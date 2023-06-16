@@ -26,7 +26,14 @@ The Motion Service can:
 You need to configure frames for your robot's components with the [Frame System](../frame-system/).
 This defines the spatial context within which the Motion Service operates.
 
-The Motion Service itself is enabled by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+The Motion Service itself is enabled on the robot by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+
+{{% alert title="Note" color="note" %}}
+
+Because the Motion Service is enabled by default, you don't give it a `"name"` while configuring it.
+Use the name `"builtin"` to access the built-in Motion Service in your code with methods like `FromRobot()` that require a `ResourceName`.
+
+{{% /alert %}}
 
 ## API
 
@@ -104,7 +111,7 @@ By default, motion is unconstrained with the exception of obstacle avoidance.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move).
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="my_motion_service")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes a gripper configured with name "my_gripper" on the robot
 gripper_name = Gripper.get_resource_name("my_gripper")
@@ -165,7 +172,7 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "my_motion_service")
+motionService, err := motion.FromRobot(robot, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the robot
 gripperName := Gripper.Named("my_gripper")
@@ -227,7 +234,7 @@ If you need collision checking and obstacle avoidance, use [`Move`](#move).
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="my_motion_service")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Assumes an arm configured with name "my_arm" on the robot
 my_frame = "my_arm_offset"
@@ -266,7 +273,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "my_motion_service")
+motionService, err := motion.FromRobot(robot, "builtin")
 
 // Assumes an arm configured with name "my_arm" on the robot
 myFrame := "my_arm_offset"
@@ -302,13 +309,13 @@ Move a component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_on_map).
 
 ```python {class="line-numbers linkable-line-numbers"}
-motion_service = MotionClient.from_robot(robot=robot, name="my_motion_service")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service" 
 my_pose = Pose(y=10)
 
 # Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success = await motion_service.move_on_map(component_name="my_base", destination=my_pose, slam_service_name="my_slam_service")
+success = await motion.move_on_map(component_name="my_base", destination=my_pose, slam_service_name="my_slam_service")
 ```
 
 {{% /tab %}}
@@ -330,7 +337,7 @@ success = await motion_service.move_on_map(component_name="my_base", destination
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "my_motion_service")
+motionService, err := motion.FromRobot(robot, "builtin")
 
 // Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service" 
 myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
@@ -386,7 +393,7 @@ from viam.services.motion import MotionClient
 # Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionClient.from_robot(robot=robot, name="my_motion_service")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
 ```
@@ -401,7 +408,7 @@ from viam.proto.common import Transform, PoseInFrame, Pose
 # Assume that the connect function is written and will return a valid robot.
 robot = await connect()
 
-motion = MotionClient.from_robot(robot=robot, name="my_motion_service")
+motion = MotionClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
@@ -463,7 +470,7 @@ gripperName := Gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
  // Access the Motion Service
-motionService, err := motion.FromRobot(robot, "my_motion_service")
+motionService, err := motion.FromRobot(robot, "builtin")
 if err != nil {
   logger.Fatal(err)
 }
