@@ -27,6 +27,7 @@ Viam currently offers SDKs for the following languages:
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
 - [C++ SDK (alpha)](https://cpp.viam.dev/)
+- [Flutter SDK (alpha)](https://github.com/viamrobotics/viam-flutter-sdk)
 
 Click on the links above to read more about installation and usage of each SDK.
 
@@ -57,6 +58,11 @@ npm install --save @viamrobotics/sdk
 {{% tab name="C++" %}}
 
 Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-flutter-sdk#viam-flutter-sdk).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -244,6 +250,29 @@ int main() {
 
   return 0;
 }
+```
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+{{< alert title="Note" color="note" >}}
+The Flutter SDK is currently in alpha.
+{{< /alert >}}
+
+```cpp {class="line-numbers linkable-line-numbers"}
+import 'package:viam_sdk/viam_sdk.dart';
+
+// Connect to an existing robot
+// *NOTE* Get the <LOCATION> and <SECRET> from app.viam.com
+final options = RobotClientOptions.withLocationSecret('<SECRET>');
+final robot = await RobotClient.atAddress('<LOCATION>', options);
+
+// Print the available resources
+print(robot.resourceNames);
+
+// Access a component
+final movementSensor = MovementSensor.fromRobot(robot, 'my_sensor');
+print(await movementSensor.readings())
 ```
 
 {{% /tab %}}
