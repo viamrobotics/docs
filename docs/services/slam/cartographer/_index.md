@@ -11,8 +11,6 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-services/img/icons/slam.svg
-
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
 To easily integrate Cartographer into the Viam ecosystem, Viam provides the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) module which wraps Cartographer as a [modular resource](/program/extend/modular-resources/) in the form of a custom SLAM service.
