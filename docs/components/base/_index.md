@@ -152,9 +152,9 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 **Parameters:**
 
 - `angle` [(float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
-Positive implies forwards.
+Positive implies a given number of degrees to the left.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
-Positive implies forwards.
+Positive implies turning to the left.
 
 **Returns:**
 
@@ -176,9 +176,9 @@ await my_base.spin(angle=10, velocity=1)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `angleDeg` [(float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
-Positive implies forwards.
+Positive implies a given number of degrees to the left.
 - `degsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
-Positive implies forwards.
+Positive implies turning to the left.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
