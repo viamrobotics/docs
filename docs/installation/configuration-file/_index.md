@@ -1,6 +1,6 @@
 ---
-title: "Configuration file"
-linkTitle: "Configuration file"
+title: "Configuration File"
+linkTitle: "Configuration File"
 weight: 30
 no_list: true
 type: docs
@@ -10,7 +10,8 @@ images: ["/installation/img/thumbnails/manage.png"]
 description: "Building your robot configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all [components](/components/) and [services](/services/) for your robot.
+The `viam-server` binary uses a JSON-formatted configuration file to define all *resources* (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+
 In order to start `viam-server` on a {{< glossary_tooltip term_id="board" text="board" >}} or computer, you must have a valid configuration file present on the local system.
 
 For more information on the individual configuration options available, see [Configuration](/manage/configuration/).
@@ -32,7 +33,7 @@ viam-server -config /path/to/config-file.json
 ```
 
 If you are using `systemctl` on Linux to manage `viam-server`, be sure to also update your service file with your custom path.
-You'll need to update these lines in <file>/etc/systemd/system/viam-server.service</file> to reflect your custom path:
+You'll need to update these lines in your <file>/etc/systemd/system/viam-server.service</file> file to reflect your custom path:
 
 ```sh {class="line-numbers linkable-line-numbers"}
 ...
