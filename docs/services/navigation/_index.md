@@ -34,6 +34,7 @@ Click **Create service**:
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
+"services": [
 {
     "name": "your-navigation-service",
     "type": "navigation", 
