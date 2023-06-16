@@ -1,9 +1,9 @@
 ---
 title: "Base Remote Control Service"
-linkTitle: "Base Remote Control"
+linkTitle: "Remote Control"
 weight: 80
 type: "docs"
-description: "The Base Remote Control Service implements remote control for a base."
+description: "The Base Remote Control Service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
 # icon: "/services/img/icons/base-remote-control.svg"
 # images: ["/services/img/icons/base-remote-control.svg"]
@@ -23,11 +23,11 @@ Control mode is determined by the configuration attribute `"mode"`, for which th
 4. `"joyStickControl"`: One joystick controls speed and angle
 5. `"droneControl"`: Two joysticks control speed and angle
 
-Monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
+You can monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
 
 ## Configuration
 
-You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Base Remote Control service.
+You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to be able to use a Base Remote Control service.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -71,7 +71,7 @@ The following attributes are available for Base Remote Control services:
 
 ## API
 
-The Base Remote Control service supports the following methods:
+The Base Remote Control Service supports the following methods:
 
 Method Name | Description
 ----------- | -----------
