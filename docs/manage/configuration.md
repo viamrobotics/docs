@@ -55,7 +55,7 @@ After you have completed the setup steps and successfully connected to your robo
 
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
-If you cannot connect your robot to the internet at all, you can also store the [configuration file](/installation/configuration-file) on the robot itself.
+If you cannot connect your robot to the internet at all, you can also store the [configuration file](/installation/configuration-file/) on the robot itself.
 
 {{% /alert %}}
 

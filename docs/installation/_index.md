@@ -175,7 +175,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </li>
 </ol>
 
-4. Create your robot's [configuration file](/installation/configuration/), and save the file to <file>/etc/viam.json</file>.
+4. Create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
 
 5. Then, start `viam-server` on your board with the following command:
 
@@ -209,7 +209,7 @@ To install `viam-server` on a macOS computer:
    cp /opt/homebrew/etc/viam.json ~/viam.json
    ```
 
-   This example configuration file contains some example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}. See [Configuration file](/installation/configuration/) for more information.
+   This example configuration file contains some example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}. See [Configuration file](/installation/configuration-file/) for more information.
 
 1. Then, start `viam-server` with the following command:
 
@@ -276,7 +276,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </li>
 </ol>
 
-3. Create your robot's [configuration file](/installation/configuration/), and save the file to <file>/etc/viam.json</file>.
+3. Create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
 
 4. Then, start `viam-server` on your board with the following command:
 
