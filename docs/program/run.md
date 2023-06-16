@@ -47,7 +47,7 @@ This is useful because as long as this computer is able to establish a network c
 
 If you need to run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or other on-robot code, you can run control code on the same board that is running `viam-server`.
 
-To ensure intermittent internet connectivity does not interfere with the code's execution, there are some special steps you need to follow:
+In case your robots have intermittent internet connectivity, you can ensure this does not interfere with the code's execution, by following these steps:
 
 {{< alert title="Note" color="note" >}}
 Currently, this only works with Python code which is running on the same board that `viam-server` is running on.
