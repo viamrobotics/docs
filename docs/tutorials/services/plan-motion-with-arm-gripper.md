@@ -164,8 +164,8 @@ You must add additional imports to access `Pose`, `PoseInFrame`, `Vector3`, `Geo
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add a table obstacle to a WorldState
-table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
-table_dims = Vector3(x=635.0, y=1271.0, z=38.0)
+table_origin = Pose(x=0.0, y=0.0, z=-19.0)
+table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
 table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
 
 obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[table_object])
@@ -184,10 +184,10 @@ The `WorldState` is available through the `referenceframe` library, but addition
 obstacles := make([]spatialmath.Geometry, 0)
 
 tableOrigin := spatialmath.NewPose(
-  r3.Vector{X: 0.0, Y: 0.0, Z: -10.0},
+  r3.Vector{X: 0.0, Y: 0.0, Z: -19.0},
   &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
 )
-tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
+tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 38.0}
 tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
 obstacles = append(obstacles, tableObj)
 
@@ -203,6 +203,7 @@ worldState := &referenceframe.WorldState{
 
 This example adds a "table" with the assumption that you mounted your robot arm to an elevated surface.
 The 2000 millimeter by 2000 millimeter dimensions ensure that a sufficiently large box is constructed, regardless of the real physical footprint of your mounting surface.
+The origin at -19 mm along the Z axis (half the table's thickness) positions the table so that its top surface is at 0.
 Feel free to change these dimensions, including thickness (the Z coordinate in the above code samples), to match your environment more closely.
 Additional obstacles can also be *appended* as desired.
 
