@@ -77,7 +77,7 @@ The base component supports the following methods:
 | [MoveStraight](#movestraight)  | Move the base in a straight line across the given distance at the given velocity. |
 | [Spin](#spin) | Move the base to the given angle at the given angular velocity. |
 | [SetPower](#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
-| [SetVelocity](#setvelocity) | Set the linear velocity and angular velocity of the base. |
+| [SetVelocity](#setvelocity) | Set the linear and angular velocity of the base. |
 | [Stop](#stop) | Stop the base. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
@@ -302,9 +302,9 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 **Parameters:**
 
 - `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in millimeters per second.
-Only the Y component of the vector is used for a wheeled base.
+Only the Y component of the vector is used for a wheeled base, since Viam's coordinate system considers +Y to be the forward axis.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second.
-Only the Z component of the vector is used for a wheeled base.
+Only the Z component of the vector is used for a wheeled base, since Viam's coordinate system considers +Z to point up and the angular velocity to rotate around the Z axis.
 
 **Returns:**
 
