@@ -6,6 +6,8 @@ type: "docs"
 description: "Configure a multi-axis gantry."
 images: ["/components/img/components/gantry.svg"]
 tags: ["gantry", "components"]
+aliases:
+    - "/components/gantry/multiaxis/"
 # SME: Rand
 ---
 
