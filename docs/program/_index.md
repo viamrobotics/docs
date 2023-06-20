@@ -294,7 +294,7 @@ The program will connect to your robot and print a list of the available {{< glo
 ### Edit the sample code
 
 Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
-You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/resource-apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
+You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
     {{% card link="/program/sdks/" size="small" custom="Add Logic to Interface with Resources" %}}
