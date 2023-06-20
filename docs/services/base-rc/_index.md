@@ -55,6 +55,21 @@ Click **Create service**:
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "my-base-remote-control-service",
+    "type": "base_remote_control",
+    "attributes": {
+        "base": "my-base",
+        "input_controller": "my-input-controller",
+        "control_mode": "arrowControl"
+    }
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 Next, add the JSON `"attributes"` you want the service to have.
