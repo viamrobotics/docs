@@ -289,7 +289,7 @@ You can run your program on any computer which:
 1. has [the appropriate SDK](#requirements) installed
 2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally)
 
-The program will connect to your robot and print a list of the available {{< glossary_tooltip term_id="resources" text="resources" >}}.
+The program will connect to your robot and print a list of the available {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 ### Edit the sample code
 
