@@ -119,7 +119,7 @@ frame = await my_cam.get_image()
 
 <br>
 
-If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [RawImage.bytes_to_depth_array()](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
+If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`RawImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
 
 For example:
 
@@ -129,7 +129,7 @@ frame = await my_cam.get_image()
 
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int].
-standard_frame  frame.bytes_to_depth_array()
+standard_frame frame.bytes_to_depth_array()
 ```
 
 {{% alert title="Note" color="note" %}}
