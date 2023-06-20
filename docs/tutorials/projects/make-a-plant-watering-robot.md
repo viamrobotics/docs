@@ -514,10 +514,10 @@ Follow these instructions to start working on your Python control code:
 
 1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
 2. Select **Python** as the language.
+3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
 
    {{% snippet "show-secret.md" %}}
 
-3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
 4. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
 5. Name the file <file>plant-watering-robot.py</file>, and save it.
 

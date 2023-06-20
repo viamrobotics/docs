@@ -246,6 +246,8 @@ if __name__ == '__main__':
 
 {{% /expand %}}
 
+{{% snippet "show-secret.md" %}}
+
 Save your code file.
 
 ### Run the code

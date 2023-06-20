@@ -125,7 +125,7 @@ Save <file>lightupbot.py</file>.
 
 You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
 
-1. Navigate to the **Code sample** tab on t[the Viam app](https://app.viam.com).
+1. Navigate to the **Code sample** tab on [the Viam app](https://app.viam.com).
 Make sure **Python** is selected in the **Language** selector.
 
 {{% snippet "show-secret.md" %}}
