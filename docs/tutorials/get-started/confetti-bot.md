@@ -260,7 +260,7 @@ The following section explains the code for the confetti bot.
 The completed code for this project is available on [GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot).
 If you copy the code from this link, don’t forget to change your robot address and secret so it connects to your own confetti robot.
 
-Navigate to the **Code sample** tab on the Viam app, select Python as the language, and click the **Copy** button.
+Navigate to the **Code sample** tab on the Viam app, select **Python** as the language, and click the **Copy** button.
 
 {{% snippet "show-secret.md" %}}
 

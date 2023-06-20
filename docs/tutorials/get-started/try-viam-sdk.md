@@ -42,8 +42,7 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to go to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab.
-Then, select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -82,8 +81,7 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to go to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab.
-Then, select **Go** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -114,8 +112,7 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to go to the [robot page on the Viam app](https://app.viam.com/robots) and navigate to the **Code sample** tab.
-Then, select **TypeScript** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 

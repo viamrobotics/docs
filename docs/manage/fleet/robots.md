@@ -90,11 +90,11 @@ For local communication between [parts](../../parts-and-remotes/#robot-parts) Vi
 
 To start programming your robot, go to the **Code sample** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.
 
+{{% snippet "show-secret.md" %}}
+
 For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdks/).
 
 There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
-
-{{% snippet "show-secret.md" %}}
 
 ### Security
 

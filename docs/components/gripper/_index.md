@@ -27,8 +27,7 @@ If you have another gripper model, you can [define a custom component](../../pro
 
 ## Control your gripper with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com) and navigate to the **Code sample** tab.
-Then, select your preferred programming language and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
