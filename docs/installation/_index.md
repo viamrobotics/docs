@@ -127,11 +127,14 @@ To install `viam-server` on a board:
 1. If you haven't already, you must install a supported operating system on your board.
    Follow the instructions to [prepare your board](#prepare-your-board) to install a supported OS on your board.
 
-1. Next, `ssh` to your board and run `uname -m` to determine the architecture of your board.
+1. Next, `ssh` to your board.
+   Create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
+
+1. Run `uname -m` to determine the architecture of your board.
    `viam-server` supports the `aarch64` and `x86_64` architectures.
 
 <!-- The below has to be in HTML because we're using a table inside another table with indentation-->
-<ol start="3">
+<ol start="4">
 <li>Select the tab below matching your board's architecture, and run the command listed to download and install <code>viam-server</code> on your board.
    We recommend the stable release for most users:
 
@@ -175,15 +178,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </li>
 </ol>
 
-4. Create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
-
-5. Then, start `viam-server` on your board with the following command:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sudo systemctl start viam-server
-   ```
-
-6. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`:
+5. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    sudo systemctl stop viam-server
@@ -228,11 +223,13 @@ To install `viam-server` on a macOS computer:
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
 To install `viam-server` on a Linux computer:
 
-1. Run `uname -m` on your Linux computer's command line to determine your system architecture.
+1. On your Linux computer, create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
+
+2. Run `uname -m` on the command line to determine your system architecture.
    `viam-server` supports the `aarch64` and `x86_64` architectures.
 
 <!-- The below has to be in HTML because we're using a table inside another table with indentation-->
-<ol start="2">
+<ol start="3">
 <li>Select the tab below matching your computer's architecture, and run the command listed to download and install <code>viam-server</code>.
    We recommend the stable release for most users:
 
@@ -276,15 +273,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 </li>
 </ol>
 
-3. Create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
-
-4. Then, start `viam-server` on your board with the following command:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sudo systemctl start viam-server
-   ```
-
-5. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`:
+4. To make configuration changes to your robot, edit the <file>/etc/viam.json</file> configuration file, then stop and restart `viam-server`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    sudo systemctl stop viam-server
