@@ -420,8 +420,7 @@ The claw game machine will use the [Motion Service](/services/motion/) to plan i
 To make sure the arm doesn't hit the walls of the enclosure or the prize drop hole, you need to create representations of obstacles around the arm that the motion service can use when planning.
 
 Obstacles are geometries located at a pose relative to some frame.
-When solving a motion plan with movable frames that contain inherent geometries, for example parts of the arm.
-The solved path is constrained such that none of those inherent geometries intersect with the obstacles.
+When solving a motion plan with movable frames that contain inherent geometries, for example parts of the arm, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
 
 You can pass information about the robot’s environment, including obstacles, to the Viam platform through a data structure named [WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
 
