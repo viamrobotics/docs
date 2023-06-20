@@ -128,7 +128,7 @@ For example:
 frame = await my_cam.get_image()
 
 # Convert "frame" to a standard 2D image representation.
-# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]]].
+# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
 standard_frame frame.bytes_to_depth_array()
 ```
 
