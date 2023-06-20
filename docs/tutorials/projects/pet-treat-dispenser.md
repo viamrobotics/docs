@@ -362,7 +362,9 @@ If you want your robot to automatically run your code upon startup, it is import
 ### Add the connection code
 
 Go to your robot’s page on [the Viam app](https://app.viam.com) and navigate to the **Code sample** tab.
-Select **Python** and toggle **Include secret**, then copy the generated sample code and paste it into the <file>main.py</file> file.
+Select **Python**, then copy the generated sample code and paste it into the <file>main.py</file> file.
+
+{{% snippet "show-secret.md" %}}
 
 Save the file and run this command to execute the code:
 

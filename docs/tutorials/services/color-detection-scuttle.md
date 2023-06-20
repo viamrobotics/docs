@@ -73,12 +73,12 @@ Download the [<file>scuttle.py</file>](https://gist.github.com/mestcihazal/e78e3
 Feel free to choose your own location, but as an example, we’ve chosen the Desktop.
 
 In the Python code, you must add your robot's address and secret (payload), which are found on the **Code sample** tab of the [Viam app](https://app.viam.com).
-Toggle **Include secret** to show this payload in the generated code.
+
 Viam pre-populates the **Code sample** tab with the robot name, address, and secret:
 
 ![Remote configuration code sample](../../img/copy-remotes-code.png)
 
-{{< readfile "/static/include/snippet/secret-share.md" >}}
+{{% snippet "show-secret.md" %}}
 
 In your local copy of <file>scuttle.py</file>, paste your robot payload and address where indicated.
 Save the file.

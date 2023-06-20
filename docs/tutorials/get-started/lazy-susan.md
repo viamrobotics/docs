@@ -241,9 +241,11 @@ pip3 install viam-sdk
 
 Installing with `pip` ensures you are using the latest version of `viam-sdk`, and makes updating it in the future easy.
 
-On the [Viam app](https://app.viam.com/), select the **Code sample** tab, set **Python** as the language, and toggle **Include secret** to show your robot's location secret in the generated code.
+On the [Viam app](https://app.viam.com/), select the **Code sample** tab and set **Python** as the language.
 
 ![The Language portion of the Code Sample tab.](/tutorials/img/lazy-susan/python-language.png)
+
+{{% snippet "show-secret.md" %}}
 
 Copy the code:
 

@@ -21,7 +21,9 @@ The credentials look like this:
 "secret":"LOCATION SECRET FROM THE VIAM APP"}}
 ```
 
-Your robot's location secret can be found on the **Code sample** tab on the Viam app. Toggle **Include secret** to display it in the code sample shown there.
+Your robot's location secret can be found on the **Code sample** tab on the Viam app.
+
+{{% snippet "show-secret.md" %}}
 
 When you turn on your robot, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.

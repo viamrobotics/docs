@@ -620,7 +620,9 @@ func main() {
 }
 ```
 
-Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com). Toggle **Include secret** to display these values in the code sample shown there.
+Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com).
+
+{{% snippet "show-secret.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}

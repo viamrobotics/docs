@@ -94,9 +94,7 @@ For more information on the SDKs, see [Program your Robot with Viam's SDKs](../.
 
 There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
 
-When viewing the **Code sample** tab, toggle **Include secret** to include the robot location secret in the boilerplate code.
-
-{{%  snippet "secret-share.md" %}}
+{{% snippet "show-secret.md" %}}
 
 ### Security
 

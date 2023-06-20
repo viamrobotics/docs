@@ -74,7 +74,10 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 
 ### How to connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Code sample** tab, toggle **Include secret**, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Code sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+
+{{% snippet "show-secret.md" %}}
+
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code from the **Code sample** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
 

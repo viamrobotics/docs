@@ -74,12 +74,12 @@ Before you get started, ensure that you:
 
 ### Connect to your robot
 
-The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code sample** tab, select your preferred SDK, toggle **Include secret** to display your robot's location secret in the code, and copy the code generated for you.
+The easiest way to get started is to navigate to your robot's page on [the Viam app](https://app.viam.com/robots), select the **Code sample** tab, select your preferred SDK, and copy the code generated for you.
+
+{{% snippet "show-secret.md" %}}
 
 These boilerplate code samples import all of the necessary libraries and set up a client connection to your robot whether your code runs on your robot or on a different machine.
 This connection is established through the Viam app in the cloud.
-
-{{< readfile "/static/include/snippet/secret-share.md" >}}
 
 Your boilerplate code sample should look similar to this:
 
@@ -319,7 +319,8 @@ Currently, this only works with Python code which is running on the same board t
 
 2. Replace the `LOCATION SECRET` with your robot location secret and the `ADDRESS` with your robot's Viam cloud address.
    Both can be found on the **Code sample** tab on [the Viam app](https://app.viam.com).
-   Toggle **Include secret** to display these values in the code sample shown there.
+
+   {{% snippet "show-secret.md" %}}
 
    Your localhost can now make a secure connection to `viam-server` locally.
    SSL will now check the server hostname against the `auth_entity` required by {{< glossary_tooltip term_id="grpc" >}} from the `auth_entity` dial options.
