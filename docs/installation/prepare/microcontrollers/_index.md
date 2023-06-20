@@ -288,20 +288,20 @@ Add the ESP32-backed worker robot as a remote of your new controller robot to es
 
 1. Navigate to the **Code sample** tab of the worker robot, click on **Remotes**, and copy the code generated.
 
-![The remotes config information](../../img/microcontroller/copy-remotes-code.png)
+   ![The remotes config information](../../img/microcontroller/copy-remotes-code.png)
 
-{{% snippet "show-secret.md" %}}
+   {{% snippet "show-secret.md" %}}
 
 2. Navigate to the **Config** tab of the control robot, select the `Remotes` subtab, select the `JSON` mode and click **Create Remote**.
 
-![Create remote menu](../../img/microcontroller/create-remote.png)
+   ![Create remote menu](../../img/microcontroller/create-remote.png)
 
 3. Paste the copied `JSON` config into the configuration field.
 
-![Empty configuration field](../../img/microcontroller/config-field.png)
+   ![Empty configuration field](../../img/microcontroller/config-field.png)
 
-Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
-If it is, the ESP32-backed robot is now programmatically available.
+   Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
+   If it is, the ESP32-backed robot is now programmatically available.
 
 ## Tips
 

@@ -728,9 +728,7 @@ from viam.services.vision import VisionClient
 ```
 
 Then it connects to our robot using a robot location secret and address.
-Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab
-
-{{% snippet "show-secret.md" %}}
+Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab:
 
 ```python {class="line-numbers linkable-line-numbers"}
 robot_secret = os.getenv('ROBOT_SECRET') or ''
@@ -741,6 +739,8 @@ base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
 camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
 pause_interval = os.getenv('PAUSE_INTERVAL') or 3
 ```
+
+{{% snippet "show-secret.md" %}}
 
 Next, the code defines functions for obstacle detection.
 The first method, `obstacle_detect()`, gets readings from a sensor, and the second method, `obstacle_detect_loop()`, asynchronously loops through the readings to stop the base if it’s closer than a certain distance from an obstacle:
