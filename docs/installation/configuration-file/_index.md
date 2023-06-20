@@ -10,7 +10,7 @@ images: ["/installation/img/thumbnails/manage.png"]
 description: "Building your robot configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all *resources* (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
 
 In order to start `viam-server` on a {{< glossary_tooltip term_id="board" text="board" >}} or computer, you must have a valid configuration file present on the local system.
 
