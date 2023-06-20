@@ -1,7 +1,7 @@
 ---
 title: "Configure a ur5e Arm"
 linkTitle: "ur5e"
-weight: 34
+weight: 40
 type: "docs"
 description: "Configure a ur5e arm."
 images: ["/components/img/components/arm.svg"]
@@ -33,8 +33,8 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
-        "board": <#>,
-        "i2c": "<your-host-address>"
+        "speed_degs_per_sec": <float>,
+        "host": "<your-host-address>",
       },
       "depends_on": []
     }]
@@ -76,5 +76,5 @@ The following attributes are available for `ur5e` arms:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
-| `speed_degs_per_sec`  | string | **Required** | The host address of the ur5e. |
-| `host`  | string | **Required** | The host address of the ur5e. |
+| `speed_degs_per_sec`  | string | **Required** | Desired maximum speed of joint movement in degrees/sec. <br> Range: `[.1, 1]` |
+| `host`  | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your ur5e. |

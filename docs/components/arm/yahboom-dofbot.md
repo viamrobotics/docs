@@ -1,7 +1,7 @@
 ---
 title: "Configure a yahboom-dofbot Arm"
 linkTitle: "yahboom-dofbot"
-weight: 34
+weight: 50
 type: "docs"
 description: "Configure a yahboom-dofbot arm."
 images: ["/components/img/components/arm.svg"]
