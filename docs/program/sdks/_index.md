@@ -16,13 +16,14 @@ The API methods provided by the SDKs for each of these resource APIs wrap gRPC c
 
 ## ResourceBase API
 
-
 In the Python SDK, [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html) defines a basic set of API methods that all child resources should provide for users.
 In the other SDKs, resource APIs implement but do not inherit these base requirements.
 
 `ResourceBase` methods include:
 
 ### FromRobot
+
+Get the `"name"` of a resource.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
