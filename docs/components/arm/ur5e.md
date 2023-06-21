@@ -77,4 +77,4 @@ The following attributes are available for `ur5e` arms:
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
 | `speed_degs_per_sec`  | float | **Required** | Desired maximum speed of joint movement in degrees/sec. <br> Range: `[.1, 1]` |
-| `host`  | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your ur5e. |
+| `host`  | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |
