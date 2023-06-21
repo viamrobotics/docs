@@ -14,7 +14,7 @@ Different models of resources implement the same API, which [Viam SDKs expose](/
 
 The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/manage/configuration/) on your robot.
 
-## ResourceBase API
+## ResourceBase Methods
 
 In the Python SDK, [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html) defines a basic set of API methods that all child resources should provide for users.
 In the other SDKs, resource APIs implement but do not inherit these base requirements.
