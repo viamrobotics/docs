@@ -10,19 +10,28 @@ tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources"]
 
 The [Viam GitHub](https://github.com/viamrobotics/odrive) provides an implementation of ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver as a modular {{< glossary_tooltip term_id="resource" text="resource" >}}.
 
-Before getting started, read through the [ODrive documentation](https://docs.odriverobotics.com/v/latest/getting-started.html) to wire, calibrate, and connect to your motor.
-Use [this guide](https://docs.odriverobotics.com/v/latest/control.html#control-doc)
+Before getting started, make sure you have read through the [ODrive documentation](https://docs.odriverobotics.com/v/latest/getting-started.html) to wire, calibrate, and connect your motor to your [board](/components/board/).
 
-The configuration remains on the same ODrive motor controller across reboots, and only changes when you go through the configuration of the ODrive again.
-* See the [odrive CAN documentation](https://docs.odriverobotics.com/v/latest/can-guide.html) for detailed information on how to set up CAN on your odrive. Make sure that you:
-    * enable SPI communication on your Raspberry Pi
-    * install `odrive`, `python-can`, `cantools`, and [`viam-sdk`](https://python.viam.dev)
+Use [this guide](https://docs.odriverobotics.com/v/latest/control.html#control-doc) to tune your motor.
 
-- grab path to config file for configuration later
+<!-- TODO: Should we make the following a note?
+The configuration remains on the same ODrive motor controller across reboots, and only changes when you go through the configuration of the ODrive again. 
+- grab path to ODRIVEconfig file for configuration later if you want it to be reconfigured
+-->
+
+{{% alert title="Note" color="note" %}}
+
+You must also enable SPI on your board if it is not enabled by default.
+See your [board model's configuration instructions](/components/board/#configuration) if applicable.
+
+{{% /alert %}}
+
+<!-- 
+
 * Update the sample config as following:
     * Update the `executable_path` (string) to the location of `run.sh` on your machine
     * If using a `"canbus"` connection, update the `canbus_node_id` (int) to the node ID of whichever CAN node you'd like to use
-  
+   -->
 TODO: NEED TO POINT SOMEWHERE TO MODULAR RESOURCES DOCUMENTATION
 After completing the re 
 
@@ -40,45 +49,36 @@ https://github.com/viamrobotics/odrive.git
 
 ## Configuration
 
+### Module
+
+Click on the **Modules** subtab.
+
+Add the odrive module with a name of your choice and an executable path that points to the location of your ODrive module's run script.
+
+
+
 - diff requirements for canbus and odrive --> can tab?
     - can deffo show requirements for multiple on canbus tab example but should I consider if it should be its own section?
     - https://github.com/viamrobotics/odrive/tree/main#connecting-to-an-odrive connecting section is split in these tabs
 
-## Requirements
-
-<!-- Install the `odrive-module` binary on your machine and make it executable by running the following commands according to your machine's architecture: -->
-
-{{< tabs >}}
+{{< tabs name="Add an Odrive motor component">}}
 {{% tab name="odrive-serial" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
 
-```
 
 {{% /tab %}}
+
 {{% tab name="odrive-canbus" %}}
-
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
-
-```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Configuration
+{{< tabs name="Add an Odrive motor component">}}
+{{% tab name="Config Builder" %}}
 
 Physically connect the ODrive motor to your machine.
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 
-{{< tabs name="Add an Odrive motor component">}}
-{{% tab name="Config Builder" %}}
-
-### Module
-
-Click on the **Modules** subtab.
-Add the odrive module with a name of your choice and an executable path that points to the location of your ODrive module's run script:
-
-### Component
 Navigate to the **Config** tab on your robot's page, and click on the **Components** subtab.
 
 Add a component with type `motor`, model `viam:motor:odrive-canbus`, and a name of your choice:
