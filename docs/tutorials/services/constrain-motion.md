@@ -19,19 +19,19 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 Say you want your robot to pass you a cup of water, but you don't want it to spill the water or bump into the tasty treats on the table.
 
-If you followed along in [part 2 of the Motion Service tutorial series](../plan-motion-with-arm-gripper), you used the [Motion Service](/services/motion) to move a robot arm and end effector to desired positions.
-This tutorial builds on that and shows you how to use [constraints](/services/motion/constraints) to control the way your robot moves between its start and end position.
+If you followed along in [part 2 of the Motion Service tutorial series](../plan-motion-with-arm-gripper/), you used the [Motion Service](/services/motion/) to move a robot arm and end effector to desired positions.
+This tutorial builds on that and shows you how to use [constraints](/services/motion/constraints/) to control the way your robot moves between its start and end position.
 
 In this tutorial, you will learn to move a cup across a table without hitting another object, and while remaining upright.
 
 {{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/).
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
 ## Prerequisites
 
-Before starting this tutorial, make sure you have the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) installed.
+Before starting this tutorial, make sure you have the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme/) installed.
 
 If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the controller before continuing.
 
@@ -43,7 +43,7 @@ For a helpful recap of the code we previously added, look at [the full code samp
 
 ## Configure your robot
 
-Use the robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](../../../services/frame-system/) configured.
+Use the robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](../../../services/frame-system/) configured.
 
 The Motion Service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
 
@@ -174,7 +174,7 @@ obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[tabl
 You need to figure out how the gripper's frame corresponds to its hardware.
 That is, you need to know which axis points from the "wrist" to the end of the gripper, which axis lines up with the direction the jaws actuate, and if the gripper was holding a cup, which axis would pass vertically through the cup.
 
-All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule).
+All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule/).
 
 <!--
 TODO: Insert diagram
