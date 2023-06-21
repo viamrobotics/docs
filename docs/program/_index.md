@@ -287,7 +287,7 @@ Once you have saved the sample code, [execute your program](/program/run/).
 You can run your program on any computer which:
 
 1. has [the appropriate SDK](#requirements) installed
-2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-locally)
+2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/program/run/#run-code-on-robot)
 
 The program will connect to your robot and print a list of the available {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
