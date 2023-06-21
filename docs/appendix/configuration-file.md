@@ -19,18 +19,18 @@ For more information on the individual configuration options available, see [Con
 ## Automatic configuration file creation in the Viam app
 
 When you set up a robot in the [the Viam app](https://app.viam.com), the configuration file is built and deployed to your robot automatically.
-As long as your robot connects to the internet, it is generally much easier to configure your robot directly in the Viam app using **Builder** mode.
+As long as your robot connects to the internet, it is generally easiest to configure your robot directly in the Viam app using **Builder** mode.
 
-However, if your robot will never connect to the internet, you may wish to create your own local configuration file without connecting to the Viam app.
-You can:
+However, if your robot will never connect to the internet, you may wish to create your own local configuration file
+You can either:
 
-* [Build a local configuration file in the Viam app](#build-a-configuration-file-manually-in-the-viam-app): Use the Viam app to build the configuration file without connecting your robot to the app.
-* [Build a local configuration file manually](#build-a-local-configuration-file-manually): Build your own local configuration file based on our example file.
+* [Build a local configuration file in the Viam app](#build-a-configuration-file-manually-in-the-viam-app) - Use the Viam app to build the configuration file and download it to your robot, without connecting your robot to the Viam app.
+* [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on our example file.
 
 ## Build a configuration file manually in the Viam app
 
-The easiest way to configure your robot and create the configuration file is from the Viam app.
-You can build a configuration file in the app without connecting your robot to it.
+If your robot will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your robot to it.
+Follow the steps below to build and then download your configuration file:
 
 1. Navigate to [the Viam app](https://app.viam.com) and select the **Config** tab.
 1. Use **Builder** mode to add components and services, configure attributes, and map pin assignments.
@@ -43,6 +43,10 @@ If you later need to make changes to your robot's configuration:
 1. Switch to **Raw JSON** mode to view your full configuration in JSON format
 1. Download the code to your robot, overwriting your local configuration file with the new one.
 1. Restart `viam-server` to apply the changes.
+
+{{% alert title="Note" color="note" %}}
+This process is not required if your robot is connected to the Viam app. When connected, any configuration changes you make in the app are propagated to your robot automatically.
+{{% /alert %}}
 
 ## Build a local configuration file manually
 
@@ -89,6 +93,10 @@ Select the tab below for your platform:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{% alert title="Note" color="note" %}}
+This process is not required if your robot is connected to the Viam app. When connected, any configuration changes you make in the app are propagated to your robot automatically.
+{{% /alert %}}
 
 ### Managing `viam-server` with `systemctl` in Linux
 
