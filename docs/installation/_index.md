@@ -128,7 +128,7 @@ To install `viam-server` on a board:
    Follow the instructions to [prepare your board](#prepare-your-board) to install a supported OS on your board.
 
 1. Next, `ssh` to your board.
-   Create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
+   Create your robot's [local configuration file](/appendix/configuration-file/), and save the file to <file>/etc/viam.json</file>.
 
 1. Run `uname -m` to determine the architecture of your board.
    `viam-server` supports the `aarch64` and `x86_64` architectures.
@@ -185,6 +185,12 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
    sudo systemctl start viam-server
    ```
 
+6. By default, `viam-server` is configured to automatically start on system boot on the Linux platform. If desired, you can disable this with the following command:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo systemctl disable viam-server
+   ```
+
 {{% /tab %}}
 {{% tab name="macOS computer" %}}
 
@@ -204,7 +210,7 @@ To install `viam-server` on a macOS computer:
    cp /opt/homebrew/etc/viam.json ~/viam.json
    ```
 
-   This example configuration file contains some example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}. See [Configuration file](/installation/configuration-file/) for more information.
+   This example [local configuration file](/appendix/configuration-file/) contains some example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}.
 
 1. Then, start `viam-server` with the following command:
 
@@ -223,7 +229,7 @@ To install `viam-server` on a macOS computer:
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
 To install `viam-server` on a Linux computer:
 
-1. On your Linux computer, create your robot's [configuration file](/installation/configuration-file/), and save the file to <file>/etc/viam.json</file>.
+1. On your Linux computer, create your robot's [local configuration file](/appendix/configuration-file/), and save the file to <file>/etc/viam.json</file>.
 
 2. Run `uname -m` on the command line to determine your system architecture.
    `viam-server` supports the `aarch64` and `x86_64` architectures.
