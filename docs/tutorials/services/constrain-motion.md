@@ -336,9 +336,9 @@ from viam.services.motion import MotionClient
 from viam.proto.common import *
 
 async def connect():
-    creds = Credentials(type="robot-location-secret", payload="t5zz8gleodicnpe27rh05y4q8pgdr26ke9aysmnv8q07i2ui")
+    creds = Credentials(type="robot-location-secret", payload="<ROBOT SECRET PAYLOAD>")
     opts = RobotClient.Options(refresh_interval=0, dial_options=DialOptions(credentials=creds))
-    return await RobotClient.at_address("motion-tutes-main.jpb4ca54k6.viam.cloud", opts)
+    return await RobotClient.at_address("<ROBOT ADDRESS", opts)
 
 
 async def main():
