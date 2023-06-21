@@ -56,8 +56,9 @@ Supported arm models include:
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
 | [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
+| [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
 | [`yahboom-dofbot`](yahboom-dofbot/) | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
+| [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
 ## Control your arm with Viam's client SDK libraries
 
