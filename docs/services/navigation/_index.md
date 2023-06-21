@@ -13,7 +13,7 @@ tags: ["navigation", "services", "base", "rover"]
 
 The Navigation service is the stateful definition of Viam's [Motion Service](/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
-Once the `Waypoints` are added and the `Mode` of the service is [set to `waypoints`](#setmode), the service communicates with the base as it begins to navigate to the `Waypoints`.
+Once these waypoints are added and the mode of the service is [set to `waypoints`](#setmode), the service begins to define the robot's path.
 
 ## Configuration
 
@@ -59,7 +59,11 @@ Click **Create service**:
     "type": "navigation",
     "attributes": {
         "store": {
-            "type": "memory"
+            "type": "mongodb", 
+            "config": {
+                "uri": "mongodb://127.0.0.1:27017"
+            } 
+        }
         },
         "movement_sensor": "test_movement",
         "base": "test_base",
@@ -101,7 +105,7 @@ The following attributes are available for `Navigation` services:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | **Required** | The configuration object to use for the Navigation data storage. Either `[{"type": "memory"}]` or `[{ "type": "mongodb", "config": {"uri": "mongodb://127.0.0.1:27017"} }]`. |
+| `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the Navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [Motion Service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a Motion Service to your robot, a new instance is added.|
