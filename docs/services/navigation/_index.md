@@ -24,7 +24,7 @@ You must configure a [base](/components/base/) with a [movement sensor](/compone
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab and navigate to the **Create service** menu.
-Select the type `Navigation` and enter a name for your service.
+Select the type `navigation` and enter a name for your service.
 
 Click **Create service**:
 
@@ -34,6 +34,7 @@ Click **Create service**:
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
+"services": [
 {
     "name": "your-navigation-service",
     "type": "navigation", 
@@ -45,6 +46,8 @@ Click **Create service**:
         "base": "test_base"
     }
 }
+    ... // Other services
+]
 ```
 
 {{% /tab %}}

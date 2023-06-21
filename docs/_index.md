@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the Viam Documentation"
+title: "Viam Documentation"
 linkTitle: "Viam Documentation"
 description: "Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS."
 weight: 1
@@ -10,8 +10,8 @@ sitemap:
   priority: 1.0
 ---
 
-Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS.
-Viam supports a wide variety of systems, including:
+Welcome to the Viam Documentation!
+Viam is a complete software platform for robots that runs on Linux and macOS and supports a wide variety of popular systems, including:
 
 <div id="board-carousel" class="carousel td-max-width-on-larger-screens">
   <ul tabindex="0">
@@ -105,6 +105,9 @@ Viam supports a wide variety of systems, including:
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
 </div>
+<br>
+
+Explore more about the Viam platform or try it out for yourself:
 
 <div class="container td-max-width-on-larger-screens">
   <div class="row">
@@ -122,10 +125,10 @@ Viam supports a wide variety of systems, including:
         <h4>Configure your robots</h4>
         <div style="text-align: left">
             <ol style="padding-inline-start: 1.1rem">
-            <li><a href="/manage/fleet/robots/">Set up your robot</a> or<a href="manage/fleet/"> fleet</a></li>
+            <li><a href="manage/configuration/">Configure your robot<a> or <a href="manage/fleet/">fleet</a></li>
             <li><a href="installation/">Install Viam on your robot</a></li>
-            <li><a href="manage/configuration/">Configure your robot</a></li>
-            <li><a href="manage/fleet/robots/#control">Test your robot</a></li>
+            <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
+            <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
             </ol>
             {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
         </div>
