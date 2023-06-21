@@ -12,11 +12,11 @@ description: "Building a local robot configuration file for use with viam-server
 
 The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
 
-When you [install `viam-server`](/installation/) from [the Viam app](https://app.viam.com), you can configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
+When you [install `viam-server`](/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
 
-However, if your robot will never connect to the internet, you may wish to create your own local configuration file, using one of these options:
+However, if your robot will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
-* [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and download it to your robot, without connecting your robot to the Viam app.
+* [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
 * [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on our example file.
 
 For more information on the individual configuration options available, see [Configuration](/manage/configuration/).
@@ -107,8 +107,8 @@ Select the tab below for your platform:
    Finally, stop and restart `viam-server` to apply the changes:
 
    ```sh {class="line-numbers linkable-line-numbers"}
-   systemctl stop viam-server
-   systemctl start viam-server
+   sudo systemctl stop viam-server
+   sudo systemctl start viam-server
    ```
 
 {{% /tab %}}
