@@ -470,8 +470,6 @@ async def connect():
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
 
-Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com).
-
 {{% snippet "show-secret.md" %}}
 
 You will update the `main()` method later.

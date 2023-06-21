@@ -472,8 +472,6 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com).
-
 {{% snippet "show-secret.md" %}}
 
 {{% /tab %}}
@@ -621,8 +619,6 @@ func main() {
   }
 }
 ```
-
-Your robot's location secret and address can be found on the **Code sample** tab on [the Viam app](https://app.viam.com).
 
 {{% snippet "show-secret.md" %}}
 
