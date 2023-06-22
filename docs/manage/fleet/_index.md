@@ -53,7 +53,7 @@ Permissions are added at the organization level and apply to everything in an or
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code Sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
+  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
 To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
 
@@ -93,13 +93,7 @@ As long as each collaborator has access to these tokens for a robot, members of 
 Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's location secret.
 The robot's remote address is displayed on both the **Control** and **Code sample** tabs of your robot's page in the app, ending with `viam.cloud`.
 
-{{% alert title="Caution" color="caution" %}}
-Be cautious when sharing location secret keys in your code or messages.
-
-Do not make a secret key publicly available, as anyone who has the secret key can access your location, compromising the security of your system.
-
-It is good practice to note _where_ and _when_ you share a location secret key.
-{{% /alert %}}
+{{% snippet "secret-share.md" %}}
 
 ### Logging
 
