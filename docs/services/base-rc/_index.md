@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 description: "The Base Remote Control Service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
-# icon: "/services/img/icons/base-remote-control.svg"
-# images: ["/services/img/icons/base-remote-control.svg"]
+icon: "/services/img/icons/base-rc.svg"
+images: ["/services/img/icons/base-rc.svg"]
 # SME: Eric
 ---
 
