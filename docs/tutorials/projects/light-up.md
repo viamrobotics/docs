@@ -125,13 +125,16 @@ Save <file>lightupbot.py</file>.
 
 You need to tell the code how to access your specific robot (which in this case represents your computer and its webcam).
 
-1. Navigate to the **Code Sample** tab on the Viam app.
-Make sure **Python** is selected in the **Language** selector.
+1. Navigate to the **Code sample** tab on [the Viam app](https://app.viam.com).
+   Make sure **Python** is selected in the **Language** selector.
+
+   {{% snippet "show-secret.md" %}}
+
 2. In the code sample, find the `payload`, a long string of numbers and letters.
-Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`.
+   Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`.
 3. Find the robot address, of the form `robot-name-main.abc1ab123a1.viam.cloud`, and paste it into line 14 of <file>lightupbot.py</file> in place of `ROBOT_ADDRESS`.
 
-You also need to tell the code how to access your smart plug.
+   You also need to tell the code how to access your smart plug.
 
 1. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
 
@@ -143,18 +146,18 @@ You will configure the Vision Service to use a [TFLite](https://www.tensorflow.o
 1. Take a look at lines 42-48 in <file>lightupbot.py</file>.
 These lines configure a Vision Service object detector to use the TFLite model and the list of labels:
 
-```python
-    vision = VisionClient.from_robot(robot)
-    params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
-    personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
-    await vision.add_detector(personDet)
-    names = await vision.get_detector_names()
-    print(names)
-```
+   ```python
+       vision = VisionClient.from_robot(robot)
+       params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
+       personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
+       await vision.add_detector(personDet)
+       names = await vision.get_detector_names()
+       print(names)
+   ```
 
 2. Download [<file>effdet0.tflite</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite) and [<file>labels.txt</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt) to your project directory.
 3. Line 44 of your <file>lightupbot.py</file> is where you specify the paths to these files.
-If you put them in the same directory as <file>lightupbot.py</file>, you don't need to edit this line.
+   If you put them in the same directory as <file>lightupbot.py</file>, you don't need to edit this line.
 4. Save the file.
 
 ### Run the code

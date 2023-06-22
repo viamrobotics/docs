@@ -18,8 +18,10 @@ The credentials look like this:
 
 ```json
 {"cloud":{"app_address":"https://app.viam.com:123","id":"123456ab-a1b2-12a3-a123-1a2b345cdefg6",
-"secret":"ab0cd0efghijkl0m12no3pqrstuvw0xyza4bcd567891abcd"}}
+"secret":"LOCATION SECRET FROM THE VIAM APP"}}
 ```
+
+{{% snippet "show-secret.md" %}}
 
 When you turn on your robot, `viam-server` starts up and, by default, it uses the credentials in its local <file>/etc/viam.json</file> to fetch its full config from the [Viam app](https://app.viam.com).
 Once the robot has a configuration, it caches it locally and can use the configuration for up to 60 days.
@@ -186,7 +188,7 @@ For specific information on how to configure each supported component type, see 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
-Meanwhile the **Code Sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdks/).
+Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdks/).
 
 {{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
 

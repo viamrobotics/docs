@@ -44,7 +44,9 @@ Once you've configured your input controller according to model type, you can wr
 
 ## Control your robot with an input controller with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -885,7 +887,8 @@ async def handleController(controller):
 
 async def main():
     # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
-    # This can be found in the Code Sample tab of app.viam.com.
+    # These can be found in the Code sample tab of app.viam.com.
+    # Toggle 'Include secret' to show the location secret.
     g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
     modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
 
