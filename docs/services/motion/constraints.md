@@ -23,7 +23,8 @@ This has the following sub-options:
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
 | line_tolerance_mm | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
-| orientation_tolerance_degs | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
+| orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
+
 
 **Example usage**:
 
@@ -49,7 +50,8 @@ If set to zero, a movement with identical starting and ending orientations will 
 
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
-| orientation_tolerance_degs | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
+| orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
+
 
 **Example usage**:
 
