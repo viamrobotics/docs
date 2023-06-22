@@ -52,21 +52,22 @@ To establish a connection between a part of one robot and a part of a second rob
 
 1. Go to the Viam app robot page of the robot part to which you wish to establish the remote connection.
    This is the robot part whose resources will be accessible to the other robot part.
-2. Click the **Code Sample** tab.
-3. On the **Language** toggle, select **Remotes**.
-4. Click **Copy JSON**.
+2. Click the **Code sample** tab.
+3. On the **Language** toggle, select **Remotes**, then click **Copy**.
 
    ![The Viam app CODE SAMPLE tab with Remotes selected and a copyable JSON snippet with the name, address and secret of the robot part.](../img/parts-and-remotes/remote-address.png)
 
-5. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
+   {{% snippet "show-secret.md" %}}
+
+4. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
    This is the robot part that will be able to access the resources of the other robot part.
-6. Click the **Config** tab, click the **Remotes** subtab, and select **JSON** mode.
+5. Click the **Config** tab, click the **Remotes** subtab, and select **JSON** mode.
 
    ![The Viam app CONFIG tab with the REMOTES subtab open and JSON mode selected.](../img/parts-and-remotes/remote-json-create.png)
 
-7. Click **Create Remote**.
-8. Paste the remote config you copied in step 4 into the empty field.
-9. Click **Save Config** in the bottom left of the screen.
+6. Click **Create Remote**.
+7. Paste the remote config you copied in step 4 into the empty field.
+8. Click **Save Config** in the bottom left of the screen.
 
 <!-- This is possibly wrong--should update with better understanding of auth key versus secret
 4. Copy the `address` of the robot to your clipboard.
@@ -81,7 +82,7 @@ To establish a connection between a part of one robot and a part of a second rob
 
 7. Give the remote a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
 8. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
-9. Click **Add Auth** and paste the `secret` from the other robot's **Code Sample** tab into the **Auth Key** field.
+9. Click **Add Auth** and paste the `secret` from the other robot's **Code sample** tab into the **Auth Key** field.
 
 ![The Viam app CONFIG tab with a remote configured.](../img/parts-and-remotes/remote-config.png)
 

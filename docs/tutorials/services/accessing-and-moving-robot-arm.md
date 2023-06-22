@@ -66,10 +66,13 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 7. Save this robot configuration.
 
-Go to the **Code Sample** tab and copy the code sample for the programming language you are working in.
-Paste this boilerplate code into a file and run the script to verify you can connect to your robot.
-Throughout this tutorial you will replace and amend this code.
-The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
+8. Go to the **Code sample** tab and select the programming language you are working in.
+
+   {{% snippet "show-secret.md" %}}
+
+   Then, paste this boilerplate code into a file and run the script to verify you can connect to your robot.
+   Throughout this tutorial you will replace and amend this code.
+   The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
 ## Access the Arm
 
@@ -330,7 +333,7 @@ from viam.rpc.dial import Credentials, DialOptions
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<ROBOT SECRET PAYLOAD>')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
@@ -370,6 +373,8 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
+{{% snippet "show-secret.md" %}}
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -398,7 +403,7 @@ func main() {
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "<ROBOT SECRET PAYLOAD>",
+          Payload: "LOCATION SECRET FROM THE VIAM APP",
       })),
   )
   if err != nil {
@@ -452,6 +457,8 @@ func main() {
   }
 }
 ```
+
+{{% snippet "show-secret.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}

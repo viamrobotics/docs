@@ -425,12 +425,13 @@ pip3 install viam-sdk python-vlc
 
 ### Connect
 
-Next, go to the **Code Sample** tab on your robot page and select **Python**.
+Next, go to the **Code sample** tab on your robot page and select **Python**, then click **Copy**.
 
-Copy the boilerplate code.
+{{% snippet "show-secret.md" %}}
+
 This code snippet imports all the necessary packages and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code Sample** tab of the Viam app into your file.
+Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -461,13 +462,15 @@ from viam.services.vision import VisionClient
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('ADDRESS_FROM_VIAM_APP', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
+
+{{% snippet "show-secret.md" %}}
 
 You will update the `main()` method later.
 

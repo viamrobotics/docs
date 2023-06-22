@@ -75,16 +75,10 @@ You can see the secret keys for a location in the **Location Secret Keys** drop-
 
 ![Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](../../img/app-usage/location-secret-keys-drop-down.png)
 
-Copy the secret key by clicking on the clipboard icon.
+Copy the location secret key by clicking on the clipboard icon.
 Use these keys in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.
 
-{{% alert title="Caution" color="caution" %}}
-Be cautious when sharing location secret keys in your code or messages.
-
-Do not make a secret key publicly available, as anyone who has the secret key can access your location, compromising the security of your system.
-
-It is good practice to note *where* and *when* you share a location secret key.
-{{% /alert %}}
+{{% snippet "secret-share.md" %}}
 
 ##### Rotate a secret key
 

@@ -78,13 +78,16 @@ pip install viam-sdk
 
 ## Test the SDK with your robot
 
-On the [Viam app](https://app.viam.com), select the **Code Sample** tab, then confirm that **Python** is set as the default language.
+On the [Viam app](https://app.viam.com), select the **Code sample** tab, then confirm that **Python** is set as the default language.
 
 ![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](../../img/single-component-tutorials-servo-mousemover/choose-python.png)
 
-Since we already installed the Python SDK, we can skip the first step. Copy the code in from step 2.
+Since we already installed the Python SDK, we can skip the first step.
+Copy the boilerplate Python code under the second step.
 
-![A screenshot of the Viam app showing the CODE SAMPLE tab. On this tab it has Language: with four boxes, Python is a black background with white text and has a checkmark indicating it is selected, then there's Golang, Typescript (Web), and Remotes with white backgrounds and black text. The page next says Python SDK (Documentation) with a link to Documentation. Below that there's a place that says "pip install viam-SDK" this is how you install the Viam Python SDK. Below that instruction are the instructions to "Then copy and run the following code to connect to your robot:" with 7 lines of code seen (the screenshot is incomplete).](../../img/single-component-tutorials-servo-mousemover/code-sample-page.png)
+![A screenshot of the Viam app showing the Code sample tab. On this tab it has Language: with four boxes, Python is a black background with white text and has a checkmark indicating it is selected, then there's Golang, Typescript (Web), and Remotes with white backgrounds and black text. The page next says Python SDK (Documentation) with a link to Documentation. Below that there's a place that says "pip install viam-SDK" this is how you install the Viam Python SDK. Below that instruction are the instructions to "Then copy and run the following code to connect to your robot:" with 7 lines of code seen (the screenshot is incomplete).](../../img/single-component-tutorials-servo-mousemover/copy-python-code-sample.png)
+
+{{% snippet "show-secret.md" %}}
 
 The copied code needs to go in a Python file on the Raspberry Pi.
 You can do so by creating a file on the Raspberry Pi and editing the file with nano.
@@ -107,7 +110,7 @@ Create a file using nano with the .py which is the python file extension, (name 
 nano anyname.py
 ```
 
-Paste the code you got from the **Code Sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
+Paste the code you got from the **Code sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
 ![Raspberry Pi terminal showing the connect code from the previous example.](../../img/single-component-tutorials-servo-mousemover/sample-code.png)
 
