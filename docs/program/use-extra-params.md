@@ -17,7 +17,7 @@ Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="re
 To do this, you must code your own modified implementation of the resource type's API for a model.
 See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
 
-An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/sdks/), the sensor component's [Readings](/components/sensor/#readings):
+An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/apis/), the sensor component's [Readings](/components/sensor/#readings):
 
 {{< tabs >}}
 {{% tab name="Python" %}}

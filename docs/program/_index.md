@@ -72,7 +72,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Hello World: The Code Sample Tab
 
-Create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/sdks/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
+Create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
 
 Start by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
@@ -293,11 +293,11 @@ The program will connect to your robot and print a list of the available {{< glo
 
 ### Edit the sample code
 
-Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/program/sdks/) to make a client application that connects to your robot and controls it in the way you want.
-You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/sdks/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
+Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/program/apis/) to make a client application that connects to your robot and controls it in the way you want.
+You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-    {{% card link="/program/sdks/" size="small" custom="Add Logic to Interface with Resources" %}}
+    {{% card link="/program/apis/" size="small" custom="Add Logic to Interface with Resources" %}}
     {{% card link="/program/run/" size="small" %}}
     {{% card link="/program/debug/" size="small" %}}
 {{< /cards >}}

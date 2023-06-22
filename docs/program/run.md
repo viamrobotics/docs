@@ -8,7 +8,7 @@ images: ["/services/img/icons/sdk.svg"]
 tags: ["client", "sdk", "application", "sdk", "fleet", "program"]
 ---
 
-After saving your [code sample](/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/program/sdks/), run your program to control your Viam-connected robot.
+After saving your [code sample](/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/program/apis/), run your program to control your Viam-connected robot.
 
 ## Run Code Remotely
 

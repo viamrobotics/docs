@@ -17,7 +17,7 @@ Instead of controlling individual motors, the base component allows you to [issu
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 But what if you want to control a rover or other mobile robot that does not expose direct motor control?
 This tutorial shows you how to create a [modular resource](/extend/modular-resources/) (custom component).
-Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/sdks/) of your choice.
+Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
 <img src="../../img/intermode/rover_outside.png" class="alignright" alt="Intermode rover pictured outdoors." title="Intermode rover pictured outdoors." style="max-width:300px" />

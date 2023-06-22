@@ -334,7 +334,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 ## Control your robot programmatically
 
-With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/program/sdks/) in the language of your choice.
+With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/program/apis/) in the language of your choice.
 This tutorial uses Python.
 
 ### Set up your python environment
