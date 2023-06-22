@@ -36,8 +36,7 @@ moved = await motion.move(
         pose=goal_pose), 
     world_state=worldState, 
     constraints={
-        "motion_profile": "linear", 
-        "line_tolerance": 0.2
+        Constraints(linear_constraint = [LinearConstraint(line_tolerance_mm=0.2)])
      },
      extra={})
 ```
@@ -62,9 +61,11 @@ moved = await motion.move(
         reference_frame="myFrame",
         pose=goal_pose),
     world_state=worldState,
-    constraints={"motion_profile": "orientation"},
+    constraints = Constraints(orientation_constraint = [OrientationConstraint()])
     extra={})
 ```
+
+You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
 
 <!--
 ## Next steps
