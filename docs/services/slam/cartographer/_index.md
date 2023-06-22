@@ -294,7 +294,7 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | -------------- | ----------- | --------- | ------------- | ----- |
 | `mode` | `2d` | **Required** | None | |
 | `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | To disable global SLAM and use only local SLAM, set this to `0`. |
-| `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
+| `num_range_data` | Number of measurements in each submap. | Optional | `30` | |
 | `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Typically the same as `max_range`. |
 | `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPlidar A3, set this value to `25`. For an RPlidar A1, use `12`. |
 | `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPlidar A3, set this value to `0.2`. For RPlidar A1, use `0.15`. |
