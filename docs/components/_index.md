@@ -11,4 +11,4 @@ images: ["/img/components.png"]
 A *component* represents a physical piece of electrical or electromechanical hardware in a robot.
 
 The following component types are natively supported.
-If you would like to use additional component types, you can [extend Viam with custom components and services](/program/extend/).
+If you would like to use additional component types, you can [extend Viam with custom components and services](/extend/).
