@@ -177,7 +177,7 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 
 {{< alert title="Tip" color="tip" >}}
 To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](../img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
-If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen. 
+If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card or a small screwdriver.
 {{< /alert >}}
