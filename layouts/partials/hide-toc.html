@@ -1,3 +1,9 @@
+{{ if not .Params.notoc }}
+{{ with .TableOfContents }}
+{{ if ge (len .) 200 }}
 <div id="hide-toc" title="Hide/show table of contents">
   <i onclick="hideToc()" style="font-size:large;" class="fas fa-list-ul"></i>
 </div>
+{{ end }}
+{{ end }}
+{{ end }}
