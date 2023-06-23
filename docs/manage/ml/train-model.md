@@ -14,6 +14,10 @@ You can label or add bounding boxes to [images collected](../../../services/data
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
 
+When training machine learning models, it is important to supply a variety of different data about the subject.
+In the case of image classification, it is important to provide images of the object being identified in different situations, such as from different angles or in different lighting situations.
+The more varied the provided data set, the more accurate the resulting model becomes.
+
 ## Train a model
 
 After [annotating your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.

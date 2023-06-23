@@ -12,22 +12,21 @@ description: "Use Viam's built-in machine learning capabilities to train image c
 Viam includes a built-in [machine learning (ML) service](/services/ml/) which provides your robot with the ability to learn from data and adjust its behavior based on insights gathered from that data.
 Common use cases include object detection, image classification, natural language processing, and speech recognition and synthesis, but your robot can make use of machine learning with nearly any kind of data.
 
-Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models, but you can use other models as well as long as your models adhere to the [model requirements](/services/ml/#tflite_cpu-limitations).
+Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/services/ml/#tflite_cpu-limitations).
 
-To make use of ML models with your robot, you can use the built-in ML model service to train image classification models for object detection and classification or create a [modular resource](/program/extend/modular-resources/) to integrate it with your robot.
+You can [add existing models](/manage/ml/upload-model/) or [train image classification models](/manage/ml/train-model/) for object detection and classification within the platform using data from the [Data Management Service](../../services/data/).
+Training detection and classification models enables robots to detect people, animals, plants or other objects with bounding boxes and perform actions when they are detected.
+
+To make use of ML models with your robot, you can use the built-in [ML model service](/services/ml/) to deploy and run the model.
 
 ### Object detection and classification
 
-Once you have [created the ML model service](/services/ml/#create-an-ml-model-service) for your robot, you can [train image classification models](train-model/) to enable it to detect people, animals, plants or other objects with bounding boxes and perform actions when they are detected.
+Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-service) for your robot, you can then add another service to make use of the model.
 
-![Gif of a dog being labeled](/tutorials/img/pet-treat-dispenser/app-data-images.png)
+* For object detection and classification you can use the [Vision Service](/services/vision) [mlmodel detector](https://docs.viam.com/services/vision/detection/#configure-a-mlmodel-detector) or [mlmodel classifier](https://docs.viam.com/services/vision/classification/#configure-a-mlmodel-classifier).
+* For other usage, you can create a [modular resource](/program/extend/modular-resources/) to integrate it with your robot.
 
-When training machine learning models, it is important to supply a variety of different data about the subject. In the case of object detection, it is important to provide images of the object in different situations, such as from different angles or in different lighting situations. The more varied the provided data set, the more accurate the resulting model becomes.
-
-You can also [upload and use existing models](upload-model/).
-
-To capture and synchronize data to the platform, see [Data Management Service](../../services/data/).
-To view or export captured data, see [Data Management](../data/).
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
 
 ## Next Steps
 
