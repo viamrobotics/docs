@@ -98,7 +98,7 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 {{% tab name="Crop" %}}
 
-The Crop transform crops takes an image and crops it to a rectangular area specified by two points: `(x_min, y_min)` and `(x_max, y_max)`.
+The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
