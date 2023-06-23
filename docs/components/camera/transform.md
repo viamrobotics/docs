@@ -115,10 +115,10 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
 
 **Attributes:**
 
-- `x_min_px`: The x coordinate of the first point that specifies the rectangular area to crop the image to.
-- `y_min_px`: The y coordinate of the first point that specifies the rectangular area to crop the image to.
-- `x_max_px`: The x coordinate of the second point that specifies the rectangular area to crop the image to.
-- `y_max_px`: The y coordinate of the second point that specifies the rectangular area to crop the image to.
+- `x_min_px`: The x coordinate of the top left point of the rectangular area to crop the image to.
+- `y_min_px`: The y coordinate of the top left point of the rectangular area to crop the image to.
+- `x_max_px`: The x coordinate of the bottom right point of the rectangular area to crop the image to.
+- `y_max_px`: The y coordinate of the bottom right point of the rectangular area to crop the image to.
 
 {{% /tab %}}
 
