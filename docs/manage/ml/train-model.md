@@ -14,13 +14,14 @@ You can tag [images collected](../../../services/data/configure-data-capture/) b
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
 
-## Label a dataset
+## Train a model
 
-To label a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+After [labeling your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.
 
-![Add new model menu](../img/add-new-model.png)
+![Train model button](../img/train-model.png)
 
-On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
+A **Training** side menu opens.
+The model that you configure to be training will train on all images that are part of the current filter.
 
 {{< alert title="Important" color="note" >}}
 Datasets are views, not materialized.
@@ -29,40 +30,17 @@ If the underlying data matching the filter changes because data is deleted or mo
 Therefore the data you are viewing may change as you label and train on the dataset.
 {{< /alert >}}
 
-If you would like to create a model that identifies an image of a star in a set of images, tag each image with a star with a `star` tag.
-
-You can also optionally tag images without a star with a `notstar` tag.
-This allows you to filter down the data in your dataset further by adding the explicit tags as a filter, for example `star` and `notstar`.
-
-To tag an image, click on the image.
-More information about the image will open up to the right side, including **Tags**.
-
-![Information view of an image](../img/image-info.png)
-
-Click on the **Tags** dropdown and create a new tag or select an existing tag to apply it to the image.
-
-![Image tag menu](../img/image-tag.png)
-
-Repeat this with all images in your dataset.
-
-## Train a model
-
-When you've tagged all the images click on the **TRAIN MODEL** button in the top right corner.
-
-![Train model button](../img/train-model.png)
-
-A **Training** side menu opens.
-The model that you configure to be training will train on all images part of the current filter.
-
 1. Select **New Model**.
 2. Specify a **Model Name**.
-3. Select a **Classification Type**:
-    - **Single Label**: predicts one label per image
-    - **Multi Label**: predicts multiple labels per image
-4. Select one or more tags to train on.
-    The selected tags will be the possible tags the model predicts for a given image.
-     - If you selected **Single Label**, the model will predict one of these labels or `UNKNOWN`.
+3. Select a **Model Type**:
+    - **Single Label Classification**: predicts one label per image
+    - **Multi Label Classification**: predicts multiple labels per image
+    - **Object Detection**: identifies an object in an image
+4. Select one or more labels to train on.
+    For classification models, the selected labels will be the possible tags the model predicts for a given image:
+     - If you selected **Single Label**, the model can predict one of these labels or `UNKNOWN`.
      - If you selected **Multi Label**, the model can predict one or more labels for each image.
+    For object detection models, the model will return detected objects along with their bounding boxes.
 4. Click **TRAIN MODEL**
 
 ![Train model menu](../img/train-model-menu.png)
