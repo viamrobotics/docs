@@ -118,6 +118,19 @@ userflow.identifyAnonymous({
     website_lead: true,
 });
 
+Sentry.onLoad(function() {
+    Sentry.init({
+      integrations: [
+        new Sentry.Replay({
+            maskAllText: false,
+            blockAllMedia: false,
+        }),
+      ],
+      // No need to configure DSN here, it is already configured in the loader script
+      // You can add any additional configuration here
+    });
+});
+
 // script for the scroll button
 const main = document.body;
 const scrollBtn = document.getElementById("scrollButton");
