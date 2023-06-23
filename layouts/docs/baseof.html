@@ -20,7 +20,10 @@
           </aside>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             {{ partial "version-banner.html" . }}
-            {{ partial "edit-on-github.html" . }}
+            {{ partial "hide-toc.html" . }}
+            {{ if not .Site.Params.notoc }}
+               {{ partial "edit-on-github.html" . }}
+            {{ end }}
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
             {{ block "main" . }}{{ end }}
             <!-- <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">

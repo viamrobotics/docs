@@ -136,6 +136,16 @@ function toTop() {
     window.scroll({top: 0, left: 0, behavior: 'smooth'});
 }
 
+// script for the hideToc button
+const tdToc = document.getElementById("wholeToc");
+function hideToc() {
+    if (tdToc.style.visibility === "visible") {
+        tdToc.style.visibility = "hidden";
+    } else {
+        tdToc.style.visibility = "visible";
+    }
+}
+
 function btnVisibility(payload) {
     if (payload[0].boundingClientRect.y <= -400) {
         scrollBtn.style.visibility = "visible";
