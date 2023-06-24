@@ -766,9 +766,12 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your robot's secret and host address by navigating to the **Code Sample** tab in the [Viam app](https://app.viam.com).
-Use the host address of your main robot part, as it will reference all parts of your robot.
-1. Then, run the following command to start the custom TypeScript interface, inserting your robot's secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
+1. Determine your robot's location secret and host address by navigating to the **Code sample** tab in the [Viam app](https://app.viam.com).
+   Use the host address of your main robot part, as it will reference all parts of your robot.
+
+   {{% snippet "show-secret.md" %}}
+
+1. Then, run the following command to start the custom TypeScript interface, inserting your robot's location secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    export VIAM_LOCATION=<mylocation>;VIAM_SECRET=<mysecret>;npm run start-simple

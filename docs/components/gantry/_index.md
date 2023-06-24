@@ -44,7 +44,9 @@ Supported gantry models include:
 
 ## Control your gantry with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -83,7 +85,7 @@ The gantry component supports the following methods:
 [MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions. |
 [Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
 [Stop](#stop) | Stop the gantry from moving. |
-[IsMoving](#stop) | Get if the gantry is currently moving. |
+[IsMoving](#ismoving) | Get if the gantry is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### Position

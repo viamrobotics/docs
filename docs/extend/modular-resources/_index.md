@@ -66,7 +66,7 @@ However, you can also create and expose new API types using modular resources.
 
 Add a modular resource to your robot configuration in five steps:
 
-1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/sdks/).
+1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
 3. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
 4. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
@@ -80,7 +80,7 @@ A configured **module** can make one or more *modular resources* available for c
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdks/) that does the following:
+Code a module in the Go or Python programming languages with [Viam's SDKs](/program/apis/) that does the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
@@ -590,7 +590,6 @@ This means that you can compose a robot of any number of parts running in differ
 Custom models of the [arm](/components/arm/) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
 
 {{< cards >}}
-    {{% card link="/services/slam/cartographer/" size="small" %}}
-    {{% card link="/program/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
+    {{% card link="/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
 {{< /cards >}}

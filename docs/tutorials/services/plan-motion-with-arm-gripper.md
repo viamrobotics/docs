@@ -391,7 +391,7 @@ from viam.services.motion import MotionClient
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<ROBOT SECRET PAYLOAD>')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
@@ -463,6 +463,8 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
+{{% snippet "show-secret.md" %}}
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -494,7 +496,7 @@ func main() {
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "<ROBOT SECRET PAYLOAD>",
+          Payload: "LOCATION SECRET FROM THE VIAM APP",
       })),
   )
   if err != nil {
@@ -608,6 +610,8 @@ func main() {
   }
 }
 ```
+
+{{% snippet "show-secret.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}
