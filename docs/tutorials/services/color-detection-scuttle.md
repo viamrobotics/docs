@@ -72,12 +72,13 @@ You should see `viam-sdk` listed near the end.
 Download the [<file>scuttle.py</file>](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0) code to a directory on your computer.
 Feel free to choose your own location, but as an example, we’ve chosen the Desktop.
 
-In the Python code, you must add your robot's address and secret (payload), which are found on the **Code Sample** tab of the [Viam app](https://app.viam.com).
-Viam pre-populates the **Code Sample** tab with the robot name, address, and secret:
+In the Python code, you must add your robot's address and secret (payload), which are found on the **Code sample** tab of the [Viam app](https://app.viam.com).
 
-![Remote configuration JSON](../../img/color-rdk-remote-cfg.png)
+Viam pre-populates the **Code sample** tab with the robot name, address, and secret:
 
-{{< readfile "/static/include/snippet/secret-share.md" >}}
+![Remote configuration code sample](../../img/copy-remotes-code.png)
+
+{{% snippet "show-secret.md" %}}
 
 In your local copy of <file>scuttle.py</file>, paste your robot payload and address where indicated.
 Save the file.

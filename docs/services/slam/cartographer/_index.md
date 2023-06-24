@@ -13,8 +13,8 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
-To easily integrate Cartographer into the Viam ecosystem, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which wraps Cartographer as a [modular resource](/program/extend/modular-resources/).
-`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` custom SLAM service [model](/program/extend/modular-resources/#models).
+To easily integrate Cartographer into the Viam ecosystem, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which wraps Cartographer as a [modular resource](/extend/modular-resources/).
+`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` custom SLAM service [model](/extend/modular-resources/#models).
 
 ## Requirements
 
@@ -52,7 +52,7 @@ brew tap viamrobotics/brews && brew install cartographer-module
 
 Running `cartographer-module` requires a [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPlidar A3. See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
 
-Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/examples/add-rplidar-module/) to add your RPlidar device as a modular component of your robot.
+Before adding a SLAM service, you must follow [these instructions](/extend/modular-resources/examples/add-rplidar-module/) to add your RPlidar device as a modular component of your robot.
 
 {{% /alert %}}
 
@@ -293,18 +293,30 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | Parameter Mode | Description | Inclusion | Default Value | Notes |
 | -------------- | ----------- | --------- | ------------- | ----- |
 | `mode` | `2d` | **Required** | None | |
-| `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
+| `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | To disable global SLAM and use only local SLAM, set this to `0`. |
 | `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
-| `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Nominally set to max length. |
+| `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Typically the same as `max_range`. |
 | `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPlidar A3, set this value to `25`. For an RPlidar A1, use `12`. |
 | `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPlidar A3, set this value to `0.2`. For RPlidar A1, use `0.15`. |
 | `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
 | `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
 | `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
 | `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for [UPDATING mode](#mapping-modes). |
-| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | |
-| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | |
-| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | |
+| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Higher values make it harder to overwrite prior scanned points. Relative to `translation weight` and `rotation weight`. |
+| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Higher values make it harder for scan matching to translate prior scans. Relative to `occupied space weight` and `rotation weight`. |
+| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Higher values make it harder for scan matching to rotate prior scans. Relative to `occupied space weight` and `translation weight`. |
+
+For more information, see the Cartographer [algorithm walkthrough](https://google-cartographer-ros.readthedocs.io/en/latest/algo_walkthrough.html), [tuning overview](https://google-cartographer-ros.readthedocs.io/en/latest/tuning.html), and [config parameter list](https://google-cartographer.readthedocs.io/en/latest/configuration.html).
+
+## SLAM Mapping Best Practices
+
+The best way to improve map quality is by taking extra care when creating the initial map. While in a mapping session, you should:
+
+- turn gently and gradually, completely avoiding sudden quick turns
+- make frequent loop closures, arriving back at a previously mapped area so the robot can correct for errors in the map layout
+- stay relatively (but not extremely) close to walls
+- use a robot that can go smoothly over bumps and transitions between flooring areas
+- drive at a moderate speed
 
 ## Troubleshooting
 

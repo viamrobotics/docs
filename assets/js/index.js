@@ -118,6 +118,17 @@ userflow.identifyAnonymous({
     website_lead: true,
 });
 
+Sentry.onLoad(function() {
+    Sentry.init({
+      integrations: [
+        new Sentry.Replay({
+            maskAllText: false,
+            blockAllMedia: false,
+        }),
+      ],
+    });
+});
+
 // script for the scroll button
 const main = document.body;
 const scrollBtn = document.getElementById("scrollButton");

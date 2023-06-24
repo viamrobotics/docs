@@ -339,7 +339,7 @@ Now that you have set up your robot and are able to control your motor, you can 
 For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
-Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/custom-components-remotes/) implementing the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
+Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/extend/custom-components-remotes/) implementing the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
 
 Create your custom sensor resource in 3 steps:
 
@@ -513,11 +513,14 @@ You can run `pwd` in your terminal after SSH'ing into your Pi to see what your u
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code Sample** tab.
-Follow the instructions in this tab.
-2. Click **Copy Code** to copy a code sample that establishes a connection with your robot when run.
-3. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
-4. Name the file <file>plant-watering-robot.py</file>, and save it.
+1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+2. Select **Python** as the language.
+3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
+
+   {{% snippet "show-secret.md" %}}
+
+4. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
+5. Name the file <file>plant-watering-robot.py</file>, and save it.
 
 For example, run the following commands on your Pi to create and open the file:
 

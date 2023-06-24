@@ -241,13 +241,15 @@ pip3 install viam-sdk
 
 Installing with `pip` ensures you are using the latest version of `viam-sdk`, and makes updating it in the future easy.
 
-On the [Viam app](https://app.viam.com/), select the **Code Sample** tab, set **Python** as the language, and toggle include secret to on.
+On the [Viam app](https://app.viam.com/), select the **Code sample** tab and set **Python** as the language.
 
 ![The Language portion of the Code Sample tab.](/tutorials/img/lazy-susan/python-language.png)
 
+{{% snippet "show-secret.md" %}}
+
 Copy the code:
 
-![The Viam app Code Sample tab with an arrow pointing to the Copy code button.](/tutorials/img/lazy-susan/python-code.png)
+![The Viam app Code Sample tab with language set to Python and Include secret enabled](/tutorials/img/lazy-susan/copy-python-code-sample.png)
 
 Create a new python file called `lazysusan.py` on your Raspberry Pi and paste the copied code into it:
 
