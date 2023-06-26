@@ -67,6 +67,8 @@ window.markmap = {
 {{ $jsPlantuml := resources.Get "js/plantuml.js" | resources.ExecuteAsTemplate "js/plantuml.js" . }}
 {{ $jsDrawio := resources.Get "js/drawio.js" | resources.ExecuteAsTemplate "js/plantuml.js" .}}
 
+{{ $jsSentry := resources.Get "js/sentry.js" }}
+
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
@@ -75,7 +77,9 @@ window.markmap = {
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
 {{ $js := $js | minify | fingerprint }}
+{{ $jsSentry := $jsSentry | minify }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+<script src="{{ $jsSentry.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
 
 {{ partial "hooks/body-end.html" . }}
