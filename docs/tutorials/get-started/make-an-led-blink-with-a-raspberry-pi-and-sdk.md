@@ -38,19 +38,13 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### Hardware
 
-<ol>
-    <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
-<ol type="a">
-    <li>Refer to the <a href="../../../installation/prepare/rpi-setup/">Viam Raspberry Pi Setup Guide</a> to setup your Pi.</li>
-<li>You must also enable SSH on your Pi.</li>
-</ol>
-    <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
-    <li><a href="https://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-    <li><a href="https://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
-    <li><a href="https://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
-</ol>
-
-[Click to view the Component URL Listing](#components-url-list)
+- [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+  - Refer to the [Viam Raspberry Pi Setup Guide](https://docs.viam.com/installation/prepare/rpi-setup/) to set up your Pi.
+- [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
+- [Jumper wires](https://amzn.to/2qVhd4y)
+- [Resistor pack](https://amzn.to/2Dmainw)
+  - You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands
+- [LED](https://amzn.to/2Ex2v5q)
 
 ### Software
 
@@ -307,13 +301,3 @@ If you are looking for some projects that would be a great next step in your jou
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Community Discord](https://discord.gg/viam).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
-
-## Components URL List
-
-<ul>
-    <li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
-    <li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
-    <li>Jumper wires for easy hookup: <a href="https://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
-    <li>Resistor pack: <a href="https://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
-    <li>Red LED: <a href="https://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
-</ul>

@@ -20,26 +20,21 @@ This tutorial is a great place to start if you have never built a robot or a cir
 
 ## What you'll need for this guide
 
-You will need the following tools to complete the project:
+You will need the following to complete the project:
 
 ### Hardware
 
-<ol>
-    <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
-<ol type="a">
-<li>Refer to the <a href="https://docs.viam.com/installation/prepare/rpi-setup/" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
-</ol>
-    <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
-    <li><a href="https://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-    <li><a href="https://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
-    <li><a href="https://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
-</ol>
-
-[Click to view the hardware URL listing](#hardware-url-list)
+- [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+  - Refer to the [Viam Raspberry Pi Setup Guide](https://docs.viam.com/installation/prepare/rpi-setup/) to set up your Pi.
+- [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
+- [Jumper wires](https://amzn.to/2qVhd4y)
+- [Resistor pack](https://amzn.to/2Dmainw)
+  - You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands
+- [LED](https://amzn.to/2Ex2v5q)
 
 ### Software
 
-- [viam-server](/installation/prepare/rpi-setup/)
+- [viam-server](/installation/#install-viam-server/)
 
 ## Project setup
 
