@@ -64,9 +64,8 @@ However, you can also create and expose new API types using modular resources.
 
 ## Use a modular resource with your robot
 
-To add a modular resource to your robot configuration, you will sometimes use a modular resource that already exists (that someone else created).
-If this is the case, skip to [Save the executable](#make-sure-viam-server-can-access-your-executable)
-If you are creating your own modular resource, follow these 5 steps:
+If you are using an existing modular resource, you can skip to [Save the executable](#make-sure-viam-server-can-access-your-executable).
+If you are creating your own modular resource, follow these steps:
 
 1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
