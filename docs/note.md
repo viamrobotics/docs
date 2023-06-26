@@ -197,7 +197,7 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 
 ## How to use Notes, Cautions, and Warnings
 
-**Info/Tip**: Exactly that. They both use the same color.
+**Info/Tip**: Use to convey helpful information or clarification. They both use the same color.
 
 **Note**: These call attention to something important. Use it to expand on a point from the body text or to provide additional information.
 
