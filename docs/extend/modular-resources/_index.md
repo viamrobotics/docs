@@ -401,6 +401,7 @@ Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRe
 ```
 
 <file>main.py</file>
+
 ``` python {class="line-numbers linkable-line-numbers"}
 import asyncio
 import sys
