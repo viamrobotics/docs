@@ -470,7 +470,7 @@ sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
 You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
-Your executable will be run by *viam-server* as root, so dependencies will need to be available to the root user.
+Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
 ### Make sure `viam-server` can access your executable
 
