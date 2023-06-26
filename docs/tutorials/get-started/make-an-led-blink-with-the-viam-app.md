@@ -25,7 +25,7 @@ You will need the following to complete the project:
 ### Hardware
 
 - [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
-  - Refer to the [Viam Raspberry Pi Setup Guide](https://docs.viam.com/installation/prepare/rpi-setup/) to set up your Pi.
+  - Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up your Pi.
 - [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
 - [Jumper wires](https://amzn.to/2qVhd4y)
 - [Resistor pack](https://amzn.to/2Dmainw)
@@ -34,7 +34,7 @@ You will need the following to complete the project:
 
 ### Software
 
-- [viam-server](/installation/#install-viam-server/)
+- [viam-server](/installation/#install-viam-server)
 
 ## Project setup
 
