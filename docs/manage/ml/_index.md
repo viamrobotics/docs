@@ -19,8 +19,6 @@ Object detection and classification models are commonly used to enable robots to
 
 To make use of ML models with your robot, you can use the built-in [ML model service](/services/ml/) to deploy and run the model.
 
-### Object detection and classification
-
 Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-service) to your robot, you can then add another service to make use of the model.
 
 * For object detection and classification you can use the [Vision Service](/services/vision) [mlmodel detector](https://docs.viam.com/services/vision/detection/#configure-a-mlmodel-detector) or [mlmodel classifier](https://docs.viam.com/services/vision/classification/#configure-a-mlmodel-classifier).
