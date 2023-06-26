@@ -384,7 +384,7 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-<file>\__init.py__</file>
+<file>`__init.py__`</file>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
