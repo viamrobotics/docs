@@ -114,7 +114,7 @@ Example code below (though you don’t have to use it yet, this will get used in
 yag.send('phone_number@gatewayaddress.com', 'subject', contents)
 ```
 
-You will need to access your phone number through your carrier.
+You will need access to your phone number through your carrier.
 For this tutorial, you are going to send the text to yourself.
 You will replace `to@someone.com` with your phone number and [SMS gateway address](https://en.wikipedia.org/wiki/SMS_gateway).
 You can find yours here: [Gateway Addresses for Mobile Phone Carrier Text Message](https://support-en.wd.com/app/answers/detailweb/a_id/44431/~/gateway-addresses-for-mobile-phone-carrier-text-message).
