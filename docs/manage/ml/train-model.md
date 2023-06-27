@@ -40,7 +40,7 @@ Therefore the data you are viewing may change as you label and train on the data
     For classification models, the selected labels will be the possible tags the model predicts for a given image:
      - If you selected **Single Label**, the model can predict one of these labels or `UNKNOWN`.
      - If you selected **Multi Label**, the model can predict one or more labels for each image.
-    For object detection models, the model will return detected objects along with their bounding boxes.
+    For object detection models, the model will return either no detected objects or any number of objects' labels and their locations within the image.
 4. Click **TRAIN MODEL**
 
 ![Train model menu](../img/train-model-menu.png)
