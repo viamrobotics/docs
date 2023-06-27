@@ -16,7 +16,7 @@ You can label or add bounding boxes to [images collected](../../../services/data
 
 ## Train a model
 
-After [labeling your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.
+After [annotating your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.
 
 ![Train model button](../img/train-model.png)
 
