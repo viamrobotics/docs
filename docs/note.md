@@ -282,7 +282,7 @@ ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
-If you'd like to use commands like webm2mp4 add this to your `.zshrc`:
+If you'd like to use commands like `webm2mp4` add this to your `.zshrc`:
 
 ```sh
 function webm2gif() {
