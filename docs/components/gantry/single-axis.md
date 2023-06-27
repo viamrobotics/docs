@@ -93,6 +93,7 @@ The following shows an example of adding an explicit dependency, where the `mySe
       "attributes": {
         "motor": "xmotor",
         "length_mm": 1000,
+        "board": "local",
         "axis": {
           "X": 1,
           "Y": 0,
@@ -115,6 +116,7 @@ The following shows an example of adding an explicit dependency, where the `mySe
       "attributes": {
         "motor": "ymotor",
         "length_mm": 1000,
+        "board": "local",
         "axis": {
           "X": 0,
           "Y": 1,
