@@ -90,7 +90,7 @@ The Motion Service takes the volumes associated with all configured robot compon
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Obstacles are defined by a pose and a geometry with dimensions.
+    - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
@@ -152,7 +152,7 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Obstacles are defined by a pose and a geometry with dimensions.
+    - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
