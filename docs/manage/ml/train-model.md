@@ -24,10 +24,9 @@ A **Training** side menu opens.
 The model will train on all images that are part of the current filter.
 
 {{< alert title="Note" color="note" >}}
-Datasets are views, not materialized.
+Filtered datasets are views and not materialized.
+That means the data you are viewing may change as you label and train on the dataset.
 If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
-
-Therefore the data you are viewing may change as you label and train on the dataset.
 {{< /alert >}}
 
 1. Select **New Model**.
