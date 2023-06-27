@@ -74,13 +74,13 @@ When `viam-server` starts, a `single-axis` gantry component will perform a homin
 
 If there are multiple `single-axis` gantries configured (for example, when using a [`multi-axis` gantry](/components/gantry/multi-axis/)), the order of homing may be important.
 
-In this case, you must specify the axes that must be homed first in a `depends_on` array to each `single-axis` gantry. For example, if there is a tool mounted to the z axis that could be damaged during homing of the x or y axes, you must add the z axis as a dependency to the x and y axes. This will ensure the z axis completes its homing routine first, and that the tool head is in a safe location to begin the homing process on the other axes.
+In this case, you must specify the axes that must be homed first in a `depends_on` array to each `single-axis` gantry. For example, if there is a tool mounted to the z axis that could be damaged during homing of the x or y axes, you must add the z axis as a dependency to the x and y axes `single-axis` gantries in your configuration. This will ensure the z axis completes its homing routine first, and that the tool head returns to a safe location to begin the homing process on the other axes.
 
 {{% alert="Note" color="note" %}}
 The order of axes in the `subaxes_list` for a `multi-axis` gantry does not influence the order of homing. A `multi-axis` gantry component is not constructed until all the `single-axis` gantry components are constructed and finish homing. Thus to ensure that homing occurs in a proscribed order, you must explicitly add dependencies to each axis for axes that must be homed first.
 {{% /alert %}}
 
-The following shows an example of adding an explicit dependency, where the `mySecondGantry`, along the y axis, is configured to always be homed before the `myFirstGantry`, along the x axis:
+The following shows an example of adding an explicit dependency, where `mySecondGantry`, along the y axis, is configured to always be homed before `myFirstGantry`, along the x axis:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
