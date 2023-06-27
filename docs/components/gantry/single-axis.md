@@ -80,55 +80,57 @@ In this case, you must specify the axes that must be homed first in a `depends_o
 The order of axes in the `subaxes_list` for a `multi-axis` gantry does not influence the order of homing. A `multi-axis` gantry component is not constructed until all the `single-axis` gantry components are constructed and finish homing. Thus to ensure that homing occurs in a proscribed order, you must explicitly add dependencies to each axis for axes that must be homed first.
 {{% /alert %}}
 
-The following shows an example of adding an explicit dependency, where `mySecondGantry`, along the y axis, is configured to always be homed before `myFirstGantry`, along the x axis:
+The following shows an example of adding an explicit dependency, where `myFirstGantry` is configured to depend on `mySecondGantry`, ensuring that `mySecondGantry` will be always be homed before `myFirstGantry`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [
-    // < Your motor config >
-    {
-      "name": "myFirstGantry",
-      "type": "gantry",
-      "model": "single-axis",
-      "attributes": {
-        "motor": "xmotor",
-        "length_mm": 1000,
-        "board": "local",
-        "axis": {
-          "X": 1,
-          "Y": 0,
-          "Z": 0
+    "components": [
+        // < Your motor config >
+        {
+            "name": "myFirstGantry",
+            "type": "gantry",
+            "model": "single-axis",
+            "attributes": {
+                "length_mm": 1000,
+                "board": "local",
+                "limit_pin_enabled_high": false,
+                "limit_pins": [
+                    "32",
+                    "36"
+                ],
+                "depends_on": [
+                  "mySecondGantry"
+                ],
+                "motor": "xmotor",
+                "gantry_rpm": 500,
+                "axis": {
+                    "x": 1,
+                    "y": 0,
+                    "z": 0
+                }
+            }
         },
-        "limit_pin_enabled_high": false,
-        "limit_pins": [
-            "32",
-            "36"
-        ]
-      },
-      "depends_on": [
-        "mySecondGantry"
-      ],
-    }
-    {
-      "name": "mySecondGantry",
-      "type": "gantry",
-      "model": "single-axis",
-      "attributes": {
-        "motor": "ymotor",
-        "length_mm": 1000,
-        "board": "local",
-        "axis": {
-          "X": 0,
-          "Y": 1,
-          "Z": 0
-        },
-        "limit_pin_enabled_high": false,
-        "limit_pins": [
-            "37",
-            "38"
-        ]
-      }
-    }
-  ]
+        {
+            "name": "mySecondGantry",
+            "type": "gantry",
+            "model": "single-axis",
+            "attributes": {
+                "length_mm": 1000,
+                "board": "local",
+                "limit_pin_enabled_high": false,
+                "limit_pins": [
+                    "37",
+                    "38"
+                ],
+                "motor": "ymotor",
+                "gantry_rpm": 500,
+                "axis": {
+                    "x": 0,
+                    "y": 1,
+                    "z": 0
+                }
+            }
+        }
+    ]
 }
 ```
