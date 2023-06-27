@@ -32,15 +32,11 @@ Therefore the data you are viewing may change as you label and train on the data
 
 1. Select **New Model**.
 2. Specify a **Model Name**.
-3. Select a **Model Type**:
-    - **Single Label Classification**: predicts one label per image
-    - **Multi Label Classification**: predicts multiple labels per image
-    - **Object Detection**: predicts a label and location for an object in an image
-4. Select one or more labels to train on.
-    For classification models, the selected labels will be the possible tags the model predicts for a given image:
-     - If you selected **Single Label**, the model can predict one of these labels or `UNKNOWN`.
-     - If you selected **Multi Label**, the model can predict one or more labels for each image.
-    For object detection models, the model will return either no detected objects or any number of objects' labels and their locations within the image.
+3. Select a **Model Type** and one or more labels to train on:
+    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
+      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
+    - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
+    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 4. Click **TRAIN MODEL**
 
 ![Train model menu](../img/train-model-menu.png)
