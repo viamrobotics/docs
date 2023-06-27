@@ -9,6 +9,8 @@ type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
 no_list: true
+aliases:
+    - "/program/extend/modular-resources/"
 ---
 
 The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components/) and [services](/services/)) into any robot running on Viam.
@@ -64,9 +66,10 @@ However, you can also create and expose new API types using modular resources.
 
 ## Use a modular resource with your robot
 
-Add a modular resource to your robot configuration in five steps:
+If you are using an existing modular resource, you can skip to [Save the executable](#make-sure-viam-server-can-access-your-executable).
+If you are creating your own modular resource, follow these steps:
 
-1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/sdks/).
+1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
 3. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
 4. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
@@ -80,7 +83,7 @@ A configured **module** can make one or more *modular resources* available for c
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/sdks/) that does the following:
+Code a module in the Go or Python programming languages with [Viam's SDKs](/program/apis/) that does the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
@@ -320,7 +323,7 @@ class MyBase(Base, Reconfigurable):
     # Constructor
     @classmethod
     def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        base = cls(MyBase(config.name))
+        base = cls(config.name)
         base.reconfigure(config, dependencies)
         return base
 
@@ -383,7 +386,7 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-<file>init.py</file>
+<file>`__init.py__`</file>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
@@ -397,6 +400,34 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 from .my_base import MyBase
 
 Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
+```
+
+<file>main.py</file>
+
+``` python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import sys
+
+from viam.components.base import Base
+from viam.module.module import Module
+from .my_base import MyBase
+
+async def main(address: str):
+    """This function creates and starts a new module, after adding all desired resources.
+    Resources must be pre-registered. For an example, see the `__init__.py` file.
+    Args:
+        address (str): The address to serve the module on
+    """
+    module = Module(address)
+    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    await module.start()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise Exception("Need socket path as command line argument")
+
+    asyncio.run(main(sys.argv[1]))
+
 ```
 
 {{% /tab %}}
@@ -427,11 +458,11 @@ For example:
 
 ``` shell
 #!/bin/sh
-cd <path-to-your-module-directory>
+cd `dirname $0`
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec python3 <your-module-directory-name>.<main-program-filename> $@
+exec python3 -m <your-module-directory-name>.<main-program-filename-without-extension> $@
 ```
 
 To make this shell script executable, run the following command in your terminal:
@@ -439,6 +470,9 @@ To make this shell script executable, run the following command in your terminal
 ``` shell
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
+
+You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
+Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
 ### Make sure `viam-server` can access your executable
 
@@ -590,7 +624,6 @@ This means that you can compose a robot of any number of parts running in differ
 Custom models of the [arm](/components/arm/) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
 
 {{< cards >}}
-    {{% card link="/services/slam/cartographer/" size="small" %}}
-    {{% card link="/program/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
+    {{% card link="/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
 {{< /cards >}}

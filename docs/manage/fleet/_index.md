@@ -78,6 +78,12 @@ You can also revert to an earlier configuration from the History tab.
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
+### Package Deployment
+
+_Coming soon._
+
+You and your collaborators can deploy control logic, [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+
 ### Remote control
 
 Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).
@@ -85,7 +91,7 @@ This allows you to visually test and remotely operate robot components and servi
 
 ### Control with the SDKs
 
-Everyone who has access to the robot's location can obtain the robot's remote address and location secret from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/sdks/).
+Everyone who has access to the robot's location can obtain the robot's remote address and location secret from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/apis/).
 You can share the robot's remote address and location secret without granting location access in the app.
 
 As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub, and execute code to control the robot from anywhere in the world.
@@ -102,4 +108,4 @@ If you are collaborating on a robot and controlling it using the [**Control** ta
 
 ### Deployment
 
-You and your collaborators can deploy [control logic](/program/sdks/), [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.

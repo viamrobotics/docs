@@ -92,7 +92,7 @@ To start programming your robot, go to the **Code sample** tab which contains bo
 
 {{% snippet "show-secret.md" %}}
 
-For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/sdks/).
+For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/apis/).
 
 There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
 

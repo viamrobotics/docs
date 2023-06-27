@@ -16,7 +16,7 @@ A robotic *gantry* is a mechanical system of linear actuators used to hold and p
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
-This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multiaxis/).
+This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multi-axis/).
 
 <img src="./img/gantry-illustration.png" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." style="max-width:300px; display: block; margin: 0 auto"></img>
 
@@ -39,8 +39,8 @@ Supported gantry models include:
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`oneaxis`](oneaxis/) | A gantry with a singular linear rail. |
-| [`multiaxis`](multiaxis/) | A gantry with multiple linear rails. Composed of multiple `oneaxis` gantries. |
+| [`single-axis`](single-axis/) | A gantry with a singular linear rail. |
+| [`multi-axis`](multi-axis/) | A gantry with multiple linear rails. Composed of multiple `single-axis` gantries. |
 
 ## Control your gantry with Viam's client SDK libraries
 
@@ -85,7 +85,7 @@ The gantry component supports the following methods:
 [MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions. |
 [Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
 [Stop](#stop) | Stop the gantry from moving. |
-[IsMoving](#stop) | Get if the gantry is currently moving. |
+[IsMoving](#ismoving) | Get if the gantry is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### Position
@@ -160,7 +160,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
+# Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
 examplePositions = [1, 2, 3]
 
 # Move the axes of the gantry to the positions specified.
@@ -185,7 +185,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go
 myGantry, err := gantry.FromRobot(robot, "my_gantry")
 
-// Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multiaxis, with 3 axes.
+// Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
 examplePositions = []float64{1, 2, 3}
 
 // Move the axes of the gantry to the positions specified.

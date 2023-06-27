@@ -27,7 +27,7 @@ You will not need to write a single line of code to integrate them, and swapping
 You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend/) Viam.
+- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/extend/) Viam.
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 
@@ -81,7 +81,7 @@ After configuring your robot's hardware, you can configure [high level functiona
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." class="alignleft" style="max-width:270px;"></img>
 
-The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdks/) with code in the **language of your choice**.
+The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/apis/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
 Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 

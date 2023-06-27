@@ -1,23 +1,25 @@
 ---
 title: "Using Extra Params with Viam's SDKs"
 linkTitle: "Extra Params"
-weight: 40
+weight: 70
 type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
-icon: "/services/img/icons/sdk.svg"
+images: ["/services/img/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
+aliases:
+  - "/program/sdks/use-extra-params"
 ---
 
 How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} API methods offer in the Go and Python SDKs.
 
 ## Utilize
 
-Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not specified as a parameter in the [built-in resource type's API specification](/program/extend/modular-resources/#apis).
+Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not explicitly specified as a parameter in the [built-in resource type's API specification](/extend/modular-resources/#apis).
 
 To do this, you must code your own modified implementation of the resource type's API for a model.
-See [Extend Viam with Modular Resources](/program/extend/modular-resources/) for more information and [instructions](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
+See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
 
-An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/sdks/#add-control-logic), the sensor component's [Readings](/components/sensor/#readings):
+An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/apis/), the sensor component's [Readings](/components/sensor/#readings):
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -107,6 +109,7 @@ async def main():
 If passing an object of type `None`, you do not have to specify `None` in the method call.
 
 {{% /alert %}}
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 

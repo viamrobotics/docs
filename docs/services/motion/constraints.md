@@ -22,8 +22,8 @@ This has the following sub-options:
 
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
-| line_tolerance | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
-| orient_tolerance | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
+| line_tolerance_mm | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
+| orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
 
 **Example usage**:
 
@@ -36,8 +36,7 @@ moved = await motion.move(
         pose=goal_pose), 
     world_state=worldState, 
     constraints={
-        "motion_profile": "linear", 
-        "line_tolerance": 0.2
+        Constraints(linear_constraint = [LinearConstraint(line_tolerance_mm=0.2)])
      },
      extra={})
 ```
@@ -50,7 +49,7 @@ If set to zero, a movement with identical starting and ending orientations will 
 
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
-| tolerance | float | 0.05 | Allowable deviation from Slerp between start/goal orientations, unit is the norm of the R3AA between start and goal. |
+| orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
 
 **Example usage**:
 
@@ -62,9 +61,11 @@ moved = await motion.move(
         reference_frame="myFrame",
         pose=goal_pose),
     world_state=worldState,
-    constraints={"motion_profile": "orientation"},
+    constraints = Constraints(orientation_constraint = [OrientationConstraint()])
     extra={})
 ```
+
+You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
 
 <!--
 ## Next steps

@@ -197,7 +197,7 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 
 ## How to use Notes, Cautions, and Warnings
 
-**Info/Tip**: Exactly that. They both use the same color.
+**Info/Tip**: Use to convey helpful information or clarification. They both use the same color.
 
 **Note**: These call attention to something important. Use it to expand on a point from the body text or to provide additional information.
 
@@ -275,14 +275,14 @@ or if you want a video without controls - mimicking a GIF:
 
 {{<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
 
-And to create the source files, run these commands:
+And to create the source files you can use [Ezgif gif to mp4](https://ezgif.com/gif-to-mp4) and [Ezgif gif to webm](https://ezgif.com/gif-to-webm) or run these commands:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
-If you'd like to use commands like webm2mp4 add this to your `.zshrc`:
+If you'd like to use commands like `webm2mp4` add this to your `.zshrc`:
 
 ```sh
 function webm2gif() {

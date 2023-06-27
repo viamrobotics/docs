@@ -5,7 +5,9 @@ weight: 99
 type: "docs"
 tags: ["server", "sdk"]
 aliases:
-    - "/program/extend/sdk-as-server"
+    - "/program/extend/sdk-as-server/"
+    - "/program/extend/custom-components-remotes/"
+
 description: "Implement custom components and register them on a server configured as a remote of your robot."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
@@ -16,7 +18,7 @@ videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acryli
 {{< glossary_tooltip term_id="module" text="Modular resources" >}} are the preferred method of creating custom resource implementations for SDKs with module support unless you are hosting `viam-server` on a non-Linux system or have another issue with compilation.
 {{% /alert %}}
 
-If a type or model of [component](/components/) you are working with is not built-in to the [Viam RDK](/internals/rdk/), you can use a [Viam SDK](/program/sdks/) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes/) of your robot.
+If a type or model of [component](/components/) you are working with is not built-in to the [Viam RDK](/internals/rdk/), you can use a [Viam SDK](/program/apis/) to code a custom resource implementation, host it on a server, and add it as a [remote](/manage/parts-and-remotes/) of your robot.
 
 Once you have coded your custom component and configured the remote servers, you can control and monitor your component with the Viam SDKs, like any other component.
 

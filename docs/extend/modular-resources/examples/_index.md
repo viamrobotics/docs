@@ -10,15 +10,17 @@ image: "/tutorials/img/intermode/rover_outside.png"
 imageAlt: "A large black intermode rover controlled with CANBUS protocol chilling outside in the snow."
 images: ["/tutorials/img/intermode/rover_outside.png"]
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+aliases:
+    - "/program/extend/modular-resources/examples/"
 ---
 
 To familiarize yourself with creating and using modular resources, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
-Once you have created a modular resource, you can test your custom resource using the [Control tab](/manage/fleet/#remote-control) and program it using the [Viam SDKs](/program/sdks/).
+Once you have created a modular resource, you can test your custom resource using the [Control tab](/manage/fleet/#remote-control) and program it using the [Viam SDKs](/program/apis/).
 
 ## Tutorials
 
 {{< cards >}}
-    {{% card link="/program/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
+    {{% card link="/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
 {{< /cards >}}
 

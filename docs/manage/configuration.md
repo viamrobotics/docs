@@ -188,7 +188,7 @@ For specific information on how to configure each supported component type, see 
 {{% alert title="Tip" color="tip" %}}
 
 When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
-Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/sdks/).
+Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/apis/).
 
 {{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
 
@@ -208,9 +208,9 @@ See the [services documentation](/services/) for more information.
 
 ## Modules
 
-[Modular resources](/program/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
+[Modular resources](/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
 
-To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/program/extend/modular-resources/#use-a-modular-resource-with-your-robot).
+To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/extend/modular-resources//#use-a-modular-resource-with-your-robot).
 
 ## Remotes
 
@@ -406,6 +406,6 @@ To run `viam-server` as a system service, see [Start automatically on boot](/ins
 
 ## Next Steps
 
-After configuring your robot, you can use the [Viam SDKs](../../program/sdks/) to program and control your robot.
+After configuring your robot, you can use the [Viam SDKs](../../program/apis/) to program and control your robot.
 
 If you want to try configuring a robot but don't have any hardware on hand, try the [Build a Mock Robot](../../tutorials/configure/build-a-mock-robot/) tutorial.
