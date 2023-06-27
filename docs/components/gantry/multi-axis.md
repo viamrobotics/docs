@@ -1,26 +1,28 @@
 ---
 title: "Configure a Multi-Axis Gantry"
-linkTitle: "multiaxis"
+linkTitle: "multi-axis"
 weight: 80
 type: "docs"
-description: "Configure a multiaxis gantry."
+description: "Configure a multi-axis gantry."
 images: ["/components/img/components/gantry.svg"]
 tags: ["gantry", "components"]
+aliases:
+    - "/components/gantry/multiaxis/"
 # SME: Rand
 ---
 
-Configure a `multiaxis` gantry to integrate a multi-axis gantry into your robot:
+Configure a `multi-axis` gantry to integrate a multi-axis gantry into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your gantry, select the type `gantry`, and select the `multiaxis` model.
+Enter a name for your gantry, select the type `gantry`, and select the `multi-axis` model.
 
 Click **Create component**.
 
-![Creation of a multi-axis gantry component in the Viam app config builder.](../img/multiaxis-ui-config.png)
+![Creation of a multi-axis gantry component in the Viam app config builder.](../img/multi-axis-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -30,11 +32,11 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
-    ... // < INSERT YOUR MOTOR AND ONEAXIS GANTRY CONFIGURATIONS >
+    ... // < INSERT YOUR MOTOR AND SINGLE-AXIS GANTRY CONFIGURATIONS >
     {
         "name": "<your-fake-gantry-name>",
         "type": "gantry",
-        "model": "multiaxis",
+        "model": "multi-axis",
         "attributes": {
             "subaxes_list": [
                 "<xaxis-name>",
@@ -107,7 +109,7 @@ Edit and fill in the attributes as applicable.
         {
             "name": "xaxis",
             "type": "gantry",
-            "model": "oneaxis",
+            "model": "single-axis",
             "attributes": {
                 "length_mm": 1000,
                 "board": "local",
@@ -128,7 +130,7 @@ Edit and fill in the attributes as applicable.
         {
             "name": "yaxis",
             "type": "gantry",
-            "model": "oneaxis",
+            "model": "single-axis",
             "attributes": {
                 "length_mm": 1000,
                 "board": "local",
@@ -149,7 +151,7 @@ Edit and fill in the attributes as applicable.
         {
             "name": "zaxis",
             "type": "gantry",
-            "model": "oneaxis",
+            "model": "single-axis",
             "attributes": {
                 "length_mm": 1000,
                 "board": "local",
@@ -184,9 +186,9 @@ Edit and fill in the attributes as applicable.
             }
         },
         {
-            "name": "my_multiaxis_gantry",
+            "name": "my_multi-axis_gantry",
             "type": "gantry",
-            "model": "multiaxis",
+            "model": "multi-axis",
             "attributes": {
                 "subaxes_list": [
                     "xaxis",
@@ -202,8 +204,8 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% /tabs %}}
 
-The following attributes are available for `multiaxis` gantries:
+The following attributes are available for `multi-axis` gantries:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [one-axis](/components/gantry/oneaxis/) gantries that make up the multi-axis gantry. |
+| `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
