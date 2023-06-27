@@ -5,7 +5,7 @@ weight: 40
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
-description: "Access data captured by the robot's components and train image classification models on the data."
+description: "Access data captured by the robot's components and train image classification and object detection models on the data."
 aliases:
     - "/manage/data-management/"
 # SME: Aaron Casas
