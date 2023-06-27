@@ -210,4 +210,4 @@ The following attributes are available for `multi-axis` gantries:
 | --------- | ---- | --------- | ----------- |
 | `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
 
-If you are using the `limit_pins` attribute with one or more of your `single-axis` gantries, and you require that the homing process for each `single-axis` gantry take place in a certain order, you must configure dependencies between axes using the `depends_on` configuration option. See [Configure `limit_pins`](/components/single-axis/#configure-limit_pins) for more information.
+If you are using the `limit_pins` attribute with one or more of your `single-axis` gantries, and you require that the homing process for each `single-axis` gantry take place in a certain order, you must configure dependencies between axes using the `depends_on` configuration option. See [Configure `limit_pins`](/components/gantry/single-axis/#configure-limit_pins) for more information.
