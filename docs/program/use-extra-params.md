@@ -6,6 +6,8 @@ type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
 images: ["/services/img/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
+aliases:
+  - "/program/sdks/use-extra-params"
 ---
 
 How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} API methods offer in the Go and Python SDKs.

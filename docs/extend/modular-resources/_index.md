@@ -9,6 +9,8 @@ type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
 no_list: true
+aliases:
+    - "/program/extend/modular-resources/"
 ---
 
 The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components/) and [services](/services/)) into any robot running on Viam.

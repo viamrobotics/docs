@@ -6,6 +6,8 @@ type: "docs"
 description: "Access and control your robot or fleet with the SDKs' client libraries for the resource and robot APIs."
 icon: "/services/img/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
+aliases:
+  - "/program/sdks/"
 ---
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).
