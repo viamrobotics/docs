@@ -21,7 +21,7 @@ After [labeling your images](/manage/data/label/), click on the **TRAIN MODEL** 
 ![Train model button](../img/train-model.png)
 
 A **Training** side menu opens.
-The model that you configure to be training will train on all images that are part of the current filter.
+The model will train on all images that are part of the current filter.
 
 {{< alert title="Note" color="note" >}}
 Datasets are views, not materialized.
