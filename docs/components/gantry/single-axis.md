@@ -62,13 +62,13 @@ The following attributes are available for `single-axis` gantries:
 | `length_mm` | int | **Required** | The length of the axis of the gantry in millimeters. |
 | `motor` | string | **Required** | The `name` of the [motor](/components/motor/) that moves the gantry's actuator. |
 | `axis` | object | **Required** | The translational axis for the gantry. Must be exactly one of `x`, `y`, or `z`. |
-| `board`  |  string | Optional | The `name` of the [board](/components/board/) containing the limit switches and pins. If `limit_pins` exist, `board` is required. |
-| `limit_pins`  | object | Optional | The `boards`'s pins attached to the limit switches on either end. If the [motor](/components/motor/) used does not include an [encoder](/components/motor/gpio/encoded-motor/), you must set `limit_pins`. The order of these pins is important. If the pins are in the wrong order, the gantry may try to travel beyond the limit switch (or switches). The switch representing the home (`0`) position must be first in the list. See [Configure `limit_pins`](#configure-limit_pins) for more information. |
-| `limit_pin_enabled_high` | boolean | Optional | Whether the limit pin must be “high” or “low” to be considered “hit”, with a value of `true` representing "high". This attribute is **Required** if `limit_pins` is set.<br> Default: `false` |
+| `board`  |  string | Optional | The `name` of the [board](/components/board/) containing the limit switches and pins. If `limit_pins` is set, `board` is **required**. |
+| `limit_pins`  | object | Optional | The pins on the `board` which are attached to the limit switches on either end. If the [motor](/components/motor/) used does not include an [encoder](/components/motor/gpio/encoded-motor/), you must set `limit_pins`. The order of these pins is important. If the pins are in the wrong order, the gantry may try to travel beyond the limit switch (or switches). The switch representing the home (`0`) position must be first in the list. In addition, if you are configuring multiple `single-axis` gantries, you can [specify the order of homing routines](#specify-the-order-of-homing-routines) if needed. |
+| `limit_pin_enabled_high` | boolean | Optional | Whether the limit pin must be “high” or “low” to be considered “hit”, with a value of `true` representing "high". This attribute is **required** if `limit_pins` is set.<br> Default: `false` |
 | `mm_per_rev` | int | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter * pi, or the pitch of a linear screw. |
 | `gantry_rpm` | int | Optional | The gantry `motor`'s default revolutions per minute (RPM). |
 
-## Configure `limit_pins`
+## Specify the order of homing routines
 
 When `viam-server` starts, a `single-axis` gantry component will perform a homing routine if its `limit_pins` attribute is set. The axis will move towards one limit switch, then the other, before stopping at 80% of the travel of the axis.
 
