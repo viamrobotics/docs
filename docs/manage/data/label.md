@@ -28,7 +28,7 @@ You can label you data with:
 ### Bounding boxes
 
 You can create one or more bounding boxes for objects in each image.
-If you label an entire dataset, you can use these labels to [create object detection models](/manage/ml/train-model/#train-a-model).
+If you annotate an entire dataset, you can use these bounding boxes to [create object detection models](/manage/ml/train-model/#train-a-model).
 For example, if you would like to create a model that detects a dog in an image, add bounding boxes around the dog in each of your images and add or select the label `dog`.
 
 To add a bounding box, click on the image you want to add the bounding box to.
