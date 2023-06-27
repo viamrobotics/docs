@@ -23,7 +23,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
 If you followed along in [part 2 of the Motion Service tutorial series](../plan-motion-with-arm-gripper/), you used the [Motion Service](/services/motion/) to move a robot arm and end effector to desired positions.
-This tutorial builds on that and shows you how to use [constraints](/services/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
+This tutorial builds on this foundation and shows you how to use [constraints](/services/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
 
 In this tutorial, you will learn to move a cup across a table without hitting another object, and while remaining upright.
 
@@ -51,6 +51,8 @@ Use the robot configuration from [the previous tutorial](../plan-motion-with-arm
 The Motion Service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
 
 {{% expand "Click for an example raw JSON config." %}}
+
+If you go to your robot's **Config** tab on [the Viam app](https://app.viam.com/) and click **Raw JSON**, your config should resemble the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -153,7 +155,7 @@ Account for this by giving the table a **Translation** of `-10` in the Z directi
 
 ## Add an obstacle on the table
 
-In the last tutorial, you [added a table obstacle](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) to prevent the arm and gripper from hitting the table upon which the arm is mounted.
+In the last tutorial, you [defined a table obstacle](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) to prevent the arm and gripper from hitting the table upon which the arm is mounted.
 In this tutorial, keep that table code and add an additional obstacle: a tissue box sitting on the table.
 
 We also added a `z_offset` parameter to the code so you can more easily calibrate your motion plans based on how high or low your arm is mounted compared to the table.
@@ -181,12 +183,12 @@ obstacles_in_frame = GeometriesInFrame(reference_frame="world",
 ## Determine the gripper's axes
 
 You need to figure out how the gripper's frame corresponds to its hardware.
-That is, you need to know which axis points from the "wrist" to the end of the gripper, which axis lines up with the direction the jaws actuate, and if the gripper was holding a cup, which axis would pass vertically through the cup.
+That is, you need to determine which axis points from the "wrist" to the end of the gripper, which axis lines up with the direction the jaws actuate, and, when the gripper is holding a cup, which axis passes vertically through the cup.
 
 All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule/).
 The following diagram shows this, as well as the global coordinate system.
 
-![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](../../img/constrain-motion/gripper-diagram.png)
+![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](../../img/constrain-motion/gripper-diagram.png)
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue this tutorial](#use-a-transform-to-represent-a-drinking-cup).
 
@@ -260,7 +262,7 @@ You could try using an [orientation constraint](../../../services/motion/constra
 However, since this opens up many more options for potential paths, it is much more computationally intensive than the linear constraint.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Create a constraint to keep the cup upright as it moves
+# Create a linear constraint to keep the cup upright and constrain it to a linear path
 constraints = Constraints(linear_constraint = [LinearConstraint()])
 
 # Move the cup to the end position without hitting the box on the table,
@@ -279,8 +281,8 @@ await my_gripper.open()
 
 ## Full tutorial code
 
-The following code contains everything covered in this tutorial in addition to the connect function, and the resource access code from the last tutorial that you still need here.
-Be sure to change the robot secret and address values to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
+The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
+Be sure to change the `<ROBOT SECRET PAYLOAD>` and `<ROBOT ADDRESS>` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
