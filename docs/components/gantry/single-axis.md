@@ -72,7 +72,7 @@ The following attributes are available for `single-axis` gantries:
 
 When `viam-server` starts, a `single-axis` gantry component will perform a homing routine if its `limit_pins` attribute is set. The axis will move towards one limit switch, then the other, before stopping at 80% of the travel of the axis.
 
-If there are multiple `single-axis` gantries configured (for example, when using a [`multi-axis` gantry](/components/gantry/multi-axis)), the order of homing may be important.
+If there are multiple `single-axis` gantries configured (for example, when using a [`multi-axis` gantry](/components/gantry/multi-axis/)), the order of homing may be important.
 
 In this case, you must specify the axes that must be homed first in a `depends_on` array to each `single-axis` gantry. For example, if there is a tool mounted to the z axis that could be damaged during homing of the x or y axes, you must add the z axis as a dependency to the x and y axes. This will ensure the z axis completes its homing routine first, and that the tool head is in a safe location to begin the homing process on the other axes.
 
