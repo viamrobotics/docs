@@ -14,10 +14,8 @@ To label data in a dataset, go to the [**DATA** tab](https://app.viam.com/data/v
 On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
 
 {{< alert title="Note" color="note" >}}
-Datasets are views, not materialized.
+The data you are viewing may change as you label and train on the dataset.
 If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
-
-Therefore the data you are viewing may change as you label and train on the dataset.
 {{< /alert >}}
 
 You can label you data with:
