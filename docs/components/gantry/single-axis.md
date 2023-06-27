@@ -70,17 +70,21 @@ The following attributes are available for `single-axis` gantries:
 
 ## Specify the order of homing routines
 
-When `viam-server` starts, a `single-axis` gantry component will perform a homing routine if its `limit_pins` attribute is set. The axis will move towards one limit switch, then the other, before stopping at 80% of the travel of the axis.
+When `limit_pins` is set, a `single-axis` gantry component performs a homing routine when `viam-server` starts.
+The axis will move towards one limit switch, then the other, before stopping at 80% of the travel of the axis.
 
-If there are multiple `single-axis` gantries configured (for example, when using a [`multi-axis` gantry](/components/gantry/multi-axis/)), the order of homing may be important.
+If there are multiple `single-axis` gantries configured (for example, when using a [`multi-axis` gantry](/components/gantry/multi-axis/)), the order in which these homing routines are executed may be important.
 
-In this case, you must specify the axes that must be homed first in a `depends_on` array to each `single-axis` gantry. For example, if there is a tool mounted to the z axis that could be damaged during homing of the x or y axes, you must add the z axis as a dependency to the x and y axes `single-axis` gantries in your configuration. This will ensure the z axis completes its homing routine first, and that the tool head returns to a safe location to begin the homing process on the other axes.
+In this case, you can specify the axes that must be homed first in a `depends_on` array to each `single-axis` gantry.
+For example, if there is a tool mounted to the z axis that could be damaged during homing of the x or y axes, you should add the z axis as a dependency to the x and y axes in your configuration. This will ensure the z axis completes its homing routine first, and that the tool head returns to a safe location to begin the homing process on the other axes.
 
 {{% alert="Note" color="note" %}}
-The order of axes in the `subaxes_list` for a `multi-axis` gantry does not influence the order of homing. A `multi-axis` gantry component is not constructed until all the `single-axis` gantry components are constructed and finish homing. Thus to ensure that homing occurs in a proscribed order, you must explicitly add dependencies to each axis for axes that must be homed first.
+The order of axes in the `subaxes_list` for a `multi-axis` gantry does not influence the order of homing.
+A `multi-axis` gantry component is not constructed until all the `single-axis` gantry components are constructed and finish homing.
+Thus to ensure that homing occurs in a set order, you must explicitly add dependencies to each axis for axes that must be homed first.
 {{% /alert %}}
 
-The following shows an example of adding an explicit dependency, where `myFirstGantry` is configured to depend on `mySecondGantry`, ensuring that `mySecondGantry` will be always be homed before `myFirstGantry`:
+The following example configuration defines a dependency between axes, with `myFirstGantry` configured to depend on `mySecondGantry`, ensuring that `mySecondGantry` will be always be homed before `myFirstGantry`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
