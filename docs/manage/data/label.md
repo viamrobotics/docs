@@ -36,7 +36,7 @@ Select the **Bounding Box** option.
 Choose an existing label or create a new label.
 Click on the image where you would like to add the bounding box and drag to where the bounding box should end.
 
-{{<gif webm_src="../img/label-dog.webm" mp4_src="../img/label-dog.mp4" alt="Add bounding box label around dog in an image">}}
+{{<gif webm_src="../img/label-dog.webm" mp4_src="../img/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
 
 Repeat this with all images in your dataset.
 
