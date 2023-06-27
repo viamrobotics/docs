@@ -13,14 +13,14 @@ To label data in a dataset, go to the [**DATA** tab](https://app.viam.com/data/v
 
 On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
 
-{{< alert title="Important" color="note" >}}
+{{< alert title="Note" color="note" >}}
 Datasets are views, not materialized.
 If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
 
 Therefore the data you are viewing may change as you label and train on the dataset.
 {{< /alert >}}
 
-You can label you data with
+You can label you data with:
 
 - [Bounding boxes](#bounding-boxes), which you can use to [train object detection models](/manage/ml/train-model/#train-a-model).
 - [Image tags](#image-tags), which you can use to [train object detection models](/manage/ml/train-model/#train-a-model).
@@ -43,8 +43,8 @@ To delete a bounding box, click the cross next to the corresponding label.
 
 ### Image Tags
 
-You can use tags to [create classification models](/manage/ml/train-model/#train-a-model) for images.
-For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image with a star with a `star` tag.
+You can use tags to [create classification models](../../manage/ml/train-model/#train-a-model) for images.
+For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
 The filter also needs to include images without the star tag or with another tag like `notstar`.
 If you add a `nostar` tag, you can filter the data in your dataset by adding the explicit tags `star` and `notstar` as a filter.
 Alternatively you can use date ranges to filter for relevant data.

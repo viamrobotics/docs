@@ -23,7 +23,7 @@ After [labeling your images](/manage/data/label/), click on the **TRAIN MODEL** 
 A **Training** side menu opens.
 The model that you configure to be training will train on all images that are part of the current filter.
 
-{{< alert title="Important" color="note" >}}
+{{< alert title="Note" color="note" >}}
 Datasets are views, not materialized.
 If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
 
@@ -35,7 +35,7 @@ Therefore the data you are viewing may change as you label and train on the data
 3. Select a **Model Type**:
     - **Single Label Classification**: predicts one label per image
     - **Multi Label Classification**: predicts multiple labels per image
-    - **Object Detection**: identifies an object in an image
+    - **Object Detection**: predicts a label and location for an object in an image
 4. Select one or more labels to train on.
     For classification models, the selected labels will be the possible tags the model predicts for a given image:
      - If you selected **Single Label**, the model can predict one of these labels or `UNKNOWN`.
