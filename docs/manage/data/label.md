@@ -56,7 +56,6 @@ To tag an image, click on the image.
 More information about the image will open up to the right side.
 Select the **Image Tags** option.
 
-
 {{<gif webm_src="../img/tag-star.webm" mp4_src="../img/tag-star.mp4" alt="Tag image with a star label">}}
 
 Repeat this with all images in your dataset.
