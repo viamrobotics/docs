@@ -3,7 +3,7 @@ title: "Add Constraints and Transforms to a Motion Plan"
 linkTitle: "Add Motion Constraints"
 weight: 25
 type: "docs"
-description: "Use constraints and transforms with the Motion Service to move robot components in specific ways."
+description: "Use constraints and transforms with the Motion Service."
 webmSrc: "/tutorials/videos/motion_constraints.webm"
 mp4Src: "/tutorials/videos/motion_constraints.mp4"
 images: ["/tutorials/videos/motion_constraints.jpg"]
@@ -31,28 +31,25 @@ The [full tutorial code](#full-tutorial-code) is available at the end of this pa
 
 ## Prerequisites
 
-{{< alert title="Note" color="note" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/).
-{{< /alert >}}
-
-Before starting this tutorial, make sure you have the [Viam Python SDK](https://python.viam.dev/) <!-- or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme/) -->installed.
-
-If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the arm controller before continuing.
-
-Familiarize yourself with the concepts outlined in the second motion tutorial, [Plan Motion with an Arm and a Gripper](../plan-motion-with-arm-gripper/), before continuing.
-This tutorial picks up where **Plan Motion with an Arm and a Gripper** stops, so further examples depend on having a connected robot, client and service access, and other infrastructure in place.
-
-For reference, look at [the full code sample from the prior tutorial](../plan-motion-with-arm-gripper/#full-tutorial-code).
+Before starting this tutorial, you must:
+- Install the [Viam Python SDK](https://python.viam.dev/)<!-- or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme/)-->.
+- If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the arm controller before continuing.
+  Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/) including a [fake arm model](../../../components/arm/fake/).
+- Complete the previous tutorial, [Plan Motion with an Arm and a Gripper](../plan-motion-with-arm-gripper/), which configures the robot, client and service access, and other infrastructure we'll need for this tutorial.
+  For reference, see the [full code sample from the prior tutorial](../plan-motion-with-arm-gripper/#full-tutorial-code).
 
 ## Configure your robot
 
-Use the robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](../../../services/frame-system/) configured.
+Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](../../../services/frame-system/) configured.
+Make one change: Change the Z translation of the gripper to zero.
 
 The Motion Service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
 
-{{% expand "Click for an example raw JSON config." %}}
+{{% expand "Click to see what your raw JSON config should look like." %}}
 
-If you go to your robot's **Config** tab on [the Viam app](https://app.viam.com/) and click **Raw JSON**, your config should resemble the following:
+If you go to your robot's **Config** tab on [the Viam app](https://app.viam.com/) and click **Raw JSON**, your config should resemble the following.
+
+If you're creating a fresh configuration instead of using your robot from the previous tutorials, you can copy paste this into your robot's **Raw JSON** field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -99,7 +96,7 @@ If you go to your robot's **Config** tab on [the Viam app](https://app.viam.com/
         "translation": {
           "x": 0,
           "y": 0,
-          "z": 90
+          "z": 0
         },
         "orientation": {
           "type": "ov_degrees",
@@ -153,14 +150,17 @@ Account for this by giving the table a **Translation** of `-10` in the Z directi
 ### Visualize obstacles on the table
 -->
 
-## Add an obstacle on the table
+## Modify your robot's working environment
 
 In the last tutorial, you [defined a table obstacle](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) to prevent the arm and gripper from hitting the table upon which the arm is mounted.
-In this tutorial, keep that table code and add an additional obstacle: a tissue box sitting on the table.
+In this tutorial, you'll expand on the code that describes your robot's working environment in two ways:
 
-We also added a `z_offset` parameter to the code so you can more easily calibrate your motion plans based on how high or low your arm is mounted compared to the table.
+- Define an additional obstacle: a tissue box sitting on the table.
+- Add a `z_offset` parameter to the `table_origin` and to the new `box_origin`.
+  This makes it easier to calibrate your motion plans based on how high or low your arm is mounted compared to the table.
 
-You can adjust the dimensions and positions of the obstacles to describe your own scenario, but here is an example:
+The following example shows the two obstacles defined with the expanded configuration.
+Adjust the dimensions and positions of the obstacles to describe your own scenario:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Use this offset to set your z to calibrate based on where your table actually is
@@ -190,14 +190,14 @@ The following diagram shows this, as well as the global coordinate system.
 
 ![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](../../img/constrain-motion/gripper-diagram.png)
 
-If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue this tutorial](#use-a-transform-to-represent-a-drinking-cup).
+If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue this tutorial](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
 If you are using a real arm and gripper, use the **Control** tab in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
 
-Imagine your cup is 120 millimeters tall and 90 millimeters in diameter.
+Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
 You can pass transforms to the [Motion Service `move` method](../../../services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
@@ -216,10 +216,12 @@ transforms = [
 ]
 ```
 
-The 155mm offset along the gripper's Z axis accounts for the radius of the gripper (45mm), plus the distance from the gripper's origin (where it meets the arm) and what you can think of as the palm of its hand.
-In this example, that distance is 110mm (see diagram above), but if you have a different gripper, change the offset accordingly.
+Here, we use a 155mm offset along the gripper's Z axis to represent the distance from the base of the gripper to the center of the cup.
+We assume the cup is situated against the palm of the gripper's hand.
+This offset is then equal to the radius of the cup (45mm) plus the distance from the gripper's origin (where it meets the arm) to its palm (110mm in this example).
+If your gripper has different dimensions, change the offset accordingly.
 
-Now that you have created the table and tissue box obstacles and the cup transform, create a WorldState that includes all of them:
+Now that you have created the table and tissue box obstacles and the cup transform, create a [WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState) that includes all of them:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Create a WorldState that includes the table and tissue box obstacles, and the cup transform
@@ -229,12 +231,13 @@ world_state = WorldState(obstacles=[obstacles_in_frame], transforms = transforms
 ## Define start and end poses
 
 You need to tell the robot where to pick up the cup, and where to put it down.
+The previous tutorial [introduced the concept of defining poses](../plan-motion-with-arm-gripper/#command-an-arm-to-move-with-the-motion-service).
+For this tutorial, you'll define a pose for the gripper that is just above the table on one side of the tissue box, and another pose on the other side of the tissue box.
 
-While the Motion Service has the mathematical ability to plan complex motion from one position to another, around an obstacle, this is computationally intensive.
-The program will run much more efficiently if you add waypoints to more tightly define the motion.
-The way points in the code below are defined such that the path between each consecutive point can be linear, without intersecting the tissue box (or other obstacle).
-
-Though we are passing these waypoints in manually, the Motion Service will throw an error if we accidentally pass in a pose that would cause the arm or gripper to hit any obstacles.
+You'll also want to define some waypoints.
+The Motion Service has the mathematical ability to plan complex motion from one position to another, even around an obstacle.
+However, this is more computationally intensive than planning a linear path from one point to another.
+To increase your program's efficiency, add waypoints such that the path between any two consecutive points can be linear, without intersecting the tissue box or the table:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Create a start pose, where the cup starts between the gripper's jaws, on the table
@@ -253,6 +256,22 @@ end_pose = Pose(x=300, y=-250, z=90.0+z_offset, o_x=1, o_y=0, o_z=0, theta=0)
 end_pose_in_frame = PoseInFrame(reference_frame="world", pose=end_pose)
 ```
 
+Though we are passing these waypoints in manually, the Motion Service will throw an error if we accidentally pass in a pose that would cause the arm or gripper to hit any obstacles.
+
+Note that the orientations of all the poses are the same.
+If we changed the orientation along the way, we might spill the tea!
+
+{{< alert title="Tip" color="tip" >}}
+You may be wondering how the orientations of the poses are determined.
+Our example gripper's frame is defined such that its orientation vector points from its "wrist" to the tip of its jaws.
+In the example code above, all poses have an [orientation vector](../../../internals/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
+When we tell the gripper to move to such a pose, its orientation vector moves to align with the orientation vector of the pose, so its jaws end up pointing along the global X axis, "forwards" from the robot base.
+This puts it in a good position for picking up and moving a cup.
+
+Additionally, for our gripper, setting `theta=0` about this particular orientation vector orients the gripper such that its jaws open and close horizontally.
+If we changed it to `theta=90` or `theta=270`, the gripper jaws would open vertically, not ideal for picking up a cup!
+{{< /alert >}}
+
 ## Add a motion constraint
 
 To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](../../../services/motion/constraints/#linear-constraint).
@@ -260,6 +279,8 @@ Then, when you tell the robot to move the cup from one upright position to anoth
 
 You could try using an [orientation constraint](../../../services/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
 However, since this opens up many more options for potential paths, it is much more computationally intensive than the linear constraint.
+
+The code below creates a linear constraint and then uses that constraint to keep the cup upright and move it in a series of linear paths along the predetermined route while avoiding the obstacles we've defined:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Create a linear constraint to keep the cup upright and constrain it to a linear path
