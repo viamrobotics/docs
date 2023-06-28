@@ -6,7 +6,7 @@ type: "docs"
 description: "Use constraints and transforms with the Motion Service."
 webmSrc: "/tutorials/videos/motion_constraints.webm"
 mp4Src: "/tutorials/videos/motion_constraints.mp4"
-images: ["/tutorials/videos/motion_constraints.jpg"]
+images: ["/tutorials/videos/motion_constraints.gif"]
 videoAlt: "An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright."
 tags: ["arm", "gripper", "motion", "services"]
 # SMEs: Motion Team
@@ -32,6 +32,7 @@ The [full tutorial code](#full-tutorial-code) is available at the end of this pa
 ## Prerequisites
 
 Before starting this tutorial, you must:
+
 - Install the [Viam Python SDK](https://python.viam.dev/)<!-- or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme/)-->.
 - If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the arm controller before continuing.
   Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/) including a [fake arm model](../../../components/arm/fake/).
