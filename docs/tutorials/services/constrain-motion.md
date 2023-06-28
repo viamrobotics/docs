@@ -186,7 +186,7 @@ obstacles_in_frame = GeometriesInFrame(reference_frame="world",
 You need to figure out how the gripper's frame corresponds to its hardware.
 That is, you need to determine which axis points from the "wrist" to the end of the gripper, which axis lines up with the direction the jaws actuate, and, when the gripper is holding a cup, which axis passes vertically through the cup.
 
-All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule/).
+All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule).
 The following diagram shows this, as well as the global coordinate system.
 
 ![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](../../img/constrain-motion/gripper-diagram.png)
