@@ -21,7 +21,7 @@ To make use of ML models with your robot, you can use the built-in [ML model ser
 
 Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-service) to your robot, you can then add another service to make use of the model.
 
-* For object detection and classification you can use the [Vision Service](/services/vision) [mlmodel detector](https://docs.viam.com/services/vision/detection/#configure-a-mlmodel-detector) or [mlmodel classifier](https://docs.viam.com/services/vision/classification/#configure-a-mlmodel-classifier).
+* For object detection and classification, you can use the [Vision Service](/services/vision), which provides both [mlmodel detector](/services/vision/detection/#configure-a-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-a-mlmodel-classifier) models.
 * For other usage, you can create a [modular resource](/program/extend/modular-resources/) to integrate it with your robot.
 
 The video below shows the training process for an object detection model using a bounding box:
