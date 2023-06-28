@@ -11,6 +11,12 @@ images: ["/img/blink.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]
+authors: []
+languages: []
+viamresources: [ "board" ]
+level: "Beginner"
+date: "4 October 2022"
+cost: 70
 ---
 
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.

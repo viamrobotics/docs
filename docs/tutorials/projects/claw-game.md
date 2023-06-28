@@ -9,7 +9,12 @@ webmSrc: "/tutorials/img/claw-game/preview.webm"
 mp4Src: "/tutorials/img/claw-game/preview.mp4"
 videoAlt: "GIF of the claw game in action at a party."
 images: ["/tutorials/img/claw-game/preview.gif"]
-# Authors: Arielle Mella, Matt Vella, Hazal Mestci
+authors: [ "Arielle Mella", "Hazal Mestci", "Matt Vella" ]
+languages: [ "python" ]
+viamresources: [ "board", "arm", "gripper", "motion" ]
+level: "Advanced"
+date: "29 May 2023"
+cost: 8910
 ---
 
 {{<gif webm_src="../../img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}

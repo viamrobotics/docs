@@ -11,7 +11,12 @@ tags: ["arm", "motion", "services"]
 aliases:
   - "/tutorials/motion/accessing-and-moving-robot-arm"
   - "/tutorials/motion/"
-# SMEs: William S.
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "arm" ]
+level: "Intermediate"
+date: "7 March 2023"
+cost: 8400
 ---
 
 {{< alert title="Caution" color="caution" >}}

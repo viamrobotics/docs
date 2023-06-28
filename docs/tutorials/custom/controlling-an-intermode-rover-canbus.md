@@ -8,6 +8,12 @@ description: "Integrate an Intermode rover as a modular-resource-based component
 image: "/tutorials/img/intermode/rover_outside.png"
 imageAlt: "Intermode rover pictured outdoors."
 images: ["/tutorials/img/intermode/rover_outside.png"]
+authors: [ "Matt Vella" ]
+languages: [ "go" ]
+viamresources: [ "base", "custom" ]
+level: "Intermediate"
+date: "22 January 2023"
+cost: 1500
 # SME: Matt Vella, Matt Dannenberg, James Otting
 ---
 

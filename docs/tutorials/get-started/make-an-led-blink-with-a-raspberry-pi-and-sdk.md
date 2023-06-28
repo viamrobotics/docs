@@ -11,7 +11,12 @@ images: ["/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.g
 aliases:
     - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/
 tags: ["board", "raspberry pi", "sdk"]
-# SME: Joe Karlsson
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "board" ]
+level: "Beginner"
+date: "4 October 2022"
+cost: 70
 ---
 
 In this post, you will be introduced to the basics of programming hardware by using either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) to make an LED blink.

@@ -10,6 +10,12 @@ videoAlt: "A circular wooden board slowly spinning clockwise with 3 bowls on top
 images: ["/tutorials/img/lazy-susan/preview.gif"]
 tags: ["motor", "python"]
 no_list: true
+authors: [ "Arielle Mella" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor" ]
+level: "Beginner"
+date: "29 May 2023"
+cost: 114
 ---
 
 {{<gif webm_src="/tutorials/img/lazy-susan/lazy-susan.webm" mp4_src="/tutorials/img/lazy-susan/lazy-susan.mp4" alt="A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks." max-width="350px" class="alignright">}}

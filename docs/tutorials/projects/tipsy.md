@@ -9,8 +9,12 @@ images: ["/tutorials/img/tipsy/tipsy-preview.gif"]
 videoAlt: "Tipsy robot carrying drinks"
 webmSrc: "/tutorials/img/tipsy/tipsy-preview.webm"
 mp4Src: "/tutorials/img/tipsy/tipsy-preview.mp4"
-
-# Author: Hazal
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor", "base", "camera", "sensor", "mlmodel", "vision" ]
+level: "Beginner"
+date: "29 May 2023"
+cost: 770
 ---
 
 <img src="../../img/tipsy/tipsy.jpg" alt="Tipsy robot carrying drinks" class="alignright" width="300px">

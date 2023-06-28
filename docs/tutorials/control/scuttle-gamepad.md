@@ -12,6 +12,12 @@ aliases:
     - "/tutorials/scuttle-gamepad/"
     - "/tutorials/scuttlebot/scuttle-gamepad/"
 tags: ["base", "scuttle", "gamepad"]
+authors: []
+languages: []
+viamresources: [ "base", "input_controller" ]
+level: "Beginner"
+date: "10 August 2022"
+cost: 575
 ---
 
 The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot.

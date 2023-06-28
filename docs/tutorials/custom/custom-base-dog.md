@@ -11,8 +11,13 @@ videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acryli
 images: ["/tutorials/img/custom-base-dog/base-control-dog.gif"]
 aliases:
     - /tutorials/custom-base-dog/
+authors: [ "Jessamy Taylor" ]
+languages: [ "python" ]
+viamresources: [ "base", "camera", "custom" ]
+level: "Beginner"
+date: "15 May 2023"
+cost: 190
 # SMEs: James Otting, Eric Daniels
-# Author: Jessamy Taylor
 ---
 
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.

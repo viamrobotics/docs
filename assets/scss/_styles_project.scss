@@ -633,6 +633,51 @@ END MARKETING CSS
   transform: translate(-3px,-3px);
 }
 
+.hover-card-tutorial {
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+.hover-card-tutorial > a {
+  width: 100%;
+}
+
+.hover-card-tutorial * .small-hover-card-div {
+  color: black;
+}
+
+.hover-card-tutorial * .pills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hover-card-tutorial * .pill {
+ background-color: white;
+ padding: 0.1rem 0.25rem;
+ border: 1px solid black;
+ margin: 0.1rem
+}
+
+.hover-card-tutorial * .pill.pill-lang {
+  color: white;
+  background-color: #333;
+}
+
+.robot-cost {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.robot-cost > .key {
+  min-width: 50px;
+  color: #666666;
+  margin-right: 0.3rem;
+}
+
 /* END card styling */
 .nav-link {
   text-decoration: none;
