@@ -5,15 +5,17 @@ description: "Viam is a complete software platform for robots that runs on any 6
 weight: 1
 no_list: true
 type: "docs"
+noToc: true
 hide_feedback: true
 sitemap:
   priority: 1.0
 ---
-
+<div class="max-page">
 Welcome to the Viam Documentation!
 Viam is a complete software platform for robots that runs on Linux and macOS and supports a wide variety of popular systems, including:
+</div>
 
-<div id="board-carousel" class="carousel td-max-width-on-larger-screens">
+<div id="board-carousel" class="carousel max-page">
   <ul tabindex="0">
    <li id="c1_slide1">
     <a href="installation/prepare/jetson-nano-setup/">
@@ -107,48 +109,56 @@ Viam is a complete software platform for robots that runs on Linux and macOS and
 </div>
 <br>
 
+<div class="max-page">
 Explore more about the Viam platform or try it out for yourself:
+</div>
 
-<div class="container td-max-width-on-larger-screens">
+<div class="cards max-page">
   <div class="row">
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding yellow">
+            <div>
             <h4>Learn and Try</h4>
             <p style="text-align: left;">
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
+            </div>
             {{<gif webm_src="img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
         </div>
     </div>
-    <div class="col landing-hover-card ">
+    <div class="col landing-hover-card">
         <div class="landing-hover-card-padding purple">
-        <h4>Configure your robots</h4>
-        <div style="text-align: left">
-            <ol style="padding-inline-start: 1.1rem">
-            <li><a href="manage/configuration/">Configure your robot<a> or <a href="manage/fleet/">fleet</a></li>
-            <li><a href="installation/">Install Viam on your robot</a></li>
-            <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
-            <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
-            </ol>
+        <div>
+          <h4>Configure your robots</h4>
+          <div style="text-align: left">
+              <ol style="padding-inline-start: 1.1rem">
+              <li><a href="manage/configuration/">Configure your robot<a> or <a href="manage/fleet/">fleet</a></li>
+              <li><a href="installation/">Install Viam on your robot</a></li>
+              <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
+              <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
+              </ol>
+              </div>
             {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
         </div>
     </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding teal">
-        <h4>Program your robots</h4>
-        <p style="text-align: left;">
-            Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
-        </p>
+        <div>
+          <h4>Program your robots</h4>
+          <p style="text-align: left;">
+              Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
+          </p>
+        </div>
         <img src="img/code.png" alt="Robot code">
         </div>
     </div>
     <div class="col landing-hover-card">
         <div class="landing-hover-card-padding pink">
+            <div>
             <h4>Community</h4>
             <p style="text-align: left;">Have questions, or want to meet other people working on robots? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
+            </div>
             {{<gif webm_src="img/heart.webm" mp4_src="img/heart.mp4" alt="A robot drawing a heart">}}
         </div>
     </div>
