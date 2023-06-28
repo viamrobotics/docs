@@ -377,7 +377,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
     ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](../../img/tipsy/app-service-ml-create.png)
 
-    In the new ML Models service panel, configure your service.
+    In the new ML Model service panel, configure your service.
 
     ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](../../img/tipsy/app-service-ml-before.png)
 

@@ -9,11 +9,24 @@ description: "Use Viam's built-in machine learning capabilities to train image c
 # SME: Aaron Casas
 ---
 
-You can use Viam's built-in machine learning capabilities to [train image classification models](train-model/) and [deploy these models to your robots](../../services/ml/).
-You can also [upload and use existing models](upload-model/).
+Viam includes a built-in [machine learning (ML) service](/services/ml/) which provides your robot with the ability to learn from data and adjust its behavior based on insights gathered from that data.
+Common use cases include object detection, image classification, natural language processing, and speech recognition and synthesis, but your robot can make use of machine learning with nearly any kind of data.
 
-To capture and synchronize data to the platform, see [Data Management Service](../../services/data/).
-To view or export captured data, see [Data Management](../data/).
+Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/services/ml/#tflite_cpu-limitations).
+
+You can [train your own image classification models](/manage/ml/train-model/) or [add an existing model](/manage/ml/upload-model/) for object detection and classification within the platform using data from the [Data Management Service](../../services/data/).
+Object detection and classification models are commonly used to enable robots to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
+
+To make use of ML models with your robot, you can use the built-in [ML model service](/services/ml/) to deploy and run the model.
+
+Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-service) to your robot, you can then add another service to make use of the model.
+
+* For object detection and classification, you can use the [Vision Service](/services/vision/), which provides both [mlmodel detector](/services/vision/detection/#configure-a-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-a-mlmodel-classifier) models.
+* For other usage, you can create a [modular resource](/extend/modular-resources/) to integrate it with your robot.
+
+The video below shows the training process for an object detection model using a bounding box:
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
 
 ## Next Steps
 
@@ -21,4 +34,5 @@ To view or export captured data, see [Data Management](../data/).
   {{% card link="/manage/ml/train-model" size="small" %}}
   {{% card link="/manage/ml/upload-model" size="small" %}}
   {{% card link="/services/ml" size="small" custom="Deploy Model" %}}
+  {{% card link="/tutorials/projects/pet-treat-dispenser/" size="small" custom="Tutorial: Smart Pet Feeder" %}}
 {{< /cards >}}
