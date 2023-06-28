@@ -11,8 +11,10 @@ sitemap:
   priority: 1.0
 ---
 <div class="max-page">
+<p>
 Welcome to the Viam Documentation!
 Viam is a complete software platform for robots that runs on Linux and macOS and supports a wide variety of popular systems, including:
+</p>
 </div>
 
 <div id="board-carousel" class="carousel max-page">
@@ -110,7 +112,9 @@ Viam is a complete software platform for robots that runs on Linux and macOS and
 <br>
 
 <div class="max-page">
+<p>
 Explore more about the Viam platform or try it out for yourself:
+</p>
 </div>
 
 <div class="cards max-page">
