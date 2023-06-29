@@ -169,7 +169,6 @@ Explore more about the Viam platform or try it out for yourself:
     </div>
 </div>
 
-<br>
 <h2>Capabilities and APIs</h2>
 
 <div class="cards max-page">
@@ -212,6 +211,25 @@ Explore more about the Viam platform or try it out for yourself:
             </div>
         </div>
     </div>
+  </div>
+</div>
+
+<h2>Popular Tutorials</h2>
+
+<div class="cards max-page">
+  <div class="row">
+  <div class="col landing-hover-card">
+    {{< card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" >}}
+  </div>
+  <div class="col landing-hover-card">
+  {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" size="small" >}}
+  </div>
+  <div class="col landing-hover-card">
+  {{< card link="/tutorials/services/color-detection-scuttle/" size="small" >}}
+  </div>
+  <div class="col landing-hover-card">
+  {{< card link="/tutorials/projects/integrating-viam-with-openai/" size="small" >}}
+  </div>
   </div>
 </div>
 

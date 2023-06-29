@@ -561,6 +561,18 @@ END MARKETING CSS
 
 }
 
+.max-page * .hover-card.hover-card-small {
+  margin: 1em 0;
+  max-width: 400px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col.landing-hover-card > .col {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 @media (min-width: 650px) { // at least two cards fit next to one another
   .hover-card.hover-card-small {
     min-width: 250px;
@@ -587,7 +599,6 @@ END MARKETING CSS
     max-width: 400px;
   }
 }
-
 
 // Between 1200 - 1650 we need to restrict the container to 850px to ensure
 // the cards go into 2 x 2 formation
