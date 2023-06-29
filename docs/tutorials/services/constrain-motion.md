@@ -42,15 +42,16 @@ Before starting this tutorial, you must:
 ## Configure your robot
 
 Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](../../../services/frame-system/) configured.
-Make one change: Change the Z translation of the gripper to zero.
+Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The Motion Service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
 
 {{% expand "Click to see what your raw JSON config should look like." %}}
 
-If you go to your robot's **Config** tab on [the Viam app](https://app.viam.com/) and click **Raw JSON**, your config should resemble the following.
+If you completed the previous tutorial, your robot's configuration should match the following.
+You can view your robot configuration in [the Viam app](https://app.viam.com/) under the **Config** tab by clicking **Raw JSON**.
 
-If you're creating a fresh configuration instead of using your robot from the previous tutorials, you can copy paste this into your robot's **Raw JSON** field.
+If instead you are creating a new robot for this tutorial, copy the following configuration into the Raw JSON field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -153,7 +154,7 @@ Account for this by giving the table a **Translation** of `-10` in the Z directi
 
 ## Modify your robot's working environment
 
-In the last tutorial, you [defined a table obstacle](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) to prevent the arm and gripper from hitting the table upon which the arm is mounted.
+In the previous tutorial, you [defined a table obstacle](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) to prevent the arm and gripper from hitting the table upon which the arm is mounted.
 In this tutorial, you'll expand on the code that describes your robot's working environment in two ways:
 
 - Define an additional obstacle: a tissue box sitting on the table.
@@ -183,7 +184,7 @@ obstacles_in_frame = GeometriesInFrame(reference_frame="world",
 
 ## Determine the gripper's axes
 
-You need to figure out how the gripper's frame corresponds to its hardware.
+You need to identify how the gripper's frame corresponds to its hardware so that you can write code that creates your desired behavior.
 That is, you need to determine which axis points from the "wrist" to the end of the gripper, which axis lines up with the direction the jaws actuate, and, when the gripper is holding a cup, which axis passes vertically through the cup.
 
 All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule).
@@ -202,7 +203,7 @@ Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
 You can pass transforms to the [Motion Service `move` method](../../../services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
-To represent the drinking cup held in your robot's gripper, add this to your code:
+To represent the drinking cup held in your robot's gripper, create a transform with the cup's measurements:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Create a transform to represent the cup as a 120mm tall, 45mm radius capsule shape
@@ -222,7 +223,7 @@ We assume the cup is situated against the palm of the gripper's hand.
 This offset is then equal to the radius of the cup (45mm) plus the distance from the gripper's origin (where it meets the arm) to its palm (110mm in this example).
 If your gripper has different dimensions, change the offset accordingly.
 
-Now that you have created the table and tissue box obstacles and the cup transform, create a [WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState) that includes all of them:
+Now that you have created the table and tissue box obstacles as well as the cup transform, create a [WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState) that includes all of them:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Create a WorldState that includes the table and tissue box obstacles, and the cup transform
@@ -257,7 +258,7 @@ end_pose = Pose(x=300, y=-250, z=90.0+z_offset, o_x=1, o_y=0, o_z=0, theta=0)
 end_pose_in_frame = PoseInFrame(reference_frame="world", pose=end_pose)
 ```
 
-Though we are passing these waypoints in manually, the Motion Service will throw an error if we accidentally pass in a pose that would cause the arm or gripper to hit any obstacles.
+Though we are passing these waypoints in manually, the Motion Service will throw an error if we accidentally pass in a pose that would cause the arm or gripper to hit any obstacles we've defined.
 
 Note that the orientations of all the poses are the same.
 If we changed the orientation along the way, we might spill the tea!
@@ -276,7 +277,7 @@ If we changed it to `theta=90` or `theta=270`, the gripper jaws would open verti
 ## Add a motion constraint
 
 To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](../../../services/motion/constraints/#linear-constraint).
-Then, when you tell the robot to move the cup from one upright position to another, the gripper will move linearly and the upright orientation of the cup will be maintained throughout the planned path.
+When you tell the robot to move the cup from one upright position to another, the linear constraint forces the gripper to move linearly and to maintain the upright orientation of the cup throughout the planned path.
 
 You could try using an [orientation constraint](../../../services/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
 However, since this opens up many more options for potential paths, it is much more computationally intensive than the linear constraint.
