@@ -96,9 +96,11 @@ The example below configures `myFirstGantry` to wait until the homing process fo
                     "36"
                 ],
                 "depends_on": [
-                  "mySecondGantry"
+                    "mySecondGantry"
                 ]
-         }
+            }
+        },
+        // < mySecondGantry config >
     ]
 }
 ```
