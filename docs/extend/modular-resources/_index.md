@@ -20,7 +20,7 @@ With modular resources, you can:
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk/).
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built into the [Robot Development Kit (RDK)](/internals/rdk/).
 
 Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
