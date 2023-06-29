@@ -77,7 +77,7 @@ If you are creating your own modular resource, follow these steps:
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
-A configured **module** can make one or more *modular resources* available for configuration.
+A configured *module* can make one or more *modular resources* available for configuration.
 
 {{% /alert %}}
 
