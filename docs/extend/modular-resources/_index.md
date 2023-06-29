@@ -453,7 +453,7 @@ Your options for completing this step are flexible, as this file does not need t
 
 If using the Go SDK, Go will build a binary when you compile your module.
 
-If using the Python SDK, one option is creating and save a new shell script (<file>.sh</file>) that runs your module.
+If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
 
 ``` shell
@@ -561,7 +561,8 @@ The `attributes` available vary depending on your implementation.
 
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
-The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base/#api):
+The custom model is configured as a component with the name "my-custom-base-1".
+Commands can be sent to the base according to the Viam [base API](/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
