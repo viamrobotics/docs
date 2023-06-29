@@ -169,5 +169,51 @@ Explore more about the Viam platform or try it out for yourself:
     </div>
 </div>
 
+<br>
+<h2>Explore capabilities and APIs</h2>
+
+<div class="cards max-page">
+  <div class="row">
+    <div class="col landing-hover-card">
+        <div class="landing-hover-card-padding teal">
+            <div>
+            <h4>Manage</h4>
+            {{<sectionlist sectiontitle="manage">}}
+            </div>
+        </div>
+    </div>
+    <div class="col landing-hover-card">
+        <div class="landing-hover-card-padding pink">
+            <div>
+            <h4>Components</h4>
+            {{<sectionlist sectiontitle="components">}}
+            </div>
+        </div>
+    </div>
+    <div class="col landing-hover-card">
+        <div class="landing-hover-card-padding purple">
+            <div>
+            <h4>Services</h4>
+            {{<sectionlist sectiontitle="services">}}
+            </div>
+        </div>
+    </div>
+    <div class="col landing-hover-card">
+        <div class="landing-hover-card-padding yellow">
+            <div>
+            <h4>SDKs</h4>
+            <ul>
+            <li><a href="https://python.viam.dev/" target="_blank">Python SDK</a></li>
+            <li><a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank">Go SDK</a></li>
+            <li><a href="https://ts.viam.dev/" target="_blank">TypeScript SDK</a></li>
+            <li><a href="https://cpp.viam.dev/" target="_blank">C++ SDK (alpha)</a></li>
+            <li><a href="https://github.com/viamrobotics/viam-flutter-sdk" target="_blank">Flutter SDK (alpha)</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript" src="js/carousel-min.js"></script>
 <link rel="stylesheet" href="css/carousel-min.css">
