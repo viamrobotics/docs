@@ -366,7 +366,7 @@ If you would like to continue onto working with Viam's Motion Service, check out
 
 {{< cards >}}
   {{% card link="/tutorials/projects/claw-game/" size="small" %}}
-  {{% card link="/tutorials/services/constrain-motion" size="small" %}}
+  {{% card link="/tutorials/services/constrain-motion/" size="small" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

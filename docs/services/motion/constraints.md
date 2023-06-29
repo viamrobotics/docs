@@ -67,9 +67,11 @@ moved = await motion.move(
 
 You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
 
-<!--
 ## Next steps
 
-Insert link to motion tutorial #3 about constraints
+Constraints are used in the following tutorials:
 
--->
+{{< cards >}}
+  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+  {{% card link="/tutorials/services/constrain-motion/" size="small" %}}
+{{< /cards >}}
