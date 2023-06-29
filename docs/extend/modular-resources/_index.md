@@ -83,7 +83,7 @@ A configured *module* can make one or more *modular resources* available for con
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/apis/) that does the following:
+Use [Viam's Go or Python language SDKs](/program/apis/) to code a module that does either of the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
