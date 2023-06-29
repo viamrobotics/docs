@@ -20,7 +20,7 @@ With modular resources, you can:
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk/).
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built into the [Robot Development Kit (RDK)](/internals/rdk/).
 
 Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
@@ -77,13 +77,13 @@ If you are creating your own modular resource, follow these steps:
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
-A configured **module** can make one or more *modular resources* available for configuration.
+A configured *module* can make one or more *modular resources* available for configuration.
 
 {{% /alert %}}
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/apis/) that does the following:
+Use [Viam's Go or Python SDKs](/program/apis/) to code a module that does either of the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
@@ -453,7 +453,7 @@ Your options for completing this step are flexible, as this file does not need t
 
 If using the Go SDK, Go will build a binary when you compile your module.
 
-If using the Python SDK, one option is creating and save a new shell script (<file>.sh</file>) that runs your module.
+If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
 
 ``` shell
@@ -561,7 +561,8 @@ The `attributes` available vary depending on your implementation.
 
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
-The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base/#api):
+The custom model is configured as a component with the name "my-custom-base-1".
+You can send commands to the base according to the Viam [base API](/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
