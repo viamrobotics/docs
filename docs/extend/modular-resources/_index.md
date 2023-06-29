@@ -83,7 +83,7 @@ A configured *module* can make one or more *modular resources* available for con
 
 ### Code your module
 
-Use [Viam's Go or Python language SDKs](/program/apis/) to code a module that does either of the following:
+Use [Viam's Go or Python SDKs](/program/apis/) to code a module that does either of the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
@@ -562,7 +562,7 @@ The `attributes` available vary depending on your implementation.
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
 The custom model is configured as a component with the name "my-custom-base-1".
-Commands can be sent to the base according to the Viam [base API](/components/base/#api):
+You can send commands to the base according to the Viam [base API](/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
