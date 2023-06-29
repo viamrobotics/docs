@@ -84,7 +84,7 @@ If set to zero, a movement with identical starting and ending orientations will 
 moved = await motion.move(
     component_name=my_gripper, 
     destination=PoseInFrame(
-        reference_frame="myFrame",
+        reference_frame="my_frame",
         pose=goal_pose),
     world_state=worldState,
     constraints = Constraints(orientation_constraint = [OrientationConstraint()])
