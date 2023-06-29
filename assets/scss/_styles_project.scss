@@ -573,20 +573,27 @@ END MARKETING CSS
 }
 
 .landing-hover-card {
-  margin: 1em auto;
+  margin: 1em 0;
   display: flex;
   min-width: 300px;
   max-width: 400px;
 }
+
+@media (max-width: 900px) {
+  .landing-hover-card {
+    margin: 1em auto;
+    display: flex;
+    min-width: 300px;
+    max-width: 400px;
+  }
+}
+
 
 // Between 1200 - 1650 we need to restrict the container to 850px to ensure
 // the cards go into 2 x 2 formation
 @media (min-width: 1200px) {
   div .cards.max-page {
     max-width: 850px !important;
-    padding-right: 5%;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
