@@ -83,8 +83,8 @@ Viam is a complete software platform for robots that runs on Linux and macOS and
   </li>
   <li id="c1_slide12">
     <a href="components/board/pca9685/">
-        <img src="installation/img/thumbnails/pca9685.png" alt="P C A 9685 Arduino I 2 C Interface" width="100%">
-        <h6>PCA9686 Arduino I<sup>2</sup>C Interface</h6>
+        <img src="installation/img/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" width="100%">
+        <h6>PCA9686 I<sup>2</sup>C Interface</h6>
     </a>
   </li>
   </ul>
@@ -100,7 +100,7 @@ Viam is a complete software platform for robots that runs on Linux and macOS and
     <li><a href="#c1_slide9">Raspberry Pi Zero 2W</a></li>
     <li><a href="#c1_slide10">FriendlyElec NanoPi</a></li>
     <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
-    <li><a href="#c1_slide12">PCA9686 Arduino I<sup>2</sup>C Interface</a></li>
+    <li><a href="#c1_slide12">PCA9686 I<sup>2</sup>C Interface</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
