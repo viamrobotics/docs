@@ -614,7 +614,7 @@ This means you can add, modify, and remove a modular resource instance from a ru
 
 #### Data management
 
-Data capture for individual components is supported on [certain component types](../../../services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+Data capture for individual components is supported on [certain component types](../../services/data/configure-data-capture/#configure-data-capture-for-individual-components).
 If your modular resource is a model of one of these types, you can configure data capture on it just as you would on a built-in resource.
 
 #### Shutdown
