@@ -22,12 +22,9 @@ cost: 190
 
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
-Viam natively supports a wheeled base model, but if you have a quadruped or other form of rover that isn't compatible with the wheeled model, you have two options:
+Viam natively supports a wheeled base model, but if you have a quadruped or other form of rover that isn't compatible with the wheeled model, you can [create a custom component as a modular resource](/extend/modular-resources/).
 
-1. Use Viam's Go SDK to [create a custom component as a modular resource](/extend/modular-resources/).
-2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/extend/custom-components-remotes/).
-
-This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
+This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
   {{<gif webm_src="../../img/custom-base-dog/base-control-dog.webm" mp4_src="../../img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
