@@ -277,10 +277,24 @@ or if you want a video without controls - mimicking a GIF:
 
 And to create the source files you can use [Ezgif gif to mp4](https://ezgif.com/gif-to-mp4) and [Ezgif gif to webm](https://ezgif.com/gif-to-webm) or run these commands:
 
+{{< tabs >}}
+{{% tab name="macOS" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
+
+{{% /tab %}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+ffmpeg -i PATH_TO_GIF_OR_VID -b:v 2000k -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 If you'd like to use commands like `webm2mp4` add this to your `.zshrc`:
 
