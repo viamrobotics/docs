@@ -170,7 +170,7 @@ Explore more about the Viam platform or try it out for yourself:
 </div>
 
 <br>
-<h2>Explore capabilities and APIs</h2>
+<h2>Capabilities and APIs</h2>
 
 <div class="cards max-page">
   <div class="row">
