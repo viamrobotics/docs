@@ -249,7 +249,7 @@ On the [Viam app](https://app.viam.com/), select the **Code sample** tab and set
 
 Copy the code:
 
-![The Viam app Code Sample tab with language set to Python and Include secret enabled](/tutorials/img/lazy-susan/copy-python-code-sample.png)
+![The Viam app Code Sample tab with language set to Python](/tutorials/img/lazy-susan/python-code.png)
 
 Create a new python file called `lazysusan.py` on your Raspberry Pi and paste the copied code into it:
 
