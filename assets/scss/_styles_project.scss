@@ -660,8 +660,23 @@ END MARKETING CSS
 }
 
 .hover-card-tutorial * .pill.pill-lang {
-  color: white;
-  background-color: #333;
+  background-color: #00ef83;
+}
+
+.hover-card-tutorial * .pill.pill-component {
+  background-color: #00e8e8;
+}
+
+.hover-card-tutorial > a {
+  display: flex;
+  flex-direction: column;
+}
+
+.hover-card-tutorial * .small-hover-card-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .robot-cost {

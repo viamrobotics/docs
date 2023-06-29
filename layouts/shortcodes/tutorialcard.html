@@ -9,42 +9,44 @@
   {{ if site.GetPage ((relURL $link) | string) }}
     {{ with site.GetPage ((relURL $link) | string) }}
       <a href="{{.RelPermalink}}">
-        {{ if .Params.webmSrc }}
-          <video autoplay loop muted playsinline preload="auto" alt="{{ .Params.videoAlt }}" width="100%">
-            <source src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
-            <source src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
-            There should have been a video here but your browser does not seem
-            to support it.
-          </video>
-        {{ end }}
-        {{ if .Params.image }}
-          <div class="hover-card-img">
-            <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
+          {{ if .Params.webmSrc }}
+            <video autoplay loop muted playsinline preload="auto" alt="{{ .Params.videoAlt }}" width="100%">
+              <source src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
+              <source src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
+              There should have been a video here but your browser does not seem
+              to support it.
+            </video>
+          {{ end }}
+          {{ if .Params.image }}
+            <div class="hover-card-img">
+              <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
+            </div>
+          {{ end }}
+          {{ if .Params.icon }}
+          <div class="hover-card-icon">
+            <img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" width="100%" />
           </div>
-        {{ end }}
-        {{ if .Params.icon }}
-        <div class="hover-card-icon">
-          <img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" width="100%" />
-        </div>
-        {{ end }}
-        <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
-          {{ if $customTitle }}<h4>{{ $customTitle }}</h4>{{ else }}<h4>{{ .LinkTitle }}</h4>{{ end }}
-          <div class="pills">
-          {{if .Params.languages}}
-          {{ range sort .Params.languages }}
-            <div class="pill pill-lang">{{ . }}</div>
           {{ end }}
-          {{ end }}
-          {{if .Params.viamresources}}
-          {{ range sort .Params.viamresources }}
-            <div class="pill">{{ . }}</div>
-          {{ end }}
-          {{ end }}
+          <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+            <div>
+            {{ if $customTitle }}<h4>{{ $customTitle }}</h4>{{ else }}<h4>{{ .LinkTitle }}</h4>{{ end }}
+            <div class="pills">
+            {{if .Params.languages}}
+            {{ range sort .Params.languages }}
+              <div class="pill pill-lang">{{ . }}</div>
+            {{ end }}
+            {{ end }}
+            {{if .Params.viamresources}}
+            {{ range sort .Params.viamresources }}
+              <div class="pill pill-component">{{ . }}</div>
+            {{ end }}
+            {{ end }}
+            </div>
+            {{if .Params.cost}}
           </div>
-          {{if .Params.cost}}
           <div class="robot-cost">
-              <div class="key">Component Cost: </div>
-              <div class="value">~${{ .Params.cost }}</div>
+            <div class="key">Materials: </div>
+            <div class="value">~${{ .Params.cost }}</div>
           </div>
           {{ end }}
         </div>
