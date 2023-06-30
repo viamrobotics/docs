@@ -14,8 +14,8 @@ description: "Short description of your tutorial (1 sentence)."
 tags: ["tutorial"]
 draft: true # Change this when you're ready
 authors: [] # Your Name
-languages: []
-viamresources: []
+languages: [] # Viam SDK programming languages used, if any
+viamresources: [] # Specific components or services used in this tutorial
 level: "" # Beginner, Intermediate, Advanced
 # Beginner means: high level of explanation and guidance
 # Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
