@@ -507,11 +507,15 @@ END MARKETING CSS
   margin-bottom: 1rem;
 }
 
-.hover-card-small.hover-card-tutorial > a * img, .hover-card-small.hover-card-tutorial > a > video {
+.hover-card-small.hover-card-tutorial > a * img {
   margin-bottom: 0;
 }
 
 @media (max-width: 650px) { // at least two cards fit next to one another
+  .hover-card-small.hover-card-tutorial > a > video {
+    margin-bottom: 0;
+  }
+
   .hover-card.hover-card-small { // only one card
     min-width: 90%;
     width: 90%;
