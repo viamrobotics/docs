@@ -634,7 +634,7 @@ END MARKETING CSS
 }
 
 .hover-card-tutorial {
-  background-color: whitesmoke;
+  background-color: white;
   padding: 10px;
 }
 
@@ -653,7 +653,7 @@ END MARKETING CSS
 }
 
 .hover-card-tutorial * .pill {
- background-color: white;
+ background-color: whitesmoke;
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
  margin: 0.1rem;
@@ -661,11 +661,11 @@ END MARKETING CSS
 }
 
 .hover-card-tutorial * .pill.pill-lang {
-  background-color: #00ef83;
+  border-color: #00e8e8;
 }
 
 .hover-card-tutorial * .pill.pill-component {
-  background-color: #00e8e8;
+  border-color: #a51aff;
 }
 
 .hover-card-tutorial > a {
