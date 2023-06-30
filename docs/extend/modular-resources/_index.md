@@ -1,9 +1,6 @@
 ---
 title: "Create custom components and services"
 linkTitle: "Modular Resources"
-image: "/tutorials/img/intermode/rover_outside.png"
-imageAlt: "An intermode rover pictured outdoors."
-images: ["/tutorials/img/intermode/rover_outside.png"]
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
