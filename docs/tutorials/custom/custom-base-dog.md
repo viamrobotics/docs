@@ -36,8 +36,8 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 ## Code used in this tutorial
 
+- [Module Generator](https://github.com/viam-labs/generator-viam-module)
 - [Robot Dog Base Code on GitHub](https://github.com/viam-labs/robot-dog-base)
-
 - [Freenove Robot Dog Kit for Raspberry Pi Code on GitHub](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/tree/master/Code)
 
 ## Hardware requirements
@@ -132,7 +132,7 @@ Follow the Freenove hardware assembly instructions, including servo setup (all o
 ## Check connection between the robot dog server and the midlayer
 
 Before proceeding with the custom component implementation, follow the instructions in this section to test the connection between the Freenove server running on your robot dog and the code running on your development machine (laptop or desktop).
-This way, you can isolate any client-server connection problems if you encounter one.
+This way, you can isolate any client-server connection problems if they exist.
 
 ### Create a connection test file
 
@@ -205,6 +205,10 @@ If the robot dog did not respond, double check your IP address, make sure the ro
 You can also try turning the robot off and on again, and then retrying the process.
 
 ## Implement the custom base code
+
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](../../extend/modular-resources/#use-a-modular-resource-with-your-robot).
+Use [this tool](https://github.com/viam-labs/generator-viam-module) to generate stub files.
+Then, edit them as necessary to define how each base API method interacts with your robot dog.
 
 From the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
 
