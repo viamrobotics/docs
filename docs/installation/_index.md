@@ -28,7 +28,7 @@ For an overview of the Viam software platform, see [Viam in 3 minutes](/viam/).
 
 ### Prepare your board
 
-If you haven't already, you must install a supported operating system to your {{< glossary_tooltip term_id="board" text="board" >}}.
+If you haven't already, you must install a supported operating system on your {{< glossary_tooltip term_id="board" text="board" >}}.
 `viam-server` supports Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures.
 If you are using one of the following boards, you can follow our guide for that board to prepare it for installation:
 
