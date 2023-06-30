@@ -19,7 +19,7 @@ However, if your robot will never connect to the internet, you will need to crea
 * [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
 * [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on our example file.
 
-For more information on the individual configuration options available, see [Configuration](/manage/configuration/).
+For information on the individual configuration options available, see [Configuration](/manage/configuration/).
 
 ## Build a local configuration file in the Viam app
 
@@ -29,14 +29,15 @@ Follow the steps below to build and then download your configuration file:
 1. Navigate to [the Viam app](https://app.viam.com) and select the **Config** tab.
 1. Use **Builder** mode to add components and services, configure attributes, and map pin assignments.
 1. Then, switch to **Raw JSON** mode to be shown the equivalent JSON configuration to the settings you made in **Builder** mode.
-1. Download the JSON code to the board or computer you intend to run `viam-server` on; click the **See full config** link to be shown this file in plaintext for easy copying.
+1. Download the JSON code to the board or computer you intend to run `viam-server` on.
+   You can click the **See full config** link to be shown this file in plaintext for easy copying.
 
 If you later need to make changes to your robot's configuration:
 
 1. Make your edits under the **Config** tab in **Builder** mode
 1. Switch to **Raw JSON** mode to view your full configuration in JSON format
 1. Download the code to your robot, overwriting your local configuration file with the new one.
-1. Restart `viam-server` to apply the changes.
+   If it is currently running, `viam-server` will detect the updated configuration and apply it automatically -- there is no need to restart `viam-server` to apply changes.
 
 {{% alert title="Note" color="note" %}}
 This process is not required if your robot is connected to the Viam app.
@@ -49,70 +50,15 @@ If your robot temporarily disconnects from the internet, its configuration is ca
 If your robot will never connect to the internet, you may create a local configuration file yourself without using the Viam app.
 A locally-configured robot will not be able to access Viam's cloud features.
 
-When you [install `viam-server`](/installation/), an example configuration file is provided at:
+If you followed our instructions to [install `viam-server` on an SBC](/installation/#install-viam-server) or [install on a macOS or Linux computer](/installation/#install-on-a-macos-or-linux-computer), an example configuration file is provided in the following location:
 
 * Linux: <file>/etc/viam.json</file>
 * macOS: <file>/opt/homebrew/etc/viam.json</file>
 
-We recommend that you copy this example file to a custom configuration file location, such as your home directory.
-Select the tab below for your platform:
+If instead you performed a [local installation](/installation/#local-installation) of `viam-server` on a Linux board or Linux computer, you will need to create your own configuration file.
+Local installations of `viam-server` on a macOS computer provide an example configuration file at <file>/opt/homebrew/etc/viam.json</file>.
 
-{{< tabs name="Copy configuration file" >}}
-{{% tab name="macOS" %}}
-
-1. Copy the example configuration file to your home directory:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   cp /opt/homebrew/etc/viam.json ~/viam.json
-   ```
-
-1. Start `viam-server`, providing the custom configuration file location using the `-config` flag:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   viam-server -config ~/viam.json
-   ```
-
-{{% /tab %}}
-{{% tab name="Linux" %}}
-
-1. Copy the example configuration file to your home directory:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   cp /etc/viam.json ~/viam.json
-   ```
-
-1. Start `viam-server`, providing the custom configuration file location using the `-config` flag:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   viam-server -config ~/viam.json
-   ```
-
-1. If you are using `systemctl` to manage `viam-server`, you must also update your service file with this custom path.
-   Update these lines in your <file>/etc/systemd/system/viam-server.service</file> file to reflect your custom path:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   ...
-   ConditionPathExists=~/viam.json
-   ...
-   ExecStart=/usr/local/bin/viam-server -config ~/viam.json
-   ...
-   ```
-
-   Then, reload the service definition file:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   sudo systemctl daemon-reload
-   ```
-
-   Finally, stop and restart `viam-server` to apply the changes:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   sudo systemctl stop viam-server
-   sudo systemctl start viam-server
-   ```
-
-{{% /tab %}}
-{{< /tabs >}}
+You can use the [example configuration file](#example-json-configuration-file) below to base your robot's configuration on.
 
 {{% alert title="Note" color="note" %}}
 This process is not required if your robot is connected to the Viam app.

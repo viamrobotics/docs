@@ -52,6 +52,22 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 - If you encounter this error once or twice, try your `ssh` command again and wait until it completes.
 - If the error persists, try the solutions presented for the `Host is down` error message above.
 
+### Something went wrong trying to read the squashfs image
+
+**Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
+
+**Description:** The `viam-server` installation or update process may have been interrupted partway, with some files either partially-written or missing.
+
+**Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
+
+### AppImages require FUSE to run
+
+**Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which relies on FUSE (Filesystem-in-Userspace).
+FUSE is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box.
+In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
+
+**Solution:** See [I get some errors related to something called "FUSE" - AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html) for assistance in resolving FUSE errors on Linux or in Docker.
+
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
