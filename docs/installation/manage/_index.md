@@ -10,9 +10,9 @@ images: ["/installation/img/thumbnails/manage.png"]
 description: "Control and troubleshoot viam-server."
 ---
 
-Once you've installed `viam-server`, you can chose to run it as a system service or manually on the command line.
+Once you've [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.
 Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/installation/#install-viam-server) on Linux.
-Running manually on the command line is suitable for local development.
+Running on the command line is suitable for local development.
 
 ## Run `viam-server`
 
@@ -64,7 +64,7 @@ sudo systemctl disable viam-server
 
 ### Run from the command line
 
-When running `viam-server` manually on the command line, you can use the following commands to manage the process.
+When running `viam-server` on the command line, you can use the following commands to manage the process.
 If `viam-server` is already running as a system service, be sure to stop the service first before using these commands.
 
 #### Start
@@ -92,7 +92,7 @@ Type **Ctrl + C** on your keyboard within the terminal session where you are run
 
 After [installation](/installation/#install-viam-server), `viam-server` can be run directory on the command line.
 
-Running `viam-server` manually on the command line is the recommended method for macOS.
+Running `viam-server` on the command line is the recommended method for macOS.
 
 You can use the following commands to manage `viam-server` on the command line:
 
@@ -156,13 +156,15 @@ Select the tab below for your platform:
 
 ### As a system service
 
+If you are running `viam-server` as a system service, run the following command to view log messages:
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo journalctl --unit=viam-server
 ```
 
 Use the arrow keys to page vertically or horizontally through the log messages.
 
-You can also list messages specific to `viam-server` in the `syslog` with the following command:
+You can also view log messages specific to `viam-server` in the `syslog` with the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 grep viam-server /var/log/syslog
@@ -172,7 +174,7 @@ grep viam-server /var/log/syslog
 
 If you are running `viam-server` on the command line, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
 
-You can also list messages specific to `viam-server` in the `syslog` with the following command:
+You can also view log messages specific to `viam-server` in the `syslog` with the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 grep viam-server /var/log/syslog
