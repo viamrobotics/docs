@@ -14,7 +14,7 @@ aliases:
 authors: []
 languages: [ "python", "go" ]
 viamresources: [ "arm" ]
-level: "Intermediate"
+level: "Beginner"
 date: "7 March 2023"
 cost: 8400
 ---
