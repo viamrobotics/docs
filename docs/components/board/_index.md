@@ -17,7 +17,7 @@ A *board* is the signal wire hub of a robot that provides access to general purp
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
 This control is simplified with [`viam-server`](/installation/).
-When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to [resource](/appendix/glossary/#term-resource) APIs.
+When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
 
 {{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
@@ -250,7 +250,7 @@ The following properties are available for `spis`:
 
 {{% alert title="WIRING WITH SPI" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK [pin numbers](/appendix/glossary/#term-pin-number).
+Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
 
@@ -318,7 +318,7 @@ The following properties are available for `i2cs`:
 
 {{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL [pin numbers](/appendix/glossary/#term-pin-number).
+Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
 
@@ -510,7 +510,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 **Parameters:**
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -531,7 +531,7 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 **Parameters:**
 
 - `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 

@@ -10,7 +10,7 @@ aliases:
     - "/program/extend/modular-resources/"
 ---
 
-The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components/) and [services](/services/)) into any robot running on Viam.
+The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, ([components](/components/), and [services](/services/)) into any robot running on Viam.
 
 With modular resources, you can:
 
