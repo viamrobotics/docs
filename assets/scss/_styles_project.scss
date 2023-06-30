@@ -507,6 +507,10 @@ END MARKETING CSS
   margin-bottom: 1rem;
 }
 
+.hover-card-small.hover-card-tutorial > a * img, .hover-card-small.hover-card-tutorial > a > video {
+  margin-bottom: 0;
+}
+
 @media (max-width: 650px) { // at least two cards fit next to one another
   .hover-card.hover-card-small { // only one card
     min-width: 90%;
@@ -526,10 +530,6 @@ END MARKETING CSS
         margin: 0 1rem 1rem 0;
         margin: auto;
         padding-right: 1rem;
-
-        img {
-          margin-bottom: 0;
-        }
       }
 
       .hover-card-icon {
@@ -656,7 +656,8 @@ END MARKETING CSS
  background-color: white;
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
- margin: 0.1rem
+ margin: 0.1rem;
+ font-size: 0.833rem;
 }
 
 .hover-card-tutorial * .pill.pill-lang {
@@ -672,6 +673,13 @@ END MARKETING CSS
   flex-direction: column;
 }
 
+@media (max-width: 650px) {
+  .hover-card-tutorial > a {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 .hover-card-tutorial * .small-hover-card-div {
     display: flex;
     flex-direction: column;
@@ -685,6 +693,7 @@ END MARKETING CSS
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: end;
+  display: none;
 }
 
 .robot-cost > .key {
