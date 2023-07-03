@@ -9,7 +9,12 @@ mp4Src: "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
 videoAlt: "A mouse mover controlled with a servo and Raspberry Pi."
 images: ["/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.gif"]
 tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
-# SME: Kacey Meier-Smith
+authors: [ "Kacey Meier-Smith" ]
+languages: [ "python" ]
+viamresources: [ "board", "servo" ]
+level: "Beginner"
+date: "30 March 2023"
+cost: 80
 ---
 
 Have you ever been working from home and needed to step out for a moment?

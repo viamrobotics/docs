@@ -10,59 +10,36 @@ description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
 
-You can tag [images collected](../../../services/data/configure-data-capture/) by robots and use the labeled data to train a **Single Label** or **Multi Label** image classification model within Viam.
+You can label or add bounding boxes to [images collected](../../../services/data/configure-data-capture/) by robots and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
 
-## Label a dataset
-
-To label a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
-
-![Add new model menu](../img/add-new-model.png)
-
-On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
-
-{{< alert title="Important" color="note" >}}
-Datasets are views, not materialized.
-If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
-
-Therefore the data you are viewing may change as you label and train on the dataset.
-{{< /alert >}}
-
-If you would like to create a model that identifies an image of a star in a set of images, tag each image with a star with a `star` tag.
-
-You can also optionally tag images without a star with a `notstar` tag.
-This allows you to filter down the data in your dataset further by adding the explicit tags as a filter, for example `star` and `notstar`.
-
-To tag an image, click on the image.
-More information about the image will open up to the right side, including **Tags**.
-
-![Information view of an image](../img/image-info.png)
-
-Click on the **Tags** dropdown and create a new tag or select an existing tag to apply it to the image.
-
-![Image tag menu](../img/image-tag.png)
-
-Repeat this with all images in your dataset.
+When training machine learning models, it is important to supply a variety of different data about the subject.
+In the case of image classification, it is important to provide images of the object being identified in different situations, such as from different angles or in different lighting situations.
+The more varied the provided data set, the more accurate the resulting model becomes.
 
 ## Train a model
 
-When you've tagged all the images click on the **TRAIN MODEL** button in the top right corner.
+After [annotating your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.
 
 ![Train model button](../img/train-model.png)
 
 A **Training** side menu opens.
-The model that you configure to be training will train on all images part of the current filter.
+The model will train on all images that are part of the current filter.
+
+{{< alert title="Note" color="note" >}}
+Filtered datasets are views and not materialized.
+That means the data you are viewing may change as you label and train on the dataset.
+If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
+{{< /alert >}}
 
 1. Select **New Model**.
 2. Specify a **Model Name**.
-3. Select a **Classification Type**:
-    - **Single Label**: predicts one label per image
-    - **Multi Label**: predicts multiple labels per image
-4. Select one or more tags to train on.
-    The selected tags will be the possible tags the model predicts for a given image.
-     - If you selected **Single Label**, the model will predict one of these labels or `UNKNOWN`.
-     - If you selected **Multi Label**, the model can predict one or more labels for each image.
+3. Select a **Model Type** and one or more labels to train on:
+    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
+      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
+    - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
+    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 4. Click **TRAIN MODEL**
 
 ![Train model menu](../img/train-model-menu.png)

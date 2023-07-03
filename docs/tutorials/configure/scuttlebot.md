@@ -11,6 +11,12 @@ tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
   - "/tutorials/scuttlebot"
   - "/tutorials/scuttlebot/scuttlebot"
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "board", "arm", "motor" ]
+level: "Beginner"
+date: "2 August 2022"
+cost: 540
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/LAMxYci242E">}}

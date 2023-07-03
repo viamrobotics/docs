@@ -1,24 +1,23 @@
 ---
 title: "Create custom components and services"
 linkTitle: "Modular Resources"
-image: "/tutorials/img/intermode/rover_outside.png"
-imageAlt: "An intermode rover pictured outdoors."
-images: ["/tutorials/img/intermode/rover_outside.png"]
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
 no_list: true
+aliases:
+    - "/program/extend/modular-resources/"
 ---
 
-The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components/) and [services](/services/)) into any robot running on Viam.
+The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, ([components](/components/), and [services](/services/)) into any robot running on Viam.
 
 With modular resources, you can:
 
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk/).
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built into the [Robot Development Kit (RDK)](/internals/rdk/).
 
 Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
@@ -64,7 +63,8 @@ However, you can also create and expose new API types using modular resources.
 
 ## Use a modular resource with your robot
 
-Add a modular resource to your robot configuration in five steps:
+If you are using an existing modular resource, you can skip to [Save the executable](#make-sure-viam-server-can-access-your-executable).
+If you are creating your own modular resource, follow these steps:
 
 1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
@@ -74,13 +74,13 @@ Add a modular resource to your robot configuration in five steps:
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
-A configured **module** can make one or more *modular resources* available for configuration.
+A configured *module* can make one or more *modular resources* available for configuration.
 
 {{% /alert %}}
 
 ### Code your module
 
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/apis/) that does the following:
+Use [Viam's Go or Python SDKs](/program/apis/) to code a module that does either of the following:
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
@@ -320,7 +320,7 @@ class MyBase(Base, Reconfigurable):
     # Constructor
     @classmethod
     def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        base = cls(MyBase(config.name))
+        base = cls(config.name)
         base.reconfigure(config, dependencies)
         return base
 
@@ -383,7 +383,7 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-<file>init.py</file>
+<file>`__init.py__`</file>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
@@ -397,6 +397,34 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 from .my_base import MyBase
 
 Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
+```
+
+<file>main.py</file>
+
+``` python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import sys
+
+from viam.components.base import Base
+from viam.module.module import Module
+from .my_base import MyBase
+
+async def main(address: str):
+    """This function creates and starts a new module, after adding all desired resources.
+    Resources must be pre-registered. For an example, see the `__init__.py` file.
+    Args:
+        address (str): The address to serve the module on
+    """
+    module = Module(address)
+    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    await module.start()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise Exception("Need socket path as command line argument")
+
+    asyncio.run(main(sys.argv[1]))
+
 ```
 
 {{% /tab %}}
@@ -422,16 +450,16 @@ Your options for completing this step are flexible, as this file does not need t
 
 If using the Go SDK, Go will build a binary when you compile your module.
 
-If using the Python SDK, one option is creating and save a new shell script (<file>.sh</file>) that runs your module.
+If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
 
 ``` shell
 #!/bin/sh
-cd <path-to-your-module-directory>
+cd `dirname $0`
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec python3 <your-module-directory-name>.<main-program-filename> $@
+exec python3 -m <your-module-directory-name>.<main-program-filename-without-extension> $@
 ```
 
 To make this shell script executable, run the following command in your terminal:
@@ -439,6 +467,9 @@ To make this shell script executable, run the following command in your terminal
 ``` shell
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
+
+You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
+Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
 ### Make sure `viam-server` can access your executable
 
@@ -527,7 +558,8 @@ The `attributes` available vary depending on your implementation.
 
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
-The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base/#api):
+The custom model is configured as a component with the name "my-custom-base-1".
+You can send commands to the base according to the Viam [base API](/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -562,6 +594,8 @@ The custom model is configured as a component with the name "my-custom-base-1" a
 
 ### Modular resource management
 
+With one [exception](#limitations), modular resources function like built-in resources:
+
 #### Dependency Management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
@@ -576,11 +610,16 @@ The RDK ensures that any configured modules are loaded automatically on start-up
 When you change the configuration of a Viam robot, the behavior of modular resource instances versus built-in resource instances is equivalent.
 This means you can add, modify, and remove a modular resource instance from a running robot as normal.
 
+#### Data management
+
+Data capture for individual components is supported on [certain component types](../../services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+If your modular resource is a model of one of these types, you can configure data capture on it just as you would on a built-in resource.
+
 #### Shutdown
 
 During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
-### Modular resources as remotes
+#### Modular resources as remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.

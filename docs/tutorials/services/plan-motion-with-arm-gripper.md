@@ -8,7 +8,12 @@ webmSrc: "/tutorials/videos/motion_armmoving.webm"
 mp4Src: "/tutorials/videos/motion_armmoving.mp4"
 videoAlt: "An arm moving with the Motion Service"
 tags: ["arm", "gripper", "motion", "services"]
-# SMEs: William S.
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "arm", "gripper", "motion" ]
+level: "Intermediate"
+date: "7 March 2023"
+cost: 8400
 ---
 
 {{< alert title="Caution" color="caution" >}}

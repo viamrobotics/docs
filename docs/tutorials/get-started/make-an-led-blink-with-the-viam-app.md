@@ -11,6 +11,12 @@ images: ["/img/blink.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]
+authors: []
+languages: []
+viamresources: [ "board" ]
+level: "Beginner"
+date: "4 October 2022"
+cost: 70
 ---
 
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
@@ -20,26 +26,21 @@ This tutorial is a great place to start if you have never built a robot or a cir
 
 ## What you'll need for this guide
 
-You will need the following tools to complete the project:
+You will need the following to complete the project:
 
 ### Hardware
 
-<ol>
-    <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
-<ol type="a">
-<li>Refer to the <a href="https://docs.viam.com/installation/prepare/rpi-setup/" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
-</ol>
-    <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
-    <li><a href="https://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-    <li><a href="https://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
-    <li><a href="https://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
-</ol>
-
-[Click to view the hardware URL listing](#hardware-url-list)
+- [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+  - Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up your Pi.
+- [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
+- [Jumper wires](https://amzn.to/2qVhd4y)
+- [Resistor pack](https://amzn.to/2Dmainw)
+  - You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands
+- [LED](https://amzn.to/2Ex2v5q)
 
 ### Software
 
-- [viam-server](/installation/prepare/rpi-setup/)
+- [viam-server](/installation/#install-viam-server)
 
 ## Project setup
 
@@ -148,20 +149,10 @@ Congratulations!
 If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi!
 You have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
-You are ready for your next robotics project.
-We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](../make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
+## Next Steps
 
-If you are looking for some more projects that would be a great next step in your robotics journey, check out our other [tutorials](/tutorials/).
+Check out the next part in this series to control your LED programmatically:
 
-{{< snippet "social.md" >}}
-
-## Hardware URL list
-
-<ul>
-    <li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
-    <li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
-    <li>Jumper wires for easy hookup: <a href="https://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
-    <li>Resistor pack: <a href="https://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
-    <li>Red LED: <a href="https://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
-    <li>Multimeter (optional): <a href="https://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
-</ul>
+{{< cards >}}
+  {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
+{{< /cards >}}

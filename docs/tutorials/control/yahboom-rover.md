@@ -10,6 +10,12 @@ images: ["/tutorials/img/yahboom-rover/bluetoothpair-connect.png"]
 aliases:
     - /tutorials/yahboom-rover/
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
+authors: [ "Hazal Mestci" ]
+languages: [ ]
+viamresources: [ "base", "input_controller", "motor" ]
+level: "Beginner"
+date: "10 August 2022"
+cost: 260
 ---
 
 ## Requirements

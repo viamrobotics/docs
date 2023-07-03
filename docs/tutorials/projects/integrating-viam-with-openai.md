@@ -9,8 +9,13 @@ image: "/tutorials/img/ai-integration/rosey_robot.jpg"
 images: ["/tutorials/img/ai-integration/rosey_robot.jpg"]
 aliases:
   /tutorials/integrating-viam-with-openai/
-imageAlt: "Viam Rover Rosey."
-# SME: Matt Vella
+imageAlt: "An AI powered companion robot called Rosey."
+authors: [ "Matt Vella" ]
+languages: [ "python" ]
+viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
+level: "Beginner"
+date: "15 February 2023"
+cost: 200
 ---
 
 When we think of robots, most of us tend to group them into categories:
@@ -213,7 +218,7 @@ Click the **Config** tab and then the **Services** subtab.
 From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
 Your robot will register this as a machine learning model and make it available for use.
 
-<img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
+<img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Model Service." width="500" />
 
 Make sure `Path to Existing Model on Robot` is selected.
 

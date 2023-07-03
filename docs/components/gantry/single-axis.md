@@ -1,26 +1,28 @@
 ---
-title: "Configure a One-Axis Gantry"
-linkTitle: "oneaxis"
+title: "Configure a Single-Axis Gantry"
+linkTitle: "single-axis"
 weight: 70
 type: "docs"
-description: "Configure a oneaxis gantry."
+description: "Configure a single-axis gantry."
 images: ["/components/img/components/gantry.svg"]
 tags: ["gantry", "components"]
+aliases:
+    - "/components/gantry/oneaxis/"
 # SME: Rand
 ---
 
-Configure a `oneaxis` gantry to integrate a one-axis gantry into your robot:
+Configure a `single-axis` gantry to integrate a one-axis gantry into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your sensor, select the type `gantry`, and select the `oneaxis` model.
+Enter a name for your sensor, select the type `gantry`, and select the `single-axis` model.
 
 Click **Create component**.
 
-![Creation of a one-axis gantry component in the Viam app config builder.](../img/oneaxis-ui-config.png)
+![Creation of a single-axis gantry component in the Viam app config builder.](../img/single-axis-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -32,9 +34,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     // < Your motor config >
     {
-      "name": "<your-oneaxis-gantry-name>",
+      "name": "<your-single-axis-gantry-name>",
       "type": "gantry",
-      "model": "oneaxis",
+      "model": "single-axis",
       "attributes": {
         "motor": "<your-motor-name>",
         "length_mm": <int>,
@@ -53,7 +55,7 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% /tabs %}}
 
-The following attributes are available for `oneaxis` gantries:
+The following attributes are available for `single-axis` gantries:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------  |

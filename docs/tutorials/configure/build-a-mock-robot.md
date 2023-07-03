@@ -12,6 +12,12 @@ aliases:
     - "/tutorials/build-a-mock-robot/"
     - "/tutorials/how-to-build-a-mock-robot/"
 tags: ["mock", "simulation"]
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "board", "arm", "motor" ]
+level: "Beginner"
+date: "11 October 2022"
+cost: "0"
 ---
 
 This tutorial will show you how to build a mock robot using just your personal laptop so you can:

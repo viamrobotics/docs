@@ -90,7 +90,7 @@ The Motion Service takes the volumes associated with all configured robot compon
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Obstacles are defined by a pose and a geometry with dimensions.
+    - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
@@ -152,7 +152,7 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Obstacles are defined by a pose and a geometry with dimensions.
+    - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
@@ -436,16 +436,14 @@ gripperPoseInObjectFrame = await motion.get_pose(
 - `destinationFrame` ([string](https://pkg.go.dev/builtin#string)):
   The name of the frame with respect to which the component's pose is reported.
 
-- `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `Transform`s.
-  A `Transform` represents an additional frame which is added to the robot's frame system.
-  It consists of the following fields:
-  - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
-  - `physical_object`: An optional `Geometry` can be added to the frame being added.
-  - `reference_frame`: Specifies the name of the frame which will be added to the frame system.
-
+- `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `LinkInFrame`s.
+  A `LinkInFrame` represents an additional frame which is added to the robot's frame system.
+  It consists of:
+  - a `PoseInFrame`: Provides the relationship between the frame being added and another frame.
+  - `Geometry`: An optional `Geometry` can be added to the frame being added.
   When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
-  This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
-  If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
+  This new frame system builds off the robot's frame system and incorporates the `LinkInFrame`s provided.
+  If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
 
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 

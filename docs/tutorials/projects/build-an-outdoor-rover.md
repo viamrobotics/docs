@@ -9,8 +9,13 @@ image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
 images: ["/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"]
 aliases:
   /tutorials/build-an-outdoor-rover/
-imageAlt: "Completed rover with mounted solar panel."
-# SME: Matt Vella
+imageAlt: "Rover with mounted solar panel."
+authors: [ "Matt Vella" ]
+languages: []
+viamresources: [ "board", "motor", "base", "camera" ]
+level: "Beginner"
+date: "29 March 2023"
+cost: 420
 ---
 
 Approaching robotics can be daunting.

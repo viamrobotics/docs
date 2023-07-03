@@ -1,0 +1,10 @@
+{{ $p := .Site.GetPage (.Get "sectiontitle") }}
+{{ range (where .Site.Pages "Section" (.Get "sectiontitle")) }}
+  <ul>
+  {{ range .Pages }}
+    {{ if and (eq $p .Parent) (not .Draft) }}
+      <li><a href="{{ .Permalink }}" title="{{.Title}}">{{ .LinkTitle }}</a></li>
+      {{ end }}
+    {{ end }}
+  </ul>
+{{ end }}

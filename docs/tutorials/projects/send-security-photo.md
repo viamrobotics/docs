@@ -8,7 +8,12 @@ image: "/tutorials/img/send-security-photo/text-message.png"
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
 images: ["/tutorials/img/send-security-photo/text-message.png"]
 tags: ["camera", "vision", "detector", "python"]
-# Author: Hazal Mestci
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "camera", "mlmodel", "vision" ]
+level: "Beginner"
+date: "30 March 2023"
+cost: "0"
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -114,7 +119,7 @@ Example code below (though you don’t have to use it yet, this will get used in
 yag.send('phone_number@gatewayaddress.com', 'subject', contents)
 ```
 
-You will need to access to your phone number through your carrier.
+You will need access to your phone number through your carrier.
 For this tutorial, you are going to send the text to yourself.
 You will replace `to@someone.com` with your phone number and [SMS gateway address](https://en.wikipedia.org/wiki/SMS_gateway).
 You can find yours here: [Gateway Addresses for Mobile Phone Carrier Text Message](https://support-en.wd.com/app/answers/detailweb/a_id/44431/~/gateway-addresses-for-mobile-phone-carrier-text-message).
