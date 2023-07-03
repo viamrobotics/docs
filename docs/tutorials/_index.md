@@ -49,6 +49,7 @@ For this reason, we list tutorials based on features you may be looking for.
 {{< cards >}}
     {{% tutorialcard link="/tutorials/services/accessing-and-moving-robot-arm/" size="small" %}}
     {{% tutorialcard link="/tutorials/services/plan-motion-with-arm-gripper/" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/constrain-motion/" size="small" %}}
     {{% tutorialcard link="/tutorials/services/data-management-tutorial/" size="small" %}}
     {{% tutorialcard link="/tutorials/services/try-viam-color-detection" size="small" %}}
     {{% tutorialcard link="/tutorials/services/color-detection-scuttle/" size="small" %}}
