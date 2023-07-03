@@ -227,7 +227,7 @@ The board component supports the following methods:
 | ----------- | ----------- |
 | [AnalogReaderByName](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](/components/board/#analogs) by `name`. |
 | [DigitalInterruptByName](/components/board/#digitalinterruptbyname) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`. |
-| [GPIOPinByName](/components/board/#gpiopinbyname) | Get a `GPIOPin` by its [pin number](/appendix/glossary/#term-pin-number). |
+| [GPIOPinByName](/components/board/#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
 | [AnalogReaderNames](/components/board/#analogreadernames) | Get the `name` of every [`AnalogReader`](/components/board/#analogs). |
 | [DigitalInterruptNames](/components/board/#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](/components/board/#digital_interrupts). |
 | [Status](/components/board/#status) | Get the current status of this board. |

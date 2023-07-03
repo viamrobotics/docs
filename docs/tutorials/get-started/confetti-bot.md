@@ -9,8 +9,12 @@ webmSrc: "/tutorials/img/confetti-bot/preview.webm"
 mp4Src: "/tutorials/img/confetti-bot/preview.mp4"
 videoAlt: "A GIF of a red button being pressed and the cannon spraying confetti"
 images: ["/tutorials/img/confetti-bot/preview.gif"]
-# Author: Hazal Mestci
-# SME: Fahmina A
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor" ]
+level: "Beginner"
+date: "29 May 2023"
+cost: 145
 ---
 
 {{<gif webm_src="/tutorials/img/confetti-bot/confetti-bot.webm" mp4_src="/tutorials/img/confetti-bot/confetti-bot.mp4" alt="GIF of a red button being pressed and the cannon spraying confetti" class="alignright" max-width="250px">}}

@@ -13,7 +13,15 @@ description: "Short description of your tutorial (1 sentence)."
 # videoAlt: "ALT text for the video"
 tags: ["tutorial"]
 draft: true # Change this when you're ready
-# Author: YOUR NAME
+authors: [] # Your Name
+languages: [] # Viam SDK programming languages used, if any
+viamresources: [] # Specific components or services used in this tutorial
+level: "" # Beginner, Intermediate, Advanced
+# Beginner means: high level of explanation and guidance
+# Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
+# Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
+date: "1 Jan 2023" # When the tutorial was created or last entirely checked
+cost: 0 # Aproximate cost in USD - Only specify number
 ---
 
 Outline the why.

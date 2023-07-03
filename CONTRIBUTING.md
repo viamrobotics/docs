@@ -3,6 +3,8 @@
 Thank you for wanting to help us make the docs better.
 Every contribution is appreciated.
 
+### Code of Conduct
+For our Code of Conduct, please see our website at: [viam.com/community-guidelines](https://www.viam.com/community-guidelines).
 
 ## Goals
 

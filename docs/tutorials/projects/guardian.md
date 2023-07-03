@@ -10,7 +10,12 @@ videoAlt: "A guardian detecting a person or pet."
 images: ["/tutorials/img/guardian/preview.gif"]
 tags: ["camera", "vision", "detector", "python"]
 no_list: true
-# Author: Naomi Pentrel
+authors: [ "Naomi Pentrel" ]
+languages: [ "python" ]
+viamresources: [ "camera", "vision", "servo", "mlmodel" ]
+level: "Beginner"
+date: "15 May 2023"
+cost: 90
 ---
 
 In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.
@@ -26,15 +31,15 @@ Here's a video of the finished guardian detecting me:
 
 To build your own guardian robot, you need the following hardware:
 
-- a **Raspberry Pi + power cable**
-- a **Raspberry Pi Camera v1.3 + 50cm ribbon cable**: The default 15cm ribbon cable is not long enough.
-- a **180 degree SG90 servo**: Because of the camera ribbon, I restricted the servo to only 180 degrees.
-- 3x **10mm RGB LEDs with common cathode**
-- **cables**
-- 4x **M2 screws** to attach the camera
-- a **speaker**: Optional if you want music.
-  I used a 4Ω 2W speaker with connected aux in.
-  You can use any speaker you can connect to your Pi.
+| Hardware | Approximate price |
+| -------- | ----------------- |
+| **Raspberry Pi + power cable** | $60 |
+| **Raspberry Pi Camera v1.3 + 50cm ribbon cable**: The default 15cm ribbon cable is not long enough. | $15 |
+| **180 degree SG90 servo**: Because of the camera ribbon, I restricted the servo to only 180 degrees. | $4 |
+| 3x **10mm RGB LEDs with common cathode** | $4 |
+| **cables** | $5 |
+| 4x **M2 screws** to attach the camera | $2 |
+| **speaker**: Optional if you want music. I used a 4Ω 2W speaker with connected aux in. You can use any speaker you can connect to your Pi. | Optional |
 
 Print or order the following printed 3D parts:
 

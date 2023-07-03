@@ -96,6 +96,32 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 {{% /tab %}}
 
+{{% tab name="Crop" %}}
+
+The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "crop",
+    "attributes": {
+        "x_min_px": int,
+        "y_min_px": int,
+        "x_max_px": int,
+        "y_max_px": int
+    }
+}
+
+```
+
+**Attributes:**
+
+- `x_min_px`: The x coordinate of the top left point of the rectangular area to crop the image to.
+- `y_min_px`: The y coordinate of the top left point of the rectangular area to crop the image to.
+- `x_max_px`: The x coordinate of the bottom right point of the rectangular area to crop the image to.
+- `y_max_px`: The y coordinate of the bottom right point of the rectangular area to crop the image to.
+
+{{% /tab %}}
+
 {{% tab name="Depth Edges" %}}
 
 The Depth Edges transform creates a canny edge detector to detect edges on an input depth map.

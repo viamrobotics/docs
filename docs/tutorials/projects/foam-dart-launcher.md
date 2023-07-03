@@ -12,6 +12,12 @@ aliases:
     - /tutorials/foam-dart-launcher
 tags: ["base", "motor", "camera", "raspberry pi"]
 # SME: Kurt S. and Hazal M.
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "base", "camera", "motor", "board" ]
+level: "Beginner"
+date: "29 November 2022"
+cost: "145"
 ---
 
 ## Introduction

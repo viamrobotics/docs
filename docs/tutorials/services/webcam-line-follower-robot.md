@@ -10,6 +10,12 @@ mp4Src: "/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4"
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
     - "/tutorials/webcam-line-follower-robot/"
+authors: [ "Jessamy Taylor" ]
+languages: [ "python" ]
+viamresources: [ "vision", "camera" ]
+level: "Beginner"
+date: "26 August 2022"
+cost: 570
 ---
 
 <div class="td-max-width-on-larger-screens">
