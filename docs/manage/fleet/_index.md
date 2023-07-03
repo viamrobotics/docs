@@ -69,7 +69,14 @@ Robot [configuration](robots/#configuration) and robot [code](#control-with-the-
 
 ### Configuration
 
-Everyone who has access to the location the robot is in, can change the robot's configuration.
+Everyone who has access to the location the robot is in, can change the robot's [configuration](robots/#configuration).
+
+{{< alert title="Simultaneous config edits" color="caution" >}}
+If you edit a config while someone else edits the same config, the person who saves last will overwrite any other changes.
+
+Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
+{{< /alert >}}
+
 When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
 You can also revert to an earlier configuration from the History tab.
