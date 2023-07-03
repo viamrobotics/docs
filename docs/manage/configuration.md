@@ -75,7 +75,7 @@ You can use the mode selector to switch between **Builder** and **Raw JSON**:
 Regardless of the mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
 {{< alert title="Simultaneous config edits" color="caution" >}}
-If you edit a config while someone else edits the same config, the person who saves last will overwrite any other changes.
+If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
 
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}

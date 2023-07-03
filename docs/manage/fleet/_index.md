@@ -72,7 +72,7 @@ Robot [configuration](robots/#configuration) and robot [code](#control-with-the-
 Everyone who has access to the location the robot is in, can change the robot's [configuration](robots/#configuration).
 
 {{< alert title="Simultaneous config edits" color="caution" >}}
-If you edit a config while someone else edits the same config, the person who saves last will overwrite any other changes.
+If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
 
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
