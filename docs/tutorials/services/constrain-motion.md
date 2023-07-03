@@ -22,7 +22,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
-If you followed along in [part 2 of the Motion Service tutorial series](../plan-motion-with-arm-gripper/), you used the [Motion Service](/services/motion/) to move a robot arm and end effector to desired positions.
+If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [Motion Service](/services/motion/) to move a robot arm and end effector to desired positions.
 This tutorial builds on this foundation and shows you how to use [constraints](/services/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
 
 In this tutorial, you will learn to move a cup across a table without hitting another object, and while remaining upright.
@@ -161,19 +161,20 @@ In this tutorial, you'll expand on the code that describes your robot's working 
 - Add a `z_offset` parameter to the `table_origin` and to the new `box_origin`.
   This makes it easier to calibrate your motion plans based on how high or low your arm is mounted compared to the table.
 
-The following example shows the two obstacles defined with the expanded configuration.
+The following example shows the two obstacles defined such that the table's top surface is at z=0 and the tissue box sits on top of the table.
 Adjust the dimensions and positions of the obstacles to describe your own scenario:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Use this offset to set your z to calibrate based on where your table actually is
 z_offset = 10
 
-# Create a table obstacle
+# Create a table obstacle with its top surface at z=0
 table_origin = Pose(x=0.0, y=0.0, z=-19.0+z_offset)
 table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
 table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
 
-# Create a tissue box obstacle
+# Create a tissue box obstacle. Setting the box's origin to 50mm above the table
+# positions the 100mm tall box on top of the table.
 box_origin = Pose(x=400, y=0, z=50+z_offset)
 box_dims = Vector3(x=120.0, y=80.0, z=100.0)
 box_object = Geometry(center=box_origin, box=RectangularPrism(dims_mm=box_dims))
@@ -192,9 +193,9 @@ The following diagram shows this, as well as the global coordinate system.
 
 ![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](../../img/constrain-motion/gripper-diagram.png)
 
-If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue this tutorial](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
+If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the **Control** tab in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**Control** tab](/manage/fleet/robots/#control) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
