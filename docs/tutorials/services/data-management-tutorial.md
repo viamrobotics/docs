@@ -12,6 +12,12 @@ aliases:
     - "/tutorials/data-management/"
     - "/manage/data-management/data-management-tutorial/"
 tags: ["data management", "data", "services", "try viam"]
+authors: []
+languages: []
+viamresources: [ "data_manager", "camera" ]
+level: "Beginner"
+date: "8 February 2023"
+cost: "0"
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 

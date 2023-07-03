@@ -12,6 +12,12 @@ aliases:
     - "/tutorials/color-detection-scuttle"
     - "/tutorials/scuttlebot/color-detection-scuttle/"
 tags: ["vision", "detector", "base", "scuttle", "services"]
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "base", "vision", "camera" ]
+level: "Beginner"
+date: "18 August 2022"
+cost: 540
 ---
 
 {{< alert title="Caution" color="caution" >}}

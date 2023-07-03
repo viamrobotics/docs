@@ -11,6 +11,12 @@ images: ["/tutorials/img/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python"]
 aliases:
     - /tutorials/get-started/try-viam-sdk
+authors: []
+languages: [ "python", "go", "typescript" ]
+viamresources: [ "base" ]
+level: "Beginner"
+date: "8 December 2022"
+cost: "0"
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
@@ -103,10 +109,10 @@ These are the components and services that the robot is configured with in the V
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-10"}
 go run square.go
-2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40 
+2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40
    Resources:
-2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:41 
-   [rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:cam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base] 
+2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:41
+   [rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:cam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base]
 ```
 
 {{% /tab %}}

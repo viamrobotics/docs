@@ -507,7 +507,15 @@ END MARKETING CSS
   margin-bottom: 1rem;
 }
 
+.hover-card-small.hover-card-tutorial > a * img {
+  margin-bottom: 0;
+}
+
 @media (max-width: 650px) { // at least two cards fit next to one another
+  .hover-card-small.hover-card-tutorial > a > video {
+    margin-bottom: 0;
+  }
+
   .hover-card.hover-card-small { // only one card
     min-width: 90%;
     width: 90%;
@@ -526,10 +534,6 @@ END MARKETING CSS
         margin: 0 1rem 1rem 0;
         margin: auto;
         padding-right: 1rem;
-
-        img {
-          margin-bottom: 0;
-        }
       }
 
       .hover-card-icon {
@@ -662,6 +666,75 @@ END MARKETING CSS
   -webkit-transform: translate(-3px,-3px);
   -ms-transform: translate(-3px,-3px);
   transform: translate(-3px,-3px);
+}
+
+.hover-card-tutorial {
+  background-color: white;
+  padding: 10px;
+}
+
+.hover-card-tutorial > a {
+  width: 100%;
+}
+
+.hover-card-tutorial * .small-hover-card-div {
+  color: black;
+}
+
+.hover-card-tutorial * .pills {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.hover-card-tutorial * .pill {
+ background-color: whitesmoke;
+ padding: 0.1rem 0.25rem;
+ border: 1px solid black;
+ margin: 0.1rem;
+ font-size: 0.833rem;
+}
+
+.hover-card-tutorial * .pill.pill-lang {
+  border-color: #00e8e8;
+}
+
+.hover-card-tutorial * .pill.pill-component {
+  border-color: #a51aff;
+}
+
+.hover-card-tutorial > a {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 650px) {
+  .hover-card-tutorial > a {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.hover-card-tutorial * .small-hover-card-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.robot-cost {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+  display: none;
+}
+
+.robot-cost > .key {
+  min-width: 50px;
+  color: #666666;
+  margin-right: 0.3rem;
 }
 
 /* END card styling */

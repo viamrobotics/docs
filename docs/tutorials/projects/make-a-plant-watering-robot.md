@@ -8,7 +8,12 @@ tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/img/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
 images: ["/tutorials/img/plant-watering-pi/preview.png"]
-
+authors: [ "Sierra Guequierre" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor", "sensor" ]
+level: "Beginner"
+date: "29 March 2023"
+cost: 150
 # SMES: Olivia Miller
 ---
 

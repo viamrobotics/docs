@@ -9,8 +9,13 @@ image: "/tutorials/img/ai-integration/rosey_robot.jpg"
 images: ["/tutorials/img/ai-integration/rosey_robot.jpg"]
 aliases:
   /tutorials/integrating-viam-with-openai/
-imageAlt: "Viam Rover Rosey."
-# SME: Matt Vella
+imageAlt: "An AI powered companion robot called Rosey."
+authors: [ "Matt Vella" ]
+languages: [ "python" ]
+viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
+level: "Beginner"
+date: "15 February 2023"
+cost: 200
 ---
 
 When we think of robots, most of us tend to group them into categories:

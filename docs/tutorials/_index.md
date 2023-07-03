@@ -22,60 +22,60 @@ For this reason, we list tutorials based on features you may be looking for.
 ## Your first robots
 
 {{< cards >}}
-    {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
-    {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app/" size="small" %}}
-    {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
-    {{% card link="/tutorials/get-started/servo-mousemover/" size="small" %}}
-    {{% card link="/tutorials/get-started/confetti-bot/" size="small" %}}
-    {{% card link="/tutorials/get-started/lazy-susan/" size="small" %}}
+    {{% tutorialcard link="/tutorials/get-started/try-viam-sdk" size="small" %}}
+    {{% tutorialcard link="/tutorials/get-started/make-an-led-blink-with-the-viam-app/" size="small" %}}
+    {{% tutorialcard link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
+    {{% tutorialcard link="/tutorials/get-started/servo-mousemover/" size="small" %}}
+    {{% tutorialcard link="/tutorials/get-started/confetti-bot/" size="small" %}}
+    {{% tutorialcard link="/tutorials/get-started/lazy-susan/" size="small" %}}
 {{< /cards >}}
 
 ## Configuration and Testing
 
 {{< cards >}}
-    {{% card link="/tutorials/configure/build-a-mock-robot/" size="small" %}}
-    {{% card link="/tutorials/configure/scuttlebot/" size="small" %}}
+    {{% tutorialcard link="/tutorials/configure/build-a-mock-robot/" size="small" %}}
+    {{% tutorialcard link="/tutorials/configure/scuttlebot/" size="small" %}}
 {{< /cards >}}
 
 ## Controlling
 
 {{< cards >}}
-    {{% card link="/tutorials/control/scuttle-gamepad/" size="small" %}}
-    {{% card link="/tutorials/control/yahboom-rover/" size="small" %}}
+    {{% tutorialcard link="/tutorials/control/scuttle-gamepad/" size="small" %}}
+    {{% tutorialcard link="/tutorials/control/yahboom-rover/" size="small" %}}
 {{< /cards >}}
 
 ## Services
 
 {{< cards >}}
-    {{% card link="/tutorials/services/accessing-and-moving-robot-arm/" size="small" %}}
-    {{% card link="/tutorials/services/plan-motion-with-arm-gripper/" size="small" %}}
-    {{% card link="/tutorials/services/data-management-tutorial/" size="small" %}}
-    {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
-    {{% card link="/tutorials/services/color-detection-scuttle/" size="small" %}}
-    {{% card link="/tutorials/services/webcam-line-follower-robot/" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/accessing-and-moving-robot-arm/" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/plan-motion-with-arm-gripper/" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/data-management-tutorial/" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/try-viam-color-detection" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/color-detection-scuttle/" size="small" %}}
+    {{% tutorialcard link="/tutorials/services/webcam-line-follower-robot/" size="small" %}}
 {{< /cards >}}
 
 ## Custom Resources
 
 {{< cards >}}
-    {{% card link="/tutorials/custom/custom-base-dog/" size="small" %}}
-    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
+    {{% tutorialcard link="/tutorials/custom/custom-base-dog/" size="small" %}}
+    {{% tutorialcard link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
 {{< /cards >}}
 
 ## Projects
 
 {{< cards >}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
-    {{% card link="/tutorials/projects/foam-dart-launcher/" size="small" %}}
-    {{% card link="/tutorials/projects/light-up/" size="small" %}}
-    {{% card link="/tutorials/projects/send-security-photo/" size="small" %}}
-    {{% card link="/tutorials/projects/guardian/" size="small" %}}
-    {{% card link="/tutorials/projects/integrating-viam-with-openai/" size="small" %}}
-    {{% card link="/tutorials/projects/modernize-retro-robot/" size="small" %}}
-    {{% card link="/tutorials/projects/build-an-outdoor-rover/" size="small" %}}
-    {{% card link="/tutorials/projects/pet-treat-dispenser/" size="small" %}}
-    {{% card link="/tutorials/projects/tipsy/" size="small" %}}
-    {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/foam-dart-launcher/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/light-up/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/send-security-photo/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/guardian/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/integrating-viam-with-openai/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/modernize-retro-robot/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/build-an-outdoor-rover/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/pet-treat-dispenser/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/tipsy/" size="small" %}}
+    {{% tutorialcard link="/tutorials/projects/claw-game/" size="small" %}}
 {{< /cards >}}
 
 <br>

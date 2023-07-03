@@ -8,9 +8,12 @@ tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/img/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/img/pet-treat-dispenser/preview.png"]
-
-# Author: Arielle
-# Designs: Jessamy
+authors: [ "Arielle Mella", "Jessamy Taylor", "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "board", "camera", "motor", "mlmodel", "vision" ]
+level: "Beginner"
+date: "30 March 2023"
+cost: 143
 ---
 
 <div class="td-max-width-on-larger-screens">
