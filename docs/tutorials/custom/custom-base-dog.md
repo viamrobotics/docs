@@ -207,22 +207,48 @@ You can also try turning the robot off and on again, and then retrying the proce
 ## Implement the custom base code
 
 Now that the Freenove server is set up, you will follow the [process for creating modular resources](../../extend/modular-resources/#use-a-modular-resource-with-your-robot).
-Use [this tool](https://github.com/viam-labs/generator-viam-module) to generate stub files.
-Then, edit them as necessary to define how each base API method interacts with your robot dog.
+You will use [this module creation tool](https://github.com/viam-labs/generator-viam-module) to simplify the process and generate the necessary stub files.
+Then, you will edit them as necessary to define how each base API method interacts with your robot dog.
 
-From the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
+### Create the module files
+
+First, from the Raspberry Pi terminal, create a directory inside the home directory to hold your custom code files:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-mkdir RobotDog
+mkdir robotdog
 ```
+
+Next, install [the module creation tool](https://github.com/viam-labs/generator-viam-module).
+Run `yo viam-module` and follow the prompts to create the files for your custom base.
+As you follow the prompts, it's a good idea to use the same names we used so that your code matches the example code:
+
+- Model name: `robotdog`
+- Module namespace: `viamlabs`
+- Module family: `base`
+- Language: `python`
+- API triplet: `rdk:components:base`
+- Existing API? `Yes`
+
+{{% alert title="Important" color="note" %}}
+
+You can use a different model name, module namespace, and family, but you need to use the existing API triplet `rdk:components:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+
+{{% /alert %}}
+
+Look in your <file>robotdog</file> directory and you'll see the tool has created a requirements file and an executable.
+Look inside the <file>src</file> subdirectory which now contains <file>__init__.py</file>, <file>main.py</file>, and <file>robotdog.py</file>.
+<file>robotdog.py</file> is the file that defines the behavior of your custom base.
+This is the file you will modify in the next steps.
 
 ### Define the custom base interface
 
-To create a custom base model, you need to subclass the base component type.
-In other words, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
+To create a custom base model, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
 
-Take a look at [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py).
-It creates a "RobotDog" model of the base component type, and defines the `set_power`, `stop`, `is_moving`, and `do` methods by specifying which corresponding commands to send to the Freenove dog server when each of these methods is called.
+Open your newly created <file>robotdog.py</file> file.
+It contains stubs of all the [base API methods](/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
+
+Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/robotdog.py).
+It defines each method by specifying which corresponding commands to send to the Freenove dog server when the method is called.
 For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot dog server to stop the dog from moving:
 
 ```python
@@ -233,36 +259,31 @@ For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot 
         self.send_data(command)
 ```
 
-Feel free to tweak the specific contents of each of the [base method definitions](/components/base/#api), and add support for other base methods like `spin`.
+Copy and paste that code into your <file>robotdog.py</file> file.
+Feel free to tweak the specific contents of each of the [base method definitions](/components/base/#api) to do things like make the dog move faster.
+Don't forget to save.
 
-Save [<file>my_robot_dog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/my_robot_dog.py) into the <file>RobotDog</file> directory you created.
+### Make your module executable
 
-### Register the custom component
+Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
+You can find more information in [the relevant section of the modular resource documentation](/extend/modular-resources/#make-your-module-executable).
+Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
-Now that you defined the methods for the custom component, you need to make your custom component available to any robots trying to connect to it.
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo chmod +x run.sh
+```
 
-Save [<file>python_server.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/python_server.py) into the <file>RobotDog</file> directory.
-The <file>python_server.py</file> file creates an RPC server that forwards {{< glossary_tooltip term_id="grpc" text="gRPC" >}} requests from `viam-server` (or elsewhere) to the custom component.
+## Configure the module on your robot
 
-## Configure the custom component server as a remote
+You need to tell your robot how to access the module you created.
 
-You need to tell your robot how to access the custom component server you created.
-This is accomplished by configuring the custom component server as a *remote*.
-
-Back over on the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
-Click the **Remotes** subtab.
-Name your remote "my-custom-base" and click **Create Remote**.
-In the **Address** field put `localhost: 9090`.
+On the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
+Click the **Modules*** subtab.
+Name your module `my-custom-base`.
+Enter the path (for example, `/home/fido/robotdog`) to your module in the **Executable path** field.
 Click **Save Config** at the bottom of the page.
 
-![Screenshot of the Viam app CONFIG tab with the Remotes subtab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
-
-{{% alert title="Tip" color="tip" %}}
-
-When you call srv.serve(), the default host and port is localhost:9090.
-If you want to use a different host or port, pass it as a parameter to the serve function.
-
-{{% /alert %}}
+![Screenshot of the Viam app CONFIG tab with the Modules subtab open, showing my-custom-base configured.](../../img/custom-base-dog/module-config.png)
 
 ## Configure the components
 
@@ -274,8 +295,10 @@ Navigate to the **Components** subtab of the **Config** tab.
 In the **Create Component** field, give your base a name.
 We called ours "quadruped".
 In the **Type** drop-down select `base`.
-In the **Model** field, type in "RobotDog".
+In the **Model** field, type in `viamlabs:base:robotdog`.
 Click **Create Component**.
+
+![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](../../img/custom-base-dog/config-modular-component.png)
 
 You don't need to add any attributes to the base component.
 
@@ -402,7 +425,7 @@ If you have otherwise unexplained connection errors, try powering things off and
 
 - If certain sensors or servos aren't being found by the software, turn off the robot and make sure all wires are fully connected before turning it back on.
 
-- If you want to send commands directly to the dog server instead of running <file>my_robot_dog.py</file> (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
+- If you want to send commands directly to the dog server instead of running <file>robotdog.py</file> (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
 
   1. Install Netcat if it isn't already installed:
 
