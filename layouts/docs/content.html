@@ -35,12 +35,12 @@
 				  {{ end }}
 				{{ if .Params.image }}
 				<div class="hover-card-img" {{ if .Params.style }}style="{{ .Params.style }}"{{ end }}>
-					<img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
-				  </div>
+					<img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+				</div>
 				{{ end }}
 				{{ if .Params.icon }}
 				<div class="hover-card-icon">
-					<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" width="100%" />
+					<img src="{{relURL (substr .Params.icon 1)}}" loading="lazy" alt="{{ .Params.linkTitle }}" width="100%" />
 				</div>
 				{{ end }}
 				<div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
