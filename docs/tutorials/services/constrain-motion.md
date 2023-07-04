@@ -9,7 +9,12 @@ mp4Src: "/tutorials/videos/motion_constraints.mp4"
 images: ["/tutorials/videos/motion_constraints.gif"]
 videoAlt: "An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright."
 tags: ["arm", "gripper", "motion", "services"]
-# SMEs: Motion Team
+authors: [ "Jessamy Taylor" ]
+languages: [ "python" ]
+viamresources: [ "data_manager", "camera" ]
+level: "Beginner"
+date: "3 July 2023"
+cost: 8400
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -392,7 +397,7 @@ async def main():
     # Create a pose where the cup will be set down
     end_pose = Pose(x=300, y=-250, z=90.0+z_offset, o_x=1, o_y=0, o_z=0, theta=0)
     end_pose_in_frame = PoseInFrame(reference_frame="world", pose=end_pose)
-    
+
     # Move to the starting position and grab the cup
     # This motion has no orientation constraints because it hasn't picked up the cup yet
     await motion_service.move(component_name=my_gripper_resource_name,
@@ -412,7 +417,7 @@ async def main():
     await motion_service.move(component_name=my_gripper_resource_name,
         destination=end_pose_in_frame, world_state=world_state, constraints=constraints)
     print(f"At end pose")
-    
+
     # Put down the cup
     await my_gripper.open()
 
