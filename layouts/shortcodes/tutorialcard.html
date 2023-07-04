@@ -11,13 +11,13 @@
       <a href="{{.RelPermalink}}">
           {{ if .Params.webmSrc }}
             <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" class="lozad">
-              <!-- <source src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm"> -->
-              <source src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
+              <source data-src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
+              <source data-src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
               There should have been a video here but your browser does not seem
               to support it.
             </video>
           {{ end }}
-          <!-- {{ if .Params.image }}
+          {{ if .Params.image }}
             <div class="hover-card-img">
               <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
             </div>
@@ -26,7 +26,7 @@
           <div class="hover-card-icon">
             <img src="{{relURL (substr .Params.icon 1)}}" loading="lazy" alt="{{ .Params.linkTitle }}" width="100%" />
           </div>
-          {{ end }} -->
+          {{ end }}
           <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
             <div>
             {{ if $customTitle }}<h4>{{ $customTitle }}</h4>{{ else }}<h4>{{ .LinkTitle }}</h4>{{ end }}
