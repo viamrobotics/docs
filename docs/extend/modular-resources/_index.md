@@ -501,7 +501,7 @@ To add a module to your robot, you need to have an [executable file](https://en.
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
 If using the Go SDK, Go will build a binary when you compile your module.
-Expand the [Go module examples](#code-your-module) to view <file>mymodule.go</file> as an example of a module you can run that initializes a custom model <file>myBase.go</file> from the registry.
+Expand the [Go module examples](#code-your-module) to view <file>mymodule.go</file> as an example of a module you can run that initializes a custom model <file>mybase.go</file> from the registry.
 
 If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
