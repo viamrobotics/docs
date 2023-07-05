@@ -49,6 +49,7 @@ If your robot temporarily disconnects from the internet, its configuration is ca
 
 If your robot will never connect to the internet, you may create a local configuration file yourself without using the Viam app.
 A locally-configured robot will not be able to access Viam's cloud features.
+This approach is not recommended unless the other options are unavailable to you.
 
 If you followed our instructions to [install `viam-server` on an SBC](/installation/#install-viam-server) or [install on a macOS or Linux computer](/installation/#install-on-a-macos-or-linux-computer), an example configuration file is provided in the following location:
 

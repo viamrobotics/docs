@@ -110,8 +110,7 @@ By default, `viam-server` will start automatically when your system boots, but y
 
 ## Local installation
 
-If desired, you can also install and run `viam-server` locally without connecting to the [Viam app](https://app.viam.com).
-This is useful for situations where you have limited internet access, or if your robot will never connect to the internet itself.
+If your robot will never connect to the internet, you can also install and run `viam-server` locally without connecting to the [Viam app](https://app.viam.com), though this is not recommended.
 You can install `viam-server` in this fashion to a board (SBC), macOS computer, or Linux computer.
 Select the tab below appropriate for your installation:
 
