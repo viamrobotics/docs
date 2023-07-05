@@ -305,7 +305,7 @@ func main() {
     // NewLoggerFromArgs will create a golog.Logger at "DebugLevel" if
     // "--log-level=debug" is the third argument in os.Args and at "InfoLevel"
     // otherwise.
-    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("complexmodule"))
+    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
 }
 
 func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
