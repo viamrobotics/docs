@@ -152,13 +152,16 @@ You can limit the CPU usage by reducing the image resolution.
 
 ### Timeout errors on a Raspberry Pi
 
-If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
+If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
+
+To enable the webcam port on a Raspberry Pi, run the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo raspi-config
-Interface Options -> Camera -> Enable Camera
-Restart the Pi
 ```
+Then, select: **Interface Options -> Camera -> Enable Camera**.
+
+Restart the Pi to complete the configuration.
 
 ## Next Steps
 
