@@ -1,39 +1,24 @@
 ---
 title: "Create custom components and services"
 linkTitle: "Modular Resources"
-<<<<<<< HEAD
-=======
-image: "/tutorials/img/intermode/rover_outside.png"
-imageAlt: "An intermode rover pictured outdoors."
-images: ["/tutorials/img/intermode/rover_outside.png"]
->>>>>>> cb2e983a (odrive module)
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
 no_list: true
-<<<<<<< HEAD
 aliases:
     - "/program/extend/modular-resources/"
 ---
 
 The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, ([components](/components/), and [services](/services/)) into any robot running on Viam.
-=======
----
-
-The Viam module system allows you to integrate custom [resources](/appendix/glossary/#term-resource) ([components](/components/) and [services](/services/)) into any robot running on Viam.
->>>>>>> cb2e983a (odrive module)
 
 With modular resources, you can:
 
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-<<<<<<< HEAD
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built into the [Robot Development Kit (RDK)](/internals/rdk/).
-=======
 `viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk/).
->>>>>>> cb2e983a (odrive module)
+`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built into the [Robot Development Kit (RDK)](/internals/rdk/).
 
 Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
 
@@ -79,12 +64,8 @@ However, you can also create and expose new API types using modular resources.
 
 ## Use a modular resource with your robot
 
-<<<<<<< HEAD
 If you are using an existing modular resource, you can skip to [Save the executable](#make-sure-viam-server-can-access-your-executable).
 If you are creating your own modular resource, follow these steps:
-=======
-Add a modular resource to your robot configuration in five steps:
->>>>>>> cb2e983a (odrive module)
 
 1. [Code a module in Go or Python](#code-your-module), using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
 2. [Compile or package the module code](#make-your-module-executable) into an executable.
@@ -94,21 +75,13 @@ Add a modular resource to your robot configuration in five steps:
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
-<<<<<<< HEAD
 A configured *module* can make one or more *modular resources* available for configuration.
-=======
-A configured **module** can make one or more *modular resources* available for configuration.
->>>>>>> cb2e983a (odrive module)
 
 {{% /alert %}}
 
 ### Code your module
 
-<<<<<<< HEAD
 Use [Viam's Go or Python SDKs](/program/apis/) to code a module that does either of the following:
-=======
-Code a module in the Go or Python programming languages with [Viam's SDKs](/program/apis/) that does the following:
->>>>>>> cb2e983a (odrive module)
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
@@ -138,7 +111,6 @@ For example:
 {{< tabs name="Base Model Modules" >}}
 {{% tab name="Go" %}}
 
-<<<<<<< HEAD
 The code for this custom model (<file>mybase.go</file>) and module (<file>mymodule.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
 The module registers a modular resource implementing Viam's built-in Base API (rdk:service:base).
 
@@ -146,11 +118,6 @@ See [Base API Methods](/components/base/#api) and [Motor API Methods](/component
 
 <file>mybase.go</file>
 
-=======
-This example module code is adapted from the full demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
-See [Base API Methods](/components/base/#api) and [Motor API Methods](/components/motor/#api) for more information.
-
->>>>>>> cb2e983a (odrive module)
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
 // It extends the built-in resource type Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
@@ -317,7 +284,6 @@ func init() {
 }
 ```
 
-<<<<<<< HEAD
 <file>mymodule.go</file>
 
 ``` go {class="line-numbers linkable-line-numbers"}
@@ -366,8 +332,6 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 }
 ```
 
-=======
->>>>>>> cb2e983a (odrive module)
 {{% /tab %}}
 {{% tab name="Python" %}}
 
@@ -409,11 +373,7 @@ class MyBase(Base, Reconfigurable):
     # Constructor
     @classmethod
     def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-<<<<<<< HEAD
-        base = cls(config.name)
-=======
         base = cls(MyBase(config.name))
->>>>>>> cb2e983a (odrive module)
         base.reconfigure(config, dependencies)
         return base
 
@@ -476,11 +436,7 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-<<<<<<< HEAD
 <file>`__init.py__`</file>
-=======
-<file>init.py</file>
->>>>>>> cb2e983a (odrive module)
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
@@ -496,7 +452,6 @@ from .my_base import MyBase
 Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
 ```
 
-<<<<<<< HEAD
 <file>main.py</file>
 
 ``` python {class="line-numbers linkable-line-numbers"}
@@ -525,8 +480,62 @@ if __name__ == "__main__":
 
 ```
 
-=======
->>>>>>> cb2e983a (odrive module)
+<file>main.py</file>
+
+``` python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import sys
+
+from viam.components.base import Base
+from viam.module.module import Module
+from .my_base import MyBase
+
+async def main(address: str):
+    """This function creates and starts a new module, after adding all desired resources.
+    Resources must be pre-registered. For an example, see the `__init__.py` file.
+    Args:
+        address (str): The address to serve the module on
+    """
+    module = Module(address)
+    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    await module.start()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise Exception("Need socket path as command line argument")
+
+    asyncio.run(main(sys.argv[1]))
+
+```
+
+<file>main.py</file>
+
+``` python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import sys
+
+from viam.components.base import Base
+from viam.module.module import Module
+from .my_base import MyBase
+
+async def main(address: str):
+    """This function creates and starts a new module, after adding all desired resources.
+    Resources must be pre-registered. For an example, see the `__init__.py` file.
+    Args:
+        address (str): The address to serve the module on
+    """
+    module = Module(address)
+    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    await module.start()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise Exception("Need socket path as command line argument")
+
+    asyncio.run(main(sys.argv[1]))
+
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -549,31 +558,18 @@ To add a module to your robot, you need to have an [executable file](https://en.
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
 If using the Go SDK, Go will build a binary when you compile your module.
-<<<<<<< HEAD
 Expand the [Go module examples](#code-your-module) to view <file>mymodule.go</file> as an example of a module you can run that initializes a custom model <file>mybase.go</file> from the registry.
 
 If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module.
-=======
-
-If using the Python SDK, one option is creating and save a new shell script (<file>.sh</file>) that runs your module.
->>>>>>> cb2e983a (odrive module)
 For example:
 
 ``` shell
 #!/bin/sh
-<<<<<<< HEAD
 cd `dirname $0`
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
 exec python3 -m <your-module-directory-name>.<main-program-filename-without-extension> $@
-=======
-cd <path-to-your-module-directory>
-
-# Be sure to use `exec` so that termination signals reach the python process,
-# or handle forwarding termination signals manually
-exec python3 <your-module-directory-name>.<main-program-filename> $@
->>>>>>> cb2e983a (odrive module)
 ```
 
 To make this shell script executable, run the following command in your terminal:
@@ -582,12 +578,9 @@ To make this shell script executable, run the following command in your terminal
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
-<<<<<<< HEAD
 You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
-=======
->>>>>>> cb2e983a (odrive module)
 ### Make sure `viam-server` can access your executable
 
 Ensure that the code defining your module is saved where the instance of `viam-server` behind your robot can read and execute it.
@@ -675,12 +668,8 @@ The `attributes` available vary depending on your implementation.
 
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
-<<<<<<< HEAD
 The custom model is configured as a component with the name "my-custom-base-1".
 You can send commands to the base according to the Viam [base API](/components/base/#api):
-=======
-The custom model is configured as a component with the name "my-custom-base-1" and can be interfaced with the Viam [base API](/components/base/#api):
->>>>>>> cb2e983a (odrive module)
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -715,11 +704,8 @@ The custom model is configured as a component with the name "my-custom-base-1" a
 
 ### Modular resource management
 
-<<<<<<< HEAD
 With one [exception](#limitations), modular resources function like built-in resources:
 
-=======
->>>>>>> cb2e983a (odrive module)
 #### Dependency Management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
@@ -734,23 +720,11 @@ The RDK ensures that any configured modules are loaded automatically on start-up
 When you change the configuration of a Viam robot, the behavior of modular resource instances versus built-in resource instances is equivalent.
 This means you can add, modify, and remove a modular resource instance from a running robot as normal.
 
-<<<<<<< HEAD
-#### Data management
-
-Data capture for individual components is supported on [certain component types](../../services/data/configure-data-capture/#configure-data-capture-for-individual-components).
-If your modular resource is a model of one of these types, you can configure data capture on it just as you would on a built-in resource.
-
-=======
->>>>>>> cb2e983a (odrive module)
 #### Shutdown
 
 During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
-<<<<<<< HEAD
-#### Modular resources as remotes
-=======
 ### Modular resources as remotes
->>>>>>> cb2e983a (odrive module)
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
@@ -760,17 +734,8 @@ This means that you can compose a robot of any number of parts running in differ
 Custom models of the [arm](/components/arm/) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
 
 {{< cards >}}
-<<<<<<< HEAD
-<<<<<<<< HEAD:docs/extend/modular-resources/_index.md
-    {{% card link="/extend/modular-resources/examples/add-rplidar-module" %}}
+    {{% card link="/services/slam/cartographer/" %}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
-========
-    {{% card link="/services/slam/cartographer/" size="small" %}}
-    {{% card link="/program/extend/modular-resources/examples/rplidar" size="small" %}}
-    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
->>>>>>>> cb2e983a (odrive module):docs/program/extend/modular-resources/_index.md
-=======
-    {{% card link="/extend/modular-resources/examples/rplidar" size="small" %}}
-    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
->>>>>>> cb2e983a (odrive module)
+    {{% card link="/extend/modular-resources/examples/rplidar" %}}
+    {{% card link="/extend/modular-resources/examples/odrive" %}}
 {{< /cards >}}
