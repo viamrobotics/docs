@@ -44,6 +44,8 @@ moved = await motion.move(
      extra={})
 ```
 
+You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -60,6 +62,8 @@ moved := motionService.Move(
     nil
     )
 ```
+
+You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -91,6 +95,8 @@ moved = await motion.move(
     extra={})
 ```
 
+You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -108,10 +114,10 @@ moved := motionService.Move(
     )
 ```
 
+You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints).
+
 {{% /tab %}}
 {{< /tabs >}}
-
-You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
 
 ## Next steps
 
