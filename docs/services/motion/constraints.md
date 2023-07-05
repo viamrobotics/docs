@@ -27,12 +27,15 @@ This has the following sub-options:
 
 **Example usage**:
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python {class="line-numbers linkable-line-numbers"}
 # Move a gripper with a linear constraint
 moved = await motion.move(
     component_name=my_gripper,
     destination=PoseInFrame(
-        reference_frame="myFrame",
+        reference_frame="my_frame",
         pose=goal_pose), 
     world_state=worldState, 
     constraints={
@@ -40,6 +43,26 @@ moved = await motion.move(
      },
      extra={})
 ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Move a gripper with a linear constraint
+myConstraints := &servicepb.Constraints{LinearConstraint: []*servicepb.LinearConstraint{&servicepb.LinearConstraint{}}}
+
+moved := motionService.Move(
+    context.Background(),
+    myGripperResourceName,
+    NewPoseInFrame("myFrame", myGoalPose),
+    worldState,
+    myConstraints,
+    nil
+    )
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Orientation Constraint
 
@@ -53,17 +76,40 @@ If set to zero, a movement with identical starting and ending orientations will 
 
 **Example usage**:
 
-``` python
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
 ## Move a gripper with an orientation constraint
 moved = await motion.move(
     component_name=my_gripper, 
     destination=PoseInFrame(
-        reference_frame="myFrame",
+        reference_frame="my_frame",
         pose=goal_pose),
     world_state=worldState,
     constraints = Constraints(orientation_constraint = [OrientationConstraint()])
     extra={})
 ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Move a gripper with an orientation constraint
+myConstraints := &servicepb.Constraints{OrientationConstraint: []*servicepb.OrientationConstraint{&servicepb.OrientationConstraint{}}}
+
+moved := motionService.Move(
+    context.Background(),
+    myGripperResourceName,
+    NewPoseInFrame("myFrame", myGoalPose),
+    worldState,
+    myConstraints,
+    nil
+    )
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
 
