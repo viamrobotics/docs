@@ -105,7 +105,7 @@ The example below configures `myFirstGantry` to wait until the homing process fo
 }
 ```
 
-{{% alert="Note" color="note" %}}
+{{% alert title="Note" color="note" %}}
 The order of axes in the `subaxes_list` for a [`multi-axis` gantry](/components/gantry/multi-axis/) does not influence the order of homing.
 To ensure that homing occurs in a set order, you must add a `depends_on` array specifying the axis or axes to be homed first for each `single-axis` gantry.
 {{% /alert %}}
