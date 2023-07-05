@@ -8,14 +8,14 @@ tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Py
 # SMEs: Kim, Martha, Rand
 ---
 
-The [Viam GitHub](https://github.com/viamrobotics/odrive) provides an implementation of ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver as a modular resource [extending](/extend/modular-resources/) the [motor API](/components/motor/#API).
+The [Viam GitHub](https://github.com/viamrobotics/odrive) provides an implementation of ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver as a modular resource [extending](/extend/modular-resources/) the [motor API](/components/motor#API).
 
 [Prepare](#prepare-your-odrive) your ODrive and [download](#requirements) and [configure](#configuration) the module to add an `odrive-serial` or `odrive-canbus` [motor](/components/motor/) {{< glossary_tooltip term_id="resource" text="resource" >}} to your robot.
 
 {{% alert title="Note" color="note" %}}
 
 This module is only implemented for use with the [Viam Python SDK](https://python.viam.dev/).
-The methods other SDKs provide for the [motor API](/components/motor/#API) will not work with this module.
+The methods other SDKs provide for the [motor API](/components/motor#API) will not work with this module.
 
 {{% /alert %}}
 
@@ -38,10 +38,10 @@ See the [Viam Github](https://github.com/viamrobotics/odrive/tree/main/sample-co
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are using a Raspberry Pi as your [board](/components/board), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
+If you are using a Raspberry Pi as your [board](/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
 See [Troubleshooting](#can-link-issues) for more information.
 
-Additionally, make sure you have [enabled SPI communication on your Pi](/installation/prepare/rpi-setup) to use several common CANHats.
+Additionally, make sure you have [enabled SPI communication on your Pi](/installation/prepare/rpi-setup/) to use several common CANHats.
 
 {{% /alert %}}
 
