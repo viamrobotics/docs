@@ -89,7 +89,7 @@ pip3 install python-can cantools viam-sdk
 
 Follow [these instructions](https://docs.odriverobotics.com/v/latest/odrivetool.html) to install `odrivetool`.
 
-Find and copy the path to `run.sh` on your robot's computer to provide in configuration.
+Find and copy the path (either absolute, or relative to the working directory) to the executable module file `run.sh` on your robot's computer to provide in configuration.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -112,9 +112,9 @@ pwd
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page, and click on the **Modules** subtab.
 
-Add the ODrive module with a name of your choice and the executable path that points to the location where your ODrive module’s run script, <file>run.sh</file>, is stored on your robot’s computer.
+Add the ODrive module with a name of your choice and an `"executable_path"` that points to the location where your ODrive module’s run script, <file>run.sh</file>, is stored on your robot’s computer.
 
-![The ODrive module with the name "odrive" and executable path "<your/path/to/run.sh>" added to a robot in the Viam app config builder](../../img/add-odrive/add-odrive-module-ui.png)
+![The ODrive module with the name "odrive" and executable path "~/desktop/odrive/odrive-motor/run.sh" added to a robot in the Viam app config builder](../../img/add-odrive/add-odrive-module-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -123,7 +123,7 @@ Add the ODrive module with a name of your choice and the executable path that po
 "modules": [
   {
     "name": "odrive",
-    "executable_path": "<your/path/to/run.sh>"
+    "executable_path": "<your/path/to/odrive/odrive-motor/run.sh>"
   }
 ]
 ```
@@ -158,13 +158,14 @@ Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page, and click on the **Components** subtab.
 Select **Raw JSON** mode.
 
-Copy and paste the following JSON depending on your preferred communication type:
+Copy and paste the following JSON along with your module JSON depending on your preferred communication type:
 
 {{< tabs name="Add an ODrive motor">}}
 {{% tab name="odrive-serial" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-//  < INSERT YOUR ODRIVE MODULE CONFIG >
+{
+  // "modules": [ {"name": "odrive" ...  } ] MODULE JSON
   "components": [
     {
       "model": "viam:motor:odrive-serial",
@@ -183,8 +184,8 @@ Copy and paste the following JSON depending on your preferred communication type
 {{% tab name="odrive-canbus" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-//  < INSERT YOUR ODRIVE MODULE CONFIG >
 {
+  // "modules": [ {"name": "odrive" ...  } ]
   "components": [
     {
       "model": "viam:motor:odrive-canbus",
@@ -208,7 +209,7 @@ Copy and paste the following JSON depending on your preferred communication type
   "modules": [
     {
       "name": "odrive",
-      "executable_path": "/path/to/run.sh"
+      "executable_path": "/path/to/odrive/odrive-motor/run.sh"
     }
   ],
   "components": [
@@ -255,7 +256,7 @@ The following attributes are available for the motor resources available in the 
 | `canbus_baud_rate` | string | Optional | [Baud rate](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive) of the ODrive CAN protocol. This attribute is only available for `"odrive-canbus"` connections. </br> Use [`odrivetool`](https://docs.odriverobotics.com/v/latest/odrivetool.html) to obtain this value with `<odrv>.can.config.baud_rate`. Format the string as a multiple of 1000 (k). <br> Example: `"250k"` |
 
 Save the config.
-Check the **Logs** tab of your robot in the Viam app to make sure your ODrive motor has connected and no errors are being raised.
+Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your ODrive motor has connected and no errors are being raised.
 
 {{% alert title="Tip" color="tip" %}}
 
