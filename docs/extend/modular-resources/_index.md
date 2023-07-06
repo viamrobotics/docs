@@ -110,8 +110,12 @@ For example:
 {{< tabs name="Base Model Modules" >}}
 {{% tab name="Go" %}}
 
-This example module code is adapted from the full demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a singular modular resource implementing Viam's built-in Base API (rdk:service:base).
+The code for this custom model (<file>mybase.go</file>) and module (<file>mymodule.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
+The module registers a modular resource implementing Viam's built-in Base API (rdk:service:base).
+
 See [Base API Methods](/components/base/#api) and [Motor API Methods](/components/motor/#api) for more information.
+
+<file>mybase.go</file>
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
@@ -276,6 +280,54 @@ func init() {
             return config.TransformAttributeMapToStruct(&conf, attributes)
         },
         &MyBaseConfig{})
+}
+```
+
+<file>mymodule.go</file>
+
+``` go {class="line-numbers linkable-line-numbers"}
+// Package main is a module which serves the mybase custom model type.
+package main
+
+import (
+    "context"
+
+    "github.com/edaniels/golog"
+
+    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/module"
+    "go.viam.com/utils"
+
+    // NOTE: You must update the following line to import your local package "mybase"
+    "go.viam.com/rdk/examples/customresources/models/mybase"
+)
+
+func main() {
+    // NewLoggerFromArgs will create a golog.Logger at "DebugLevel" if
+    // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
+    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
+}
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+    myMod, err := module.NewModuleFromArgs(ctx, logger)
+    if err != nil {
+        return err
+    }
+
+    // Models and APIs add helpers to the registry during their init().
+    // They can then be added to the module here.
+    err = myMod.AddModelFromRegistry(ctx, base.API, mybase.Model)
+    if err != nil {
+        return err
+    }
+
+    err = myMod.Start(ctx)
+    defer myMod.Close(ctx)
+    if err != nil {
+        return err
+    }
+    <-ctx.Done()
+    return nil
 }
 ```
 
@@ -449,6 +501,7 @@ To add a module to your robot, you need to have an [executable file](https://en.
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
 If using the Go SDK, Go will build a binary when you compile your module.
+Expand the [Go module examples](#code-your-module) to view <file>mymodule.go</file> as an example of a module you can run that initializes a custom model <file>mybase.go</file> from the registry.
 
 If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module.
 For example:
