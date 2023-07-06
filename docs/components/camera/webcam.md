@@ -159,6 +159,7 @@ To enable the webcam port on a Raspberry Pi, run the following command:
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo raspi-config
 ```
+
 Then, select: **Interface Options -> Camera -> Enable Camera**.
 
 Restart the Pi to complete the configuration.
