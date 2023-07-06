@@ -339,7 +339,7 @@ sudo chmod +x run.sh
 You need to tell your robot how to access the module you created.
 
 On the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
-Click the **Modules*** subtab.
+Click the **Modules** subtab.
 Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
 Click **Save Config** at the bottom of the page.
@@ -383,18 +383,21 @@ Configure the ribbon camera on the dog as a `webcam` following our [webcam docum
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-You can configure a *process* to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+You can configure a [*process*](../../../manage/configuration/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Navigate to the **Processes** subtab of your robot's **Config** tab.
 
 Create a new process and give it a name (for example `freenove`).
 Fill out the config panel as follows:
 
-- **Executable**: `python`
-- **Arguments**: `main.py -tn` so that the Freenove server starts without launching Freenove's GUI.
-Be sure to click **Add argument**!
-- **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code)
-- **Logging**: Toggle to the **on** position so you can view logs for this server process
+- **Executable**: The path to Python on your Pi, for example `/usr/bin/python`.
+If you're not sure what this path should be, run `which python` on your Pi command line to find it.
+- **Arguments**: Type in `main.py` and click **Add argument**.
+Then type `-tn` and click **Add argument** again.
+This flag starts the Freenove server without launching Freenove's GUI (which you don't need for this use case).
+- **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code).
+- **Logging**: Toggle to the **on** position so you can view logs for this server process.
+- **Execute once**: Leave this **off** so that the Freenove server will continue to run, and will restart if it crashes.
 
 Click **Save Config** at the bottom of the window.
 
@@ -405,14 +408,15 @@ Click **Save Config** at the bottom of the window.
 ```json
   "processes": [
     {
-      "id": "freenove",
       "log": true,
-      "name": "python",
-      "args": [
-        "main.py -tn"
-      ],
+      "name": "/usr/bin/python",
       "cwd": "/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server",
-      "one_shot": false
+      "args": [
+        "main.py",
+        "-tn"
+      ],
+      "one_shot": false,
+      "id": "freenove"
     }
   ]
 ```
@@ -436,7 +440,7 @@ sudo python main.py -tn
 
 Navigate to the **Control** tab.
 
-Click the **my-custom-base:my-robot-dog** component panel to expand it and reveal the controls.
+Click the **quadruped** component panel to expand it and reveal the controls.
 
 ![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](../../img/custom-base-dog/control-tab.png)
 
