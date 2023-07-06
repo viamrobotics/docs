@@ -242,7 +242,7 @@ Check out our other [tutorials that use the Viam Rover](../../tutorials/).
 
 ### Rover Build
 
-If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/VR1-22-A001).
+If you want to learn more about the rover, you can find the CAD files and bill-of-materials (BOM) on [GitHub](https://github.com/viamrobotics/Rover-VR1).
 
 ### Extensibility
 
