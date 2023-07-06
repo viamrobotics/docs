@@ -1,28 +1,34 @@
 ---
-title: "Configure a DC brushed motor driven by a roboclaw motor controller"
-linkTitle: "28byj48"
+title: "Configure a roboclaw motor"
+linkTitle: "roboclaw"
 weight: 22
 type: "docs"
-description: "Configure a DC brushed motor driven by a roboclaw motor controller."
+description: "Configure a brushed DC motor driven by a roboclaw motor controller."
 images: ["/components/img/components/motor.svg"]
 # SMEs: Olivia, Rand
 ---
 
-The `roboclaw` model of the motor component supports small unipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by stepper motor drivers like [ULN2003](https://www.ti.com/product/ULN2003A). The `28byj48` is often used for low-current and low-precision applications and supports full, half, and quarter stepping with 2048 steps in a rotation in full-step mode.
+The `roboclaw` model of the motor component supports [standard brushed DC motors](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller.
 
-To configure a `28byj48` motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
-Then, add the motor:
+{{< alert title="Note" color="note" >}}
 
-{{< tabs name="gpiostepper-config">}}
+You must set up your RoboClaw before configuring it.
+Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-getting-started-guide/) to do so.
+
+{{< /alert >}}
+
+To configure a `roboclaw` motor as a component of your robot:
+
+{{< tabs name="Configure your roboclaw motor">}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your motor, select the type `motor`, and select the `28byj48` model.
+Enter a name for your motor, select the type `motor`, and select the `roboclaw` model.
 
 Click **Create component**.
 
-![A 28byj48 motor config.](../../img/motor/28byj48-config-ui.png)
+![A roboclaw motor config.](../../img/motor/roboclaw-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -33,25 +39,13 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "<your-board-name>",
-      "type": "board",
-      "model": "<your-board-model>",
-      "attributes": {},
-      "depends_on": [],
-    },
-    {
-      "name": "<your-motor-name>",
+      "name": <"your-roboclaw-motor-name">,
       "type": "motor",
-      "model": "28byj48",
+      "model": "roboclaw",
       "attributes": {
-        "board": "<your-board-name>",
-        "pins": {
-          "in1": "<pin-number>",
-          "in2": "<pin-number>",
-          "in3": "<pin-number>",
-          "in4": "<pin-number>"
-        },
-        "ticks_per_rotation": <int>
+        "serial_path": <"your-serial-path">,
+        "motor_channel": <#>,
+        "serial_baud_rate": <#>
       },
       "depends_on": []
     }
@@ -62,30 +56,21 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-Example configuration for a `28byj48` stepper motor:
+Example configuration for a `roboclaw` DC brushed motor:
 
 ```json
 {
   "components": [
     {
-      "name": "example-board",
-      "type": "board",
-      "model": "pi"
-    },
-    {
-      "name": "example-motor",
+      "name": "your-roboclaw-motor",
       "type": "motor",
-      "model": "28byj48",
+      "model": "roboclaw",
       "attributes": {
-        "board": "example-board",
-        "pins": {
-          "in1": "16",
-          "in2": "18",
-          "in3": "29",
-          "in4": "22"
-        },
-        "ticks_per_rotation": 200
-      }
+        "serial_path": "/dev/ttyUSB0",
+        "motor_channel": 1,
+        "serial_baud_rate": 38400
+      },
+      "depends_on": []
     }
   ]
 }
@@ -98,10 +83,10 @@ The following attributes are available for `roboclaw` motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `serial` | string | **Required** |  |
-| `serial_baud_rate` | int | **Required** |  |
-| `motor_channel` | int | **Required** |  |
-| `address` | int | Optional |  |
-| `ticks_per_rotation` | int | Optional |  |
+| `serial_path` | string | **Required** | Serial path of the `roboclaw` controller's USB connection to your robot's filesystem. Run `ls /dev/tty*` in your terminal to find USB serial ports on Linux. <br> Example: `"/dev/ttyUSB0"` |
+| `serial_baud_rate` | int | **Required** | [Rate to send data](https://learn.sparkfun.com/tutorials/serial-communication) over the serial line. You cannot have multiple `roboclaw` motors with different baud rates. <br> Default: `38400` |
+| `motor_channel` | int | **Required** | Channel the motor is connected to on the controller. Must be `1` or `2`. |
+| `address` | int | Optional | Serial address of the controller. <br> Default: `128`  |
+| `ticks_per_rotation` | int | Optional | Number of full steps in a rotation. Update this if you connect [encoders](/components/encoder/) to your controller through its EN1 and EN2 pins. <br> Default: `0` |
 
 Refer to your motor and motor driver data sheets for specifics.
