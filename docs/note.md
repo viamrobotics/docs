@@ -251,8 +251,8 @@ Section content before this line is contained in an included file: /static/inclu
 
 Our docs have two kinds of videos:
 
+- Regular videos with video controls and audio
 - GIF-like videos that do not have video controls or audio and function like GIFs
-- regular videos with video controls and audio
 
 ### Regular Videos
 
@@ -274,7 +274,7 @@ To create the `webm` and mp4 files use these commands:
 {{% tab name="macOS" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-1" -b:v 400k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-1" -b:v 300k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
@@ -282,7 +282,7 @@ ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 {{% tab name="Linux" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-1" -b:v 400k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-1" -b:v 300k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
