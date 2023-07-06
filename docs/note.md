@@ -247,17 +247,16 @@ Figure styles the Attribution text as body text.
 
 Section content before this line is contained in an included file: /static/include/sample.md
 
-## GIFs and Videos
+## Videos
 
-There are a few issues to consider with these:
+Our docs have two kinds of videos:
 
-- Some MP4 files aren't natively supported on iPhones.
-  If you add an MP4 file, test it on mobile with the deployed link on the PR.
-- GIFs use a lot of bandwidth.
-  More than videos.
-  The [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
+- Regular videos with video controls and audio
+- GIF-like videos that do not have video controls or audio and function like GIFs
 
-Instead use a video div with two sources and a poster that gets loaded as a preview:
+### Regular Videos
+
+For regular videos that should use the video shortcode as follows:
 
 ```md
 <!-- remove space -->
@@ -266,7 +265,71 @@ Instead use a video div with two sources and a poster that gets loaded as a prev
 
 {{<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">}}
 
-or if you want a video without controls - mimicking a GIF:
+We use `webm` and `mp4` source files for videos because they are generally smaller.
+The poster is an image that gets loaded as a preview.
+
+To create the `webm` and mp4 files use these commands:
+
+{{< tabs >}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-2" -b:v 300k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
+```
+
+{{% /tab %}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-2" -b:v 300k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The first command:
+
+- uses the `libx264` codec
+- uses the `yuv420p` pixel format
+- scales the video to `720px` width
+- changes the bitrate to `300k` - you can change this value but check that the result is usable and reasonably small
+
+The second command:
+
+- uses the `vp9` codec
+- `-crf 41` sets the quality level.
+  Valid values are 0-63.
+  Lower numbers are higher quality
+
+To create a preview image use this command:
+
+{{< tabs >}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+ffmpeg -ss 00:00:05 -i PATH_TO_GIF_OR_VID.mp4 -frames:v 1 PATH_TO_GIF_OR_VID.jpg
+```
+
+{{% /tab %}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+ffmpeg -ss 00:00:05 -i PATH_TO_GIF_OR_VID.mp4 -frames:v 1 PATH_TO_GIF_OR_VID.jpg
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The command takes a screenshot at `00:00:05`.
+
+### GIF-like videos
+
+GIF-like videos on our pages are generally used to show robot actions.
+We do not use the GIF file format because it uses a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
+
+Instead, we use a video div with two sources:
 
 ```md
 <!-- remove space -->
@@ -275,13 +338,22 @@ or if you want a video without controls - mimicking a GIF:
 
 {{<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
 
-And to create the source files you can use [Ezgif gif to mp4](https://ezgif.com/gif-to-mp4) and [Ezgif gif to webm](https://ezgif.com/gif-to-webm) or run these commands:
+To create the `webm` and `mp4` source files, you need to convert the video/gif you have.
+**The resulting `webm` and `mp4` file should always be less than 1MB.**
+A good first thing to do is to upload the video to [Ezgif](https://ezgif.com) and reduce the file size by:
+
+- changing the size
+- changing the quality
+- using the optimize function to remove every second frame and then adjusting the speed
+- using the frames editor to remove frames that are similar and holding the previous frame longer instead
+
+Once you have a gif that is reasonably small, run these commands:
 
 {{< tabs >}}
 {{% tab name="macOS" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-ffmpeg -i PATH_TO_GIF_OR_VID -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
@@ -289,12 +361,42 @@ ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 {{% tab name="Linux" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-ffmpeg -i PATH_TO_GIF_OR_VID -b:v 2000k -c:a eac3 -b:a 224k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
+
+The first command:
+
+- uses the `libx264` codec
+- uses the `yuv420p` pixel format
+- scales the video to `400px` width
+- changes the bitrate to `300k` - you can change this value but check that the result is usable
+- removes the audiotrack with `-an`
+
+The second command:
+
+- uses the `vp9` codec
+- `-crf 41` sets the quality level.
+  Valid values are 0-63.
+  Lower numbers are higher quality
+
+{{< alert title="Caution" color="caution" >}}
+
+Some MP4 files aren't natively supported on iPhones depending on the [video codec used](https://confluence.atlassian.com/confkb/unable-to-play-embedded-mp4-videos-on-ipad-or-iphone-in-confluence-305037325.html).
+If you add an MP4 file, test it on an iPhone with the deployed link on the PR.
+
+{{< /alert >}}
+
+{{< alert title="Note" color="note" >}}
+The gif can and should be used only in the frontmater `images` variable and only if close in size to 1MB.
+The `images` variable sets it to be the preview image on social platforms (for example it will be the preview when you share a link on slack).
+Link previews do not support `webm` and `mp4` but they do support gifs.
+{{< /alert >}}
+
+### Add video command to terminal
 
 If you'd like to use commands like `webm2mp4` add this to your `.zshrc`:
 
@@ -320,7 +422,7 @@ vid=$1
 ext=${vid##*.}
 vdirname=`dirname $vid`
 vfname=`basename $vid $ext`
-ffmpeg -i ${vdirname}/${vfname}gif -c vp9 -b:v 0 -crf 41 ${vdirname}/${vfname}webm
+ffmpeg -i ${vdirname}/${vfname}gif -c vp9 -b:v 0 -crf 41 -an ${vdirname}/${vfname}webm
 }
 
 function gif2mp4() {
@@ -328,11 +430,26 @@ vid=$1
 ext=${vid##*.}
 vdirname=`dirname $vid`
 vfname=`basename $vid $ext`
-ffmpeg -i ${vdirname}/${vfname}gif -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k ${vdirname}/${vfname}mp4
+ffmpeg -i ${vdirname}/${vfname}gif -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an ${vdirname}/${vfname}mp4
 }
 
+function gif2mp4-withsound() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}gif -vcodec libx264 -vf "format=yuv420p,scale=-2:720" -b:v 300k ${vdirname}/${vfname}mp4
+}
 
 function mp42webm() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}mp4 -c vp9 -b:v 0 -crf 41 -an ${vdirname}/${vfname}webm
+}
+
+function mp42webm-withsound() {
 vid=$1
 ext=${vid##*.}
 vdirname=`dirname $vid`
@@ -345,7 +462,15 @@ vid=$1
 ext=${vid##*.}
 vdirname=`dirname $vid`
 vfname=`basename $vid $ext`
-ffmpeg -i ${vdirname}/${vfname}webm -vcodec hevc_videotoolbox -b:v 2000k -tag:v hvc1 -c:a eac3 -b:a 224k ${vdirname}/${vfname}mp4
+ffmpeg -i ${vdirname}/${vfname}webm -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an ${vdirname}/${vfname}mp4
+}
+
+function webm2mp4-withsound() {
+vid=$1
+ext=${vid##*.}
+vdirname=`dirname $vid`
+vfname=`basename $vid $ext`
+ffmpeg -i ${vdirname}/${vfname}webm -vcodec libx264 -vf "format=yuv420p,scale=-2:720" -b:v 300k ${vdirname}/${vfname}mp4
 }
 
 function mp42jpg {
@@ -353,7 +478,7 @@ vid=$1
 ext=${vid##*.}
 vdirname=`dirname $vid`
 vfname=`basename $vid $ext`
-ffmpeg -i ${vdirname}/${vfname}mp4 -vf "select=eq(n\,0)" -q:v 3 ${vdirname}/${vfname}jpg
+ffmpeg -ss 00:00:05 -i ${vdirname}/${vfname}mp4 -frames:v 1 ${vdirname}/${vfname}jpg
 }
 ```
 
