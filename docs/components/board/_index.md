@@ -1534,7 +1534,7 @@ Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostPr
 Functions added to an interrupt will be used to modify values before they are returned by [Value()](#value).
 
 {{% alert title="Note" color="note" %}}
-This method is  not yet fully implemented with the Viam Python SDK.
+This method is not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
 
 {{< tabs >}}
