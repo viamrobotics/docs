@@ -28,7 +28,8 @@ By default, `viam-server` is configured to start when the machine boots.
 
 Running `viam-server` as a system service is the recommended method for Linux.
 
-You can use the following commands to manage `viam-server` when installed as a system service:
+You can use the following commands to manage `viam-server` when installed as a system service.
+These commands require that you store your configuration file at <file>/etc/viam.json</file>.
 
 #### Start
 
@@ -69,12 +70,14 @@ If `viam-server` is already running as a system service, be sure to stop the ser
 
 #### Start
 
-Run the following from the directory in which you installed `viam-server`, providing the path to your own configuration file:
+Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo viam-server -config /path/to/my/config.json
 ```
 
+If you followed our [installation steps](/installation/#install-viam-server), your robot's configuration file is available at <file>/etc/viam.json</file>.
+You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can [build a new configuration file](/appendix/local-configuration-file/).
 
 Note that on a Raspberry Pi, `viam-server` must always run as `root` (using `sudo`) in order to access the DMA subsystem for GPIO.
@@ -98,12 +101,14 @@ You can use the following commands to manage `viam-server` on the command line:
 
 #### Start
 
-Run the following on the command line, providing the path to your own configuration file:
+Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam-server -config /path/to/my/config.json
 ```
 
+If you followed our [installation steps](/installation/#install-viam-server), your robot's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
+You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/appendix/local-configuration-file/).
 
 #### Stop
@@ -185,19 +190,9 @@ grep viam-server /var/log/syslog
 
 {{% tab name="macOS" %}}
 
-### From the command line
-
-When running `viam-server` on the command line in macOS, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
+When running `viam-server` on macOS, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
 
 You can also access the local `viam-server` log file using the following command:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-cat $(brew --prefix)/var/log/viam.log
-```
-
-### As a system service
-
-If you are running `viam-server` on macOS as a `brew` service, you can access the local `viam-server` log file using the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cat $(brew --prefix)/var/log/viam.log

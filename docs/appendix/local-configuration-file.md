@@ -56,10 +56,7 @@ If you followed our instructions to [install `viam-server` on an SBC](/installat
 * Linux: <file>/etc/viam.json</file>
 * macOS: <file>/opt/homebrew/etc/viam.json</file>
 
-If instead you performed a [local installation](/installation/#local-installation) of `viam-server` on a Linux board or Linux computer, you will need to create your own configuration file.
-Local installations of `viam-server` on a macOS computer provide an example configuration file at <file>/opt/homebrew/etc/viam.json</file>.
-
-You can use the [example configuration file](#example-json-configuration-file) below to base your robot's configuration on.
+You can also use the [example configuration file](#example-json-configuration-file) below to base your robot's configuration on.
 
 {{% alert title="Note" color="note" %}}
 This process is not required if your robot is connected to the Viam app.
