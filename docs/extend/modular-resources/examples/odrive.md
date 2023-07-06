@@ -29,7 +29,7 @@ This configuration remains on the same ODrive motor controller across reboots, a
 
 If you wish to set the native configuration dynamically, use `odrivetool` to find and copy the path to the motor's `config.json` file.
 Provide this in configuration as the optional attribute `"odrive_config_file"`.
-See the [Viam Github](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of this file.
+See the [Odrive S1 Modular Component repository](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of this file.
 
 This option is not recommend for the `odrive-canbus` model.
 
@@ -62,7 +62,7 @@ Plug a USB-C to USB-A cable from the isolator to the ODrive.
 Wire the CANH and CANL pins from your board to your ODrive.
 Refer to your board and the [ODrive's pinout](https://docs.odriverobotics.com/v/latest/pinout.html) diagrams for the location of these pins.
 
-You will have already made a serial connection to set up your ODrive.
+You must make a serial connection to set up your ODrive.
 After setting up the ODrive, if you wish to use the `odrive-canbus` model, you can either leave the serial connection plugged in or remove it and leave only the CANH and CANL pins wired.
 
 Note that if you want to only use the CAN pins, you cannot specify an `"odrive_config_file"` in your Viam configuration.
@@ -250,7 +250,7 @@ The following attributes are available for the motor resources available in the 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `canbus_node_id` | int | Optional | Required for successful initialization of the `"odrive-canbus"` type. <br> Node ID of the CAN node you would like to use. You configured this when [setting up your ODrive](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive). <br> Example: `0` |
-| `odrive_config_file` | string | Optional | Filepath of a separate JSON file containing your ODrive's native configuration. </br> See the [Viam Github](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of this file. |
+| `odrive_config_file` | string | Optional | Filepath of a separate JSON file containing your ODrive's native configuration. </br> See the [Odrive S1 Modular Component repository](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of this file. |
 | `serial_number` | string | Optional | The serial number of the ODrive. Note that this is not necessary if you only have one ODrive connected. See [Troubleshooting](#hanging) for help finding this value. |
 | `canbus_baud_rate` | string | Optional | [Baud rate](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive) of the ODrive CAN protocol. This attribute is only available for `"odrive-canbus"` connections. </br> Use [`odrivetool`](https://docs.odriverobotics.com/v/latest/odrivetool.html) to obtain this value with `<odrv>.can.config.baud_rate`. Format the string as a multiple of 1000 (k). <br> Example: `"250k"` |
 
