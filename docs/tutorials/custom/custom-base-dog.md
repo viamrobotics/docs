@@ -3,7 +3,7 @@ title: "Control a Robot Dog with a Custom Viam Base Component"
 linkTitle: "Custom Quadruped Base"
 weight: 55
 type: "docs"
-tags: ["sdk", "extending viam", "components", "base", "python"]
+tags: ["sdk", "extending viam", "components", "base", "python", "modular resources"]
 description: "Integrate a custom base component with the Viam Python SDK."
 webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
@@ -43,7 +43,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 ## Hardware requirements
 
 - [Freenove Robot Dog Kit for Raspberry Pi](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi)
-  - Currently (24 January 2023) [available on Amazon](https://www.amazon.com/gp/product/B08C254F73/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+  - Currently (05 July 2023) [available on Amazon](https://www.amazon.com/gp/product/B08C254F73/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
   - Significant assembly is required.
   Follow Freenove hardware assembly instructions before starting this tutorial.
 - Raspberry Pi 4B
@@ -236,7 +236,7 @@ You can use a different model name, module namespace, and family, but you need t
 {{% /alert %}}
 
 Look in your <file>robotdog</file> directory and you'll see the tool has created a requirements file and an executable.
-Look inside the <file>src</file> subdirectory which now contains <file>__init__.py</file>, <file>main.py</file>, and <file>robotdog.py</file>.
+Look inside the <file>src</file> subdirectory which now contains <file>\_\_init__.py</file>, <file>main.py</file>, and <file>robotdog.py</file>.
 <file>robotdog.py</file> is the file that defines the behavior of your custom base.
 This is the file you will modify in the next steps.
 

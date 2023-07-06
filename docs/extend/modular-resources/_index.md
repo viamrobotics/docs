@@ -683,6 +683,7 @@ Custom models of the [arm](/components/arm/) component type are not yet supporte
 
 {{< cards >}}
     {{% card link="/services/slam/cartographer/" %}}
-    {{% card link="/extend/modular-resources/examples/rplidar" %}}
+    {{% card link="/extend/modular-resources/examples/rplidar/" %}}
     {{% card link="/extend/modular-resources/examples/odrive" %}}
+    {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{< /cards >}}
