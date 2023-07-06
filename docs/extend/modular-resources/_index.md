@@ -110,7 +110,8 @@ For example:
 {{< tabs name="Base Model Modules" >}}
 {{% tab name="Go" %}}
 
-The example custom model code (<file>mybase.go</file>) and module (<file>mymodule.go</file>) are adapted from the full demo module available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go), and creates a modular resource implementing Viam's built-in Base API (rdk:service:base).
+The code for this custom model (<file>mybase.go</file>) and module (<file>mymodule.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
+The module registers a modular resource implementing Viam's built-in Base API (rdk:service:base).
 
 See [Base API Methods](/components/base/#api) and [Motor API Methods](/components/motor/#api) for more information.
 
