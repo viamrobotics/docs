@@ -27,7 +27,7 @@ The robot checks for new configurations every 15 seconds and changes its configu
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
 {{< alert title="Tip" color="tip" >}}
-You can also store your config file in a custom location if desired. See [Run `viam-server`](/manage/configuration/#run-viam-server) for more information.
+You can also store your config file in a custom location if desired. See [Run `viam-server`](/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your robot, go to the **Config** tab to start adding to the configuration.
@@ -301,7 +301,7 @@ Find more information in the [frame system documentation](/services/frame-system
 If you run into issues, here are some things to try:
 
 - Check the **Logs** tab in [the Viam app](https://app.viam.com) to view log messages and errors from `viam-server`.
-   You can also [access the local log file](/manage/#view-viam-server-logs) on your robot if needed.
+   You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your robot if needed.
 - Make sure all configured components are actually saved to your config.
    If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
 - Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
