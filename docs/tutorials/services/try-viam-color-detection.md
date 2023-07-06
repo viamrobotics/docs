@@ -51,7 +51,7 @@ To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter `my_color_detector` as the **Name**.
-3. Select `color_detector` as the **Model**.
+3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
 In your Vision Service's panel, fill in the **Attributes** field.
