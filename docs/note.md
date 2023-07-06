@@ -327,7 +327,7 @@ The command takes a screenshot at `00:00:05`.
 ### GIF-like videos
 
 GIF-like videos on our pages are generally used to show robot actions.
-We do not use the GIF file format because they use a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
+We do not use the GIF file format because it uses a lot of bandwidth - more than videos - and the [best practice](https://developer.chrome.com/en/docs/lighthouse/performance/efficient-animated-content/) is to not use them.
 
 Instead, we use a video div with two sources:
 
