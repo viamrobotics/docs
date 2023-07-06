@@ -141,7 +141,7 @@ position, err := myGantry.Position(context.Background(), nil)
 
 ### MoveToPosition
 
-Move the axes of the gantry to the desired positions (mm) at the requested speeds.
+Move the axes of the gantry to the desired positions (mm) at the requested speeds (mm/sec).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
