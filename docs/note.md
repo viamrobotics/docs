@@ -282,7 +282,7 @@ ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 {{% tab name="Linux" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-1" -b:v 300k PATH_TO_GIF_OR_VID.mp4
+ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-2" -b:v 300k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```
 
