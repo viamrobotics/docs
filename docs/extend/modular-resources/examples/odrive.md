@@ -8,14 +8,14 @@ tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Py
 # SMEs: Kim, Martha, Rand
 ---
 
-The [Viam GitHub](https://github.com/viamrobotics/odrive) provides an implementation of ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver as module defining two modular resources [extending](/extend/modular-resources/) the [motor API](/components/motor#API) as new motor types.
+The [Viam GitHub](https://github.com/viamrobotics/odrive) provides an implementation of ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver as module defining two modular resources [extending](/extend/modular-resources/) the [motor API](/components/motor/#api) as new motor types.
 
 [Prepare](#prepare-your-odrive) your ODrive and [download](#requirements) and [configure](#configuration) the module to add an `odrive-serial` or `odrive-canbus` [motor](/components/motor/) {{< glossary_tooltip term_id="resource" text="resource" >}} to your robot.
 
 {{% alert title="Note" color="note" %}}
 
 This module is only implemented for use with the [Viam Python SDK](https://python.viam.dev/).
-The methods other SDKs provide for the [motor API](/components/motor#API) will not work with this module.
+The methods other SDKs provide for the [motor API](/components/motor/#api) will not work with this module.
 
 {{% /alert %}}
 
