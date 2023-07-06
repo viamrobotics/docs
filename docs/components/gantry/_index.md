@@ -83,7 +83,7 @@ The gantry component supports the following methods:
 | ----------- | ----------- |
 | [Position](#position) | Get the current positions of the axes of the gantry in mm. |
 | [MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions at the requested speeds. |
-| [Home](#home) | Run the homing sequence of the gantry to return to its starting positions and return true once completed. |
+| [Home](#home) | Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches. |
 | [Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
 | [Stop](#stop) | Stop the gantry from moving. |
 | [IsMoving](#ismoving) | Get if the gantry is currently moving. |
@@ -204,7 +204,7 @@ myGantry.MoveToPosition(context.Background(), examplePositions, exampleSpeeds, n
 
 ### Home
 
-Run the homing sequence of the gantry to return to its starting positions and return true once completed.
+Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
