@@ -269,7 +269,7 @@ See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/control.
 ODrives have 2 serial numbers: one that will be printed out when you start `odrivetool`, and one that can be accessed in `odrivetool` by running `odrv0.serial_number`.
 The correct serial number is the one that is printed out when you start `odrivetool`.
 - If you have not provided a serial number or you are sure you have provided the correct serial number, you are likely connected to the ODrive elsewhere.
-Make sure any connections via Python, `odrivetool` or the GUI are closed.
+Make sure any connections through Python, `odrivetool` or the GUI are closed.
 
 ### CAN Link Issues
 
