@@ -20,8 +20,8 @@ Once you have created a modular resource, you can test your custom resource usin
 ## Tutorials
 
 {{< cards >}}
-    {{% card link="/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
-    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
+    {{% card link="/extend/modular-resources/examples/add-rplidar-module" %}}
+    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
 {{< /cards >}}
 
 ## Repositories

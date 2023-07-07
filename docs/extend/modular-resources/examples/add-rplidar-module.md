@@ -195,6 +195,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/slam/cartographer" size="small" %}}
-  {{% card link="/services/slam" size="small" %}}
+  {{% card link="/services/slam/cartographer" %}}
+  {{% card link="/services/slam" %}}
 {{< /cards >}}

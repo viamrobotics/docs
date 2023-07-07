@@ -85,6 +85,6 @@ The components and services included in the fragment will appear inside a read-o
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+  {{% card link="/tutorials/get-started/try-viam-sdk" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}

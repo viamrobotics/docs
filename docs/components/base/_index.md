@@ -465,7 +465,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
-  {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
-  {{% card link="/tutorials/services/webcam-line-follower-robot" size="small" %}}
+  {{% card link="/tutorials/control/yahboom-rover" %}}
+  {{% card link="/tutorials/get-started/try-viam-sdk" %}}
+  {{% card link="/tutorials/services/webcam-line-follower-robot" %}}
 {{< /cards >}}

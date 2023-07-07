@@ -25,11 +25,11 @@ If you forget your password to the app, click **Forgot password** and enter your
 You do not have to use the app to use Viam's platform to build your robot, but it has several key features to help you get started managing your robots, including configuring robots with more complicated architecture like sub-parts or remotes:
 
 {{< cards >}}
-  {{% card link="/manage/configuration" size="small" %}}
-  {{% card link="/manage/fleet" size="small" %}}
-  {{% card link="/manage/data" size="small" %}}
-  {{% card link="/manage/ml" size="small" %}}
-  {{% card link="/manage/parts-and-remotes" size="small" %}}
+  {{% card link="/manage/configuration" %}}
+  {{% card link="/manage/fleet" %}}
+  {{% card link="/manage/data" %}}
+  {{% card link="/manage/ml" %}}
+  {{% card link="/manage/parts-and-remotes" %}}
 {{< /cards >}}
 
 <br>
@@ -37,7 +37,7 @@ You do not have to use the app to use Viam's platform to build your robot, but i
 You can also manage and control your robots from the command line with our CLI:
 
 {{< cards >}}
-  {{% card link="/manage/cli" size="small" %}}
+  {{% card link="/manage/cli" %}}
 {{< /cards >}}
 
 ## Sign Out

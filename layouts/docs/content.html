@@ -23,7 +23,7 @@
 	  <div id="archive" class="card-container">
 		<div class="row">
 		  {{ range sort $pages ".Weight"}}
-			<div class="col hover-card hover-card-small">
+			<div class="col hover-card">
 			  <a href="{{.RelPermalink}}">
 				{{ if .Params.webmSrc }}
 				  <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" class="lozad">

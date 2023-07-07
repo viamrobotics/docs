@@ -12,5 +12,5 @@ tags: ["server", "rdk"]
 ## Next steps
 
 {{< cards >}}
-  {{% card link="/installation/prepare/microcontrollers" size="small" %}}
+  {{% card link="/installation/prepare/microcontrollers" %}}
 {{< /cards >}}

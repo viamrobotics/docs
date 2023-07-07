@@ -5,7 +5,7 @@
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
 {{ end }}
-<div class="col hover-card hover-card-small hover-card-tutorial">
+<div class="col tutorial hover-card">
   {{ if site.GetPage ((relURL $link) | string) }}
     {{ with site.GetPage ((relURL $link) | string) }}
       <a href="{{.RelPermalink}}">

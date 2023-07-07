@@ -72,6 +72,6 @@ Otherwise, the class won’t instantiate.
 The following tutorials also explain how to add custom components as remotes:
 
 {{< cards >}}
-    {{% card link="/tutorials/custom/custom-base-dog" size="small" %}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot" size="small" %}}
+    {{% card link="/tutorials/custom/custom-base-dog" %}}
+    {{% card link="/tutorials/projects/make-a-plant-watering-robot" %}}
 {{< /cards >}}

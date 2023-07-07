@@ -435,5 +435,5 @@ if __name__ == "__main__":
 If you would like to continue onto working with Viam's Motion Service, check out this tutorial:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}
