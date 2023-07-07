@@ -535,13 +535,9 @@ END MARKETING CSS
 
   .hover-card > a {
     display: flex;
+    padding-right: 1rem;
 
-    video {
-      max-width: 50%;
-      padding-right: 1rem;
-    }
-
-    .hover-card-img {
+    .hover-card-video, .hover-card-img {
       max-width: 50%;
       margin: 0 1rem 1rem 0;
       margin: auto;
