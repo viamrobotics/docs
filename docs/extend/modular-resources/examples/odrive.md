@@ -245,14 +245,15 @@ The `"odrive-canbus"` type allows you to connect multiple ODrives without provid
 
 {{% /alert %}}
 
-To add an `odrive_config_file` and reconfigure your ODrive natively each time the motor is initialized on the robot:
-
 #### Add an `odrive_config_file`
 
-1. Extract your configurations from your ODrive. To do so you must [have `odrivetool` installed](https://docs.odriverobotics.com/v/latest/odrivetool.html).
-2. After installing `odrivetool` run `odrivetool backup-config config.json` to extract your configs to a file called `config.json`. See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
-3. `iq_msg_rate_ms` in the config defaults to `0`. You must set this to or around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
-4. If you add an `odrive_config_file` to an `odrive-canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
+To add an `odrive_config_file` and reconfigure your ODrive natively each time the motor is initialized on the robot, use [`odrivetool`](https://docs.odriverobotics.com/v/latest/odrivetool.html) to extract your configuration from your ODrive:
+
+1. Run `odrivetool backup-config config.json` to extract your configs to a file called `config.json`.
+See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
+1. `iq_msg_rate_ms` in the config defaults to `0`.
+You must set this to or around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
+1. If you add an `odrive_config_file` to an `odrive-canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
 
 An alternative to adding an `odrive_config_file` is running the command `odrivetool restore-config /path/to/config.json` in your terminal.
 
