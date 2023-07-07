@@ -1466,7 +1466,7 @@ err := interrupt.Tick(context.Background(), true, 12345)
 Add a [channel](https://go.dev/tour/concurrency/2) as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
 When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the returned value `high`.
 
-{{% alert title="Stability Notice" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 This method is not available for digital interrupts [configured](#digital_interrupts) with `"type": "servo"`.
 It is also not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
@@ -1533,7 +1533,7 @@ interrupt.AddCallback(ch)
 Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor) function that takes an integer input and transforms it into a new integer value.
 Functions added to an interrupt will be used to modify values before they are returned by [Value()](#value).
 
-{{% alert title="Stability Notice" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 This method is not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
 

@@ -341,7 +341,7 @@ logger.Info(controls)
 
 Directly send an [Event Object](#event-object) from external code.
 
-{{% alert title="Stability Notice" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 This method is currently only supported for input controllers of model `webgamepad`.
 {{% /alert %}}
 
@@ -654,7 +654,7 @@ See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/inpu
 
 ### Axis Controls
 
-{{% alert title="Stability Notice" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 Currently, only `Absolute` axes are supported.
 
 `Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
