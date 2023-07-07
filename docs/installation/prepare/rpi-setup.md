@@ -59,9 +59,9 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
    ![Raspberry Pi Imager window showing gear-shaped settings icon is selected.](../../img/rpi-setup/advanced-options.png)
 
-   {{% alert title="Note" color="note" %}}
+   {{% alert title="Important" color="note" %}}
    If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
-   {{% /alert  %}}
+   {{% /alert %}}
 
    ![Raspberry Pi Imager window showing the advanced options menu.](/installation/img/rpi-setup/imager-set-hostname.png)
 
@@ -177,7 +177,7 @@ Use your keyboard to select "Interface Options" and enable the relevant protocol
 
 ![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../img/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 When using a CSI camera, you need to enable legacy camera support.
 {{< /alert >}}
 

@@ -14,7 +14,7 @@ aliases:
 
 The [Viam Rover](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 You must purchase the following hardware separately:
 
 - A Raspberry Pi 4

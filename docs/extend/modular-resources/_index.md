@@ -37,7 +37,7 @@ For example:
 - The API of built-in component [camera](/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
 - The API of built-in service [vision](/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
 {{% /alert %}}
 
@@ -484,7 +484,7 @@ if __name__ == "__main__":
 
 {{% /expand%}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 You must define all functions belonging to a built-in resource type if defining a new model.
 Otherwise, the class won’t instantiate.

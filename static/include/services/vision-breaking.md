@@ -1,4 +1,4 @@
-{{< alert title="IMPORTANT" color="info" >}}
+{{< alert title="Stability Notice" color="info" >}}
 **The Vision Service is becoming more modular.**
 
 By the beginning of May, the following **breaking changes** will take effect:

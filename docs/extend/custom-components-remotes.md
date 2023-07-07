@@ -58,7 +58,7 @@ Each remote server can host one or many custom components.
 {{% /tab %}}
 {{% /tabs %}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 You must define all functions belonging to a built-in resource type if defining a new model.
 Otherwise, the class won’t instantiate.

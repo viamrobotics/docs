@@ -149,7 +149,7 @@ For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`,
 An [encoder](/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
 In this case, the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 When configuring encoded motors for your own robot, you must configure the encoders before the motors because the motors depend on the encoders.
 {{< /alert >}}
 

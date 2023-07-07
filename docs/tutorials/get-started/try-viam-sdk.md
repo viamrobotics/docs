@@ -393,7 +393,7 @@ async function main() {
 
 Underneath the `main` function, add the following function that initializes your Viam Rover base client and drives it in a square:
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 By default, the base name is `viam_base`.
 If you have changed the base name, update the name in your code.
 {{< /alert >}}

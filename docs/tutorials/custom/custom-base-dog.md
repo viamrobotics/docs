@@ -84,7 +84,7 @@ Get the code by running the following command:
     git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
     ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 This tutorial uses `/home/fido/` as an example home directory in various example filepaths and code snippets.
 If the name of the directory where you store and run your code is different, be sure to use the correct filepath when running these commands.
@@ -256,7 +256,7 @@ Click **Save Config** at the bottom of the page.
 
 ![Screenshot of the Viam app CONFIG tab with the Remotes subtab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 When you call srv.serve(), the default host and port is localhost:9090.
 If you want to use a different host or port, pass it as a parameter to the serve function.
@@ -386,7 +386,7 @@ Click the **my-custom-base:my-robot-dog** component panel to expand it and revea
 2. Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.
 3. Use the **W**, **A**, **S** and **D** buttons to make the robot walk forward, turn left, walk backward or turn right.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Depending on the speed of your server connection, you may need to hold down the base control button/key for a second or two before anything happens.
 

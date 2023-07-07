@@ -63,7 +63,7 @@ You can find it at the top of the robot's **Control** tab.
 
 ## Run Code On-Robot
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 This method of running code locally is only implemented on the Viam Python SDK.
 {{< /alert >}}
 

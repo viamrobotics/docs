@@ -9,7 +9,7 @@ tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Stability Notice" color="note" >}}
 
 This board is experimental.
 Stability is not guaranteed.

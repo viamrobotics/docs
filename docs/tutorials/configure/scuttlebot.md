@@ -43,7 +43,7 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
    We will stay in **Builder** mode for this tutorial (as opposed to **Raw JSON**).
    ![A screenshot of the Viam app UI showing the CONFIG tab of a robot.](../../img/scuttlebot/createcomponent.png)
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
 {{% /alert %}}
 
@@ -105,7 +105,7 @@ The next step is to add a motor and make it spin a wheel.
 
 {{% /expand %}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute (found by clicking **Show more**) and set it to "true."
 {{% /alert %}}
 
@@ -122,10 +122,11 @@ You'll use this panel to set the motor's `power` level.
 Be careful when activating your robot!
 Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature.
 If this happens, increase the power level by 10% increments until it starts to turn.
 {{% /alert %}}
+
 At this point, the right-side wheel should be working.
 
 ### Adding the left motor

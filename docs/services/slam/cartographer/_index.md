@@ -260,7 +260,7 @@ These are generated at runtime, so there is no need to add anything to this fold
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 If this directory structure is not present at runtime, the SLAM Service creates it.
 

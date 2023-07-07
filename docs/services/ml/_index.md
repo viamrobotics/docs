@@ -106,7 +106,7 @@ The following parameters are available for a `"tflite_cpu"` model:
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the  `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
 {{< /alert >}}

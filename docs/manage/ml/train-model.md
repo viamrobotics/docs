@@ -27,7 +27,7 @@ After [annotating your images](/manage/data/label/), click on the **TRAIN MODEL*
 A **Training** side menu opens.
 The model will train on all images that are part of the current filter.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 Filtered datasets are views and not materialized.
 That means the data you are viewing may change as you label and train on the dataset.
 If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
@@ -55,7 +55,7 @@ Once the model has finished training, it becomes visible in the **Models** secti
 If you [deploy a model](../../../services/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
 If you train a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 The previous model remains unchanged when you are training a new version of a model and is not used as input.
 If you are training a new model, you need to again select the images to train on because the model will be built from scratch.
 {{< /alert >}}

@@ -98,7 +98,7 @@ The servo component supports the following methods:
 
 Move the servo to the desired angle in degrees.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 Support for continuous servos  with the GPIO servo model is experimental.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.

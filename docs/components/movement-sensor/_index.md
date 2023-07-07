@@ -17,7 +17,7 @@ aliases:
 A movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
 Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Viam also supports generic [sensors](/components/sensor/) and [encoders](/components/encoder/).
 

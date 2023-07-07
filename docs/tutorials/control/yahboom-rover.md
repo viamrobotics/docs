@@ -63,7 +63,7 @@ You can ignore the other optional attributes.
 
 Save the config by clicking **Save Config** at the bottom of the page.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 If you are using a motor with encoders, you need to specify the ticks per rotation.
 {{% /alert %}}
 

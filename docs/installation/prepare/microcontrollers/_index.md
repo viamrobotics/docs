@@ -238,7 +238,7 @@ In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pi
 
 {{% /expand%}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 You can find a full example [on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32.rs).
 
@@ -260,7 +260,7 @@ While the serial connection is live, you can also restart the currently flashed 
 
 If everything went well, your ESP32 will be programmed so that you will be able to see your robot live on [the Viam app](https://app.viam.com).
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 
 If you encounter a crash due to stack overflow, you may need to increase the stack available to the main task.
 

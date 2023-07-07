@@ -8,7 +8,7 @@ images: ["/components/img/components/imu.svg"]
 # SMEs: Rand
 ---
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 
 The `gps-rtk` model is an experimental feature.
 Stability is not guaranteed.

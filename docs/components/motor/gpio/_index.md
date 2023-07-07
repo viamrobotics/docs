@@ -143,7 +143,7 @@ Inside the `pins` struct you need to configure **two or three** of the following
 | `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
 | `pwm` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 Only two or three of these `pins` attributes are required, depending on your motor driver.
 
@@ -153,7 +153,7 @@ If your motor drivers uses only In1 and In2, and not a third PWM pin, **do not c
 
 ## Wiring examples
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 The following are just examples and do not apply to all motor setups.
 Refer to your motor and motor driver data sheets for information on power requirements and how to properly wire your motor.

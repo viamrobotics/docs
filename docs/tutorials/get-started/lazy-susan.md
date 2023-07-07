@@ -78,7 +78,7 @@ Make sure your board is turned off and unplugged before wiring!
 
 ![Wiring diagram for the Lazy Susan showing colored wires connecting the assembled components.](/tutorials/img/lazy-susan/wiring-diagram.png)
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Important" color="note" %}}
 The Raspberry Pi and the 12V power supply share the same GND on the L298N motor driver.
 The Raspberry Pi is powered by its own 5V power cable.
 {{% /alert %}}

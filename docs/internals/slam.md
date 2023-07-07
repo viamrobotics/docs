@@ -97,7 +97,7 @@ If 0, no new data is sent to the SLAM algorithm.
 **input_file_pattern** (string): File glob describing how to ingest previously saved sensor data.
 Must be in the form X:Y:Z where Z is how many files to skip while iterating between the start index, X and the end index Y.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 X and Y are the file numbers since the most recent map data package in the data folder.
 If nil, includes all previously saved data.
 {{% /alert %}}

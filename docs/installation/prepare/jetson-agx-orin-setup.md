@@ -19,10 +19,10 @@ Follow this guide to set up the [Jetson AGX Orin Developer Kit](https://develope
 
 <div style="clear:both;"><br /></div>
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 
-This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board, but you may want to use a different carrier board to incorporate your Orin into your robot.
-If so, the type of carrier board you use will affect your hardware requirements.
+This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board.
+If you want to use a different carrier board to incorporate your Orin into your robot, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 

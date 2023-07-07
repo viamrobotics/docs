@@ -11,8 +11,9 @@ tags: ["input controller", "components"]
 
 Configuring a `webgamepad` input controller allows you to use a web-based gamepad as a device to communicate with your robot.
 
-{{% alert title="Note" color="note" %}}
-You **must** use "WebGamepad" as the `name` of the web gamepad controller. This restriction will be removed in the future.
+{{% alert title="Important" color="note" %}}
+You **must** use "WebGamepad" as the `name` of the web gamepad controller.
+This restriction will be removed in the future.
 {{% /alert %}}
 
 ## Configuration
@@ -74,7 +75,7 @@ For example, this is how the row of [Controls](../#control-field) appears after 
 
 <img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
 For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}

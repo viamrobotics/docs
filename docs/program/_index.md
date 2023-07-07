@@ -150,7 +150,7 @@ func main() {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
@@ -206,7 +206,7 @@ main();
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Stability Notice" color="note" >}}
 The C++ SDK is currently in alpha.
 {{< /alert >}}
 
@@ -247,7 +247,7 @@ int main() {
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Stability Notice" color="note" >}}
 The Flutter SDK is currently in alpha.
 {{< /alert >}}
 

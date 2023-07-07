@@ -81,7 +81,7 @@ When you or your collaborators change a robot's configuration, the robot will au
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
