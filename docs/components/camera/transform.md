@@ -349,7 +349,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
         "source" : "physical_cam",
         "pipeline": [
             { "type": "rotate", "attributes": { } },
-            { "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
+            { "type": "resize", "attributes": {"width_px": 200, "height_px": 100} }
         ]
     }
 }
