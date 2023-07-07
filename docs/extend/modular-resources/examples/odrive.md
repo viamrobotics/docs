@@ -73,13 +73,13 @@ Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you 
 {{% alert title="Tip" color="tip" %}}
 
 If you are using a Raspberry Pi as your [board](/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
-See [Troubleshooting](#can-link-issues) for more information.
+See "[Troubleshooting](#troubleshooting): [CAN Link Issues](https://github.com/viamrobotics/odrive#can-link-issues)" for more information.
 
 Additionally, make sure you have [enabled SPI communication on your Pi](/installation/prepare/rpi-setup/) to use several common CANHats.
 
 {{% /alert %}}
 
-4. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
+1. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
 
 {{< tabs name="Connect your ODrive">}}
 {{% tab name="odrive-serial" %}}
@@ -233,7 +233,7 @@ The following attributes are available for the motor resources available in the 
 | ---- | ---- | --------- | ----------- |
 | `canbus_node_id` | int | Optional | Required for successful initialization of the `"odrive-canbus"` type. <br> Node ID of the CAN node you would like to use. You configured this when [setting up your ODrive](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive). <br> Example: `0` |
 | `odrive_config_file` | string | Optional | Filepath of a separate JSON file containing your ODrive's native configuration. See [add an `odrive_config_file`](#add-an-odrive_config_file) for instructions if you add this attribute. </br> See the [Odrive S1 Modular Component repository](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of this file. |
-| `serial_number` | string | Optional | The serial number of the ODrive. Note that this is not necessary if you only have one ODrive connected. See [Troubleshooting](#hanging) for help finding this value. |
+| `serial_number` | string | Optional | The serial number of the ODrive. Note that this is not necessary if you only have one ODrive connected. See "[Troubleshooting](#troubleshooting): [Hanging](https://github.com/viamrobotics/odrive#hanging)" for help finding this value. |
 | `canbus_baud_rate` | string | Optional | [Baud rate](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive) of the ODrive CAN protocol. This attribute is only available for `"odrive-canbus"` connections. </br> Use [`odrivetool`](https://docs.odriverobotics.com/v/latest/odrivetool.html) to obtain this value with `<odrv>.can.config.baud_rate`. Format the string as a multiple of 1000 (k). <br> Example: `"250k"` |
 
 Save the config.
@@ -259,23 +259,6 @@ An alternative to adding an `odrive_config_file` is running the command `odrivet
 
 ## Troubleshooting
 
-### Unstable Behavior
-
-- The motor is likely not properly tuned.
-See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/control.html) for instructions on how to tune.
-
-### Hanging
-
-- If you have provided a serial number, make sure it is the correct serial number.
-ODrives have 2 serial numbers: one that will be printed out when you start `odrivetool`, and one that can be accessed in `odrivetool` by running `odrv0.serial_number`.
-The correct serial number is the one that is printed out when you start `odrivetool`.
-- If you have not provided a serial number or you are sure you have provided the correct serial number, you are likely connected to the ODrive elsewhere.
-Make sure any connections through Python, `odrivetool` or the GUI are closed.
-
-### CAN Link Issues
-
-- If you get an error of `"Device or resource busy"`, try setting CAN down and back up with the command `sudo ip link set can0 down`, followed by `sudo ip link set can0 up type can bitrate <baud_rate>`.
-  - You have to do this any time you want to change the baud rate.
-- If you get an error of `"Network is down"`, try setting CAN up with the command `sudo ip link set can0 up type can bitrate <baud_rate>`.
+See the [Viam Github](https://github.com/viamrobotics/odrive#troubleshooting) for help with common issues.
 
 {{< snippet "social.md" >}}
