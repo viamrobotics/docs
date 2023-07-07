@@ -4,28 +4,6 @@ Add styles or override variables from the theme here.
 
 */
 
-
-/* START - CSS to stack Eliot's video on the landing page */
-
-.mra-column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-}
-
-.mra-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-@media screen and (max-width: 576px) {
-  .mra-column {
-    width: 100%;
-  }
-}
-/* END - CSS to stack Eliot's video on the landing page */
-
 /* START Add Square bracket on footnote number */
 a.footnote-ref::before {
   content: '[';
@@ -36,25 +14,21 @@ a.footnote-ref::after {
 /* END Add Square bracket on footnote number */
 
 
-
-/* START Disable unwanted RH TOC entries */
-
-/* Disable "Create Child Pages" */
-.td-page-meta--child { display: none !important; }
-
-/* Disable "Edit this page" */
-.td-page-meta--edit { display: none !important; }
-
-/* Disable "View page source" */
-.td-page-meta--view { display: none !important; }
-
-/* END Disable unwanted RH TOC entries */
-
-
-/*
-START MARKETING CSS
-*/
+/* START MARKETING CSS */
 /* START Adjust Heading sizes*/
+
+.td-navbar {
+  background: black !important;
+}
+
+/* This ensures there is no padding added to the top logo bar */
+.td-navbar .td-navbar-nav-scroll {
+  height: unset;
+}
+
+.td-navbar .td-navbar-nav-scroll .navbar-nav {
+  padding-bottom: unset;
+}
 
 .td-navbar .navbar-brand {
   font-family: Space Mono, sans-serif;
@@ -95,7 +69,6 @@ h3, .h3 {
   font-size: 1.1667rem !important;
 }
 
-/* Added H4 and H5 in response to DAD-97 */
 h4, .h4 {
   font-size: 1.0625rem !important;
   line-height: 1.4375em;
@@ -115,32 +88,23 @@ h7, .h7 {
   line-height: 1.0625rem;
   font-weight: 400;
   font-style: italic;
-  text-decoration: underline green;
 }
 
 .td-content > h3 {
   margin-bottom: 0.667rem;
 }
 
-/* This class prevents h4 headings in alerts from indenting */
-.plain{
-  margin-left: 0;
-}
-/* This prevents the h4 heading rules from appearing in alerts */
-.plain:after{
-  content:' ';
-  display:none;
-}
-
 /* END Adjust Heading sizes*/
 
+// Navigation side bar
 
 .td-sidebar {
-  /*NAV Panel changes*/
-  /* background */
+  /* NAV Panel changes */
   background-color: #f2f2f2;
   letter-spacing: 0.0625rem;
 }
+
+// TABLE OF CONTENT CHANGES
 
 .td-toc > nav ul li {
   border-left: 2px solid #1be020;
@@ -177,7 +141,11 @@ h7, .h7 {
   color: #666666;
 }
 
-// Expanded headers should be bold
+.td-sidebar-toc {
+  border-left: unset;
+}
+
+// Breadcrumb styling
 
 .breadcrumb {
   font-size: 1rem;
@@ -187,14 +155,20 @@ h7, .h7 {
   }
 }
 
-a {
+.breadcrumb-item {
   color: #0000EA;
-  h1, h2, h3, h4, h5, h6, h7, p {
-    color: black;
-  }
 }
 
-a:hover {
+.breadcrumb-item + .breadcrumb-item::before {
+  float: left;
+  padding-right: 0.5rem;
+  color: black;
+  content: ">>";
+}
+
+// Link styling
+
+a, a:hover {
   color: #0000EA;
   h1, h2, h3, h4, h5, h6, h7, p {
     color: black;
@@ -231,25 +205,26 @@ p, li {
   }
 }
 
-/*This ensures there is no padding added to the top logo bar*/
-.td-navbar .td-navbar-nav-scroll {
-  height: unset;
-}
-
-.td-navbar .td-navbar-nav-scroll .navbar-nav {
-  padding-bottom: unset;
-}
-
-/* font weight */
-
-.td-navbar {
-  background: black !important;
-}
+// START FOOTER STYLING
 
 /* sets the footer to black. */
 .bg-dark {
   background-color: black !important;
 }
+
+/* START no whitespace beneath footer */
+
+body footer {
+  line-height: 1;
+}
+
+footer small {
+  line-height: 1.5;
+}
+
+/* END no whitespace beneath footer */
+
+// END FOOTER STYLING
 
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
@@ -258,35 +233,23 @@ p, li {
   line-height: 1.75em !important;
 }
 
-.breadcrumb-item {
-  color: #0000EA;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-  float: left;
-  padding-right: 0.5rem;
-  color: black;
-  content: ">>";
-}
-
 /*
 END MARKETING CSS
 */
 
 
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/*/
-/* I added margins, changed Preload to 600px. The default was 100% */
+/* Added margins, changed Preload to 600px. The default was 100% */
 
 .td-content > .video-shortcode, .video-shortcode {
   margin: 12px 0 12px 0;
-  border:solid 1px;
+  border: solid 1px;
   max-width: 100%;
   width: 600px;
   height: auto;
 }
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/ */
 
-/**/
 .primary-color                      {color: var(--primary-color)}
 .bg-primary-color                   {background-color: var(--primary-color)}
 .hover-bg-primary-color:hover       {background-color: var(--primary-color)}
@@ -318,7 +281,6 @@ END MARKETING CSS
 .text-color-disabled   {color: var(--text-color-disabled)}
 .divider-color         {color: var(--divider-color)}
 .warn-color            {color: var(--warn-color)}
-
 
 .nested-links a {
   color: var(--primary-color);
@@ -381,26 +343,17 @@ END MARKETING CSS
   position: absolute;
   top: 35%;
   left: -12px;
-  /*background-color: white;*/
 }
 
 .admonition-content {
   display: block;
   margin: 0px;
   padding: .125em 1em;
-  /*margin-left: 1em;*/
   margin-top: 2em;
   margin-bottom: 2em;
   overflow-x: auto;
-  /*font-size: .9375em;*/
   background-color: var(--black-05);
 }
-
-/* color: sets the text color in the alert*/
-/* background: sets the background color in the alert*/
-/* border-color: sets the color of the LH border in the alert*/
-/* .alert-warning hr: doesn't seem to do anything*/
-/* .alert-warning .alert-link: doesn't seem to do anything*/
 
 .alert a {
   text-decoration: underline;
@@ -414,43 +367,20 @@ END MARKETING CSS
 .alert-warning {
   box-shadow: 5px 5px 0 0 red;
 }
-.alert-warning hr {
-  border-top-color: #ff9f9f;
-}
-.alert-warning .alert-link {
-  color: #520000;
-}
-
-
 .alert-note {
   box-shadow: 5px 5px 0 0 blue;
 }
-.alert-note hr {
-  border-top-color: #ff9f9f;
-}
-.alert-note .alert-link {
-  color: #520000;
-}
-
 .alert-caution {
   box-shadow: 5px 5px 0 0 #f0b93f;
 }
-.alert-caution hr {
-  border-top-color: #ff9f9f;
-}
-.alert-caution .alert-link {
-  color: #520000;
-}
-
-
 .alert-tip, .alert-info {
   box-shadow: 5px 5px 0 0 #1be020;
 }
 
+// Overwrite default
 .alert-info .alert-heading {
   color: black;
 }
-
 
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
 
@@ -482,6 +412,7 @@ END MARKETING CSS
 }
 
 /* END CSS FOR EXPANDER */
+
 
 /* START card styling */
 .hover-card {
@@ -753,7 +684,7 @@ td > ul, td > ol {
 /* START TAB CSS consistency */
 
 .nav-tabs {
-    border-bottom: none; // unset from inherited styles
+  border-bottom: none; // unset from inherited styles
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
@@ -783,18 +714,6 @@ td > ul, td > ol {
 }
 
 /* END TAB CSS consistency */
-
-/* START no whitespace beneath footer */
-
-body footer {
-  line-height: 1;
-}
-
-footer small {
-  line-height: 1.5;
-}
-
-/* END no whitespace beneath footer */
 
 /* START scroll to top and github styling */
 
@@ -846,6 +765,10 @@ footer small {
   max-width: 600px;
 }
 
+/* END GIFs should have a max width */
+
+// Other styling
+
 .table {
   margin-top: 1.5rem;
 }
@@ -862,10 +785,6 @@ footer small {
 .embed-responsive.embed-responsive-16by9 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-}
-
-.td-sidebar-toc {
-  border-left: unset;
 }
 
 /* Feedback container */
@@ -948,6 +867,8 @@ footer small {
     visibility: initial;
   }
 }
+
+// Align media to left, center, or right
 
 @media (min-width: 650px) {
   img.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
