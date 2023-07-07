@@ -308,7 +308,8 @@ To create a custom base model, you need a script that defines what each base com
 Open your newly created <file>robotdog.py</file> file.
 It contains stubs of all the [base API methods](/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
 
-Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/src/robotdog.py).
+Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/robotdog/src/robotdog.py).
+
 It defines each method by specifying which corresponding commands to send to the Freenove dog server when the method is called.
 For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot dog server to stop the dog from moving:
 
