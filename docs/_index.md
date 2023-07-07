@@ -167,12 +167,6 @@ sitemap:
   <div class="row">
     <div class="col sectionlist">
         <div>
-        <h4>Manage</h4>
-        {{<sectionlist sectiontitle="manage">}}
-        </div>
-    </div>
-    <div class="col sectionlist">
-        <div>
         <h4>Components</h4>
         {{<sectionlist sectiontitle="components">}}
         </div>
@@ -181,6 +175,12 @@ sitemap:
         <div>
         <h4>Services</h4>
         {{<sectionlist sectiontitle="services">}}
+        </div>
+    </div>
+    <div class="col sectionlist">
+        <div>
+        <h4>Manage</h4>
+        {{<sectionlist sectiontitle="manage">}}
         </div>
     </div>
     <div class="col sectionlist">
