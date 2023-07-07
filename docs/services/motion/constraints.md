@@ -36,8 +36,8 @@ moved = await motion.move(
     component_name=my_gripper,
     destination=PoseInFrame(
         reference_frame="my_frame",
-        pose=goal_pose), 
-    world_state=worldState, 
+        pose=goal_pose),
+    world_state=worldState,
     constraints={
         Constraints(linear_constraint = [LinearConstraint(line_tolerance_mm=0.2)])
      },
@@ -86,7 +86,7 @@ If set to zero, a movement with identical starting and ending orientations will 
 ```python {class="line-numbers linkable-line-numbers"}
 ## Move a gripper with an orientation constraint
 moved = await motion.move(
-    component_name=my_gripper, 
+    component_name=my_gripper,
     destination=PoseInFrame(
         reference_frame="my_frame",
         pose=goal_pose),
@@ -124,6 +124,6 @@ You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.co
 Constraints are used in the following tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
-  {{% card link="/tutorials/services/constrain-motion/" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}

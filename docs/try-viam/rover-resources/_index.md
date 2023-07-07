@@ -18,7 +18,7 @@ description: If you want a convenient mobile base for robotics projects, order a
 If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%}} for a variety of robotics projects, you can now [order your own Viam rover](https://www.viam.com/resources/rover).
 {{< /alert >}}
 
-<div class="container td-max-width-on-larger-screens">
+<div class="td-max-width-on-larger-screens">
 <div class="row">
     <div class="col">
         <a href="https://www.viam.com/resources/rover" target="_blank"><img src="img/viam-rover/rover-front.jpg" style="max-width:400px; min-width:300px; float: left" alt="The front of the assembled Viam Rover" /></a>

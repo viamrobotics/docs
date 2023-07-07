@@ -197,6 +197,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/components/component/control-a-component" size="small" %}}
-    {{% card link="/components/component/install" size="small" %}}
+    {{% card link="/components/component/control-a-component" %}}
+    {{% card link="/components/component/install" %}}
 {{< /cards >}}

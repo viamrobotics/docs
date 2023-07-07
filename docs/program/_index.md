@@ -297,7 +297,7 @@ Once you have successfully run the sample code, you can edit the boilerplate cod
 You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-    {{% card link="/program/apis/" size="small" custom="Add Logic to Interface with Resources" %}}
-    {{% card link="/program/run/" size="small" %}}
-    {{% card link="/program/debug/" size="small" %}}
+    {{% card link="/program/apis/" custom="Add Logic to Interface with Resources" %}}
+    {{% card link="/program/run/" %}}
+    {{% card link="/program/debug/" %}}
 {{< /cards >}}

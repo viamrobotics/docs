@@ -198,6 +198,6 @@ You can disable this by commenting out the ExecPre line (the one with --aix-upda
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/installation/manage" size="small" %}}
-  {{% card link="/installation/update" size="small" %}}
+  {{% card link="/installation/manage" %}}
+  {{% card link="/installation/update" %}}
 {{< /cards >}}

@@ -315,7 +315,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
-# Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service" 
+# Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service"
 my_pose = Pose(y=10)
 
 # Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
@@ -343,7 +343,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
 
-// Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service" 
+// Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service"
 myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
 
 // Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
@@ -493,6 +493,6 @@ logger.Info("Orientation of myArm from the Motion Service:", myArmMotionPose.Pos
 The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the Motion Service API, respectively:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

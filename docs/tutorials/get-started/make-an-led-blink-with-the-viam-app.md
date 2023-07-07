@@ -154,5 +154,5 @@ You have learned how the GPIO on a Raspberry Pi works, and how to build circuits
 Check out the next part in this series to control your LED programmatically:
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" size="small" %}}
+  {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" %}}
 {{< /cards >}}

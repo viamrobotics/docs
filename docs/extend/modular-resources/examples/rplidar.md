@@ -1,17 +1,17 @@
 ---
-title: "Add an RPlidar as a Modular Component"
-linkTitle: "Add an RPlidar as a Modular Component"
+title: "Add an RPlidar as a Modular Resource"
+linkTitle: "RPlidar"
 weight: 40
 type: "docs"
-description: "How to add an RPlidar as a modular component of your robot."
+description: "How to add an RPlidar as a modular resource of your robot."
 image: "/program/img/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
 images: ["/program/img/modular-resources/rplidar-on-robot.png"]
-tags: ["slam", "services"]
+tags: ["slam", "services", "modular resources", "lidar", "rplidar"]
 aliases:
   - "/program/extend/modular-resources/add-rplidar-module/"
   - "/program/extend/modular-resources/examples/add-rplidar-module/"
-
+  - "/extend/modular-resources/examples/add-rplidar-module/"
 # SMEs: Kat, Jeremy
 ---
 
@@ -195,6 +195,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/slam/cartographer" size="small" %}}
-  {{% card link="/services/slam" size="small" %}}
+  {{% card link="/services/slam/cartographer" %}}
+  {{% card link="/services/slam" %}}
 {{< /cards >}}

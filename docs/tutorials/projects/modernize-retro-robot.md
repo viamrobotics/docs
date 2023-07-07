@@ -237,9 +237,7 @@ As with the positive connector, one of the negative terminals will be left empty
 
 Finally, plug the USB-C output from the step down converter into the Raspberry Pi.
 
-<div class="td-max-width-on-larger-screens" style="max-width: 800px;">
-<img src="../../img/maiv/viam-omnibot-wiring-02.png" alt="Omnibot MAIV powered wiring diagram." title="Omnibot MAIV powered wiring diagram." />
-</div>
+![Omnibot MAIV powered wiring diagram.](../../img/maiv/viam-omnibot-wiring-02.png)
 
 #### Power MAIV on
 
@@ -478,9 +476,7 @@ Connect the final terminal of the negative quick connector to the GND terminal o
 Connect GPIO pins for the neck motor with female-to-female jumper wires.
 You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2`, and pin 29 to `ENA`.
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/viam-omnibot-wiring-03.png" alt="Omnibot MAIV complete wiring diagram." title="Omnibot MAIV complete wiring diagram." style="max-width: 800px;" />
-</div>
+![Omnibot MAIV complete wiring diagram.](../../img/maiv/viam-omnibot-wiring-03.png)
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}

@@ -313,5 +313,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
+  {{% card link="/tutorials/configure/scuttlebot" %}}
 {{< /cards >}}

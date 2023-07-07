@@ -10,13 +10,14 @@
 
     <div class="card-container">
         <div class="row">
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/viam/"
                     ><div class="hover-card-img">
                         <img
                             src="/img/understand.png"
                             alt="A diagram of robotic parts and software"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
@@ -28,7 +29,7 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/try-viam/"
                     ><video
                         autoplay=""
@@ -39,9 +40,10 @@
                         alt="A Viam Rover moving about"
                         width="100%"
                         style="max-width: "
+                        class="lozad"
                     >
-                        <source src="/img/rover.webm" type="video/webm" />
-                        <source src="/img/rover.mp4" type="video/mp4" />
+                        <source data-src="/img/rover.webm" type="video/webm" />
+                        <source data-src="/img/rover.mp4" type="video/mp4" />
                         There should have been a video here but your browser
                         does not seem to support it.
                     </video>
@@ -55,13 +57,14 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/installation/"
                     ><div class="hover-card-img">
                         <img
                             src="/installation/img/thumbnails/install.png"
                             alt="Install viam"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
@@ -73,13 +76,14 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/manage/configuration/"
                     ><div class="hover-card-img">
                         <img
                             src="/installation/img/thumbnails/manage.png"
                             alt="Terminal window"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
@@ -92,13 +96,14 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/program/"
                     ><div class="hover-card-img">
                         <img
                             src="/img/code.png"
                             alt="Program a robot"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
@@ -116,7 +121,7 @@
     <h2>Or these?</h2>
     <div class="card-container">
         <div class="row">
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/tutorials/get-started/servo-mousemover/"
                     ><video
                         autoplay=""
@@ -126,13 +131,14 @@
                         preload="auto"
                         alt="A mouse mover controlled with a servo and Raspberry Pi."
                         width="100%"
+                        class="lozad"
                     >
                         <source
-                            src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm"
+                            data-src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm"
                             type="video/webm"
                         />
                         <source
-                            src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
+                            data-src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
                             type="video/mp4"
                         />
                         There should have been a video here but your browser
@@ -148,7 +154,7 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/tutorials/services/plan-motion-with-arm-gripper/"
                     ><video
                         autoplay=""
@@ -158,13 +164,14 @@
                         preload="auto"
                         alt="An arm moving with the Motion Service"
                         width="100%"
+                        class="lozad"
                     >
                         <source
-                            src="/tutorials/videos/motion_armmoving.webm"
+                            data-src="/tutorials/videos/motion_armmoving.webm"
                             type="video/webm"
                         />
                         <source
-                            src="/tutorials/videos/motion_armmoving.mp4"
+                            data-src="/tutorials/videos/motion_armmoving.mp4"
                             type="video/mp4"
                         />
                         There should have been a video here but your browser
@@ -180,7 +187,7 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/tutorials/services/color-detection-scuttle/"
                     ><video
                         autoplay=""
@@ -190,13 +197,14 @@
                         preload="auto"
                         alt="Detecting color with a Scuttle Robot"
                         width="100%"
+                        class="lozad"
                     >
                         <source
-                            src="/tutorials/videos/scuttledemos_colordetection.webm"
+                            data-src="/tutorials/videos/scuttledemos_colordetection.webm"
                             type="video/webm"
                         />
                         <source
-                            src="/tutorials/videos/scuttledemos_colordetection.mp4"
+                            data-src="/tutorials/videos/scuttledemos_colordetection.mp4"
                             type="video/mp4"
                         />
                         There should have been a video here but your browser
@@ -212,7 +220,7 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/tutorials/custom/custom-base-dog/"
                     ><video
                         autoplay=""
@@ -222,13 +230,14 @@
                         preload="auto"
                         alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
                         width="100%"
+                        class="lozad"
                     >
                         <source
-                            src="/tutorials/img/custom-base-dog/base-control-dog.webm"
+                            data-src="/tutorials/img/custom-base-dog/base-control-dog.webm"
                             type="video/webm"
                         />
                         <source
-                            src="/tutorials/img/custom-base-dog/base-control-dog.mp4"
+                            data-src="/tutorials/img/custom-base-dog/base-control-dog.mp4"
                             type="video/mp4"
                         />
                         There should have been a video here but your browser
@@ -244,13 +253,14 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/tutorials/projects/make-a-plant-watering-robot/"
                     ><div class="hover-card-img">
                         <img
                             src="/tutorials/img/plant-watering-pi/preview.png"
                             alt="Picture of the plant watering robot"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
