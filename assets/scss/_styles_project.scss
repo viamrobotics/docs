@@ -455,6 +455,18 @@ END MARKETING CSS
   margin-bottom: 1rem;
 }
 
+.hover-card > img {
+  margin-bottom: 7px !important;
+}
+
+.hover-card > img, .hover-card * video, .hover-card * .hover-card-img > img, .hover-card * .hover-card-icon > img {
+  border: 1px solid #000;
+  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
 // Sizes and types
 
 // Tiny hover card with no text
@@ -523,13 +535,9 @@ END MARKETING CSS
 
   .hover-card > a {
     display: flex;
+    padding-right: 1rem;
 
-    video {
-      max-width: 50%;
-      padding-right: 1rem;
-    }
-
-    .hover-card-img {
+    .hover-card-video, .hover-card-img {
       max-width: 50%;
       margin: 0 1rem 1rem 0;
       margin: auto;

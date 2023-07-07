@@ -17,7 +17,6 @@ With modular resources, you can:
 - Create new models of built-in component or service types
 - Create brand new resource types
 
-`viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built-in to the [Robot Development Kit (RDK)](/internals/rdk/).
 `viam-server` [manages](#modular-resource-management) modular resources configured on your robot like resources that are already built into the [Robot Development Kit (RDK)](/internals/rdk/).
 
 Two key concepts exist across all Viam resources (both built-in and modular) to facilitate this: [*APIs*](#apis) and [*models*](#models).
@@ -373,7 +372,7 @@ class MyBase(Base, Reconfigurable):
     # Constructor
     @classmethod
     def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        base = cls(MyBase(config.name))
+        base = cls(config.name)
         base.reconfigure(config, dependencies)
         return base
 
@@ -450,62 +449,6 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 from .my_base import MyBase
 
 Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
-```
-
-<file>main.py</file>
-
-``` python {class="line-numbers linkable-line-numbers"}
-import asyncio
-import sys
-
-from viam.components.base import Base
-from viam.module.module import Module
-from .my_base import MyBase
-
-async def main(address: str):
-    """This function creates and starts a new module, after adding all desired resources.
-    Resources must be pre-registered. For an example, see the `__init__.py` file.
-    Args:
-        address (str): The address to serve the module on
-    """
-    module = Module(address)
-    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
-    await module.start()
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        raise Exception("Need socket path as command line argument")
-
-    asyncio.run(main(sys.argv[1]))
-
-```
-
-<file>main.py</file>
-
-``` python {class="line-numbers linkable-line-numbers"}
-import asyncio
-import sys
-
-from viam.components.base import Base
-from viam.module.module import Module
-from .my_base import MyBase
-
-async def main(address: str):
-    """This function creates and starts a new module, after adding all desired resources.
-    Resources must be pre-registered. For an example, see the `__init__.py` file.
-    Args:
-        address (str): The address to serve the module on
-    """
-    module = Module(address)
-    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
-    await module.start()
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        raise Exception("Need socket path as command line argument")
-
-    asyncio.run(main(sys.argv[1]))
-
 ```
 
 <file>main.py</file>
@@ -720,11 +663,16 @@ The RDK ensures that any configured modules are loaded automatically on start-up
 When you change the configuration of a Viam robot, the behavior of modular resource instances versus built-in resource instances is equivalent.
 This means you can add, modify, and remove a modular resource instance from a running robot as normal.
 
+#### Data management
+
+Data capture for individual components is supported on [certain component types](../../services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+If your modular resource is a model of one of these types, you can configure data capture on it just as you would on a built-in resource.
+
 #### Shutdown
 
 During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
-### Modular resources as remotes
+#### Modular resources as remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
@@ -735,7 +683,6 @@ Custom models of the [arm](/components/arm/) component type are not yet supporte
 
 {{< cards >}}
     {{% card link="/services/slam/cartographer/" %}}
-    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
     {{% card link="/extend/modular-resources/examples/rplidar" %}}
     {{% card link="/extend/modular-resources/examples/odrive" %}}
 {{< /cards >}}
