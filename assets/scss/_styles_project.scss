@@ -885,3 +885,39 @@ td > ul, td > ol {
       max-width: 80%;
   }
 }
+
+// sectionlist styling
+
+ul.sectionlist {
+  padding: 0;
+}
+
+ul.sectionlist > a > li {
+  width: 100%;
+  list-style-type: none;
+  padding: 0.25rem 0rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+}
+
+ul.sectionlist > a > li > img {
+  margin: 0rem;
+}
+
+ul.sectionlist > a > li > p {
+  margin-left: 0.75rem;
+  margin-bottom: 0;
+}
+
+ul.sectionlist > a > li:hover {
+  background-color: whitesmoke;
+}
+
+.col.sectionlist {
+  min-width: 280px;
+  max-width: 400px;
+  padding: 1rem;
+  margin: 1rem;
+}

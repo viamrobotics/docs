@@ -1,10 +1,13 @@
 {{ $p := .Site.GetPage (.Get "sectiontitle") }}
-{{ range (where .Site.Pages "Section" (.Get "sectiontitle")) }}
-  <ul>
+<ul class="sectionlist">
+  {{ range (where .Site.Pages "Section" (.Get "sectiontitle")) }}
   {{ range .Pages }}
     {{ if and (eq $p .Parent) (not .Draft) }}
-      <li><a href="{{ .Permalink }}" title="{{.Title}}">{{ .LinkTitle }}</a></li>
+      <a href="{{ .Permalink }}" title="{{.Title}}"><li>
+        {{if .Params.icon}}<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" loading="lazy" width="45" height="45">{{end}}
+        <p>{{ .LinkTitle }}</p>
+      </li></a>
       {{ end }}
     {{ end }}
-  </ul>
 {{ end }}
+</ul>
