@@ -104,7 +104,7 @@ async def main():
     await your_sensor.get_readings(extra=your_info)
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 If passing an object of type `None`, you do not have to specify `None` in the method call.
 
@@ -134,7 +134,7 @@ func main() {
 }
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 If passing an object of type `nil`, you must specify `nil` in the method call or the method will fail.
 

@@ -10,7 +10,7 @@ no_list: true
 # SMEs: Kat, Jeremy
 ---
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 The SLAM Service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.

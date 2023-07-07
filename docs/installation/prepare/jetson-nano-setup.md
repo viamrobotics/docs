@@ -16,12 +16,17 @@ Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nv
 
 <div class="td-max-width-on-larger-screens text-center"><img src="../../img/jetson-nano-setup/jetson-nano-dev-kit.png" style="max-width:400px" alt="The front of the NVIDIA Jetson Nano single-board computer development kit."></div>
 
-{{< alert title="Note" color="note" >}}
+{{% alert title="Stability Notice" color="note" %}}
 
-This board is experimental.
+Support for this board is experimental.
 Stability is not guaranteed.
-This guide assumes that you have a Jetson Nano Developer Kit with a Jetson module and reference carrier board, but you may want to use a different carrier board to incorporate your Nano into your robot.
-If so, the type of carrier board you use will affect your hardware requirements.
+
+{{% /alert %}}
+
+{{% alert title="Important" color="note" %}}
+
+This guide assumes that you have a Jetson Nano Developer Kit with a Jetson module and reference carrier board.
+If you want to use a different carrier board to incorporate your Nano into your robot, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 

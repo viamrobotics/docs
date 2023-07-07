@@ -126,7 +126,7 @@ Method Name | Description
 [`AddWaypoint`](#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](#removewaypoint) | Remove a waypoint from the service's data storage.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a robot configured with a `Navigation` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
@@ -135,7 +135,7 @@ Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) f
 
 ### Mode
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 
 The `manual` mode is experimental and will have no effect.
 
@@ -172,7 +172,7 @@ mode, err := myNav.Mode(context.Background(), nil)
 
 ### SetMode
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 
 The `manual` mode is experimental and will have no effect.
 

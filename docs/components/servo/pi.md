@@ -9,7 +9,7 @@ icon: "img/components/servo.png"
 # SME: Rand
 ---
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 Unlike other servo models, `pi` servos are implemented as part of the [`pi` board component](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
 

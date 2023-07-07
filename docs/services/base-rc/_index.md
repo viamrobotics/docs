@@ -92,7 +92,7 @@ Method Name | Description
 [`Close`](#close) | Close out of all remote control related systems.
 [`ControllerInputs`](#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"` and an [input controller](/components/input-controller/) called `"my_controller"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.

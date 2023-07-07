@@ -53,7 +53,7 @@ viam-server -config <path-to-config>.json
 
 After you have completed the setup steps and successfully connected to your robot, go to the **Config** tab to start adding to the configuration.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
@@ -61,7 +61,7 @@ If you cannot connect your robot to the internet at all, you can also [store the
 
 {{% /alert %}}
 
-## The CONFIG tab
+## The Config tab
 
 The **Config** tab on the [Viam app](https://app.viam.com) is the place to configure everything about your robot.
 

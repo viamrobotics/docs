@@ -134,7 +134,7 @@ frame = await my_cam.get_image()
 standard_frame frame.bytes_to_depth_array()
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Be sure to close the image when finished.
 

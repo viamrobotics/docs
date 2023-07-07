@@ -199,28 +199,32 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 
 **Info/Tip**: Use to convey helpful information or clarification. They both use the same color.
 
-**Note**: These call attention to something important. Use it to expand on a point from the body text or to provide additional information.
+**Note/Important/Stability Notice**: These call attention to something important.
 
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
 **Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
 
 {{< alert title="Tip" color="tip" >}}
-The "title" and "color" keywords and the names of colors ("tip," "note," and so on) are case sensitive. If you use uppercase, Alerts will not have a title and the color border will be incorrect.
+The "title" and "color" keywords and the names of colors ("tip," "note," and so on) are case sensitive. If you use uppercase, alerts will not have a title and the color border will be incorrect.
 {{< /alert >}}
 
 {{< figure src="/img/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
 
 {{< alert title="Tip" color="tip" >}}
-Use for tips
+Provide a tip.
 {{< /alert >}}
 
 {{< alert title="Info" color="info" >}}
-Use for extra background information
+Use to expand on something from the body text or to provide additional information.
 {{< /alert >}}
 
-{{< alert title="Note" color="note" >}}
-This is to call the reader's attention to something important. Use it to expand on something from the body text or to provide a tip or additional information.
+{{< alert title="Important" color="note" >}}
+This is to call the reader's attention to something important.
+{{< /alert >}}
+
+{{< alert title="Stability Notice" color="note" >}}
+Let the reader know that a feature is experimental and that breaking changes are likely to occur.
 {{< /alert >}}
 
 {{< alert title="Caution" color="caution" >}}

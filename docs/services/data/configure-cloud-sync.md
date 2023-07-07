@@ -38,7 +38,7 @@ To change the sync interval, specify an interval in minutes in the interval fiel
 }
 ```
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 If `capture_dir` is unspecified, `viam-server` will use the default directory at <file>~/.viam/capture</file>.
 {{< /alert >}}
 

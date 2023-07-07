@@ -32,7 +32,7 @@ You will use the Balena Etcher to flash the microSD card.
 
 ## Flash the image
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 

@@ -15,7 +15,7 @@ images: ["/components/img/components/sensor.svg"]
 A *sensor* is a device that can measure information about the outside world.
 Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Viam has two component types defined separately from *sensor* that you can use to implement sensors with specific functions:
 

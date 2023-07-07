@@ -28,7 +28,7 @@ This defines the spatial context within which the Motion Service operates.
 
 The Motion Service itself is enabled on the robot by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Because the Motion Service is enabled by default, you don't give it a `"name"` while configuring it.
 Use the name `"builtin"` to access the built-in Motion Service in your code with methods like `FromRobot()` that require a `ResourceName`.
@@ -46,7 +46,7 @@ Method Name | Description
 [`GetPose`](#getpose) | Get the current location and orientation of a component.
 [`MoveOnMap`](#moveonmap) | Move a component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
@@ -204,7 +204,7 @@ As the name of the method suggests, only the single component specified by `comp
 An example of when this may be useful is if you have implemented your own custom arm model, and wish to use your own motion planning for it.
 Implement `MoveToPosition` on that arm using whatever method you desire to plan motion to the specified pose, and then use `MoveSingleComponent` to pass the destination in the frame of any other robot component.
 
-{{% alert title="Note" color="note" %}} <a id="move-vs-movetoposition">
+{{% alert title="Caution" color="caution" %}} <a id="move-vs-movetoposition">
 
 If you call this method on an arm that uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling [`MoveToPosition`](/components/arm/#movetoposition) on the arm directly.
 Note that `arm.MoveToPosition` does not use `world_state`, so collision checking and obstacle avoidance *will not* be performed.

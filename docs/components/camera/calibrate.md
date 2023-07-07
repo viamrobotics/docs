@@ -31,7 +31,7 @@ pip3 install opencv-python
    You can use the **Export Screenshot** button on the camera panel of your robot's **Control** tab in the [Viam app](https://app.viam.com).
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
-   {{< alert title="Note" color="note" >}}
+   {{< alert title="Important" color="note" >}}
    In order for the calibration to be compatible with the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, take the images by running the camera using the RDK.
    {{< /alert >}}
 

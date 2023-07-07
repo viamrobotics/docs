@@ -11,8 +11,8 @@ tags: ["encoder", "components"]
 The `AMS-AS5048` encoder model supports AMS's [AS5048](https://ams.com/en/as5048a) encoder.
 This is an absolute encoder that uses an [I<sup>2</sup>C](/components/board/#i2cs) or [SPI](/components/board/#spis) interface to connect.
 
-{{% alert title="Note" color="note" %}}
-Any [motor](/components/motor/) using the `AMS-AS5048` encoder must have the `ticks_per_rotation` attribute configured as `1` because this encoder provides angular measurements directly.
+{{% alert title="Important" color="note" %}}
+Any [motor](/components/motor/) using the `AMS-AS5048` encoder must have its `ticks_per_rotation` attribute configured as `1` because this encoder provides angular measurements directly.
 {{% /alert %}}
 
 To configure the encoder, you must first [configure an I<sup>2</sup>C bus](/components/board/#i2cs) on your [board](/components/board/).

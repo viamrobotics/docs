@@ -22,7 +22,7 @@ Method Name | Description
 [`Sensors`](#sensors) | Returns a list of names of the available sensors.
 [`Readings`](#readings) | Returns a list of readings from a given list of sensors.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a robot configured, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
