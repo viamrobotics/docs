@@ -24,7 +24,6 @@ The [base component type](/components/base/) is useful for controlling mobile ro
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can [create a custom component as a modular resource](/extend/modular-resources/).
 
-
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
@@ -38,7 +37,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 ## Code used in this tutorial
 
 - [Module Generator](https://github.com/viam-labs/generator-viam-module)
-- [Robot Dog Base Code on GitHub](https://github.com/viam-labs/robot-dog-base)
+- [Robot Dog Base Code on GitHub](https://github.com/viam-labs/robot-dog-module)
 - [Freenove Robot Dog Kit for Raspberry Pi Code on GitHub](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/tree/master/Code)
 
 ## Hardware requirements
@@ -309,7 +308,7 @@ To create a custom base model, you need a script that defines what each base com
 Open your newly created <file>robotdog.py</file> file.
 It contains stubs of all the [base API methods](/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
 
-Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-base/blob/main/robotdog.py).
+Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/src/robotdog.py).
 It defines each method by specifying which corresponding commands to send to the Freenove dog server when the method is called.
 For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot dog server to stop the dog from moving:
 
