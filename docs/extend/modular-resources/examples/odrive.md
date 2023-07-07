@@ -93,7 +93,7 @@ Plug a USB-C to USB-A cable from the isolator to the ODrive.
 Wire the CANH and CANL pins from your board to your ODrive.
 Refer to your board and the [ODrive's pinout](https://docs.odriverobotics.com/v/latest/pinout.html) diagrams for the location of these pins.
 
-You must make a serial connection to set up your ODrive.
+You must make a serial connection to set up your ODrive. If CAN chains together multiple ODrives, only one at a time must have this serial connection for reconfiguration
 After setting up the ODrive, if you wish to use the `odrive-canbus` model, you can either leave the serial connection plugged in or remove it and leave only the CANH and CANL pins wired.
 
 Note that if you want to only use the CAN pins, you cannot specify an `"odrive_config_file"` in your Viam configuration.
