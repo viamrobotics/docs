@@ -64,6 +64,6 @@ To delete a tag, click the cross next to the corresponding label.
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/manage/ml/train-model/" size="small" %}}
-  {{% card link="/tutorials/projects/pet-treat-dispenser/" size="small" %}}
+  {{% card link="/manage/ml/train-model/" %}}
+  {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{< /cards >}}

@@ -370,8 +370,8 @@ This has implications for how motion is calculated, and what final configuration
 If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
-  {{% card link="/tutorials/services/constrain-motion/" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

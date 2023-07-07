@@ -560,7 +560,7 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
-  {{% card link="/services/motion" size="small" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/services/motion" %}}
 {{< /cards >}}
