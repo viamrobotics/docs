@@ -114,6 +114,7 @@ The arm component supports the following methods:
 | [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](#stop) | Stop the arm from moving. |
 | [IsMoving](#ismoving) | Get if the arm is currently moving. |
+| [Kinematics](#kinematics) | Get the kinematics information associated with the arm. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetEndPosition
@@ -401,6 +402,44 @@ myArm, err := arm.FromRobot(robot, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err := myArm.Stop(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Kinematics
+
+{{% alert title="Note" color="note" %}}
+This method is not yet available with the Viam Go SDK.
+{{% /alert %}}
+
+Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/internals/kinematic-chain-config/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes)): A tuple containing [the format](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat) of the arm's <file>.URDF</file> or <file>.json</file> kinematics file and the [byte](https://docs.python.org/3/library/stdtypes.html#bytes) contents of the file.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_kinematics).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
+
+# Get the kinematics information associated with the arm.
+kinematics := await my_arm.get_kinematics()
+
+# Get the format of the kinematics file.
+k_file = kinematics[0]
+
+# Get the byte contents of the file.
+k_bytes = kinematics[1]
+
 ```
 
 {{% /tab %}}
