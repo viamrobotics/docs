@@ -79,7 +79,7 @@ Additionally, make sure you have [enabled SPI communication on your Pi](/install
 
 {{% /alert %}}
 
-1. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
+4. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
 
 {{< tabs name="Connect your ODrive">}}
 {{% tab name="odrive-serial" %}}
@@ -166,7 +166,7 @@ Copy and paste the following JSON along with your module JSON depending on your 
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  // "modules": [ {"name": "odrive" ...  } ]
+  // "modules": [ {"name": "odrive" ...  } ] MODULE JSON
   "components": [
     {
       "model": "viam:motor:odrive-canbus",
@@ -251,9 +251,9 @@ To add an `odrive_config_file` and reconfigure your ODrive natively each time th
 
 1. Run `odrivetool backup-config config.json` to extract your configs to a file called `config.json`.
 See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
-1. `iq_msg_rate_ms` in the config defaults to `0`.
+2. `iq_msg_rate_ms` in the config defaults to `0`.
 You must set this to or around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
-1. If you add an `odrive_config_file` to an `odrive-canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
+3. If you add an `odrive_config_file` to an `odrive-canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
 
 An alternative to adding an `odrive_config_file` is running the command `odrivetool restore-config /path/to/config.json` in your terminal.
 
