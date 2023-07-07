@@ -19,7 +19,7 @@ You can use `extra` parameters with modular {{< glossary_tooltip term_id="resour
 For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM Service](/services/slam/).
 
 The `extra` parameters in that built-in resource type's [API](/extend/modular-resources/#apis) give users the option to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
-This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera).
+This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
 
 Send extra information in an API call in `extra` parameters as follows:
 
