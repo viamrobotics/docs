@@ -37,7 +37,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 ## Hardware requirements
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
 While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/extend/modular-resources/)-based projects.
 {{% /alert %}}
@@ -58,8 +58,8 @@ Before proceeding, [set up `viam-server` on your Raspberry Pi](/installation/pre
 
 Next, install the PiCAN 2 driver software [following these instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/).
 
-{{% alert title="Note" color="note" %}}
-If you restart your pi, you will need to bring up the CAN interface again, as the above linked instructions do not set this process up to be managed on system start.
+{{% alert title="Tip" color="tip" %}}
+If you restart your Pi, you will need to bring up the CAN interface again, as the above linked instructions do not set this process up to be managed on system start.
 {{% /alert %}}
 
 ### Hardware

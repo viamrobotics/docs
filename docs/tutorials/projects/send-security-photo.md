@@ -21,7 +21,7 @@ There are [breaking changes in the Vision Service](/appendix/release-notes/#25-a
 This tutorial has not yet been updated.
 {{< /alert >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 This tutorial is part of our built-in webcam projects series.
 For a similar project that integrates a Kasa smart plug, see [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/).

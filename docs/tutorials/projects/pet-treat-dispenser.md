@@ -358,7 +358,7 @@ To install the Python SDK on your Raspberry Pi, run the following command in you
 pip3 install --target=petfeeder viam-sdk python-vlc
 ```
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 If you want your robot to automatically run your code upon startup, it is important to install the package into the <file>petfeeder</file> folder because of how the Viam platform runs the process.
 {{< /alert >}}
 

@@ -160,7 +160,7 @@ These are generated at runtime, so there is no need to add anything to this fold
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 If this directory structure is not present at runtime, the SLAM Service creates it.
 
@@ -338,7 +338,7 @@ Change the **Refresh frequency** to your desired frequency.
 If in Live Data mode, move your webcam around slowly.
 Watch a map start to appear.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 It might take a couple of minutes before a map is displayed.
 Keep moving the camera slowly within your space and wait for the map to visualize.
 {{% /alert %}}

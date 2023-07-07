@@ -33,7 +33,7 @@ If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%
 </div>
 </div>
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 You must purchase the following hardware separately:
 
 - A Raspberry Pi 4

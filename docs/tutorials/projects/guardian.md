@@ -621,9 +621,8 @@ The main logic for the guardian robot:
 - loads a music file `guardian.mp3`
 - runs an infinite loop where it calls the `idle_and_check_for_living_creatures()` function and when a creature is found calls the `focus_on_creature()` function
 
-{{< alert title="Note" color="note" >}}
-
-Please copy a suitable music file to the directory where your code is running and name it `guardian.mp3`.
+{{< alert title="Important" color="note" >}}
+Copy a suitable music file to the directory where your code is running and name it `guardian.mp3`.
 {{< /alert >}}
 
 Replace your `main()` function with the following:

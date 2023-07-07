@@ -27,7 +27,7 @@ This tutorial is a good introduction to [Python](https://www.python.org/) or [Go
   {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
 </div>
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](/tutorials/get-started/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
 You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup/), [connected to the Viam app and set up `viam-server`](/installation/#install-viam-server), and built your circuit before proceeding.
@@ -62,7 +62,7 @@ You will need the following hardware, tools, and software to complete this proje
 In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
 Use which ever programming language you are most comfortable with.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Refer to the appropriate SDK documentation for SDK installation instructions.
 

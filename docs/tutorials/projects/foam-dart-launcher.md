@@ -34,7 +34,7 @@ Don’t forget to be careful and have fun!
 
 You will need the following hardware, software, tools, and consumables to complete this project:
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Important" color="note"%}}
 If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover.
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor.
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
@@ -69,7 +69,7 @@ If you use a different motor driver, refer to the manufacturer’s data sheet an
 A motor controller is a piece of hardware that takes digital signals from the Raspberry Pi and sends power to the motors accordingly.
 For this setup we have one dual motor controller for the two motors.
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Info" color="info" %}}
 If you have more than two motors you will likely need two motor controllers.
 {{% /alert %}}
 
@@ -111,7 +111,7 @@ The solenoid component actuates the foam dart launcher trigger.
 The relay works as a switch to turn on and off the solenoid.
 This allows us to activate the foam dart launcher with a GPIO pin on the board.
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Info" color="info" %}}
 We cannot directly power these components from GPIO pins, since there is a board limitation that restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
 Even the 3.3V and 5V power pins on the Pi supply are limited to about 1A.
 

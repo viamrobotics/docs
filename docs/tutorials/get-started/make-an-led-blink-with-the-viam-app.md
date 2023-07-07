@@ -138,7 +138,7 @@ You can play around with values **low** and **high** by setting them differently
 
 {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 The above image blinks at regular intervals, while yours will turn on and off when you set the values to **high** and **low** respectively.
 To make your LED blink at regular intervals, see [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/).
 {{< /alert >}}

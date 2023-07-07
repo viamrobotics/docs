@@ -141,8 +141,8 @@ Since you just created a new robot, your robot's main part is already defined.
 Multi-part robots also have one or more sub-parts representing additional computers running `viam-server`.
 If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](https://docs.viam.com/manage/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/services/motion/) on a laptop and connect that laptop as a sub-part to your robot.
 
-{{< alert title="Note" color="note" >}}
-Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or a Linux laptop running `viam-server`.
+{{< alert title="Tip" color="tip" >}}
+Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
 Use the parts drop-down menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
@@ -436,7 +436,7 @@ If the dimensions of your enclosure differ from ours, adjust your `obstacles.jso
 The obstacles for our arm are configured in reference to the "world" frame which is defined as a , which is a special frame that represents the starting point for all other frames in the robot's world.
 The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/services/motion/#move) call.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 If the arm is not mounted exactly perpendicular to the x/y axis of the enclosure, you can adjust the theta (_th_) of the arm within the arm component configuration by a number of degrees to compensate.
 Obstacles can then be configured as if the arm were straight in the enclosure.
 See the [frame system documentation](/services/frame-system/) for more information.

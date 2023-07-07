@@ -25,8 +25,9 @@ Also pay attention to your surroundings, double-check your code for correctness,
 Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
 The [Motion Service](/services/motion/) enables sophisticated movement involving one or many components of your robot.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
