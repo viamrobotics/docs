@@ -241,7 +241,7 @@ Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make 
 
 {{% alert title="Tip" color="tip" %}}
 
-The `"odrive-canbus"` type allows you to connect multiple ODrives without providing a `serial_number` as long as you have not defined any `odrive_config_file`.
+The `"odrive-canbus"` type allows you to connect multiple ODrives without providing a `serial_number` as long as you have not defined any `odrive_config_file` once the drive has been configured with `odrivetool`.
 
 {{% /alert %}}
 
