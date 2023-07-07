@@ -4,7 +4,7 @@
   {{ range .Pages }}
     {{ if and (eq $p .Parent) (not .Draft) }}
       <a href="{{ .Permalink }}" title="{{.Title}}"><li>
-        {{if .Params.icon}}<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" loading="lazy" width="50" height="50">{{end}}
+        {{if .Params.icon}}<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" loading="lazy" width="45" height="45">{{end}}
         <p>{{ .LinkTitle }}</p>
       </li></a>
       {{ end }}
