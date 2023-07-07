@@ -451,20 +451,27 @@ END MARKETING CSS
 }
 
 // images in hover cards at the top have a margin before text
-.hover-card > a > .hover-card-img, .hover-card > a > video {
+.hover-card > a > .hover-card-img {
   margin-bottom: 1rem;
 }
 
-.hover-card > img {
-  margin-bottom: 7px !important;
+// For some reason video elements don't calculate the height correctly. This adjusts for that.
+.hover-card-video {
+  border: 1px solid white;
+  margin-bottom: 0.5rem;
+}
+.hover-card.landing > .hover-card-img {
+  padding-bottom: 7px;
 }
 
-.hover-card > img, .hover-card * video, .hover-card * .hover-card-img > img, .hover-card * .hover-card-icon > img {
-  border: 1px solid #000;
+
+.hover-card > img, .hover-card * video, .hover-card * .hover-card-img > img, .hover-card * .hover-card-icon > img, .hover-card.landing > .hover-card-img > img {
   object-fit: cover;
   width: 100%;
   max-width: 100%;
   aspect-ratio: 4 / 3;
+  margin-bottom: 0 !important;
+  border: 1px solid black;
 }
 
 // Sizes and types
@@ -542,6 +549,8 @@ END MARKETING CSS
       margin: 0 1rem 1rem 0;
       margin: auto;
       padding-right: 1rem;
+      display: flex;
+      flex: 1;
     }
 
     .hover-card-icon {

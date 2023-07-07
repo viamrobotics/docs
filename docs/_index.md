@@ -149,7 +149,9 @@ sitemap:
             Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
           </p>
         </div>
-        <img src="img/code.png" alt="Robot code" loading="lazy">
+        <div class="hover-card-img">
+          <img src="img/code.png" alt="Robot code" loading="lazy">
+        </div>
       </div>
       <div class="col hover-card landing pink">
         <div>
