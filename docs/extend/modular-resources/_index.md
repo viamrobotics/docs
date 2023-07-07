@@ -583,7 +583,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board/). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. For example, a [board](/components/board/). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -653,6 +653,10 @@ With one [exception](#limitations), modular resources function like built-in res
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
 The Viam RDK handles dependency management.
+
+If you choose to rely on explicit dependencies, you'll need to add dependencies in the `depends_on` field when you configure an instance of your modular resource.
+You can instead define your module with implicit dependencies as shown in the [example code above](#code-your-module).
+See the `validate_config` and `reconfigure` functions in the Python example, or `init()` in the Go example.
 
 #### Start-up
 
