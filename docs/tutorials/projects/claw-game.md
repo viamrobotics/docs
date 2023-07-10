@@ -17,7 +17,7 @@ date: "29 May 2023"
 cost: 8910
 ---
 
-{{<gif webm_src="../../img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
+{{<gif webm_src="/tutorials/img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
 
 Create your own version of the famous arcade claw machine game using a robotic arm, an arcade claw grabber, and some fun items to pick from.
 Fine-tune every intricate detail, from the precision of each grab, to the claw's strength, and even the aesthetics of your control interface.

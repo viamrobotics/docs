@@ -27,7 +27,7 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 Once your reservation starts and the system has configured your rover, click **TRY MY ROVER** from the [**TRY VIAM** page](https://app.viam.com/try) or, if you were queuing, click **Take Me to My Rover** in the confirmation email.
 
-{{<gif webm_src="../img/rover-reservation.webm" mp4_src="../img/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
+{{<gif webm_src="/try-viam/img/rover-reservation.webm" mp4_src="/try-viam/img/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
 
 ![Navigation bar of the Viam app with the Viam Rover time remaining indicator.](../img/navigation-bar.png)
 

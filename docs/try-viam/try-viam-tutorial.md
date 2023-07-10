@@ -116,7 +116,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 ![The left motor running at 20% power and forwards and right motor running at 80% power and backwards.](../img/try-viam/motors-running.png)
 
-{{<gif webm_src="../img/try-viam/rotating.webm" mp4_src="../img/try-viam/rotating.mp4" alt="The robot rotating with the left motor running at 20% power and forwards and right motor running at 80% power and backwards.">}}
+{{<gif webm_src="/try-viam/img/try-viam/rotating.webm" mp4_src="/try-viam/img/try-viam/rotating.mp4" alt="The robot rotating with the left motor running at 20% power and forwards and right motor running at 80% power and backwards.">}}
 
 #### Board control
 
