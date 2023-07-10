@@ -518,7 +518,7 @@ The `imgproc` shortcode will:
 For more information on the resize options see [Image Processing](https://gohugo.io/content-management/image-processing/).
 
 {{< alert title="Important" color="note" >}}
-Only specify `declaredimensions` if the image is **not** responsive, that means if it doesn't resize.
+Only specify `declaredimensions` if the image is **not** responsive (if it doesn't resize).
 
 If it does resize, use the largest size the image can take up as the image to `resize` the image to.
 {{< /alert >}}
