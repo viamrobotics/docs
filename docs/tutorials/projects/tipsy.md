@@ -63,7 +63,7 @@ Follow the wiring diagram below to wire together your Raspberry Pi, buck convert
 
 ![Tipsy wiring diagram](../../img/tipsy/wiring-diagram.png)
 
-The Tipsy robot uses an assembled Scuttle Rover base with some modifications: Tipsy does not use the camera that came with the Scuttle Rover because the cable is not long enough to allow the camera to be attached to the top of the robot.
+The Tipsy robot uses an assembled SCUTTLE Rover base with some modifications: Tipsy does not use the camera that came with the SCUTTLE Rover because the cable is not long enough to allow the camera to be attached to the top of the robot.
 Additionally, Tipsy also does not use the encoders or the batteries that come with the kit.
 These changes are reflected in the wiring diagram.
 
