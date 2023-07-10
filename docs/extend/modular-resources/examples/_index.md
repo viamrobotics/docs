@@ -3,7 +3,7 @@ title: "Modular Resource Configuration Examples"
 linkTitle: "Examples"
 childTitleEndOverwrite: "Modular Resource Example"
 description: "Tutorials and repositories with modular resources configuration examples."
-weight: 10
+weight: 70
 type: "docs"
 no_list: true
 image: "/tutorials/img/intermode/rover_outside.png"

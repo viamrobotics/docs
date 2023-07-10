@@ -1,0 +1,532 @@
+---
+title: "Code your own modules to create custom resources"
+linkTitle: "Create"
+weight: 30
+type: "docs"
+tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
+no_list: true
+---
+
+The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, [components](/components/), and [services](/services/), into any robot running on Viam.
+
+<!-- With modular resources, you can:
+
+- Create new models of built-in component or service types
+- Create brand new resource types -->
+
+A common use-case for modular resources is to create a new model using an existing Viam API.
+However, you can also create and expose new API types using modular resources.
+
+{{% alert title="Modules vs. modular resources" color="tip" %}}
+
+A configured *module* can make one or more *modular resources* available for configuration.
+
+{{% /alert %}}
+
+## Create a custom modular resource
+
+If you are creating your own modular resource, you need to [code a module](#code-your-module) in Go or Python, using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
+
+Follow these steps:
+
+1. Code a new resource model.
+2. Code a main program that serves as the entry point to the module.
+3. [Compile or package](#compile-the-module-into-an-executable) the module into an executable.
+
+Then, follow these steps to use your modular resource with your robot:
+
+1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
+2. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
+3. [Add a new component or service](#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot.
+
+## Code your module
+
+{{% alert title="Note" color="note" %}}
+
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/#models) as a new model, `"mybase"`:
+
+The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
+
+{{% /alert %}}
+
+Use [Viam's Go or Python SDKs](/program/apis/) to code a module that implements at least one new model or type of {{< glossary_tooltip term_id="resource" text="resource" >}}:
+
+{{< tabs >}}
+{{% tab name="Define a New Model of a Built-In Resource Type" %}}
+
+1. Code a new resource model implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
+
+2. Code a main program to serve as the entry point to the module.
+Use the module helpers provided by your chosen SDK to import your custom model and API into the main program, and register the new resource model with the module helper SDK.
+
+{{% /tab %}}
+{{% tab name="Define a New Type of Resource" %}}
+
+1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then generate code in Python or Go and use the generated code to implement the higher level server and client functions required.
+
+2. Code at least one model of this new resource.
+Make sure to implement every method required in your API definition.
+
+3. Code a main program to serve as the entry point to the module.
+Use the module helpers provided by your chosen SDK to import your custom models and APIs into the main program, and register the new resource models with the module helper SDK.
+
+{{% /tab %}}
+{{% /tabs %}}
+
+### Code a new resource model
+
+[Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
+
+<file>mybase.go</file>
+
+{{%expand "Click to view example code from a Go module implementing a custom model of the base component built-in resource, mybase, and registering the new model and API" %}}
+
+``` go {class="line-numbers linkable-line-numbers"}
+// Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
+// It extends the built-in resource type Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
+
+package mybase
+
+import (
+    "context"
+    "fmt"
+    "math"
+
+    "github.com/edaniels/golog"
+    "github.com/golang/geo/r3"
+    "github.com/pkg/errors"
+    "go.uber.org/multierr"
+
+    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/components/generic"
+    "go.viam.com/rdk/components/motor"
+    "go.viam.com/rdk/config"
+    "go.viam.com/rdk/registry"
+    "go.viam.com/rdk/resource"
+    "go.viam.com/rdk/utils"
+)
+
+// Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
+// acme = namespace, demo = family, mybase = model name.
+var (
+    Model            = resource.NewModel("acme", "demo", "mybase")
+    errUnimplemented = errors.New("unimplemented")
+)
+
+// Constructor
+func newBase(ctx context.Context, deps registry.Dependencies, config config.Component, logger golog.Logger) (interface{}, error) {
+    b := &MyBase{logger: logger}
+    err := b.Reconfigure(config, deps)
+    return b, err
+}
+
+// Defines what the JSON configuration should look like
+type MyBaseConfig struct {
+    LeftMotor  string `json:"motorL"`
+    RightMotor string `json:"motorR"`
+}
+
+// Validates JSON configuration
+func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
+    if cfg.LeftMotor == "" {
+        return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
+    }
+    if cfg.RightMotor == "" {
+        return nil, fmt.Errorf(`expected "motorR" attribute for mybase %q`, path)
+    }
+
+    return []string{cfg.LeftMotor, cfg.RightMotor}, nil
+}
+
+// Handles attribute reconfiguration
+func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies) error {
+    base.left = nil
+    base.right = nil
+    baseConfig, ok := cfg.ConvertedAttributes.(*MyBaseConfig)
+    if !ok {
+        return utils.NewUnexpectedTypeError(baseConfig, cfg.ConvertedAttributes)
+    }
+    var err error
+
+    base.left, err = motor.FromDependencies(deps, baseConfig.LeftMotor)
+    if err != nil {
+        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.LeftMotor)
+    }
+
+    base.right, err = motor.FromDependencies(deps, baseConfig.RightMotor)
+    if err != nil {
+        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.RightMotor)
+    }
+
+    // Stopping motors at reconfiguration
+    return multierr.Combine(base.left.Stop(context.Background(), nil), base.right.Stop(context.Background(), nil))
+}
+
+// Attributes of the base
+type MyBase struct {
+    generic.Echo
+    left   motor.Motor
+    right  motor.Motor
+    logger golog.Logger
+}
+
+// Implement the methods the Viam RDK defines for the base API (rdk:component:base)
+
+// MoveStraight: unimplemented
+func (base *MyBase) MoveStraight(ctx context.Context, distanceMm int, mmPerSec float64, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
+// Spin: unimplemented
+func (base *MyBase) Spin(ctx context.Context, angleDeg, degsPerSec float64, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
+// SetVelocity: unimplemented
+func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
+// SetPower: sets the linear and angular velocity of the left and right motors on the base
+func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+    // stop the base if absolute value of linear and angular velocity is less than .01
+    if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
+        return base.Stop(ctx, extra)
+    }
+
+    // use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors
+    sum := math.Abs(linear.Y) + math.Abs(angular.Z)
+    err1 := base.left.SetPower(ctx, (linear.Y-angular.Z)/sum, extra)
+    err2 := base.right.SetPower(ctx, (linear.Y+angular.Z)/sum, extra)
+    return multierr.Combine(err1, err2)
+}
+
+// Stop: stops the base from moving by stopping both motors
+func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
+    base.logger.Debug("Stop")
+
+    err1 := base.left.Stop(ctx, extra)
+    err2 := base.right.Stop(ctx, extra)
+
+    return multierr.Combine(err1, err2)
+}
+
+// IsMoving: checks if either motor on the base is moving with motors' IsPowered
+func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
+    for _, m := range []motor.Motor{base.left, base.right} {
+        isMoving, _, err := m.IsPowered(ctx, nil)
+        if err != nil {
+            return false, err
+        }
+        if isMoving {
+            return true, err
+        }
+    }
+    return false, nil
+}
+
+// Stop the base from moving when closing a client's connection to the base
+func (base *MyBase) Close(ctx context.Context) error {
+    return base.Stop(ctx, nil)
+}
+
+// Register the component with the Go SDK
+func init() {
+    registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
+
+    // VALIDATION: Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method.
+    // The Validate method will automatically be called in RDK's module manager to validate MyBase's configuration and register implicit dependencies.
+    config.RegisterComponentAttributeMapConverter(
+        base.Subtype,
+        Model,
+        func(attributes config.AttributeMap) (interface{}, error) {
+            var conf MyBaseConfig
+            return config.TransformAttributeMapToStruct(&conf, attributes)
+        },
+        &MyBaseConfig{})
+}
+```
+
+{{% /expand%}}
+
+[Python SDK](https://python.viam.dev/):
+
+<file>my_base.py</file>
+
+{{%expand "Click to view example code from a Python module implementing a custom model of the base component built-in resource, mybase" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
+
+from typing_extensions import Self
+
+from viam.module.types import Reconfigurable
+from viam.proto.app.robot import ComponentConfig
+from viam.proto.common import ResourceName, Vector3
+from viam.resource.base import ResourceBase
+from viam.resource.types import Model, ModelFamily
+
+from viam.components.base import Base
+from viam.components.motor import Motor
+
+class MyBase(Base, Reconfigurable):
+    """
+    MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
+
+    It inherits from the built-in resource type Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
+
+    Additionally, it specifies a constructor function ``MyBase.new_base`` which confirms to the ``resource.types.ResourceCreator`` type required for all models.
+    """
+
+    # Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
+    # acme = namespace, demo = family, mybase = model name.
+    MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
+
+    left: Motor # Left motor
+    right: Motor # Right motor
+
+    # Constructor
+    @classmethod
+    def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        base = cls(config.name)
+        base.reconfigure(config, dependencies)
+        return base
+
+    # Validates JSON Configuration
+    @classmethod
+    def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
+        left_name = config.attributes.fields["motorL"].string_value
+        if left_name == "":
+            raise Exception("A motorL attribute is required for a MyBase component.")
+        right_name= [config.attributes.fields["motorR"].string_value]
+        if right_name == "":
+            raise Exception("A motorR attribute is required for a MyBase component.")
+        return [left_name, right_name]
+
+    # Handles attribute reconfiguration
+    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+        left_name = config.attributes.fields["motorL"].string_value
+        right_name = config.attributes.fields["motorR"].string_value
+
+        left_motor = dependencies[Motor.get_resource_name(left_name)]
+        right_motor = dependencies[Motor.get_resource_name(right_name)]
+
+        self.left = cast(Motor, left_motor)
+        self.right = cast(Motor, right_motor)
+
+    """ Implement the methods the Viam RDK defines for the base API (rdk:component:base) """
+
+    # move_straight: unimplemented
+    async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # spin: unimplemented
+    async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # set_velocity: unimplemented
+    async def set_velocity( self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        pass
+
+    # set_power: set the linear and angular velocity of the left and right motors on the base
+    async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+
+        # stop the base if absolute value of linear and angular velocity is less than .01
+        if abs(linear.y) < 0.01 and abs(angular.z) < 0.01:
+            return self.stop(extra=extra, timeout=timeout)
+
+        # use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors
+        sum = abs(linear.y) + abs(angular.z)
+
+        self.left.set_power(power=((linear.y - angular.z) / sum), extra=extra, timeout=timeout)
+        self.right.set_power(power=((linear.y + angular.z) / sum), extra=extra, timeout=timeout)
+
+    # stop: stop the base from moving by stopping both motors
+    async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        self.left.stop(extra=extra, timeout=timeout)
+        self.right.stop(extra=extra, timeout=timeout)
+
+    # is_moving: check if either motor on the base is moving with motors' is_powered
+    async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
+        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
+```
+
+{{% /expand%}}
+
+<file>_\_init__.py</file>
+
+{{%expand "Click to view example code from a Python module registering the mybase custom model and API" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+"""
+This file registers the MyBase model with the Python SDK.
+"""
+
+from viam.components.motor import *
+from viam.components.base import Base
+from viam.resource.registry import Registry, ResourceCreatorRegistration
+
+from .my_base import MyBase
+
+Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
+```
+
+{{% /expand%}}
+
+### Code a main program that serves as the entry point file to the module
+
+[Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
+
+<file>main.go</file>
+
+{{%expand "Click to view example code from a Go module's entry point file initializing the mybase custom model and API from the registry" %}}
+
+``` go {class="line-numbers linkable-line-numbers"}
+// Package main is a module which serves the mybase custom model.
+package main
+
+import (
+    "context"
+
+    "github.com/edaniels/golog"
+
+    "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/module"
+    "go.viam.com/utils"
+
+    // NOTE: You must update the following line to import your local package "mybase"
+    "go.viam.com/rdk/examples/customresources/models/mybase"
+)
+
+func main() {
+    // NewLoggerFromArgs will create a golog.Logger at "DebugLevel" if
+    // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
+    utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
+}
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+    myMod, err := module.NewModuleFromArgs(ctx, logger)
+    if err != nil {
+        return err
+    }
+
+    // Models and APIs add helpers to the registry during their init().
+    // They can then be added to the module here.
+    err = myMod.AddModelFromRegistry(ctx, base.API, mybase.Model)
+    if err != nil {
+        return err
+    }
+
+    err = myMod.Start(ctx)
+    defer myMod.Close(ctx)
+    if err != nil {
+        return err
+    }
+    <-ctx.Done()
+    return nil
+}
+```
+
+{{% /expand%}}
+
+[Python SDK](https://python.viam.dev/):
+
+<file>main.py</file>
+
+{{%expand "Click to view example code from a Python module's entry point file initializing the mybase custom model and API from the registry" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import sys
+
+from viam.components.base import Base
+from viam.module.module import Module
+from .my_base import MyBase
+
+async def main(address: str):
+    """This function creates and starts a new module, after adding all desired resources.
+    Resources must be pre-registered. For an example, see the `__init__.py` file.
+    Args:
+        address (str): The address to serve the module on
+    """
+    module = Module(address)
+    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    await module.start()
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        raise Exception("Need socket path as command line argument")
+
+    asyncio.run(main(sys.argv[1]))
+
+```
+
+{{% /expand%}}
+
+{{% alert title="Important" color="note" %}}
+
+You must define all functions belonging to a built-in resource type if defining a new model.
+Otherwise, the class won’t instantiate.
+
+- If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
+- If you are using the Go SDK, return `errUnimplemented`.
+- Additionally, return any values designated in the function's return signature, typed correctly.
+
+{{% /alert %}}
+
+### Compile the module into an executable
+
+To [add a module](/modular-resources/#configure-your-module) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) entry point file that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+
+Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+If using the Go SDK, use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) and obtain a single executable for your module:
+
+- Navigate to your module directory in your terminal.
+- Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
+- Run `ls` in your module directory to find the executable, which should have been named after the module directory.
+
+Expand the [Go module examples](#code-your-module) to view <file>main.go</file> for an example of this.
+<file>main.go</file> adds the custom model <file>mybase.go</file> from the resource registry, while <file>mybase.go</file> defines and registers the module.
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
+
+For example:
+
+``` shell
+#!/bin/sh
+cd `dirname $0`
+
+# Be sure to use `exec` so that termination signals reach the python process,
+# or handle forwarding termination signals manually
+exec python3 -m <your-module-directory-name>.<main-program-filename-without-extension> $@
+```
+
+To make this shell script executable, run the following command in your terminal:
+
+``` shell
+sudo chmod +x <FILEPATH>/<FILENAME>
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
+Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
+
+<!-- TODO: more info on providing socket command line argument -->
+
+## Next Steps
+
+Follow [these instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) to use your custom resource with your robot.
+
+Make your executable accessible to `viam-server`, [configure your new module](/extend/modular-resources/#configure-your-module), and [configure your modular resource](/extend/modular-resources/#configure-your-modular-resource).
+
+Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
