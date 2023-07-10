@@ -8,9 +8,8 @@ description: "The key concepts behind how Viam's resource APIs and models are un
 no_list: true
 ---
 
-`viam-server` [manages](#modular-resource-management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot like resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
+`viam-server` [manages](#management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot like resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
 Two key concepts exist across all Viam resources, both built-in and modular, that make this flexible management possible: uniquely namespaced resource [*APIs*](#apis) and [*models*](#models).
-<!-- Read through [this section](#management) to learn more about modular resource management. -->
 
 Resource APIs are uniquely namespaced by colon-delimited-triplets in the form of `namespace:type:subtype`, and models in the form of `namespace:family:name`:
 
