@@ -27,7 +27,7 @@ Then, follow one of these [example tutorials](/extend/modular-resources/examples
 If you want to create your own module providing custom resource models or new resource types as modular resources, follow [these instructions](/extend/modular-resources/create/) instead.
 After that, follow [these steps](/extend/modular-resources/configure/) to configure the module and modular resource.
 
-Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
+Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
 {{< cards >}}
     {{% card link="/extend/modular-resources/examples/rplidar" %}}

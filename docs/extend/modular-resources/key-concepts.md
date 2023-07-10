@@ -11,8 +11,6 @@ no_list: true
 `viam-server` [manages](#management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot like resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
 Two key concepts exist across all Viam resources, both built-in and modular, that make this flexible management possible: uniquely namespaced resource [*APIs*](#apis) and [*models*](#models).
 
-Resource APIs are uniquely namespaced by colon-delimited-triplets in the form of `namespace:type:subtype`, and models in the form of `namespace:family:name`:
-
 If you create your [own module](/extend/modular-resources/create/), you must register any new APIs and models you define in your model with Viam's model registry in the appropriate namespaces to [configure](/extend/modular-resources/configure/) the modular resource on your robot.
 
 ### APIs
