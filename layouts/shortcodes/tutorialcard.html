@@ -11,12 +11,7 @@
       <a href="{{.RelPermalink}}">
           {{ if .Params.webmSrc }}
           <div class="hover-card-video">
-            <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" class="lozad">
-              <source data-src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
-              <source data-src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
-              There should have been a video here but your browser does not seem
-              to support it.
-            </video>
+            {{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "lozad" ) }}
           </div>
           {{ end }}
           {{ if .Params.image }}

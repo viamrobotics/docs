@@ -23,7 +23,7 @@ Before running any code, ensure your robotic arm has enough space and that there
 Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
 {{< /alert >}}
 
-{{<gif webm_src="../../videos/motion_constraints.webm" mp4_src="../../videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
+{{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 

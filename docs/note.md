@@ -264,10 +264,10 @@ For regular videos that should use the video shortcode as follows:
 
 ```md
 <!-- remove space -->
-{ {<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">} }
+{ {<video webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart" poster="/img/heart.jpg">} }
 ```
 
-{{<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">}}
+{{<video webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart" poster="/img/heart.jpg">}}
 
 We use `webm` and `mp4` source files for videos because they are generally smaller.
 The poster is an image that gets loaded as a preview.
@@ -337,19 +337,23 @@ Instead, we use a video div with two sources:
 
 ```md
 <!-- remove space -->
-{ {<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+{ {<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
 ```
 
-{{<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+{{<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
+
+**Place the files into the `static` directory.**
 
 To create the `webm` and `mp4` source files, you need to convert the video/gif you have.
 **The resulting `webm` and `mp4` file should always be less than 1MB.**
 A good first thing to do is to upload the video to [Ezgif](https://ezgif.com) and reduce the file size by:
 
+- cutting the video
+- cropping the video
 - changing the size
-- changing the quality
-- using the optimize function to remove every second frame and then adjusting the speed
-- using the frames editor to remove frames that are similar and holding the previous frame longer instead
+- (on GIFs) changing the quality
+- (on GIFs) using the optimize function to remove every second frame and then adjusting the speed
+- (on GIFs) using the frames editor to remove frames that are similar and holding the previous frame longer instead
 
 Once you have a gif that is reasonably small, run these commands:
 
@@ -376,7 +380,7 @@ The first command:
 
 - uses the `libx264` codec
 - uses the `yuv420p` pixel format
-- scales the video to `400px` width
+- scales the video to `400px` width - if you are working with screenshots that need to be bigger, adjust this number.
 - changes the bitrate to `300k` - you can change this value but check that the result is usable
 - removes the audiotrack with `-an`
 

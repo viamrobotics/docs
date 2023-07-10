@@ -126,7 +126,7 @@ sitemap:
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
         </div>
-        {{<gif webm_src="img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
+        {{<gif webm_src="/img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
       </div>
       <div class="col hover-card landing purple">
         <div>
@@ -139,7 +139,7 @@ sitemap:
             <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
           </ol>
         </div>
-        {{<gif webm_src="img/blink.webm" mp4_src="img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
+        {{<gif webm_src="/img/blink.webm" mp4_src="/img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
         </div>
       </div>
       <div class="col hover-card landing teal">
@@ -158,7 +158,7 @@ sitemap:
           <h4>Community</h4>
           <p style="text-align: left;">Have questions, or want to meet other people working on robots? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
         </div>
-        {{<gif webm_src="img/heart.webm" mp4_src="img/heart.mp4" alt="A robot drawing a heart">}}
+        {{<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
       </div>
     </div>
 </div>
