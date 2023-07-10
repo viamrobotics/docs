@@ -39,13 +39,13 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": <"your-roboclaw-motor-name">,
+      "name": "<your-roboclaw-motor-name>",
       "type": "motor",
       "model": "roboclaw",
       "attributes": {
         "serial_path": <"your-serial-path">,
-        "motor_channel": <#>,
-        "serial_baud_rate": <#>
+        "motor_channel": <int>,
+        "serial_baud_rate": <int>
       },
       "depends_on": []
     }
