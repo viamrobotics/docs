@@ -675,7 +675,7 @@ Secure them using T-slotted framing structural brackets.
 Next, add the wired Raspberry Pi, motor driver, and 12V battery to the base.
 
 You can use the 3D-printed holders that come with the assembled Scuttle base for the Raspberry Pi and the motor driver.
-You can also print holders based on Scuttle begins from [grabcad](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
+You can also print holders based on Scuttle designs from [grabcad](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
 
 Secure the 12V battery to the bottom using velcro tape or other tape, and secure the sides using T-slotted brackets.
 
