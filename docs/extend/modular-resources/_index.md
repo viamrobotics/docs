@@ -23,7 +23,7 @@ With one exception, the {{< glossary_tooltip term_id="rdk" text="RDK">}} [manage
 
 To get started adding custom resources to your robot, learn the [key concepts](/extend/modular-resources/key-concepts/) behind Viam's resource APIs that make the module system possible.
 
-Then, follow one of the [example tutorials](/extend/examples/) to add previously built modules and modular resources to your robot.
+Then, follow one of the [example tutorials](/extend/modular-resources/examples/) to add previously built modules and modular resources to your robot.
 
 If you want to create your own module providing custom resource models or new resource types as modular resources, follow [these instructions](/extend/modular-resources/create/) instead.
 Then, follow [these steps](/extend/modular-resources/configure/) to configure the module and modular resource.
