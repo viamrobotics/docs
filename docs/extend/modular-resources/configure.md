@@ -74,16 +74,18 @@ Add these properties to your module's configuration:
 
 ### Configure your modular resource
 
-Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module by adding new components or services configured with your modular resources' new type or [model](#models).
+Once you have configured a module as part of your robot configuration, you can instantiate any number of instances of a modular resource made available by that module by adding new components or services configured with your modular resources' new type or [model](/extend/modular-resources/key-concepts/#models).
+
+<!-- sg TODO: make triplets a tooltip? -->
 
 The following properties are available for modular resources:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the [API](#apis) (the first part of the [API](#apis) triplet). |
-| `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
+| `namespace` | string | **Required** | The namespace of the [API](/extend/modular-resources/key-concepts/#apis) (the first part of the [API](#apis) triplet). |
+| `type` | string | **Required** | The subtype of the [API](/extend/modular-resources/key-concepts/#apis) (the third part of the [API](#apis) triplet). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
+| `model` | string | **Required** | The [full triplet](/extend/modular-resources/key-concepts/#models) of the modular resource. |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board/). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
