@@ -22,7 +22,7 @@ cost: 770
 Tipsy makes it easy to replenish everyone's drinks at a party.
 Designed with ultrasonic sensors and cameras, Tipsy is equipped to detect the presence of obstacles and people in its surrounding area.
 While avoiding the obstacles with the ultrasonic sensor distance measurements, it identifies the people using an ML model and object detection and moves towards them with ease.
-Once it reaches the person, Tipsy allows people to grab a drink without ever having to leave their spot, since Tipsy brings a bucket of ice-cold drinks within arm's reach.
+Tipsy allows people to grab a drink without ever having to leave their spot by bringing a bucket of ice-cold drinks within arm's reach.
 
 This tutorial will teach you how to build your own drink-carrying robot.
 
