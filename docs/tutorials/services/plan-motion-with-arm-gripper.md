@@ -423,7 +423,7 @@ async def main():
     print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
     # Command a joint position move: small adjustment to the last joint
-    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
+    cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
     await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
@@ -537,7 +537,7 @@ func main() {
   fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
   // Command a joint position move: small adjustment to the last joint
-  cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
+  cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
   err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
   if err != nil {
     fmt.Println(err)
