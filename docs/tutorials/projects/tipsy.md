@@ -22,7 +22,7 @@ cost: 770
 Tipsy makes it easy to replenish everyone's drinks at a party.
 Designed with ultrasonic sensors and cameras, Tipsy is equipped to detect the presence of obstacles and people in its surrounding area.
 While avoiding the obstacles with the ultrasonic sensor distance measurements, it identifies the people using a ML model and object detection and moves towards them with ease.
-Once it reaches the person, Tipsy allows people to grab a drink without ever having to leave their spot, since Tipsy brings a bucket of ice cold drinks within arm's reach.
+Tipsy allows people to grab a drink without ever having to leave their spot by bringing a bucket of ice cold drinks within arm's reach.
 
 This tutorial will teach you how to build your own drink-carrying robot.
 
@@ -32,8 +32,8 @@ This tutorial will teach you how to build your own drink-carrying robot.
 
 To build your own drink-carrying robot, you need the following hardware:
 
-* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), setup following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
-* Assembled [Scuttle rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
+* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
+* Assembled [SCUTTLE rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
 * [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
 These are for the height of the robot.
 * [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 2 single 4 slot rail, 30 mm square, hollow, 12 inches long.
