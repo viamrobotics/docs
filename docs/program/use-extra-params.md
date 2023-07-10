@@ -14,10 +14,10 @@ How to [utilize](#utilize) and [define](#define) the `extra` parameters that man
 
 ## Utilize
 
-Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not explicitly specified as a parameter in the [built-in resource type's API specification](/extend/modular-resources/#apis).
+Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not explicitly specified as a parameter in the [built-in resource type's API specification](/extend/modular-resources/key-concepts/#apis).
 
 To do this, you must code your own modified implementation of the resource type's API for a model.
-See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
+See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and instructions on [creating a custom resource](/extend/modular-resources/create/) with a modified API.
 
 An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/apis/), the sensor component's [Readings](/components/sensor/#readings):
 

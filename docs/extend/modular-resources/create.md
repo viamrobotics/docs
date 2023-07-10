@@ -29,19 +29,13 @@ Follow these steps:
 2. Code a main program that serves as the entry point to the module.
 3. [Compile or package](#compile-the-module-into-an-executable) the module into an executable.
 
-Then, follow [these instructions](/extend/modular-resources/configure) to use your modular resource with your robot.
-
-<!-- follow these steps to use your modular resource with your robot:
-
-1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
-2. [Add a **module**](/extend/modular-resources/configure/#configure-your-module) referencing this executable to the configuration of your robot.
-3. [Add a new component or service](/extend/modular-resources/configure/#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot. -->
+Then, follow [these instructions](/extend/modular-resources/configure/) to use your modular resource with your robot.
 
 ## Code your module
 
 {{% alert title="Note" color="note" %}}
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/#models) as a new model, `"mybase"`:
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
@@ -522,7 +516,7 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Next Steps
 
-Follow [these instructions](/extend/modular-resources/configure) to add your custom resource to your robot.
+Follow [these instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
 
 Make your [executable accessible](/extend/modular-resources/configure/#make-sure-viam-server-can-access-your-executable), [configure your new module](/extend/modular-resources/configure/#configure-your-module), and [configure your modular resource](/extend/modular-resources/configure/#configure-your-modular-resource).
 

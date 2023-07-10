@@ -10,7 +10,7 @@ no_list: true
 
 Configure a module on your robot to make one or more modular resources available for configuration.
 
-If you want to create your own modular resource, you must first follow [these steps](/extend/modular-resources/create) to code your own module and generate an executable.
+If you want to create your own modular resource, you must first follow [these steps](/extend/modular-resources/create/) to code your own module and generate an executable.
 If you are using a pre-built modular resource, make sure you install the module and determine the filename of [the module's executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
 
 Follow these steps to configure the module and modular resource:
