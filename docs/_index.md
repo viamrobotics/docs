@@ -73,12 +73,6 @@ sitemap:
         <h6>Raspberry Pi Zero 2W</h6>
       </a>
     </li>
-    <li id="c1_slide10">
-      <a href="components/board/nanopi/">
-        <img src="installation/img/thumbnails/nanopi.png" alt="FriendlyElec's NanoPi Mini Board" width="100%" loading="lazy">
-        <h6>FriendlyElec NanoPi</h6>
-      </a>
-    </li>
     <li id="c1_slide11">
       <a href="components/board/numato/">
         <img src="installation/img/thumbnails/numato.png" alt="Numato GPIO Modules" width="100%" loading="lazy">
