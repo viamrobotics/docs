@@ -133,7 +133,7 @@ sitemap:
         <h4>Configure your robots</h4>
         <div style="text-align: left">
           <ol style="padding-inline-start: 1.1rem">
-            <li><a href="manage/configuration/">Configure your robot<a> or <a href="manage/fleet/">fleet</a></li>
+            <li><a href="manage/configuration/">Configure your robot</a> or <a href="manage/fleet/">fleet</a></li>
             <li><a href="installation/">Install Viam on your robot</a></li>
             <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
             <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
