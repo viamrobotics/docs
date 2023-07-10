@@ -889,7 +889,8 @@ td > ul, td > ol {
 
 .td-content > .code-toolbar,
 .td-content > .table,
-.td-content > div {
+.td-content > div,
+.td-content > img {
   @include media-breakpoint-up(lg) {
       max-width: 80%;
   }
@@ -929,4 +930,9 @@ ul.sectionlist > a > li:hover {
   max-width: 400px;
   padding: 1rem;
   margin: 1rem;
+}
+
+.row-no-margin {
+  display: flex;
+  flex-wrap: wrap;
 }

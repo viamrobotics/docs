@@ -16,7 +16,12 @@
         {{ end }}
         {{ if .Params.image }}
           <div class="hover-card-img">
-            <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{ $img := resources.GetMatch .Params.image }}
+            {{if $img }}
+              {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x webp" "alt" (.Params.imageAlt) "style" "") }}
+            {{ else }}
+              <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{end}}
           </div>
         {{ end }}
         {{ if .Params.icon }}

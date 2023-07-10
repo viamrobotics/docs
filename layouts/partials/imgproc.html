@@ -1,0 +1,17 @@
+<!-- THIS ONLY WORKS FOR PICTURES IN THE ASSETS FOLDER -->
+{{ $img := resources.GetMatch .src }}
+{{ $sizeInBytes := len $img.Content }}
+{{ $sizeInBytes := div $sizeInBytes 1000 }}
+{{ if gt $sizeInBytes 1000 }}
+  {{ warnf "Size of picture %s was %d kB - please use a smaller image" $img.RelPermalink $sizeInBytes  }}
+{{ end }}
+{{if $img }}
+  {{ $img := $img.Resize (printf "%s webp" .resize) }}
+  {{if .declaredimensions}}
+      <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ .alt }}" loading="lazy" style="{{ .style }}">
+    {{ else }}
+      <img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" loading="lazy" style="{{ .style }}">
+    {{ end }}
+{{ else }}
+  {{ errorf "Image not found - is it in the assets folder? %s" .src }}
+{{end}}

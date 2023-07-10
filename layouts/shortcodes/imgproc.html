@@ -1,0 +1,5 @@
+{{ $style := ""}}
+{{ if (.Get "style") }}
+    {{ $style := (.Get "style")}}
+{{ end }}
+{{ partial "imgproc.html" (dict "src" (.Get "src") "resize" (.Get "resize") "alt" (.Get "alt") "style" $style "declaredimensions" (.Get "declaredimensions") ) }}

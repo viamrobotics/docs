@@ -5,8 +5,8 @@ childTitleEndOverwrite: "Try Viam"
 weight: 20
 no_list: true
 type: docs
-icon: "/installation/img/thumbnails/install.png"
-images: ["/installation/img/thumbnails/install.png"]
+icon: "/installation/thumbnails/install.png"
+images: ["/installation/thumbnails/install.png"]
 aliases:
     - /installation/prepare/
     - /installation/macos-install/
@@ -30,9 +30,9 @@ You can run `viam-server` on any device that runs:
 - **any** Linux 64-bit operating system (except FUSE)
 - macOS
 
-<div class="container text-left td-max-width-on-larger-screens">
-    <div class="row">
-        <img src="img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
+<div class="text-left td-max-width-on-larger-screens">
+    <div class="row-no-margin">
+        {{<imgproc src="installation/thumbnails/pc.png" alt="Desktop computer" resize="100x" width="100px" >}}
         <div class="col">
             <p> If you plan to run <code>viam-server</code> on your laptop or desktop with a Linux or Mac operating system, no special prep is required. Proceed to <a href="#install-viam-server">Install <code>viam-server</code></a>. </p>
         </div>
