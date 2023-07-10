@@ -17,6 +17,8 @@ Modular resources can be either:
 1. New models of built-in [components](/components/) or [services](/services/) that implement the built-in resource type's API through Viam's [client SDKs](/program/sdks/).
 2. Brand new types of resources that define their own API in [protocol buffers](https://developers.google.com/protocol-buffers).
 
+## Get started
+
 To get started adding custom resources to your robot, learn the [key concepts](/extend/modular-resources/key-concepts) behind Viam's resource APIs that make the module system possible.
 
 Then, follow one of the [example tutorials](/extend/examples) to add previously built modules and modular resources to your robot.

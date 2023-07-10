@@ -1,7 +1,7 @@
 ---
 title: "Code your own modules to create custom resources"
 linkTitle: "Create"
-weight: 30
+weight: 20
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
@@ -9,11 +9,6 @@ no_list: true
 ---
 
 The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, [components](/components/), and [services](/services/), into any robot running on Viam.
-
-<!-- With modular resources, you can:
-
-- Create new models of built-in component or service types
-- Create brand new resource types -->
 
 A common use-case for modular resources is to create a new model using an existing Viam API.
 However, you can also create and expose new API types using modular resources.
@@ -525,8 +520,8 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Next Steps
 
-Follow [these instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) to use your custom resource with your robot.
+Follow [these instructions](/extend/modular-resources/configure) to add your custom resource to your robot.
 
-Make your executable accessible to `viam-server`, [configure your new module](/extend/modular-resources/#configure-your-module), and [configure your modular resource](/extend/modular-resources/#configure-your-modular-resource).
+Make your [executable accessible](/extend/modular-resources/configure/#make-sure-viam-server-can-access-your-executable), [configure your new module](/extend/modular-resources/configure/#configure-your-module), and [configure your modular resource](/extend/modular-resources/configure/#configure-your-modular-resource).
 
-Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
+After configuring a modular resource, test it with the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
