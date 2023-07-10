@@ -264,10 +264,10 @@ For regular videos that should use the video shortcode as follows:
 
 ```md
 <!-- remove space -->
-{ {<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">} }
+{ {<video webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart" poster="/img/heart.jpg">} }
 ```
 
-{{<video webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart" poster="../img/heart.jpg">}}
+{{<video webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart" poster="/img/heart.jpg">}}
 
 We use `webm` and `mp4` source files for videos because they are generally smaller.
 The poster is an image that gets loaded as a preview.
@@ -337,10 +337,10 @@ Instead, we use a video div with two sources:
 
 ```md
 <!-- remove space -->
-{ {<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+{ {<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
 ```
 
-{{<gif webm_src="../img/heart.webm" mp4_src="../img/heart.mp4" alt="A robot drawing a heart">}}
+{{<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
 
 To create the `webm` and `mp4` source files, you need to convert the video/gif you have.
 **The resulting `webm` and `mp4` file should always be less than 1MB.**

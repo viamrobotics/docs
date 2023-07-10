@@ -24,7 +24,7 @@ This will allow you to write code to make an LED connected to the GPIO of a Rasp
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
+  {{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
 </div>
 
 {{% alert title="Tip" color="tip" %}}
@@ -285,7 +285,7 @@ go run blink.go
 And, if all goes well, you should see your LED blinking on and off again every second!
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
+  {{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
 </div>
 
 You can exit this program by pressing **CTRL + C** in your terminal window.

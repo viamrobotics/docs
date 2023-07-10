@@ -13,7 +13,7 @@ aliases:
 Viam is a general robotics platform that can run on any hardware.
 The easiest way to try Viam is to [rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in New York:
 
-{{<gif webm_src="img/rover-reservation.webm" mp4_src="img/rover-reservation.mp4" alt="Rover reservation management page" max-width="800px">}}
+{{<gif webm_src="/try-viam/img/rover-reservation.webm" mp4_src="/try-viam/img/rover-reservation.mp4" alt="Rover reservation management page" max-width="800px">}}
 
 ## Get started with Viam
 
