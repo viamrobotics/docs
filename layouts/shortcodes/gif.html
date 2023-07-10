@@ -2,7 +2,7 @@
   {{ $f := os.Stat (.Get "webm_src") }}
   {{ $sizeInBytes := div $f.Size 1000 }}
   {{ if gt $sizeInBytes 1000 }}
-    {{ warnf "Size of video file %s was %d kB - please reduce file size" $f.Name $sizeInBytes  }}
+    {{ warnf "Size of video file %s was %d kB - please reduce file size" (.Get "webm_src") $sizeInBytes  }}
   {{ end }}
 {{ else }}
   {{warnf "Please use absolute file path: %s" (.Get "webm_src")}}
@@ -11,7 +11,7 @@
   {{ $f := os.Stat (.Get "mp4_src") }}
   {{ $sizeInBytes := div $f.Size 1000 }}
   {{ if gt $sizeInBytes 1000 }}
-    {{ warnf "Size of video file %s was %d kB - please reduce file size" $f.Name $sizeInBytes  }}
+    {{ warnf "Size of video file %s was %d kB - please reduce file size" (.Get "mp4_src") $sizeInBytes  }}
   {{ end }}
 {{end}}
 <div>
