@@ -11,22 +11,21 @@ aliases:
 ---
 
 The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}} into any robot running on Viam.
+The {{< glossary_tooltip term_id="rdk" text="RDK">}} [manages](/extend/modular-resources/key-concepts/) these modular resources like the resource types and models that are built-in.
 
-Modular resources can be either:
+Modular resources can be:
 
 1. New models of built-in [components](/components/) or [services](/services/) that implement the built-in resource type's API through Viam's [client SDKs](/program/apis/).
 2. Brand new types of resources that define their own API in [protocol buffers](https://developers.google.com/protocol-buffers).
-
-With one exception, the {{< glossary_tooltip term_id="rdk" text="RDK">}} [manages](/extend/modular-resources/key-concepts/) modular resources like built-in resources.
 
 ## Get Started
 
 To get started adding custom resources to your robot, learn the [key concepts](/extend/modular-resources/key-concepts/) behind Viam's resource APIs that make the module system possible.
 
-Then, follow one of the [example tutorials](/extend/modular-resources/examples/) to add previously built modules and modular resources to your robot.
+Then, follow one of these [example tutorials](/extend/modular-resources/examples/) to add previously built modules and modular resources to your robot.
 
 If you want to create your own module providing custom resource models or new resource types as modular resources, follow [these instructions](/extend/modular-resources/create/) instead.
-Then, follow [these steps](/extend/modular-resources/configure/) to configure the module and modular resource.
+After that, follow [these steps](/extend/modular-resources/configure/) to configure the module and modular resource.
 
 Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
 
