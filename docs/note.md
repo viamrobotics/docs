@@ -510,7 +510,6 @@ Though the Markdown syntax (`![ALT text](file)`) does render, please use the fol
 
 {{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">}}
 
-
 The `imgproc` shortcode will:
 - convert the image into the `webp` format which is more efficient and resize the image
 - resize the image in the current format and set that image as a backup in case `webp` is not supported
