@@ -498,7 +498,7 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 
 **Place images in the `assets` folder.**
 
-While you can include images using markdown syntax (`![ALT text](file)`), please use the following shortcode (without the slashes) instead:
+Though the Markdown syntax (`![ALT text](file)`) does render, please use the following shortcode (without the slashes) instead:
 
 ```md
 \{\{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">\}\}
