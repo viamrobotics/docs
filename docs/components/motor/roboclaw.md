@@ -13,6 +13,8 @@ The `roboclaw` model of the motor component supports [standard brushed DC motors
 {{< alert title="Note" color="note" >}}
 
 You must set up your RoboClaw before configuring it.
+Make note of the baud rate that you set up during this process.
+The default is `38400`.
 Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-getting-started-guide/) to do so.
 
 {{< /alert >}}
@@ -43,7 +45,7 @@ Edit and fill in the attributes as applicable.
       "type": "motor",
       "model": "roboclaw",
       "attributes": {
-        "serial_path": <"your-serial-path">,
+        "serial_path": "<your-serial-path>",
         "motor_channel": <int>,
         "serial_baud_rate": <int>
       },
@@ -84,7 +86,7 @@ The following attributes are available for `roboclaw` motors:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `serial_path` | string | **Required** | Serial path of the `roboclaw` controller's USB connection to your robot's filesystem. Run `ls /dev/tty*` in your terminal to find USB serial ports on Linux. <br> Example: `"/dev/ttyUSB0"` |
-| `serial_baud_rate` | int | **Required** | [Rate to send data](https://learn.sparkfun.com/tutorials/serial-communication) over the serial line. You cannot have multiple `roboclaw` motors with different baud rates. <br> Default: `38400` |
+| `serial_baud_rate` | int | Optional | [Rate to send data](https://learn.sparkfun.com/tutorials/serial-communication) over the serial line. This must match the baudrate you have set up using basicmicro's setup program. You cannot have multiple `roboclaw` motors with different baud rates. <br> Default: `38400` |
 | `motor_channel` | int | **Required** | Channel the motor is connected to on the controller. Must be `1` or `2`. |
 | `address` | int | Optional | Serial address of the controller. <br> Default: `128`  |
 | `ticks_per_rotation` | int | Optional | Number of full steps in a rotation. Update this if you connect [encoders](/components/encoder/) to your controller through its EN1 and EN2 pins. <br> Default: `0` |
