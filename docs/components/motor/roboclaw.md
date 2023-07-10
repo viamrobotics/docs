@@ -85,7 +85,7 @@ The following attributes are available for `roboclaw` motors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `serial_path` | string | **Required** | Serial path of the `roboclaw` controller's USB connection to your robot's filesystem. Run `ls /dev/tty*` in your terminal to find USB serial ports on Linux. <br> Example: `"/dev/ttyUSB0"` |
+| `serial_path` | string | **Required** | Serial path of the `roboclaw` controller's USB connection to your robot's filesystem. Run `ls /dev/serial/by-path` in your terminal to find USB serial ports on a Raspberry Pi. <br> Example: `"/dev/serial/by-path/usb-0:1.1:1.0"` |
 | `serial_baud_rate` | int | Optional | [Rate to send data](https://learn.sparkfun.com/tutorials/serial-communication) over the serial line. This must match the baudrate you have set up using basicmicro's setup program. You cannot have multiple `roboclaw` motors with different baud rates. <br> Default: `38400` |
 | `motor_channel` | int | **Required** | Channel the motor is connected to on the controller. Must be `1` or `2`. |
 | `address` | int | Optional | Serial address of the controller. <br> Default: `128`  |
