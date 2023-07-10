@@ -29,11 +29,13 @@ Follow these steps:
 2. Code a main program that serves as the entry point to the module.
 3. [Compile or package](#compile-the-module-into-an-executable) the module into an executable.
 
-Then, follow these steps to use your modular resource with your robot:
+Then, follow [these instructions](/extend/modular-resources/configure) to use your modular resource with your robot.
+
+<!-- follow these steps to use your modular resource with your robot:
 
 1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
-2. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
-3. [Add a new component or service](#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot.
+2. [Add a **module**](/extend/modular-resources/configure/#configure-your-module) referencing this executable to the configuration of your robot.
+3. [Add a new component or service](/extend/modular-resources/configure/#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot. -->
 
 ## Code your module
 
@@ -472,7 +474,7 @@ Otherwise, the class won’t instantiate.
 
 ### Compile the module into an executable
 
-To [add a module](/modular-resources/#configure-your-module) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) entry point file that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+To [add a module](/extend/modular-resources/configure/#configure-your-module) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) entry point file that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
