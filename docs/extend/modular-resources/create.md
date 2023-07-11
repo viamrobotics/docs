@@ -21,35 +21,28 @@ A configured *module* can make one or more *modular resources* available for con
 
 ## Create a custom modular resource
 
-If you are creating your own modular resource, you need to [code a module](#code-your-module) in Go or Python, using the module support libraries provided by the Python or Go [Viam SDK](/program/apis/).
+To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new model or type of {{< glossary_tooltip term_id="resource" text="resource" >}}:
 
-Follow these steps:
+<!-- Follow these steps:
 
-1. Code a new resource model.
-2. Code a main program that serves as the entry point to the module.
-3. [Compile or package](#compile-the-module-into-an-executable) the module into an executable.
-
-Then, follow [these instructions](/extend/modular-resources/configure/) to use your modular resource with your robot.
-
-## Code your module
-
-{{% alert title="Note" color="note" %}}
-
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
-
-The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
-
-{{% /alert %}}
-
-Use [Viam's Go or Python SDKs](/program/apis/) to code a module that implements at least one new model or type of {{< glossary_tooltip term_id="resource" text="resource" >}}:
+1. Code your resource model.
+Make sure any custom resource models included in your module are registered with the appropriate SDK.
+1. Code a main program that starts the module after adding your desired resource from the registry.
+This main program is the "entry point" to your module.
+1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point. -->
+<!-- 
+Then, follow [these instructions](/extend/modular-resources/configure/) to use your modular resource with your robot. -->
 
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
 
-1. Code a new resource model implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
+1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
+Import your custom model and API into the main program and register the new resource model with your chosen SDK's helper methods.
 
-2. Code a main program to serve as the entry point to the module.
-Use the module helpers provided by your chosen SDK to import your custom model and API into the main program, and register the new resource model with the module helper SDK.
+1. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
+This main program is the "entry point" to your module.
+
+1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 {{% /tab %}}
 {{% tab name="Define a New Type of Resource" %}}
@@ -58,14 +51,25 @@ Use the module helpers provided by your chosen SDK to import your custom model a
 
 2. Code at least one model of this new resource.
 Make sure to implement every method required in your API definition.
+Import your custom models and APIs into the main program and register the new resource models with your chosen SDK's helper methods.
 
-3. Code a main program to serve as the entry point to the module.
-Use the module helpers provided by your chosen SDK to import your custom models and APIs into the main program, and register the new resource models with the module helper SDK.
+3. Code a main program that starts the module after adding your desired resources from the registry.
+This main program is the "entry point" to your module.
+
+4. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 {{% /tab %}}
 {{% /tabs %}}
 
 ### Code a new resource model
+
+{{% alert title="Note" color="note" %}}
+
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
+
+The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
+
+{{% /alert %}}
 
 [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
 
@@ -511,8 +515,6 @@ sudo chmod +x <FILEPATH>/<FILENAME>
 
 You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
-
-<!-- TODO: more info on providing socket command line argument -->
 
 ## Next Steps
 

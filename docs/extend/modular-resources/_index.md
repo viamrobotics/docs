@@ -11,7 +11,7 @@ aliases:
 ---
 
 The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}} into any robot running on Viam.
-The {{< glossary_tooltip term_id="rdk" text="RDK">}} [manages](/extend/modular-resources/key-concepts/) these modular resources like the resource types and models that are built-in.
+The {{< glossary_tooltip term_id="rdk" text="RDK">}} [manages](/extend/modular-resources/key-concepts/) these modular resources like the resource types and models that are built-in to the kit.
 
 Modular resources can be:
 
