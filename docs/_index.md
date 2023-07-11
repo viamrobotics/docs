@@ -182,11 +182,11 @@ sitemap:
         <div>
         <h4>SDKs</h4>
         <ul class="sectionlist">
-        <a href="https://python.viam.dev/" target="_blank"><li><p>Python SDK</p></li></a>
-        <a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><li><p>Go SDK</p></li></a>
-        <a href="https://ts.viam.dev/" target="_blank"><li><p>TypeScript SDK</p></li></a>
-        <a href="https://cpp.viam.dev/" target="_blank"><li><p>C++ SDK (alpha)</p></li></a>
-        <a href="https://github.com/viamrobotics/viam-flutter-sdk" target="_blank"><li><p>Flutter SDK (alpha)</p></li></a>
+        <li><a href="https://python.viam.dev/" target="_blank"><div><p>Python SDK</p></div></a></li>
+        <li><a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><div><p>Go SDK</p></div></a></li>
+        <li><a href="https://ts.viam.dev/" target="_blank"><div><p>TypeScript SDK</p></div></a></li>
+        <li><a href="https://cpp.viam.dev/" target="_blank"><div><p>C++ SDK (alpha)</p></div></a></li>
+        <li><a href="https://github.com/viamrobotics/viam-flutter-sdk" target="_blank"><div><p>Flutter SDK (alpha)</p></div></a></li>
         </ul>
         </div>
     </div>

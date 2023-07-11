@@ -3,10 +3,14 @@
   {{ range (where .Site.Pages "Section" (.Get "sectiontitle")) }}
   {{ range .Pages }}
     {{ if and (eq $p .Parent) (not .Draft) }}
-      <a href="{{ .Permalink }}" title="{{.Title}}"><li>
-        {{if .Params.icon}}<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" loading="lazy" width="45" height="45">{{end}}
-        <p>{{ .LinkTitle }}</p>
-      </li></a>
+      <li>
+        <a href="{{ .Permalink }}" title="{{.Title}}">
+          <div>
+            {{if .Params.icon}}<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" loading="lazy" width="45" height="45">{{end}}
+            <p>{{ .LinkTitle }}</p>
+          </div>
+        </a>
+    </li>
       {{ end }}
     {{ end }}
 {{ end }}

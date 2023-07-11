@@ -902,9 +902,16 @@ ul.sectionlist {
   padding: 0;
 }
 
-ul.sectionlist > a > li {
-  width: 100%;
+ul.sectionlist > li {
   list-style-type: none;
+}
+
+ul.sectionlist > li > a {
+  text-decoration: none;
+}
+
+ul.sectionlist > li > a > div {
+  width: 100%;
   padding: 0.25rem 0rem;
   display: flex;
   flex-direction: row;
@@ -912,16 +919,16 @@ ul.sectionlist > a > li {
   height: 50px;
 }
 
-ul.sectionlist > a > li > img {
+ul.sectionlist > li * img {
   margin: 0rem;
 }
 
-ul.sectionlist > a > li > p {
+ul.sectionlist > li * p {
   margin-left: 0.75rem;
   margin-bottom: 0;
 }
 
-ul.sectionlist > a > li:hover {
+ul.sectionlist > li:hover {
   background-color: whitesmoke;
 }
 
