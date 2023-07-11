@@ -404,7 +404,7 @@ The `images` variable sets it to be the preview image on social platforms (for e
 Link previews do not support `webm` and `mp4` but they do support gifs.
 {{< /alert >}}
 
-### Add video command to terminal
+### Add video commands to terminal
 
 If you'd like to use commands like `webm2mp4` add this to your `.zshrc`:
 
@@ -492,4 +492,39 @@ ffmpeg -ss 00:00:05 -i ${vdirname}/${vfname}mp4 -frames:v 1 ${vdirname}/${vfname
 
 {{< alert title="Note" color="note" >}}
 The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
+{{< /alert >}}
+
+## Images
+
+**Place images in the `assets` folder.**
+
+Though the Markdown syntax (`![ALT text](file)`) does render, please use the following shortcode (without the slashes) instead:
+
+```md
+\{\{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">\}\}
+
+\{\{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">\}\}
+```
+
+{{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">}}
+
+{{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">}}
+
+The `imgproc` shortcode will:
+
+- convert the image into the `webp` format (which is more efficient) and resize the image
+- resize the image in the current format and set that image as a backup in case `webp` is not supported
+
+For more information on the resize options see [Image Processing](https://gohugo.io/content-management/image-processing/).
+
+{{< alert title="Important" color="note" >}}
+Only specify `declaredimensions` if the image is **not** responsive (if it doesn't resize).
+
+An example of this are the small board icons on the front page which should never be a different size than they are.
+The pictures in cards, however, need to resize because they change size based on the available screen space.
+Screenshot images are as big as they can be generally but on mobile they're smaller.
+
+Basically the only images that you'd want to use declaredimensions on are the ones that take up the same space on mobile as on desktop.
+
+If it does resize, use the largest size the image can take up as the image to `resize` the image to.
 {{< /alert >}}
