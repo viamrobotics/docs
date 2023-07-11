@@ -45,7 +45,7 @@ For model-specific configuration information, click on one of the following mode
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](#pwm)/[servo](/components/servo/) driver peripheral |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
-| other | Other boards can be used with Viam using modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
+| other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
 
 ## Attribute Configuration
 

@@ -73,13 +73,13 @@ sitemap:
         <h6>Raspberry Pi Zero 2W</h6>
       </a>
     </li>
-    <li id="c1_slide11">
+    <li id="c1_slide10">
       <a href="components/board/numato/">
         <img src="installation/img/thumbnails/numato.png" alt="Numato GPIO Modules" width="100%" loading="lazy">
         <h6>Numato GPIO Modules</h6>
       </a>
     </li>
-    <li id="c1_slide12">
+    <li id="c1_slide11">
       <a href="components/board/pca9685/">
         <img src="installation/img/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" width="100%" loading="lazy">
         <h6>PCA9686 I<sup>2</sup>C Interface</h6>
@@ -96,9 +96,8 @@ sitemap:
     <li><a href="#c1_slide7">NVIDIA Jetson AGX Orin</a></li>
     <li><a href="#c1_slide8">NVIDIA Jetson Xavier NX</a></li>
     <li><a href="#c1_slide9">Raspberry Pi Zero 2W</a></li>
-    <li><a href="#c1_slide10">FriendlyElec NanoPi</a></li>
-    <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
-    <li><a href="#c1_slide12">PCA9686 I<sup>2</sup>C Interface</a></li>
+    <li><a href="#c1_slide10">Numato GPIO Modules</a></li>
+    <li><a href="#c1_slide11">PCA9686 I<sup>2</sup>C Interface</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
