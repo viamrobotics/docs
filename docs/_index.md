@@ -119,7 +119,7 @@ sitemap:
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
         </div>
-        {{<gif webm_src="/img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
+        {{<gif webm_src="/img/rover.webm" mp4_src="/img/rover.mp4" alt="A Viam Rover moving about">}}
       </div>
       <div class="col hover-card landing purple">
         <div>
@@ -143,7 +143,7 @@ sitemap:
           </p>
         </div>
         <div class="hover-card-img">
-          <img src="img/code.png" alt="Robot code" loading="lazy">
+          <img src="/img/code.png" alt="Robot code" loading="lazy">
         </div>
       </div>
       <div class="col hover-card landing pink">
