@@ -23,37 +23,27 @@ A configured *module* can make one or more *modular resources* available for con
 
 To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new model or type of {{< glossary_tooltip term_id="resource" text="resource" >}}:
 
-<!-- Follow these steps:
-
-1. Code your resource model.
-Make sure any custom resource models included in your module are registered with the appropriate SDK.
-1. Code a main program that starts the module after adding your desired resource from the registry.
-This main program is the "entry point" to your module.
-1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point. -->
-<!-- 
-Then, follow [these instructions](/extend/modular-resources/configure/) to use your modular resource with your robot. -->
-
 {{< tabs >}}
 {{% tab name="Define a New Model of a Built-In Resource Type" %}}
 
 1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
 Import your custom model and API into the main program and register the new resource model with your chosen SDK's helper methods.
 
-1. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
+2. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
-1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
+3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 {{% /tab %}}
 {{% tab name="Define a New Type of Resource" %}}
 
-1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then generate code in Python or Go and use the generated code to implement the higher level server and client functions required.
+1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then [generate code](https://grpc.io/docs/languages/python/generated-code/) in Python or Go and use the generated code to implement the higher level server and client functions required.
 
-2. Code at least one model of this new resource.
+2. [Code at least one model](#code-a-new-resource-model) of this new resource.
 Make sure to implement every method required in your API definition.
 Import your custom models and APIs into the main program and register the new resource models with your chosen SDK's helper methods.
 
-3. Code a main program that starts the module after adding your desired resources from the registry.
+3. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
 4. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
