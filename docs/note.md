@@ -524,7 +524,7 @@ An example of this are the small board icons on the front page which should neve
 The pictures in cards, however, need to resize because they change size based on the available screen space.
 Screenshot images are as big as they can be generally but on mobile they're smaller.
 	
-So basically the only images that you'd want to use declaredimensions on are the ones that take up the same space on mobile as on desktop.
+Basically the only images that you'd want to use declaredimensions on are the ones that take up the same space on mobile as on desktop.
 	
 If it does resize, use the largest size the image can take up as the image to `resize` the image to.
 {{< /alert >}}
