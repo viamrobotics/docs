@@ -100,9 +100,11 @@
     min-height: 130px;
 }
 
-#board-carousel ul li a {
-    text-decoration: none;
-    padding: 0rem 0.8rem;
+#board-carousel ul li a p {
+    font-size: .833rem!important;
+    line-height: 1.0625rem!important;
+    color: black;
+    font-weight: 600;
 }
 
 #board-carousel ul li img {
