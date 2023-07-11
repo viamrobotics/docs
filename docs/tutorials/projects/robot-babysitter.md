@@ -34,13 +34,18 @@ This tutorial will teach you how to build your own singing robot babysitter.
 
 To build your own singing robot babysitter, you need the following hardware:
 
-* Laptop (uses webcam and speakers)
+* A computer with a webcam and speakers.
+We used a Macbook.
 
-make sure viam-server is on your robot.
+Make sure viam-server is on your robot.
 
 ### Capture data
 
-Configure a webcam with data capture:
+Add a [camera](/components/camera/) of model [`webcam`](/components/camera/webcam) to your robot's configuration.
+
+Then, follow these instructions [to add a data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your robot and [configure data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on the camera.
+
+The configuration of your robot should look similar to the following:
 
 ``` json
 {
