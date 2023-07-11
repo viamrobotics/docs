@@ -109,3 +109,46 @@ Once you have configured data capture and cloud sync, you can [view](../../manag
 
 You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
 You can also [upload and use existing models](../../manage/ml/upload-model/).
+
+## API
+
+The Data Management Service supports the following methods:
+
+Method Name | Description
+----------- | -----------
+[`Sync`](#sync) | Sync data stored on the robot to the cloud.
+
+{{% alert title="Tip" color="tip" %}}
+
+The following code examples assume that you have a robot configured with a Data Management Service called `"my_data_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+
+{{% /alert %}}
+
+### Sync
+
+Sync data stored on the robot to the cloud.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+
+```go {class="line-numbers linkable-line-numbers"}
+data, err := datamanager.FromRobot(robot, "my_data_service")
+
+// Sync data stored on the robot to the cloud.
+err := data.Sync(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
