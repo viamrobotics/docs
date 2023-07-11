@@ -94,7 +94,8 @@ Try to get 50 images of each puzzle piece.
 
 ### Tag data
 
-Add tags for each of the puzzle pieces. I used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”. I tagged 50 images for each shape.
+Add tags for each of the puzzle pieces.
+I used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”. I tagged 50 images for each shape.
 
 ### Train a model
 
@@ -102,7 +103,7 @@ Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 
 ### Configure classifier robot
 
-[Deploy the model](/services/ml/#deploy) to the robot and configure a vision service to use this model.
+[Deploy the model](/services/ml/#deploy) to the robot and [configure a vision service](/services/vision) of model `mlmodel` to use this model.
 
 ``` json
 {
