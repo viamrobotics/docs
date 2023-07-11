@@ -475,7 +475,7 @@ If using the Go SDK, use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_p
 - Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
 - Run `ls` in your module directory to find the executable, which should have been named after the module directory.
 
-Expand the [Go module examples](#code-your-module) to view <file>main.go</file> for an example of this.
+Expand the [Go module code](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) to view <file>main.go</file> for an example of this.
 <file>main.go</file> adds the custom model <file>mybase.go</file> from the resource registry, while <file>mybase.go</file> defines and registers the module.
 
 {{% /tab %}}
