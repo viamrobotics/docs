@@ -519,12 +519,12 @@ For more information on the resize options see [Image Processing](https://gohugo
 
 {{< alert title="Important" color="note" >}}
 Only specify `declaredimensions` if the image is **not** responsive (if it doesn't resize).
-	
+
 An example of this are the small board icons on the front page which should never be a different size than they are.
 The pictures in cards, however, need to resize because they change size based on the available screen space.
 Screenshot images are as big as they can be generally but on mobile they're smaller.
-	
+
 Basically the only images that you'd want to use declaredimensions on are the ones that take up the same space on mobile as on desktop.
-	
+
 If it does resize, use the largest size the image can take up as the image to `resize` the image to.
 {{< /alert >}}
