@@ -38,7 +38,7 @@ Get the `"name"` of a resource.
 **Returns:**
 
 - [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your robot.
-For example, an [Arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ``` python
 my_arm = Arm.from_robot(robot, "my_arm")
@@ -57,7 +57,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): The named resource if it exists on your robot.
-For example, an [Arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 my_arm = arm.FromRobot(robot, "my_arm")
