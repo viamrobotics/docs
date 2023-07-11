@@ -62,9 +62,7 @@ Services are the software packages that provide our robots with cool and powerfu
 
 <img src="../../img/scuttle-gamepad/pi-game-create-service.png" alt="Create service builder" />
 
-<li>The Viam app does not add any JSON attributes to the Base Remote Control configuration.
-
-Please add the following Attributes:
+Copy and paste the following into the empty **Attributes** field:
 </OL>
 
 ```json {class="line-numbers linkable-line-numbers"}
