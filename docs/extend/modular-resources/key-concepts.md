@@ -4,7 +4,7 @@ linkTitle: "Concepts"
 weight: 10
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "The key concepts behind how Viam's resource APIs and models are uniquely namespaced, modular resource management, and limitations with the RDK."
+description: "The key concepts behind how Viam's resource APIs and models are uniquely namespaced and modular resource management with the RDK."
 no_list: true
 ---
 
@@ -54,7 +54,7 @@ For example:
 
 ### Management
 
-With one [exception](#limitations), modular resources function like built-in resources:
+Modular resources function like built-in resources:
 
 #### Dependency Management
 
