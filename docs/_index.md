@@ -74,18 +74,12 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide10">
-      <a href="components/board/nanopi/">
-        {{<imgproc src="installation/thumbnails/nanopi.png" alt="FriendlyElec's NanoPi Mini Board" resize="x60" declaredimensions=true >}}
-        <h6>FriendlyElec NanoPi</h6>
-      </a>
-    </li>
-    <li id="c1_slide11">
       <a href="components/board/numato/">
         {{<imgproc src="installation/thumbnails/numato.png" alt="Numato GPIO Modules" resize="x60" declaredimensions=true >}}
         <h6>Numato GPIO Modules</h6>
       </a>
     </li>
-    <li id="c1_slide12">
+    <li id="c1_slide11">
       <a href="components/board/pca9685/">
         {{<imgproc src="installation/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" resize="x60" declaredimensions=true >}}
         <h6>PCA9686 I<sup>2</sup>C Interface</h6>
@@ -102,9 +96,8 @@ sitemap:
     <li><a href="#c1_slide7">NVIDIA Jetson AGX Orin</a></li>
     <li><a href="#c1_slide8">NVIDIA Jetson Xavier NX</a></li>
     <li><a href="#c1_slide9">Raspberry Pi Zero 2W</a></li>
-    <li><a href="#c1_slide10">FriendlyElec NanoPi</a></li>
-    <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
-    <li><a href="#c1_slide12">PCA9686 I<sup>2</sup>C Interface</a></li>
+    <li><a href="#c1_slide10">Numato GPIO Modules</a></li>
+    <li><a href="#c1_slide11">PCA9686 I<sup>2</sup>C Interface</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
@@ -126,7 +119,7 @@ sitemap:
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
         </div>
-        {{<gif webm_src="/img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
+        {{<gif webm_src="/img/rover.webm" mp4_src="/img/rover.mp4" alt="A Viam Rover moving about">}}
       </div>
       <div class="col hover-card landing purple">
         <div>
