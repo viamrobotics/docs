@@ -54,7 +54,7 @@ For example:
 
 ### Management
 
-Modular resources function like built-in resources:
+The Robot Development Kit (RDK) `viam-server` provides automatically manages modular resources to function like built-in resources:
 
 #### Dependency Management
 
