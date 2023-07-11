@@ -94,22 +94,6 @@ If the robot loses connectivity and remains disconnected, data capture can event
 Currently, Viam does not safeguard against this.
     {{< /alert >}}
 
-## Next steps
-
-To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
-Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
-
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
-
-### Accessing and exporting data
-
-Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
-
-### Machine Learning
-
-You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
-You can also [upload and use existing models](../../manage/ml/upload-model/).
-
 ## API
 
 The Data Management Service supports the following methods:
@@ -126,6 +110,12 @@ Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) f
 {{% /alert %}}
 
 ### Sync
+
+{{% alert title="Important" color="tip" %}}
+
+This method is not yet available in the Viam Python SDK.
+
+{{% /alert %}}
 
 Sync data stored on the robot to the cloud.
 
@@ -152,3 +142,19 @@ err := data.Sync(context.Background())
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Next Steps
+
+To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
+Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
+
+For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
+
+### Access and Export Data
+
+Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
+
+### Train and Deploy Machine Learning
+
+You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
+You can also [upload and use existing models](../../manage/ml/upload-model/).
