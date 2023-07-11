@@ -25,7 +25,7 @@ In the other SDKs, resource APIs implement but do not inherit these base require
 
 ### FromRobot
 
-Get the `"name"` of a resource.
+Get a resource configured on a robot by `"name"`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -79,7 +79,8 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 
 **Returns:**
 
-- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): Your named resource. For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): Your named resource.
+For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript
 const myArmClient = new VIAM.ArmClient(robot, "my_arm");
