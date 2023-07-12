@@ -1,5 +1,5 @@
 ---
-title: "Integrate Modular Resources into your robot"
+title: "Integrate Modular Resources into your Robot"
 linkTitle: "Modular Resources"
 weight: 10
 type: "docs"
