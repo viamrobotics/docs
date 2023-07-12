@@ -199,7 +199,7 @@ The code in `src/viam/examples/mlmodel/example_audio_classification_client.cpp` 
 
 1. The client then populates an input tensor named `sample` as a `tensor_view` over the provided sample data.
    The tensor must be named according to the configured value under `tensor_name_remappings` in your robot configuration.
-   If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `sample` is already pre-populated for you.
+   If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
 
 1. The client invokes the `infer` method provided by the `MLModelService` custom module, providing it with the `sample` input tensor data it generated earlier.
 
@@ -207,13 +207,13 @@ The code in `src/viam/examples/mlmodel/example_audio_classification_client.cpp` 
 
 1. The client validates the result, including its expected type: a vector of `float` values.
    The expected output must be defined under `tensor_name_remappings` in your robot configuration for validation to succeed.
-   If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `categories` is already pre-populated for you.
+   If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `categories` was pre-populated for you in your generated robot configuration.
 
 1. If a labels file was provided, labels are read in as a vector of `string` values and the top 5 scores are associated with their labels.
 
 1. Finally, the client runs 100 rounds of inference using the determined label and score pairs, and returns the results of the rounds, including mean and variance values.
 
-Similarly, the custom module that provides the `MLModelService` model can be found at `src/viam/examples/modules/example_mlmodelservice_tflite.cpp` and also offers rich comments explaining its features and considerations.
+Similarly, the custom module that provides the `MLModelService` module can be found at `src/viam/examples/modules/example_mlmodelservice_tflite.cpp` and also offers rich comments explaining its features and considerations.
 
 ## Troubleshooting
 
