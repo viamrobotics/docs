@@ -79,7 +79,7 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 
 **Returns:**
 
-- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): Your named resource.
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your robot.
 For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript
