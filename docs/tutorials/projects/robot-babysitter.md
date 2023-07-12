@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-images: ["/tutorials/img/tipsy/tipsy-preview.gif"]
-videoAlt: "Tipsy robot carrying drinks"
+# images: ["/tutorials/img/tipsy/tipsy-preview.gif"]
+videoAlt: "A demonstration of the singing robot babysitter is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
 webmSrc: "/tutorials/img/robot-babysitter/robot_babysitter.webm"
 mp4Src: "/tutorials/img/robot-babysitter/robot_babysitter.mp4"
 authors: [ "Tess Avitabile" ]
@@ -14,40 +14,86 @@ languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
 level: "Beginner"
 date: "21 April 2023"
-# cost: 770
+# cost: 0 (laptop)
 ---
-
-<!-- <img src="../../img/tipsy/tipsy.jpg" alt="Tipsy robot carrying drinks" class="alignright" width="300px">
- -->
 
 {{<gif webm_src="../../img/robot-babysitter/robot_babysitter.webm" mp4_src="../../img/robot-babysitter/robot_babysitter.mp4" alt="A demonstration of the singing robot babysitter is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 When I started at Viam, Eliot told me the best way to test the product is to try to automate something I do in my life with a robot.
 
-As a parent of a 3-year-old and a 1-year-old, I’m often presented with a toy and asked to sing a song about it.
+As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
+When Viam's ML Model service was released, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not at home.
+As I created this babysitting program myself, I was able to customize it to recognize my kid's exact toys and sing the songs I wanted it to in my voice.
+
+<!-- TODO: some more info here about different options possible? -->
 
 This tutorial will teach you how to build your own singing robot babysitter.
 
-## Requirements
-
-### Hardware
+## Set up your Robot Babysitter
 
 To build your own singing robot babysitter, you need the following hardware:
 
-* A computer with a webcam and speakers.
-We used a Macbook.
+* A computer with a webcam and speakers
 
-Make sure viam-server is on your robot.
+This tutorial uses a Macbook.
+You can use any computer with a Viam-compatible operating system that meets these requirements, but you will have to modify the code to program the robot to play songs if not using MacOs.
 
-### Capture data
+Make sure you [prepare your computer](/installation/prepare/) and create a new robot in [the Viam app](https://app.viam.com) before starting this tutorial.
+Follow [this guide](/installation/#install-viam-server) to install `viam-server` on your computer and connect to the corresponding robot through [the Viam app](https://app.viam.com).
 
-Add a [camera](/components/camera/) of model [`webcam`](/components/camera/webcam) to your robot's configuration.
+## Part 1: Train your ML Model with pictures of toys
 
-Then, follow these instructions [to add a data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your robot and [configure data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on the camera.
+### Configure your webcam to capture data
 
-The configuration of your robot should look similar to the following:
+Navigate to your robot's page on the app and click on the **Config** tab.
 
-``` json
+#### camera
+
+First, add the camera on your computer as a [camera](/components/camera/) component by creating a new component with **type** `camera` and **model** `webcam`:
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+``` json {class="line-numbers linkable-line-numbers"}
+"components": [
+   {
+     "model": "webcam",
+     "attributes": {},
+     "depends_on": [],
+     "name": "<your-camera-name>",
+     "type": "camera"
+   }
+ ]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+``` json {class="line-numbers linkable-line-numbers"}
+"components": [
+   {
+     "model": "webcam",
+     "attributes": {},
+     "depends_on": [],
+     "name": "cam",
+     "type": "camera"
+   }
+ ]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Give your camera the name "`cam`" to match the name used in the code of this tutorial.
+You do not need to configure any attributes for the camera.
+
+#### data capture
+
+Now that you've added your camera, follow these instructions [to add a data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your robot and [configure data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on the camera.
+
+At this point, the full **Raw JSON** configuration of your robot should look similar to the following:
+
+``` json {class="line-numbers linkable-line-numbers"}
 {
  "components": [
    {
@@ -88,6 +134,8 @@ The configuration of your robot should look similar to the following:
 }
 ```
 
+### Take pictures
+
 Capture images of puzzle pieces.
 Use a consistent background.
 Try to get 50 images of each puzzle piece.
@@ -101,11 +149,13 @@ I used “octagon”, “circle”, “triangle”, “oval”, “rectangle”,
 
 Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 
-### Configure classifier robot
+## PART 2: Use your ML Model to sing songs to your kids
+
+### Configure your webcam to act as a shape classifier
 
 [Deploy the model](/services/ml/#deploy) to the robot and [configure a vision service](/services/vision) of model `mlmodel` to use this model.
 
-``` json
+``` json {class="line-numbers linkable-line-numbers"}
 {
  "packages": [
    {
@@ -146,16 +196,20 @@ Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 }
 ```
 
-### Write some code
+### Program your robot with Viam's SDKs
 
 Put mp3 files with the same names as the classifier tags in the folder with the code (i.e. square.mp3, etc).
-Here are my songs. (? TODO SG: where are the songs)
+Here are my songs.
+
+<!-- TODO: insert mp3s from google drive -->
 
 Write code to connect to the robot and play a song when the camera is pointed at a puzzle piece.
 I used the sample code tab in the config UI to get the code to connect to the robot.
-Here is a video of me demoing this. (TODO: SEE TICKET. trim down video)
+Here is a video of me demoing this.
 
-``` go
+<!-- (TODO: SEE TICKET. trim down video) -->
+
+``` go {class="line-numbers linkable-line-numbers"}
 package main
 
 
@@ -267,6 +321,6 @@ func main() {
 }
 ```
 
-### Next Steps
+## Next Steps
 
-TODO: can do a lot more with this tutorial
+<!-- TODO: can do a lot more with this tutorial -->
