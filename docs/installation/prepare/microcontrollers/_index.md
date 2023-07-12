@@ -86,7 +86,7 @@ Requires Go 1.19 or newer to be installed
 go install github.com/viamrobotics/canon@latest
 ```
 
-Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See https://go.dev/ref/mod#go-install for details.
+Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
 
 ### Setting up development environment manually
 #### Install ESP-IDF
