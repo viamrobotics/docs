@@ -223,6 +223,6 @@ Similarly, the `example_mlmodelservice_tflite` custom module can be found at <fi
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/), and additional reference material in the [C++ SDK Documentation](https://cpp.viam.dev/).
+You can find additional reference material in the [C++ SDK Documentation](https://cpp.viam.dev/), and specific guidance on the C++ build process in the [C++ SDK repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 {{< snippet "social.md" >}}
