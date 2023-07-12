@@ -8,14 +8,14 @@ description: "The key concepts behind how Viam's resource APIs and models are un
 no_list: true
 ---
 
-`viam-server` [manages](#management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot like resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
+`viam-server` [manages](#management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot the same way it manages resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
 Two key concepts exist across all Viam resources, both built-in and modular, that make this flexible management possible: uniquely namespaced resource [*APIs*](#apis) and [*models*](#models).
 
 If you create your [own module](/extend/modular-resources/create/), you must register any new APIs and models you define in your model with Viam's model registry in the appropriate namespaces to [configure](/extend/modular-resources/configure/) the modular resource on your robot.
 
 ### APIs
 
-Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API).
+Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} type exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API).
 This can be understood as a description of how you can interact with that resource.
 Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
