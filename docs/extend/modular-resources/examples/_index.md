@@ -23,6 +23,7 @@ Once you have created a modular resource, you can test your custom resource usin
     {{% card link="/extend/modular-resources/examples/rplidar" customTitle="Add an RPlidar camera as a Modular Resource" %}}
     {{% card link="/extend/modular-resources/examples/odrive" customTitle="Add an ODrive motor as a Modular Resource" %}}
     {{% card link="/extend/modular-resources/examples/custom-arm" %}}
+    {{% card link="/extend/modular-resources/examples/add-tflite-module.md/" %}}
     {{% card link="/tutorials/custom/custom-base-dog/" %}}
     {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
 {{< /cards >}}
