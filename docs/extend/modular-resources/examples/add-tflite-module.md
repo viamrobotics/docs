@@ -1,6 +1,6 @@
 ---
-title: "Add an Audio Classification Service as a Modular Resource"
-linkTitle: "Add an Audio Classification Service as a Modular Resource"
+title: "Add Audio Classification as a Modular Service"
+linkTitle: "Add Audio Classification as a Modular Service"
 weight: 70
 type: "docs"
 description: "Add a custom MLModel modular-resource-based service which uses TensorFlow Lite to classify audio samples."
