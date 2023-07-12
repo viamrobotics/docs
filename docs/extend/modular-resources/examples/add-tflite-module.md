@@ -70,18 +70,19 @@ While your specific build steps may differ slightly, your installation should ge
    export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
    ```
 
-1. Build the C++ SDK.
-   We are using two flags to help us compile successfully:
-
-   - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
-   - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>/usr/local/</file> instead of the default <file>./install</file> location.
-     To write to the restricted location <file>/usr/local/</file>, we'll also need to use `sudo` for the second `ninja` invocation:
+1. Build the C++ SDK by running the following commands:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cmake .. -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=/usr/local -G Ninja
    ninja all
    sudo ninja install
    ```
+
+   This tutorial passes two flags to the build process to help compile successfully:
+
+   - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
+   - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>/usr/local/</file> instead of the default <file>./install</file> location.
+     To write to the restricted location <file>/usr/local/</file>, the second `ninja` invocation must also use `sudo`.
 
 {{% /tab %}}
 {{% tab name="Linux" %}}
@@ -179,7 +180,7 @@ With everything configured and running, you can now run the inference client tha
 
    The command should return output similar to:
 
-   ```sh {id="terminal-prompt" class="command-line"}
+   ```sh {id="terminal-prompt"}
    0: Static                               0.5
    1: Noise                                0.332031
    2: White noise                          0.261719
