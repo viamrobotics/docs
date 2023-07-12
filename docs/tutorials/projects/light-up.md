@@ -17,16 +17,11 @@ date: "30 March 2023"
 cost: 20
 ---
 
-{{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
-This tutorial has not yet been updated.
-{{< /alert >}}
-
 This tutorial uses the Viam [Vision Service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
-This project is a great place to start if you are new to building robots, because the only hardware it requires in addition to your computer is a [smart plug](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini) or smart bulb.
+This project is a great place to start if you are new to building robots because the only hardware it requires in addition to your computer is a [smart plug](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini) or smart bulb.
 
 {{<gif webm_src="/tutorials/img/light-up/light-up.webm" mp4_src="/tutorials/img/light-up/light-up.mp4" alt="The project working: a person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on.">}}
 
@@ -39,7 +34,7 @@ You need the following hardware for this tutorial:
 - Mobile phone (to download the Kasa Smart app)
 - Either a smart plug or bulb:
   - [Kasa Smart Wi-Fi Plug Mini](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini)
-    - (This is what we used for this tutorial.)
+    - (This is what we used for this tutorial)
   - [Kasa Smart Light Bulb](https://www.kasasmart.com/us/products/smart-lighting/kasa-smart-light-bulb-multicolor-kl125)
 - [Table Lamp Base](https://www.amazon.com/gp/product/B08KZNZVY7/ref=ppx_yo_dt_b_asin_title_o02_s00?) or similar
 
@@ -84,12 +79,80 @@ Navigate to the **Control** tab where you can see your camera working.
 
 {{< gif webm_src="/tutorials/img/light-up/control-panel.webm" mp4_src="/tutorials/img/light-up/control-panel.mp4" alt= "Opening the camera panel on the control tab, toggling the video feed on, and watching as a person wearing headphones waves at the camera." >}}
 
+## Configure your services
+
+This tutorial uses pre-trained ML packages.
+If you want to train your own, you can [train a model](/manage/ml/train-model/).
+
+To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
+
+Click on the **Services** subtab and navigate to the **Create service** menu.
+
+1. **Configure the ML Model Service**
+
+    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
+    Click **Create service**.
+
+    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](../../img/tipsy/app-service-ml-create.png)
+
+    In the new ML Model service panel, configure your service.
+
+    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](../../img/tipsy/app-service-ml-before.png)
+
+    Select the **Path to Existing Model On Robot** for the **Deployment** field.
+    Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
+
+   1. **Configure a mlmodel detector**
+
+    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
+    Click **Create service**.
+
+    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](../../img/tipsy/app-service-vision-create.png)
+
+    In the new Vision Service panel, configure your service.
+
+    ![vision service panel called myPeopleDetector with empty Attributes section](../../img/tipsy/app-service-vision-before.png)
+
+    Name the ml model name `people`.
+
+    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](../../img/tipsy/app-service-vision-after.png)
+
+## Configure the detection camera
+
+To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera` and the model `transform`.
+
+![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](../../img/tipsy/app-detection-before.png)
+
+In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
+
+```json
+    {
+    "source": "my-camera",
+    "pipeline": [
+        {
+        "type": "detections",
+        "attributes": {
+            "detector_name": "myPeopleDetector",
+            "confidence_threshold": 0.5
+        }
+        }
+    ]
+    }
+ ```
+
+Click **Save config** in the bottom left corner of the screen.
+
+![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](../../img/tipsy/app-detection-after.png)
+
 ## Set up the Kasa Smart Plug
 
 1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
 To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
 When you first open the app, you will be prompted to create an account.
-As you do this, you will receive an email with subject line "TP-Link ID: Activation Required" to complete your account registration.
+As you do this, you will receive an email with the subject line "TP-Link ID: Activation Required" to complete your account registration.
 
 2. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
 Once it is connected, you will no longer need to use the mobile app.
@@ -108,7 +171,7 @@ Once it is connected, you will no longer need to use the mobile app.
 
     You should see this command output something like this:
 
-    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time and cloud).](../../img/light-up/kasa-discover-output.png)
+    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](../../img/light-up/kasa-discover-output.png)
 
     Write down or save the host address (for example, `10.1.11.221`).
 You will need to include it in your Python code in a later step.
@@ -143,28 +206,6 @@ You need to tell the code how to access your specific robot (which in this case 
 
 1. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
 
-### Set the model path and label path
-
-You will use the [Vision Service](/services/vision/) to interpret what your camera sees.
-You will configure the Vision Service to use a [TFLite](https://www.tensorflow.org/lite) model to detect specific objects, and a corresponding text file that holds class labels for your TFLite model.
-
-1. Take a look at lines 42-48 in <file>lightupbot.py</file>.
-These lines configure a Vision Service object detector to use the TFLite model and the list of labels:
-
-   ```python
-       vision = VisionClient.from_robot(robot)
-       params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
-       personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
-       await vision.add_detector(personDet)
-       names = await vision.get_detector_names()
-       print(names)
-   ```
-
-2. Download [<file>effdet0.tflite</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite) and [<file>labels.txt</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt) to your project directory.
-3. Line 44 of your <file>lightupbot.py</file> is where you specify the paths to these files.
-   If you put them in the same directory as <file>lightupbot.py</file>, you don't need to edit this line.
-4. Save the file.
-
 ### Run the code
 
 Now you are ready to test your robot!
@@ -195,7 +236,7 @@ turning off
 
 You can actually detect any object that is listed in the <file>labels.txt</file> (such as a dog or a chair) but for this tutorial, we are detecting a person.
 
-To detect something else with the camera, just change the string "person" on line 69 of <file>lightupbot.py</file> to a different item in the <file>label.txt</file> file.
+To detect something else with the camera, just change the string "person" on line 46 of <file>lightupbot.py</file> to a different item in the <file>label.txt</file> file.
 
 ```python
 if d.class_name.lower() == "person":
