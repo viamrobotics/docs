@@ -56,11 +56,11 @@ Name | Type | Inclusion | Description
     "attributes": {
         "<whatever other attributes>": "<example>",
         "connection_type": "I2C",
-        // "board": "<name of board, e.g. local>"  Include if "model": "gps-rtk"
+        // "board": "<name of your board>"  Include if "model": "gps-rtk"
         "i2c_attributes": {
             "i2c_addr": 111,
             "i2c_bus": "1",
-            // "board": "<name of board, e.g. local>"  Include if "model": "gps-nmea"
+            // "board": "<name of your board>"  Include if "model": "gps-nmea"
         }
     }
 }
