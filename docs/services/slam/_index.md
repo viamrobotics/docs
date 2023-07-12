@@ -41,7 +41,7 @@ Method Name | Description
 [`GetPosition`](#getposition) | Get the current position of the specified component in the point cloud SLAM map.
 [`GetPointCloudMap`](#getpointcloudmap) | Get the point cloud SLAM map.
 [`GetInternalState`](#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
-[`GetLatestMapInfo](#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
+[`GetLatestMapInfo`](#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
 
 {{% alert title="Tip" color="tip" %}}
 
