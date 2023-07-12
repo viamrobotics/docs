@@ -224,7 +224,7 @@ Similarly, the `example_mlmodelservice_tflite` custom module can be found at <fi
 ## Troubleshooting and additional documentation
 
 * If you experience issues building the C++ SDK, see [C++ SDK: Limitations, Known Issues, and Troubleshooting](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
-* To customize your C++ build process or make adjustments to fit your platform or deployment requirements, see [C++ SDK: Options to Configure or Customize the build](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#options-to-configure-or-customize-the-build)
+* To customize your C++ build process or make adjustments to fit your platform or deployment requirements, see [C++ SDK: Options to Configure or Customize the Build](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#options-to-configure-or-customize-the-build)
 
 You can find additional reference material in the [C++ SDK documentation](https://cpp.viam.dev/).
 
