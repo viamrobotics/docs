@@ -53,11 +53,9 @@ This main program is the "entry point" to your module.
 
 ### Code a new resource model
 
-
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
-
 
 [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
 
