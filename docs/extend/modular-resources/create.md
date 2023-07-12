@@ -502,7 +502,7 @@ sudo chmod +x <FILEPATH>/<FILENAME>
 You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
-## Next Steps
+## Next steps
 
 Follow [these instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
 
