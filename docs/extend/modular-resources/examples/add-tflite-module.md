@@ -8,14 +8,14 @@ tags: ["ml", "model training", "services"]
 # SMEs: Andrew Morrow
 ---
 
-Viam provides an example of a [custom module](extend/modular-resources) written in the Viam C++ SDK that extends the [ML model](/services/ml/) service to support audio classification.
+Viam provides an example [custom module](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to support audio classification using TensorFlow Lite.
 
 The example files can be found in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
 - [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - a custom module that provides an example `MLModelService` instance which runs TensorFlow Lite models.
 - [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example client instance which generates audio samples and invokes the `example_mlmodelservice_tflite` custom module to classify those samples.
 
-This tutorial walks you through everything you need to start using these example files with your robot, including building the C++ SDK, procuring the necessary support files, configuring your robot and installing `viam-server`, and running the compiled binary example.
+This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, procuring the necessary support files, configuring your robot and installing `viam-server`, and running the compiled binary example.
 
 ## Build the C++ SDK
 
@@ -29,7 +29,7 @@ Follow the [Viam C++ SDK build instructions](https://github.com/viamrobotics/via
 
 While your specific build steps may differ slightly, your installation should generally resemble the following:
 
-1. Install the mandatory and optional dependencies to support the Viam C++ SDK:
+1. Install all listed dependencies to support the Viam C++ SDK:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    brew install abseil cmake boost grpc protobuf xtensor pkg-config ninja buf
@@ -43,7 +43,7 @@ While your specific build steps may differ slightly, your installation should ge
    git clone git@github.com:viamrobotics/viam-cpp-sdk.git
    ```
 
-1. Create a `build` directory to house the build target:
+1. Create a <file>build</file> directory to house the build target:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd viam-cpp-sdk/
@@ -51,13 +51,14 @@ While your specific build steps may differ slightly, your installation should ge
    cd build
    ```
 
-1. Determine the version of `openssl` you are running on your macOS computer:
+1. The Viam C++ SDK requires a specific version of `openssl` in order to build successfully.
+   Determine the version of `openssl` you are running on your macOS computer:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    brew list | grep openssl
    ```
 
-   If the command returns `openssl@1.1`, proceed to the next step. If the command returns a different `openssl` version, install the correct version first:
+   If the command returns `openssl@1.1`, proceed to the next step. If the command returns a different `openssl` version, install version `openssl@1.1` specifically:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    brew install openssl@1.1
@@ -70,8 +71,11 @@ While your specific build steps may differ slightly, your installation should ge
    ```
 
 1. Build the C++ SDK.
-   We are using two flags to help us compile successfully: [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build, and [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to `/usr/local/` instead of the default `./install` location.
-   To write to the restricted location `/usr/local/`, we'll also need to use `sudo` for the second `ninja` invocation:
+   We are using two flags to help us compile successfully:
+
+   - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
+   - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>/usr/local/</file> instead of the default <file>./install</file> location.
+     To write to the restricted location <file>/usr/local/</file>, we'll also need to use `sudo` for the second `ninja` invocation:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cmake .. -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=/usr/local -G Ninja
@@ -90,12 +94,12 @@ TODO: Linux instructions here. Currently failing at requiring tflite C headers: 
 ## Download the `yamnet/classification` model file
 
 This example uses the `yamnet/classification` TensorFlow Lite model for audio classification.
-We are using a pre-trained model for this example, but you can also [train your own model](/manage/ml/train-model/).
+This is a pre-trained model suitable for this example, but you can also [train your own model](/manage/ml/train-model/).
 
 1. Download the `yamnet/classification` TensorFlow Lite model file: [yamnet classification tflite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
 
 1. Copy the downloaded file into a more permanent location.
-   For this example, place the model file in the `~/example_workspace` directory from earlier:
+   For this example, place the model file in the <file>~/example_workspace</file> directory from earlier:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cp ~/Downloads/lite-model_yamnet_classification_tflite_1.tflite ~/example_workspace/
@@ -160,7 +164,7 @@ This generated configuration features the minimum required configuration to supp
 
 ## Run the inference client
 
-With everything configured and running, we can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` custom module.
+With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` custom module.
 
 1. First, determine your robot address and location secret. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include secret**.
    The location secret resembles `abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
@@ -187,12 +191,14 @@ With everything configured and running, we can now run the inference client that
    Inference latency (seconds), Var : 0.000164449
    ```
 
-   The labels shown in the example output require that you have provided the <file>yamnet_label_list.txt</file> labels file to the `example_audio_classification_client` client using the `--model-label-path` flag.
+   The labels shown in the example output require that you have provided the <file>yamnet_label_list.txt</file> labels file to `example_audio_classification_client` using the `--model-label-path` flag.
    If you have omitted the labels file, the computed scores will be returned without labels.
 
-## Understanding the client
+## Understanding the code
 
-The code in `src/viam/examples/mlmodel/example_audio_classification_client.cpp` is richly commented to explain each step it takes in generating and analyzing the data provided. What follows is a high-level overview of the steps it takes when executed:
+All example code is provided in the Viam C++ SDK in the <file>src/viam/examples/</file> directory.
+
+The code in <file>src/viam/examples/mlmodel/example_audio_classification_client.cpp</file> is richly commented to explain each step it takes in generating and analyzing the data provided. What follows is a high-level overview of the steps it takes when executed:
 
 1. The inference client generates two signals that meet the input requirements of the `yamnet/classification` model: the first signal is silence, while the second is noise.
    As written, the example analyzes only the noise signal, but you can change which signal is classified by changing which is assigned to the `samples` variable in the code.
@@ -201,9 +207,9 @@ The code in `src/viam/examples/mlmodel/example_audio_classification_client.cpp` 
    The tensor must be named according to the configured value under `tensor_name_remappings` in your robot configuration.
    If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
 
-1. The client invokes the `infer` method provided by the `MLModelService` custom module, providing it with the `sample` input tensor data it generated earlier.
+1. The client invokes the `infer` method provided by the `example_mlmodelservice_tflite` custom module, providing it with the `sample` input tensor data it generated earlier.
 
-1. The `MLModelService` custom module returns a map of response tensors as a result.
+1. The `example_mlmodelservice_tflite` custom module returns a map of response tensors as a result.
 
 1. The client validates the result, including its expected type: a vector of `float` values.
    The expected output must be defined under `tensor_name_remappings` in your robot configuration for validation to succeed.
@@ -213,7 +219,7 @@ The code in `src/viam/examples/mlmodel/example_audio_classification_client.cpp` 
 
 1. Finally, the client runs 100 rounds of inference using the determined label and score pairs, and returns the results of the rounds, including mean and variance values.
 
-Similarly, the custom module that provides the `MLModelService` module can be found at `src/viam/examples/modules/example_mlmodelservice_tflite.cpp` and also offers rich comments explaining its features and considerations.
+Similarly, the `example_mlmodelservice_tflite` custom module can be found at <file>src/viam/examples/modules/example_mlmodelservice_tflite.cpp</file> and also offers rich comments explaining its features and considerations.
 
 ## Troubleshooting
 
