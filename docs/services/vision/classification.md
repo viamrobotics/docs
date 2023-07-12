@@ -43,7 +43,7 @@ Scroll to the **Create Service** section.
 3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](../img/mlmodel.png)
+{{< imgproc src="/services/vision/mlmodel.png" alt="Create Vision Service for mlmodel" resize="1000x" declaredimensions=true >}}
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -119,7 +119,7 @@ To be able to interact with the Vision Service you must:
     After adding the component and its attributes, click **Save config**.
     Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
 
-    ![Model recognizes a star on camera feed](../../img/model-on-camera.png)
+    {{< imgproc src="/services/model-on-camera.png" alt="Model recognizes a star on camera feed" resize="1000x" declaredimensions=true >}}
 
 ## Code
 

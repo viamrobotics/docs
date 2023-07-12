@@ -5,7 +5,7 @@ weight: 70
 type: "docs"
 description: "Configure a SLAM service with the Cartographer modular resource."
 tags: ["slam", "services"]
-icon: "/services/img/icons/slam.svg"
+icon: "/services/icons/slam.svg"
 aliases:
   - "/services/slam/run-slam-cartographer"
 # SMEs: Kat, Jeremy
@@ -66,7 +66,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
-![adding cartographer slam service](../img/run_slam/add-cartographer-service-ui.png)
+{{< imgproc src="/services/slam/add-cartographer-service-ui.png" alt="adding cartographer slam service" resize="1000x" declaredimensions=true >}}
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -107,13 +107,13 @@ Click on the **Modules** subtab. Add the cartographer module with a name of your
 {{< tabs name="Add Cartographer Service Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
-![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
+{{< imgproc src="/services/slam/add-cartographer-module-ui-linux.png" alt="adding cartographer module linux" resize="1000x" declaredimensions=true >}}
 
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-![adding cartographer module M1 M2](../img/run_slam/add-cartographer-module-ui-M1-M2.png)
+{{< imgproc src="/services/slam/add-cartographer-module-ui-M1-M2.png" alt="adding cartographer module M1 M2" resize="1000x" declaredimensions=true >}}
 
 {{% /tab %}}
 {{< /tabs >}}

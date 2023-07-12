@@ -5,7 +5,7 @@ weight: 35
 type: "docs"
 draft: "true"
 description: "Configure a boat base."
-images: ["/components/img/components/base.svg"]
+images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 # SMEs: Eliot
 ---

@@ -5,8 +5,8 @@ description: "The Navigation Service uses GPS to autonomously navigate a rover t
 type: docs
 weight: 60
 no_list: true
-icon: "/services/img/icons/navigation.svg"
-images: ["/services/img/icons/navigation.svg"]
+icon: "/services/icons/navigation.svg"
+images: ["/services/icons/navigation.svg"]
 tags: ["navigation", "services", "base", "rover"]
 # SMEs: Raymond
 ---
@@ -28,7 +28,7 @@ Select the type `navigation` and enter a name for your service.
 
 Click **Create service**:
 
-![An example configuration for a Navigation service in the Viam app Config Builder.](img/navigation-ui-config.png)
+{{< imgproc src="/services/navigation/navigation-ui-config.png" alt="An example configuration for a Navigation service in the Viam app Config Builder." resize="1000x" declaredimensions=true >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -37,7 +37,7 @@ Click **Create service**:
 "services": [
 {
     "name": "your-navigation-service",
-    "type": "navigation", 
+    "type": "navigation",
     "attributes": {
         "store": {
             "type": "memory"
@@ -59,10 +59,10 @@ Click **Create service**:
     "type": "navigation",
     "attributes": {
         "store": {
-            "type": "mongodb", 
+            "type": "mongodb",
             "config": {
                 "uri": "mongodb://127.0.0.1:27017"
-            } 
+            }
         }
         },
         "movement_sensor": "test_movement",

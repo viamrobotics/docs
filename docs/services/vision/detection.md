@@ -56,11 +56,11 @@ To create a [Vision Service](/services/vision/):
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for color detector](../img/color_detector.png)
+{{< imgproc src="/services/vision/color_detector.png" alt="Create Vision Service for color detector" resize="1000x" declaredimensions=true >}}
 
 In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
-![Color detector panel with color and hue tolerance selection and a field for the segment size](../img/color-detector-panel.png)
+{{< imgproc src="/services/vision/color-detector-panel.png" alt="Color detector panel with color and hue tolerance selection and a field for the segment size" resize="1000x" declaredimensions=true >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -160,7 +160,7 @@ Scroll to the **Create Service** section.
 3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](../img/mlmodel.png)
+{{< imgproc src="/services/vision/mlmodel.png" alt="Create Vision Service for mlmodel" resize="1000x" declaredimensions=true >}}
 
 In your Vision Service's panel, fill in the **Attributes** field.
 

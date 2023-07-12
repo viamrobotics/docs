@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Configure a fake motor to test software without any hardware."
-images: ["/components/img/components/motor.svg"]
+images: ["/icons/components/motor.svg"]
 # SMEs: Rand, James
 ---
 
@@ -20,7 +20,7 @@ Enter a name for your motor, select the type `motor`, and select the `fake` mode
 
 Click **Create component**.
 
-![A fake motor config.](../../img/motor/fake-config-ui.png)
+{{< imgproc src="/icons/components/motor/fake-config-ui.png" alt="A fake motor config." resize="1000x" declaredimensions=true >}}
 
 Edit and fill in the attributes as applicable.
 
