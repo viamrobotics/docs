@@ -86,6 +86,6 @@ window.markmap = {
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
-<script defer src="{{ $jsSentry.RelPermalink }}" crossorigin="anonymous"></script>
+<script async src="{{ $jsSentry.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
 {{ partial "hooks/body-end.html" . }}
