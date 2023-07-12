@@ -147,24 +147,25 @@ branch = "main"
     path = "github.com/google/docsy/dependencies"
     disable = false
 
-[[deployment.matchers]]
-# Cache for 1 week.
-pattern = "^.+\\.(js|css|svg|ttf)$"
-cacheControl = "public, s-maxage=604800, max-age=604800"
-gzip = true
+[deployment]
+  [[deployment.matchers]]
+  # Cache for 1 week.
+  pattern = "^.+\\.(js|css|svg|ttf)$"
+  cacheControl = "public, s-maxage=604800, max-age=604800"
+  gzip = true
 
-# Cache static assets for 1 month.
-[[deployment.matchers]]
-pattern = "^.+\\.(jpg|jpeg|gif|png|webp|mp4|woff|woff2|webm)$"
-cacheControl = "public, s-maxage=7776000, max-age=604800"
-gzip = false
+  # Cache static assets for 1 month.
+  [[deployment.matchers]]
+  pattern = "^.+\\.(jpg|jpeg|gif|png|webp|mp4|woff|woff2|webm)$"
+  cacheControl = "public, s-maxage=7776000, max-age=604800"
+  gzip = false
 
-[[deployment.matchers]]
-# Set custom content type for /sitemap.xml
-pattern = "^sitemap\\.xml$"
-contentType = "application/xml"
-gzip = true
+  [[deployment.matchers]]
+  # Set custom content type for /sitemap.xml
+  pattern = "^sitemap\\.xml$"
+  contentType = "application/xml"
+  gzip = true
 
-[[deployment.matchers]]
-pattern = "^.+\\.(html|xml|json)$"
-gzip = true
+  [[deployment.matchers]]
+  pattern = "^.+\\.(html|xml|json)$"
+  gzip = true
