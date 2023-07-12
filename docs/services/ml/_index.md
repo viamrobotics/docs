@@ -29,7 +29,7 @@ Scroll to the **Create Service** section.
 3. Select `tflite_cpu` as the **Model**.
 4. Click **Create Service**.
 
-{{< imgproc src="/services/ml-models-service.png" alt="Create a machine learning models service" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/ml-models-service.png" alt="Create a machine learning models service" resize="1000x" >}}
 
 You can choose to configure your service with an existing model on the robot or deploy a model onto your robot:
 
@@ -40,7 +40,7 @@ To configure your service with an existing model on the robot, select **Path to 
 
 Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
-{{< imgproc src="/services/available-models.png" alt="Create a machine learning models service with an existing model" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/available-models.png" alt="Create a machine learning models service with an existing model" resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
@@ -49,7 +49,7 @@ To configure your service and deploy a model onto your robot, select **Deploy Mo
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
-{{< imgproc src="/services/deploy-model.png" alt="Create a machine learning models service with a model to be deployed" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/deploy-model.png" alt="Create a machine learning models service with a model to be deployed" resize="1000x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}

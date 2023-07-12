@@ -12,7 +12,7 @@ tags: ["frame system", "services"]
 
 Any robot configured in Viam comes with the Frame System service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
 
-{{< imgproc src="/services/frame-system/frame_system_wheeled_base.png" alt="Visualization of a wheeled base configured with motors and a mounted camera in the Frame System tab of the Viam app UI" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/frame_system_wheeled_base.png" alt="Visualization of a wheeled base configured with motors and a mounted camera in the Frame System tab of the Viam app UI" resize="1000x" >}}
 
 The Frame System is the basis for many of Viam's other services, like [Motion](/services/motion/) and [Vision](/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
@@ -29,7 +29,7 @@ To adjust the frame from its default configuration, change the parameters as nee
 
 Navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
 
-{{< imgproc src="/services/frame-system/frame_card.png" alt="add reference frame pane" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/frame_card.png" alt="add reference frame pane" resize="1000x" >}}
 
 Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*, *rad*, or *q*), according to the position and orientation of your component in relation to the `parent` frame.
 
@@ -107,7 +107,7 @@ Navigate to the **Config** tab on your robot's page, select **mode** as **Builde
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
 
-{{< imgproc src="/services/frame-system/frame_system_basic.png" alt="Default frame system configuration grid visualization for a single component, shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/frame_system_basic.png" alt="Default frame system configuration grid visualization for a single component, shown in the Frame System Editor" resize="1000x" >}}
 
 This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a robot's components in the Frame System.
 
@@ -117,26 +117,26 @@ Consider a robot configured with a [`jetson` board](/components/board/), wired t
 
 No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
 
-{{< imgproc src="/services/frame-system/demo_base_unedited.png" alt="Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_base_unedited.png" alt="Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other" resize="1000x" >}}
 
 The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
 
 Add this value to `"X"` in the base's reference frame `Translation` attribute, and the Frame System readjusts to show the base's translation:
 
-{{< imgproc src="/services/frame-system/demo_base_edited.png" alt="Base translated 200mm forwards shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_base_edited.png" alt="Base translated 200mm forwards shown in the Frame System Editor" resize="1000x" >}}
 
 The distance from the board to the camera mounted overhead is 50 millimeters.
 
 Add this value to `"Z"` in the camera's reference frame `Translation` attribute, and the Frame System readjusts to show the camera's translation:
 
-{{< imgproc src="/services/frame-system/demo_camera_edited_1.png" alt="Camera translated 50 mm overhead shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_camera_edited_1.png" alt="Camera translated 50 mm overhead shown in the Frame System Editor" resize="1000x" >}}
 
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
 Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
 
-{{< imgproc src="/services/frame-system/demo_camera_edited_2.png" alt="Camera oriented .5 degrees OX shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_camera_edited_2.png" alt="Camera oriented .5 degrees OX shown in the Frame System Editor" resize="1000x" >}}
 
 Now that the Frame System is accurately configured with the robot's spatial orientation, [Motion Service](/services/motion/) methods that take in reference frame information can be utilized.
 
@@ -151,12 +151,12 @@ Click the video camera icon below and to the right of the **Frame System** butto
 {{< tabs name="Toggle Camera Views" >}}
 {{% tab name="Perspective Camera" %}}
 
-{{< imgproc src="/services/frame-system/demo_perspective.png" alt="Default Perspective Camera view shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_perspective.png" alt="Default Perspective Camera view shown in the Frame System Editor" resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="Orthographic Camera" %}}
 
-{{< imgproc src="/services/frame-system/demo_orthographic.png" alt="Non-default Orthographic Camera view shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_orthographic.png" alt="Non-default Orthographic Camera view shown in the Frame System Editor" resize="1000x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -170,22 +170,22 @@ By default, a **Geometry** is shown surrounding the origin point of a component:
 {{< tabs name="Visualize Adding Geometry Bounds" >}}
 {{% tab name="Box" %}}
 
-{{< imgproc src="/services/frame-system/demo_bound_box.png" alt="Demo robot with default box bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_bound_box.png" alt="Demo robot with default box bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" >}}
 
 You can adjust the **Size** and **Translation** of a **Geometry** to change these bounds.
 For example:
 
-{{< imgproc src="/services/frame-system/demo_bound_box_translation.png" alt="Demo robot with translated box bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_bound_box_translation.png" alt="Demo robot with translated box bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" >}}
 
 {{< /tab >}}
 {{% tab name="Sphere" %}}
 
-{{< imgproc src="/services/frame-system/demo_bound_sphere.png" alt="Demo robot with default sphere bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_bound_sphere.png" alt="Demo robot with default sphere bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="Capsule" %}}
 
-{{< imgproc src="/services/frame-system/demo_bound_capsule.png" alt="Demo robot with default capsule bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/demo_bound_capsule.png" alt="Demo robot with default capsule bounds added to the wheeled base, shown in the Frame System Editor" resize="1000x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -196,13 +196,13 @@ For example:
 
 Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames in the robot's logs at `--debug` level:
 
-{{< imgproc src="/services/frame-system/frame_sys_log_example.png" alt="an example of a logged frame system" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/frame_sys_log_example.png" alt="an example of a logged frame system" resize="1000x" >}}
 
 Consider the example of nested reference frame configuration where [two dynamic components are attached](/services/frame-system/nested-frame-config/): a robotic arm, `A`, attaches to a gantry, `G`, which in turn is fixed in place at a point on the `World` of a table.
 
 The resulting tree of reference frames looks like:
 
-{{< imgproc src="/services/frame-system/frame_tree.png" alt="reference frame tree" resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/frame-system/frame_tree.png" alt="reference frame tree" resize="1000x" >}}
 
 `viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining *two* reference frames for each component:
 

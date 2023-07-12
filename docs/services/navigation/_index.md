@@ -28,7 +28,7 @@ Select the type `navigation` and enter a name for your service.
 
 Click **Create service**:
 
-{{< imgproc src="/services/navigation/navigation-ui-config.png" alt="An example configuration for a Navigation service in the Viam app Config Builder." resize="1000x" declaredimensions=true >}}
+{{< imgproc src="/services/navigation/navigation-ui-config.png" alt="An example configuration for a Navigation service in the Viam app Config Builder." resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
