@@ -3,9 +3,9 @@ title: "NVIDIA Jetson Nano Setup Guide"
 linkTitle: "Jetson Nano Setup"
 weight: 20
 type: "docs"
-image: "/installation/img/jetson-nano-setup/jetson-nano-dev-kit.png"
+image: "/installation/thumbnails/jetson-nano-dev-kit.png"
 imageAlt: "Jetson Nano"
-images: ["/installation/img/jetson-nano-setup/jetson-nano-dev-kit.png"]
+images: ["/installation/thumbnails/jetson-nano-dev-kit.png"]
 description: "Set up the Jetson Nano Developer Kit to prepare your NVIDIA Jetson Nano for viam-server installation."
 no_list: true
 # SMEs: Pete Garafano
@@ -14,7 +14,9 @@ no_list: true
 The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
 Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation.
 
-<div class="td-max-width-on-larger-screens text-center"><img src="../../img/jetson-nano-setup/jetson-nano-dev-kit.png" style="max-width:400px" alt="The front of the NVIDIA Jetson Nano single-board computer development kit."></div>
+<div class="td-max-width-on-larger-screens text-center">
+{{<imgproc src="installation/thumbnails/jetson-nano-dev-kit.png" resize="400x" alt="The front of the NVIDIA Jetson Nano single-board computer development kit.">}}
+</div>
 
 {{% alert title="Stability Notice" color="note" %}}
 

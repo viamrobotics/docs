@@ -10,76 +10,18 @@ aliases:
   - "/program/sdks/use-extra-params"
 ---
 
-How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} API methods offer in the Go and Python SDKs.
+How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} [API methods](/program/apis/) offer in the Go and Python SDKs.
 
 ## Utilize
 
-Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not explicitly specified as a parameter in the [built-in resource type's API specification](/extend/modular-resources/#apis).
+You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are *models* of built-in resource types.
 
-To do this, you must code your own modified implementation of the resource type's API for a model.
-See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
+For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM Service](/services/slam/).
 
-An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/apis/), the sensor component's [Readings](/components/sensor/#readings):
+The `extra` parameters in that built-in resource type's [API](/extend/modular-resources/#apis) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
+This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-``` python {class="line-numbers linkable-line-numbers"}
-# Readings depends on extra parameters.
-@abc.abstractmethod
-async def get_readings(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-
-    # Define an empty dictionary for readings.
-    readings = {}
-
-    # If extra["type"] is temperature or humidity, get the temperature or humidity from helper functions and return these values as the readings the sensor has provided.
-    if extra["type"] is "temperature":
-        readings["type"] = get_temp()
-    elif extra["type"] is "humidity":
-        readings["type"] = get_humidity()
-    # If the type is not one of these two cases, raise an exception.
-    else: 
-        raise Exception(f"Invalid sensor reading request: type {type}")
-
-    return readings
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-// Readings depends on extra parameters.
-func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
-
-    // Define an empty map for readings.
-    readings := map[string]interface{}{}
-
-    // If extra["type"] is temperature or humidity, get the temperature or humidity from helper methods and return these values as the readings the sensor has provided.
-    if readingType, ok := extra["type"]; ok {
-        rType, ok := readingType.(string)
-        if !ok {
-            return nil, errors.New("invalid sensor reading request")
-        }
-        switch rType {
-        case "temperature":
-            readings[rType] = getTemp()
-        case "humidity":
-            readings[rType] = getHumidity()
-        // If the type is not one of these two cases, return an error.
-        default:
-            return nil, errors.Errorf("Invalid sensor reading request: type %s", rType)
-        }
-    }
-
-    // Return the readings and `nil`/no error.
-    return readings, nil
-}
-```
-
-{{% /tab %}}
-{{% /tabs %}}
-
-## Define
+Send extra information in an API call in `extra` parameters as follows:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -141,3 +83,76 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 {{% /alert %}}
 {{% /tab %}}
 {{% /tabs %}}
+
+## Define
+
+If `extra` information must be passed to a resource, it is handled within a new, *modular* resource model's [custom API](/extend/modular-resources/#apis) wrapper.
+
+{{%expand "Click for instructions on defining a custom model to utilize extra params" %}}
+
+To do this, define a custom implementation of the resource's API as a new *model*, and modify the resource's API methods to handle the `extra` information you send.
+Follow [these instructions](/extend/modular-resources/#code-your-module) to do so.
+
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#readings) method in the code of a [new sensor model](/extend/modular-resources/):
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+``` python {class="line-numbers linkable-line-numbers"}
+# Readings depends on extra parameters.
+@abc.abstractmethod
+async def get_readings(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+
+    # Define an empty dictionary for readings.
+    readings = {}
+
+    # If extra["type"] is temperature or humidity, get the temperature or humidity from helper functions and return these values as the readings the sensor has provided.
+    if extra["type"] is "temperature":
+        readings["type"] = get_temp()
+    elif extra["type"] is "humidity":
+        readings["type"] = get_humidity()
+    # If the type is not one of these two cases, raise an exception.
+    else: 
+        raise Exception(f"Invalid sensor reading request: type {type}")
+
+    return readings
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Readings depends on extra parameters.
+func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+
+    // Define an empty map for readings.
+    readings := map[string]interface{}{}
+
+    // If extra["type"] is temperature or humidity, get the temperature or humidity from helper methods and return these values as the readings the sensor has provided.
+    if readingType, ok := extra["type"]; ok {
+        rType, ok := readingType.(string)
+        if !ok {
+            return nil, errors.New("invalid sensor reading request")
+        }
+        switch rType {
+        case "temperature":
+            readings[rType] = getTemp()
+        case "humidity":
+            readings[rType] = getHumidity()
+        // If the type is not one of these two cases, return an error.
+        default:
+            return nil, errors.Errorf("Invalid sensor reading request: type %s", rType)
+        }
+    }
+
+    // Return the readings and `nil`/no error.
+    return readings, nil
+}
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying built-in API specifications.
+
+{{% /expand%}}

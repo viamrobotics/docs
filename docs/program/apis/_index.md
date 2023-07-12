@@ -25,19 +25,20 @@ In the other SDKs, resource APIs implement but do not inherit these base require
 
 ### FromRobot
 
-Get the `"name"` of a resource.
+Get a resource configured on a robot by `"name"`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
+- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `name` of the resource.
 
 **Returns:**
 
-- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
-- `name` [(str)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The "name" of the resource.
+- [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your robot.
+For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ``` python
 my_arm = Arm.from_robot(robot, "my_arm")
@@ -55,7 +56,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): Your named resource. For example, an [Arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): The named resource if it exists on your robot.
+For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 my_arm = arm.FromRobot(robot, "my_arm")
@@ -77,7 +79,8 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 
 **Returns:**
 
-- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): Your named resource. For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your robot.
+For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript
 const myArmClient = new VIAM.ArmClient(robot, "my_arm");

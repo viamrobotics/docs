@@ -196,7 +196,7 @@ For specific information on how to configure each supported component type, see 
 When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
 Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/apis/).
 
-{{<gif webm_src="../img/control.webm" mp4_src="../img/control.mp4" alt="Using the control tab">}}
+{{<gif webm_src="/manage/img/control.webm" mp4_src="/manage/img/control.mp4" alt="Using the control tab">}}
 
 {{% /alert %}}
 
