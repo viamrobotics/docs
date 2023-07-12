@@ -221,8 +221,11 @@ The code in <file>src/viam/examples/mlmodel/example_audio_classification_client.
 
 Similarly, the `example_mlmodelservice_tflite` custom module can be found at <file>src/viam/examples/modules/example_mlmodelservice_tflite.cpp</file> and also offers rich comments explaining its features and considerations.
 
-## Further reading
+## Troubleshooting and additional documentation
 
-You can find additional reference material in the [C++ SDK documentation](https://cpp.viam.dev/), and specific guidance on the C++ build process in the [C++ SDK repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+* If you experience issues building the C++ SDK, see [C++ SDK: Limitations, Known Issues, and Troubleshooting](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+* To customize your C++ build process or make adjustments to fit your platform or deployment requirements, see [C++ SDK: Options to Configure or Customize the build](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#options-to-configure-or-customize-the-build)
+
+You can find additional reference material in the [C++ SDK documentation](https://cpp.viam.dev/).
 
 {{< snippet "social.md" >}}
