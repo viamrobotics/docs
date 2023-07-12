@@ -10,7 +10,7 @@ no_list: true
 
 The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, [components](/components/), and [services](/services/), into any robot running on Viam.
 
-A common use-case for modular resources is to create a new model using an existing Viam API.
+A common use case for modular resources is to create a new model that implements an existing Viam API.
 However, you can also create and expose new API types using modular resources.
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
@@ -53,13 +53,11 @@ This main program is the "entry point" to your module.
 
 ### Code a new resource model
 
-{{% alert title="Note" color="note" %}}
 
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
-{{% /alert %}}
 
 [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
 

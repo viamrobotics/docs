@@ -1,5 +1,5 @@
 ---
-title: Api Namespace Triplet
+title: API Namespace Triplet
 id: api-namespace-triplet
 full_link:
 short_description: namespace:type:subtype

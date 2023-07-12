@@ -143,3 +143,7 @@ You can send commands to the base according to the Viam [base API](/components/b
 
 {{% /tab %}}
 {{% /tabs %}}
+
+## Next Steps
+
+Now that you've configured a modular resource, test it with the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).

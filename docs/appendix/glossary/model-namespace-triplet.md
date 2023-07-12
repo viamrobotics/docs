@@ -6,10 +6,7 @@ short_description: namespace:family:name
 aka:
 ---
 
-A model is a specific implementation of a resource that implements (speaks) its API.
-Models allow you to control different versions of resource types with a consistent interface.
-
-Models of a {{< glossary_tooltip term_id="resource" text="resource" >}} are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
+{{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
 
 For example:
 
