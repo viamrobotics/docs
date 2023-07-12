@@ -42,7 +42,7 @@ For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attr
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
-`board` | string | **Required** | The `name` of the [board](/components/board/) to which the [I<sup>2</sup>C](/components/board/#i2cs) connection is being made. This attribute is only required for the [`gps-nmea`](/components/movement-sensor/gps-nmea/) model.
+`board` | string | **Required** | The `name` of the [board](/components/board/) to which the [I<sup>2</sup>C](/components/board/#i2cs) connection is being made. This attribute is only required for the `gps-nmea` model.
 `i2c_bus` | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor.
 `i2c_addr` | int | **Required** | The device's I<sup>2</sup>C address.
 `i2c_baud_rate` | int | Optional | The rate at which data is sent from the sensor. Optional. <br> Default: `115200`
