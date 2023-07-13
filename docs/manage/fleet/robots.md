@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "A robot is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
 tags: ["fleet management", "cloud", "app"]
-images: ["/manage/img/control.gif"]
+images: ["/manage/control.gif"]
 ---
 
 A robot is an organizational concept, consisting of either one <em>{{< glossary_tooltip term_id="part" text="part" >}}</em>, or multiple _parts_ working closely together to complete tasks.
@@ -62,7 +62,7 @@ The **History** tab shows timestamped changes to your robot's configuration.
 
 If you want to revert changes that you made, you can load a previous configuration by clicking the **Load config** button next to the respective configuration.
 
-{{<gif webm_src="/manage/img/load-prev-config.webm" mp4_src="/manage/img/load-prev-config.mp4" alt="Load a previous config from the UI" max-width="800px">}}
+{{<gif webm_src="/manage/load-prev-config.webm" mp4_src="/manage/load-prev-config.mp4" alt="Load a previous config from the UI" max-width="800px">}}
 
 You can also change your timestamp format to ISO or Local depending on your preference.
 
@@ -71,7 +71,7 @@ You can also change your timestamp format to ISO or Local depending on your pref
 To make debugging issues with your robots easier, each robot automatically sends its logs to the cloud.
 You can access your logs from the **Logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
 
-{{<gif webm_src="/manage/img/log-filtering.webm" mp4_src="/manage/img/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
+{{<gif webm_src="/manage/log-filtering.webm" mp4_src="/manage/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
 You can also change your timestamp format to ISO or Local depending on your preference.
 
@@ -84,7 +84,7 @@ If you have configured a camera component, a window in the **Control** tab displ
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](../../parts-and-remotes/#robot-parts) Viam uses gRPC or WebRTC.
 
-{{<gif webm_src="/manage/img/control.webm" mp4_src="/manage/img/control.mp4" alt="Using the control tab" max-width="800px">}}
+{{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab" max-width="800px">}}
 
 ### Code Sample
 
