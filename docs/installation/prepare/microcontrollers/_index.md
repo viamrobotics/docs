@@ -56,12 +56,14 @@ To build the micro-rdk, you must install the following software on your machine:
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
 ```
+
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install dfu-util
 ```
+
 {{% /tab %}}
 {{% /tabs %}}
 
@@ -92,6 +94,7 @@ cargo install espflash
 ```
 
 ### Using Canon
+
 Canon is a CLI utility for managing a Docker based canonical environment.
 See [GitHub](https://github.com/viamrobotics/canon) for more information.
 It needs  a working installation of docker follow [Docker Installation](https://docs.docker.com/engine/install/) to install Docker. If running linux make sure to go throught the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/)
@@ -113,7 +116,9 @@ go install github.com/viamrobotics/canon@latest
 Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
 
 ### Setting up development environment manually
+
 #### Install dependencies
+
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
 
@@ -181,6 +186,7 @@ Finally to download and install the esp-rs toolchain run :
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 espup install -s -f ~/esp/export-rs.sh -v 1.67.0
 ```
+
 To activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -225,7 +231,6 @@ Paste this into your terminal.
 All of the generated files should be safe to commit as a project on Github, with the exception of `viam.json`, since it contains a secret key.
 
 {{% /alert %}}
-
 
 ### Upload and Connect to your ESP32 Board
 
