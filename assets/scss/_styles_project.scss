@@ -464,8 +464,7 @@ END MARKETING CSS
   padding-bottom: 7px;
 }
 
-
-.hover-card > img, .hover-card * video, .hover-card * .hover-card-img > img, .hover-card * .hover-card-icon > img, .hover-card.landing > .hover-card-img > img {
+.hover-card * img, .hover-card * video {
   object-fit: cover;
   width: 100%;
   max-width: 100%;
