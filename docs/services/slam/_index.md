@@ -38,7 +38,7 @@ The SLAM Service supports the following methods:
 
 Method Name | Description
 ----------- | -----------
-[`GetPosition`](#getposition) | Get the current position of the specified component in the point cloud SLAM map.
+[`GetPosition`](#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
 [`GetPointCloudMap`](#getpointcloudmap) | Get the point cloud SLAM map.
 [`GetInternalState`](#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
 [`GetLatestMapInfo`](#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
@@ -52,7 +52,7 @@ Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) f
 
 ### GetPosition
 
-Get the current position of the specified component in the SLAM map.
+Get the current position of the component the SLAM service is configured to source point cloud data from in the SLAM map as a [`Pose`](/internals/orientation-vector/).
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -60,12 +60,12 @@ Get the current position of the specified component in the SLAM map.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.3.0/spatialmath#Pose): A `Pose` representing the current position of the specified component.
-- [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the SLAM service.
+- [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
+For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).
@@ -73,7 +73,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers"}
 slam_svc, err := slam.FromRobot(robot, "my_slam_service")
 
-// Get the current position of the specified component in the SLAM map as a Pose.
+// Get the current position of the specified source component in the SLAM map as a Pose.
 pos, name, err := slam_svc.GetPosition(context.Background())
 ```
 
@@ -86,14 +86,15 @@ pos, name, err := slam_svc.GetPosition(context.Background())
 
 **Returns:**
 
-- [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A `Pose` representing the current position of the specified component.
+- [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A `Pose` representing the current position of the component the SLAM service is configured to source point cloud data from.
+For example, a [camera](/components/camera/) named `"cam"`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_position).
 
 ```python {class="line-numbers linkable-line-numbers"}
 slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
-# Get the current position of the specified component in the SLAM map as a Pose.
+# Get the current position of the specified source component in the SLAM map as a Pose.
 pose = await slam.get_position()
 ```
 
@@ -110,19 +111,19 @@ Get the point cloud map.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
+- (func() [[]byte](https://pkg.go.dev/builtin#byte), [error](https://pkg.go.dev/builtin#error)): The complete point cloud map in standard PCD format.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
 slam_svc, err := slam.FromRobot(robot, "my_slam_service")
 
-// Get the point cloud map.
-err := slam_svc.GetPointCloudMap(context.Background())
+// Get the point cloud map in standard PCD format.
+pcd_map, err := slam_svc.GetPointCloudMap(context.Background())
 ```
 
 {{% /tab %}}
@@ -134,16 +135,15 @@ err := slam_svc.GetPointCloudMap(context.Background())
 
 **Returns:**
 
-- [(List[GetPointCloudMapResponse])](https://python.viam.dev/autoapi/viam/gen/service/slam/v1/slam_pb2/index.html#viam.gen.service.slam.v1.slam_pb2.GetPointCloudMapResponse): Complete pointcloud in standard PCD format.
-Chunks of the PointCloud, concatenating all GetPointCloudMapResponse.point_cloud_pcd_chunk values.
+- [(List[GetPointCloudMapResponse])](https://python.viam.dev/autoapi/viam/gen/service/slam/v1/slam_pb2/index.html#viam.gen.service.slam.v1.slam_pb2.GetPointCloudMapResponse): The complete point cloud map in standard PCD format.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_point_cloud_map).
 
 ```python {class="line-numbers linkable-line-numbers"}
 slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
-# Get the point cloud map
-internal_state = await slam.get_point_cloud_map()
+# Get the point cloud map in standard PCD format.
+pcd_map = await slam.get_point_cloud_map()
 ```
 
 {{% /tab %}}
@@ -163,10 +163,10 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 
 **Returns:**
 
-- [([]byte)](https://pkg.go.dev/builtin#byte):
+- (func() [[]byte](https://pkg.go.dev/builtin#byte), [error](https://pkg.go.dev/builtin#error)): Chunks of the internal state of the SLAM algorithm.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
 slam_svc, err := slam.FromRobot(robot, "my_slam_service")
@@ -180,11 +180,11 @@ internal_state, err := slam_svc.GetInternalState(context.Background())
 
 **Parameters:**
 
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (List[[ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)]): Names of the available sensors of the robot.
+- (List[[GetInternalStateResponse](https://python.viam.dev/autoapi/viam/gen/service/slam/v1/slam_pb2/index.html#viam.gen.service.slam.v1.slam_pb2.GetInternalStateResponse)]): Chunks of the internal state of the SLAM algorithm.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.SLAMClient.get_internal_state).
 
@@ -214,19 +214,19 @@ Get the timestamp of the last update to the point cloud SLAM map.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
+- [(time.Time)](https://pkg.go.dev/time#Time): The timestamp of the last update to the point cloud SLAM map.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
 slam_svc, err := slam.FromRobot(robot, "my_slam_service")
 
 // Get the timestamp of the last update to the point cloud SLAM map.
-err := slam_svc.GetLatestMapInfo(context.Background())
+timestamp, err := slam_svc.GetLatestMapInfo(context.Background())
 ```
 
 {{% /tab %}}
