@@ -47,7 +47,7 @@
                     ><div class="hover-card-img">
                         {{ $img := resources.GetMatch "installation/thumbnails/install.png" }}
                         {{if $img }}
-                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/install.png" "resize" "400x webp" "alt" "Install viam" "style" "") }}
+                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/install.png" "resize" "400x" "alt" "Install viam" "style" "") }}
                         {{ else }}
                             {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
                         {{end}}
@@ -66,7 +66,7 @@
                     ><div class="hover-card-img">
                         {{ $img := resources.GetMatch "installation/thumbnails/manage.png" }}
                         {{if $img }}
-                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/manage.png" "resize" "400x webp" "alt" "Configure viam" "style" "") }}
+                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/manage.png" "resize" "400x" "alt" "Configure viam" "style" "") }}
                         {{ else }}
                             {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
                         {{end}}

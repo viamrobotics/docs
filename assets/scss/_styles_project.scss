@@ -890,7 +890,9 @@ td > ul, td > ol {
 .td-content > .code-toolbar,
 .td-content > .table,
 .td-content > div,
-.td-content > img {
+.td-content > img,
+.td-content > picture,
+.td-content > picture > img {
   @include media-breakpoint-up(lg) {
       max-width: 80%;
   }

@@ -4,7 +4,7 @@ linkTitle: "image_file"
 weight: 31
 type: "docs"
 description: "Configure a camera that gets color or depth images frames from a file path."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

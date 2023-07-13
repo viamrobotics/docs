@@ -1,24 +1,33 @@
 <!-- THIS ONLY WORKS FOR PICTURES IN THE ASSETS FOLDER -->
+{{ $image_type_arr := split .src "." }}
+{{ $image_ext := index $image_type_arr 1 }}
 {{ $img := resources.GetMatch .src }}
-{{ $sizeInBytes := len $img.Content }}
-{{ $sizeInBytes := div $sizeInBytes 1000 }}
-{{ if gt $sizeInBytes 1000 }}
-  {{ warnf "Size of picture %s was %d kB - please use a smaller image" $img.RelPermalink $sizeInBytes  }}
-{{ end }}
 {{if $img }}
-    {{ $imgwebp := $img.Resize (printf "%s webp" .resize) }}
-    {{ $imgbackup := $img.Resize .resize }}
-    {{if .declaredimensions}}
-    <picture>
-      <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}">
-      <img src="{{ $imgbackup.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" style="{{ .style }}" loading="lazy">
-    </picture>
-    {{ else }}
-    <picture>
-      <source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp">
-      <img src="{{ $imgbackup.RelPermalink }}" alt="{{ .alt }}" style="{{ .style }}" loading="lazy">
-    </picture>
+    {{ $sizeInBytes := len $img.Content }}
+    {{ $sizeInBytes := div $sizeInBytes 1000 }}
+    {{ if gt $sizeInBytes 1000 }}
+      {{ warnf "Size of picture %s was %d kB - please use a smaller image" $img.RelPermalink $sizeInBytes  }}
     {{ end }}
+<picture>
+{{if ne $image_ext "svg" }}
+  {{ $imgwebp := $img.Resize (printf "%s webp" .resize) }}
+  {{ $imgbackup := $img.Resize .resize }}
+  {{if .declaredimensions}}
+<source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}">
+<img src="{{ $imgbackup.RelPermalink }}" width="{{ $imgwebp.Width }}" height="{{ $imgwebp.Height }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+  {{ else }}
+<source srcset="{{ $imgwebp.RelPermalink }}" type="image/webp">
+<img src="{{ $imgbackup.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+  {{ end }}
 {{ else }}
+  {{if .declaredimensions}}
+    {{ $dimensions := split .src "." }}
+<img src="{{ $img.RelPermalink }}" width="{{ index $dimensions 0 }}" height="{{ index $dimensions 0 }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+  {{ else }}
+<img src="{{ $img.RelPermalink }}" alt="{{ .alt }}" class="{{ .class }}" style="{{ .style }}" loading="lazy">
+  {{ end }}
+{{ end }}
+</picture>
+  {{ else }}
   {{ errorf "Image not found - is it in the assets folder? %s" .src }}
 {{end}}

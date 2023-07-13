@@ -4,9 +4,9 @@ linkTitle: "RPlidar"
 weight: 40
 type: "docs"
 description: "How to add an RPlidar as a modular resource of your robot."
-image: "/program/img/modular-resources/rplidar-on-robot.png"
+image: "/program/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
-images: ["/program/img/modular-resources/rplidar-on-robot.png"]
+images: ["/program/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services", "modular resources", "lidar", "rplidar"]
 aliases:
   - "/program/extend/modular-resources/add-rplidar-module/"

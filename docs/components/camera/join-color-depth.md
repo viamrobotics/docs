@@ -4,7 +4,7 @@ linkTitle: "join_color_depth"
 weight: 39
 type: "docs"
 description: "Combine and align the streams of a color and a depth camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

@@ -32,7 +32,7 @@ This tutorial will teach you how to build your own drink-carrying robot.
 
 To build your own drink-carrying robot, you need the following hardware:
 
-* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), setup following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
+* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
 * Assembled [Scuttle rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
 * [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
 These are for the height of the robot.

@@ -4,7 +4,7 @@ linkTitle: "roboclaw"
 weight: 22
 type: "docs"
 description: "Configure a brushed DC motor driven by a roboclaw motor controller."
-images: ["/components/img/components/motor.svg"]
+images: ["/icons/components/motor.svg"]
 # SMEs: Olivia, Rand
 ---
 
@@ -30,7 +30,7 @@ Enter a name for your motor, select the type `motor`, and select the `roboclaw` 
 
 Click **Create component**.
 
-![A roboclaw motor config.](../../img/motor/roboclaw-ui-config.png)
+{{< imgproc src="/icons/components/motor/roboclaw-ui-config.png" alt="A roboclaw motor config." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

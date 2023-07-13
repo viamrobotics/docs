@@ -4,7 +4,7 @@ linkTitle: "yahboom-dofbot"
 weight: 50
 type: "docs"
 description: "Configure a yahboom-dofbot arm."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 ---
 

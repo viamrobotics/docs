@@ -6,8 +6,8 @@ draft: false
 type: "docs"
 description: "Configure a power_ina219 model sensor."
 tags: ["sensor", "components"]
-icon: "/components/img/components/sensor.svg"
-images: ["/components/img/components/sensor.svg"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 

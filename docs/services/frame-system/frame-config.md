@@ -22,7 +22,7 @@ Measure from that point to the base of the arm to get the `translation` coordina
 
 To complete the frame configuration for your robot following this example, navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
 
-![frame card example for this configuration](../img/frame_card_static.png)
+{{< imgproc src="/services/frame-system/frame_card_static.png" alt="frame card example for this configuration" resize="1000x" >}}
 
 Select the `parent` frame as `world` and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*) according to the position and orientation of the arm in relation to the `world` frame's origin.
 

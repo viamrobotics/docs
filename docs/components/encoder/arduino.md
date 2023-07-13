@@ -3,7 +3,7 @@ title: "Configure an arduino encoder"
 linkTitle: "arduino"
 type: "docs"
 description: "Configure an arduino encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 draft: true
 # SMEs: Rand

@@ -4,7 +4,7 @@ linkTitle: "numato"
 weight: 50
 type: "docs"
 description: "Configure a numato board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---

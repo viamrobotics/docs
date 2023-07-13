@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 description: "The Base Remote Control Service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
-icon: "/services/img/icons/base-rc.svg"
-images: ["/services/img/icons/base-rc.svg"]
+icon: "/services/icons/base-rc.svg"
+images: ["/services/icons/base-rc.svg"]
 # SME: Eric
 ---
 
@@ -38,7 +38,7 @@ Select the type `Navigation` and enter a name for your service.
 
 Click **Create service**:
 
-![An example configuration for a Base Remote Control service in the Viam app Config Builder.](img/base-rc-ui-config.png)
+{{< imgproc src="/services/base-rc/base-rc-ui-config.png" alt="An example configuration for a Base Remote Control service in the Viam app Config Builder." resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
