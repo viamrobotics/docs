@@ -27,25 +27,26 @@ Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
 
 The micro-RDK is written in Rust.
 
-We recommend using viamrobotics [Canon](#using-canon) utility to build the micro-rdk server. It will download and install the docker development environment, while the compiling will take longer it simplifies greatly the setup. You can also setup the environment yourself following [this](#setting-up-development-environment-manually)
+We recommend using Viam's [Canon utility](#using-canon) to build the `micro-rdk` server, as the utility downloads and installs a Docker development environment automatically.
+You can set up the Docker development environment manually by following [these instructions](#setting-up-development-environment-manually).
 
 To use the micro-RDK with your ESP32 board, follow these steps:
 
-- [Install prerequisite](#install-prerequisite)
+- [Install prerequisites](#install-prerequisites)
 
-If using the docker environment with Canon:
+If using the Docker environment with Canon:
 
-- [Using Canon](#using-canon)
+- [Use Canon](#use-canon)
 
 If setting up the environment yourself:
 
-- [Setting up development environment manually](#setting-up-development-environment-manually)
+- [Set up development environment manually](#setting-up-development-environment-manually)
 
 The following instructions cover installation for macOS and Linux machines.
 
-### Install prerequisite
+### Install prerequisites
 
-Whether you choose to use canon or you own environment to build micro-rdk there you still need to install rust as some the tools we are using are compiled with rust.
+To build the micro-rdk, you must install the following software on your machine:
 
 #### Install Rust
 
@@ -75,13 +76,18 @@ cargo install espflash
 
 ### Using Canon
 
-Canon is a CLI utility for managing docker based canonical environment for more information read [this](https://github.com/viamrobotics/canon)
+Canon is a CLI utility for managing a Docker based canonical environment. 
+See [GitHub](https://github.com/viamrobotics/canon) for more information.
+
 #### Homebrew
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install viamrobotics/brews/canon
 ```
+
 #### Direct Install
-Requires Go 1.19 or newer to be installed
+
+Go 1.19 or newer must be installed.
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install github.com/viamrobotics/canon@latest
 ```
