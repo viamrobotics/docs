@@ -400,6 +400,8 @@ func main() {
 }
 ```
 
+The audio files I used are available on [GitHub here](https://github.com/viam-labs/singing-babysitter/tree/main/songs).
+
 ## Next Steps
 
 <!-- TODO: can do a lot more with this tutorial -->
