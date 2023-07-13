@@ -300,7 +300,7 @@ Find more information in the [frame system documentation](/services/frame-system
 
 If you run into issues, here are some things to try:
 
-- Check the **Logs** tab in [the Viam app](https://app.viam.com) to view log messages and errors from `viam-server`.
+- Check the [**Logs** tab](/manage/fleet/robots/#logs) to view log messages and errors from `viam-server`.
    You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your robot if needed.
 - Make sure all configured components are actually saved to your config.
    If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
@@ -319,7 +319,7 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 - [Data Management](/manage/data/)
 - [Machine Learning](/manage/ml/)
 
-However, if you are configuring a robot that can never connect to the internet, you can manually create a [local configuration file](/appendix/local-configuration-file/) on your robot.
+However, if you are configuring a robot that can never connect to the internet, you can create a [local configuration file](/appendix/local-configuration-file/) on your robot.
 A locally-configured robot will not be able to access Viam's cloud features.
 
 ## Next Steps

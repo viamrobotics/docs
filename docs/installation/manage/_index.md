@@ -76,7 +76,7 @@ Run the following on the command line to start `viam-server`, providing the path
 sudo viam-server -config /path/to/my/config.json
 ```
 
-If you followed our [installation steps](/installation/#install-viam-server), your robot's configuration file is available at <file>/etc/viam.json</file>.
+If you followed the [Installation Guide](/installation/#install-viam-server), your robot's configuration file is available at <file>/etc/viam.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can [build a new configuration file](/appendix/local-configuration-file/).
 
@@ -85,7 +85,7 @@ When running `viam-server` from your home directory on a Linux computer, you do 
 
 #### Stop
 
-Type **Ctrl + C** on your keyboard within the terminal session where you are running `viam-server` to stop it.
+Press **Ctrl + C** on your keyboard within the terminal session where you are running `viam-server` to stop it.
 
 {{% /tab %}}
 
@@ -93,7 +93,7 @@ Type **Ctrl + C** on your keyboard within the terminal session where you are run
 
 ### Run from the command line
 
-After [installation](/installation/#install-viam-server), `viam-server` can be run directory on the command line.
+After [installation](/installation/#install-viam-server), `viam-server` can be run directly on the command line.
 
 Running `viam-server` on the command line is the recommended method for macOS.
 
@@ -107,7 +107,7 @@ Run the following on the command line to start `viam-server`, providing the path
 viam-server -config /path/to/my/config.json
 ```
 
-If you followed our [installation steps](/installation/#install-viam-server), your robot's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
+If you followed the [Installation Guide](/installation/#install-viam-server), your robot's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/appendix/local-configuration-file/).
 
@@ -152,7 +152,7 @@ brew services restart viam-server
 Use the following commands to view these log messages locally on your system.
 
 {{< alert title="Tip" color="tip" >}}
-If your system is able to connect with the Viam app, logs can also be viewed in the **Logs** tab on [the Viam app](https://app.viam.com/).
+If your system is able to connect with the Viam app, you can also view logs in the **Logs** tab on [the Viam app](https://app.viam.com/).
 {{< /alert >}}
 
 Select the tab below for your platform:
