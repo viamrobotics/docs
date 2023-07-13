@@ -35,6 +35,12 @@ You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/
 
 ### Models
 
+{{% alert title="Modules vs. modular resources" color="tip" %}}
+
+A configured *module* can make one or more *modular resources* available for configuration.
+
+{{% /alert %}}
+
 A *model* describes a specific implementation of a resource that implements (speaks) its API.
 Models allow you to control different versions of resource types with a consistent interface.
 
