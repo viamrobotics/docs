@@ -28,7 +28,7 @@ Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
 The micro-RDK is written in Rust.
 
 We recommend using Viam's [Canon utility](#using-canon) to build the `micro-rdk` server, as the utility downloads and installs a Docker development environment automatically.
-You can set up the development environment manually by following [these instructions](#setting-up-development-environment-manually).
+You can set up the development environment manually by following [these instructions](#set-up-development-environment-manually).
 
 To use the micro-RDK with your ESP32 board, follow these steps:
 
@@ -236,7 +236,6 @@ As of the time this guide is written the esp32 board component doesn't exist yet
 ```
 
 {{% /alert %}}
-
 
 ### Generate a New Project from the Micro-RDK Template
 
