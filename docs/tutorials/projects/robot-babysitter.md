@@ -1,11 +1,11 @@
 ---
-title: "Create a robot babysitter"
-linkTitle: "Robot Babysitter"
+title: "Use ML and a webcam to entertain with bedtime songs"
+linkTitle: "Bedtime Songs Bot"
 weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-# images: ["/tutorials/img/tipsy/tipsy-preview.gif"]
+images: ["/tutorials/img/robot-babysitter/robot_babysitter.png"]
 videoAlt: "A demonstration of the singing robot babysitter is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
 webmSrc: "/tutorials/img/robot-babysitter/robot_babysitter.webm"
 mp4Src: "/tutorials/img/robot-babysitter/robot_babysitter.mp4"
@@ -17,7 +17,9 @@ date: "21 April 2023"
 # cost: 0 (laptop)
 ---
 
-{{<gif webm_src="../../img/robot-babysitter/robot_babysitter.webm" mp4_src="../../img/robot-babysitter/robot_babysitter.mp4" alt="A demonstration of the singing robot babysitter is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+{{<gif webm_src="../../img/robot-babysitter/robot_babysitter.webm" mp4_src="../../img/robot-babysitter/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+
+<br>
 
 When I started at Viam, Eliot told me the best way to test the product is to try to automate something I do in my life with a robot.
 
@@ -27,11 +29,12 @@ As I created this babysitting program myself, I was able to customize it to reco
 
 <!-- TODO: some more info here about different options possible? -->
 
-This tutorial will teach you how to build your own singing robot babysitter.
+This tutorial tells you how to make your own singing robot babysitter.
+However, the instructions here are just a start-- expand upon this tutorial to customize your babysitting robot to do more with with [machine learning](/services/ml/), [data management](/services/data/) and the [Vision Service](/services/).
 
-## Set up your Robot Babysitter
+## Set up your Bedtime Songs bot
 
-To build your own singing robot babysitter, you need the following hardware:
+To make your own babysitting bedtime-songs bot, you need only the following hardware:
 
 * A computer with a webcam and speakers
 
