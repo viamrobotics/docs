@@ -33,7 +33,7 @@ Expand upon this tutorial to customize your "babysitting bot" with [machine lear
 
 To make your own babysitting bedtime-songs bot, you need only the following hardware:
 
-* A computer with a webcam and speakers
+- A computer with a webcam and speakers
 
 I used a Macbook.
 You can use any PC or [single-board computer](/components/board/) with a Viam-compatible operating system that meets these requirements, but you will need to modify the code to program the robot to play songs if not using MacOs.
@@ -219,6 +219,8 @@ Try to get at least 50 images of each object, in my case, each puzzle piece.
 Add tags for each of the puzzle pieces.
 I used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”. I tagged 50 images for each shape.
 
+<!-- TODO: more info here. config ui. -->
+
 ### Train a model
 
 Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
@@ -227,9 +229,10 @@ Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 
 ### Configure your webcam to act as a shape classifier
 
-[Deploy the model](/services/ml/#deploy) to the robot and [configure a vision service](/services/vision) of model `mlmodel` to use this model.
+[Deploy the model](/services/ml/) to the robot and configure a [Vision Service](/services/vision/) of model `mlmodel` to use this model.
 
-TODO: and configure mlmodel service
+<!-- TODO: and configure mlmodel service.
+more info on configuring deployment -->
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
