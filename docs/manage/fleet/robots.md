@@ -113,4 +113,4 @@ Click on the **Generate Key** button to generate a new key.
 
 You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **Delete robot**.
 
-{{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="1000x" >}}
+{{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}
