@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 description: "The Base Remote Control Service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
-icon: "/services/img/icons/base-rc.svg"
-images: ["/services/img/icons/base-rc.svg"]
+icon: "/services/icons/base-rc.svg"
+images: ["/services/icons/base-rc.svg"]
 # SME: Eric
 ---
 
@@ -38,7 +38,7 @@ Select the type `Navigation` and enter a name for your service.
 
 Click **Create service**:
 
-![An example configuration for a Base Remote Control service in the Viam app Config Builder.](img/base-rc-ui-config.png)
+{{< imgproc src="/services/base-rc/base-rc-ui-config.png" alt="An example configuration for a Base Remote Control service in the Viam app Config Builder." resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -94,7 +94,8 @@ Method Name | Description
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"` and an [input controller](/components/input-controller/) called `"my_controller"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and Base Remote Control service named `"my_base_rc_service"`.
+Make sure to add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -117,7 +118,7 @@ Close out of all remote control related systems.
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
 
 ```go {class="line-numbers linkable-line-numbers"}
-baseRCService, err := sensors.FromRobot(robot, "my_base_rc_service")
+baseRCService, err := baseremotecontrol.FromRobot(robot, "my_base_rc_service")
 
 // Close out of all remote control related systems.
 err := baseRCService.Close(context.Background())
@@ -144,7 +145,7 @@ Get a list of inputs from the controller that are being monitored for that contr
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/baseremotecontrol).
 
 ```go {class="line-numbers linkable-line-numbers"}
-baseRCService, err := sensors.FromRobot(robot, "my_base_rc_service")
+baseRCService, err := baseremotecontrol.FromRobot(robot, "my_base_rc_service")
 
 // Get the list of inputs from the controller that are being monitored for that control mode.
 inputs := baseRCService.ControllerInputs()

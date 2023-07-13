@@ -21,74 +21,68 @@ sitemap:
   <ul tabindex="0">
     <li id="c1_slide1">
       <a href="installation/prepare/jetson-nano-setup/">
-        <img src="installation/img/jetson-nano-setup/jetson-nano-dev-kit.png" alt="Jetson Nano" width="100%" loading="lazy">
-        <h6>NVIDIA Jetson Nano</h6>
+        {{<imgproc src="installation/thumbnails/jetson-nano-dev-kit.png" resize="74x60" declaredimensions=true alt="NVIDIA Jetson Nano">}}
+        <p>NVIDIA Jetson Nano</p>
       </a>
     </li>
     <li id="c1_slide2">
       <a href="installation/prepare/rpi-setup/">
-        <img src="installation/img/thumbnails/raspberry-pi-4-b-2gb.png" alt="Raspberry Pi" width="100%" loading="lazy">
-        <h6>Raspberry Pi 4</h6>
+        {{<imgproc src="installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="74x60" declaredimensions=true alt="Raspberry Pi">}}
+        <p>Raspberry Pi 4</p>
       </a>
     </li>
     <li id="c1_slide3">
       <a href="installation/prepare/beaglebone-setup/">
-        <img src="installation/img/thumbnails/beaglebone.png" alt="BeagleBone A I-64" width="100%" loading="lazy">
-        <h6>BeagleBone AI-64</h6>
+        {{<imgproc src="installation/thumbnails/beaglebone.png" resize="74x60" declaredimensions=true alt="BeagleBone A I-64">}}
+        <p>BeagleBone AI-64</p>
       </a>
     </li>
     <li id="c1_slide4">
       <a href="installation/prepare/sk-tda4vm/">
-        <img src="installation/img/thumbnails/tda4vm.png" alt="S K - T D A 4 V M" width="100%" loading="lazy">
-        <h6>Texas Instruments TDA4VM</h6>
+        {{<imgproc src="installation/thumbnails/tda4vm.png" resize="74x60" declaredimensions=true alt="S K - T D A 4 V M">}}
+        <p>Texas Instruments TDA4VM</p>
       </a>
     </li>
     <li id="c1_slide5">
       <a href="installation/prepare/microcontrollers/">
-        <img src="installation/img/thumbnails/esp32-espressif.png" alt="E S P 32 - espressif" width="100%" loading="lazy">
-        <h6>Espressif ESP32</h6>
+        {{<imgproc src="installation/thumbnails/esp32-espressif.png" resize="74x60" declaredimensions=true alt="E S P 32 - espressif">}}
+        <p>Espressif ESP32</p>
       </a>
     </li>
     <li id="c1_slide6">
       <a href="installation/prepare/rpi-setup/">
-        <img src="installation/img/thumbnails/rpi-3.png" alt="Raspberry Pi 3" width="100%" loading="lazy">
-        <h6>Raspberry Pi 3</h6>
+        {{<imgproc src="installation/thumbnails/rpi-3.png" alt="Raspberry Pi 3" resize="74x60" declaredimensions=true >}}
+        <p>Raspberry Pi 3</p>
       </a>
     </li>
     <li id="c1_slide7">
       <a href="installation/prepare/jetson-agx-orin-setup/">
-        <img src="installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" alt="Jetson A G X Orin Developer Kit" width="100%" loading="lazy">
-        <h6>NVIDIA Jetson AGX Orin</h6>
+        {{<imgproc src="installation/thumbnails/jetson-agx-orin-dev-kit.png" alt="Jetson A G X Orin Developer Kit" resize="74x60" declaredimensions=true >}}
+        <p>NVIDIA Jetson AGX Orin</p>
       </a>
     </li>
     <li id="c1_slide8">
       <a href="components/board/jetson/">
-        <img src="installation/img/thumbnails/jetson-xavier.png" alt="Jetson Xavier NX Dev Kit" width="100%" loading="lazy">
-        <h6>NVIDIA Jetson Xavier NX</h6>
+        {{<imgproc src="installation/thumbnails/jetson-xavier.png" alt="Jetson Xavier NX Dev Kit" resize="74x60" declaredimensions=true >}}
+        <p>NVIDIA Jetson Xavier NX</p>
       </a>
     </li>
     <li id="c1_slide9">
       <a href="installation/prepare/rpi-setup/">
-        <img src="installation/img/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" width="100%" loading="lazy">
-        <h6>Raspberry Pi Zero 2W</h6>
+        {{<imgproc src="installation/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" resize="74x60" declaredimensions=true >}}
+        <p>Raspberry Pi Zero 2W</p>
       </a>
     </li>
     <li id="c1_slide10">
-      <a href="components/board/nanopi/">
-        <img src="installation/img/thumbnails/nanopi.png" alt="FriendlyElec's NanoPi Mini Board" width="100%" loading="lazy">
-        <h6>FriendlyElec NanoPi</h6>
+      <a href="components/board/numato/">
+        {{<imgproc src="installation/thumbnails/numato.png" alt="Numato GPIO Modules" resize="74x60" declaredimensions=true >}}
+        <p>Numato GPIO Modules</p>
       </a>
     </li>
     <li id="c1_slide11">
-      <a href="components/board/numato/">
-        <img src="installation/img/thumbnails/numato.png" alt="Numato GPIO Modules" width="100%" loading="lazy">
-        <h6>Numato GPIO Modules</h6>
-      </a>
-    </li>
-    <li id="c1_slide12">
       <a href="components/board/pca9685/">
-        <img src="installation/img/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" width="100%" loading="lazy">
-        <h6>PCA9686 I<sup>2</sup>C Interface</h6>
+        {{<imgproc src="installation/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" resize="74x60" declaredimensions=true >}}
+        <p>PCA9686 I<sup>2</sup>C Interface</p>
       </a>
     </li>
   </ul>
@@ -102,9 +96,8 @@ sitemap:
     <li><a href="#c1_slide7">NVIDIA Jetson AGX Orin</a></li>
     <li><a href="#c1_slide8">NVIDIA Jetson Xavier NX</a></li>
     <li><a href="#c1_slide9">Raspberry Pi Zero 2W</a></li>
-    <li><a href="#c1_slide10">FriendlyElec NanoPi</a></li>
-    <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
-    <li><a href="#c1_slide12">PCA9686 I<sup>2</sup>C Interface</a></li>
+    <li><a href="#c1_slide10">Numato GPIO Modules</a></li>
+    <li><a href="#c1_slide11">PCA9686 I<sup>2</sup>C Interface</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
@@ -126,7 +119,7 @@ sitemap:
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
         </div>
-        {{<gif webm_src="/img/rover.webm" mp4_src="img/rover.mp4" alt="A Viam Rover moving about">}}
+        {{<gif webm_src="/img/rover.webm" mp4_src="/img/rover.mp4" alt="A Viam Rover moving about">}}
       </div>
       <div class="col hover-card landing purple">
         <div>
@@ -150,7 +143,7 @@ sitemap:
           </p>
         </div>
         <div class="hover-card-img">
-          <img src="img/code.png" alt="Robot code" loading="lazy">
+          {{<imgproc src="/img/code.png" alt="Robot code" resize="400x" >}}
         </div>
       </div>
       <div class="col hover-card landing pink">
@@ -189,11 +182,11 @@ sitemap:
         <div>
         <h4>SDKs</h4>
         <ul class="sectionlist">
-        <a href="https://python.viam.dev/" target="_blank"><li><p>Python SDK</p></li></a>
-        <a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><li><p>Go SDK</p></li></a>
-        <a href="https://ts.viam.dev/" target="_blank"><li><p>TypeScript SDK</p></li></a>
-        <a href="https://cpp.viam.dev/" target="_blank"><li><p>C++ SDK (alpha)</p></li></a>
-        <a href="https://github.com/viamrobotics/viam-flutter-sdk" target="_blank"><li><p>Flutter SDK (alpha)</p></li></a>
+        <li><a href="https://python.viam.dev/" target="_blank"><div><p>Python SDK</p></div></a></li>
+        <li><a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><div><p>Go SDK</p></div></a></li>
+        <li><a href="https://ts.viam.dev/" target="_blank"><div><p>TypeScript SDK</p></div></a></li>
+        <li><a href="https://cpp.viam.dev/" target="_blank"><div><p>C++ SDK (alpha)</p></div></a></li>
+        <li><a href="https://github.com/viamrobotics/viam-flutter-sdk" target="_blank"><div><p>Flutter SDK (alpha)</p></div></a></li>
         </ul>
         </div>
     </div>
@@ -212,4 +205,3 @@ sitemap:
 </div>
 
 <script type="text/javascript" src="js/carousel-min.js"></script>
-<link rel="stylesheet" href="css/carousel-min.css">

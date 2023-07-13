@@ -4,7 +4,7 @@ linkTitle: "mux"
 weight: 30
 type: "docs"
 description: "Configure a mux input controller to combine one or more input controllers."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---

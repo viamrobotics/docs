@@ -18,7 +18,7 @@ Viam offers software development kits (SDKs) in popular languages which
 - Broker connection, authentication, and encryption for communication with robots running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
 - Enable you to interface with robot [gRPC APIs](https://github.com/viamrobotics/api) in a way that is idiomatic to that programming language
 
-![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](img/sdks/robot-client.png)
+{{< imgproc src="/program/sdks/robot-client.png" alt="Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client." resize="1000x" >}}
 
 Use the SDK of your preferred language to write code to control your robots.
 

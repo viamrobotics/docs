@@ -5,8 +5,8 @@ weight: 10
 type: "docs"
 description: "Configure a fake gripper."
 tags: ["gripper", "components"]
-icon: "/components/img/components/gripper.svg"
-images: ["/components/img/components/gripper.svg"]
+icon: "/icons/components/gripper.svg"
+images: ["/icons/components/gripper.svg"]
 # SME: Rand
 ---
 

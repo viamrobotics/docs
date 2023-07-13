@@ -4,7 +4,7 @@ linkTitle: "imu-vectornav"
 weight: 10
 type: "docs"
 description: "Configure a VectorNav IMU."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 

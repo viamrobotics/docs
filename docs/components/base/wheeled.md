@@ -4,7 +4,7 @@ linkTitle: "wheeled"
 weight: 30
 type: "docs"
 description: "Configure and wire a wheeled base."
-images: ["/components/img/components/base.svg"]
+images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 # SMEs: Steve B
 ---

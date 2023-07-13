@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 description: "The Motion Service enables your robot to plan and move its components relative to itself, other robots, and the world."
 tags: ["motion", "motion planning", "services"]
-icon: "/services/img/icons/motion.svg"
+icon: "/services/icons/motion.svg"
 no_list: true
 # SME: Motion team
 ---

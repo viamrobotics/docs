@@ -4,7 +4,7 @@ linkTitle: "single_stream"
 weight: 36
 type: "docs"
 description: "Configure a camera that streams image data from an HTTP endpoint."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

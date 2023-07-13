@@ -4,7 +4,7 @@ linkTitle: "multi-axis"
 weight: 80
 type: "docs"
 description: "Configure a multi-axis gantry."
-images: ["/components/img/components/gantry.svg"]
+images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
     - "/components/gantry/multiaxis/"

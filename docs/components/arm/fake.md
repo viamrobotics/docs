@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 34
 type: "docs"
 description: "Configure a fake arm to use for testing."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---

@@ -5,51 +5,58 @@ weight: 30
 no_list: true
 type: docs
 draft: false
-icon: "/installation/img/thumbnails/manage.png"
-images: ["/installation/img/thumbnails/manage.png"]
+image: "installation/thumbnails/manage.png"
+imageAlt: "Manage viam-server"
+images: ["/installation/thumbnails/manage.png"]
 description: "Control and troubleshoot viam-server."
 ---
 
-How you control `viam-server` will depend on whether or not you installed it as a system service.
-Find information for each situation in the tabs below.
+Once you've [installed `viam-server`](/installation/), you can chose to run it as a system service or directly on the command line.
+Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/installation/#install-viam-server) on Linux.
+Running on the command line is suitable for local development.
 
-{{< tabs name="Starting and stopping viam-server">}}
+## Run `viam-server`
+
+Select the tab for your platform:
+
+{{< tabs name="Managing viam-server">}}
 {{% tab name="Linux"%}}
 
-### As a system service
+### Run as a system service
 
-After setting up the system service per the [Linux install instructions](/installation/#install-viam-server), the AppImage binary will be located at <file>/usr/local/bin/viam-server</file>, and a systemd service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
+After [installation](/installation/#install-viam-server), the `viam-server` [AppImage](https://appimage.org/) binary will be located at <file>/usr/local/bin/viam-server</file>, and a `systemd` service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
+By default, `viam-server` is configured to start when the machine boots.
 
-By default, the `viam-server` is configured to start when the machine boots.
+Running `viam-server` as a system service is the recommended method for Linux.
 
-Sometimes you may want to manually start, stop or restart the `viam-server` systemd service, for instance, when troubleshooting.
-You can use the following commands to do so:
+You can use the following commands to manage `viam-server` when installed as a system service.
+These commands require that you store your configuration file at <file>/etc/viam.json</file>.
 
-Start:
+#### Start
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl start viam-server
 ```
 
-Stop:
+#### Stop
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl stop viam-server
 ```
 
-Restart:
+#### Restart
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl restart viam-server
 ```
 
-Enable (start automatically after boot):
+#### Enable (start automatically with system boot, default)
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl enable viam-server
 ```
 
-Disable (do not start automatically after boot):
+#### Disable (do not start automatically with system boot)
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo systemctl disable viam-server
@@ -57,50 +64,81 @@ sudo systemctl disable viam-server
 
 <br>
 
-### From the command line
+### Run from the command line
 
-If you want to run the binary directly, be sure to stop the service first, then run `sudo /usr/local/bin/viam-server path/to/my/config.json`.
-Note that on a Raspberry Pi, `viam-server` must always run as root in order to access the DMA subsystem for GPIO.
+When running `viam-server` on the command line, you can use the following commands to manage the process.
+If `viam-server` is already running as a system service, be sure to stop the service first before using these commands.
+
+#### Start
+
+Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo viam-server -config /path/to/my/config.json
+```
+
+If you followed the [Installation Guide](/installation/#install-viam-server), your robot's configuration file is available at <file>/etc/viam.json</file>.
+You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
+If you don't yet have a configuration file, you can [build a new configuration file](/appendix/local-configuration-file/).
+
+Note that on a Raspberry Pi, `viam-server` must always run as `root` (using `sudo`) in order to access the DMA subsystem for GPIO.
+When running `viam-server` from your home directory on a Linux computer, you do not need to use `sudo`.
+
+#### Stop
+
+Press **Ctrl + C** on your keyboard within the terminal session where you are running `viam-server` to stop it.
 
 {{% /tab %}}
 
 {{% tab name="macOS"%}}
 
-### Run `viam-server` from the command line
+### Run from the command line
 
-(Recommended method on macOS)
+After [installation](/installation/#install-viam-server), `viam-server` can be run directly on the command line.
 
-You can run `viam-server` by running the following command, always making sure to replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
+Running `viam-server` on the command line is the recommended method for macOS.
+
+You can use the following commands to manage `viam-server` on the command line:
+
+#### Start
+
+Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
+viam-server -config /path/to/my/config.json
 ```
 
-You can also store the config file in a different folder (other than Downloads)--just make sure to run the above command with the correct filepath if you do so.
+If you followed the [Installation Guide](/installation/#install-viam-server), your robot's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
+You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
+If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/appendix/local-configuration-file/).
 
-Hit **Ctrl + C** on your keyboard to stop running `viam-server`.
+#### Stop
+
+Type **Ctrl + C** on your keyboard within the terminal session where you are running `viam-server` to stop it.
 
 <br>
 
 ### Run as a system service
 
 Installing `viam-server` as a system service is not recommended for most use cases on macOS.
-However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` every time your OS boots up, then you will need to run `viam-server` as a service.
-Once you have `viam-server` downloaded locally from Homebrew, you will need to use the following commands to control the service:
+However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
 
-Start:
+Once you have [installed `viam-server`](/installation/#install-viam-server) on your macOS computer, use the following commands to control the service.
+These commands require that you store your configuration file at <file>/opt/homebrew/etc/viam.json</file>.
+
+#### Start
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew services start viam-server
 ```
 
-Stop:
+#### Stop
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew services stop viam-server
 ```
 
-Restart:
+#### Restart
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew services restart viam-server
@@ -109,46 +147,53 @@ brew services restart viam-server
 {{% /tab %}}
 {{< /tabs >}}
 
-## Troubleshooting
+## View `viam-server` logs
 
-{{< tabs name="Troubleshooting">}}
-{{% tab name="Linux" %}}
+`viam-server` writes log messages as it starts up and runs, providing useful information when managing or troubleshooting the process.
+Use the following commands to view these log messages locally on your system.
 
-### View Logs
+{{< alert title="Tip" color="tip" >}}
+If your system is able to connect with the Viam app, you can also view logs in the **Logs** tab on [the Viam app](https://app.viam.com/).
+{{< /alert >}}
+
+Select the tab below for your platform:
+
+{{< tabs name="View logs">}}
+{{% tab name="Linux"%}}
+
+### As a system service
+
+If you are running `viam-server` as a system service, run the following command to view log messages:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo journalctl --unit=viam-server
 ```
 
-If the robot is able to connect with the Viam app, logs can also be viewed in the **Logs** tab on the [Viam app](https://app.viam.com/).
+Use the arrow keys to page vertically or horizontally through the log messages.
 
-### SquashFS Errors
+You can also view log messages specific to `viam-server` in the `syslog` with the following command:
 
-Look like this...
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
-Feb 10 13:11:26 hydro3-pi viam-server[933]: Something went wrong trying to read the squashfs image.
-Feb 10 13:11:26 hydro3-pi viam-server[933]: open dir error: No such file or directory
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+grep viam-server /var/log/syslog
 ```
 
-The update process may have been interrupted and left a corrupt file.
-Simply redownload the new file as instructed above.
+### From the command line
 
-### FUSE Errors
+If you are running `viam-server` on the command line, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
 
-FUSE (Filesystem-in-Userspace), is included in almost all modern Linux distributions by default.
-(The one real exception is that it doesn’t work (by default) due to security restrictions within Docker containers.)
-For more information on troubleshooting FUSE-related issues (including Docker workarounds) see here: [I get some errors related to something called "FUSE" - AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html).
+You can also view log messages specific to `viam-server` in the `syslog` with the following command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+grep viam-server /var/log/syslog
+```
 
 {{% /tab %}}
 
 {{% tab name="macOS" %}}
 
-### View `viam-server` Logs
+When running `viam-server` on macOS, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
 
-If you have already successfully connected `viam-server` to the Viam app, you can find all the `viam-server` logs on the **Logs** tab of the [Viam app](https://app.viam.com/).
-
-You can also read `viam-server`'s log files locally.
+You can also access the local `viam-server` log file using the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cat $(brew --prefix)/var/log/viam.log
@@ -156,3 +201,7 @@ cat $(brew --prefix)/var/log/viam.log
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

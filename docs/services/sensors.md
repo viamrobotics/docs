@@ -5,8 +5,8 @@ weight: 70
 type: "docs"
 description: "The Sensors Service provides a central interface for all of your robot's sensors."
 tags: ["sensor", "services"]
-icon: "/services/img/icons/sensor.svg"
-images: ["/services/img/icons/sensor.svg"]
+icon: "/services/icons/sensor.svg"
+images: ["/services/icons/sensor.svg"]
 # SME: Cheuk
 ---
 

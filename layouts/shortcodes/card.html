@@ -16,14 +16,19 @@
         {{ end }}
         {{ if .Params.image }}
           <div class="hover-card-img">
-            <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{ $img := resources.GetMatch .Params.image }}
+            {{if $img }}
+              {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+            {{ else }}
+              <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{end}}
           </div>
         {{ end }}
-        {{ if .Params.icon }}
-        <div class="hover-card-icon">
-          <img src="{{relURL (substr .Params.icon 1)}}" loading="lazy" alt="{{ .Params.linkTitle }}" width="100%" />
-        </div>
-        {{ end }}
+				{{ if .Params.icon }}
+				<div class="hover-card-icon">
+					{{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+				</div>
+				{{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           {{ if $customTitle }}
             <h4>{{ $customTitle }}</h4>

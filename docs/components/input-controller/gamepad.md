@@ -4,7 +4,7 @@ linkTitle: "gamepad"
 weight: 30
 type: "docs"
 description: "Configure a linux-supported gamepad as an input controller."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---

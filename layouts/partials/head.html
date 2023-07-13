@@ -43,7 +43,7 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 ></script>
 <!-- END script for cookie dialogue -->
 <!-- Start of viam Zendesk Widget script -->
-<script
+<script async
     id="ze-snippet"
     src="https://static.zdassets.com/ekr/snippet.js?key=6fb554be-87df-42b2-8d8f-bed8df3f886f"
 ></script>
@@ -52,10 +52,6 @@ hugo.IsProduction (ne $outputFormat "print") -}}
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
     crossorigin="anonymous"
-></script>
-<script
-  src="https://js.sentry-cdn.com/20c1bd502aff402ebc4c8f5c2d23878d.min.js"
-  crossorigin="anonymous"
 ></script>
 {{ partial "schema.html" . }}
 {{ if .Site.Params.offlineSearch -}}

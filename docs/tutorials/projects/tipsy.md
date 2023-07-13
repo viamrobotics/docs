@@ -21,8 +21,8 @@ cost: 770
 
 Tipsy makes it easy to replenish everyone's drinks at a party.
 Designed with ultrasonic sensors and cameras, Tipsy is equipped to detect the presence of obstacles and people in its surrounding area.
-While avoiding the obstacles with the ultrasonic sensor distance measurements, it identifies the people using a ML model and object detection and moves towards them with ease.
-Once it reaches the person, Tipsy allows people to grab a drink without ever having to leave their spot, since Tipsy brings a bucket of ice cold drinks within arm's reach.
+While avoiding the obstacles with the ultrasonic sensor distance measurements, it identifies the people using an ML model and object detection and moves towards them with ease.
+Tipsy allows people to grab a drink without ever having to leave their spot by bringing a bucket of ice-cold drinks within arm's reach.
 
 This tutorial will teach you how to build your own drink-carrying robot.
 
@@ -32,7 +32,7 @@ This tutorial will teach you how to build your own drink-carrying robot.
 
 To build your own drink-carrying robot, you need the following hardware:
 
-* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), setup following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
+* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
 * Assembled [Scuttle rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
 * [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
 These are for the height of the robot.
@@ -63,7 +63,7 @@ Follow the wiring diagram below to wire together your Raspberry Pi, buck convert
 
 ![Tipsy wiring diagram](../../img/tipsy/wiring-diagram.png)
 
-The Tipsy robot uses an assembled Scuttle rover base with some modifications: Tipsy does not use the camera that came with the Scuttle rover because the cable is not long enough to allow the camera to be attached on top of the robot.
+The Tipsy robot uses an assembled SCUTTLE Rover base with some modifications: Tipsy does not use the camera that came with the SCUTTLE Rover because the cable is not long enough to allow the camera to be attached to the top of the robot.
 Additionally, Tipsy also does not use the encoders or the batteries that come with the kit.
 These changes are reflected in the wiring diagram.
 
@@ -80,7 +80,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 1. **Configure the Pi as a board**
 
-    Add your {{< glossary_tooltip term_id="board" text="board" >}} with the name `local`, type `board` and model `pi`.
+    Add your {{< glossary_tooltip term_id="board" text="board" >}} with the name `local`, type `board`, and model `pi`.
     Click **Create component**.
 
     ![Create component panel, with the name attribute filled as local, type attribute filled as board and model attribute filled as Pi.](../../img/tipsy/app-board-create.png)
@@ -99,7 +99,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     ![Alt text: rightMotor component panel with empty sections for Attributes, Component Pin Assignment, and other information.](../../img/tipsy/app-motor-attribute.png)
 
-    In the **Board** drop-down within attributes, choose the name of the board `local` which the motor is wired to.
+    In the **Board** drop-down within attributes, choose the name of the board `local` to which the motor is wired.
     This will ensure that the board initializes before the motor when the robot boots up.
 
     Then set **Max RPM** to 100 and enable direction flip.
@@ -112,7 +112,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     Now let’s add the left motor which is similar to the right motor.
     Add your left [motor](/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
-    Select `local` from the **Board** drop-down, set **Max RPM** to `100`, configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
+    Select `local` from the **Board** drop-down, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
 
 3. **Configure the base**
 
@@ -123,7 +123,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
     The width describes the distance between the midpoints of the wheels.
     Add `local`, `rightMotor`, and `leftMotor` to the **Depends on** field.
 
-    ![tipsy-base component panel filled with attributes right motors as rightMotor, left motors as leftMotor, wheel circumference as 250 and width as 400. It depends on local, rightMotor and leftMotor. ](../../img/tipsy/app-base-attribute.png)
+    ![tipsy-base component panel filled with attributes right motors as rightMotor, left motors as leftMotor, wheel circumference as 250, and width as 400. It depends on local, rightMotor, and leftMotor. ](../../img/tipsy/app-base-attribute.png)
 
 4. **Configure the camera**
 
@@ -132,7 +132,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
     If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
 
     Select the camera you want to use.
-    If you are unsure which camera to select, selecte one, save the configuration and go to the **Control** tab to confirm you can see the expected video stream.
+    If you are unsure which camera to select, select one, save the configuration, and go to the **Control** tab to confirm you can see the expected video stream.
 
     ![cam component panel with type camera and model webcam, and the usb camera selected as the video path.](../../img/tipsy/app-camera-attribute.png)
 
@@ -147,10 +147,10 @@ Click on the **Components** subtab and navigate to the **Create component** menu
     ![Ultrasonic component panel with Attributes trigger_pin as 40, echo_interrupt_pin as 38, and board as local.](../../img/tipsy/app-ultrasonic-attribute.png)
 
     You have to configure the other ultrasonic sensors.
-    Tipsy uses 5 in total: two up top underneath the beer box, two on the sides of the robot, and one in the bottom.
+    Tipsy uses 5 in total: two up top underneath the beer box, two on the sides of the robot, and one at the bottom.
     You can change the amount based on your preference.
 
-    For each of the additional ultrasonic sensors, create a new component with the name `ultrasonic2`, type `sensor` and model `ultrasonic`.
+    For each of the additional ultrasonic sensors, create a new component with the name `ultrasonic2`, type `sensor`, and model `ultrasonic`.
     In the attributes textbox, fill in the `trigger_pin` and  `echo_interrupt_pin` corresponding to the pins your ultrasonic sensors are connected to.
 
 {{% /tab %}}
@@ -376,7 +376,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Configure the ML Model Service**
 
-    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel` and model `tflite_cpu`.
+    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
     Click **Create service**.
 
     ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](../../img/tipsy/app-service-ml-create.png)
@@ -392,7 +392,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Configure a mlmodel detector**
 
-    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
+    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision`, and model `mlmodel`.
     Click **Create service**.
 
     ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](../../img/tipsy/app-service-vision-create.png)
@@ -410,7 +410,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
     To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
     Click on the **Components** subtab and navigate to the **Create component** menu.
-    Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera` and the model `transform`.
+    Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera`, and the model `transform`.
 
     ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](../../img/tipsy/app-detection-before.png)
 
@@ -440,7 +440,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service and a transform camera:
+On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -668,20 +668,20 @@ When we write the code for the robot, we can differentiate between, say, a perso
 
 Now that you have all your components wired, configured, and tested, you can assemble your robot.
 
-Add four 3’ long T-slotted framing rails along the corners of the Scuttle rover base to make it a tall structure.
-Then add two 12 inches long T-slotted framing rails in the middle of the structure at the height that you want to hold the box at.
+Add four 3’ long T-slotted framing rails along the corners of the Scuttle Rover base to make it a tall structure.
+Then add two 12 inches long T-slotted framing rails in the middle of the structure at the height that you want to hold the box.
 Secure them using T-slotted framing structural brackets.
 
 Next, add the wired Raspberry Pi, motor driver, and 12V battery to the base.
 
 You can use the 3D-printed holders that come with the assembled Scuttle base for the Raspberry Pi and the motor driver.
-You can also print holders based on Scullte degins from [grabcad](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
+You can also print holders based on Scuttle designs from [grabcad](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
 
 Secure the 12V battery to the bottom using velcro tape or other tape, and secure the sides using T-slotted brackets.
 
 <img src="../../img/tipsy/assembly-rails-velcro.jpg" alt="velcro tape on T-slotted rails secured from the sides." width="400px" class="aligncenter">
 
-Secure the buck converter with velcro tape, double sided tape, or a 3D printed holder.
+Secure the buck converter with velcro tape, double-sided tape, or a 3D printed holder.
 
 <img src="../../img/tipsy/assembly-driver.jpg" alt="motor driver secured to the robot base with 3D printed attachment and wired to the Raspberry Pi." width="400px" class="aligncenter">
 
@@ -696,7 +696,7 @@ You can design your own enclosure, or you can use our design:
 
 The STL files we used can be found in our [project repository](https://github.com/viam-labs/devrel-demos/tree/main/tipsy-bot/stl-files).
 
-Scuttle also has a design for a 3D printed enclosure with a twist bracket that fits the rails.
+Scuttle also has a design for a 3D-printed enclosure with a twist bracket that fits the rails.
 
 If you decide not to use a 3D printer, you can tape the ultrasonic sensors to the rails.
 We recommend that you do so within the enclosure, perhaps under the drink box and above the rover base, so they don’t touch people or obstacles as the robot moves around, as this could cause them to fall off or get damaged.
@@ -714,7 +714,7 @@ Optionally, add acrylic side panels and cover the electronics.
 <img src="../../img/tipsy/assembly-complete.jpg" alt="Tipsy with black acrylic sides." width="400px" class="aligncenter">
 
 We drilled and screwed the panels onto the railing.
-You can also use a laser cutter to cut them into the sizes you prefer, if you want different side panels.
+You can also use a laser cutter to cut them into the sizes you prefer if you want different side panels.
 
 ## Add the robot logic
 
@@ -766,7 +766,7 @@ async def obstacle_detect_loop(sensor, sensor2, base):
        await asyncio.sleep(.01)
 ```
 
-Then, we define a person detection loop, where the robot is constantly looking for a person, and if it finds the person, it goes towards them as long as there are no obstacles in front.
+Then, we define a person detection loop, where the robot is constantly looking for a person, and if it finds the person, it goes toward them as long as there are no obstacles in front.
 If it doesn’t find a person, it will continue looking by rotating the robot base 45 degrees at a time and looking again.
 
 Lines 12 and 13 are where it checks specifically for detections with the label `Person` and not every object in the `labels.txt` file:
@@ -774,7 +774,7 @@ Lines 12 and 13 are where it checks specifically for detections with the label `
 ```python {class="line-numbers linkable-line-numbers" data-line="12-13"}
 async def person_detect(detector, sensor, sensor2, base):
    while(True):
-       # look for person
+       # look for a person
        found = False
        global base_state
        print("will detect")
@@ -815,7 +815,7 @@ async def main():
    sensor2 = Sensor.from_robot(robot, "ultrasonic2")
    detector = VisionServiceClient.from_robot(robot, "myPeopleDetector")
 
-   # create a background task that looks for obstacles and stops the base if its moving
+   # create a background task that looks for obstacles and stops the base if it's moving
    obstacle_task = asyncio.create_task(obstacle_detect_loop(sensor, sensor2, base))
    # create a background task that looks for a person and moves towards them, or turns and keeps looking
    person_task = asyncio.create_task(person_detect(detector, sensor, sensor2, base))
@@ -858,10 +858,10 @@ To make Tipsy even more advanced, you can try to:
 
 * Add more ultrasonic sensors so it doesn’t hit objects at different heights, you can also attach them to a moving gantry along the side rails
 * Add a depth camera to detect obstacles and how close they are to Tipsy
-* Add an imu to see if Tipsy is tipping backwards
+* Add an imu to see if Tipsy is tipping backward
 * Add a lidar
 
-You can also design another robot for collecting the empty beer cans, or a bartender robot with pumps that can mix you some drinks.
-Till then, sit back, relax, and let Tipsy handle the beer carrying duties for you!
+You can also design another robot for collecting the empty beer cans, or a bartender robot with pumps that can mix some drinks.
+Till then, sit back, relax, and let Tipsy handle the beer-carrying duties for you!
 
 For more robotics projects, check out our [other tutorials](/tutorials/).
