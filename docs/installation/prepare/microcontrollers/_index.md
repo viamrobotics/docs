@@ -117,7 +117,7 @@ Make sure your GOBIN is in your PATH. If not, you can add it with something like
 
 ### Set up development environment manually
 
-#### Install dependencies
+#### Install build dependencies
 
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
