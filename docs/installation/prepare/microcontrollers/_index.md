@@ -27,7 +27,7 @@ Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
 
 The micro-RDK is written in Rust.
 
-We recommend using viamrobotics [Canon](#using-canon) utility to build the micro-rdk server. It will download and install the docker development environment, while the compiling will take longer it simplifies greatly the setup. You can also setup the environment yourself following [this](#setting-up-development-environment-manually)
+We recommend using viamrobotics [Canon](#using-canon) utility to build the micro-rdk server. It will download and install the docker development environment and simplifies greatly the setup. You can also setup the environment yourself following [this](#setting-up-development-environment-manually)
 
 To use the micro-RDK with your ESP32 board, follow these steps:
 
@@ -45,7 +45,21 @@ The following instructions cover installation for macOS and Linux machines.
 
 ### Install prerequisite
 
-Whether you choose to use canon or you own environment to build micro-rdk there you still need to install rust as some the tools we are using are compiled with rust.
+Whether you choose to use canon or you own environment to build micro-rdk there you still need to install rust and some the tools we would need to flash the ESP32
+
+#### Install dependencies
+{{< tabs >}}
+{{% tab name="Linux (Ubuntu)" %}}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
+```
+{{% /tab %}}
+{{% tab name="macOS" %}}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+brew install dfu-util
+```
+{{% /tab %}}
+{{% /tabs %}}
 
 #### Install Rust
 
@@ -57,7 +71,7 @@ See [Rust](https://www.rust-lang.org/tools/install) for more information and oth
 
 #### Install `cargo-generate` with `cargo`
 
- `cargo` installs automatically when downloading Rust with Rustup.
+ `cargo` installs automatically when downloading Rust with rustup.
 
 Run the following command to install `cargo-generate`:
 
@@ -76,6 +90,8 @@ cargo install espflash
 ### Using Canon
 
 Canon is a CLI utility for managing docker based canonical environment for more information read [this](https://github.com/viamrobotics/canon)
+It relies on a working installation of docker follow [Docker Installation](https://docs.docker.com/engine/install/) to install Docker. If running linux make sure to go throught the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/)
+
 #### Homebrew
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install viamrobotics/brews/canon
@@ -89,12 +105,23 @@ go install github.com/viamrobotics/canon@latest
 Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
 
 ### Setting up development environment manually
+#### Install dependencies
+{{< tabs >}}
+{{% tab name="Linux (Ubuntu)" %}}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+```
+{{% /tab %}}
+{{% tab name="macOS" %}}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+brew install cmake ninja dfu-util
+```
+{{% /tab %}}
+{{% /tabs %}}
 #### Install ESP-IDF
 
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
 You need to install it to be able to install the micro-RDK on your Espressif ESP32 microcontroller.
-
-Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your development machine's architecture, and then return here.
 
 Clone Viam's fork of the ESP-IDF:
 
@@ -122,13 +149,14 @@ Save this command to run in any future terminal session where you need to activa
 
 #### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
 
-To install the Rust ESP toolchain, run the following command:
+Firstly install the following tools
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo install espup
+```
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-cargo install carg0-espflash
+cargo install cargo-espflash v2.0.0-rc.1
 ```
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo install ldproxy
@@ -183,13 +211,22 @@ All of the generated files should be safe to commit as a project on Github, with
 {{% /alert %}}
 
 
-### Upload the Project and Connect to your ESP32 Board
+### Build, Upload and Connect to your ESP32 Board
 
-After modifying the contents of <file>src/main.rs</file> to your liking, run:
-
+{{< tabs >}}
+{{% tab name="Using Canon" %}}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+canon bash -lc "make build-esp32-bin"
+make flash-esp32-bin
+```
+{{% /tab %}}
+{{% tab name="Local environment" %}}
+Make sure you have sourced `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` prior running the following command
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 make upload
 ```
+{{% /tab %}}
+{{% /tabs %}}
 
 While running `make upload`, you may be presented with an interactive menu of different serial port options to use to connect to the ESP32 board.
 
@@ -200,6 +237,8 @@ While the serial connection is live, you can also restart the currently flashed 
 If everything went well, your ESP32 will be programmed so that you will be able to see your robot live and connect to it on [the Viam app](https://app.viam.com).
 
 ### Troubleshooting
+
+If you run into the following error `Failed to open serial port` when flashing your esp32 with linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
