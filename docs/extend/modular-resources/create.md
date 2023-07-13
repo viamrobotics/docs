@@ -24,7 +24,8 @@ A configured *module* can make one or more *modular resources* available for con
 To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new model or type of {{< glossary_tooltip term_id="resource" text="resource" >}}:
 
 {{< tabs >}}
-{{% tab name="Define a New Model of a Built-In Resource Type" %}}
+{{% tab name="New Model" %}}
+Define a new model of a built-in resource type:
 
 1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
 Import your custom model and API into the main program and register the new resource model with your chosen SDK's helper methods.
@@ -35,7 +36,8 @@ This main program is the "entry point" to your module.
 3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 {{% /tab %}}
-{{% tab name="Define a New Type of Resource" %}}
+{{% tab name="New Type" %}}
+Define a new type of resource:
 
 1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then [generate code](https://grpc.io/docs/languages/python/generated-code/) in Python or Go and use the generated code to implement the higher level server and client functions required.
 
@@ -55,7 +57,7 @@ This main program is the "entry point" to your module.
 
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
 
-The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
+The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) are adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
 [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
 
@@ -361,7 +363,7 @@ Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRe
 
 <file>main.go</file>
 
-{{%expand "Click to view example code from a Go module's entry point file initializing the mybase custom model and API from the registry" %}}
+{{%expand "Click to view example code from a Go module's entry point file initializing the mybase custom model and API helpers from the registry" %}}
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package main is a module which serves the mybase custom model.
@@ -415,7 +417,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 
 <file>main.py</file>
 
-{{%expand "Click to view example code from a Python module's entry point file initializing the mybase custom model and API from the registry" %}}
+{{%expand "Click to view example code from a Python module's entry point file initializing the mybase custom model and API helpers from the registry" %}}
 
 ``` python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -497,15 +499,13 @@ sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
 {{% /tab %}}
-{{% /tabs %}}
+{{< /tabs >}}
 
 You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
 ## Next steps
 
-Follow [these instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
-
-Make your [executable accessible](/extend/modular-resources/configure/#make-sure-viam-server-can-access-your-executable), [configure your new module](/extend/modular-resources/configure/#configure-your-module), and [configure your modular resource](/extend/modular-resources/configure/#configure-your-modular-resource).
+Follow [these configuration instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
 
 After configuring a modular resource, test it with the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
