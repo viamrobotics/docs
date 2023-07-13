@@ -489,7 +489,7 @@ You will need to first register the machine learning model file with the [ML Mod
             <td width="120px"><strong>What is it?</strong></td>
             <td>
                 We have improved the UI of the base control card to make it easier to view multiple camera streams while remotely controlling a base. When a robots config contains SLAM, we also now provide a view of the SLAM Map with a dot to indicate where the robot is currently localized within that map.
-                <img src="../img/base-control-card-ui.png" alt="Base component card UI"> </img>
+                {{< imgproc src="/appendix/base-control-card-ui.png" alt="Base component card UI" resize="1000x" >}}
             </td>
         </tr>
     <tbody>
@@ -548,7 +548,12 @@ All component drivers can now declare dependencies, which are used to infer the 
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>Users can now set the power of the base from the remote control UI. This sets the power percentage being sent to the motors that are driving the base which determines its overall speed.
-            <img src="../img/base-power-control.png" alt="Base power control in the UI"> </img>
+            {{ $img := resources.GetMatch "/appendix/base-power-control.png" }}
+            {{if $img }}
+                {{ partial "imgproc.html" (dict "src" "/appendix/base-power-control.png" "resize" "400x" "alt" "Base power control in the UI" "style" "") }}
+            {{ else }}
+                {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
+            {{end}}
             </td>
         </tr>
     <tbody>
