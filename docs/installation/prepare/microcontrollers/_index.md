@@ -274,7 +274,7 @@ make flash-esp32-bin
 {{% /tab %}}
 {{% tab name="Local environment" %}}
 
-Make sure you have sourced `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` before running the following command:
+Make sure you have run `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` before running the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 make upload
