@@ -143,12 +143,7 @@ sitemap:
           </p>
         </div>
         <div class="hover-card-img">
-            {{ $img := resources.GetMatch "/img/code.png" }}
-            {{if $img }}
-                {{ partial "imgproc.html" (dict "src" "/img/code.png" "resize" "400x" "alt" "Robot code" "style" "") }}
-            {{ else }}
-                {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
-            {{end}}
+          {{<imgproc src="/img/code.png" alt="Robot code" resize="400x" >}}
         </div>
       </div>
       <div class="col hover-card landing pink">
