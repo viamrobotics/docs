@@ -49,13 +49,16 @@ The following instructions cover installation for macOS and Linux machines.
 To build the micro-rdk, you must install the following software on your machine:
 
 #### Install dependencies
+
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
 ```
 {{% /tab %}}
 {{% tab name="macOS" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install dfu-util
 ```
@@ -94,6 +97,7 @@ See [GitHub](https://github.com/viamrobotics/canon) for more information.
 It needs  a working installation of docker follow [Docker Installation](https://docs.docker.com/engine/install/) to install Docker. If running linux make sure to go throught the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
 #### Homebrew
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install viamrobotics/brews/canon
 ```
@@ -112,16 +116,21 @@ Make sure your GOBIN is in your PATH. If not, you can add it with something like
 #### Install dependencies
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
 ```
+
 {{% /tab %}}
 {{% tab name="macOS" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install cmake ninja dfu-util
 ```
+
 {{% /tab %}}
 {{% /tabs %}}
+
 #### Install ESP-IDF
 
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
@@ -162,10 +171,13 @@ cargo install espup
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo install cargo-espflash v2.0.0-rc.1
 ```
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo install ldproxy
 ```
+
 Finally to download and install the esp-rs toolchain run :
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 espup install -s -f ~/esp/export-rs.sh -v 1.67.0
 ```
@@ -219,22 +231,27 @@ All of the generated files should be safe to commit as a project on Github, with
 
 {{< tabs >}}
 {{% tab name="Using Canon" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 canon bash -lc "make build-esp32-bin"
 make flash-esp32-bin
 ```
+
 {{% /tab %}}
 {{% tab name="Local environment" %}}
+
 Make sure you have sourced `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` prior running the following command
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 make upload
 ```
+
 {{% /tab %}}
 {{% /tabs %}}
 
-While running `make upload`, you may be presented with an interactive menu of different serial port options to use to connect to the ESP32 board.
+While running above commands, you may be presented with an interactive menu of different serial port options to use to connect to the ESP32 board.
 
-If successful, `make upload` will retain a serial connection to the board until `Ctrl-C` is pressed.
+If successful you will retain a serial connection to the board until `Ctrl-C` is pressed.
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
