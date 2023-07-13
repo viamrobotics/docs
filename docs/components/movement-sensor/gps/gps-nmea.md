@@ -4,7 +4,7 @@ linkTitle: "gps-nmea"
 weight: 10
 type: "docs"
 description: "Configure an NMEA-based GPS."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 

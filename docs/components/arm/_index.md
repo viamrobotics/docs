@@ -7,8 +7,8 @@ type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
 no_list: true
 tags: ["arm", "components"]
-icon: "/components/img/components/arm.svg"
-images: ["/components/img/components/arm.svg"]
+icon: "/icons/components/arm.svg"
+images: ["/icons/components/arm.svg"]
 # SME: Peter L
 ---
 

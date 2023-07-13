@@ -6,7 +6,9 @@
       <li>
         <a href="{{ .Permalink }}" title="{{.Title}}">
           <div>
-            {{if .Params.icon}}<img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" loading="lazy" width="45" height="45">{{end}}
+            {{ if .Params.icon }}
+              {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "45x45" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
+            {{ end }}
             <p>{{ .LinkTitle }}</p>
           </div>
         </a>

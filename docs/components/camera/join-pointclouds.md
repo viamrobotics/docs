@@ -4,7 +4,7 @@ linkTitle: "join_pointclouds"
 weight: 40
 type: "docs"
 description: "Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

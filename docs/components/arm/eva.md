@@ -5,7 +5,7 @@ weight: 34
 type: "docs"
 draft: "true"
 description: "Configure an eva arm."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---

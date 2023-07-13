@@ -4,7 +4,7 @@ linkTitle: "Debug"
 weight: 60
 type: "docs"
 description: "Read and filter logs to fix issues while programming with Viam's SDKs."
-images: ["/services/img/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags: ["client", "sdk", "logs", "debug", "robot", "viam-server"]
 ---
 

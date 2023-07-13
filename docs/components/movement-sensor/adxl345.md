@@ -4,7 +4,7 @@ linkTitle: "accel-adxl345"
 weight: 20
 type: "docs"
 description: "Configure an ADXL345 digital accelerometer."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand, Kim Mishra
 ---
 

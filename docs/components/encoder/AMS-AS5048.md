@@ -3,7 +3,7 @@ title: "Configure an AMS-AS5048 encoder"
 linkTitle: "AMS-AS5048"
 type: "docs"
 description: "Configure an AMS-AS5048 encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---

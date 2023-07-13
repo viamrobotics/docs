@@ -4,7 +4,7 @@ linkTitle: "Extra Params"
 weight: 70
 type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
-images: ["/services/img/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
 aliases:
   - "/program/sdks/use-extra-params"
@@ -38,7 +38,7 @@ async def main():
 
     # Get your sensor resource from the robot.
     your_sensor = YourSensor.from_robot(robot, "your-sensor")
-    
+
     # Define a dictionary containing extra information.
     your_info = {"type": "temperature", "description": "more info", "id": 123}
 
@@ -112,7 +112,7 @@ async def get_readings(self, *, extra: Optional[Dict[str, Any]] = None, timeout:
     elif extra["type"] is "humidity":
         readings["type"] = get_humidity()
     # If the type is not one of these two cases, raise an exception.
-    else: 
+    else:
         raise Exception(f"Invalid sensor reading request: type {type}")
 
     return readings

@@ -4,7 +4,7 @@ linkTitle: "ffmpeg"
 weight: 30
 type: "docs"
 description: "Uses a camera, a video file, or a stream as a camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

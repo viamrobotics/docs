@@ -3,7 +3,7 @@ title: "Configure an incremental encoder"
 linkTitle: "incremental"
 type: "docs"
 description: "Configure an incremental encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---

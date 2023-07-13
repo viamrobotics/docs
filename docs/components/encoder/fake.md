@@ -3,7 +3,7 @@ title: "Configure a fake encoder"
 linkTitle: "fake"
 type: "docs"
 description: "Configure a fake encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 weight: 10
 # SMEs: Rand

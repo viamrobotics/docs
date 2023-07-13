@@ -4,7 +4,7 @@ linkTitle: "ur5e"
 weight: 40
 type: "docs"
 description: "Configure a ur5e arm."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 ---
 

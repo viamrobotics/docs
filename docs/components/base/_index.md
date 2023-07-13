@@ -6,8 +6,8 @@ type: "docs"
 no_list: true
 description: "The moving platform that the other parts of a mobile robot attach to."
 tags: ["base", "components"]
-icon: "/components/img/components/base.svg"
-images: ["/components/img/components/base.svg"]
+icon: "/icons/components/base.svg"
+images: ["/icons/components/base.svg"]
 # SMEs: Steve B
 ---
 

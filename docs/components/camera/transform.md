@@ -4,7 +4,7 @@ linkTitle: "transform"
 weight: 60
 type: "docs"
 description: "Instructions for transforming a camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---

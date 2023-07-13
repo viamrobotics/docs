@@ -7,8 +7,8 @@ type: "docs"
 no_list: true
 description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
 tags: ["board", "components"]
-icon: "/components/img/components/board.svg"
-images: ["/components/img/components/board.svg"]
+icon: "/icons/components/board.svg"
+images: ["/icons/components/board.svg"]
 # SMEs: Gautham, Rand
 ---
 

@@ -9,7 +9,7 @@ description: "Capture data from a robot's components and sync it to the cloud."
 aliases:
     - "/data-management/"
     - "/services/data-management/"
-icon: "/services/img/icons/data-capture.svg"
+icon: "/services/icons/data-capture.svg"
 # SME: Aaron Casas
 ---
 
