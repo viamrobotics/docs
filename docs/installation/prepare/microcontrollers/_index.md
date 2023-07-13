@@ -36,7 +36,7 @@ To use the micro-RDK with your ESP32 board, follow these steps:
 
 If using the Docker environment with Canon:
 
-- [Use Canon](#use-canon)
+- [Use Canon](#using-canon)
 
 If setting up the environment yourself:
 
@@ -184,7 +184,7 @@ To install the Micro-RDK on your ESP32 board:
 
 - [create a new robot in the Viam app](#create-a-new-robot)
 - [generate a new project from Viam's micro-RDK template](#generate-a-new-project-from-the-micro-rdk-template)
-- [upload the project to your ESP32](#upload-the-project-and-connect-to-your-esp32-board)
+- [upload the project to your ESP32](#upload-and-connect-to-your-esp32-board)
 
 ### Create a New Robot
 
@@ -215,7 +215,7 @@ All of the generated files should be safe to commit as a project on Github, with
 {{% /alert %}}
 
 
-### Build, Upload and Connect to your ESP32 Board
+### Upload and Connect to your ESP32 Board
 
 {{< tabs >}}
 {{% tab name="Using Canon" %}}
