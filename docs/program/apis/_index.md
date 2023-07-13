@@ -90,7 +90,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 
 ### Name
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 An equivalent for `Name` is not currently provided by the TypeScript SDK.
 
