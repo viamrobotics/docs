@@ -12,7 +12,7 @@ description: "Upload an image classification model to Viam."
 
 On the [**DATA** tab](https://app.viam.com/data/view) in the Viam app, navigate to the **Models** subtab.
 
-![Add new model](../img/add-new-model.png)
+{{< imgproc alt="Add new model" src="/manage/ml/add-new-model.png" resize="1000x" >}}
 
 To add a new model:
 
@@ -25,7 +25,7 @@ The model now starts training and you can follow its process in the **Training**
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 
-![The trained model](../img/stars-model.png)
+{{< imgproc alt="The trained model" src="/manage/ml/stars-model.png" resize="1000x" >}}
 
 ### Upload a new version of a model
 

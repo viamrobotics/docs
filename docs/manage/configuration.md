@@ -50,7 +50,7 @@ You can use the mode selector to switch between **Builder** and **Raw JSON**:
 - **Builder** mode provides a graphical interface for configuring your robot resources.
 - **Raw JSON** mode provides a text editing field where you can write and edit the config manually.
 
-![The CONFIG tab of the Viam app with a box highlighting the CONFIG tab and the Mode selector (where you can select Builder or Raw JSON).](../img/configuration/config-tab.png)
+{{< imgproc alt="The CONFIG tab of the Viam app with a box highlighting the CONFIG tab and the Mode selector (where you can select Builder or Raw JSON)." src="/manage/configuration/config-tab.png" resize="1000x" >}}
 
 Regardless of the mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
@@ -178,7 +178,7 @@ For specific information on how to configure each supported component type, see 
 When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
 Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/apis/).
 
-{{<gif webm_src="/manage/img/control.webm" mp4_src="/manage/img/control.mp4" alt="Using the control tab">}}
+{{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">}}
 
 {{% /alert %}}
 
@@ -225,7 +225,7 @@ In raw JSON, these options are represented by `log` (bool) and `one_shot` (bool)
 
 The following configuration executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your robot boots, and keeps it executing indefinitely.
 
-![The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](../img/configuration/process-fancy.png)
+{{< imgproc alt="The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off." src="/manage/configuration/process-fancy.png" resize="1000x" >}}
 
 The corresponding raw JSON looks like this:
 
@@ -259,7 +259,7 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 2. Add the JSON configuration in the config field.
 3. Click **SAVE FRAGMENT**.
 
-![Fragment creation view](../img/fragment-view.png)
+{{< imgproc alt="Fragment creation view" src="/manage/fragment-view.png" resize="1000x" >}}
 
 ### Add a fragment to a robot
 
@@ -272,11 +272,11 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-![The fragments subtab](../img/fragments-tab.png)
+{{< imgproc alt="The fragments subtab" src="/manage/fragments-tab.png" resize="1000x" >}}
 
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
-![A fragment in the components subtab](../img/fragment-components.png)
+{{< imgproc alt="A fragment in the components subtab" src="/manage/fragment-components.png" resize="1000x" >}}
 
 In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
 
