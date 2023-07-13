@@ -40,7 +40,7 @@ If using the Docker environment with Canon:
 
 If setting up the environment yourself:
 
-- [Set up development environment manually](#setting-up-development-environment-manually)
+- [Set up development environment manually](#set-up-development-environment-manually)
 
 The following instructions cover installation for macOS and Linux machines.
 
@@ -115,7 +115,7 @@ go install github.com/viamrobotics/canon@latest
 
 Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
 
-### Setting up development environment manually
+### Set up development environment manually
 
 #### Install dependencies
 
@@ -167,7 +167,7 @@ Save this command to run in any future terminal session where you need to activa
 
 #### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
 
-Firstly install the following tools
+First install the following tools with `cargo` :
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo install espup
@@ -193,7 +193,7 @@ To activate the ESP Rust toolchain, run the following command to source (`.`) th
 . $HOME/esp/esp-idf/export-rs.sh
 ```
 
-Similarly to ESP-IDF to avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
+To to avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
 Save this command to run in any future terminal session where you need to activate the ESP Rust development framework.
 
 ## Install the Micro-RDK
@@ -248,7 +248,7 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 
 If you would like, you can use `mkdir` to initialize a new repository in the directory you created by running `cargo-generate`, to track any changes you make to the generated project.
 
-You will be prompted to paste your Viam robot configuration information (`viam.json`) into the terminal.
+You will be prompted to paste your robot's JSON configuration into the terminal.
 
 To obtain this, navigate to [the Viam app](https://app.viam.com).
 Click the **Copy viam-server config** button on the right side of the **Setup** tab of your robot.
@@ -274,7 +274,7 @@ make flash-esp32-bin
 {{% /tab %}}
 {{% tab name="Local environment" %}}
 
-Make sure you have sourced `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` prior running the following command
+Make sure you have sourced `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` before running the following command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 make upload
@@ -282,8 +282,6 @@ make upload
 
 {{% /tab %}}
 {{% /tabs %}}
-
-While running above commands, you may be presented with an interactive menu of different serial port options to use to connect to the ESP32 board.
 
 If successful you will retain a serial connection to the board until `Ctrl-C` is pressed.
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
@@ -293,7 +291,7 @@ If everything went well, your ESP32 will be programmed so that you will be able 
 
 ### Troubleshooting
 
-If you run into the following error `Failed to open serial port` when flashing your esp32 with linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
+If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
