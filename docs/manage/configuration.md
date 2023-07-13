@@ -29,26 +29,7 @@ The robot checks for new configurations every 15 seconds and changes its configu
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
 {{< alert title="Tip" color="tip" >}}
-You can also store your config file in another location.
-To start `viam-server` with a config file in a different location, run the following command:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
+You can also store your config file in a custom location if desired. See [Run `viam-server`](/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your robot, go to the **Config** tab to start adding to the configuration.
@@ -57,8 +38,7 @@ After you have completed the setup steps and successfully connected to your robo
 
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
-If you cannot connect your robot to the internet at all, you can also [store the configuration file](#local-setup) on the robot itself.
-
+If your robot will never connect to the internet, you can also create a [local configuration file](/appendix/local-configuration-file/) on the robot itself.
 {{% /alert %}}
 
 ## The Config tab
@@ -139,6 +119,8 @@ If you add components in **Builder** mode and click **Save Config** at the botto
   "modules": []
 }
 ```
+
+See [Example JSON configuration file](/appendix/local-configuration-file/#example-json-configuration-file) for an additional example.
 
 {{% /expand %}}
 
@@ -327,32 +309,15 @@ Find more information in the [frame system documentation](/services/frame-system
 
 If you run into issues, here are some things to try:
 
-- Check the **Logs** tab to check for any errors or other info from `viam-server`.
-- You can also view logs locally by running the following command on the robot:
-
-  {{< tabs >}}
-  {{% tab name="Linux" %}}
-
-  ```bash
-  sudo journalctl --unit=viam-server
-  ```
-
-  {{% /tab %}}
-  {{% tab name="macOS" %}}
-
-  ```bash
-  cat $(brew --prefix)/var/log/viam.log
-  ```
-
-  {{% /tab %}}
-  {{< /tabs >}}
-
+- Check the [**Logs** tab](/manage/fleet/robots/#logs) to view log messages and errors from `viam-server`.
+   You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your robot if needed.
 - Make sure all configured components are actually saved to your config.
    If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
 - Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
    It takes a few minutes for the server to shut down and restart.
 - Make sure the issue is not hardware related.
   Some things to check are that the robot has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
+- See [Troubleshooting](/appendix/troubleshooting/) for additional troubleshooting steps.
 - {{< snippet "social.md" >}}
 
 ## Local Setup
@@ -363,52 +328,8 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 - [Data Management](/manage/data/)
 - [Machine Learning](/manage/ml/)
 
-A locally configured robot, will not be able to access Viam's cloud features.
-If you are configuring a robot that can never connect to the internet, you can manually create a local full raw JSON config file on your robot.
-
-You can write the contents of this config file manually, or you can use the Viam app's config builder (without connecting your robot to it).
-Once you finish configuring your robot in the **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your config file.
-Save the file at <file>/etc/viam.json</file> or another location.
-
-Then start `viam-server`:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-To run `viam-server` as a system service, see [Start automatically on boot](/installation/#start-automatically-on-boot).
+However, if you are configuring a robot that can never connect to the internet, you can create a [local configuration file](/appendix/local-configuration-file/) on your robot.
+A locally-configured robot will not be able to access Viam's cloud features.
 
 ## Next Steps
 
