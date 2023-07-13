@@ -208,6 +208,35 @@ To install the Micro-RDK on your ESP32 board:
 
 Navigate to [the Viam app](https://app.viam.com) and create a new robot in your desired location.
 Keep your `Mode` and `Architecture` selections at default, and skip the instructions in the **Setup** tab for now as the setup instructions there are not for microcontrollers.
+You can configure your robot using the config tab.
+
+{{< alert title="Caution" color="caution" >}}
+As of the time this guide is written the esp32 board component doesn't exist yet on app.viam.com below you can find the board template for esp32:
+
+```json
+{
+  "attributes": {
+    "webhook": "", // Optional path a webhook see https://github.com/viam-labs/webhook-template for an example
+    "webhook-secret": "", // Option webhook secret
+    "pins": [ // pin to be configured as Input/Ouput (for Get/SetGpio)
+      15
+    ],
+    "analogs": [
+      {
+        "pin": "34", // analog pins
+        "name": "sensor"
+      }
+    ]
+  },
+  "depends_on": [],
+  "model": "esp32",
+  "name": "board",
+  "type": "board"
+}
+```
+
+{{% /alert %}}
+
 
 ### Generate a New Project from the Micro-RDK Template
 
