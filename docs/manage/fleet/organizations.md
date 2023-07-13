@@ -28,9 +28,7 @@ For example, you may have an account with one organization for your personal rob
 You organization is shown in the upper right corner of the Viam app.
 If you click on the organization drop down, the app displays your name, email, and a list of organizations you belong to.
 
-<div style="max-width: 400px">
-    <img src="../../img/app-usage/my-org.png" alt="The org drop down showing an example user's name, email, Sign out button, list of organizations, and org settings button." >
-</div>
+{{< imgproc alt="The org drop down showing an example user's name, email, Sign out button, list of organizations, and org settings button." src="/manage/app-usage/my-org.png" resize="400x" declaredimensions=true >}}
 
 If you used an email invite to sign up, you have two organizations to begin with: the organization that invited you and a personal organization for other projects.
 
@@ -46,9 +44,7 @@ Then enter the name for your new organization in the **New Organization** field 
 To invite a user to your organization, click on the Org's **Settings** in the top right of the navigation bar.
 In the members section of the page enter their email address, select a role, and click **Invite**.
 
-<div style="max-width: 400px">
-    <img src="../../img/app-usage/invite-user.png" alt="The user invitation menu on the Organization settings page." >
-</div>
+{{< imgproc alt="The user invitation menu on the Organization settings page." src="/manage/app-usage/invite-user.png" resize="400x" declaredimensions=true >}}
 
 ### Delete an organization
 

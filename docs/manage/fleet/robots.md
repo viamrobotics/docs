@@ -17,7 +17,7 @@ A robot always has a main part that receives client requests, and any number of 
 
 Add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
 
-![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](../../img/app-usage/create-robot.png)
+{{< imgproc alt="The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted." src="/manage/app-usage/create-robot.png" resize="1000x" >}}
 
 Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
 
@@ -27,7 +27,7 @@ The banner at the top of the robot page displays the robot's location, name, and
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
-![The robot page with menu tabs](../../img/app-usage/robot-page.png)
+{{< imgproc alt="The robot page with menu tabs" src="/manage/app-usage/robot-page.png" resize="1000x" >}}
 
 For each robot in your fleet, you start by setting up the robot on the **Setup** tab:
 
@@ -102,7 +102,7 @@ Your robot and the Viam app communicate securely using [WebRTC](https://pkg.go.d
 
 The **Security** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
 
-![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-secrets.png)
+{{< imgproc alt="The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down." src="/manage/app-usage/robot-secrets.png" resize="1000x" >}}
 
 Copy the part secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
@@ -113,4 +113,4 @@ Click on the **Generate Key** button to generate a new key.
 
 You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **Delete robot**.
 
-![The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it.](../../img/app-usage/delete.png)
+{{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="1000x" >}}

@@ -22,11 +22,11 @@ With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >
 For example, you may have separate organizations for your robots at home and at work:
 
 <!-- this is a very small gif - conversion to mp4 caused issues -->
-![An organization for personal robots and one for work robots.](../img/organizations.gif)
+![An organization for personal robots and one for work robots.](/manage/organizations.gif)
 
 Inside an organization, you can organize robots into one or more locations:
 
-![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
+{{< imgproc alt="An image of two locations, New York, and Chicago, in one organization, Good Robots" src="/manage/locations.png" resize="1000x" >}}
 
 If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../configuration/), allowing you to use the same configuration for multiple robots.
 
@@ -59,7 +59,7 @@ To view the roles each organization member has, click on the organization drop d
 
 If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role drop down for the respective user.
 
-![Example permissions overview](../img/rbac.png)
+{{< imgproc alt="Example permissions overview" src="/manage/rbac.png" resize="1000x" >}}
 
 ## Collaborate on your robots
 
