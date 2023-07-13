@@ -27,34 +27,42 @@ As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy an
 When Viam's ML Model service was released, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not at home.
 As I created this babysitting program myself, I was able to customize it to recognize my kid's exact toys and sing the songs I wanted it to in my voice.
 
-<!-- TODO: some more info here about different options possible? -->
-
 This tutorial tells you how to make your own singing robot babysitter.
-However, the instructions here are just a start-- expand upon this tutorial to customize your babysitting robot to do more with with [machine learning](/services/ml/), [data management](/services/data/) and the [Vision Service](/services/).
-
-## Set up your Bedtime Songs bot
+However, the instructions here are just a start.
+Expand upon this tutorial to customize your "babysitting bot" with [machine learning](/services/ml/), the [Vision Service](/services/), and more [components](/components/) and [services](/services/).
 
 To make your own babysitting bedtime-songs bot, you need only the following hardware:
 
 * A computer with a webcam and speakers
 
-This tutorial uses a Macbook.
-You can use any computer with a Viam-compatible operating system that meets these requirements, but you will have to modify the code to program the robot to play songs if not using MacOs.
+I used a Macbook.
+You can use any PC or [single-board computer](/components/board/) with a Viam-compatible operating system that meets these requirements, but you will need to modify the code to program the robot to play songs if not using MacOs.
 
-Make sure you [prepare your computer](/installation/prepare/) and create a new robot in [the Viam app](https://app.viam.com) before starting this tutorial.
-Follow [this guide](/installation/#install-viam-server) to install `viam-server` on your computer and connect to the corresponding robot through [the Viam app](https://app.viam.com).
+To start,  you will configure the camera on your laptop to capture data with the Data Management service, and use it to capture images.
+You will learn how to filter this image data with tags of your choice and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
+
+Then, you'll configure that same camera to act as a shape classifier with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services.
 
 ## Part 1: Train your ML Model with pictures of toys
+
+Make sure you have created a robot before starting this tutorial.
+If you haven't already, follow [this guide](/installation/#install-viam-server) to install `viam-server` on your computer and connect to the corresponding robot by following the steps in the **Setup** tab of [the Viam app](https://app.viam.com).
 
 ### Configure your webcam to capture data
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
-#### camera
-
 First, add the camera on your computer as a [camera](/components/camera/) component by creating a new component with **type** `camera` and **model** `webcam`:
 
 {{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../img/robot-babysitter/video-path-ui.png)
+
+You do not have to edit the attributes of your camera at this point.
+Optionally, select a fixed filepath for the camera from the automated options in the **video path** drop-down menu.
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ``` json {class="line-numbers linkable-line-numbers"}
@@ -88,13 +96,62 @@ First, add the camera on your computer as a [camera](/components/camera/) compon
 {{< /tabs >}}
 
 Give your camera the name "`cam`" to match the name used in the code of this tutorial.
-You do not need to configure any attributes for the camera.
-
-#### data capture
+If you use a different name, change `"cam"` in the code to match the name you used.
 
 Now that you've added your camera, follow these instructions [to add a data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your robot and [configure data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on the camera.
 
-At this point, the full **Raw JSON** configuration of your robot should look similar to the following:
+- Make sure that you add a `service_config` to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`.
+
+At this point, the full **Raw JSON** configuration of your robot should look like the following:
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+``` json {class="line-numbers linkable-line-numbers"}
+{
+ "components": [
+   {
+     "model": "webcam",
+     "attributes": {},
+     "depends_on": [],
+     "service_config": [
+       {
+         "attributes": {
+           "capture_methods": [
+             {
+               "additional_params": {
+                 "mime_type": "image/jpeg"
+               },
+               "capture_frequency_hz": <float>,
+               "method": "ReadImage"
+             }
+           ]
+         },
+         "type": "data_manager"
+       }
+     ],
+     "name": "<your-camera-name>",
+     "type": "camera"
+   }
+ ],
+ "services": [
+   {
+     "attributes": {
+       "sync_interval_mins": <float>,
+       "capture_dir": "<>",
+       "tags": []
+     },
+     "name": "<your-data-management-service-name>",
+     "type": "data_manager"
+   }
+ ]
+}
+```
+
+If you copy and paste this template into your robot's **Raw JSON** configuration, make sure to edit and fill in the attributes as applicable.
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -137,11 +194,25 @@ At this point, the full **Raw JSON** configuration of your robot should look sim
 }
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Take pictures
 
-Capture images of puzzle pieces.
+Navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
+
+Click on the drop-down menu labeled **camera** and toggle the feed on to view your webcam's image stream.
+
+![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/robot-babysitter/export-screenshot.png)
+
+Now, click on **Export Screenshot** to take pictures of the toys you want the robot to be able to recognize and differentiate between.
+You are going to use these pictures to train your machine learning model so that when your webcam "sees" (captures image data containing) that toy, the robot knows to play a particular song through its computer's speakers.
+
+My kids like playing with brightly colored puzzle pieces, which come in different shapes.
+I decided to filter by shape rather than color, but you can filter your objects as you choose.
+Capture pictures of the different shapes.
 Use a consistent background.
-Try to get 50 images of each puzzle piece.
+Try to get at least 50 images of each object, in my case, each puzzle piece.
 
 ### Tag data
 
@@ -157,6 +228,8 @@ Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 ### Configure your webcam to act as a shape classifier
 
 [Deploy the model](/services/ml/#deploy) to the robot and [configure a vision service](/services/vision) of model `mlmodel` to use this model.
+
+TODO: and configure mlmodel service
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
