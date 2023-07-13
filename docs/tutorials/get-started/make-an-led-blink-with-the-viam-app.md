@@ -11,35 +11,36 @@ images: ["/img/blink.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app"]
+authors: []
+languages: []
+viamresources: [ "board" ]
+level: "Beginner"
+date: "4 October 2022"
+cost: 70
 ---
 
 In this post, we will show you how to use Viam to make an LED blink with a Raspberry Pi.
 This tutorial is a great place to start if you have never built a robot or a circuit before.
 
-{{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
+{{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
 ## What you'll need for this guide
 
-You will need the following tools to complete the project:
+You will need the following to complete the project:
 
 ### Hardware
 
-<ol>
-    <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
-<ol type="a">
-<li>Refer to the <a href="https://docs.viam.com/installation/prepare/rpi-setup/" target="_blank">Viam Raspberry Pi Setup Guide </a> to setup your Pi.</li>
-</ol>
-    <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
-    <li><a href="https://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-    <li><a href="https://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
-    <li><a href="https://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
-</ol>
-
-[Click to view the hardware URL listing](#hardware-url-list)
+- [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+  - Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up your Pi.
+- [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
+- [Jumper wires](https://amzn.to/2qVhd4y)
+- [Resistor pack](https://amzn.to/2Dmainw)
+  - You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands
+- [LED](https://amzn.to/2Ex2v5q)
 
 ### Software
 
-- [viam-server](/installation/prepare/rpi-setup/)
+- [viam-server](/installation/#install-viam-server)
 
 ## Project setup
 
@@ -108,7 +109,7 @@ Steps on how to do this can be found in the [Adding your Pi on the Viam App](/in
 Now that we have gotten that out of the way, let's get back to configuring your robot's components.
 First, go to the Viam app at [app.viam.com](https://app.viam.com/) on your web browser, and select the robot's **Config** tab.
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt="Screenshot of the Viam app showing the Create Component field on the COMPONENTS subtab of the CONFIG tab." width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image2.png" alt="Screenshot of the Viam app showing the Create Component field on the Components subtab of the Config tab." width="100%">
 
 You will add a [*board component*](/components/board/) to represent your single board computer, which in this case is the Raspberry Pi.
 You'll create the new component in the **Create Component** panel.
@@ -117,7 +118,7 @@ For the component **Type**, select **`board`**.
 For **Model**, select **`pi`**, then click **`Create Component`**.
 Your board component pane will look like this:
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image6.png" alt="Screenshot of the Viam app showing the board configuration on the CONFIG tab. The board is named 'local' and the attributes are shown as empty braces." width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image6.png" alt="Screenshot of the Viam app showing the board configuration on the Config tab. The board is named 'local' and the attributes are shown as empty braces." width="100%">
 
 Click **Save Config** at the bottom of the screen.
 
@@ -125,19 +126,19 @@ As you add your board component to your robot in the Viam app, it generates a pa
 Here, you can click on **Get** to get the current status of your pin.
 The first time you click **Get Pin State**, it should return "Pin: 8 is low."
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt="Screenshot of the Viam app showing the board configuration on the **Code Sample** tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the '**Get Pin State**' button and the output, which reads, 'Pin: 8 is low.'" width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image5.png" alt="Screenshot of the Viam app showing the board configuration on the Control tab. The 'Board Local' row is expanded, and under the 'Get' row, the pin is set to '8.' A red box is around the 'Get Pin State' button and the output, which reads, 'Pin: 8 is low.'" width="100%">
 
 You can now select **Set** to control the status of your pin to **high**.
 It will look like this:
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image8.png" alt="Screenshot of the Viam app showing the board configuration on the 'Connect' tab. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field." width="100%">
+<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image8.png" alt="Screenshot of the Viam app showing the board configuration on the Control tab. The 'Board Local' row is expanded, and under the 'Set' row, the pin is set to '8.' A red box is around the 'Set Pin State' field." width="100%">
 
 After setting your pin to **high** the LED should illuminate.
 You can play around with values **low** and **high** by setting them differently, and you will see your LED toggle on and off depending on whether you have the value set to **low** or **high**.
 
-{{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
+{{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-the-viam-app/image7.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 The above image blinks at regular intervals, while yours will turn on and off when you set the values to **high** and **low** respectively.
 To make your LED blink at regular intervals, see [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/).
 {{< /alert >}}
@@ -148,20 +149,10 @@ Congratulations!
 If you have followed along, you have just successfully used Viam to make an LED blink with a Raspberry Pi!
 You have learned how the GPIO on a Raspberry Pi works, and how to build circuits for LED bulbs.
 
-You are ready for your next robotics project.
-We recommend that you check out the next part in this series, [How to Make an LED Blink with a Raspberry Pi and the Viam SDK](../make-an-led-blink-with-a-raspberry-pi-and-sdk/), where you will learn how to use the Viam SDK to control a Raspberry Pi robot with Go or Python.
+## Next Steps
 
-If you are looking for some more projects that would be a great next step in your robotics journey, check out our other [tutorials](/tutorials/).
+Check out the next part in this series to control your LED programmatically:
 
-{{< snippet "social.md" >}}
-
-## Hardware URL list
-
-<ul>
-    <li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
-    <li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
-    <li>Jumper wires for easy hookup: <a href="https://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
-    <li>Resistor pack: <a href="https://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
-    <li>Red LED: <a href="https://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
-    <li>Multimeter (optional): <a href="https://amzn.to/2qWurxS" target="_blank">ht<span></span>tp://amzn.to/2qWurxS</a></li>
-</ul>
+{{< cards >}}
+  {{% card link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" %}}
+{{< /cards >}}

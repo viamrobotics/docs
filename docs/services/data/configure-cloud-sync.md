@@ -38,7 +38,7 @@ To change the sync interval, specify an interval in minutes in the interval fiel
 }
 ```
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 If `capture_dir` is unspecified, `viam-server` will use the default directory at <file>~/.viam/capture</file>.
 {{< /alert >}}
 
@@ -70,7 +70,7 @@ This is only applicable for files in a directory added as an additional sync pat
 
 In the example pictured here, the Data Management Service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
 
-![service config example](../img/data-service-config.png)
+{{< imgproc src="/services/data/data-service-config.png" alt="service config example" resize="1000x" >}}
 
 {{%expand "Click to view the JSON configuration for this example" %}}
 

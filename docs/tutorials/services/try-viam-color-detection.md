@@ -11,6 +11,12 @@ tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
     - /tutorials/viam-rover/try-viam-color-detection
     - /tutorials/try-viam-color-detection
+authors: [ "Hazal Mestci" ]
+languages: []
+viamresources: [ "vision", "camera" ]
+level: "Beginner"
+date: "16 December 2022"
+cost: "0"
 # SMEs: Hazal
 ---
 
@@ -45,7 +51,7 @@ To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter `my_color_detector` as the **Name**.
-3. Select `color_detector` as the **Model**.
+3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
 In your Vision Service's panel, fill in the **Attributes** field.

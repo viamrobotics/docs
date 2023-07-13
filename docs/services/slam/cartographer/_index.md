@@ -1,10 +1,11 @@
 ---
-title: "Cartographer Integrated Library"
+title: "Cartographer Modular Resource"
 linkTitle: "Cartographer"
 weight: 70
 type: "docs"
-description: "Configure a SLAM service with the Cartographer library."
+description: "Configure a SLAM service with the Cartographer modular resource."
 tags: ["slam", "services"]
+icon: "/services/icons/slam.svg"
 aliases:
   - "/services/slam/run-slam-cartographer"
 # SMEs: Kat, Jeremy
@@ -12,9 +13,12 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
+To easily integrate Cartographer into the Viam ecosystem, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which wraps Cartographer as a [modular resource](/extend/modular-resources/).
+`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` custom SLAM service [model](/extend/modular-resources/#models).
+
 ## Requirements
 
-Install the binary required to utilize the `cartographer` library on your machine and make it executable by running the following commands according to your machine's architecture:
+To use Cartographer with Viam, install the `cartographer-module` module on your machine and make it executable by running the following commands according to your machine's architecture:
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
@@ -48,7 +52,7 @@ brew tap viamrobotics/brews && brew install cartographer-module
 
 Running `cartographer-module` requires a [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPlidar A3. See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
 
-Before adding a SLAM service, you must follow [these instructions](/program/extend/modular-resources/examples/add-rplidar-module/) to add your RPlidar device as a modular component of your robot.
+Before adding a SLAM service, you must follow [these instructions](/extend/modular-resources/examples/rplidar/) to add your RPlidar device as a modular component of your robot.
 
 {{% /alert %}}
 
@@ -62,7 +66,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
-![adding cartographer slam service](../img/run_slam/add-cartographer-service-ui.png)
+{{< imgproc src="/services/slam/add-cartographer-service-ui.png" alt="adding cartographer slam service" resize="1000x" >}}
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -103,13 +107,13 @@ Click on the **Modules** subtab. Add the cartographer module with a name of your
 {{< tabs name="Add Cartographer Service Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
-![adding cartographer module linux](../img/run_slam/add-cartographer-module-ui-linux.png)
+{{< imgproc src="/services/slam/add-cartographer-module-ui-linux.png" alt="adding cartographer module linux" resize="1000x" >}}
 
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-![adding cartographer module M1 M2](../img/run_slam/add-cartographer-module-ui-M1-M2.png)
+{{< imgproc src="/services/slam/add-cartographer-module-ui-M1-M2.png" alt="adding cartographer module M1 M2" resize="1000x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -256,7 +260,7 @@ These are generated at runtime, so there is no need to add anything to this fold
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 If this directory structure is not present at runtime, the SLAM Service creates it.
 
@@ -289,25 +293,37 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | Parameter Mode | Description | Inclusion | Default Value | Notes |
 | -------------- | ----------- | --------- | ------------- | ----- |
 | `mode` | `2d` | **Required** | None | |
-| `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | |
-| `num_range_data` | Number of measurements in each submap. | Optional | `100` | |
-| `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Nominally set to max length. |
+| `optimize_every_n_nodes` | How many trajectory nodes are inserted before the global optimization is run. | Optional | `3` | To disable global SLAM and use only local SLAM, set this to `0`. |
+| `num_range_data` | Number of measurements in each submap. | Optional | `30` | |
+| `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Typically the same as `max_range`. |
 | `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPlidar A3, set this value to `25`. For an RPlidar A1, use `12`. |
 | `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPlidar A3, set this value to `0.2`. For RPlidar A1, use `0.15`. |
 | `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
 | `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
 | `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
 | `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for [UPDATING mode](#mapping-modes). |
-| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | |
-| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | |
-| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | |
+| `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Higher values make it harder to overwrite prior scanned points. Relative to `translation weight` and `rotation weight`. |
+| `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Higher values make it harder for scan matching to translate prior scans. Relative to `occupied space weight` and `rotation weight`. |
+| `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Higher values make it harder for scan matching to rotate prior scans. Relative to `occupied space weight` and `translation weight`. |
+
+For more information, see the Cartographer [algorithm walkthrough](https://google-cartographer-ros.readthedocs.io/en/latest/algo_walkthrough.html), [tuning overview](https://google-cartographer-ros.readthedocs.io/en/latest/tuning.html), and [config parameter list](https://google-cartographer.readthedocs.io/en/latest/configuration.html).
+
+## SLAM Mapping Best Practices
+
+The best way to improve map quality is by taking extra care when creating the initial map. While in a mapping session, you should:
+
+- turn gently and gradually, completely avoiding sudden quick turns
+- make frequent loop closures, arriving back at a previously mapped area so the robot can correct for errors in the map layout
+- stay relatively (but not extremely) close to walls
+- use a robot that can go smoothly over bumps and transitions between flooring areas
+- drive at a moderate speed
 
 ## Troubleshooting
 
 ### Tip: Lidar Mounting for the Viam Rover
 
 If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
-The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidar_adapter.STL).
 
 ### Known Issues
 

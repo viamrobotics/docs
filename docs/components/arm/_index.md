@@ -7,8 +7,8 @@ type: "docs"
 description: "A robotic arm is made up of a series of links and joints, ending with a device you can position."
 no_list: true
 tags: ["arm", "components"]
-icon: "/components/img/components/arm.svg"
-images: ["/components/img/components/arm.svg"]
+icon: "/icons/components/arm.svg"
+images: ["/icons/components/arm.svg"]
 # SME: Peter L
 ---
 
@@ -56,15 +56,15 @@ Supported arm models include:
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
 | [`xArm6`](xarm6/) | [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) |
 | [`xArm7`](xarm7/) | [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) |
-| [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) |
-| `eva` | [Automata Eva](https://automata.tech/products/hardware/about-eva/) |
-| `ur5e` | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot/) |
-| `yahboom-dofbot` | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
-| `wrapper_arm` | A model used to wrap a partially implemented arm. |
+| [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
+| [`yahboom-dofbot`](yahboom-dofbot/) | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
+| [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
 ## Control your arm with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -79,6 +79,10 @@ Be sure to import the arm package for the SDK you are using:
 
 ```python
 from viam.components.arm import Arm
+# To use move_to_position:
+from viam.proto.common import Pose
+# To use move_to_joint_positions:
+from viam.proto.component.arm import JointPositions
 ```
 
 {{% /tab %}}
@@ -87,6 +91,11 @@ from viam.components.arm import Arm
 ```go
 import (
   "go.viam.com/rdk/components/arm"
+  // To use MoveToPosition:
+  "go.viam.com/rdk/referenceframe"
+  "go.viam.com/rdk/spatialmath"
+  // To use MoveToJointPositions ("armapi" name optional, but necessary if importing other packages called "v1"):
+  armapi "go.viam.com/api/component/arm/v1"
 )
 ```
 
@@ -105,6 +114,7 @@ The arm component supports the following methods:
 | [JointPositions](#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](#stop) | Stop the arm from moving. |
 | [IsMoving](#ismoving) | Get if the arm is currently moving. |
+| [Kinematics](#kinematics) | Get the kinematics information associated with the arm. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### GetEndPosition
@@ -229,7 +239,7 @@ err := myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
 
 Move each joint on the arm to the position specified in `positions`.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Caution" color="caution" %}}
 
 Collision checks are not enabled when doing direct joint control with MoveToJointPositions().
 
@@ -397,6 +407,44 @@ err := myArm.Stop(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### Kinematics
+
+{{% alert title="Note" color="note" %}}
+This method is not yet available with the Viam Go SDK.
+{{% /alert %}}
+
+Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/internals/kinematic-chain-config/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes)): A tuple containing [the format](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat) of the arm's <file>.URDF</file> or <file>.json</file> kinematics file and the [byte](https://docs.python.org/3/library/stdtypes.html#bytes) contents of the file.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_kinematics).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
+
+# Get the kinematics information associated with the arm.
+kinematics := await my_arm.get_kinematics()
+
+# Get the format of the kinematics file.
+k_file = kinematics[0]
+
+# Get the byte contents of the file.
+k_bytes = kinematics[1]
+
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### IsMoving
 
 Get if the arm is currently moving.
@@ -512,7 +560,7 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
-  {{% card link="/services/motion" size="small" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/services/motion" %}}
 {{< /cards >}}

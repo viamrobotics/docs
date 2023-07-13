@@ -27,7 +27,7 @@ You will not need to write a single line of code to integrate them, and swapping
 You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/program/extend/) Viam.
+- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/extend/) Viam.
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 
@@ -36,7 +36,7 @@ Join the [**Viam community**](https://discord.gg/viam) to collaborate during pla
 A *robot* in Viam consists of at least one computer, typically a [single-board computer](/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 Viam supports devices running **any** 64-bit Linux OS or macOS.
 
-<img src="img/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." class="alignleft" style="max-width:270px"></img>
+{{< imgproc src="/viam/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." resize="270x" class="alignleft" style="max-width:270px" >}}
 
 The Viam platform provides a user interface for connecting to and managing robots, the [Viam app](https://app.viam.com/).
 
@@ -61,7 +61,9 @@ The term {{% glossary_tooltip term_id="component" text="*component*" %}} describ
 
 For each component that makes up your robot:
 
-<img src="img/test_components.png" alt="Multiple components being tested in the Viam app." class="alignright" style="max-width:320px"></img>
+<p>
+{{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
+</p>
 
 1. Add it to your robot by [choosing the component type](/manage/configuration/#components) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/manage/fleet/robots/#control).
@@ -75,13 +77,13 @@ After configuring your robot's hardware, you can configure [high level functiona
 - **Vision** enables your robot to intelligently see and interpret the world around it.
 - **Simultaneous Localization And Mapping (SLAM)** enables your robot to map its surroundings and find its position on a map.
 
-![Robot components](img/robot-components.png)
+{{< imgproc src="/viam/robot-components.png" alt="Robot components" resize="1000x"  >}}
 
 ## Control your robot
 
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/63334e5e19a68d329b1c5b0e_viam-overview-illustrations-manage.svg" alt="A diagram illustrating secure robot control." class="alignleft" style="max-width:270px;"></img>
 
-The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/sdks/) with code in the **language of your choice**.
+The Viam platform provides a consistent programming interface for all robots, allowing you to [control your robots](/program/apis/) with code in the **language of your choice**.
 Viam currently has SDKs for [Go](https://pkg.go.dev/go.viam.com/rdk), [Python](https://python.viam.dev/), and [TypeScript](https://ts.viam.dev/).
 Additional SDKs are coming soon, including Rust, Java, C++, and Flutter.
 

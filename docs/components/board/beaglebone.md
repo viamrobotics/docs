@@ -4,7 +4,7 @@ linkTitle: "beaglebone"
 weight: 40
 type: "docs"
 description: "Configure a beaglebone board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---

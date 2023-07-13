@@ -53,7 +53,7 @@ Permissions are added at the organization level and apply to everything in an or
 - **Owner**: Can see and edit [every tab on the robot page](robots/#navigating-the-robot-page).
   Can manage users in the app.
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
-  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code Sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
+  Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
 To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
 
@@ -65,16 +65,23 @@ If you have the **Owner** role, you can [invite new users](organizations/#invite
 
 Viam is built in a way that allows you to change configurations, deploy packages, check logs, and control your robots both when you are close to your robot, as well as remotely.
 
-Robot [configuration](robots/#configuration) and robot [code](#control-with-code) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Robot [configuration](robots/#configuration) and robot [code](#control-with-the-sdks) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ### Configuration
 
-Everyone who has access to the location the robot is in, can change the robot's configuration.
+Everyone who has access to the location the robot is in, can change the robot's [configuration](robots/#configuration).
+
+{{< alert title="Simultaneous config edits" color="caution" >}}
+If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
+
+Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
+{{< /alert >}}
+
 When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
@@ -82,29 +89,30 @@ For some configuration aspects you may require physical access to the robot so y
 
 _Coming soon._
 
-You and your collaborators can deploy control logic, [modular resources](/program/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy control logic, [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ### Remote control
 
-Everyone who has access to the robot can remotely control it using the [**Control** tab](robots/#control).
-This allows you to visually test and remotely operate robot components and services
+Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).
+This allows you to visually test and remotely operate robot components and services.
 
-### Control with code
+### Control with the SDKs
 
-Everyone who has access to the robot's location can obtain the robot address and secret needed to send API calls to the robot.
-You can also share the robot address and location secret without granting location access in the Viam app.
+Everyone who has access to the robot's location can obtain the robot's remote address and location secret from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/apis/).
+You can share the robot's remote address and location secret without granting location access in the app.
 
-With the robot address and the location secret, you can write code, collaborate on your code using tools like GitHub, and run your code to control the robot from anywhere in the world.
+As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub, and execute code to control the robot from anywhere in the world.
 
-{{% alert title="Caution" color="caution" %}}
-Be cautious when sharing location secret keys in your code or messages.
+Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's location secret.
+The robot's remote address is displayed on both the **Control** and **Code sample** tabs of your robot's page in the app, ending with `viam.cloud`.
 
-Do not make a secret key publicly available, as anyone who has the secret key can access your location, compromising the security of your system.
+{{% snippet "secret-share.md" %}}
 
-It is good practice to note _where_ and _when_ you share a location secret key.
-{{% /alert %}}
-
-### Logs
+### Logging
 
 Each robot automatically sends logs to the cloud where you can view them from the [**Logs** tab](robots/#logs).
-If you are collaborating on a robot and controlling it using the [**Control** tab](robots/#control) or [code](#control-with-code), everyone who has access to the location the robot is in, can see the robot's logs.
+If you are collaborating on a robot and controlling it using the [**Control** tab](robots/#control) or [SDK code](#control-with-the-sdks), everyone who has access to the location the robot is in can see the robot's logs.
+
+### Deployment
+
+You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.

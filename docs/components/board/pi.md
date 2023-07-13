@@ -4,7 +4,7 @@ linkTitle: "pi"
 weight: 20
 type: "docs"
 description: "Configure a pi board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---

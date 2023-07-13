@@ -7,15 +7,15 @@ no_list: true
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
-icon: "/components/img/components/sensor.svg"
-images: ["/components/img/components/sensor.svg"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
 A *sensor* is a device that can measure information about the outside world.
 Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Viam has two component types defined separately from *sensor* that you can use to implement sensors with specific functions:
 
@@ -43,14 +43,16 @@ Supported sensor models include:
 | [`renogy`](renogy/) | [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
-You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/program/extend/modular-resources/).
+You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/extend/modular-resources/).
 This allows you to have the same access and control of the sensor through Viam as you would if it was a built-in model.
 
 For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module).
 
 ## Control your sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -145,6 +147,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
-    {{% card link="/tutorials/projects/tipsy/" size="small" %}}
+    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
+    {{% card link="/tutorials/projects/tipsy/" %}}
 {{< /cards >}}

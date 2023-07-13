@@ -1,3 +1,10 @@
+<!-- START script for lazy loading -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+{{ $jsLozad := resources.Get "js/lozad.js" }}
+{{ $jsLozad := $jsLozad | minify }}
+<script src="{{ $jsLozad.RelPermalink }}" crossorigin="anonymous"></script>
+<!-- END script for lazy loading -->
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>
@@ -67,6 +74,8 @@ window.markmap = {
 {{ $jsPlantuml := resources.Get "js/plantuml.js" | resources.ExecuteAsTemplate "js/plantuml.js" . }}
 {{ $jsDrawio := resources.Get "js/drawio.js" | resources.ExecuteAsTemplate "js/plantuml.js" .}}
 
+{{ $jsSentry := resources.Get "js/sentry.js" }}
+
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
@@ -75,7 +84,8 @@ window.markmap = {
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
 {{ $js := $js | minify | fingerprint }}
+{{ $jsSentry := $jsSentry | minify }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+<script async src="{{ $jsSentry.RelPermalink }}" crossorigin="anonymous"></script>
 {{ end }}
-
 {{ partial "hooks/body-end.html" . }}

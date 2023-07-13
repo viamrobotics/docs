@@ -8,7 +8,12 @@ tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/img/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
 images: ["/tutorials/img/plant-watering-pi/preview.png"]
-
+authors: [ "Sierra Guequierre" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor", "sensor" ]
+level: "Beginner"
+date: "29 March 2023"
+cost: 150
 # SMES: Olivia Miller
 ---
 
@@ -27,10 +32,10 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
-- A Raspberry Pi 3B or 4B with SD card
+- A Raspberry Pi 3B or 4B with SD card and [5V USB power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)
 - A [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
 - A [peristaltic pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
-- An [Adafruit MCP3008 ADC](https://www.amazon.com/dp/B00NAY3RB2?psc=1)
+- An [Adafruit MCP3008 ADC](https://a.co/d/csRaIHE)
 - A [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
 - A [breadboard](https://www.amazon.com/SunFounder-Raspberry-Breadboard-solderless-Circuit/dp/B07ZYR7R8X)
 - A [9V battery](https://www.amazon.com/dp/B08BRJQQSL/)
@@ -41,6 +46,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A screwdriver
 
 Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Connect your Pi to its power supply to power it on.
 Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
 
 ## Set Up your Plant Watering Robot
@@ -128,7 +134,7 @@ You can either bend or soldier the jumper wire here to make the connection betwe
 
 ## Program Your Plant Watering Robot
 
-{{<gif webm_src="../../img/plant-watering-pi/plant-watering-video.webm" mp4_src="../../img/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
+{{<gif webm_src="/tutorials/img/plant-watering-pi/plant-watering-video.webm" mp4_src="/tutorials/img/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
 
 ### Enable SPI on your Pi
 
@@ -338,7 +344,7 @@ Now that you have set up your robot and are able to control your motor, you can 
 For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
-Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/program/extend/custom-components-remotes/) implementing the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
+Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can use the Viam Python SDK to configure this sensor as a [custom resource](/extend/custom-components-remotes/) implementing the Viam [sensor class](https://python.viam.dev/autoapi/viam/components/sensor/sensor/index.html), making it a model of sensor available for you to use on your robot.
 
 Create your custom sensor resource in 3 steps:
 
@@ -449,7 +455,7 @@ Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 If you use the Config Builder to make your remote, make sure you have still added the line: `"insecure": true,` to the Raw JSON.
 This line determines that your server does need an SSL certificate.
@@ -512,11 +518,14 @@ You can run `pwd` in your terminal after SSH'ing into your Pi to see what your u
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code Sample** tab.
-Follow the instructions in this tab.
-2. Click **Copy Code** to copy a code sample that establishes a connection with your robot when run.
-3. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
-4. Name the file <file>plant-watering-robot.py</file>, and save it.
+1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+2. Select **Python** as the language.
+3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
+
+   {{% snippet "show-secret.md" %}}
+
+4. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
+5. Name the file <file>plant-watering-robot.py</file>, and save it.
 
 For example, run the following commands on your Pi to create and open the file:
 

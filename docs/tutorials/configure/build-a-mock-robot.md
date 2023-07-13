@@ -12,6 +12,12 @@ aliases:
     - "/tutorials/build-a-mock-robot/"
     - "/tutorials/how-to-build-a-mock-robot/"
 tags: ["mock", "simulation"]
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "board", "arm", "motor" ]
+level: "Beginner"
+date: "11 October 2022"
+cost: "0"
 ---
 
 This tutorial will show you how to build a mock robot using just your personal laptop so you can:
@@ -144,14 +150,14 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect to your mock robot with your code
 
-The easiest way to get started writing an application with Viam's SDKs is to use the boilerplate code on the **Code Sample** tab.
+The easiest way to get started writing an application with Viam's SDKs is to use the boilerplate code on the **Code sample** tab.
 
-Navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code Sample** tab, and select your SDK language (**Python** or **Golang**).
-Copy the boilerplate code.
+Navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, select your SDK language (**Python** or **Golang**), and copy the boilerplate code.
+
+{{% snippet "show-secret.md" %}}
+
 This code snippet imports all the necessary libraries, is pre-populated with your robot credentials, and sets up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
-
-{{< readfile "/static/include/snippet/secret-share.md" >}}
 
 You can now run the code.
 Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
@@ -335,7 +341,7 @@ Now when you run this code, you should see the new mock arm positions listed in 
 Open the **Control** tab of your mock robot to see the robot's arm positions changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/build-a-mock-robot/joint-changes.webm" mp4_src="../../img/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
+  {{<gif webm_src="/tutorials/img/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/img/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
 </div>
 
 ## Create a mock sub-part
@@ -509,12 +515,10 @@ func main() {
 
 When you run this code, you will see your mock sub motor toggling between running and idle in real time from the Viam app!
 
-{{<gif webm_src="../../img/build-a-mock-robot/go-start-demo.webm" mp4_src="../../img/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
+{{<gif webm_src="/tutorials/img/build-a-mock-robot/go-start-demo.webm" mp4_src="/tutorials/img/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
 
 ## Next steps
 
 In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using a Viam SDK.
 
 If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try building one of Viam's [introductory robots](/tutorials/#your-first-robots).
-
-{{< snippet "social.md" >}}

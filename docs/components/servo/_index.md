@@ -6,7 +6,7 @@ weight: 80
 type: "docs"
 description: "A hobby servo is a special type of small motor whose position you can precisely control."
 tags: ["servo", "components"]
-icon: "/components/img/components/servo.svg"
+icon: "/icons/components/servo.svg"
 no_list: true
 # SME: #team-bucket
 ---
@@ -52,7 +52,9 @@ Click on the model names above for configuration information.
 
 ## Control your servo with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -96,7 +98,7 @@ The servo component supports the following methods:
 
 Move the servo to the desired angle in degrees.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 Support for continuous servos  with the GPIO servo model is experimental.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
@@ -345,7 +347,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/guardian" size="small" %}}
-  {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
-  {{% card link="/tutorials/projects/integrating-viam-with-openai" size="small" %}}
+  {{% card link="/tutorials/projects/guardian" %}}
+  {{% card link="/tutorials/control/yahboom-rover" %}}
+  {{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
 {{< /cards >}}

@@ -4,28 +4,6 @@ Add styles or override variables from the theme here.
 
 */
 
-
-/* START - CSS to stack Eliot's video on the landing page */
-
-.mra-column {
-  float: left;
-  width: 50%;
-  padding: 10px;
-}
-
-.mra-row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-@media screen and (max-width: 576px) {
-  .mra-column {
-    width: 100%;
-  }
-}
-/* END - CSS to stack Eliot's video on the landing page */
-
 /* START Add Square bracket on footnote number */
 a.footnote-ref::before {
   content: '[';
@@ -36,25 +14,21 @@ a.footnote-ref::after {
 /* END Add Square bracket on footnote number */
 
 
-
-/* START Disable unwanted RH TOC entries */
-
-/* Disable "Create Child Pages" */
-.td-page-meta--child { display: none !important; }
-
-/* Disable "Edit this page" */
-.td-page-meta--edit { display: none !important; }
-
-/* Disable "View page source" */
-.td-page-meta--view { display: none !important; }
-
-/* END Disable unwanted RH TOC entries */
-
-
-/*
-START MARKETING CSS
-*/
+/* START MARKETING CSS */
 /* START Adjust Heading sizes*/
+
+.td-navbar {
+  background: black !important;
+}
+
+/* This ensures there is no padding added to the top logo bar */
+.td-navbar .td-navbar-nav-scroll {
+  height: unset;
+}
+
+.td-navbar .td-navbar-nav-scroll .navbar-nav {
+  padding-bottom: unset;
+}
 
 .td-navbar .navbar-brand {
   font-family: Space Mono, sans-serif;
@@ -95,7 +69,6 @@ h3, .h3 {
   font-size: 1.1667rem !important;
 }
 
-/* Added H4 and H5 in response to DAD-97 */
 h4, .h4 {
   font-size: 1.0625rem !important;
   line-height: 1.4375em;
@@ -115,32 +88,23 @@ h7, .h7 {
   line-height: 1.0625rem;
   font-weight: 400;
   font-style: italic;
-  text-decoration: underline green;
 }
 
 .td-content > h3 {
   margin-bottom: 0.667rem;
 }
 
-/* This class prevents h4 headings in alerts from indenting */
-.plain{
-  margin-left: 0;
-}
-/* This prevents the h4 heading rules from appearing in alerts */
-.plain:after{
-  content:' ';
-  display:none;
-}
-
 /* END Adjust Heading sizes*/
 
+// Navigation side bar
 
 .td-sidebar {
-  /*NAV Panel changes*/
-  /* background */
+  /* NAV Panel changes */
   background-color: #f2f2f2;
   letter-spacing: 0.0625rem;
 }
+
+// TABLE OF CONTENT CHANGES
 
 .td-toc > nav ul li {
   border-left: 2px solid #1be020;
@@ -177,7 +141,11 @@ h7, .h7 {
   color: #666666;
 }
 
-// Expanded headers should be bold
+.td-sidebar-toc {
+  border-left: unset;
+}
+
+// Breadcrumb styling
 
 .breadcrumb {
   font-size: 1rem;
@@ -187,14 +155,20 @@ h7, .h7 {
   }
 }
 
-a {
+.breadcrumb-item {
   color: #0000EA;
-  h1, h2, h3, h4, h5, h6, h7, p {
-    color: black;
-  }
 }
 
-a:hover {
+.breadcrumb-item + .breadcrumb-item::before {
+  float: left;
+  padding-right: 0.5rem;
+  color: black;
+  content: ">>";
+}
+
+// Link styling
+
+a, a:hover {
   color: #0000EA;
   h1, h2, h3, h4, h5, h6, h7, p {
     color: black;
@@ -231,25 +205,26 @@ p, li {
   }
 }
 
-/*This ensures there is no padding added to the top logo bar*/
-.td-navbar .td-navbar-nav-scroll {
-  height: unset;
-}
-
-.td-navbar .td-navbar-nav-scroll .navbar-nav {
-  padding-bottom: unset;
-}
-
-/* font weight */
-
-.td-navbar {
-  background: black !important;
-}
+// START FOOTER STYLING
 
 /* sets the footer to black. */
 .bg-dark {
   background-color: black !important;
 }
+
+/* START no whitespace beneath footer */
+
+body footer {
+  line-height: 1;
+}
+
+footer small {
+  line-height: 1.5;
+}
+
+/* END no whitespace beneath footer */
+
+// END FOOTER STYLING
 
 /* sets the base font heavier than the theme. */
 .td-content p, .td-content li, .td-content td {
@@ -258,35 +233,23 @@ p, li {
   line-height: 1.75em !important;
 }
 
-.breadcrumb-item {
-  color: #0000EA;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-  float: left;
-  padding-right: 0.5rem;
-  color: black;
-  content: ">>";
-}
-
 /*
 END MARKETING CSS
 */
 
 
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/*/
-/* I added margins, changed Preload to 600px. The default was 100% */
+/* Added margins, changed Preload to 600px. The default was 100% */
 
 .td-content > .video-shortcode, .video-shortcode {
   margin: 12px 0 12px 0;
-  border:solid 1px;
+  border: solid 1px;
   max-width: 100%;
   width: 600px;
   height: auto;
 }
 /* START VIDEO SHORTCODE STYLES https://roneo.org/en/hugo-create-a-shortcode-for-local-videos/ */
 
-/**/
 .primary-color                      {color: var(--primary-color)}
 .bg-primary-color                   {background-color: var(--primary-color)}
 .hover-bg-primary-color:hover       {background-color: var(--primary-color)}
@@ -318,7 +281,6 @@ END MARKETING CSS
 .text-color-disabled   {color: var(--text-color-disabled)}
 .divider-color         {color: var(--divider-color)}
 .warn-color            {color: var(--warn-color)}
-
 
 .nested-links a {
   color: var(--primary-color);
@@ -381,26 +343,17 @@ END MARKETING CSS
   position: absolute;
   top: 35%;
   left: -12px;
-  /*background-color: white;*/
 }
 
 .admonition-content {
   display: block;
   margin: 0px;
   padding: .125em 1em;
-  /*margin-left: 1em;*/
   margin-top: 2em;
   margin-bottom: 2em;
   overflow-x: auto;
-  /*font-size: .9375em;*/
   background-color: var(--black-05);
 }
-
-/* color: sets the text color in the alert*/
-/* background: sets the background color in the alert*/
-/* border-color: sets the color of the LH border in the alert*/
-/* .alert-warning hr: doesn't seem to do anything*/
-/* .alert-warning .alert-link: doesn't seem to do anything*/
 
 .alert a {
   text-decoration: underline;
@@ -414,43 +367,20 @@ END MARKETING CSS
 .alert-warning {
   box-shadow: 5px 5px 0 0 red;
 }
-.alert-warning hr {
-  border-top-color: #ff9f9f;
-}
-.alert-warning .alert-link {
-  color: #520000;
-}
-
-
 .alert-note {
   box-shadow: 5px 5px 0 0 blue;
 }
-.alert-note hr {
-  border-top-color: #ff9f9f;
-}
-.alert-note .alert-link {
-  color: #520000;
-}
-
 .alert-caution {
   box-shadow: 5px 5px 0 0 #f0b93f;
 }
-.alert-caution hr {
-  border-top-color: #ff9f9f;
-}
-.alert-caution .alert-link {
-  color: #520000;
-}
-
-
 .alert-tip, .alert-info {
   box-shadow: 5px 5px 0 0 #1be020;
 }
 
+// Overwrite default
 .alert-info .alert-heading {
   color: black;
 }
-
 
 /* END CSS FOR NOTES, CAUTIONS, WARNINGS */
 
@@ -483,17 +413,18 @@ END MARKETING CSS
 
 /* END CSS FOR EXPANDER */
 
+
 /* START card styling */
+
 .hover-card {
   border: 1px solid #000;
   box-shadow: 5px 5px 0 0 #000;
-  margin: 1em;
-  min-width: 200px;
-  width: 200px;
-  max-width: 200px;
   display: flex;
-  padding: 1rem
+  padding: 1rem;
+  margin: 1rem;
 }
+
+// Hover animations and colors
 
 .hover-card:hover {
   box-shadow: 8px 8px 0 0 #000;
@@ -503,66 +434,62 @@ END MARKETING CSS
   transform: translate(-3px,-3px);
 }
 
-.hover-card-small > a > .hover-card-img, .hover-card-small > a > video {
+.hover-card.yellow:hover {
+  box-shadow: 8px 8px 0 0 #FFD400;
+}
+.hover-card.green:hover {
+  box-shadow: 8px 8px 0 0 #00ef83;
+}
+.hover-card.purple:hover {
+  box-shadow: 8px 8px 0 0 #a51aff;
+}
+.hover-card.teal:hover {
+  box-shadow: 8px 8px 0 0 #00e8e8;
+}
+.hover-card.pink:hover {
+  box-shadow: 8px 8px 0 0 #ff79ff;
+}
+
+// images in hover cards at the top have a margin before text
+.hover-card > a > .hover-card-img {
   margin-bottom: 1rem;
 }
 
-@media (max-width: 650px) { // at least two cards fit next to one another
-  .hover-card.hover-card-small { // only one card
-    min-width: 90%;
-    width: 90%;
-    max-width: 90%;
+// For some reason video elements don't calculate the height correctly. This adjusts for that.
+.hover-card-video {
+  border: 1px solid white;
+  margin-bottom: 0.5rem;
+}
+.hover-card.landing > .hover-card-img {
+  padding-bottom: 7px;
+}
 
-    a {
-      display: flex;
 
-      video {
-        max-width: 50%;
-        padding-right: 1rem;
-      }
+.hover-card > img, .hover-card * video, .hover-card * .hover-card-img > img, .hover-card * .hover-card-icon > img, .hover-card.landing > .hover-card-img > img {
+  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 0 !important;
+  border: 1px solid black;
+}
 
-      .hover-card-img {
-        max-width: 50%;
-        margin: 0 1rem 1rem 0;
-        margin: auto;
-        padding-right: 1rem;
+// Sizes and types
 
-        img {
-          margin-bottom: 0;
-        }
-      }
+// Tiny hover card with no text
 
-      .hover-card-icon {
-        max-width: 30%;
-        margin: 0 1rem 1rem 0;
-        margin: auto;
-        padding-right: 1rem;
-
-        img {
-          margin-bottom: 0;
-        }
-      }
-
-      div.small-hover-card-div {
-        width: 50%;
-      }
-
-      p {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  .hover-card.hover-card-xs {
+@media (max-width: 650px) {
+  .hover-card.xs {
     min-width: 40%;
     width: 40%;
     max-width: 40%;
   }
-
 }
 
-@media (min-width: 650px) { // at least two cards fit next to one another
-  .hover-card.hover-card-small {
+// Hover card which turns into a small one on mobile with image on the left
+
+@media (min-width: 650px) {
+  .hover-card {
     min-width: 250px;
     max-width: 250px;
   }
@@ -572,68 +499,171 @@ END MARKETING CSS
   }
 }
 
-@media (min-width: 992px) {
-  .hover-card {
-    min-width: 300px;
-    width: 300px;
-    max-width: 300px;
+// Hover card which stays similarly formatted on mobile
+
+.hover-card.landing {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+// TUTORIAL CARD STYLING START
+
+.hover-card.tutorial {
+  background-color: white;
+  padding: 10px;
+}
+
+.hover-card.tutorial > a {
+  width: 100%;
+}
+
+// Text is black
+.hover-card.tutorial * .small-hover-card-div {
+  color: black;
+}
+
+.hover-card.tutorial > a * img {
+  margin-bottom: 0;
+}
+
+@media (max-width: 650px) { // at least two cards fit next to one another
+  .hover-card.tutorial > a > video {
+    margin-bottom: 0;
+  }
+
+  .hover-card { // only one card
+    min-width: 92%;
+    width: 92%;
+    max-width: 92%;
+  }
+
+  .hover-card > a {
+    display: flex;
+    padding-right: 1rem;
+
+    .hover-card-video, .hover-card-img {
+      max-width: 50%;
+      margin: 0 1rem 1rem 0;
+      margin: auto;
+      padding-right: 1rem;
+      display: flex;
+      flex: 1;
+    }
+
+    .hover-card-icon {
+      max-width: 30%;
+      margin: 0 1rem 1rem 0;
+      margin: auto;
+      padding-right: 1rem;
+
+      img {
+        margin-bottom: 0;
+      }
+    }
+
+    div.small-hover-card-div {
+      width: 50%;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 
-.landing-hover-card {
-  margin: 1em auto;
-  min-width: 300px;
-  max-width: 450px;
+// label styling in tutorials START
+
+.hover-card.tutorial * .pills {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.landing-hover-card-padding {
-  padding: 1rem;
-  border: 1px solid #000;
-  box-shadow: 5px 5px 0 0 #000;
+.hover-card.tutorial * .pill {
+ background-color: whitesmoke;
+ padding: 0.1rem 0.25rem;
+ border: 1px solid black;
+ margin: 0.1rem;
+ font-size: 0.833rem;
 }
 
-.landing-hover-card-padding.yellow:hover {
-  box-shadow: 8px 8px 0 0 #FFD400;
-
-  -webkit-transform: translate(-3px,-3px);
-  -ms-transform: translate(-3px,-3px);
-  transform: translate(-3px,-3px);
+.hover-card.tutorial * .pill.pill-lang {
+  border-color: #00e8e8;
 }
 
- .landing-hover-card-padding.green:hover {
-  box-shadow: 8px 8px 0 0 #00ef83;
-
-  -webkit-transform: translate(-3px,-3px);
-  -ms-transform: translate(-3px,-3px);
-  transform: translate(-3px,-3px);
+.hover-card.tutorial * .pill.pill-component {
+  border-color: #a51aff;
 }
 
- .landing-hover-card-padding.purple:hover {
-  box-shadow: 8px 8px 0 0 #a51aff;
+// label styling in tutorials END
 
-  -webkit-transform: translate(-3px,-3px);
-  -ms-transform: translate(-3px,-3px);
-  transform: translate(-3px,-3px);
+.hover-card.tutorial > a {
+  display: flex;
+  flex-direction: column;
 }
 
- .landing-hover-card-padding.teal:hover {
-  box-shadow: 8px 8px 0 0 #00e8e8;
-
-  -webkit-transform: translate(-3px,-3px);
-  -ms-transform: translate(-3px,-3px);
-  transform: translate(-3px,-3px);
+@media (max-width: 650px) {
+  .hover-card.tutorial > a {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
- .landing-hover-card-padding.pink:hover {
-  box-shadow: 8px 8px 0 0 #ff79ff;
-
-  -webkit-transform: translate(-3px,-3px);
-  -ms-transform: translate(-3px,-3px);
-  transform: translate(-3px,-3px);
+.hover-card.tutorial * .small-hover-card-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
+
+.robot-cost {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
+  display: none;
+}
+
+.robot-cost > .key {
+  min-width: 50px;
+  color: #666666;
+  margin-right: 0.3rem;
+}
+
+// TUTORIAL CARD STYLING END
+
+// On front page the normal hover-cards should take up more space
+
+.max-page * .hover-card {
+  min-width: 280px;
+  max-width: 400px;
+}
+
+// START fit either all 4 cards, 2 by 2 or each card individually
+
+// Between 1200 - 1650 we need to restrict the container to 850px to ensure
+// the cards go into 2 x 2 formation
+@media (min-width: 1200px) {
+  div .cards.max-page {
+    max-width: 850px !important;
+  }
+}
+
+@media (min-width: 1651px) {
+  div .cards.max-page {
+    max-width: 95% !important;
+  }
+}
+
+// END fit either all 4 cards, 2 by 2 or each card individually
 
 /* END card styling */
+
+
 .nav-link {
   text-decoration: none;
 }
@@ -649,7 +679,7 @@ td > ul, td > ol {
 /* START TAB CSS consistency */
 
 .nav-tabs {
-    border-bottom: none; // unset from inherited styles
+  border-bottom: none; // unset from inherited styles
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:hover {
@@ -679,18 +709,6 @@ td > ul, td > ol {
 }
 
 /* END TAB CSS consistency */
-
-/* START no whitespace beneath footer */
-
-body footer {
-  line-height: 1;
-}
-
-footer small {
-  line-height: 1.5;
-}
-
-/* END no whitespace beneath footer */
 
 /* START scroll to top and github styling */
 
@@ -742,6 +760,10 @@ footer small {
   max-width: 600px;
 }
 
+/* END GIFs should have a max width */
+
+// Other styling
+
 .table {
   margin-top: 1.5rem;
 }
@@ -760,14 +782,13 @@ footer small {
   margin-bottom: 1.5rem;
 }
 
-.td-sidebar-toc {
-  border-left: unset;
-}
-
 /* Feedback container */
 
-.feedback--prompt {
+.feedback {
   padding-top: 2rem;
+}
+
+.feedback--prompt {
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -786,7 +807,10 @@ footer small {
 .feedback--response {
   display: none;
   margin-top: 1em;
-  text-align: center;
+  border: 1px solid black;
+  padding: 1rem;
+  max-width: 400px;
+  margin: auto;
 }
 
 .feedback--answer {
@@ -795,6 +819,29 @@ footer small {
 
 .feedback--response__visible {
   display: block;
+}
+
+.feedback-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feedback-form > button {
+  margin-left: 0.5rem;
+}
+
+.feedback-form > textarea {
+  height: 133px;
+  width: 100%;
+}
+
+.feedback-ty {
+  text-align: center;
+}
+
+.feedback-ty > p {
+  margin-top: 1rem;
 }
 
 /* END Feedback container */
@@ -816,6 +863,8 @@ footer small {
   }
 }
 
+// Align media to left, center, or right
+
 @media (min-width: 650px) {
   img.alignright { padding: 4px; margin: 0 0 2px 20px; display: inline; }
   img.alignleft { padding: 4px; margin: 0 20px 2px 0; display: inline; }
@@ -834,4 +883,190 @@ footer small {
   .alignleft { display: block; margin-left: auto; margin-right: auto; }
   .aligncenter { display: block; margin-left: auto; margin-right: auto; }
   .center-if-small { display: block; margin-left: auto; margin-right: auto; }
+}
+
+// Fix page width on full screen to be 80%
+
+.td-content > .code-toolbar,
+.td-content > .table,
+.td-content > div,
+.td-content > img,
+.td-content > picture,
+.td-content > picture > img {
+  @include media-breakpoint-up(lg) {
+      max-width: 80%;
+  }
+}
+
+// sectionlist styling
+
+ul.sectionlist {
+  padding: 0;
+}
+
+ul.sectionlist > li {
+  list-style-type: none;
+}
+
+ul.sectionlist > li > a {
+  text-decoration: none;
+}
+
+ul.sectionlist > li > a > div {
+  width: 100%;
+  padding: 0.25rem 0rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+}
+
+ul.sectionlist > li * img {
+  margin: 0rem;
+}
+
+ul.sectionlist > li * p {
+  margin-left: 0.75rem;
+  margin-bottom: 0;
+}
+
+ul.sectionlist > li:hover {
+  background-color: whitesmoke;
+}
+
+.col.sectionlist {
+  min-width: 280px;
+  max-width: 400px;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.row-no-margin {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Carousel styling
+.carousel {
+  position: relative;
+}
+.carousel ul {
+  overflow: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  scroll-snap-points-y: repeat(100%);
+  scroll-behavior: smooth;
+  background: white;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+}
+.carousel ul::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+.carousel ul li {
+  position: relative;
+  min-width: 100%;
+  list-style: none;
+  background: url() center center / cover no-repeat;
+  scroll-snap-align: start;
+}
+.carousel ul li > * {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.carousel ul li > img {
+  object-fit: cover;
+}
+.carousel ul li > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.carousel ol {
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+.carousel ol li {
+  list-style: none;
+  padding: 0 5px;
+}
+.carousel ol li a {
+  display: block;
+  height: 10px;
+  width: 10px;
+  border: 2px solid white;
+  background: transparent;
+  border-radius: 100%;
+}
+.carousel ol li.selected a {
+  background: white;
+}
+.carousel .prev,
+.carousel .next {
+  display: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 50px;
+  color: black;
+  position: absolute;
+  left: 0;
+  padding: 15px 15px 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
+  line-height: 0;
+}
+.carousel .next {
+  left: auto;
+  right: 0;
+}
+
+#board-carousel {
+  padding: 0 1.5rem;
+  max-height: 150px;
+}
+
+#board-carousel ul {
+  max-height: 150px;
+}
+
+#board-carousel ul li {
+  min-width: 100px;
+  min-height: 130px;
+}
+
+#board-carousel ul li a {
+  text-decoration: none;
+  padding: 0rem 0.8rem;
+}
+
+#board-carousel ul li img {
+  height: 60px;
+}
+
+#board-carousel ul li a p {
+  font-size: .833rem!important;
+  line-height: 1.0625rem!important;
+  color: black;
+  font-weight: 600;
+}
+
+#board-carousel div.prev,
+#board-carousel div.next {
+  padding: 0;
+  font-size: 30px;
 }

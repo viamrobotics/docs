@@ -4,7 +4,7 @@ linkTitle: "Calibrate a Camera"
 weight: 80
 type: "docs"
 description: "Calibrate a camera and extract the intrinsic and distortion parameters."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 ---
 
@@ -31,7 +31,7 @@ pip3 install opencv-python
    You can use the **Export Screenshot** button on the camera panel of your robot's **Control** tab in the [Viam app](https://app.viam.com).
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
-   {{< alert title="Note" color="note" >}}
+   {{< alert title="Important" color="note" >}}
    In order for the calibration to be compatible with the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, take the images by running the camera using the RDK.
    {{< /alert >}}
 
@@ -106,7 +106,7 @@ The following is a full example config:
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/components/camera/transform" size="small" %}}
-  {{% card link="/services/vision" size="small" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+  {{% card link="/components/camera/transform" %}}
+  {{% card link="/services/vision" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}

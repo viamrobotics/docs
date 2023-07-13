@@ -5,28 +5,30 @@
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
 {{ end }}
-<div class="col hover-card {{ if eq $size "small" }}hover-card-small{{ end }}{{ if eq $size "xs" }}hover-card-xs{{ end }}">
+<div class="col hover-card {{ if eq $size "xs" }}xs{{ end }} {{ if .Get "class" }}{{.Get "class"}}{{ end }}">
   {{ if site.GetPage ((relURL $link) | string) }}
     {{ with site.GetPage ((relURL $link) | string) }}
       <a href="{{.RelPermalink}}">
         {{ if .Params.webmSrc }}
-          <video autoplay loop muted playsinline preload="auto" alt="{{ .Params.videoAlt }}" width="100%">
-            <source src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
-            <source src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
-            There should have been a video here but your browser does not seem
-            to support it.
-          </video>
+        <div class="hover-card-video">
+					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "lozad" ) }}
+        </div>
         {{ end }}
         {{ if .Params.image }}
           <div class="hover-card-img">
-            <img src="{{relURL (substr .Params.image 1)}}" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{ $img := resources.GetMatch .Params.image }}
+            {{if $img }}
+              {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+            {{ else }}
+              <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{end}}
           </div>
         {{ end }}
-        {{ if .Params.icon }}
-        <div class="hover-card-icon">
-          <img src="{{relURL (substr .Params.icon 1)}}" alt="{{ .Params.linkTitle }}" width="100%" />
-        </div>
-        {{ end }}
+				{{ if .Params.icon }}
+				<div class="hover-card-icon">
+					{{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+				</div>
+				{{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           {{ if $customTitle }}
             <h4>{{ $customTitle }}</h4>

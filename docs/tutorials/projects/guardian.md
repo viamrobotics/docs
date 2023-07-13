@@ -10,7 +10,12 @@ videoAlt: "A guardian detecting a person or pet."
 images: ["/tutorials/img/guardian/preview.gif"]
 tags: ["camera", "vision", "detector", "python"]
 no_list: true
-# Author: Naomi Pentrel
+authors: [ "Naomi Pentrel" ]
+languages: [ "python" ]
+viamresources: [ "camera", "vision", "servo", "mlmodel" ]
+level: "Beginner"
+date: "15 May 2023"
+cost: 90
 ---
 
 In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.
@@ -20,21 +25,21 @@ Luckily, I am not the first one to have the idea to build a guardian and there w
 In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [Vision Service](/services/vision/).
 Here's a video of the finished guardian detecting me:
 
-{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" poster="../../img/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
+{{<video webm_src="/tutorials/img/guardian/guardian-detection.webm" mp4_src="/tutorials/img/guardian/guardian-detection.mp4" poster="/tutorials/img/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
 
 ## Hardware requirements
 
 To build your own guardian robot, you need the following hardware:
 
-- a **Raspberry Pi + power cable**
-- a **Raspberry Pi Camera v1.3 + 50cm ribbon cable**: The default 15cm ribbon cable is not long enough.
-- a **180 degree SG90 servo**: Because of the camera ribbon, I restricted the servo to only 180 degrees.
-- 3x **10mm RGB LEDs with common cathode**
-- **cables**
-- 4x **M2 screws** to attach the camera
-- a **speaker**: Optional if you want music.
-  I used a 4Ω 2W speaker with connected aux in.
-  You can use any speaker you can connect to your Pi.
+| Hardware | Approximate price |
+| -------- | ----------------- |
+| **Raspberry Pi + power cable** | $60 |
+| **Raspberry Pi Camera v1.3 + 50cm ribbon cable**: The default 15cm ribbon cable is not long enough. | $15 |
+| **180 degree SG90 servo**: Because of the camera ribbon, I restricted the servo to only 180 degrees. | $4 |
+| 3x **10mm RGB LEDs with common cathode** | $4 |
+| **cables** | $5 |
+| 4x **M2 screws** to attach the camera | $2 |
+| **speaker**: Optional if you want music. I used a 4Ω 2W speaker with connected aux in. You can use any speaker you can connect to your Pi. | Optional |
 
 Print or order the following printed 3D parts:
 
@@ -71,12 +76,12 @@ You will use the following software in this tutorial:
 
 You can view a timelapse of the robot assembly here:
 
-{{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" poster="../../img/guardian/timelapse.jpg" alt="Timelapse of guardian assembly">}}
+{{<video webm_src="/tutorials/img/guardian/timelapse.webm" mp4_src="/tutorials/img/guardian/timelapse.mp4" poster="/tutorials/img/guardian/timelapse.jpg" alt="Timelapse of guardian assembly">}}
 
 ### Assemble for testing
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/guardian/head.png" class="alignright" alt="Head with camera attachment" style="max-width: 200px" />
+  <img src="/tutorials/img/guardian/head.png" class="alignright" alt="Head with camera attachment" style="max-width: 200px" />
 </div>
 
 To assemble the guardian, start with the head and use four M2 screws to screw the camera with attached ribbon cable to the front half of the head.
@@ -89,7 +94,7 @@ Use the screws to attach the horn to the base of the head.
 Next, get your Raspberry Pi and your servo and connect the servo to the Raspberry Pi by connecting the PWM wire to pin 12, the power wire to pin 2, and the ground wire to pin 8.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](/try-viam/rover-resources/img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](/try-viam/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
 Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card or a small screwdriver.
 {{< /alert >}}
@@ -425,12 +430,13 @@ pip3 install viam-sdk python-vlc
 
 ### Connect
 
-Next, go to the **Code Sample** tab on your robot page and select **Python**.
+Next, go to the **Code sample** tab on your robot page and select **Python**, then click **Copy**.
 
-Copy the boilerplate code.
+{{% snippet "show-secret.md" %}}
+
 This code snippet imports all the necessary packages and sets up a connection with the Viam app in the cloud.
 
-Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code Sample** tab of the Viam app into your file.
+Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -461,13 +467,15 @@ from viam.services.vision import VisionClient
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('ADDRESS_FROM_VIAM_APP', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
+
+{{% snippet "show-secret.md" %}}
 
 You will update the `main()` method later.
 
@@ -515,7 +523,7 @@ python3 main.py
 
 Your Guardian lights up blue:
 
-{{<gif webm_src="../../img/guardian/light-up.webm" mp4_src="../../img/guardian/light-up.mp4" alt="Guardian lights up blue" max-width="300px">}}
+{{<gif webm_src="/tutorials/img/guardian/light-up.webm" mp4_src="/tutorials/img/guardian/light-up.mp4" alt="Guardian lights up blue" max-width="300px">}}
 
 ### Detections
 
@@ -613,9 +621,8 @@ The main logic for the guardian robot:
 - loads a music file `guardian.mp3`
 - runs an infinite loop where it calls the `idle_and_check_for_living_creatures()` function and when a creature is found calls the `focus_on_creature()` function
 
-{{< alert title="Note" color="note" >}}
-
-Please copy a suitable music file to the directory where your code is running and name it `guardian.mp3`.
+{{< alert title="Important" color="note" >}}
+Copy a suitable music file to the directory where your code is running and name it `guardian.mp3`.
 {{< /alert >}}
 
 Replace your `main()` function with the following:
@@ -663,7 +670,7 @@ python3 main.py
 
 If everything works, your guardian should now start to idle and when it detects humans or dogs or cats turn red, start music, and focus on the detected being:
 
-{{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" poster="../../img/guardian/guardian-finished.jpg" alt="FInished guardian">}}
+{{<video webm_src="/tutorials/img/guardian/guardian-finished.webm" mp4_src="/tutorials/img/guardian/guardian-finished.mp4" poster="/tutorials/img/guardian/guardian-finished.jpg" alt="FInished guardian">}}
 
 ## Run the program automatically
 
@@ -723,7 +730,7 @@ Or simply use to greet you when you get back to your desk.
 
 Here is a video of how I set up my guardian to follow my dog around my living room:
 
-{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" poster="../../img/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
+{{<video webm_src="/tutorials/img/guardian/ernieandtheguardian.webm" mp4_src="/tutorials/img/guardian/ernieandtheguardian.mp4" poster="/tutorials/img/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
 
 Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/manage/ml/train-model/) to use.
 

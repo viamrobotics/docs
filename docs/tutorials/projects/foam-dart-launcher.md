@@ -12,6 +12,12 @@ aliases:
     - /tutorials/foam-dart-launcher
 tags: ["base", "motor", "camera", "raspberry pi"]
 # SME: Kurt S. and Hazal M.
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "base", "camera", "motor", "board" ]
+level: "Beginner"
+date: "29 November 2022"
+cost: "145"
 ---
 
 ## Introduction
@@ -22,13 +28,13 @@ This robot will be able to move around and launch foam darts.
 This project is a great place to start if you are new to building robots, have a love for Nerf toys, an occasion to target something and launch a dart at it, or if you just want to troll your friends.
 Don’t forget to be careful and have fun!
 
-{{<gif webm_src="../../img/foam-dart-launcher/init-image-nerf-robot.webm" mp4_src="../../img/foam-dart-launcher/init-image-nerf-robot.mp4" alt="Robot launching a dart from a foam dart launcher taped to the robot." max-width="400px">}}
+{{<gif webm_src="/tutorials/img/foam-dart-launcher/init-image-nerf-robot.webm" mp4_src="/tutorials/img/foam-dart-launcher/init-image-nerf-robot.mp4" alt="Robot launching a dart from a foam dart launcher taped to the robot." max-width="400px">}}
 
 ## What You’ll Need for This Tutorial
 
 You will need the following hardware, software, tools, and consumables to complete this project:
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Important" color="note"%}}
 If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover.
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor.
 Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
@@ -63,7 +69,7 @@ If you use a different motor driver, refer to the manufacturer’s data sheet an
 A motor controller is a piece of hardware that takes digital signals from the Raspberry Pi and sends power to the motors accordingly.
 For this setup we have one dual motor controller for the two motors.
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Info" color="info" %}}
 If you have more than two motors you will likely need two motor controllers.
 {{% /alert %}}
 
@@ -105,9 +111,9 @@ The solenoid component actuates the foam dart launcher trigger.
 The relay works as a switch to turn on and off the solenoid.
 This allows us to activate the foam dart launcher with a GPIO pin on the board.
 
-{{% alert title="Note" color="note"%}}
+{{% alert title="Info" color="info" %}}
 We cannot directly power these components from GPIO pins, since there is a board limitation that restricts GPIO pins to providing 3.3V and a very limited current supply (16mA).
-Even the 3V and 5.5V power pins on the Pi supply are limited to about 1A.
+Even the 3.3V and 5V power pins on the Pi supply are limited to about 1A.
 
 If a component attempts to pull more current than that, you risk power cycling the Pi.
 That is why we use a relay to supply 5VDC with a higher current to actuate the solenoid.
@@ -129,7 +135,7 @@ For example, by using a common off-the-shelf 15A light switch to actuate a relay
 </ol>
 <li>Connect <strong>VCC</strong> (<strong>DC+</strong>) and ground (<strong>DC-</strong>) .</li>
 <ol type="a">
-<li>Connect <strong>DC+</strong> to the 5V of the Raspberry Pi.</li>
+<li>Connect <strong>DC+</strong> to the 6V of the external battery pack.</li>
 <li>Connect <strong>DC-</strong> to ground on the Raspberry Pi. </li>
 </ol>
 <li>Connect <strong>IN</strong>. </li>

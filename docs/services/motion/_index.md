@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 description: "The Motion Service enables your robot to plan and move its components relative to itself, other robots, and the world."
 tags: ["motion", "motion planning", "services"]
-icon: "/services/img/icons/motion.svg"
+icon: "/services/icons/motion.svg"
 no_list: true
 # SME: Motion team
 ---
@@ -26,7 +26,14 @@ The Motion Service can:
 You need to configure frames for your robot's components with the [Frame System](../frame-system/).
 This defines the spatial context within which the Motion Service operates.
 
-The Motion Service itself is enabled by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+The Motion Service itself is enabled on the robot by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+
+{{% alert title="Tip" color="tip" %}}
+
+Because the Motion Service is enabled by default, you don't give it a `"name"` while configuring it.
+Use the name `"builtin"` to access the built-in Motion Service in your code with methods like `FromRobot()` that require a `ResourceName`.
+
+{{% /alert %}}
 
 ## API
 
@@ -37,11 +44,12 @@ Method Name | Description
 [`Move`](#move) | Move multiple components in a coordinated way to achieve a desired motion.
 [`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually."
 [`GetPose`](#getpose) | Get the current location and orientation of a component.
+[`MoveOnMap`](#moveonmap) | Move a component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
 
@@ -81,10 +89,12 @@ The Motion Service takes the volumes associated with all configured robot compon
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
-      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Geometry locations are defined with respect to the *origin* of the specified frame.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
+    - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry) with dimensions.
+      The pose location is the point at the center of the geometry.
+    - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
-      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
   - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
   Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
@@ -141,10 +151,12 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The Motion Service assumes that obstacles are static.
-      If a worldstate geometry is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
-    - Geometries are "part of" their frame, rather than at the distal end of the frame.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
+    - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
+      The pose location is the point at the center of the geometry.
+    - Obstacle locations are defined with respect to the *origin* of the specified frame.
       Their poses are relative to the *origin* of the specified frame.
-      A geometry associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} will be interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
+      An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
   - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
   Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
@@ -164,11 +176,7 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
- // Access the Motion Service
 motionService, err := motion.FromRobot(robot, "builtin")
-if err != nil {
-  logger.Fatal(err)
-}
 
 // Assumes a gripper configured with name "my_gripper" on the robot
 gripperName := Gripper.Named("my_gripper")
@@ -196,7 +204,7 @@ As the name of the method suggests, only the single component specified by `comp
 An example of when this may be useful is if you have implemented your own custom arm model, and wish to use your own motion planning for it.
 Implement `MoveToPosition` on that arm using whatever method you desire to plan motion to the specified pose, and then use `MoveSingleComponent` to pass the destination in the frame of any other robot component.
 
-{{% alert title="Note" color="note" %}} <a id="move-vs-movetoposition">
+{{% alert title="Caution" color="caution" %}} <a id="move-vs-movetoposition">
 
 If you call this method on an arm that uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling [`MoveToPosition`](/components/arm/#movetoposition) on the arm directly.
 Note that `arm.MoveToPosition` does not use `world_state`, so collision checking and obstacle avoidance *will not* be performed.
@@ -269,11 +277,7 @@ As of April 21, 2023, [arm](/components/arm/) is the only component so supported
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
- // Access the Motion Service
 motionService, err := motion.FromRobot(robot, "builtin")
-if err != nil {
-  logger.Fatal(err)
-}
 
 // Assumes an arm configured with name "my_arm" on the robot
 myFrame := "my_arm_offset"
@@ -282,6 +286,68 @@ goalPose := PoseInFrame(0, 400, 0, 0, 0, 1, 0)
 
 // Move the arm
 moved, err := motionService.MoveSingleComponent(context.TODO(), goalPose, worldState, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### MoveOnMap
+
+Move a component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a [SLAM](/services/slam/) map.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the component to move.
+- `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
+- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the [SLAM Service](/services/slam/) from which the SLAM map is requested.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the request to `MoveOnMap` was successful.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_on_map).
+
+```python {class="line-numbers linkable-line-numbers"}
+motion = MotionClient.from_robot(robot=robot, name="builtin")
+
+# Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service"
+my_pose = Pose(y=10)
+
+# Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
+success = await motion.move_on_map(component_name="my_base", destination=my_pose, slam_service_name="my_slam_service")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the component to move.
+- `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
+- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the [SLAM Service](/services/slam/) from which the SLAM map is requested.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): Whether the request to `MoveOnMap` was successful.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/services/motion#Service).
+
+```go {class="line-numbers linkable-line-numbers"}
+motionService, err := motion.FromRobot(robot, "builtin")
+
+// Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service"
+myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
+
+// Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
+success, err := motionService.MoveOnMap(context.Background(), "my_base", myPose, "my_slam_service", nil)
 ```
 
 {{% /tab %}}
@@ -370,16 +436,14 @@ gripperPoseInObjectFrame = await motion.get_pose(
 - `destinationFrame` ([string](https://pkg.go.dev/builtin#string)):
   The name of the frame with respect to which the component's pose is reported.
 
-- `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `Transform`s.
-  A `Transform` represents an additional frame which is added to the robot's frame system.
-  It consists of the following fields:
-  - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
-  - `physical_object`: An optional `Geometry` can be added to the frame being added.
-  - `reference_frame`: Specifies the name of the frame which will be added to the frame system.
-
+- `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `LinkInFrame`s.
+  A `LinkInFrame` represents an additional frame which is added to the robot's frame system.
+  It consists of:
+  - a `PoseInFrame`: Provides the relationship between the frame being added and another frame.
+  - `Geometry`: An optional `Geometry` can be added to the frame being added.
   When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
-  This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
-  If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
+  This new frame system builds off the robot's frame system and incorporates the `LinkInFrame`s provided.
+  If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
 
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
@@ -429,6 +493,6 @@ logger.Info("Orientation of myArm from the Motion Service:", myArmMotionPose.Pos
 The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the Motion Service API, respectively:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" size="small" %}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

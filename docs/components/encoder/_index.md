@@ -6,8 +6,8 @@ weight: 50
 type: "docs"
 description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
-icon: "/components/img/components/encoder.svg"
-images: ["/components/img/components/encoder.svg"]
+icon: "/icons/components/encoder.svg"
+images: ["/icons/components/encoder.svg"]
 no_list: true
 # SME: Rand
 ---
@@ -48,7 +48,9 @@ For configuration information, click on one of the following models:
 
 ## Control your encoder with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -253,7 +255,7 @@ properties, err := myEncoder.Properties(context.Background(), nil)
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-If you are [implementing your own encoder](../../program/extend/) and add features that have no built-in API method, you can access them with `DoCommand`.
+If you are [implementing your own encoder](../../extend/) and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -311,5 +313,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
+  {{% card link="/tutorials/configure/scuttlebot" %}}
 {{< /cards >}}

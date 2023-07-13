@@ -8,9 +8,12 @@ tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/img/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/img/pet-treat-dispenser/preview.png"]
-
-# Author: Arielle
-# Designs: Jessamy
+authors: [ "Arielle Mella", "Jessamy Taylor", "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "board", "camera", "motor", "mlmodel", "vision" ]
+level: "Beginner"
+date: "30 March 2023"
+cost: 143
 ---
 
 <div class="td-max-width-on-larger-screens">
@@ -69,7 +72,7 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 1. Prepare your 3D prints.
 The front of the main body of your print is the side with the dog bone.
 
-{{<gif webm_src="../../img/pet-treat-dispenser/3d-print-design.webm" mp4_src="../../img/pet-treat-dispenser/3d-print-design.gif" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
+{{<gif webm_src="/tutorials/img/pet-treat-dispenser/3d-print-design.webm" mp4_src="/tutorials/img/pet-treat-dispenser/3d-print-design.mp4" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
 
 2. Mount your Raspberry Pi to the side of the main body of your pet feeder using the provided mounting screw holes.
 1. Connect your power source to the Pi through the side hole.
@@ -334,7 +337,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 ## Control your robot programmatically
 
-With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/program/sdks/) in the language of your choice.
+With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/program/apis/) in the language of your choice.
 This tutorial uses Python.
 
 ### Set up your python environment
@@ -355,14 +358,16 @@ To install the Python SDK on your Raspberry Pi, run the following command in you
 pip3 install --target=petfeeder viam-sdk python-vlc
 ```
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 If you want your robot to automatically run your code upon startup, it is important to install the package into the <file>petfeeder</file> folder because of how the Viam platform runs the process.
 {{< /alert >}}
 
 ### Add the connection code
 
-Go to your robot’s page on [the Viam app](https://app.viam.com) and navigate to the **Code Sample** tab.
-Select Python, copy the generated sample code, and paste it into the <file>main.py</file> file.
+Go to your robot’s page on [the Viam app](https://app.viam.com) and navigate to the **Code sample** tab.
+Select **Python**, then copy the generated sample code and paste it into the <file>main.py</file> file.
+
+{{% snippet "show-secret.md" %}}
 
 Save the file and run this command to execute the code:
 
@@ -471,7 +476,7 @@ from viam.components.camera import Camera
 from viam.components.motor import Motor
 from viam.services.vision import VisionClient
 
-# these must be set, you can get them from your robot's 'CODE SAMPLE' tab
+# these must be set, you can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 

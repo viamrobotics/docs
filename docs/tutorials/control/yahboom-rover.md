@@ -10,6 +10,12 @@ images: ["/tutorials/img/yahboom-rover/bluetoothpair-connect.png"]
 aliases:
     - /tutorials/yahboom-rover/
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
+authors: [ "Hazal Mestci" ]
+languages: [ ]
+viamresources: [ "base", "input_controller", "motor" ]
+level: "Beginner"
+date: "10 August 2022"
+cost: 260
 ---
 
 ## Requirements
@@ -57,7 +63,7 @@ You can ignore the other optional attributes.
 
 Save the config by clicking **Save Config** at the bottom of the page.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 If you are using a motor with encoders, you need to specify the ticks per rotation.
 {{% /alert %}}
 

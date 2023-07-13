@@ -4,11 +4,11 @@ linkTitle: "rtk-station"
 weight: 10
 type: "docs"
 description: "Configure an experimental RTK correction source to use with an RTK-ready GPS."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 
 The `rtk-station` model is an experimental feature.
 Stability is not guaranteed.

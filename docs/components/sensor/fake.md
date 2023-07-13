@@ -5,8 +5,8 @@ weight: 10
 type: "docs"
 description: "Configure a fake sensor to use for testing."
 tags: ["sensor", "components"]
-icon: "/components/img/components/sensor.svg"
-images: ["/components/img/components/sensor.svg"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
@@ -41,7 +41,7 @@ Click **Create component**.
 
 No attributes are available for `fake` sensors.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 A call to [`Readings()`](../#readings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 

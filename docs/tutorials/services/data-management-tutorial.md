@@ -12,6 +12,12 @@ aliases:
     - "/tutorials/data-management/"
     - "/manage/data-management/data-management-tutorial/"
 tags: ["data management", "data", "services", "try viam"]
+authors: []
+languages: []
+viamresources: [ "data_manager", "camera" ]
+level: "Beginner"
+date: "8 February 2023"
+cost: "0"
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
@@ -43,7 +49,7 @@ However, if you want to manage your robot's captured data yourself, it's possibl
 
    To learn more about the Try Viam experience, see [Try Viam](/try-viam/).
 
-    {{% alert title="Note" color="note" %}}
+    {{% alert title="Tip" color="tip" %}}
 
 If you are using your own robot, be sure that you have [`viam-server` installed](/installation/) on your robot.
 The data management setup process will be mostly the same, but you will need to substitute your robot's components.

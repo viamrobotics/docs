@@ -6,7 +6,7 @@ type: "docs"
 no_list: true
 description: "An input controller, like a gamepad or joystick, is a device humans use to control a robot's actions."
 tags: ["input controller", "components"]
-icon: "/components/img/components/controller.svg"
+icon: "/icons/components/controller.svg"
 # SME: James
 ---
 
@@ -44,7 +44,9 @@ Once you've configured your input controller according to model type, you can wr
 
 ## Control your robot with an input controller with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -93,7 +95,7 @@ A second call to register a callback function for a [EventType](#eventtype-field
 
 You can pass a `nil` function here to "deregister" a callback.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 Registering a callback for the `ButtonChange` [EventType](#eventtype-field) is merely a convenience for filtering.
 Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, but `ButtonChange` is not reported in an actual [Event Object](#event-object).
 {{% /alert %}}
@@ -339,7 +341,7 @@ logger.Info(controls)
 
 Directly send an [Event Object](#event-object) from external code.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 This method is currently only supported for input controllers of model `webgamepad`.
 {{% /alert %}}
 
@@ -652,7 +654,7 @@ See [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/inpu
 
 ### Axis Controls
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 Currently, only `Absolute` axes are supported.
 
 `Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
@@ -701,7 +703,7 @@ If your input controller has a directional pad with analog buttons on the pad, t
 
 #### Z Axes (Analog Trigger Sticks)
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 Devices like analog triggers and gas or brake pedals use `Absolute` axes, but they only report position change in the positive direction.
 The neutral point of the axes is still `0.0`.
 {{% /alert %}}
@@ -885,7 +887,8 @@ async def handleController(controller):
 
 async def main():
     # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
-    # This can be found in the Code Sample tab of app.viam.com.
+    # These can be found in the Code sample tab of app.viam.com.
+    # Toggle 'Include secret' to show the location secret.
     g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
     modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
 
@@ -940,7 +943,7 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 }
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
 {{% /alert %}}
 
@@ -953,6 +956,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
-    {{% card link="/tutorials/control/scuttle-gamepad" size="small" %}}
+    {{% card link="/tutorials/control/yahboom-rover" %}}
+    {{% card link="/tutorials/control/scuttle-gamepad" %}}
 {{< /cards >}}

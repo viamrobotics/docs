@@ -79,7 +79,7 @@ Now your data will be saved locally on your robot to the directory specified in 
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
-![component config example](../img/data-service-component-config.png)
+{{< imgproc src="/services/data/data-service-component-config.png" alt="component config example" resize="1000x" >}}
 
 {{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
 

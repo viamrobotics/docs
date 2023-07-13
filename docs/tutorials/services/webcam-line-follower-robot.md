@@ -10,11 +10,17 @@ mp4Src: "/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4"
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
     - "/tutorials/webcam-line-follower-robot/"
+authors: [ "Jessamy Taylor" ]
+languages: [ "python" ]
+viamresources: [ "vision", "camera" ]
+level: "Beginner"
+date: "26 August 2022"
+cost: 570
 ---
 
 <div class="td-max-width-on-larger-screens">
  <div class="alignright" style="max-width:150px;">
-  {{<gif webm_src="../../img/webcam-line-follower/lf-following1.webm" mp4_src="../../img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
+  {{<gif webm_src="/tutorials/img/webcam-line-follower/lf-following1.webm" mp4_src="/tutorials/img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
   </div>
 </div>
 
@@ -325,12 +331,15 @@ When the rover no longer sees any of the line color anywhere in the front portio
 3. Open a file in your favorite IDE and paste in [the code from the earlier referenced repo](https://github.com/viam-labs/line-follower/blob/main/rgb_follower.py).
 4. Adjust the component names to match the component names you created in your config file.
    In this case, the component names that you may need to change are **scuttlebase**, **my_camera**, and **green_detector**.
-5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **Code Sample** tab.
-   Find the Python SDK field and copy the robot address (which will likely have the form <file>robotName-main.1234abcd.local.viam.cloud:8080</file>) and payload (a nonsensical string of numbers and letters) from it into the corresponding fields towards the top of your command file.
+5. From your robot’s page on the [Viam app](https://app.viam.com/), go to the **Code sample** tab and select **Python**.
+
+   {{% snippet "show-secret.md" %}}
+
+   Copy your robot's address (which should resemble `robotName-main.1234abcd.local.viam.cloud:8080`) and payload (your robot's location secret, resembling `a1bcd2ef34ghijklmn5op678qr9stuvw01xyz2abcde12f3g`) from the **Code sample** into the corresponding fields towards the top of your command file.
    This allows your code to connect to your robot.
 
    {{% alert title="Caution" color="caution" %}}
-   Do not share your robot secret or robot address publicly.
+   Do not share your robot location secret or robot address publicly.
    Sharing this information compromises your system security by allowing unauthorized access to your computer.
    {{% /alert %}}
 

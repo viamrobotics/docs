@@ -5,8 +5,8 @@ childTitleEndOverwrite: "Try Viam"
 weight: 20
 no_list: true
 type: docs
-icon: "/installation/img/thumbnails/install.png"
-images: ["/installation/img/thumbnails/install.png"]
+icon: "/installation/thumbnails/install.png"
+images: ["/installation/thumbnails/install.png"]
 aliases:
     - /installation/prepare/
     - /installation/macos-install/
@@ -28,7 +28,7 @@ For an overview of the Viam software platform, see [Viam in 3 minutes](/viam/).
 
 ### Prepare your board
 
-If you haven't already, you must install a supported operating system on your {{< glossary_tooltip term_id="board" text="board" >}}.
+If you haven't already, you must install a supported operating system on your {{< glossary_tooltip term_id="board" text="board" >}} (SBC).
 `viam-server` supports Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures.
 If you are using one of the following boards, you can follow our guide for that board to prepare it for installation:
 
@@ -40,6 +40,8 @@ If you are using one of the following boards, you can follow our guide for that 
 {{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
 {{% card link="/installation/prepare/microcontrollers" size="xs" %}}
 {{< /cards >}}
+  
+Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
 ### Install `viam-server`
 
@@ -111,6 +113,6 @@ By default, `viam-server` will start automatically when your system boots, but y
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/installation/manage" size="small" %}}
-  {{% card link="/installation/update" size="small" %}}
+  {{% card link="/installation/manage" %}}
+  {{% card link="/installation/update" %}}
 {{< /cards >}}

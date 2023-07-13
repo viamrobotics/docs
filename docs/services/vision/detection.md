@@ -33,7 +33,7 @@ A heuristic detector that draws boxes around objects according to their hue.
 Color detectors do not detect black, perfect grays (grays where the red, green, and blue color component values are equal), or white.
 It only detects hues found on the color wheel.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 Object colors can vary dramatically based on the light source.
 We recommend you verify the desired color detection value under actual lighting conditions.
 To determine the color value from the actual camera component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
@@ -56,11 +56,11 @@ To create a [Vision Service](/services/vision/):
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for color detector](../img/color_detector.png)
+{{< imgproc src="/services/vision/color_detector.png" alt="Create Vision Service for color detector" resize="1000x" >}}
 
 In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
-![Color detector panel with color and hue tolerance selection and a field for the segment size](../img/color-detector-panel.png)
+{{< imgproc src="/services/vision/color-detector-panel.png" alt="Color detector panel with color and hue tolerance selection and a field for the segment size" resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -128,7 +128,7 @@ The following parameters are available for a `"color_detector"`.
 | `saturation_cutoff_pct` | _Optional_ | A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2. |
 | `value_cutoff_pct` | _Optional_ | A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3. |
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 **hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** refer to hue, saturation, and value (brightness) in the HSV Color Model, but do not set color values in Viam.
 
@@ -160,7 +160,7 @@ Scroll to the **Create Service** section.
 3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](../img/mlmodel.png)
+{{< imgproc src="/services/vision/mlmodel.png" alt="Create Vision Service for mlmodel" resize="1000x" >}}
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -296,7 +296,7 @@ To see more code examples of how to use Viam's Vision Service, see [our example 
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/try-viam-color-detection/" size="small" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle/" size="small" %}}
-  {{% card link="/tutorials/services/webcam-line-follower-robot/" size="small" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection/" %}}
+  {{% card link="/tutorials/services/color-detection-scuttle/" %}}
+  {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
 {{< /cards >}}

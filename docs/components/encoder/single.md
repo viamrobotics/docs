@@ -3,7 +3,7 @@ title: "Configure a single encoder"
 linkTitle: "single"
 type: "docs"
 description: "Configure a single encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---

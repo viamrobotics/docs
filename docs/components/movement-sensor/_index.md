@@ -6,8 +6,8 @@ weight: 70
 type: "docs"
 description: "A sensor that measures location, kinematic data, or both."
 tags: ["movement sensor", "gps", "imu", "sensor", "components"]
-icon: "/components/img/components/imu.svg"
-images: ["/components/img/components/imu.svg"]
+icon: "/icons/components/imu.svg"
+images: ["/icons/components/imu.svg"]
 no_list: true
 aliases:
     - /components/movement-sensor/
@@ -17,7 +17,7 @@ aliases:
 A movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
 Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Viam also supports generic [sensors](/components/sensor/) and [encoders](/components/encoder/).
 
@@ -42,7 +42,9 @@ Model | Description <a name="model-table"></a>
 
 ## Control your movement sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -639,7 +641,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next Steps
 
-Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/sdks/) to implement closed-loop movement control for your robot.
+Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/apis/) to implement closed-loop movement control for your robot.
 
 Or, try configuring [data capture](../../services/data/) on your movement sensor.
 

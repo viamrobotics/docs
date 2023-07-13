@@ -4,9 +4,9 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "Flash a BeagleBone AI-64 to prepare it for viam-server installation."
-image: "/installation/img/thumbnails/beaglebone.png"
+image: "installation/thumbnails/beaglebone.png"
 imageAlt: "BeagleBone A I-64"
-images: ["/installation/img/thumbnails/beaglebone.png"]
+images: ["/installation/thumbnails/beaglebone.png"]
 no_list: true
 aliases:
     - "/installation/beaglebone-install/"
@@ -17,7 +17,9 @@ aliases:
 The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/) from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.
 Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
+<div class="td-max-width-on-larger-screens text-center">
 <img src="../../img/beaglebone-setup/image4.png" alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle.">
+</div>
 
 ## Hardware Requirements
 

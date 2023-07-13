@@ -10,6 +10,12 @@ videoAlt: "A circular wooden board slowly spinning clockwise with 3 bowls on top
 images: ["/tutorials/img/lazy-susan/preview.gif"]
 tags: ["motor", "python"]
 no_list: true
+authors: [ "Arielle Mella" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor" ]
+level: "Beginner"
+date: "29 May 2023"
+cost: 114
 ---
 
 {{<gif webm_src="/tutorials/img/lazy-susan/lazy-susan.webm" mp4_src="/tutorials/img/lazy-susan/lazy-susan.mp4" alt="A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks." max-width="350px" class="alignright">}}
@@ -72,7 +78,7 @@ Make sure your board is turned off and unplugged before wiring!
 
 ![Wiring diagram for the Lazy Susan showing colored wires connecting the assembled components.](/tutorials/img/lazy-susan/wiring-diagram.png)
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Important" color="note" %}}
 The Raspberry Pi and the 12V power supply share the same GND on the L298N motor driver.
 The Raspberry Pi is powered by its own 5V power cable.
 {{% /alert %}}
@@ -241,13 +247,15 @@ pip3 install viam-sdk
 
 Installing with `pip` ensures you are using the latest version of `viam-sdk`, and makes updating it in the future easy.
 
-On the [Viam app](https://app.viam.com/), select the **Code Sample** tab, set **Python** as the language, and toggle include secret to on.
+On the [Viam app](https://app.viam.com/), select the **Code sample** tab and set **Python** as the language.
 
 ![The Language portion of the Code Sample tab.](/tutorials/img/lazy-susan/python-language.png)
 
+{{% snippet "show-secret.md" %}}
+
 Copy the code:
 
-![The Viam app Code Sample tab with an arrow pointing to the Copy code button.](/tutorials/img/lazy-susan/python-code.png)
+![The Viam app Code Sample tab with language set to Python](/tutorials/img/lazy-susan/python-code.png)
 
 Create a new python file called `lazysusan.py` on your Raspberry Pi and paste the copied code into it:
 

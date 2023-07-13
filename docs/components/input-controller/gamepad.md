@@ -4,7 +4,7 @@ linkTitle: "gamepad"
 weight: 30
 type: "docs"
 description: "Configure a linux-supported gamepad as an input controller."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -81,8 +81,8 @@ For example, this is what the row of inputs above looks like after pressing the 
 
 <img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app. This is for a WebGamepad model." style="width:100%"/>
 
-{{% alert title="Note" color="note" %}}
-The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a linux-supported `gamepad` model is directly connected.
+{{% alert title="Info" color="info" %}}
+The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a Linux-supported `gamepad` model is directly connected.
 {{% /alert %}}
 
 ### Work in Progress Models

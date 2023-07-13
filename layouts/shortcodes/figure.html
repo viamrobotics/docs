@@ -18,7 +18,7 @@
             {{- if .Get "attrlink" }}</a>{{ end }}</p>
         {{- end }}
     </figcaption>
-    <img src="{{ if $src }}{{ $src.RelPermalink }}{{ else }}{{ .Get "src" }}{{ end }}" 
+    <img src="{{ if $src }}{{ $src.RelPermalink }}{{ else }}{{ .Get "src" }}{{ end }}" loading="lazy"
          {{- if or (.Get "alt") (.Get "caption") }}
          alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify| plainify }}{{ end }}"
          {{- end -}}

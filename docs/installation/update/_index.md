@@ -5,8 +5,9 @@ weight: 40
 simple_list: false
 type: docs
 draft: false
-icon: "/installation/img/thumbnails/update.png"
-images: ["/installation/img/thumbnails/update.png"]
+image: "/installation/thumbnails/update.png"
+imageAlt: "Update viam-server"
+images: ["/installation/thumbnails/update.png"]
 description: "Update your version of viam-server."
 ---
 

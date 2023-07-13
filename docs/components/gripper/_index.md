@@ -6,8 +6,8 @@ weight: 60
 type: "docs"
 description: "A gripper is a robotic grasping device that can open and close."
 tags: ["gripper", "components"]
-icon: "/components/img/components/gripper.svg"
-images: ["/components/img/components/gripper.svg"]
+icon: "/icons/components/gripper.svg"
+images: ["/icons/components/gripper.svg"]
 no_list: true
 # SMEs: Bucket Team
 ---
@@ -23,11 +23,13 @@ Model | Description
 [`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) |
 [`fake`](fake/) | A model used for testing, with no physical hardware. |
 
-If you have another gripper model, you can [define a custom component](../../program/extend/).
+If you have another gripper model, you can [define a custom component](../../extend/).
 
 ## Control your gripper with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -325,5 +327,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

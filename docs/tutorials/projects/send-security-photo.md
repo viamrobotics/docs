@@ -8,7 +8,12 @@ image: "/tutorials/img/send-security-photo/text-message.png"
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
 images: ["/tutorials/img/send-security-photo/text-message.png"]
 tags: ["camera", "vision", "detector", "python"]
-# Author: Hazal Mestci
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "camera", "mlmodel", "vision" ]
+level: "Beginner"
+date: "30 March 2023"
+cost: "0"
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -16,7 +21,7 @@ There are [breaking changes in the Vision Service](/appendix/release-notes/#25-a
 This tutorial has not yet been updated.
 {{< /alert >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 This tutorial is part of our built-in webcam projects series.
 For a similar project that integrates a Kasa smart plug, see [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/).
@@ -114,7 +119,7 @@ Example code below (though you don’t have to use it yet, this will get used in
 yag.send('phone_number@gatewayaddress.com', 'subject', contents)
 ```
 
-You will need to access to your phone number through your carrier.
+You will need access to your phone number through your carrier.
 For this tutorial, you are going to send the text to yourself.
 You will replace `to@someone.com` with your phone number and [SMS gateway address](https://en.wikipedia.org/wiki/SMS_gateway).
 You can find yours here: [Gateway Addresses for Mobile Phone Carrier Text Message](https://support-en.wd.com/app/answers/detailweb/a_id/44431/~/gateway-addresses-for-mobile-phone-carrier-text-message).
@@ -172,7 +177,7 @@ from viam.services.vision import VisionClient, VisModelConfig, VisModelType, Det
 import yagmail
 
 
-# These must be set. You can get them from your robot's 'CODE SAMPLE' tab
+# These must be set. You can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
@@ -245,6 +250,8 @@ if __name__ == '__main__':
 ```
 
 {{% /expand %}}
+
+{{% snippet "show-secret.md" %}}
 
 Save your code file.
 

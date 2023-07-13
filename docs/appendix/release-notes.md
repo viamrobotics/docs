@@ -401,7 +401,7 @@ You will need to first register the machine learning model file with the [ML Mod
             <td width="120px"><strong>What is it?</strong></td>
             <td>
                 Users of Try Viam now have the option to reuse a robot config if they want to continue working on a project that they started in a prior session.
-{{<gif webm_src="../img/reuse-rovers.webm" mp4_src="../img/reuse-rovers.mp4" alt="Select a rover to reuse in the UI">}}
+{{<gif webm_src="/appendix/img/reuse-rovers.webm" mp4_src="/appendix/img/reuse-rovers.mp4" alt="Select a rover to reuse in the UI">}}
 </td>
         </tr>
     <tbody>
@@ -415,8 +415,8 @@ You will need to first register the machine learning model file with the [ML Mod
             <td width="120px"><strong>What is it?</strong></td>
             <td>
                 The code sample included for each SDK dynamically updates as resources are added to the config. We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
-{{<gif webm_src="../img/dynamic-code-sample.webm" mp4_src="../img/dynamic-code-sample.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
-{{<gif webm_src="../img/example-output-try-viam.webm" mp4_src="../img/example-output-try-viam.mp4" alt="Example output from running the example code used in the Try Viam experience">}}
+{{<gif webm_src="/appendix/img/dynamic-code-sample.webm" mp4_src="/appendix/img/dynamic-code-sample.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
+{{<gif webm_src="/appendix/img/example-output-try-viam.webm" mp4_src="/appendix/img/example-output-try-viam.mp4" alt="Example output from running the example code used in the Try Viam experience">}}
 </td>
         </tr>
     <tbody>
@@ -436,7 +436,7 @@ You will need to first register the machine learning model file with the [ML Mod
                 </li>
                 <li>
                     <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/teleop">Teleop Example from Github page</a>
-{{<gif webm_src="../img/teleop-example.webm" mp4_src="../img/teleop-example.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
+{{<gif webm_src="/appendix/img/teleop-example.webm" mp4_src="/appendix/img/teleop-example.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
 </li>
                 </ul>
             </td>
@@ -454,7 +454,7 @@ You will need to first register the machine learning model file with the [ML Mod
                 Users can now set up a frame system on their robot using a 3D visualizer located in the **Frame System** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
                 <ul>
                 <li>
-{{<gif webm_src="../img/frame-system-visualizer.webm" mp4_src="../img/frame-system-visualizer.mp4" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar">}}
+{{<gif webm_src="/appendix/img/frame-system-visualizer.webm" mp4_src="/appendix/img/frame-system-visualizer.mp4" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar">}}
 </li>
                 </ul>
             </td>
@@ -649,7 +649,7 @@ All component drivers can now declare dependencies, which are used to infer the 
             This meant that a user needed to run a <code>viam-server</code> for their custom component and add it to their main part as a remote.
             With custom modular resources, users no longer need to run separate server instances for each custom resource which saves additional network requests.<br/>
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 This is a breaking change.
 This breaking change affects ALL users who are using the Viam app to configure their robot.
 You will need to update to at the latest version of the RDK (V3.0.0) to access your robot using the remote control page.
@@ -763,7 +763,7 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
             <td>We previously used bidirectional streaming, with the robot streaming sensor readings to the app and the app streaming acknowledgements of progress back to the robot.
             We switched to a simpler unary approach which is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.<br>
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 This breaking change will NOT affect most users.
 If you have previously captured data on your robot that has not yet been synced, enable syncing to get that data into app.viam before using the new release.
 {{< /alert >}}
@@ -950,7 +950,7 @@ If you have previously captured data on your robot that has not yet been synced,
             <td><strong>What does it affect?</strong></td>
             <td>Users of the Go SDK <strong>must</strong> update their code to specify <code>extra</code> in the arguments that pass into each request.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 This breaking change does NOT affect users of the Python SDK.
 {{% /alert %}}
 

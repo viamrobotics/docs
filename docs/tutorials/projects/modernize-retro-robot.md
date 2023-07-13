@@ -10,7 +10,12 @@ tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"
 no_list: true
 description: "Modernize the Omnibot 2000 from the 1980s with Viam and AI."
 imageAlt: "The front of the Ombibot 2000 robot"
-# SME: Matt Vella
+authors: [ "Matt Vella" ]
+languages: []
+viamresources: [ "board", "motor", "base", "camera" ]
+level: "Beginner"
+date: "4 May 2023"
+cost: 580
 ---
 
 From Star Wars to Short Circuit, Go-bots to Transformers - the 1980s was a time in pop culture where people thought a lot about how robots might exist alongside us in the future.
@@ -42,8 +47,8 @@ Other than the Omnibot 2000, which you'll need to find on a used marketplace lik
 |Part  | Price | Notes |
 | --- | --- | --- |
 [Omnibot 2000](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2047675.m570.l1312&_nkw=omnibot+2000&_sacat=0)|$250|Prices can vary dramatically - we paid about $200 for an "as-is, non-working" copy. You do not need one with the remote control or tray included.|
-[12V to 5V DC USB Type-C step-down power converter](https://www.amazon.com/dp/B0BNQ9XXCZ/)|$7.99|To power the Pi from a 12v battery.|
-[12v power supply](https://www.amazon.com/TMEZON-Power-Adapter-Supply-2-1mm/dp/B00Q2E5IXW)|$8.09|To charge the battery.|
+[12V to 5V DC USB Type-C step-down power converter](https://www.amazon.com/dp/B0BNQ9XXCZ/)|$7.99|To power the Pi from a 12V battery.|
+[12V power supply](https://www.amazon.com/TMEZON-Power-Adapter-Supply-2-1mm/dp/B00Q2E5IXW)|$8.09|To charge the battery.|
 [L298N motor drive controller board 2-pack](https://www.amazon.com/DAOKI-Controller-H-Bridge-Stepper-Mega2560/dp/B085XSLKFQ/r)|$8.31|To control the base and head motors.|
 [LED E10 bulbs](https://www.amazon.com/Ruiandsion-6000K-Flashlight-Headlight-Negative/dp/B08SLQBZGN)|$7.99|You'll need 2 LED bulbs to light up the eyes.|
 [Webcam](https://www.amazon.com/gp/product/B08PTNVPKX)|$36.15|A webcam that can be placed as a "nose", there are many options.|
@@ -232,9 +237,7 @@ As with the positive connector, one of the negative terminals will be left empty
 
 Finally, plug the USB-C output from the step down converter into the Raspberry Pi.
 
-<div class="td-max-width-on-larger-screens" style="max-width: 800px;">
-<img src="../../img/maiv/viam-omnibot-wiring-02.png" alt="Omnibot MAIV powered wiring diagram." title="Omnibot MAIV powered wiring diagram." />
-</div>
+![Omnibot MAIV powered wiring diagram.](../../img/maiv/viam-omnibot-wiring-02.png)
 
 #### Power MAIV on
 
@@ -412,7 +415,7 @@ Click on the base panel and use the arrows to control the base.
 Ensure the motors on both sides are working, and that the wheels are spinning as expected.
 If the wheels on a given side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.
 
-{{<video webm_src="../../img/maiv/maiv_base_test.webm" mp4_src="../../img/maiv/maiv_base_test.mp4" poster="../../img/maiv/maiv_base_test.jpg" alt="MAIV base test movements" max-width="300px">}}
+{{<video webm_src="/tutorials/img/maiv/maiv_base_test.webm" mp4_src="/tutorials/img/maiv/maiv_base_test.mp4" poster="/tutorials/img/maiv/maiv_base_test.jpg" alt="MAIV base test movements" max-width="300px">}}
 
 From the **Control** tab you can also test the individual motors directly.
 First select the desired direction and power percent, then start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
@@ -452,7 +455,7 @@ You will use GPIO directly to control the eyes through the `board` component you
 Once `viam-server` is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
 From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the eyes on) or low (to turn the eyes off).
 
-{{<video webm_src="../../img/maiv/maiv_eye_test.webm" mp4_src="../../img/maiv/maiv_eye_test.mp4" poster="../../img/maiv/maiv_eye_test.jpg" alt="MAIV eye flashing test" max-width="300px">}}
+{{<video webm_src="/tutorials/img/maiv/maiv_eye_test.webm" mp4_src="/tutorials/img/maiv/maiv_eye_test.mp4" poster="/tutorials/img/maiv/maiv_eye_test.jpg" alt="MAIV eye flashing test" max-width="300px">}}
 
 ### Connect and test the neck motor
 
@@ -473,9 +476,7 @@ Connect the final terminal of the negative quick connector to the GND terminal o
 Connect GPIO pins for the neck motor with female-to-female jumper wires.
 You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2`, and pin 29 to `ENA`.
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/viam-omnibot-wiring-03.png" alt="Omnibot MAIV complete wiring diagram." title="Omnibot MAIV complete wiring diagram." style="max-width: 800px;" />
-</div>
+![Omnibot MAIV complete wiring diagram.](../../img/maiv/viam-omnibot-wiring-03.png)
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -597,7 +598,7 @@ If you are editing the configuration of MAIV using JSON directly, add the camera
 Test your camera by navigating to the **Control** tab, opening the camera card, and turning on the video stream.
 Turning MAIV's head while streaming video will give you a sense of how MAIV is starting to see the world!
 
-{{<video webm_src="../../img/maiv/maiv_head_test.webm" mp4_src="../../img/maiv/maiv_head_test.mp4" poster="../../img/maiv/maiv_head_test.jpg" alt="MAIV head test" max-width="300px">}}
+{{<video webm_src="/tutorials/img/maiv/maiv_head_test.webm" mp4_src="/tutorials/img/maiv/maiv_head_test.mp4" poster="/tutorials/img/maiv/maiv_head_test.jpg" alt="MAIV head test" max-width="300px">}}
 
 ## MAIV in the world
 
@@ -608,13 +609,13 @@ Now that you've wired, configured, and tested all the components, put MAIV back 
 
 Now MAIV is ready to interact with the world!
 
-{{<video webm_src="../../img/maiv/maiv_driving.webm" mp4_src="../../img/maiv/maiv_driving.mp4" poster="../../img/maiv/maiv_driving.jpg" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
+{{<video webm_src="/tutorials/img/maiv/maiv_driving.webm" mp4_src="/tutorials/img/maiv/maiv_driving.mp4" poster="/tutorials/img/maiv/maiv_driving.jpg" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
 
 ## Next steps
 
 Start by driving MAIV through the **Control** panel, then try writing some code.
 A simple first exercise would be to have MAIV [drive in a square](/tutorials/get-started/try-viam-sdk/).
-The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot secret and any component names that differ in the code.
+The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot location secret and any component names that differ in the code.
 
 Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
 

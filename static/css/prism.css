@@ -156,6 +156,7 @@ div.code-toolbar.code-terminal > .toolbar > .toolbar-item > span {
 .code-terminal > pre[class*="language-sh"] > code {
   background-color: #333 !important;
   color: white !important;
+  text-shadow: none !important;
 }
 
 .command-line-prompt {

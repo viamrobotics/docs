@@ -10,13 +10,14 @@
 
     <div class="card-container">
         <div class="row">
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/viam/"
                     ><div class="hover-card-img">
                         <img
                             src="/img/understand.png"
                             alt="A diagram of robotic parts and software"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
@@ -28,23 +29,9 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/try-viam/"
-                    ><video
-                        autoplay=""
-                        loop=""
-                        muted=""
-                        playsinline=""
-                        preload="auto"
-                        alt="A Viam Rover moving about"
-                        width="100%"
-                        style="max-width: "
-                    >
-                        <source src="/img/rover.webm" type="video/webm" />
-                        <source src="/img/rover.mp4" type="video/mp4" />
-                        There should have been a video here but your browser
-                        does not seem to support it.
-                    </video>
+                    >{{ partial "gif.html" (dict "webm_src" "/img/rover.webm" "mp4_src" "/img/rover.mp4" "alt" "A Viam Rover moving about" "maxWidth" "100%" "class" "lozad" ) }}
                     <div class="small-hover-card-div">
                         <h4>Drive a Viam Rover</h4>
                         <p>
@@ -55,14 +42,15 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/installation/"
                     ><div class="hover-card-img">
-                        <img
-                            src="/installation/img/thumbnails/install.png"
-                            alt="Install viam"
-                            width="100%"
-                        />
+                        {{ $img := resources.GetMatch "installation/thumbnails/install.png" }}
+                        {{if $img }}
+                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/install.png" "resize" "400x" "alt" "Install viam" "style" "") }}
+                        {{ else }}
+                            {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
+                        {{end}}
                     </div>
                     <div class="small-hover-card-div">
                         <h4>Install <code>viam-server</code></h4>
@@ -73,14 +61,15 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/manage/configuration/"
                     ><div class="hover-card-img">
-                        <img
-                            src="/installation/img/thumbnails/manage.png"
-                            alt="Terminal window"
-                            width="100%"
-                        />
+                        {{ $img := resources.GetMatch "installation/thumbnails/manage.png" }}
+                        {{if $img }}
+                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/manage.png" "resize" "400x" "alt" "Configure viam" "style" "") }}
+                        {{ else }}
+                            {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
+                        {{end}}
                     </div>
                     <div class="small-hover-card-div">
                         <h4>Configure a Robot</h4>
@@ -92,13 +81,14 @@
                     </div></a
                 >
             </div>
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/program/"
                     ><div class="hover-card-img">
                         <img
                             src="/img/code.png"
                             alt="Program a robot"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">
@@ -116,28 +106,9 @@
     <h2>Or these?</h2>
     <div class="card-container">
         <div class="row">
-            <div class="col hover-card hover-card-small">
-                <a href="/tutorials/get-started/servo-mousemover/"
-                    ><video
-                        autoplay=""
-                        loop=""
-                        muted=""
-                        playsinline=""
-                        preload="auto"
-                        alt="A mouse mover controlled with a servo and Raspberry Pi."
-                        width="100%"
-                    >
-                        <source
-                            src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm"
-                            type="video/webm"
-                        />
-                        <source
-                            src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
-                            type="video/mp4"
-                        />
-                        There should have been a video here but your browser
-                        does not seem to support it.
-                    </video>
+            <div class="col hover-card">
+                <a href="/tutorials/get-started/servo-mousemover/">
+                    {{ partial "gif.html" (dict "webm_src" "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm" "mp4_src" "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4" "alt" "A mouse mover controlled with a servo and Raspberry Pi." "maxWidth" "100%" "class" "lozad" ) }}
                     <div class="small-hover-card-div">
                         <h4>Create a Mouse Mover</h4>
                         <p>
@@ -148,28 +119,9 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
-                <a href="/tutorials/services/plan-motion-with-arm-gripper/"
-                    ><video
-                        autoplay=""
-                        loop=""
-                        muted=""
-                        playsinline=""
-                        preload="auto"
-                        alt="An arm moving with the Motion Service"
-                        width="100%"
-                    >
-                        <source
-                            src="/tutorials/videos/motion_armmoving.webm"
-                            type="video/webm"
-                        />
-                        <source
-                            src="/tutorials/videos/motion_armmoving.mp4"
-                            type="video/mp4"
-                        />
-                        There should have been a video here but your browser
-                        does not seem to support it.
-                    </video>
+            <div class="col hover-card">
+                <a href="/tutorials/services/plan-motion-with-arm-gripper/">
+                    {{ partial "gif.html" (dict "webm_src" "/tutorials/videos/motion_armmoving.webm" "mp4_src" "/tutorials/videos/motion_armmoving.mp4" "alt" "An arm moving with the Motion Service" "maxWidth" "100%" "class" "lozad" ) }}
                     <div class="small-hover-card-div">
                         <h4>Plan Motion with an Arm</h4>
                         <p>
@@ -180,28 +132,9 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
-                <a href="/tutorials/services/color-detection-scuttle/"
-                    ><video
-                        autoplay=""
-                        loop=""
-                        muted=""
-                        playsinline=""
-                        preload="auto"
-                        alt="Detecting color with a Scuttle Robot"
-                        width="100%"
-                    >
-                        <source
-                            src="/tutorials/videos/scuttledemos_colordetection.webm"
-                            type="video/webm"
-                        />
-                        <source
-                            src="/tutorials/videos/scuttledemos_colordetection.mp4"
-                            type="video/mp4"
-                        />
-                        There should have been a video here but your browser
-                        does not seem to support it.
-                    </video>
+            <div class="col hover-card">
+                <a href="/tutorials/services/color-detection-scuttle/">
+                    {{ partial "gif.html" (dict "webm_src" "/tutorials/videos/scuttle-colordetection-preview.webm" "mp4_src" "/tutorials/videos/scuttle-colordetection-preview.mp4" "alt" "Detecting color with a Scuttle Robot" "maxWidth" "100%" "class" "lozad" ) }}
                     <div class="small-hover-card-div">
                         <h4>Colored Object Follower</h4>
                         <p>
@@ -212,28 +145,9 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
-                <a href="/tutorials/custom/custom-base-dog/"
-                    ><video
-                        autoplay=""
-                        loop=""
-                        muted=""
-                        playsinline=""
-                        preload="auto"
-                        alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
-                        width="100%"
-                    >
-                        <source
-                            src="/tutorials/img/custom-base-dog/base-control-dog.webm"
-                            type="video/webm"
-                        />
-                        <source
-                            src="/tutorials/img/custom-base-dog/base-control-dog.mp4"
-                            type="video/mp4"
-                        />
-                        There should have been a video here but your browser
-                        does not seem to support it.
-                    </video>
+            <div class="col hover-card">
+                <a href="/tutorials/custom/custom-base-dog/">
+                    {{ partial "gif.html" (dict "webm_src" "/tutorials/img/custom-base-dog/base-control-dog.webm" "mp4_src" "/tutorials/img/custom-base-dog/base-control-dog.mp4" "alt" "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." "maxWidth" "100%" "class" "lozad" ) }}
                     <div class="small-hover-card-div">
                         <h4>Custom Quadruped Base</h4>
                         <p>
@@ -244,13 +158,14 @@
                 >
             </div>
 
-            <div class="col hover-card hover-card-small">
+            <div class="col hover-card">
                 <a href="/tutorials/projects/make-a-plant-watering-robot/"
                     ><div class="hover-card-img">
                         <img
                             src="/tutorials/img/plant-watering-pi/preview.png"
                             alt="Picture of the plant watering robot"
                             width="100%"
+                            loading="lazy"
                         />
                     </div>
                     <div class="small-hover-card-div">

@@ -9,8 +9,12 @@ webmSrc: "/tutorials/img/confetti-bot/preview.webm"
 mp4Src: "/tutorials/img/confetti-bot/preview.mp4"
 videoAlt: "A GIF of a red button being pressed and the cannon spraying confetti"
 images: ["/tutorials/img/confetti-bot/preview.gif"]
-# Author: Hazal Mestci
-# SME: Fahmina A
+authors: [ "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "board", "motor" ]
+level: "Beginner"
+date: "29 May 2023"
+cost: 145
 ---
 
 {{<gif webm_src="/tutorials/img/confetti-bot/confetti-bot.webm" mp4_src="/tutorials/img/confetti-bot/confetti-bot.mp4" alt="GIF of a red button being pressed and the cannon spraying confetti" class="alignright" max-width="250px">}}
@@ -260,7 +264,10 @@ The following section explains the code for the confetti bot.
 The completed code for this project is available on [GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot).
 If you copy the code from this link, don’t forget to change your robot address and secret so it connects to your own confetti robot.
 
-Navigate to the **Code sample** tab on the Viam app, toggle include secrets, select Python as the language, and scroll down to click the **Copy** button.
+Navigate to the **Code sample** tab on the Viam app, select **Python** as the language, and click the **Copy** button.
+
+{{% snippet "show-secret.md" %}}
+
 Paste this into a new Python file in your favorite code editor to connect to your robot.
 
 At the top of the code, your board and motor components are imported:

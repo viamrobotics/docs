@@ -23,7 +23,7 @@ Viam supports two formats for supplying kinematic parameters to configure interm
 1. [Spatial Vector Algebra (SVA)](https://drake.mit.edu/doxygen_cxx/group__multibody__spatial__vectors.html): supplying reference frame information for each `link` and each `joint`.
 2. [Denavit-Hartenberg (DH)](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters) parameters.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 Of the two methods, we prefer Spacial Vector Algebra over Denavit-Hartenberg because it allows you to specify link frames arbitrarily, which DH parameters are unable to guarantee.
 Additionally, if you are making your own robot and defining new drivers, incorrect SVA parameters are easier to troubleshoot than incorrect DH parameters.
@@ -309,8 +309,9 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
-These reference frames are ingested by the Frame System, but not exposed through gRPC calls. You cannot access them directly with SDK code.
+These reference frames are ingested by the Frame System, but not exposed through gRPC calls.
+You cannot access them directly with SDK code.
 
 {{% /alert %}}

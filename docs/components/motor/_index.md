@@ -6,7 +6,7 @@ weight: 70
 type: "docs"
 description: "A motor is a rotating machine that transforms electrical energy into mechanical energy."
 tags: ["motor", "components"]
-icon: "/components/img/components/motor.svg"
+icon: "/icons/components/motor.svg"
 no_list: true
 # SME: Rand
 ---
@@ -38,11 +38,14 @@ Model | Description <a name="model-table"></a>
 [`28byj48`](./28byj48/) | Small unipolar 28BYJ-48 stepper motor driven by a [ULN2003](https://www.ti.com/product/ULN2003A) driver
 [`TMC5072`](./tmc5072/) | Stepper motor driven by [the TMC5072 chip](https://www.trinamic.com/support/eval-kits/details/tmc5072-bob/)
 [`DMC4000`](./dmc4000/) | Stepper motor driven by a [DMC-40x0 series motion controller](https://www.galil.com/motion-controllers/multi-axis/dmc-40x0)
+[`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your motor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -628,8 +631,8 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/get-started/confetti-bot/" size="small" %}}
-    {{% card link="/tutorials/get-started/lazy-susan/" size="small" %}}
-    {{% card link="/tutorials/control/yahboom-rover" size="small" %}}
-    {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
+    {{% card link="/tutorials/get-started/confetti-bot/" %}}
+    {{% card link="/tutorials/get-started/lazy-susan/" %}}
+    {{% card link="/tutorials/control/yahboom-rover" %}}
+    {{% card link="/tutorials/configure/scuttlebot" %}}
 {{< /cards >}}

@@ -11,7 +11,12 @@ images: ["/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.g
 aliases:
     - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/
 tags: ["board", "raspberry pi", "sdk"]
-# SME: Joe Karlsson
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "board" ]
+level: "Beginner"
+date: "4 October 2022"
+cost: 70
 ---
 
 In this post, you will be introduced to the basics of programming hardware by using either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) to make an LED blink.
@@ -19,10 +24,10 @@ This will allow you to write code to make an LED connected to the GPIO of a Rasp
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
+  {{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
 </div>
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 This is part 2 of Viam's Intro to Robotics series.
 If you haven't completed [Part 1](/tutorials/get-started/make-an-led-blink-with-the-viam-app/), be sure to go back and complete that before starting on this tutorial.
 You should have already set up [your Raspberry Pi](/installation/prepare/rpi-setup/), [connected to the Viam app and set up `viam-server`](/installation/#install-viam-server), and built your circuit before proceeding.
@@ -38,19 +43,13 @@ You will need the following hardware, tools, and software to complete this proje
 
 ### Hardware
 
-<ol>
-    <li><a href="https://a.co/d/5Tn67G3" target="_blank">Raspberry Pi 3 or 4</a></li>
-<ol type="a">
-    <li>Refer to the <a href="../../../installation/prepare/rpi-setup/">Viam Raspberry Pi Setup Guide</a> to setup your Pi.</li>
-<li>You must also enable SSH on your Pi.</li>
-</ol>
-    <li><a href="https://amzn.to/2Q4Z5Ta" target="_blank">Solderless breadboard</a></li>
-    <li><a href="https://amzn.to/2qVhd4y" target="_blank">Jumper wires for easy hookup</a></li>
-    <li><a href="https://amzn.to/2Dmainw" target="_blank">Resistor pack </a>You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands</li>
-    <li><a href="https://amzn.to/2Ex2v5q" target="_blank">LED</a></li>
-</ol>
-
-[Click to view the Component URL Listing](#components-url-list)
+- [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
+  - Refer to the [Viam Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to set up your Pi.
+- [Solderless breadboard](https://amzn.to/2Q4Z5Ta)
+- [Jumper wires](https://amzn.to/2qVhd4y)
+- [Resistor pack](https://amzn.to/2Dmainw)
+  - You will be using a 100 Ohm resistor, which is the resistor with brown-black-brown bands
+- [LED](https://amzn.to/2Ex2v5q)
 
 ### Software
 
@@ -63,7 +62,7 @@ You will need the following hardware, tools, and software to complete this proje
 In this step, you are going to install either the [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme) on your local computer.
 Use which ever programming language you are most comfortable with.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Refer to the appropriate SDK documentation for SDK installation instructions.
 
@@ -74,9 +73,12 @@ Refer to the appropriate SDK documentation for SDK installation instructions.
 
 ### How to connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Code Sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam App](https://app.viam.com/robots), select the **Code sample** tab, and copy the boilerplate code from the section labeled **Python SDK** or **Go SDK**.
+
+{{% snippet "show-secret.md" %}}
+
 These code snippets import all the necessary libraries and set up a connection with the Viam app in the cloud.
-Next, paste that boilerplate code from the **Code Sample** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
+Next, paste that boilerplate code from the **Code sample** tab of the Viam app into a file named <file>blink.py</file> or <file>blink.go</file> file in your code editor, and save your file.
 
 You can now run the code.
 Doing so will ensure that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
@@ -283,7 +285,7 @@ go run blink.go
 And, if all goes well, you should see your LED blinking on and off again every second!
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
+  {{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
 </div>
 
 You can exit this program by pressing **CTRL + C** in your terminal window.
@@ -304,13 +306,3 @@ If you are looking for some projects that would be a great next step in your jou
 If you have any issues whatsoever getting the Viam SDK set up or getting your code to run on your Raspberry Pi, the best way to get help is over on the [Community Discord](https://discord.gg/viam).
 There, you will find a friendly developer community of people learning how to make robots using Viam.
 {{% /alert %}}
-
-## Components URL List
-
-<ul>
-    <li>Raspberry Pi 3 or 4: <a href="https://a.co/d/5Tn67G3" target="_blank">ht<span></span>tps://a.co/d/5Tn67G3</a></li>
-    <li>Solderless breadboard: <a href="https://amzn.to/2Q4Z5Ta" target="_blank">ht<span></span>tps://amzn.to/2Q4Z5Ta</a></li>
-    <li>Jumper wires for easy hookup: <a href="https://amzn.to/2qVhd4y" target="_blank">ht<span></span>tp://amzn.to/2qVhd4y</a></li>
-    <li>Resistor pack: <a href="https://amzn.to/2Dmainw" target="_blank">ht<span></span>tp://amzn.to/2Dmainw</a></li>
-    <li>Red LED: <a href="https://amzn.to/2Ex2v5q" target="_blank">ht<span></span>tp://amzn.to/2Ex2v5q</a></li>
-</ul>

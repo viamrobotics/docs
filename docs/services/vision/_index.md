@@ -4,7 +4,7 @@ linkTitle: "Vision"
 weight: 90
 type: "docs"
 description: "The Vision Service enables your robot to use its on-board cameras to intelligently see and interpret the world around it."
-icon: "/services/img/icons/vision.svg"
+icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 # SMEs: Bijan, Khari
 ---

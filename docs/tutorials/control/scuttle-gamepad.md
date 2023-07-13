@@ -3,19 +3,25 @@ title: "Drive a SCUTTLE Robot with a Bluetooth Gamepad"
 linkTitle: "Drive a SCUTTLE with a Gamepad"
 weight: 20
 type: "docs"
-description: "Drive a SCUTTLE Robot with a bluetooth gamepad from the Viam app."
+description: "Drive a SCUTTLE Robot with a Bluetooth gamepad from the Viam app."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
-videoAlt: "Drive a SCUTTLE Robot with a bluetooth gamepad."
+videoAlt: "Drive a SCUTTLE Robot with a Bluetooth gamepad."
 images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:
     - "/tutorials/scuttle-gamepad/"
     - "/tutorials/scuttlebot/scuttle-gamepad/"
 tags: ["base", "scuttle", "gamepad"]
+authors: []
+languages: []
+viamresources: [ "base", "input_controller" ]
+level: "Beginner"
+date: "10 August 2022"
+cost: 575
 ---
 
 The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot.
-On completion of this tutorial you'll be able to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.
+On completion of this tutorial, you'll be able to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.
 
 ## Prerequisites
 
@@ -25,9 +31,9 @@ Refer to the [Setting up a SCUTTLE with Viam](../../configure/scuttlebot/) tutor
 * Connection to the Viam app
 * EasySMX ESM-9101 Wireless Controller
 
-The following video demonstrates controlling a SCUTTLE Robot using a bluetooth gamepad:
+The following video demonstrates controlling a SCUTTLE Robot using a Bluetooth gamepad:
 
-{{<video webm_src="../../videos/scuttledemos_gamepad.webm" mp4_src="../../videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a bluetooth gamepad" poster="../../videos/scuttledemos_gamepad.jpg">}}
+{{<video webm_src="../../videos/scuttledemos_gamepad.webm" mp4_src="../../videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="../../videos/scuttledemos_gamepad.jpg">}}
 
 ## Adding the controller to the SCUTTLE's config
 
@@ -40,20 +46,6 @@ Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (withou
 
 <li>Click <strong>New Component</strong>. The Viam app opens the Component Config panel for the gamepad. </li>
 <li>On the Component Config panel, leave <strong>Depends On</strong> set to empty.</li>
-
-<li>The Viam app does not add any JSON attributes to the input_controller configuration.
-
-Please add the following Attributes:
-</OL>
-
-```json {class="line-numbers linkable-line-numbers"}
-{
- "base": "scuttle",
- "input_controller": "gamepad"
-}
-```
-
-<img src="../../img/scuttle-gamepad/pi-game-game-config-blank.png" alt="Blank configuration json" />
 
 The controller config adds the gamepad controller to your robot.
 However, it does not wire it up to any functionality.
@@ -69,6 +61,18 @@ Services are the software packages that provide our robots with cool and powerfu
 3. Enter **scuttle_gamepad** for the **Service** `name`.
 
 <img src="../../img/scuttle-gamepad/pi-game-create-service.png" alt="Create service builder" />
+
+Copy and paste the following into the empty **Attributes** field:
+</OL>
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+ "base": "scuttle",
+ "input_controller": "gamepad"
+}
+```
+
+<img src="../../img/scuttle-gamepad/pi-game-game-config-blank.png" alt="Blank configuration json" />
 
 After adding the **Attributes**, your config screen should appear similar to this:
 

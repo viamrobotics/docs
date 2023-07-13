@@ -6,14 +6,14 @@ weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
-icon: "../img/components.png"
-images: ["../img/components.png"]
+icon: "/icons/components.png"
+images: ["/icons/components.png"]
 draft: true
 no_list: true
 # SMEs:
 ---
 
-<img src="../../img/components.png"  style="float:right" alt="Component picture" width="400" />
+<img src="/icons/components.png"  style="float:right" alt="Component picture" width="400" />
 
 Brief description of the component and what you can do with it.
 
@@ -37,11 +37,13 @@ Model | Description
 [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)
 [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE)
 
-If you want to use another COMPONENT model with Viam, you can [define a custom component](../../program/extend/).
+If you want to use another COMPONENT model with Viam, you can [define a custom component](../../extend/).
 
 ## Control your board with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by getting your `COMPONENT` component from the robot with `FromRobot` and adding API method calls, as shown in the following examples.
@@ -195,6 +197,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/components/component/control-a-component" size="small" %}}
-    {{% card link="/components/component/install" size="small" %}}
+    {{% card link="/components/component/control-a-component" %}}
+    {{% card link="/components/component/install" %}}
 {{< /cards >}}

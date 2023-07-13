@@ -11,7 +11,12 @@ tags: ["arm", "motion", "services"]
 aliases:
   - "/tutorials/motion/accessing-and-moving-robot-arm"
   - "/tutorials/motion/"
-# SMEs: William S.
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "arm" ]
+level: "Beginner"
+date: "7 March 2023"
+cost: 8400
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -66,10 +71,13 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 7. Save this robot configuration.
 
-Go to the **Code Sample** tab and copy the code sample for the programming language you are working in.
-Paste this boilerplate code into a file and run the script to verify you can connect to your robot.
-Throughout this tutorial you will replace and amend this code.
-The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
+8. Go to the **Code sample** tab and select the programming language you are working in.
+
+   {{% snippet "show-secret.md" %}}
+
+   Then, paste this boilerplate code into a file and run the script to verify you can connect to your robot.
+   Throughout this tutorial you will replace and amend this code.
+   The [full tutorial code](#full-tutorial-code) is available at the bottom of this tutorial for reference.
 
 ## Access the Arm
 
@@ -305,8 +313,8 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
@@ -330,7 +338,7 @@ from viam.rpc.dial import Credentials, DialOptions
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<ROBOT SECRET PAYLOAD>')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
@@ -370,6 +378,8 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
+{{% snippet "show-secret.md" %}}
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -398,7 +408,7 @@ func main() {
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "<ROBOT SECRET PAYLOAD>",
+          Payload: "LOCATION SECRET FROM THE VIAM APP",
       })),
   )
   if err != nil {
@@ -452,6 +462,8 @@ func main() {
   }
 }
 ```
+
+{{% snippet "show-secret.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}

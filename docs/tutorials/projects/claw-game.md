@@ -9,12 +9,15 @@ webmSrc: "/tutorials/img/claw-game/preview.webm"
 mp4Src: "/tutorials/img/claw-game/preview.mp4"
 videoAlt: "GIF of the claw game in action at a party."
 images: ["/tutorials/img/claw-game/preview.gif"]
-# Authors: Arielle Mella, Matt Vella, Hazal Mestci
+authors: [ "Arielle Mella", "Hazal Mestci", "Matt Vella" ]
+languages: [ "python" ]
+viamresources: [ "board", "arm", "gripper", "motion" ]
+level: "Advanced"
+date: "29 May 2023"
+cost: 8910
 ---
 
-
-
-{{<gif webm_src="../../img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
+{{<gif webm_src="/tutorials/img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
 
 Create your own version of the famous arcade claw machine game using a robotic arm, an arcade claw grabber, and some fun items to pick from.
 Fine-tune every intricate detail, from the precision of each grab, to the claw's strength, and even the aesthetics of your control interface.
@@ -36,7 +39,7 @@ To build your own claw game machine, you need the following hardware:
 - An [xarm6](https://www.robotshop.com/products/xarm-6-dof-robotic-arm) robotic arm
 - An [Arcade claw](https://www.ebay.com/itm/393988987705)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
-- A [24v power supply](https://www.amazon.com/gp/product/B08F7DVY8G) for the claw
+- A [24V power supply](https://www.amazon.com/gp/product/B08F7DVY8G) for the claw
 - An iPad or other tablet
 - 1 x 4’x4’ fiberboard
 - 10 x  2”x4”x8’ lumber
@@ -84,7 +87,9 @@ To support the arm and create a surface to hold the prizes, create a flat surfac
 You will need to build the table to a size that allows for the arm to reach anywhere on the table surface.
 For the xArm6, a table that is 4'x4' works.
 
+<div>
 <img src="../../img/claw-game/build-base.jpg" alt="4' x 4' square made with wood pieces on the floor." width="300px" class="alignright">
+</div>
 
 1. Cut one 2"x4" in half, creating two 48 inch sides.
 1. Then take two 2x4s and cut them to four 46.5 inch lengths.
@@ -105,7 +110,7 @@ Center the exit, make it 10 inches wide, 8 inches long and cut the opening with 
 We used two 2 foot by 4 foot fiberboards, but ideally you can use one 4 foot by 4 foot fiberboard.
 1. Glue and clamp the tabletop and let it dry overnight.
 
-<img src="../../img/claw-game/build-table.jpg" alt="Wooden table top glued and secured with clamps" width="400px" class="aligncenter">
+   <img src="../../img/claw-game/build-table.jpg" alt="Wooden table top glued and secured with clamps" width="400px" class="aligncenter">
 
 ### Add legs and mount the arm
 
@@ -118,10 +123,10 @@ To finish the table construction, attach the supporting legs and mount the arm t
 1. For extra stability, cut two more 2x4s to 48 inch lengths, and mount these with deck screws on all four sides of the bottom of the cabinet, bridging the legs.
 You can also cut an additional 2x4 and mount it as a fifth leg, going from the center arm supports to the floor.
 1. Finally, mount the xArm6 to the top of the table using the lag screws.
-Be sure that the lag screws sink into the 2x4 posts below, and that you are mounting the arm so that it is straight, with the X axis facing the player.
-You’ll need at least two people to ensure a smooth installation of the arm.
+   Be sure that the lag screws sink into the 2x4 posts below, and that you are mounting the arm so that it is straight, with the X axis facing the player.
+   You’ll need at least two people to ensure a smooth installation of the arm.
 
-<img src="../../img/claw-game/mount-arm.jpg" alt="The xarm6 attached to the middle of the enclosure." width="400px" class="aligncenter">
+   <img src="../../img/claw-game/mount-arm.jpg" alt="The xarm6 attached to the middle of the enclosure." width="400px" class="aligncenter">
 
 ## Configure the robot
 
@@ -136,8 +141,8 @@ Since you just created a new robot, your robot's main part is already defined.
 Multi-part robots also have one or more sub-parts representing additional computers running `viam-server`.
 If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](https://docs.viam.com/manage/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/services/motion/) on a laptop and connect that laptop as a sub-part to your robot.
 
-{{< alert title="Note" color="note" >}}
-Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or a Linux laptop running `viam-server`.
+{{< alert title="Tip" color="tip" >}}
+Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
 Use the parts drop-down menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
@@ -383,7 +388,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 1. Using velcro cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
 
-<img src="../../img/claw-game/mount-together.jpg" alt="Gripper attached to the arm and cord wired around the arm" width="400px" class="aligncenter">
+   <img src="../../img/claw-game/mount-together.jpg" alt="Gripper attached to the arm and cord wired around the arm" width="400px" class="aligncenter">
 
 ### Wire and test the claw
 
@@ -420,8 +425,7 @@ The claw game machine will use the [Motion Service](/services/motion/) to plan i
 To make sure the arm doesn't hit the walls of the enclosure or the prize drop hole, you need to create representations of obstacles around the arm that the motion service can use when planning.
 
 Obstacles are geometries located at a pose relative to some frame.
-When solving a motion plan with movable frames that contain inherent geometries, for example parts of the arm.
-The solved path is constrained such that none of those inherent geometries intersect with the obstacles.
+When solving a motion plan with movable frames that contain inherent geometries, for example parts of the arm, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
 
 You can pass information about the robot’s environment, including obstacles, to the Viam platform through a data structure named [WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState).
 
@@ -432,7 +436,7 @@ If the dimensions of your enclosure differ from ours, adjust your `obstacles.jso
 The obstacles for our arm are configured in reference to the "world" frame which is defined as a , which is a special frame that represents the starting point for all other frames in the robot's world.
 The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/services/motion/#move) call.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 If the arm is not mounted exactly perpendicular to the x/y axis of the enclosure, you can adjust the theta (_th_) of the arm within the arm component configuration by a number of degrees to compensate.
 Obstacles can then be configured as if the arm were straight in the enclosure.
 See the [frame system documentation](/services/frame-system/) for more information.
@@ -767,9 +771,12 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    npm install
    ```
 
-1. Determine your robot's secret and host address by navigating to the **Code Sample** tab in the [Viam app](https://app.viam.com).
-Use the host address of your main robot part, as it will reference all parts of your robot.
-1. Then, run the following command to start the custom TypeScript interface, inserting your robot's secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
+1. Determine your robot's location secret and host address by navigating to the **Code sample** tab in the [Viam app](https://app.viam.com).
+   Use the host address of your main robot part, as it will reference all parts of your robot.
+
+   {{% snippet "show-secret.md" %}}
+
+1. Then, run the following command to start the custom TypeScript interface, inserting your robot's location secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    export VIAM_LOCATION=<mylocation>;VIAM_SECRET=<mysecret>;npm run start-simple

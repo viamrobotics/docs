@@ -9,8 +9,13 @@ image: "/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"
 images: ["/tutorials/img/outdoor-rover-boxbot/completed-rover.jpg"]
 aliases:
   /tutorials/build-an-outdoor-rover/
-imageAlt: "Completed rover with mounted solar panel."
-# SME: Matt Vella
+imageAlt: "Rover with mounted solar panel."
+authors: [ "Matt Vella" ]
+languages: []
+viamresources: [ "board", "motor", "base", "camera" ]
+level: "Beginner"
+date: "29 March 2023"
+cost: 420
 ---
 
 Approaching robotics can be daunting.
@@ -51,12 +56,12 @@ For example, you might not need a night-vision camera if you won't operate it at
 | [Weatherproof plastic case](https://www.alibaba.com/product-detail/Waterproof-Foam-Pu-eva-epe-xpe_1600097495864.html) | 1 | $30.50 | $30.50 | This is the key to protecting your electronics and holding the robot together. Make sure it is a thick, strong plastic and can fit the solar panel mounted on top. Finally, get one with adjustable foam inside - this is very handy for cushioning your electronic components.|
 | [Night vision camera](https://www.amazon.com/gp/product/B07C1N9R4Z)|1|$40|$40|Night vision is optional, but a webcam of some sort is highly recommended.|
 | Raspberry Pi 3B or 4B with microSD card|1|$100|$100|Note: Due to supply shortages, Raspberry Pi prices are fluctuating dramatically.|
-| [12V Battery](https://www.amazon.com/LiFePO4-Battery-Miady-Rechargeable-Maintenance-Free/dp/B089VXSBC6)|1|$65|$65|Lots of options here - some motors might run better on 24v. You can use a battery with less storage if you don't plan to run it continuously.|
+| [12V Battery](https://www.amazon.com/LiFePO4-Battery-Miady-Rechargeable-Maintenance-Free/dp/B089VXSBC6)|1|$65|$65|Lots of options here - some motors might run better on 24V. You can use a battery with less storage if you don't plan to run it continuously.|
 | [Brushless hub motor wheels](https://www.alibaba.com/product-detail/Electric-Wheel-Hoverboard-DC-Hub-6_60615157026.html)|2|$30|$60|Better yet - source them from a used [hoverboard](https://www.amazon.com/RIDE-SWFT-Hoverboard-Balancing-Front-Facing/dp/B08N5DSVY3) (this is what I did, sorry son).|
 |[GPS module](https://www.amazon.com/Receiver-Antenna-Gmouse-Laptop-Navigation/dp/B073P3Y48Q/)|1|$20|$20|optional|
 |[Solar charge controller](https://www.amazon.com/Renogy-Wanderer-Amp-12V-24V/dp/B07NPDWZJ7)|1|$20|$20|optional|
 |[25w Solar panel](https://www.alibaba.com/product-detail/High-Efficiency-25W-Polycrystalline-Crystalline-Solar_60814369754.html)|1|$10|$10|optional|
-[12V to 5V DC USB Type-C Right Angle Step-Down Power Converter](https://www.amazon.com/gp/product/B086KTGRH1/)|1|$13.50|$13.50|To power the Pi from a 12v battery.|
+[12V to 5V DC USB Type-C Right Angle Step-Down Power Converter](https://www.amazon.com/gp/product/B086KTGRH1/)|1|$13.50|$13.50|To power the Pi from a 12V battery.|
 |[Brushless motor controller](https://www.amazon.com/RioRand-6-60V-Brushless-Electric-Controller/dp/B087M2378D)|2|$18|$36|
 |[Caster wheel](https://www.harborfreight.com/3-inch-x-3-4-quarter-inch-stem-swivel-caster-90997.html)|2|$5|$10|
 |Galvanized nuts/bolts, water sealing epoxy or caulk, washers, misc wires, brackets, etc|1|$15|$15|Bolts are for mounting your hub motors and other components. I used a bracket I had lying in my basement plus some brackets/rails from my kids' erector set to mount the solar panel.|
@@ -151,7 +156,7 @@ You'll also need to solder two pins to the controller just to the left of the wh
 
 You'll then connect the motor phase A, B, and C wires from your hub motor to the left side of the controller, and the 5 hall sensor wires to the white wire harness on the bottom right.
 It is also worth mentioning that you may need to extend the wires from your hub motors if they are not long enough to work with.
-Likely, the color of the wires from your hub motor will match the diagram - at the very least the 5v and GND should.
+Likely, the color of the wires from your hub motor will match the diagram - at the very least the 5V and GND should.
 If any of the phase wire colors don't match, you might need to swap them when testing with the potentiometer.
 
 <div class="td-max-width-on-larger-screens">
@@ -196,7 +201,7 @@ Once that's sorted out, we're ready to connect 3 wires from the motor controller
 2. One from the pin you added labeled **P** to any available GPIO pin on the Pi
 3. One from terminal labeled **DIRExternal potentiometer** to any available GPIO pin on the Pi
 
-Finally, you'll want to connect the wires from the 12V to the 5v Pi power converter to the battery.
+Finally, you'll want to connect the wires from the 12V to the 5V Pi power converter to the battery.
 
 At this point, you can plug in any extra components to the Pi (GPS and camera, if you are using them).
 If they are USB-based (like ones in the parts list), this is straightforward.

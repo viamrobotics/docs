@@ -5,8 +5,9 @@ weight: 30
 no_list: true
 type: docs
 draft: false
-icon: "/installation/img/thumbnails/manage.png"
-images: ["/installation/img/thumbnails/manage.png"]
+image: "installation/thumbnails/manage.png"
+imageAlt: "Manage viam-server"
+images: ["/installation/thumbnails/manage.png"]
 description: "Control and troubleshoot viam-server."
 ---
 

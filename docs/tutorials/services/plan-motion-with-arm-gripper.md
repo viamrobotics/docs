@@ -8,7 +8,12 @@ webmSrc: "/tutorials/videos/motion_armmoving.webm"
 mp4Src: "/tutorials/videos/motion_armmoving.mp4"
 videoAlt: "An arm moving with the Motion Service"
 tags: ["arm", "gripper", "motion", "services"]
-# SMEs: William S.
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "arm", "gripper", "motion" ]
+level: "Intermediate"
+date: "7 March 2023"
+cost: 8400
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -20,8 +25,9 @@ Also pay attention to your surroundings, double-check your code for correctness,
 Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
 The [Motion Service](/services/motion/) enables sophisticated movement involving one or many components of your robot.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
@@ -164,8 +170,8 @@ You must add additional imports to access `Pose`, `PoseInFrame`, `Vector3`, `Geo
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add a table obstacle to a WorldState
-table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
-table_dims = Vector3(x=635.0, y=1271.0, z=38.0)
+table_origin = Pose(x=0.0, y=0.0, z=-19.0)
+table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
 table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
 
 obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[table_object])
@@ -184,10 +190,10 @@ The `WorldState` is available through the `referenceframe` library, but addition
 obstacles := make([]spatialmath.Geometry, 0)
 
 tableOrigin := spatialmath.NewPose(
-  r3.Vector{X: 0.0, Y: 0.0, Z: -10.0},
+  r3.Vector{X: 0.0, Y: 0.0, Z: -19.0},
   &spatialmath.OrientationVectorDegrees{OX: 0.0, OY: 0.0, OZ: 1.0, Theta: 0.0},
 )
-tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 20.0}
+tableDims := r3.Vector{X: 2000.0, Y: 2000.0, Z: 38.0}
 tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
 obstacles = append(obstacles, tableObj)
 
@@ -203,6 +209,7 @@ worldState := &referenceframe.WorldState{
 
 This example adds a "table" with the assumption that you mounted your robot arm to an elevated surface.
 The 2000 millimeter by 2000 millimeter dimensions ensure that a sufficiently large box is constructed, regardless of the real physical footprint of your mounting surface.
+Setting the Z component of the origin to -19 mm (half the table's thickness) conveniently positions the top surface of the table at 0.
 Feel free to change these dimensions, including thickness (the Z coordinate in the above code samples), to match your environment more closely.
 Additional obstacles can also be *appended* as desired.
 
@@ -359,28 +366,18 @@ You do not need to calculate that exact pose with respect to the **arm** or **wo
 You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `PoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
 
-## Next Steps and References
+## Next steps
 
 If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
 
-<!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
-<!--
-## Next Steps
-
-If you would like to continue onto working with complex motion constraints:
-
-{{< cards >}}
-  {{% card link="/tutorials/services/add-constraints-to-motion-plan" size="small" %}}
-{{< /cards >}}
--->
-
-## Full Tutorial Code
+## Full tutorial code
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -400,7 +397,7 @@ from viam.services.motion import MotionClient
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<ROBOT SECRET PAYLOAD>')
+        payload='LOCATION SECRET FROM THE VIAM APP')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
@@ -472,6 +469,8 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
+{{% snippet "show-secret.md" %}}
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -503,7 +502,7 @@ func main() {
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "<ROBOT SECRET PAYLOAD>",
+          Payload: "LOCATION SECRET FROM THE VIAM APP",
       })),
   )
   if err != nil {
@@ -617,6 +616,8 @@ func main() {
   }
 }
 ```
+
+{{% snippet "show-secret.md" %}}
 
 {{% /tab %}}
 {{< /tabs >}}

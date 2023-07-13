@@ -7,8 +7,8 @@ type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."
 no_list: true
 tags: ["camera", "components"]
-icon: "/components/img/components/camera.svg"
-images: ["/components/img/components/camera.svg"]
+icon: "/icons/components/camera.svg"
+images: ["/icons/components/camera.svg"]
 aliases:
   - "/tutorials/configure-a-camera"
 # SMEs: Bijan, vision team
@@ -53,7 +53,9 @@ For configuration information, click on one of the following models:
 
 ## Control your camera with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code Sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
 Then control your robot programmatically by adding API method calls as shown in the following examples.
@@ -117,7 +119,26 @@ my_camera = Camera.from_robot(robot=robot, name="my_camera")
 frame = await my_cam.get_image()
 ```
 
+<br>
+
+If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`RawImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
+
+For example:
+
+```python {class="line-numbers linkable-line-numbers"}
+# Assume "frame" has a mime_type of "image/vnd.viam.dep"
+frame = await my_cam.get_image()
+
+# Convert "frame" to a standard 2D image representation.
+# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
+standard_frame frame.bytes_to_depth_array()
+```
+
+{{% alert title="Tip" color="tip" %}}
+
 Be sure to close the image when finished.
+
+{{% /alert %}}
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_image).
 
@@ -127,11 +148,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `errHandlers` [(ErrorHandler)](https://pkg.go.dev/github.com/edaniels/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors).
+- `errHandlers` [(ErrorHandler)](https://pkg.go.dev/github.com/viamrobotics/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors).
 
 **Returns:**
 
-- [(gostream.VideoStream)](https://pkg.go.dev/github.com/edaniels/gostream): A `VideoStream` that streams video until closed.
+- [(gostream.VideoStream)](https://pkg.go.dev/github.com/viamrobotics/gostream): A `VideoStream` that streams video until closed.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -164,7 +185,7 @@ The consumer of this call should decode the bytes into the format suggested by t
 
 **Returns:**
 
-- [(Tuple[bytes,str])](https://docs.python.org/3/library/stdtypes.html#bytes): The pointcloud data as bytes paired with a string representing the mimetype of the pointcloud (for example, PCD).
+- [(Tuple[bytes,str])](https://docs.python.org/3/library/stdtypes.html#bytes): The pointcloud data as bytes paired with a string representing the MIME type of the pointcloud (for example, PCD).
 
 To deserialize the returned information into a numpy array, use the Open3D library:
 
@@ -303,7 +324,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-
   result, err := myCamera.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/components/camera).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -317,7 +338,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/vision" size="small" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle" size="small" %}}
+  {{% card link="/services/vision" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" %}}
+  {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

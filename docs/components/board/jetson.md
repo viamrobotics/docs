@@ -4,7 +4,7 @@ linkTitle: "jetson"
 weight: 20
 type: "docs"
 description: "Configure a jetson board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
@@ -15,7 +15,7 @@ Follow one of our Jetson [setup guides](/installation/) to prepare your board fo
 
 {{% /alert %}}
 
-Configure a `jetson` board to integrate a [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson  Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your robot:
+Configure a `jetson` board to integrate a [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your robot:
 
 {{< tabs name="Configure an jetson Board" >}}
 {{% tab name="Config Builder" %}}

@@ -11,21 +11,26 @@ videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acryli
 images: ["/tutorials/img/custom-base-dog/base-control-dog.gif"]
 aliases:
     - /tutorials/custom-base-dog/
+authors: [ "Jessamy Taylor" ]
+languages: [ "python" ]
+viamresources: [ "base", "camera", "custom" ]
+level: "Beginner"
+date: "15 May 2023"
+cost: 190
 # SMEs: James Otting, Eric Daniels
-# Author: Jessamy Taylor
 ---
 
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of rover that isn't compatible with the wheeled model, you have two options:
 
-1. Use Viam's Go SDK to [create a custom component as a modular resource](/program/extend/modular-resources/).
-2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/program/extend/custom-components-remotes/).
+1. Use Viam's Go SDK to [create a custom component as a modular resource](/extend/modular-resources/).
+2. Use another Viam SDK (for example, the Python SDK) to [create a custom resource server](/extend/custom-components-remotes/).
 
 This tutorial demonstrates option two, using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
-  {{<gif webm_src="../../img/custom-base-dog/base-control-dog.webm" mp4_src="../../img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="/tutorials/img/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
@@ -79,7 +84,7 @@ Get the code by running the following command:
     git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
     ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 This tutorial uses `/home/fido/` as an example home directory in various example filepaths and code snippets.
 If the name of the directory where you store and run your code is different, be sure to use the correct filepath when running these commands.
@@ -251,7 +256,7 @@ Click **Save Config** at the bottom of the page.
 
 ![Screenshot of the Viam app CONFIG tab with the Remotes subtab open, showing my-custom-base configured as a remote.](../../img/custom-base-dog/remote-config.png)
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 When you call srv.serve(), the default host and port is localhost:9090.
 If you want to use a different host or port, pass it as a parameter to the serve function.
@@ -381,7 +386,7 @@ Click the **my-custom-base:my-robot-dog** component panel to expand it and revea
 2. Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.
 3. Use the **W**, **A**, **S** and **D** buttons to make the robot walk forward, turn left, walk backward or turn right.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Depending on the speed of your server connection, you may need to hold down the base control button/key for a second or two before anything happens.
 

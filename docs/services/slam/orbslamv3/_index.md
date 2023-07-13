@@ -11,7 +11,7 @@ tags: ["slam", "services"]
 
 [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) performs sparse SLAM using monocular or RGB-D images.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 While ORB-SLAM3 does support the use of monocular cameras, for best results it is recommended that you use an RGB-D camera.
 {{% /alert %}}
 
@@ -160,7 +160,7 @@ These are generated at runtime, so there is no need to add anything to this fold
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 If this directory structure is not present at runtime, the SLAM Service creates it.
 
@@ -177,7 +177,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
-![adding orbslam3 slam service](/services/slam/img/run_slam/add-orbslam-service-ui.png)
+![adding orbslam3 slam service](/services/slam/add-orbslam-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -338,7 +338,7 @@ Change the **Refresh frequency** to your desired frequency.
 If in Live Data mode, move your webcam around slowly.
 Watch a map start to appear.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 It might take a couple of minutes before a map is displayed.
 Keep moving the camera slowly within your space and wait for the map to visualize.
 {{% /alert %}}

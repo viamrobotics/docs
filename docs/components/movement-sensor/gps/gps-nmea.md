@@ -4,7 +4,7 @@ linkTitle: "gps-nmea"
 weight: 10
 type: "docs"
 description: "Configure an NMEA-based GPS."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
@@ -96,9 +96,9 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
       "type": "movement_sensor",
       "model": "gps-nmea",
       "attributes": {
-        "board": "local",
         "connection_type": "I2C",
         "i2c_attributes": {
+          "board": "local",
           "i2c_baud_rate": 115200,
           "i2c_addr": 111,
           "i2c_bus": "<name_of_bus_on_board>"
@@ -118,7 +118,6 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 Name | Type | Inclusion | Description |
 ---- | ---- | --------- | ----------- |
 `connection_type` | string | **Required** |`"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
-`board` | string | depends on connection type | The `name` of the [board](/components/board/) connected to the chip. Required for NMEA over [I<sup>2</sup>C](/components/board/#i2cs). Not required for serial communication.
 `disable_nmea` | boolean | Optional | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false`
 
 ### Connection Attributes
