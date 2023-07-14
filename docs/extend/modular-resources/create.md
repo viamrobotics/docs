@@ -339,12 +339,13 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
+<br>
 </details>
 
-<file>_\_init__.py</file> registers the mybase custom model and API helper functions with the SDK.
+<file>__init__.py</file> registers the mybase custom model and API helper functions with the SDK.
 
 <details>
-  <summary>Click to view sample code from <file>_\_init__.py</file></summary>
+  <summary>Click to view sample code from <file>__init__.py</file></summary>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
