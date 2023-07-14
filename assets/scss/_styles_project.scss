@@ -457,11 +457,15 @@ END MARKETING CSS
 
 // Adjust font size
 
-.hover-card > a div > span {
+.hover-card > a div > div, .hover-card > div > div {
   font-size: 1.0625rem!important;
   font-weight: 600;
   line-height: 1.4375em;
   color: black;
+}
+
+.hover-card > div > div {
+  margin-bottom: 0.5rem;
 }
 
 // For some reason video elements don't calculate the height correctly. This adjusts for that.
