@@ -372,8 +372,7 @@ In the attributes field, paste the following, replacing `<HOSTNAME>` with your P
 }
 ```
 
-This ".local" address works because the Freenove server is running on the same machine as `viam-server`.
-If for some reason you are running the module on a separate machine (instead of on the Pi), you need to replace it with the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
+If this doesn't work, you can instead try using the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
 
 `5001` is the default port for sending and receiving instructions to and from the Freenove server.
 
