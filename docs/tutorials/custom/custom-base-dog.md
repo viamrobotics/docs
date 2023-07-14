@@ -363,17 +363,16 @@ Click **Create Component**.
 ![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](../../img/custom-base-dog/config-modular-component.png)
 
 You need to add the `ip_address` and `port` attributes to your base config.
-In the attributes field, paste the following:
+In the attributes field, paste the following, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`):
 
 ```json
 {
-  "ip_address": "localhost",
+  "ip_address": "<HOSTNAME>.local",
   "port": 5001
 }
 ```
 
-Use `localhost` as the local IP address because the Freenove server is running on the same machine as `viam-server`.
-If for some reason you are running the module on a separate machine (instead of on the Pi), you need to replace it with the IP address of the machine where the module is running.
+If this doesn't work, you can instead try using the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
 
 `5001` is the default port for sending and receiving instructions to and from the Freenove server.
 
