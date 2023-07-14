@@ -11,7 +11,7 @@ no_list: true
 The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, [components](/components/), and [services](/services/), into any robot running on Viam.
 
 A common use case for modular resources is to create a new model that implements an existing Viam API.
-However, you can also create and expose new API types using modular resources.
+However, you can also create and expose new APIs with modular resources.
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
@@ -21,23 +21,23 @@ A configured *module* can make one or more *modular resources* available for con
 
 ## Create a custom modular resource
 
-To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new model or type of {{< glossary_tooltip term_id="resource" text="resource" >}}:
+To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new model or {{< glossary_tooltip term_id="api-namespace-triplet" text="subtype" >}} of {{< glossary_tooltip term_id="resource" text="resource" >}}:
 
 {{< tabs >}}
 {{% tab name="New Model" %}}
-Define a new model of a built-in resource type:
+Define a new model of a built-in resource subtype:
 
-1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in type (ex. `rdk:component:base`).
+1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (ex. `rdk:component:base`).
 Import your custom model and API into the main program and register the new resource model with your chosen SDK's helper methods.
 
-2. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
+1. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
-3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
+1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 {{% /tab %}}
 {{% tab name="New Type" %}}
-Define a new type of resource:
+Define a new {{< glossary_tooltip term_id="api-namespace-triplet" text=" type or subtype" >}} of resource:
 
 1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then [generate code](https://grpc.io/docs/languages/python/generated-code/) in Python or Go and use the generated code to implement the higher level server and client functions required.
 
@@ -45,10 +45,10 @@ Define a new type of resource:
 Make sure to implement every method required in your API definition.
 Import your custom models and APIs into the main program and register the new resource models with your chosen SDK's helper methods.
 
-3. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
+1. [Code a main program](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
-4. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
+1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 {{% /tab %}}
 {{% /tabs %}}
@@ -67,7 +67,7 @@ The Go code for the custom model (<file>mybase.go</file>) and module entry point
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
-// It extends the built-in resource type Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
+// It extends the built-in resource subtype Base and implements methods to handle resource construction, attribute configuration, and reconfiguration.
 
 package mybase
 
@@ -257,7 +257,7 @@ class MyBase(Base, Reconfigurable):
     """
     MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
 
-    It inherits from the built-in resource type Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
+    It inherits from the built-in resource subtype Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
 
     Additionally, it specifies a constructor function ``MyBase.new_base`` which confirms to the ``resource.types.ResourceCreator`` type required for all models.
     """
@@ -449,7 +449,7 @@ if __name__ == "__main__":
 
 {{% alert title="Important" color="note" %}}
 
-You must define all functions belonging to a built-in resource type if defining a new model.
+You must define all functions belonging to a built-in resource subtype's API if defining a new model.
 Otherwise, the class won’t instantiate.
 
 - If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.

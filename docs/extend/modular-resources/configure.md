@@ -74,7 +74,7 @@ Add these properties to your module's configuration:
 
 ### Configure your modular resource
 
-Once you have configured a module as part of your robot configuration, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new type or [model](/extend/modular-resources/key-concepts/#models).
+Once you have configured a module as part of your robot configuration, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new {{< glossary_tooltip term_id="api-namespace-triplet" text="subtype" >}} or [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
@@ -97,7 +97,7 @@ The `attributes` available vary depending on your implementation.
   "components": [
     {
       "namespace": "<your-module-namespace>",
-      "type": "<your-resource-type>",
+      "type": "<your-resource-subtype>",
       "model": "<model-namespace>:<model-family-name>:<model-name>",
       "name": "<your-module-name>",
       "depends_on": [],
