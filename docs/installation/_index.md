@@ -5,8 +5,10 @@ childTitleEndOverwrite: "Try Viam"
 weight: 20
 no_list: true
 type: docs
-icon: "/installation/thumbnails/install.png"
+image: "/installation/thumbnails/install.png"
+imageAlt: "Install Viam"
 images: ["/installation/thumbnails/install.png"]
+description: "To use Viam software with your robot, install and run the viam-server binary on the computer that you want to use to control the robot."
 aliases:
     - /installation/prepare/
     - /installation/macos-install/
