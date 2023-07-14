@@ -22,7 +22,7 @@
 	  <div id="archive" class="card-container">
 		<div class="row-no-margin">
 		  {{ range sort $pages ".Weight"}}
-          {{ warnf "%s" (.Page.File)}}
+          {{ warnf "%s" (.Page.File.BaseFileName)}}
 		    {{ partial "card.html" (dict "link" (.Page.File.BaseFileName) "class" "" "customTitle" "" "customDescription" "" ) }}
 		  {{ end }}
 		</div>
