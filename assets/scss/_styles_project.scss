@@ -635,7 +635,8 @@ END MARKETING CSS
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
  margin: 0.1rem;
- font-size: 0.833rem;
+ font-size: 0.833rem !important;
+ font-weight: 400 !important;
 }
 
 .hover-card.tutorial * .pill.pill-lang {
