@@ -46,7 +46,7 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 
 Here's an example of how a servo might be wired to a Raspberry Pi:
 
-![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/img/servo/servo-wiring.png)
+{{<imgproc src="/components/servo/servo-wiring.png" resize="1000x" declaredimensions=true alt="A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.">}}
 
 ### Resistors
 

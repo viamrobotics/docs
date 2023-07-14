@@ -26,7 +26,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `AMS-AS
 
 Click **Create component**.
 
-![Configuration of an AS5048 encoder in the Viam app config builder.](../img/configure-am5.png)
+{{< imgproc src="/components/encoder/configure-am5.png" alt="Configuration of an AS5048 encoder in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

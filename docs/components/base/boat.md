@@ -22,8 +22,6 @@ Enter a name for your base, select the type `base`, and select the `boat` model.
 
 Click **Create component** and then fill in the attributes for your model:
 
-<!-- ![An example configuration for a boat base in the Viam app Config Builder.](../img/boat-base-ui-config.png) -->
-
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
