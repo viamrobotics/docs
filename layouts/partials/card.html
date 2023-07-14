@@ -32,9 +32,9 @@
 				{{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           {{ if $customTitle }}
-            <h4>{{ $customTitle }}</h4>
+            <span>{{ $customTitle }}</span>
           {{ else }}
-            <h4>{{ .LinkTitle }}</h4>
+            <span>{{ .LinkTitle }}</span>
           {{ end }}
           {{ if ne $class "small" }}
           <p> {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }} </p>
