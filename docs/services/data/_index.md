@@ -137,7 +137,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 data, err := datamanager.FromRobot(robot, "my_data_service")
 
 // Sync data stored on the robot to the cloud.
-err := data.Sync(context.Background())
+err := data.Sync(context.Background(), nil)
 ```
 
 {{% /tab %}}
