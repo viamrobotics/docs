@@ -9,6 +9,8 @@ aliases:
     - "/getting-started/"
     - "/getting-started/high-level-overview"
     - "/product-overviews/"
+image: "/img/understand.png"
+imageAlt: "/img/understand.png"
 images: ["/img/understand.png"]
 ---
 

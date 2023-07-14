@@ -33,6 +33,6 @@ The video below shows the training process for an object detection model using a
 {{< cards >}}
   {{% card link="/manage/ml/train-model" %}}
   {{% card link="/manage/ml/upload-model" %}}
-  {{% card link="/services/ml" custom="Deploy Model" %}}
-  {{% card link="/tutorials/projects/pet-treat-dispenser/" custom="Tutorial: Smart Pet Feeder" %}}
+  {{% card link="/services/ml" customTitle="Deploy Model" %}}
+  {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Tutorial: Smart Pet Feeder" %}}
 {{< /cards >}}
