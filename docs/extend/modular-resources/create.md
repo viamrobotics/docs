@@ -525,5 +525,3 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 ## Next steps
 
 Follow [these configuration instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
-
-After configuring a modular resource, test it with the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
