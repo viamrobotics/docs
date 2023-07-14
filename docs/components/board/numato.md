@@ -4,7 +4,7 @@ linkTitle: "numato"
 weight: 50
 type: "docs"
 description: "Configure a numato board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
@@ -21,7 +21,7 @@ Enter a name for your board, select the type `board`, and select the `numato` mo
 
 Click **Create component**.
 
-![An example configuration for a numato board in the Viam app Config Builder.](../img/numato-ui-config.png)
+{{< imgproc src="/components/board/numato-ui-config.png" alt="An example configuration for a numato board in the Viam app Config Builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

@@ -27,17 +27,17 @@ Using a fragment makes managing a fleet of multiple robots configured in the sam
 Navigate to your robot in [the Viam app](https://app.viam.com/robots).
 On the  **Config** tab, click on the **Fragments** subtab.
 
-![Fragments tab inside the Viam app](../img/fragments/fragments_tab.png)
+{{<imgproc src="try-viam/rover-resources/fragments/fragments_tab.png" resize="1200x" alt="Fragments tab inside the Viam app">}}
 
 On the **Fragments** tab, you can see the available fragments to add.
 Find `ViamRover202210b` and click `ADD` to add the fragment to your robot configuration.
 
-![List of available fragments](../img/fragments/fragments_list.png)
+{{<imgproc src="try-viam/rover-resources/fragments/fragments_list.png" resize="1200x" alt="List of available fragments">}}
 
 After you add the fragment, the config on the right side shows the robot's configuration with the new fragment.
 Click **Save Config** to save the new configuration.
 
-![Fragment configuration](../img/fragments/fragment_configuration.png)
+{{<imgproc src="try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
 
 The fragment adds the following components to your robot's JSON configuration:
 

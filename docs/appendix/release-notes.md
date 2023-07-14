@@ -401,7 +401,7 @@ You will need to first register the machine learning model file with the [ML Mod
             <td width="120px"><strong>What is it?</strong></td>
             <td>
                 Users of Try Viam now have the option to reuse a robot config if they want to continue working on a project that they started in a prior session.
-{{<gif webm_src="../img/reuse-rovers.webm" mp4_src="../img/reuse-rovers.mp4" alt="Select a rover to reuse in the UI">}}
+{{<gif webm_src="/appendix/img/reuse-rovers.webm" mp4_src="/appendix/img/reuse-rovers.mp4" alt="Select a rover to reuse in the UI">}}
 </td>
         </tr>
     <tbody>
@@ -415,8 +415,8 @@ You will need to first register the machine learning model file with the [ML Mod
             <td width="120px"><strong>What is it?</strong></td>
             <td>
                 The code sample included for each SDK dynamically updates as resources are added to the config. We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
-{{<gif webm_src="../img/dynamic-code-sample.webm" mp4_src="../img/dynamic-code-sample.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
-{{<gif webm_src="../img/example-output-try-viam.webm" mp4_src="../img/example-output-try-viam.mp4" alt="Example output from running the example code used in the Try Viam experience">}}
+{{<gif webm_src="/appendix/img/dynamic-code-sample.webm" mp4_src="/appendix/img/dynamic-code-sample.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
+{{<gif webm_src="/appendix/img/example-output-try-viam.webm" mp4_src="/appendix/img/example-output-try-viam.mp4" alt="Example output from running the example code used in the Try Viam experience">}}
 </td>
         </tr>
     <tbody>
@@ -436,7 +436,7 @@ You will need to first register the machine learning model file with the [ML Mod
                 </li>
                 <li>
                     <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/teleop">Teleop Example from Github page</a>
-{{<gif webm_src="../img/teleop-example.webm" mp4_src="../img/teleop-example.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
+{{<gif webm_src="/appendix/img/teleop-example.webm" mp4_src="/appendix/img/teleop-example.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
 </li>
                 </ul>
             </td>
@@ -454,7 +454,7 @@ You will need to first register the machine learning model file with the [ML Mod
                 Users can now set up a frame system on their robot using a 3D visualizer located in the **Frame System** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
                 <ul>
                 <li>
-{{<gif webm_src="../img/frame-system-visualizer.webm" mp4_src="../img/frame-system-visualizer.mp4" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar">}}
+{{<gif webm_src="/appendix/img/frame-system-visualizer.webm" mp4_src="/appendix/img/frame-system-visualizer.mp4" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar">}}
 </li>
                 </ul>
             </td>
@@ -489,8 +489,8 @@ You will need to first register the machine learning model file with the [ML Mod
             <td width="120px"><strong>What is it?</strong></td>
             <td>
                 We have improved the UI of the base control card to make it easier to view multiple camera streams while remotely controlling a base. When a robots config contains SLAM, we also now provide a view of the SLAM Map with a dot to indicate where the robot is currently localized within that map.
-                <img src="../img/base-control-card-ui.png" alt="Base component card UI"> </img>
-            </td>
+{{< imgproc src="/appendix/base-control-card-ui.png" alt="Base component card UI" resize="1000x" >}}
+</td>
         </tr>
     <tbody>
 </table>
@@ -548,8 +548,8 @@ All component drivers can now declare dependencies, which are used to infer the 
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>Users can now set the power of the base from the remote control UI. This sets the power percentage being sent to the motors that are driving the base which determines its overall speed.
-            <img src="../img/base-power-control.png" alt="Base power control in the UI"> </img>
-            </td>
+{{<imgproc src="/appendix/base-power-control.png" alt="Base power control in the UI" resize="400x" >}}
+</td>
         </tr>
     <tbody>
 </table>

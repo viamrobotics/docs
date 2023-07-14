@@ -4,7 +4,7 @@ linkTitle: "join_color_depth"
 weight: 39
 type: "docs"
 description: "Combine and align the streams of a color and a depth camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -23,7 +23,7 @@ Enter a name for your camera, select the type `camera`, and select the `join_col
 
 Click **Create component**.
 
-![Configuration of a join color depth view in the Viam app config builder.](../img/configure-join-color-depth.png)
+{{< imgproc src="/components/camera/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

@@ -19,42 +19,13 @@
 	{{ if ne .Params.no_list true}}
 
 	{{ $pages := union .Sections .Pages }}
-
 	  <div id="archive" class="card-container">
-		<div class="row">
+		<div class="row-no-margin">
 		  {{ range sort $pages ".Weight"}}
-			<div class="col hover-card">
-			  <a href="{{.RelPermalink}}">
-				{{ if .Params.webmSrc }}
-				  <video autoplay loop muted playsinline alt="{{ .Params.videoAlt }}" width="100%" class="lozad">
-					<source data-src="{{relURL (substr .Params.webmSrc 1) }}" type="video/webm">
-					<source data-src="{{relURL (substr .Params.mp4Src 1) }}" type="video/mp4">
-					There should have been a video here but your browser does not seem
-					to support it.
-				  </video>
-				  {{ end }}
-				{{ if .Params.image }}
-				<div class="hover-card-img" {{ if .Params.style }}style="{{ .Params.style }}"{{ end }}>
-					<img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
-				</div>
-				{{ end }}
-				{{ if .Params.icon }}
-				<div class="hover-card-icon">
-					<img src="{{relURL (substr .Params.icon 1)}}" loading="lazy" alt="{{ .Params.linkTitle }}" width="100%" />
-				</div>
-				{{ end }}
-				<div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
-    				<h4>
-					{{ if .Params.title_overwrite }} {{ .Params.title_overwrite }} {{ else }} {{ if .LinkTitle }} {{ .LinkTitle }} {{ else }} Untitled {{ end }} {{ end }}
-					</h4>
-					<p>{{ if .Description }} {{ .Description }} {{ else }}  {{ end }}</p>
-				</div>
-			</a>
-			</div>
+		  	{{ partial "card.html" (dict "link" (.RelPermalink) "class" "" "customTitle" "" "customDescription" "" ) }}
 		  {{ end }}
 		</div>
 	  </div>
-
 	  <br>
 	  <br>
 	  <div>

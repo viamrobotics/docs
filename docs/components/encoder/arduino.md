@@ -3,7 +3,7 @@ title: "Configure an arduino encoder"
 linkTitle: "arduino"
 type: "docs"
 description: "Configure an arduino encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 draft: true
 # SMEs: Rand
@@ -18,7 +18,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `arduin
 
 Click **Create component**.
 
-![Configuration of an Arduino encoder in the Viam app config builder.](../img/configure-arduino.png)
+{{< imgproc src="/components/encoder/configure-arduino.png" alt="Configuration of an Arduino encoder in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

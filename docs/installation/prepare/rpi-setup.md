@@ -4,9 +4,9 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "Image a Raspberry Pi to prepare it for viam-server installation."
-image: "/installation/img/thumbnails/raspberry-pi-4-b-2gb.png"
+image: "installation/thumbnails/raspberry-pi-4-b-2gb.png"
 imageAlt: "Raspberry Pi"
-iamges: ["/installation/img/thumbnails/raspberry-pi-4-b-2gb.png"]
+images: ["/installation/thumbnails/raspberry-pi-4-b-2gb.png"]
 no_list: true
 aliases:
     - /getting-started/rpi-setup/
@@ -27,7 +27,7 @@ To check whether the Linux installation on your Raspberry Pi is 64-bit (required
 
 Example output:
 
-![Screenshot of a terminal running the "lscpu" command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads "Architecture: aarch64."](../../img/rpi-setup/lscpu-output.png)
+{{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true >}}
 
 If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [installing `viam-server`](../../#install-viam-server).
 
@@ -46,24 +46,24 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
 1. Download the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and launch it.
 
-    ![Raspberry Pi Imager launcher window showing a "Choose OS" and "Choose Storage" buttons.](../../img/rpi-setup/imager-launch-screen.png)
+    {{< imgproc alt="Raspberry Pi Imager launcher window showing a 'Choose OS' and 'Choose Storage' buttons." src="/installation/rpi-setup/imager-launch-screen.png" resize="800x" declaredimensions=true >}}
 
 2. Select `CHOOSE OS`.
    Click on `Raspberry Pi OS (other)`.
-   ![Raspberry Pi Imager window showing "Raspberry Pi OS (Other) is selected.](../../img/rpi-setup/select-other-custom-os.png)
+   {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
    Select `Raspberry Pi OS Lite (64-bit)` from the  menu.
-   ![Raspberry Pi Imager window showing "Raspberry Pi OS Lite (64-bit)" is selected.](../../img/rpi-setup/select-other-rpi.png)
+   {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected." src="/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
    You should be brought back to the initial launch screen.
 3. To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
    Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
 
-   ![Raspberry Pi Imager window showing gear-shaped settings icon is selected.](../../img/rpi-setup/advanced-options.png)
+   {{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options.png" resize="800x" declaredimensions=true >}}
 
    {{% alert title="Important" color="note" %}}
    If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
    {{% /alert %}}
 
-   ![Raspberry Pi Imager window showing the advanced options menu.](/installation/img/rpi-setup/imager-set-hostname.png)
+   {{< imgproc alt="Raspberry Pi Imager window showing the advanced options menu." src="/installation/rpi-setup/imager-set-hostname.png" resize="800x" declaredimensions=true >}}
 
    Check `Set hostname` and enter the name you would like to access the Pi by in that field.
 
@@ -76,12 +76,12 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
    If this section is empty, you can either generate a new SSH key using [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), or you can use password authentication instead.
 
-   ![Raspberry Pi Imager window showing "Set Hostname" and "Enable SSH" both selected.](/installation/img/rpi-setup/imager-set-ssh.png)
+   {{< imgproc alt="Raspberry Pi Imager window showing 'Set Hostname' and 'Enable SSH' both selected." src="/installation/rpi-setup/imager-set-ssh.png" resize="800x" declaredimensions=true >}}
 
    If you decide to use the password authentication method: click on `Use password authentication`.
    If you scroll down, you have the option to change the username, then to set a password:
 
-   ![Raspberry Pi Imager window showing the "Set username and password" option is selected.](/installation/img/rpi-setup/imager-set-passwordauthentication.png)
+   {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected." src="/installation/rpi-setup/imager-set-passwordauthentication.png" resize="800x" declaredimensions=true >}}
 
     {{% alert title="Tip" color="tip" %}}
 Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
@@ -102,35 +102,36 @@ In the past, malware infected thousands of Raspberry Pi devices that were using 
     Check `Configure wireless LAN` and enter your wireless network credentials.
     SSID (short for Service Set Identifier) is your Wi-Fi network name, and password is the network password.
     Change the section `Wireless LAN country` to where your router is currently being operated and then hit save:
-    ![Raspberry Pi Imager window showing the "Configure wireless LAN" option selected with SSID and password information for a wireless network.](../../img/rpi-setup/imager-set-wifi.png)
+
+    {{< imgproc alt="Raspberry Pi Imager window showing the 'Configure wireless LAN' option selected with SSID and password information for a wireless network." src="/installation/rpi-setup/imager-set-wifi.png" resize="800x" declaredimensions=true >}}
 
     This should return you to the initial screen.
 
 4. Now you need to pick your storage medium, so click `CHOOSE STORAGE`:
 
-    ![Raspberry Pi Imager window showing the main page, and the "Choose Storage" button is selected.](../../img/rpi-setup/imager-selected-os.png)
+    {{< imgproc alt="Raspberry Pi Imager window showing the main page, and the 'Choose Storage' button is selected." src="/installation/rpi-setup/imager-selected-os.png" resize="800x" declaredimensions=true >}}
 
     You may have many devices listed, select the microSD card you intend to use in your Raspberry Pi.
     If this page is blank and you do not have any listed, make sure your microSD card is connected to your computer correctly:
 
-    ![The storage screen is shown with a generic SD card available as an option.](../../img/rpi-setup/imager-select-storage.png)
+    {{< imgproc alt="The storage screen is shown with a generic SD card available as an option." src="/installation/rpi-setup/imager-select-storage.png" resize="800x" declaredimensions=true >}}
 
 5. After clicking save, double check your OS and Storage settings and then click `WRITE`:
 
-    ![A warning is shown that says "All existing data on the SD card will be erased. Are you sure that you want to continue?"](../../img/rpi-setup/imager-write-confirm.png)
+    {{< imgproc alt="A warning is shown that says All existing data on the SD card will be erased. Are you sure that you want to continue?" src="/installation/rpi-setup/imager-write-confirm.png" resize="800x" declaredimensions=true >}}
 
     You will be prompted to confirm erasing your microSD card: select `YES`.
     You may also be prompted by your operating system to enter an Administrator password:
 
-    ![macOS admin password confirmation screen.](../../img/rpi-setup/imager-permission.png)
+    {{< imgproc alt="macOS admin password confirmation screen." src="/installation/rpi-setup/imager-permission.png" resize="800x" declaredimensions=true >}}
 
     After granting permissions to the Imager, it will begin writing and then verifying the Linux installation to the MicroSD card:
 
-    ![The Raspberry Pi Imager will display information on the status of the write.](../../img/rpi-setup/imager-writing.png)
+    {{< imgproc alt="The Raspberry Pi Imager will display information on the status of the write." src="/installation/rpi-setup/imager-writing.png" resize="800x" declaredimensions=true >}}
 
     Remove the microSD card from your computer when it is complete:
 
-    ![You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully."](../../img/rpi-setup/imager-done.png)
+    {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully." src="/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
 
 6. Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
@@ -175,7 +176,7 @@ sudo raspi-config
 
 Use your keyboard to select "Interface Options" and enable the relevant protocols.
 
-![Screenshot of the Raspi Config screen with a red box and red arrow pointing to the "3 Interface Options" option where you can find the I2C and other drivers](../../img/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png)
+{{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
 
 {{< alert title="Important" color="note" >}}
 When using a CSI camera, you need to enable legacy camera support.

@@ -4,7 +4,7 @@ linkTitle: "single-axis"
 weight: 70
 type: "docs"
 description: "Configure a single-axis gantry."
-images: ["/components/img/components/gantry.svg"]
+images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
     - "/components/gantry/oneaxis/"
@@ -22,7 +22,7 @@ Enter a name for your sensor, select the type `gantry`, and select the `single-a
 
 Click **Create component**.
 
-![Creation of a single-axis gantry component in the Viam app config builder.](../img/single-axis-ui-config.png)
+{{< imgproc src="/components/gantry/single-axis-ui-config.png" alt="Creation of a single-axis gantry component in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

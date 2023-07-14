@@ -4,7 +4,7 @@ linkTitle: "rtk-station"
 weight: 10
 type: "docs"
 description: "Configure an experimental RTK correction source to use with an RTK-ready GPS."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
@@ -33,7 +33,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**
 
-![Creation of a `rtk-station` movement sensor in the Viam app config builder.](../../img/rtk-station-builder.png)
+{{< imgproc src="/components/movement-sensor/rtk-station-builder.png" alt="Creation of a `rtk-station` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 

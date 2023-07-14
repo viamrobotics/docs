@@ -4,7 +4,7 @@ linkTitle: "APIs"
 weight: 20
 type: "docs"
 description: "Access and control your robot or fleet with the SDKs' client libraries for the resource and robot APIs."
-icon: "/services/img/icons/sdk.svg"
+icon: "/services/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - "/program/sdks/"
@@ -25,19 +25,20 @@ In the other SDKs, resource APIs implement but do not inherit these base require
 
 ### FromRobot
 
-Get the `"name"` of a resource.
+Get a resource configured on a robot by `"name"`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
+- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `name` of the resource.
 
 **Returns:**
 
-- `robot` [(RobotClient)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): The robot.
-- `name` [(str)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The "name" of the resource.
+- [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your robot.
+For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ``` python
 my_arm = Arm.from_robot(robot, "my_arm")
@@ -55,7 +56,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): Your named resource. For example, an [Arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): The named resource if it exists on your robot.
+For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 my_arm = arm.FromRobot(robot, "my_arm")
@@ -77,7 +79,8 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 
 **Returns:**
 
-- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): Your named resource. For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your robot.
+For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript
 const myArmClient = new VIAM.ArmClient(robot, "my_arm");
@@ -204,6 +207,7 @@ The arm component supports the following methods:
 | [JointPositions](/components/arm/#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](/components/arm/#stop) | Stop the arm from moving. |
 | [IsMoving](/components/arm/#ismoving) | Get if the arm is currently moving. |
+| [Kinematics](/components/arm/#kinematics) | Get the kinematics information associated with the arm. |
 | [DoCommand](/components/arm/#docommand) | Send or receive model-specific commands. |
 
 ### Base
@@ -325,6 +329,37 @@ These APIs provide interfaces for controlling and getting information from the s
 Built-in API methods are defined for each service implementation.
 Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
 
+### Base Remote Control
+
+Method Name | Description
+----------- | -----------
+[`Close`](/services/base-rc/#close) | Close out of all remote control related systems.
+[`ControllerInputs`](/services/base-rc/#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
+
+### Data Manager
+
+Method Name | Description
+----------- | -----------
+[`Sync`](/services/data/#sync) | Sync data stored on the robot to the cloud.
+
+### Navigation
+
+Method Name | Description
+----------- | -----------
+[`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
+[`SetMode`](/services/navigation/#setmode) | Set the mode the service is operating in.
+[`Location`](/services/navigation/#location) | Get the current location of the robot.
+[`Waypoints`](/services/navigation/#waypoints) | Get an array of waypoints currently in the service's data storage.
+[`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
+[`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
+
+### Sensors
+
+Method Name | Description
+----------- | -----------
+[`Sensors`](/services/sensors/#sensors) | Returns a list of names of the available sensors.
+[`Readings`](/services/sensors/#readings) | Returns a list of readings from a given list of sensors.
+
 ### Motion
 
 Method Name | Description
@@ -337,9 +372,10 @@ Method Name | Description
 
 Method Name | Description
 ----------- | -----------
-`Position` | Get current position of the specified component in the SLAM Map.
-`PointCloudMap`| Get the point cloud map.
-`InternalState` | Get the internal state of the SLAM algorithm required to continue mapping/localization.
+[`GetPosition`](/services/slam/#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
+[`GetPointCloudMap`](/services/slam/#getpointcloudmap) | Get the point cloud SLAM map.
+[`GetInternalState`](/services/slam/#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
+[`GetLatestMapInfo`](/services/slam/#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
 
 ### MLModel
 

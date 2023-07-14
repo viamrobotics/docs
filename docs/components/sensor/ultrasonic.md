@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 description: "Configure an ultrasonic model sensor."
 tags: ["sensor", "components"]
-icon: "/components/img/components/sensor.svg"
-images: ["/components/img/components/sensor.svg"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
@@ -21,7 +21,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `ultrason
 
 Click **Create component**.
 
-![Creation of a ultrasonic sensor in the Viam app config builder.](../img/ultrasonic-sensor-ui-config.png)
+{{< imgproc src="/components/sensor/ultrasonic-sensor-ui-config.png" alt="Creation of a ultrasonic sensor in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

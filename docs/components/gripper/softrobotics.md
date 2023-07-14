@@ -4,7 +4,7 @@ linkTitle: "softrobotics"
 weight: 30
 type: "docs"
 description: "Configure a Soft Robotics gripper."
-images: ["/components/img/components/gripper.svg"]
+images: ["/icons/components/gripper.svg"]
 ---
 
 The `softrobotics` model supports the [Soft Robotics *m*Grip](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) gripper controlled by the [Soft Robotics *co*Drive Control Unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf).
@@ -18,7 +18,7 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
 
 Click **Create component**.
 
-![Creation of a softrobotics gripper component in the Viam app config builder.](../img/softrobotics-ui-config.png)
+{{< imgproc src="/components/gripper/softrobotics-ui-config.png" alt="Creation of a softrobotics gripper component in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

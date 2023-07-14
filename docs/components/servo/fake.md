@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a fake servo."
 tags: ["servo", "components"]
-icon: "img/components/servo.png"
+icon: "/icons/components/servo.svg"
 # SME: Rand
 ---
 
@@ -22,7 +22,7 @@ Enter a name for your servo, select the type `servo`, and select the `fake` mode
 
 Click **Create component**:
 
-![An example configuration for a fake servo in the Viam app Config Builder.](../img/fake-servo-ui-config.png)
+{{< imgproc src="/components/servo/fake-servo-ui-config.png" alt="An example configuration for a fake servo in the Viam app Config Builder." resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

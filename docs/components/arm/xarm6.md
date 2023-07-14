@@ -4,7 +4,7 @@ linkTitle: "xArm6"
 weight: 34
 type: "docs"
 description: "Configure a UFACTORY xArm 6 into your robot."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
@@ -20,7 +20,7 @@ Enter a name for your arm, select the type `arm`, and select the `xArm6` model.
 
 Click **Create component**.
 
-![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/xArm6-ui-config.png)
+{{< imgproc src="/components/arm/xArm6-ui-config.png" alt="Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

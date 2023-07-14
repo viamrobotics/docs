@@ -5,8 +5,10 @@ childTitleEndOverwrite: "Try Viam"
 weight: 20
 no_list: true
 type: docs
-icon: "/installation/img/thumbnails/install.png"
-images: ["/installation/img/thumbnails/install.png"]
+image: "/installation/thumbnails/install.png"
+imageAlt: "Install Viam"
+images: ["/installation/thumbnails/install.png"]
+description: "To use Viam software with your robot, install and run the viam-server binary on the computer that you want to use to control the robot."
 aliases:
     - /installation/prepare/
     - /installation/macos-install/
@@ -19,181 +21,96 @@ aliases:
     - /getting-started/linux-install/
 ---
 
-To use Viam software with your robot, you need to install and run a binary called `viam-server` on the computer you want to use to control the robot.
-See [What is Viam?](/viam/) for more information.
+To use Viam software with your robot, install and run the `viam-server` binary on the computer that you want to use to control the robot.
+In most cases, this will be a [single board computer (SBC)](#install-on-a-single-board-computer), like a Raspberry Pi, but you can also install `viam-server` on a [macOS or Linux computer](#install-on-a-macos-or-linux-computer).
 
-## Preparation
+For an overview of the Viam software platform, see [Viam in 3 minutes](/viam/).
 
-Make sure your system is compatible with Viam.
-You can run `viam-server` on any device that runs:
+## Install on a single board computer
 
-- **any** Linux 64-bit operating system (except FUSE)
-- macOS
+### Prepare your board
 
-<div class="container text-left td-max-width-on-larger-screens">
-    <div class="row">
-        <img src="img/thumbnails/pc.png" style="max-width:100px" alt="Desktop computer">
-        <div class="col">
-            <p> If you plan to run <code>viam-server</code> on your laptop or desktop with a Linux or Mac operating system, no special prep is required. Proceed to <a href="#install-viam-server">Install <code>viam-server</code></a>. </p>
-        </div>
-    </div>
-</div>
-
-<br>
-
-If you are using a single board computer (SBC) or a microcontroller, prepare your device by following the relevant setup document:
+If you haven't already, you must install a supported operating system on your {{< glossary_tooltip term_id="board" text="board" >}} (SBC).
+`viam-server` supports Linux 64-bit operating systems running on the `aarch64` or `x86_64` architectures.
+If you are using one of the following boards, you can follow our guide for that board to prepare it for installation:
 
 {{< cards >}}
-{{% card link="/installation/prepare/rpi-setup/" size="xs" %}}
-{{% card link="/installation/prepare/beaglebone-setup/" size="xs" %}}
-{{% card link="/installation/prepare/sk-tda4vm/" size="xs" %}}
-{{% card link="/installation/prepare/jetson-nano-setup/" size="xs" %}}
-{{% card link="/installation/prepare/jetson-agx-orin-setup/" size="xs" %}}
-{{% card link="/installation/prepare/microcontrollers" size="xs" %}}
+{{% card link="/installation/prepare/rpi-setup/" class="small" %}}
+{{% card link="/installation/prepare/beaglebone-setup/" class="small" %}}
+{{% card link="/installation/prepare/sk-tda4vm/" class="small" %}}
+{{% card link="/installation/prepare/jetson-nano-setup/" class="small" %}}
+{{% card link="/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
+{{% card link="/installation/prepare/microcontrollers" class="small" %}}
 {{< /cards >}}
 
-## Install `viam-server`
+Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
+
+### Install `viam-server`
+
+Once you have a compatible operating system on your board, follow along with the video below or walk through the steps outlined beneath it to install `viam-server` on your board:
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
 
-Once you have a compatible operating system on your computer, you are ready to install `viam-server`.
+#### Installation steps
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
-   If this is your first time using the Viam app, you first need to create an account.
-2. Click the **Setup** tab on your robot page.
-3. Select the **Mode** and **Architecture** settings for your device.
-4. Follow the steps on the **Setup** tab to install `viam-server`.
-   Also detailed in [Detailed Installation Instructions](#detailed-installation-instructions).
+   If this is your first time using the Viam app, you must create an account first.
 
-### Detailed Installation Instructions
+1. On the **Setup** tab, select `Linux` for **Mode** and select the appropriate **Architecture** for your board.
+   On most Linux operating systems, you can run `uname -m` to confirm your board's architecture.
 
-{{< tabs name="Detailed Installation Instructions" >}}
-{{% tab name="Linux"%}}
+1. Follow the steps shown on the **Setup** tab to install `viam-server` on your board.
 
-`viam-server` is distributed as an AppImage.
-The AppImage is a single, self-contained binary that runs on any 64-bit Linux system (except FUSE), with no need to install any dependencies.
+1. Once `viam-server` is installed and running on your board, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your robot has successfully connected.
 
-1. **Download the Viam app config to your computer.** `viam-server` uses this config file to connect to app.viam.com.
-   This connection allows the robot to pull its full configuration information and allows you to monitor and control your robot from the Viam app.
-   Download your robot's config file from the **Setup** tab of your robot on the Viam app. </li>
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
 
-<!-- The below has to be in HTML because we're using a table inside another table with indentation-->
-<ol start="2">
-<li> <strong>Download and install <code>viam-server</code>.</strong>
+## Install on a macOS or Linux computer
 
-   Run `viam-server` locally on your Mac with the config you just downloaded.
-   Replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
+You can also install `viam-server` on a macOS or Linux computer.
+This is useful if you don't have a board available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than is otherwise available on an SBC.
+Select the tab below for your operating system:
 
-   To determine the CPU architecture (x86_64 or aarch64) of your device, run `uname -m` on the command line.
-   Raspberry Pi and Jetson boards are aarch64 and most desktops and laptops are x86_64.
+{{< tabs name="Install on computer" >}}
+{{% tab name="macOS computer" %}}
 
-{{< tabs name="different-architectures" >}}
-{{% tab name="Aarch64"%}}
+### Install on a macOS computer
 
-Stable:
+`viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation), and supports both Intel and Apple Silicon macOS computers.
+To install `viam-server` on a macOS computer:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server &&
-  chmod 755 viam-server && sudo ./viam-server --aix-install
-```
+1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
+   If this is your first time using the Viam app, you must create an account first.
 
-Latest:
+1. On the **Setup** tab, select `Mac` for **Mode**.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage -o viam-server &&
-  chmod 755 viam-server && sudo ./viam-server --aix-install
-```
+1. Follow the steps shown on the **Setup** tab to install `viam-server` on your macOS computer.
+
+1. Once `viam-server` is installed and running, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your computer has successfully connected.
 
 {{% /tab %}}
-{{% tab name="X86_64"%}}
+{{% tab name="Linux computer" %}}
 
-Stable:
+### Install on a Linux computer
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server &&
-  chmod 755 viam-server && sudo ./viam-server --aix-install
-```
+`viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
+The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
+To install `viam-server` on a Linux computer:
 
-Latest:
+1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
+   If this is your first time using the Viam app, you must create an account first.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-x86_64.AppImage -o viam-server &&
-  chmod 755 viam-server && sudo ./viam-server --aix-install
-```
+1. On the **Setup** tab, select `Linux` for **Mode** and select the appropriate **Architecture** for your computer.
+   On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
+
+1. Follow the steps shown on the **Setup** tab to install `viam-server` on your Linux computer.
+
+1. Once `viam-server` is installed and running, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your computer has successfully connected.
+
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-If you do not want to run `viam-server` as a service, you can also [run it manually as a binary](#start-manually-from-the-command-line).
-
-</li>
-</ol>
-
-3. **Connect and configure.** Go to the **Setup** page on the Viam app and wait for confirmation that your robot has successfully connected.
-
-{{% /tab %}}
-{{% tab name="macOS"%}}
-
-`viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation).
-
-1. **Install `viam-server` on your Mac**
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   brew tap viamrobotics/brews && brew install viam-server
-   ```
-
-2. **Download the Viam app config to your Mac.** `viam-server` uses this config file to connect to app.viam.com.
-   This connection allows the robot to pull its full configuration information and allows you to monitor and control your robot from the Viam app.
-   Download your robot's config file from the **Setup** tab of your robot on the Viam app.
-
-3. **Start `viam-server` on your Mac.** Run `viam-server` locally on your Mac with the config you just downloaded.
-   Replace `<YOUR_ROBOT_NAME>` with the name of your robot from the Viam app.
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam-server -config ~/Downloads/viam-<YOUR_ROBOT_NAME>-main.json
-   ```
-
-4. **Connect and configure.** Go to the **Setup** page on the Viam app and wait for confirmation that your robot has successfully connected.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Starting `viam-server` on Linux
-
-To run `viam-server`, you have two options:
-
-#### Start manually from the command line
-
-To run `viam-server` directly from the command line, you can use the following command, replacing "myconfig" with the name of your configuration file.
-`sudo` is necessary on some devices to access hardware.
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo ./viam-server -config myconfig.json
-```
-
-#### Start automatically on boot
-
-If you install `viam-server` as a system service, `viam-server` starts automatically every time you boot your device.
-Note that this is the default way `viam-server` is set up if you follow the **Setup** tab instructions on the [Viam app](https://app.viam.com).
-
-For this setup your configuration file must be at <file>/etc/viam.json</file>.
-
-The following command creates a systemd service file at <file>/etc/systemd/system/viam-server.service</file> and sets it to start on boot, using a config placed at <file>/etc/viam.json</file>.
-It will also move the actual binary (AppImage) to <file>/usr/local/bin/viam-server</file> (regardless of the previous filename).
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo ./viam-server --aix-install
-```
-
-Start the service by running:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo systemctl start viam-server
-```
-
-The service is an AppImage and will check for updates and self-update automatically each time the service is started.
-Self-updates can take a couple of minutes, so the service may sometimes take a moment to start while this runs.
-You can disable this by commenting out the ExecPre line (the one with --aix-update on it) in the service file.
 
 ## Next Steps
 

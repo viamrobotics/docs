@@ -177,7 +177,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
-![adding orbslam3 slam service](/services/slam/img/run_slam/add-orbslam-service-ui.png)
+![adding orbslam3 slam service](/services/slam/add-orbslam-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 

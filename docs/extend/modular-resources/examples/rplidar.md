@@ -4,9 +4,9 @@ linkTitle: "RPlidar"
 weight: 40
 type: "docs"
 description: "How to add an RPlidar as a modular resource of your robot."
-image: "/program/img/modular-resources/rplidar-on-robot.png"
+image: "/program/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
-images: ["/program/img/modular-resources/rplidar-on-robot.png"]
+images: ["/program/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services", "modular resources", "lidar", "rplidar"]
 aliases:
   - "/program/extend/modular-resources/add-rplidar-module/"
@@ -56,7 +56,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Componen
 
 Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of your choice:
 
-![adding rplidar component](../../img/add-rplidar/add-rplidar-component-ui.png)
+{{< imgproc src="/extend/modular-resources/add-rplidar/add-rplidar-component-ui.png" alt="adding rplidar component" resize="1000x" >}}
 
 Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux):
 
@@ -87,13 +87,13 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 {{< tabs name="Add Rplidar Component Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
-![adding rplidar module linux](../../img/add-rplidar/add-rplidar-module-ui-linux.png)
+{{< imgproc src="/extend/modular-resources/add-rplidar/add-rplidar-module-ui-linux.png" alt="adding rplidar module linux" resize="1000x" >}}
 
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-![adding rplidar module M1 M2](../../img/add-rplidar/add-rplidar-module-ui-M1-M2.png)
+{{< imgproc src="/extend/modular-resources/add-rplidar/add-rplidar-module-ui-M1-M2.png" alt="adding rplidar module M1 M2" resize="1000x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}

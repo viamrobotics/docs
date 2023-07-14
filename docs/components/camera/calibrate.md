@@ -4,7 +4,7 @@ linkTitle: "Calibrate a Camera"
 weight: 80
 type: "docs"
 description: "Calibrate a camera and extract the intrinsic and distortion parameters."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 ---
 
@@ -36,7 +36,7 @@ pip3 install opencv-python
    {{< /alert >}}
 
    Example of good images:
-   ![Example of good images](../img/calibrate/ExampleImages.png)
+   {{< imgproc src="/components/camera/calibrate/ExampleImages.png" alt="Example of good images" resize="1000x" >}}
 
 3. Save [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
 4. Run `python3 cameraCalib.py YOUR_PICTURES_DIRECTORY`.
@@ -63,7 +63,7 @@ pip3 install opencv-python
 
 5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the Raw JSON config on your robot's **Config** tab.
 
-<img src="../img/camera_tutorial_copy_paste.png" alt="Config tab with configuration snippet highlighted" width="800px">
+{{<imgproc src="/components/camera/camera_tutorial_copy_paste.png" resize="800x" declaredimensions=true alt="Config tab with configuration snippet highlighted">}}
 
 The following is a full example config:
 

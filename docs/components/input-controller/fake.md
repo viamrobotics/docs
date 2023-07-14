@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 30
 type: "docs"
 description: "Configure a fake input controller for testing."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -26,7 +26,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your input controller, select the type `input_controller`, and select the `fake` model.
 Click **Create component**.
 
-![An example configuration for a fake input controller component in the Viam App config builder.](../img/fake-input-controller-ui-config.png)
+{{< imgproc src="/components/input-controller/fake-input-controller-ui-config.png" alt="An example configuration for a fake input controller component in the Viam App config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

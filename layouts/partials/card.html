@@ -1,0 +1,48 @@
+{{ $class := .class }}
+{{ $customTitle := .customTitle }}
+{{ $customDescription := .customDescription }}
+{{ $link := (path.Clean (.link)) }}
+{{ $baseurl := .Site.BaseURL }}
+{{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
+  {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
+{{ end }}
+<div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
+  {{ if site.GetPage ((relURL $link) | string) }}
+    {{ with site.GetPage ((relURL $link) | string) }}
+      <a href="{{.RelPermalink}}">
+        {{ if .Params.webmSrc }}
+        <div class="hover-card-video">
+					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "lozad" ) }}
+        </div>
+        {{ end }}
+        {{ if .Params.image }}
+          <div class="hover-card-img">
+            {{ $img := resources.GetMatch .Params.image }}
+            {{if $img }}
+              {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+            {{ else }}
+              <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
+            {{end}}
+          </div>
+        {{ end }}
+				{{ if .Params.icon }}
+				<div class="hover-card-icon">
+					{{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "400x" "alt" (.Params.linkTitle) "style" "") }}
+				</div>
+				{{ end }}
+        <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
+          {{ if $customTitle }}
+            <div>{{ $customTitle }}</div>
+          {{ else }}
+            <div>{{ .LinkTitle }}</div>
+          {{ end }}
+          {{ if ne $class "small" }}
+          <p> {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }} </p>
+          {{ end }}
+        </div>
+      </a>
+      {{ end }}
+  {{ else }}
+  <a href="{{ (relURL $link) }}">This is a bug. Card has a bad link.</a>
+  {{ end }}
+</div>

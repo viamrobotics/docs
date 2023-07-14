@@ -4,7 +4,7 @@ linkTitle: "webcam"
 weight: 33
 type: "docs"
 description: "Configure a standard camera that streams camera data."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `webcam` 
 
 Click **Create component**.
 
-![Configuration of a webcam camera in the Viam app config builder.](../img/configure-webcam.png)
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.

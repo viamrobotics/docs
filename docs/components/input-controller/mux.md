@@ -4,7 +4,7 @@ linkTitle: "mux"
 weight: 30
 type: "docs"
 description: "Configure a mux input controller to combine one or more input controllers."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -30,7 +30,7 @@ Enter a name for your input controller, select the type `input_controller`, and 
 
 Click **Create component**.
 
-![An example configuration for a multiplexed input controller component in the Viam App config builder](../img/mux-input-controller-ui-config.png)
+{{< imgproc src="/components/input-controller/mux-input-controller-ui-config.png" alt="An example configuration for a multiplexed input controller component in the Viam App config builder" resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

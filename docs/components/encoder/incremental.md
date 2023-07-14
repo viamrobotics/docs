@@ -3,7 +3,7 @@ title: "Configure an incremental encoder"
 linkTitle: "incremental"
 type: "docs"
 description: "Configure an incremental encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---
@@ -22,7 +22,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `increm
 
 Click **Create component**.
 
-![Configuration of an incremental encoder in the Viam app config builder.](../img/configure-incremental.png)
+{{< imgproc src="/components/encoder/configure-incremental.png" alt="Configuration of an incremental encoder in the Viam app config builder." resize="1000x" >}}
 
 Fill in and edit the attributes as applicable.
 

@@ -4,7 +4,7 @@ linkTitle: "transform"
 weight: 60
 type: "docs"
 description: "Instructions for transforming a camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `transfor
 
 Click **Create component**.
 
-![Configuration of an transform view in the Viam app config builder.](../img/configure-transform.png)
+{{< imgproc src="/components/camera/configure-transform.png" alt="Configuration of an transform view in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

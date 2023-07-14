@@ -20,7 +20,7 @@ The corner of the room is (0, 0, 0).
 
 To configure the camera into the frame system, you need to know where in the room the camera is, and where it's pointing.
 
-![A camera in a 3D space](../img/vector/orientation-vector-camera.png)
+{{< imgproc src="/internals/vector/orientation-vector-camera.png" alt="A camera in a 3D space" resize="1000x" >}}
 
 **(OX, OY, OZ)** are defined by measurements starting from the corner of the room to the camera:
 

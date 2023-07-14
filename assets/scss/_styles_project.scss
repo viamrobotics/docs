@@ -451,8 +451,21 @@ END MARKETING CSS
 }
 
 // images in hover cards at the top have a margin before text
-.hover-card > a > .hover-card-img {
+.hover-card > a > .hover-card-img, .hover-card > a > .hover-card-icon {
   margin-bottom: 1rem;
+}
+
+// Adjust font size
+
+.hover-card > a div > div, .hover-card > div > div {
+  font-size: 1.0625rem!important;
+  font-weight: 600;
+  line-height: 1.4375em;
+  color: black;
+}
+
+.hover-card > div > div {
+  margin-bottom: 0.5rem;
 }
 
 // For some reason video elements don't calculate the height correctly. This adjusts for that.
@@ -464,8 +477,7 @@ END MARKETING CSS
   padding-bottom: 7px;
 }
 
-
-.hover-card > img, .hover-card * video, .hover-card * .hover-card-img > img, .hover-card * .hover-card-icon > img, .hover-card.landing > .hover-card-img > img {
+.hover-card * img, .hover-card * video {
   object-fit: cover;
   width: 100%;
   max-width: 100%;
@@ -474,16 +486,47 @@ END MARKETING CSS
   border: 1px solid black;
 }
 
+.hover-card * .hover-card-icon * img {
+  object-fit: contain;
+}
+
 // Sizes and types
 
-// Tiny hover card with no text
+// Tiny hover card with only title which stays similarly formatted on mobile
 
 @media (max-width: 650px) {
-  .hover-card.xs {
-    min-width: 40%;
-    width: 40%;
-    max-width: 40%;
+  .hover-card.small {
+    min-width: 125px;
+    max-width: 28%;
   }
+  .hover-card.small > a div.small-hover-card-div > div {
+    font-size: 0.833rem !important;
+  }
+}
+
+.hover-card.small {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.hover-card.small > a {
+  flex-direction: column;
+  padding-right: 0;
+}
+
+.hover-card.small > a > .hover-card-img {
+  padding-right: 0;
+  max-width: 100%;
+}
+
+.hover-card.small * img {
+  object-fit: contain;
+}
+
+.hover-card.small > a div.small-hover-card-div {
+  margin-top: 0.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 // Hover card which turns into a small one on mobile with image on the left
@@ -553,8 +596,13 @@ END MARKETING CSS
       flex: 1;
     }
 
+    .hover-card-video > div {
+      margin-bottom: -6px;
+    }
+
     .hover-card-icon {
       max-width: 30%;
+      min-width: 30%;
       margin: 0 1rem 1rem 0;
       margin: auto;
       padding-right: 1rem;
@@ -587,7 +635,8 @@ END MARKETING CSS
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
  margin: 0.1rem;
- font-size: 0.833rem;
+ font-size: 0.833rem !important;
+ font-weight: 400 !important;
 }
 
 .hover-card.tutorial * .pill.pill-lang {
@@ -889,7 +938,10 @@ td > ul, td > ol {
 
 .td-content > .code-toolbar,
 .td-content > .table,
-.td-content > div {
+.td-content > div,
+.td-content > img,
+.td-content > picture,
+.td-content > picture > img {
   @include media-breakpoint-up(lg) {
       max-width: 80%;
   }
@@ -901,9 +953,16 @@ ul.sectionlist {
   padding: 0;
 }
 
-ul.sectionlist > a > li {
-  width: 100%;
+ul.sectionlist > li {
   list-style-type: none;
+}
+
+ul.sectionlist > li > a {
+  text-decoration: none;
+}
+
+ul.sectionlist > li > a > div {
+  width: 100%;
   padding: 0.25rem 0rem;
   display: flex;
   flex-direction: row;
@@ -911,16 +970,18 @@ ul.sectionlist > a > li {
   height: 50px;
 }
 
-ul.sectionlist > a > li > img {
+ul.sectionlist > li * img {
+  width: 45px;
+  height: 45px;
   margin: 0rem;
 }
 
-ul.sectionlist > a > li > p {
+ul.sectionlist > li * p {
   margin-left: 0.75rem;
   margin-bottom: 0;
 }
 
-ul.sectionlist > a > li:hover {
+ul.sectionlist > li:hover {
   background-color: whitesmoke;
 }
 
@@ -929,4 +990,134 @@ ul.sectionlist > a > li:hover {
   max-width: 400px;
   padding: 1rem;
   margin: 1rem;
+}
+
+.row-no-margin {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Carousel styling
+.carousel {
+  position: relative;
+}
+.carousel ul {
+  overflow: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  scroll-snap-points-y: repeat(100%);
+  scroll-behavior: smooth;
+  background: white;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+}
+.carousel ul::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+.carousel ul li {
+  position: relative;
+  min-width: 100%;
+  list-style: none;
+  background: url() center center / cover no-repeat;
+  scroll-snap-align: start;
+}
+.carousel ul li > * {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.carousel ul li > img {
+  object-fit: cover;
+}
+.carousel ul li > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.carousel ol {
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+.carousel ol li {
+  list-style: none;
+  padding: 0 5px;
+}
+.carousel ol li a {
+  display: block;
+  height: 10px;
+  width: 10px;
+  border: 2px solid white;
+  background: transparent;
+  border-radius: 100%;
+}
+.carousel ol li.selected a {
+  background: white;
+}
+.carousel .prev,
+.carousel .next {
+  display: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 50px;
+  color: black;
+  position: absolute;
+  left: 0;
+  padding: 15px 15px 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9;
+  line-height: 0;
+}
+.carousel .next {
+  left: auto;
+  right: 0;
+}
+
+#board-carousel {
+  padding: 0 1.5rem;
+  max-height: 150px;
+}
+
+#board-carousel ul {
+  max-height: 150px;
+}
+
+#board-carousel ul li {
+  min-width: 100px;
+  min-height: 130px;
+}
+
+#board-carousel ul li a {
+  text-decoration: none;
+  padding: 0rem 0.8rem;
+}
+
+#board-carousel ul li img {
+  height: 60px;
+}
+
+#board-carousel ul li a p {
+  font-size: .833rem!important;
+  line-height: 1.0625rem!important;
+  color: black;
+  font-weight: 600;
+}
+
+#board-carousel div.prev,
+#board-carousel div.next {
+  padding: 0;
+  font-size: 30px;
 }

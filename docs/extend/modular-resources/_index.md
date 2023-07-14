@@ -552,7 +552,7 @@ Add these properties to your module's configuration:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a new module in the Viam app config builder.](/program/img/modular-resources/module-ui-config.png)
+{{< imgproc src="/program/modular-resources/module-ui-config.png" alt="Creation of a new module in the Viam app config builder." resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -583,7 +583,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The subtype of the [API](#apis) (the third part of the [API](#apis) triplet). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The [full triplet](#models) of the modular resource. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board/). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. For example, a [board](/components/board/). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -654,6 +654,10 @@ With one [exception](#limitations), modular resources function like built-in res
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
 The Viam RDK handles dependency management.
 
+If you choose to rely on explicit dependencies, you'll need to add dependencies in the `depends_on` field when you configure an instance of your modular resource.
+You can instead define your module with implicit dependencies as shown in the [example code above](#code-your-module).
+See the `validate_config` and `reconfigure` functions in the Python example, or `init()` in the Go example.
+
 #### Start-up
 
 The RDK ensures that any configured modules are loaded automatically on start-up, and that configured modular resource instances are started alongside configured built-in resource instances.
@@ -681,8 +685,11 @@ This means that you can compose a robot of any number of parts running in differ
 
 Custom models of the [arm](/components/arm/) component type are not yet supported, as kinematic information is not currently exposed through the arm API.
 
+## Related tutorials
+
 {{< cards >}}
     {{% card link="/services/slam/cartographer/" %}}
-    {{% card link="/extend/modular-resources/examples/rplidar" %}}
+    {{% card link="/extend/modular-resources/examples/rplidar/" %}}
     {{% card link="/extend/modular-resources/examples/odrive" %}}
+    {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{< /cards >}}

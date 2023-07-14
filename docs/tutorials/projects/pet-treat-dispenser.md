@@ -72,7 +72,7 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 1. Prepare your 3D prints.
 The front of the main body of your print is the side with the dog bone.
 
-{{<gif webm_src="../../img/pet-treat-dispenser/3d-print-design.webm" mp4_src="../../img/pet-treat-dispenser/3d-print-design.gif" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
+{{<gif webm_src="/tutorials/img/pet-treat-dispenser/3d-print-design.webm" mp4_src="/tutorials/img/pet-treat-dispenser/3d-print-design.mp4" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
 
 2. Mount your Raspberry Pi to the side of the main body of your pet feeder using the provided mounting screw holes.
 1. Connect your power source to the Pi through the side hole.

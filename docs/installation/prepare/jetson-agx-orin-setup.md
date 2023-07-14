@@ -3,16 +3,17 @@ title: "NVIDIA Jetson AGX Orin Setup Guide"
 linkTitle: "Jetson AGX Orin Setup"
 weight: 20
 type: "docs"
-image: "/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"
+image: "/installation/thumbnails/jetson-agx-orin-dev-kit.png"
 imageAlt: "Jetson A G X Orin Developer Kit"
-images: ["/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"]
+images: ["/installation/thumbnails/jetson-agx-orin-dev-kit.png"]
 description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Jetson AGX Orin for viam-server installation."
 no_list: true
 # SMEs: Pete Garafano
 ---
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" style="max-width:200px" class="alignright" alt="The grey and chunky front of the NVIDIA Jetson AGX Orin single-board computer development kit."></div>
+<div class="td-max-width-on-larger-screens text-center">
+{{<imgproc src="installation/thumbnails/jetson-agx-orin-dev-kit.png" alt="The grey and chunky front of the NVIDIA Jetson AGX Orin single-board computer development kit." resize="200x" declaredimensions=true >}}
+</div>
 
 The [Jetson AGX Orin](https://developer.nvidia.com/embedded/jetson-orin) from [NVIDIA](https://www.nvidia.com/) is a single-board computer that supports modern AI workloads and application development.
 Follow this guide to set up the [Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to prepare your NVIDIA Jetson AGX Orin for `viam-server` installation.

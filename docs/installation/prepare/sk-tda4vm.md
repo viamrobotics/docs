@@ -3,9 +3,9 @@ title: "SK-TDA4VM Setup Guide"
 linkTitle: "SK-TDA4VM Setup"
 weight: 25
 type: "docs"
-image: "/installation/img/thumbnails/tda4vm.png"
+image: "/installation/thumbnails/tda4vm.png"
 imageAlt: "S K - T D A 4 V M"
-images: ["/installation/img/thumbnails/tda4vm.png"]
+images: ["/installation/thumbnails/tda4vm.png"]
 description: "Image a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
 no_list: true
 #SMEs: Matt Dannenberg
@@ -36,7 +36,7 @@ You will use the Balena Etcher to flash the microSD card.
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
-<img src="../../img/sk-tda4vm/etcher.png" width="600px" alt="The Balena Etcher interface.">
+{{< imgproc alt="The Balena Etcher interface." src="/installation/sk-tda4vm/etcher.png" resize="600x" declaredimensions=true >}}
 
 <br>
 <br>
@@ -59,7 +59,7 @@ You must extract the image from the zip file before flashing the microSD card.
 
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
-<img src="../../img/sk-tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." >
+{{< imgproc alt="Successful image flash completion screen." src="/installation/sk-tda4vm/completed.png" resize="600x" declaredimensions=true >}}
 
 ## Install Viam dependencies on the TDA4VM
 

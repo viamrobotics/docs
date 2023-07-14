@@ -4,7 +4,7 @@ linkTitle: "gpio"
 weight: 30
 type: "docs"
 description: "Configure a GPIO or ADC based device as an input controller."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -26,7 +26,7 @@ Enter a name for your input controller, select the type `input_controller`, and 
 
 Click **Create component**.
 
-![An example configuration for a GPIO input controller component in the Viam App config builder](../img/gpio-input-controller-ui-config.png)
+{{< imgproc src="/components/input-controller/gpio-input-controller-ui-config.png" alt="An example configuration for a GPIO input controller component in the Viam App config builder" resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

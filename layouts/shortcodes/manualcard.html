@@ -8,9 +8,9 @@
         {{ end }}
         <div {{ if .Get "img" }}class="small-hover-card-div"{{ end }}>
         {{ if .Get "title" }}
-          <h4>
+          <div>
             {{ .Get "title" }}
-          </h4>
+          </div>
         {{ end }}
         {{ with $.Inner }}
         <div>

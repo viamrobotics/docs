@@ -9,7 +9,7 @@ description: "Capture data from a robot's components and sync it to the cloud."
 aliases:
     - "/data-management/"
     - "/services/data-management/"
-icon: "/services/img/icons/data-capture.svg"
+icon: "/services/icons/data-capture.svg"
 # SME: Aaron Casas
 ---
 
@@ -94,18 +94,67 @@ If the robot loses connectivity and remains disconnected, data capture can event
 Currently, Viam does not safeguard against this.
     {{< /alert >}}
 
-## Next steps
+## API
+
+The Data Management Service supports the following methods:
+
+Method Name | Description
+----------- | -----------
+[`Sync`](#sync) | Sync data stored on the robot to the cloud.
+
+{{% alert title="Tip" color="tip" %}}
+
+The following code examples assume that you have a robot configured with a Data Management Service called `"my_data_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+
+{{% /alert %}}
+
+### Sync
+
+{{% alert title="Important" color="tip" %}}
+
+This method is not yet available in the Viam Python SDK.
+
+{{% /alert %}}
+
+Sync data stored on the robot to the cloud.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+
+```go {class="line-numbers linkable-line-numbers"}
+data, err := datamanager.FromRobot(robot, "my_data_service")
+
+// Sync data stored on the robot to the cloud.
+err := data.Sync(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Next Steps
 
 To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
 Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
 
-### Accessing and exporting data
+### Access and Export Data
 
 Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
 
-### Machine Learning
+### Train and Deploy Machine Learning
 
 You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
 You can also [upload and use existing models](../../manage/ml/upload-model/).

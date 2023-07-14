@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 34
 type: "docs"
 description: "Configure a fake arm to use for testing."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
@@ -20,7 +20,7 @@ Enter a name for your arm, select the type `arm`, and select the `fake` model.
 
 Click **Create component**.
 
-![An example configuration for a fake ur5e arm in the Viam app Config Builder.](../img/fake-arm-ui-config.png)
+{{< imgproc src="/components/arm/fake-arm-ui-config.png" alt="An example configuration for a fake ur5e arm in the Viam app Config Builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 This example sets the `fake` arm to act as a `ur5e` arm.

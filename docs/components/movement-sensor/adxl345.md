@@ -4,7 +4,7 @@ linkTitle: "accel-adxl345"
 weight: 20
 type: "docs"
 description: "Configure an ADXL345 digital accelerometer."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand, Kim Mishra
 ---
 
@@ -22,7 +22,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**
 
-![Creation of an `accel-adxl345` movement sensor in the Viam app config builder.](../img/adxl345-builder.png)
+{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 

@@ -4,7 +4,7 @@ linkTitle: "ffmpeg"
 weight: 30
 type: "docs"
 description: "Uses a camera, a video file, or a stream as a camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -20,7 +20,7 @@ Enter a name for your camera, select the type `camera`, and select the `ffmpeg` 
 
 Click **Create component**.
 
-![Configuration of a ffmpeg camera in the Viam app config builder.](../img/configure-ffmpeg.png)
+{{< imgproc src="/components/camera/configure-ffmpeg.png" alt="Configuration of a ffmpeg camera in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 
