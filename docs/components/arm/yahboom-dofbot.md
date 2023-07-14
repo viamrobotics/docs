@@ -19,7 +19,7 @@ Enter a name for your arm, select the type `arm`, and select the `yahboom-dofbot
 
 Click **Create component**.
 
-![Web UI configuration panel for an arm of model yahboom-dofbot in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/yahboom-dofbot-ui-config.png)
+{{< imgproc src="/components/arm/yahboom-dofbot-ui-config.png" alt="Web UI configuration panel for an arm of model yahboom-dofbot in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

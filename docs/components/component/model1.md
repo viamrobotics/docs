@@ -21,7 +21,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 Enter a name for your arm, select the `arm` type, and select the `model1` model.
 
-![Creation of a `model1` arm in the Viam app config builder.](../img/model1-builder.png)
+{{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm in the Viam app config builder." resize="600x" >}}
 
 Click **Create component** and then fill in the attributes for your model.
 

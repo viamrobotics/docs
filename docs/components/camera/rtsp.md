@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `rtsp` mo
 
 Click **Create component**.
 
-![Configuration of a rtsp camera in the Viam app config builder.](../img/configure-rtsp.png)
+{{< imgproc src="/components/camera/configure-rtsp.png" alt="Configuration of a rtsp camera in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

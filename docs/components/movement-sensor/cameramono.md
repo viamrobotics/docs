@@ -28,7 +28,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**.
 
-![Creation of an `camera_mono` movement sensor in the Viam app config builder.](../img/camera-mono-builder.png)
+{{< imgproc src="/components/movement-sensor/camera-mono-builder.png" alt="Creation of an `camera_mono` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 

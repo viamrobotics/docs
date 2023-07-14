@@ -20,7 +20,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `single
 
 Click **Create component**.
 
-![Configuration of a single encoder in the Viam app config builder.](../img/configure-single.png)
+{{< imgproc src="/components/encoder/configure-single.png" alt="Configuration of a single encoder in the Viam app config builder." resize="1000x" >}}
 
 Fill in and edit the attributes as applicable.
 
