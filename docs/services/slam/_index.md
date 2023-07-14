@@ -32,6 +32,8 @@ Integrated SLAM Libraries include:
 | ----- | ----------- |
 | [`viam:slam:cartographer`](cartographer/) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
 
+Follow [these instructions](cartographer/) to configure Cartographer SLAM on your robot.
+
 ## API
 
 The SLAM Service supports the following methods:
