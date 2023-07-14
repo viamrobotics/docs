@@ -210,4 +210,4 @@ The following attributes are available for `multi-axis` gantries:
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
 | `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
-| `move_simultaneously` | boolean | Optional | A boolean indicating if the sub-axes should move together, or one at a time when `MoveToPosition` is called. |
+| `move_simultaneously` | boolean | Optional | A boolean indicating if the sub-axes should move together, or one at a time when `MoveToPosition` is called. <br> Default:  `false` |
