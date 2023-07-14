@@ -4,7 +4,7 @@ linkTitle: "xArm7"
 weight: 34
 type: "docs"
 description: "Configure a UFACTORY xArm 7 for your robot."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---

@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 20
 type: "docs"
 description: "Configure a fake base to use for testing without physical hardware."
-images: ["/components/img/components/base.svg"]
+images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 # SMEs: Steve B
 ---

@@ -4,7 +4,7 @@ linkTitle: "single-axis"
 weight: 70
 type: "docs"
 description: "Configure a single-axis gantry."
-images: ["/components/img/components/gantry.svg"]
+images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
     - "/components/gantry/oneaxis/"

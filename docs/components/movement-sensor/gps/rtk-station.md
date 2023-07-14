@@ -4,7 +4,7 @@ linkTitle: "rtk-station"
 weight: 10
 type: "docs"
 description: "Configure an experimental RTK correction source to use with an RTK-ready GPS."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 

@@ -13,12 +13,12 @@
             <div class="col hover-card">
                 <a href="/viam/"
                     ><div class="hover-card-img">
-                        <img
-                            src="/img/understand.png"
-                            alt="A diagram of robotic parts and software"
-                            width="100%"
-                            loading="lazy"
-                        />
+                        {{ $img := resources.GetMatch "/img/understand.png" }}
+                        {{if $img }}
+                            {{ partial "imgproc.html" (dict "src" "/img/understand.png" "resize" "400x" "alt" "A diagram of robotic parts and software" "style" "") }}
+                        {{ else }}
+                            {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
+                        {{end}}
                     </div>
                     <div class="small-hover-card-div">
                         <h4>Viam in 3 minutes</h4>
@@ -47,7 +47,7 @@
                     ><div class="hover-card-img">
                         {{ $img := resources.GetMatch "installation/thumbnails/install.png" }}
                         {{if $img }}
-                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/install.png" "resize" "400x webp" "alt" "Install viam" "style" "") }}
+                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/install.png" "resize" "400x" "alt" "Install viam" "style" "") }}
                         {{ else }}
                             {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
                         {{end}}
@@ -66,7 +66,7 @@
                     ><div class="hover-card-img">
                         {{ $img := resources.GetMatch "installation/thumbnails/manage.png" }}
                         {{if $img }}
-                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/manage.png" "resize" "400x webp" "alt" "Configure viam" "style" "") }}
+                            {{ partial "imgproc.html" (dict "src" "installation/thumbnails/manage.png" "resize" "400x" "alt" "Configure viam" "style" "") }}
                         {{ else }}
                             {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
                         {{end}}
@@ -84,12 +84,12 @@
             <div class="col hover-card">
                 <a href="/program/"
                     ><div class="hover-card-img">
-                        <img
-                            src="/img/code.png"
-                            alt="Program a robot"
-                            width="100%"
-                            loading="lazy"
-                        />
+                        {{ $img := resources.GetMatch "/img/code.png" }}
+                        {{if $img }}
+                            {{ partial "imgproc.html" (dict "src" "/img/code.png" "resize" "400x" "alt" "Program a robot" "style" "") }}
+                        {{ else }}
+                            {{ warnf "Image not found - is it in the assets folder? %s" .Params.image }}
+                        {{end}}
                     </div>
                     <div class="small-hover-card-div">
                         <h4>Program your Robots</h4>

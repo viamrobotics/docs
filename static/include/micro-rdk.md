@@ -16,9 +16,7 @@ To use Viam on a microcontroller, you need to both:
 To run both the micro-RDK and `viam-server`, you currently need two robots: one controlling robot which runs `viam-server` and a worker robot which runs the micro-RDK on your microcontroller.
 This second "robot" can be as simple as an instance of `viam-server` running on your development machine.
 
-<div style="max-width:600px">
-<img alt="The control robot runs viam-server and connects to the microcontroller which runs the micro-RDK" src="/installation/img/microcontroller/micro-rdk-overview.png" />
-</div>
+{{< imgproc alt="The control robot runs viam-server and connects to the microcontroller which runs the micro-RDK" src="/installation/microcontroller/micro-rdk-overview.png" resize="800x" declaredimensions=true >}}
 
 The micro-RDK currently only supports:
 

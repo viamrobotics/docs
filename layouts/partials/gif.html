@@ -8,7 +8,7 @@
     {{ warnf "Size of video file %s was %d kB - please reduce file size" $webmLink $sizeInBytes  }}
   {{ end }}
 {{ else }}
-  {{warnf "Please use absolute file path: %s" $webmLink}}
+  {{errorf "File not found - did you use the absolute file path? %s" $webmLink}}
 {{end}}
 {{if os.FileExists $mp4Link }}
   {{ $f := os.Stat $mp4Link }}

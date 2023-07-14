@@ -29,26 +29,7 @@ The robot checks for new configurations every 15 seconds and changes its configu
 All communication happens securely over HTTPS using secret tokens that are in a robot's configuration.
 
 {{< alert title="Tip" color="tip" >}}
-You can also store your config file in another location.
-To start `viam-server` with a config file in a different location, run the following command:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
+You can also store your config file in a custom location if desired. See [Run `viam-server`](/installation/manage/#run-viam-server) for more information.
 {{< /alert >}}
 
 After you have completed the setup steps and successfully connected to your robot, go to the **Config** tab to start adding to the configuration.
@@ -57,8 +38,7 @@ After you have completed the setup steps and successfully connected to your robo
 
 Your robot does not need to stay connected to the Viam app after it has obtained its configuration file.
 The configuration is cached locally.
-If you cannot connect your robot to the internet at all, you can also [store the configuration file](#local-setup) on the robot itself.
-
+If your robot will never connect to the internet, you can also create a [local configuration file](/appendix/local-configuration-file/) on the robot itself.
 {{% /alert %}}
 
 ## The Config tab
@@ -70,7 +50,7 @@ You can use the mode selector to switch between **Builder** and **Raw JSON**:
 - **Builder** mode provides a graphical interface for configuring your robot resources.
 - **Raw JSON** mode provides a text editing field where you can write and edit the config manually.
 
-![The CONFIG tab of the Viam app with a box highlighting the CONFIG tab and the Mode selector (where you can select Builder or Raw JSON).](../img/configuration/config-tab.png)
+{{< imgproc alt="The CONFIG tab of the Viam app with a box highlighting the CONFIG tab and the Mode selector (where you can select Builder or Raw JSON)." src="/manage/configuration/config-tab.png" resize="1000x" >}}
 
 Regardless of the mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
@@ -140,6 +120,8 @@ If you add components in **Builder** mode and click **Save Config** at the botto
 }
 ```
 
+See [Example JSON configuration file](/appendix/local-configuration-file/#example-json-configuration-file) for an additional example.
+
 {{% /expand %}}
 
 The **Config** tab has subtabs for each section of your robot's config:
@@ -196,7 +178,7 @@ For specific information on how to configure each supported component type, see 
 When you configure a component on the **Config** tab, it will also appear on the **Control** tab which gives you an interface to test and interact with it.
 Meanwhile the **Code sample** tab will also update to include code for some basic interaction with that component using the Viam [SDKs](/program/apis/).
 
-{{<gif webm_src="/manage/img/control.webm" mp4_src="/manage/img/control.mp4" alt="Using the control tab">}}
+{{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab">}}
 
 {{% /alert %}}
 
@@ -243,7 +225,7 @@ In raw JSON, these options are represented by `log` (bool) and `one_shot` (bool)
 
 The following configuration executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your robot boots, and keeps it executing indefinitely.
 
-![The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](../img/configuration/process-fancy.png)
+{{< imgproc alt="The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off." src="/manage/configuration/process-fancy.png" resize="1000x" >}}
 
 The corresponding raw JSON looks like this:
 
@@ -277,7 +259,7 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 2. Add the JSON configuration in the config field.
 3. Click **SAVE FRAGMENT**.
 
-![Fragment creation view](../img/fragment-view.png)
+{{< imgproc alt="Fragment creation view" src="/manage/fragment-view.png" resize="1000x" >}}
 
 ### Add a fragment to a robot
 
@@ -290,11 +272,11 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-![The fragments subtab](../img/fragments-tab.png)
+{{< imgproc alt="The fragments subtab" src="/manage/fragments-tab.png" resize="1000x" >}}
 
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
-![A fragment in the components subtab](../img/fragment-components.png)
+{{< imgproc alt="A fragment in the components subtab" src="/manage/fragment-components.png" resize="1000x" >}}
 
 In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
 
@@ -327,32 +309,15 @@ Find more information in the [frame system documentation](/services/frame-system
 
 If you run into issues, here are some things to try:
 
-- Check the **Logs** tab to check for any errors or other info from `viam-server`.
-- You can also view logs locally by running the following command on the robot:
-
-  {{< tabs >}}
-  {{% tab name="Linux" %}}
-
-  ```bash
-  sudo journalctl --unit=viam-server
-  ```
-
-  {{% /tab %}}
-  {{% tab name="macOS" %}}
-
-  ```bash
-  cat $(brew --prefix)/var/log/viam.log
-  ```
-
-  {{% /tab %}}
-  {{< /tabs >}}
-
+- Check the [**Logs** tab](/manage/fleet/robots/#logs) to view log messages and errors from `viam-server`.
+   You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your robot if needed.
 - Make sure all configured components are actually saved to your config.
    If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
 - Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
    It takes a few minutes for the server to shut down and restart.
 - Make sure the issue is not hardware related.
   Some things to check are that the robot has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
+- See [Troubleshooting](/appendix/troubleshooting/) for additional troubleshooting steps.
 - {{< snippet "social.md" >}}
 
 ## Local Setup
@@ -363,52 +328,8 @@ Configuring `viam-server` with the Viam app allows you to make use of the cloud 
 - [Data Management](/manage/data/)
 - [Machine Learning](/manage/ml/)
 
-A locally configured robot, will not be able to access Viam's cloud features.
-If you are configuring a robot that can never connect to the internet, you can manually create a local full raw JSON config file on your robot.
-
-You can write the contents of this config file manually, or you can use the Viam app's config builder (without connecting your robot to it).
-Once you finish configuring your robot in the **Builder** mode, switch to **Raw JSON** and copy the entire raw JSON into your config file.
-Save the file at <file>/etc/viam.json</file> or another location.
-
-Then start `viam-server`:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-If you have stored your config file at a location different from the default location (<file>/etc/viam.json</file>), pass in the path to the config:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam-server -config <path-to-config>.json
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-To run `viam-server` as a system service, see [Start automatically on boot](/installation/#start-automatically-on-boot).
+However, if you are configuring a robot that can never connect to the internet, you can create a [local configuration file](/appendix/local-configuration-file/) on your robot.
+A locally-configured robot will not be able to access Viam's cloud features.
 
 ## Next Steps
 
