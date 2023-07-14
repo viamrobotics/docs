@@ -328,7 +328,7 @@ Don't forget to save.
 ### Make your module executable
 
 Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
-You can find more information in [the relevant section of the modular resource documentation](/extend/modular-resources/#make-your-module-executable).
+You can find more information in [the relevant section of the modular resource documentation](/extend/modular-resources/).
 Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
