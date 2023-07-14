@@ -6,6 +6,8 @@ description: "Use the SDK of your preferred language to write code to control yo
 weight: 45
 no_list: true
 type: docs
+image: "/img/code.png"
+imageAlt: "Program a Robot"
 images: ["/img/code.png"]
 aliases:
   - "product-overviews/sdk-as-client"
@@ -297,7 +299,7 @@ Once you have successfully run the sample code, you can edit the boilerplate cod
 You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-    {{% card link="/program/apis/" custom="Add Logic to Interface with Resources" %}}
+    {{% card link="/program/apis/" customTitle="Add Logic to Interface with Resources" %}}
     {{% card link="/program/run/" %}}
     {{% card link="/program/debug/" %}}
 {{< /cards >}}

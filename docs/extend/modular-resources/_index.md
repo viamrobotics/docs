@@ -29,7 +29,10 @@ Then, follow [these steps](/extend/modular-resources/configure/) to configure th
 
 Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
+## Related tutorials
+
 {{< cards >}}
     {{% card link="/extend/modular-resources/examples/rplidar" %}}
     {{% card link="/extend/modular-resources/examples/odrive" %}}
+    {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{< /cards >}}

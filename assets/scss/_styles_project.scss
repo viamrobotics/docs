@@ -451,8 +451,21 @@ END MARKETING CSS
 }
 
 // images in hover cards at the top have a margin before text
-.hover-card > a > .hover-card-img {
+.hover-card > a > .hover-card-img, .hover-card > a > .hover-card-icon {
   margin-bottom: 1rem;
+}
+
+// Adjust font size
+
+.hover-card > a div > div, .hover-card > div > div {
+  font-size: 1.0625rem!important;
+  font-weight: 600;
+  line-height: 1.4375em;
+  color: black;
+}
+
+.hover-card > div > div {
+  margin-bottom: 0.5rem;
 }
 
 // For some reason video elements don't calculate the height correctly. This adjusts for that.
@@ -473,16 +486,47 @@ END MARKETING CSS
   border: 1px solid black;
 }
 
+.hover-card * .hover-card-icon * img {
+  object-fit: contain;
+}
+
 // Sizes and types
 
-// Tiny hover card with no text
+// Tiny hover card with only title which stays similarly formatted on mobile
 
 @media (max-width: 650px) {
-  .hover-card.xs {
-    min-width: 40%;
-    width: 40%;
-    max-width: 40%;
+  .hover-card.small {
+    min-width: 125px;
+    max-width: 28%;
   }
+  .hover-card.small > a div.small-hover-card-div > span {
+    font-size: 0.833rem !important;
+  }
+}
+
+.hover-card.small {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.hover-card.small > a {
+  flex-direction: column;
+  padding-right: 0;
+}
+
+.hover-card.small > a > .hover-card-img {
+  padding-right: 0;
+  max-width: 100%;
+}
+
+.hover-card.small * img {
+  object-fit: contain;
+}
+
+.hover-card.small > a div.small-hover-card-div {
+  margin-top: 0.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 // Hover card which turns into a small one on mobile with image on the left
@@ -552,8 +596,13 @@ END MARKETING CSS
       flex: 1;
     }
 
+    .hover-card-video > div {
+      margin-bottom: -6px;
+    }
+
     .hover-card-icon {
       max-width: 30%;
+      min-width: 30%;
       margin: 0 1rem 1rem 0;
       margin: auto;
       padding-right: 1rem;
@@ -921,6 +970,8 @@ ul.sectionlist > li > a > div {
 }
 
 ul.sectionlist > li * img {
+  width: 45px;
+  height: 45px;
   margin: 0rem;
 }
 

@@ -9,9 +9,6 @@ aliases:
     - "/program/extend/custom-components-remotes/"
 
 description: "Implement custom components and register them on a server configured as a remote of your robot."
-webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
-mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
-videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 ---
 
 {{% alert title="Caution" color="caution" %}}
@@ -69,9 +66,8 @@ Otherwise, the class won’t instantiate.
 
 {{% /alert %}}
 
-The following tutorials also explain how to add custom components as remotes:
+The following tutorial also explains how to add a custom component as a remote:
 
 {{< cards >}}
-    {{% card link="/tutorials/custom/custom-base-dog" %}}
     {{% card link="/tutorials/projects/make-a-plant-watering-robot" %}}
 {{< /cards >}}

@@ -284,21 +284,21 @@ Create and configure a second robot as the controller robot.
 
 Add the ESP32-backed worker robot as a remote of your new controller robot to establish a secure connection between both robots:
 
-<div style="max-width:800px;"><img src="../../img/esp32-setup/esp32-remote-creation.png" alt="Adding the ESP32 as a remote in the Viam app Config builder." ></div>
+{{< imgproc alt="Adding the ESP32 as a remote in the Viam app Config builder." src="/installation/esp32-setup/esp32-remote-creation.png" resize="800x" declaredimensions=true >}}
 
 1. Navigate to the **Code sample** tab of the worker robot, click on **Remotes**, and copy the code generated.
 
-   ![The remotes config information](../../img/microcontroller/copy-remotes-code.png)
+    {{< imgproc alt="The remotes config information" src="/installation/microcontroller/copy-remotes-code.png" resize="800x" declaredimensions=true >}}
 
-   {{% snippet "show-secret.md" %}}
+    {{% snippet "show-secret.md" %}}
 
 2. Navigate to the **Config** tab of the control robot, select the `Remotes` subtab, select the `JSON` mode and click **Create Remote**.
 
-   ![Create remote menu](../../img/microcontroller/create-remote.png)
+    {{< imgproc alt="Create remote menu" src="/installation/microcontroller/create-remote.png" resize="800x" declaredimensions=true >}}
 
 3. Paste the copied `JSON` config into the configuration field.
 
-   ![Empty configuration field](../../img/microcontroller/config-field.png)
+   {{< imgproc alt="Empty configuration field" src="/installation/microcontroller/config-field.png" resize="800x" declaredimensions=true >}}
 
    Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
    If it is, the ESP32-backed robot is now programmatically available.
