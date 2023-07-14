@@ -94,6 +94,7 @@ Use [Viam's Go or Python SDKs](/program/apis/) to code a module that does either
 {{% tab name="Define a New Type of Resource" %}}
 
 1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then generate code in Python or Go and use the generated code to implement the higher level server and client functions required.
+[Find in-depth API creation instructions in the New Type documentation.](../create-type/)
 2. Code at least one model of this new resource.
 Make sure to implement every method required in your API definition.
 3. Code a main program to serve as the module itself, using the module helpers provided by your chosen SDK.
