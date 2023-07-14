@@ -27,26 +27,19 @@ Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
 
 The micro-RDK is written in Rust.
 
-We recommend using Viam's [Canon utility](#using-canon) to build the `micro-rdk` server, as the utility downloads and installs a Docker development environment automatically.
-You can set up the development environment manually by following [these instructions](#set-up-development-environment-manually).
+We recommend using Viam's [Canon utility](#using-canon-to-build-micro-rdk) to build the `micro-rdk` server, as the utility downloads and installs a Docker development environment automatically.
+If you don't want to use Canon, you can set up the development environment manually by following [these instructions](#set-up-development-environment-manually) instead.
 
 To use the micro-RDK with your ESP32 board, follow these steps:
 
-- [Install prerequisites](#install-prerequisites)
+1. [Install prerequisites](#install-prerequisites)
+2. Set up the environment automatically with [Canon](#using-canon-to-build-micro-rdk) or [manually](#set-up-development-environment-manually)
 
-If using the Docker environment with Canon:
-
-- [Use Canon](#using-canon)
-
-If setting up the environment yourself (Optional):
-
-- [Set up development environment manually](#set-up-development-environment-manually)
-
-The following instructions cover installation for macOS and Linux machines.
+The following instructions cover installation of necessary tools to program the ESP32 on macOS and Linux systems.
 
 ### Install prerequisites
 
-To build the micro-rdk, you must install the following software on your machine:
+To build the micro-rdk, you must install the following software on your development machine:
 
 #### Install dependencies
 
@@ -73,7 +66,7 @@ brew install dfu-util
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-See [Rust](https://www.rust-lang.org/tools/install) for more information and other installation methods.
+See the [Rust Installation guide](https://www.rust-lang.org/tools/install) for more information and other installation methods.
 
 #### Install `cargo-generate` with `cargo`
 
@@ -93,19 +86,15 @@ Run the following command to install `espflash`
 cargo install espflash
 ```
 
-### Using Canon
+### Using Canon to build micro-rdk
 
-Canon is a CLI utility for managing a Docker based canonical environment.
-See [GitHub](https://github.com/viamrobotics/canon) for more information.
-It needs  a working installation of docker, follow [Docker Installation](https://docs.docker.com/engine/install/) to install Docker. If running linux make sure to go throught the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/)
+[Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker based canonical environment.
+Canon requires a working installation of docker.
+[Install Docker](https://docs.docker.com/engine/install/) before proceeding.
+If you are running linux, make sure to go through the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/).
 
-#### Homebrew
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-brew install viamrobotics/brews/canon
-```
-
-#### Direct Install
+{{< tabs >}}
+{{% tab name="Linux (Ubuntu)" %}}
 
 Go 1.19 or newer must be installed.
 
@@ -113,11 +102,21 @@ Go 1.19 or newer must be installed.
 go install github.com/viamrobotics/canon@latest
 ```
 
-Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+brew install viamrobotics/brews/canon
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+Make sure your the GOBIN folder is in your PATH. If not, you can add like this: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
 
 ### Set up development environment manually
 
-These steps are optional if you are using the canon utility to build micro-rdk
+These steps are optional if you are using the canon utility to build the micro-rdk.
 
 #### Install build dependencies
 
