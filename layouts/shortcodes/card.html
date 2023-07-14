@@ -1,11 +1,11 @@
-{{ $size := (.Get "size") }}
+{{ $class := (.Get "class") }}
 {{ $customTitle := (.Get "custom") }}
 {{ $link := (path.Clean (.Get "link")) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
 {{ end }}
-<div class="col hover-card {{ if eq $size "xs" }}xs{{ end }} {{ if .Get "class" }}{{.Get "class"}}{{ end }}">
+<div class="col hover-card {{ if .Get "class" }}{{.Get "class"}}{{ end }}">
   {{ if site.GetPage ((relURL $link) | string) }}
     {{ with site.GetPage ((relURL $link) | string) }}
       <a href="{{.RelPermalink}}">
@@ -35,7 +35,7 @@
           {{ else }}
             <h4>{{ .LinkTitle }}</h4>
           {{ end }}
-          {{ if ne $size "xs" }}
+          {{ if ne $class "small" }}
           <p> {{ .Description }} </p>
           {{ end }}
         </div>
