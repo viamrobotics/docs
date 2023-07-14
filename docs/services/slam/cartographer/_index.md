@@ -76,7 +76,6 @@ Paste the following into the **Attributes** field of your new service:
 ```json
 {
   "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-  "delete_processed_data": true,
   "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
   "config_params": {
     "mode": "2d"
@@ -91,7 +90,6 @@ Paste the following into the **Attributes** field of your new service:
 ```json
 {
   "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-  "delete_processed_data": true,
   "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
   "config_params": {
     "mode": "2d"
@@ -144,7 +142,6 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
     "type": "slam",
     "attributes": {
       "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-      "delete_processed_data": true,
       "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
@@ -173,7 +170,6 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
     "type": "slam",
     "attributes": {
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-      "delete_processed_data": true,
       "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
@@ -202,7 +198,6 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
     "type": "slam",
     "attributes": {
       "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-      "delete_processed_data": true,
       "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
       "config_params": {
         "mode": "2d"
@@ -281,9 +276,7 @@ Watch a map start to appear.
 | `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving input LIDAR data in <file>/data</file> and output mapping data in <file>/map</file>. |
 | `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. |
 | `map_rate_sec` | int | Optional | Rate of <file>/map</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
-| `data_rate_msec` | int | Optional | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
-| `port` | string | Optional | Port for SLAM gRPC server. If running locally, this should be in the form "localhost:<PORT>". If no value is specified a random available port is assigned. |
-| `delete_processed_data` | bool | Optional | <p>Setting this to `true` helps to reduce the amount of memory required to run SLAM.</p> <ul> `true`: sensor data is deleted after the SLAM algorithm has processed it. </ul><ul> `false`: sensor data is not deleted after the SLAM algorithm has processed it. </ul> |
+| `data_rate_msec` | int | Deprecated | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 ### `config_params`
