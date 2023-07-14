@@ -114,7 +114,7 @@ sitemap:
   <div class="row">
       <div class="col hover-card landing yellow">
         <div>
-          <h4>Learn and Try</h4>
+          <div>Learn and Try</div>
           <p style="text-align: left;">
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
@@ -123,7 +123,7 @@ sitemap:
       </div>
       <div class="col hover-card landing purple">
         <div>
-        <h4>Configure your robots</h4>
+        <div>Configure your robots</div>
         <div style="text-align: left">
           <ol style="padding-inline-start: 1.1rem">
             <li><a href="manage/configuration/">Configure your robot</a> or <a href="manage/fleet/">fleet</a></li>
@@ -137,7 +137,7 @@ sitemap:
       </div>
       <div class="col hover-card landing teal">
         <div>
-          <h4>Program your robots</h4>
+          <div>Program your robots</div>
           <p style="text-align: left;">
             Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
           </p>
@@ -148,7 +148,7 @@ sitemap:
       </div>
       <div class="col hover-card landing pink">
         <div>
-          <h4>Community</h4>
+          <div>Community</div>
           <p style="text-align: left;">Have questions, or want to meet other people working on robots? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
         </div>
         {{<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
@@ -162,25 +162,25 @@ sitemap:
   <div class="row">
     <div class="col sectionlist">
         <div>
-        <h4>Components</h4>
+        <div>Components</div>
         {{<sectionlist sectiontitle="components">}}
         </div>
     </div>
     <div class="col sectionlist">
         <div>
-        <h4>Services</h4>
+        <div>Services</div>
         {{<sectionlist sectiontitle="services">}}
         </div>
     </div>
     <div class="col sectionlist">
         <div>
-        <h4>Manage</h4>
+        <div>Manage</div>
         {{<sectionlist sectiontitle="manage">}}
         </div>
     </div>
     <div class="col sectionlist">
         <div>
-        <h4>SDKs</h4>
+        <div>SDKs</div>
         <ul class="sectionlist">
         <li><a href="https://python.viam.dev/" target="_blank"><div><p>Python SDK</p></div></a></li>
         <li><a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><div><p>Go SDK</p></div></a></li>
