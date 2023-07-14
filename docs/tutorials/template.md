@@ -4,12 +4,12 @@ linkTitle: "Menu title of the tutorial"
 weight: 90
 type: "docs"
 description: "Short description of your tutorial (1 sentence)."
-# Use either image or GIF/video
-# image: "path to preview image"
+# If GIF+video is available use those - otherwise use an image
+# images: ["path to preview gif if available and less than 1MB in size - otherwise path to preview image"]
+# webmSrc: "path to preview video - ideally in 4:3 format"
+# mp4Src: "path to preview video - ideally in 4:3 format"
+# image: "path to preview image - ideally in 4:3 format"
 # imageAlt: "ALT text for the image"
-# images: ["path to preview image"]
-# webmSrc: "path to preview video"
-# mp4Src: "path to preview video"
 # videoAlt: "ALT text for the video"
 tags: ["tutorial"]
 draft: true # Change this when you're ready

@@ -1,4 +1,4 @@
-{{ $src := (.Page.Resources.GetMatch (printf "**%s*" (.Get "src"))) }}
+{{ $src := (resources.GetMatch (.Get "src")) }}
 
 <figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
     {{- if .Get "link" -}}
