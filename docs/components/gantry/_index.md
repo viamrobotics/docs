@@ -18,7 +18,9 @@ The linear rail design makes gantries a common and reliable system for simple po
 
 This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multi-axis/).
 
-<img src="./img/gantry-illustration.png" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." style="max-width:300px; display: block; margin: 0 auto"></img>
+<div class="td-max-width-on-larger-screens text-center">
+{{<imgproc src="/components/gantry/gantry-illustration.png" resize="300x" declaredimensions=true alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry.">}}
+</div>
 
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.

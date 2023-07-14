@@ -22,7 +22,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `sensor`, and select the `fake` model.
 Click **Create component**.
 
-![An example configuration for a fake sensor in the Viam app Config Builder. Attributes are left blank.](../img/fake-sensor-ui-config.png)
+{{< imgproc src="/components/sensor/fake-sensor-ui-config.png" alt="An example configuration for a fake sensor in the Viam app Config Builder. Attributes are left blank." resize="1000x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

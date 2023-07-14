@@ -18,7 +18,7 @@ Enter a name for your gripper, select the type `gripper`, and select the `softro
 
 Click **Create component**.
 
-![Creation of a softrobotics gripper component in the Viam app config builder.](../img/softrobotics-ui-config.png)
+{{< imgproc src="/components/gripper/softrobotics-ui-config.png" alt="Creation of a softrobotics gripper component in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

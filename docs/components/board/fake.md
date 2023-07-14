@@ -20,7 +20,7 @@ Enter a name for your board, select the type `board`, and select the `fake` mode
 
 Click **Create component**.
 
-![An example configuration for a fake board in the Viam app Config Builder.](../img/fake-ui-config.png)
+{{< imgproc src="/components/board/fake-ui-config.png" alt="An example configuration for a fake board in the Viam app Config Builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 

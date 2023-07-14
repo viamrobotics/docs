@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `image_fi
 
 Click **Create component**.
 
-![Configuration of an image file camera in the Viam app config builder.](../img/configure-image-file.png)
+{{< imgproc src="/components/camera/configure-image-file.png" alt="Configuration of an image file camera in the Viam app config builder." resize="1000x" >}}
 
 Edit and fill in the attributes as applicable.
 
