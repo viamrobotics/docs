@@ -86,7 +86,7 @@ pos, name, err := slam_svc.GetPosition(context.Background())
 
 **Returns:**
 
-- [(Pose)](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose): A `Pose` representing the current position of the component the SLAM service is configured to source point cloud data from.
+- [(Pose)](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose): A `Pose` representing the current position of the component the SLAM service is configured to source point cloud data from.
 For example, a [camera](/components/camera/) named `"cam"`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_position).
@@ -159,7 +159,6 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
