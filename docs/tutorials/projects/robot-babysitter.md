@@ -5,10 +5,9 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
+image: "/tutorials/img/robot-babysitter/robot_babysitter.jpg"
+imageAlt: "Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop."
 images: ["/tutorials/img/robot-babysitter/robot_babysitter.jpg"]
-videoAlt: "Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. Different songs play."
-webmSrc: "/tutorials/img/robot-babysitter/robot_babysitter.webm"
-mp4Src: "/tutorials/img/robot-babysitter/robot_babysitter.mp4"
 authors: [ "Tess Avitabile" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
