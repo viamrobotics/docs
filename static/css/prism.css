@@ -27,7 +27,8 @@ pre[class*="language-"]::selection {
 pre[class*="language-"] {
   background: #FFFFFF;
   padding-top: 0;
-  padding-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 5px;
   position: relative;
   overflow-y: hidden;
   scrollbar-gutter: stable;
