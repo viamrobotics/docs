@@ -311,7 +311,7 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 
 {{% alert title="Info" color="info" %}}
 
-These reference frames are ingested by the Frame System, but not exposed through gRPC calls.
-You cannot access them directly with SDK code.
+These reference frames are ingested by the Frame System, but not exposed through gRPC calls except for arms.
+For arms, you can use the GetKinematics() call to access kinematics information of the arm.
 
 {{% /alert %}}
