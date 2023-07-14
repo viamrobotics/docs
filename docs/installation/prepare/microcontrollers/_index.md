@@ -38,7 +38,7 @@ If using the Docker environment with Canon:
 
 - [Use Canon](#using-canon)
 
-If setting up the environment yourself:
+If setting up the environment yourself (Optional):
 
 - [Set up development environment manually](#set-up-development-environment-manually)
 
@@ -97,7 +97,7 @@ cargo install espflash
 
 Canon is a CLI utility for managing a Docker based canonical environment.
 See [GitHub](https://github.com/viamrobotics/canon) for more information.
-It needs  a working installation of docker follow [Docker Installation](https://docs.docker.com/engine/install/) to install Docker. If running linux make sure to go throught the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/)
+It needs  a working installation of docker, follow [Docker Installation](https://docs.docker.com/engine/install/) to install Docker. If running linux make sure to go throught the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/)
 
 #### Homebrew
 
@@ -116,6 +116,8 @@ go install github.com/viamrobotics/canon@latest
 Make sure your GOBIN is in your PATH. If not, you can add it with something like: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
 
 ### Set up development environment manually
+
+These steps are optional if you are using the canon utility to build micro-rdk
 
 #### Install build dependencies
 
