@@ -59,11 +59,13 @@ The following example module registers a modular resource implementing Viam's bu
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) are adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
-[Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
+{{< tabs name="Sample SDK Code">}}
+{{% tab name="Go"%}}
 
-<file>mybase.go</file>
+<file>mybase.go</file> implements a custom model of the base component built-in resource, "mybase", and registers the new model and API helper functions with the SDK.
 
-{{%expand "Click to view example code from a Go module implementing a custom model of the base component built-in resource, mybase, and registering the new model and API" %}}
+<details>
+  <summary>Click to view sample code from <file>mybase.go</file></summary>
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package mybase implements a base that only supports SetPower (basic forward/back/turn controls), IsMoving (check if in motion), and Stop (stop all motion).
@@ -231,13 +233,15 @@ func init() {
 }
 ```
 
-{{% /expand%}}
+</details>
 
-[Python SDK](https://python.viam.dev/):
+{{% /tab %}}
+{{% tab name="Python"%}}
 
-<file>my_base.py</file>
+<file>my_base.py</file> implements a custom model of the base component built-in resource, "mybase".
 
-{{%expand "Click to view example code from a Python module implementing a custom model of the base component built-in resource, mybase" %}}
+<details>
+  <summary>Click to view sample code from <file>my_base.py</file></summary>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
@@ -335,11 +339,12 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-{{% /expand%}}
+</details>
 
-<file>_\_init__.py</file>
+<file>_\_init__.py</file> registers the mybase custom model and API helper functions with the SDK.
 
-{{%expand "Click to view example code from a Python module registering the mybase custom model and API" %}}
+<details>
+  <summary>Click to view sample code from <file>_\_init__.py</file></summary>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 """
@@ -355,15 +360,21 @@ from .my_base import MyBase
 Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
 ```
 
-{{% /expand%}}
+</details>
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ### Code a main program that serves as the entry point file to the module
 
-[Go Client SDK](https://pkg.go.dev/go.viam.com/rdk):
+{{< tabs name="Sample SDK Main Program Code">}}
+{{% tab name="Go"%}}
 
-<file>main.go</file>
+<file>main.go</file> is the demo Go module's entry point file.
+When executed, it initializes the mybase custom model and API helper functions from the registry.
 
-{{%expand "Click to view example code from a Go module's entry point file initializing the mybase custom model and API helpers from the registry" %}}
+<details>
+  <summary>Click to view sample code from <file>main.go</file></summary>
 
 ``` go {class="line-numbers linkable-line-numbers"}
 // Package main is a module which serves the mybase custom model.
@@ -411,13 +422,16 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 }
 ```
 
-{{% /expand%}}
+</details>
 
-[Python SDK](https://python.viam.dev/):
+{{% /tab %}}
+{{% tab name="Python"%}}
 
-<file>main.py</file>
+<file>main.py</file> is the demo Python module's entry point file.
+When executed, it initializes the mybase custom model and API helper functions from the registry.
 
-{{%expand "Click to view example code from a Python module's entry point file initializing the mybase custom model and API helpers from the registry" %}}
+<details>
+  <summary>Click to view sample code from <file>main.py</file></summary>
 
 ``` python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -445,7 +459,10 @@ if __name__ == "__main__":
 
 ```
 
-{{% /expand%}}
+</details>
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% alert title="Important" color="note" %}}
 
@@ -464,7 +481,7 @@ To [add a module](/extend/modular-resources/configure/#configure-your-module) to
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
-{{< tabs >}}
+{{% tabs %}}
 {{% tab name="Go" %}}
 
 If using the Go SDK, use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) and obtain a single executable for your module:
@@ -474,6 +491,7 @@ If using the Go SDK, use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_p
 - Run `ls` in your module directory to find the executable, which should have been named after the module directory.
 
 Expand the [Go module code](#code-a-main-program-that-serves-as-the-entry-point-file-to-the-module) to view <file>main.go</file> for an example of this.
+
 <file>main.go</file> adds the custom model <file>mybase.go</file> from the resource registry, while <file>mybase.go</file> defines and registers the module.
 
 {{% /tab %}}
@@ -483,7 +501,7 @@ If using the Python SDK, one option is to create and save a new shell script (<f
 
 For example:
 
-``` shell
+``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -494,14 +512,14 @@ exec python3 -m <your-module-directory-name>.<main-program-filename-without-exte
 
 To make this shell script executable, run the following command in your terminal:
 
-``` shell
+``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{% /tabs %}}
 
-You need to ensure any dependencies for your module (including the Viam SDK) are installed, as well.
+You need to ensure any dependencies for your module (including the Python or Go [Viam SDK](/program/)) are installed as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
 ## Next steps

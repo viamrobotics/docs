@@ -18,7 +18,7 @@ You can use `extra` parameters with modular {{< glossary_tooltip term_id="resour
 
 For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM Service](/services/slam/).
 
-The `extra` parameters in that built-in resource type's [API](/extend/modular-resources/#apis) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
+The `extra` parameters in that built-in resource type's [API](/program/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
 This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
 
 Send extra information in an API call in `extra` parameters as follows:
@@ -86,12 +86,12 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 
 ## Define
 
-If `extra` information must be passed to a resource, it is handled within a new, *modular* resource model's [custom API](/extend/modular-resources/#apis) wrapper.
+If `extra` information must be passed to a resource, it is handled within a new, *modular* resource model's [custom API](/extend/modular-resources/) wrapper.
 
 {{%expand "Click for instructions on defining a custom model to utilize extra params" %}}
 
 To do this, define a custom implementation of the resource's API as a new *model*, and modify the resource's API methods to handle the `extra` information you send.
-Follow [these instructions](/extend/modular-resources/#code-your-module) to do so.
+Follow the steps in the [Modular Resources documentation](/extend/modular-resources/create) to do so.
 
 For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#readings) method in the code of a [new sensor model](/extend/modular-resources/):
 
@@ -153,6 +153,6 @@ func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (
 {{% /tab %}}
 {{% /tabs %}}
 
-See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying built-in API specifications.
+See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/) on modifying built-in API specifications.
 
 {{% /expand%}}
