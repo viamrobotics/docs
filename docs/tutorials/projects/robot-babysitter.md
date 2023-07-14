@@ -16,7 +16,7 @@ date: "21 April 2023"
 # cost: 0 (laptop)
 ---
 
-{{<gif webm_src="../../img/robot-babysitter/robot_babysitter.webm" mp4_src="../../img/robot-babysitter/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+{{<gif webm_src="/tutorials/img/robot-babysitter/robot_babysitter.webm" mp4_src="/tutorials/img/robot-babysitter/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 <br>
 
