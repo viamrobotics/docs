@@ -5,8 +5,8 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-images: ["/tutorials/img/robot-babysitter/robot_babysitter.png"]
-videoAlt: "A demonstration of the singing robot babysitter is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
+images: ["/tutorials/img/robot-babysitter/robot_babysitter.jpg"]
+videoAlt: "Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. Different songs play."
 webmSrc: "/tutorials/img/robot-babysitter/robot_babysitter.webm"
 mp4Src: "/tutorials/img/robot-babysitter/robot_babysitter.mp4"
 authors: [ "Tess Avitabile" ]
@@ -21,21 +21,29 @@ date: "21 April 2023"
 
 <br>
 
+A Note From the Author:
+
+<pre>
+
 When I started at Viam, Eliot told me the best way to test the product is to try to automate something I do in my life with a robot.
 
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
-When Viam's ML Model service was released, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not at home.
-As I created this babysitting program myself, I was able to customize it to recognize my kid's exact toys and sing the songs I wanted it to in my voice.
+When we were testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around.
 
-This tutorial tells you how to make your own singing robot babysitter.
-However, the instructions here are just a start.
+As I created this babysitting program myself, I was able to customize it to recognize the different toys my kid likes to play with and sing the songs I wanted it to in my voice.
+In the future, I'd build a babysitting robot that does more to respond to the sight of different toys, like spin around gadgets or tell a story with integrated ChatGPT.
+
+</pre>
+
+This tutorial teaches how to make your own singing robot babysitter.
+The instructions here are just a start.
 Expand upon this tutorial to customize your "babysitting bot" with [machine learning](/services/ml/), the [Vision Service](/services/), and more [components](/components/) and [services](/services/).
 
 To make your own babysitting bedtime-songs bot, you need only the following hardware:
 
 - A computer with a webcam and speakers
 
-I used a Macbook.
+Tess used a Macbook.
 You can use any PC or [single-board computer](/components/board/) with a Viam-compatible operating system that meets these requirements, but you will need to modify the code to program the robot to play songs if not using MacOs.
 
 To start,  you will configure the camera on your laptop to capture data with the Data Management service, and use it to capture images.
@@ -100,7 +108,11 @@ If you use a different name, change `"cam"` in the code to match the name you us
 
 Now that you've added your camera, follow these instructions [to add a data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your robot and [configure data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on the camera.
 
-- Make sure that you add a `service_config` to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`.
+{{< alert title="Important" color="tip" >}}
+
+Make sure that you add a `service_config` to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`.
+
+{{< /alert >}}
 
 At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
@@ -206,18 +218,20 @@ Click on the drop-down menu labeled **camera** and toggle the feed on to view yo
 ![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/robot-babysitter/export-screenshot.png)
 
 Now, click on **Export Screenshot** to take pictures of the toys you want the robot to be able to recognize and differentiate between.
+
 You are going to use these pictures to train your machine learning model so that when your webcam "sees" (captures image data containing) that toy, the robot knows to play a particular song through its computer's speakers.
 
-My kids like playing with brightly colored puzzle pieces, which come in different shapes.
-I decided to filter by shape rather than color, but you can filter your objects as you choose.
+My kids like playing with brightly colored puzzle pieces, which come in different shape and color combinations.
+Tess decided to tag by shape, but you can filter your objects as you choose.
 Capture pictures of the different shapes.
 Use a consistent background.
-Try to get at least 50 images of each object, in my case, each puzzle piece.
+Try to get at least 50 images of each object, like each puzzle piece.
 
 ### Tag data
 
 Add tags for each of the puzzle pieces.
-I used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”. I tagged 50 images for each shape.
+Tess used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
+They recommend tagging at least 50 images for each shape.
 
 <!-- TODO: more info here. config ui. -->
 
@@ -400,7 +414,7 @@ func main() {
 }
 ```
 
-The audio files I used are available on [GitHub here](https://github.com/viam-labs/singing-babysitter/tree/main/songs).
+The audio files I used are available on [GitHub](https://github.com/viam-labs/singing-babysitter/tree/main/songs) here.
 
 ## Next Steps
 
