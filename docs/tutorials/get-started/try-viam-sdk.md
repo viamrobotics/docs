@@ -3,7 +3,7 @@ title: "Drive the Viam Rover with the Viam SDK"
 linkTitle: "Drive with the SDK"
 weight: 40
 type: "docs"
-description: "Use a Viam SDK to program a Viam Rover to move in a square."
+description: "Drive a Viam rover from the comfort of your home right now and use a Viam SDK to program a Viam Rover to move in a square."
 webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
