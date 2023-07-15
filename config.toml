@@ -6,6 +6,7 @@ enableRobotsTXT = false
 enableGitInfo = true
 disableKinds = ["RSS"]
 timeout = 60000
+canonifyURLs = true
 
 [taxonomies]
 tag = "tags"
