@@ -28,7 +28,7 @@ This robot will be able to move around and launch foam darts.
 This project is a great place to start if you are new to building robots, have a love for Nerf toys, an occasion to target something and launch a dart at it, or if you just want to troll your friends.
 Don’t forget to be careful and have fun!
 
-{{<gif webm_src="/tutorials/img/foam-dart-launcher/init-image-nerf-robot.webm" mp4_src="/tutorials/img/foam-dart-launcher/init-image-nerf-robot.mp4" alt="Robot launching a dart from a foam dart launcher taped to the robot." max-width="400px">}}
+{{<gif webm_src="/tutorials/foam-dart-launcher/init-image-nerf-robot.webm" mp4_src="/tutorials/foam-dart-launcher/init-image-nerf-robot.mp4" alt="Robot launching a dart from a foam dart launcher taped to the robot." max-width="400px">}}
 
 ## What You’ll Need for This Tutorial
 
@@ -73,7 +73,7 @@ For this setup we have one dual motor controller for the two motors.
 If you have more than two motors you will likely need two motor controllers.
 {{% /alert %}}
 
-{{< figure src="../../img/foam-dart-launcher/dual-h-bridge-motor-controller.jpg" width="400px" alt="Dual H-bridge motor controller with four signal wires going in and two sets of motor power wires coming out." title="Dual H-bridge motor controller." >}}
+{{< figure src="/tutorials/foam-dart-launcher/dual-h-bridge-motor-controller.jpg" width="400px" alt="Dual H-bridge motor controller with four signal wires going in and two sets of motor power wires coming out." title="Dual H-bridge motor controller." >}}
 
 We need only worry about <strong>OUT1</strong> through <strong>OUT4</strong>, <strong>IN1</strong> through <strong>IN4</strong>, 12V, and ground.
 
@@ -121,7 +121,7 @@ This is standard practice for power control circuits in many situations.
 For example, by using a common off-the-shelf 15A light switch to actuate a relay bank, it is possible to control hundreds of amps of lighting for an entire office floor.
 {{% /alert %}}
 
-{{< figure src="../../img/foam-dart-launcher/power-relay.jpg" width="400px" alt="Power relay." title="Power relay." >}}
+{{< figure src="/tutorials/foam-dart-launcher/power-relay.jpg" width="400px" alt="Power relay." title="Power relay." >}}
 
 <ol>
 <li>Connect the solenoid to the relay.</li>
@@ -147,7 +147,7 @@ For example, by using a common off-the-shelf 15A light switch to actuate a relay
 
 ### Assemble Solenoid/Foam Dart Launcher
 
-{{< figure src="../../img/foam-dart-launcher/assembled-foam-dart-launcher.jpg" width="400px" alt="Solenoid attached to the orange foam dart launcher using rubber bands and electrical tape." title="Foam dart launcher/Solenoid Assembly." >}}
+{{< figure src="/tutorials/foam-dart-launcher/assembled-foam-dart-launcher.jpg" width="400px" alt="Solenoid attached to the orange foam dart launcher using rubber bands and electrical tape." title="Foam dart launcher/Solenoid Assembly." >}}
 
 1. Modify the foam dart launcher to make room for the solenoid.
    Using cutting pliers, we cut the trigger guard off of the front as seen in the picture above.
@@ -165,7 +165,7 @@ For example, by using a common off-the-shelf 15A light switch to actuate a relay
 Try activating the solenoid manually to ensure that it hits the foam dart launcher trigger in the right spot.
 [^solvolt]:  If you choose to increase the voltage, you must connect **VCC** and ground (**DC+** and **DC-**) to the new voltage source rather than connecting them to the Raspberry Pi as described in Step 3 of [Assemble Solenoid/Foam Dart Launcher](#assemble-solenoidfoam-dart-launcher).
 
-{{< figure src="../../img/foam-dart-launcher/ng-taped-to-rover.jpg"  alt="Foam dart launcher taped to a rover base using electrical tape." title="Foam dart launcher Taped to the Rover" width="400">}}
+{{< figure src="/tutorials/foam-dart-launcher/ng-taped-to-rover.jpg"  alt="Foam dart launcher taped to a rover base using electrical tape." title="Foam dart launcher Taped to the Rover" width="400">}}
 
 ## Configure Your Foam Dart Launcher Robot with the Viam App
 
@@ -176,7 +176,7 @@ Create a new robot in the Viam app and give it a name.
 Add your board with the **Name** `local`, **Type** `board`, and **Model** `pi`.
 Click **Create Component**.
 
-<img src="../../img/foam-dart-launcher/add-board.png"  alt="Viam app board component attribute pane." width="800" >
+{{<imgproc src="/tutorials/foam-dart-launcher/add-board.png" resize="800x" declaredimensions=true alt="Viam app board component attribute pane.">}}
 
 You can name your board whatever you want, we picked `local`.
 Just remember to use that name consistently in the following steps.
@@ -196,7 +196,7 @@ In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`,
 
 Set **Max RPM** to `150`.
 
-<img src="../../img/foam-dart-launcher/left-motor.png"  alt="Left motor component config UI." width="800">
+{{<imgproc src="/tutorials/foam-dart-launcher/left-motor.png" resize="800x" declaredimensions=true alt="Left motor component config UI.">}}
 
 Click **Save config** at the bottom of the screen.
 
@@ -213,12 +213,12 @@ For **A/In1** select `16 GPIO 23` and for **B/In2** select `18 GPIO 24`.
 
 Set **Max RPM** to `150`.
 
-<img src="../../img/foam-dart-launcher/right-motor.png"  alt="Right motor component config UI." width="800">
+{{<imgproc src="/tutorials/foam-dart-launcher/right-motor.png" resize="800x" declaredimensions=true alt="Right motor component config UI.">}}
 
 Click **Save config** at the bottom of the screen.
 Then go to the **Control** tab where you will now see the buttons you can use to control the motors:
 
-<img src="../../img/foam-dart-launcher/LR-motor-config-panes.png"  alt="Left and right motor configuration panes." width="800">
+{{<imgproc src="/tutorials/foam-dart-launcher/LR-motor-config-panes.png" resize="800x" declaredimensions=true alt="Left and right motor configuration panes.">}}
 
 Now you can drive your left and right wheels separately.
 Let’s add a base to be able to control them together.
@@ -235,7 +235,7 @@ Set the **Wheel Circumference** to `200` and the **Width** to `130` if you used 
 If you used different hardware, measure the diameter of your wheels and multiply by pi for the circumference.
 Measure the distance between the centers of the right and left wheels to find the width.
 
-<img src="../../img/foam-dart-launcher/config-base.png"  alt="Base Component Attribute Pane." width=800>
+{{<imgproc src="/tutorials/foam-dart-launcher/config-base.png" resize="800x" declaredimensions=true alt="Base Component Attribute Pane.">}}
 
 Now let’s add a camera to watch the video stream on the control panel as you move your rover.
 
@@ -244,11 +244,11 @@ Now let’s add a camera to watch the video stream on the control panel as you m
 Add your USB camera as a webcam.
 Please refer to [our webcam documentation](/components/camera/webcam/) for complete instructions.
 
-<img src="../../img/foam-dart-launcher/config-webcam.png"  alt="Camera Component Attribute Pane." title="Camera Component Attribute Pane" width="800">
+{{<imgproc src="/tutorials/foam-dart-launcher/config-webcam.png" resize="800x" declaredimensions=true alt="Camera Component Attribute Pane.">}}
 
 If you go back to the **Control** tab and click to expand the base panel, you will see your base and camera:
 
-<img src="../../img/foam-dart-launcher/base-cam-view.png"  alt="Camera view from the Base component's keyboard tab." title="Camera View from the Base Component's Keyboard Tab." width="800">
+{{<imgproc src="/tutorials/foam-dart-launcher/base-cam-view.png" resize="800x" declaredimensions=true alt="Camera view from the Base component's keyboard tab.">}}
 
 Toggle the switch under **Keyboard Disabled** to enable keyboard control, then use the W, A, S, and D keys on your keyboard to move your rover around.
 You can view the camera stream at the same time.
@@ -341,11 +341,11 @@ If you set the pin state to high, the solenoid will actuate.
 If you set it to low, it should deactivate the solenoid.
 Since we already assembled the robot, setting pin 37 to **high** launches your foam dart launcher if its loaded.
 
-{{< figure src="../../img/foam-dart-launcher/board-low.png"  alt="Board component, G P I O section showing Low selected on the Pin State drop-down." title="Board component, GPIO section showing Low selected on the Pin State drop-down" width="800">}}
+{{< figure src="/tutorials/foam-dart-launcher/board-low.png"  alt="Board component, G P I O section showing Low selected on the Pin State drop-down." title="Board component, GPIO section showing Low selected on the Pin State drop-down" width="800">}}
 
-{{< figure src="../../img/foam-dart-launcher/board-displaying-high.png"  alt="Board component, G P I O section with pin 37 set to High." title="Board component, GPIO section with pin 37 set to High." width="800">}}
+{{< figure src="/tutorials/foam-dart-launcher/board-displaying-high.png"  alt="Board component, G P I O section with pin 37 set to High." title="Board component, GPIO section with pin 37 set to High." width="800">}}
 
-{{< figure src="../../img/foam-dart-launcher/board-high.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
+{{< figure src="/tutorials/foam-dart-launcher/board-high.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
 
 ## Control with the Viam App
 
@@ -362,7 +362,7 @@ Since we already assembled the robot, setting pin 37 to **high** launches your f
 
 You can see the demo video of it in action here:
 
-{{<video webm_src="../../videos/FoamDartLauncherRobotDemo.webm" mp4_src="../../videos/FoamDartLauncherRobotDemo.mp4" poster="../../videos/FoamDartLauncherRobotDemo.jpg" alt="Foam Dart Launcher Demo">}}
+{{<video webm_src="/tutorials/videos/FoamDartLauncherRobotDemo.webm" mp4_src="/tutorials/videos/FoamDartLauncherRobotDemo.mp4" poster="/tutorials/videos/FoamDartLauncherRobotDemo.jpg" alt="Foam Dart Launcher Demo">}}
 
 ## Troubleshooting
 

@@ -14,7 +14,7 @@ no_list: true
 # SMEs:
 ---
 
-<img src="/icons/components.png"  style="float:right" alt="Component picture" width="400" />
+{{<imgproc src="/icons/components.png" resize="400x" declaredimensions=true alt="ALT" class="alignright">}}
 
 Brief description of the component and what you can do with it.
 
@@ -198,6 +198,4 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/components/component/control-a-component" %}}
-    {{% card link="/components/component/install" %}}
 {{< /cards >}}

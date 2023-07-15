@@ -24,7 +24,7 @@ Enter a name for your camera, select the type `camera`, and select the `fake` mo
 
 Click **Create component**.
 
-{{< imgproc src="/components/camera/configure-fake.png" alt="Configuration of a fake camera in the Viam app config builder." resize="1000x" >}}
+![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
 
 Edit and fill in the attributes as applicable.
 

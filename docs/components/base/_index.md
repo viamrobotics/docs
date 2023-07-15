@@ -15,7 +15,7 @@ A base is the platform that the other parts of a mobile robot attach to.
 
 By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 
-{{< imgproc src="/components/base/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." resize="1000x" >}}
+![A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component.](/components/base/base-trk-rover-w-arm.png)
 
 Most mobile robots with a base need at least the following hardware:
 

@@ -22,7 +22,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `increm
 
 Click **Create component**.
 
-{{< imgproc src="/components/encoder/configure-incremental.png" alt="Configuration of an incremental encoder in the Viam app config builder." resize="1000x" >}}
+![Configuration of an incremental encoder in the Viam app config builder.](/components/encoder/configure-incremental.png)
 
 Fill in and edit the attributes as applicable.
 

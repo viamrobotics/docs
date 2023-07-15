@@ -22,7 +22,7 @@ Enter a name for your sensor, select the type `gantry`, and select the `single-a
 
 Click **Create component**.
 
-{{< imgproc src="/components/gantry/single-axis-ui-config.png" alt="Creation of a single-axis gantry component in the Viam app config builder." resize="1000x" >}}
+![Creation of a single-axis gantry component in the Viam app config builder.](/components/gantry/single-axis-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

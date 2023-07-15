@@ -141,6 +141,6 @@ The following attributes are available for `wheeled` bases:
 
 An example wiring diagram for a base with one motor on each side:
 
-{{< imgproc src="/components/base/base-wiring-diagram.png" alt="Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover" resize="1000x" >}}
+![Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover](/components/base/base-wiring-diagram.png)
 
 Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.

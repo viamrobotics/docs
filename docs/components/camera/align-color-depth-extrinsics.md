@@ -20,7 +20,7 @@ Enter a name for your camera, select the type `camera`, and select the `align_co
 
 Click **Create component**.
 
-{{< imgproc src="/components/camera/configure-align-color-depth-extrinsics.png" alt="Configuration of an align color depth extrinsics view in the Viam app config builder." resize="1000x" >}}
+![Configuration of an align color depth extrinsics view in the Viam app config builder.](/components/camera/configure-align-color-depth-extrinsics.png)
 
 Edit and fill in the attributes as applicable.
 

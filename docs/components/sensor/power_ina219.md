@@ -22,7 +22,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `power_in
 
 Click **Create component**.
 
-{{< imgproc src="/components/sensor/power-ina219-sensor-ui-config.png" alt="Creation of a power_ina219 sensor in the Viam app config builder." resize="1000x" >}}
+![Creation of a power_ina219 sensor in the Viam app config builder.](/components/sensor/power-ina219-sensor-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

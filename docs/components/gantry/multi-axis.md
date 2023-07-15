@@ -22,7 +22,7 @@ Enter a name for your gantry, select the type `gantry`, and select the `multi-ax
 
 Click **Create component**.
 
-{{< imgproc src="/components/gantry/multi-axis-ui-config.png" alt="Creation of a multi-axis gantry component in the Viam app config builder." resize="1000x" >}}
+![Creation of a multi-axis gantry component in the Viam app config builder.](/components/gantry/multi-axis-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

@@ -46,7 +46,7 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 
 Here's an example of how a servo might be wired to a Raspberry Pi:
 
-{{<imgproc src="/components/servo/servo-wiring.png" resize="1000x" declaredimensions=true alt="A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.">}}
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/servo/servo-wiring.png)
 
 ### Resistors
 
@@ -54,7 +54,7 @@ Here's an example of how a servo might be wired to a Raspberry Pi:
 
 #### Resistor Value Chart
 
-![Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms.](../img/resistor.png)
+![Chart of standard colors to values for electronic components. An example resistor with green, red, and orange bands is shown. The value is 52 times 10 to the third power, or 52,000 Ohms.](/internals/vector/resistor.png)
 
 You can easily learn resistor color markings without referring to a chart by remembering this jingle:
 
@@ -76,11 +76,11 @@ For example, a resistor with brown, green, orange bands representing, 1, 5, and 
 ### LEDs (Light-Emitting Diodes)
 
 Light-emitting diodes come in a variety of form factors:
-<img src="../img/Verschiedene_LEDs.jpg" alt="Image of various Light Emitting Diode form factors." />
+![Image of various Light Emitting Diode form factors.](/internals/vector/Verschiedene_LEDs.jpg)
 LEDs commonly have two leads, although specialty LEDs are available that are capable of simultaneously displaying two colors or of displaying a blended shade. These specialty LEDs have 4-6 leads and 2-4 LED junctions.
 
 LEDs work by applying a voltage with a positive and negative polarity to the leads in such a manner that the positive voltage is attached to the anode of the LED and the negative voltage lead is attached to the LED's cathode. On a two-pin LED, the longer pin is the anode and the short pin is the cathode.
 
 LEDs require current-limiting resistors to avoid destroying the LED junction during an over-current situation. Always include a current-limiting resistor in basic LED circuits. The following schematic illustrates this circuit:
 
-<img src="../img/LED_circuit2.png" alt="This image displays a schematic showing the arrangement of a DC voltage source with the positive lead to the LED's anode, the LED's cathode connected to a one end of a current-limiting resistor and the other end of the voltage drop resistor connected to the negative lead of the voltage source, completing the circuit." />
+![This image displays a schematic showing the arrangement of a DC voltage source with the positive lead to the LED's anode, the LED's cathode connected to a one end of a current-limiting resistor and the other end of the voltage drop resistor connected to the negative lead of the voltage source, completing the circuit.](/internals/vector/LED_circuit2.png)
