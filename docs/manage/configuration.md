@@ -53,7 +53,7 @@ You can use the mode selector to switch between **Builder** and **Raw JSON**:
 - **Builder** mode provides a graphical interface for configuring your robot resources.
 - **Raw JSON** mode provides a text editing field where you can write and edit the config manually.
 
-{{< imgproc alt="The CONFIG tab of the Viam app with a box highlighting the CONFIG tab and the Mode selector (where you can select Builder or Raw JSON)." src="/manage/configuration/config-tab.png" resize="1000x" >}}
+![The CONFIG tab of the Viam app with a box highlighting the CONFIG tab and the Mode selector (where you can select Builder or Raw JSON).](/manage/configuration/config-tab.png)
 
 Regardless of the mode you choose, Viam stores the configuration file in [JSON (JavaScript Object Notation)](https://en.wikipedia.org/wiki/JSON).
 
@@ -228,7 +228,7 @@ In raw JSON, these options are represented by `log` (bool) and `one_shot` (bool)
 
 The following configuration executes the command `python3 my_cool_script.py` in your <file>/home/myName/project/</file> directory every time your robot boots, and keeps it executing indefinitely.
 
-{{< imgproc alt="The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off." src="/manage/configuration/process-fancy.png" resize="1000x" >}}
+![The PROCESSES subtab of the CONFIG tab with a process called run-my-code configured. The executable is python3, the argument is my_cool_script.py, and the working directory is /home/myName/project. Logging is turned on and execute once is turned off.](/manage/configuration/process-fancy.png)
 
 The corresponding raw JSON looks like this:
 
@@ -262,7 +262,7 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 2. Add the JSON configuration in the config field.
 3. Click **SAVE FRAGMENT**.
 
-{{< imgproc alt="Fragment creation view" src="/manage/fragment-view.png" resize="1000x" >}}
+![Fragment creation view](/manage/fragment-view.png)
 
 ### Add a fragment to a robot
 
@@ -275,11 +275,11 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-{{< imgproc alt="The fragments subtab" src="/manage/fragments-tab.png" resize="1000x" >}}
+![The fragments subtab](/manage/fragments-tab.png)
 
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
-{{< imgproc alt="A fragment in the components subtab" src="/manage/fragment-components.png" resize="1000x" >}}
+![A fragment in the components subtab](/manage/fragment-components.png)
 
 In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
 

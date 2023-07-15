@@ -3,9 +3,9 @@ title: "Modernize a 1980s robot"
 linkTitle: "Modernize a 1980s Robot"
 weight: 60
 type: "docs"
-webmSrc: "/tutorials/img/maiv/maiv_front.webm"
-mp4Src: "/tutorials/img/maiv/maiv_front.mp4"
-images: ["/tutorials/img/maiv/maiv_front.gif"]
+webmSrc: "/tutorials/maiv/maiv_front.webm"
+mp4Src: "/tutorials/maiv/maiv_front.mp4"
+images: ["/tutorials/maiv/maiv_front.gif"]
 tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
 no_list: true
 description: "Modernize the Omnibot 2000 from the 1980s with Viam and AI."
@@ -21,7 +21,7 @@ cost: 580
 From Star Wars to Short Circuit, Go-bots to Transformers - the 1980s was a time in pop culture where people thought a lot about how robots might exist alongside us in the future.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/omnibot_ad.png" class="alignleft" alt="1984 advertisement for the Omnibot 2000." title="1984 advertisement for the Omnibot 2000." style="max-width: 350px" />
+{{<imgproc src="/tutorials/maiv/omnibot_ad.png" resize="400x" declaredimensions=true alt="1984 advertisement for the Omnibot 2000." class="alignleft" style="max-width: 350px">}}
 </div>
 
 Along with robots appearing in mass media, a good number of toy robots made their way into homes.
@@ -74,7 +74,7 @@ You'll also need some basic tools and supplies:
 ## Introduce yourself to Omnibot 2000
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_here.jpg" class="alignright" alt="The Omnibot 2000." title="The Omnibot 2000." style="max-width: 250px" />
+{{<imgproc src="/tutorials/maiv/maiv_here.jpg" resize="300x" declaredimensions=true alt="The Omnibot 2000." class="alignright" style="max-width: 250px">}}
 </div>
 
 Your Omnibot 2000 arrival will likely be both exciting *and* full of dust.
@@ -85,7 +85,7 @@ The powered wheels have treads - you'll want to see if yours are intact and usab
 Ours were in decent shape - if yours are not you can find them for sale on [eBay](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=omnibot+2000+treads&_sacat=0&LH_TitleDesc=0&_odkw=omnibot+2000&_osacat=0) or 3D-printable at [Thingiverse](https://www.thingiverse.com/thing:4779479).
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_wheels.jpg" class="alignleft" alt="Omnibot 2000 wheels." title="Omnibot 2000 wheels." style="max-width: 200px" />
+{{<imgproc src="/tutorials/maiv/maiv_wheels.jpg" resize="300x" declaredimensions=true alt="Omnibot 2000 wheels." class="alignleft" style="max-width: 200px">}}
 </div>
 
 Note that Omnibot seems to be right-handed - its right arm and hand are motorized, while the left is manually posable.
@@ -94,7 +94,7 @@ This tutorial does not cover how to control its arm and gripper.
 The tape player is an interesting device to have built-into a robot - and it certainly adds to the retro look.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_unscrew_battery_cover.jpg" class="alignright" alt="Omnibot 2000 battery cover being opened." title="Omnibot 2000 battery cover being opened." style="max-width: 170px;" />
+{{<imgproc src="/tutorials/maiv/maiv_unscrew_battery_cover.jpg" resize="250x" declaredimensions=true alt="Omnibot 2000 battery cover being opened." class="alignright" style="max-width: 170px;">}}
 </div>
 
 It is powered separately from the rest of the robot.
@@ -112,7 +112,7 @@ This will take some surgery - but fortunately its all low-risk.
 Just remember to set aside any screws you remove in a place where they remain organized and will not get lost.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_surgery.jpg" alt="Omnibot 2000 taken apart." title="Omnibot 2000 taken apart." style="max-width: 400px;" />
+{{<imgproc src="/tutorials/maiv/maiv_surgery.jpg" resize="500x" declaredimensions=true alt="Omnibot 2000 taken apart." style="max-width: 400px;">}}
 </div>
 
 ### Inside MAIV's base
@@ -121,7 +121,7 @@ Start by placing MAIV face-down on a large table or floor, and find the six scre
 Unscrew each screw (if yours has all of its screws intact, ours was missing a few), detach the lower base and place it wheels-down.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_base_open.jpg" alt="Omnibot MAIV base opened." class="alignleft" title="Omnibot MAIV base opened." style="max-width: 250px;" />
+{{<imgproc src="/tutorials/maiv/maiv_base_open.jpg" resize="300x" declaredimensions=true alt="Omnibot MAIV base opened." class="alignleft" style="max-width: 250px;">}}
 </div>
 
 The first thing you may notice is that inside the base, there is a good amount of room to work.
@@ -136,7 +136,7 @@ Be sure to keep it this way!
 #### Mark MAIV's base motors
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_motor_wires_labeled.PNG" alt="Omnibot MAIV base opened." class="alignright" title="Omnibot MAIV base opened." style="max-width: 250px;" />
+{{<imgproc src="/tutorials/maiv/maiv_motor_wires_labeled.PNG" resize="300x" declaredimensions=true alt="Omnibot MAIV base opened." style="max-width: 250px;" class="alignright">}}
 </div>
 
 You will see two wires leading to each motor.
@@ -162,7 +162,7 @@ Orient your L298N so that the `OUT1` and `OUT2` terminals are on the left side.
 Using a screwdriver, attach the 2 wires from the left motor to the `OUT1` and `OUT2` terminals.
 Now, attach the 2 wires from the right motor to the `OUT3` and `OUT4` terminals.
 
-![Omnibot MAIV base wiring diagram.](../../img/maiv/viam-omnibot-wiring-01.png)
+![Omnibot MAIV base wiring diagram.](/tutorials/maiv/viam-omnibot-wiring-01.png)
 
 Ensure your Raspberry Pi is powered off, and connect GPIO pins for the left motor with female-to-female jumper wires.
 You can use any GPIO pins, but we connected pin 32 to `IN1`, pin 38 to `IN2`, and pin 35 to `ENA`.
@@ -175,7 +175,7 @@ Conveniently, MAIV has easy-to-access external switches, a barrel jack in the ba
 Spending a little time now repurposing these will make it easy for you to power up, power down, and charge your robot.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_switch_solder.jpg" alt="Omnibot MAIV switch wires soldered." class="alignright" title="Omnibot MAIV switch wires soldered." style="max-width: 150px;" />
+{{<imgproc src="/tutorials/maiv/maiv_switch_solder.jpg" resize="300x" declaredimensions=true alt="Omnibot MAIV switch wires soldered." style="max-width: 150px;" class="alignright" >}}
 </div>
 
 #### Power switch and battery
@@ -206,7 +206,7 @@ You should now be able to remove the back portion of the torso.
 Turn this over so that the wires coming out of the battery box and switches are facing upwards.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_main_board.jpg" alt="Omnibot MAIV power wiring." class="alignleft" title="Omnibot MAIV power wiring." style="max-width: 250px;" />
+{{<imgproc src="/tutorials/maiv/maiv_main_board.jpg" resize="300x" declaredimensions=true alt="Omnibot MAIV power wiring." style="max-width: 250px" class="alignleft" >}}
 </div>
 
 At the top of the torso, you'll notice a large printed circuit board that was originally the main digital control center of the Omnibot 2000.
@@ -215,7 +215,7 @@ We'll won't use it at all as we modernize MAIV, but we can leave it intact.
 Now, using wire cutters and quick wire connectors, connect the battery, switch, and charger wires as shown.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_power_wiring.jpg" alt="Omnibot MAIV power wiring." class="alignright" title="Omnibot MAIV power wiring." style="max-width: 400px;" />
+{{<imgproc src="/tutorials/maiv/maiv_power_wiring.jpg" resize="300x" declaredimensions=true alt="Omnibot MAIV power wiring." style="max-width: 400px;" class="alignright" >}}
 </div>
 
 One 3-terminal quick connect joins the negative wire from the battery, the negative wire from the charging port, and a new wire that you need to run from the torso into the base to power the robot.
@@ -237,7 +237,7 @@ As with the positive connector, one of the negative terminals will be left empty
 
 Finally, plug the USB-C output from the step down converter into the Raspberry Pi.
 
-![Omnibot MAIV powered wiring diagram.](../../img/maiv/viam-omnibot-wiring-02.png)
+![Omnibot MAIV powered wiring diagram.](/tutorials/maiv/viam-omnibot-wiring-02.png)
 
 #### Power MAIV on
 
@@ -415,7 +415,7 @@ Click on the base panel and use the arrows to control the base.
 Ensure the motors on both sides are working, and that the wheels are spinning as expected.
 If the wheels on a given side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.
 
-{{<video webm_src="/tutorials/img/maiv/maiv_base_test.webm" mp4_src="/tutorials/img/maiv/maiv_base_test.mp4" poster="/tutorials/img/maiv/maiv_base_test.jpg" alt="MAIV base test movements" max-width="300px">}}
+{{<video webm_src="/tutorials/maiv/maiv_base_test.webm" mp4_src="/tutorials/maiv/maiv_base_test.mp4" poster="/tutorials/maiv/maiv_base_test.jpg" alt="MAIV base test movements" max-width="300px">}}
 
 From the **Control** tab you can also test the individual motors directly.
 First select the desired direction and power percent, then start the motor by clicking `RUN` and stop the motor by clicking `STOP`.
@@ -433,7 +433,7 @@ You will be replacing the current incandescent bulbs with more energy-efficient 
 In order to access the eye wiring, locate the screws on the underside of the head and unscrew them.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_eyes.jpg" alt="Omnibot MAIV eye plate." class="alignleft" title="Omnibot MAIV eye plate." style="max-width: 250px;" />
+{{<imgproc src="/tutorials/maiv/maiv_eyes.jpg" resize="300x" declaredimensions=true alt="Omnibot MAIV eye plate." class="alignleft" style="max-width: 250px;" >}}
 </div>
 
 Remove the eye shield, unscrew the incandescent bulbs and screw in the LED bulbs.
@@ -455,7 +455,7 @@ You will use GPIO directly to control the eyes through the `board` component you
 Once `viam-server` is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
 From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the eyes on) or low (to turn the eyes off).
 
-{{<video webm_src="/tutorials/img/maiv/maiv_eye_test.webm" mp4_src="/tutorials/img/maiv/maiv_eye_test.mp4" poster="/tutorials/img/maiv/maiv_eye_test.jpg" alt="MAIV eye flashing test" max-width="300px">}}
+{{<video webm_src="/tutorials/maiv/maiv_eye_test.webm" mp4_src="/tutorials/maiv/maiv_eye_test.mp4" poster="/tutorials/maiv/maiv_eye_test.jpg" alt="MAIV eye flashing test" max-width="300px">}}
 
 ### Connect and test the neck motor
 
@@ -476,7 +476,7 @@ Connect the final terminal of the negative quick connector to the GND terminal o
 Connect GPIO pins for the neck motor with female-to-female jumper wires.
 You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2`, and pin 29 to `ENA`.
 
-![Omnibot MAIV complete wiring diagram.](../../img/maiv/viam-omnibot-wiring-03.png)
+![Omnibot MAIV complete wiring diagram.](/tutorials/maiv/viam-omnibot-wiring-03.png)
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -548,7 +548,7 @@ Covering both sides with masking tape before drilling (remove afterwards) can al
 {{% /alert %}}
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/maiv/maiv_eye_sockets.jpg" alt="Omnibot MAIV face plate with camera." class="alignright" title="Omnibot MAIV face plate with camera." style="max-width: 250px;" />
+{{<imgproc src="/tutorials/maiv/maiv_eye_sockets.jpg" resize="300x" declaredimensions=true alt="Omnibot MAIV face plate with camera." style="max-width: 250px;" class="alignright" >}}
 </div>
 
 Find a drill bit that is about the same circumference as the USB camera you purchased and carefully drill a hole through the face plate.
@@ -598,7 +598,7 @@ If you are editing the configuration of MAIV using JSON directly, add the camera
 Test your camera by navigating to the **Control** tab, opening the camera card, and turning on the video stream.
 Turning MAIV's head while streaming video will give you a sense of how MAIV is starting to see the world!
 
-{{<video webm_src="/tutorials/img/maiv/maiv_head_test.webm" mp4_src="/tutorials/img/maiv/maiv_head_test.mp4" poster="/tutorials/img/maiv/maiv_head_test.jpg" alt="MAIV head test" max-width="300px">}}
+{{<video webm_src="/tutorials/maiv/maiv_head_test.webm" mp4_src="/tutorials/maiv/maiv_head_test.mp4" poster="/tutorials/maiv/maiv_head_test.jpg" alt="MAIV head test" max-width="300px">}}
 
 ## MAIV in the world
 
@@ -609,7 +609,7 @@ Now that you've wired, configured, and tested all the components, put MAIV back 
 
 Now MAIV is ready to interact with the world!
 
-{{<video webm_src="/tutorials/img/maiv/maiv_driving.webm" mp4_src="/tutorials/img/maiv/maiv_driving.mp4" poster="/tutorials/img/maiv/maiv_driving.jpg" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
+{{<video webm_src="/tutorials/maiv/maiv_driving.webm" mp4_src="/tutorials/maiv/maiv_driving.mp4" poster="/tutorials/maiv/maiv_driving.jpg" alt="MAIV driving, in one of our home offices - so not quite the world, yet" max-width="350px">}}
 
 ## Next steps
 

@@ -4,10 +4,10 @@ linkTitle: "Mouse Mover"
 weight: 40
 type: "docs"
 description: "Use the Python SDK to move a continuous servo to keep a computer screen from sleeping."
-webmSrc: "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm"
-mp4Src: "/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4"
+webmSrc: "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.webm"
+mp4Src: "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.mp4"
 videoAlt: "A mouse mover controlled with a servo and Raspberry Pi."
-images: ["/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.gif"]
+images: ["/tutorials/single-component-tutorials-servo-mousemover/pi-hole.gif"]
 tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
 authors: [ "Kacey Meier-Smith" ]
 languages: [ "python" ]
@@ -28,7 +28,7 @@ This robot will turn the continuous servo that's secured inside the box, which w
 This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/moving.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/moving.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle.">}}
 </div>
 
 ## Requirements
@@ -85,12 +85,12 @@ pip install viam-sdk
 
 On the [Viam app](https://app.viam.com), select the **Code sample** tab, then confirm that **Python** is set as the default language.
 
-![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/img/single-component-tutorials-servo-mousemover/choose-python.png)
+![A screenshot of the word Language with four boxes below it with Python, Golang, Typescript (Web), and Remotes in each one. Python has a black background with white text and a checkmark, the other three have white backgrounds with black text.](/tutorials/single-component-tutorials-servo-mousemover/choose-python.png)
 
 Since we already installed the Python SDK, we can skip the first step.
 Copy the boilerplate Python code under the second step.
 
-![A screenshot of the Viam app showing the Code sample tab. On this tab it has Language: with four boxes, Python is a black background with white text and has a checkmark indicating it is selected, then there's Golang, Typescript (Web), and Remotes with white backgrounds and black text. The page next says Python SDK (Documentation) with a link to Documentation. Below that there's a place that says "pip install viam-SDK" this is how you install the Viam Python SDK. Below that instruction are the instructions to "Then copy and run the following code to connect to your robot:" with 7 lines of code seen (the screenshot is incomplete).](/tutorials/img/single-component-tutorials-servo-mousemover/copy-python-code-sample.png)
+![A screenshot of the Viam app showing the Code sample tab. On this tab it has Language: with four boxes, Python is a black background with white text and has a checkmark indicating it is selected, then there's Golang, Typescript (Web), and Remotes with white backgrounds and black text. The page next says Python SDK (Documentation) with a link to Documentation. Below that there's a place that says "pip install viam-SDK" this is how you install the Viam Python SDK. Below that instruction are the instructions to "Then copy and run the following code to connect to your robot:" with 7 lines of code seen (the screenshot is incomplete).](/tutorials/single-component-tutorials-servo-mousemover/copy-python-code-sample.png)
 
 {{% snippet "show-secret.md" %}}
 
@@ -117,7 +117,7 @@ nano anyname.py
 
 Paste the code you got from the **Code sample** tab in the Viam app. Press CTRL+O, then CTRL+M, then CTRL+X to save the code and exit.
 
-![Raspberry Pi terminal showing the connect code from the previous example.](/tutorials/img/single-component-tutorials-servo-mousemover/sample-code.png)
+![Raspberry Pi terminal showing the connect code from the previous example.](/tutorials/single-component-tutorials-servo-mousemover/sample-code.png)
 
 Now, run the code using the below command to get the resource information that lets us know if the connection is good or if there are any errors.
 
@@ -125,7 +125,7 @@ Now, run the code using the below command to get the resource information that l
 python3 anyname.py
 ```
 
-![The output of the code showing a list of the resources.](/tutorials/img/single-component-tutorials-servo-mousemover/resources-printed.png)
+![The output of the code showing a list of the resources.](/tutorials/single-component-tutorials-servo-mousemover/resources-printed.png)
 
 There are no errors in the resources above, so we have confirmed a good software connection between the Python SDK and your Viam robot!
 
@@ -140,7 +140,7 @@ Now, follow this schematic diagram to attach jumper wires to the servo and Raspb
 - **5V** on servo attached to pin 2 on Pi
 - **PWM** on servo attached to pin 12 on Pi
 
-![Computer-drawn photo schematic of a Raspberry Pi connected to a FS90R servo. It shows the yellow wire coming from the servo as the PWM wire and it's attached to pin twelve on the raspberry pi. The red wire coming from the servo is a five-volt wire and it's attached to pin two. The black wire coming from the servo is the ground wire and it's attached to pin eight.](/tutorials/img/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
+![Computer-drawn photo schematic of a Raspberry Pi connected to a FS90R servo. It shows the yellow wire coming from the servo as the PWM wire and it's attached to pin twelve on the raspberry pi. The red wire coming from the servo is a five-volt wire and it's attached to pin two. The black wire coming from the servo is the ground wire and it's attached to pin eight.](/tutorials/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
 
 Once you have the wires connected, attach the wheel/arm to servo and turn on the Raspberry Pi.
 
@@ -150,7 +150,7 @@ The servo is now physically connected to the Raspberry Pi, but the Viam app hasn
 
 Go to the [Viam app](https://app.viam.com), and navigate to the **Config** tab.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box for a Name to be typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam. To the far right it says Model, but it's greyed out because none of the previous two fields have been filled in. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/img/single-component-tutorials-servo-mousemover/new-component.png)
+![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box for a Name to be typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam. To the far right it says Model, but it's greyed out because none of the previous two fields have been filled in. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-component.png)
 
 ### Board component
 
@@ -160,7 +160,7 @@ In the **Config** tab, create a new component with the following attributes:
 - **Type**: `board`
 - **Model**: `pi`
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name local typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with board selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/img/single-component-tutorials-servo-mousemover/new-board.png)
+![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name local typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with board selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-board.png)
 
 Click **Create Component** to create the pi [board component](/components/board/) component.
 
@@ -172,7 +172,7 @@ After the board component, create a new [servo component](/components/servo/) wi
 - **Type**: `servo`
 - **Model**: `pi`
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name FS90R typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with servo selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/img/single-component-tutorials-servo-mousemover/new-servo.png)
+![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name FS90R typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with servo selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-servo.png)
 
 Click **Create Component** to create the [servo component](/components/servo/).
 
@@ -185,12 +185,12 @@ This is where you tell Viam which hardware pin to use to control the servo.
 
 The attribute section will look like this:
 
-![This is a screenshot of the Viam app on the CONFIG page. This shows the options that populate when you create a servo with the pi Model. It shows attributes to fill out, with a JSON coding area next to it. "Pin" is filled in with "12" and "Board" is filled in with "local". Pin and board are required fields. To the right of this area is an "Attribute Guide" with optional attributes and required. Required attributes are denoted with a star before the word. To the left below the Attributes is Data Capture Configuration and to the right of this is a button that says Add Method. Below that and to the left it says Frame and to the right of Frame it has a button that says Add Frame. Below this and to the left it says Depends On and to the right of that it has a dropdown box. Below the dropdown box you can see I've chosen local, which has an x next to the word to delete it.](/tutorials/img/single-component-tutorials-servo-mousemover/servo-config.png)
+![This is a screenshot of the Viam app on the CONFIG page. This shows the options that populate when you create a servo with the pi Model. It shows attributes to fill out, with a JSON coding area next to it. "Pin" is filled in with "12" and "Board" is filled in with "local". Pin and board are required fields. To the right of this area is an "Attribute Guide" with optional attributes and required. Required attributes are denoted with a star before the word. To the left below the Attributes is Data Capture Configuration and to the right of this is a button that says Add Method. Below that and to the left it says Frame and to the right of Frame it has a button that says Add Frame. Below this and to the left it says Depends On and to the right of that it has a dropdown box. Below the dropdown box you can see I've chosen local, which has an x next to the word to delete it.](/tutorials/single-component-tutorials-servo-mousemover/servo-config.png)
 
 Click the **Save Config** button.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/save-config.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/save-config.mp4" alt="Square button that says Save Config with a graphic of an old floppy disk in the corner. A mouse in the shape of a extended finger clicks the button." max-width="200px">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/save-config.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/save-config.mp4" alt="Square button that says Save Config with a graphic of an old floppy disk in the corner. A mouse in the shape of a extended finger clicks the button." max-width="200px">}}
 </div>
 
 ## Control the servo in Viam app
@@ -198,13 +198,13 @@ Click the **Save Config** button.
 If everything went well, the servo started to move.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/its-alive.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/its-alive.mp4" alt="Small square .gif of black and white frankenstein clip with man with brown hair in lab coat frantically looking around and yelling while text that says \"IT'S ALIVE! IT'S ALIVE!\" is on screen. There's a very tall man with something on his head on a table behind him and another man sitting on a chair behind the table." max-width="400px">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/its-alive.mp4" alt="Small square .gif of black and white frankenstein clip with man with brown hair in lab coat frantically looking around and yelling while text that says \"IT'S ALIVE! IT'S ALIVE!\" is on screen. There's a very tall man with something on his head on a table behind him and another man sitting on a chair behind the table." max-width="400px">}}
 </div>
 
 Navigate to the **Control** tab and press the **STOP** button on the servo card (matching what you named the servo) to stop the servo.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/stop.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/stop.mp4" alt="Red square button with the word STOP on it with an animation of a finger mouse pointer clicking it." max-width="150px">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/stop.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/stop.mp4" alt="Red square button with the word STOP on it with an animation of a finger mouse pointer clicking it." max-width="150px">}}
 </div>
 
 Click on the top of the servo card to open the servo controls.
@@ -214,7 +214,7 @@ Click on the top of the servo card to open the servo controls.
 Try changing the angle to a few different settings.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/angle-100.mp4" alt="A gif at the top of the CONTROL tab in the Viam app. The pointer finger is pressing the 10 button and it changes the angle from 90 to 100 repeatedly. The red STOP button is in the upper right corner. There is a blue circular arrow depicting the servo's direction as being counterclockwise. Below this is a gif of the Raspberry Pi to the left and the FS90R servo on the right. The servo stops, then spins counterclockwise repeatedly.">}}
 </div>
 
 ## Assemble the mouse mover
@@ -228,7 +228,7 @@ Now, make sure the servo is close to level with the top (leaving a tiny bit of r
 Tape the servo in place.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/servo-in-box.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/servo-in-box.mp4" alt="One hand holds a shallow box while the other holds a servo against the bottom and turns it to show the audience how flush the servo is to the top.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/servo-in-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/servo-in-box.mp4" alt="One hand holds a shallow box while the other holds a servo against the bottom and turns it to show the audience how flush the servo is to the top.">}}
 </div>
 
 ### Cut a holes in the box for the Pi
@@ -238,13 +238,13 @@ Take out the Raspberry Pi.
 Grab a box cutter and cut out a power hole.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/pi-hole.mp4" alt="This is a sped up gif of cutting a hole for the raspberry pi. First the person puts the raspberry pi inside to mark where the power holes are, then a mark is made on the lateral side of the box, then they pull out the raspberry pi and use boxcutters to cut a hole.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/pi-hole.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/pi-hole.mp4" alt="This is a sped up gif of cutting a hole for the raspberry pi. First the person puts the raspberry pi inside to mark where the power holes are, then a mark is made on the lateral side of the box, then they pull out the raspberry pi and use boxcutters to cut a hole.">}}
 </div>
 
 Since the Raspberry Pi will be in a box and won't have much ventilation, cutting a courtesy hole to allow for it to vent is the least we could do to keep it from frying.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/vent-box.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/vent-box.mp4" alt="This is sped up gif showing cutting the heat hole for the Raspberry Pi. First, they put the Raspberry Pi inside and identify where they need to cut on the bottom of the box, they then pull the Raspberry Pi out. Then they use box cutters to cut a one-inch by two-inch hole.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/vent-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/vent-box.mp4" alt="This is sped up gif showing cutting the heat hole for the Raspberry Pi. First, they put the Raspberry Pi inside and identify where they need to cut on the bottom of the box, they then pull the Raspberry Pi out. Then they use box cutters to cut a one-inch by two-inch hole.">}}
 </div>
 
 Be sure to tape the jumper wires out of the way of the servo.
@@ -255,7 +255,7 @@ The technique we used to find the center of the circle was to mark the screw on 
 Gently push on the box to get a mark on the inside of the box, then create a cut we could see from the other side.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/cut-box.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/cut-box.mp4" alt="This is sped up gif showing using a marker and marking the screw of the servo, then shutting the box quick and getting the marker on the lid, then opening it back up. Then using that mark to make a cut with a box cutter, and on the other side of the lid which is the outside, marking that cut hole and putting a large roll of tape down to draw a circle. Finally, cutting the circle out with box cutters.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/cut-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/cut-box.mp4" alt="This is sped up gif showing using a marker and marking the screw of the servo, then shutting the box quick and getting the marker on the lid, then opening it back up. Then using that mark to make a cut with a box cutter, and on the other side of the lid which is the outside, marking that cut hole and putting a large roll of tape down to draw a circle. Finally, cutting the circle out with box cutters.">}}
 </div>
 
 ### Tape the box shut, add "babygates", and plug in the Raspberry Pi
@@ -264,7 +264,7 @@ When taping the box shut be sure the servo with the circle cut out sits fairly f
 Add "babygates" or rails to keep the mouse from wandering off if it catches some friction.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="/tutorials/img/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the Raspberry Pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end, they place the mouse on top.">}}
+  {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the Raspberry Pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end, they place the mouse on top.">}}
 </div>
 
 ### Control your robot with code
@@ -282,7 +282,7 @@ Experiment and have fun.
 ## Next steps
 
 If you want to build more robots, head over to our documentation site and take a look at our [tutorials](/tutorials/).
-And if you didn't like this tutorial and would like to speak to my manager, their name is <img src="/tutorials/img/single-component-tutorials-servo-mousemover/censor.jpg" style="width:50px;" alt="Fuzzy box meant to censor text."></img>.
-(Update: apparently that's a big no no.)
+And if you didn't like this tutorial and would like to speak to my manager, their name is
+{{<imgproc src="/tutorials/single-component-tutorials-servo-mousemover/censor.jpg" resize="70x" style="width:50px;" declaredimensions=true alt="Fuzzy box meant to censor text.">}} (Update: apparently that's a big no no.)
 
 You can also join us in [Viam's Discord](https://discord.gg/viam) for any issues, comments, hardware chats, banter, and debates on if pineapple belongs on pizza or not.

@@ -9,9 +9,9 @@ aliases:
     - "/getting-started/"
     - "/getting-started/high-level-overview"
     - "/product-overviews/"
-image: "/img/understand.png"
-imageAlt: "/img/understand.png"
-images: ["/img/understand.png"]
+image: "/general/understand.png"
+imageAlt: "/general/understand.png"
+images: ["/general/understand.png"]
 ---
 
 Viam is a complete software platform that supports every step of your robot development lifecycle.
@@ -79,7 +79,9 @@ After configuring your robot's hardware, you can configure [high level functiona
 - **Vision** enables your robot to intelligently see and interpret the world around it.
 - **Simultaneous Localization And Mapping (SLAM)** enables your robot to map its surroundings and find its position on a map.
 
-{{< imgproc src="/viam/robot-components.png" alt="Robot components" resize="1000x"  >}}
+<div>
+{{< imgproc src="/viam/robot-components.png" alt="Robot components" resize="600x" class="aligncenter" >}}
+</div>
 
 ## Control your robot
 

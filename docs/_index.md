@@ -119,21 +119,21 @@ sitemap:
             Learn about <a href="viam/">the Viam platform in 3 minutes</a> and then
             <a href="try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
         </div>
-        {{<gif webm_src="/img/rover.webm" mp4_src="/img/rover.mp4" alt="A Viam Rover moving about">}}
+        {{<gif webm_src="/rover.webm" mp4_src="/rover.mp4" alt="A Viam Rover moving about">}}
       </div>
       <div class="col hover-card landing purple">
         <div>
-        <div>Configure your robots</div>
-        <div style="text-align: left">
-          <ol style="padding-inline-start: 1.1rem">
-            <li><a href="manage/configuration/">Configure your robot</a> or <a href="manage/fleet/">fleet</a></li>
-            <li><a href="installation/">Install Viam on your robot</a></li>
-            <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
-            <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
-          </ol>
+          <div>Configure your robots</div>
+          <div style="text-align: left">
+            <ol style="padding-inline-start: 1.1rem">
+              <li><a href="manage/configuration/">Configure your robot</a> or <a href="manage/fleet/">fleet</a></li>
+              <li><a href="installation/">Install Viam on your robot</a></li>
+              <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
+              <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
+            </ol>
+          </div>
         </div>
-        {{<gif webm_src="/img/blink.webm" mp4_src="/img/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
-        </div>
+        {{<gif webm_src="/blink.webm" mp4_src="/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
       </div>
       <div class="col hover-card landing teal">
         <div>
@@ -143,7 +143,7 @@ sitemap:
           </p>
         </div>
         <div class="hover-card-img">
-          {{<imgproc src="/img/code.png" alt="Robot code" resize="400x" >}}
+          {{<imgproc src="/general/code.png" alt="Robot code" resize="400x" >}}
         </div>
       </div>
       <div class="col hover-card landing pink">
@@ -151,7 +151,7 @@ sitemap:
           <div>Community</div>
           <p style="text-align: left;">Have questions, or want to meet other people working on robots? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
         </div>
-        {{<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
+        {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
       </div>
     </div>
 </div>

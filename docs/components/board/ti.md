@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `ti` model.
 
 Click **Create component**.
 
-{{< imgproc src="/components/board/ti-ui-config.png" alt="An example configuration for a ti board in the Viam app Config Builder." resize="1000x" >}}
+![An example configuration for a ti board in the Viam app Config Builder.](/components/board/ti-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

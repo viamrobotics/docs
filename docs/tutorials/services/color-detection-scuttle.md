@@ -82,7 +82,7 @@ In the Python code, you must add your robot's address and secret (payload), whic
 
 Viam pre-populates the **Code sample** tab with the robot name, address, and secret:
 
-![Remote configuration code sample](../../img/copy-remotes-code.png)
+![Remote configuration code sample](/tutorials/copy-remotes-code.png)
 
 {{% snippet "show-secret.md" %}}
 
