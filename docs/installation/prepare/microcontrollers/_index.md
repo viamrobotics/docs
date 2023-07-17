@@ -20,7 +20,7 @@ aliases:
 Follow these steps to install and build the micro-rdk on your ESP32:
 
 1. Install the [required software](#software-requirements)
-2. [Set up your development enviroment](#set-up-your-docker-development-enviroment) with Viam's [Canon CLI utility](#use-viams-canon-cli-utility) *(recommended)* or [manually](#set-up-development-environment-manually)
+2. [Set up your development enviroment](#set-up-your-development-enviroment) with Viam's [Canon CLI utility](#use-viams-canon-cli-utility) *(recommended)* or [manually](#set-up-development-environment-manually)
 3. [Install the Micro-RDK](#install-the-micro-rdk) and [create](#create-a-new-robot) and [connect to](#connect-to-your-esp32) a new robot
 
 ### Hardware Requirements
@@ -295,7 +295,7 @@ The following attributes are available for `esp32` boards:
 | `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
 | `webhook` | string | Optional | Path to a webhook. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. |
-| `webhook-secret` | string | Optional | A webhook's secret. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. |
+| `webhook-secret` | string | Optional | The secret key for a configured `webhook`. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. |
 
 ### Generate a New Project from the Micro-RDK Template
 
@@ -322,7 +322,7 @@ The micro-RDK needs this JSON file, which contains your robot part secret key an
 Now, upload the project to connect to your ESP32 through [the Viam app](https://app.viam.com).
 
 {{< tabs >}}
-{{% tab name="Using Canon" %}}
+{{% tab name="Use Canon" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 canon bash -lc "make build-esp32-bin"
