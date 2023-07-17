@@ -22,10 +22,11 @@ Modular resources can be:
 
 To get started adding custom resources to your robot, learn the [key concepts](/extend/modular-resources/key-concepts/) behind Viam's resource APIs that make the module system possible.
 
-Then, follow one of these [example tutorials](/extend/modular-resources/examples/) to add previously built modules and modular resources to your robot.
+- To create your own module and modular resources, follow [these instructions](/extend/modular-resources/create/).
 
-If you want to create your own module providing a new resource model or a new resource type as a modular resource, follow [these instructions](/extend/modular-resources/create/).
-Then, follow [these steps](/extend/modular-resources/configure/) to configure the module and modular resource.
+- To download modules and add modular resources that other users have built to your robot, follow one of Viam's [module setup guides](/extend/modular-resources/examples/).
+
+- To configure a module and modular resource, follow [these instructions](/extend/modular-resources/configure/).
 
 Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 

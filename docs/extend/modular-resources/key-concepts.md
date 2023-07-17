@@ -15,6 +15,12 @@ If you create your [own module](/extend/modular-resources/create/), you must reg
 
 ### APIs
 
+{{% alert title="Modules vs. modular resources" color="tip" %}}
+
+A configured *module* can make one or more *modular resources* available for configuration.
+
+{{% /alert %}}
+
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} subtype exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API).
 This can be understood as a description of how you can interact with that resource.
 Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
@@ -34,12 +40,6 @@ You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/
 {{% /alert %}}
 
 ### Models
-
-{{% alert title="Modules vs. modular resources" color="tip" %}}
-
-A configured *module* can make one or more *modular resources* available for configuration.
-
-{{% /alert %}}
 
 A *model* describes a specific implementation of a resource that implements (speaks) its API.
 Models allow you to control different instances of resource {{< glossary_tooltip term_id="api-namespace-triplet" text="subtypes" >}} with a consistent interface.
