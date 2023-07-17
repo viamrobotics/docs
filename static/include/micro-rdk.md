@@ -11,9 +11,9 @@ The only microcontroller the micro-RDK currently supports is the [ESP32](https:/
 The micro-RDK currently only supports client API integration for the following resources:
 
 - [GPIO Pin](/components/board/#gpiopin-api)
-- Analog readers
-- Motors
-- Encoders
+- [Analog Reader](/components/board/#analogreader-api)
+- [Motor](/components/motor/)
+- [Encoder](/components/encoder/)
 - [Base](/components/base/)
 
-See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.
+See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about development with the micro-RDK.
