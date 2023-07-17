@@ -19,7 +19,7 @@ That means the data you are viewing may change as you label and train on the dat
 If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
 {{< /alert >}}
 
-You can label you data with:
+You can label your data with:
 
 - [Bounding boxes](#bounding-boxes), which you can use to [train object detection models](/manage/ml/train-model/#train-a-model).
 - [Image tags](#image-tags), which you can use to [image classification models](/manage/ml/train-model/#train-a-model).
