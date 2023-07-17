@@ -283,7 +283,7 @@ If you successfully configured your robot and it is able to connect to the Viam 
 What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your robot in the Viam app (the board, as well as various built-in services).
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-25"}
-username@hostname.local:~/my-project-folder $ go run blink.go
+go run blink.go
 2023-07-14T13:05:50.958-0700        INFO    client my-project-folder/blink.go:41
     Resources:
 2023-07-14T13:05:50.958-0700        INFO    client my-project-folder/blink.go:41
