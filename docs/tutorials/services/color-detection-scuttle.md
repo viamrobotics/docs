@@ -27,7 +27,7 @@ This tutorial has not yet been updated.
 
 This tutorial shows how to use the Viam [Vision Service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
 
-{{<video webm_src="../../videos/scuttledemos_colordetection.webm" mp4_src="../../videos/scuttledemos_colordetection.mp4" poster="../../videos/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+{{<video webm_src="/tutorials/scuttlebot/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/scuttlebot/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 
 ### Code used in this tutorial
 
@@ -82,7 +82,7 @@ In the Python code, you must add your robot's address and secret (payload), whic
 
 Viam pre-populates the **Code sample** tab with the robot name, address, and secret:
 
-![Remote configuration code sample](../../img/copy-remotes-code.png)
+![Remote configuration code sample](/tutorials/copy-remotes-code.png)
 
 {{% snippet "show-secret.md" %}}
 

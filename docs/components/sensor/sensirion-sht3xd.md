@@ -21,7 +21,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `sensirio
 
 Click **Create component**.
 
-![Creation of a sensirion-sht3xd sensor in the Viam app config builder.](../img/sensirion-sht3xd-sensor-ui-config.png)
+![Creation of a sensirion-sht3xd sensor in the Viam app config builder.](/components/sensor/sensirion-sht3xd-sensor-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

@@ -4,10 +4,10 @@ linkTitle: "Lazy Susan"
 weight: 50
 type: "docs"
 description: "Wire a DC motor to a board, attach a plate on top, and control the motor to rotate the plate."
-webmSrc: "/tutorials/img/lazy-susan/preview.webm"
-mp4Src: "/tutorials/img/lazy-susan/preview.mp4"
+webmSrc: "/tutorials/lazy-susan/preview.webm"
+mp4Src: "/tutorials/lazy-susan/preview.mp4"
 videoAlt: "A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks."
-images: ["/tutorials/img/lazy-susan/preview.gif"]
+images: ["/tutorials/lazy-susan/preview.gif"]
 tags: ["motor", "python"]
 no_list: true
 authors: [ "Arielle Mella" ]
@@ -18,7 +18,7 @@ date: "29 May 2023"
 cost: 114
 ---
 
-{{<gif webm_src="/tutorials/img/lazy-susan/lazy-susan.webm" mp4_src="/tutorials/img/lazy-susan/lazy-susan.mp4" alt="A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks." max-width="350px" class="alignright">}}
+{{<gif webm_src="/tutorials/lazy-susan/lazy-susan.webm" mp4_src="/tutorials/lazy-susan/lazy-susan.mp4" alt="A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks." max-width="350px" class="alignright">}}
 
 Welcome to the robotic world of culinary comfort and supreme convenience!
 Are you sick of straining your arms to transfer plates around the dinner table? Are you tired of being taken away from your delicious meal to pass the rolls?
@@ -76,7 +76,7 @@ You will also use the board to deploy code, run `viam-server`, and connect your 
 Use the following diagram to wire your hardware together.
 Make sure your board is turned off and unplugged before wiring!
 
-![Wiring diagram for the Lazy Susan showing colored wires connecting the assembled components.](/tutorials/img/lazy-susan/wiring-diagram.png)
+![Wiring diagram for the Lazy Susan showing colored wires connecting the assembled components.](/tutorials/lazy-susan/wiring-diagram.png)
 
 {{% alert title="Important" color="note" %}}
 The Raspberry Pi and the 12V power supply share the same GND on the L298N motor driver.
@@ -112,7 +112,7 @@ Wait a moment until your robot connects to the Viam app.
 
     <br>
 
-    ![The board component being created with the name local, type board, and  model pi.](/tutorials/img/lazy-susan/config-board.png)
+    ![The board component being created with the name local, type board, and  model pi.](/tutorials/lazy-susan/config-board.png)
 
 2. **Configure the motor**
 
@@ -124,13 +124,13 @@ Wait a moment until your robot connects to the Viam app.
 
     <br>
 
-   ![The motor component being built with the name dcmotor, type motor, and model gpio.](/tutorials/img/lazy-susan/config-motor.png)
+   ![The motor component being built with the name dcmotor, type motor, and model gpio.](/tutorials/lazy-susan/config-motor.png)
 
    After creating your motor component, fill in the [required attributes for a gpio motor](/components/motor/gpio/):
 
    * For **board**, click the dropdown box and select local (or whatever you named your board!).
 
-       ![The motor component attribute panel with local selected for the board.](/tutorials/img/lazy-susan/config-motor-attribute.png)
+       ![The motor component attribute panel with local selected for the board.](/tutorials/lazy-susan/config-motor-attribute.png)
 
    * For **Max RPM**, enter `100`.
      RPM stands for revolutions per minute: it's roughly a measure of how fast any machine is operating at a given time.
@@ -139,7 +139,7 @@ Wait a moment until your robot connects to the Viam app.
    * Toggle the slider to **In1/In2** motor type.
      The specific driver you are using expects this pin configuration.
 
-     ![The motor component attribute panel with the Component pin assignment area. Type has two options: direction and In1/In2 and In1/In2 is toggled on.](/tutorials/img/lazy-susan/config-motor-pin1.png)
+     ![The motor component attribute panel with the Component pin assignment area. Type has two options: direction and In1/In2 and In1/In2 is toggled on.](/tutorials/lazy-susan/config-motor-pin1.png)
 
    * During wiring, you connected pins on the Pi to two ports called IN1 and IN2, and a third pin to ENA.
     When you toggle the **In1/In2** motor type, the UI opens three dropdown fields below it.
@@ -152,15 +152,15 @@ Wait a moment until your robot connects to the Viam app.
 
      <br>
 
-     ![The motor component attribute panel under the Component pin assignment area and 16 GPIO 23 has been selected for A/In1, 18 GPIO 24 has been selected for B/In2, and 22 GPIO 25 has been selected for PWM.](/tutorials/img/lazy-susan/config-motor-pin2.png)
+     ![The motor component attribute panel under the Component pin assignment area and 16 GPIO 23 has been selected for A/In1, 18 GPIO 24 has been selected for B/In2, and 22 GPIO 25 has been selected for PWM.](/tutorials/lazy-susan/config-motor-pin2.png)
 
    * For **Depends On** select **local**. This ensures that the board is initialized before the motor.
 
-     ![The motor component attribute panel. At the bottom of the page for “Depends on”, local is selected.](/tutorials/img/lazy-susan/config-motor-depends.png)
+     ![The motor component attribute panel. At the bottom of the page for “Depends on”, local is selected.](/tutorials/lazy-susan/config-motor-depends.png)
 
   Click the **Save Config** button.
 
-  {{<gif webm_src="/tutorials/img/lazy-susan/config-save.webm" mp4_src="/tutorials/img/lazy-susan/config-save.mp4" alt="Click the save button" max-width="150px">}}
+  {{<gif webm_src="/tutorials/lazy-susan/config-save.webm" mp4_src="/tutorials/lazy-susan/config-save.mp4" alt="Click the save button" max-width="150px">}}
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -200,7 +200,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 
 Click **Save config** in the bottom left corner of the screen.
 
-{{<gif webm_src="/tutorials/img/lazy-susan/config-save.webm" mp4_src="/tutorials/img/lazy-susan/config-save.mp4" alt="Click the save button" max-width="150px">}}
+{{<gif webm_src="/tutorials/lazy-susan/config-save.webm" mp4_src="/tutorials/lazy-susan/config-save.mp4" alt="Click the save button" max-width="150px">}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -209,23 +209,23 @@ Click **Save config** in the bottom left corner of the screen.
 
 Navigate to the **Control** tab and click on the top of the **dcmotor** card to open the motor controls.
 
-{{<gif webm_src="/tutorials/img/lazy-susan/control-dcmotor.webm" mp4_src="/tutorials/img/lazy-susan/control-dcmotor.mp4" alt="The Viam app Control tab and clicking the dcmotor dropdown card to reveal the controls.">}}
+{{<gif webm_src="/tutorials/lazy-susan/control-dcmotor.webm" mp4_src="/tutorials/lazy-susan/control-dcmotor.mp4" alt="The Viam app Control tab and clicking the dcmotor dropdown card to reveal the controls.">}}
 
 You can change the direction of rotation of the motor by toggling the **Forwards** and **Backwards** button.
 
 You can also adjust how fast the motor rotates by adjusting the **Power %** slider.
 
-{{<gif webm_src="/tutorials/img/lazy-susan/control-power.webm" mp4_src="/tutorials/img/lazy-susan/control-power.mp4" alt="The controls in the Control tab for the dcmotor. The gif shows there is a toggle for direction of rotation and below that is a Power % slider and below the slider on the left is the run button." max-width="400px">}}
+{{<gif webm_src="/tutorials/lazy-susan/control-power.webm" mp4_src="/tutorials/lazy-susan/control-power.mp4" alt="The controls in the Control tab for the dcmotor. The gif shows there is a toggle for direction of rotation and below that is a Power % slider and below the slider on the left is the run button." max-width="400px">}}
 
 Hit the **RUN** button when you're ready and check that your motor runs!
 
 Adjust your settings and test your motor to find the perfect settings that suit your Lazy Susan prototype.
 
-{{<gif webm_src="/tutorials/img/lazy-susan/control-video.webm" mp4_src="/tutorials/img/lazy-susan/control-video.mp4" alt="The Control tab as discussed above, and an overlay video of the actual motor running with the changing of the power % in the Viam app.">}}
+{{<gif webm_src="/tutorials/lazy-susan/control-video.webm" mp4_src="/tutorials/lazy-susan/control-video.mp4" alt="The Control tab as discussed above, and an overlay video of the actual motor running with the changing of the power % in the Viam app.">}}
 
 When you’re done testing your motor, press the **STOP** button in the upper right corner to stop your motor.
 
-{{<gif webm_src="/tutorials/img/lazy-susan/control-stop.webm" mp4_src="/tutorials/img/lazy-susan/control-stop.mp4" alt="Click the stop button" max-width="150px">}}
+{{<gif webm_src="/tutorials/lazy-susan/control-stop.webm" mp4_src="/tutorials/lazy-susan/control-stop.mp4" alt="Click the stop button" max-width="150px">}}
 
 ## Use the Python SDK to control the motor
 
@@ -249,13 +249,13 @@ Installing with `pip` ensures you are using the latest version of `viam-sdk`, an
 
 On the [Viam app](https://app.viam.com/), select the **Code sample** tab and set **Python** as the language.
 
-![The Language portion of the Code Sample tab.](/tutorials/img/lazy-susan/python-language.png)
+![The Language portion of the Code Sample tab.](/tutorials/lazy-susan/python-language.png)
 
 {{% snippet "show-secret.md" %}}
 
 Copy the code:
 
-![The Viam app Code Sample tab with language set to Python](/tutorials/img/lazy-susan/python-code.png)
+![The Viam app Code Sample tab with language set to Python](/tutorials/lazy-susan/python-code.png)
 
 Create a new python file called `lazysusan.py` on your Raspberry Pi and paste the copied code into it:
 
@@ -274,7 +274,7 @@ python3 turnsusan.py
 
 The output should show a list of resources:
 
-![The resources printed out in the terminal showing no errors.](/tutorials/img/lazy-susan/python-resources.png)
+![The resources printed out in the terminal showing no errors.](/tutorials/lazy-susan/python-resources.png)
 
 If there are no errors, you have successfully connected to your robot and run some code!
 
@@ -323,7 +323,7 @@ python3  turnsusan.py
 Your Lazy Susan should now spin at the speed you indicated.
 Because we didn’t set any parameters for how long this will run for, we will need to stop it using the Viam app button on the **Control** tab for now.
 
-{{<gif webm_src="/tutorials/img/lazy-susan/control-stop.webm" mp4_src="/tutorials/img/lazy-susan/control-stop.mp4" alt="Click the stop button" max-width="150px">}}
+{{<gif webm_src="/tutorials/lazy-susan/control-stop.webm" mp4_src="/tutorials/lazy-susan/control-stop.mp4" alt="Click the stop button" max-width="150px">}}
 
 However, there is also an API method you can use to [Stop](/components/motor/#stop) the motor!
 
@@ -363,7 +363,7 @@ You have now successfully completed the code for your Lazy Susan and have learne
 Now you can go ahead and put your robot together with the turntable.
 Connect the wood to your motor and decorate it as you wish to make your Lazy Susan a hit at your next dinner party!
 
-{{<gif webm_src="/tutorials/img/lazy-susan/preview.webm" mp4_src="/tutorials/img/lazy-susan/preview.mp4" alt="A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks." max-width="300px" class="aligncenter">}}
+{{<gif webm_src="/tutorials/lazy-susan/preview.webm" mp4_src="/tutorials/lazy-susan/preview.mp4" alt="A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks." max-width="300px" class="aligncenter">}}
 
 ## Next steps
 

@@ -43,6 +43,8 @@ If you are using one of the following boards, you can follow our guide for that 
 {{% card link="/installation/prepare/microcontrollers" class="small" %}}
 {{< /cards >}}
 
+<br>
+
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
 ### Install `viam-server`

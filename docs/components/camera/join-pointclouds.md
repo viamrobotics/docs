@@ -20,7 +20,7 @@ Enter a name for your camera, select the type `camera`, and select the `join_poi
 
 Click **Create component**.
 
-![Configuration of a Join Point Clouds view in the Viam App config builder.](../img/configure-join-pointclouds.png)
+![Configuration of a Join Point Clouds view in the Viam App config builder.](/components/camera/configure-join-pointclouds.png)
 
 Edit and fill in the attributes as applicable.
 

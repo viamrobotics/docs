@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `pi` model.
 
 Click **Create component**.
 
-![An example configuration for a pi board in the Viam app Config Builder.](../img/pi-ui-config.png)
+![An example configuration for a pi board in the Viam app Config Builder.](/components/board/pi-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

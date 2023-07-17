@@ -116,7 +116,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Modules*
 
 Add the ODrive module with a name of your choice and an `"executable_path"` that points to the location where your ODrive module’s run script, <file>run.sh</file>, is stored on your robot’s computer.
 
-{{< imgproc src="/extend/modular-resources/add-odrive/add-odrive-module-ui.png" alt="The ODrive module with the name 'odrive' and executable path '~/desktop/odrive/odrive-motor/run.sh' added to a robot in the Viam app config builder" resize="1000x" >}}
+![The ODrive module with the name 'odrive' and executable path '~/desktop/odrive/odrive-motor/run.sh' added to a robot in the Viam app config builder](/extend/modular-resources/add-odrive/add-odrive-module-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `jetson` mo
 
 Click **Create component**.
 
-![An example configuration for a jetson board in the Viam app Config Builder.](../img/jetson-ui-config.png)
+![An example configuration for a jetson board in the Viam app Config Builder.](/components/board/jetson-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

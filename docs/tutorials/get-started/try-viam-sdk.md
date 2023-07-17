@@ -4,10 +4,10 @@ linkTitle: "Drive with the SDK"
 weight: 40
 type: "docs"
 description: "Drive a Viam rover from the comfort of your home right now and use a Viam SDK to program a Viam Rover to move in a square."
-webmSrc: "/tutorials/img/try-viam-sdk/image1.webm"
-mp4Src: "/tutorials/img/try-viam-sdk/image1.mp4"
+webmSrc: "/tutorials/try-viam-sdk/image1.webm"
+mp4Src: "/tutorials/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
-images: ["/tutorials/img/try-viam-sdk/image1.gif"]
+images: ["/tutorials/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python"]
 aliases:
     - /tutorials/get-started/try-viam-sdk
@@ -25,7 +25,7 @@ The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write c
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
 <div class="td-max-width-on-larger-screens">
-{{<gif webm_src="/tutorials/img/try-viam-sdk/image1.webm" mp4_src="/tutorials/img/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
 </div>
 
 {{< alert title="Tip" color="tip" >}}
@@ -465,7 +465,7 @@ If you are [renting your rover](https://app.viam.com/try), go to the **Control**
 When you run your code, your robot moves in a square.
 
 <div class="td-max-width-on-larger-screens">
-{{<gif webm_src="/tutorials/img/try-viam-sdk/image2.webm" mp4_src="../../img/try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
+{{<gif webm_src="/tutorials/try-viam-sdk/image2.webm" mp4_src="../../try-viam-sdk/image2.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square on the left, and on the right, a terminal window shows the output of running the square function as the rover moves in a square.">}}
 </div>
 
 ## Complete Code

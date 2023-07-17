@@ -23,7 +23,7 @@ Enter a name for your base, select the type `base`, and select the `wheeled` mod
 
 Click **Create component**.
 
-![An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame.](../img/wheeled-base-ui-config.png)
+{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame." resize="600x" >}}
 
 Select the motors attached to the base as your **Right Motors** and **Left Motors**.
 Edit and fill in the attributes as applicable.
@@ -122,7 +122,7 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-![JSON configuration file for a wheeled base with annotations explaining some of the attributes.](../img/base-json.png)
+{{< imgproc src="/components/base/base-json.png" alt="JSON configuration file for a wheeled base with annotations explaining some of the attributes." resize="600x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -141,6 +141,6 @@ The following attributes are available for `wheeled` bases:
 
 An example wiring diagram for a base with one motor on each side:
 
-![Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover](../img/base-wiring-diagram.png)
+![Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover](/components/base/base-wiring-diagram.png)
 
 Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.

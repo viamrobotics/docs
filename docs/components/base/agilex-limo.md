@@ -22,7 +22,7 @@ Enter a name for your base, select the type `base`, and select the `agilex-limo`
 
 Click **Create component**.
 
-![An example configuration for a agilex-limo base in the Viam app Config Builder.](../img/agilex-limo-ui-config.png)
+![An example configuration for a agilex-limo base in the Viam app Config Builder.](/components/base/agilex-limo-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

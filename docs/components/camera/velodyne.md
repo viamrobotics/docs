@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `velodyne
 
 Click **Create component**.
 
-![Configuration of a velodyne camera in the Viam app config builder.](../img/configure-velodyne.png)
+{{< imgproc src="/components/camera/configure-velodyne.png" alt="Configuration of a velodyne camera in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 

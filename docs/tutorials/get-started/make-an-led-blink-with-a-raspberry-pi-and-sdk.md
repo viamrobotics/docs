@@ -4,10 +4,10 @@ linkTitle: "Blink an LED with a Pi and the SDK"
 weight: 40
 type: "docs"
 description: "Intro to Hardware Programming Part 2: Use a Viam SDK to make an LED blink with a Raspberry Pi."
-webmSrc: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.webm"
-mp4Src: "/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp4"
+webmSrc: "/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.webm"
+mp4Src: "/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.mp4"
 videoAlt: "A blinking blue LED connected to a Raspberry Pi with jumper cables."
-images: ["/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.gif"]
+images: ["/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/preview.gif"]
 aliases:
     - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/
 tags: ["board", "raspberry pi", "sdk"]
@@ -24,7 +24,7 @@ This will allow you to write code to make an LED connected to the GPIO of a Rasp
 This tutorial is a good introduction to [Python](https://www.python.org/) or [Go](https://go.dev/) programming languages, and developing custom software for robots.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
+  {{<gif webm_src="/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.webm" mp4_src="/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/image3.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables.">}}
 </div>
 
 {{% alert title="Tip" color="tip" %}}
@@ -35,7 +35,7 @@ You should have already set up [your Raspberry Pi](/installation/prepare/rpi-set
 
 For reference, the circuit you are building for this tutorial looks like this:
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image1.png" alt="Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins." width="100%">
+![Circuit diagram showing a Raspberry Pi with a red connector running out of GPIO pin 8 to a 100-ohm* resistor*. The resistor is connected to the long lead of a red LED bulb. Finally, a blue connector connects the short lead of the LED to the ground connection on pin 6 of the Raspberry Pi GPIO pins.](/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/image1.png)
 
 ## What you'll need for this guide
 
@@ -105,7 +105,7 @@ go run blink.go
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various resources, components, and services that have been configured to your robot in the Viam app.
 
-<img src="../../img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board." width="500">
+{{<imgproc src="/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/image4.png" resize="500x" declaredimensions=true alt="A screenshot from the Visual Studio Code command line that prints the output of print(robot.resource_names) when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. Some of these are the Vision Service, Data Manager, and Board.">}}
 
 {{% alert title="Tip" color="tip" %}}
 {{< snippet "social.md" >}}
@@ -285,7 +285,7 @@ go run blink.go
 And, if all goes well, you should see your LED blinking on and off again every second!
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="/tutorials/img/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
+  {{<gif webm_src="/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.webm" mp4_src="/tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/image6.mp4" alt="A GIF of the completed project showing a hand hitting enter on the keyboard, then the blue LED starts to blink and the text LED is on, and LED is off is printed out to the terminal onscreen.">}}
 </div>
 
 You can exit this program by pressing **CTRL + C** in your terminal window.

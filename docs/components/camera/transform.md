@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `transfor
 
 Click **Create component**.
 
-![Configuration of an transform view in the Viam app config builder.](../img/configure-transform.png)
+![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 
 Edit and fill in the attributes as applicable.
 

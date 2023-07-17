@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `beaglebone
 
 Click **Create component**.
 
-![An example configuration for a beaglebone board in the Viam app Config Builder.](../img/beaglebone-ui-config.png)
+![An example configuration for a beaglebone board in the Viam app Config Builder.](/components/board/beaglebone-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

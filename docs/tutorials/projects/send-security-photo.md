@@ -4,9 +4,9 @@ linkTitle: "Detect a Person and Send a Photo"
 weight: 50
 type: "docs"
 description: "Use the Vision Service and the Python SDK to send yourself a text message when your webcam detects a person."
-image: "/tutorials/img/send-security-photo/text-message.png"
+image: "/tutorials/send-security-photo/text-message.png"
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
-images: ["/tutorials/img/send-security-photo/text-message.png"]
+images: ["/tutorials/send-security-photo/text-message.png"]
 tags: ["camera", "vision", "detector", "python"]
 authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
@@ -37,7 +37,7 @@ This robot will help you catch the culprit.
 
 When someone comes to your desk, the robot will use the [Vision Service](/services/vision/) and an ML model to detect a person, take their photo, and text you an alert with a photo of the person.
 
-![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](../../img/send-security-photo/text-message.png)
+![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
 ## Hardware requirements
 
@@ -75,7 +75,7 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 
 On your new robot's page, go to the **Config** tab.
 
-![The CONFIG tab in Builder mode on the Viam app.](../../img/light-up/config-tab.png)
+![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
 
 On the **Config** tab, create a new component:
 

@@ -20,7 +20,7 @@ Enter a name for your camera, select the type `camera`, and select the `ffmpeg` 
 
 Click **Create component**.
 
-![Configuration of a ffmpeg camera in the Viam app config builder.](../img/configure-ffmpeg.png)
+![Configuration of a ffmpeg camera in the Viam app config builder.](/components/camera/configure-ffmpeg.png)
 
 Edit and fill in the attributes as applicable.
 

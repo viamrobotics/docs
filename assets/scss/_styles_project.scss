@@ -473,6 +473,7 @@ END MARKETING CSS
   border: 1px solid white;
   margin-bottom: 0.5rem;
 }
+
 .hover-card.landing > .hover-card-img {
   padding-bottom: 7px;
 }
@@ -499,7 +500,7 @@ END MARKETING CSS
     min-width: 125px;
     max-width: 28%;
   }
-  .hover-card.small > a div.small-hover-card-div > span {
+  .hover-card.small > a div.small-hover-card-div > div {
     font-size: 0.833rem !important;
   }
 }
@@ -635,7 +636,8 @@ END MARKETING CSS
  padding: 0.1rem 0.25rem;
  border: 1px solid black;
  margin: 0.1rem;
- font-size: 0.833rem;
+ font-size: 0.833rem !important;
+ font-weight: 400 !important;
 }
 
 .hover-card.tutorial * .pill.pill-lang {
