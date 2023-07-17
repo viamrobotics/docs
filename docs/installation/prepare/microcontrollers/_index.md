@@ -197,7 +197,7 @@ cargo install cargo-espflash v2.0.0-rc.1
 cargo install ldproxy
 ```
 
-Finally to download and install the esp-rs toolchain run :
+To download and install the esp-rs toolchain, run:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 espup install -s -f ~/esp/export-rs.sh -v 1.67.0
@@ -223,7 +223,8 @@ Keep your `Mode` and `Architecture` selections at default, and skip the instruct
 You can configure your robot using the config tab.
 
 {{< alert title="Caution" color="caution" >}}
-As of the time this guide is written the esp32 board component doesn't exist yet on app.viam.com below you can find the board template for esp32:
+The`esp32` model of [board](/components/board/) is not yet provided for you in [the Viam app](https://app.viam.com).
+Configure an `esp32` board as follows:
 
 ```json
 {
@@ -290,7 +291,7 @@ make upload
 {{% /tab %}}
 {{% /tabs %}}
 
-If successful you will retain a serial connection to the board until `Ctrl-C` is pressed.
+If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
