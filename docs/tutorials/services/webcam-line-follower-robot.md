@@ -5,8 +5,8 @@ weight: 50
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services", "python"]
-webmSrc: "/tutorials/img/webcam-line-follower/lf-tape-follow3.webm"
-mp4Src: "/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4"
+webmSrc: "/tutorials/webcam-line-follower/lf-tape-follow3.webm"
+mp4Src: "/tutorials/webcam-line-follower/lf-tape-follow3.mp4"
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
     - "/tutorials/webcam-line-follower-robot/"
@@ -20,7 +20,7 @@ cost: 570
 
 <div class="td-max-width-on-larger-screens">
  <div class="alignright" style="max-width:150px;">
-  {{<gif webm_src="/tutorials/img/webcam-line-follower/lf-following1.webm" mp4_src="/tutorials/img/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
+  {{<gif webm_src="/tutorials/webcam-line-follower/lf-following1.webm" mp4_src="/tutorials/webcam-line-follower/lf-following1.mp4" alt="Robot following a line">}}
   </div>
 </div>
 
@@ -52,7 +52,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
     For our tutorial, we used green electrical tape.
   - Non-shiny floors tend to work best.
 
-<img src="/tutorials/img/webcam-line-follower/lf-scuttle2.png" alt="A SCUTTLE Robot base with a camera mounted on the front, pointing mostly down and slightly forwards." width="600" />
+{{<imgproc src="/tutorials/webcam-line-follower/lf-scuttle2.png" resize="600x" declaredimensions=true alt="A SCUTTLE Robot base with a camera mounted on the front, pointing mostly down and slightly forwards.">}}
 
 ## Configuration using Viam
 
@@ -71,7 +71,7 @@ We named ours `scuttlebase`.
 
 Your webcam configuration will look something like this:
 
-![The webcam configuration UI with video_path set to video0.](/tutorials/img/webcam-line-follower/lf-cam-config.png)
+![The webcam configuration UI with video_path set to video0.](/tutorials/webcam-line-follower/lf-cam-config.png)
 
 Or if you prefer the raw JSON:
 
@@ -174,7 +174,7 @@ You can paste the following into the **Attributes** section of the `show_detecti
 
 If you save the config and go to the **Control** tab, you should now be able to view the camera feed with color detector overlays superimposed on the image.
 
-![A screenshot of the CONTROL tab showing the base card with the show_detections transform camera stream displayed. A green line crosses the left portion of the camera image, and a red box around it is labeled "cyan: 1.00".](/tutorials/img/webcam-line-follower/bounding.png)
+![A screenshot of the CONTROL tab showing the base card with the show_detections transform camera stream displayed. A green line crosses the left portion of the camera image, and a red box around it is labeled "cyan: 1.00".](/tutorials/webcam-line-follower/bounding.png)
 
 ### Full example config
 
@@ -302,7 +302,7 @@ Once the line is back in the center front of the camera frame, the rover continu
 
 When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
-{{<gif webm_src="/tutorials/img/webcam-line-follower/lf-tape-follow3.webm" mp4_src="/tutorials/img/webcam-line-follower/lf-tape-follow3.mp4" alt="The green line the camera sees as the rover moves along it." max-width="300px">}}
+{{<gif webm_src="/tutorials/webcam-line-follower/lf-tape-follow3.webm" mp4_src="/tutorials/webcam-line-follower/lf-tape-follow3.mp4" alt="The green line the camera sees as the rover moves along it." max-width="300px">}}
 
 ## Let’s write some code
 
@@ -362,14 +362,14 @@ When the rover no longer sees any of the line color anywhere in the front portio
    Ensure that the base moves as expected.
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
 
-   {{<gif webm_src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/img/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." max-width="600px">}}
+   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." max-width="600px">}}
 
 3. Now for the creative part: Use your colored tape to make a path for your robot to follow.
    Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
    Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 4. Set your robot on the line such that the line appears in the front of the camera’s view.
    Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the robot page.
-   <img src="/tutorials/img/webcam-line-follower/lf-cam-view6.png" alt="The camera view in the control tab on the robot page" width="600" />
+{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" declaredimensions=true alt="The camera view in the control tab on the robot page">}}
 5. In a terminal window, SSH to your Pi by running:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}

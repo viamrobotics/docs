@@ -92,14 +92,14 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](../../../services/frame-system/).
+The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the Motion Service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 ### Get the `ResourceName`
 
-When you use the [arm API](../../../components/arm/#api), you call methods on your arm component itself.
-To use the [Motion Service API](../../../services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
+When you use the [arm API](/components/arm/#api), you call methods on your arm component itself.
+To use the [Motion Service API](/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -218,14 +218,14 @@ Within the app, the **Frame System** subtab of your robot's **Config** tab gives
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/motion/plan_01_frame_system_tab.png" width="900px" alt="A picture of the Frame System tab in use.">
+  {{<imgproc src="/tutorials/motion/plan_01_frame_system_tab.png" resize="900x" declaredimensions=true alt="A picture of the Frame System tab in use.">}}
 </div>
 
 ## Command an arm to move with the Motion Service
 
 In previous examples you controlled motion of individual components.
 Now you will use the Motion Service to control the motion of the robot as a whole.
-You will use the Motion Service's [`Move`](../../../services/motion/#move) method to execute more general robotic motion.
+You will use the Motion Service's [`Move`](/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the Motion Service takes that information into account when planning.
 
@@ -301,7 +301,7 @@ We need to do several things to prepare a new gripper component for motion.
     * Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/motion/plan_03_gripper_config.png" width="700px" alt="Sample gripper configuration with several fields filled out.">
+{{<imgproc src="/tutorials/motion/plan_03_gripper_config.png" resize="700x" declaredimensions=true alt="Sample gripper configuration with several fields filled out.">}}
 </div>
 
 Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`.

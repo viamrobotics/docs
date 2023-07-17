@@ -5,12 +5,12 @@ weight: 80
 simple_list: true
 type: docs
 tags: ["rover", "viam rover"]
-image: "try-viam/rover-resources/viam-rover/box-contents.jpg"
+image: "/try-viam/rover-resources/viam-rover/box-contents.jpg"
 imageAlt: "A Viam Rover in a box"
 aliases:
     - "/viam-rover-resources/"
     - "/rover-resources/"
-images: ["try-viam/rover-resources/viam-rover/box-contents.jpg"]
+images: ["/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 description: If you want a convenient mobile base for robotics projects, order a Viam rover and set it up.
 ---
 

@@ -23,7 +23,7 @@ Enter a name for your gripper, select the type `gripper`, and select the `fake` 
 
 Click **Create component**:
 
-{{< imgproc src="/components/gripper/fake-gripper-ui-config.png" alt="An example configuration for a fake gripper in the Viam app Config Builder." resize="1000x" >}}
+![An example configuration for a fake gripper in the Viam app Config Builder.](/components/gripper/fake-gripper-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

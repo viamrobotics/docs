@@ -17,7 +17,7 @@ These are small motors with built-in potentiometer position sensors, enabling yo
 As servos can use a lot of power, drawing voltage away from a [board](/components/board/), you should power your servo with its own power supply in most cases.
 The following shows an example wiring diagram for a hobby servo wired to a [`pi` board](/components/board/pi/):
 
-{{< imgproc src="/components/servo/servo-wiring.png" alt="A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply." resize="1000x" >}}
+![A diagram showing the signal wire of a servo connected to pin 16 on a Raspberry Pi. The servo's power wires are connected to a 4.8V power supply.](/components/servo/servo-wiring.png)
 
 The colors of the servo wires in this diagram may not match your servo.
 Refer to your servo's data sheet for wiring specifications.

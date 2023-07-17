@@ -66,7 +66,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
-{{< imgproc src="/services/slam/add-cartographer-service-ui.png" alt="adding cartographer slam service" resize="1000x" >}}
+![adding cartographer slam service](/services/slam/add-cartographer-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -107,13 +107,13 @@ Click on the **Modules** subtab. Add the cartographer module with a name of your
 {{< tabs name="Add Cartographer Service Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
-{{< imgproc src="/services/slam/add-cartographer-module-ui-linux.png" alt="adding cartographer module linux" resize="1000x" >}}
+![adding cartographer module linux](/services/slam/add-cartographer-module-ui-linux.png)
 
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-{{< imgproc src="/services/slam/add-cartographer-module-ui-M1-M2.png" alt="adding cartographer module M1 M2" resize="1000x" >}}
+![adding cartographer module M1 M2](/services/slam/add-cartographer-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}

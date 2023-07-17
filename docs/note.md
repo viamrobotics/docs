@@ -15,7 +15,7 @@ Rather than re-typing the material or making multiple copy/paste updates in many
 
 The following is an example of the <file>secret-share.md</file> alert added using the snippet shortcode:
 
-{{% figure src="/img/snippet-shortcode.png" alt="Snippet shortcode usage." title="Snippet Shortcode Usage" %}}
+{{% figure src="/snippet-shortcode.png" alt="Snippet shortcode usage." title="Snippet Shortcode Usage" %}}
 
 {{% snippet "secret-share.md" %}}
 
@@ -37,7 +37,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 ### Example Usage
 
-<img style="border:solid 1px black" alt="Screen capture of Tab/Tabs Shortcode Usage" src="/img/tabbed-panel-markdown.png">
+<img style="border:solid 1px black" alt="Screen capture of Tab/Tabs Shortcode Usage" src="/tabbed-panel-markdown.png">
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
@@ -47,9 +47,9 @@ The following is an example of the <file>secret-share.md</file> alert added usin
  <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
 
 - **Markdown Image Example**<br>
-![expand example](/img/expander-markdown.png)<br>
+![expand example](/general/expander-markdown.png)<br>
 - **HTML Image Example*- (with border)<br>
-<img style="border:solid 1px black" src="/img/expander-markdown.png" alt="Screen capture of Tab/Tabs Shortcode Usage">
+{{<imgproc src="/general/expander-markdown.png" resize="800x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage">}}
 
 </div>
 <br>
@@ -123,7 +123,7 @@ Expanders allow to you add long sections of code to your topic and hide them unt
 Within the expander, you can still use most other shortcodes and syntax highlighting from Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
 **Screen Capture of an Expander**
-<img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/img/expander-example.png">
+<img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/expander-example.png">
 
 ### Usage
 
@@ -132,7 +132,7 @@ Within the expander, you can still use most other shortcodes and syntax highligh
 
 ### Markdown Example
 
-<img style="border:solid 1px black" src="/img/expander-markdown.png">
+<img style="border:solid 1px black" src="/expander-markdown.png">
 
 ### Rendered Expander Example
 
@@ -209,7 +209,7 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 The "title" and "color" keywords and the names of colors ("tip," "note," and so on) are case sensitive. If you use uppercase, alerts will not have a title and the color border will be incorrect.
 {{< /alert >}}
 
-{{< figure src="/img/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
+{{< figure src="/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
 
 {{< alert title="Tip" color="tip" >}}
 Provide a tip.
@@ -239,7 +239,7 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 
 The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr*- element for attribution text and **attrlink*- if you wish to add a link to the attribution text.
 
-{{< figure src="/img/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
+{{< figure src="/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
 This shortcode places the caption (that is the "title") above the table. The **title*- is set in 12pt italic with a green underline.
 
@@ -264,10 +264,10 @@ For regular videos that should use the video shortcode as follows:
 
 ```md
 <!-- remove space -->
-{ {<video webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart" poster="/img/heart.jpg">} }
+{ {<video webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart" poster="/general/heart.jpg">} }
 ```
 
-{{<video webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart" poster="/img/heart.jpg">}}
+{{<video webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart" poster="/general/heart.jpg">}}
 
 We use `webm` and `mp4` source files for videos because they are generally smaller.
 The poster is an image that gets loaded as a preview.
@@ -337,10 +337,10 @@ Instead, we use a video div with two sources:
 
 ```md
 <!-- remove space -->
-{ {<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
+{ {<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
 ```
 
-{{<gif webm_src="/img/heart.webm" mp4_src="/img/heart.mp4" alt="A robot drawing a heart">}}
+{{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
 
 **Place the files into the `static` directory.**
 

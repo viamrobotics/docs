@@ -22,7 +22,7 @@ Enter a name for your servo, select the type `servo`, and select the `fake` mode
 
 Click **Create component**:
 
-{{< imgproc src="/components/servo/fake-servo-ui-config.png" alt="An example configuration for a fake servo in the Viam app Config Builder." resize="1000x" >}}
+![An example configuration for a fake servo in the Viam app Config Builder.](/components/servo/fake-servo-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -25,7 +25,7 @@ To capture data from one or more robots, you must first add the [Data Management
    {{< /alert >}}
 5. Click **Save Config**.
 
-![data capture configuration](../../../tutorials/img/data-management/data-manager.png)
+![data capture configuration](/tutorials/data-management/data-manager.png)
 
 {{%expand "Click to view the JSON configuration for the Data Management Service" %}}
 
@@ -79,7 +79,7 @@ Now your data will be saved locally on your robot to the directory specified in 
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
-{{< imgproc src="/services/data/data-service-component-config.png" alt="component config example" resize="1000x" >}}
+![component config example](/services/data/data-service-component-config.png)
 
 {{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
 

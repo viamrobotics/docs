@@ -5,9 +5,9 @@ weight: 60
 type: "docs"
 tags: ["modular resources", "extending viam", "components", "rover", "base", "CAN bus", "Intermode"]
 description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
-image: "/tutorials/img/intermode/rover_outside.png"
+image: "/tutorials/intermode/rover_outside.png"
 imageAlt: "Intermode rover pictured outdoors."
-images: ["/tutorials/img/intermode/rover_outside.png"]
+images: ["/tutorials/intermode/rover_outside.png"]
 authors: [ "Matt Vella" ]
 languages: [ "go" ]
 viamresources: [ "base", "custom" ]
@@ -26,7 +26,7 @@ This tutorial shows you how to create a [modular resource](/extend/modular-resou
 Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/intermode/rover_outside.png" class="alignright" alt="Intermode rover pictured outdoors." title="Intermode rover pictured outdoors." style="max-width:300px" />
+{{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
 </div>
 
 While the concepts covered here are applicable to other hardware, we’ll specifically show you an example of how you can get started using Viam to control the [Intermode rover](https://www.intermode.io/).
@@ -71,7 +71,7 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting it to the top of the Pi [using a spacer and a screw](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi).
 
 <div class="td-max-width-on-larger-screens">
-    <img src="../../img/intermode/can_terminal_conn.png" class="alignright" alt="PiCAN Terminal Wiring." title="PiCAN Terminal Wiring." style="max-width:400px" />
+    {{<imgproc src="/tutorials/intermode/can_terminal_conn.png" resize="400x" declaredimensions=true alt="PiCAN Terminal Wiring." class="alignright" style="max-width:400px">}}
 </div>
 
 Next, with the Intermode rover powered down, connect the 6-wire amphenol connector that comes with the rover to the 4 screw terminal on PiCAN bus:
@@ -87,7 +87,7 @@ Connect the remaining two wires to the + (red) and - (black) **input** terminals
 Attach the USB-C adapter wires to the **output** of your buck converter, and plug the other end of the USB-C adapter into your Pi.
 You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover using CAN bus!
 
-![Intermode, Pi Wiring.](../../img/intermode/intermode_wiring.jpg)
+![Intermode, Pi Wiring.](/tutorials/intermode/intermode_wiring.jpg)
 
 ### Software for the Intermode base modular resource
 

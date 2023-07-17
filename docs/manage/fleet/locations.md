@@ -57,11 +57,11 @@ There are two ways to share a location beyond its organization:
 
 Share your location with another organization you belong to by selecting the organization from the **Add Organization** drop-down menu and clicking **Share**.
 
-{{< imgproc alt="The Add Organization drop-down in the Viam app displays all organizations the user is a member of." src="/manage/app-usage/add-org-drop-down.png" resize="1000x" >}}
+![The Add Organization drop-down in the Viam app displays all organizations the user is a member of.](/manage/app-usage/add-org-drop-down.png)
 
 The location's page lists newly added organization, along with the organization identified as the **primary owner**:
 
-{{< imgproc alt="After adding another org, the Viam app lists it under the orgs that share this location list." src="/manage/app-usage/after-add-org.png" resize="1000x" >}}
+![After adding another org, the Viam app lists it under the orgs that share this location list.](/manage/app-usage/after-add-org.png)
 
 ##### Remove an organization from a shared location
 
@@ -73,7 +73,7 @@ Grant programmatic access to your location by sharing a location secret key.
 
 You can see the secret keys for a location in the **Location Secret Keys** drop-down:
 
-{{< imgproc alt="Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app." src="/manage/app-usage/location-secret-keys-drop-down.png" resize="1000x" >}}
+![Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](/manage/app-usage/location-secret-keys-drop-down.png)
 
 Copy the location secret key by clicking on the clipboard icon.
 Use these keys in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.

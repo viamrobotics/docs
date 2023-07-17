@@ -38,7 +38,7 @@ Select the type `Navigation` and enter a name for your service.
 
 Click **Create service**:
 
-{{< imgproc src="/services/base-rc/base-rc-ui-config.png" alt="An example configuration for a Base Remote Control service in the Viam app Config Builder." resize="1000x" >}}
+![An example configuration for a Base Remote Control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
