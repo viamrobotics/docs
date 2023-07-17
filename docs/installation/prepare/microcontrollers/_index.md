@@ -17,7 +17,7 @@ aliases:
 
 ## Get Started
 
-To install and build the `micro-rdk` on your ESP32 board, follow these steps:
+Follow these steps to install and build the micro-rdk on your ESP32:
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development enviroment](#set-up-your-docker-development-enviroment) with Viam's [Canon CLI utility](#use-viams-canon-cli-utility) *(recommended)* or [manually](#set-up-development-environment-manually)
