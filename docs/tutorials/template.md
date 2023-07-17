@@ -49,5 +49,5 @@ Code and directions.
 Link to other tutorials with cards or text.
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" %}}
+  {{% card link="/tutorials/get-started/blink-an-led" %}}
 {{< /cards >}}
