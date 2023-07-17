@@ -34,9 +34,13 @@ Viam recommends purchasing the ESP32 with a development board: see [development 
 ### Software Requirements
 
 The micro-RDK is written in Rust.
-The following instructions cover installation of necessary tools to program the ESP32 on macOS and Linux systems.
+To be able to program the ESP32 on macOS and Linux systems, you must install the following software on your development machine:
 
-To build the micro-rdk, you must install the following software on your development machine:
+#### Install Homebrew
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 #### Install Build Dependencies
 
