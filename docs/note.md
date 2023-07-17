@@ -9,13 +9,14 @@ description: "Information for writing docs with hugo - this is only rendered in 
 
 ## Reusable Text Snippets
 
-There are situations where we need to repeat text blocks. For example, when cautioning users to disconnect power before changing connections or providing a commonly used instruction set or procedure.
+There are situations where we need to repeat text blocks.
+For example, when cautioning users to disconnect power before changing connections or providing a commonly used instruction set or procedure.
 
 Rather than re-typing the material or making multiple copy/paste updates in many locations, you can simply update one file and its content flows to any location it was used.
 
 The following is an example of the <file>secret-share.md</file> alert added using the snippet shortcode:
 
-{{% figure src="/snippet-shortcode.png" alt="Snippet shortcode usage." title="Snippet Shortcode Usage" %}}
+{{% figure src="/general/snippet-shortcode.png" alt="Snippet shortcode usage." title="Snippet Shortcode Usage" %}}
 
 {{% snippet "secret-share.md" %}}
 
@@ -25,10 +26,14 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 {{% tab name="Support"%}}
 **Supported**
 
-- Markdown and HTML images.
+- Markdown and HTML images
+  - Images should be included with the imgproc shortcode.
+    You cannot directly use the `<img>` html tag for images in the assets folder because the images, once built, are renamed.
+    If you really need to use html directly, place the image in the static folder.
 - Alert Shortcode
 - PRISM syntax highlighting (the three backticks)
-- "codelang" highlighting (add codelang="language" to tab element). It's very ugly, needs css work, and is not recommended at this time.
+- "codelang" highlighting (add codelang="language" to tab element).
+  It's very ugly, needs css work, and is not recommended at this time.
 
 ### Not Supported
 
@@ -37,14 +42,20 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 ### Example Usage
 
-<img style="border:solid 1px black" alt="Screen capture of Tab/Tabs Shortcode Usage" src="/tabbed-panel-markdown.png">
+```md
+# remove spaces
+{ {<imgproc src="/general/tabbed-panel-markdown.png" resize="300x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage" style="border:solid 1px black">} }
+```
+
+{{<imgproc src="/general/tabbed-panel-markdown.png" resize="300x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage" style="border:solid 1px black">}}
 
 {{% /tab %}}
 {{% tab name="Examples" %}}
 
 <div>
  <h3>What is Rendered?</h3>
- <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images. For example, these two images:</p>
+ <p>It renders <i>vanilla</i> HTML and markdown, Alerts, and images.
+ For example, these two images:</p>
 
 - **Markdown Image Example**<br>
 ![expand example](/general/expander-markdown.png)<br>
@@ -120,19 +131,21 @@ It can even contain shortcodes.
 
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
 
-Within the expander, you can still use most other shortcodes and syntax highlighting from Prism functions properly. The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
+Within the expander, you can still use most other shortcodes and syntax highlighting from Prism functions properly.
+The shortcode displays your expander's title in a light blue bar to make it noticeable.<br><br>
 
 **Screen Capture of an Expander**
-<img style="border:solid 1px black" alt="Screen capture of the expander control rendered on a documentation page" src="/expander-example.png">
+{{<imgproc src="/general/expander-example.png" resize="1000x" declaredimensions=true alt="Screen capture of the expander control rendered on a documentation page" style="border:solid 1px black">}}
 
 ### Usage
 
-1. Add the shortcode tags. Make sure that the title is suitable for your use.
+1. Add the shortcode tags.
+   Make sure that the title is suitable for your use.
 1. Drop in the material you want to hide until the reader wants it.
 
 ### Markdown Example
 
-<img style="border:solid 1px black" src="/expander-markdown.png">
+{{<imgproc src="/general/expander-markdown.png" resize="400x" declaredimensions=true alt="ALT" style="border:solid 1px black">}}
 
 ### Rendered Expander Example
 
@@ -197,19 +210,22 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 
 ## How to use Notes, Cautions, and Warnings
 
-**Info/Tip**: Use to convey helpful information or clarification. They both use the same color.
+**Info/Tip**: Use to convey helpful information or clarification.
+They both use the same color.
 
 **Note/Important/Stability Notice**: These call attention to something important.
 
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
-**Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards. Electrical and physical safety fall into this category.
+**Warning**: Use to notify the reader of an issue to avoid loss of life, personal injury, and health hazards.
+Electrical and physical safety fall into this category.
 
 {{< alert title="Tip" color="tip" >}}
-The "title" and "color" keywords and the names of colors ("tip," "note," and so on) are case sensitive. If you use uppercase, alerts will not have a title and the color border will be incorrect.
+The "title" and "color" keywords and the names of colors ("tip," "note," and so on) are case sensitive.
+If you use uppercase, alerts will not have a title and the color border will be incorrect.
 {{< /alert >}}
 
-{{< figure src="/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
+{{< figure src="/general/alert-markdown.png"  alt="The shortcodes used to display Alerts." title="Shortcodes for Alerts" >}}
 
 {{< alert title="Tip" color="tip" >}}
 Provide a tip.
@@ -237,11 +253,13 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 
 ## Using the Figure Shortcode
 
-The figure shortcode enhances the existing figure and figurecaption html tags. Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr*- element for attribution text and **attrlink*- if you wish to add a link to the attribution text.
+The figure shortcode enhances the existing figure and figurecaption html tags.
+Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr*- element for attribution text and **attrlink*- if you wish to add a link to the attribution text.
 
-{{< figure src="/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
+{{< figure src="/general/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
-This shortcode places the caption (that is the "title") above the table. The **title*- is set in 12pt italic with a green underline.
+This shortcode places the caption (that is the "title") above the table.
+The **title*- is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 
@@ -498,13 +516,27 @@ The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 
 **Place images in the `assets` folder.**
 
-Though the Markdown syntax (`![ALT text](file)`) does render, please use the following shortcode (without the slashes) instead:
+If the image is supposed to take up the full width of the page use the regular markdown syntax: `![alt text](path)`.
+
+If the image is smaller use the `imgproc` shortcode with an appropriate resize value.
+
+{{< alert title="Note" color="note" >}}
+
+You cannot directly use the `<img>` html tag for images in the assets folder because the images, once built, are renamed.
+If you really need to use html directly, place the image in the static folder.
+
+{{< /alert >}}
 
 ```md
-\{\{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">\}\}
+<!-- remove space -->
+![Raspberry Pi](/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 
-\{\{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">\}\}
+{ {<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">} }
+
+{ {<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">} }
 ```
+
+![Raspberry Pi](/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 
 {{<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">}}
 
