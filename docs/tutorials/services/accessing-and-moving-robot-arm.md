@@ -228,8 +228,8 @@ from viam.proto.component.arm import JointPositions
 See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Command a joint position move: small adjustment to the last joint
-cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
+# Command a joint position move: move the forearm of the arm slightly up 
+cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
 await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 ```
 
@@ -241,8 +241,8 @@ Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able t
 See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Command a joint position move: small adjustment to the last joint
-cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
+// Command a joint position move: move the forearm of the arm slightly up 
+cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
 err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 if err != nil {
   fmt.Println(err)
@@ -252,7 +252,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-If you execute the sample joint move statement above, your arm should move the last joint a small amount (15 degrees).
+If you execute the sample joint move statement above, the third joint of your arm should move a small amount (30 degrees).
 Feel free to experiment further with joint position commands by changing the values for each joint and re-sending the commands.
 
 When you are ready to move on, the next section will show you how to use **pose commands**.
