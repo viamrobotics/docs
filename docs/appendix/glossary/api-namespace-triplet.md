@@ -9,7 +9,7 @@ aka:
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} type exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API) to describe how you can interact with that resource.
 
  These APIs are organized by colon-delimited-triplet identifiers, in the form of `namespace:type:subtype`.
- 
+
  The `namespace` for built-in Viam resources is `rdk`, while the `type` is `component` or `service`.
  `subtype` refers to a specific component or service, like a `camera` or `vision`.
 
