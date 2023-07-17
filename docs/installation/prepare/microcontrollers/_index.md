@@ -15,33 +15,30 @@ aliases:
 
 {{% readfile "/static/include/micro-rdk.md" %}}
 
-## Hardware Requirements
+## Get Started
+
+To install and build the `micro-rdk` on your ESP32 board, follow these steps:
+
+1. Install the [required software](#software-requirements)
+2. [Set up your development enviroment](#set-up-your-docker-development-enviroment) with Viam's [Canon CLI utility](#use-viams-canon-cli-utility) *(recommended)* or [manually](#set-up-development-environment-manually)
+3. [Install the Micro-RDK](#install-the-micro-rdk)
+
+### Hardware Requirements
 
 You need an an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see [development kit options](https://www.espressif.com/en/products/devkits).
 
-Minimal configuration: 384kB Ram 4MB flash
-Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
+- **Minimal configuration:** 384kB Ram 4MB flash
+- **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
 
-## Software Requirements
+### Software Requirements
 
 The micro-RDK is written in Rust.
-
-We recommend using Viam's [Canon utility](#using-canon-to-build-micro-rdk) to build the `micro-rdk` server, as the utility downloads and installs a Docker development environment automatically.
-If you don't want to use Canon, you can set up the development environment manually by following [these instructions](#set-up-development-environment-manually) instead.
-
-To use the micro-RDK with your ESP32 board, follow these steps:
-
-1. [Install prerequisites](#install-prerequisites)
-2. Set up the environment automatically with [Canon](#using-canon-to-build-micro-rdk) or [manually](#set-up-development-environment-manually)
-
 The following instructions cover installation of necessary tools to program the ESP32 on macOS and Linux systems.
-
-### Install prerequisites
 
 To build the micro-rdk, you must install the following software on your development machine:
 
-#### Install dependencies
+#### Install Build Dependencies
 
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
@@ -60,7 +57,7 @@ brew install dfu-util
 {{% /tab %}}
 {{% /tabs %}}
 
-#### Install Rust
+#### Install `Rust`
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -86,10 +83,14 @@ Run the following command to install `espflash`
 cargo install espflash
 ```
 
-### Use Canon to build micro-RDK
+## Set up your Docker development enviroment
+
+### Use Viam's Canon CLI utility
 
 [Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker based canonical environment.
-Canon requires a working installation of docker.
+
+Canon requires a working installation of Docker.
+
 [Install Docker](https://docs.docker.com/engine/install/) before proceeding.
 If you are running Docker on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/).
 
@@ -116,9 +117,16 @@ Make sure to [add the go binary folder to your `PATH`](https://go.dev/ref/mod#go
 
 ### Set up development environment manually
 
-Only follow these steps if you are not using the Canon utility to build the micro-RDK.
+{{< alert title="Tip" color="tip" >}}
+You only need to follow these steps if you are not using Canon to build the micro-RDK.
 
-#### Install build dependencies
+If you have completed [set up with Canon](/installation/prepare/microcontrollers/#use-viams-canon-cli-utility), skip this section and begin on [install the Micro-RDK](/installation/prepare/microcontrollers/#install-the-micro-rdk).
+
+{{< /alert >}}
+
+To set up the Docker development environment for ESP manually, complete the following:
+
+{{%expand "Install build dependencies" %}}
 
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
@@ -137,10 +145,11 @@ brew install cmake ninja dfu-util
 {{% /tab %}}
 {{% /tabs %}}
 
-#### Install ESP-IDF
+{{% /expand%}}
+
+{{%expand "Install ESP-IDF" %}}
 
 ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
-You need to install it to be able to install the micro-RDK on your Espressif ESP32 microcontroller.
 
 Clone Viam's fork of the ESP-IDF:
 
@@ -166,7 +175,9 @@ To activate ESP-IDF, run the following command to source (`.`) the activation sc
 To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
 Save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 
-#### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
+{{% /expand%}}
+
+{{%expand "Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment" %}}
 
 First install the following tools with `cargo` :
 
@@ -197,13 +208,9 @@ To activate the ESP Rust toolchain, run the following command to source (`.`) th
 To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
 Save this command to run in any future terminal session where you need to activate the ESP Rust development framework.
 
+{{% /expand%}}
+
 ## Install the Micro-RDK
-
-To install the Micro-RDK on your ESP32 board:
-
-- [create a new robot in the Viam app](#create-a-new-robot)
-- [generate a new project from Viam's micro-RDK template](#generate-a-new-project-from-the-micro-rdk-template)
-- [upload the project to your ESP32](#upload-and-connect-to-your-esp32-board)
 
 ### Create a New Robot
 
@@ -246,7 +253,7 @@ Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.
 cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 ```
 
-To track any changes you make to the generated project with Git, use the `mkdir` command to initialize a new repository inside of the directory you created by running `cargo-generate`. 
+To track any changes you make to the generated project with Git, use the `mkdir` command to initialize a new repository inside of the directory you created by running `cargo-generate`.
 
 You will be prompted to paste your robot's JSON configuration into the terminal.
 
