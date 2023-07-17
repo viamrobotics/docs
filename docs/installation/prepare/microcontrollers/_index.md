@@ -21,7 +21,7 @@ Follow these steps to install and build the micro-rdk on your ESP32:
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development enviroment](#set-up-your-docker-development-enviroment) with Viam's [Canon CLI utility](#use-viams-canon-cli-utility) *(recommended)* or [manually](#set-up-development-environment-manually)
-3. [Install the Micro-RDK](#install-the-micro-rdk)
+3. [Install the Micro-RDK](#install-the-micro-rdk) and [create](#create-a-new-robot) and [connect to](#connect-to-your-esp32) a new robot
 
 ### Hardware Requirements
 
@@ -87,7 +87,7 @@ Run the following command to install `espflash`
 cargo install espflash
 ```
 
-## Set up your Docker development enviroment
+## Set up your development enviroment
 
 ### Use Viam's Canon CLI utility
 
@@ -218,20 +218,56 @@ Save this command to run in any future terminal session where you need to activa
 
 ### Create a New Robot
 
-Navigate to [the Viam app](https://app.viam.com) and create a new robot in your desired location.
-Keep your `Mode` and `Architecture` selections at default, and skip the instructions in the **Setup** tab for now as the setup instructions there are not for microcontrollers.
-You can configure your robot using the config tab.
+Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
-{{< alert title="Caution" color="caution" >}}
-The`esp32` model of [board](/components/board/) is not yet provided for you in [the Viam app](https://app.viam.com).
-Configure an `esp32` board as follows:
+- Click on the name of the robot to go to the robot's page.
+- Skip the instructions in the [**Setup** tab](/manage/fleet/robots/#setup) for now, as the setup instructions there are not for microcontrollers.
+- Keep your `Mode` and `Architecture` selections at default.
+
+### Configure an `esp32` Board
+
+{{< alert title="Tip" color="tip" >}}
+The`esp32` model of [board](/components/board/) is not currently provided for you as an option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+{{< /alert >}}
+
+To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
+
+Copy the following JSON template and paste it into your configuration:
+
+{{< tabs name="Configure an esp32 Board" >}}
+{{% tab name="JSON Template"%}}
 
 ```json
 {
   "attributes": {
-    "webhook": "", // Optional path a webhook see https://github.com/viam-labs/webhook-template for an example
-    "webhook-secret": "", // Option webhook secret
-    "pins": [ // pin to be configured as Input/Ouput (for Get/SetGpio)
+    "webhook": "",
+    "webhook-secret": "",
+    "pins": [
+      <int>
+    ],
+    "analogs": [
+      {
+        "pin": "<number>", 
+        "name": "<your-analog-name>"
+      }
+    ]
+  },
+  "depends_on": [],
+  "model": "esp32",
+  "name": "<your-board-name>",
+  "type": "board"
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "attributes": {
+    "webhook": "", 
+    "webhook-secret": "", 
+    "pins": [ // pin to be configured as Input/Ouput 
       15
     ],
     "analogs": [
@@ -248,7 +284,18 @@ Configure an `esp32` board as follows:
 }
 ```
 
-{{% /alert %}}
+{{% /tab %}}
+{{< /tabs >}}
+
+Edit and fill in the attributes as applicable.
+The following attributes are available for `esp32` boards:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
+| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
+| `webhook` | string | Optional | Path to a webhook. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. |
+| `webhook-secret` | string | Optional | A webhook's secret. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. |
 
 ### Generate a New Project from the Micro-RDK Template
 
@@ -261,15 +308,18 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 To track any changes you make to the generated project with Git, use the `mkdir` command to initialize a new repository inside of the directory you created by running `cargo-generate`.
 
 You will be prompted to paste your robot's JSON configuration into the terminal.
+To obtain this:
 
-To obtain this, navigate to [the Viam app](https://app.viam.com).
-Click the **Copy viam-server config** button on the right side of the **Setup** tab of your robot.
+- Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+- Click the **Copy viam-server config** button on the right side of the **Setup** tab.
 The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to [the Viam app](https://app.viam.com).
-Paste your JSON config into your terminal when prompted.
+- Paste your JSON config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
-### Upload and Connect to your ESP32 Board
+### Connect to your ESP32
+
+Now, upload the project to connect to your ESP32 through [the Viam app](https://app.viam.com).
 
 {{< tabs >}}
 {{% tab name="Using Canon" %}}
@@ -295,7 +345,7 @@ If successful, you will retain a serial connection to the board until you press 
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-If everything went well, your ESP32 is now programmed so that you will be able to see your robot live and connect to it on [the Viam app](https://app.viam.com).
+Your should now be able to connect to your ESP-32 backed robot live on [the Viam app](https://app.viam.com).
 
 ### Troubleshooting
 
