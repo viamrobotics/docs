@@ -49,7 +49,7 @@ The following steps guide you through this process in more detail.
     - [<file>buf.lock</file>](https://buf.build/docs/configuration/v1/buf-lock/)
     - [<file>buf.yaml</file>](https://buf.build/docs/configuration/v1/buf-gen-yaml/)
 
-1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code.
+1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<type name>.proto` file you wrote.
 
     - [Example generated files for a Python-based service](https://github.com/viam-labs/speech/tree/main/src/proto)
       - (<file>speech.proto</file> was manually written, not generated)
