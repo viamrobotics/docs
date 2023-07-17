@@ -24,7 +24,7 @@ Enter a name for your camera, select the type `camera`, and select the `fake` mo
 
 Click **Create component**.
 
-![Configuration of a fake camera in the Viam app config builder.](../img/configure-fake.png)
+![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -60,7 +60,7 @@ Then toggle the camera or the Point Cloud Data view to ON.
 You will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
-![Fake Camera View](../img/fake-view.png)
+{{< imgproc src="/components/camera/fake-view.png" alt="Fake Camera View" resize="600x" >}}
 
 ## Next Steps
 

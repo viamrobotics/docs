@@ -30,7 +30,7 @@ Enter a name for your input controller, select the type `input_controller`, and 
 
 Click **Create component**.
 
-![An example configuration for a multiplexed input controller component in the Viam App config builder](../img/mux-input-controller-ui-config.png)
+![An example configuration for a multiplexed input controller component in the Viam App config builder](/components/input-controller/mux-input-controller-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

@@ -207,6 +207,7 @@ The arm component supports the following methods:
 | [JointPositions](/components/arm/#jointpositions) | Get the current position of each joint on the arm. |
 | [Stop](/components/arm/#stop) | Stop the arm from moving. |
 | [IsMoving](/components/arm/#ismoving) | Get if the arm is currently moving. |
+| [Kinematics](/components/arm/#kinematics) | Get the kinematics information associated with the arm. |
 | [DoCommand](/components/arm/#docommand) | Send or receive model-specific commands. |
 
 ### Base
@@ -328,6 +329,37 @@ These APIs provide interfaces for controlling and getting information from the s
 Built-in API methods are defined for each service implementation.
 Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
 
+### Base Remote Control
+
+Method Name | Description
+----------- | -----------
+[`Close`](/services/base-rc/#close) | Close out of all remote control related systems.
+[`ControllerInputs`](/services/base-rc/#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
+
+### Data Manager
+
+Method Name | Description
+----------- | -----------
+[`Sync`](/services/data/#sync) | Sync data stored on the robot to the cloud.
+
+### Navigation
+
+Method Name | Description
+----------- | -----------
+[`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
+[`SetMode`](/services/navigation/#setmode) | Set the mode the service is operating in.
+[`Location`](/services/navigation/#location) | Get the current location of the robot.
+[`Waypoints`](/services/navigation/#waypoints) | Get an array of waypoints currently in the service's data storage.
+[`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
+[`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
+
+### Sensors
+
+Method Name | Description
+----------- | -----------
+[`Sensors`](/services/sensors/#sensors) | Returns a list of names of the available sensors.
+[`Readings`](/services/sensors/#readings) | Returns a list of readings from a given list of sensors.
+
 ### Motion
 
 Method Name | Description
@@ -340,9 +372,10 @@ Method Name | Description
 
 Method Name | Description
 ----------- | -----------
-`Position` | Get current position of the specified component in the SLAM Map.
-`PointCloudMap`| Get the point cloud map.
-`InternalState` | Get the internal state of the SLAM algorithm required to continue mapping/localization.
+[`GetPosition`](/services/slam/#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
+[`GetPointCloudMap`](/services/slam/#getpointcloudmap) | Get the point cloud SLAM map.
+[`GetInternalState`](/services/slam/#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
+[`GetLatestMapInfo`](/services/slam/#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
 
 ### MLModel
 

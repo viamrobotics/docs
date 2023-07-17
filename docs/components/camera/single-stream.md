@@ -30,7 +30,7 @@ Enter a name for your camera, select the type `camera`, and select the `single_s
 
 Click **Create component**.
 
-![Configuration of a single stream camera in the Viam App config builder.](../img/configure-single-stream.png)
+![Configuration of a single stream camera in the Viam App config builder.](/components/camera/configure-single-stream.png)
 
 Edit and fill in the attributes as applicable.
 

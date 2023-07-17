@@ -22,7 +22,7 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 After [annotating your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.
 
-{{< imgproc alt="Train model button" src="/manage/ml/train-model.png" resize="1000x" >}}
+![Train model button](/manage/ml/train-model.png)
 
 A **Training** side menu opens.
 The model will train on all images that are part of the current filter.
@@ -42,13 +42,13 @@ If the underlying data matching the filter changes because data is deleted or mo
     - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 4. Click **TRAIN MODEL**
 
-{{< imgproc alt="Train model menu" src="/manage/ml/train-model-menu.png" resize="1000x" >}}
+![Train model menu](/manage/ml/train-model-menu.png)
 
 The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 
-{{< imgproc alt="The trained model" src="/manage/ml/stars-model.png" resize="1000x" >}}
+![The trained model](/manage/ml/stars-model.png)
 
 ### Train a new version of a model
 

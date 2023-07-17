@@ -7,8 +7,8 @@
   {{ $baseurl := (substr .Site.BaseURL 0 -1) }}
 {{ end }}
 <div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
-  {{ if site.GetPage ((relURL $link) | string) }}
-    {{ with site.GetPage ((relURL $link) | string) }}
+  {{ if site.GetPage ($link | string) }}
+    {{ with site.GetPage ($link | string) }}
       <a href="{{.RelPermalink}}">
         {{ if .Params.webmSrc }}
         <div class="hover-card-video">
@@ -21,8 +21,8 @@
             {{if $img }}
               {{ partial "imgproc.html" (dict "src" (.Params.image) "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
             {{ else }}
-              <img src="{{relURL (substr .Params.image 1)}}" loading="lazy" alt="{{ .Params.imageAlt }}" width="100%" />
-            {{end}}
+              {{ errorf "Couldn't get image %s" .Params.image }}
+            {{ end }}
           </div>
         {{ end }}
 				{{ if .Params.icon }}
@@ -32,9 +32,9 @@
 				{{ end }}
         <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
           {{ if $customTitle }}
-            <h4>{{ $customTitle }}</h4>
+            <div>{{ $customTitle }}</div>
           {{ else }}
-            <h4>{{ .LinkTitle }}</h4>
+            <div>{{ .LinkTitle }}</div>
           {{ end }}
           {{ if ne $class "small" }}
           <p> {{ if $customDescription }} {{ $customDescription }} {{ else }} {{ .Description }} {{ end }} </p>
@@ -43,6 +43,6 @@
       </a>
       {{ end }}
   {{ else }}
-  <a href="{{ (relURL $link) }}">This is a bug. Card has a bad link.</a>
+  {{ warnf "Card has a bad link: %s" $link }}
   {{ end }}
 </div>

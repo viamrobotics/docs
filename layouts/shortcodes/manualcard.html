@@ -3,23 +3,21 @@
   {{ if .Get "link" }}<a href="{{ .Get "link" }}" class="noanchor">{{ end }}
         {{ if .Get "img" }}
         <div class="hover-card-img">
-          <img src="{{ .Get "img" }}" loading="lazy" alt="{{ .Get "alt" }}" width="100%" />
+          {{ $img := resources.GetMatch (.Get "img") }}
+          {{if $img }}
+            {{ partial "imgproc.html" (dict "src" (.Get "img") "resize" "400x" "alt" (.Params.imageAlt) "style" "") }}
+          {{ else }}
+            {{ errorf "Couldn't get image %s" .Params.image }}
+          {{ end }}
         </div>
         {{ end }}
         <div {{ if .Get "img" }}class="small-hover-card-div"{{ end }}>
-        {{ if .Get "title" }}
-          <h4>
-            {{ .Get "title" }}
-          </h4>
-        {{ end }}
         {{ with $.Inner }}
-        <div>
           {{ if eq $.Page.File.Ext "md" }}
             {{ $.Inner | markdownify }}
           {{ else }}
             {{ $.Inner | htmlUnescape | safeHTML }}
           {{ end }}
-        </div>
         {{ end }}
       </div>
       {{ if .Get "link" }}</a>{{ end }}

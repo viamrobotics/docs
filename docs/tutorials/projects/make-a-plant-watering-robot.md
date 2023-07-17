@@ -5,9 +5,9 @@ weight: 50
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
-image: "/tutorials/img/plant-watering-pi/preview.png"
+image: "/tutorials/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
-images: ["/tutorials/img/plant-watering-pi/preview.png"]
+images: ["/tutorials/plant-watering-pi/preview.png"]
 authors: [ "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "board", "motor", "sensor" ]
@@ -17,7 +17,7 @@ cost: 150
 # SMES: Olivia Miller
 ---
 
-![Picture of the plant watering robot on a desk.](../../img/plant-watering-pi/plant-watering-robot.png)
+![Picture of the plant watering robot on a desk.](/tutorials/plant-watering-pi/plant-watering-robot.png)
 
 Building a useful robot doesn't have to require complicated code or expensive equipment.
 With a Raspberry Pi and some cheap, basic hardware, you can keep your plants healthy and happy from anywhere in the world!
@@ -58,7 +58,7 @@ You will set up the robot to receive signals from the capacitive soil moisture s
 
 Refer back to this diagram as you complete the steps to wire your hardware.
 
-![The full wiring diagram for all the hardware for the Plant Watering Robot.](../../img/plant-watering-pi/full-wiring.png)
+![The full wiring diagram for all the hardware for the Plant Watering Robot.](/tutorials/plant-watering-pi/full-wiring.png)
 
 ### Wire your ADC
 
@@ -69,7 +69,7 @@ Start by wiring your ADC to your Raspberry Pi board.
 You can find a Raspberry Pi pinout diagram at [pinout.xyz](https://pinout.xyz/pinout/3v3_power).
 Reference the following pinout diagram for your MCP3008 analog-to-digital converter:
 
-![Pinout diagram for the ADC.](../../img/plant-watering-pi/adc-pinout.png)
+![Pinout diagram for the ADC.](/tutorials/plant-watering-pi/adc-pinout.png)
 
 {{% alert title="Tip" color="tip" %}}
 The half circle shown in the pinout diagram above should be physically present on your ADC.
@@ -96,7 +96,7 @@ Next, wire your [capacitive soil moisture sensor](https://www.amazon.com/KeeYees
 
 Reference this diagram of the blue module part of the sensor:
 
-![Pinout diagram for the capacitive soil moisture sensor.](../../img/plant-watering-pi/moisture-sensor-pinout.png)
+![Pinout diagram for the capacitive soil moisture sensor.](/tutorials/plant-watering-pi/moisture-sensor-pinout.png)
 
 Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
 
@@ -114,7 +114,7 @@ Now, wire and power your Peristaltic Pump [motor](/components/motor/) and [motor
 
 Reference this diagram of the motor speed controller:
 
-![Pinout diagram for the motor speed controller.](../../img/plant-watering-pi/motor-speed-controller-diagram.png)
+![Pinout diagram for the motor speed controller.](/tutorials/plant-watering-pi/motor-speed-controller-diagram.png)
 
 1. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your battery to connect it to the DC power pins on your motor speed controller.
 Match the **+** notation on the battery to the **+** DC power pin.
@@ -134,7 +134,7 @@ You can either bend or soldier the jumper wire here to make the connection betwe
 
 ## Program Your Plant Watering Robot
 
-{{<gif webm_src="/tutorials/img/plant-watering-pi/plant-watering-video.webm" mp4_src="/tutorials/img/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
+{{<gif webm_src="/tutorials/plant-watering-pi/plant-watering-video.webm" mp4_src="/tutorials/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
 
 ### Enable SPI on your Pi
 
@@ -149,15 +149,15 @@ sudo raspi-config
 
 Once the `raspi-config` interface is open, navigate to **Interface Options**:
 
-![Raspi-config Tool interface with Interface Options selected.](../../img/plant-watering-pi/interface-options.png)
+![Raspi-config Tool interface with Interface Options selected.](/tutorials/plant-watering-pi/interface-options.png)
 
 Then, select **SPI**:
 
-![Raspi-config Tool interface with SPI selected.](../../img/plant-watering-pi/spi.png)
+![Raspi-config Tool interface with SPI selected.](/tutorials/plant-watering-pi/spi.png)
 
 Now, select **Yes** to enable SPI:
 
-![Raspi-config Tool interface with Yes selected for SPI enablement.](../../img/plant-watering-pi/spi-enabled.png)
+![Raspi-config Tool interface with Yes selected for SPI enablement.](/tutorials/plant-watering-pi/spi-enabled.png)
 
 Finally, select **Finish**.
 Restart your Pi using `sudo reboot` to make these changes take effect.
@@ -255,7 +255,7 @@ Now, you should see the moisture sensor values outputted by the MCP3008.
 
 Test your sensor by putting it in air, water, and different soils to see how the values change to determine your baseline for wet and dry values.
 
-![Terminal output of capacitive soil moisture sensor values.](../../img/plant-watering-pi/moisture-sensor-output.png)
+![Terminal output of capacitive soil moisture sensor values.](/tutorials/plant-watering-pi/moisture-sensor-output.png)
 
 ### Configure the Components of your Robot in the Viam app
 
@@ -268,7 +268,7 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a pi board in the Viam app config builder.](../../img/plant-watering-pi/pi-board-config-builder.png)
+![Creation of a pi board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -297,7 +297,7 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM**  to `12 GPIO 18` (t
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a pump motor in the Viam app config builder.](../../img/plant-watering-pi/pump-motor-config-builder.png)
+![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -329,7 +329,7 @@ Click **Save config**.
 
 Now, if you navigate to your robot's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
 
-![Creation of a pump motor in the Viam app config builder.](../../img/plant-watering-pi/pump-motor-control.png)
+![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png)
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -450,7 +450,7 @@ Add your sensor server as a [remote part](/manage/parts-and-remotes/) called `my
 {{% /tab %}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a custom sensor remote in the Viam app config builder."](../../img/plant-watering-pi/sensor-remote-config-builder.png)
+![Creation of a custom sensor remote in the Viam app config builder."](/tutorials/plant-watering-pi/sensor-remote-config-builder.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -493,7 +493,7 @@ Then, navigate to the **Processes** subtab and create a process called `run-sens
 {{% /tab %}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a process to run the sensor remote server in the Viam app config builder.](../../img/plant-watering-pi/sensor-process-config-builder.png)
+![Creation of a process to run the sensor remote server in the Viam app config builder.](/tutorials/plant-watering-pi/sensor-process-config-builder.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -503,7 +503,7 @@ Modify the `"args"` and `"cwd"` to match the path to your `plant-watering-robot`
 Click **Save config**.
 Now, when you navigate to your robot's **Control** tab, you should be able to see your sensor readings:
 
-![Readings from a soil moisture sensor in the Viam app CONTROL tab.](../../img/plant-watering-pi/sensor-reading-control.png)
+![Readings from a soil moisture sensor in the Viam app CONTROL tab.](/tutorials/plant-watering-pi/sensor-reading-control.png)
 
 {{% alert title="Tip" color="tip" %}}
 

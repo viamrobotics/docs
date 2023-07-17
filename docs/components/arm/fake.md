@@ -20,7 +20,7 @@ Enter a name for your arm, select the type `arm`, and select the `fake` model.
 
 Click **Create component**.
 
-![An example configuration for a fake ur5e arm in the Viam app Config Builder.](../img/fake-arm-ui-config.png)
+![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 This example sets the `fake` arm to act as a `ur5e` arm.

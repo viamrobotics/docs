@@ -26,7 +26,7 @@ Enter a name for your input controller, select the type `input_controller`, and 
 
 Click **Create component**.
 
-![An example configuration for a GPIO input controller component in the Viam App config builder](../img/gpio-input-controller-ui-config.png)
+![An example configuration for a GPIO input controller component in the Viam App config builder](/components/input-controller/gpio-input-controller-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

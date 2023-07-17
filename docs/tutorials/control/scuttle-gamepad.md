@@ -26,14 +26,14 @@ On completion of this tutorial, you'll be able to drive the SCUTTLE around like 
 ## Prerequisites
 
 * A pre-configured and controllable (using a keyboard and the Viam app ([app.viam.com](https://app.viam.com)) SCUTTLE Robot.
-Refer to the [Setting up a SCUTTLE with Viam](../../configure/scuttlebot/) tutorial, if necessary.
+Refer to the [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) tutorial, if necessary.
 
 * Connection to the Viam app
 * EasySMX ESM-9101 Wireless Controller
 
 The following video demonstrates controlling a SCUTTLE Robot using a Bluetooth gamepad:
 
-{{<video webm_src="../../videos/scuttledemos_gamepad.webm" mp4_src="../../videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="../../videos/scuttledemos_gamepad.jpg">}}
+{{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
 ## Adding the controller to the SCUTTLE's config
 
@@ -60,7 +60,7 @@ Services are the software packages that provide our robots with cool and powerfu
 2. Enter "Base Remote Control" for **Component** `type`. "Base Remote Control" is a service we provide for driving a rover with a gamepad.
 3. Enter **scuttle_gamepad** for the **Service** `name`.
 
-<img src="../../img/scuttle-gamepad/pi-game-create-service.png" alt="Create service builder" />
+![Create service builder](/tutorials/scuttle-gamepad/pi-game-create-service.png)
 
 Copy and paste the following into the empty **Attributes** field:
 </OL>
@@ -72,11 +72,11 @@ Copy and paste the following into the empty **Attributes** field:
 }
 ```
 
-<img src="../../img/scuttle-gamepad/pi-game-game-config-blank.png" alt="Blank configuration json" />
+![Blank configuration json](/tutorials/scuttle-gamepad/pi-game-game-config-blank.png)
 
 After adding the **Attributes**, your config screen should appear similar to this:
 
-<img src="../../img/scuttle-gamepad/pi-game-service-config.png" alt="Service configuration" />
+![Service configuration](/tutorials/scuttle-gamepad/pi-game-service-config.png)
 
 Save the configuration and visit the control UI on the Viam app ([app.viam.com](https://app.viam.com)).
 
@@ -84,7 +84,7 @@ You should see the panel for the Controller Service and its connection indicator
 This is how your web UI will look.
 Note the green connection indicator:
 
-<img src="../../img/scuttle-gamepad/pi-game-controller-panel.png" alt="Gamepad input UI" />
+![Gamepad input UI](/tutorials/scuttle-gamepad/pi-game-controller-panel.png)
 
 At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values:
 
@@ -110,16 +110,20 @@ Testing these attributes tells you which mode you are in.
 
 Here is a diagram of the gamepad.
 <table>
-<tr><td><img src="../../img/scuttle-gamepad/pi-game-gamepad-diagram.png" alt="gamepad diagram" /></td><td><img src="../../img/scuttle-gamepad/pi-game-gamepad-legend.png" alt="gamepad legend" /></td></tr>
+<tr>
+<td>{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-gamepad-diagram.png" resize="800x" alt="gamepad diagram">}}</td>
+<td>{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-gamepad-legend.png" resize="800x" alt="gamepad legend">}}</td>
+</tr>
 </table>
 
 To change the in-use movement/direction control on the gamepad between the D-Pad and the Joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
 Each red color arrangement allows you to control the gamepad in the Viam app:
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>
-<img src="../../img/scuttle-gamepad/pi-game-cont-1and3.jpg" width="250px" alt="Led 1 and 3 are lit" /></td><td>LED 3 and 4: Use the D-Pad<BR>
-<img src="../../img/scuttle-gamepad/pi-game-cont-3and4.jpg" width="250px" alt="Led 3 and 4 are lit" /></td></tr>
+{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-1and3.jpg" resize="300x" declaredimensions=true alt="Led 1 and 3 are lit">}}
+</td><td>LED 3 and 4: Use the D-Pad<BR>
+{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-3and4.jpg" resize="300x" declaredimensions=true alt="Led 3 and 4 are lit">}}</td></tr>
 <tr><td>LED 1 and 2: Use the D-Pad<BR>
-<img src="../../img/scuttle-gamepad/pi-game-cont-1and2.jpg" width="250px" alt="Led 1 and 2 are lit" /></td><td>LED 1 and 4: Use the Joystick<BR>
-<img src="../../img/scuttle-gamepad/pi-game-cont-1and4.jpg" width="250px" alt="Led 1 and 4 are lit" /></td></tr>
+{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-1and2.jpg" resize="300x" declaredimensions=true alt="Led 1 and 4 are lit">}}</td><td>LED 1 and 4: Use the Joystick<BR>
+{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-1and4.jpg" resize="300x" declaredimensions=true alt="Led 1 and 4 are lit">}}</td></tr>
 </table>

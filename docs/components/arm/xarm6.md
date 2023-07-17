@@ -20,7 +20,7 @@ Enter a name for your arm, select the type `arm`, and select the `xArm6` model.
 
 Click **Create component**.
 
-![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/xArm6-ui-config.png)
+![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/xArm6-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

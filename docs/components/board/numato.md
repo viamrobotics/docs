@@ -21,7 +21,7 @@ Enter a name for your board, select the type `board`, and select the `numato` mo
 
 Click **Create component**.
 
-![An example configuration for a numato board in the Viam app Config Builder.](../img/numato-ui-config.png)
+![An example configuration for a numato board in the Viam app Config Builder.](/components/board/numato-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
