@@ -8,12 +8,12 @@ The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk"
 
 The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-The micro-RDK currently only supports:
+The micro-RDK currently only supports client API integration for the following resources:
 
-- GPIO pins
+- [GPIO Pin](/components/board/#gpiopin-api)
 - Analog readers
 - Motors
 - Encoders
-- Base
+- [Base](/components/base/)
 
 See [GitHub](https://github.com/viamrobotics/micro-rdk) for code examples and more information about the micro-RDK.

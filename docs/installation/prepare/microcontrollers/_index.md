@@ -86,12 +86,12 @@ Run the following command to install `espflash`
 cargo install espflash
 ```
 
-### Using Canon to build micro-rdk
+### Use Canon to build micro-RDK
 
 [Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker based canonical environment.
 Canon requires a working installation of docker.
 [Install Docker](https://docs.docker.com/engine/install/) before proceeding.
-If you are running linux, make sure to go through the post installation [steps](https://docs.docker.com/engine/install/linux-postinstall/).
+If you are running Docker on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/).
 
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
@@ -112,11 +112,11 @@ brew install viamrobotics/brews/canon
 {{% /tab %}}
 {{% /tabs %}}
 
-Make sure your the GOBIN folder is in your PATH. If not, you can add like this: `export PATH="$PATH:~/go/bin"` Note: This path may vary. See [Go](https://go.dev/ref/mod#go-install) for details.
+Make sure to [add the go binary folder to your `PATH`](https://go.dev/ref/mod#go-install).
 
 ### Set up development environment manually
 
-These steps are optional if you are using the canon utility to build the micro-rdk.
+Only follow these steps if you are not using the Canon utility to build the micro-RDK.
 
 #### Install build dependencies
 
@@ -194,7 +194,7 @@ To activate the ESP Rust toolchain, run the following command to source (`.`) th
 . $HOME/esp/esp-idf/export-rs.sh
 ```
 
-To to avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
+To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
 Save this command to run in any future terminal session where you need to activate the ESP Rust development framework.
 
 ## Install the Micro-RDK
@@ -246,20 +246,16 @@ Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.
 cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 ```
 
-If you would like, you can use `mkdir` to initialize a new repository in the directory you created by running `cargo-generate`, to track any changes you make to the generated project.
+To track any changes you make to the generated project with Git, use the `mkdir` command to initialize a new repository inside of the directory you created by running `cargo-generate`. 
 
 You will be prompted to paste your robot's JSON configuration into the terminal.
 
 To obtain this, navigate to [the Viam app](https://app.viam.com).
 Click the **Copy viam-server config** button on the right side of the **Setup** tab of your robot.
-The Micro-RDK uses the config for communication with the Viam app.
-Paste this into your terminal.
+The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to [the Viam app](https://app.viam.com).
+Paste your JSON config into your terminal when prompted.
 
-{{< alert title="Caution" color="caution" >}}
-
-All of the generated files should be safe to commit as a project on Github, with the exception of `viam.json`, since it contains a secret key.
-
-{{% /alert %}}
+{{% snippet "secret-share.md" %}}
 
 ### Upload and Connect to your ESP32 Board
 
@@ -287,7 +283,7 @@ If successful you will retain a serial connection to the board until `Ctrl-C` is
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-If everything went well, your ESP32 will be programmed so that you will be able to see your robot live and connect to it on [the Viam app](https://app.viam.com).
+If everything went well, your ESP32 is now programmed so that you will be able to see your robot live and connect to it on [the Viam app](https://app.viam.com).
 
 ### Troubleshooting
 
