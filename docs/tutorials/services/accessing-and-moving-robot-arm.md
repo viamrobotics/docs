@@ -252,7 +252,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-If you execute the sample joint move statement above, your arm should move the last joint a small amount (15 degrees).
+If you execute the sample joint move statement above, the third joint of your arm should move a small amount (30 degrees).
 Feel free to experiment further with joint position commands by changing the values for each joint and re-sending the commands.
 
 When you are ready to move on, the next section will show you how to use **pose commands**.
