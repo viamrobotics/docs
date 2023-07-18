@@ -8,7 +8,7 @@ description: "Use the Viam module system to implement custom resources that can 
 no_list: true
 ---
 
-The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}}, [components](/components/), and [services](/services/), into any robot running on Viam.
+The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) into any robot running on Viam.
 
 A common use case for modular resources is to create a new model that implements an existing Viam API.
 However, you can also create and expose new APIs with modular resources.
