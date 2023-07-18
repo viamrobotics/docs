@@ -31,7 +31,7 @@ Ensure that your module executable is saved where the instance of `viam-server` 
 
 For example, if you are running `viam-server` on an Raspberry Pi, you'll need to save the module on the Pi's filesystem.
 
-Obtain the real (absolute) path to the executable file on your computer/[board's](/components/board/) filesystem by running the following command in your terminal:
+Obtain the real (absolute) path to the executable file on your computer's filesystem by running the following command in your terminal:
 
 ``` shell
 realpath <path-to-your-module-directory>/<your-module>
@@ -74,7 +74,7 @@ Add these properties to your module's configuration:
 
 ### Configure your modular resource
 
-Once you have configured a module as part of your robot configuration, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new {{< glossary_tooltip term_id="api-namespace-triplet" text="subtype" >}} or [model](/extend/modular-resources/key-concepts/#models).
+Once you have configured a module as part of your robot configuration, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new subtype or [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
@@ -84,7 +84,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The subtype of the [API](/extend/modular-resources/key-concepts/#apis) (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's [model](/extend/modular-resources/key-concepts/#models). |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Usually a [board](/components/board/). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](../#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.

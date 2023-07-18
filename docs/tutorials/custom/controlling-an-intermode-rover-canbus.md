@@ -95,7 +95,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 
 ## A modular resource for the Intermode base
 
-Viam includes [APIs](/extend/modular-resources/key-concepts/#apis) for common component types within `viam-server`.
+Viam includes [APIs](/program/apis/) for common component types within `viam-server`.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base/).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.

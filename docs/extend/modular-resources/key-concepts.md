@@ -13,7 +13,7 @@ Two key concepts exist across all Viam resources, both built-in and modular, tha
 
 If you create your [own module](/extend/modular-resources/create/), you must register any new APIs and models you define in your model with Viam's model registry in the appropriate namespaces to [configure](/extend/modular-resources/configure/) the modular resource on your robot.
 
-### APIs
+## APIs
 
 {{% alert title="Modules vs. modular resources" color="tip" %}}
 
@@ -26,7 +26,7 @@ This can be understood as a description of how you can interact with that resour
 Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
 Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
 
-#### Namespace
+### Namespace
 
 Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form of `namespace:type:subtype`.
 
@@ -39,7 +39,7 @@ For example:
 You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
 {{% /alert %}}
 
-### Models
+## Models
 
 A *model* describes a specific implementation of a resource that implements (speaks) its API.
 Models allow you to control different instances of resource {{< glossary_tooltip term_id="api-namespace-triplet" text="subtypes" >}} with a consistent interface.
@@ -47,9 +47,9 @@ Models allow you to control different instances of resource {{< glossary_tooltip
 For example:
 
 Some DC motors use just [GPIO](/components/board/), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
-Regardless, you can power any motor model that implements the *rdk:component:motor* API with the `SetPower()` method.
+Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-#### Namespace
+### Namespace
 
 Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
 
@@ -58,34 +58,34 @@ For example:
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
 
-### Management
+## Management
 
 The Robot Development Kit (RDK) `viam-server` provides automatically manages modular resources to function like built-in resources:
 
-#### Dependency Management
+### Dependency Management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
 The Viam RDK handles dependency management.
 
-#### Start-up
+### Start-up
 
 The RDK ensures that any configured modules are loaded automatically on start-up, and that configured modular resource instances are started alongside configured built-in resource instances.
 
-#### Reconfiguration
+### Reconfiguration
 
 When you change the configuration of a Viam robot, the behavior of modular resource instances versus built-in resource instances is equivalent.
 This means you can add, modify, and remove a modular resource instance from a running robot as normal.
 
-#### Data management
+### Data management
 
 Data capture for individual components is supported on [certain component subtypes](/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
 If your modular resource is a model of one of these subtypes, you can configure data capture on it just as you would on a built-in resource.
 
-#### Shutdown
+### Shutdown
 
 During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
-#### Modular resources as remotes
+### Modular resources as remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
 This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
