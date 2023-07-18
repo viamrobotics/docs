@@ -26,13 +26,12 @@ You can conduct SLAM with data collected live by a [RPlidar](/extend/modular-res
 
 ## Configuration
 
-Integrated SLAM Libraries include:
+Integrated SLAM libraries include the following.
+Click the model name for configuration instructions.
 
 | Model | Description |
 | ----- | ----------- |
 | [`viam:slam:cartographer`](cartographer/) | [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data. |
-
-Follow [these instructions](cartographer/) to configure Cartographer SLAM on your robot.
 
 ## API
 
