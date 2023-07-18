@@ -17,7 +17,7 @@ Navigate to the **Logs** tab of your robot's page in [the Viam app](https://app.
 
  Use the **Filter** input to filter the logs by key terms, and select from the **Levels** drop-down menu to filter the logs by warning level:
 
-{{< imgproc src="/program/sdks/log-level-info.png" alt="Filtering by log level of info in the logs tab of the Viam app." resize="1000x" >}}
+![Filtering by log level of info in the logs tab of the Viam app.](/program/sdks/log-level-info.png)
 
 {{% /tab %}}
 {{% tab name="CLI" %}}

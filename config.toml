@@ -5,6 +5,7 @@ enableMissingTranslationPlaceholders = false
 enableRobotsTXT = false
 enableGitInfo = true
 disableKinds = ["RSS"]
+timeout = 60000
 
 [taxonomies]
 tag = "tags"

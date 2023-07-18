@@ -20,7 +20,7 @@ Enter a name for your motor, select the type `motor`, and select the `fake` mode
 
 Click **Create component**.
 
-{{< imgproc src="/icons/components/motor/fake-config-ui.png" alt="A fake motor config." resize="1000x" >}}
+![A fake motor config.](/icons/components/motor/fake-config-ui.png)
 
 Edit and fill in the attributes as applicable.
 

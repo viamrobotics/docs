@@ -23,7 +23,7 @@ Enter a name for your gantry, select the type `gantry`, and select the `fake` mo
 
 Click **Create component**:
 
-{{< imgproc src="/components/gantry/fake-gantry-ui-config.png" alt="An example configuration for a fake gantry in the Viam app Config Builder." resize="1000x" >}}
+![An example configuration for a fake gantry in the Viam app Config Builder.](/components/gantry/fake-gantry-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

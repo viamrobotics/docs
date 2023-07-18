@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `dual_str
 
 Click **Create component**.
 
-{{< imgproc src="/components/camera/configure-dual-stream.png" alt="Configuration of a dual stream camera in the Viam app config builder." resize="1000x" >}}
+![Configuration of a dual stream camera in the Viam app config builder.](/components/camera/configure-dual-stream.png)
 
 Edit and fill in the attributes as applicable.
 
