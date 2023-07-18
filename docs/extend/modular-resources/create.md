@@ -506,7 +506,7 @@ sudo chmod +x <FILEPATH>/<FILENAME>
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If using the Go SDK, use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) and obtain a single executable for your module:
+Use Go to [compile](https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies) and obtain a single executable for your module:
 
 - Navigate to your module directory in your terminal.
 - Run `go build` to compile your entry point (main program) file <file>main.go</file> and all other <file>.go</file> files in the directory, building your module and all dependencies into a single executable file.
