@@ -124,7 +124,7 @@ Make sure to [add the go binary folder to your `PATH`](https://go.dev/ref/mod#go
 {{< alert title="Tip" color="tip" >}}
 You only need to follow these steps if you are not using Canon to build the micro-RDK.
 
-If you have completed [set up with Canon](/installation/prepare/microcontrollers/#use-viams-canon-cli-utility), skip this section and begin on [install the Micro-RDK](/installation/prepare/microcontrollers/#install-the-micro-rdk).
+If you have completed [set up with Canon](/installation/prepare/microcontrollers/#use-viams-canon-cli-utility), skip this section and begin on [install the Micro-RDK](#install-the-micro-rdk).
 
 {{< /alert >}}
 
