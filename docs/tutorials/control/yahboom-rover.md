@@ -4,9 +4,9 @@ linkTitle: "Drive a Yahboom Rover with a Gamepad"
 weight: 50
 type: "docs"
 description: "Drive a Yahboom 4WD Rover with a bluetooth gamepad from the Viam app."
-image: "/tutorials/img/yahboom-rover/bluetoothpair-connect.png"
+image: "/tutorials/yahboom-rover/bluetoothpair-connect.png"
 imageAlt: "A Pi terminal showing the bluetoothctl commands and their outputs."
-images: ["/tutorials/img/yahboom-rover/bluetoothpair-connect.png"]
+images: ["/tutorials/yahboom-rover/bluetoothpair-connect.png"]
 aliases:
     - /tutorials/yahboom-rover/
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
@@ -30,7 +30,7 @@ See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instruc
 Go to the Viam app ([app.viam.com](https://app.viam.com)) in a web browser, and navigate to the **Config** tab of the robot associated with your Raspberry Pi.
 To create a new component you'll be working within the **Create Component** section of the **Components** subtab.
 
-![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](../../img/yahboom-rover/config.png)
+![A screenshot of the config builder UI on app.viam.com showing the Create Component box filled out with name=local, type=board and model=pi.](/tutorials/yahboom-rover/config.png)
 
 The first component you will add is the [board](/components/board/) which represents the Raspberry Pi to which the other components are wired.
 For component `Type`, select `board`.
@@ -39,7 +39,7 @@ For `Model`, select `pi`.
 Click the **Create Component** button.
 You don't need to add any attributes for this one, so your configured board will look something like this:
 
-![A screenshot of the board's configuration card on app.viam.com.](../../img/yahboom-rover/board.png)
+![A screenshot of the board's configuration card on app.viam.com.](/tutorials/yahboom-rover/board.png)
 
 ## Configuring the Motors and Wheels
 
@@ -67,7 +67,7 @@ Save the config by clicking **Save Config** at the bottom of the page.
 If you are using a motor with encoders, you need to specify the ticks per rotation.
 {{% /alert %}}
 
-![A screenshot of the right motor configuration showing pin assignment and Max RPM set to 300.](../../img/yahboom-rover/rightmotor.png)
+![A screenshot of the right motor configuration showing pin assignment and Max RPM set to 300.](/tutorials/yahboom-rover/rightmotor.png)
 
 Having configured these two components, you should now be able to actuate your motor.
 Click **Control** at the top of the page to navigate to the Control tab.
@@ -77,7 +77,7 @@ Please be careful when activating your robot! Start with the power level set to 
 Ensure the rover has sufficient space to drive around without hitting anyone or anything.
 Consider possibly holding your robot off the ground so it cannot run away or collide with anything unexpected.
 
-![A screenshot of the CONTROL tab UI with buttons to control the right motor.](../../img/yahboom-rover/control-rightmotor.png)
+![A screenshot of the CONTROL tab UI with buttons to control the right motor.](/tutorials/yahboom-rover/control-rightmotor.png)
 
 At this point, the wheels on one side of your robot should be working.
 Now try to add the other set of wheels using the same steps and see if you can get this robot driving with all of the components working together.
@@ -87,12 +87,12 @@ To do this, go back to the **Config** tab and find the **Create Component** box.
 The config attributes for this `motor` will be very similar to the `right` motor, which makes sense as the hardware is the same and it is connected to the same `board`.
 The only difference will be the `Name` which will be `left` and the pins it is connected to, which should be set as follows: `a` (In1) to `38`, `b` (In2) to `40`, and `pwm` to `36`.
 
-![A screenshot of the left motor configuration showing pin assignment and Max RPM set to 300.](../../img/yahboom-rover/leftmotor.png)
+![A screenshot of the left motor configuration showing pin assignment and Max RPM set to 300.](/tutorials/yahboom-rover/leftmotor.png)
 
 Save the config and hop over to the control view again.
 You should now see two motors and be able to make each set of wheels spin.
 
-![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](../../img/yahboom-rover/motors.png)
+![A screenshot of the CONTROL tab UI with buttons to control both sets of motors.](/tutorials/yahboom-rover/motors.png)
 
 ## Configuring the Base
 
@@ -120,14 +120,14 @@ If you click **Go to Advanced** you can see that the Attributes field now contai
 
 The whole base card will look something like this:
 
-![A screenshot of the Yahboom base configuration on the Viam app.](../../img/yahboom-rover/base.png)
+![A screenshot of the Yahboom base configuration on the Viam app.](/tutorials/yahboom-rover/base.png)
 
 When you save the config and switch to the control view once more, you should have new buttons for the `base` functionality.
 On the **Keyboard** tab of the base control card you can enable keyboard control to drive the rover with the WASD keys.
 Also check out the **Discrete** tab of the base control area for a different type of control.
 Try playing around with these and get a sense of how the base moves.
 
-![A screenshot of the CONTROL tab UI with buttons to make the base move.](../../img/yahboom-rover/baseui.png)
+![A screenshot of the CONTROL tab UI with buttons to make the base move.](/tutorials/yahboom-rover/baseui.png)
 
 Awesome! Now you have a rover which you can drive using a webUI.
 But wouldn’t it be more fun to drive it around like an RC car? Now you can try attaching a Bluetooth controller and using that to control the rover.
@@ -143,14 +143,14 @@ Run `sudo bluetoothctl scan on` to list all Bluetooth devices within reach of th
 As you do this, in terminal make sure you are in your Pi and not in your computer.
 This command will scan all the devices but the 8bitdo controller will have a MAC address that begins E4:17:D8.
 
-![A screenshot of a Mac command prompt with the command ssh hazal_pi@hazal_pi.local.](../../img/yahboom-rover/ssh-pilocal.png)
+![A screenshot of a Mac command prompt with the command ssh hazal_pi@hazal_pi.local.](/tutorials/yahboom-rover/ssh-pilocal.png)
 
-![A screenshot of a Raspberry Pi terminal with the following command: sudo bluetoothctl scan on. The results of the command are displayed: a list of device MAC addresses.](../../img/yahboom-rover/bluetooth-scan.png)
+![A screenshot of a Raspberry Pi terminal with the following command: sudo bluetoothctl scan on. The results of the command are displayed: a list of device MAC addresses.](/tutorials/yahboom-rover/bluetooth-scan.png)
 
 If you see a large log of devices, to see the addresses that only begin with E4:17:D8 you can use the `grep` command line tool.
 It is an acronym that stands for Global Regular Expression Print and allows to search for a string of characters in a specified file: `sudo bluetoothctl scan on | grep "E4:17:D8"`
 
-![A screenshot of a Rasperry Pi terminal with the 'sudo bluetoothctl scan on | grep "E4:17:D8"' command at the top, followed by a list of device MAC addresses all beginning in "E4:17:D8".](../../img/yahboom-rover/bluetooth-grep.png)
+![A screenshot of a Rasperry Pi terminal with the 'sudo bluetoothctl scan on | grep "E4:17:D8"' command at the top, followed by a list of device MAC addresses all beginning in "E4:17:D8".](/tutorials/yahboom-rover/bluetooth-grep.png)
 
 Once you find it in the listings, pair with the controller: `sudo bluetoothctl pair <8bitdo-mac-address>`.
 Do not forget to take the < and > symbols out as you paste your address.
@@ -161,7 +161,7 @@ Lastly trust the controller, which makes reconnecting easier in the future: `sud
 
 To confirm the connection, you can list connected devices with: `sudo bluetoothctl devices | cut -f2 -d| while read uuid; do sudo bluetoothctl info $uuid; done|grep -e "Device\|Connected\|Name"`
 
-![A screenshot of a Pi terminal showing the above bluetoothctl commands and their outputs.](../../img/yahboom-rover/bluetoothpair-connect.png)
+![A screenshot of a Pi terminal showing the above bluetoothctl commands and their outputs.](/tutorials/yahboom-rover/bluetoothpair-connect.png)
 
 If you would like a stronger understanding of `bluetoothctl` and managing Bluetooth devices in Linux, we recommend [this guide](https://www.makeuseof.com/manage-bluetooth-linux-with-bluetoothctl/).
 
@@ -172,7 +172,7 @@ Click **Create Component**.
 Lastly, you can set the `auto_reconnect` attribute to `true`.
 This config adds the controller to the robot, but doesn’t give it any functionality yet.
 
-![A screenshot of the 8BitDo controller configuration in the Viam app. Other than the name, type and model, it contains only the attribute auto_reconnect = true.](../../img/yahboom-rover/8bit-do.png)
+![A screenshot of the 8BitDo controller configuration in the Viam app. Other than the name, type and model, it contains only the attribute auto_reconnect = true.](/tutorials/yahboom-rover/8bit-do.png)
 
 To link the controller input to the four-wheel base functionality, you need to add our first `service`.
 Services are the software packages which provide our robots with cool and powerful functionality.
@@ -191,7 +191,7 @@ You will need to configure the following attributes for this service: `base` sho
 }
 ```
 
-![A screenshot of the SERVICES subtab of the CONFIG tab on app.viam.com, showing the configured base remote control service.](../../img/yahboom-rover/serviceattributes.png)
+![A screenshot of the SERVICES subtab of the CONFIG tab on app.viam.com, showing the configured base remote control service.](/tutorials/yahboom-rover/serviceattributes.png)
 
 If you can not see a section where you can add the attributes, you can go to **Raw JSON** mode, and add this code:
 
@@ -222,11 +222,11 @@ Follow [these instructions on how to connect and configure a camera](/components
 Don't worry about calibrating the camera; it is not necessary for this tutorial.
 That should be enough to get the `camera` streaming to the webUI.
 
-![A screenshot of the camera configuration with video_path set to "video0".](../../img/yahboom-rover/rover-camera.png)
+![A screenshot of the camera configuration with video_path set to "video0".](/tutorials/yahboom-rover/rover-camera.png)
 
 If you click on your webUI, you will be able to see your camera streaming.
 
-![A screenshot of the camera output in the CONTROL tab. The camera feed displays the view out the window of one building, consisting of an apartment building wall across the street.](../../img/yahboom-rover/camerastream.png)
+![A screenshot of the camera output in the CONTROL tab. The camera feed displays the view out the window of one building, consisting of an apartment building wall across the street.](/tutorials/yahboom-rover/camerastream.png)
 
 ## Configuring the Servo Components
 
@@ -234,16 +234,16 @@ You may have noticed that the camera is mounted on a pair of [servos](/component
 Go to the **Create Component** section at the bottom of **Config**.
 Set the `Name` to `pan`, the `Type` to `servo`, the `Model` to `pi`, and click **Create Component**. Set `Depends On` to `local`, and `pin` to `23`, which is the pin the servo is wired to.
 
-![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](../../img/yahboom-rover/panservo.png)
+![A screenshot fron the CONFIG tab of the pan servo configuration showing pin set to 23.](/tutorials/yahboom-rover/panservo.png)
 
 Finally, add the tilt `servo` as well.
 This will be the same process as the first `servo`, but with the `Name` set to `tilt` and the `pin` to `21`.
 
-![A screenshot of the tilt servo configuration showing pin set to 21.](../../img/yahboom-rover/tiltservo.png)
+![A screenshot of the tilt servo configuration showing pin set to 21.](/tutorials/yahboom-rover/tiltservo.png)
 
 Saving the config and moving to the control UI, you should notice two new panels for adjusting these servos.
 
-![A screenshot of the servo control card on the CONTROL tab. There are buttons to change the angles of the pan and tilt servos, independently.](../../img/yahboom-rover/servos.png)
+![A screenshot of the servo control card on the CONTROL tab. There are buttons to change the angles of the pan and tilt servos, independently.](/tutorials/yahboom-rover/servos.png)
 
 Congratulations, you have successfully configured your rover with Viam!
 But for now, all the control is manual.

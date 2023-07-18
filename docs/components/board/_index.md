@@ -1599,6 +1599,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" %}}
+  {{% card link="/tutorials/get-started/blink-an-led" %}}
   {{% card link="/tutorials/projects/guardian" %}}
 {{< /cards >}}

@@ -1,6 +1,15 @@
-<video class="video-shortcode lozad" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}" data-poster="{{ relURL (substr (.Get "poster") 1) }}">
+{{ if (.Get "poster") }}
+  {{ $img := resources.GetMatch (.Get "poster") }}
+  {{if $img }}
+<video class="video-shortcode lozad" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}" data-poster="{{ $img.RelPermalink }}">
   <source data-src="{{ relURL (substr (.Get "webm_src") 1) }}" type="video/webm">
   <source data-src="{{ relURL (substr (.Get "mp4_src") 1) }}" type="video/mp4">
   There should have been a video here but your browser does not seem
   to support it.
 </video>
+  {{ else }}
+    {{ errorf "Couldn't get image %s" (.Get "poster") }}
+  {{ end }}
+{{ else }}
+  {{ errorf "Video should have poster %s" (.Get "webm_src") }}
+{{ end }}

@@ -21,7 +21,7 @@ Enter a name for your sensor, select the type `sensor`, and select the `ultrason
 
 Click **Create component**.
 
-{{< imgproc src="/components/sensor/ultrasonic-sensor-ui-config.png" alt="Creation of a ultrasonic sensor in the Viam app config builder." resize="1000x" >}}
+![Creation of a ultrasonic sensor in the Viam app config builder.](/components/sensor/ultrasonic-sensor-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

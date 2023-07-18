@@ -76,7 +76,7 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-{{< imgproc src="/components/servo/servo-json.png" alt="A servo JSON config with explanatory annotations for each attribute." resize="1000x" >}}
+![A servo JSON config with explanatory annotations for each attribute.](/components/servo/servo-json.png)
 
 {{% /tab %}}
 {{< /tabs >}}

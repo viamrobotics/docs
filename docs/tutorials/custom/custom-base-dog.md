@@ -5,10 +5,10 @@ weight: 55
 type: "docs"
 tags: ["sdk", "extending viam", "components", "base", "python", "modular resources"]
 description: "Integrate a custom base component with the Viam Python SDK."
-webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
-mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
+webmSrc: "/tutorials/custom-base-dog/base-control-dog.webm"
+mp4Src: "/tutorials/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
-images: ["/tutorials/img/custom-base-dog/base-control-dog.gif"]
+images: ["/tutorials/custom-base-dog/base-control-dog.gif"]
 aliases:
     - /tutorials/custom-base-dog/
 authors: [ "Jessamy Taylor" ]
@@ -27,7 +27,7 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
-  {{<gif webm_src="/tutorials/img/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/img/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
@@ -258,7 +258,7 @@ The code below shows what the top of your class definition should look like.
 ```python {class="line-numbers linkable-line-numbers"}
 class robotdog(Base, Reconfigurable):
     MODEL: ClassVar[Model] = Model(ModelFamily("viamlabs", "base"), "robotdog")
-    
+
     # Class parameters
     ip_address: str
     port: int
@@ -345,7 +345,7 @@ Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
 Click **Save Config** at the bottom of the page.
 
-![Screenshot of the Viam app CONFIG tab with the Modules subtab open, showing my-custom-base configured.](../../img/custom-base-dog/module-config.png)
+![Screenshot of the Viam app CONFIG tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
 
 ## Configure the components
 
@@ -360,7 +360,7 @@ In the **Type** drop-down select `base`.
 In the **Model** field, type in `viamlabs:base:robotdog`.
 Click **Create Component**.
 
-![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](../../img/custom-base-dog/config-modular-component.png)
+![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](/tutorials/custom-base-dog/config-modular-component.png)
 
 You need to add the `ip_address` and `port` attributes to your base config.
 In the attributes field, paste the following, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`):
@@ -404,7 +404,7 @@ This flag starts the Freenove server without launching Freenove's GUI (which you
 
 Click **Save Config** at the bottom of the window.
 
-![Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above.](../../img/custom-base-dog/process-config.png)
+![Screenshot of the Processes subtab of the Config tab, showing a process configured as detailed above.](/tutorials/custom-base-dog/process-config.png)
 
 {{% expand "Click to see what the processes config looks like in Raw JSON mode." %}}
 
@@ -445,7 +445,7 @@ Navigate to the **Control** tab.
 
 Click the **quadruped** component panel to expand it and reveal the controls.
 
-![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](../../img/custom-base-dog/control-tab.png)
+![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](/tutorials/custom-base-dog/control-tab.png)
 
 1. Enable the camera stream from the **Select Cameras** drop-down.
 2. Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.

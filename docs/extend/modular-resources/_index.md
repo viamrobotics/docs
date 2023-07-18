@@ -552,7 +552,7 @@ Add these properties to your module's configuration:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-{{< imgproc src="/program/modular-resources/module-ui-config.png" alt="Creation of a new module in the Viam app config builder." resize="1000x" >}}
+![Creation of a new module in the Viam app config builder.](/program/modular-resources/module-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

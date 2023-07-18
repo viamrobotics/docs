@@ -22,11 +22,12 @@ SLAM is an important area of ongoing research in robotics, particularly for mobi
 The Viam SLAM Service supports the integration of SLAM as a service on your robot.
 You can conduct SLAM with data collected live by a [RPlidar](/extend/modular-resources/examples/rplidar/) or with LIDAR data you provide in configuration, and easily view the map you build on the **Control** tab of your robot's page in the [Viam app](https://app.viam.com):
 
-{{< imgproc src="/services/slam/slam-map-example.png" alt="SLAM map built with Viam of a triangle shaped building." resize="1000x" >}}
+![SLAM map built with Viam of a triangle shaped building.](/services/slam/slam-map-example.png)
 
 ## Configuration
 
-Integrated SLAM Libraries include:
+Integrated SLAM libraries include the following.
+Click the model name for configuration instructions.
 
 | Model | Description |
 | ----- | ----------- |

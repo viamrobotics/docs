@@ -6,9 +6,9 @@ description: "Tutorials and repositories with modular resources configuration ex
 weight: 10
 type: "docs"
 no_list: true
-image: "/tutorials/img/intermode/rover_outside.png"
+image: "/tutorials/intermode/rover_outside.png"
 imageAlt: "A large black intermode rover controlled with CANBUS protocol chilling outside in the snow."
-images: ["/tutorials/img/intermode/rover_outside.png"]
+images: ["/tutorials/intermode/rover_outside.png"]
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 aliases:
     - "/program/extend/modular-resources/examples/"
