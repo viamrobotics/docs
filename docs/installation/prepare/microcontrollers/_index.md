@@ -263,12 +263,12 @@ Copy the following JSON template and paste it into your configuration:
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "attributes": {
-    "pins": [ // pin number of the GPIO pin you want to use with GPIOPin API 
+    "pins": [
       15
     ],
     "analogs": [
       {
-        "pin": "34", // analog pins
+        "pin": "34",
         "name": "sensor"
       }
     ]
