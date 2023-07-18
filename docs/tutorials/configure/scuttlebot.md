@@ -1,5 +1,5 @@
 ---
-title: "Configure a SCUTTLE Robot with a Camera"
+title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
