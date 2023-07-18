@@ -1,9 +1,9 @@
 ---
-title: "Drive a SCUTTLE Robot with a Bluetooth Gamepad"
-linkTitle: "Drive a SCUTTLE with a Gamepad"
+title: "Drive a Rover with a Bluetooth Gamepad"
+linkTitle: "Drive a Rover with a Gamepad"
 weight: 20
 type: "docs"
-description: "Drive a SCUTTLE Robot with a Bluetooth gamepad from the Viam app."
+description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
 videoAlt: "Drive a SCUTTLE Robot with a Bluetooth gamepad."
@@ -20,73 +20,76 @@ date: "10 August 2022"
 cost: 575
 ---
 
-The purpose of this tutorial is to add a Bluetooth gamepad input controller to a SCUTTLE Robot.
-On completion of this tutorial, you'll be able to drive the SCUTTLE around like an RC car using the EasySMX ESM-9101 Wireless Controller.
+This tutorial teaches you how to add a Bluetooth gamepad controller to your wheeled robot.
+By the end of this tutorial, you'll be able to drive your rover around like an RC car.
 
-## Prerequisites
+{{% alert title="Tip" color="tip" %}}
 
-* A pre-configured and controllable (using a keyboard and the Viam app ([app.viam.com](https://app.viam.com)) SCUTTLE Robot.
-Refer to the [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) tutorial, if necessary.
+If your gamepad has a dongle, keep reading.
+If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a Gamepad](../yahboom-rover/#connecting-a-bluetooth-controller) for Bluetooth pairing instructions.
 
-* Connection to the Viam app
-* EasySMX ESM-9101 Wireless Controller
+{{% /alert %}}
 
-The following video demonstrates controlling a SCUTTLE Robot using a Bluetooth gamepad:
+## Requirements
+
+You will need the following to complete this tutorial:
+
+- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/)
+    - [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
+    This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you complete this tutorial using a different rover.
+- [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle
 
 {{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
-## Adding the controller to the SCUTTLE's config
+## Add the controller to the rover's config
 
-To add this controller to the robot’s config, from the Viam app ([app.viam.com](https://app.viam.com)), click on our old friend, **New COMPONENT**.
-<OL>
-<li>On the Create Component screen, enter "gamepad" as the component <strong>Name</strong>  and select "input_controller" for the component <strong>Type</strong>. </li>
+Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
 
-<li>There are no <strong>Model</strong> options for input_controllers.
-Therefore, for <strong>Model</strong>, please manually enter, "gamepad," (without the quotes) then press Tab. The Viam app will retain your entry.</li>
+In the **Create component** panel, configure a [gamepad](/components/input-controller/gamepad/):
 
-<li>Click <strong>New Component</strong>. The Viam app opens the Component Config panel for the gamepad. </li>
-<li>On the Component Config panel, leave <strong>Depends On</strong> set to empty.</li>
+- Enter `my-gamepad` as the component **Name**.
+- Select `input_controller` for the component **Type**.
+- Select `gamepad` for the **Model**.
+- Click **Create component**.
+
+![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
 
 The controller config adds the gamepad controller to your robot.
-However, it does not wire it up to any functionality.
+However, it does not connect it to any functionality.
 This requires a Service.
 
-## Adding a Service
+## Add the Base Remote Control Service
 
-To link the controller's input to the base functionality, we need to add our first `service`.
-Services are the software packages that provide our robots with cool and powerful functionality.
+Services are software packages that provide robots with higher level functionality.
+To link the controller's input to the base functionality, you need to configure the [Base Remote Control Service](/services/base-rc/):
 
-1. Click **Create Service** under **services** at the top of the Viam app ([app.viam.com](https://app.viam.com)).
-2. Enter "Base Remote Control" for **Component** `type`. "Base Remote Control" is a service we provide for driving a rover with a gamepad.
-3. Enter **scuttle_gamepad** for the **Service** `name`.
+- Go to the **Services** subtab of your robot's **Config** tab.
+- In the **Create service** panel, click the **Type** dropdown and select **Base Remote Control**.
+- Enter `gamepad_service` for the **Service** **name**.
+- Click **Create service**.
 
-![Create service builder](/tutorials/scuttle-gamepad/pi-game-create-service.png)
-
-Copy and paste the following into the empty **Attributes** field:
-</OL>
+Copy and paste the following into the empty **Attributes** field, replacing `THE NAME OF YOUR BASE` with your base's name.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
- "base": "scuttle",
- "input_controller": "gamepad"
+ "base": "THE NAME OF YOUR BASE",
+ "input_controller": "my-gamepad"
 }
 ```
 
-![Blank configuration json](/tutorials/scuttle-gamepad/pi-game-game-config-blank.png)
+<br>
 
-After adding the **Attributes**, your config screen should appear similar to this:
+![Service configuration](/tutorials/scuttle-gamepad/gamepad-service-config.png)
 
-![Service configuration](/tutorials/scuttle-gamepad/pi-game-service-config.png)
+Save the configuration and go to the **Control** tab.
 
-Save the configuration and visit the control UI on the Viam app ([app.viam.com](https://app.viam.com)).
+You should see the panel for the gamepad and its connection indicator:
 
-You should see the panel for the Controller Service and its connection indicator.
-This is how your web UI will look.
-Note the green connection indicator:
+![Gamepad input UI showing a "connected" indicator and a list of inputs from all the buttons, for example X=0.0, RY=0.0 and East=0.](/tutorials/scuttle-gamepad/control-tab-input.png)
 
-![Gamepad input UI](/tutorials/scuttle-gamepad/pi-game-controller-panel.png)
+At this point, you should be able to move the rover using the gamepad.
 
-At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values:
+If you are in the [mode](#easysmx-esm-9101-wireless-controller-information) that allows you to use the Joystick (#7), it will change the values:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 "X
@@ -95,7 +98,7 @@ Y
 0.0000"
 ```
 
-If you are in the specific mode that allows you to use the D-Pad (#8), it will change the values:
+If you are in the mode that allows you to use the D-Pad (#8), it will change the values:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 "Hat0X
@@ -116,7 +119,7 @@ Here is a diagram of the gamepad.
 </tr>
 </table>
 
-To change the in-use movement/direction control on the gamepad between the D-Pad and the Joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
+To change the movement/direction control on the gamepad between the D-Pad and the joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
 Each red color arrangement allows you to control the gamepad in the Viam app:
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>
