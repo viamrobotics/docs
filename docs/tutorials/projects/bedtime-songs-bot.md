@@ -37,7 +37,7 @@ To make your own singing robot, you need the following hardware:
 
 - A computer with a webcam, speakers, and the [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk) installed.
 
-  Tess used a Macbook.
+  We used a Macbook.
 
   You can use any PC with a Viam-compatible operating system that meets the above requirements.
   If you choose to use a [single-board computer](/components/board/), you may need to adjust the [code to program the robot to play songs](#program-your-bedtime-songs-bot) to work with the software or components you configure.
@@ -244,8 +244,8 @@ If you set this to `.33`, your webcam should export 1 image every 3 seconds.
 
 At this point, grab the toys or any objects you want the robot to be able to differentiate between.
 
-Tess's kids like playing with puzzle pieces, which come in different shape and color combinations.
-Tess decided to filter between these puzzle pieces by tagging by shape, but you can filter your objects as you choose.
+The inventor's kids like playing with puzzle pieces, which come in different shape and color combinations.
+They decided to filter between these puzzle pieces by tagging by shape, but you can filter your objects as you choose.
 
 Hold up the toys to the camera while photos are being taken.
 Try to capture images from different angles and backgrounds.
@@ -258,7 +258,7 @@ Now, use these pictures to train your machine learning model.
 ### Tag data
 
 Add tags for each of the puzzle pieces.
-Tess used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
+We used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
 Try to have at least 50 images labelled for each tag.
 
 <!-- TODO: more info here. config ui. -->
@@ -465,7 +465,7 @@ func main() {
 
 <!-- Run this code on your robot by TODO: run code instructions -->
 
-{{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+{{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The inventor holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 ## Next Steps
 
