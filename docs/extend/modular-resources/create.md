@@ -484,7 +484,7 @@ Your options for completing this step are flexible, as this file does not need t
 {{% tabs %}}
 {{% tab name="Python" %}}
 
-If using the Python SDK, one option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
+One option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
 For example:
 
