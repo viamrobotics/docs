@@ -26,7 +26,8 @@ You can conduct SLAM with data collected live by a [RPlidar](/extend/modular-res
 
 ## Configuration
 
-Integrated SLAM Libraries include:
+Integrated SLAM libraries include the following.
+Click the model name for configuration instructions.
 
 | Model | Description |
 | ----- | ----------- |
