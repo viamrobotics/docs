@@ -5,9 +5,9 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-image: "/tutorials/img/robot-babysitter/robot_babysitter.jpg"
+image: "/tutorials/img/bedtime-songs-bot/bedtime-songs-bot.jpg"
 imageAlt: "Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop."
-images: ["/tutorials/img/robot-babysitter/robot_babysitter.jpg"]
+images: ["/tutorials/img/bedtime-songs-bot/bedtime-songs-bot.jpg"]
 authors: [ "Tess Avitabile" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
@@ -16,7 +16,7 @@ date: "21 April 2023"
 # cost: 0 (laptop)
 ---
 
-A Note From the Author:
+A note from the creator:
 
 <pre>
 
@@ -25,14 +25,7 @@ When I started at Viam, Eliot told me the best way to test the product is to try
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
 When we were testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around.
 
-As I created this babysitting program myself, I was able to customize it to recognize the different toys my kid likes to play with and sing the songs I wanted it to in my voice.
-In the future, I'd build a babysitting robot that does more to respond to the sight of different toys, like spin around gadgets or tell a story with integrated ChatGPT.
-
 </pre>
-
-{{<gif webm_src="/tutorials/img/robot-babysitter/robot_babysitter.webm" mp4_src="/tutorials/img/robot-babysitter/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
-
-<br>
 
 This tutorial teaches you how to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
 
@@ -67,7 +60,7 @@ First, add the camera on your computer as a [camera](/components/camera/) compon
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../img/robot-babysitter/video-path-ui.png)
+![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../img/bedtime-songs-bot/video-path-ui.png)
 
 You do not have to edit the attributes of your camera at this point.
 Optionally, select a fixed filepath for the camera from the automated options in the **video path** drop-down menu.
@@ -112,7 +105,7 @@ To view your webcam's image stream, navigate to the **Control** tab of your robo
 Click on the drop-down menu labeled **camera** and toggle the feed on.
 Click on **Export Screenshot** to capture an image.
 
-![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/robot-babysitter/export-screenshot.png)
+![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/bedtime-songs-bot/export-screenshot.png)
 
 Now, configure a [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) with [Data Capture](/services/data/configure-data-capture/) to use the image data coming from your camera on your robot to train your ML model:
 
@@ -248,7 +241,7 @@ Make sure that you have added a `service_config` to the JSON configuration of yo
 
 Click on the drop-down menu labeled **camera** and toggle the feed on to view your webcam's image stream.
 
-![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/robot-babysitter/export-screenshot.png)
+![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/bedtime-songs-bot/export-screenshot.png)
 
 Now, click on **Export Screenshot** to take pictures of the toys you want the robot to be able to recognize and differentiate between. -->
 
@@ -334,18 +327,9 @@ more info on configuring deployment -->
 
 ### Program your robot with Viam's SDKs
 
-Put mp3 files with the same names as the classifier tags in the folder with the code (i.e. square.mp3, etc).
-Here are my songs.
-
-<!-- TODO: insert mp3s from google drive -->
-
-Write code to connect to the robot and play a song when the camera is pointed at a puzzle piece.
+Now, write code to connect to the robot and play a song when the camera is pointed at a puzzle piece.
 I used the sample code tab in the config UI to get the code to connect to the robot.
-
 <!-- INSTRUCTIONS TO GO TO CODE SAMPLE HERE AND WHERE TO SAVE FILES ETC -->
-
-<!-- Here is a video of me demoing this.
-(TODO: SEE TICKET. trim down video) -->
 
 ``` go {class="line-numbers linkable-line-numbers"}
 package main
@@ -459,7 +443,16 @@ func main() {
 }
 ```
 
-The audio files I used are available on [GitHub](https://github.com/viam-labs/singing-babysitter/tree/main/songs) here.
+Record or download the audio files you want to use to your computer in <file>.mp3</file> format.
+Make the names of the files match the classifier tags you used: for example, <file>square.mp3</file>.
+Place these files in the same directory on your computer as your SDK code.
+The audio files I used are available to download on [GitHub].
+
+<!-- TODO: insert mp3s from google drive -->
+
+Here is a video of me demoing this.
+
+{{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 ## Next Steps
 
