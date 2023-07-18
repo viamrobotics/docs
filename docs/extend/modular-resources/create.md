@@ -163,9 +163,8 @@ class MyBase(Base, Reconfigurable):
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
 ```
 
-<br>
 </details>
-
+<br>
 <file>__init__.py</file> registers the mybase custom model and API helper functions with the SDK.
 
 <details>
