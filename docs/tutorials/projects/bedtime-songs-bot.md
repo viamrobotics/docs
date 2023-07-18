@@ -17,7 +17,7 @@ date: "21 April 2023"
 ---
 
 <br>
-A note from the author:
+A Note from the Inventor:
 </br>
 
 <pre>
@@ -33,18 +33,20 @@ Follow this tutorial to train a machine learning model to make your own "bedtime
 
 ## Requirements
 
-To make your own singing robot, you need only the following hardware:
+To make your own singing robot, you need the following hardware:
 
-- A computer with a webcam, speakers, and a [Viam SDK](/program/) installed
+- A computer with a webcam, speakers, and the [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk) installed.
 
   Tess used a Macbook.
-  You can use any PC or [single-board computer](/components/board/) with a Viam-compatible operating system that meets the above requirements, but you must modify the [code to program the robot](#program-your-robot-with-viams-sdks) to play songs if not using macOs.
 
-First, you will [configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
+  You can use any PC with a Viam-compatible operating system that meets the above requirements.
+  If you choose to use a [single-board computer](/components/board/), you may need to adjust the [code to program the robot to play songs](#program-your-bedtime-songs-bot) to work with the software or components you configure.
 
-After that, you will filter your image data with [tags](#tag-data) and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
+First,[configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
 
-Then, you will [configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
+After that, filter your image data with [tags](#tag-data) and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
+
+Finally, [configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
 
 ## Train your ML Model with pictures of toys
 
@@ -118,8 +120,6 @@ Enabling data capture here will allow you to view the saved images in the Viam a
 You can leave the default directory as is.
 This is where your captured data is stored on-robot.
 By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
-<!-- 
-![The data management service configured with the name pet-data.](/tutorials/pet-treat-dispenser/app-service-data-management.png) -->
 
 Next, [configure Data Capture for an individual component](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on your webcam:
 
@@ -132,7 +132,7 @@ This will capture an image from the camera roughly once every 3 seconds.
 1. Select the **Mime Type** that you want to capture.
 For this tutorial, we are capturing `image/jpeg` data.
 
-![The configuration page for a camera component.](/tutorials/img/pet-treat-dispenser/app-camera-configuration.png)
+![The configuration page for a camera component.](/tutorials/img/bedtime-songs-bot/app-camera-configuration.png)
 
 At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
@@ -237,45 +237,58 @@ Make sure that you have added a `service_config` to the JSON configuration of yo
 
 ### Capture data
 
-<!-- Navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
-
-Click on the drop-down menu labeled **camera** and toggle the feed on to view your webcam's image stream.
-
-![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/bedtime-songs-bot/export-screenshot.png)
-
-Now, click on **Export Screenshot** to take pictures of the toys you want the robot to be able to recognize and differentiate between. -->
-
 Your webcam should now be configured to automatically capture images when you are connected to your robot on [the Viam app](https://app.viam.com).
 
 You set the rate of capture in your webcam's service configuration attibute `capture_frequency_hz`.
 If you set this to `.33`, your webcam should export 1 image every 3 seconds.
 
 At this point, grab the toys or any objects you want the robot to be able to differentiate between.
+
 Tess's kids like playing with puzzle pieces, which come in different shape and color combinations.
 Tess decided to filter between these puzzle pieces by tagging by shape, but you can filter your objects as you choose.
 
-- Hold up the toys to the camera to capture photos of the different shapes.
-Use a consistent background.
-Try to get at least 50 images of each object, like each puzzle piece.
+Hold up the toys to the camera while photos are being taken.
+Try to capture images from different angles and backgrounds.
+Try to get at least 50 images that fit your criteria for each tag.
 
-- Go to the [**DATA tab**](https://app.viam.com/data/view?view=images) in the Viam app to see the images captured by your webcam.
+Go to the [**DATA tab**](https://app.viam.com/data/view?view=images) in the Viam app to see the images captured by your webcam.
 
-You are going to use these pictures to train your machine learning model.
-When your webcam "sees" (captures image data containing) that toy, the robot should know to play a particular song through its computer's speakers.
+Now, use these pictures to train your machine learning model.
 
 ### Tag data
 
 Add tags for each of the puzzle pieces.
 Tess used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
-Try to have at least 50 images labelled for every tag.
+Try to have at least 50 images labelled for each tag.
 
 <!-- TODO: more info here. config ui. -->
 
+#### Filter based on tags
+
+<!-- Upon completion of tagging your data set, you can now [filter images](/manage/data/view/) according to those tags.
+Head over to the **Filtering** menu and select a tag from the drop down list.
+In the following screenshot, we have filtered the images in our data set according to one tag, in this case `toast`, (which is the name of our doggy test subject) and now we can easily view all images of Toast:
+
+![The filtering tab with toast entered as a filtered tag.](../../img/pet-treat-dispenser/app-data-filter-tags.png) -->
+
 ### Train a model
+
+<!-- After tagging and filtering your images so only the pictures of your pet are visible, begin training your model.
+Click the **Train Model** button, name your model and select **Single label** as the model type.
+Then select the label that you sued to label your pet images.
+We called it `puppymodel` and selected the tag `toast` to train on images of the pup.
+
+![The data page with single model selected using name puppymodel.](../../img/pet-treat-dispenser/app-training.png)
+
+If you want your model to be able to recognize multiple pets you can instead create a **Multi Label** model based on multiple tags.
+Go ahead and select all the tags you would like to include in your model and click **Train Model**. -->
 
 Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 
 ## Use your ML Model to sing songs to your kids
+
+Now, deploy and configure your ML Model on your robot.
+Use Viam's Go SDK to program the robot so that if your webcam "sees" (captures image data containing) a toy, the robot knows to play a particular song through its computer's speakers.
 
 ### Configure your webcam to act as a shape classifier
 
@@ -407,11 +420,11 @@ func main() {
  logger := golog.NewDevelopmentLogger("client")
  robot, err := client.New(
      context.Background(),
-     "shape-classifier-main.c9iwca3k3f.viam.cloud",
+     ".viam.cloud", // TODO: insert app cloud address here
      logger,
      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
          Type:    utils.CredentialsTypeRobotLocationSecret,
-         Payload: "fr8l4atdgsvsc1agh9gvjaa4zlg1z0dzf58q6to595h11asv",
+         Payload: "", // TODO: insert robot location secret here
      })),
  )
  if err != nil {
@@ -431,7 +444,6 @@ func main() {
 
 
  for {
-   // work around https://viam.atlassian.net/browse/RSDK-2396
    for i := 0; i < 3; i++ {
        visService.ClassificationsFromCamera(context.Background(), "cam",  1, nil)
    }
@@ -460,4 +472,3 @@ func main() {
 This project is just a start.
 
 Expand upon the [configuration](/manage/configuration/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/services/ml/), the [Vision Service](/services/), and more [components](/components/) and [services](/services/).
-
