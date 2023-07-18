@@ -16,7 +16,9 @@ date: "21 April 2023"
 # cost: 0 (laptop)
 ---
 
-A note from the creator:
+<br>
+A note from the author:
+</br>
 
 <pre>
 
@@ -27,10 +29,7 @@ When we were testing out Viam's ML Model service, I came up with the idea of usi
 
 </pre>
 
-This tutorial teaches you how to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
-
-The instructions here are just a start.
-Expand upon this tutorial to build a custom singing robot with [machine learning](/services/ml/), the [Vision Service](/services/), and more [components](/components/) and [services](/services/).
+Follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
 
 ## Requirements
 
@@ -41,12 +40,13 @@ To make your own singing robot, you need only the following hardware:
   Tess used a Macbook.
   You can use any PC or [single-board computer](/components/board/) with a Viam-compatible operating system that meets the above requirements, but you must modify the [code to program the robot](#program-your-robot-with-viams-sdks) to play songs if not using macOs.
 
-In [Part 1](#part-1-train-your-ml-model-with-pictures-of-toys), you will configure the camera on your laptop to capture data with the Data Management service and use it to capture images.
-Then, in [Part 2](#part-2-use-your-ml-model-to-sing-songs-to-your-kids) you'll learn how to filter this image data with tags of your choice and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
+First, you will [configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
 
-Then, you'll configure that same camera to act as a shape classifier with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services.
+After that, you will filter your image data with [tags](#tag-data) and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
 
-## Part 1: Train your ML Model with pictures of toys
+Then, you will [configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
+
+## Train your ML Model with pictures of toys
 
 Make sure you have created a robot before starting this tutorial.
 If you haven't already, follow [this guide](/installation/#install-viam-server) to install `viam-server` on your computer and connect to the corresponding robot by following the steps in the **Setup** tab of [the Viam app](https://app.viam.com).
@@ -275,7 +275,7 @@ Try to have at least 50 images labelled for every tag.
 
 Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 
-## PART 2: Use your ML Model to sing songs to your kids
+## Use your ML Model to sing songs to your kids
 
 ### Configure your webcam to act as a shape classifier
 
@@ -325,7 +325,15 @@ more info on configuring deployment -->
 }
 ```
 
-### Program your robot with Viam's SDKs
+### Record bedtime songs
+
+- Record or download the audio files you want to use to your computer in <file>.mp3</file> format.
+- Make the names of the files match the classifier tags you used: for example, <file>square.mp3</file>.
+- Place these files in the same directory on your computer as your SDK code.
+
+The audio files I used are available to download on [GitHub](https://github.com/viam-labs/bedtime-songs-bot).
+
+### Program your bedtime-songs bot
 
 Now, write code to connect to the robot and play a song when the camera is pointed at a puzzle piece.
 I used the sample code tab in the config UI to get the code to connect to the robot.
@@ -443,17 +451,13 @@ func main() {
 }
 ```
 
-Record or download the audio files you want to use to your computer in <file>.mp3</file> format.
-Make the names of the files match the classifier tags you used: for example, <file>square.mp3</file>.
-Place these files in the same directory on your computer as your SDK code.
-The audio files I used are available to download on [GitHub].
-
-<!-- TODO: insert mp3s from google drive -->
-
-Here is a video of me demoing this.
+<!-- Run this code on your robot by TODO: run code instructions -->
 
 {{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The author, Tess, holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 ## Next Steps
 
-<!-- TODO: can do a lot more with this tutorial -->
+This project is just a start.
+
+Expand upon the [configuration](/manage/configuration/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/services/ml/), the [Vision Service](/services/), and more [components](/components/) and [services](/services/).
+
