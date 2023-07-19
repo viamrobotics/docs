@@ -1,5 +1,5 @@
 ---
-title: "Modular Resource Configuration Examples"
+title: "Modular Resource Examples"
 linkTitle: "Examples"
 childTitleEndOverwrite: "Modular Resource Example"
 description: "Tutorials and repositories with modular resources configuration examples."
