@@ -27,7 +27,7 @@ This tutorial has not yet been updated.
 
 This tutorial shows how to use the Viam [Vision Service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
 
-{{<video webm_src="/tutorials/scuttlebot/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/scuttlebot/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 
 ### Code used in this tutorial
 
