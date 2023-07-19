@@ -28,6 +28,8 @@ To get started adding custom resources to your robot, learn the [key concepts](/
 
 - To configure a module and modular resource, follow [these instructions](/extend/modular-resources/configure/).
 
+Once you have configured a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
+
 ## Related tutorials
 
 {{< cards >}}
