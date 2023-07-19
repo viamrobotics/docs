@@ -21,14 +21,14 @@ For example:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 ~/myCode/myViamFile.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go run ~/myCode/myViamFile.py
 ```
 

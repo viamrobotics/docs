@@ -1,7 +1,7 @@
 {{< tabs name="different-architectures" >}}
    {{% tab name="Aarch64"%}}
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --aix-install
    ```
 
@@ -10,7 +10,7 @@
    {{% /tab %}}
    {{% tab name="X86_64"%}}
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --aix-install
    ```
 

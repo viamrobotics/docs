@@ -27,7 +27,7 @@ This tutorial has not yet been updated.
 
 This tutorial shows how to use the Viam [Vision Service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
 
-{{<video webm_src="/tutorials/scuttlebot/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/scuttlebot/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 
 ### Code used in this tutorial
 
@@ -44,7 +44,7 @@ We highly suggest using a virtual Python environment like [Poetry](https://pytho
 
 Then create an environment for Python by running the following on the terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 poetry new pysdk  # new poetry project
 conda create -n pysdk python=3.9  # new (mini)conda environment
 ```
@@ -54,7 +54,7 @@ We named our environment pysdk, referring to the [Viam Python SDK](https://pytho
 
 NOTE: If using (mini)conda, activate the environment by running the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 conda activate pysdk
 ```
 
@@ -65,7 +65,7 @@ Follow the [Python SDK installation](https://github.com/viamrobotics/viam-python
 
 NOTE: If using a python environment, ensure that the package is installed in the proper environment.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip freeze | grep viam  # generic
 poetry show | grep viam  # for poetry environments
 conda list | grep viam  # for (mini)conda environments
@@ -99,13 +99,13 @@ You can use something like a red sports ball or book cover as a target to follow
 Navigate to the folder where you saved the Python script.
 From that folder, run this in the terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python scuttle.py
 ```
 
 Be sure to replace <file>~/Desktop/</file> with the <file>/path/toYour/directory/</file> where the Python code was saved.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python ~/Desktop/scuttle.py
 ```
 
