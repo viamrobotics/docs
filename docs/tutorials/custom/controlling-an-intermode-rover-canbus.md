@@ -95,7 +95,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 
 ## A modular resource for the Intermode base
 
-Viam includes [APIs](/extend/modular-resources/#apis) for common component types within `viam-server`.
+Viam includes [APIs](/program/apis/) for common component types within `viam-server`.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base/).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.
@@ -104,10 +104,10 @@ If you want to directly configure this modular resource code with your robot, sk
 ### Create a custom model using the Viam RDK base API
 
 The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
-To use it for the Intermode rover, you must create a new [model](/extend/modular-resources/#models) with its own implementation of each method.
+To use it for the Intermode rover, you must create a new [model](/extend/modular-resources/key-concepts/#models) with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/components/base/), the [API](/extend/modular-resources/#apis) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/extend/modular-resources/key-concepts/#apis) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
@@ -231,7 +231,7 @@ Now the intermode base can receive and execute *SetPower* commands using the sam
 
 ### Leaving some methods unimplemented
 
-In some cases, you may not want to implement specific methods provided by the resource type's [API](/extend/modular-resources/#apis).
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/extend/modular-resources/key-concepts/#apis).
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
@@ -295,7 +295,7 @@ Change this to the correct location in `executable_path` when adding the module 
 }
 ```
 
-More details about modules and how they work can be found in the [modular resources documentation](/extend/modular-resources/#use-a-modular-resource-with-your-robot).
+More details about modules and how they work can be found in the [modular resources documentation](/extend/modular-resources/).
 
 ### Control the rover
 
