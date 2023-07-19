@@ -10,7 +10,9 @@ images: ["/installation/thumbnails/esp32-espressif.png"]
 description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers
+
 # SMEs: Nicolas Menard
+
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}
@@ -28,8 +30,8 @@ Follow these steps to install and build the micro-rdk on your ESP32:
 You need an an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a development board: see [development kit options](https://www.espressif.com/en/products/devkits).
 
-- **Minimal configuration:** 384kB Ram 4MB flash
-- **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
+* **Minimal configuration:** 384kB Ram 4MB flash
+* **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
 
 ### Software Requirements
 
@@ -37,7 +39,6 @@ The micro-RDK is written in Rust.
 To be able to program the ESP32 on macOS and Linux systems, you must install the following software on your development machine:
 
 #### Install Homebrew
-
 
 #### Install Dependencies
 
@@ -107,7 +108,7 @@ If you are running Docker on Linux, make sure that you go through the [post inst
 {{% tab name="Linux (Ubuntu)" %}}
 
 Make sure your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
-Verify your version of Go with `go version`. 
+Verify your version of Go with `go version`.
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install github.com/viamrobotics/canon@latest
@@ -226,9 +227,9 @@ Save this command to run in any future terminal session where you need to activa
 
 Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
-- Click on the name of the robot to go to the robot's page.
-- Skip the instructions in the [**Setup** tab](/manage/fleet/robots/#setup), as the setup instructions there are not for microcontrollers.
-- Keep your `Mode` and `Architecture` selections at default.
+* Click on the name of the robot to go to the robot's page.
+* Skip the instructions in the [**Setup** tab](/manage/fleet/robots/#setup), as the setup instructions there are not for microcontrollers.
+* Keep your `Mode` and `Architecture` selections at default.
 
 ### Configure an `esp32` Board
 
@@ -308,14 +309,13 @@ Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.
 cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 ```
 
-
 You will be prompted to paste your robot's JSON configuration into the terminal.
 To obtain this:
 
-- Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
-- Click the **Copy viam-server config** button on the right side of the **Setup** tab.
+* Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+* Click the **Copy viam-server config** button on the right side of the **Setup** tab.
 The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to [the Viam app](https://app.viam.com).
-- Paste the `viam-server` config into your terminal when prompted.
+* Paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
@@ -348,7 +348,7 @@ To manage this connection, consider running it within a dedicated terminal sessi
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
 Navigate to your new robot's page on [the Viam app](https://app.viam.com).
-If successful, *Live** should be displayed underneath **Last online**. 
+If successful, *Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting
 
