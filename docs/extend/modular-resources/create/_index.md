@@ -40,7 +40,7 @@ This main program is the "entry point" to your module.
 Define a new {{< glossary_tooltip term_id="api-namespace-triplet" text=" type or subtype" >}} of resource:
 
 1. Define the methods and messages of the new API in [protobuf](https://github.com/protocolbuffers/protobuf) and in Python or Go, then use a protobuf compiler to [generate the rest of the required protobuf files](https://grpc.io/docs/languages/python/generated-code/) based on that Python or Go code.
-Find detailed instructions in [Define a New Resource Subtype](../create-subtype/).
+Find detailed instructions in [Define a New Resource Subtype](create-subtype/).
 
 2. [Code at least one model](#code-a-new-resource-model) of this new resource.
 Make sure to implement every method required in your API definition.
