@@ -298,8 +298,8 @@ The following attributes are available for `esp32` boards:
 | ---- | ---- | --------- | ----------- |
 | `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
-<!-- | `webhook` | string | Optional | A webhook's URL. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. |
-| `webhook-secret` | string | Optional | The secret key for a configured `webhook`. See [GitHub](https://github.com/viam-labs/webhook-template) for an example. | -->
+<!-- | `webhook` | string | Optional | A webhook's URL. See [GitHub](viam-labs/webhook-template) for an example. |
+| `webhook-secret` | string | Optional | The secret key for a configured `webhook`. See [GitHub](viam-labs/webhook-template) for an example. | -->
 
 ### Generate a New Project from the Micro-RDK Template
 
