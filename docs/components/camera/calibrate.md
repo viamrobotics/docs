@@ -16,7 +16,7 @@ The chessboard is often used because the geometry makes it a good test case for 
 The calibration code uses the `numpy` and `opencv-python` packages.
 To follow along, install the libraries:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install numpy
 pip3 install opencv-python
 ```

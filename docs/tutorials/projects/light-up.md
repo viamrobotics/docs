@@ -159,13 +159,13 @@ Once it is connected, you will no longer need to use the mobile app.
 
 3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     pip3 install python-kasa
     ```
 
 4. <a name=kasa ></a> Run the following command to return information about your smart device:
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     kasa discover
     ```
 
@@ -212,7 +212,7 @@ Now you are ready to test your robot!
 
 From a command line on your computer, navigate to the project directory and run the code with this command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 lightupbot.py
 ```
 

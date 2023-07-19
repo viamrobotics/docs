@@ -88,7 +88,7 @@ Note the green connection indicator:
 
 At this point, you should be able to move the SCUTTLE. If you are in the specific mode that allows you to use the Joystick (#7), it will change the values:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 "X
 0.0000
 Y
@@ -97,7 +97,7 @@ Y
 
 If you are in the specific mode that allows you to use the D-Pad (#8), it will change the values:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 "Hat0X
 0.0000
 Hat0Y

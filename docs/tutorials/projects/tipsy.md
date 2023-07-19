@@ -364,7 +364,7 @@ If you want to train your own, you can [train a model](/manage/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp effdet0.tflite tipsy@tipsy.local:/home/tipsy/effdet0.tflite
 scp labels.txt tipsy@tipsy.local:/home/tipsy/labels.txt
 ```
@@ -825,7 +825,7 @@ async def main():
 
 When you run the code, you should see results like this:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 will detect
 Person
 I see a person
