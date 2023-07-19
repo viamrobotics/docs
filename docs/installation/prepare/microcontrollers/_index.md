@@ -130,7 +130,7 @@ Make sure to [add the go binary folder to your `PATH`](https://go.dev/ref/mod#go
 {{< alert title="Tip" color="tip" >}}
 You only need to follow these steps if you are not using Canon to build the micro-RDK.
 
-If you have completed [set up with Canon](/installation/prepare/microcontrollers/#use-viams-canon-cli-utility), skip this section and begin on [install the Micro-RDK](#install-the-micro-rdk).
+If you have completed your [set up with Canon](/installation/prepare/microcontrollers/#use-viams-canon-cli-utility), skip this section and continue to [install the Micro-RDK](#install-the-micro-rdk).
 
 {{< /alert >}}
 
@@ -227,13 +227,13 @@ Save this command to run in any future terminal session where you need to activa
 Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
 - Click on the name of the robot to go to the robot's page.
-- Skip the instructions in the [**Setup** tab](/manage/fleet/robots/#setup) for now, as the setup instructions there are not for microcontrollers.
+- Skip the instructions in the [**Setup** tab](/manage/fleet/robots/#setup), as the setup instructions there are not for microcontrollers.
 - Keep your `Mode` and `Architecture` selections at default.
 
 ### Configure an `esp32` Board
 
-{{< alert title="Tip" color="tip" >}}
-The`esp32` model of [board](/components/board/) is not currently provided for you as an option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+{{< alert title="Info" color="info" >}}
+The`esp32` [board](/components/board/) model is not currently provided for you as an option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
 {{< /alert >}}
 
 To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
@@ -290,6 +290,7 @@ Copy the following JSON template and paste it into your configuration:
 {{< /tabs >}}
 
 Edit and fill in the attributes as applicable.
+Click **Save config**.
 The following attributes are available for `esp32` boards:
 
 | Name | Type | Inclusion | Description |
@@ -301,13 +302,12 @@ The following attributes are available for `esp32` boards:
 
 ### Generate a New Project from the Micro-RDK Template
 
-Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.git) to create a new micro-RDK project to upload to your ESP32 by running:
+Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 ```
 
-To track any changes you make to the generated project with Git, use the `mkdir` command to initialize a new repository inside of the directory you created by running `cargo-generate`.
 
 You will be prompted to paste your robot's JSON configuration into the terminal.
 To obtain this:
@@ -315,13 +315,13 @@ To obtain this:
 - Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
 - Click the **Copy viam-server config** button on the right side of the **Setup** tab.
 The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to [the Viam app](https://app.viam.com).
-- Paste your JSON config into your terminal when prompted.
+- Paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 
 ### Connect to your ESP32
 
-Now, upload the project to connect to your ESP32 through [the Viam app](https://app.viam.com).
+Now, upload the project to connect to your ESP32 through [the Viam app](https://app.viam.com):
 
 {{< tabs >}}
 {{% tab name="Use Canon" %}}
@@ -347,7 +347,8 @@ If successful, you will retain a serial connection to the board until you press 
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-Your should now be able to connect to your ESP-32 backed robot live on [the Viam app](https://app.viam.com).
+Navigate to your new robot's page on [the Viam app](https://app.viam.com).
+If successful, *Live** should be displayed underneath **Last online**. 
 
 ### Troubleshooting
 

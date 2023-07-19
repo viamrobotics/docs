@@ -4,11 +4,11 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk" text="Robot Development Kit (RDK)"%}} which can run on resource-limited embedded systems that can not run RDK's fully-featured `viam-server`.
+The micro-RDK is a lightweight version of the {{% glossary_tooltip term_id="rdk" text="Robot Development Kit (RDK)"%}} which can run on resource-limited embedded systems that can not run the fully-featured [`viam-server`](link).
 
 The only microcontroller the micro-RDK currently supports is the [ESP32](https://www.espressif.com/en/products/socs/esp32).
 
-[Client API](/program/apis/) usage with the micro-RDK is currently limited to the following supported resources:
+[Client API](/program/apis/) usage with the Micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 - [Motor](/components/motor/)
 - [Encoder](/components/encoder/)
