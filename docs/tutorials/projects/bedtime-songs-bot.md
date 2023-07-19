@@ -62,7 +62,7 @@ First, add the camera on your computer as a [camera](/components/camera/) compon
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../img/bedtime-songs-bot/video-path-ui.png)
+![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](/tutorials/img/bedtime-songs-bot/video-path-ui.png)
 
 You do not have to edit the attributes of your camera at this point.
 Optionally, select a fixed filepath for the camera from the automated options in the **video path** drop-down menu.
@@ -107,7 +107,7 @@ To view your webcam's image stream, navigate to the **Control** tab of your robo
 Click on the drop-down menu labeled **camera** and toggle the feed on.
 Click on **Export Screenshot** to capture an image.
 
-![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../img/bedtime-songs-bot/export-screenshot.png)
+![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](/tutorials/img/bedtime-songs-bot/export-screenshot.png)
 
 Now, configure a [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) with [Data Capture](/services/data/configure-data-capture/) to use the image data coming from your camera on your robot to train your ML model:
 
