@@ -25,7 +25,7 @@ If you want to use most of an existing API but need just a few other functions, 
 Viam uses [protocol buffers](https://protobuf.dev/) for API definition.
 
 To define a new subtype, you need to define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), generate all necessary [protobuf module files](https://buf.build/docs/generate/usage/), and then write code in Python or Go to implement the higher level server and client functions required.
-The following steps guide you through this process in more detail.
+The following steps guide you through this process in more detail:
 
 1. Decide whether your subtype is a {{< glossary_tooltip term_id="component" text="component" >}} or a {{< glossary_tooltip term_id="service" text="service" >}}.
   If it provides an interface to control hardware, it is a component.
@@ -40,7 +40,7 @@ The following steps guide you through this process in more detail.
       - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/module/src/proto/gizmo.proto)
       - [Example modular service proto file](https://github.com/viam-labs/speech/blob/main/src/proto/speech.proto)
       - [Built-in Viam resource proto files for reference](https://github.com/viamrobotics/api/tree/main/proto/viam)
-    - And define those methods in a protobuf-supported language such as Python or Go in a file called `api.py` (or `api.go`).
+    - And define the proto methods in a protobuf-supported language such as Python or Go in a file called `api.py` or `api.go`.
       - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/module/src/gizmo/api.py)
       - [Example service in Python](https://github.com/viam-labs/speech/blob/main/src/speech/api.py)
 
