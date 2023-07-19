@@ -137,7 +137,7 @@ If you have completed your [set up with Canon](/installation/prepare/microcontro
 
 To set up the Docker development environment for ESP manually, complete the following:
 
-{{%expand "Install build dependencies" %}}
+#### Install build dependencies
 
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
@@ -156,13 +156,9 @@ brew install cmake ninja dfu-util
 {{% /tab %}}
 {{% /tabs %}}
 
-{{% /expand%}}
+#### Install and Activate the ESP-IDF
 
-{{%expand "Install ESP-IDF" %}}
-
-ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
-
-Clone Viam's fork of the ESP-IDF:
+Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 mkdir -p ~/esp
@@ -186,11 +182,9 @@ To activate ESP-IDF, run the following command to source (`.`) the activation sc
 To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
 Save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 
-{{% /expand%}}
+#### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
 
-{{%expand "Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment" %}}
-
-First install the following tools with `cargo` :
+First, install the following tools with `cargo`:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cargo install espup
@@ -218,8 +212,6 @@ To activate the ESP Rust toolchain, run the following command to source (`.`) th
 
 To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
 Save this command to run in any future terminal session where you need to activate the ESP Rust development framework.
-
-{{% /expand%}}
 
 ## Install the Micro-RDK
 
