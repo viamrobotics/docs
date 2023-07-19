@@ -11,11 +11,12 @@ no_list: true
 You need to define a new {{% glossary_tooltip term_id="resource" text="resource" %}} *type* (and an API for that type) if:
 
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing [component](/components/) or [service](/services/) types.
-- You have a resource that could fit into an existing type, for example, [base](/components/base/), but you want to define an API with different endpoints than the ones in the standard Viam [API](/program/apis/) for that type.
+- You have a resource that could fit into an existing type, but you want to define an API with different endpoints than the ones in the standard Viam [API](/program/apis/) for that type.
+For example, you have a [sensor](/components/sensor/) and you want to define a `Calibrate` endpoint.
 
 {{% alert title="Tip" color="tip" %}}
 
-If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/program/apis/#docommand) endpoint to add custom functionality to an existing type.
+If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/program/apis/#docommand) endpoint and [extra parameters](/program/use-extra-params/) to add custom functionality to an existing type.
 
 {{% /alert %}}
 
@@ -26,27 +27,14 @@ Viam uses [protocol buffers](https://protobuf.dev/) for API definition.
 To define a new type, you need to define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), generate all necessary [protobuf module files](https://buf.build/docs/generate/usage/), and then write code in Python or Go to implement the higher level server and client functions required.
 The following steps guide you through this process in more detail.
 
-{{% alert title="Tip" color="tip" %}}
-
-If you are writing your module using Python, you can use this [module generator tool](https://github.com/viam-labs/generator-viam-module) to generate stub files for the new API as well as a new module that implements the new API.
-
-{{% /alert %}}
-
-1. Decide on a name for your module, in the form `namespace:type:subtype` (for example, `rdk:component:motor` or `viamlabs:component:gizmo`):
-
-    - Decide on a namespace for your module.
-    `rdk` is reserved for built-in resources, but otherwise this is up to you.
-    You could name it after yourself, your company, some other designator, or use `viamlabs`.
-    - Decide whether your new resource is a {{< glossary_tooltip term_id="component" text="component" >}} or a {{< glossary_tooltip term_id="service" text="service" >}}.
-    If it is hardware, it is a component.
-    If it is a software package, it is a service.
-    This becomes the "type" piece of your API namespace triplet.
-    - Choose a name for your subtype.
-    For example, "gizmo."
-
-2. Create a directory or repository for your module.
-  Within that, create a directory called <file>src</file>, and a subdirectory called <file>src/proto</file>.
-3. Define your new API:
+1. Decide whether your type is a component or a service.
+  If it provides an interface to control hardware, it is a component.
+  If it provides higher-level functionality, it is a service.
+1. Choose a name for your type.
+  For example, "gizmo."
+1. Create a directory or repository for your module.
+  Within that, create a directory called <file>src</file>.
+1. Define your new API:
 
     - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
       - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/module/src/proto/gizmo.proto)
@@ -56,7 +44,8 @@ If you are writing your module using Python, you can use this [module generator 
       - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/module/src/gizmo/api.py)
       - [Example service in Python](https://github.com/viam-labs/speech/blob/main/src/speech/api.py)
 
-4. In the root directory of your module, you need to generate the following boilerplate files.
+1. In the root directory of your module, you need to generate some boilerplate files.
+You will typically need the following three files for most modules, though different files are required for some advanced use cases.
   See the [Buf documentation](https://buf.build/docs/generate/usage/) for instructions.
 
     - [<file>buf.yaml</file>](https://buf.build/docs/configuration/v1/buf-gen-yaml/)
