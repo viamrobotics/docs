@@ -42,7 +42,7 @@ You will need the following to complete this tutorial:
 
 {{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
-## Hardware setup
+## Set up the hardware
 
 Plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/components/board/).
 Turn on power to the rover.
