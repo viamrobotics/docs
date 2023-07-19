@@ -254,13 +254,13 @@ If you make changes to the tutorial code, you'll need to re-compile to create a 
 To run the modular resource, first copy the module binary to your Raspberry Pi.
 If you have git installed on your Pi, this is as simple as running the following command in the directory for your modular resource code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/tutorial-intermode
 ```
 
 If you don't have git installed on your Pi, you'll need to first run:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install git
 ```
 

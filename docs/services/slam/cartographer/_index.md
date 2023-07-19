@@ -23,7 +23,7 @@ To use Cartographer with Viam, install the `cartographer-module` module on your 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
@@ -31,7 +31,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
@@ -39,7 +39,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install cartographer-module
 ```
 

@@ -246,7 +246,7 @@ You can also [train your own custom model](/manage/ml/train-model/) based on ima
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp effdet0.tflite pi@guardian.local:/home/pi/effdet0.tflite
 scp labels.txt pi@guardian.local:/home/pi/labels.txt
 ```
@@ -404,7 +404,7 @@ The full code is available at [the end of the tutorials](#full-code).
 We are going to use Virtualenv to set up a virtual environment for this project, in order to isolate the dependencies of this project from other projects.
 Run the following commands in your command-line to install virtualenv, set up an environment `venv` and activate it:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 -m pip install --user virtualenv
 python3 -m venv env
 source env/bin/activate
@@ -412,7 +412,7 @@ source env/bin/activate
 
 Now, install the Python Viam SDK and the VLC module:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk python-vlc
 ```
 
@@ -431,7 +431,7 @@ Run the code to verify that the Viam SDK is properly installed and that the `via
 
 You can run your code by typing the following into your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
@@ -505,7 +505,7 @@ async def main():
 
 You can test the code by running:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
@@ -652,7 +652,7 @@ if __name__ == '__main__':
 
 Now, run the code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
@@ -670,32 +670,32 @@ To be able to run the Python script from your Raspberry Pi, you need to install 
 
 [`ssh` into your Pi](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pip
 ```
 
 Create a folder `guardian` inside your home directory:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 mkdir guardian
 ```
 
 Then install the Viam Python SDK and the VLC module **into that folder**:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install --target=guardian viam-sdk python-vlc
 ```
 
 Exit out of your connection to your Pi and use `scp` to copy your code to your Pi into your new folder.
 Your hostname may be different:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp main.py pi@guardian.local:/home/pi/guardian/main.py
 ```
 
 Also copy your music file over:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp guardian.mp3 pi@guardian.local:/home/pi/guardian/guardian.mp3
 ```
 

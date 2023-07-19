@@ -41,21 +41,21 @@ Next, to install your preferred Viam SDK on your Linux or macOS development mach
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/robot/client@latest
 ```
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 npm install --save @viamrobotics/sdk
 ```
 
