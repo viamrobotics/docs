@@ -8,7 +8,7 @@ tags: ["ml", "model training", "services"]
 # SMEs: Andrew Morrow
 ---
 
-Viam provides an example [custom module](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to support audio classification using TensorFlow Lite.
+Viam provides an example [custom module](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
 
 The example files can be found in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
@@ -35,7 +35,7 @@ While your specific build steps may differ slightly, your installation should ge
    brew install abseil cmake boost grpc protobuf xtensor pkg-config ninja buf
    ```
 
-1. Clone the Viam C++ SDK to your computer:
+1. Create a new <file>example_workspace</file> directory for this tutorial and clone the Viam C++ SDK:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    mkdir -p ~/example_workspace
@@ -43,7 +43,13 @@ While your specific build steps may differ slightly, your installation should ge
    git clone git@github.com:viamrobotics/viam-cpp-sdk.git
    ```
 
-1. Create a <file>build</file> directory to house the build target:
+1. Create an <file>opt</file> directory to install the build artifacts to:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   mkdir -p ~/example_workspace/opt
+   ```
+
+1. Create a <file>build</file> directory to house the build:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd viam-cpp-sdk/
@@ -51,43 +57,98 @@ While your specific build steps may differ slightly, your installation should ge
    cd build
    ```
 
-1. The Viam C++ SDK requires a specific version of `openssl` in order to build successfully.
-   Determine the version of `openssl` you are running on your macOS computer:
+1. Create an environment variable `PKG_CONFIG_PATH` which points to the version of `openssl` installed on your system:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   brew list | grep openssl
-   ```
-
-   If the command returns `openssl@1.1`, proceed to the next step. If the command returns a different `openssl` version, install version `openssl@1.1` specifically:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   brew install openssl@1.1
-   ```
-
-1. Create an environment variable `PKG_CONFIG_PATH` which points to the version of `openssl` we will use for the Viam C++ SDK build:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+   export PKG_CONFIG_PATH="`brew --prefix`/opt/openssl/lib/pkgconfig"
    ```
 
 1. Build the C++ SDK by running the following commands:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   cmake .. -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=/usr/local -G Ninja
+   cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
    ninja all
-   sudo ninja install
+   ninja install
    ```
 
-   This tutorial passes two flags to the build process to help compile successfully:
+   This tutorial passes three flags to the build process to configure the build:
 
+   - `VIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE` to request building the example module for this tutorial.
    - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
-   - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>/usr/local/</file> instead of the default <file>./install</file> location.
-     To write to the restricted location <file>/usr/local/</file>, the second `ninja` invocation must also use `sudo`.
+   - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>~/example_workspace/opt</file> instead of the default <file>./install</file> location.
 
 {{% /tab %}}
 {{% tab name="Linux" %}}
 
-TODO: Linux instructions here. Currently failing at requiring tflite C headers: I have not yet been able to successfully [build the tflite headers on Linux](https://www.tensorflow.org/lite/guide/build_cmake#build_tensorflow_lite_c_library).
+Follow the [Viam C++ SDK build instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) to build the SDK on your Linux system.
+
+While your specific build steps may differ slightly, your installation should generally resemble the following:
+
+1. Clone the Viam C++ SDK to your Linux system:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   git clone git@github.com:viamrobotics/viam-cpp-sdk.git
+   ```
+
+1. Build and run the `bullseye` development Docker container included with the SDK:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   cd viam-cpp-sdk/
+   docker build -t cpp . -f etc/docker/Dockerfile.debian.bullseye
+   docker run --rm -it -v "$PWD":/usr/src/viam-cpp-sdk -w /usr/src/viam-cpp-sdk cpp /bin/bash
+   ```
+
+   Alternatively, you can skip running the docker container if you would prefer to use your own development environment.
+
+1. Install all listed dependencies to support the Viam C++ SDK:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo apt-get install git cmake build-essential libabsl-dev libboost-all-dev libgrpc++-dev libprotobuf-dev pkg-config ninja-build protobuf-compiler-grpc
+   ```
+
+1. If you are not using the `bullseye` container included with the SDK, you may need to install a newer version of `cmake` to build the SDK.
+   Run the following to determine the version of `cmake` installed on your system:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   cmake --version
+   ```
+
+   If the version returned is `3.25` or later, skip to the next step.
+   Otherwise, run the following commands to add the `bullseye-backports` repository and install the version of `cmake` provided there:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   sudo apt-get install software-properties-common
+   sudo apt-add-repository 'deb http://deb.debian.org/debian bullseye-backports main'
+   sudo apt-get update
+   sudo apt-get install -t bullseye-backports cmake
+   ```
+
+1. Create an <file>opt</file> directory to install the build artifacts to:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   mkdir -p ~/example_workspace/opt/
+   ```
+
+1. Create a <file>build</file> directory to house the build:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   mkdir build
+   cd build
+   ```
+
+1. Build the C++ SDK by running the following commands:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
+   ninja all
+   ninja install
+   ```
+
+   This tutorial passes three flags to the build process to configure the build:
+
+   - `VIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE` to request building the example module for this tutorial.
+   - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
+   - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>~/example_workspace/opt</file> instead of the default <file>./install</file> location.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -95,16 +156,16 @@ TODO: Linux instructions here. Currently failing at requiring tflite C headers: 
 ## Download the `yamnet/classification` model file
 
 This example uses the `yamnet/classification` TensorFlow Lite model for audio classification.
-This is a pre-trained model suitable for this example, but you can also [train your own model](/manage/ml/train-model/).
+This is a pre-trained model suitable for this example, but when working with your own programs you can also [train your own model](/manage/ml/train-model/).
 
-1. Download the `yamnet/classification` TensorFlow Lite model file: [yamnet classification tflite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
-
-1. Copy the downloaded file into a more permanent location.
-   For this example, place the model file in the <file>~/example_workspace</file> directory from earlier:
+1. Download the `yamnet/classification` TensorFlow Lite model file and place it in your <file>example_workspace</file> directory:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   cp ~/Downloads/lite-model_yamnet_classification_tflite_1.tflite ~/example_workspace/
+   curl -Lo ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1?lite-format=tflite
    ```
+
+   Alternatively, you may download the model file here: [yamnet classification tflite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
+   If you download in this fashion, move the downloaded file to your <file>~/example_workspace</file> directory.
 
 1. Extract the labels file <file>yamnet_label_list.txt</file> from the downloaded model file:
 
@@ -113,7 +174,7 @@ This is a pre-trained model suitable for this example, but you can also [train y
    ```
 
    The labels file provides pre-populated labels for the calculated scores, so that output scores can be associated and returned with their matching labels.
-   You can omit this file if desired, which will cause the client to return the computed scores without labels.
+   You can omit this file if desired, which will cause the inference client to return the computed scores without labels.
 
 ## Install `viam-server`
 
@@ -125,6 +186,21 @@ Next, install `viam-server` on your robot, if you have not done so already.
    If you are installing on a Linux system, additionally select your system's **Architecture**.
 
 1. Follow the steps listed under the **Setup** tab to install `viam-server` on your system.
+
+   {{< alert title="Important" color="note" >}}
+   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command *instead* of the command listed in step 2 **Download and install viam-server** in the Viam app:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --appimage-extract-and-run -config /etc/viam.json
+   ```
+
+   Once installed within the Docker container, you can later run it with just:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam-server --appimage-extract-and-run -config /etc/viam.json &
+   ```
+
+   {{< /alert >}}
 
 1. Once complete, verify that step 3 on the **Setup** tab indicates that your robot has successfully connected.
 
@@ -139,15 +215,14 @@ To generate your robot's configuration using `example_audio_classification_clien
    If you followed the instructions above, this path is: <file>~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite</file>.
 
 1. Next, determine the full path to the `example_mlmodelservice_tflite` modular resource example provided with the Viam C++ SDK.
-   If you followed the instructions above, this path is: <file>/usr/local/bin/example_mlmodelservice_tflite</file>.
+   If you followed the instructions above, this path is: <file>~/example_workspace/opt/bin/example_mlmodelservice_tflite</file>.
 
 1. Run the `example_audio_classification_client` binary, proving both paths to the `--generate` function in the following fashion:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path /usr/local/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
+   cd ~/example_workspace/opt/bin
+   example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
    ```
-
-   If you did not use the [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) option when building the C++ SDK, you may need to provide the full path to the `example_audio_classification_client` binary for this step.
 
 1. Verify that the resulting configuration file was created successfully:
 
