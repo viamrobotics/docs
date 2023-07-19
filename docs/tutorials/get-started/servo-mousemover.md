@@ -64,20 +64,20 @@ First, install `viam-server` according to our [installation guide](/installation
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager. Select "yes" when it asks if you want to continue.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt-get install pip
 ```
 
 The command above installs the latest version of `python3` and `pip3` on your Raspberry Pi.
 To verify and get the version of the package, you can run the command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 --version
 ```
 
 The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate robots using Viam. To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
 ```
 
@@ -99,19 +99,19 @@ You can do so by creating a file on the Raspberry Pi and editing the file with n
 
 Inside the Raspberry Pi Terminal, run the following command to create a folder to put our files in (name this folder whatever you want).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 mkdir mousefolder
 ```
 
 Go into mousefolder.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cd mousefolder
 ```
 
 Create a file using nano with the .py which is the python file extension, (name this file whatever you want).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 nano anyname.py
 ```
 
@@ -121,7 +121,7 @@ Paste the code you got from the **Code sample** tab in the Viam app. Press CTRL+
 
 Now, run the code using the below command to get the resource information that lets us know if the connection is good or if there are any errors.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 anyname.py
 ```
 

@@ -295,7 +295,7 @@ To create the `webm` and mp4 files use these commands:
 {{< tabs >}}
 {{% tab name="macOS" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {id="video-conversion-macos" class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-2" -b:v 300k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
@@ -303,7 +303,7 @@ ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 {{% /tab %}}
 {{% tab name="Linux" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=720:-2" -b:v 300k PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```
@@ -330,14 +330,14 @@ To create a preview image use this command:
 {{< tabs >}}
 {{% tab name="macOS" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 ffmpeg -ss 00:00:05 -i PATH_TO_GIF_OR_VID.mp4 -frames:v 1 PATH_TO_GIF_OR_VID.jpg
 ```
 
 {{% /tab %}}
 {{% tab name="Linux" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 ffmpeg -ss 00:00:05 -i PATH_TO_GIF_OR_VID.mp4 -frames:v 1 PATH_TO_GIF_OR_VID.jpg
 ```
 
@@ -378,7 +378,7 @@ Once you have a gif that is reasonably small, run these commands:
 {{< tabs >}}
 {{% tab name="macOS" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 ```
@@ -386,7 +386,7 @@ ffmpeg -i PATH_TO_GIF_OR_VID -c vp9 -b:v 0 -crf 41 my-animation.webm
 {{% /tab %}}
 {{% tab name="Linux" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 ffmpeg -i PATH_TO_GIF_OR_VID -vcodec libx264 -vf "format=yuv420p,scale=400:-2" -b:v 300k -an PATH_TO_GIF_OR_VID.mp4
 ffmpeg -i PATH_TO_GIF_OR_VID -c:v libvpx-vp9 -b:v 0 -crf 41 my-animation.webm
 ```

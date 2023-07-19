@@ -34,31 +34,31 @@ These commands require that you store your configuration file at <file>/etc/viam
 
 #### Start
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl start viam-server
 ```
 
 #### Stop
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl stop viam-server
 ```
 
 #### Restart
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl restart viam-server
 ```
 
 #### Enable (start automatically with system boot, default)
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl enable viam-server
 ```
 
 #### Disable (do not start automatically with system boot)
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl disable viam-server
 ```
 
@@ -73,7 +73,7 @@ If `viam-server` is already running as a system service, be sure to stop the ser
 
 Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo viam-server -config /path/to/my/config.json
 ```
 
@@ -104,7 +104,7 @@ You can use the following commands to manage `viam-server` on the command line:
 
 Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam-server -config /path/to/my/config.json
 ```
 
@@ -128,19 +128,19 @@ These commands require that you store your configuration file at <file>/opt/home
 
 #### Start
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew services start viam-server
 ```
 
 #### Stop
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew services stop viam-server
 ```
 
 #### Restart
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew services restart viam-server
 ```
 
@@ -165,7 +165,7 @@ Select the tab below for your platform:
 
 If you are running `viam-server` as a system service, run the following command to view log messages:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo journalctl --unit=viam-server
 ```
 
@@ -173,7 +173,7 @@ Use the arrow keys to page vertically or horizontally through the log messages.
 
 You can also view log messages specific to `viam-server` in the `syslog` with the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 grep viam-server /var/log/syslog
 ```
 
@@ -183,7 +183,7 @@ If you are running `viam-server` on the command line, log messages are written t
 
 You can also view log messages specific to `viam-server` in the `syslog` with the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 grep viam-server /var/log/syslog
 ```
 
@@ -195,7 +195,7 @@ When running `viam-server` on macOS, log messages are written to standard out (`
 
 You can also access the local `viam-server` log file using the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cat $(brew --prefix)/var/log/viam.log
 ```
 

@@ -345,7 +345,7 @@ This tutorial uses Python.
 Open your terminal and `ssh` into your Pi.
 Run the following command to install the Python package manager onto your Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pip
 ```
 
@@ -354,7 +354,7 @@ Create a folder named <file>petfeeder</file> for your code and create a file cal
 The [Viam Python SDK](https://python.viam.dev/) allows you to write programs in the Python programming language to operate robots using Viam.
 To install the Python SDK on your Raspberry Pi, run the following command in your existing `ssh` session to your Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install --target=petfeeder viam-sdk python-vlc
 ```
 
@@ -371,7 +371,7 @@ Select **Python**, then copy the generated sample code and paste it into the <fi
 
 Save the file and run this command to execute the code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
@@ -440,7 +440,7 @@ if __name__ == '__main__':
 
 Save your file and run the code, put your pet in front of the robot to check it works:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 

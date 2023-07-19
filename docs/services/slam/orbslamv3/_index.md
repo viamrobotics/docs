@@ -22,7 +22,7 @@ Install the binary required to utilize `orbslamv3` on your machine and make it e
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/orb_grpc_server https://storage.googleapis.com/packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -30,7 +30,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 {{< /tab >}}
 {{% tab name="Linux x86_64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/orb_grpc_server https://storage.googleapis.com/packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -248,14 +248,14 @@ If you do not already have a dataset from running SLAM live or another dataset y
 
 2. Copy the zipped file to the machine running `viam-server` and unzip it. For example:
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.
     unzip viam-office-hallway-1-rgbd.zip
     ```
 
 3. Rename the unzipped folder to <file>data</file> and place inside of the folder at <file>data_dir</file>. For example:
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     cd /home/<YOUR_USERNAME>/<ORBSLAM3_DIR>
     mv ~/Downloads/viam-office-hallway-1-rgbd data/
     ```

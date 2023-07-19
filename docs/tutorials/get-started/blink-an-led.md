@@ -85,8 +85,9 @@ For example, "GPIO 22".
 For example, board pin 38 is the same pin as GPIO pin 20, but when configuring your robot with Viam, you should refer to it as pin `38`.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](https://docs.viam.com/try-viam/rpi4_rover_leaf_A4.pdf) which has labels for the pins.
-Carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card or a small screwdriver.
@@ -231,14 +232,14 @@ Run your code:
 
 Run the code by typing the following command into the terminal, with the correct path to your file:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 <INSERT PATH TO YOUR FILE>/blink.py
 ```
 
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
 What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your robot in the Viam app (the board, as well as various built-in services).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-25"}
+```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 my-project-folder/blink.py
 2023-07-14 13:05:50,958        INFO    viam.rpc.dial (dial.py:212)
     Connecting to socket: xxxxxxxxxxxx
@@ -268,26 +269,26 @@ name: "local"
 Navigate to the directory where your <file>blink.go</file> file is saved.
 Create the necessary <file>go.mod</file> and <file>go.sum</file> files ([more information on the Go Blog](https://go.dev/blog/using-go-modules)) by running these commands:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go mod init blink
 go mod tidy
 ```
 
 Then, run your code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go run blink.go
 ```
 
 If you successfully configured your robot and it is able to connect to the Viam app, you should see something like the following printed to the terminal after running your program.
 What you see here is a list of the various {{< glossary_tooltip term_id="resource" text="resources" >}} that have been configured on your robot in the Viam app (the board, as well as various built-in services).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-25"}
+```sh {class="command-line" data-prompt="$" data-output="2-25"}
 go run blink.go
 2023-07-14T13:05:50.958-0700        INFO    client my-project-folder/blink.go:41
     Resources:
 2023-07-14T13:05:50.958-0700        INFO    client my-project-folder/blink.go:41
-    [rdk:component:board/local rdk:service:sensors/builtin 
+    [rdk:component:board/local rdk:service:sensors/builtin
     rdk:service:motion/builtin rdk:service:data_manager/builtin]
 ```
 
@@ -454,7 +455,7 @@ Run your finished code:
 
 Type the following into your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 blink.py
 ```
 
@@ -463,7 +464,7 @@ python3 blink.py
 
 Type the following into your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go run blink.go
 ```
 

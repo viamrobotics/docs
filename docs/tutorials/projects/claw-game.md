@@ -471,7 +471,7 @@ We tested between `240` and `280` for this level, but you can adjust it to your 
 
 Use `git` to clone the [Claw Game project repository](https://github.com/viam-labs/claw-game/):
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/claw-game
 ```
 
@@ -721,13 +721,13 @@ if __name__ == '__main__':
 
 Use `CLI-test.py` to run these commands from the command line, for example:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 CLI-test.py --password mypass --location mylocation --command grab
 ```
 
 Or, you can run sequences of these commands together, for example:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 CLI-test.py --password mypass --location mylocation --command sequence --sequence grab,sleep,release,sleep,grab,sleep,release
 ```
 
@@ -767,7 +767,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
 1. Once you have installed Node, you can now fetch all dependencies, including the Viam TypeScript SDK, by running the following command in your project directory:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    npm install
    ```
 
@@ -778,7 +778,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
 1. Then, run the following command to start the custom TypeScript interface, inserting your robot's location secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    export VIAM_LOCATION=<mylocation>;VIAM_SECRET=<mysecret>;npm run start-simple
    ```
 

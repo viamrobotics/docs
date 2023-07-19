@@ -108,13 +108,13 @@ This is convenient if the computer running `viam-server` is a dedicated part of 
 
 To disable `viam-server` from starting automatically on boot, run the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl disable viam-server
 ```
 
 Then start `viam-server`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo ./viam-server -config /etc/viam.json
 ```
 
@@ -167,14 +167,14 @@ Run your code by entering the following in a new terminal on your computer:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 index.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go run index.go
 ```
 
@@ -398,7 +398,7 @@ In the upper right corner of the **Setup** tab, click **Copy viam-server config*
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From a new terminal window, navigate to the directory where you saved the config file, and run the following command to create a new instance of `viam-server` using this configuration.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam-server -config viam-sub-part.json
 ```
 
