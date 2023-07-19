@@ -87,15 +87,16 @@ Copy and paste the following into the empty **Attributes** field, replacing `THE
 
 ![Service configuration](/tutorials/scuttle-gamepad/gamepad-service-config.png)
 
-Save the configuration and go to the **Control** tab.
+Click **Save config**, then go to the **Control** tab.
 
 You should see the panel for the gamepad and its connection indicator:
 
 ![Gamepad input UI showing a "connected" indicator and a list of inputs from all the buttons, for example X=0.0, RY=0.0 and East=0.](/tutorials/scuttle-gamepad/control-tab-input.png)
 
 At this point, you should be able to move the rover using the gamepad.
+However, whether you can drive it with the joystick or with the D-pad depends on the [settings on the controller](#easysmx-esm-9101-wireless-controller-information).
 
-If you are in the [mode](#easysmx-esm-9101-wireless-controller-information) that allows you to use the Joystick (#7), it will change the values:
+If you are in the [mode](#easysmx-esm-9101-wireless-controller-information) that allows you to use the joystick (#7), it will change the `X` and `Y` values on the **Control** tab gamepad panel:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 "X
@@ -104,7 +105,7 @@ Y
 0.0000"
 ```
 
-If you are in the mode that allows you to use the D-Pad (#8), it will change the values:
+If you are in the mode that allows you to use the D-pad (#8), it will change the `Hat0X` and `Hat0Y` values:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 "Hat0X
@@ -125,7 +126,7 @@ Here is a diagram of the gamepad.
 </tr>
 </table>
 
-To change the movement/direction control on the gamepad between the D-Pad and the joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
+To change the movement/direction control on the gamepad between the D-pad and the joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
 Each red color arrangement allows you to control the gamepad in the Viam app:
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>
