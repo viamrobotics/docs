@@ -22,7 +22,7 @@ Install the `rplidar-module` binary on your machine and make it executable by ru
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
@@ -30,7 +30,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
@@ -38,7 +38,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install rplidar-module
 ```
 

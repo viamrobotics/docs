@@ -118,20 +118,20 @@ It also contains an open source machine learning [detector model](https://github
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
 If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/tutorial-openai-integration
 ```
 
 If you don't have git installed on your Pi, you will need to first run:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install git
 ```
 
 Now that you have cloned the repository, you will need to install dependencies.
 If you do not have python3 and pip3 installed, do this first:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install python3
 sudo apt install python3-pip
@@ -139,7 +139,7 @@ sudo apt install python3-pip
 
 You will also need to install pyaudio, alsa, and flac:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pyaudio
 sudo apt-get install alsa-tools alsa-utils
 sudo apt-get install flac
@@ -147,7 +147,7 @@ sudo apt-get install flac
 
 Now, install the python library dependencies by running the following command from inside the directory where you cloned the code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip install -r requirements.txt
 ```
 
@@ -170,7 +170,7 @@ python rosey.py
 
 Then, make `run.sh` executable:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 chmod +x run.sh
 ```
 
@@ -280,7 +280,7 @@ By default, Rosey will use Google TTS for audio voice generation.
 However, [ElevenLabs](https://elevenlabs.io/) can be used for enhanced AI voice generation.
 To use ElevenLabs, add your ElevenLabs API key to `run.sh` as follows:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 export ELEVENLABS_KEY=mykey
 ```
 

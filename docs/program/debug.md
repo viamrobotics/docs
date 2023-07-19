@@ -25,14 +25,14 @@ Navigate to the **Logs** tab of your robot's page in [the Viam app](https://app.
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo journalctl --unit=viam-server
 ```
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cat $(brew --prefix)/var/log/viam.log
 ```
 
