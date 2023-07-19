@@ -38,9 +38,6 @@ To be able to program the ESP32 on macOS and Linux systems, you must install the
 
 #### Install Homebrew
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
 
 #### Install Dependencies
 
@@ -53,7 +50,7 @@ sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
-
+If you haven't already, run the following command to install Homebrew:
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install dfu-util
 ```
@@ -91,7 +88,7 @@ cargo install espflash
 
 ### Use Viam's Canon CLI utility
 
-[Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker based canonical environment.
+[Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker-based canonical environment.
 
 Canon requires a working installation of Docker.
 
@@ -101,7 +98,8 @@ If you are running Docker on Linux, make sure that you go through the [post inst
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
 
-Go 1.19 or newer must be installed.
+Make sure your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
+Verify your version of Go with `go version`. 
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install github.com/viamrobotics/canon@latest
