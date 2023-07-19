@@ -50,7 +50,15 @@ sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
-If you haven't already, run the following command to install Homebrew:
+
+If you haven't already, install Homebrew:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Then, install `dfu-util`:
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install dfu-util
 ```
