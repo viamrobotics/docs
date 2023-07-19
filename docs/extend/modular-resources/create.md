@@ -21,14 +21,14 @@ A configured *module* can make one or more *modular resources* available for con
 
 ## Create a custom modular resource
 
-To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new model or {{< glossary_tooltip term_id="api-namespace-triplet" text="subtype" >}} of {{< glossary_tooltip term_id="resource" text="resource" >}}:
+To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new {{< glossary_tooltip term_id="model" text="model" >}} or {{< glossary_tooltip term_id="subtype" text="subtype" >}} of {{< glossary_tooltip term_id="resource" text="resource" >}}:
 
 {{< tabs >}}
 {{% tab name="New Model" %}}
 Define a new model of a built-in resource subtype:
 
 1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (ex. `rdk:component:base`).
-Import your custom model and API into the main program and register the new resource model with your chosen SDK's helper methods.
+Import your custom model and API into the main program and register them with your chosen SDK.
 
 1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
@@ -37,13 +37,13 @@ This main program is the "entry point" to your module.
 
 {{% /tab %}}
 {{% tab name="New Type" %}}
-Define a new {{< glossary_tooltip term_id="api-namespace-triplet" text=" type or subtype" >}} of resource:
+Define a new {{< glossary_tooltip term_id="api-namespace-triplet" text="type or subtype" >}} of resource:
 
 1. Define the messages and methods of the new API in [protobuf](https://github.com/protocolbuffers/protobuf), then [generate code](https://grpc.io/docs/languages/python/generated-code/) in Python or Go and use the generated code to implement the higher level server and client functions required.
 
 2. [Code at least one model](#code-a-new-resource-model) of this new resource.
 Make sure to implement every method required in your API definition.
-Import your custom models and APIs into the main program and register the new resource models with your chosen SDK's helper methods.
+Import your custom models and APIs into the main program and register them with your chosen SDK.
 
 1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
