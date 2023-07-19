@@ -61,14 +61,14 @@ Run the code to verify that the Viam SDK is properly installed and that the `via
 
 You can run your code by typing the following into your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 square.py
 ```
 
 The program prints an array of resources.
 These are the components and services that the robot is configured with in the Viam app.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-75"}
+```sh {class="command-line" data-prompt="$" data-output="2-75"}
 python3 square.py
 2023-05-12 11:33:21,045      INFO    viam.rpc.dial (dial.py:211)    Connecting to socket: /tmp/proxy-Dome34KJ.sock
 Resources:
@@ -98,7 +98,7 @@ Then, save your file.
 
 Initialize your project, and install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go mod init square
 go mod tidy
 go run square.go
@@ -107,7 +107,7 @@ go run square.go
 The program prints an array of resources.
 These are the components and services that the robot is configured with in the Viam app.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
 go run square.go
 2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40
    Resources:
@@ -174,7 +174,7 @@ Add the following markup:
 
 Run the following commands to install the necessary libraries, and then run the program to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 npm install
 npm start
 ```

@@ -7,16 +7,16 @@
   <div class="feedback--response feedback--response-yes">
     <p>{{ .Site.Params.ui.feedback.yes | safeHTML }}</p>
     <div class="feedback-form">
-      <input type="hidden" name="url" id="feedback-url" value="{{.Permalink}}">
-      <textarea name="feedback" id="yes-feedback-text" value="Feedback"></textarea>
+      <input type="hidden" name="url" id="feedback-url-helpful" value="{{.Permalink}}">
+      <textarea name="feedback" id="yes-feedback-text" title="Feedback Response" value="Feedback"></textarea>
       <button class="docsbutton feedback--answer" type="submit" id="yesSubmitButton">Send</button>
     </div>
   </div>
   <div class="feedback--response feedback--response-no">
     <p>{{ .Site.Params.ui.feedback.no | safeHTML }}</p>
     <div class="feedback-form">
-      <input type="hidden" name="url" id="feedback-url" value="{{.Permalink}}">
-      <textarea name="feedback" id="no-feedback-text" value="Feedback"></textarea>
+      <input type="hidden" name="url" id="feedback-url-not-helpful" value="{{.Permalink}}">
+      <textarea name="feedback" id="no-feedback-text" title="Feedback Response" value="Feedback"></textarea>
       <button class="docsbutton feedback--answer" type="submit" id="noSubmitButton">Send</button>
     </div>
   </div>
