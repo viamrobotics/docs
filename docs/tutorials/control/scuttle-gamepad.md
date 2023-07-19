@@ -1,6 +1,6 @@
 ---
-title: "Drive a Rover with a Bluetooth Gamepad"
-linkTitle: "Drive a Rover with a Gamepad"
+title: "Drive a Rover (like SCUTTLE) Using a Gamepad with a Dongle"
+linkTitle: "Drive a Rover with a Dongle Gamepad"
 weight: 20
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
@@ -20,7 +20,7 @@ date: "10 August 2022"
 cost: 575
 ---
 
-This tutorial teaches you how to add a Bluetooth gamepad controller to your wheeled robot.
+This tutorial teaches you how to add a Bluetooth dongle gamepad controller to your wheeled robot.
 By the end of this tutorial, you'll be able to drive your rover around like an RC car.
 
 {{% alert title="Tip" color="tip" %}}
@@ -35,11 +35,17 @@ If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a 
 You will need the following to complete this tutorial:
 
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/)
-    - [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
+  - [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
     This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you complete this tutorial using a different rover.
-- [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle
+- [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle.
+  This is the controller that comes with the SCUTTLE rover.
 
 {{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
+
+## Hardware setup
+
+Plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/components/board/).
+Turn on power to the rover.
 
 ## Add the controller to the rover's config
 
@@ -64,7 +70,7 @@ Services are software packages that provide robots with higher level functionali
 To link the controller's input to the base functionality, you need to configure the [Base Remote Control Service](/services/base-rc/):
 
 - Go to the **Services** subtab of your robot's **Config** tab.
-- In the **Create service** panel, click the **Type** dropdown and select **Base Remote Control**.
+- In the **Create service** panel, click the **Type** dropdown and select `Base Remote Control`.
 - Enter `gamepad_service` for the **Service** **name**.
 - Click **Create service**.
 
