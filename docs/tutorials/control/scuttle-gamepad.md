@@ -51,6 +51,9 @@ Turn on power to the rover.
 
 Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
 
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
 In the **Create component** panel, configure a [gamepad](/components/input-controller/gamepad/):
 
 - Enter `my-gamepad` as the component **Name**.
@@ -60,6 +63,25 @@ In the **Create component** panel, configure a [gamepad](/components/input-contr
 
 ![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
 
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+If instead of using the config builder, you prefer to write raw JSON, switch to **Raw JSON** mode on the **Config** tab.
+Inside the `"components": []` section of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
+
+```json {class="line-numbers linkable-line-numbers"}
+    {
+      "name": "my-gamepad",
+      "type": "input_controller",
+      "model": "gamepad",
+      "attributes": {},
+      "depends_on": []
+    }
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 The controller config adds the gamepad controller to your robot.
 However, it is not functional yet.
 To make it functional, you need to add the Base Remote Control Service.
@@ -68,6 +90,9 @@ To make it functional, you need to add the Base Remote Control Service.
 
 Services are software packages that provide robots with higher level functionality.
 To link the controller's input to the base functionality, you need to configure the [Base Remote Control Service](/services/base-rc/):
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
 
 - Go to the **Services** subtab of your robot's **Config** tab.
 - In the **Create service** panel, click the **Type** dropdown and select `Base Remote Control`.
@@ -86,6 +111,28 @@ Copy and paste the following into the empty **Attributes** field, replacing `<yo
 <br>
 
 ![Service configuration](/tutorials/scuttle-gamepad/gamepad-service-config.png)
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+If instead of using the config builder, you prefer to write raw JSON, switch to **Raw JSON** mode on the **Config** tab.
+Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
+
+```json {class="line-numbers linkable-line-numbers"}
+  "services": [
+    {
+      "name": "gamepad_service",
+      "type": "base_remote_control",
+      "attributes": {
+        "input_controller": "my-gamepad",
+        "base": "<your-base-name>"
+      }
+    }
+  ]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Click **Save config**, then go to the **Control** tab.
 
