@@ -62,7 +62,7 @@ First, add the camera on your computer as a [camera](/components/camera/) compon
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](/tutorials/img/bedtime-songs-bot/video-path-ui.png)
+![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../tutorials/img/bedtime-songs-bot/video-path-ui.png)
 
 You do not have to edit the attributes of your camera at this point.
 Optionally, select a fixed filepath for the camera from the automated options in the **video path** drop-down menu.
@@ -100,14 +100,15 @@ Optionally, select a fixed filepath for the camera from the automated options in
 {{% /tab %}}
 {{< /tabs >}}
 
-Give your camera the name "`cam`" to match the name used in the code of this tutorial.
-If you use a different name, change `"cam"` in the code to match the name you used.
+To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your camera `"cam"`.
+
+If you use a different name, change `"cam"` in the [code](#program-your-bedtime-songs-bot) to match the name you used.
 
 To view your webcam's image stream, navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
 Click on the drop-down menu labeled **camera** and toggle the feed on.
 Click on **Export Screenshot** to capture an image.
 
-![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](/tutorials/img/bedtime-songs-bot/export-screenshot.png)
+![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../tutorials/img/bedtime-songs-bot/export-screenshot.png)
 
 Now, configure a [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) with [Data Capture](/services/data/configure-data-capture/) to use the image data coming from your camera on your robot to train your ML model:
 
@@ -132,7 +133,7 @@ This will capture an image from the camera roughly once every 3 seconds.
 1. Select the **Mime Type** that you want to capture.
 For this tutorial, we are capturing `image/jpeg` data.
 
-![The configuration page for a camera component.](/tutorials/img/bedtime-songs-bot/app-camera-configuration.png)
+![The configuration page for a camera component.](../../tutorials/img/bedtime-songs-bot/app-camera-configuration.png)
 
 At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
@@ -257,45 +258,61 @@ Now, use these pictures to train your machine learning model.
 
 ### Tag data
 
-Add tags for each of the puzzle pieces.
-We used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
-Try to have at least 50 images labelled for each tag.
+Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your robot.
+After selecting the image, you can type a custom tag for some of the objects you see in the image.
 
-<!-- TODO: more info here. config ui. -->
+Add tags for each of the puzzle pieces.
+Since we wanted to classify our toys by shape, we used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
+Try to have at least 50 images labeled for each tag.
+
+Notice that in our image collection, we captured images at different angles and with different background compositions.
+This is to ensure that our model can continue to recognize the object no matter how your robot is viewing it through its camera.
+
+Begin by selecting the image you would like to tag, and you will see all of the data that is associated with that image.
+Type in your desired tag in the Tags section.
+
+Be mindful of your naming as you can only use alphanumeric characters and underscores: this is because the model will be exported as a `.tflite` file with a corresponding `.txt` file for labeling.
+
+Add tags for each image that shows an object of the corresponding shape.
+
+Continue parsing through your collected data (in this case images) and tag away to your heart's desire.
+Once you create tags, it is as simple as selecting your image and then selecting the tag in the **Recently used** drop down menu.
+Tag as many images with as many tags until you are happy with your dataset.
+This is important for the next step.
 
 #### Filter based on tags
 
-<!-- Upon completion of tagging your data set, you can now [filter images](/manage/data/view/) according to those tags.
-Head over to the **Filtering** menu and select a tag from the drop down list.
-In the following screenshot, we have filtered the images in our data set according to one tag, in this case `toast`, (which is the name of our doggy test subject) and now we can easily view all images of Toast:
-
-![The filtering tab with toast entered as a filtered tag.](../../img/pet-treat-dispenser/app-data-filter-tags.png) -->
+Upon completion of tagging your data set, you can now [filter images](/manage/data/view/) according to those tags.
+Head over to the **Filtering** menu and select a tag from the drop down list to view all labeled images.
 
 ### Train a model
 
-<!-- After tagging and filtering your images so only the pictures of your pet are visible, begin training your model.
-Click the **Train Model** button, name your model and select **Single label** as the model type.
-Then select the label that you sued to label your pet images.
-We called it `puppymodel` and selected the tag `toast` to train on images of the pup.
+After tagging and filtering your images, begin training your model.
 
-![The data page with single model selected using name puppymodel.](../../img/pet-treat-dispenser/app-training.png)
+Click the **Train Model** button.
+Name your model.
+To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your model `"shape-classifier-model"`.
+Select **Multi label** as the model type, which accounts for multiple tags.
 
-If you want your model to be able to recognize multiple pets you can instead create a **Multi Label** model based on multiple tags.
-Go ahead and select all the tags you would like to include in your model and click **Train Model**. -->
+Then select the tags that you used to label your toys and click **Train Model**.
 
 Follow [the tutorial](/manage/ml/train-model/) to train your ML model.
 
 ## Use your ML Model to sing songs to your kids
 
-Now, deploy and configure your ML Model on your robot.
+Now, deploy and configure your ML Model on your robot, and configure your webcam to act as a shape classifier.
 Use Viam's Go SDK to program the robot so that if your webcam "sees" (captures image data containing) a toy, the robot knows to play a particular song through its computer's speakers.
 
 ### Configure your webcam to act as a shape classifier
 
 [Deploy the model](/services/ml/) to the robot and configure a [Vision Service](/services/vision/) of model `mlmodel` to use this model.
 
-<!-- TODO: and configure mlmodel service.
-more info on configuring deployment -->
+To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your Vision Service `"shape-classifier"`.
+
+At this point, the full **Raw JSON** configuration of your robot should look similar to the following:
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -338,7 +355,14 @@ more info on configuring deployment -->
 }
 ```
 
+If you copy and paste this template into your robot's **Raw JSON** configuration, make sure to edit and fill in the attributes as applicable.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Record bedtime songs
+
+Now, capture the audio of the songs you want your bot to play.
 
 - Record or download the audio files you want to use to your computer in <file>.mp3</file> format.
 - Make the names of the files match the classifier tags you used: for example, <file>square.mp3</file>.
@@ -349,30 +373,33 @@ The audio files I used are available to download on [GitHub](https://github.com/
 ### Program your bedtime-songs bot
 
 Now, write code to connect to the robot and play a song when the camera is pointed at a puzzle piece.
-I used the sample code tab in the config UI to get the code to connect to the robot.
-<!-- INSTRUCTIONS TO GO TO CODE SAMPLE HERE AND WHERE TO SAVE FILES ETC -->
+
+Follow these instructions to start working on your Go control code:
+
+1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+2. Select **Go** as the language.
+3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
+
+   {{% snippet "show-secret.md" %}}
+
+4. Open your terminal.
+Navigate to the directory where you want to store your code.
+Paste this code sample into a new file named <file>play-songs.go</file>, and save it.
+
+For example, run the following commands on your Macbok to create and open the file:
+
+``` shell
+cd <insert-path-to>/<my-bedtime-songs-bot-directory>
+touch play-songs.go
+vim play-songs.go
+```
+
+Now, you can add code into <file>play-songs.go</file> to write the logic that defines your bedtime songs bot.
+
+To start, add in the code that initializes your speaker and plays the songs.
+We used the platform-flexible [Go `os` package](https://pkg.go.dev/os) and an audio processing package from [GitHub](https://github.com/faiface/beep/) to do this.
 
 ``` go {class="line-numbers linkable-line-numbers"}
-package main
-
-
-import (
- "context"
- "os"
- "time"
-
-
- "github.com/edaniels/golog"
- "github.com/faiface/beep"
- "github.com/faiface/beep/mp3"
- "github.com/faiface/beep/speaker"
- "go.viam.com/rdk/robot/client"
- "go.viam.com/rdk/utils"
- "go.viam.com/utils/rpc"
- "go.viam.com/rdk/services/vision"
-)
-
-
 func initSpeaker(logger golog.Logger) {
    f, err := os.Open("square.mp3")
    if err != nil {
@@ -415,16 +442,136 @@ func play(label string, logger golog.Logger) {
 
    <-done
 }
+```
 
+Modify the above code as you desire.
+
+Make sure you import the necessary packages by adding the following to the `import` statement of your program:
+
+```go
+"github.com/faiface/beep"
+"github.com/faiface/beep/mp3"
+"github.com/faiface/beep/speaker"
+```
+
+Also, make sure that you add `initSpeaker(logger)`, a line that initializes the speaker, to the `main` function of your program.
+
+Now, create the logic for the classifiers.
+Use the Vision Service's [classification](/services/vision/classification) API method `ClassificationsFromCamera` to do this.
+
+You can get your components from the robot like this:
+
+``` go
+visService, err := vision.FromRobot(robot, "shape-classifier")
+```
+
+And you can get the classification the `"shape-classifier-model"` behind `"shape-classifier"` computes for your robot like this:
+
+```go 
+classifications, err := visService.ClassificationsFromCamera(context.Background(), "cam", 1, nil)
+```
+
+Change the `name` in [FromRobot()](/program/apis/#fromrobot) if you used a different name for the resource in your code.
+
+This is what we used for the logic for the classifiers:
+
+``` go
+// Classifications logic
+for {
+  for i := 0; i < 3; i++ {
+      visService.ClassificationsFromCamera(context.Background(), "cam",  1, nil)
+  }
+
+
+  classifications, err := visService.ClassificationsFromCamera(context.Background(), "cam", 1, nil)
+  if err != nil {
+      logger.Fatalf("Could not get classifications: %v", err)
+  }
+  if len(classifications) > 0 && classifications[0].Score() > 0.7 {
+      logger.Info(classifications[0])
+      play(classifications[0].Label(), logger)
+  }
+
+
+}
+```
+
+After completing these instructions, your program <file>play-songs.go</file> should look like the following:
+
+``` go {class="line-numbers linkable-line-numbers"}
+package main
+
+
+import (
+ "context"
+ "os"
+ "time"
+
+
+ "github.com/edaniels/golog"
+ "github.com/faiface/beep"
+ "github.com/faiface/beep/mp3"
+ "github.com/faiface/beep/speaker"
+ "go.viam.com/rdk/robot/client"
+ "go.viam.com/rdk/utils"
+ "go.viam.com/utils/rpc"
+ "go.viam.com/rdk/services/vision"
+)
+
+// Initializes the speaker
+func initSpeaker(logger golog.Logger) {
+   f, err := os.Open("square.mp3")
+   if err != nil {
+       logger.Fatal(err)
+   }
+   defer f.Close()
+
+
+   streamer, format, err := mp3.Decode(f)
+   if err != nil {
+       logger.Fatal(err)
+   }
+   defer streamer.Close()
+
+
+   speaker.Init(format.SampleRate, format.SampleRate.N(time.Second/10))
+}
+
+// Plays a song
+func play(label string, logger golog.Logger) {
+   f, err := os.Open(label + ".mp3")
+   if err != nil {
+       logger.Fatal(err)
+   }
+   defer f.Close()
+
+
+   streamer, _, err := mp3.Decode(f)
+   if err != nil {
+       logger.Fatal(err)
+   }
+   defer streamer.Close()
+
+
+   done := make(chan bool)
+   speaker.Play(beep.Seq(streamer, beep.Callback(func() {
+       done <- true
+   })))
+
+
+   <-done
+}
+
+// Code Sample Connect() Code 
 func main() {
  logger := golog.NewDevelopmentLogger("client")
  robot, err := client.New(
      context.Background(),
-     ".viam.cloud", // TODO: insert app cloud address here
+     ".viam.cloud", // Insert your remote address here. Go to the Code Sample tab in the Viam app to find.
      logger,
      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
          Type:    utils.CredentialsTypeRobotLocationSecret,
-         Payload: "", // TODO: insert robot location secret here
+         Payload: "", // Insert your robot location secret here. Go to the Code Sample tab in the Viam app to find.
      })),
  )
  if err != nil {
@@ -434,15 +581,17 @@ func main() {
 
  defer robot.Close(context.Background())
   
+// Get the shape classifier from the robot 
  visService, err := vision.FromRobot(robot, "shape-classifier")
  if err != nil {
    logger.Error(err)
  }
 
-
+ // Initialize the speaker
  initSpeaker(logger)
 
 
+ // Classifications logic
  for {
    for i := 0; i < 3; i++ {
        visService.ClassificationsFromCamera(context.Background(), "cam",  1, nil)
@@ -463,7 +612,16 @@ func main() {
 }
 ```
 
-<!-- Run this code on your robot by TODO: run code instructions -->
+Save your <file>play-songs.go</file> program with this logic added in.
+Run the code on your personal computer as follows:
+
+``` shell
+go run ~/<my-bedtime-songs-bot-directory>/play-songs.go
+```
+
+The full example source code for <file>play-songs.go</file> is available on [GitHub](https://github.com/viam-labs/bedtime-songs-bot/blob/main/play_songs.go).
+
+Now, as shown below, your smart bedtime songs bot knows to play a song whenever it sees a shape on the camera:
 
 {{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The inventor holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
