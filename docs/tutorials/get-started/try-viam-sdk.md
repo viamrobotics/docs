@@ -21,7 +21,8 @@ cost: "0"
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
-The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected robot like the [Viam Rover](https://app.viam.com/try).
+The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected robot.
+Through this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 
 <div class="td-max-width-on-larger-screens">
@@ -32,8 +33,15 @@ You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try
 You can also directly see the [complete code for the tutorial](#complete-code).
 {{< /alert >}}
 
+## Hardware requirements
+
+You don't need any hardware to complete this tutorial!
+You can rent a rover to drive remotely for free with [Try Viam](https://app.viam.com/try).
+
+If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
+
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of renting one to drive remotely, be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/manage/configuration/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/manage/configuration/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 ## Install a Viam SDK
