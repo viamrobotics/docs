@@ -1,9 +1,9 @@
 ---
-title: "Drive the Viam Rover with the Viam SDK"
+title: "Drive a Rover with the Viam SDK"
 linkTitle: "Drive with the SDK"
 weight: 40
 type: "docs"
-description: "Drive a Viam rover from the comfort of your home right now and use a Viam SDK to program a Viam Rover to move in a square."
+description: "Use a Viam SDK to program a rover to move in a square."
 webmSrc: "/tutorials/try-viam-sdk/image1.webm"
 mp4Src: "/tutorials/try-viam-sdk/image1.mp4"
 videoAlt: "A Viam Rover driving in a square"
@@ -22,7 +22,7 @@ cost: "0"
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
 The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected robot like the [Viam Rover](https://app.viam.com/try).
-You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
+You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
@@ -31,6 +31,10 @@ You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try
 {{< alert title="Tip" color="tip" >}}
 You can also directly see the [complete code for the tutorial](#complete-code).
 {{< /alert >}}
+
+{{% alert title="Important" color="note" %}}
+If you are using your own robot for this tutorial instead of renting one to drive remotely, be sure to [install `viam-server`](/installation/#install-viam-server) on it and [configure](/manage/configuration/) its hardware before proceeding with this tutorial.
+{{% /alert %}}
 
 ## Install a Viam SDK
 
@@ -43,12 +47,12 @@ This way, you can maximize the amount of time you have using the Viam Rover.
 If you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
-## Connect to your Viam Rover
+## Connect to your rover
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -157,7 +161,7 @@ Add the following markup:
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Drive a Viam Rover</title>
+    <title>Drive a Rover</title>
     <link rel="icon" href="favicon.ico" />
   </head>
   <body>
@@ -196,8 +200,8 @@ If you are [renting your rover](https://app.viam.com/try), and your reservation 
 
 ## Drive your rover in a square
 
-Now that you have connected the rover to Viam with the SDK, you can start writing code to control the Viam Rover.
-The following code moves the Viam Rover in a square:
+Now that you have connected the rover to Viam with the SDK, you can start writing code to control the rover.
+The following code moves the rover in a square:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -210,11 +214,11 @@ Add the following line of code to your imports:
 from viam.components.base import Base
 ```
 
-Next, you need to initialize your Viam Rover base.
+Next, you need to initialize your rover base.
 
 In the main function, after you connect, paste the code from line 5.
-By default, the base name is `viam_base`.
-If you have changed the base name, update the name in your code.
+On the Try Viam rental rovers, the default base name is `viam_base`.
+If you have a different base name, update the name in your code.
 
 Your main function should look like this:
 
@@ -222,22 +226,22 @@ Your main function should look like this:
 async def main():
     robot = await connect()
 
-    # Get the base component from the Viam Rover
+    # Get the base component from the rover
     roverBase = Base.from_robot(robot, 'viam_base')
 
     await robot.close()
 ```
 
-Now that your Viam Rover base is initialized, you can write code to drive it in a square.
+Now that your rover base is initialized, you can write code to drive it in a square.
 Paste this snippet above your `main()` function:
 
 ```python
 async def moveInSquare(base):
     for _ in range(4):
-        # moves the Viam Rover forward 500mm at 500mm/s
+        # moves the rover forward 500mm at 500mm/s
         await base.move_straight(velocity=500, distance=500)
         print("move straight")
-        # spins the Viam Rover 90 degrees at 100 degrees per second
+        # spins the rover 90 degrees at 100 degrees per second
         await base.spin(velocity=100, angle=90)
         print("spin 90 degrees")
 ```
@@ -250,10 +254,10 @@ Your main function should now look like this:
 async def main():
     robot = await connect()
 
-    # Get the base component from the Viam Rover
+    # Get the base component from the rover
     roverBase = Base.from_robot(robot, 'viam_base')
 
-    # Move the Viam Rover in a square
+    # Move the rover in a square
     await moveInSquare(roverBase)
 
     await robot.close()
@@ -273,11 +277,11 @@ import (
 )
 ```
 
-Next, you need to initialize your Viam Rover base.
+Next, you need to initialize your rover base.
 
 In the main function, after you connect, paste the code from lines 19-22.
-By default, the base name is `viam_base`.
-If you have changed the base name, update the name in your code.
+On the Try Viam rental rovers, the default base name is `viam_base`.
+If you have a different base name, update the name in your code.
 
 Your main function should look like this:
 
@@ -299,7 +303,7 @@ func main() {
 
     defer robot.Close(context.Background())
 
-    // Get the base from the Viam Rover
+    // Get the base from the rover
     roverBase, err := base.FromRobot(robot, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
@@ -307,16 +311,16 @@ func main() {
 }
 ```
 
-Now that your Viam Rover base has been initialized, you can write code to drive it in a square.
+Now that your rover base has been initialized, you can write code to drive it in a square.
 Paste this snippet above your `main()` function:
 
 ```go
 func moveInSquare(ctx context.Context, base base.Base, logger golog.Logger) {
     for i := 0; i < 4; i++ {
-        // moves the Viam Rover forward 600mm at 500mm/s
+        // moves the rover forward 600mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
         logger.Info("move straight")
-        // spins the Viam Rover 90 degrees at 100 degrees per second
+        // spins the rover 90 degrees at 100 degrees per second
         base.Spin(ctx, 90, 100.0, nil)
         logger.Info("spin 90 degrees")
   }
@@ -330,13 +334,13 @@ Your main function should now look like this:
 ```go {class="line-numbers linkable-line-numbers" data-line="10"}
 func main() {
     // Connect rover to Viam...
-    // Get the base from the Viam Rover
+    // Get the base from the rover
     roverBase, err := base.FromRobot(robot, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
     }
 
-    // Move the Viam Rover in a square
+    // Move the rover in a square
     moveInSquare(context.Background(), roverBase, logger)
 }
 ```
@@ -391,11 +395,11 @@ async function main() {
 }
 ```
 
-Underneath the `main` function, add the following function that initializes your Viam Rover base client and drives it in a square:
+Underneath the `main` function, add the following function that initializes your rover base client and drives it in a square:
 
 {{< alert title="Important" color="note" >}}
-By default, the base name is `viam_base`.
-If you have changed the base name, update the name in your code.
+On the Try Viam rental rovers, the default base name is `viam_base`.
+If you have a different base name, update the name in your code.
 {{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
@@ -494,10 +498,10 @@ async def connect():
 
 async def moveInSquare(base):
     for _ in range(4):
-        # moves the Viam Rover forward 500mm at 500mm/s
+        # moves the rover forward 500mm at 500mm/s
         await base.move_straight(velocity=500, distance=500)
         print("move straight")
-        # spins the Viam Rover 90 degrees at 100 degrees per second
+        # spins the rover 90 degrees at 100 degrees per second
         await base.spin(velocity=100, angle=90)
         print("spin 90 degrees")
 
@@ -509,7 +513,7 @@ async def main():
 
     roverBase = Base.from_robot(robot, 'viam_base')
 
-    # Move the Viam Rover in a square
+    # Move the rover in a square
     await moveInSquare(roverBase)
 
     await robot.close()
@@ -536,10 +540,10 @@ import (
 
 func moveInSquare(ctx context.Context, base base.Base, logger golog.Logger) {
     for i := 0; i < 4; i++ {
-        // moves the Viam Rover forward 600mm at 500mm/s
+        // moves the rover forward 600mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
         logger.Info("move straight")
-        // spins the Viam Rover 90 degrees at 100 degrees per second
+        // spins the rover 90 degrees at 100 degrees per second
         base.Spin(ctx, 90, 100.0, nil)
         logger.Info("spin 90 degrees")
     }
@@ -561,7 +565,7 @@ func main() {
     }
     defer robot.Close(context.Background())
 
-    // Get the base from the Viam Rover
+    // Get the base from the rover
     roverBase, err := base.FromRobot(robot, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
@@ -603,7 +607,7 @@ func main() {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Drive a Viam Rover</title>
+    <title>Drive a Rover</title>
     <link rel="icon" href="favicon.ico" />
   </head>
   <body>
@@ -680,6 +684,6 @@ main().catch((error) => {
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?
 A figure-eight?
-You could also write some code to control the other components on the Viam Rover, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
+You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
 
-You could also control Viam's services, by adding [data management](/manage/data/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your Rover](/tutorials/services/try-viam-color-detection/).
+You could also control Viam's services, by adding [data management](/manage/data/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).
