@@ -223,7 +223,7 @@ Wait for the robot to reload, and then go to the **Control** tab to test the str
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
+The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -240,8 +240,8 @@ my_detector = VisionClient.from_robot(robot, "my_detector")
 detections = await my_detector.get_detections_from_camera(cam1)
 
 # If you need to get an image first and then run detections on it,
-# you can do it this way (generally slower but useful if you need to,
-# for instance, crop the image before running the detector on it):
+# you can do it this way (generally slower but useful if you need to
+# use the image afterwards
 img = await cam1.get_image()
 detections_from_image = await my_detector.get_detections(img)
 
@@ -282,8 +282,8 @@ if len(directDetections) > 0 {
 }
 
 // If you need to get an image first and then run detections on it,
-// you can do it this way (generally slower but useful if you need to,
-// for instance, crop the image before running the detector on it):
+// you can do it this way (generally slower but useful if you need to
+// use the image afterwards):
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
