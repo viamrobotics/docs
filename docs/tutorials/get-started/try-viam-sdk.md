@@ -36,7 +36,7 @@ You can also directly see the [complete code for the tutorial](#complete-code).
 ## Hardware requirements
 
 You don't need any hardware to complete this tutorial!
-You can rent a rover to drive remotely for free with [Try Viam](https://app.viam.com/try).
+You can rent a rover to drive remotely at no cost with [Try Viam](https://app.viam.com/try).
 
 If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
 
