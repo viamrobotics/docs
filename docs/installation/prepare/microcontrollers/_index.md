@@ -295,10 +295,10 @@ The following attributes are available for `esp32` boards:
 
 ### Generate a New Project from the Micro-RDK Template
 
-Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
+Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-robot-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
+cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.git
 ```
 
 You will be prompted to paste your robot's JSON configuration into the terminal.
