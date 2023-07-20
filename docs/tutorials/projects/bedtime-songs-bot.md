@@ -452,7 +452,7 @@ Make sure you import the necessary packages by adding the following to the `impo
 Also, make sure that you add `initSpeaker(logger)`, a line that initializes the speaker, to the `main` function of your program.
 
 Now, create the logic for the classifiers.
-Use the Vision Service's [classification](/services/vision/classification) API method `ClassificationsFromCamera` to do this.
+Use the Vision Service's [classification](/services/vision/classification/) API method `ClassificationsFromCamera` to do this.
 
 You can get your components from the robot like this:
 
