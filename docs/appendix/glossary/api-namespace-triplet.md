@@ -6,7 +6,7 @@ short_description: namespace:type:subtype
 aka:
 ---
 
-Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} type exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API) to describe how you can interact with that resource.
+Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} subtype exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API) to describe how you can interact with that resource.
 
  These APIs are organized by colon-delimited-triplet identifiers, in the form of `namespace:type:subtype`.
 
