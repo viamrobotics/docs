@@ -221,7 +221,7 @@ To generate your robot's configuration using `example_audio_classification_clien
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
-   example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
+   ./example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
    ```
 
 1. Verify that the resulting configuration file was created successfully:
@@ -250,7 +250,8 @@ With everything configured and running, you can now run the inference client tha
 1. On the command line of the system you built the Viam C++ SDK on, run the following to start the inference client, providing the necessary access credentials and the path to the labels file we extracted earlier:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-secret abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234
+   cd ~/example_workspace/opt/bin
+   ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-secret abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234
    ```
 
    The command should return output similar to:
@@ -274,7 +275,8 @@ With everything configured and running, you can now run the inference client tha
 
 All example code is provided in the Viam C++ SDK in the <file>src/viam/examples/</file> directory.
 
-The code in <file>src/viam/examples/mlmodel/example_audio_classification_client.cpp</file> is richly commented to explain each step it takes in generating and analyzing the data provided. What follows is a high-level overview of the steps it takes when executed:
+The code in <file>src/viam/examples/mlmodel/example_audio_classification_client.cpp</file> is richly commented to explain each step it takes in generating and analyzing the data provided.
+What follows is a high-level overview of the steps it takes when executed:
 
 1. The inference client generates two signals that meet the input requirements of the `yamnet/classification` model: the first signal is silence, while the second is noise.
    As written, the example analyzes only the noise signal, but you can change which signal is classified by changing which is assigned to the `samples` variable in the code.
