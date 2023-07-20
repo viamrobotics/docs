@@ -34,9 +34,9 @@ If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a 
 
 You will need the following to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/)
-  - [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
-    This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you complete this tutorial using a different rover.
+- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
+  - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
 - [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle.
   This is the controller that comes with the SCUTTLE rover.
 
@@ -61,8 +61,8 @@ In the **Create component** panel, configure a [gamepad](/components/input-contr
 ![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
 
 The controller config adds the gamepad controller to your robot.
-However, it does not connect it to any functionality.
-This requires a Service.
+However, it is not functional yet.
+To make it functional, you need to add the Base Remote Control Service.
 
 ## Add the Base Remote Control Service
 
@@ -74,11 +74,11 @@ To link the controller's input to the base functionality, you need to configure 
 - Enter `gamepad_service` for the **Service** **name**.
 - Click **Create service**.
 
-Copy and paste the following into the empty **Attributes** field, replacing `THE NAME OF YOUR BASE` with your base's name.
+Copy and paste the following into the empty **Attributes** field, replacing `<your-base-name>` with your base's name.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
- "base": "THE NAME OF YOUR BASE",
+ "base": "<your-base-name>",
  "input_controller": "my-gamepad"
 }
 ```
@@ -93,10 +93,10 @@ You should see the panel for the gamepad and its connection indicator:
 
 ![Gamepad input UI showing a "connected" indicator and a list of inputs from all the buttons, for example X=0.0, RY=0.0 and East=0.](/tutorials/scuttle-gamepad/control-tab-input.png)
 
-At this point, you should be able to move the rover using the gamepad.
-However, whether you can drive it with the joystick or with the D-pad depends on the [settings on the controller](#easysmx-esm-9101-wireless-controller-information).
+Try moving the left joystick or pressing the D-pad to move the rover using the gamepad.
 
-If you are in the [mode](#easysmx-esm-9101-wireless-controller-information) that allows you to use the joystick (#7), it will change the `X` and `Y` values on the **Control** tab gamepad panel:
+The ESM-9101 controller has different [modes](#easysmx-esm-9101-wireless-controller-information) that allow you to use either the joystick or the D-pad.
+If you are in the mode that allows you to use the joystick (#7), it will change the `X` and `Y` values on the **Control** tab gamepad panel:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
 "X
