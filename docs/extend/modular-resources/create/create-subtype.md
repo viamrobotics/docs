@@ -11,8 +11,8 @@ no_list: true
 You need to define a new resource *subtype* (and an API for that subtype) if:
 
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing [component](/components/) or [service](/services/) subtypes.
-- You have a resource that could fit into an existing subtype, but you want to define an API with different endpoints than the ones in the standard Viam [API](/program/apis/) for that subtype.
-For example, you have a [sensor](/components/sensor/) and you want to define a `Calibrate` endpoint.
+- You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/program/apis/) for that subtype.
+For example, you have a [sensor](/components/sensor/) and you want to define a `Calibrate` method.
 
 {{% alert title="Tip" color="tip" %}}
 
