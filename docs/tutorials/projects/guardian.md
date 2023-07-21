@@ -79,7 +79,7 @@ You can view a timelapse of the robot assembly here:
 {{< imgproc src="/tutorials/guardian/base.jpg" alt="Wooden guardian base" resize="400x" >}}
 
 <div class="td-max-width-on-larger-screens" class="alignright" style="max-width: 200px">
-  ![Head with camera attachment](/tutorials/guardian/head.png)
+  {{<imgproc src="/tutorials/guardian/head.png" resize="300x" declaredimensions=true alt="Head with camera attachment">}}
 </div>
 
 To assemble the guardian, start with the head and use four M2 screws to screw the camera with attached ribbon cable to the front half of the head.
