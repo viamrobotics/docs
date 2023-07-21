@@ -62,7 +62,8 @@ If you are writing your module using Python, you can use this [module generator 
 6. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<subtype name>.proto` file you wrote.
 
     - [Example generated files for a Python-based service](https://github.com/viam-labs/speech/tree/main/src/proto)
-      - (<file>speech.proto</file> was manually written, not generated)
+      - (<file>speech.proto</file> was manually written, not generated.)
 
-7. Your resource API is defined.
-  Now you can [create a new model](/extend/modular-resources/create/#code-a-new-resource-model) that implements your new API.
+## Next steps
+
+Now that your resource API is defined, [create a new model](/extend/modular-resources/create/#code-a-new-resource-model) that implements your new API.
