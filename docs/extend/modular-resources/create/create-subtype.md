@@ -20,7 +20,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
-## How to define your new resource API
+## Define your new resource API
 
 Viam uses [protocol buffers](https://protobuf.dev/) for API definition.
 
