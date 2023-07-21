@@ -156,7 +156,6 @@ While your specific build steps may differ slightly, your installation should ge
 ## Download the `yamnet/classification` model file
 
 This example uses the `yamnet/classification` TensorFlow Lite model for audio classification.
-This is a pre-trained model suitable for this example, but when working with your own programs you can also [train your own model](/manage/ml/train-model/).
 
 1. Download the `yamnet/classification` TensorFlow Lite model file and place it in your <file>example_workspace</file> directory:
 
