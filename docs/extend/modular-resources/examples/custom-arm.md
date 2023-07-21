@@ -25,6 +25,7 @@ See [Arm Configuration](/components/arm/#configuration) for the current list of 
 If you have a robot arm whose native software is not provided with a built-in driver, you probably don't want to replace that arm **($$$)**, but you might want to use the [Arm API](/components/arm/#api) to [program](/program/) and control your arm, or want to use it with a Viam [service](/services/).
 
 Follow these instructions to implement a model of [arm component](/components/arm/) that is not built-in to the RDK:
+
 - [Get your arm's kinematics file](#get-your-arms-kinematics-file)
 - [Create a custom arm model as a modular resource](#create-a-custom-arm-model-as-a-modular-resource)
   - [Code a new resource model](#code-a-new-resource-model)
@@ -46,7 +47,7 @@ A configured *module* can make one or more *modular resources* available for con
 ## Get your arm's kinematics file
 
 The way arms move across space is more complicated than Viam's other [components](/components/).
-Because of this, the arm, unlike other components, needs a [kinematic configuration file](/internals/kinematic-chain-config) describing the geometry of the robot arm to work with the RDK's built-in [Motion Service](/motion/), on top of the client-inaccessible and mostly static [Frame System Service](/services/frame-system/).
+Because of this, the arm, unlike other components, needs a [kinematic configuration file](/internals/kinematic-chain-config/) describing the geometry of the robot arm to work with the RDK's built-in [Motion Service](/services/motion/), on top of the client-inaccessible and mostly static [Frame System Service](/services/frame-system/).
 
 **Find a pre-built kinematics file:**
 
@@ -80,7 +81,7 @@ This main program is the "entry point" to your module.
 
 ### Code a new resource model
 
-Save the following two files, <file>my_modular_arm.py</file> and <file>__init__.py</file>, on your computer and edit the code as applicable.
+Save the following two files, <file>my_modular_arm.py</file> and <file>_\_init__.py</file>, on your computer and edit the code as applicable.
 
 This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) [(rdk:service:arm)](/extend/modular-resources/key-concepts/#models) as a new model, `"myarm"`:
 
