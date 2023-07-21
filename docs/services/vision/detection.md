@@ -241,7 +241,7 @@ detections = await my_detector.get_detections_from_camera(cam1)
 
 # If you need to get an image first and then run detections on it,
 # you can do it this way (generally slower but useful if you need to
-# use the image afterwards
+# use the image afterwards):
 img = await cam1.get_image()
 detections_from_image = await my_detector.get_detections(img)
 

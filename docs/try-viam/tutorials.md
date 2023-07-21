@@ -17,7 +17,7 @@ aliases:
 </div>
 
 {{< cards >}}
-    {{% card link="/tutorials/get-started/try-viam-sdk" %}}
+    {{% card link="/tutorials/get-started/try-viam-sdk" customDescription="Drive a Viam Rover from the comfort of your home right now and use a Viam SDK to program the rover to move in a square." %}}
     {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}
 
