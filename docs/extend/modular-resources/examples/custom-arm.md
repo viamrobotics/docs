@@ -1,5 +1,5 @@
 ---
-title: "Create a custom Arm model"
+title: "Create a Custom Arm Model"
 linkTitle: "Custom Arm"
 weight: 100
 type: "docs"
