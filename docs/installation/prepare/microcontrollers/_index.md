@@ -38,8 +38,6 @@ Viam recommends purchasing the ESP32 with a development board: see [development 
 The micro-RDK is written in Rust.
 To be able to program the ESP32 on macOS and Linux systems, you must install the following software on your development machine:
 
-#### Install Homebrew
-
 #### Install Dependencies
 
 {{< tabs >}}
@@ -117,6 +115,9 @@ go install github.com/viamrobotics/canon@latest
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
+Make sure your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
+Verify your version of Go with `go version`.
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install viamrobotics/brews/canon
 ```
@@ -125,6 +126,7 @@ brew install viamrobotics/brews/canon
 {{% /tabs %}}
 
 Make sure to [add the go binary folder to your `PATH`](https://go.dev/ref/mod#go-install).
+Run `$ export PATH=$PATH:$(go env GOPATH)/bin` to do this, and verify your `GOPATH` with `go env GOPATH`.
 
 ### Set up development environment manually
 
@@ -340,7 +342,7 @@ To manage this connection, consider running it within a dedicated terminal sessi
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
 Navigate to your new robot's page on [the Viam app](https://app.viam.com).
-If successful, *Live** should be displayed underneath **Last online**.
+If successful, **Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting
 
