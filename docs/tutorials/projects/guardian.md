@@ -551,8 +551,7 @@ async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, r
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            img = await cam.get_image()
-            detections = await detector.get_detections(img)
+            detections = await detector.get_detections_from_camera(cam)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
@@ -807,8 +806,7 @@ async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, r
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            img = await cam.get_image()
-            detections = await detector.get_detections(img)
+            detections = await detector.get_detections_from_camera(cam)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
