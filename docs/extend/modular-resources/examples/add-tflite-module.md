@@ -205,8 +205,7 @@ Next, install `viam-server` on your robot, if you have not done so already.
 
 ## Generate your robot configuration
 
-When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary.
-The `example_audio_classification_client` binary includes a `--generate` function which determines and creates the necessary robot configuration to support this example.
+When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary, which includes a `--generate` function that determines and creates the necessary robot configuration to support this example.
 
 To generate your robot's configuration using `example_audio_classification_client`:
 
@@ -301,24 +300,22 @@ What follows is a high-level overview of the steps it takes when executed:
 
 Similarly, the `example_mlmodelservice_tflite` module can be found at <file>src/viam/examples/modules/example_mlmodelservice_tflite.cpp</file> and also offers rich comments explaining its features and considerations.
 
-## Next Steps
+## Next steps
 
 This tutorial explores audio classification using the `yamnet/classification` TensorFlow Lite model, but the `MLModelService` modular resource provided by the `example_mlmodelservice_tflite` module can accept any TensorFlow Lite model so long as it fulfils the [TFLite model constraints](https://www.tensorflow.org/lite/models/build#model_design_constraints).
 
-Once you have run the example and examined the module and client code, you could explore the following:
+Once you have run the example and examined the module and client code, you might explore the following next steps:
 
 - Write a client similar to `example_audio_classification_client` that generates a different kind of data and provides a suitable TensorFlow Lite model for that data to the `MLModelService` modular resource.
   For example, you might find a new [pre-trained TensorFlow Lite model](https://www.tensorflow.org/lite/models/trained) that analyzes [speech waveforms](https://tfhub.dev/s?deployment-format=lite&module-type=audio-speech-synthesis) and write a client to provide these waveform samples to the `MLModelService` modular resource and interpret the results returned.
 - Write a client similar to `example_audio_classification_client` that [trains its own model](/manage/ml/train-model/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
   For example, you might add a [movement sensor](components/movement-sensor/) component to your robot that captures sensor readings to the built-in [data management service](/services/data/).
-  Then you could write a client that trains a new model based on the collected sensor reading dataset, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
-- Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TFLite, then write a client that provides a valid model and source data for that inference engine.
+  Then you could write a client that trains a new model based on the collected data, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
+- Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TensorFlow Lite, then write a client that provides a valid model and source data for that inference engine.
 
 ## Troubleshooting and additional documentation
 
-* If you experience issues building the C++ SDK, see [C++ SDK: Limitations, Known Issues, and Troubleshooting](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
-* To customize your C++ build process or make adjustments to fit your platform or deployment requirements, see [C++ SDK: Options to Configure or Customize the Build](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#options-to-configure-or-customize-the-build)
+- If you experience issues building the C++ SDK, see [C++ SDK: Limitations, Known Issues, and Troubleshooting](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+- To customize your C++ build process or make adjustments to fit your platform or deployment requirements, see [C++ SDK: Options to Configure or Customize the Build](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#options-to-configure-or-customize-the-build)
 
 You can find additional reference material in the [C++ SDK documentation](https://cpp.viam.dev/).
-
-{{< snippet "social.md" >}}
