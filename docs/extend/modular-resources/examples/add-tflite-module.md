@@ -3,19 +3,19 @@ title: "Add a TensorFlow Lite Modular Service"
 linkTitle: "Add a TensorFlow Lite Modular Service"
 weight: 70
 type: "docs"
-description: "Add a custom MLModel modular-resource-based service which uses TensorFlow Lite to classify audio samples."
+description: "Add a MLModel modular-resource-based service which uses TensorFlow Lite to classify audio samples."
 tags: ["ml", "model training", "services"]
 # SMEs: Andrew Morrow
 ---
 
-Viam provides an example [custom module](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
+Viam provides an example [modular resource](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
 
 The example files can be found in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
-- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - a custom module that provides an example `MLModelService` instance which runs TensorFlow Lite models.
-- [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example client instance which generates audio samples and invokes the `example_mlmodelservice_tflite` custom module to classify those samples.
+- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides a `MLModelService` modular resource capable of running any TensorFlow Lite model.
+- [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the `yamnet/classification` TensorFlow Lite model.
 
-This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, procuring the necessary support files, configuring your robot and installing `viam-server`, and running the compiled binary example.
+This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.
 
 ## Build the C++ SDK
 
@@ -194,10 +194,10 @@ Next, install `viam-server` on your robot, if you have not done so already.
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --appimage-extract-and-run -config /etc/viam.json
    ```
 
-   Once installed within the Docker container, you can later run it with just:
+   Once installed within the Docker container, you can later run `viam-server` with the following command, from within the directory you installed it to:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam-server --appimage-extract-and-run -config /etc/viam.json &
+   ./viam-server --appimage-extract-and-run -config /etc/viam.json
    ```
 
    {{< /alert >}}
@@ -236,18 +236,18 @@ To generate your robot's configuration using `example_audio_classification_clien
 1. Click the **Save config** button at the bottom of the page.
    Now, when you switch back to **Builder** mode, you can see the new configuration settings under the **Services** and **Modules** subtabs.
 
-This generated configuration features the minimum required configuration to support this tutorial: a `services` definition for the [ML model](/services/ml/) service and a `modules` definition for our `example_mlmodelservice_tflite` [custom module](extend/modular-resources/#configure-your-modular-resource).
+This generated configuration features the minimum required configuration to support this tutorial: `services` parameters for the [ML model](/services/ml/) service and `modules` parameters for the `example_mlmodelservice_tflite` module.
 
 ## Run the inference client
 
-With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` custom module.
+With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
 1. First, determine your robot address and location secret. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include secret**.
    The location secret resembles `abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
 
-1. On the command line of the system you built the Viam C++ SDK on, run the following to start the inference client, providing the necessary access credentials and the path to the labels file we extracted earlier:
+1. Then, run the following to start the inference client, providing the necessary access credentials and the path to the labels file extracted earlier:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
@@ -273,6 +273,9 @@ With everything configured and running, you can now run the inference client tha
 
 ## Understanding the code
 
+The `example_mlmodelservice_tflite` module, and the `MLModelService` modular resource it provides, extends the existing [ML model](/services/ml/) service to run any TensorFlow Lite model.
+The `example_audio_classification_client` inference client provides sample audio data and the `yamnet/classification` TensorFlow Lite model to the `MLModelService` modular resource and interprets the results it returns.
+
 All example code is provided in the Viam C++ SDK in the <file>src/viam/examples/</file> directory.
 
 The code in <file>src/viam/examples/mlmodel/example_audio_classification_client.cpp</file> is richly commented to explain each step it takes in generating and analyzing the data provided.
@@ -285,9 +288,9 @@ What follows is a high-level overview of the steps it takes when executed:
    The tensor must be named according to the configured value under `tensor_name_remappings` in your robot configuration.
    If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
 
-1. The client invokes the `infer` method provided by the `example_mlmodelservice_tflite` custom module, providing it with the `sample` input tensor data it generated earlier.
+1. The client invokes the `infer` method provided by the `example_mlmodelservice_tflite` module, providing it with the `sample` input tensor data it generated earlier.
 
-1. The `example_mlmodelservice_tflite` custom module returns a map of response tensors as a result.
+1. The `example_mlmodelservice_tflite` module returns a map of response tensors as a result.
 
 1. The client validates the result, including its expected type: a vector of `float` values.
    The expected output must be defined under `tensor_name_remappings` in your robot configuration for validation to succeed.
@@ -297,7 +300,20 @@ What follows is a high-level overview of the steps it takes when executed:
 
 1. Finally, the client runs 100 rounds of inference using the determined label and score pairs, and returns the results of the rounds, including mean and variance values.
 
-Similarly, the `example_mlmodelservice_tflite` custom module can be found at <file>src/viam/examples/modules/example_mlmodelservice_tflite.cpp</file> and also offers rich comments explaining its features and considerations.
+Similarly, the `example_mlmodelservice_tflite` module can be found at <file>src/viam/examples/modules/example_mlmodelservice_tflite.cpp</file> and also offers rich comments explaining its features and considerations.
+
+## Next Steps
+
+This tutorial explores audio classification using the `yamnet/classification` TensorFlow Lite model, but the `MLModelService` modular resource provided by the `example_mlmodelservice_tflite` module can accept any TensorFlow Lite model so long as it fulfils the [TFLite model constraints](https://www.tensorflow.org/lite/models/build#model_design_constraints).
+
+Once you have run the example and examined the module and client code, you could explore the following:
+
+- Write a client similar to `example_audio_classification_client` that generates a different kind of data and provides a suitable TensorFlow Lite model for that data to the `MLModelService` modular resource.
+  For example, you might find a new [pre-trained TensorFlow Lite model](https://www.tensorflow.org/lite/models/trained) that analyzes [speech waveforms](https://tfhub.dev/s?deployment-format=lite&module-type=audio-speech-synthesis) and write a client to provide these waveform samples to the `MLModelService` modular resource and interpret the results returned.
+- Write a client similar to `example_audio_classification_client` that [trains its own model](/manage/ml/train-model/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
+  For example, you might add a [movement sensor](components/movement-sensor/) component to your robot that captures sensor readings to the built-in [data management service](/services/data/).
+  Then you could write a client that trains a new model based on the collected sensor reading dataset, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
+- Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TFLite, then write a client that provides a valid model and source data for that inference engine.
 
 ## Troubleshooting and additional documentation
 
