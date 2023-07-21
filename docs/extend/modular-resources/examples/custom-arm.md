@@ -8,7 +8,7 @@ tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Py
 # SMEs: Nicole Jung
 ---
 
-The RDK provides a number of built-in {{< glossary_tooltip term_id="model" text="models" >}} that implement the API protocol of the [arm](/components/arm) subtype of component, such as the `ur5e`, `xArm6`, and `xArm7`.
+The RDK provides a number of built-in {{< glossary_tooltip term_id="model" text="models" >}} that implement the API protocol of the [arm](/components/arm/) subtype of component, such as the `ur5e`, `xArm6`, and `xArm7`.
 
 {{% alert title="Info" color="info" %}}
 
