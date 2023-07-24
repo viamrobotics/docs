@@ -171,6 +171,14 @@ sudo journalctl --unit=viam-server
 
 Use the arrow keys to page vertically or horizontally through the log messages.
 
+You can also "tail" the logs, viewing new messages as they come in with:
+
+```sh {class="command-line" data-prompt="$"}
+sudo journalctl -f --unit=viam-server
+```
+
+Use the q key to stop following the logs.
+
 You can also view log messages specific to `viam-server` in the `syslog` with the following command:
 
 ```sh {class="command-line" data-prompt="$"}
