@@ -125,6 +125,7 @@ Method Name | Description
 [`Waypoints`](#waypoints) | Get an array of waypoints currently in the service's data storage.
 [`AddWaypoint`](#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](#removewaypoint) | Remove a waypoint from the service's data storage.
+[`GetObstacles`](#getobstacles) | Get an array of obstacles currently in the service's data storage.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -137,7 +138,7 @@ Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) f
 
 {{% alert title="Stability Notice" color="note" %}}
 
-The `manual` mode is experimental and will have no effect.
+The `manual` mode stops autonomous navigation between waypoints and allows the base to be controlled manually.
 
 {{% /alert %}}
 
@@ -155,10 +156,10 @@ If you set the mode to `waypoint`, the service starts looking for added waypoint
 
 **Returns:**
 
-- [(Mode)](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Mode): The `Mode` the service is operating in.
+- [(Mode)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Mode): The `Mode` the service is operating in.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav")
@@ -188,14 +189,14 @@ If you set the mode to `waypoint`, the service starts looking for added waypoint
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `mode` [(Mode)](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Mode): The `Mode` for the service to operate in.
+- `mode` [(Mode)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Mode): The `Mode` for the service to operate in.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav")
@@ -224,7 +225,7 @@ Get the current location of the robot in the navigation service.
 - [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav")
@@ -251,10 +252,10 @@ These are locations designated within a path for the robot to navigate to.
 
 **Returns:**
 
-- [([]Waypoints)](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Waypoint): An array comprised of each `Waypoint` in the service's data storage. These are locations designated within a path for the robot to navigate to.
+- [([]Waypoints)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Waypoint): An array comprised of each `Waypoint` in the service's data storage. These are locations designated within a path for the robot to navigate to.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav")
@@ -283,7 +284,7 @@ Add a waypoint to the service's data storage.
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav")
@@ -315,7 +316,7 @@ Remove a waypoint from the service's data storage.
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.49/services/navigation#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
 
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav")
@@ -325,6 +326,38 @@ waypoint_id = primitive.NewObjectID()
 
 // Remove the waypoint matching that ObjectID from the service's data storage
 err := myNav.RemoveWaypoint(context.Background(), waypoint_id, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetObstacles
+
+Get an array of obstacles currently in the service's data storage.
+These are locations designated for the robot to avoid when navigating.
+See the [Motion Service](/services/motion/) for more information.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
+These are locations designated for the robot to avoid when navigating.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav")
+
+// Get an array containing each obstacle stored by the navigation service
+obstacles, err := myNav.GetObstables(context.Background(), nil)
 ```
 
 {{% /tab %}}
