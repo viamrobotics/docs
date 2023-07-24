@@ -16,12 +16,12 @@
           {{ end }}
           {{ if .Params.image }}
           <div class="hover-card-img">
-            {{ partial "imgproc.html" (dict "src" .Params.image "resize" "600x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
+            {{ partial "imgproc.html" (dict "src" .Params.image "resize" "300x" "alt" .Params.imageAlt "style" "" "class" "" "declaredimensions" false ) }}
           </div>
           {{ end }}
           {{ if .Params.icon }}
           <div class="hover-card-icon">
-            {{ partial "imgproc.html" (dict "src" .Params.icon "resize" "600x" "alt" .Params.linkTitle "style" "" "class" (.Get "class") "declaredimensions" false ) }}
+            {{ partial "imgproc.html" (dict "src" .Params.icon "resize" "300x" "alt" .Params.linkTitle "style" "" "class" (.Get "class") "declaredimensions" false ) }}
           </div>
           {{ end }}
           <div {{ if .Params.image }}class="small-hover-card-div"{{ end }}{{ if .Params.webmSrc }}class="small-hover-card-div"{{ end }}>
