@@ -274,7 +274,7 @@ async def main():
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdk@v0.2.4/components/base#Base).
+The first thing you need to do is import the [base component](https://pkg.go.dev/go.viam.com/rdkcomponents/base#Base).
 The base is responsible for controlling the motors attached to the base of the rover.
 Add the following line of code to your imports before:
 
