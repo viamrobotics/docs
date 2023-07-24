@@ -115,7 +115,7 @@ Copy and paste the following into the empty **Attributes** field, replacing `<yo
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to **Raw JSON** mode on the **Config** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/manage/configuration/#the-config-tab) on the **Config** tab.
 Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -131,6 +131,7 @@ Add the following configuration for your base remote control service, replacing 
   ]
 ```
 
+If you already have a `"services"` array with other services configured, add just the contents of the square brackets above to that array, rather than creating two different `"services"` arrays.
 {{% /tab %}}
 {{< /tabs >}}
 
