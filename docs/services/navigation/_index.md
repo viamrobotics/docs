@@ -63,7 +63,6 @@ Click **Create service**:
             "config": {
                 "uri": "mongodb://127.0.0.1:27017"
             }
-        }
         },
         "movement_sensor": "test_movement",
         "base": "test_base",
