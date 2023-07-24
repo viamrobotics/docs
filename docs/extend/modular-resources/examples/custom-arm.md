@@ -12,19 +12,19 @@ The RDK provides a number of built-in {{< glossary_tooltip term_id="model" text=
 
 {{% alert title="Info" color="info" %}}
 
-*Built-in* indicates each of these models has a driver for their native software in the RDK.
+*Built-in* models each have a software driver in the RDK.
 For example, the `ur5e`'s driver is defined in the RDK as found on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur.go).
 
-Each of these models also has to have a [kinematics file](/internals/kinematic-chain-config/) that specifies the relative [orientation](/internals/orientation-vector/) of components in its kinematic chain, which is located in the RDK in the same directory as the respective driver.
+Each of these models also has to have a [kinematics file](/internals/kinematic-chain-config/) that specifies the relative [orientation](/internals/orientation-vector/) of links and joints in its kinematic chain, which is located in the RDK in the same directory as the respective driver.
 For example, the `ur5e`'s kinematics file, <file>ur5e.json</file>, is defined in the RDK as found on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json).
 
 See [Arm Configuration](/components/arm/#configuration) for the current list of built-in models the RDK provides.
 
 {{% /alert %}}
 
-If you have a robot arm whose native software is not provided with a built-in driver, you probably don't want to replace that arm **($$$)**, but you might want to use the [Arm API](/components/arm/#api) to [program](/program/) and control your arm, or want to use it with a Viam [service](/services/).
+If you have a robot arm that is not already supported by the RDK, creating a custom module for it allows you to [program](/program/) and control it with the [arm API](/components/arm/#api), or use it with Viam [services](/services/) such as [Motion Planning](/services/motion/), just as you would with a built-in model.
 
-Follow these instructions to implement a model of [arm component](/components/arm/) that is not built-in to the RDK:
+Follow these instructions to implement a model of [arm component](/components/arm/) that is not built into the RDK:
 
 - [Get your arm's kinematics file](#get-your-arms-kinematics-file)
 - [Create a custom arm model as a modular resource](#create-a-custom-arm-model-as-a-modular-resource)
@@ -36,22 +36,15 @@ Follow these instructions to implement a model of [arm component](/components/ar
 This guide uses Viam's Python SDK to code the arm module, but if you want to use the Go Client SDK, you can.
 Follow [this guide](/extend/modular-resources/create/#code-a-new-resource-model) and select **Go** to learn how to code a module providing a new arm model in Go.
 
-{{% alert title="Modules vs. modular resources" color="tip" %}}
-
-The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) into any robot running on Viam.
-
-A configured *module* can make one or more *modular resources* available for configuration.
-
-{{% /alert %}}
-
 ## Get your arm's kinematics file
 
 The way arms move across space is more complicated than Viam's other [components](/components/).
-Because of this, the arm, unlike other components, needs a [kinematic configuration file](/internals/kinematic-chain-config/) describing the geometry of the robot arm to work with the RDK's built-in [Motion Service](/services/motion/), on top of the client-inaccessible and mostly static [Frame System Service](/services/frame-system/).
+Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
+This provides necessary information for the built-in [Motion Service](/services/motion/) to work with the arm, on top of the client-inaccessible and mostly static [Frame System Service](/services/frame-system/).
 
 **Find a pre-built kinematics file:**
 
-- The RDK's `viam-server` will work with <file>URDF</file> (United Robot Description Format) kinematics files, which are currently the standard for ROS drivers.
+- `viam-server` will work with <file>URDF</file> (United Robot Description Format) kinematics files, which are currently the standard for ROS drivers.
 Many <file>URDF</file> "robot descriptions" for industrial robot arm models can be found on [GitHub](https://github.com/) that could work with the arm on Viam.
 
 **Create your own kinematics file:**
@@ -59,7 +52,7 @@ Many <file>URDF</file> "robot descriptions" for industrial robot arm models can 
 - Follow the instructions on [Configure Complex Kinematic Chains](/internals/kinematic-chain-config/) to write a file detailing the geometry of your arm.
   - Use the [Spatial Vector Algebra (SVA)](/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
-  - Following the Frame System's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientation](/internals/orientation-vector/) of the `"links"` on your arm.
+  - Follow the Frame System's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientation](/internals/orientation-vector/) of the `"links"` on your arm.
 - View examples of the SVA and JSON format in Viam's built-in arm drivers on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm).
 
 Create a new directory.
@@ -71,7 +64,7 @@ While completing the following step, make sure to save any new files that you ge
 
 To create a custom arm model, code a module in Python with the module support libraries provided by [Viam's SDKs](/program/apis/):
 
-1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (ex. `rdk:component:arm`).
+1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (for example, `rdk:component:arm`).
 Import your custom model and API into the main program and register the new resource model with your chosen SDK.
 
 2. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
@@ -256,3 +249,4 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 ## Configure the module and modular resource on your robot
 
 Follow [these configuration instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
+
