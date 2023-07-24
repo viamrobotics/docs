@@ -66,8 +66,8 @@ In the **Create component** panel, configure a [gamepad](/components/input-contr
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to **Raw JSON** mode on the **Config** tab.
-Inside the `"components": []` section of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
+If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/manage/configuration/#the-config-tab) on the **Config** tab.
+Inside the `components` array of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
     {
