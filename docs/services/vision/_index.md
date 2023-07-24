@@ -137,10 +137,9 @@ Get a list of detections from the next image from a specified camera using a det
 
 **Returns:**
 
-- [(List[Detection])](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detectionn): A list of 2D bounding boxes, their labels, and the confidence score of the labels around the detected objects, and confidence scores of those detections.
+- [(List[Detection])](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection): A list of 2D bounding boxes, their labels, and the confidence score of the labels around the detected objects, and confidence scores of those detections.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
-
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
 # Grab the camera from the robot
@@ -188,8 +187,166 @@ detections, err := visService.DetectionsFromCamera(context.Background(), myCam, 
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
-if len(directDetections) > 0 {
+if len(detections) > 0 {
     logger.Info(detections[0])
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetClassifications
+
+Get a list of classifications from a given image using a configured classifier.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `image` [(RawImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage): The image in which to look for classifications.
+- `count` [(int)](https://docs.python.org/3/library/functions.html#int): The number of classifications to return. For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(List[Classification])](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification): A list of classification labels, and the confidence scores of those classifications.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications).
+
+```python {class="line-numbers linkable-line-numbers" data-line="11"}
+# Grab camera from the robot
+cam1 = Camera.from_robot(robot, "cam1")
+
+# Get the classifier you configured on your robot
+my_classifier = VisionClient.from_robot(robot, "my_classifier")
+
+# Get an image from the camera
+img = await cam1.get_image()
+
+# Get classifications from that image
+classifications = await my_classifier.get_classifications(img)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `img` [(Image)](https://pkg.go.dev/image#Image): The image in which to look for classifications.
+- `n` [(int)](https://pkg.go.dev/builtin#int): The number of classifications to return. For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(classification.Classification)](https://pkg.go.dev/go.viam.com/rdk/vision/classification#Classifications): A list of classification labels, and the confidence scores of those classifications.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
+
+```go {class="line-numbers linkable-line-numbers" data-line="22"}
+// Grab the camera from the robot
+cameraName := "cam1"
+myCam, err := camera.FromRobot(robot, cameraName)
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
+// Grab the classifier you configured on your robot
+visService, err := vision.from_robot(robot=robot, name='my_classifier')
+if err != nil {
+    logger.Fatalf("Cannot get Vision Service: %v", err)
+}
+
+// Get the stream from a camera
+camStream, err := myCam.Stream(context.Background())
+
+// Get an image from the camera stream
+img, release, err := camStream.Next(context.Background())
+defer release()
+
+// Get the top 2 classifications from the image
+classifications, err := visService.Classifications(context.Background(), img, 2, nil)
+if err != nil {
+    logger.Fatalf("Could not get classifications: %v", err)
+}
+if len(classifications) > 0 {
+    logger.Info(classifications[0])
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetClassificationsFromCamera
+
+Get a list of classifications from the next image from a specified camera using a configured classifier.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `camera_name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the camera from which to get an image to run the classifier on.
+- `count` [(int)](https://docs.python.org/3/library/functions.html#int): The number of classifications to return. For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(List[Classification])](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification): A list of classification labels, and the confidence scores of those classifications.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications_from_camera).
+
+```python {class="line-numbers linkable-line-numbers" data-line="8"}
+# Grab the camera from the robot
+cam1 = Camera.from_robot(robot, "cam1")
+
+# Grab the classifier you configured on your robot
+my_classifier = VisionClient.from_robot(robot, "my_classifier")
+
+# Get the top 2 classifications from the next image from the camera
+classifications = await my_classifier.get_classifications_from_camera(cam1, 2)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cameraName` [(string)](https://pkg.go.dev/builtin#string): The name of the camera from which to get an image to run the classifier on.
+- `n` [(int)](https://pkg.go.dev/builtin#int): The number of classifications to return. For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]objection.Classification)](https://pkg.go.dev/go.viam.com/vision/classification#Classifications): A list of classification labels, and the confidence scores of those classifications.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
+
+```go {class="line-numbers linkable-line-numbers" data-line="15"}
+// Grab the camera from the robot
+cameraName := "cam1"
+myCam, err := camera.FromRobot(robot, cameraName)
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
+// Grab the classifier you configured on your robot
+visService, err := vision.from_robot(robot=robot, name='my_classifier')
+if err != nil {
+    logger.Fatalf("Cannot get Vision Service: %v", err)
+}
+
+// Get the top 2 classifications from the camera output
+classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
+if err != nil {
+    logger.Fatalf("Could not get classifications: %v", err)
+}
+if len(classifications) > 0 {
+    logger.Info(classifications[0])
 }
 ```
 
