@@ -64,7 +64,7 @@ Get the current position of the component the SLAM service is configured to sour
 
 **Returns:**
 
-- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdkspatialmath#Pose): A `Pose` representing the current position of the specified component.
+- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A `Pose` representing the current position of the specified component.
 - [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
 For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
