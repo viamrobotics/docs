@@ -9,11 +9,15 @@ tags: ["ml", "model training", "services"]
 ---
 
 Viam provides an example [modular resource](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
+The example includes an inference client program as well, which generates audio samples and uses the modular resource to classify the audio samples based on a pre-trained model.
 
-The example files can be found in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
+This example is intended to demonstrate the design, implementation, and usage of a custom module to serve as a guide to help you write your own.
+This code is for instructional purposes only, and is not intended for production use.
+
+You can find the example files in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
 - [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides a `MLModelService` modular resource capable of running any TensorFlow Lite model.
-- [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the `yamnet/classification` TensorFlow Lite model.
+- [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the [`yamnet/classification` TensorFlow Lite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
 
 This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.
 
@@ -177,7 +181,7 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 
 ## Install `viam-server`
 
-Next, install `viam-server` on your robot, if you have not done so already.
+Next, install `viam-server` on your robot, if you have not done so already:
 
 1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
 
@@ -215,7 +219,7 @@ To generate your robot's configuration using `example_audio_classification_clien
 1. Next, determine the full path to the `example_mlmodelservice_tflite` modular resource example provided with the Viam C++ SDK.
    If you followed the instructions above, this path is: <file>~/example_workspace/opt/bin/example_mlmodelservice_tflite</file>.
 
-1. Run the `example_audio_classification_client` binary, proving both paths to the `--generate` function in the following fashion:
+1. Run the `example_audio_classification_client` binary, providing both paths to the `--generate` function in the following fashion:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
@@ -309,7 +313,7 @@ Once you have run the example and examined the module and client code, you might
 - Write a client similar to `example_audio_classification_client` that generates a different kind of data and provides a suitable TensorFlow Lite model for that data to the `MLModelService` modular resource.
   For example, you might find a new [pre-trained TensorFlow Lite model](https://www.tensorflow.org/lite/models/trained) that analyzes [speech waveforms](https://tfhub.dev/s?deployment-format=lite&module-type=audio-speech-synthesis) and write a client to provide these waveform samples to the `MLModelService` modular resource and interpret the results returned.
 - Write a client similar to `example_audio_classification_client` that [trains its own model](/manage/ml/train-model/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
-  For example, you might add a [movement sensor](components/movement-sensor/) component to your robot that captures sensor readings to the built-in [data management service](/services/data/).
+  For example, you might add a [movement sensor](components/movement-sensor/) component to your robot that captures sensor readings to the built-in [Data Management Service](/services/data/).
   Then you could write a client that trains a new model based on the collected data, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
 - Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TensorFlow Lite, then write a client that provides a valid model and source data for that inference engine.
 
