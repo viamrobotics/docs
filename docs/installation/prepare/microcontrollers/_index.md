@@ -97,10 +97,10 @@ cargo install espflash
 
 [Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker-based canonical environment.
 
-Canon requires a working installation of Docker.
+Canon requires a working installation of Docker Engine.
 
-[Install Docker](https://docs.docker.com/engine/install/) before proceeding.
-If you are running Docker on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/).
+[Install Docker Engine](https://docs.docker.com/engine/install/) before proceeding.
+If you are running Docker Engine on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to run Docker automatically on startup.
 
 {{< tabs >}}
 {{% tab name="Linux (Ubuntu)" %}}
@@ -212,8 +212,12 @@ To activate the ESP Rust toolchain, run the following command to source (`.`) th
 . $HOME/esp/esp-idf/export-rs.sh
 ```
 
-To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
-Save this command to run in any future terminal session where you need to activate the ESP Rust development framework.
+{{< alert title="Tip" color="tip" >}}
+
+To avoid conflicts with other toolchains, adding this command to your .bashrc or .zshrc is not recommended.
+Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
+
+{{< /alert >}}
 
 ## Install the Micro-RDK
 
@@ -222,8 +226,7 @@ Save this command to run in any future terminal session where you need to activa
 Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
 * Click on the name of the robot to go to the robot's page.
-* Skip the instructions in the [**Setup** tab](/manage/fleet/robots/#setup), as the setup instructions there are not for microcontrollers.
-* Keep your `Mode` and `Architecture` selections at default.
+* Navigate to the **Config** tab.
 
 ### Configure an `esp32` Board
 
@@ -297,6 +300,9 @@ The following attributes are available for `esp32` boards:
 
 ### Generate a New Project from the Micro-RDK Template
 
+[Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
+If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
+
 Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-robot-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -307,6 +313,8 @@ You will be prompted to paste your robot's JSON configuration into the terminal.
 To obtain this:
 
 * Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+* Click on the **Setup** tab.
+Keep your `Mode` and `Architecture` selections at default.
 * Click the **Copy viam-server config** button on the right side of the **Setup** tab.
 The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to [the Viam app](https://app.viam.com).
 * Paste the `viam-server` config into your terminal when prompted.
