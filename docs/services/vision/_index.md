@@ -352,3 +352,75 @@ if len(classifications) > 0 {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### GetObjectPointClouds
+
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using the specified segmenter).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `camera_name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the 3D camera from which to get point cloud data.
+- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(List[PointCloudObject])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject): A list of point clouds and associated metadata like the center coordinates of each point cloud.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_object_point_clouds).
+
+```python {class="line-numbers linkable-line-numbers" data-line="8"}
+# Grab the 3D camera from the robot
+cam1 = Camera.from_robot(robot, "cam1")
+
+# Grab the object segmenter you configured on your robot
+my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
+
+# Get the top 2 classifications from the next image from the camera
+objects = await my_segmenter.get_object_point_clouds(cam1)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cameraName` [(string)](https://pkg.go.dev/builtin#string): The name of the 3D camera from which to get point cloud data.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]objection.Classification)](https://pkg.go.dev/go.viam.com/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
+
+```go {class="line-numbers linkable-line-numbers" data-line="15"}
+// Grab the camera from the robot
+cameraName := "cam1"
+myCam, err := camera.FromRobot(robot, cameraName)
+if err != nil {
+  logger.Fatalf("cannot get camera: %v", err)
+}
+
+// Grab the segmenter you configured on your robot
+visService, err := vision.from_robot(robot=robot, name='my_segmenter')
+if err != nil {
+    logger.Fatalf("Cannot get Vision Service: %v", err)
+}
+
+// Get the objects from the camera output
+objects, err := visService.ObjectPointClouds(context.Background(), myCam, nil)
+if err != nil {
+    logger.Fatalf("Could not get point clouds: %v", err)
+}
+if len(objects) > 0 {
+    logger.Info(objects[0])
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
