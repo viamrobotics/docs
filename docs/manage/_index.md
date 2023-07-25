@@ -27,7 +27,6 @@ We do not automatically merge Single Sign On accounts.
 If you use Google to log in and then sign up with Apple, Viam treats that as two separate accounts.
 {{< /alert >}}
 
-
 ## Manage
 
 You do not have to use the app to use Viam's platform to build your robot, but it has several key features to help you get started managing your robots, including configuring robots with more complicated architecture like sub-parts or remotes:
