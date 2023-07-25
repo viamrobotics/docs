@@ -225,8 +225,8 @@ my_classifier = VisionClient.from_robot(robot, "my_classifier")
 # Get an image from the camera
 img = await cam1.get_image()
 
-# Get classifications from that image
-classifications = await my_classifier.get_classifications(img)
+# Get the 2 classifications with the highest confidence scores
+classifications = await my_classifier.get_classifications(img, 2)
 ```
 
 {{% /tab %}}
@@ -268,7 +268,7 @@ camStream, err := myCam.Stream(context.Background())
 img, release, err := camStream.Next(context.Background())
 defer release()
 
-// Get the top 2 classifications from the image
+// Get the 2 classifications with the highest confidence scores from the image
 classifications, err := visService.Classifications(context.Background(), img, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
@@ -308,7 +308,7 @@ cam1 = Camera.from_robot(robot, "cam1")
 # Grab the classifier you configured on your robot
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the top 2 classifications from the next image from the camera
+# Get the 2 classifications with the highest confidence scores from the next image from the camera
 classifications = await my_classifier.get_classifications_from_camera(cam1, 2)
 ```
 
@@ -344,7 +344,7 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// Get the top 2 classifications from the camera output
+// Get the 2 classifications with the highest confidence scores from the camera output
 classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
@@ -382,7 +382,7 @@ cam1 = Camera.from_robot(robot, "cam1")
 # Grab the object segmenter you configured on your robot
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
-# Get the top 2 classifications from the next image from the camera
+# Get the objects from the camera output
 objects = await my_segmenter.get_object_point_clouds(cam1)
 ```
 

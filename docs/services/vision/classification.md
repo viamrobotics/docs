@@ -137,7 +137,7 @@ cam1 = Camera.from_robot(robot, "cam1")
 # Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the top 2 most confident classifications from the camera output
+# Get the top 2 classifications with the highest confidence scores from the camera output
 classifications = await my_classifier.get_classifications_from_camera(img, 2)
 
 # If you need to get an image first and then run classifications on it,
@@ -174,7 +174,7 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// Get the top 2 most confident classifications from the camera output
+// Get the top 2 classifications with the highest confidence scores from the camera output
 classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
@@ -195,7 +195,7 @@ img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-// Get the top 2 most confident classifications
+// Get the top 2 classifications with the highest confidence scores
 classificationsFromImage, err := visService.GetClassifications(context.Background(), img, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
