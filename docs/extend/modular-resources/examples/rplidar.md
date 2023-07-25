@@ -47,8 +47,12 @@ brew tap viamrobotics/brews && brew install rplidar-module
 
 ## Configuration
 
-Physically connect the RPlidar to your machine.
-Go to your robot's page on the [Viam app](https://app.viam.com/).
+Physically connect the RPlidar to your robot.
+Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
+For example, if you are using the RPlidar A1 model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
+This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the robot, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
+
+Then, go to your robot's page on the [Viam app](https://app.viam.com/).
 
 {{< tabs name="Add the Rplidar component">}}
 {{% tab name="Config Builder" %}}

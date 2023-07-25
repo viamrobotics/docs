@@ -255,10 +255,14 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/components/movement-sensor/) for more information.
-- For [LiDAR laser range scanning](/services/slam/cartographer/), we recommend Velodyne, or RPLIDAR (including A1, which is a sub-$100 LIDAR).
+- For [LiDAR laser range scanning](/services/slam/cartographer/), we recommend Velodyne, or RPlidar (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
-### Lidar Mounting for the Viam Rover
+### Mount an RPlidar to the rover
 
-If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
-The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/VR1-22-A001/blob/master/CAD/RPIidar_adapter.STL).
+If you are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
+For example, if you are using the RPlidar A1 model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
+This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
+
+If you need a mount for your RPlidar, you can 3D print an adapter plate.
+The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidar_adapter.STL).
