@@ -24,15 +24,15 @@ Currently, the Vision Service supports the following models:
 
 ## API
 
-The Vision Service supports the following methods:
+Different Vision Service models support different methods:
 
-Method Name | Description
------------ | -----------
-[`GetDetections`](#getdetections) | Get detections from an image.
-[`GetDetectionsFromCamera`](#getdetectionsfromcamera) | Get detections from the next image from a camera.
-[`GetClassifications`](#getclassifications) | Get classifications from an image.
-[`GetClassificationsFromCamera`](#getclassificationsfromcamera) | Get classifications from the next image from a camera.
-[`GetObjectPointClouds`](#getobjectpointclouds) | Get a list of point cloud objects from a 3D camera.
+Method Name | Description | Models That Support This Method
+----------- | ----------- | -------------------------------
+[`GetDetections`](#getdetections) | Get detections from an image. | [detectors](./detection/)
+[`GetDetectionsFromCamera`](#getdetectionsfromcamera) | Get detections from the next image from a camera. | [detectors](./detection/)
+[`GetClassifications`](#getclassifications) | Get classifications from an image. | [classifiers](./classification/)
+[`GetClassificationsFromCamera`](#getclassificationsfromcamera) | Get classifications from the next image from a camera. | [classifiers](./classification/)
+[`GetObjectPointClouds`](#getobjectpointclouds) | Get a list of point cloud objects from a 3D camera. | [segmenters](./segmentation/)
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -43,7 +43,7 @@ Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) f
 
 ### GetDetections
 
-Get a list of detections from a given image using a detector.
+Get a list of detections from a given image using a configured [detector](./detection/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -125,7 +125,7 @@ if len(detections) > 0 {
 
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a detector.
+Get a list of detections from the next image from a specified camera using a configured [detector](./detection/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -197,7 +197,7 @@ if len(detections) > 0 {
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured classifier.
+Get a list of classifications from a given image using a configured [classifier](./classification/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -283,7 +283,7 @@ if len(classifications) > 0 {
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured classifier.
+Get a list of classifications from the next image from a specified camera using a configured [classifier](./classification/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -359,7 +359,7 @@ if len(classifications) > 0 {
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using the specified segmenter).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](./segmentation/)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
