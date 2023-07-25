@@ -45,7 +45,7 @@ Method Name | Description
 [`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually."
 [`GetPose`](#getpose) | Get the current location and orientation of a component as a `Pose`.
 [`MoveOnMap`](#moveonmap) | Move a component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
-[`MoveOnGlobe`] | Move a component to a specific latitude and longitude, using a [Movement Sensor](/components/movement-sensor/) to determine the location.
+[`MoveOnGlobe`] | Move a component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -491,14 +491,16 @@ success, err := motionService.MoveOnMap(context.Background(), "my_base", myPose,
 
 ### MoveOnGlobe
 
-Move the component to a destination location represented in geographic notation *(latitude, longitude)*.
+Move a component to a destination GPS point, represented in geographic notation *(latitude, longitude)*.
 Use a [Movement Sensor](/components/movement-sensor/) to check the location of the robot.
 
 {{< alert title="Usage" color="tip" >}}
 
 `MoveOnGlobe()` is intended for use with the [Navigation Service](/services/navigation), providing autonomous GPS navigation for rover [bases](/components/base/).
 
-To use `MoveOnGlobe()`, make sure the [movement sensor](/components/movement-sensor) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
+To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the robot.
+
+Make sure the [movement sensor](/components/movement-sensor) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the robot's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
