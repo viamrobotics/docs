@@ -19,8 +19,10 @@ Once these waypoints are added and the mode of the service is [set to `MODE_WAYP
 
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
-The movement sensor must support `GetPosition`, `GetCompassHeading`, or `Orientation` in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Sensor API](/components/sensor/#api).
-If your movement sensor provides multiple methods, your robot will default to using the values returned by `GetCompassHeading`.
+The movement sensor must support [`GetPosition()`](/components/movement-sensor/#getposition), and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation), in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
+It must support `GetPosition()` to report the robot's current GPS location.
+It must also support either `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
+If your movement sensor provides multiple methods, your robot will default to using the values returned by `GetCompassHeading()`.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -266,7 +268,7 @@ Get the current location of the robot in the navigation service.
 
 **Returns:**
 
-- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
+- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude and longitude values.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
