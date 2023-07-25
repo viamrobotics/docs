@@ -6,7 +6,7 @@ type: "docs"
 description: "Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software."
 webmSrc: "/tutorials/videos/scuttle-colordetection-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-colordetection-preview.mp4"
-videoAlt: "Detecting color with a Scuttle Robot"
+videoAlt: "Detecting color with a SCUTTLE Robot"
 images: ["/tutorials/videos/scuttle-colordetection-preview.gif"]
 aliases:
     - "/tutorials/color-detection-scuttle"
