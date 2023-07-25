@@ -510,8 +510,12 @@ Make sure the [movement sensor](/components/movement-sensor) you use supports us
 
 {{< alert title="Stability Notice" color="alert" >}}
 
+This method is experimental.
+
 Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoObstacle` objects.
 The translation feature is not yet supported by the [Navigation Service](/services/navigation/api/).
+
+Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/services/motion/algorithms/).
 
 {{< /alert >}}
 
