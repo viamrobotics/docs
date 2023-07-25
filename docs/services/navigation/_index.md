@@ -13,7 +13,7 @@ tags: ["navigation", "services", "base", "rover"]
 
 The Navigation service is the stateful definition of Viam's [Motion Service](/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
-Once these waypoints are added and the mode of the service is [set to `Mode.WAYPOINT`](#setmode), the service begins to define the robot's path.
+Once these waypoints are added and the mode of the service is [set to `MODE_WAYPOINT`](#setmode), the service begins to define the robot's path.
 
 ## Configuration
 
