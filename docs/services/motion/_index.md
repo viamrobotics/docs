@@ -500,7 +500,7 @@ Use a [Movement Sensor](/components/movement-sensor/) to check the location of t
 
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the robot.
 
-Make sure the [movement sensor](/components/movement-sensor) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the robot's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
@@ -513,7 +513,7 @@ Make sure the [movement sensor](/components/movement-sensor) you use supports us
 This method is experimental.
 
 Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoObstacle` objects.
-The translation feature is not yet supported by the [Navigation Service](/services/navigation/api/).
+The translation feature is not yet supported by the [Navigation Service](/services/navigation/).
 
 Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/services/motion/algorithms/).
 
