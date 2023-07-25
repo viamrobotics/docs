@@ -329,7 +329,7 @@ success = await motion.move_on_map(component_name="my_base", destination=my_pose
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the component to move.
-- `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
+- `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
 - `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the [SLAM Service](/services/slam/) from which the SLAM map is requested.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
@@ -338,7 +338,7 @@ success = await motion.move_on_map(component_name="my_base", destination=my_pose
 - [(bool)](https://pkg.go.dev/builtin#bool): Whether the request to `MoveOnMap` was successful.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/services/motion#Service).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")

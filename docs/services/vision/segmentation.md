@@ -237,14 +237,13 @@ if err != nil {
 }
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-segments, err := visService.GetObjectPointClouds(cameraName)
+segments, err := visService.GetObjectPointClouds(context.Background(), cameraName, nil)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
 if len(segments) > 0 {
     logger.Info(segments[0])
 }
-
 ```
 
 To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).

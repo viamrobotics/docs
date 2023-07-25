@@ -51,12 +51,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/robot#Robot): The robot.
+- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot.
 - `name` [(string)](https://pkg.go.dev/builtin#string): The "name" of the resource.
 
 **Returns:**
 
-- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): The named resource if it exists on your robot.
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your robot.
 For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
@@ -467,11 +467,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
+- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
 
 **Returns:**
 
-- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`.
+- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`.
 `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -797,7 +797,7 @@ resource_names = robot.resource_names
 
 **Returns:**
 
-- [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): List of all known resource names.
+- [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): List of all known resource names.
 
 ```go
 resource_names := robot.ResourceNames()

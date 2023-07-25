@@ -15,7 +15,7 @@ To be able to build the docs locally, you need to install the following:
 You can build the docs for local development using the following command:
 
 ```sh
-make serve-dev
+make serve-dev-draft
 ```
 
 If you would like to see the production view (without drafts and with minified CSS), run:

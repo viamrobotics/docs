@@ -8,7 +8,7 @@ images: ["/icons/components/motor.svg"]
 # SMEs: Rand, James
 ---
 
-The `gpiostepper` model of the motor component supports bipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825) or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and move the motor one step per pulse.
+The `gpiostepper` model of the motor component supports bipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825), [A4988](https://www.pololu.com/product/1182), or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and move the motor one step per pulse.
 
 {{< alert title="Tip" color="tip" >}}
 Viam also supports some more advanced stepper driver chips ([TMC5072](../tmc5072/), [DMC4000](../dmc4000/)) that have their own microcontrollers that handle things like speed and acceleration control.
@@ -107,7 +107,7 @@ The following attributes are available for `gpiostepper` motors:
 | `board` | string | **Required** | `name` of the [board](/components/board/) the motor driver is wired to. |
 | `pins` | object | **Required** |  A struct containing the [board](/components/board/) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
 | `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
-| `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. <br> Default: `20` |
+| `stepper_delay` | int | Optional | Time in microseconds to remain high for each step. |
 
 Refer to your motor and motor driver data sheets for specifics.
 
