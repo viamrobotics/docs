@@ -145,7 +145,7 @@ Get the `Mode` the service is operating in.
 
 There are three options for modes: `MODE_UNSPECIFIED`, `MODE_MANUAL`, or `MODE_WAYPOINT`.
 
-- `MODE_UNSPECIFIED`: Do not perform any mode of autonomous navigation.
+- `MODE_UNSPECIFIED`: Do not perform autonomous navigation.
 When you create a new service, its default mode is `MODE_UNSPECIFIED`.
 - `MODE_WAYPOINT`: Start to look for added waypoints and begin autonomous navigation.
 - `MODE_MANUAL`: Stop autonomous navigation between waypoints and allow the base to be controlled manually.
@@ -201,7 +201,7 @@ Set the `Mode` the service is operating in.
 
 There are three options for modes: `MODE_UNSPECIFIED`, `MODE_MANUAL`, or `MODE_WAYPOINT`.
 
-- `MODE_UNSPECIFIED`: Do not perform any mode of autonomous navigation.
+- `MODE_UNSPECIFIED`: Do not perform autonomous navigation.
 When you create a new service, its default is `MODE_UNSPECIFIED`.
 - `MODE_WAYPOINT`: Start to look for added waypoints and begin autonomous navigation.
 - `MODE_MANUAL`: Stop autonomous navigation between waypoints and allow the base to be controlled manually.
@@ -287,7 +287,7 @@ location, err := myNav.Location(context.Background(), nil)
 
 **Returns:**
 
-- [(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude (lat) and longitude (lng) values.
+- [(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude and longitude values.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_waypoints).
 
@@ -386,7 +386,7 @@ err := myNav.AddWaypoint(context.Background(), location, nil)
 
 **Parameters:**
 
-- `point`[(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude (lat) and longitude (lng) values.
+- `point`[(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude and longitude values.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
