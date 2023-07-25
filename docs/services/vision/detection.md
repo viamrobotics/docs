@@ -273,7 +273,7 @@ if err != nil {
 }
 
 // Get detections from the camera output
-detections, err := visService.DetectionsFromCamera(context.Background(), myCam)
+detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -293,7 +293,7 @@ img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-detectionsFromImage, err := visService.Detections(context.Background(), img)
+detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
