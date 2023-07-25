@@ -345,7 +345,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
-# Get an list containing each waypoint stored by the navigation service
+# Get a list containing each waypoint stored by the navigation service
 waypoints = await my_nav.get_waypoints()
 ```
 
