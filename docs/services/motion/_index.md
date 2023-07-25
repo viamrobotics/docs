@@ -491,16 +491,27 @@ success, err := motionService.MoveOnMap(context.Background(), "my_base", myPose,
 
 ### MoveOnGlobe
 
-<!-- Move a component to a specified location, represented in geographic notation.
-Use a [Movement Sensor](/components/movement-sensor/) to determine the location of the `GeoPoint`.
-  - specified destination? report the location?
- -->
-
-Move a component to the specified point, represented in geographic notation.
+Move the component to a destination location represented in geographic notation *(latitude, longitude)*.
 Use a [Movement Sensor](/components/movement-sensor/) to check the location of the robot.
 
-<!-- todo-- objects are the same as waypoint w/ nav, so could make that more clear
-add in requirements for movement sensor here  -->
+{{< alert title="Usage" color="tip" >}}
+
+`MoveOnGlobe()` is intended for use with the [Navigation Service](/services/navigation), providing autonomous GPS navigation for rover [bases](/components/base/).
+
+To use `MoveOnGlobe()`, make sure the [movement sensor](/components/movement-sensor) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
+
+- It must support `GetPosition()` to report the robot's current GPS location.
+- It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
+- If your movement sensor provides multiple methods, your robot will default to using the values returned by `GetCompassHeading()`.
+
+{{< /alert >}}
+
+{{< alert title="Stability Notice" color="alert" >}}
+
+Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoObstacle` objects.
+The translation feature is not yet supported by the [Navigation Service](/services/navigation/api/).
+
+{{< /alert >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
