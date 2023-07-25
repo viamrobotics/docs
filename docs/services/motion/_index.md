@@ -539,7 +539,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
-#  Define a destination GeoPoint at the geographic location [0, 0]
+#  Define a destination GeoPoint at the GPS coordinates [0, 0]
 my_destination = movement_sensor.GeoPoint(latitude=0, longitude=0)
 
 # Move the base component "my_base" to the designated geographic location, as reported by the movement sensor "my_movement_sensor"
@@ -571,7 +571,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
 
-// Define a destination Point at the geographic location [0, 0]
+// Define a destination Point at the GPS coordinates [0, 0]
 myDestination := geo.NewPoint(0, 0)
 
 // Move the base component "my_base" to the designated geographic location, as reported by the movement sensor "my_movement_sensor"
