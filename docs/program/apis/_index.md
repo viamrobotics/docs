@@ -221,6 +221,7 @@ The base component supports the following methods:
 | [SetPower](/components/base/#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 | [SetVelocity](/components/base/#setvelocity) | Set the linear velocity and angular velocity of the base. |
 | [Stop](/components/base/#stop) | Stop the base. |
+| [GetProperties](/components/base/#getproperties) | Get the width and turning radius of the base. |
 | [DoCommand](/components/base/#docommand) | Send or receive model-specific commands. |
 
 ### Board
