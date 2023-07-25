@@ -496,7 +496,7 @@ Use a [Movement Sensor](/components/movement-sensor/) to check the location of t
 
 {{< alert title="Usage" color="tip" >}}
 
-`MoveOnGlobe()` is intended for use with the [Navigation Service](/services/navigation), providing autonomous GPS navigation for rover [bases](/components/base/).
+`MoveOnGlobe()` is intended for use with the [Navigation Service](/services/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
 
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the robot.
 
