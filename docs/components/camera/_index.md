@@ -145,6 +145,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+{{% alert title="Info" color="info" %}}
+
+Unlike most Viam [component APIs](/program/apis/#component-apis), the methods of the Go camera client do not map exactly to the Python SDK camera methods.
+`Stream` works somewhat differently from the Python `get_image` method.
+In the example below, note how a stream is constructed before the next image is gotten from the stream.
+
+{{% /alert %}}
+
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
