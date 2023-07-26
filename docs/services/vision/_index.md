@@ -325,7 +325,7 @@ For example, if you specify `3` you will get the top three classifications with 
 
 **Returns:**
 
-- [([]objection.Classification)](https://pkg.go.dev/go.viam.com/vision/classification#Classifications): A list of classification labels, and the confidence scores of those classifications.
+- [([]objection.Classification)](https://pkg.go.dev/go.viam.com/rdk/vision/classification#Classifications): A list of classification labels, and the confidence scores of those classifications.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
@@ -397,7 +397,7 @@ objects = await my_segmenter.get_object_point_clouds(cam1)
 
 **Returns:**
 
-- [([]objection.Classification)](https://pkg.go.dev/go.viam.com/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
+- [([]objection.Classification)](https://pkg.go.dev/go.viam.com/rdk/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision).
