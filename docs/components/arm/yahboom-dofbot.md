@@ -28,7 +28,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "yahboom-dofbot",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -37,7 +38,8 @@ Edit and fill in the attributes as applicable.
         "i2c": "<your-i2c-name>"
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 

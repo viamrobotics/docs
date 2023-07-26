@@ -87,12 +87,7 @@ Click **Create service**:
             },
             "x":10,
             "y":10,
-            "z":10,
-            "translation":{
-                "x":1,
-                "y":1,
-                "z":1
-            }
+            "z":10
         }],
         "location": {
             "latitude":1,
@@ -146,10 +141,8 @@ Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) f
 
 Get the `Mode` the service is operating in.
 
-There are three options for modes: `MODE_UNSPECIFIED`, `MODE_MANUAL`, or `MODE_WAYPOINT`.
+There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 
-- `MODE_UNSPECIFIED`: Do not perform autonomous navigation.
-When you create a new service, its default mode is `MODE_UNSPECIFIED`.
 - `MODE_WAYPOINT`: Start to look for added waypoints and begin autonomous navigation.
 - `MODE_MANUAL`: Stop autonomous navigation between waypoints and allow the base to be controlled manually.
 
@@ -202,10 +195,8 @@ await my_nav.get_mode()
 
 Set the `Mode` the service is operating in.
 
-There are three options for modes: `MODE_UNSPECIFIED`, `MODE_MANUAL`, or `MODE_WAYPOINT`.
+There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 
-- `MODE_UNSPECIFIED`: Do not perform autonomous navigation.
-When you create a new service, its default is `MODE_UNSPECIFIED`.
 - `MODE_WAYPOINT`: Start to look for added waypoints and begin autonomous navigation.
 - `MODE_MANUAL`: Stop autonomous navigation between waypoints and allow the base to be controlled manually.
 
