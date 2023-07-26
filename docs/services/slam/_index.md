@@ -22,11 +22,12 @@ SLAM is an important area of ongoing research in robotics, particularly for mobi
 The Viam SLAM Service supports the integration of SLAM as a service on your robot.
 You can conduct SLAM with data collected live by a [RPlidar](/extend/modular-resources/examples/rplidar/) or with LIDAR data you provide in configuration, and easily view the map you build on the **Control** tab of your robot's page in the [Viam app](https://app.viam.com):
 
-{{< imgproc src="/services/slam/slam-map-example.png" alt="SLAM map built with Viam of a triangle shaped building." resize="1000x" >}}
+![SLAM map built with Viam of a triangle shaped building.](/services/slam/slam-map-example.png)
 
 ## Configuration
 
-Integrated SLAM Libraries include:
+Integrated SLAM libraries include the following.
+Click the model name for configuration instructions.
 
 | Model | Description |
 | ----- | ----------- |
@@ -63,7 +64,7 @@ Get the current position of the component the SLAM service is configured to sour
 
 **Returns:**
 
-- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.3.0/spatialmath#Pose): A `Pose` representing the current position of the specified component.
+- [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A `Pose` representing the current position of the specified component.
 - [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
 For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.

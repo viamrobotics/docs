@@ -1,6 +1,35 @@
-<video class="video-shortcode lozad" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}" data-poster="{{ relURL (substr (.Get "poster") 1) }}">
+{{ $webmLink := printf "/static%s" (path.Clean (.Get "webm_src")) }}
+{{ $mp4Link := printf "/static%s" (path.Clean (.Get "mp4_src")) }}
+
+{{if os.FileExists $webmLink }}
+  {{ $f := os.Stat $webmLink }}
+  {{ $sizeInBytes := div $f.Size 30000 }}
+  {{ if gt $sizeInBytes 1000 }}
+    {{ warnf "Size of video file %s was %d kB - please reduce file size or use youtube" $webmLink $sizeInBytes  }}
+  {{ end }}
+{{ else }}
+  {{errorf "File not found - did you use the absolute file path? %s" $webmLink}}
+{{end}}
+{{if os.FileExists $mp4Link }}
+  {{ $f := os.Stat $mp4Link }}
+  {{ $sizeInBytes := div $f.Size 30000 }}
+  {{ if gt $sizeInBytes 30000 }}
+    {{ warnf "Size of video file %s was %d kB - please reduce file size or use youtube" $mp4Link $sizeInBytes  }}
+  {{ end }}
+{{end}}
+
+{{ if (.Get "poster") }}
+  {{ $img := resources.GetMatch (.Get "poster") }}
+  {{if $img }}
+<video class="video-shortcode lozad" preload="none" controls alt="{{ .Get "alt" }}" style="max-width: {{ .Get "max-width" }}" data-poster="{{ $img.RelPermalink }}">
   <source data-src="{{ relURL (substr (.Get "webm_src") 1) }}" type="video/webm">
   <source data-src="{{ relURL (substr (.Get "mp4_src") 1) }}" type="video/mp4">
   There should have been a video here but your browser does not seem
   to support it.
 </video>
+  {{ else }}
+    {{ errorf "Couldn't get image %s" (.Get "poster") }}
+  {{ end }}
+{{ else }}
+  {{ errorf "Video should have poster %s" (.Get "webm_src") }}
+{{ end }}

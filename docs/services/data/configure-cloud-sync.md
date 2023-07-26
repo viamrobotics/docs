@@ -15,7 +15,7 @@ Click **Save Config** at the bottom of the window.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
 
-![data capture configuration](../../../tutorials/img/data-management/data-manager.png)
+![data capture configuration](/tutorials/data-management/data-manager.png)
 
 By default, the Data Management Service syncs data to Viam's cloud every 0.1 minutes, that is every 6 seconds.
 To change the sync interval, specify an interval in minutes in the interval field.
@@ -70,7 +70,7 @@ This is only applicable for files in a directory added as an additional sync pat
 
 In the example pictured here, the Data Management Service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
 
-{{< imgproc src="/services/data/data-service-config.png" alt="service config example" resize="1000x" >}}
+![service config example](/services/data/data-service-config.png)
 
 {{%expand "Click to view the JSON configuration for this example" %}}
 

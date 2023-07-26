@@ -8,6 +8,8 @@ action:
 swap:
   viam app: Viam app
   Viam App: Viam app
+  RPLIDAR: RPlidar
+  Rplidar: RPlidar
   Viam platform: Viam platform
   Scuttle robot: SCUTTLE Robot
   Scuttle Robot: SCUTTLE Robot

@@ -4,9 +4,9 @@ linkTitle: "Unbox and Set Up your Viam Rover"
 weight: 10
 type: "docs"
 tags: ["rover", "tutorial"]
-image: "try-viam/rover-resources/viam-rover/box-contents.jpg"
+image: "/try-viam/rover-resources/viam-rover/box-contents.jpg"
 imageAlt: "A Viam Rover in a box"
-images: ["try-viam/rover-resources/viam-rover/box-contents.jpg"]
+images: ["/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
 aliases:
   - "/rover-resources/rover-tutorial"
@@ -34,12 +34,12 @@ This guide covers what's inside the kit, describes each component, provides inst
 
 1. Four M2.5 screws for mounting your Raspberry Pi.
 
-    {{<imgproc src="try-viam/rover-resources/viam-rover/screws.jpg" resize="400x" declaredimensions=true alt="Four screws" >}}
+    {{<imgproc src="try-viam/rover-resources/viam-rover/screws.jpg" resize="200x" declaredimensions=true alt="Four screws" >}}
 
 1. Two spare stiffer suspension springs.
    You can swap them out with the springs that come with the rover if you need stiffer suspension for higher payload applications.
 
-   {{<imgproc src="try-viam/rover-resources/viam-rover/suspension-springs.jpg" resize="400x" declaredimensions=true alt="Two suspension springs" >}}
+   {{<imgproc src="try-viam/rover-resources/viam-rover/suspension-springs.jpg" resize="200x" declaredimensions=true alt="Two suspension springs" >}}
 
 1. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
 
@@ -176,7 +176,9 @@ The rover's design allows you to reach the SD card slot at all times, so you can
 ### Connect the wires
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](/try-viam/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card or a small screwdriver.
@@ -184,7 +186,7 @@ To make attaching the paper easier, use a credit card or a small screwdriver.
 
 Wire your Pi to the buck converter, the acceleration tilt module, and the DC motor driver:
 
-{{<imgproc src="try-viam/rover-resources/viam-rover/rover-wiring-diagram.png" resize="400x" declaredimensions=true alt="Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below." >}}
+![Closeup of the wiring diagram, showcasing the Pi, motor driver, accelerometer, and buck converter, wired according to the table below.](/try-viam/rover-resources/viam-rover/rover-wiring-diagram.png)
 
 The following pinout corresponds to the diagram:
 
@@ -218,9 +220,9 @@ You must wire it with the outside row pins:
 
 Then connect the camera's USB cable to the Pi.
 
-{{<imgproc src="try-viam/rover-resources/viam-rover/rover-wiring-diagram-full.png" resize="600x" declaredimensions=true alt="Wiring diagram showcasing the Pi, motors, driver, camera, and all other rover components." >}}
+![Wiring diagram showcasing the Pi, motors, driver, camera, and all other rover components.](/try-viam/rover-resources/viam-rover/rover-wiring-diagram-full.png)
 
-{{<imgproc src="try-viam/rover-resources/viam-rover/rover-with-pi.jpg" resize="600x" declaredimensions=true alt="the Pi, motors, driver, and all other rover components" >}}
+![the Pi, motors, driver, and all other rover components](/try-viam/rover-resources/viam-rover/rover-with-pi.jpg)
 
 ### Turn the rover on
 

@@ -152,7 +152,7 @@ Set the dimensions (**Size**) to `1000` x `1000` x `20`.
 Notice that the top of the table is now 10mm above the origin, because the 20mm thickness is centered on the centerpoint.
 Account for this by giving the table a **Translation** of `-10` in the Z direction, moving the top of the table to 0.
 
-![The Frame System subtab of the Components tab with a 1000 wide, 1000 deep, 200 millimeter thick box representing the top of the table.](../../img/constrain-motion/frame-table.jpg)
+![The Frame System subtab of the Components tab with a 1000 wide, 1000 deep, 200 millimeter thick box representing the top of the table.](../../constrain-motion/frame-table.jpg)
 
 ### Visualize obstacles on the table
 -->
@@ -196,7 +196,7 @@ That is, you need to determine which axis points from the "wrist" to the end of 
 All example code below assumes +Z points from the base of the gripper to the point where its jaws close, +Y points towards the ground when the gripper is holding a cup from the side, and the X axis is the axis along which the jaws close, following the [right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule).
 The following diagram shows this, as well as the global coordinate system.
 
-![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](../../img/constrain-motion/gripper-diagram.png)
+![A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y.](/tutorials/constrain-motion/gripper-diagram.png)
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 

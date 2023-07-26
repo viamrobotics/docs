@@ -45,7 +45,7 @@ Start by completing Step 1 of [these instructions](https://docs.espressif.com/pr
 
 Clone Viam's fork of the ESP-IDF:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 mkdir -p ~/esp
 cd ~/esp
 git clone https://github.com/npmenard/esp-idf
@@ -56,14 +56,14 @@ git submodule update --init --recursive
 
 Then, install the required tools for ESP-IDF:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cd ~/esp/esp-idf
 ./install.sh esp32
 ```
 
 To activate ESP-IDF, run the following command to source (`.`) the activation script `export.sh`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 . $HOME/esp/esp-idf/export.sh
 ```
 
@@ -72,7 +72,7 @@ Save this command to run in any future terminal session where you need to activa
 
 ### Install Rust
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
@@ -82,7 +82,7 @@ See [Rust](https://www.rust-lang.org/tools/install) for more information and oth
 
 To install the Rust ESP toolchain, run the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 curl -LO https://github.com/esp-rs/rust-build/releases/download/v1.64.0.0/install-rust-toolchain.sh
 chmod a+x install-rust-toolchain.sh
 ./install-rust-toolchain.sh
@@ -90,7 +90,7 @@ chmod a+x install-rust-toolchain.sh
 
 This command will prompt you to add two variables to your `.zshrc` or `.bashrc` if you want to activate the ESP-RS environment automatically in every terminal session:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 IMPORTANT!
  The following environment variables need to be updated:
 export LIBCLANG_PATH= ...
@@ -101,13 +101,13 @@ As an alternative, the script prompts you to save the export script `export-esp.
 
 Run the following command to save `./export-esp.sh` at `$HOME/esp/esp-idf/export-esp-rs.sh`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 mv ./export-esp.sh $HOME/esp/esp-idf/export-esp-rs.sh
 ```
 
 After doing so, run the following command to source (`.`) this file, activating the ESP-RS Virtual Environment:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 . $HOME/esp/esp-idf/export-esp-rs.sh
 ```
 
@@ -119,13 +119,13 @@ Save this source command to run in any future terminal session where you need to
 
 If you need to install `cargo`, run the following command, or see the [Rust Documentation](https://doc.rust-lang.org/cargo/getting-started/installation.html) for other installation methods:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 curl https://sh.rustup.rs -sSf | sh
 ```
 
 Run the following command to install `cargo-generate`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cargo install cargo-generate
 ```
 
@@ -133,7 +133,7 @@ cargo install cargo-generate
 
 Run the following command to install `cargo-espflash` in Viam's recommended version:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cargo install cargo-espflash@2.0.0-rc.1
 ```
 
@@ -154,7 +154,7 @@ Keep your `Mode` and `Architecture` selections at default, and skip the instruct
 
 Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.git) to create a new micro-RDK project to upload to your ESP32 by running:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
 ```
 
@@ -248,7 +248,7 @@ You can find a full example [on GitHub](https://github.com/viamrobotics/micro-rd
 
 After modifying the contents of <file>src/main.rs</file> to your liking, run:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 make upload
 ```
 
@@ -317,7 +317,7 @@ Espressif maintains a good [QEMU emulator](https://github.com/espressif/qemu) su
 
 Run the following command to install the QEMU ESP32 Emulator:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/espressif/qemu
 cd qemu
 ./configure --target-list=xtensa-softmmu \
@@ -334,13 +334,13 @@ cd build && ninja
 
 On Ubuntu or Debian, first make sure you have the `libgcrypt` library and headers installed by running the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt-get install libgcrypt20 libgcrypt20-dev
 ```
 
 Then, run the following command to install QEMU:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/espressif/qemu
 cd qemu
 ./configure --target-list=xtensa-softmmu     --enable-gcrypt \
@@ -368,13 +368,13 @@ CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
 
 You can then run:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 make sim-local
 ```
 
 Or, if you want to connect a debugger:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 make debug-local
 ```
 

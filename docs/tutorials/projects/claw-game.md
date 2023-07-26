@@ -3,21 +3,21 @@ title: "Build a robotic claw game with a Raspberry Pi"
 linkTitle: "Claw Game"
 weight: 50
 type: "docs"
-description: "Create your own version of the famous arcade claw machine using a robotic arm and a a claw grabber."
+description: "Create your own version of the famous arcade claw machine using a robotic arm and a claw grabber."
 tags: ["app", "board", "motor", "gripper"]
-webmSrc: "/tutorials/img/claw-game/preview.webm"
-mp4Src: "/tutorials/img/claw-game/preview.mp4"
+webmSrc: "/tutorials/claw-game/preview.webm"
+mp4Src: "/tutorials/claw-game/preview.mp4"
 videoAlt: "GIF of the claw game in action at a party."
-images: ["/tutorials/img/claw-game/preview.gif"]
+images: ["/tutorials/claw-game/preview.gif"]
 authors: [ "Arielle Mella", "Hazal Mestci", "Matt Vella" ]
-languages: [ "python" ]
+languages: [ "python", "typescript" ]
 viamresources: [ "board", "arm", "gripper", "motion" ]
 level: "Advanced"
 date: "29 May 2023"
 cost: 8910
 ---
 
-{{<gif webm_src="/tutorials/img/claw-game/claw-game.webm" mp4_src="../../img/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
+{{<gif webm_src="/tutorials/claw-game/claw-game.webm" mp4_src="/tutorials/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
 
 Create your own version of the famous arcade claw machine game using a robotic arm, an arcade claw grabber, and some fun items to pick from.
 Fine-tune every intricate detail, from the precision of each grab, to the claw's strength, and even the aesthetics of your control interface.
@@ -88,7 +88,7 @@ You will need to build the table to a size that allows for the arm to reach anyw
 For the xArm6, a table that is 4'x4' works.
 
 <div>
-<img src="../../img/claw-game/build-base.jpg" alt="4' x 4' square made with wood pieces on the floor." width="300px" class="alignright">
+{{<imgproc src="/tutorials/claw-game/build-base.jpg" resize="300x" declaredimensions=true alt="4' x 4' square made with wood pieces on the floor." class="alignright">}}
 </div>
 
 1. Cut one 2"x4" in half, creating two 48 inch sides.
@@ -110,7 +110,7 @@ Center the exit, make it 10 inches wide, 8 inches long and cut the opening with 
 We used two 2 foot by 4 foot fiberboards, but ideally you can use one 4 foot by 4 foot fiberboard.
 1. Glue and clamp the tabletop and let it dry overnight.
 
-   <img src="../../img/claw-game/build-table.jpg" alt="Wooden table top glued and secured with clamps" width="400px" class="aligncenter">
+   {{<imgproc src="/tutorials/claw-game/build-table.jpg" resize="400x" declaredimensions=true alt="Wooden table top glued and secured with clamps" class="aligncenter">}}
 
 ### Add legs and mount the arm
 
@@ -126,7 +126,7 @@ You can also cut an additional 2x4 and mount it as a fifth leg, going from the c
    Be sure that the lag screws sink into the 2x4 posts below, and that you are mounting the arm so that it is straight, with the X axis facing the player.
    You’ll need at least two people to ensure a smooth installation of the arm.
 
-   <img src="../../img/claw-game/mount-arm.jpg" alt="The xarm6 attached to the middle of the enclosure." width="400px" class="aligncenter">
+   {{<imgproc src="/tutorials/claw-game/mount-arm.jpg" resize="400x" declaredimensions=true alt="The xarm6 attached to the middle of the enclosure." class="aligncenter">}}
 
 ## Configure the robot
 
@@ -148,7 +148,7 @@ Technically you could configure all the components within one part, but motion p
 Use the parts drop-down menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
 
 <div style="max-width:500px" class="aligncenter">
-<img src="../../img/claw-game/app-planning.png" alt="UI for adding a sub part named planning.">
+![UI for adding a sub part named planning.](/tutorials/claw-game/app-planning.png)
 </div>
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
@@ -168,7 +168,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Add your [board](https://docs.viam.com/components/board/) with the name `myBoard`, type `board`, and model `pi`.
 Click **Create Component**.
 
-![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](../../img/claw-game/app-component-myboard.png)
+![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](/tutorials/claw-game/app-component-myboard.png)
 
 You can name your board whatever you want as long as you use the same name to refer to it in your code.
 We named it `myBoard` for simplicity.
@@ -204,7 +204,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 Use the parts drop-down menu to navigate to the `planning` sub-part.
 
-<img src="../../img/claw-game/app-subpart-planning.png" alt="Navigating to the sub-part named planning." width="250px" class="">
+{{<imgproc src="/tutorials/claw-game/app-subpart-planning.png" resize="300x" declaredimensions=true alt="Navigating to the sub-part named planning." class="">}}
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -214,7 +214,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Add your [arm](/components/arm/) with the name `myArm`, type `arm`, and model `xArm6`.
 Click **Create Component**.
 
-   ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](../../img/claw-game/app-myarm.png)
+   ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
 
 Configure the arm component with the arm's IP address in the `host` field under **Attributes**.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
@@ -276,10 +276,10 @@ Click **Save config** in the bottom left corner of the screen.
 Add your [gripper](/components/gripper/) with the name `gripper`, type `gripper`, and model `fake`.
 Click **Create Component**.
 
-![Create component panel, with the name attribute filled as gripper, type attribute filled as gripper and model attribute filled as fake. In the Frame section, there is a myArm parent in the frame.](../../img/claw-game/app-gripper.png)
+![Create component panel, with the name attribute filled as gripper, type attribute filled as gripper and model attribute filled as fake. In the Frame section, there is a myArm parent in the frame.](/tutorials/claw-game/app-gripper.png)
 
 Set up a `fake` model.
-You will only use this as a placeholder for the size of the gripper to use with Viam’s {{< glossary_tooltip term_id="frame-system" text="frame system" >}}later.
+You will only use this as a placeholder for the size of the gripper to use with Viam’s {{< glossary_tooltip term_id="frame-system" text="frame system" >}} later.
 
 Measure the claw's height and width, and enter these values for the `fake` model.
 Ours was 120mm for the width and 180mm for the height.
@@ -369,7 +369,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 [Download the STL](https://github.com/viam-labs/claw-game/blob/main/xarm6ClawMount.stl) for the claw mount, and use a 3D printer to print the mount for in between the claw and the xArm6.
 
-<img src="../../img/claw-game/claw-mount.jpg" alt="3d printed claw mount part" width="300px" class="aligncenter">
+{{<imgproc src="/tutorials/claw-game/claw-mount.jpg" resize="400x" declaredimensions=true alt="3d printed claw mount part" class="aligncenter">}}
 
 ### Attach the claw to the printed mount
 
@@ -383,12 +383,12 @@ Click **Save config** in the bottom left corner of the screen.
 
 1. Using two M20 screws, attach the printed mount to the end of the arm and tighten.
 
-    <img src="../../img/claw-game/mount-screw-holes.jpg" alt="Screw holes on the xarm6 head without the attachment" style="height:250px" class="center-if-small">
-    <img src="../../img/claw-game/mount-gripper.jpg" alt="3d printed mount attached to the gripper and mounted to the arm" style="height:250px" class="center-if-small">
+    {{<imgproc src="/tutorials/claw-game/mount-screw-holes.jpg" resize="x300" declaredimensions=true alt="Screw holes on the xarm6 head without the attachment" class="center-if-small" style="height:250px">}}
+    {{<imgproc src="/tutorials/claw-game/mount-gripper.jpg" resize="x300" declaredimensions=true alt="3d printed mount attached to the gripper and mounted to the arm" class="center-if-small" style="height:250px">}}
 
-1. Using velcro cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
+1. Using hook-and-loop cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
 
-   <img src="../../img/claw-game/mount-together.jpg" alt="Gripper attached to the arm and cord wired around the arm" width="400px" class="aligncenter">
+   {{<imgproc src="/tutorials/claw-game/mount-together.jpg" resize="500x" declaredimensions=true alt="Gripper attached to the arm and cord wired around the arm" class="aligncenter">}}
 
 ### Wire and test the claw
 
@@ -402,7 +402,7 @@ This creates a _normally open_ circuit, which means the circuit is normally not 
 
 In order to control the claw through Viam, you will now wire the relay to the Raspberry Pi.
 
-![Wiring guide for the claw game showing all assembled components with the wiring plan for each component.](../../img/claw-game/wiring-guide.png)
+![Wiring guide for the claw game showing all assembled components with the wiring plan for each component.](/tutorials/claw-game/wiring-guide.png)
 
 1. First, power down the Pi.
 Then take three female jumper wires, cut off one end of each, and strip the ends.
@@ -417,7 +417,7 @@ Go to the **Control** tab for your robot, open the `MyBoard` card, enter `8` nex
 The relay will trigger the claw circuit to be closed when the GPIO pin state is set to high and your claw will close.
 Now select `low` and click **Set Pin State** again: the claw will open.
 
-![GPIO pin 8 getting set as high on the Control panel.](../../img/claw-game/app-gpio-high.png)
+![GPIO pin 8 getting set as high on the Control panel.](/tutorials/claw-game/app-gpio-high.png)
 
 ## Create obstacles and a world state
 
@@ -471,7 +471,7 @@ We tested between `240` and `280` for this level, but you can adjust it to your 
 
 Use `git` to clone the [Claw Game project repository](https://github.com/viam-labs/claw-game/):
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/claw-game
 ```
 
@@ -721,13 +721,13 @@ if __name__ == '__main__':
 
 Use `CLI-test.py` to run these commands from the command line, for example:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 CLI-test.py --password mypass --location mylocation --command grab
 ```
 
 Or, you can run sequences of these commands together, for example:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 CLI-test.py --password mypass --location mylocation --command sequence --sequence grab,sleep,release,sleep,grab,sleep,release
 ```
 
@@ -767,7 +767,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
 1. Once you have installed Node, you can now fetch all dependencies, including the Viam TypeScript SDK, by running the following command in your project directory:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    npm install
    ```
 
@@ -778,7 +778,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
 1. Then, run the following command to start the custom TypeScript interface, inserting your robot's location secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    export VIAM_LOCATION=<mylocation>;VIAM_SECRET=<mysecret>;npm run start-simple
    ```
 

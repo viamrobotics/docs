@@ -19,7 +19,7 @@ As of June 01, 2022, we support the following SLAM libraries:
 
 The SLAM Service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
 
-<img src="../img/slam-service-arch.png"/>
+<img src="/services/slam-service-arch.png"/>
 
 ### Data Generation
 
@@ -168,7 +168,7 @@ Coming soon!
 
 Perform a git clone on the SLAM repository using the recursive install flag to allow the sub packages to be downloaded as well.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone --recurse-submodules git@github.com:viamrobotics/slam.git
 ```
 
@@ -181,13 +181,13 @@ This setup documents the current process for getting ORBSLAM3 working locally on
 The following are the required dependencies for building and running ORBSLAM3.
 In addition you should ensure the most recent version of the orbslam submodule is located in your directory with
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git submodule update --init --recursive
 ```
 
 ###### Pangolin - to setup run the following
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
 cd Pangolin
 ./scripts/install_prerequisites.sh recommended
@@ -199,13 +199,13 @@ sudo make install
 
 ###### OpenCV
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo apt install libopencv-dev
 ```
 
 ###### Eigen
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo apt install libeigen3-dev
 ```
 
@@ -213,7 +213,7 @@ sudo apt install libeigen3-dev
 
 To setup gRPC, use the following command:
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 cd \~/slam/slam-libraries
 mae pull-rdk
 ```
@@ -222,7 +222,7 @@ This command pulls a minimal copy of rdk and build c++ gRPC files off of our pro
 
 ###### Other Dependencies
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo apt install libssl-dev
 sudo apt-get install libboost-all-dev
 ```
@@ -231,7 +231,7 @@ sudo apt-get install libboost-all-dev
 
 To build ORBSLAM3 run
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 cd \~/slam/slam-libraries/viam-orb-slam
 ./build_orbslam.sh
 ```
@@ -240,7 +240,7 @@ Should the code fail the initial setup (your Pi freezes and requires a restart),
 
 After building, use the following command to move the binary to `/usr/local/bin`:
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo cp bin/orb_grpc_server /usr/local/bin
 ```
 
@@ -249,7 +249,7 @@ In addition, make sure the binary is added in SLAMlibraries.go for ORBSLAM3 in r
 Lastly, move the vocabulary file into your data directory.
 You must do this whenever a new data directory will be used.
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 cp ORB_SLAM3/Vocabulary/ORBvoc.txt ~/YOUR_DATA_DIR/config
 ```
 

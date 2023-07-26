@@ -22,7 +22,7 @@ Install the binary required to utilize `orbslamv3` on your machine and make it e
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/orb_grpc_server https://storage.googleapis.com/packages.viam.com/apps/slam-servers/orb_grpc_server-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -30,7 +30,7 @@ sudo chmod a+rx /usr/local/bin/orb_grpc_server
 {{< /tab >}}
 {{% tab name="Linux x86_64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/orb_grpc_server https://storage.googleapis.com/packages.viam.com/apps/slam-servers/orb_grpc_server-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/orb_grpc_server
 ```
@@ -69,7 +69,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
-![adding orbslam3 slam service](../img/run_slam/add-orbslam-service-ui.png)
+![adding orbslam3 slam service](/services/slam/add-orbslam-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -85,7 +85,7 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](../img/run_slam/add-orbslam-service-attributes-live.png)
+![adding orbslam3 slam service attributes box](/services/slam/add-orbslam-service-attributes-live.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -192,7 +192,7 @@ Paste the following into the **Attributes** field of your new service:
 }
 ```
 
-![adding orbslam3 slam service attributes box](../img/run_slam/add-orbslam-service-attributes-offline.png)
+![adding orbslam3 slam service attributes box](/services/slam/add-orbslam-service-attributes-offline.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -248,14 +248,14 @@ If you do not already have a dataset from running SLAM live or another dataset y
 
 2. Copy the zipped file to the machine running `viam-server` and unzip it. For example:
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.
     unzip viam-office-hallway-1-rgbd.zip
     ```
 
 3. Rename the unzipped folder to <file>data</file> and place inside of the folder at <file>data_dir</file>. For example:
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     cd /home/<YOUR_USERNAME>/<ORBSLAM3_DIR>
     mv ~/Downloads/viam-office-hallway-1-rgbd data/
     ```
@@ -351,7 +351,7 @@ Keep moving the camera slowly within your space and wait for the map to visualiz
 
 This issue has a couple of potential causes.
 
-![error getting SLAM map](../img/run_slam/01_slam_tutorial_no_map_points.png)
+![error getting SLAM map](/services/slam/01_slam_tutorial_no_map_points.png)
 
 First, it might take a few minutes for ORB-SLAM3 to create an initial map after starting up.
 In both live and offline mode, this might mean that you have to wait a little while before you can see a map on the UI.

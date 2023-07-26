@@ -22,7 +22,7 @@ Enter a name for your base, select the type `base`, and select the `fake` model.
 
 Click **Create component**.
 
-{{< imgproc src="/components/base/fake-base-ui-config.png" alt="An example configuration for a fake base in the Viam app Config Builder." resize="1000x" >}}
+![An example configuration for a fake base in the Viam app Config Builder.](/components/base/fake-base-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

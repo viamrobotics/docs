@@ -10,7 +10,7 @@ tags: ["data management", "cloud", "sync"]
 
 First, install the [Viam CLI](/manage/cli/) and [authenticate](/manage/cli/#authenticate).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
 viam auth
 ```
@@ -20,11 +20,11 @@ To export data from the Data Management Service in the cloud:
 1. Navigate to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
 2. Below the **SEARCH** button in the **Filtering** panel, click **Copy Export Command** to copy the export command to the clipboard.
 
-   {{< imgproc alt="The 'copy export command' button from the Viam app." src="/manage/data/copy_command.png" resize="1000x" >}}
+   ![The 'copy export command' button from the Viam app.](/manage/data/copy_command.png)
 
 3. Run the copied command in a terminal:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    go run go.viam.com/rdk/cli/viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.
    ```
 

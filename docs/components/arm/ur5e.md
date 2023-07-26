@@ -19,7 +19,7 @@ Enter a name for your arm, select the type `arm`, and select the `ur5e` model.
 
 Click **Create component**.
 
-{{< imgproc src="/components/arm/ur5e-ui-config.png" alt="Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." resize="1000x" >}}
+![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/ur5e-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -28,7 +28,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "ur5e",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -37,7 +38,8 @@ Edit and fill in the attributes as applicable.
         "host": "<your-host-address>",
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 

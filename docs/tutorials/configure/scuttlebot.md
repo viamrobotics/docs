@@ -1,11 +1,11 @@
 ---
-title: "Configure a SCUTTLE Robot with a Camera"
+title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
 description: "Configure a SCUTTLE Robot on the Viam platform."
-image: "/tutorials/img/scuttlebot/createcomponent.png"
-images: ["/tutorials/img/scuttlebot/createcomponent.png"]
+image: "/tutorials/scuttlebot/createcomponent.png"
+images: ["/tutorials/scuttlebot/createcomponent.png"]
 imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
@@ -41,7 +41,7 @@ Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/
    If you already have a Location, then this step is optional.
 5. Create a **robot** and navigate to its **Config** tab.
    We will stay in **Builder** mode for this tutorial (as opposed to **Raw JSON**).
-   ![A screenshot of the Viam app UI showing the CONFIG tab of a robot.](../../img/scuttlebot/createcomponent.png)
+   ![A screenshot of the Viam app UI showing the CONFIG tab of a robot.](/tutorials/scuttlebot/createcomponent.png)
 
 {{% alert title="Tip" color="tip" %}}
 When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
@@ -59,7 +59,7 @@ Add your first component, the [board](/components/board/) (in this case the Rasp
 4. Click **Create Component** and the board component panel will expand.
 
 We don't need to worry about any other attributes for this component.
-![Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured.](../../img/scuttlebot/board-empty-json.png)
+![Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
 
 ## Configuring the motors
 
@@ -79,7 +79,7 @@ The next step is to add a motor and make it spin a wheel.
    3. Set **B/In2** to `15`.
    4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.
 
-![Screenshot of the motor config panel with the attributes set as described above.](../../img/scuttlebot/pi-rhwheel.png)
+![Screenshot of the motor config panel with the attributes set as described above.](/tutorials/scuttlebot/pi-rhwheel.png)
 <br><br>
 
 {{% expand "Click to view the raw JSON for the right motor" %}}
@@ -117,7 +117,7 @@ Save the config by clicking **Save config** at the bottom of the page, then clic
 Here you'll see a panel for the right `motor`.
 You'll use this panel to set the motor's `power` level.
 
-![Power level adjustment](../../img/scuttlebot/pi-moverhmotor.png)
+![Power level adjustment](/tutorials/scuttlebot/pi-moverhmotor.png)
 
 Be careful when activating your robot!
 Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
@@ -170,7 +170,7 @@ This will be similar to adding the right motor.
 
 With both motors configured, the **Control** tab now display panels for both motors:
 
-<img src="../../img/scuttlebot/scuttle-bothmotors.png" alt="Motor panels">
+![Motor panels](/tutorials/scuttlebot/scuttle-bothmotors.png)
 
 Viam ([app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
 Don't worry if your motor panels are not adjacent.
@@ -208,11 +208,11 @@ When you save the config and switch to the **Control** tab, you'll see new contr
 In the **Keyboard** tab, toggle your keyboard control to active.
 Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
-<img src="../../img/scuttlebot/pi-kybrd-control.png" width="300px" alt="WASD controls">
+{{<imgproc src="/tutorials/scuttlebot/pi-kybrd-control.png" resize="300x" declaredimensions=true alt="WASD controls">}}
 
 If you click the **Discrete** tab, then you'll see different movement modes such as `Straight` and `Spin`; and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
 
-<img src="../../img/scuttlebot/pi-discrete.png" alt="Discrete controls">
+![Discrete controls](/tutorials/scuttlebot/pi-discrete.png)
 
 Now you have a rover that you can drive using Viam's UI!
 Awesome!
@@ -297,7 +297,7 @@ Finally, we'll add a camera to your SCUTTLE Robot.
 3. Click **Create Component**.
 
 Now, you'll see the config panel for the camera component:
-<img src="../../img/scuttlebot/pi-cam-control.png" alt="Camera component config panel" >
+![Camera component config panel](/tutorials/scuttlebot/pi-cam-control.png)
 
 On the camera config panel, set the `video_path`.
 

@@ -41,7 +41,7 @@ To create a [Vision Service](/services/vision/):
 3. Select **Radius Clustering Segmenter** as the **Model**.
 4. Click **Create Service**.
 
-{{< imgproc src="/services/vision/radius_clustering_segmenter.png" alt="Create Vision Service for radius_clustering_segmenter" resize="1000x" >}}
+![Create Vision Service for radius_clustering_segmenter](/services/vision/radius_clustering_segmenter.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -130,7 +130,7 @@ To create a [Vision Service](/services/vision/):
 3. Select **Detector to 3D Segmenter** as the **Model**.
 4. Click **Create Service**.
 
-{{< imgproc src="/services/vision/detector_3d_segmenter.png" alt="Create Vision Service for detector_3d_segmenter" resize="1000x" >}}
+![Create Vision Service for detector_3d_segmenter](/services/vision/detector_3d_segmenter.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -209,10 +209,10 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# grab Viam's vision service for the detector
+# Grab Viam's Vision Service for the segmenter
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
-detections = await my_segmenter.get_object_point_clouds("cam1")
+objects = await my_segmenter.get_object_point_clouds("cam1")
 
 await robot.close()
 ```
@@ -237,14 +237,13 @@ if err != nil {
 }
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-segments, err := visService.GetObjectPointClouds(cameraName)
+segments, err := visService.GetObjectPointClouds(context.Background(), cameraName, nil)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
 if len(segments) > 0 {
     logger.Info(segments[0])
 }
-
 ```
 
 To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).

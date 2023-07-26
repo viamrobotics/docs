@@ -19,7 +19,7 @@ Enter a name for your arm, select the type `arm`, and select the `xArmLite` mode
 
 Click **Create component**.
 
-{{< imgproc src="/components/arm/xArmLite-ui-config.png" alt="Web UI configuration panel for an arm of model xArmLite in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame." resize="1000x" >}}
+![Web UI configuration panel for an arm of model xArmLite in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/xArmLite-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -28,7 +28,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "xArmLite",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -36,7 +37,8 @@ Edit and fill in the attributes as applicable.
           "host": "<your-arms-ip-address-on-your-network>"
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 
@@ -45,7 +47,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "name": "my_arm",
       "type": "arm"
       "model": "xArmLite",
@@ -70,7 +73,8 @@ Edit and fill in the attributes as applicable.
               "z": 0
           }
       }
-  }]
+    }
+  ]
 }
 ```
 

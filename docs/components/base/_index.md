@@ -15,7 +15,7 @@ A base is the platform that the other parts of a mobile robot attach to.
 
 By configuring a base component, organizing individual components to produce coordinated movement, you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 
-{{< imgproc src="/components/base/base-trk-rover-w-arm.png" alt="A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component." resize="1000x" >}}
+![A robot comprised of a wheeled base (motors, wheels and chassis) as well as some other components. The wheels are highlighted to indicate that they are part of the concept of a 'base', while the non-base components are not highlighted. The width and circumference are required attributes when configuring a base component.](/components/base/base-trk-rover-w-arm.png)
 
 Most mobile robots with a base need at least the following hardware:
 
@@ -35,7 +35,6 @@ Supported base models include:
 | [`wheeled`](wheeled/) | Mobile wheeled robot |
 | [`agilex-limo`](agilex-limo/) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
-| `boat` | Mobile boat robot |
 
 ## Control your base with Viam's client SDK libraries
 
@@ -81,6 +80,7 @@ The base component supports the following methods:
 | [SetPower](#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 | [SetVelocity](#setvelocity) | Set the linear and angular velocity of the base. |
 | [Stop](#stop) | Stop the base. |
+| [GetProperties](#getproperties) | Get the width and turning radius of the base in meters. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### MoveStraight
@@ -400,6 +400,67 @@ myBase.MoveStraight(context.Background(), 10, 1)
 
 // Stop the base.
 myBase.Stop(context.Background())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetProperties
+
+Get the width and turning radius of the {{< glossary_tooltip term_id="model" text="model" >}} of base in meters.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with two fields, `width` and `turning_radius_meters`, representing the width and turning radius of the physical base in meters *(m)*.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot=robot, name="my_base")
+
+# Get the width and turning radius of the base 
+properties = await my_base.get_properties()
+
+# Get the width 
+print(f"Width of base in meters: {properties.width}")
+
+# Get the turning radius
+print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with two fields, `WidthMeters` and `TurningRadiusMeters`, representing the width and turning radius of the physical base in meters *(m)*.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
+
+```go {class="line-numbers linkable-line-numbers"}
+myBase, err := base.FromRobot(robot, "my_base")
+
+// Get the width and turning radius of the base 
+properties, err := myBase.GetProperties(context.Background(), nil)
+
+// Get the width
+myBaseWidth := properties.WidthMeters
+
+// Get the turning radius
+myBaseTurningRadius := properties.TurningRadiusMeters
 ```
 
 {{% /tab %}}

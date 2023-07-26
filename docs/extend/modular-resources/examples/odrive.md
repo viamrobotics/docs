@@ -23,13 +23,13 @@ The methods other SDKs provide for the [motor API](/components/motor/#api) will 
 
 On your robot's computer, clone the [Viam ODrive module](https://github.com/viamrobotics/odrive):
 
-``` {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` {class="command-line" data-prompt="$"}
 git clone https://github.com/viamrobotics/odrive.git
 ```
 
 Install `python-can`, `cantools`, and the [Python `viam-sdk`](https://python.viam.dev/):
 
-``` {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` {class="command-line" data-prompt="$"}
 pip3 install python-can cantools viam-sdk
 ```
 
@@ -41,7 +41,7 @@ Find and copy the path (either absolute, or relative to the working directory) t
 
 Navigate to the `odrive/odrive-motor` directory of the ODrive module you cloned on a Terminal session with your computer and run `pwd` to obtain the path to `run.sh` on your robot's computer.
 
-``` {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` {class="command-line" data-prompt="$"}
 cd <your/path/to/odrive/odrive-motor>
 pwd
 ```
@@ -116,7 +116,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Modules*
 
 Add the ODrive module with a name of your choice and an `"executable_path"` that points to the location where your ODrive module’s run script, <file>run.sh</file>, is stored on your robot’s computer.
 
-{{< imgproc src="/extend/modular-resources/add-odrive/add-odrive-module-ui.png" alt="The ODrive module with the name 'odrive' and executable path '~/desktop/odrive/odrive-motor/run.sh' added to a robot in the Viam app config builder" resize="1000x" >}}
+![The ODrive module with the name 'odrive' and executable path '~/desktop/odrive/odrive-motor/run.sh' added to a robot in the Viam app config builder](/extend/modular-resources/add-odrive/add-odrive-module-ui.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

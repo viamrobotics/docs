@@ -23,7 +23,7 @@ Enter a name for your camera, select the type `camera`, and select the `join_col
 
 Click **Create component**.
 
-{{< imgproc src="/components/camera/configure-join-color-depth.png" alt="Configuration of a join color depth view in the Viam app config builder." resize="1000x" >}}
+![Configuration of a join color depth view in the Viam app config builder.](/components/camera/configure-join-color-depth.png)
 
 Edit and fill in the attributes as applicable.
 

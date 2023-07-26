@@ -3,7 +3,7 @@ title: "Tutorials"
 linkTitle: "Tutorials"
 weight: 65
 type: docs
-images: [ "/tutorials/img/try-viam-sdk/image1.gif" ]
+images: [ "/tutorials/try-viam-sdk/image1.gif" ]
 description: "Build a robot yourself by following along with a tutorial."
 no_list: true
 sitemap:
@@ -23,8 +23,7 @@ For this reason, we list tutorials based on features you may be looking for.
 
 {{< cards >}}
     {{% tutorialcard link="/tutorials/get-started/try-viam-sdk" %}}
-    {{% tutorialcard link="/tutorials/get-started/make-an-led-blink-with-the-viam-app/" %}}
-    {{% tutorialcard link="/tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/" %}}
+    {{% tutorialcard link="/tutorials/get-started/blink-an-led/" %}}
     {{% tutorialcard link="/tutorials/get-started/servo-mousemover/" %}}
     {{% tutorialcard link="/tutorials/get-started/confetti-bot/" %}}
     {{% tutorialcard link="/tutorials/get-started/lazy-susan/" %}}

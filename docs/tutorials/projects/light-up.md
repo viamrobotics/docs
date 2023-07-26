@@ -4,9 +4,9 @@ linkTitle: "Turn on Lights with Object Detection"
 weight: 49
 type: "docs"
 description: "How to turn a light on when your webcam sees a person."
-webmSrc: "/tutorials/img/light-up/light-up.webm"
-mp4Src: "/tutorials/img/light-up/light-up.mp4"
-images: ["/tutorials/img/light-up/light-up.gif"]
+webmSrc: "/tutorials/light-up/light-up.webm"
+mp4Src: "/tutorials/light-up/light-up.mp4"
+images: ["/tutorials/light-up/light-up.gif"]
 videoAlt: "A person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on."
 tags: ["camera", "vision", "detector", "python"]
 authors: [ "Hazal Mestci" ]
@@ -23,7 +23,7 @@ You can turn it into a night light for reading books, a security robot that aler
 
 This project is a great place to start if you are new to building robots because the only hardware it requires in addition to your computer is a [smart plug](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-wifi-plug-mini) or smart bulb.
 
-{{<gif webm_src="/tutorials/img/light-up/light-up.webm" mp4_src="/tutorials/img/light-up/light-up.mp4" alt="The project working: a person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on.">}}
+{{<gif webm_src="/tutorials/light-up/light-up.webm" mp4_src="/tutorials/light-up/light-up.mp4" alt="The project working: a person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on.">}}
 
 ## Hardware requirements
 
@@ -59,7 +59,7 @@ Go to the **Setup** tab of your new robot's page and follow the steps to install
 
 On your new robot's page, go to the **Config** tab.
 
-![The CONFIG tab in Builder mode on the Viam app.](../../img/light-up/config-tab.png)
+![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
 
 On the **Config** tab, create a new component:
 
@@ -77,7 +77,7 @@ Click **Save Config** in the bottom left corner of the screen.
 
 Navigate to the **Control** tab where you can see your camera working.
 
-{{< gif webm_src="/tutorials/img/light-up/control-panel.webm" mp4_src="/tutorials/img/light-up/control-panel.mp4" alt= "Opening the camera panel on the control tab, toggling the video feed on, and watching as a person wearing headphones waves at the camera." >}}
+{{< gif webm_src="/tutorials/light-up/control-panel.webm" mp4_src="/tutorials/light-up/control-panel.mp4" alt= "Opening the camera panel on the control tab, toggling the video feed on, and watching as a person wearing headphones waves at the camera." >}}
 
 ## Configure your services
 
@@ -93,29 +93,29 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
     Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
     Click **Create service**.
 
-    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](../../img/tipsy/app-service-ml-create.png)
+    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
 
     In the new ML Model service panel, configure your service.
 
-    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](../../img/tipsy/app-service-ml-before.png)
+    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
     Select the **Path to Existing Model On Robot** for the **Deployment** field.
     Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
 
-   1. **Configure a mlmodel detector**
+   1. **Configure an mlmodel detector**
 
     Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
     Click **Create service**.
 
-    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](../../img/tipsy/app-service-vision-create.png)
+    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
 
     In the new Vision Service panel, configure your service.
 
-    ![vision service panel called myPeopleDetector with empty Attributes section](../../img/tipsy/app-service-vision-before.png)
+    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 
     Name the ml model name `people`.
 
-    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](../../img/tipsy/app-service-vision-after.png)
+    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
 
 ## Configure the detection camera
 
@@ -124,7 +124,7 @@ To be able to test that the vision service is working, add a `transform` camera 
 Click on the **Components** subtab and navigate to the **Create component** menu.
 Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera` and the model `transform`.
 
-![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](../../img/tipsy/app-detection-before.png)
+![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 
 In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
 
@@ -145,7 +145,7 @@ In the new transform camera panel, replace the attributes JSON object with the f
 
 Click **Save config** in the bottom left corner of the screen.
 
-![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](../../img/tipsy/app-detection-after.png)
+![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
 
 ## Set up the Kasa Smart Plug
 
@@ -159,19 +159,19 @@ Once it is connected, you will no longer need to use the mobile app.
 
 3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     pip3 install python-kasa
     ```
 
 4. <a name=kasa ></a> Run the following command to return information about your smart device:
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    ```sh {class="command-line" data-prompt="$"}
     kasa discover
     ```
 
     You should see this command output something like this:
 
-    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](../../img/light-up/kasa-discover-output.png)
+    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
 
     Write down or save the host address (for example, `10.1.11.221`).
 You will need to include it in your Python code in a later step.
@@ -212,7 +212,7 @@ Now you are ready to test your robot!
 
 From a command line on your computer, navigate to the project directory and run the code with this command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 lightupbot.py
 ```
 

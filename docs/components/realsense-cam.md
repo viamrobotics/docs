@@ -21,7 +21,7 @@ They will show up as 3 separate cameras.
 
 On your Raspberry Pi, download the following server for your intel camera
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/intelgrpcserver https://storage.googleapis.com/packages.viam.com/apps/camera-servers/intelrealgrpcserver-latest-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
 ```
@@ -109,7 +109,7 @@ Use this method if you don’t care about the individual 2D image streams and on
 
 On your Raspberry Pi, download the following server for your Intel RealSense camera:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/intelrealserver https://storage.googleapis.com/packages.viam.com/apps/camera-servers/intelrealserver-latest-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/intelrealserver
 ```

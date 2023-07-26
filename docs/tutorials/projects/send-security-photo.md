@@ -4,9 +4,9 @@ linkTitle: "Detect a Person and Send a Photo"
 weight: 50
 type: "docs"
 description: "Use the Vision Service and the Python SDK to send yourself a text message when your webcam detects a person."
-image: "/tutorials/img/send-security-photo/text-message.png"
+image: "/tutorials/send-security-photo/text-message.png"
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
-images: ["/tutorials/img/send-security-photo/text-message.png"]
+images: ["/tutorials/send-security-photo/text-message.png"]
 tags: ["camera", "vision", "detector", "python"]
 authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
@@ -16,11 +16,6 @@ date: "30 March 2023"
 cost: "0"
 ---
 
-{{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
-This tutorial has not yet been updated.
-{{< /alert >}}
-
 {{% alert title="Tip" color="tip" %}}
 
 This tutorial is part of our built-in webcam projects series.
@@ -28,16 +23,16 @@ For a similar project that integrates a Kasa smart plug, see [Use Object Detecti
 
 {{% /alert %}}
 
-In this tutorial you will create a desk security system with no hardware other than your laptop and built-in webcam.
+In this tutorial, you will create a desk security system with no hardware other than your laptop and the built-in webcam.
 
 Maybe you keep a box of chocolates on your desk to snack on when you are hungry.
 Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [Vision Service](/services/vision/) and an ML model to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [Vision Service](/services/vision/) and the [ML Model Service](/services/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
-![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](../../img/send-security-photo/text-message.png)
+![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
 ## Hardware requirements
 
@@ -45,7 +40,7 @@ You need the following hardware for this tutorial:
 
 - Computer with a webcam
   - This tutorial uses a MacBook Pro but any computer running macOS or 64-bit Linux will work
-- Mobile phone (to receive the text messages)
+- Mobile phone (to receive text messages)
 
 ## Software requirements
 
@@ -57,7 +52,7 @@ You will use the following software in this tutorial:
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
   Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [yagmail](https://github.com/kootenpv/yagmail)
-- A gmail account to send emails. You can use an existing account, or create a new one.
+- A Gmail account to send emails. You can use an existing account, or create a new one.
 
 ## Configure your robot on the Viam app
 
@@ -75,7 +70,7 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 
 On your new robot's page, go to the **Config** tab.
 
-![The CONFIG tab in Builder mode on the Viam app.](../../img/light-up/config-tab.png)
+![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
 
 On the **Config** tab, create a new component:
 
@@ -95,11 +90,79 @@ Navigate to the **Control** tab where you can see your camera working.
 
 {{% /expand %}}
 
+### Configure your services
+
+This tutorial uses pre-trained ML packages.
+If you want to train your own, you can [train a model](/manage/ml/train-model/).
+
+To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
+
+Click on the **Services** subtab and navigate to the **Create service** menu.
+
+1. **Configure the ML Model Service**
+
+    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
+    Click **Create service**.
+
+    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
+
+    In the new ML Model service panel, configure your service.
+
+    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+
+    Select the **Path to Existing Model On Robot** for the **Deployment** field.
+    Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
+
+   1. **Configure a mlmodel detector**
+
+    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
+    Click **Create service**.
+
+    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
+
+    In the new Vision Service panel, configure your service.
+
+    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
+
+    Name the ml model name `people`.
+
+    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
+
+### Configure the detection camera
+
+To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera`, and the model `transform`.
+
+![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
+
+In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
+
+```json
+    {
+    "source": "my-camera",
+    "pipeline": [
+        {
+        "type": "detections",
+        "attributes": {
+            "detector_name": "myPeopleDetector",
+            "confidence_threshold": 0.5
+        }
+        }
+    ]
+    }
+ ```
+
+Click **Save config** in the bottom left corner of the screen.
+
+![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
+
 ## How to use yagmail
 
 Install yagmail (Yet Another Gmail/SMTP client) by running the following command in a terminal on your computer:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install yagmail
 ```
 
@@ -112,7 +175,7 @@ App Passwords are 16-digit passcodes that allow the app or device access to your
 This step is optional.
 {{% /alert %}}
 
-Then we have to indicate whom to send a message to, the subject, and the contents of the text message (which can be a string, image or audio).
+Then we have to indicate whom to send a message to, the subject, and the contents of the text message (which can be a string, image, or audio).
 Example code below (though you don’t have to use it yet, this will get used in the next section):
 
 ```python
@@ -136,19 +199,19 @@ yag.send('xxxxxxxxxx@tmomail.net', 'subject', contents)
 
 ```
 
-This allows us to route the email to our phone as a text message.
+This allows you to route the email to your phone as a text message.
 
 ## Use the Viam Python SDK to control your security robot
 
-If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already set up a folder with some Python code that connects to your robot and implements the Vision Service.
+If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already set up a folder with some Python code that connects to your robot and gets detections from your camera.
 
-If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file, connect the code to the robot, and select the model and label path.
+If you are starting with this tutorial, follow [these steps](/tutorials/projects/light-up/#write-python-code-to-control-your-object-detection-robot) to create the main script file and connect the code to the robot.
 Ignore the step about the Kasa smart plug host address.
 
 Instead of using this person detector to activate a smart plug, you will send yourself a text message.
 
 Make a copy of the [<file>lightupbot.py</file>](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/lightupbot.py) file in your project directory and save it as <file>chocolate_security.py</file>.
-You will use the same robot connection code and Vision Service configuration code but edit some other parts of the file.
+You will use the same robot connection code and detector configuration code but edit some other parts of the file.
 
 Delete the `from kasa import Discover, SmartPlug` line and replace it with the following to import the Yagmail Python library:
 
@@ -171,8 +234,6 @@ import os
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.components.camera import Camera
-from viam.components.types import CameraMimeType
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType, Detection
 import yagmail
 
@@ -194,29 +255,16 @@ async def connect():
 async def main():
     robot = await connect()
 
-    print('Resources:')
-    print(robot.resource_names)
-    # This string should match your camera component name in your robot config on the Viam app
-    camera = Camera.from_robot(robot, "my-camera")
-    image = await camera.get_image()
-
-    # Get and set up the Vision Service
-    vision = VisionClient.from_robot(robot)
-    params = {"model_path": "./effdet0.tflite", "label_path": "./labels.txt", "num_threads": 1}
-    personDet = VisModelConfig(name="person_detector", type=VisModelType("tflite_detector"), parameters=params)
-    await vision.add_detector(personDet)
-    names = await vision.get_detector_names()
-    print(names)
+    detector = VisionClient.from_robot(robot, "myPeopleDetector")
 
     N = 100
     for i in range(N):
-        image = await camera.get_image()
-        detections = await vision.get_detections(image, "person_detector")
+        #make sure that your camera name in the app matches "my-camera"       
+        detections = await detector.get_detections_from_camera("my-camera")
         found = False
         for d in detections:
             if d.confidence > 0.8:
-                print(d)
-                print()
+                print(d.class_name)
                 if d.class_name.lower() == "person":
                     print("This is a person!")
                     found = True
@@ -261,7 +309,7 @@ You are ready to test your robot!
 
 From a command line on your computer, navigate to the project directory and run the code with this command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 chocolate_security.py
 ```
 
@@ -269,7 +317,7 @@ If you are in front of your computer's webcam, you should get a text!
 
 Your terminal should look like this as your project runs if you are in front of the camera for a bit, and then move away from the screen:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="2-25"}
+```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 chocolate_security.py
 This is a person!
 sending message
@@ -292,13 +340,13 @@ class_name: "Person"
 
 This is a person!
 sending message
-There's nobody here, don't send message
-There's nobody here, don't send message
+There's nobody here, don't send a message
+There's nobody here, don't send a message
 ```
 
 ## Summary and next steps
 
-In this tutorial, you learned how to build a security robot using the Vision Service, your computer, and your mobile phone, and we all learned not to trust Steve.
+In this tutorial, you learned how to build a security robot using the Vision Service, the ML Model Service, your computer, and your mobile phone, and we all learned not to trust Steve.
 
 Have you heard about the chocolate box thief?
 He's always got a few Twix up his Steve.

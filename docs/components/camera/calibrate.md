@@ -16,7 +16,7 @@ The chessboard is often used because the geometry makes it a good test case for 
 The calibration code uses the `numpy` and `opencv-python` packages.
 To follow along, install the libraries:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install numpy
 pip3 install opencv-python
 ```
@@ -36,7 +36,7 @@ pip3 install opencv-python
    {{< /alert >}}
 
    Example of good images:
-   {{< imgproc src="/components/camera/calibrate/ExampleImages.png" alt="Example of good images" resize="1000x" >}}
+   ![Example of good images](/components/camera/calibrate/ExampleImages.png)
 
 3. Save [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
 4. Run `python3 cameraCalib.py YOUR_PICTURES_DIRECTORY`.

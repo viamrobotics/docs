@@ -13,8 +13,8 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
-To easily integrate Cartographer into the Viam ecosystem, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which wraps Cartographer as a [modular resource](/extend/modular-resources/).
-`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` custom SLAM service [model](/extend/modular-resources/#models).
+To add Cartographer to your robot, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which wraps Cartographer as a [modular resource](/extend/modular-resources/).
+`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` {{< glossary_tooltip term_id="model-namespace-triplet" text="namespaced">}} custom [model](/extend/modular-resources/key-concepts/#models) of SLAM service.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ To use Cartographer with Viam, install the `cartographer-module` module on your 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
@@ -31,7 +31,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/cartographer-module
 ```
@@ -39,7 +39,7 @@ sudo chmod a+rx /usr/local/bin/cartographer-module
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install cartographer-module
 ```
 
@@ -66,7 +66,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Services
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
-{{< imgproc src="/services/slam/add-cartographer-service-ui.png" alt="adding cartographer slam service" resize="1000x" >}}
+![adding cartographer slam service](/services/slam/add-cartographer-service-ui.png)
 
 Paste the following into the **Attributes** field of your new service:
 
@@ -105,13 +105,13 @@ Click on the **Modules** subtab. Add the cartographer module with a name of your
 {{< tabs name="Add Cartographer Service Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
-{{< imgproc src="/services/slam/add-cartographer-module-ui-linux.png" alt="adding cartographer module linux" resize="1000x" >}}
+![adding cartographer module linux](/services/slam/add-cartographer-module-ui-linux.png)
 
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-{{< imgproc src="/services/slam/add-cartographer-module-ui-M1-M2.png" alt="adding cartographer module M1 M2" resize="1000x" >}}
+![adding cartographer module M1 M2](/services/slam/add-cartographer-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}

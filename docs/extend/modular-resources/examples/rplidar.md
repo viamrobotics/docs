@@ -22,7 +22,7 @@ Install the `rplidar-module` binary on your machine and make it executable by ru
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-stable-aarch64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
@@ -30,7 +30,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/rplidar-module https://storage.googleapis.com/packages.viam.com/apps/rplidar/rplidar-module-stable-x86_64.AppImage
 sudo chmod a+rx /usr/local/bin/rplidar-module
 ```
@@ -38,7 +38,7 @@ sudo chmod a+rx /usr/local/bin/rplidar-module
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-```{id="terminal-prompt" class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews && brew install rplidar-module
 ```
 
@@ -56,7 +56,7 @@ Navigate to the **Config** tab on your robot's page, and click on the **Componen
 
 Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of your choice:
 
-{{< imgproc src="/extend/modular-resources/add-rplidar/add-rplidar-component-ui.png" alt="adding rplidar component" resize="1000x" >}}
+![adding rplidar component](/extend/modular-resources/add-rplidar/add-rplidar-component-ui.png)
 
 Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux):
 
@@ -87,13 +87,13 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 {{< tabs name="Add Rplidar Component Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
-{{< imgproc src="/extend/modular-resources/add-rplidar/add-rplidar-module-ui-linux.png" alt="adding rplidar module linux" resize="1000x" >}}
+![adding rplidar module linux](/extend/modular-resources/add-rplidar/add-rplidar-module-ui-linux.png)
 
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-{{< imgproc src="/extend/modular-resources/add-rplidar/add-rplidar-module-ui-M1-M2.png" alt="adding rplidar module M1 M2" resize="1000x" >}}
+![adding rplidar module M1 M2](/extend/modular-resources/add-rplidar/add-rplidar-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -15,7 +15,7 @@ To be able to build the docs locally, you need to install the following:
 You can build the docs for local development using the following command:
 
 ```sh
-make serve-dev
+make serve-dev-draft
 ```
 
 If you would like to see the production view (without drafts and with minified CSS), run:
@@ -86,7 +86,7 @@ For example, if you were writing in `viam/high-level-overview.md`, Hugo sees thi
 
 - To link to another markdown file in the same directory as the markdown file, use `[mylink](../installation/)`.
   **Note the trailing slash as another markdown file is another web directory in Hugo**
-- To link to some image in the same directory as the markdown file, use `[mylink](../img/image1.png)`.
+- To link to some image in the same directory as the markdown file, use `[mylink](../image1.png)`.
 - To link something in a different directory, use `[mylink](/components/)`
 
 We are also using `htmltest` to ensure links within the docs work.

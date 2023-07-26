@@ -4,9 +4,9 @@ linkTitle: "Move a Robot Arm"
 weight: 5
 type: "docs"
 description: "Access and control one of the most fundamental systems in robotics: A robotic arm."
-image: "/tutorials/img/motion/preview.jpg"
+image: "/tutorials/motion/preview.jpg"
 imageAlt: "A robotic arm"
-images: ["/tutorials/img/motion/preview.jpg"]
+images: ["/tutorials/motion/preview.jpg"]
 tags: ["arm", "motion", "services"]
 aliases:
   - "/tutorials/motion/accessing-and-moving-robot-arm"
@@ -28,7 +28,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/motion/access_01_xarm6.png" class="alignright" alt="A picture of the UFACTORY xArm 6." style="max-width: 400px">
+  {{<imgproc src="/tutorials/motion/access_01_xarm6.png" resize="500x" declaredimensions=true alt="A picture of the UFACTORY xArm 6." class="alignright" style="max-width: 400px" >}}
 </div>
 
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
@@ -67,7 +67,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 6. Add a **Frame** to this component.
    * You do not need to change the default values that populate the new frame card
 
-   <img src="../../img/motion/access_02_arm_config.png" width="700px" alt="Sample robot arm configuration with several fields filled out.">
+   {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="700x" declaredimensions=true alt="Sample robot arm configuration with several fields filled out." class="alignright" style="max-width: 400px" >}}
 
 7. Save this robot configuration.
 
@@ -87,7 +87,7 @@ In this step, you'll fetch data about the robotic arm's current position.
 {{< tabs >}}
 {{% tab name="Python" %}}
 The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the [`get_end_position`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`get_end_position`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
@@ -100,7 +100,7 @@ print(f"myArm get_end_position return value: {my_arm_end_position}")
 
 You should see output that looks similar to the following:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 myArm get_end_position return value: x: 200.73450755898915
 y: 0.0028507667654201754
 z: 108.63966593621173
@@ -135,7 +135,7 @@ fmt.Println("myArm EndPosition orientation value:", myArmEndPosition.Orientation
 
 You should see output that looks similar to the following:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 myArm EndPosition position value: (200.734507558989150766137755, 0.002850766765420175395673, 108.639665936211727625959611)
 myArm EndPosition orientation value: &{-0.009825947555660422 -2.127840592298059e-06 0.9999517242097753 -5.6523269754840597e-08}
 ```
@@ -161,7 +161,7 @@ print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
 You should see output that looks similar to the following:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 myArm get_joint_positions return value: values: 0.00043945314765093886
 values: 0.46724854536551791
 values: 0.64500731344456741
@@ -187,7 +187,7 @@ fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
 You should see output that looks similar to the following:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$" data-output="1-10"}
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
 myArm JointPositions return value: values:0.00043945314765093886  values:0.4672485453655179  values:0.6450073134445674  values:-0.0009887695170768527  values:0.013732909913080547  values:0.0007690429693064871
 ```
 
@@ -228,8 +228,8 @@ from viam.proto.component.arm import JointPositions
 See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Command a joint position move: small adjustment to the last joint
-cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
+# Command a joint position move: move the forearm of the arm slightly up
+cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
 await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 ```
 
@@ -241,8 +241,8 @@ Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able t
 See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Command a joint position move: small adjustment to the last joint
-cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
+// Command a joint position move: move the forearm of the arm slightly up
+cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
 err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 if err != nil {
   fmt.Println(err)
@@ -252,7 +252,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-If you execute the sample joint move statement above, your arm should move the last joint a small amount (15 degrees).
+If you execute the sample joint move statement above, the third joint of your arm should move a small amount (30 degrees).
 Feel free to experiment further with joint position commands by changing the values for each joint and re-sending the commands.
 
 When you are ready to move on, the next section will show you how to use **pose commands**.
@@ -268,7 +268,7 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Add the sample code below to your own client script to try using the arm component's [`move_to_position`](../../../components/arm/#movetoposition) command.
+Add the sample code below to your own client script to try using the arm component's [`move_to_position`](/components/arm/#movetoposition) command.
 This example gets a `Pose` from `get_end_position()` so no additional imports are required.
 If you want to synthesize new poses directly, note that you must import an additional Python package by adding `from viam.proto.common import Pose` to your import list.
 
@@ -281,7 +281,7 @@ await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](../../../components/arm/#movetoposition) command.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](/components/arm/#movetoposition) command.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}

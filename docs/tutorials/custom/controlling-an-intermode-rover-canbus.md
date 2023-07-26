@@ -5,9 +5,9 @@ weight: 60
 type: "docs"
 tags: ["modular resources", "extending viam", "components", "rover", "base", "CAN bus", "Intermode"]
 description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
-image: "/tutorials/img/intermode/rover_outside.png"
+image: "/tutorials/intermode/rover_outside.png"
 imageAlt: "Intermode rover pictured outdoors."
-images: ["/tutorials/img/intermode/rover_outside.png"]
+images: ["/tutorials/intermode/rover_outside.png"]
 authors: [ "Matt Vella" ]
 languages: [ "go" ]
 viamresources: [ "base", "custom" ]
@@ -26,7 +26,7 @@ This tutorial shows you how to create a [modular resource](/extend/modular-resou
 Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/intermode/rover_outside.png" class="alignright" alt="Intermode rover pictured outdoors." title="Intermode rover pictured outdoors." style="max-width:300px" />
+{{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
 </div>
 
 While the concepts covered here are applicable to other hardware, we’ll specifically show you an example of how you can get started using Viam to control the [Intermode rover](https://www.intermode.io/).
@@ -71,7 +71,7 @@ Always disconnect devices from power before plugging, unplugging or moving wires
 Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connector and fitting it to the top of the Pi [using a spacer and a screw](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi).
 
 <div class="td-max-width-on-larger-screens">
-    <img src="../../img/intermode/can_terminal_conn.png" class="alignright" alt="PiCAN Terminal Wiring." title="PiCAN Terminal Wiring." style="max-width:400px" />
+    {{<imgproc src="/tutorials/intermode/can_terminal_conn.png" resize="400x" declaredimensions=true alt="PiCAN Terminal Wiring." class="alignright" style="max-width:400px">}}
 </div>
 
 Next, with the Intermode rover powered down, connect the 6-wire amphenol connector that comes with the rover to the 4 screw terminal on PiCAN bus:
@@ -87,7 +87,7 @@ Connect the remaining two wires to the + (red) and - (black) **input** terminals
 Attach the USB-C adapter wires to the **output** of your buck converter, and plug the other end of the USB-C adapter into your Pi.
 You can now power up the rover, which will provide power to your Pi and allow it to communicate with the rover using CAN bus!
 
-![Intermode, Pi Wiring.](../../img/intermode/intermode_wiring.jpg)
+![Intermode, Pi Wiring.](/tutorials/intermode/intermode_wiring.jpg)
 
 ### Software for the Intermode base modular resource
 
@@ -95,7 +95,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 
 ## A modular resource for the Intermode base
 
-Viam includes [APIs](/extend/modular-resources/#apis) for common component types within `viam-server`.
+Viam includes [APIs](/program/apis/) for common component types within `viam-server`.
 The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base/).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.
@@ -104,10 +104,10 @@ If you want to directly configure this modular resource code with your robot, sk
 ### Create a custom model using the Viam RDK base API
 
 The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
-To use it for the Intermode rover, you must create a new [model](/extend/modular-resources/#models) with its own implementation of each method.
+To use it for the Intermode rover, you must create a new [model](/extend/modular-resources/key-concepts/#models) with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/components/base/), the [API](/extend/modular-resources/#apis) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/extend/modular-resources/key-concepts/#apis) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
@@ -231,7 +231,7 @@ Now the intermode base can receive and execute *SetPower* commands using the sam
 
 ### Leaving some methods unimplemented
 
-In some cases, you may not want to implement specific methods provided by the resource type's [API](/extend/modular-resources/#apis).
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/extend/modular-resources/key-concepts/#apis).
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
@@ -254,13 +254,13 @@ If you make changes to the tutorial code, you'll need to re-compile to create a 
 To run the modular resource, first copy the module binary to your Raspberry Pi.
 If you have git installed on your Pi, this is as simple as running the following command in the directory for your modular resource code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/tutorial-intermode
 ```
 
 If you don't have git installed on your Pi, you'll need to first run:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install git
 ```
 
@@ -295,7 +295,7 @@ Change this to the correct location in `executable_path` when adding the module 
 }
 ```
 
-More details about modules and how they work can be found in the [modular resources documentation](/extend/modular-resources/#use-a-modular-resource-with-your-robot).
+More details about modules and how they work can be found in the [modular resources documentation](/extend/modular-resources/).
 
 ### Control the rover
 

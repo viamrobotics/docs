@@ -4,9 +4,9 @@ linkTitle: "Mock Robot"
 weight: 41
 type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
-webmSrc: "/tutorials/img/build-a-mock-robot/mock-robot.webm"
-mp4Src: "/tutorials/img/build-a-mock-robot/mock-robot.mp4"
-images: ["/tutorials/img/build-a-mock-robot/mock-robot.gif"]
+webmSrc: "/tutorials/build-a-mock-robot/mock-robot.webm"
+mp4Src: "/tutorials/build-a-mock-robot/mock-robot.mp4"
+images: ["/tutorials/build-a-mock-robot/mock-robot.gif"]
 videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 aliases:
     - "/tutorials/build-a-mock-robot/"
@@ -74,7 +74,7 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
 
     The config panel should look like this:
 
-    ![A fake arm being configured in Builder mode in the Viam app config tab.](../../img/build-a-mock-robot/create-arm.png)
+    ![A fake arm being configured in Builder mode in the Viam app config tab.](/tutorials/build-a-mock-robot/create-arm.png)
     - Click **Save config**.
 
 6. Configure a [fake motor component](../../../components/motor/fake/):
@@ -108,13 +108,13 @@ This is convenient if the computer running `viam-server` is a dedicated part of 
 
 To disable `viam-server` from starting automatically on boot, run the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl disable viam-server
 ```
 
 Then start `viam-server`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo ./viam-server -config /etc/viam.json
 ```
 
@@ -127,7 +127,7 @@ Find more information on running `viam-server` in the [installation guide](../..
 
 When you add components to your robot, the Viam app automatically generates a UI for them under the **Control** tab.
 
-![Screenshot from the Viam app showing the Control tab with the fake arm, and motor components.](../../img/build-a-mock-robot/control-tab.png)
+![Screenshot from the Viam app showing the Control tab with the fake arm, and motor components.](/tutorials/build-a-mock-robot/control-tab.png)
 
 You can use the **Control** tab UI to send commands to your robot.
 For example, you can control the direction and speed of your motor, or change the joint positions of your robotic arm.
@@ -167,14 +167,14 @@ Run your code by entering the following in a new terminal on your computer:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 index.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go run index.go
 ```
 
@@ -184,7 +184,7 @@ go run index.go
 If you successfully configured your robot and it is able to connect to the Viam app you should see something like this printed to the terminal after running your program.
 What you see here is a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your robot in the Viam app.
 
-![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. The list includes the Motion Service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](../../img/build-a-mock-robot/resource-output.png)
+![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. The list includes the Motion Service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](/tutorials/build-a-mock-robot/resource-output.png)
 
 ### Control your mock robot
 
@@ -341,7 +341,7 @@ Now when you run this code, you should see the new mock arm positions listed in 
 Open the **Control** tab of your mock robot to see the robot's arm positions changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
-  {{<gif webm_src="/tutorials/img/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/img/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
+  {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
 </div>
 
 ## Create a mock sub-part
@@ -367,12 +367,12 @@ This could be anything, but imagine for the purpose of this tutorial that this m
 
 On your robot's page on the Viam app, click on the dropdown next to the main part, name your part and click **Add new**.
 
-![Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox.](../../img/build-a-mock-robot/part-menu.png)
+![Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
 
 Navigate to your new sub-part's **Config** tab and create a new motor using the **fake** model.
 Name it `"motor2"`.
 
-![The config tab of the sub-part. A new motor component called motor2 is being created.](../../img/build-a-mock-robot/sub-part-motor.png)
+![The config tab of the sub-part. A new motor component called motor2 is being created.](/tutorials/build-a-mock-robot/sub-part-motor.png)
 
 Click **Create component** and then **Save config**.
 
@@ -393,18 +393,18 @@ The following instructions use port `8081`, but you can use any open port you wa
 
 In the upper right corner of the **Setup** tab, click **Copy viam-server config**.
 
-![The Setup tab of the sub-part's robot page showing the 'Copy viam-server config' button highlighted by a red box.](../../img/build-a-mock-robot/copy-config.png)
+![The Setup tab of the sub-part's robot page showing the 'Copy viam-server config' button highlighted by a red box.](/tutorials/build-a-mock-robot/copy-config.png)
 
 On your local machine, create a new file called <file>viam-sub-part.json</file>, then paste the contents of your server config into that file and save.
 From a new terminal window, navigate to the directory where you saved the config file, and run the following command to create a new instance of `viam-server` using this configuration.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam-server -config viam-sub-part.json
 ```
 
 Now that you have two instances of `viam-server` running on your local machine, you should be able to see both your main robot arm and your new mock sub motor listed on your main robot's **Control** tab.
 
-![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub part motor component.](../../img/build-a-mock-robot/control-all.png)
+![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub part motor component.](/tutorials/build-a-mock-robot/control-all.png)
 
 ## Control a sub-part using the Viam SDK
 
@@ -515,7 +515,7 @@ func main() {
 
 When you run this code, you will see your mock sub motor toggling between running and idle in real time from the Viam app!
 
-{{<gif webm_src="/tutorials/img/build-a-mock-robot/go-start-demo.webm" mp4_src="/tutorials/img/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
+{{<gif webm_src="/tutorials/build-a-mock-robot/go-start-demo.webm" mp4_src="/tutorials/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
 
 ## Next steps
 
