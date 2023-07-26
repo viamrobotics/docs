@@ -516,7 +516,7 @@ command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myBase.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Docs](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
 
 {{% /tab %}}
 {{< /tabs >}}
