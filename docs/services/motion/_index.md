@@ -429,7 +429,7 @@ logger.Info("Orientation of myArm from the Motion Service:", myArmMotionPose.Pos
 
 ### MoveOnMap
 
-Move a [base](/component/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a [SLAM](/services/slam/) map.
+Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a [SLAM](/services/slam/) map.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
