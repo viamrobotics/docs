@@ -16,7 +16,7 @@ Most Viam components come with a _fake_ model that can be useful when testing.
 These fake components interact with Viam like real hardware, but of course, do not actually exist.
 We will be using these fake components to build out a mock robot and explore how to use Viam.
 
-In this tutorial, you will set up, control, and program a mock robotic arm and a mock motor sub-part using fake components.
+In this tutorial, you will set up, control, and program a mock robotic arm and a mock motor sub-part using fake components.  
 
 ## What you'll need for this guide
 
