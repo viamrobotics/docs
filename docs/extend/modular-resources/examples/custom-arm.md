@@ -8,15 +8,16 @@ tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Py
 # SMEs: Nicole Jung
 ---
 
-The RDK provides a number of built-in {{< glossary_tooltip term_id="model" text="models" >}} that implement the API protocol of the [arm](/components/arm/) subtype of component, such as the `ur5e`, `xArm6`, and `xArm7`.
+The {{< glossary_tooltip term_id="rdk" text="RDK" >}} provides a number of built-in arm {{< glossary_tooltip term_id="model" text="models" >}} that implement the API protocol of the [arm](/components/arm/) subtype of component, such as the `ur5e`, `xArm6`, and `xArm7`.
 
 {{% alert title="Info" color="info" %}}
 
 *Built-in* models each have a software driver in the RDK.
-For example, the `ur5e`'s driver is defined in the RDK as found on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur.go).
+For example, the `ur5e`'s driver is implemented in [`ur.go`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur.go) in the RDK.
 
-Each of these models also has to have a [kinematics file](/internals/kinematic-chain-config/) that specifies the relative [orientation](/internals/orientation-vector/) of links and joints in its kinematic chain, which is located in the RDK in the same directory as the respective driver.
-For example, the `ur5e`'s kinematics file, <file>ur5e.json</file>, is defined in the RDK as found on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json).
+Each of these models must also include a [kinematics file](/internals/kinematic-chain-config/), which specifies the relative [orientation](/internals/orientation-vector/) of links and joints in its kinematic chain.
+Each built-in driver in the RDK includes a corresponding kinematics file located in the same directory as the driver.
+For example, the `ur5e`'s kinematics file, [`ur5e.json`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json), is provided in the RDK in the same directory as its driver, `ur.go`.
 
 See [Arm Configuration](/components/arm/#configuration) for the current list of built-in models the RDK provides.
 
@@ -38,21 +39,21 @@ Follow [this guide](/extend/modular-resources/create/#code-a-new-resource-model)
 
 ## Get your arm's kinematics file
 
-The way arms move across space is more complicated than Viam's other [components](/components/).
+The way arms move through space is more complicated than Viam's other [components](/components/).
 Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
 This provides necessary information for the built-in [Motion Service](/services/motion/) to work with the arm, on top of the client-inaccessible and mostly static [Frame System Service](/services/frame-system/).
 
 **Find a pre-built kinematics file:**
 
-- `viam-server` will work with <file>URDF</file> (United Robot Description Format) kinematics files, which are currently the standard for ROS drivers.
-Many <file>URDF</file> "robot descriptions" for industrial robot arm models can be found on [GitHub](https://github.com/) that could work with the arm on Viam.
+- `viam-server` will work with <file>URDF</file>  [(United Robot Description Format)]( http://wiki.ros.org/urdf) kinematics files, which are currently the standard for ROS drivers.
+You can find <file>URDF</file> "robot descriptions" for many industrial robot arm models on GitHub that are compatible with the Viam platform.
 
 **Create your own kinematics file:**
 
 - Follow the instructions on [Configure Complex Kinematic Chains](/internals/kinematic-chain-config/) to write a file detailing the geometry of your arm.
   - Use the [Spatial Vector Algebra (SVA)](/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
-  - Follow the Frame System's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientation](/internals/orientation-vector/) of the `"links"` on your arm.
+  - Follow the Frame System's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientations](/internals/orientation-vector/) of the `links` on your arm.
 - View examples of the SVA and JSON format in Viam's built-in arm drivers on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm).
 
 Create a new directory.
@@ -70,7 +71,7 @@ Import your custom model and API into the main program and register the new reso
 2. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
-3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
+3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from `viam-server`, open the socket, and start the module at the entry point.
 
 ### Code a new resource model
 
@@ -78,7 +79,7 @@ Save the following two files, <file>my_modular_arm.py</file> and <file>_\_init__
 
 This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) [(rdk:service:arm)](/extend/modular-resources/key-concepts/#models) as a new model, `"myarm"`:
 
-- <file>my_modular_arm.py</file> implements a custom model of the arm component built-in resource, "myarm".
+- <file>my_modular_arm.py</file> implements a custom model of the arm component built-in resource, `"myarm"`.
 
     <details>
     <summary>Click to view sample code from <file>my_modular_arm.py</file></summary>
@@ -154,7 +155,7 @@ This module template registers a modular resource implementing Viam's built-in [
 
     </details><br>
 
-- <file>_\_init__.py</file> registers the my_modular_arm custom model and API helper functions with the Python SDK.
+- <file>_\_init__.py</file> registers the `my_modular_arm` custom model and API helper functions with the Python SDK.
 
     <details>
     <summary>Click to view sample code from <file>__init__.py</file></summary>
@@ -172,7 +173,7 @@ This module template registers a modular resource implementing Viam's built-in [
 
 {{% alert title="Info" color="info" %}}
 
-The Python code for the custom model (<file>my_modular_arm.py</file>), resource registration file (<file>_\_init__.py</file>), and module entry point file (<file>main.py</file>) is adapted from the [Python SDK Docs](https://python.viam.dev/examples/example.html#custom-modular-arm-example).
+The Python code for the custom model (<file>my_modular_arm.py</file>), resource registration file (<file>_\_init__.py</file>), and module entry point file (<file>main.py</file>) is adapted from the [Python SDK modular arm example](https://python.viam.dev/examples/example.html#custom-modular-arm-example).
 
 {{% /alert %}}
 
