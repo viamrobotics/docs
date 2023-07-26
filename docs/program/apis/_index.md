@@ -350,9 +350,10 @@ Method Name | Description
 [`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
 [`SetMode`](/services/navigation/#setmode) | Set the mode the service is operating in.
 [`Location`](/services/navigation/#location) | Get the current location of the robot.
-[`Waypoints`](/services/navigation/#waypoints) | Get an array of waypoints currently in the service's data storage.
+[`Waypoints`](/services/navigation/#waypoints) | Get the waypoints currently in the service's data storage.
 [`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
+[`GetObstacles`](/services/navigation/#getobstacles) | Get the obstacles currently in the service's data storage.
 
 ### Sensors
 
@@ -368,6 +369,8 @@ Method Name | Description
 [`Move`](/services/motion/#move) | Move multiple components in a coordinated way to achieve a desired motion.
 [`MoveSingleComponent`](/services/motion/#movesinglecomponent) | Move a single component "manually."
 [`GetPose`](/services/motion/#getpose) | Get the current location and orientation of a component.
+[`MoveOnMap`](/services/motion/#moveonmap) | Move a [base](/components/base/) component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
+[`MoveOnGlobe`](/services/motion/#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
 
 ### SLAM
 
