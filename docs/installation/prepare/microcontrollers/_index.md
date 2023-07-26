@@ -27,8 +27,8 @@ Follow these steps to install and build the micro-rdk on your ESP32:
 
 ### Hardware Requirements
 
-You need an an Espressif ESP32 microcontroller to use the micro-RDK.
-Viam recommends purchasing the ESP32 with a development board: see [development kit options](https://www.espressif.com/en/products/devkits).
+You need an Espressif ESP32 microcontroller to use the micro-RDK.
+Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).
 
 * **Minimal configuration:** 384kB Ram 4MB flash
 * **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
@@ -125,8 +125,8 @@ brew install viamrobotics/brews/canon
 {{% /tab %}}
 {{% /tabs %}}
 
-Make sure to [add the go binary folder to your `PATH`](https://go.dev/ref/mod#go-install).
-Run `$ export PATH=$PATH:$(go env GOPATH)/bin` to do this, and verify your `GOPATH` with `go env GOPATH`.
+Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
+`export PATH=$PATH:$(go env GOPATH)/bin`.
 
 ### Set up development environment manually
 
@@ -181,8 +181,10 @@ To activate ESP-IDF, run the following command to source (`.`) the activation sc
 . $HOME/esp/esp-idf/export.sh
 ```
 
+{{< alert title="Tip" color="tip" >}}
 To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
-Save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
+Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
+{{< /alert >}}
 
 #### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
 
@@ -228,7 +230,7 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 * Click on the name of the robot to go to the robot's page.
 * Navigate to the **Config** tab.
 
-### Configure an `esp32` Board
+### Configure an esp32 board
 
 {{< alert title="Info" color="info" >}}
 The`esp32` [board](/components/board/) model is not currently provided for you as an option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
@@ -321,7 +323,7 @@ The micro-RDK needs this JSON file, which contains your robot part secret key an
 
 {{% snippet "secret-share.md" %}}
 
-### Connect to your ESP32
+### Upload the Micro-RDK to your ESP32
 
 Now, upload the project to connect to your ESP32 through [the Viam app](https://app.viam.com):
 
