@@ -386,7 +386,7 @@ Click **Save config** in the bottom left corner of the screen.
     {{<imgproc src="/tutorials/claw-game/mount-screw-holes.jpg" resize="x300" declaredimensions=true alt="Screw holes on the xarm6 head without the attachment" class="center-if-small" style="height:250px">}}
     {{<imgproc src="/tutorials/claw-game/mount-gripper.jpg" resize="x300" declaredimensions=true alt="3d printed mount attached to the gripper and mounted to the arm" class="center-if-small" style="height:250px">}}
 
-1. Using velcro cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
+1. Using hook-and-loop cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
 
    {{<imgproc src="/tutorials/claw-game/mount-together.jpg" resize="500x" declaredimensions=true alt="Gripper attached to the arm and cord wired around the arm" class="aligncenter">}}
 

@@ -33,7 +33,7 @@ This tutorial will teach you how to build your own drink-carrying robot.
 To build your own drink-carrying robot, you need the following hardware:
 
 * [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
-* Assembled [Scuttle rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
+* Assembled [SCUTTLE rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
 * [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
 These are for the height of the robot.
 * [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 2 single 4 slot rail, 30 mm square, hollow, 12 inches long.
@@ -44,7 +44,7 @@ These are to create a base inside the robot to securely hold the drink box.
 * DC-DC converter, 12V in, 5V out
 * USB camera
 * A box to hold drinks
-* Optional: velcro tape
+* Optional: Hook-and-loop tape
 * Optional: Acrylic panels to cover the sides
 * Optional: 3D printer
 
@@ -668,24 +668,24 @@ When we write the code for the robot, we can differentiate between, say, a perso
 
 Now that you have all your components wired, configured, and tested, you can assemble your robot.
 
-Add four 3’ long T-slotted framing rails along the corners of the Scuttle Rover base to make it a tall structure.
+Add four 3’ long T-slotted framing rails along the corners of the SCUTTLE Rover base to make it a tall structure.
 Then add two 12 inches long T-slotted framing rails in the middle of the structure at the height that you want to hold the box.
 Secure them using T-slotted framing structural brackets.
 
 Next, add the wired Raspberry Pi, motor driver, and 12V battery to the base.
 
-You can use the 3D-printed holders that come with the assembled Scuttle base for the Raspberry Pi and the motor driver.
-You can also print holders based on Scuttle designs from [grabcad](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
+You can use the 3D-printed holders that come with the assembled SCUTTLE base for the Raspberry Pi and the motor driver.
+You can also print holders based on SCUTTLE designs from [GrabCAD](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
 
-Secure the 12V battery to the bottom using velcro tape or other tape, and secure the sides using T-slotted brackets.
+Secure the 12V battery to the bottom using hook-and-loop tape or other tape, and secure the sides using T-slotted brackets.
 
 {{<imgproc src="/tutorials/tipsy/assembly-rails-velcro.jpg" resize="500x" declaredimensions=true alt="velcro tape on T-slotted rails secured from the sides." class="aligncenter">}}
 
-Secure the buck converter with velcro tape, double-sided tape, or a 3D printed holder.
+Secure the buck converter with hook-and-loop tape, double-sided tape, or a 3D printed holder.
 
 {{<imgproc src="/tutorials/tipsy/assembly-driver.jpg" resize="500x" declaredimensions=true alt="motor driver secured to the robot base with 3D printed attachment and wired to the Raspberry Pi." class="aligncenter">}}
 
-Use velcro or something else to secure the USB camera to the box that holds the drinks so it faces the front, towards any people who may interact with the robot.
+Use hook-and-loop fasteners or something else to secure the USB camera to the box that holds the drinks so it faces the front, towards any people who may interact with the robot.
 
 For ultrasonic sensors to fit the framing, we recommend 3D printing enclosures.
 This step is optional but makes the project look more aesthetically pleasing and ensures that the sensors don’t fall out as your robot moves around.
@@ -696,7 +696,7 @@ You can design your own enclosure, or you can use our design:
 
 The STL files we used can be found in our [project repository](https://github.com/viam-labs/devrel-demos/tree/main/tipsy-bot/stl-files).
 
-Scuttle also has a design for a 3D-printed enclosure with a twist bracket that fits the rails.
+SCUTTLE also has a design for a 3D-printed enclosure with a twist bracket that fits the rails.
 
 If you decide not to use a 3D printer, you can tape the ultrasonic sensors to the rails.
 We recommend that you do so within the enclosure, perhaps under the drink box and above the rover base, so they don’t touch people or obstacles as the robot moves around, as this could cause them to fall off or get damaged.
