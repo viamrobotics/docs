@@ -407,11 +407,7 @@ myBase.Stop(context.Background())
 
 ### GetProperties
 
-Get the width and turning radius of the base in meters.
-
-{{< alert title="Tip" color="tip" >}}
-These properties are inherent to the {{< glossary_tooltip term_id="model" text="model" >}} of base, so you do not need to [configure](#configuration) them.
-{{< /alert >}}
+Get the width and turning radius of the {{< glossary_tooltip term_id="model" text="model" >}} of base in meters.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
