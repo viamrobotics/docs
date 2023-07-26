@@ -23,19 +23,9 @@ See [Arm Configuration](/components/arm/#configuration) for the current list of 
 
 {{% /alert %}}
 
-If you have a robot arm that is not already supported by the RDK, creating a custom module for it allows you to [program](/program/) and control it with the [arm API](/components/arm/#api), or use it with Viam [services](/services/) such as [Motion Planning](/services/motion/), just as you would with a built-in model.
+If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/program/) and control it with the [arm API](/components/arm/#api), or use it with [services](/services/) like [Motion](/services/motion/), just as you would with a built-in model.
 
-Follow these instructions to implement a model of [arm component](/components/arm/) that is not built into the RDK:
-
-- [Get your arm's kinematics file](#get-your-arms-kinematics-file)
-- [Create a custom arm model as a modular resource](#create-a-custom-arm-model-as-a-modular-resource)
-  - [Code a new resource model](#code-a-new-resource-model)
-  - [Code a main entry point program](#code-a-main-entry-point-program)
-  - [Compile the module into an executable](#compile-the-module-into-an-executable)
-- [Configure the module and modular resource on your robot](#configure-the-module-and-modular-resource-on-your-robot)
-
-This guide uses Viam's Python SDK to code the arm module, but if you want to use the Go Client SDK, you can.
-Follow [this guide](/extend/modular-resources/create/#code-a-new-resource-model) and select **Go** to learn how to code a module providing a new arm model in Go.
+See [Modular Resources](/extend/modular-resources/) for more information.
 
 ## Get your arm's kinematics file
 
@@ -66,14 +56,21 @@ While completing the following step, make sure to save any new files that you ge
 To create a custom arm model, code a module in Python with the module support libraries provided by [Viam's SDKs](/program/apis/):
 
 1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (for example, `rdk:component:arm`).
-Import your custom model and API into the main program and register the new resource model with your chosen SDK.
+Import your custom model and API into the main program and register the new resource model with the Python SDK.
 
-2. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
+1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
-3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from `viam-server`, open the socket, and start the module at the entry point.
+1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from `viam-server`, open the socket, and start the module at the entry point.
 
 ### Code a new resource model
+
+{{% alert title="Info" color="info" %}}
+
+This guide uses Viam's Python SDK to implement a custom arm module, but if you want to use the Go Client SDK, you can.
+Follow [this guide](/extend/modular-resources/create/#code-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
+
+{{% /alert %}}
 
 Save the following two files, <file>my_modular_arm.py</file> and <file>_\_init__.py</file>, on your computer and edit the code as applicable.
 
@@ -233,10 +230,11 @@ For example:
 #!/bin/sh
 cd `dirname $0`
 
-# Be sure to use `exec` so that termination signals reach the python process,
-# or handle forwarding termination signals manually
 exec python3 -m <your-module-directory-name>.<main-program-filename-without-extension> $@
 ```
+
+This script uses exec to be able to ensure that termination signals reach the python process.
+If you omit this, be sure to handle the forwarding of termination signals accordingly.
 
 To make this shell script executable, run the following command in your terminal:
 
@@ -250,4 +248,3 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 ## Configure the module and modular resource on your robot
 
 Follow [these configuration instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
-
