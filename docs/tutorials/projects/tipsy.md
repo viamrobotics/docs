@@ -664,7 +664,7 @@ When we write the code for the robot, we can differentiate between, say, a perso
 
 ## Design your robot
 
-{{<imgproc src="/tutorials/tipsy/assembly-frame.jpg" resize="400x" declaredimensions=true alt="four T-slotted framing rails connected to the SCUTTLE base with brackets for height, and two T-slotted framing rails connected to underneath the box with brackets for holding the drinks." class="alignleft">}}
+{{<imgproc src="/tutorials/tipsy/assembly-frame.jpg" resize="400x" declaredimensions=true alt="four T-slotted framing rails connected to the Scuttle base with brackets for height, and two T-slotted framing rails connected to underneath the box with brackets for holding the drinks." class="alignleft">}}
 
 Now that you have all your components wired, configured, and tested, you can assemble your robot.
 
@@ -677,7 +677,7 @@ Next, add the wired Raspberry Pi, motor driver, and 12V battery to the base.
 You can use the 3D-printed holders that come with the assembled SCUTTLE base for the Raspberry Pi and the motor driver.
 You can also print holders based on SCUTTLE designs from [GrabCAD](https://grabcad.com/library?page=1&time=all_time&sort=recent&query=scuttle).
 
-Secure the 12V battery to the bottom using Velcro tape or other tape, and secure the sides using T-slotted brackets.
+Secure the 12V battery to the bottom using hook-and-loop tape or other tape, and secure the sides using T-slotted brackets.
 
 {{<imgproc src="/tutorials/tipsy/assembly-rails-velcro.jpg" resize="500x" declaredimensions=true alt="velcro tape on T-slotted rails secured from the sides." class="aligncenter">}}
 
@@ -685,7 +685,7 @@ Secure the buck converter with hook-and-loop tape, double-sided tape, or a 3D pr
 
 {{<imgproc src="/tutorials/tipsy/assembly-driver.jpg" resize="500x" declaredimensions=true alt="motor driver secured to the robot base with 3D printed attachment and wired to the Raspberry Pi." class="aligncenter">}}
 
-Use hook and loop fasteners or something else to secure the USB camera to the box that holds the drinks so it faces the front, towards any people who may interact with the robot.
+Use hook-and-loop fasteners or something else to secure the USB camera to the box that holds the drinks so it faces the front, towards any people who may interact with the robot.
 
 For ultrasonic sensors to fit the framing, we recommend 3D printing enclosures.
 This step is optional but makes the project look more aesthetically pleasing and ensures that the sensors don’t fall out as your robot moves around.
