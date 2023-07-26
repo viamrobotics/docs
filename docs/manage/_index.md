@@ -14,7 +14,7 @@ The [Viam app](https://app.viam.com/) is a web UI for managing and building robo
 ## Create Account and Log In
 
 To get started on the Viam app, you must log in as an authorized user.
-Viam support sign up using Google, GitHub, Apple, and Email.
+Viam support sign up using Google, GitHub, Apple, and email.
 
 Navigate to [the main page](https://app.viam.com/).
 If you haven't created an account yet, click **Sign Up** to create a new account using your prefered Single Sign On method or your email address and a password.
