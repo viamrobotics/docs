@@ -19,7 +19,7 @@ Once these waypoints are added and the mode of the service is [set to `MODE_WAYP
 
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
-Make sure the [movement sensor](/components/movement-sensor) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the robot's current GPS location.
 - It must also support either `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
