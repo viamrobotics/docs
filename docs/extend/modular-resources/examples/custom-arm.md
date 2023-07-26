@@ -31,11 +31,11 @@ See [Modular Resources](/extend/modular-resources/) for more information.
 
 The way arms move through space is more complicated than Viam's other [components](/components/).
 Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
-This provides necessary information for the built-in [Motion Service](/services/motion/) to work with the arm, on top of the client-inaccessible and mostly static [Frame System Service](/services/frame-system/).
+This provides the necessary information for the [Frame System Service](/services/frame-system/) and built-in [Motion Service](/services/motion/) to work with the arm.
 
 **Find a pre-built kinematics file:**
 
-- `viam-server` will work with <file>URDF</file>  [(United Robot Description Format)]( http://wiki.ros.org/urdf) kinematics files, which are currently the standard for ROS drivers.
+- `viam-server` will work with <file>URDF</file>  [(United Robot Description Format)]( https://wiki.ros.org/urdf) kinematics files, which are currently the standard for ROS drivers.
 You can find <file>URDF</file> "robot descriptions" for many industrial robot arm models on GitHub that are compatible with the Viam platform.
 
 **Create your own kinematics file:**
