@@ -18,6 +18,8 @@ We will be using these fake components to build out a mock robot and explore how
 
 In this tutorial, you will set up, control, and program a mock robotic arm and a mock motor sub-part using fake components.  
 
+New content?
+
 ## What you'll need for this guide
 
 - A laptop or desktop running Linux or macOS.
