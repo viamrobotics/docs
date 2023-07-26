@@ -331,6 +331,7 @@ Now, upload the project to connect to your ESP32 through [the Viam app](https://
 {{% tab name="Use Canon" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cd <your-path-to/your-project-directory>
 canon bash -lc "make build-esp32-bin"
 make flash-esp32-bin
 ```
