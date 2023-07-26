@@ -23,8 +23,7 @@ If you already have an account, click **Log In** to log in using your Single Sig
 If you forget your password to the app, click **Forgot password** and enter your email address to obtain instructions to reset your password.
 
 {{< alert title="Info" color="info" >}}
-We do not automatically merge Single Sign On accounts.
-If you use Google to log in and then sign up with Apple, Viam treats that as two separate accounts.
+Accounts created from separate authentication sources are unique to each other.
 {{< /alert >}}
 
 ## Manage
