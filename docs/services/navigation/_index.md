@@ -46,7 +46,7 @@ Click **Create service**:
     "type": "navigation",
     "attributes": {
         "store": {
-            "type": "memory"
+            "type": "<your-store-type>"
         },
         "movement_sensor": "<your-movement-sensor>",
         "base": "<your-base>"
@@ -66,6 +66,7 @@ Click **Create service**:
     "attributes": {
         "store": {
             "type": "mongodb",
+            // Remove "config": { ... } below if using "type": "memory"
             "config": {
                 "uri": "mongodb://127.0.0.1:12345"
             }
