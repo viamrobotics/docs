@@ -320,9 +320,13 @@ The best way to improve map quality is by taking extra care when creating the in
 
 ## Troubleshooting
 
-### Tip: Lidar Mounting for the Viam Rover
+### Mount an RPlidar to the rover
 
-If you have a Viam Rover and need a mount for your RPLidar, you can 3D print an adapter plate.
+If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
+For example, if you are using the RPlidar A1 model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
+This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
+
+If you need a mount plate for your RPlidar, you can 3D print an adapter plate.
 The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidar_adapter.STL).
 
 ### Known Issues

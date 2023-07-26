@@ -264,5 +264,5 @@ If you are mounting an RPlidar to your rover, be sure to position the RPlidar so
 For example, if you are using the RPlidar A1 model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
 This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
 
-If you need a mount for your RPlidar, you can 3D print an adapter plate.
+If you need a mount plate for your RPlidar, you can 3D print an adapter plate.
 The STL file for an adapter plate is available on [GitHub](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidar_adapter.STL).
