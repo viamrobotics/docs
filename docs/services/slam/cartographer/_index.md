@@ -237,7 +237,6 @@ The SLAM Mapping Mode is determined by 2 conditions:
 | UPDATING | Update an existing internal state with new sensor readings. | An existing internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes).|
 | LOCALIZING | Localize the robot on an existing internal state without changing the internal state itself. | An internal state is found in <file>/internal_state</file> + [`map_rate_sec = 0`](#attributes). |
 
-
 {{% alert title="Info" color="info" %}}
 
 If this directory structure is not present at runtime, the SLAM Service creates it.
