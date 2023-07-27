@@ -104,7 +104,7 @@ Canon requires a working installation of Docker Engine.
 If you are running Docker Engine on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to run Docker automatically on startup.
 
 {{< tabs >}}
-{{% tab name="Linux (Ubuntu)" %}}
+{{% tab name="Linux" %}}
 
 Make sure your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
 Verify your version of Go with `go version`.
