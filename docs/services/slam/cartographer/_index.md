@@ -256,7 +256,7 @@ Watch a map start to appear.
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
-| `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. |
+| `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
 | `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
