@@ -73,7 +73,7 @@ Edit and fill in the attributes as applicable.
       "attributes": {
         "connection_type": "serial",
         "serial_attributes": {
-          "serial_baud_rate": 115200,
+          "serial_baud_rate": 38400,
           "serial_path": "/dev/serial/by-path/<device_ID>"
         }
       },
@@ -99,7 +99,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
         "connection_type": "I2C",
         "i2c_attributes": {
           "board": "local",
-          "i2c_baud_rate": 115200,
+          "i2c_baud_rate": 38400,
           "i2c_addr": 111,
           "i2c_bus": "<name_of_bus_on_board>"
         }
