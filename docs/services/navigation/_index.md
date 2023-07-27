@@ -129,9 +129,8 @@ It stores the required contextual information for Viam's services like [Motion](
 
 {{% /alert %}}
 
-To configure and calibrate your frame system for the most accurate autonomous GPS navigation with the Navigation Service, complete the following.
-
-Add the Frame System Service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
+For the most accurate autonomous GPS navigation with the Navigation Service, configure and calibrate the Frame System Service for the components of your robot.
+To start, add the Frame System Service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
 - Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
@@ -159,7 +158,7 @@ Add the Frame System Service to your rover [base](/components/base/) and [moveme
 
     See [the Frame System Service](/services/frame-system/configuration/) for more information, and [Viam's Internals](/internals/orientation-vector) for a detailed guide on conducting this measurement.
 
-Then, to calibrate your Frame Aystem for the most accurate autonomous GPS navigation with the Navigation Service:
+Then, to calibrate your Frame System for the most accurate autonomous GPS navigation with the Navigation Service:
 
 - After configuring your robot, navigate to the **Control** page and select the card matching the name of your Navigation Service.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
