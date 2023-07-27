@@ -23,7 +23,7 @@ Follow these steps to install and build the micro-rdk on your ESP32:
 
 1. Install the [required software](#software-requirements)
 2. [Set up your development enviroment](#set-up-your-development-enviroment) with Viam's [Canon CLI utility](#use-viams-canon-cli-utility) *(recommended)* or [manually](#set-up-development-environment-manually)
-3. [Install the Micro-RDK](#install-the-micro-rdk) and [create](#create-a-new-robot) and [connect to](#connect-to-your-esp32) a new robot
+3. [Install the Micro-RDK](#install-the-micro-rdk)
 
 ### Hardware Requirements
 
@@ -93,6 +93,9 @@ cargo install espflash
 
 ## Set up your development enviroment
 
+{{< tabs >}}
+{{% tab name="Canon CLI (recommended)" %}}
+
 ### Use Viam's Canon CLI utility
 
 [Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker-based canonical environment.
@@ -127,6 +130,9 @@ brew install viamrobotics/brews/canon
 
 Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
 `export PATH=$PATH:$(go env GOPATH)/bin`.
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
 
 ### Set up development environment manually
 
@@ -221,6 +227,9 @@ Instead, save this command to run in any future terminal session where you need 
 
 {{< /alert >}}
 
+{{% /tab %}}
+{{% /tabs %}}
+
 ## Install the Micro-RDK
 
 ### Create a New Robot
@@ -233,8 +242,24 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 ### Configure an esp32 board
 
 {{< alert title="Info" color="info" >}}
-The`esp32` [board](/components/board/) model is not currently provided for you as an option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+
+The`esp32` [board](/components/board/) model is not currently provided for you as a built-in option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+
 {{< /alert >}}
+
+<!-- 
+TODO: UNCOMMENT WHEN AVAILABLE IN APP UI, AND MOVE THIS CHUNK TO BOARD PAGE (SG)
+
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your board, select the type `board`, and select the `numato` model.
+
+Click **Create component**.
+
+ ![An example configuration for an esp21 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png) 
+ 
+ Edit and fill in the attributes as applicable.
+ -->
 
 To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
 
@@ -243,7 +268,7 @@ Copy the following JSON template and paste it into your configuration:
 {{< tabs name="Configure an esp32 Board" >}}
 {{% tab name="JSON Template"%}}
 
-```json
+```json {class="line-numbers linkable-line-numbers"}
 {
   "attributes": {
     "pins": [
@@ -318,7 +343,7 @@ To obtain this:
 * Click on the **Setup** tab.
 Keep your `Mode` and `Architecture` selections at default.
 * Click the **Copy viam-server config** button on the right side of the **Setup** tab.
-The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to [the Viam app](https://app.viam.com).
+The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 * Paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
