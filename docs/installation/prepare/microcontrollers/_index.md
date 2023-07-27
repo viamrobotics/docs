@@ -143,7 +143,7 @@ If you have completed your [set up with Canon](/installation/prepare/microcontro
 
 {{< /alert >}}
 
-To set up the Docker development environment for ESP manually, complete the following:
+To set up the Docker development environment for ESP manually, complete the following instructions:
 
 #### Install build dependencies
 
@@ -236,8 +236,8 @@ Instead, save this command to run in any future terminal session where you need 
 
 Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
-* Click on the name of the robot to go to the robot's page.
-* Navigate to the **Config** tab.
+Click on the name of the robot to go to the robot's page.
+Then, navigate to the **Config** tab.
 
 ### Configure an esp32 board
 
@@ -316,6 +316,7 @@ Copy the following JSON template and paste it into your configuration:
 
 Edit and fill in the attributes as applicable.
 Click **Save config**.
+
 The following attributes are available for `esp32` boards:
 
 | Name | Type | Inclusion | Description |
@@ -350,7 +351,7 @@ The micro-RDK needs this JSON file, which contains your robot part secret key an
 
 ### Upload the Micro-RDK to your ESP32
 
-Now, upload the project to connect to your ESP32 through [the Viam app](https://app.viam.com):
+Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
 
 {{< tabs >}}
 {{% tab name="Use Canon" %}}
