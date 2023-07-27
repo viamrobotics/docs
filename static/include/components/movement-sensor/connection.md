@@ -14,7 +14,7 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
 `serial_path` | string | **Required** | The name of the port through which the sensor communicates with the computer.
-`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor. <br> Default: `115200`
+`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor. <br> Default: `38400`
 ---
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -26,7 +26,7 @@ Name | Type | Inclusion | Description
         "<whatever other attributes>": "<example>",
         "connection_type": "serial",
         "serial_attributes": {
-            "serial_baud_rate": 115200,
+            "serial_baud_rate": 38400,
             "serial_path": "<PATH>"
         }
     }
