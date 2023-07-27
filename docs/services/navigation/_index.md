@@ -156,7 +156,7 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 
     In other words, designate the origin of the base as `(0,0,0)`, and measure the distance the sensor is *translated*, or, *displaced*, from that point, to obtain the coordinates of the **Translation**.
 
-    See [the Frame System Service](/services/frame-system/configuration/) for more information, and [Viam's Internals](/internals/orientation-vector) for a detailed guide on conducting this measurement.
+    See [the Frame System Service](/services/frame-system/configuration/) for more information, and [Viam's Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
 
 Then, to calibrate your Frame System for the most accurate autonomous GPS navigation with the Navigation Service:
 
