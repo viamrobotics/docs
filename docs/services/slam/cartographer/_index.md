@@ -224,10 +224,6 @@ This directory must be structured as follows:
     ├── <file>internal_state</file>
 </pre>
 
-Click through the following tabs to see the usage of each folder in this directory:
-
-Whether internal state data is present in <file>internal_state</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
-
 ### Mapping Modes
 
 | Mode | Description | Runtime Dictation |
