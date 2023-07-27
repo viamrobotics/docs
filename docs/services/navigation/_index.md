@@ -135,7 +135,7 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 - Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
 
-    {{< imgproc src="/services/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam App config builder." resize="500x" >}}
+    {{< imgproc src="/services/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
 
 - Click **Add Frame**.
 
@@ -144,13 +144,13 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
   - Configure a **Geometry** for the base that reflects its physical dimensions.
   Reference [these instructions](/services/frame-system/#bounding-geometries) to configure your geometry and measure the physical dimensions of your base.
 
-    ![The frame card for the base in the Viam App config builder.](/services/navigation/full-frame-base-ui.png)
+    ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-base-ui.png)
 
 - Scroll to the card with the name of your movement sensor.
   Click **Add Frame** and select the **Parent** box.
   - Type in the `name` of your base to specify this component as the `parent` of the sensor in the reference frame coordinate system, and click **Save Config** to save your configuration.
   See [how to configure nested reference frames](/services/frame-system/nested-frame-config/) for an explanation of this configuration process.
-  ![The frame card for the base in the Viam App config builder.](/services/navigation/full-frame-movement-sensor-ui.png)
+  ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-movement-sensor-ui.png)
 
   - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
 
@@ -160,7 +160,7 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 
 Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the Navigation Service:
 
-- After configuring your robot, navigate to the **Control** page and select the card matching the name of your navigation service.
+- After configuring your robot, navigate to the **Control** page and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
   - Navigate back to your robot's **Config** page.
