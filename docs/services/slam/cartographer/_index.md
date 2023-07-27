@@ -226,7 +226,7 @@ This directory must be structured as follows:
 
 The SLAM Mapping Mode is determined by 2 conditions:
 1. If the internal state data is present in <file>internal_state</file> at runtime
-2. the attribute `map_rate_sec`
+2. The attribute `map_rate_sec`
 
 ### SLAM Mapping Modes
 
