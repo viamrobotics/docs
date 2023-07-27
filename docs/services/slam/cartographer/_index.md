@@ -214,43 +214,30 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 
 ### Adjust `data_dir`
 
-Change the `data_dir` attribute to point to a directory on your machine where you want to save the sensor data your SLAM service uses and the maps and config files it produces.
+Change the `data_dir` attribute to point to a directory on your machine where you want to save the internal state your SLAM service produces.
 
 This directory must be structured as follows:
 
 <pre>
 .
 └──\(<file>CARTOGRAPHER_DIR</file>)
-    ├── <file>map</file>
-    ├── <file>data</file>
-    └── <file>config</file>
+    ├── <file>internal_state</file>
 </pre>
 
 Click through the following tabs to see the usage of each folder in this directory:
 
 {{% tabs name="Folders"%}}
-{{% tab name="/map" %}}
+{{% tab name="/internal_state" %}}
 
-Whether mapping data is present in <file>map</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
+Whether internal state data is present in <file>internal_state</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
 
 ### Mapping Modes
 
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
-| PURE MAPPING | Generate a new map in <file>/map</file>. | No map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes). |
-| UPDATING | Update an existing map with new <file>/data</data>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes). |
-
-{{% /tab %}}
-{{% tab name="/data" %}}
-
-The <file>data</file> folder stores the LIDAR data gathered by your RPlidar and used for SLAM.
-
-{{% /tab %}}
-{{% tab name="/config" %}}
-
-The <file>config</file> folder stores any Cartographer specific config files created.
-These are generated at runtime, so there is no need to add anything to this folder.
+| PURE MAPPING | Generate a new internal state in <file>/internal_state</file>. | No internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes). |
+| UPDATING | Update an existing internal state with new sensor readings. | An existing internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes).|
+| LOCALIZING | Localize the robot on an existing internal state without changing the internal state itself. | An internal state is found in <file>/internal_state</file> + [`map_rate_sec = 0`](#attributes). |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -273,10 +260,10 @@ Watch a map start to appear.
 
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving input LIDAR data in <file>/data</file> and output mapping data in <file>/map</file>. |
+| `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving output mapping internal state in <file>/internal_state</file>. |
 | `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. |
-| `map_rate_sec` | int | Optional | Rate of <file>/map</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
-| `data_rate_msec` | int | Deprecated | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
+| `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
+| `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 ### `config_params`
