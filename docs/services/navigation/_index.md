@@ -154,7 +154,7 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 
   - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
 
-    In other words, designate the origin of the base as `(0,0,0)`, and measure the distance the sensor is *translated*, or, *displaced*, from that point, to obtain the coordinates of the **Translation**.
+    In other words, designate the origin of the base as `(0,0,0)`, and measure the distance between the origin of the base and the origin of the sensor to obtain the coordinates of the **Translation**.
 
     See [the Frame System Service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
 
