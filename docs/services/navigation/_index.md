@@ -19,7 +19,7 @@ Once these waypoints are added and the mode of the service is [set to `MODE_WAYP
 
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
-{{% alert title="Stability Notice" color="stability notice" %}}
+{{% alert title="Important" color="note" %}}
 
 Make sure the [movement sensor](/components/movement-sensor/) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
 
@@ -123,7 +123,7 @@ The following attributes are available for `Navigation` services:
 
 {{% alert title="Info" color="info" %}}
 
-The [Frame System Service](/services/frame-system/) is an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
+The [Frame System Service](/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a robot within a coordinate system configured by the user.
 
 It stores the required contextual information for Viam's services like [Motion](/services/motion/) and [Vision](/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/components/movement-sensor/).
 
@@ -156,14 +156,16 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 
     In other words, designate the origin of the base as `(0,0,0)`, and measure the distance the sensor is *translated*, or, *displaced*, from that point, to obtain the coordinates of the **Translation**.
 
-    See [the Frame System Service](/services/frame-system/#configuration) for more information, and [Viam's Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
+    See [the Frame System Service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
 
-Then, to calibrate your Frame System for the most accurate autonomous GPS navigation with the Navigation Service:
+Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the Navigation Service:
 
-- After configuring your robot, navigate to the **Control** page and select the card matching the name of your Navigation Service.
+- After configuring your robot, navigate to the **Control** page and select the card matching the name of your navigation service.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
-  - Navigate back to your robot's **Config** page. Scroll to the card with the name of your base. Adjust the **Orientation** of the frame to compensate for the mismatch.
+  - Navigate back to your robot's **Config** page.
+  Scroll to the card with the name of your base.
+  Adjust the **Orientation** of the frame to compensate for the mismatch.
   - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your base to be oriented accurately within the Frame System.
   - If you cannot verify this, repeat as necessary.
 
