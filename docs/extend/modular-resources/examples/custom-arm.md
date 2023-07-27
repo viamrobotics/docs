@@ -55,7 +55,7 @@ While completing the following step, make sure to save any new files that you ge
 
 To create a custom arm model, code a module in Python with the module support libraries provided by [Viam's SDKs](/program/apis/):
 
-1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (for example, `rdk:component:arm`).
+1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}}, `rdk:component:arm`, which is available for reference [on GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm/arm.go).
 Import your custom model and API into the main program and register the new resource model with the Python SDK.
 
 1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
