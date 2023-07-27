@@ -226,9 +226,6 @@ This directory must be structured as follows:
 
 Click through the following tabs to see the usage of each folder in this directory:
 
-{{% tabs name="Folders"%}}
-{{% tab name="/internal_state" %}}
-
 Whether internal state data is present in <file>internal_state</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
 
 ### Mapping Modes
@@ -258,7 +255,7 @@ Watch a map start to appear.
 
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving output mapping internal state in <file>/internal_state</file>. |
+| `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
 | `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. |
 | `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
