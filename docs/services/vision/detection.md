@@ -22,6 +22,8 @@ The returned detections consist of the bounding box around the identified object
 - `confidence` (float): specifies the confidence of the assigned label.
   Between `0.0` and `1.0`, inclusive.
 
+![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.05."](/services/vision/chair-detector.png)
+
 You can use the following types of detectors:
 
 - [**color_detector**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
