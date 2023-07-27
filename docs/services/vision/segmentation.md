@@ -209,10 +209,10 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# grab Viam's vision service for the detector
+# Grab Viam's Vision Service for the segmenter
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
-detections = await my_segmenter.get_object_point_clouds("cam1")
+objects = await my_segmenter.get_object_point_clouds("cam1")
 
 await robot.close()
 ```
@@ -237,14 +237,13 @@ if err != nil {
 }
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-segments, err := visService.GetObjectPointClouds(cameraName)
+segments, err := visService.GetObjectPointClouds(context.Background(), cameraName, nil)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
 if len(segments) > 0 {
     logger.Info(segments[0])
 }
-
 ```
 
 To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).

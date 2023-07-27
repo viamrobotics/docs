@@ -15,7 +15,7 @@ The Viam module system allows you to integrate custom {{< glossary_tooltip term_
 
 Modular resources can be:
 
-1. New models of built-in [components](/components/) or [services](/services/) that implement the built-in resource {{< glossary_tooltip term_id="api-namespace-triplet" text="subtype" >}}'s API through Viam's [client SDKs](/program/apis/).
+1. New models of built-in [components](/components/) or [services](/services/) that implement the built-in resource {{< glossary_tooltip term_id="subtype" text="subtype" >}}'s API through Viam's [client SDKs](/program/apis/).
 2. Brand new types of resources that define their own API in [protocol buffers](https://developers.google.com/protocol-buffers).
 
 ## Get Started
