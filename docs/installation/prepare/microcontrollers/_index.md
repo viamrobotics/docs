@@ -22,7 +22,7 @@ aliases:
 Follow these steps to install and build the micro-rdk on your ESP32:
 
 1. Install the [required software](#software-requirements)
-2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility *(recommended)* 
+2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility *(recommended)*
 3. [Install the Micro-RDK](#install-the-micro-rdk)
 
 ### Hardware Requirements
@@ -91,11 +91,10 @@ Run the following command to install `espflash`
 cargo install espflash
 ```
 
-## Set up your development enviroment
+### Set up your development enviroment
 
 {{< tabs >}}
 {{% tab name="Canon CLI (recommended)" %}}
-
 
 [Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker-based canonical environment.
 
@@ -132,7 +131,6 @@ Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath
 
 {{% /tab %}}
 {{% tab name="Manual" %}}
-
 
 {{< alert title="Tip" color="tip" >}}
 You only need to follow these steps if you are not using Canon to build the micro-RDK.
