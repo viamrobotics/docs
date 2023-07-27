@@ -16,30 +16,18 @@ date: "21 April 2023"
 # cost: 0 (laptop)
 ---
 
-<br>
-A Note from the Inventor:
-</br>
-
-<pre>
-
-When I started at Viam, Eliot told me the best way to test the product is to try to automate something I do in my life with a robot.
-
+When I started at Viam, the CEO, Eliot, told me the best way to test the product is to try to automate something I do in my life with a robot.
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
 When we were testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around.
 
-</pre>
-
-Follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
+If you would also like to build this or a similar robot, follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
 
 ## Requirements
 
 To make your own singing robot, you need the following hardware:
 
 - A computer with a webcam, speakers, and the [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk) installed.
-
-  We used a Macbook.
-
-  You can use any PC with a Viam-compatible operating system that meets the above requirements.
+  We used a Macbook but you can use any PC with a Viam-compatible operating system that meets the above requirements.
 
 Complete this tutorial by following the instructions in these two sections:
 
@@ -54,14 +42,13 @@ Complete this tutorial by following the instructions in these two sections:
 
 ## Train your ML Model with pictures of toys
 
-Make sure you have created a robot before starting this tutorial.
-If you haven't already, follow [this guide](/installation/#install-viam-server) to install `viam-server` on your computer and connect to the corresponding robot by following the steps in the **Setup** tab of [the Viam app](https://app.viam.com).
+In the [the Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
 ### Configure your webcam to capture data
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
-First, add the camera on your computer as a [camera](/components/camera/) component by creating a new component with **type** `camera` and **model** `webcam`:
+First, add the your computer's camera as a [camera](/components/camera/) component by creating a new component with **type** `camera` and **model** `webcam`:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -106,7 +93,7 @@ Optionally, select a fixed filepath for the camera from the automated options in
 
 To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your camera `"cam"`.
 
-If you use a different name, change `"cam"` in the [code](#program-your-bedtime-songs-bot) to match the name you used.
+If you use a different name, you will need to adapt the code in the later steps of this tutorial to use the name you give your camera.
 
 To view your webcam's image stream, navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
 Click on the drop-down menu labeled **camera** and toggle the feed on.
@@ -114,19 +101,19 @@ Click on **Export Screenshot** to capture an image.
 
 ![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../tutorials/bedtime-songs-bot/export-screenshot.png)
 
-Now, configure a [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) with [Data Capture](/services/data/configure-data-capture/) to use the image data coming from your camera on your robot to train your ML model:
+Now, configure the [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
-1. Under the **Config** tab, select **Services**, and navigate to **Create service**.
-Here, you will add a service so your robot can sync data to the Viam app in the cloud.
-1. For **type**, select **Data Management** from the drop-down, and give your service a name.
+1. On the **Config** tab, select **Services**, and navigate to **Create service**.
+1. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the drop-down, and give your service a name.
 We used `Data-Management-Service` for this tutorial.
 1. Ensure that **Data Capture** is enabled and **Cloud Sync** is enabled.
-Enabling data capture here will allow you to view the saved images in the Viam app and allow you to easily tag them and train your own machine learning model.
+Enabling data capture will allow you to capture data from components and services and cloud sync will sync your data to the Viam app.
+Doing both allows you to capture images from your webcam, sync them to the cloud and, in the Viam app, easily tag them and train your own machine learning model.
 You can leave the default directory as is.
 This is where your captured data is stored on-robot.
 By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
 
-Next, [configure Data Capture for an individual component](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) on your webcam:
+Next, [configure Data Capture for your webcam](/services/data/configure-data-capture/#configure-data-capture-for-individual-components):
 
 1. Go to the **Components** tab and scroll down to the camera component you previously configured.
 2. Click **+ Add method** in the **Data Capture Configuration** section.
