@@ -239,8 +239,6 @@ Whether internal state data is present in <file>internal_state</file> at runtime
 | UPDATING | Update an existing internal state with new sensor readings. | An existing internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes).|
 | LOCALIZING | Localize the robot on an existing internal state without changing the internal state itself. | An internal state is found in <file>/internal_state</file> + [`map_rate_sec = 0`](#attributes). |
 
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% alert title="Info" color="info" %}}
 
