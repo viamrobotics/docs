@@ -44,12 +44,12 @@ You can find <file>URDF</file> "robot descriptions" for many industrial robot ar
   - Use the [Spatial Vector Algebra (SVA)](/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
   - Follow the Frame System's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientations](/internals/orientation-vector/) of the `links` on your arm.
-- View examples of the SVA and JSON format in Viam's built-in arm drivers on [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm).
+  You can view existing examples of the SVA and JSON format in Viam's [built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm).
 
 Create a new directory.
 Give it the name your want you call your custom {{< glossary_tooltip term_id="model" text="model" >}} of arm.
-Save this file as <file>your-model-name.json</file> inside of this directory.
-While completing the following step, make sure to save any new files that you generate inside of this directory.
+Save the JSON as <file>your-model-name.json</file> inside of this directory.
+While completing the following step, make sure to save any new files that you generate inside of this same directory.
 
 ## Create a custom arm model as a modular resource
 
