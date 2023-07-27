@@ -73,7 +73,8 @@ Edit and fill in the attributes as applicable.
       "attributes": {
         "connection_type": "serial",
         "serial_attributes": {
-          "serial_baud_rate": 38400,
+          "serial_baud_rate": 115200,
+
           "serial_path": "/dev/serial/by-path/<device_ID>"
         }
       },
