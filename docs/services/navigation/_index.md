@@ -148,7 +148,7 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 
 - Scroll to the card with the name of your movement sensor.
   Click **Add Frame** and select the **Parent** box.
-  - Type in the `name` of your base to specify this component as the `parent` of the sensor in the reference frame coordinate system.
+  - Type in the `name` of your base to specify this component as the `parent` of the sensor in the reference frame coordinate system, and click **Save Config** to save your configuration.
   See [how to configure nested reference frames](/services/frame-system/nested-frame-config/) for an explanation of this configuration process.
   ![The frame card for the base in the Viam App config builder.](/services/navigation/full-frame-movement-sensor-ui.png)
 
