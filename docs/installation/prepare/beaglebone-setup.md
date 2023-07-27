@@ -25,7 +25,7 @@ Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-serve
 
 You need the following hardware, tools, and software to install `viam-server` on a BeagleBone AI-64:
 
-1. A [BeagleBone AI-64](https://beagleboard.org/ai-64)
+1. A [BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64)
 2. A 5V barrel jack (recommended) and/or USB-C power supply, to power the BeagleBone
 3. Ethernet cable and/or WiFi dongle, to establish network connection on the BeagleBone
 4. (Optional) A microSD card and a way to connect the microSD card to the computer (like a microSD slot or microSD reader)
