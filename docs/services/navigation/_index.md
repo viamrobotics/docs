@@ -129,7 +129,7 @@ It stores the required contextual information for Viam's services like [Motion](
 
 {{% /alert %}}
 
-For the most accurate autonomous GPS navigation with the Navigation Service, configure and calibrate the Frame System Service for the components of your robot.
+To make sure your rover base's autonomous GPS navigation with the Navigation Service is accurate, configure and calibrate the Frame System Service for the components of your robot.
 To start, add the Frame System Service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
 - Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
