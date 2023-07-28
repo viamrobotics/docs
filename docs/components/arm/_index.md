@@ -104,6 +104,8 @@ import (
 
 ## API
 
+The arm component supports the following methods:
+
 {{< readfile "/static/include/components/apis/arm.md" >}}
 
 ### GetEndPosition

@@ -361,16 +361,7 @@ import (
 
 The board component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [AnalogReaderByName](#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
-| [DigitalInterruptByName](#digitalinterruptbyname) | Get a [`DigitalInterrupt`](#digital_interrupts) by `name`. |
-| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
-| [AnalogReaderNames](#analogreadernames) | Get the `name` of every [`AnalogReader`](#analogs). |
-| [DigitalInterruptNames](#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](#digital_interrupts). |
-| [Status](#status) | Get the current status of this board. |
-| [ModelAttributes](#modelattributes) | Get the attributes related to the model of this board. |
-| [SetPowerMode](#setpowermode) | Set the board to the indicated power mode. |
+{{< readfile "/static/include/components/apis/board.md" >}}
 
 Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` interfaces support the following methods:
 

@@ -88,12 +88,7 @@ import (
 
 The camera component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [GetImage](#getimage) | Return an image from the camera. |
-| [GetPointCloud](#getpointcloud) | Return a point cloud from the camera. |
-| [GetProperties](#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
-| [DoCommand](#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/camera.md" >}}
 
 ### GetImage
 

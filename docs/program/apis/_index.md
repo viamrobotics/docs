@@ -18,7 +18,7 @@ The API methods provided by the SDKs for each of these resource APIs wrap gRPC c
 
 ## ResourceBase Methods
 
-In the Python SDK, [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html) defines a basic set of API methods that all child resources should provide for users.
+In the Python SDK, the [`ResourceBase`](https://python.viam.dev/autoapi/viam/resource/base/index.html) class defines a basic set of API methods that all child resources should provide for users.
 In the other SDKs, resource APIs implement but do not inherit these base requirements.
 
 `ResourceBase` methods include:
@@ -197,54 +197,37 @@ Documentation on using these methods in your SDK code is found on each [componen
 
 ### Arm
 
+The [arm component](/components/arm/) supports the following methods:
+
 {{< readfile "/static/include/components/apis/arm.md" >}}
 
 ### Base
 
-The base component supports the following methods:
+The [base component](/components/base/) supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [MoveStraight](/components/base/#movestraight)  | Move the base in a straight line across the given distance at the given velocity. |
-| [Spin](/components/base/#spin) | Move the base to the given angle at the given angular velocity. |
-| [SetPower](/components/base/#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
-| [SetVelocity](/components/base/#setvelocity) | Set the linear velocity and angular velocity of the base. |
-| [Stop](/components/base/#stop) | Stop the base. |
-| [GetProperties](/components/base/#getproperties) | Get the width and turning radius of the base in meters. |
-| [DoCommand](/components/base/#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/base.md" >}}
 
 ### Board
 
-The board component supports the following methods:
+The [board component](/components/board/) supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [AnalogReaderByName](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](/components/board/#analogs) by `name`. |
-| [DigitalInterruptByName](/components/board/#digitalinterruptbyname) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`. |
-| [GPIOPinByName](/components/board/#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
-| [AnalogReaderNames](/components/board/#analogreadernames) | Get the `name` of every [`AnalogReader`](/components/board/#analogs). |
-| [DigitalInterruptNames](/components/board/#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](/components/board/#digital_interrupts). |
-| [Status](/components/board/#status) | Get the current status of this board. |
-| [ModelAttributes](/components/board/#modelattributes) | Get the attributes related to the model of this board. |
-| [SetPowerMode](/components/board/#setpowermode) | Set the board to the indicated power mode. |
+{{< readfile "/static/include/components/apis/board.md" >}}
 
 ### Camera
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [GetImage](/components/camera/#getimage) | Return an image from the camera. |
-| [GetPointCloud](/components/camera/#getpointcloud) | Return a point cloud from the camera. |
-| [GetProperties](/components/camera/#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+The [camera component](/components/camera/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/camera.md" >}}
 
 ### Encoder
 
-Method Name | Description
------------ | -----------
-[Position](/components/encoder/#position) | Get the current position of the encoder.
-[ResetPosition](/components/encoder/#resetposition) | Reset the position to zero.
-[GetProperties](/components/encoder/#getproperties) | Get the supported properties of this encoder.
+The [encoder component](/components/encoder/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/encoder.md" >}}
 
 ### Gantry
+
+The [gantry component](/components/gantry/) supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
