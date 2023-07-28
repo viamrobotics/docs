@@ -10,377 +10,373 @@ images: ["/installation/thumbnails/esp32-espressif.png"]
 description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
     - /installation/microcontrollers
+
 # SMEs: Nicolas Menard
+
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}
 
-## Hardware Requirements
+## Get Started
 
-You need an an Espressif ESP32 microcontroller to use the micro-RDK.
-Viam recommends purchasing the ESP32 with a development board: see [development kit options](https://www.espressif.com/en/products/devkits).
+Follow these steps to install and build the micro-rdk on your ESP32:
 
-Minimal configuration: 384kB Ram 4MB flash
-Recommended configuration: 384kB Ram + 8MB SPIRAM + 4MB Flash
+1. Install the [required software](#software-requirements)
+2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility *(recommended)*
+3. [Install the Micro-RDK](#install-the-micro-rdk)
 
-## Software Requirements
+### Hardware Requirements
+
+You need an Espressif ESP32 microcontroller to use the micro-RDK.
+Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).
+
+* **Minimal configuration:** 384kB Ram 4MB flash
+* **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
+
+### Software Requirements
 
 The micro-RDK is written in Rust.
-To use the micro-RDK with your ESP32 board, you need to install:
+To be able to program the ESP32 on macOS and Linux systems, you must install the following software on your development machine:
 
-- [ESP-IDF](#install-esp-idf)
-- [Rust](#install-rust)
-- [Rust ESP Toolchain](#install-the-rust-esp-toolchain-and-activate-the-esp-rs-virtual-environment)
-- [`cargo-generate`](#install-cargo-generate-with-cargo)
-- [`cargo-espflash`](#install-or-update-cargo-espflash)
+#### Install Dependencies
 
-The following instructions cover installation for macOS and Linux machines.
+{{< tabs >}}
+{{% tab name="Linux" %}}
 
-### Install ESP-IDF
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo apt-get install git libssl-dev dfu-util libusb-1.0-0 libudev-dev
+```
 
-ESP-IDF is the development framework for Espressif SoCs (System-on-Chips), supported on Windows, Linux and macOS.
-You need to install it to be able to install the micro-RDK on your Espressif ESP32 microcontroller.
+{{% /tab %}}
+{{% tab name="macOS" %}}
 
-Start by completing Step 1 of [these instructions](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html), following the appropriate steps for your development machine's architecture, and then return here.
+If you haven't already, install Homebrew:
 
-Clone Viam's fork of the ESP-IDF:
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-```sh {class="command-line" data-prompt="$"}
+Then, install `dfu-util`:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+brew install dfu-util
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+#### Install `Rust`
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+See the [Rust Installation guide](https://www.rust-lang.org/tools/install) for more information and other installation methods.
+
+#### Install `cargo-generate` with `cargo`
+
+ `cargo` installs automatically when downloading Rust with rustup.
+
+Run the following command to install `cargo-generate`:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cargo install cargo-generate
+```
+
+#### Install `espflash`
+
+Run the following command to install `espflash`
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cargo install espflash
+```
+
+### Set up your development enviroment
+
+{{< tabs >}}
+{{% tab name="Canon CLI (recommended)" %}}
+
+[Canon](https://github.com/viamrobotics/canon) is a CLI utility for managing a Docker-based canonical environment.
+
+Canon requires a working installation of Docker Engine.
+
+[Install Docker Engine](https://docs.docker.com/engine/install/) before proceeding.
+If you are running Docker Engine on Linux, make sure that you go through the [post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to run Docker automatically on startup.
+
+{{< tabs >}}
+{{% tab name="Direct Go Install (Linux)" %}}
+
+Make sure your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
+Verify your version of Go with `go version`.
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+go install github.com/viamrobotics/canon@latest
+```
+
+Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
+`export PATH=$PATH:$(go env GOPATH)/bin`.
+
+{{% /tab %}}
+{{% tab name="With Homebrew (Linux/MacOS)" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+brew install viamrobotics/brews/canon
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
+{{< alert title="Tip" color="tip" >}}
+You only need to follow these steps if you are not using Canon to build the micro-RDK.
+
+If you have completed your set up with Canon, skip this section and continue to [install the Micro-RDK](#install-the-micro-rdk).
+
+{{< /alert >}}
+
+To set up the Docker development environment for ESP manually, complete the following instructions:
+
+#### Install build dependencies
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+```
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+brew install cmake ninja dfu-util
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+#### Install and Activate the ESP-IDF
+
+Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (System-on-Chips) supported on Windows, Linux and macOS:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 mkdir -p ~/esp
 cd ~/esp
-git clone https://github.com/npmenard/esp-idf
-cd esp-idf
-git checkout v4.4.1
-git submodule update --init --recursive
+git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/npmenard/esp-idf
 ```
 
 Then, install the required tools for ESP-IDF:
 
-```sh {class="command-line" data-prompt="$"}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cd ~/esp/esp-idf
 ./install.sh esp32
 ```
 
 To activate ESP-IDF, run the following command to source (`.`) the activation script `export.sh`:
 
-```sh {class="command-line" data-prompt="$"}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 . $HOME/esp/esp-idf/export.sh
 ```
 
+{{< alert title="Tip" color="tip" >}}
 To avoid conflicts with other toolchains, adding this command to your `.bashrc` or `.zshrc` is not recommended.
-Save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
+Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
+{{< /alert >}}
 
-### Install Rust
+#### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
 
-```sh {class="command-line" data-prompt="$"}
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+First, install the following tools with `cargo`:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cargo install espup
 ```
 
-See [Rust](https://www.rust-lang.org/tools/install) for more information and other installation methods.
-
-### Install the Rust ESP Toolchain and Activate the ESP-RS Virtual Environment
-
-To install the Rust ESP toolchain, run the following command:
-
-```sh {class="command-line" data-prompt="$"}
-curl -LO https://github.com/esp-rs/rust-build/releases/download/v1.64.0.0/install-rust-toolchain.sh
-chmod a+x install-rust-toolchain.sh
-./install-rust-toolchain.sh
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cargo install cargo-espflash v2.0.0-rc.1
 ```
 
-This command will prompt you to add two variables to your `.zshrc` or `.bashrc` if you want to activate the ESP-RS environment automatically in every terminal session:
-
-```sh {class="command-line" data-prompt="$"}
-IMPORTANT!
- The following environment variables need to be updated:
-export LIBCLANG_PATH= ...
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cargo install ldproxy
 ```
 
-Doing so is not recommended, as this may cause conflicts with other toolchains.
-As an alternative, the script prompts you to save the export script `export-esp.sh`.
+To download and install the esp-rs toolchain, run:
 
-Run the following command to save `./export-esp.sh` at `$HOME/esp/esp-idf/export-esp-rs.sh`:
-
-```sh {class="command-line" data-prompt="$"}
-mv ./export-esp.sh $HOME/esp/esp-idf/export-esp-rs.sh
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+espup install -s -f ~/esp/export-rs.sh -v 1.67.0
 ```
 
-After doing so, run the following command to source (`.`) this file, activating the ESP-RS Virtual Environment:
+To activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
 
-```sh {class="command-line" data-prompt="$"}
-. $HOME/esp/esp-idf/export-esp-rs.sh
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+. $HOME/esp/esp-idf/export-rs.sh
 ```
-
-Save this source command to run in any future terminal session where you need to activate the ESP-RS Virtual Environment.
-
-### Install `cargo-generate` with `cargo`
-
- `cargo` installs automatically when downloading Rust with Rustup.
-
-If you need to install `cargo`, run the following command, or see the [Rust Documentation](https://doc.rust-lang.org/cargo/getting-started/installation.html) for other installation methods:
-
-```sh {class="command-line" data-prompt="$"}
-curl https://sh.rustup.rs -sSf | sh
-```
-
-Run the following command to install `cargo-generate`:
-
-```sh {class="command-line" data-prompt="$"}
-cargo install cargo-generate
-```
-
-### Install or Update `cargo-espflash`
-
-Run the following command to install `cargo-espflash` in Viam's recommended version:
-
-```sh {class="command-line" data-prompt="$"}
-cargo install cargo-espflash@2.0.0-rc.1
-```
-
-## Install the Micro-RDK
-
-To install the Micro-RDK on your ESP32 board:
-
-- [create a new robot in the Viam app](#create-a-new-robot)
-- [generate a new project from Viam's micro-RDK template](#generate-a-new-project-from-the-micro-rdk-template)
-- [upload the project to your ESP32](#upload-the-project-and-connect-to-your-esp32-board)
-
-### Create a New Robot
-
-Navigate to [the Viam app](https://app.viam.com) and create a new robot in your desired location.
-Keep your `Mode` and `Architecture` selections at default, and skip the instructions in the **Setup** tab for now as the setup instructions there are not for microcontrollers.
-
-### Generate a New Project from the Micro-RDK Template
-
-Use [the micro-RDK template](https://github.com/viamrobotics/micro-rdk-template.git) to create a new micro-RDK project to upload to your ESP32 by running:
-
-```sh {class="command-line" data-prompt="$"}
-cargo generate --git https://github.com/viamrobotics/micro-rdk-template.git
-```
-
-If you would like, you can use `mkdir` to initialize a new repository in the directory you created by running `cargo-generate`, to track any changes you make to the generated project.
-
-You will be prompted to paste your Viam robot configuration information (`viam.json`) into the terminal.
-
-To obtain this, navigate to [the Viam app](https://app.viam.com).
-Click the **Copy viam-server config** button on the right side of the **Setup** tab of your robot.
-The Micro-RDK uses the config for communication with the Viam app.
-Paste this into your terminal.
-
-{{< alert title="Caution" color="caution" >}}
-
-All of the generated files should be safe to commit as a project on Github, with the exception of `viam.json`, since it contains a secret key.
-
-{{% /alert %}}
-
-### Modify the Generated Template
-
-You can find the declaration of the robot in the generated file `src/main.rs`.
-This example exposes one GPIO pin (pin 18), and one analog reader attached to GPIO pin 34.
-Change the example as needed.
-
-You can, for example:
-
-{{%expand "Expose other pins" %}}
-
-Once you have selected an appropriate GPIO pin, according to the pinout diagram included with your ESP32, you can add to the collection of exposed pins.
-
-For example, to expose GPIO pin 21, change the line:
-
-``` rust
-let pins = vec![PinDriver::output(periph.pins.gpio18.downgrade_output())?];
-```
-
-to
-
-``` rust
-let pins = vec![PinDriver::output(periph.pins.gpio18.downgrade_output())?,
-    PinDriver::output(periph.pins.gpio21.downgrade_output())?,];
-```
-
-Now you can change and read the state of pin 21 from [the Viam app](https://app.viam.com).
-
-{{% /expand%}}
-
-{{%expand "Add a New Analog Reader" %}}
-
-Adding a new analog reader requires a few more steps.
-First, identify a pin capable of analog reading.
-
-In the pinout diagram of the ESP32, the pins are labeled like this:
-
-- `ADCn_y`: where `n` is the adc number (1 or 2, note that 2 cannot be used with WiFi enabled), and `y` is the channel number.
-
-Once you have identified an appropriate pin, follow these steps to add it.
-In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pinout diagram:
-
-1. Create a new ADC channel:
-
-    ``` rust
-    let my_analog_channel = adc_chan: AdcChannelDriver<_, Atten11dB<adc::ADC1>> =
-                AdcChannelDriver::new(periph.pins.gpio35)?;
-    ```
-
-2. Create the actual Analog reader:
-
-    ``` rust
-    let my_analog_reader = Esp32AnalogReader::new("A2".to_string(), my_analog_channel, adc1.clone());
-    ```
-
-3. Finally, add the collection of analog readers:
-
-    ``` rust
-    let analog_readers = vec![
-                Rc::new(RefCell::new(analog1)),
-                Rc::new(RefCell::new(my_analog_reader)),
-            ];
-    ```
-
-{{% /expand%}}
-
-{{% alert title="Tip" color="tip" %}}
-
-You can find a full example [on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32-server.rs).
-
-{{% /alert %}}
-
-### Upload the Project and Connect to your ESP32 Board
-
-After modifying the contents of <file>src/main.rs</file> to your liking, run:
-
-```sh {class="command-line" data-prompt="$"}
-make upload
-```
-
-While running `make upload`, you may be presented with an interactive menu of different serial port options to use to connect to the ESP32 board.
-
-If successful, `make upload` will retain a serial connection to the board until `Ctrl-C` is pressed.
-To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
-While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
-
-If everything went well, your ESP32 will be programmed so that you will be able to see your robot live on [the Viam app](https://app.viam.com).
 
 {{< alert title="Tip" color="tip" >}}
 
-If you encounter a crash due to stack overflow, you may need to increase the stack available to the main task.
+To avoid conflicts with other toolchains, adding this command to your .bashrc or .zshrc is not recommended.
+Instead, save this command to run in any future terminal session where you need to activate the ESP-IDF development framework.
 
-In the generated <file>sdkconfig.defaults</file> set the `CONFIG_ESP_MAIN_TASK_STACK_SIZE` to `32768`:
+{{< /alert >}}
 
-``` diff
-CONFIG_ESP_MAIN_TASK_STACK_SIZE=32768
-```
+{{% /tab %}}
+{{% /tabs %}}
 
-{{% /alert %}}
+## Install the Micro-RDK
 
-## Configure the controlling robot
+### Create a New Robot
 
-You have already created one robot which is running the Micro-RDK on your ESP32. To programmatically control the robot now running on the ESP32, you need to connect it to another robot that is running the full-featured `viam-server` software, as the microcontroller lacks the required processing power to do so.
-This second "robot" can be as simple as an instance of `viam-server` running on your development machine.
+Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
-### Configure the ESP32 as a Remote
+Click on the name of the robot to go to the robot's page.
+Then, navigate to the **Config** tab.
 
-Navigate to [the Viam app](https://app.viam.com).
-Create and configure a second robot as the controller robot.
+### Configure an esp32 board
 
-Add the ESP32-backed worker robot as a remote of your new controller robot to establish a secure connection between both robots:
+{{< alert title="Info" color="info" >}}
 
-{{< imgproc alt="Adding the ESP32 as a remote in the Viam app Config builder." src="/installation/esp32-setup/esp32-remote-creation.png" resize="800x" declaredimensions=true >}}
+The`esp32` [board](/components/board/) model is not currently provided for you as a built-in option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
 
-1. Navigate to the **Code sample** tab of the worker robot, click on **Remotes**, and copy the code generated.
+{{< /alert >}}
 
-    {{< imgproc alt="The remotes config information" src="/installation/microcontroller/copy-remotes-code.png" resize="800x" declaredimensions=true >}}
+<!--
+TODO: UNCOMMENT WHEN AVAILABLE IN APP UI, AND MOVE THIS CHUNK TO BOARD PAGE (SG)
 
-    {{% snippet "show-secret.md" %}}
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your board, select the type `board`, and select the `numato` model.
 
-2. Navigate to the **Config** tab of the control robot, select the `Remotes` subtab, select the `JSON` mode and click **Create Remote**.
+Click **Create component**.
 
-    {{< imgproc alt="Create remote menu" src="/installation/microcontroller/create-remote.png" resize="800x" declaredimensions=true >}}
+ ![An example configuration for an esp21 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png)
 
-3. Paste the copied `JSON` config into the configuration field.
+ Edit and fill in the attributes as applicable.
+ -->
 
-   {{< imgproc alt="Empty configuration field" src="/installation/microcontroller/config-field.png" resize="800x" declaredimensions=true >}}
+To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
 
-   Ensure that the controlling robot is live in [the Viam app](https://app.viam.com).
-   If it is, the ESP32-backed robot is now programmatically available.
+Copy the following JSON template and paste it into your configuration inside the `"components"` array:
 
-## Tips
+{{< tabs name="Configure an esp32 Board" >}}
+{{% tab name="JSON Template"%}}
 
-When developing, you can use the QEMU emulator instead of flashing the ESP32 board.
-Follow these instructions to install and build the emulator.
-
-### Install Espressif's QEMU ESP32 Emulator
-
-Espressif maintains a good [QEMU emulator](https://github.com/espressif/qemu) supporting the ESP32.
-
-{{< tabs >}}
-{{% tab name="macOS" %}}
-
-Run the following command to install the QEMU ESP32 Emulator:
-
-```sh {class="command-line" data-prompt="$"}
-git clone https://github.com/espressif/qemu
-cd qemu
-./configure --target-list=xtensa-softmmu \
-    --enable-gcrypt \
-    --enable-debug --enable-sanitizers \
-    --disable-strip --disable-user \
-    --disable-capstone --disable-vnc \
-    --disable-sdl --disable-gtk --extra-cflags="-I/opt/homebrew/Cellar/libgcrypt/1.10.1/include -I/opt/homebrew//include/"
-cd build && ninja
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "attributes": {
+    "pins": [
+      <int>
+    ],
+    "analogs": [
+      {
+        "pin": "<number>",
+        "name": "<your-analog-name>"
+      }
+    ]
+  },
+  "depends_on": [],
+  "model": "esp32",
+  "name": "<your-board-name>",
+  "type": "board"
+}
 ```
 
 {{% /tab %}}
-{{% tab name="Linux" %}}
+{{% tab name="JSON Example" %}}
 
-On Ubuntu or Debian, first make sure you have the `libgcrypt` library and headers installed by running the following command:
-
-```sh {class="command-line" data-prompt="$"}
-sudo apt-get install libgcrypt20 libgcrypt20-dev
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "attributes": {
+    "pins": [
+      15
+    ],
+    "analogs": [
+      {
+        "pin": "34",
+        "name": "sensor"
+      }
+    ]
+  },
+  "depends_on": [],
+  "model": "esp32",
+  "name": "board",
+  "type": "board"
+}
 ```
 
-Then, run the following command to install QEMU:
+{{% /tab %}}
+{{< /tabs >}}
 
-```sh {class="command-line" data-prompt="$"}
-git clone https://github.com/espressif/qemu
-cd qemu
-./configure --target-list=xtensa-softmmu     --enable-gcrypt \
-    --enable-debug --enable-sanitizers  --disable-strip --disable-user \
-    --disable-capstone --disable-vnc --disable-sdl --disable-gtk
-cd build && ninja
+Edit and fill in the attributes as applicable.
+Click **Save config**.
+
+The following attributes are available for `esp32` boards:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
+| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
+<!-- | `webhook` | string | Optional | A webhook's URL. See [GitHub](viam-labs/webhook-template) for an example. |
+| `webhook-secret` | string | Optional | The robot secret for a configured `webhook`. See [GitHub](viam-labs/webhook-template) for an example. | -->
+
+### Generate a New Project from the Micro-RDK Template
+
+[Start Docker](https://docs.docker.com/config/daemon/start/) on your development machine.
+If you haven't already, complete Docker's [Linux post installation steps](https://docs.docker.com/engine/install/linux-postinstall/) to set up Docker to run whenever your system boots up.
+
+Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-robot-template.git) to create a new Micro-RDK project to upload to your ESP32 by running:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.git
+```
+
+You will be prompted to paste your robot's JSON configuration into the terminal.
+To obtain this:
+
+* Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+* Click on the **Setup** tab.
+Keep your `Mode` and `Architecture` selections at default.
+* Click the **Copy viam-server config** button on the right side of the **Setup** tab.
+The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+* Paste the `viam-server` config into your terminal when prompted.
+
+{{% snippet "secret-share.md" %}}
+
+### Upload the Micro-RDK to your ESP32
+
+Now, upload the project to connect to your ESP32 and remotely control it live on [the Viam app](https://app.viam.com):
+
+{{< tabs >}}
+{{% tab name="Use Canon" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cd <your-path-to/your-project-directory>
+canon bash -lc "make build-esp32-bin"
+make flash-esp32-bin
+```
+
+{{% /tab %}}
+{{% tab name="Local environment" %}}
+
+Make sure you have run `. ~/dev/esp/export-rs.sh` and `. ~/dev/esp/esp-idf/export.sh` before running the following command:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+make upload
 ```
 
 {{% /tab %}}
 {{% /tabs %}}
 
-Add `export QEMU_ESP32_XTENSA=<path-to-clone-qemu>/build/` to your `.zshrc` or `.bashrc`, or save this command to run in your terminal every session you wish to use the QEMU emulator.
+If successful, you will retain a serial connection to the board until you press `Ctrl-C`.
+To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
+While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-### Build with the QEMU ESP32 Emulator
-
-Navigate to the root of the Micro-RDK repository.
-Once you've `cd`'d to the correct repository, run `. $HOME/esp/esp-idf/export.sh` if you haven't done so already in this terminal session.
-
-You will need to comment out two lines from the file `sdkconfig.defaults`:
-
-``` editorconfig
-CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
-CONFIG_ESPTOOLPY_FLASHMODE_QIO=y
-```
-
-You can then run:
-
-```sh {class="command-line" data-prompt="$"}
-make sim-local
-```
-
-Or, if you want to connect a debugger:
-
-```sh {class="command-line" data-prompt="$"}
-make debug-local
-```
+Navigate to your new robot's page on [the Viam app](https://app.viam.com).
+If successful, **Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting
 
-If you are unable to connect to the ESP32-backed robot as a remote, try adding `:4545` to the end of the value set in the remote's `Address` field.
+If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
