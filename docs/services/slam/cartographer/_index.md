@@ -214,46 +214,28 @@ Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"m
 
 ### Adjust `data_dir`
 
-Change the `data_dir` attribute to point to a directory on your machine where you want to save the sensor data your SLAM service uses and the maps and config files it produces.
+Change the `data_dir` attribute to point to a directory on your machine where you want to save the internal state your SLAM service produces.
 
 This directory must be structured as follows:
 
 <pre>
 .
 └──\(<file>CARTOGRAPHER_DIR</file>)
-    ├── <file>map</file>
-    ├── <file>data</file>
-    └── <file>config</file>
+    ├── <file>internal_state</file>
 </pre>
 
-Click through the following tabs to see the usage of each folder in this directory:
+The SLAM Mapping Mode is determined by 2 conditions:
 
-{{% tabs name="Folders"%}}
-{{% tab name="/map" %}}
+1. If the internal state data is present in <file>internal_state</file> at runtime
+2. The attribute `map_rate_sec`
 
-Whether mapping data is present in <file>map</file> at runtime and the attribute `map_rate_sec` determines the SLAM mapping mode:
-
-### Mapping Modes
+### SLAM Mapping Modes
 
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
-| PURE MAPPING | Generate a new map in <file>/map</file>. | No map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes). |
-| UPDATING | Update an existing map with new <file>/data</data>. | A map is found in <file>/map</file> + [`map_rate_sec > 0`](#attributes).|
-| LOCALIZING | Localize the robot on an existing map without changing the map itself. | A map is found in <file>/map</file> + [`map_rate_sec = 0`](#attributes). |
-
-{{% /tab %}}
-{{% tab name="/data" %}}
-
-The <file>data</file> folder stores the LIDAR data gathered by your RPlidar and used for SLAM.
-
-{{% /tab %}}
-{{% tab name="/config" %}}
-
-The <file>config</file> folder stores any Cartographer specific config files created.
-These are generated at runtime, so there is no need to add anything to this folder.
-
-{{% /tab %}}
-{{< /tabs >}}
+| PURE MAPPING | Generate a new internal state in <file>/internal_state</file>. | No internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes). |
+| UPDATING | Update an existing internal state with new sensor readings. | An existing internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes).|
+| LOCALIZING | Localize the robot on an existing internal state without changing the internal state itself. | An internal state is found in <file>/internal_state</file> + [`map_rate_sec = 0`](#attributes). |
 
 {{% alert title="Info" color="info" %}}
 
@@ -273,10 +255,10 @@ Watch a map start to appear.
 
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `data_dir` | string | **Required** | Path to [the directory](#mapping-modes) used for saving input LIDAR data in <file>/data</file> and output mapping data in <file>/map</file>. |
-| `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. |
-| `map_rate_sec` | int | Optional | Rate of <file>/map</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
-| `data_rate_msec` | int | Deprecated | Rate of <file>/data</file> collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
+| `data_dir` | string | **Required** | Path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
+| `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
+| `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
+| `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 ### `config_params`
@@ -291,10 +273,10 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `missing_data_ray_length` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Typically the same as `max_range`. |
 | `max_range` | Maximum range of valid measurements. | Optional | `25` | For an RPlidar A3, set this value to `25`. For an RPlidar A1, use `12`. |
 | `min_range` | Minimum range of valid measurements. | Optional | `0.2` | For an RPlidar A3, set this value to `0.2`. For RPlidar A1, use `0.15`. |
-| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#mapping-modes). |
-| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#mapping-modes). |
-| `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#mapping-modes). |
-| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for [UPDATING mode](#mapping-modes). |
+| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#slam-mapping-modes). |
+| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#slam-mapping-modes). |
+| `min_covered_area` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#slam-mapping-modes). |
+| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for [UPDATING mode](#slam-mapping-modes). |
 | `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Higher values make it harder to overwrite prior scanned points. Relative to `translation weight` and `rotation weight`. |
 | `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Higher values make it harder for scan matching to translate prior scans. Relative to `occupied space weight` and `rotation weight`. |
 | `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Higher values make it harder for scan matching to rotate prior scans. Relative to `occupied space weight` and `translation weight`. |
