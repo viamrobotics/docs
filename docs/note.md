@@ -123,7 +123,7 @@ This is **some markdown.**
 
 ### Alerts Shortcodes
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 It can even contain shortcodes.
 {{< /alert >}}
 
@@ -416,7 +416,7 @@ If you add an MP4 file, test it on an iPhone with the deployed link on the PR.
 
 {{< /alert >}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 The gif can and should be used only in the frontmater `images` variable and only if close in size to 1MB.
 The `images` variable sets it to be the preview image on social platforms (for example it will be the preview when you share a link on slack).
 Link previews do not support `webm` and `mp4` but they do support gifs.
@@ -508,7 +508,7 @@ ffmpeg -ss 00:00:05 -i ${vdirname}/${vfname}mp4 -frames:v 1 ${vdirname}/${vfname
 }
 ```
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 The `2gif` commands only turn the first 5 seconds of a video into a low res gif.
 {{< /alert >}}
 
@@ -520,7 +520,7 @@ If the image is supposed to take up the full width of the page use the regular m
 
 If the image is smaller use the `imgproc` shortcode with an appropriate resize value.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 
 You cannot directly use the `<img>` html tag for images in the assets folder because the images, once built, are renamed.
 If you really need to use html directly, place the image in the static folder.
