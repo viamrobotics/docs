@@ -905,7 +905,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-<!-- ### Drive a robot with Four Wheels & a Skid Steer Platform
+### Drive a robot with Four Wheels & a Skid Steer Platform
 
 The following Go code is part of an example of using an input controller to drive a robot with four wheels & a skid steer platform.
 
@@ -942,10 +942,6 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
     err = g.RegisterControlCallback(ctx, control, []input.EventType{input.PositionChangeAbs}, motorCtl)
 }
 ```
-
-{{% alert title="Tip" color="tip" %}}
-Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
-{{% /alert %}} -->
 
 ## Troubleshooting
 
