@@ -112,6 +112,7 @@ Verify your version of Go with `go version`.
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install github.com/viamrobotics/canon@latest
 ```
+
 Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
 `export PATH=$PATH:$(go env GOPATH)/bin`.
 
@@ -127,7 +128,6 @@ brew install viamrobotics/brews/canon
 
 {{% /tab %}}
 {{% /tabs %}}
-
 
 {{% /tab %}}
 {{% tab name="Manual" %}}
