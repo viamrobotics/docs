@@ -435,7 +435,7 @@ You will need to first register the machine learning model file with the [ML Mod
                     <a href="https://ts.viam.dev/">TypeScript SDK Docs</a>
                 </li>
                 <li>
-                    <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples/teleop">Teleop Example from Github page</a>
+                    <a href="https://github.com/viamrobotics/viam-typescript-sdk/tree/main/examples">Teleop Example from Github page</a>
 {{<gif webm_src="/appendix/teleop-example.webm" mp4_src="/appendix/teleop-example.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
 </li>
                 </ul>
