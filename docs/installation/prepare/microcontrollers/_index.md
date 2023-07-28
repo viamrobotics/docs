@@ -112,6 +112,8 @@ Verify your version of Go with `go version`.
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 go install github.com/viamrobotics/canon@latest
 ```
+Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
+`export PATH=$PATH:$(go env GOPATH)/bin`.
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
@@ -126,8 +128,6 @@ brew install viamrobotics/brews/canon
 {{% /tab %}}
 {{% /tabs %}}
 
-Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath_code) by running:
-`export PATH=$PATH:$(go env GOPATH)/bin`.
 
 {{% /tab %}}
 {{% tab name="Manual" %}}
@@ -243,7 +243,7 @@ The`esp32` [board](/components/board/) model is not currently provided for you a
 
 {{< /alert >}}
 
-<!-- 
+<!--
 TODO: UNCOMMENT WHEN AVAILABLE IN APP UI, AND MOVE THIS CHUNK TO BOARD PAGE (SG)
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
@@ -252,14 +252,14 @@ Enter a name for your board, select the type `board`, and select the `numato` mo
 
 Click **Create component**.
 
- ![An example configuration for an esp21 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png) 
- 
+ ![An example configuration for an esp21 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png)
+
  Edit and fill in the attributes as applicable.
  -->
 
 To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
 
-Copy the following JSON template and paste it into your configuration:
+Copy the following JSON template and paste it into your configuration inside the `"components"` array:
 
 {{< tabs name="Configure an esp32 Board" >}}
 {{% tab name="JSON Template"%}}
@@ -272,7 +272,7 @@ Copy the following JSON template and paste it into your configuration:
     ],
     "analogs": [
       {
-        "pin": "<number>", 
+        "pin": "<number>",
         "name": "<your-analog-name>"
       }
     ]
