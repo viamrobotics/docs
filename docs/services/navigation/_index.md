@@ -164,9 +164,9 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
   - Navigate back to your robot's **Config** page.
-  Scroll to the card with the name of your base.
+  Scroll to the card with the name of your movement sensor.
   Adjust the **Orientation** of the frame to compensate for the mismatch.
-  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your base to be oriented accurately within the Frame System.
+  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your robot to be oriented accurately within the Frame System.
   - If you cannot verify this, repeat as necessary.
 
 ## API
