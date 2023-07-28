@@ -46,7 +46,7 @@ Supported sensor models include:
 You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/extend/modular-resources/).
 This allows you to have the same access and control of the sensor through Viam as you would if it was a built-in model.
 
-For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module).
+For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/).
 
 ## Control your sensor with Viam's client SDK libraries
 
