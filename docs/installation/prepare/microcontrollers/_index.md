@@ -117,10 +117,7 @@ Make sure to [add the go binary folder to your `PATH`](https://go.dev/doc/gopath
 `export PATH=$PATH:$(go env GOPATH)/bin`.
 
 {{% /tab %}}
-{{% tab name="macOS" %}}
-
-Make sure your system has [Go 1.19](https://golangtutorial.dev/news/go-1.19-version-released/#major-changes-in-go-119-version) or later installed.
-Verify your version of Go with `go version`.
+{{% tab name="macOS with Homebrew" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 brew install viamrobotics/brews/canon
