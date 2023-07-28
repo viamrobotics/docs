@@ -229,72 +229,44 @@ The [encoder component](/components/encoder/) supports the following methods:
 
 The [gantry component](/components/gantry/) supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-[Position](/components/gantry/#position) | Get the current positions of the axes of the gantry in mm. |
-[MoveToPosition](/components/gantry/#movetoposition) | Move the axes of the gantry to the desired positions. |
-[Lengths](/components/gantry/#lengths) | Get the lengths of the axes of the gantry in mm. |
-[Stop](/components/gantry/#stop) | Stop the gantry from moving. |
-[IsMoving](/components/gantry/#ismoving) | Get if the gantry is currently moving. |
+{{< readfile "/static/include/components/apis/gantry.md" >}}
 
 ### Gripper
 
-Method Name | Description
------------ | -----------
-[`Open`](/components/gripper/#open) | Open the gripper.
-[`Grab`](/components/gripper/#grab) | Close the gripper until it grabs something or closes completely.
-[`Stop`](/components/gripper/#stop) | Stop the gripper's movement.
-[`IsMoving`](/components/gripper/#ismoving) | Report whether the gripper is currently moving.
+The [gripper component](/components/gripper/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/gripper.md" >}}
 
 ### Input Controller
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Controls](/components/input-controller/#controls) | Get a list of input `Controls` that this Controller provides. |
-| [Events](/components/input-controller/#events) | Get the current state of the Controller as a map of the most recent [Event](/components/input-controller/#event-object) for each [Control](/components/input-controller/#control-field). |
-| [RegisterControlCallback](/components/input-controller/#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](/components/input-controller/#eventtype-field) selected occurs on the given [Control](/components/input-controller/#control-field). |
+The [input controller component](/components/input-controller/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/input-controller.md" >}}
 
 ### Motor
 
-Method Name | Description
------------ | -----------
-[SetPower](/components/motor/#setpower) | Set the power to send to the motor as a portion of max power.
-[GoFor](/components/motor/#gofor) | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](/components/motor/#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](/components/motor/#resetzeroposition) | Set the current position to be the new zero (home) position.
-[GetPosition](/components/motor/#getposition) | Report the position of the motor based on its encoder. Not supported on all motors.
-[GetProperties](/components/motor/#getproperties) | Return whether or not the motor supports certain optional features.
-[Stop](/components/motor/#stop) | Cut power to the motor off immediately, without any gradual step down.
-[IsPowered](/components/motor/#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
-[IsMoving](/components/motor/#ismoving) | Return whether the motor is moving or not.
+The [motor component](/components/motor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/motor.md" >}}
 
 ### Movement Sensor
 
-Method Name | Description |
------------ | ----------- |
-[GetPosition](/components/movement-sensor/#getposition) | Get the current latitude, longitude and altitude. |
-[GetLinearVelocity](/components/movement-sensor/#getlinearvelocity) | Get the current linear velocity as a 3D vector. |
-[GetAngularVelocity](/components/movement-sensor/#getangularvelocity) | Get the current angular velocity as a 3D vector. |
-[GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) | Get the current linear acceleration as a 3D vector. |
-[GetCompassHeading](/components/movement-sensor/#getcompassheading) | Get the current compass heading in degrees. |
-[GetOrientation](/components/movement-sensor/#getorientation) | Get the current orientation. |
-[GetProperties](/components/movement-sensor/#getproperties) | Get the supported properties of this sensor. |
-[GetAccuracy](/components/movement-sensor/#getaccuracy) | Get the accuracy of the various sensors. |
-[GetReadings](/components/movement-sensor/#getreadings) | Obtain the measurements/data specific to this sensor. |
+The [movement sensor component](/components/movement-sensor/) supports the following methods.
+Some methods are only supported by certain models:
+
+{{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 ### Sensor
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Readings](/components/sensor/#readings) | Get the measurements or readings that this sensor provides. |
+The [sensor component](/components/sensor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/sensor.md" >}}
 
 ### Servo
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Move](/components/servo/#move) | Move the servo to the desired angle. |
-| [Position](/components/servo/#position) | Get the current angle of the servo. |
-| [Stop](/components/servo/#stop) | Stop the servo. |
+The [servo component](/components/servo/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/servo.md" >}}
 
 ## Service APIs
 
