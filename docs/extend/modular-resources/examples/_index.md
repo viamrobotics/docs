@@ -29,4 +29,4 @@ Once you have created a modular resource, you can test your custom resource usin
 
 ## Repositories
 
-Detailed, working examples of various types of modular resources are included in [Viam's GitHub](https://github.com/viamrobotics) with [the RDK](https://github.com/viamrobotics/rdk/tree/main/examples/customresources), [the Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module), and [Viam Labs](https://github.com/viam-labs/wifi-sensor).
+Detailed, working examples of various types of modular resources are included in [Viam's GitHub](https://github.com/viamrobotics) with [the RDK](https://github.com/viamrobotics/rdk/tree/main/examples/customresources), [the Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/), and [Viam Labs](https://github.com/viam-labs/wifi-sensor).

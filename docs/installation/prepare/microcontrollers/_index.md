@@ -240,7 +240,7 @@ In this example, we want to add GPIO pin 35, which is labeled `ADC1_7` in the pi
 
 {{% alert title="Tip" color="tip" %}}
 
-You can find a full example [on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32.rs).
+You can find a full example [on GitHub](https://github.com/viamrobotics/micro-rdk/blob/main/examples/esp32/esp32-server.rs).
 
 {{% /alert %}}
 
