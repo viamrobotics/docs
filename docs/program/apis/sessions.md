@@ -16,9 +16,21 @@ supports stopping actuating components when it's not.
 
 ### Purpose
 
-When working with robots, we want a protocol and system-wide means to be able to understand the presence of a client connected to a robot. This provides for safer operation scenarios when dealing with actuating controls. Specifically, without this, controls that would be "sticky" (e.g. SetPower of a base) based on the last input of a client, can have a robot try to continue what it was told to do forever. These clients range from SDK scripts, input controllers, and robots talking amongst themselves.
+When working with robots, we want a protocol and system-wide means to be able to understand the presence of a client connected to a robot.
 
-Part of the solution to this is session management. A session, as defined here, is a presence mechanism at the application layer (i.e. RDK, not TCP) maintained by a client (e.g. SDK) with a server (e.g. RDK). Since the client maintains the session, it is responsible for telling the server it is still present every so often; this will be called staying within the heartbeat window. The client must send at least one session heartbeat within this window. As soon as the window lapses/expires, the server will safely stop all resources that are marked for safety monitoring that have been last used by that session, and no others; a lapsed client will attempt to establish a new session immediately prior to the next operation it performs.
+This provides for safer operation scenarios when dealing with actuating controls. S
+
+pecifically, without this, controls that would be "sticky" (e.g. SetPower of a base) based on the last input of a client, can have a robot try to continue what it was told to do forever.
+
+These clients range from SDK scripts, input controllers, and robots talking amongst themselves.
+
+Part of the solution to this is session management.
+A session, as defined here, is a presence mechanism at the application layer (i.e. RDK, not TCP) maintained by a client (e.g. SDK) with a server (e.g. RDK).
+
+The client maintains the session, telling the server it is still present every so often, or staying within the heartbeat window.
+
+The client must send at least one session heartbeat within this window.
+As soon as the window lapses/expires, the server will safely stop all resources that are marked for safety monitoring that have been last used by that session, and no others; a lapsed client will attempt to establish a new session immediately prior to the next operation it performs.
 
 {{< /alert >}}
 
@@ -27,6 +39,12 @@ Python SDK: [Sessions Client](https://python.viam.dev/autoapi/viam/sessions_clie
 - To interact with the Robot API with the Python SDK, instantiate a `SessionsClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
 Go Client SDK: [Session Management API](https://pkg.go.dev/go.viam.com/rdk@v0.5.0/session)
+
+First, use your [`RobotClient()`](/program/apis/#robot-api) instance to initialize a `SessionsClient()`.
+
+SessionsClient provides a client for the [Sessions Management API](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go), which is the `viam-server` built-in solution for controlling session management on your robot.
+
+Next: what are sessions?
 
 - some updates to RobotClient methods.
 - maybe just put them here?
