@@ -276,28 +276,33 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 ### Base Remote Control
 
-Method Name | Description
------------ | -----------
-[`Close`](/services/base-rc/#close) | Close out of all remote control related systems.
-[`ControllerInputs`](/services/base-rc/#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
+The [Base Remote Control Service](/services/base-rc/) supports the following methods:
 
-### Data Manager
+{{< readfile "/static/include/services/apis/base-rc.md" >}}
 
-Method Name | Description
------------ | -----------
-[`Sync`](/services/data/#sync) | Sync data stored on the robot to the cloud.
+### Data Management
+
+The [Data Management Service](/services/data/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/data.md" >}}
+
+### MLModel
+
+The [ML Model Service](/services/ml/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/ml.md" >}}
+
+### Motion
+
+The [Motion Service](/services/motion/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/motion.md" >}}
 
 ### Navigation
 
-Method Name | Description
------------ | -----------
-[`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
-[`SetMode`](/services/navigation/#setmode) | Set the mode the service is operating in.
-[`Location`](/services/navigation/#location) | Get the current location of the robot.
-[`Waypoints`](/services/navigation/#waypoints) | Get the waypoints currently in the service's data storage.
-[`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
-[`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
-[`GetObstacles`](/services/navigation/#getobstacles) | Get the obstacles currently in the service's data storage.
+The [Navigation Service](/services/navigation/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/navigation.md" >}}
 
 ### Sensors
 
@@ -306,41 +311,17 @@ Method Name | Description
 [`Sensors`](/services/sensors/#sensors) | Returns a list of names of the available sensors.
 [`Readings`](/services/sensors/#readings) | Returns a list of readings from a given list of sensors.
 
-### Motion
-
-Method Name | Description
------------ | -----------
-[`Move`](/services/motion/#move) | Move multiple components in a coordinated way to achieve a desired motion.
-[`MoveSingleComponent`](/services/motion/#movesinglecomponent) | Move a single component "manually."
-[`GetPose`](/services/motion/#getpose) | Get the current location and orientation of a component.
-[`MoveOnMap`](/services/motion/#moveonmap) | Move a [base](/components/base/) component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
-[`MoveOnGlobe`](/services/motion/#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
-
 ### SLAM
 
-Method Name | Description
------------ | -----------
-[`GetPosition`](/services/slam/#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
-[`GetPointCloudMap`](/services/slam/#getpointcloudmap) | Get the point cloud SLAM map.
-[`GetInternalState`](/services/slam/#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
-[`GetLatestMapInfo`](/services/slam/#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
+The [SLAM Service](/services/slam/) supports the following methods:
 
-### MLModel
-
-Method Name | Description
------------ | -----------
-`Infer` | Take an already ordered input tensor as an array, make an inference on the model, and return an output tensor map.
-`Metadata`| Get the metadata (such as name, type, expected tensor/array shape, inputs, and outputs) associated with the ML model.
+{{< readfile "/static/include/services/apis/slam.md" >}}
 
 ### Vision
 
-Method Name | Description |
------------ | ----------- |
-`DetectionsFromCamera` | Get a list of detections in the next image given a camera and a detector. |
-`Detections`| Get a list of detections in the given image using the specified detector. |
-`ClassificationsFromCamera` | Get a list of classifications in the next image given a camera and a classifier. |
-`Classifications` | Get a list of detections in the given image using the specified detector. |
-`ObjectPointClouds`| Returns a list of the 3D point cloud objects and associated metadata in the latest picture obtained from the specified 3D camera (using the specified segmenter). |
+Different [Vision Service](/services/vision/) models support different methods:
+
+{{< readfile "/static/include/services/apis/vision.md" >}}
 
 ## Signaling APIs
 
