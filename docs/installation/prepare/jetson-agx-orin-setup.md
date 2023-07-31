@@ -92,7 +92,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
   - Headless Mode Tips:
-    - Once you reach **step e** which instructs you to connect through the host host serial port, the instructions to connect are immediately under **step e**.
+    - Once you reach **step e** which instructs you to connect through the host serial port, the instructions to connect are immediately under **step e**.
       Follow those steps according to the type of computer you're using.
     - After running `sudo screen`, note that the `Password` input prompt immediately following refers to your computer's system password.
   - "Jetson Initial configuration" (oem-config) Command Prompt Tips:
