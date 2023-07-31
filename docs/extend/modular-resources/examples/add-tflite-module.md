@@ -16,7 +16,7 @@ This code is for instructional purposes only, and is not intended for production
 
 You can find the example files in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
-- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides a `MLModelService` modular resource capable of running any TensorFlow Lite model.
+- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides the `MLModelService` modular resource capable of running any TensorFlow Lite model.
 - [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the [`yamnet/classification` TensorFlow Lite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
 
 This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.
@@ -75,7 +75,7 @@ While your specific build steps may differ slightly, your installation should ge
    ninja install
    ```
 
-   This tutorial passes three flags to the build process to configure the build:
+   For this tutorial, the build process uses the following configuration options. See [Viam C++ SDK Build Instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) for more information:
 
    - `VIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE` to request building the example module for this tutorial.
    - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
@@ -94,7 +94,7 @@ While your specific build steps may differ slightly, your installation should ge
    git clone git@github.com:viamrobotics/viam-cpp-sdk.git
    ```
 
-1. Build and run the `bullseye` development Docker container included with the SDK:
+1. Build and run the `bullseye` development Docker container included with the SDK. If you haven't already, first [install Docker Engine](https://docs.docker.com/engine/install/).
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd viam-cpp-sdk/
@@ -118,7 +118,8 @@ While your specific build steps may differ slightly, your installation should ge
    ```
 
    If the version returned is `3.25` or later, skip to the next step.
-   Otherwise, run the following commands to add the `bullseye-backports` repository and install the version of `cmake` provided there:
+   Otherwise, download and install `cmake 3.25` or later from your system's package manager.
+   For example, if using Debian, you can run the following commands to add the `bullseye-backports` repository and install the version of `cmake` provided there:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    sudo apt-get install software-properties-common
@@ -130,7 +131,7 @@ While your specific build steps may differ slightly, your installation should ge
 1. Create an <file>opt</file> directory to install the build artifacts to:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   mkdir -p ~/example_workspace/opt/
+   mkdir -p ~/example_workspace/opt
    ```
 
 1. Create a <file>build</file> directory to house the build:
@@ -148,7 +149,7 @@ While your specific build steps may differ slightly, your installation should ge
    ninja install
    ```
 
-   This tutorial passes three flags to the build process to configure the build:
+   For this tutorial, the build process uses the following configuration options. See [Viam C++ SDK Build Instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) for more information:
 
    - `VIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE` to request building the example module for this tutorial.
    - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
@@ -207,6 +208,8 @@ Next, install `viam-server` on your robot, if you have not done so already:
 
 1. Once complete, verify that step 3 on the **Setup** tab indicates that your robot has successfully connected.
 
+1. Stop `viam-server` by pressing CTL C on your keyboard.
+
 ## Generate your robot configuration
 
 When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary, which includes a `--generate` function that determines and creates the necessary robot configuration to support this example.
@@ -248,6 +251,21 @@ With everything configured and running, you can now run the inference client tha
    The location secret resembles `abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
+
+1. Next, start `viam-server` once more on your robot:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam-server -config /etc/viam.json
+   ```
+
+   {{< alert title="Important" color="note" >}}
+   If you are working within the Docker container, run the following command instead, from within the directory you installed `viam-server` to:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ./viam-server --appimage-extract-and-run -config /etc/viam.json
+   ```
+
+   {{< /alert >}}
 
 1. Then, run the following to start the inference client, providing the necessary access credentials and the path to the labels file extracted earlier:
 
@@ -319,7 +337,7 @@ Once you have run the example and examined the module and client code, you might
 
 ## Troubleshooting and additional documentation
 
-- If you experience issues building the C++ SDK, see [C++ SDK: Limitations, Known Issues, and Troubleshooting](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+- If you experience issues building the C++ SDK, see [C++ SDK: Limitations, Known Issues, and Troubleshooting](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#limitations-known-issues-and-troubleshooting).
 - To customize your C++ build process or make adjustments to fit your platform or deployment requirements, see [C++ SDK: Options to Configure or Customize the Build](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#options-to-configure-or-customize-the-build)
 
 You can find additional reference material in the [C++ SDK documentation](https://cpp.viam.dev/).
