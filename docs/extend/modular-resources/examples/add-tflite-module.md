@@ -252,17 +252,17 @@ With everything configured and running, you can now run the inference client tha
 
    {{%  snippet "secret-share.md" %}}
 
-1. Next, start `viam-server` once more on your robot:
+1. Next, start `viam-server` once more on your robot, this time as a background process:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam-server -config /etc/viam.json
+   viam-server -config /etc/viam.json &
    ```
 
    {{< alert title="Important" color="note" >}}
    If you are working within the Docker container, run the following command instead, from within the directory you installed `viam-server` to:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   ./viam-server --appimage-extract-and-run -config /etc/viam.json
+   ./viam-server --appimage-extract-and-run -config /etc/viam.json &
    ```
 
    {{< /alert >}}
