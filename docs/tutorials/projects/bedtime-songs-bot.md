@@ -255,8 +255,8 @@ Head over to the [**DATA** page](https://app.viam.com/data/view) and select an i
 After selecting the image, you will see all of the data that is associated with that image.
 
 Add tags for each of the puzzle pieces.
-Follow [these instructions](/manage/data/tag) to do so.
-Type in your desired tag in the Tags section and save the tag.
+Follow [these instructions](/manage/data/label/#image-tags) to do so.
+Type in your desired tag in the **Tags** section and save the tag.
 Since we wanted to classify our toys by shape, we used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
 
 Scroll between your images.
@@ -267,7 +267,7 @@ This is important for the next step.
 
 #### Filter based on tags
 
-Upon completion of tagging your data set, you can now [filter images](/manage/data/view/) according to those tags.
+Now that you've tagged the image data, you have the option to [filter your images](/manage/data/view/) according to those tags.
 Head over to the **Filtering** menu and select a tag from the drop down list to view all labeled images.
 
 ### Train a model
