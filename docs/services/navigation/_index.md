@@ -19,11 +19,15 @@ Once these waypoints are added and the mode of the service is [set to `MODE_WAYP
 
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
+{{% alert title="Important" color="note" %}}
+
 Make sure the [movement sensor](/components/movement-sensor/) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the robot's current GPS location.
 - It must also support either `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
 - If your movement sensor provides multiple methods, your robot will default to using the values returned by `GetCompassHeading()`.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -114,6 +118,56 @@ The following attributes are available for `Navigation` services:
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `60` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.3` |
 | `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [Motion Service](/services/motion/) for more information. |
+
+### Configure and calibrate the Frame System Service for GPS Navigation
+
+{{% alert title="Info" color="info" %}}
+
+The [Frame System Service](/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a robot within a coordinate system configured by the user.
+
+It stores the required contextual information for Viam's services like [Motion](/services/motion/) and [Vision](/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/components/movement-sensor/).
+
+{{% /alert %}}
+
+To make sure your rover base's autonomous GPS navigation with the Navigation Service is accurate, configure and calibrate the Frame System Service for the components of your robot.
+To start, add the Frame System Service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
+
+- Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+  Scroll to the card with the name of your base:
+
+    {{< imgproc src="/services/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
+
+- Click **Add Frame**.
+
+  - Keep the `parent` frame as `world`.
+  Select the **Geometry** drop-down menu.
+  - Configure a **Geometry** for the base that reflects its physical dimensions.
+  Reference [these instructions](/services/frame-system/#bounding-geometries) to configure your geometry and measure the physical dimensions of your base.
+
+    ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-base-ui.png)
+
+- Scroll to the card with the name of your movement sensor.
+  Click **Add Frame** and select the **Parent** box.
+  - Type in the `name` of your base to specify this component as the `parent` of the sensor in the reference frame coordinate system, and click **Save Config** to save your configuration.
+  See [how to configure nested reference frames](/services/frame-system/nested-frame-config/) for an explanation of this configuration process.
+  ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-movement-sensor-ui.png)
+
+  - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
+
+    In other words, designate the origin of the base as `(0,0,0)`, and measure the distance between the origin of the base and the origin of the sensor to obtain the coordinates of the **Translation**.
+
+    See [the Frame System Service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
+
+Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the Navigation Service:
+
+- After configuring your robot, navigate to the **Control** page and select the card matching the name of your movement sensor.
+- Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
+- If you cannot verify this:
+  - Navigate back to your robot's **Config** page.
+  Scroll to the card with the name of your movement sensor.
+  Adjust the **Orientation** of the frame to compensate for the mismatch.
+  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your robot to be oriented accurately within the Frame System.
+  - If you cannot verify this, repeat as necessary.
 
 ## API
 

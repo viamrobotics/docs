@@ -99,17 +99,20 @@ these settings to your settings.json:
     "vale.valeCLI.path": "/usr/local/bin/vale",
 ```
 
-### Using `markdown-check` as a pre-commit hook
+### Using `markdown-check` and `single-line-check` as a pre-commit hook
+
+If you add `markdown-check` and `single-line-check` as a pre-commit hook, git will perform both checks on all files that have changed since the last commit.
 
 Inside your local docs directory add a `pre-commit` file inside the `.git/hooks` directory:
 
 ```sh
 markdownlint --config VALEDIR/.markdownlint.yaml $(git diff --diff-filter=d --name-only HEAD | grep '\.md$'
+single-line-check HEAD
 ```
 
 This will run the markdownlinter on all changed files before you commit. It will also not allow you to commit unless the markdownlinter passes.
 
-**To skip the pre-commit check if you need to quickly commit somethign use `--no-verify`**
+**To skip the pre-commit check if you need to quickly commit something use `--no-verify`**
 
 ## Credits
 
