@@ -70,7 +70,10 @@ The following attributes are available for `image_file` cameras:
 | `depth_image_file_path` | string | Optional | The file path to the depth image on your local system. |
 | `pointcloud_file_path` | string | Optional | The file path to the point cloud file on your local system. |
 
-You must specify `color_image_file_path` or `depth_image_file_path`.
+You must specify at least one of `color_image_file_path`, `depth_image_file_path`, and `pointcloud_file_path`.
+
+If you provide configuration for the `depth_image_file_path` and `intrinsic_parameters` of the camera, then your robot will also retrieve point cloud data from the `depth_image_file_path`.
+If you then also configure a `pointcloud_file_path` on your camera, Viam will try to pull the data from the `pointcloud_file_path` first.
 
 ## View the camera stream
 
