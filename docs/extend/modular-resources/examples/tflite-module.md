@@ -264,7 +264,7 @@ With everything configured and running, you can now run the inference client tha
    ```
 
    {{< alert title="Important" color="note" >}}
-   If you are working within the Docker container, run the following command *instead* of the above, from within the directory you installed `viam-server` to:
+   If you are working within the `bullseye` Docker container on Linux, run the following command *instead* of the above, from within the directory you installed `viam-server` to:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &
