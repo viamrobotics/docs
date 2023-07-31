@@ -9,8 +9,7 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-An `image_file` camera gets color and depth images frames from a file path.
-If you provide a depth image, as well as the intrinsic parameters of the camera that took that depth image, then the camera will also provide a point cloud.
+An `image_file` camera gets color and depth image frames or point clouds from a file path on your local system.
 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
