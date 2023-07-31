@@ -13,7 +13,7 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
-`serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg | grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyAMA0` , to its device file, such as <file>/dev/ttyAMA0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.
+`serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyAMA0` , to its device file, such as <file>/dev/ttyAMA0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.
 `serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor. <br> Default: `38400`
 ---
 

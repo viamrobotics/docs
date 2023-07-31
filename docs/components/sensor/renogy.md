@@ -74,6 +74,6 @@ The following attributes are available for `renogy` sensors:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg | grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyAMA0` , to its device file, such as <file>/dev/ttyAMA0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/serial0` |
+| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyAMA0` , to its device file, such as <file>/dev/ttyAMA0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/serial0` |
 | `serial_baud_rate` | int | **Required** | The baud rate to use for serial communications. <br> Default: `9600` |
 | `modbus_id`  | int | **Required** | Controller MODBUS address. <br> Default: `1` |
