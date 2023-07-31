@@ -223,6 +223,17 @@ To generate your robot's configuration using `example_audio_classification_clien
    ./example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
    ```
 
+   {{< alert title="Important" color="note" >}}
+   If you are running on macOS, use the following commands *instead* of the above:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   cd ~/example_workspace/opt/bin
+   DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/ ./example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
+   ```
+
+   If you installed the SDK build artifacts to a directory other than <file>~/example_workspace/opt</file>, update the path provided to `DYLD_LIBRARY_PATH` accordingly.
+   {{< /alert >}}
+
 1. Verify that the resulting configuration file was created successfully:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -253,7 +264,7 @@ With everything configured and running, you can now run the inference client tha
    ```
 
    {{< alert title="Important" color="note" >}}
-   If you are working within the Docker container, run the following command instead, from within the directory you installed `viam-server` to:
+   If you are working within the Docker container, run the following command *instead* of the above, from within the directory you installed `viam-server` to:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &
