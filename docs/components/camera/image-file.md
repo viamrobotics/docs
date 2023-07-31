@@ -71,7 +71,7 @@ The following attributes are available for `image_file` cameras:
 | `depth_image_file_path` | string | Optional | The file path to the depth image on your local system. |
 | `pointcloud_file_path` | string | Optional | The file path to the point cloud file on your local system. You must specify `depth_image_file_path` to use `pointcloud_file_path`. |
 
-You must specify either `color_image_file_path` or `depth_image_file_path`.
+You must specify `color_image_file_path` or `depth_image_file_path`.
 
 ## View the camera stream
 
