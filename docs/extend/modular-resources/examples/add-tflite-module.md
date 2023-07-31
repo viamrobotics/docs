@@ -202,7 +202,7 @@ Next, install `viam-server` on your robot, if you have not done so already:
 
 1. Once complete, verify that step 3 on the **Setup** tab indicates that your robot has successfully connected.
 
-1. Stop `viam-server` by pressing CTL C on your keyboard.
+1. Stop `viam-server` by pressing CTL-C on your keyboard from within the terminal window where you entered the commands from step 3 above.
 
 ## Generate your robot configuration
 
