@@ -174,7 +174,7 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 1. Extract the labels file <file>yamnet_label_list.txt</file> from the downloaded model file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   unzip ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite
+   unzip ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite -d ~/example_workspace/
    ```
 
    The labels file provides pre-populated labels for the calculated scores, so that output scores can be associated and returned with their matching labels.
