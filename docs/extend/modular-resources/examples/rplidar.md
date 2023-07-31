@@ -47,10 +47,14 @@ brew tap viamrobotics/brews && brew install rplidar-module
 
 ## Configuration
 
-Physically connect the RPlidar to your machine.
-Go to your robot's page on the [Viam app](https://app.viam.com/).
+Physically connect the RPlidar to your robot.
 
-{{< tabs name="Add the Rplidar component">}}
+Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
+For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
+
+Then, go to your robot's page on the [Viam app](https://app.viam.com/).
+
+{{< tabs name="Add the RPlidar component">}}
 {{% tab name="Config Builder" %}}
 Navigate to the **Config** tab on your robot's page, and click on the **Components** subtab.
 
@@ -60,7 +64,7 @@ Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of yo
 
 Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux):
 
-{{< tabs name="Add Rplidar Configs">}}
+{{< tabs name="Add RPlidar Configs">}}
 {{% tab name="macOS x86_64" %}}
 
 ```json
@@ -84,7 +88,7 @@ Paste the following into the **Attributes** field of your new component accordin
 
 Click on the **Modules** subtab. Add the rplidar module with a name of your choice and an executable path that points to the location of your installed `rplidar-module` binary:
 
-{{< tabs name="Add Rplidar Component Module">}}
+{{< tabs name="Add RPlidar Component Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
 
 ![adding rplidar module linux](/extend/modular-resources/add-rplidar/add-rplidar-module-ui-linux.png)
@@ -103,7 +107,7 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 Navigate to the **Config** tab.
 Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON:
 
-  {{< tabs name="Add the Rplidar component - configs" >}}
+  {{< tabs name="Add the RPlidar component - configs" >}}
   {{% tab name="Linux" %}}
 
   ```json
