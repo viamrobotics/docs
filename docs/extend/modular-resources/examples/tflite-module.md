@@ -67,6 +67,12 @@ While your specific build steps may differ slightly, your installation should ge
    export PKG_CONFIG_PATH="`brew --prefix`/opt/openssl/lib/pkgconfig"
    ```
 
+1. Add an additional path to the `DYLD_LIBRARY_PATH` environment variable, which allows the built binaries to find the libraries they need:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   export DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/:$DYLD_LIBRARY_PATH
+   ```
+
 1. Build the C++ SDK by running the following commands:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -224,14 +230,12 @@ To generate your robot's configuration using `example_audio_classification_clien
    ```
 
    {{< alert title="Important" color="note" >}}
-   If you are running on macOS, use the following commands *instead* of the above:
+   If you receive a `Library not loaded` error when running the above on macOS, run the following command again:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   cd ~/example_workspace/opt/bin
-   DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/ ./example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
+   export DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/:$DYLD_LIBRARY_PATH
    ```
 
-   If you installed the SDK build artifacts to a directory other than <file>~/example_workspace/opt</file>, update the path provided to `DYLD_LIBRARY_PATH` accordingly.
    {{< /alert >}}
 
 1. Verify that the resulting configuration file was created successfully:
@@ -268,6 +272,15 @@ With everything configured and running, you can now run the inference client tha
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &
+   ```
+
+   {{< /alert >}}
+
+   {{< alert title="Important" color="note" >}}
+   If you receive a `Library not loaded` error when running the above on macOS, run the following command again:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   export DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/:$DYLD_LIBRARY_PATH
    ```
 
    {{< /alert >}}
