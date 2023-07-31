@@ -260,7 +260,7 @@ With everything configured and running, you can now run the inference client tha
 1. Next, start `viam-server` once more on your robot, this time as a background process:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam-server -config /etc/viam.json &
+   viam-server -config /etc/viam.json
    ```
 
    {{< alert title="Important" color="note" >}}
