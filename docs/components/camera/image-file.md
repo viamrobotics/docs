@@ -52,7 +52,7 @@ Edit and fill in the attributes as applicable.
         "debug": <boolean>,
         "color_image_file_path": "<your-file-path>",
         "depth_image_file_path": "<your-file-path>",
-        "pointcloud_file_path": "<your-file-path-to-pcd-file>",
+        "pointcloud_file_path": "<your-file-path>",
     }
 }
 ```
@@ -69,7 +69,7 @@ The following attributes are available for `image_file` cameras:
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 | `color_image_file_path` | string | Optional | The file path to the color image on your local system. |
 | `depth_image_file_path` | string | Optional | The file path to the depth image on your local system. |
-| `pointcloud_file_path` | string | Optional | The file path to the point cloud file on your local system. You must specify `depth_image_file_path` to use `pointcloud_file_path`. |
+| `pointcloud_file_path` | string | Optional | The file path to the point cloud file on your local system. |
 
 You must specify `color_image_file_path` or `depth_image_file_path`.
 
