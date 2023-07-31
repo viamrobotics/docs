@@ -198,12 +198,6 @@ Next, install `viam-server` on your robot, if you have not done so already:
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --appimage-extract-and-run -config /etc/viam.json
    ```
 
-   Once installed within the Docker container, you can later run `viam-server` with the following command, from within the directory you installed it to:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   ./viam-server --appimage-extract-and-run -config /etc/viam.json
-   ```
-
    {{< /alert >}}
 
 1. Once complete, verify that step 3 on the **Setup** tab indicates that your robot has successfully connected.
