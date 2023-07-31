@@ -223,7 +223,7 @@ Wait for the robot to reload, and then go to the **Control** tab to test the str
 
 ## Code
 
-The following code gets the robot’s vision service and then runs a color detector vision model on an image from the robot's camera `"camera_1"`:
+The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -232,13 +232,18 @@ The following code gets the robot’s vision service and then runs a color detec
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# grab camera from the robot
+# Grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
-# grab Viam's vision service for the detector
+# Grab Viam's vision service for the detector
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
+detections = await my_detector.get_detections_from_camera(cam1)
+
+# If you need to get an image first and then run detections on it,
+# you can do it this way (generally slower but useful if you need to
+# use the image afterwards):
 img = await cam1.get_image()
-detections = await my_detector.get_detections(img)
+detections_from_image = await my_detector.get_detections(img)
 
 await robot.close()
 ```
@@ -255,7 +260,7 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-// grab the camera from the robot
+// Grab the camera from the robot
 cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -267,21 +272,35 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// gets the stream from a camera
+// Get detections from the camera output
+detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
+if err != nil {
+    logger.Fatalf("Could not get detections: %v", err)
+}
+if len(directDetections) > 0 {
+    logger.Info(detections[0])
+}
+
+// If you need to get an image first and then run detections on it,
+// you can do it this way (generally slower but useful if you need to
+// use the image afterwards):
+
+// Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
 
-// gets an image from the camera stream
+// Get an image from the camera stream
 img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-detections, err := visService.GetDetections(context.Background(), img)
+detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
-if len(detections) > 0 {
-    logger.Info(detections[0])
+if len(detectionsFromImage) > 0 {
+    logger.Info(detectionsFromImage[0])
 }
+
 ```
 
 To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).

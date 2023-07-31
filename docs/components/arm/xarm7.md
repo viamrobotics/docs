@@ -29,7 +29,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "xArm7",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -37,7 +38,8 @@ Edit and fill in the attributes as applicable.
           "host": "<ip-address-to-connect-to-your-arm>"
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 
@@ -46,7 +48,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "attributes": {
           "host": "10.0.0.97"
       },
@@ -71,7 +74,8 @@ Edit and fill in the attributes as applicable.
       "model": "xArm7",
       "name": "xArm7",
       "type": "arm"
-  }]
+    }
+  ]
 }
 ```
 

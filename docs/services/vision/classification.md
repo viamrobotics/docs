@@ -117,7 +117,7 @@ To be able to interact with the Vision Service you must:
     ```
 
     After adding the component and its attributes, click **Save config**.
-    Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
+    Wait for the robot to reload, and then go to the **Control** tab to test the stream of classifications.
 
     ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
@@ -132,13 +132,20 @@ The following code gets the robot’s Vision Service and then runs a classifier 
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# grab camera from the robot
+# Grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
-# grab Viam's vision service for the classifier
+# Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
+# Get the top 2 classifications with the highest confidence scores from the camera output
+classifications = await my_classifier.get_classifications_from_camera(img, 2)
+
+# If you need to get an image first and then run classifications on it,
+# you can do it this way (generally slower but useful if you need to
+# use the image afterwards):
 img = await cam1.get_image()
-classifications = await my_classifier.get_classifications(img)
+classifications_from_image = await my_classifier.get_classifications(img, 2)
+
 
 await robot.close()
 ```
@@ -155,7 +162,7 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-// grab the camera from the robot
+// Grab the camera from the robot
 cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -167,20 +174,34 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// gets the stream from a camera
+// Get the top 2 classifications with the highest confidence scores from the camera output
+classifications, err := visService.ClassificationsFromCamera(context.Background(), myCam, 2, nil)
+if err != nil {
+    logger.Fatalf("Could not get classifications: %v", err)
+}
+if len(directClassifications) > 0 {
+    logger.Info(classifications[0])
+}
+
+// If you need to get an image first and then run classifications on it,
+// you can do it this way (generally slower but useful if you need to
+// use the image afterwards):
+
+// Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
 
-// gets an image from the camera stream
+// Get an image from the camera stream
 img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-classifications, err := visService.GetClassifications(context.Background(), img)
+// Get the top 2 classifications with the highest confidence scores
+classificationsFromImage, err := visService.GetClassifications(context.Background(), img, 2, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
-if len(classifications) > 0 {
-    logger.Info(classifications[0])
+if len(classificationsFromImage) > 0 {
+    logger.Info(classificationsFromImage[0])
 }
 ```
 

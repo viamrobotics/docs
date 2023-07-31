@@ -51,12 +51,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk@v0.2.48/robot#Robot): The robot.
+- `r` [(RobotClient)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot.
 - `name` [(string)](https://pkg.go.dev/builtin#string): The "name" of the resource.
 
 **Returns:**
 
-- [(Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): The named resource if it exists on your robot.
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your robot.
 For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
@@ -221,6 +221,7 @@ The base component supports the following methods:
 | [SetPower](/components/base/#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
 | [SetVelocity](/components/base/#setvelocity) | Set the linear velocity and angular velocity of the base. |
 | [Stop](/components/base/#stop) | Stop the base. |
+| [GetProperties](/components/base/#getproperties) | Get the width and turning radius of the base in meters. |
 | [DoCommand](/components/base/#docommand) | Send or receive model-specific commands. |
 
 ### Board
@@ -349,9 +350,10 @@ Method Name | Description
 [`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
 [`SetMode`](/services/navigation/#setmode) | Set the mode the service is operating in.
 [`Location`](/services/navigation/#location) | Get the current location of the robot.
-[`Waypoints`](/services/navigation/#waypoints) | Get an array of waypoints currently in the service's data storage.
+[`Waypoints`](/services/navigation/#waypoints) | Get the waypoints currently in the service's data storage.
 [`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
+[`GetObstacles`](/services/navigation/#getobstacles) | Get the obstacles currently in the service's data storage.
 
 ### Sensors
 
@@ -367,6 +369,8 @@ Method Name | Description
 [`Move`](/services/motion/#move) | Move multiple components in a coordinated way to achieve a desired motion.
 [`MoveSingleComponent`](/services/motion/#movesinglecomponent) | Move a single component "manually."
 [`GetPose`](/services/motion/#getpose) | Get the current location and orientation of a component.
+[`MoveOnMap`](/services/motion/#moveonmap) | Move a [base](/components/base/) component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
+[`MoveOnGlobe`](/services/motion/#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
 
 ### SLAM
 
@@ -467,11 +471,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
+- `qs` [([]resource.DiscoveryQuery)](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery): A list of [tuples of API and model](https://pkg.go.dev/go.viam.com/rdk/resource#DiscoveryQuery) that you want to retrieve the component configurations corresponding to.
 
 **Returns:**
 
-- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk@v0.2.46/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`.
+- [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`.
 `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -797,7 +801,7 @@ resource_names = robot.resource_names
 
 **Returns:**
 
-- [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.2.47/resource#Name): List of all known resource names.
+- [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): List of all known resource names.
 
 ```go
 resource_names := robot.ResourceNames()

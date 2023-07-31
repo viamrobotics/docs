@@ -1,7 +1,7 @@
 # Welcome to the Viam Documentation
 
 > **Note**
-> Looking to contribute? Check out the [Contributer Guide](./CONTRIBUTING.md).
+> Looking to contribute? Check out the [Contributer Guide](https://github.com/viamrobotics/docs/blob/main/CONTRIBUTING.md).
 
 ## Build the docs locally
 
@@ -15,7 +15,7 @@ To be able to build the docs locally, you need to install the following:
 You can build the docs for local development using the following command:
 
 ```sh
-make serve-dev
+make serve-dev-draft
 ```
 
 If you would like to see the production view (without drafts and with minified CSS), run:

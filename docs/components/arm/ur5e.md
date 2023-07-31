@@ -28,7 +28,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "ur5e",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -37,7 +38,8 @@ Edit and fill in the attributes as applicable.
         "host": "<your-host-address>",
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 
