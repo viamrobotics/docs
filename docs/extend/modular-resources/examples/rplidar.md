@@ -50,7 +50,7 @@ brew tap viamrobotics/brews && brew install rplidar-module
 Physically connect the RPlidar to your robot.
 
 Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
-For example, if you are using the RPlidar A1 model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
+For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
 
 Then, go to your robot's page on the [Viam app](https://app.viam.com/).
 
