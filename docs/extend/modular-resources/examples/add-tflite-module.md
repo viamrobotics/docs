@@ -11,15 +11,15 @@ tags: ["ml", "model training", "services"]
 Viam provides an example [modular resource](extend/modular-resources) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
 The example includes an inference client program as well, which generates audio samples and uses the modular resource to classify the audio samples based on a pre-trained model.
 
-This example is intended to demonstrate the design, implementation, and usage of a custom module to serve as a guide to help you write your own.
+This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.
+
+The provided example code demonstrates the design, implementation, and usage of a custom module to help you write your own.
 This code is for instructional purposes only, and is not intended for production use.
 
 You can find the example files in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
 - [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides the `MLModelService` modular resource capable of running any TensorFlow Lite model.
 - [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the [`yamnet/classification` TensorFlow Lite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
-
-This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.
 
 ## Build the C++ SDK
 
@@ -39,21 +39,21 @@ While your specific build steps may differ slightly, your installation should ge
    brew install abseil cmake boost grpc protobuf xtensor pkg-config ninja buf
    ```
 
-1. Create a new <file>example_workspace</file> directory for this tutorial and clone the Viam C++ SDK:
+1. Create a new <file>example_workspace</file> directory for this tutorial, and create an <file>opt</file> directory within it to house the build artifacts:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    mkdir -p ~/example_workspace
    cd ~/example_workspace
-   git clone git@github.com:viamrobotics/viam-cpp-sdk.git
+   mkdir -p opt
    ```
 
-1. Create an <file>opt</file> directory to install the build artifacts to:
+1. Within the <file>~/example_workspace</file> directory, clone the Viam C++ SDK:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   mkdir -p ~/example_workspace/opt
+    git clone git@github.com:viamrobotics/viam-cpp-sdk.git
    ```
 
-1. Create a <file>build</file> directory to house the build:
+1. Change directory into the SDK, and create a <file>build</file> directory to house the build:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    cd viam-cpp-sdk/
@@ -134,7 +134,7 @@ While your specific build steps may differ slightly, your installation should ge
    mkdir -p ~/example_workspace/opt
    ```
 
-1. Create a <file>build</file> directory to house the build:
+1. Within the <file>viam-cpp-sdk</file> directory, create a <file>build</file> directory to house the build:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    mkdir build
