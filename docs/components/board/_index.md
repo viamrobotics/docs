@@ -367,33 +367,19 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 [`GPIOPin`](#gpiopin-api) API:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Set](#set) | Set the output of this pin to high/low. |
-| [Get](#get) | Get if this pin is active (high). |
-| [PWM](#pwm) | Get the pin’s pulse-width modulation duty cycle. |
-| [SetPWM](#pwmfreq) | Set the pin’s pulse-width modulation duty cycle. |
-| [PWMFreq](#pwmfreq) | Get the pulse-width modulation frequency of this pin. |
-| [SetPWMFreq](#setpwmfreq) | Set the pulse-width modulation frequency of this pin. |
+{{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
 <br>
 
 [`AnalogReader`](#analogreader-api) API:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Read](#read) | Read the current integer value of the digital signal output by the ADC. |
+{{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 <br>
 
 [`DigitalInterrupt`](#digitalinterrupt-api) API:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Value](#value) | Get the current value of this interrupt. |
-| [Tick](#tick) | Record an interrupt. |
-| [AddCallback](#addcallback) | Add a channel as a callback for [Tick()](#tick). |
-| [AddPostProcessor](#addpostprocessor) | Add a PostProcessor function for [Value()](#value). |
+{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
 ### AnalogReaderByName
 

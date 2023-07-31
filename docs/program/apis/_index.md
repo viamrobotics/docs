@@ -306,10 +306,9 @@ The [Navigation Service](/services/navigation/) supports the following methods:
 
 ### Sensors
 
-Method Name | Description
------------ | -----------
-[`Sensors`](/services/sensors/#sensors) | Returns a list of names of the available sensors.
-[`Readings`](/services/sensors/#readings) | Returns a list of readings from a given list of sensors.
+The [Sensors Service](/services/sensors/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/sensors.md" >}}
 
 ### SLAM
 
@@ -327,35 +326,21 @@ Different [Vision Service](/services/vision/) models support different methods:
 
 ### GPIO Pins
 
-In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO Pins on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Set](/components/board/#set) | Set the output of this pin to high/low. |
-| [Get](/components/board/#get) | Get if this pin is active (high). |
-| [PWM](/components/board/#pwm) | Get the pin’s pulse-width modulation duty cycle. |
-| [SetPWM](/components/board/#pwmfreq) | Set the pin’s pulse-width modulation duty cycle. |
-| [PWMFreq](/components/board/#pwmfreq) | Get the pulse-width modulation frequency of this pin. |
-| [SetPWMFreq](/components/board/#setpwmfreq) | Set the pulse-width modulation frequency of this pin. |
+{{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
 ### Analog-to-Digital Converters (ADCs)
 
-In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Read](/components/board/#read) | Read the current integer value of the digital signal output by the ADC. |
+{{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 ### Digital Interrupts
 
-In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts)  on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Value](/components/board/#value) | Get the current value of this interrupt. |
-| [Tick](/components/board/#tick) | Record an interrupt. |
-| [AddCallback](/components/board/#addcallback) | Add a channel as a callback for [Tick()](/components/board/#tick). |
-| [AddPostProcessor](/components/board/#addpostprocessor) | Add a PostProcessor function for [Value()](/components/board/#value). |
+{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
 ## Robot API
 
