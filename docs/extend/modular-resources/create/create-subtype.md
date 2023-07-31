@@ -44,11 +44,11 @@ If you are writing your module using Python, you can use this [module generator 
 4. Define your new API:
 
     - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
-      - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/module/src/proto/gizmo.proto)
+      - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
       - [Example modular service proto file](https://github.com/viam-labs/speech/blob/main/src/proto/speech.proto)
       - [Built-in Viam resource proto files for reference](https://github.com/viamrobotics/api/tree/main/proto/viam)
     - And define the proto methods in a protobuf-supported language such as Python or Go in a file called `api.py` or `api.go`.
-      - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/module/src/gizmo/api.py)
+      - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/gizmo/api.py)
       - [Example service in Python](https://github.com/viam-labs/speech/blob/main/src/speech/api.py)
 
 5. In the root directory of your module, you need to generate some boilerplate files.
