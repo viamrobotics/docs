@@ -76,6 +76,7 @@ For this reason, we list tutorials based on features you may be looking for.
     {{% tutorialcard link="/tutorials/projects/pet-treat-dispenser/" %}}
     {{% tutorialcard link="/tutorials/projects/tipsy/" %}}
     {{% tutorialcard link="/tutorials/projects/claw-game/" %}}
+    {{% tutorialcard link="/tutorials/projects/bedtime-songs-bot/" %}}
 {{< /cards >}}
 
 <br>

@@ -229,21 +229,23 @@ Make sure that you have added a `service_config` to the JSON configuration of yo
 
 ### Capture data
 
-Your webcam should now be configured to automatically capture images when you are connected to your robot on [the Viam app](https://app.viam.com).
-
-You set the rate of capture in your webcam's service configuration attibute `capture_frequency_hz`.
-If you set this to `.333`, your webcam should export 1 image roughly every 3 seconds.
-
+Your webcam is now configured to automatically capture images when you are connected to your robot live on [the Viam app](https://app.viam.com).
 At this point, grab the toys or any objects you want the robot to be able to differentiate between.
 
-The inventor's kids like playing with puzzle pieces, which come in different shape and color combinations.
+Tess's kids like playing with puzzle pieces, which come in different shape and color combinations.
 They decided to filter between these puzzle pieces by tagging by shape, but you can filter your objects as you choose.
 
 Hold up the toys to the camera while photos are being taken.
 Try to capture images from different angles and backgrounds.
 Try to get at least 50 images that fit your criteria for each tag.
 
+You set the rate of capture in your webcam's service configuration attribute `capture_frequency_hz`.
+If you set this to `.333`, your webcam will export 1 image roughly every 3 seconds as you hold up your toys to the camera.
+
 Go to the [**DATA tab**](https://app.viam.com/data/view?view=images) in the Viam app to see the images captured by your webcam.
+
+When you've captured enough images to tag, navigate back to the **Config** tab.
+Scroll to the card with the name of your webcam and click the power switch next to the **Data Capture Configuration** to **off** to [disable data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
 
 Now, use these pictures to train your machine learning model.
 
@@ -253,6 +255,7 @@ Head over to the [**DATA** page](https://app.viam.com/data/view) and select an i
 After selecting the image, you will see all of the data that is associated with that image.
 
 Add tags for each of the puzzle pieces.
+Follow [these instructions](/manage/data/tag) to do so.
 Type in your desired tag in the Tags section and save the tag.
 Since we wanted to classify our toys by shape, we used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
 
@@ -281,9 +284,6 @@ Then select the tags that you used to label your toys and click **Train Model**.
 Read through our guide to [training a new model](/manage/ml/train-model/) for more information.
 
 ## Use your ML Model to sing songs to your kids
-
-Now, deploy and configure your ML Model on your robot, and configure your webcam to act as a shape classifier.
-Use Viam's Go SDK to program the robot so that if your webcam "sees" (captures image data containing) a toy, the robot knows to play a particular song through its computer's speakers.
 
 ### Configure your webcam to act as a shape classifier
 
@@ -348,13 +348,14 @@ Now, capture the audio of the songs you want your bot to play.
 
 - Record or download the audio files you want to use to your computer in <file>.mp3</file> format.
 - Make the names of the files match the classifier tags you used: for example, <file>square.mp3</file>.
-- Place these files in the same directory on your computer as your SDK code.
+- Navigate to a directory where you want to store your SDK code.
+Save your audio files inside of this directory.
 
 The audio files I used are available to download on [GitHub](https://github.com/viam-labs/bedtime-songs-bot).
 
 ### Program your bedtime-songs bot
 
-Now, write code to connect to the robot and play a song when the camera is pointed at a puzzle piece.
+Now, use Viam's Go SDK to program your robot so that if your webcam "sees" (captures image data containing) a toy, the robot knows to play a particular song through its computer's speakers.
 
 Follow these instructions to start working on your Go control code:
 
@@ -605,7 +606,7 @@ The full example source code for <file>play-songs.go</file> is available on [Git
 
 Now, as shown below, your smart bedtime songs bot knows to play a song whenever it sees a shape on the camera:
 
-{{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. The inventor holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+{{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 ## Next Steps
 
