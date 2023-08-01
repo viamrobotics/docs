@@ -25,7 +25,7 @@ The returned detections consist of the bounding box around the identified object
 You can use the following types of detectors:
 
 - [**color detection**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**object detection**](#configure-a-mlmodel-detector): A ML model detector that draws bounding boxes according to a ML model available on the robot’s hard drive.
+- [**object detection**](#configure-a-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/services/mlmodel/) available on the robot’s hard drive.
 
 ## Configure a `color_detector`
 
