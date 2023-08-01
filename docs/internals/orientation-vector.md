@@ -3,15 +3,16 @@ title: "How Orientation is Measured in Viam"
 linkTitle: "Orientation"
 weight: 10
 type: "docs"
-description: "How Viam reads and utilizes the orientation measurements reported by some models of sensor."
+description: "How Viam reads and utilizes the orientation measurements reported by some models of movement sensor."
 aliases:
     - "/appendix/orientation-vector"
     - "/internals/orientation-vector"
 ---
 
-A description of how Viam's platform reads and utilizes the orientation measurements reported by some models of sensor and movement sensor components.
+How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="models" text="models" >}} of movement sensor components:
 
-<!-- TODO: CAN GATHER MODELS HERE -->
+- [imu-wit](/components/movement-sensor/imu/imu-wit/)
+- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 
 An _orientation vector_ specifies the orientation of an object in 3D space.
 You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
@@ -24,13 +25,46 @@ You compose "orientation vectors" following the same protocol to specify relativ
 
 An example of an `Orientation` reading or, an orientation vector:
 
-``` golang
-sensors.Readings{Name: movementsensor.Named("imu"), Readings: map[string]interface{}{"a": 1.2, "b": 2.3, "c": 3.4}}
+``` shell
+imu get_readings return value: {'angular_velocity': x: -47.9736328125
+y: 142.63916015625
+z: -90.14892578125
+, 'linear_acceleration': x: -6.3973068359375
+y: 1.3455413330078123
+z: 12.320561743164061
+, 'orientation': o_x: -0.5830770214771182
+o_y: -0.3688865202247088
+o_z: 0.7238397075471042
+theta: 60.92769307372125
+}
 ```
 
-<!-- TODO: add terminal output or short code snippet -->
+When you provide an orientation vector to Viam, Viam **normalizes** `(0X, OY, OZ))` to the unit sphere.
+Therefore, if you ran the following line of code simulating an orientation `Reading` from a sensor of `(0, -4, -1)`, it will be normalized to `(0, -0.97, -0.24)` as interpreted by `viam-server`:
 
-## Example: A camera in a room
+``` golang
+sensors.Readings{Name: movementsensor.Named("imu"), Readings: map[string]interface{}{"b": 0, "b": -4, "c": -1}}
+```
+
+``` sh
+imu get_readings return value: {'angular_velocity': x: -47.9736328125
+y: 142.63916015625
+z: -90.14892578125
+, 'linear_acceleration': x: -6.3973068359375
+y: 1.3455413330078123
+z: 12.320561743164061
+, 'orientation': o_x: 0.0
+o_y: -4.0
+o_z: -1.0
+theta: 60.92769307372125
+}
+```
+
+<!-- TODO: uhh the sample just doesn't include theta right? should I add it to the sample code? -->
+
+## Configuration
+
+### Example: A camera in a room
 
 Imagine you have a room with a camera.
 The corner of the room is (0, 0, 0).
@@ -50,15 +84,15 @@ When you provide an orientation vector to Viam, Viam normalizes it to the unit s
 Therefore if you enter (0, -4, -1), Viam stores it internally and displays it to you as (0,-0.97, -0.24).
 {{< /alert >}}
 
-**Theta** describes the angle of rotation of the camera around the calculated vector.
+- **Theta**: describes the angle of **rotation** of the component (camera in example) around the calculated vector.
 If you are familiar with the pitch-roll-yaw system, you can think of theta as _roll_.
 If your camera is perpendicular to one of the axes of your Frame system,
 you can determine Theta by looking at the picture and changing the value to 0, 90, 180, or 270 until the orientation of the picture is correct.
 
- OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
+OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
 
-## Why Viam uses orientation vectors
+<!-- ## Why Viam uses orientation vectors
 
 - Easy to measure in the real world
 - No protractor needed
-- Rotation is pulled out as Theta which is often used independently and measured independently
+- Rotation is pulled out as Theta which is often used independently and measured independently -->
