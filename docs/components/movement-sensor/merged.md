@@ -10,7 +10,7 @@ images: ["/icons/components/imu.svg"]
 
 The `merged` movement sensor model supports a movement sensor that allows you to measure angular and linear velocity at the same time.
 
-Use the sensor in the following cases:
+Use this model of sensor in the following cases:
 CASE 1: A SetVelocity call with Y and Z supplied, movement_sensor is LinearVelocitySupporting and AngularVelocitySupporting, use both readings in a feedback loop to reduce velocity error.
 
 {{< tabs >}}
@@ -94,9 +94,9 @@ Edit and fill in the attributes as applicable.
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
-`position` | string | **Required** | 
-`orientation` | string | **Required** | 
-`compass_heading` | boolean | **Required** | 
-`angular_velocity` | boolean | **Required** | 
-`linear_velocity` | boolean | **Required** | 
-`linear_acceleration` | boolean | **Required** | 
+`position` | string | **Dependent on Readings Type Supported** If your movement sensor reads position. |
+`orientation` | string | **Dependent on Readings Type Supported** If your movement sensor reads orientation. |
+`compass_heading` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads compass heading position. |
+`linear_velocity` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads linear velocity. |
+`angular_velocity` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads angular velocity. |
+`linear_acceleration` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads angular velocity. |
