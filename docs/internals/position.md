@@ -19,6 +19,6 @@ sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interfa
 
 <!-- TODO: add terminal output or short code snippet -->
 
-Use position readings to specify *absolute* positions of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/), as opposed to orientation vector readings, which you use to specify relative position.
+Use position readings to specify the *absolute* position of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/), as opposed to orientation vector readings, which you use to specify relative position.
 
 Because these absolute readings don't require spatial relationships to be defined, a *sensor* or *movement sensor* that reads `position` requires less [robot configuration](/manage/configuration/) for you to utilize the [sensor API](/program/apis/#sensor) or [movement sensor API](/program/apis/#movement-sensor) than sensors or movement sensors that read `orientation.`
