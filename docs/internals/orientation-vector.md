@@ -1,12 +1,17 @@
 ---
-title: "Orientation Vector"
-linkTitle: "Orientation Vector"
+title: "How Orientation is Measured in Viam"
+linkTitle: "Orientation"
 weight: 10
 type: "docs"
-description: "A description of Viam's orientation vector object."
+description: "How Viam reads and utilizes the orientation measurements reported by some models of sensor."
 aliases:
     - "/appendix/orientation-vector"
+    - "/internals/orientation-vector"
 ---
+
+A description of how Viam's platform reads and utilizes the orientation measurements reported by some models of sensor and movement sensor components.
+
+Alternative title ideas: "Orientation Vectors: Orientation measurements in Viam" "Orientation Vectors: How Orientation is measured in Viam"
 
 An _orientation vector_ specifies the orientation of an object in 3D space.
 You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
