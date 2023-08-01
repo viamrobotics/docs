@@ -39,12 +39,12 @@
             {{ end }}
             {{ end }}
             </div>
-            {{if .Params.cost}}
           </div>
-          <div class="robot-cost">
-            <div class="key">Materials: </div>
-            <div class="value">~${{ .Params.cost }}</div>
-          </div>
+          {{if .Params.cost}}
+            <div class="robot-cost">
+              <div class="key">Materials: </div>
+              <div class="value">~${{ .Params.cost }}</div>
+            </div>
           {{ end }}
         </div>
       </a>
