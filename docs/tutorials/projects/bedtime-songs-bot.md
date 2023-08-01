@@ -5,15 +5,16 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-image: "/tutorials/bedtime-songs-bot/bedtime-songs-bot.png"
-imageAlt: "Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop."
+webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
+mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
+videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
 images: ["/tutorials/bedtime-songs-bot/bedtime-songs-bot.png"]
 authors: [ "Tess Avitabile" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
 level: "Beginner"
 date: "21 April 2023"
-# cost: 0 (laptop)
+cost: "0"
 ---
 
 When I started at Viam, the CEO, Eliot, told me the best way to test the product is to try to automate something I do in my life with a robot.
@@ -46,7 +47,7 @@ In the [the Viam app](https://app.viam.com), create a new robot and follow the s
 
 ### Configure your webcam to capture data
 
-Navigate to your robot's page on the app and click on the **Config** tab.
+Navigate to your robot's page on the app and click on the [**Config** tab](/manage/configuration/).
 
 First, add the your computer's camera as a [camera](/components/camera/) component by creating a new component with **type** `camera` and **model** `webcam`:
 
