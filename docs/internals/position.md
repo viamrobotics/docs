@@ -13,6 +13,10 @@ An `Position` reading specifies the GPS coordinates of an object in 3D space, or
 
 An example of a `Position` reading:
 
+``` go
+sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
+```
+
 <!-- TODO: add terminal output or short code snippet -->
 
 Use position readings to specify *absolute* positions of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/), as opposed to orientation vector readings, which you use to specify relative position.

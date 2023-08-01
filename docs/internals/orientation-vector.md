@@ -11,15 +11,22 @@ aliases:
 
 A description of how Viam's platform reads and utilizes the orientation measurements reported by some models of sensor and movement sensor components.
 
+<!-- TODO: CAN GATHER MODELS HERE -->
+
 An _orientation vector_ specifies the orientation of an object in 3D space.
 You use orientation vectors to specify relative orientations of components when using the [motion service](../../services/motion/) and [frame system](../../services/frame-system/).
-The first three components of this vector form an axis pointing in the same direction as the object.
+The first three properties (coordinates) of this vector, `OX`, `OY`, and `OZ`, form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
 
-An `Orientation` reading specifies the orientation of an object in 3D space as an "orientation vector".
+An `Orientation` reading specifies the orientation of an object in 3D space as an "orientation vector", or, its position within the [cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) relative to some specific `origin` point that you, the user, need to choose and configure for your robot.
+
 You compose "orientation vectors" following the same protocol to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
 
-An example of a `Orientation` reading or, an orientation vector:
+An example of an `Orientation` reading or, an orientation vector:
+
+``` golang
+sensors.Readings{Name: movementsensor.Named("imu"), Readings: map[string]interface{}{"a": 1.2, "b": 2.3, "c": 3.4}}
+```
 
 <!-- TODO: add terminal output or short code snippet -->
 
