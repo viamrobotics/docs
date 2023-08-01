@@ -11,12 +11,17 @@ aliases:
 
 A description of how Viam's platform reads and utilizes the orientation measurements reported by some models of sensor and movement sensor components.
 
-Alternative title ideas: "Orientation Vectors: Orientation measurements in Viam" "Orientation Vectors: How Orientation is measured in Viam"
-
 An _orientation vector_ specifies the orientation of an object in 3D space.
 You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
 The first three components of this vector form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
+
+An `Orientation` reading specifies the orientation of an object in 3D space as an "orientation vector".
+You compose "orientation vectors" following the same protocol to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
+
+An example of a `Orientation` reading or, an orientation vector:
+
+<!-- TODO: add terminal output or short code snippet -->
 
 ## Example: A camera in a room
 
