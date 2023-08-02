@@ -27,10 +27,27 @@ To create your own modular resource, code a module in Go or Python using the mod
 {{% tab name="New Model" %}}
 Define a new model of a built-in resource subtype:
 
-1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (ex. `rdk:component:base`).
-Import your custom model and API into the main program and register them with your chosen SDK.
+1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the protobuf API definition of its built-in subtype (ex. `rdk:component:base`).
+Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
+Import your custom model and chosen resource subtype's API into the main program of your module and register them with your chosen SDK.
+Find the appropriate protobuf definitions in the open-source RDK on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
+Follow these instructions to find those definitions to base your work off of before you start the process:
 
-2. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
+    1. **To prepare to code a new resource model**:
+   The methods you code in your model's "driver", <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>, are how your model is able to respond when `viam-server` asks your resource a question as the `Client` of the relevant resource.
+   View the client interface definition to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API so you can match your resource's method's to the appropriate `Client`.
+    Find the client interface definition as defined in protobuf in the relevant `<resource-name>/client.go` file in the RDK on Viam's GitHub.
+    For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+
+   Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file. 
+
+    2. **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK**:
+    Find the subtype API as defined in protobuf in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
+    For example, the base subtype is defined in <file>rdk/components/base/base.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
+
+   Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file. 
+
+3. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
 1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
@@ -63,7 +80,7 @@ The Go code for the custom model (<file>mybase.go</file>) and module entry point
 {{< tabs name="Sample SDK Code">}}
 {{% tab name="Python"%}}
 
-<file>my_base.py</file> implements a custom model of the base component built-in resource, "mybase".
+<file>my_base.py</file> implements a custom **model** of the base component built-in resource, "mybase".
 
 <details>
   <summary>Click to view sample code from <file>my_base.py</file></summary>
