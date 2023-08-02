@@ -10,6 +10,12 @@ tags: ["vision", "computer vision", "CV", "services", "detection"]
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/release-notes/#25-april-2023)_
 
+<div class="td-max-width-on-larger-screens">
+  <div class="alignright" >
+    {{< imgproc alt="A white dog with a bounding box around it labeled 'Dog: 0.71'" src="/services/vision/dog-detector.png" resize="300x" declaredimensions=true >}}
+  </div>
+</div>
+
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.
 
@@ -21,8 +27,6 @@ The returned detections consist of the bounding box around the identified object
 - `class_name` (string): specifies the label of the found object.
 - `confidence` (float): specifies the confidence of the assigned label.
   Between `0.0` and `1.0`, inclusive.
-
-![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.05."](/services/vision/chair-detector.png)
 
 You can use the following types of detectors:
 
@@ -222,6 +226,8 @@ To be able to interact with the Vision Service you must:
 After adding the component and its attributes, click **Save config**.
 
 Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
+
+![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
 
 ## Code
 
