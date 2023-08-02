@@ -118,7 +118,7 @@ Add the Vision Service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"color_detector"`.
+The following parameters are available for a `color_detector`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
