@@ -215,15 +215,22 @@ You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
 1. Configure a physical [camera component](../../../components/camera/).
-2. Configure a [transform camera](../../../components/camera/transform/) to view output from the detector overlaid on images from the physical camera.
+Pass the name of this camera to Vision Service methods.
+2. (Optional) To view output from the detector overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/).
 
-After adding the component and its attributes, click **Save config**.
+    After adding the component and its attributes, click **Save config**.
 
-Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
+    Wait for the robot to reload, and then go to the **Control** tab and open the transform camera card to test the stream of detections.
 
 ## Code
 
-The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
+The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`.
+
+{{% alert title="Tip" color="tip" %}}
+
+Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
