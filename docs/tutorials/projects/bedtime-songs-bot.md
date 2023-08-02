@@ -164,14 +164,10 @@ At this point, the full **Raw JSON** configuration of your robot should look lik
 }
 ```
 
+Make sure that you have added a `service_config` to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`, as shown above.
+
 {{% /tab %}}
 {{< /tabs >}}
-
-{{< alert title="Important" color="tip" >}}
-
-Make sure that you have added a `service_config` to the JSON configuration of your webcam with type `data_manager`, as well as a new service with type `data_manager`.
-
-{{< /alert >}}
 
 ### Capture data
 
