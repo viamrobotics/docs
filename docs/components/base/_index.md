@@ -448,13 +448,13 @@ print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
 - [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with two fields, `WidthMeters` and `TurningRadiusMeters`, representing the width and turning radius of the physical base in meters *(m)*.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 
 // Get the width and turning radius of the base 
-properties, err := myBase.GetProperties(context.Background(), nil)
+properties, err := myBase.Properties(context.Background(), nil)
 
 // Get the width
 myBaseWidth := properties.WidthMeters
