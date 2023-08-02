@@ -80,7 +80,7 @@ The Go code for the custom model (<file>mybase.go</file>) and module entry point
 {{< tabs name="Sample SDK Code">}}
 {{% tab name="Python"%}}
 
-<file>my_base.py</file> implements a custom **model** of the base component built-in resource, "mybase".
+<file>my_base.py</file> implements a custom model of the base component built-in resource, "mybase".
 
 <details>
   <summary>Click to view sample code from <file>my_base.py</file></summary>
