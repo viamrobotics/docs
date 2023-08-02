@@ -22,7 +22,7 @@ cost: "0"
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
 When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around."**
 
-**- Tess, Engineering Director at Viam**
+- Tess, Engineering Director at Viam
 
 Follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
 
