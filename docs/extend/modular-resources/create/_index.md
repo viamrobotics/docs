@@ -39,13 +39,13 @@ Follow these instructions to find those definitions to base your work off of bef
     Find the client interface definition as defined in protobuf in the relevant `<resource-name>/client.go` file in the RDK on Viam's GitHub.
     For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
 
-   Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file. 
+   Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file.
 
     2. **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK**:
     Find the subtype API as defined in protobuf in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
     For example, the base subtype is defined in <file>rdk/components/base/base.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
 
-   Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file. 
+   Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file.
 
 3. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
