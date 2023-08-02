@@ -73,15 +73,7 @@ import (
 
 The base component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [MoveStraight](#movestraight)  | Move the base in a straight line across the given distance at the given velocity. |
-| [Spin](#spin) | Move the base to the given angle at the given angular velocity. |
-| [SetPower](#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
-| [SetVelocity](#setvelocity) | Set the linear and angular velocity of the base. |
-| [Stop](#stop) | Stop the base. |
-| [GetProperties](#getproperties) | Get the width and turning radius of the base in meters. |
-| [DoCommand](#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/base.md" >}}
 
 ### MoveStraight
 

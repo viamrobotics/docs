@@ -78,11 +78,9 @@ import (
 The COMPONENT component supports the following methods:
 
 *Writing Instructions: Use the method names in the protobuf, not the Python or Go-specific method names.*
+*Use an included snippet so you can add it to <file>/program/apis/</file>.*
 
-Method Name | Description
------------ | -----------
-[GetReadings](#getreadings) | Do the thing the method does.
-[MethodName2](#methodname2) | Do the thing this method does.
+{{< readfile "/static/include/components/apis/component.md" >}}
 
 ### GetReadings
 

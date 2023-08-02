@@ -26,13 +26,7 @@ Currently, the Vision Service supports the following models:
 
 Different Vision Service models support different methods:
 
-Method Name | Description | Models That Support This Method
------------ | ----------- | -------------------------------
-[`GetDetections`](#getdetections) | Get detections from an image. | [detectors](./detection/)
-[`GetDetectionsFromCamera`](#getdetectionsfromcamera) | Get detections from the next image from a camera. | [detectors](./detection/)
-[`GetClassifications`](#getclassifications) | Get classifications from an image. | [classifiers](./classification/)
-[`GetClassificationsFromCamera`](#getclassificationsfromcamera) | Get classifications from the next image from a camera. | [classifiers](./classification/)
-[`GetObjectPointClouds`](#getobjectpointclouds) | Get a list of point cloud objects from a 3D camera. | [segmenters](./segmentation/)
+{{< readfile "/static/include/services/apis/vision.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 

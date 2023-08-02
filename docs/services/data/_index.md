@@ -98,9 +98,7 @@ Currently, Viam does not safeguard against this.
 
 The Data Management Service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Sync`](#sync) | Sync data stored on the robot to the cloud.
+{{< readfile "/static/include/services/apis/data.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 

@@ -37,12 +37,7 @@ Click the model name for configuration instructions.
 
 The SLAM Service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`GetPosition`](#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
-[`GetPointCloudMap`](#getpointcloudmap) | Get the point cloud SLAM map.
-[`GetInternalState`](#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
-[`GetLatestMapInfo`](#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
+{{< readfile "/static/include/services/apis/slam.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
