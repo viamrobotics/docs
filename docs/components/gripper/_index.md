@@ -60,13 +60,9 @@ import (
 
 ## API
 
-Method Name | Description
------------ | -----------
-[`Open`](#open) | Open the gripper.
-[`Grab`](#grab) | Close the gripper until it grabs something or closes completely.
-[`Stop`](#stop) | Stop the gripper's movement.
-[`IsMoving`](#ismoving) | Report whether the gripper is currently moving.
-[`DoCommand`](#docommand) | Send or receive model-specific commands.
+The gripper component supports the following methods:
+
+{{< readfile "/static/include/components/apis/gripper.md" >}}
 
 ### Open
 

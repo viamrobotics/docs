@@ -87,10 +87,7 @@ The following attributes are available for Base Remote Control services:
 
 The Base Remote Control Service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Close`](#close) | Close out of all remote control related systems.
-[`ControllerInputs`](#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
+{{< readfile "/static/include/services/apis/base-rc.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 

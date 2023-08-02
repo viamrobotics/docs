@@ -39,13 +39,7 @@ Use the name `"builtin"` to access the built-in Motion Service in your code with
 
 The Motion Service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Move`](#move) | Move multiple components in a coordinated way to achieve a desired motion.
-[`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually."
-[`GetPose`](#getpose) | Get the current location and orientation of a component as a `Pose`.
-[`MoveOnMap`](#moveonmap) | Move a [base](/components/base/) component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
-[`MoveOnGlobe`](#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
+{{< readfile "/static/include/services/apis/motion.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 

@@ -76,21 +76,9 @@ import (
 
 ## API
 
-Method Name | Description
------------ | -----------
-[SetPower](#setpower) | Set the power to send to the motor as a portion of max power.
-[GoFor](#gofor) | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](#resetzeroposition) | Set the current position to be the new zero (home) position.
-[GetPosition](#getposition) | Report the position of the motor based on its encoder. Not supported on all motors.
-[GetProperties](#getproperties) | Return whether or not the motor supports certain optional features.
-[Stop](#stop) | Cut power to the motor off immediately, without any gradual step down.
-[IsPowered](#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
-[IsMoving](#ismoving) | Return whether the motor is moving or not.
-[DoCommand](#docommand) | Send or receive model-specific commands.
+The motor component supports the following methods:
 
-In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor)
-or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#).
+{{< readfile "/static/include/components/apis/motor.md" >}}
 
 ### SetPower
 

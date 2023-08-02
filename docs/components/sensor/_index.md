@@ -85,9 +85,7 @@ import (
 
 The sensor component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Readings](#readings) | Get the measurements or readings that this sensor provides. |
+{{< readfile "/static/include/components/apis/sensor.md" >}}
 
 ### Readings
 

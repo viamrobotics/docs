@@ -81,20 +81,7 @@ Different movement sensors provide different data, so be aware that not all of t
 You can run `GetProperties` on your sensor for a list of its supported methods.
 {{< /alert >}}
 
-Method Name | Description | Models That Support This Method
------------ | ----------- | -------------------------------
-[GetPosition](#getposition) | Get the current latitude, longitude and altitude. | GPS models
-[GetLinearVelocity](#getlinearvelocity) | Get the current linear velocity as a 3D vector. | GPS models
-[GetAngularVelocity](#getangularvelocity) | Get the current angular velocity as a 3D vector. | IMU models and `gyro-mpu6050`
-[GetLinearAcceleration](#getlinearacceleration) | Get the current linear acceleration as a 3D vector. | IMU models,  `accel-adxl345`, and `gyro-mpu6050`
-[GetCompassHeading](#getcompassheading) | Get the current compass heading in degrees. | GPS models and `imu-vectornav`
-[GetOrientation](#getorientation) | Get the current orientation. | IMU models
-[GetProperties](#getproperties) | Get the supported properties of this sensor. | all models
-[GetAccuracy](#getaccuracy) | Get the accuracy of the various sensors. | GPS models
-[GetReadings](#getreadings) | Obtain the measurements/data specific to this sensor. | all models
-[DoCommand](#docommand) | Send or receive model-specific commands. | all models
-
-In addition to the information below, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor) or [Python SDK docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#).
+{{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 ### GetPosition
 
