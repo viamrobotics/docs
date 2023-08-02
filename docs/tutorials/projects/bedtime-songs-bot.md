@@ -9,7 +9,7 @@ webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
 videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
 images: ["/tutorials/bedtime-songs-bot/bedtime-songs-bot.png"]
-authors: [ "Tess Avitabile" ]
+authors: [ "Tess Avitabile", "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
 level: "Beginner"
@@ -17,18 +17,17 @@ date: "21 April 2023"
 cost: "0"
 ---
 
-When I started at Viam, the CEO, Eliot, told me the best way to test the product is to try to automate something I do in my life with a robot.
+When I started at Viam, Eliot Horowitz told me the best way to test the product is to try to automate something I do in my life with a robot.
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
-When we were testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around.
+When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around.
+
+- Tess, Engineering Director at Viam
 
 If you would also like to build this or a similar robot, follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
-
-## Requirements
-
 To make your own singing robot, you need the following hardware:
 
 - A computer with a webcam, speakers, and the [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk) installed.
-  We used a Macbook but you can use any PC with a Viam-compatible operating system that meets the above requirements.
+  Tess used a Macbook, but you can use any PC with a Viam-compatible operating system that meets the above requirements.
 
 Complete this tutorial by following the instructions in these two sections:
 
@@ -43,13 +42,13 @@ Complete this tutorial by following the instructions in these two sections:
 
 ## Train your ML Model with pictures of toys
 
-In the [the Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
-
 ### Configure your webcam to capture data
+
+In the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
 Navigate to your robot's page on the app and click on the [**Config** tab](/manage/configuration/).
 
-First, add the your computer's camera as a [camera](/components/camera/) component by creating a new component with **type** `camera` and **model** `webcam`:
+First, add your personal computer's webcam to your robot as a [camera](/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -64,119 +63,61 @@ Optionally, select a fixed filepath for the camera from the automated options in
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "components": [
-   {
-     "model": "webcam",
-     "attributes": {},
-     "depends_on": [],
-     "name": "<your-camera-name>",
-     "type": "camera"
-   }
- ]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-``` json {class="line-numbers linkable-line-numbers"}
-"components": [
-   {
-     "model": "webcam",
-     "attributes": {},
-     "depends_on": [],
-     "name": "cam",
-     "type": "camera"
-   }
- ]
+  {
+    "model": "webcam",
+    "attributes": {},
+    "depends_on": [],
+    "name": "cam",
+    "type": "camera"
+  }
+]
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your camera `"cam"`.
-
-If you use a different name, you will need to adapt the code in the later steps of this tutorial to use the name you give your camera.
+Name your camera `"cam"`.
+If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your camera.
 
 To view your webcam's image stream, navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
 Click on the drop-down menu labeled **camera** and toggle the feed on.
-Click on **Export Screenshot** to capture an image.
+Click on **Export Screenshot** to capture an image, as shown below:
 
-![The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen.](../../tutorials/bedtime-songs-bot/export-screenshot.png)
+  {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen." >}}
 
 Now, configure the [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
 1. On the **Config** tab, select **Services**, and navigate to **Create service**.
-1. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the drop-down, and give your service a name.
-We used `Data-Management-Service` for this tutorial.
-1. Ensure that **Data Capture** is enabled and **Cloud Sync** is enabled.
-Enabling data capture will allow you to capture data from components and services and cloud sync will sync your data to the Viam app.
-Doing both allows you to capture images from your webcam, sync them to the cloud and, in the Viam app, easily tag them and train your own machine learning model.
-You can leave the default directory as is.
-This is where your captured data is stored on-robot.
-By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
+2. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the drop-down, and name your service `Data-Management-Service`.
+If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
+1. Make sure both **Data Capture** and **Cloud Sync** are enabled as shown:
+
+    {{<imgproc src="../../tutorials/bedtime-songs-bot/enable-data-capture-cloud-sync.png" resize="400x" declaredimensions=true alt="Data capture and cloud sync enabled for a singular component" >}}
+
+    Enabling data capture and cloud sync lets you capture images from your webcam, sync them to the cloud and, in the Viam app, easily tag them and train your own machine learning model.
+
+    You can leave the default directory as is.
+    By default, captured data is saved to the <file>~/.viam/capture</file> directory on-robot.
 
 Next, [configure Data Capture for your webcam](/services/data/configure-data-capture/#configure-data-capture-for-individual-components):
 
 1. Go to the **Components** tab and scroll down to the camera component you previously configured.
 2. Click **+ Add method** in the **Data Capture Configuration** section.
 3. Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
-This will capture an image from the camera roughly once every 3 seconds.
-  Feel free to adjust the frequency if you want the camera to capture more or less image data.
-  You want to capture data quickly so your classifier model can be very accurate.
-1. Select the **Mime Type** that you want to capture.
-For this tutorial, we are capturing `image/jpeg` data.
+   This will capture an image from the camera roughly once every 3 seconds.
+   Feel free to adjust the frequency if you want the camera to capture more or less image data.
+   You want to capture data quickly so your classifier model can be very accurate.
+4. Select the **Mime Type** as `image/jpeg`:
 
-![The configuration page for a camera component.](../../tutorials/bedtime-songs-bot/app-camera-configuration.png)
-
-At this point, the full **Raw JSON** configuration of your robot should look like the following:
-
-{{< tabs >}}
-{{% tab name="JSON Template" %}}
-
-``` json {class="line-numbers linkable-line-numbers"}
-{
- "components": [
-   {
-     "model": "webcam",
-     "attributes": {},
-     "depends_on": [],
-     "service_config": [
-       {
-         "attributes": {
-           "capture_methods": [
-             {
-               "additional_params": {
-                 "mime_type": "image/jpeg"
-               },
-               "capture_frequency_hz": <float>,
-               "method": "ReadImage"
-             }
-           ]
-         },
-         "type": "data_manager"
-       }
-     ],
-     "name": "<your-camera-name>",
-     "type": "camera"
-   }
- ],
- "services": [
-   {
-     "attributes": {
-       "sync_interval_mins": <float>,
-       "capture_dir": "<>",
-       "tags": []
-     },
-     "name": "<your-data-management-service-name>",
-     "type": "data_manager"
-   }
- ]
-}
-```
-
-If you copy and paste this template into your robot's **Raw JSON** configuration, make sure to edit and fill in the attributes as applicable.
+  {{<imgproc src="../../tutorials/bedtime-songs-bot/app-camera-configuration.png" resize="400x" declaredimensions=true alt="The configuration page for a camera component." >}}
 
 {{% /tab %}}
-{{% tab name="JSON Example" %}}
+{{% tab name="Raw JSON" %}}
+
+At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -258,7 +199,7 @@ After selecting the image, you will see all of the data that is associated with 
 Add tags for each of the puzzle pieces.
 Follow [these instructions](/manage/data/label/#image-tags) to do so.
 Type in your desired tag in the **Tags** section and save the tag.
-Since we wanted to classify our toys by shape, we used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
+Since Tess wanted to classify their toys by shape, they used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
 
 Scroll between your images.
 Add tags for each image that shows an object of the corresponding shape.
@@ -276,8 +217,8 @@ Head over to the **Filtering** menu and select a tag from the drop down list to 
 After tagging and filtering your images, begin training your model.
 
 Click the **Train Model** button.
-Name your model.
-To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your model `"shape-classifier-model"`.
+Name your model `"shape-classifier-model"`.
+If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your model.
 Select **Multi label** as the model type, which accounts for multiple tags.
 
 Then select the tags that you used to label your toys and click **Train Model**.
@@ -290,12 +231,13 @@ Read through our guide to [training a new model](/manage/ml/train-model/) for mo
 
 [Deploy the model](/services/ml/) to the robot and configure a [Vision Service](/services/vision/) of model `mlmodel` to use this model.
 
-To match the name we used in our [bedtime songs program](#program-your-bedtime-songs-bot), name your Vision Service `"shape-classifier"`.
-
-At this point, the full **Raw JSON** configuration of your robot should look similar to the following:
+Name your Vision Service `"shape-classifier"`.
+If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your model.
 
 {{< tabs >}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Raw JSON" %}}
+
+At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -338,8 +280,6 @@ At this point, the full **Raw JSON** configuration of your robot should look sim
 }
 ```
 
-If you copy and paste this template into your robot's **Raw JSON** configuration, make sure to edit and fill in the attributes as applicable.
-
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -370,7 +310,7 @@ Follow these instructions to start working on your Go control code:
 Navigate to the directory where you want to store your code.
 Paste this code sample into a new file named <file>play-songs.go</file>, and save it.
 
-For example, run the following commands on your Macbok to create and open the file:
+For example, run the following commands on your Macbook to create and open the file:
 
 ``` shell
 cd <insert-path-to>/<my-bedtime-songs-bot-directory>
@@ -381,7 +321,7 @@ vim play-songs.go
 Now, you can add code into <file>play-songs.go</file> to write the logic that defines your bedtime songs bot.
 
 To start, add in the code that initializes your speaker and plays the songs.
-We used the platform-flexible [Go `os` package](https://pkg.go.dev/os) and an audio processing package from [GitHub](https://github.com/faiface/beep/) to do this.
+Tess used the platform-flexible [Go `os` package](https://pkg.go.dev/os) and an audio processing package from [GitHub](https://github.com/faiface/beep/) to do this.
 
 ``` go {class="line-numbers linkable-line-numbers"}
 func initSpeaker(logger golog.Logger) {
@@ -457,7 +397,7 @@ classifications, err := visService.ClassificationsFromCamera(context.Background(
 
 Change the `name` in [FromRobot()](/program/apis/#fromrobot) if you used a different name for the resource in your code.
 
-This is what we used for the logic for the classifiers:
+This is what Tess used for the logic for the classifiers:
 
 ``` go
 // Classifications logic
