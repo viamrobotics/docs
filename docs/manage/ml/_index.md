@@ -23,6 +23,7 @@ Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-s
 
 * For object detection and classification, you can use the [Vision Service](/services/vision/), which provides both [mlmodel detector](/services/vision/detection/#configure-a-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-a-mlmodel-classifier) models.
 * For other usage, you can create a [modular resource](/extend/modular-resources/) to integrate it with your robot.
+  For an example, see [this tutorial](/extend/modular-resources/examples/tflite-module/) which adds a modular-resource-based service that uses TensorFlow Lite to classify audio samples.
 
 The video below shows the training process for an object detection model using a bounding box:
 
@@ -35,4 +36,5 @@ The video below shows the training process for an object detection model using a
   {{% card link="/manage/ml/upload-model" %}}
   {{% card link="/services/ml" customTitle="Deploy Model" %}}
   {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Tutorial: Smart Pet Feeder" %}}
+  {{% card link="/extend/modular-resources/examples/tflite-module/" %}}
 {{< /cards >}}
