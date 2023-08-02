@@ -128,7 +128,7 @@ The following code gets the robot’s vision service and then runs a classifier 
 
 {{% alert title="Tip" color="tip" %}}
 
-Pass the name of the physical camera you configured, *not* the name of the transform camera, to the Vision Service methods.
+Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
 
 {{% /alert %}}
 
