@@ -23,7 +23,7 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **mlmodel**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+* **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ## Configure a `mlmodel` classifier
 
