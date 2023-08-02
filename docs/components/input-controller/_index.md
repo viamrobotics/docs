@@ -943,10 +943,6 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 }
 ```
 
-{{% alert title="Tip" color="tip" %}}
-Access the complete repository for the Python example on [Github](https://github.com/viamrobotics/intermode/blob/main/controller_client/wheel.py).
-{{% /alert %}}
-
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
