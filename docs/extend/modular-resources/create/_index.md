@@ -27,10 +27,10 @@ To create your own modular resource, code a module in Go or Python using the mod
 {{% tab name="New Model" %}}
 Define a new model of a built-in resource subtype:
 
-1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the protobuf API definition of its built-in subtype (ex. `rdk:component:base`).
+1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the protobuf API's built-in client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
 Import your custom model and chosen resource subtype's API into the main program of your module and register them with your chosen SDK.
-Find the appropriate definitions in the open-source RDK on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
+Find the appropriate API client in the open-source RDK on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
 Follow these instructions to find those definitions to base your work off of before you start the process:
 
     1. **To prepare to code a new resource model**:
