@@ -1,5 +1,5 @@
 ---
-title: "Use ML and a webcam to entertain kids with bedtime songs"
+title: "Build a bedtime songs bot with a custom ML model"
 linkTitle: "Bedtime Songs Bot"
 weight: 60
 type: "docs"
@@ -8,7 +8,6 @@ description: "Create a robot babysitter with a webcam and machine learning."
 webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
 videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
-images: ["/tutorials/bedtime-songs-bot/bedtime-songs-bot.png"]
 authors: [ "Tess Avitabile", "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
@@ -17,26 +16,31 @@ date: "21 April 2023"
 cost: "0"
 ---
 
-When I started at Viam, Eliot Horowitz told me the best way to test the product is to try to automate something I do in my life with a robot.
+## Author's Note
+
+**"When I started at Viam, Eliot Horowitz told me the best way to test the product is to try to automate something I do in my life with a robot.
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
-When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around.
+When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around."**
 
-- Tess, Engineering Director at Viam
+**- Tess, Engineering Director at Viam**
 
-If you would also like to build this or a similar robot, follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
+Follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
+
+## Get Started
+
 To make your own singing robot, you need the following hardware:
 
 - A computer with a webcam, speakers, and the [Go Client SDK](https://pkg.go.dev/go.viam.com/rdk) installed.
   Tess used a Macbook, but you can use any PC with a Viam-compatible operating system that meets the above requirements.
 
-Complete this tutorial by following the instructions in these two sections:
+While following this tutorial, you'll complete the following steps to train and utilize a machine learning model on a webcam:
 
-[**Train your ML Model with pictures of toys:**](#train-your-ml-model-with-pictures-of-toys)
+1. [**Train your ML Model with pictures of toys:**](#train-your-ml-model-with-pictures-of-toys)
 
 - [Configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
    After that, filter your image data with [tags](#tag-data) and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
 
-[**Use your ML Model to sing songs to your kids:**](#use-your-ml-model-to-sing-songs-to-your-kids)
+2. [**Use your ML Model to sing songs to your kids:**](#use-your-ml-model-to-sing-songs-to-your-kids)
 
 - [Configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
 
