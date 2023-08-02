@@ -4,7 +4,7 @@ linkTitle: "transform"
 weight: 60
 type: "docs"
 description: "Instructions for transforming a camera."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `transfor
 
 Click **Create component**.
 
-![Configuration of an transform view in the Viam app config builder.](../img/configure-transform.png)
+![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -93,6 +93,32 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 - `classifier_name`: The name of the classifier in the [Vision Service](../../../services/vision/).
 - `confidence_threshold`: The threshold above which to display classifications.
+
+{{% /tab %}}
+
+{{% tab name="Crop" %}}
+
+The Crop transform crops takes an image and crops it to a rectangular area specified by two points: the top left point (`(x_min, y_min)`) and the bottom right point (`(x_max, y_max)`).
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "type": "crop",
+    "attributes": {
+        "x_min_px": int,
+        "y_min_px": int,
+        "x_max_px": int,
+        "y_max_px": int
+    }
+}
+
+```
+
+**Attributes:**
+
+- `x_min_px`: The x coordinate of the top left point of the rectangular area to crop the image to.
+- `y_min_px`: The y coordinate of the top left point of the rectangular area to crop the image to.
+- `x_max_px`: The x coordinate of the bottom right point of the rectangular area to crop the image to.
+- `y_max_px`: The y coordinate of the bottom right point of the rectangular area to crop the image to.
 
 {{% /tab %}}
 
@@ -323,7 +349,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
         "source" : "physical_cam",
         "pipeline": [
             { "type": "rotate", "attributes": { } },
-            { "type": "resize", "attributes": {"width_px":200, "height_px" 100} }
+            { "type": "resize", "attributes": {"width_px": 200, "height_px": 100} }
         ]
     }
 }
@@ -336,7 +362,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/services/vision" size="small" %}}
-    {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
-    {{% card link="/tutorials/services/color-detection-scuttle" size="small" %}}
+    {{% card link="/services/vision" %}}
+    {{% card link="/tutorials/services/try-viam-color-detection" %}}
+    {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

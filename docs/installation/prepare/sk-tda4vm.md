@@ -3,9 +3,9 @@ title: "SK-TDA4VM Setup Guide"
 linkTitle: "SK-TDA4VM Setup"
 weight: 25
 type: "docs"
-image: "/installation/img/thumbnails/tda4vm.png"
+image: "/installation/thumbnails/tda4vm.png"
 imageAlt: "S K - T D A 4 V M"
-images: ["/installation/img/thumbnails/tda4vm.png"]
+images: ["/installation/thumbnails/tda4vm.png"]
 description: "Image a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
 no_list: true
 #SMEs: Matt Dannenberg
@@ -32,11 +32,11 @@ You will use the Balena Etcher to flash the microSD card.
 
 ## Flash the image
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 You must extract the image from the zip file before flashing the microSD card.
 {{% /alert %}}
 
-<img src="../../img/sk-tda4vm/etcher.png" width="600px" alt="The Balena Etcher interface.">
+{{< imgproc alt="The Balena Etcher interface." src="/installation/sk-tda4vm/etcher.png" resize="600x" declaredimensions=true >}}
 
 <br>
 <br>
@@ -59,7 +59,7 @@ You must extract the image from the zip file before flashing the microSD card.
 
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
-<img src="../../img/sk-tda4vm/completed.png" width="600px" alt="Successful image flash completion screen." >
+{{< imgproc alt="Successful image flash completion screen." src="/installation/sk-tda4vm/completed.png" resize="600x" declaredimensions=true >}}
 
 ## Install Viam dependencies on the TDA4VM
 
@@ -75,25 +75,25 @@ From the SSH session on the TDA4VM board:
 
 1. Clone the TDA4VM repo:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    git clone https://github.com/viam-labs/tda4vm-setup.git
    ```
 
 2. Navigate to the setup directory:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    cd tda4vm-setup/
    ```
 
 3. Make the server setup script executable:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    chmod +x tda4vm-viam-setup.sh
    ```
 
 4. Launch the setup script to install `viam-server` dependencies:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt="$"}
    ./tda4vm-viam-setup.sh
    ```
 

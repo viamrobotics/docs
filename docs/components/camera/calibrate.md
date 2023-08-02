@@ -4,7 +4,7 @@ linkTitle: "Calibrate a Camera"
 weight: 80
 type: "docs"
 description: "Calibrate a camera and extract the intrinsic and distortion parameters."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 ---
 
@@ -16,7 +16,7 @@ The chessboard is often used because the geometry makes it a good test case for 
 The calibration code uses the `numpy` and `opencv-python` packages.
 To follow along, install the libraries:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install numpy
 pip3 install opencv-python
 ```
@@ -31,12 +31,12 @@ pip3 install opencv-python
    You can use the **Export Screenshot** button on the camera panel of your robot's **Control** tab in the [Viam app](https://app.viam.com).
    Save between 10 - 15 images (see [examples](https://github.com/viam-labs/camera-calibration#example-images)).
 
-   {{< alert title="Note" color="note" >}}
+   {{< alert title="Important" color="note" >}}
    In order for the calibration to be compatible with the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, take the images by running the camera using the RDK.
    {{< /alert >}}
 
    Example of good images:
-   ![Example of good images](../img/calibrate/ExampleImages.png)
+   ![Example of good images](/components/camera/calibrate/ExampleImages.png)
 
 3. Save [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
 4. Run `python3 cameraCalib.py YOUR_PICTURES_DIRECTORY`.
@@ -63,7 +63,7 @@ pip3 install opencv-python
 
 5. Copy the output which contains the `intrinsic_parameters` and `distortion_parameters` into the Raw JSON config on your robot's **Config** tab.
 
-<img src="../img/camera_tutorial_copy_paste.png" alt="Config tab with configuration snippet highlighted" width="800px">
+{{<imgproc src="/components/camera/camera_tutorial_copy_paste.png" resize="800x" declaredimensions=true alt="Config tab with configuration snippet highlighted">}}
 
 The following is a full example config:
 
@@ -106,7 +106,7 @@ The following is a full example config:
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/components/camera/transform" size="small" %}}
-  {{% card link="/services/vision" size="small" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+  {{% card link="/components/camera/transform" %}}
+  {{% card link="/services/vision" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}

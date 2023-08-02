@@ -4,22 +4,96 @@ linkTitle: "Extra Params"
 weight: 70
 type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
-images: ["/services/img/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
 aliases:
   - "/program/sdks/use-extra-params"
 ---
 
-How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} API methods offer in the Go and Python SDKs.
+How to [utilize](#utilize) and [define](#define) the `extra` parameters that many {{< glossary_tooltip term_id="resource" text="resource" >}} [API methods](/program/apis/) offer in the Go and Python SDKs.
 
 ## Utilize
 
-Use `extra` parameters to pass information to a {{< glossary_tooltip term_id="resource" text="resource's" >}} driver that is not explicitly specified as a parameter in the [built-in resource type's API specification](/extend/modular-resources/#apis).
+You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are *models* of built-in resource types.
 
-To do this, you must code your own modified implementation of the resource type's API for a model.
-See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/#use-a-modular-resource-with-your-robot) on modifying API specifications.
+For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM Service](/services/slam/).
 
-An example of how to check the values of keys in an `extra` parameter of a [built-in resource API method](/program/apis/), the sensor component's [Readings](/components/sensor/#readings):
+The `extra` parameters in that built-in resource type's [API](/program/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
+This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
+
+Send extra information in an API call in `extra` parameters as follows:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+[`Optional[Dict[str, Any]]`](https://docs.python.org/3/library/typing.html#typing.Optional) indicates you are required to pass in an object of either type `Dict[str, Any]` or `None` as a parameter when calling this method.
+
+An object of type `Dict[str, Any]` is a [dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) with keys of type [`str`](https://docs.python.org/3/library/stdtypes.html#str) and values of [`any type`](https://docs.python.org/3/library/typing.html#typing.Any),
+
+For example:
+
+``` python {class="line-numbers linkable-line-numbers"}
+async def main():
+    ... # Connect to the robot.
+
+    # Get your sensor resource from the robot.
+    your_sensor = YourSensor.from_robot(robot, "your-sensor")
+
+    # Define a dictionary containing extra information.
+    your_info = {"type": "temperature", "description": "more info", "id": 123}
+
+    # Send this information in an call to the sensor resource's API.
+    await your_sensor.get_readings(extra=your_info)
+```
+
+{{% alert title="Tip" color="tip" %}}
+
+If passing an object of type `None`, you do not have to specify `None` in the method call.
+
+{{% /alert %}}
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+`extra (map[string]interface{})` indicates you are required to pass in an object of either type `map[string]interface{}` or `nil` as a parameter when calling this method.
+
+An object of type `map[string]interface{}` is an [map](https://go.dev/blog/maps) with keys of type [`string`](https://go.dev/blog/strings) and values of [any type that you have cast to an interface](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go).
+
+For example:
+
+```go {class="line-numbers linkable-line-numbers"}
+func main() {
+    ... // Connect to the robot
+
+    // Get your sensor resource from the robot.
+    yourSensor, err := YourSensor.FromRobot(robot, "your-sensor")
+
+    // Define a map containing extra information.
+    your_info := map[string]interface{}{"type": "temperature", "description": "more info", "id": 123}
+
+    // Send this information in an call to the sensor resource's API.
+    err := yourSensor.Readings(context.Background(), your_info)
+}
+```
+
+{{% alert title="Important" color="note" %}}
+
+If passing an object of type `nil`, you must specify `nil` in the method call or the method will fail.
+
+{{% /alert %}}
+{{% /tab %}}
+{{% /tabs %}}
+
+## Define
+
+If `extra` information must be passed to a resource, it is handled within a new, *modular* resource model's [custom API](/extend/modular-resources/) wrapper.
+
+{{%expand "Click for instructions on defining a custom model to utilize extra params" %}}
+
+To do this, define a custom implementation of the resource's API as a new *model*, and modify the resource's API methods to handle the `extra` information you send.
+Follow the steps in the [Modular Resources documentation](/extend/modular-resources/create/) to do so.
+
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#readings) method in the code of a [new sensor model](/extend/modular-resources/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -38,7 +112,7 @@ async def get_readings(self, *, extra: Optional[Dict[str, Any]] = None, timeout:
     elif extra["type"] is "humidity":
         readings["type"] = get_humidity()
     # If the type is not one of these two cases, raise an exception.
-    else: 
+    else:
         raise Exception(f"Invalid sensor reading request: type {type}")
 
     return readings
@@ -79,65 +153,6 @@ func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (
 {{% /tab %}}
 {{% /tabs %}}
 
-## Define
+See [Extend Viam with Modular Resources](/extend/modular-resources/) for more information and [instructions](/extend/modular-resources/) on modifying built-in API specifications.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-[`Optional[Dict[str, Any]]`](https://docs.python.org/3/library/typing.html#typing.Optional) indicates you are required to pass in an object of either type `Dict[str, Any]` or `None` as a parameter when calling this method.
-
-An object of type `Dict[str, Any]` is a [dictionary](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) with keys of type [`str`](https://docs.python.org/3/library/stdtypes.html#str) and values of [`any type`](https://docs.python.org/3/library/typing.html#typing.Any),
-
-For example:
-
-``` python {class="line-numbers linkable-line-numbers"}
-async def main():
-    ... # Connect to the robot.
-
-    # Get your sensor resource from the robot.
-    your_sensor = YourSensor.from_robot(robot, "your-sensor")
-    
-    # Define a dictionary containing extra information.
-    your_info = {"type": "temperature", "description": "more info", "id": 123}
-
-    # Send this information in an call to the sensor resource's API.
-    await your_sensor.get_readings(extra=your_info)
-```
-
-{{% alert title="Note" color="note" %}}
-
-If passing an object of type `None`, you do not have to specify `None` in the method call.
-
-{{% /alert %}}
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-`extra (map[string]interface{})` indicates you are required to pass in an object of either type `map[string]interface{}` or `nil` as a parameter when calling this method.
-
-An object of type `map[string]interface{}` is an [map](https://go.dev/blog/maps) with keys of type [`string`](https://go.dev/blog/strings) and values of [any type that you have cast to an interface](https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go).
-
-For example:
-
-```go {class="line-numbers linkable-line-numbers"}
-func main() {
-    ... // Connect to the robot
-
-    // Get your sensor resource from the robot.
-    yourSensor, err := YourSensor.FromRobot(robot, "your-sensor")
-
-    // Define a map containing extra information.
-    your_info := map[string]interface{}{"type": "temperature", "description": "more info", "id": 123}
-
-    // Send this information in an call to the sensor resource's API.
-    err := yourSensor.Readings(context.Background(), your_info)
-}
-```
-
-{{% alert title="Note" color="note" %}}
-
-If passing an object of type `nil`, you must specify `nil` in the method call or the method will fail.
-
-{{% /alert %}}
-{{% /tab %}}
-{{% /tabs %}}
+{{% /expand%}}

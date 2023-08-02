@@ -4,13 +4,12 @@ linkTitle: "image_file"
 weight: 31
 type: "docs"
 description: "Configure a camera that gets color or depth images frames from a file path."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-An `image_file` camera gets color and depth images frames from a file path.
-If you provide a depth image, as well as the intrinsic parameters of the camera that took that depth image, then the camera will also provide a point cloud.
+An `image_file` camera gets color and depth image frames or point clouds from a file path on your local system.
 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
@@ -21,7 +20,7 @@ Enter a name for your camera, select the type `camera`, and select the `image_fi
 
 Click **Create component**.
 
-![Configuration of an image file camera in the Viam app config builder.](../img/configure-image-file.png)
+![Configuration of an image file camera in the Viam app config builder.](/components/camera/configure-image-file.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -51,7 +50,8 @@ Edit and fill in the attributes as applicable.
         },
         "debug": <boolean>,
         "color_image_file_path": "<your-file-path>",
-        "depth_image_file_path": "<your-file-path>"
+        "depth_image_file_path": "<your-file-path>",
+        "pointcloud_file_path": "<your-file-path>",
     }
 }
 ```
@@ -66,10 +66,14 @@ The following attributes are available for `image_file` cameras:
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
-| `color_image_file_path` | string | Optional | The file path to the color image. |
-| `depth_image_file_path` | string | Optional | The file path to the depth image. |
+| `color_image_file_path` | string | Optional | The file path to the color image on your local system. |
+| `depth_image_file_path` | string | Optional | The file path to the depth image on your local system. |
+| `pointcloud_file_path` | string | Optional | The file path to the point cloud file on your local system. |
 
-You must specify `color_image_file_path` or `depth_image_file_path`.
+You must specify at least one of `color_image_file_path`, `depth_image_file_path`, and `pointcloud_file_path`.
+
+If you provide configuration for the `depth_image_file_path` and `intrinsic_parameters` of the camera, then your robot will also retrieve point cloud data from the `depth_image_file_path`.
+If you then also configure a `pointcloud_file_path` on your camera, Viam will try to pull the data from the `pointcloud_file_path` first.
 
 ## View the camera stream
 

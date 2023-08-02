@@ -4,9 +4,9 @@ linkTitle: "BeagleBone Setup"
 weight: 20
 type: "docs"
 description: "Flash a BeagleBone AI-64 to prepare it for viam-server installation."
-image: "/installation/img/thumbnails/beaglebone.png"
+image: "installation/thumbnails/beaglebone.png"
 imageAlt: "BeagleBone A I-64"
-images: ["/installation/img/thumbnails/beaglebone.png"]
+images: ["/installation/thumbnails/beaglebone.png"]
 no_list: true
 aliases:
     - "/installation/beaglebone-install/"
@@ -17,13 +17,15 @@ aliases:
 The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/) from [BeagleBoard.org](https://beagleboard.org/) is an open-source single-board computer with a Debian GNU/Linux operating system based on the Texas Instruments TDA4VM processor.
 Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
-<img src="../../img/beaglebone-setup/image4.png" alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle.">
+<div class="td-max-width-on-larger-screens text-center">
+{{< imgproc alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle." src="/installation/beaglebone-setup/image4.png" resize="600x" declaredimensions=true >}}
+</div>
 
 ## Hardware Requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a BeagleBone AI-64:
 
-1. A [BeagleBone AI-64](https://beagleboard.org/ai-64)
+1. A [BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64)
 2. A 5V barrel jack (recommended) and/or USB-C power supply, to power the BeagleBone
 3. Ethernet cable and/or WiFi dongle, to establish network connection on the BeagleBone
 4. (Optional) A microSD card and a way to connect the microSD card to the computer (like a microSD slot or microSD reader)

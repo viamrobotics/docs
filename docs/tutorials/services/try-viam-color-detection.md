@@ -4,13 +4,19 @@ linkTitle: "Detect Color"
 weight: 41
 type: "docs"
 description: "Use the Vision Service in the Viam app to detect a color with the Viam Rover."
-image: "/tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png"
+image: "/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"
 imageAlt: "detectionCam stream displaying a color detection"
-images: ["/tutorials/img/try-viam-color-detection/detectioncam-comp-stream.png"]
+images: ["/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"]
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
     - /tutorials/viam-rover/try-viam-color-detection
     - /tutorials/try-viam-color-detection
+authors: [ "Hazal Mestci" ]
+languages: []
+viamresources: [ "vision", "camera" ]
+level: "Beginner"
+date: "16 December 2022"
+cost: "0"
 # SMEs: Hazal
 ---
 
@@ -31,7 +37,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 This tutorial uses the hex color #7a4f5c (a reddish color).
 
-**Hex color #7a4f5c**: <img src="../../img/try-viam-color-detection/7a4f5c.png" alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color." >
+**Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="300x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -45,7 +51,7 @@ To create a [Vision Service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter `my_color_detector` as the **Name**.
-3. Select `color_detector` as the **Model**.
+3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
 In your Vision Service's panel, fill in the **Attributes** field.
@@ -116,7 +122,7 @@ To create a [transform camera](/components/camera/transform/):
 3. Select `transform` as the **Model**.
 4. Click **Create Component**.
 
-![The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.](../../img/try-viam-color-detection/create-component-pane.png)
+![The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.](/tutorials/try-viam-color-detection/create-component-pane.png)
 
 Viam generates an empty **Attributes** section for the detection camera's component panel.
 The panel's **Attribute Guide** section displays the available attributes for the selected component.
@@ -125,7 +131,7 @@ The panel's **Attribute Guide** section displays the available attributes for th
 Attribute Guides always prefix required attributes with an asterisk.
 {{% /alert %}}
 
-![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](../../img/try-viam-color-detection/empty-detectioncam-component-panel.png)
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/empty-detectioncam-component-panel.png)
 
 Copy the following JSON configuration into the Attributes section:
 
@@ -152,7 +158,7 @@ Copy the following JSON configuration into the Attributes section:
 | `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence in the color being present the detection service needs to detect a color. |
 | `type` | `detections` | The type of the component. |
 
-![The Viam app showing the detectionCam component section. It contains the Attributes section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](../../img/try-viam-color-detection/detectioncam-component-panel.png)
+![The Viam app showing the detectionCam component section. It contains the Attributes section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/detectioncam-component-panel.png)
 
 After adding the component and its attributes, click **Save config**.
 
@@ -163,7 +169,7 @@ In the **Control** tab, click on your base component and add the detection camer
 Next, enable the keyboard and move your rover around until your camera detects the configured color.
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
-![Base component panel displaying an example color detection.](../../img/try-viam-color-detection/detected-example.png)
+![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
 If you scroll down in the **Control** tab, you can also click on the detectionCam's own section to view its stream there.
 

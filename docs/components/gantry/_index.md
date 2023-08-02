@@ -7,8 +7,8 @@ weight: 50
 type: "docs"
 description: "A mechanical system of linear rails that can precisely position an attached device."
 tags: ["gantry", "components"]
-icon: "/components/img/components/gantry.svg"
-images: ["/components/img/components/gantry.svg"]
+icon: "/icons/components/gantry.svg"
+images: ["/icons/components/gantry.svg"]
 # SME: Rand
 ---
 
@@ -18,7 +18,9 @@ The linear rail design makes gantries a common and reliable system for simple po
 
 This component abstracts the hardware of a gantry to give you an easy interface for coordinated control of linear actuators, even many at once [(multi-axis)](multi-axis/).
 
-<img src="./img/gantry-illustration.png" alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry." style="max-width:300px; display: block; margin: 0 auto"></img>
+<div class="td-max-width-on-larger-screens text-center">
+{{<imgproc src="/components/gantry/gantry-illustration.png" resize="300x" declaredimensions=true alt="Example of what a multi-axis robot gantry looks like as a black and white illustration of an XX YY mechanical gantry.">}}
+</div>
 
 Gantry components can only be controlled in terms of linear motion (you cannot rotate them).
 Each gantry can only move in one axis within the limits of the length of the linear rail.
@@ -81,11 +83,12 @@ The gantry component supports the following methods:
 
 | Method Name | Description |
 | ----------- | ----------- |
-[Position](#position) | Get the current positions of the axes of the gantry in mm. |
-[MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions. |
-[Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
-[Stop](#stop) | Stop the gantry from moving. |
-[IsMoving](#ismoving) | Get if the gantry is currently moving. |
+| [Position](#position) | Get the current positions of the axes of the gantry in mm. |
+| [MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions at the requested speeds. |
+| [Home](#home) | Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches. |
+| [Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
+| [Stop](#stop) | Stop the gantry from moving. |
+| [IsMoving](#ismoving) | Get if the gantry is currently moving. |
 | [DoCommand](#docommand) | Send or receive model-specific commands. |
 
 ### Position
@@ -140,7 +143,7 @@ position, err := myGantry.Position(context.Background(), nil)
 
 ### MoveToPosition
 
-Move the axes of the gantry to the desired positions (mm).
+Move the axes of the gantry to the desired positions (mm) at the requested speeds (mm/sec).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -148,6 +151,7 @@ Move the axes of the gantry to the desired positions (mm).
 **Parameters:**
 
 - `positions` [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of positions for the axes of the gantry to move to, in millimeters.
+- `speeds` [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of speeds in millimeters per second for the gantry to move at respective to each axis.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -163,8 +167,10 @@ my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 # Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
 examplePositions = [1, 2, 3]
 
+exampleSpeeds = [3, 9, 12]
+
 # Move the axes of the gantry to the positions specified.
-await my_gantry.move_to_position(positions=examplePositions)
+await my_gantry.move_to_position(positions=examplePositions, speeds=exampleSpeeds)
 ```
 
 {{% /tab %}}
@@ -174,6 +180,7 @@ await my_gantry.move_to_position(positions=examplePositions)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [([]float64)](https://pkg.go.dev/builtin#float64): A list of positions for the axes of the gantry to move to, in millimeters.
+- `speeds` [([]float64)](https://pkg.go.dev/builtin#float64): A list of speeds in millimeters per second for the gantry to move at respective to each axis.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -188,8 +195,58 @@ myGantry, err := gantry.FromRobot(robot, "my_gantry")
 // Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
 examplePositions = []float64{1, 2, 3}
 
+exampleSpeeds = []float64{3, 9, 12}
+
 // Move the axes of the gantry to the positions specified.
-myGantry.MoveToPosition(context.Background(), examplePositions, nil)
+myGantry.MoveToPosition(context.Background(), examplePositions, exampleSpeeds, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Home
+
+Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(boolean)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the gantry has run the homing sequence successfully.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.move_to_position).
+
+```python
+my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
+
+await my_gantry.home()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): Whether the gantry has run the homing sequence successfully.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gantry#Gantry).
+
+```go
+myGantry, err := gantry.FromRobot(robot, "my_gantry")
+
+myGantry.Home(context.Background(), nil)
 ```
 
 {{% /tab %}}

@@ -9,9 +9,6 @@ aliases:
     - "/program/extend/custom-components-remotes/"
 
 description: "Implement custom components and register them on a server configured as a remote of your robot."
-webmSrc: "/tutorials/img/custom-base-dog/base-control-dog.webm"
-mp4Src: "/tutorials/img/custom-base-dog/base-control-dog.mp4"
-videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 ---
 
 {{% alert title="Caution" color="caution" %}}
@@ -38,7 +35,7 @@ To add a custom resource as a [remote](/manage/parts-and-remotes/):
 1. Code a new model of a built-in resource type. You can do this by creating a new interface that implements required methods. The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
 2. Register the custom component on a new gRPC server instance and start the server.
 3. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.
-4. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+4. Configure a command to launch this remote server as a {{< glossary_tooltip term_id="process" text="process" >}} of your robot to make sure the remote server is always running alongside the rest of your robot.
 
 Each remote server can host one or many custom components.
 
@@ -51,14 +48,14 @@ The new model must implement any functions of the built-in resource type marked 
 1. Register the custom component on a new gRPC server instance and start the server.
 You can do this with the [`viam.rpc` library](https://python.viam.dev/autoapi/viam/rpc/index.html) by creating a new `rpc.server.Server` instance.
 1. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.
-2. Configure a command to launch this remote server as a [process](/appendix/glossary/#term-process) of your robot to make sure the remote server is always running alongside the rest of your robot.
+2. Configure a command to launch this remote server as a {{< glossary_tooltip term_id="process" text="process" >}} of your robot to make sure the remote server is always running alongside the rest of your robot.
 
 Each remote server can host one or many custom components.
 
 {{% /tab %}}
 {{% /tabs %}}
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 You must define all functions belonging to a built-in resource type if defining a new model.
 Otherwise, the class won’t instantiate.
@@ -69,9 +66,8 @@ Otherwise, the class won’t instantiate.
 
 {{% /alert %}}
 
-The following tutorials also explain how to add custom components as remotes:
+The following tutorial also explains how to add a custom component as a remote:
 
 {{< cards >}}
-    {{% card link="/tutorials/custom/custom-base-dog" size="small" %}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot" size="small" %}}
+    {{% card link="/tutorials/projects/make-a-plant-watering-robot" %}}
 {{< /cards >}}

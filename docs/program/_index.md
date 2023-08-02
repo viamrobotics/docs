@@ -6,7 +6,9 @@ description: "Use the SDK of your preferred language to write code to control yo
 weight: 45
 no_list: true
 type: docs
-images: ["/img/code.png"]
+image: "/general/code.png"
+imageAlt: "Program a Robot"
+images: ["/general/code.png"]
 aliases:
   - "product-overviews/sdk-as-client"
   - "program/sdk-as-client"
@@ -18,7 +20,7 @@ Viam offers software development kits (SDKs) in popular languages which
 - Broker connection, authentication, and encryption for communication with robots running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
 - Enable you to interface with robot [gRPC APIs](https://github.com/viamrobotics/api) in a way that is idiomatic to that programming language
 
-![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](img/sdks/robot-client.png)
+![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/program/sdks/robot-client.png)
 
 Use the SDK of your preferred language to write code to control your robots.
 
@@ -32,28 +34,28 @@ Viam currently offers SDKs for the following languages:
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control your robot [(likely a single-board computer)](/components/board/#configuration) and [configured a robot](/manage/configuration/).
+Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control your robot (likely a [single-board computer](/components/board/#configuration)), and [configured your robot](/manage/configuration/).
 
 Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/robot/client@latest
 ```
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 npm install --save @viamrobotics/sdk
 ```
 
@@ -150,7 +152,7 @@ func main() {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
@@ -206,7 +208,7 @@ main();
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Stability Notice" color="note" >}}
 The C++ SDK is currently in alpha.
 {{< /alert >}}
 
@@ -247,7 +249,7 @@ int main() {
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Stability Notice" color="note" >}}
 The Flutter SDK is currently in alpha.
 {{< /alert >}}
 
@@ -297,7 +299,7 @@ Once you have successfully run the sample code, you can edit the boilerplate cod
 You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-    {{% card link="/program/apis/" size="small" custom="Add Logic to Interface with Resources" %}}
-    {{% card link="/program/run/" size="small" %}}
-    {{% card link="/program/debug/" size="small" %}}
+    {{% card link="/program/apis/" customTitle="Add Logic to Interface with Resources" %}}
+    {{% card link="/program/run/" %}}
+    {{% card link="/program/debug/" %}}
 {{< /cards >}}

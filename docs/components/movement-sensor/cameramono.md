@@ -4,11 +4,11 @@ linkTitle: "camera_mono"
 weight: 40
 type: "docs"
 description: "Configure camera_mono, an experimental visual odometry model."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Stability Notice" color="note" %}}
 
 The `camera_mono` model is an experimental feature.
 Stability is not guaranteed.
@@ -28,7 +28,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**.
 
-![Creation of an `camera_mono` movement sensor in the Viam app config builder.](../img/camera-mono-builder.png)
+{{< imgproc src="/components/movement-sensor/camera-mono-builder.png" alt="Creation of an `camera_mono` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 

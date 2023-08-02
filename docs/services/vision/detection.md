@@ -33,7 +33,7 @@ A heuristic detector that draws boxes around objects according to their hue.
 Color detectors do not detect black, perfect grays (grays where the red, green, and blue color component values are equal), or white.
 It only detects hues found on the color wheel.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 Object colors can vary dramatically based on the light source.
 We recommend you verify the desired color detection value under actual lighting conditions.
 To determine the color value from the actual camera component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
@@ -56,11 +56,11 @@ To create a [Vision Service](/services/vision/):
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for color detector](../img/color_detector.png)
+![Create Vision Service for color detector](/services/vision/color_detector.png)
 
 In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
-![Color detector panel with color and hue tolerance selection and a field for the segment size](../img/color-detector-panel.png)
+![Color detector panel with color and hue tolerance selection and a field for the segment size](/services/vision/color-detector-panel.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -128,7 +128,7 @@ The following parameters are available for a `"color_detector"`.
 | `saturation_cutoff_pct` | _Optional_ | A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2. |
 | `value_cutoff_pct` | _Optional_ | A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3. |
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 **hue_tolerance_pct**, **saturation_cutoff_pct**, and **value_cutoff_pct** refer to hue, saturation, and value (brightness) in the HSV Color Model, but do not set color values in Viam.
 
@@ -160,7 +160,7 @@ Scroll to the **Create Service** section.
 3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](../img/mlmodel.png)
+![Create Vision Service for mlmodel](/services/vision/mlmodel.png)
 
 In your Vision Service's panel, fill in the **Attributes** field.
 
@@ -223,7 +223,7 @@ Wait for the robot to reload, and then go to the **Control** tab to test the str
 
 ## Code
 
-The following code gets the robot’s vision service and then runs a color detector vision model on an image from the robot's camera `"camera_1"`:
+The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -232,13 +232,18 @@ The following code gets the robot’s vision service and then runs a color detec
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# grab camera from the robot
+# Grab camera from the robot
 cam1 = Camera.from_robot(robot, "cam1")
-# grab Viam's vision service for the detector
+# Grab Viam's vision service for the detector
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
+detections = await my_detector.get_detections_from_camera(cam1)
+
+# If you need to get an image first and then run detections on it,
+# you can do it this way (generally slower but useful if you need to
+# use the image afterwards):
 img = await cam1.get_image()
-detections = await my_detector.get_detections(img)
+detections_from_image = await my_detector.get_detections(img)
 
 await robot.close()
 ```
@@ -255,7 +260,7 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-// grab the camera from the robot
+// Grab the camera from the robot
 cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
@@ -267,21 +272,35 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// gets the stream from a camera
+// Get detections from the camera output
+detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
+if err != nil {
+    logger.Fatalf("Could not get detections: %v", err)
+}
+if len(directDetections) > 0 {
+    logger.Info(detections[0])
+}
+
+// If you need to get an image first and then run detections on it,
+// you can do it this way (generally slower but useful if you need to
+// use the image afterwards):
+
+// Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
 
-// gets an image from the camera stream
+// Get an image from the camera stream
 img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-detections, err := visService.GetDetections(context.Background(), img)
+detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
-if len(detections) > 0 {
-    logger.Info(detections[0])
+if len(detectionsFromImage) > 0 {
+    logger.Info(detectionsFromImage[0])
 }
+
 ```
 
 To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
@@ -296,7 +315,7 @@ To see more code examples of how to use Viam's Vision Service, see [our example 
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/try-viam-color-detection/" size="small" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle/" size="small" %}}
-  {{% card link="/tutorials/services/webcam-line-follower-robot/" size="small" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection/" %}}
+  {{% card link="/tutorials/services/color-detection-scuttle/" %}}
+  {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
 {{< /cards >}}

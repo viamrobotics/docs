@@ -22,11 +22,11 @@ With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >
 For example, you may have separate organizations for your robots at home and at work:
 
 <!-- this is a very small gif - conversion to mp4 caused issues -->
-![An organization for personal robots and one for work robots.](../img/organizations.gif)
+<img src="/manage/organizations.gif" alt="An organization for personal robots and one for work robots.">
 
 Inside an organization, you can organize robots into one or more locations:
 
-![An image of two locations, New York, and Chicago, in one organization, Good Robots](../img/locations.png)
+![An image of two locations, New York, and Chicago, in one organization, Good Robots](/manage/locations.png)
 
 If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](../configuration/), allowing you to use the same configuration for multiple robots.
 
@@ -59,7 +59,7 @@ To view the roles each organization member has, click on the organization drop d
 
 If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role drop down for the respective user.
 
-![Example permissions overview](../img/rbac.png)
+![Example permissions overview](/manage/rbac.png)
 
 ## Collaborate on your robots
 
@@ -69,12 +69,19 @@ Robot [configuration](robots/#configuration) and robot [code](#control-with-the-
 
 ### Configuration
 
-Everyone who has access to the location the robot is in, can change the robot's configuration.
+Everyone who has access to the location the robot is in, can change the robot's [configuration](robots/#configuration).
+
+{{< alert title="Simultaneous config edits" color="caution" >}}
+If you edit a config while someone else edits the same config, the person who saves last will overwrite any prior changes that aren't reflected in the new config.
+
+Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
+{{< /alert >}}
+
 When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 

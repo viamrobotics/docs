@@ -5,11 +5,11 @@ weight: 90
 type: "docs"
 description: "Configure a pi servo to integrate a hobby servo controlled by GPIO pins on a Raspberry Pi board."
 tags: ["servo", "components"]
-icon: "img/components/servo.png"
+icon: "/icons/components/servo.svg"
 # SME: Rand
 ---
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 Unlike other servo models, `pi` servos are implemented as part of the [`pi` board component](https://github.com/viamrobotics/rdk/blob/main/components/board/pi/impl/servo.go).
 
@@ -26,7 +26,7 @@ Enter a name for your servo, select the type `servo`, and select the `pi` model.
 
 Click **Create component**:
 
-![An example configuration for a pi servo in the Viam app Config Builder.](../img/pi-servo-ui-config.png)
+{{< imgproc src="/components/servo/pi-servo-ui-config.png" alt="An example configuration for a pi servo in the Viam app Config Builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 
@@ -76,7 +76,7 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-![A servo JSON config with explanatory annotations for each attribute.](../img/servo-json.png)
+![A servo JSON config with explanatory annotations for each attribute.](/components/servo/servo-json.png)
 
 {{% /tab %}}
 {{< /tabs >}}

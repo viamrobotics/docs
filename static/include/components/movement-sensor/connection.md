@@ -11,13 +11,11 @@ Then create a struct within `attributes` for either `serial_attributes` or `i2c_
 
 For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
 
-Name | Type | Default Value | Description
----- | ---- | ------------- | -----
-`serial_path` | string | - | The name of the port through which the sensor communicates with the computer.
-`serial_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
+Name | Type | Inclusion | Description
+---- | ---- | --------- | -----------
+`serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.
+`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor. <br> Default: `38400`
 ---
-
-Serial communication uses a filepath instead of relying on any specific piece of board hardware, so no "board" attribute is needed when configuring a movement sensor with this communication method.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -28,7 +26,7 @@ Serial communication uses a filepath instead of relying on any specific piece of
         "<whatever other attributes>": "<example>",
         "connection_type": "serial",
         "serial_attributes": {
-            "serial_baud_rate": 115200,
+            "serial_baud_rate": 38400,
             "serial_path": "<PATH>"
         }
     }
@@ -42,14 +40,13 @@ Serial communication uses a filepath instead of relying on any specific piece of
 
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
 
-Name | Type | Default Value | Description
----- | ---- | ------------- | -----
-`i2c_bus` | string | - | The name of I<sup>2</sup>C bus wired to the sensor.
-`i2c_addr` | int | - | The device's I<sup>2</sup>C address.
-`i2c_baud_rate` | int | 115200 | The rate at which data is sent from the sensor. Optional.
+Name | Type | Inclusion | Description
+---- | ---- | --------- | -----------
+`board` | string | **Required** | The `name` of the [board](/components/board/) to which the [I<sup>2</sup>C](/components/board/#i2cs) connection is being made. This attribute is only required for the `gps-nmea` model.
+`i2c_bus` | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor.
+`i2c_addr` | int | **Required** | The device's I<sup>2</sup>C address.
+`i2c_baud_rate` | int | Optional | The rate at which data is sent from the sensor. Optional. <br> Default: `38400`
 ---
-
-You'll also need to configure the `board` attribute with the name of the board to which the I<sup>2</sup>C connection is being made.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -57,12 +54,13 @@ You'll also need to configure the `board` attribute with the name of the board t
     "type": "<TYPE>",
     "model": "<MODEL>",
     "attributes": {
-        "board": "<name of board, e.g. local>",
         "<whatever other attributes>": "<example>",
         "connection_type": "I2C",
+        // "board": "<name of your board>"  Include if "model": "gps-rtk"
         "i2c_attributes": {
             "i2c_addr": 111,
-            "i2c_bus": "1"
+            "i2c_bus": "1",
+            // "board": "<name of your board>"  Include if "model": "gps-nmea"
         }
     }
 }

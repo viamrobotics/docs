@@ -14,14 +14,14 @@ Once you are logged in, a location will be created for you by default, or you ca
 Location are just a way of organizing robots.
 You can find more information on [managing robot fleets here](/manage/fleet/#how-to-use-the-viam-app).
 
-![Screenshot from the Viam app showing the add new location page.](/installation/img/rpi-setup/add-location.png)
+![Screenshot from the Viam app showing the add new location page.](/installation/rpi-setup/add-location.png)
 
 Select your location and use the form on the right to create a new Robot.
 If this is the first robot in this location, the app displays an arrow pointer to the **New Robot** field (upper RH-corner).
 Enter a name for your robot, then click **Add Robot**:
 
-![Screenshot from the Viam app showing the create a robot page.](/installation/img/rpi-setup/add-robot.png)
+![Screenshot from the Viam app showing the create a robot page.](/installation/rpi-setup/add-robot.png)
 
 Navigate to your new robot, which should show the **Setup** tab as shown below:
 
-![Screenshot from the Viam app showing the Setup page.](/installation/img/rpi-setup/view-robot.png)
+![Screenshot from the Viam app showing the Setup page.](/installation/rpi-setup/view-robot.png)

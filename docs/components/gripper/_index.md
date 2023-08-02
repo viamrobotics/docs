@@ -6,8 +6,8 @@ weight: 60
 type: "docs"
 description: "A gripper is a robotic grasping device that can open and close."
 tags: ["gripper", "components"]
-icon: "/components/img/components/gripper.svg"
-images: ["/components/img/components/gripper.svg"]
+icon: "/icons/components/gripper.svg"
+images: ["/icons/components/gripper.svg"]
 no_list: true
 # SMEs: Bucket Team
 ---
@@ -327,5 +327,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" size="small" %}}
+  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

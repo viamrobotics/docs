@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "A robot is an organizational concept, consisting of either one or multiple parts working closely together to complete tasks."
 tags: ["fleet management", "cloud", "app"]
-images: ["/manage/img/control.gif"]
+images: ["/manage/control.gif"]
 ---
 
 A robot is an organizational concept, consisting of either one <em>{{< glossary_tooltip term_id="part" text="part" >}}</em>, or multiple _parts_ working closely together to complete tasks.
@@ -17,7 +17,7 @@ A robot always has a main part that receives client requests, and any number of 
 
 Add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
 
-![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](../../img/app-usage/create-robot.png)
+![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](/manage/app-usage/create-robot.png)
 
 Click the name of a robot to go to that robot's page, where you'll find a variety of tools for working with your robot.
 
@@ -27,7 +27,7 @@ The banner at the top of the robot page displays the robot's location, name, and
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
-![The robot page with menu tabs](../../img/app-usage/robot-page.png)
+![The robot page with menu tabs](/manage/app-usage/robot-page.png)
 
 For each robot in your fleet, you start by setting up the robot on the **Setup** tab:
 
@@ -62,7 +62,7 @@ The **History** tab shows timestamped changes to your robot's configuration.
 
 If you want to revert changes that you made, you can load a previous configuration by clicking the **Load config** button next to the respective configuration.
 
-{{<gif webm_src="../../img/load-prev-config.webm" mp4_src="../../img/load-prev-config.mp4" alt="Load a previous config from the UI" max-width="800px">}}
+{{<gif webm_src="/manage/load-prev-config.webm" mp4_src="/manage/load-prev-config.mp4" alt="Load a previous config from the UI" max-width="800px">}}
 
 You can also change your timestamp format to ISO or Local depending on your preference.
 
@@ -71,7 +71,7 @@ You can also change your timestamp format to ISO or Local depending on your pref
 To make debugging issues with your robots easier, each robot automatically sends its logs to the cloud.
 You can access your logs from the **Logs** tab in the [Viam app](https://app.viam.com) and filter your logs for specific keywords or log levels:
 
-{{<gif webm_src="../../img/log-filtering.webm" mp4_src="../../img/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
+{{<gif webm_src="/manage/log-filtering.webm" mp4_src="/manage/log-filtering.mp4" alt="Filter logs by term of log level in the UI" max-width="800px">}}
 
 You can also change your timestamp format to ISO or Local depending on your preference.
 
@@ -84,7 +84,7 @@ If you have configured a camera component, a window in the **Control** tab displ
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
 For local communication between [parts](../../parts-and-remotes/#robot-parts) Viam uses gRPC or WebRTC.
 
-{{<gif webm_src="../../img/control.webm" mp4_src="../../img/control.mp4" alt="Using the control tab" max-width="800px">}}
+{{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab" max-width="800px">}}
 
 ### Code Sample
 
@@ -102,7 +102,7 @@ Your robot and the Viam app communicate securely using [WebRTC](https://pkg.go.d
 
 The **Security** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
 
-![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](../../img/app-usage/robot-secrets.png)
+![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](/manage/app-usage/robot-secrets.png)
 
 Copy the part secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
@@ -113,4 +113,4 @@ Click on the **Generate Key** button to generate a new key.
 
 You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **Delete robot**.
 
-![The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it.](../../img/app-usage/delete.png)
+{{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}

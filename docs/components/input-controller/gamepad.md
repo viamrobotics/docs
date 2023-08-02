@@ -4,7 +4,7 @@ linkTitle: "gamepad"
 weight: 30
 type: "docs"
 description: "Configure a linux-supported gamepad as an input controller."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -25,7 +25,7 @@ Enter a name for your input controller, select the type `input_controller`, and 
 
 Click **Create component**.
 
-![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](../img/gamepad-input-controller-ui-config.png)
+![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -73,16 +73,16 @@ Click on the drop-down menu to expand it.
 
 Now, you should see the [Controls](../#control-field) on your input controller appear:
 
-<img src="../img/gamepad-enabled-app.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app." style="width:100%"/>
+![The dropdown as a table of controls available and their inputs in the Control tab of the Viam app.](/components/input-controller/gamepad-enabled-app.png)
 
 You should now be able to see the row of [Controls](../#control-field) respond to your button presses and stick toggles.
 
 For example, this is what the row of inputs above looks like after pressing the circle (west) button on the button pad of a PS4 controller connected as a `webgamepad` :
 
-<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app. This is for a WebGamepad model." style="width:100%"/>
+![The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app. This is for a WebGamepad model.](/components/input-controller/gamepad-enabled-app-with-input.png)
 
-{{% alert title="Note" color="note" %}}
-The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a linux-supported `gamepad` model is directly connected.
+{{% alert title="Info" color="info" %}}
+The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a Linux-supported `gamepad` model is directly connected.
 {{% /alert %}}
 
 ### Work in Progress Models

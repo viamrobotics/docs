@@ -23,8 +23,8 @@ You can extend Viam in these and other ways by creating and using custom resourc
 Click on the cards below for instructions on implementing custom resources through {{< glossary_tooltip term_id="module" text="modules" >}} or {{< glossary_tooltip term_id="remote" text="remotes" >}}:
 
 {{< cards >}}
-    {{% card link="/extend/modular-resources" size="large" %}}
-    {{% card link="/extend/custom-components-remotes" size="large" %}}
+    {{% card link="/extend/modular-resources" %}}
+    {{% card link="/extend/custom-components-remotes" %}}
 {{< /cards >}}
 
 {{% alert title="Tip" color="tip" %}}

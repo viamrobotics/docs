@@ -5,8 +5,8 @@ weight: 10
 type: "docs"
 description: "Configure a fake sensor to use for testing."
 tags: ["sensor", "components"]
-icon: "/components/img/components/sensor.svg"
-images: ["/components/img/components/sensor.svg"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
@@ -22,7 +22,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Enter a name for your sensor, select the type `sensor`, and select the `fake` model.
 Click **Create component**.
 
-![An example configuration for a fake sensor in the Viam app Config Builder. Attributes are left blank.](../img/fake-sensor-ui-config.png)
+![An example configuration for a fake sensor in the Viam app Config Builder. Attributes are left blank.](/components/sensor/fake-sensor-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -41,7 +41,7 @@ Click **Create component**.
 
 No attributes are available for `fake` sensors.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 A call to [`Readings()`](../#readings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 

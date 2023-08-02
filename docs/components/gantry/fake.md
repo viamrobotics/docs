@@ -5,8 +5,8 @@ weight: 10
 type: "docs"
 description: "Configure a fake gantry."
 tags: ["gantry", "components"]
-icon: "/components/img/components/gantry.svg"
-images: ["/components/img/components/gantry.svg"]
+icon: "/icons/components/gantry.svg"
+images: ["/icons/components/gantry.svg"]
 # SME: Rand
 ---
 
@@ -23,7 +23,7 @@ Enter a name for your gantry, select the type `gantry`, and select the `fake` mo
 
 Click **Create component**:
 
-![An example configuration for a fake gantry in the Viam app Config Builder.](../img/fake-gantry-ui-config.png)
+![An example configuration for a fake gantry in the Viam app Config Builder.](/components/gantry/fake-gantry-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

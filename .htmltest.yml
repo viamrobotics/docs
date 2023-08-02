@@ -11,7 +11,7 @@ IgnoreURLs:
 - "beaglebone.local"
 - "instagram.com"
 - "twitter.com"
-- "github.com/viamrobotics/"
+- "github.com/viamrobotics/docs"
 - "openai.com"
 - "espressif.com"
 - "pinout.xyz"

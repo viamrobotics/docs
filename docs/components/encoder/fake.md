@@ -3,7 +3,7 @@ title: "Configure a fake encoder"
 linkTitle: "fake"
 type: "docs"
 description: "Configure a fake encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 weight: 10
 # SMEs: Rand
@@ -20,7 +20,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `fake` 
 
 Click **Create component**.
 
-![Configuration of a fake encoder in the Viam app config builder.](../img/configure-fake.png)
+{{< imgproc src="/components/encoder/configure-fake.png" alt="Configuration of a fake encoder in the Viam app config builder." resize="600x" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

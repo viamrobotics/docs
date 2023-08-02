@@ -7,8 +7,8 @@ type: "docs"
 description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."
 no_list: true
 tags: ["camera", "components"]
-icon: "/components/img/components/camera.svg"
-images: ["/components/img/components/camera.svg"]
+icon: "/icons/components/camera.svg"
+images: ["/icons/components/camera.svg"]
 aliases:
   - "/tutorials/configure-a-camera"
 # SMEs: Bijan, vision team
@@ -134,7 +134,7 @@ frame = await my_cam.get_image()
 standard_frame frame.bytes_to_depth_array()
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Be sure to close the image when finished.
 
@@ -144,6 +144,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+{{% alert title="Info" color="info" %}}
+
+Unlike most Viam [component APIs](/program/apis/#component-apis), the methods of the Go camera client do not map exactly to the names of the other SDK's camera methods.
+To get an image in the Go SDK, you first need to construct a `Stream` and then you can get the next image from that stream.
+
+{{% /alert %}}
 
 **Parameters:**
 
@@ -338,7 +345,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/vision" size="small" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle" size="small" %}}
+  {{% card link="/services/vision" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection" %}}
+  {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

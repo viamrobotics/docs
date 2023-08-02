@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 34
 type: "docs"
 description: "Configure a fake arm to use for testing."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
@@ -20,7 +20,7 @@ Enter a name for your arm, select the type `arm`, and select the `fake` model.
 
 Click **Create component**.
 
-![An example configuration for a fake ur5e arm in the Viam app Config Builder.](../img/fake-arm-ui-config.png)
+![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 This example sets the `fake` arm to act as a `ur5e` arm.
@@ -49,7 +49,7 @@ The following attributes are available for `fake` arms:
 | `arm-model` | string | Optional | `name` of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#configuration) for supported model names. |
 | `model-path` | string | Optional | The path to the [kinematic configuration file](/internals/kinematic-chain-config/) of the arm driver you want your fake arm to act as. This path should point to the exact location where the file is located on your computer running `viam-server`. |
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 At least one of these attributes must be supplied for your `fake` arm to work.
 If neither are specified, an error is thrown asking for specification.

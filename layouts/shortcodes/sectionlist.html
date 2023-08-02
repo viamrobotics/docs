@@ -1,0 +1,19 @@
+{{ $p := .Site.GetPage (.Get "sectiontitle") }}
+<ul class="sectionlist">
+  {{ range (where .Site.Pages "Section" (.Get "sectiontitle")) }}
+  {{ range .Pages }}
+    {{ if and (eq $p .Parent) (not .Draft) }}
+      <li>
+        <a href="{{ .Permalink }}" title="{{.Title}}">
+          <div>
+            {{ if .Params.icon }}
+              {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "45x45" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
+            {{ end }}
+            <p>{{ .LinkTitle }}</p>
+          </div>
+        </a>
+    </li>
+      {{ end }}
+    {{ end }}
+{{ end }}
+</ul>

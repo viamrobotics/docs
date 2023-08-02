@@ -4,16 +4,24 @@ linkTitle: "Menu title of the tutorial"
 weight: 90
 type: "docs"
 description: "Short description of your tutorial (1 sentence)."
-# Use either image or GIF/video
-# image: "path to preview image"
+# If GIF+video is available use those - otherwise use an image
+# images: ["path to preview gif if available and less than 1MB in size - otherwise path to preview image"]
+# webmSrc: "path to preview video - ideally in 4:3 format"
+# mp4Src: "path to preview video - ideally in 4:3 format"
+# image: "path to preview image - ideally in 4:3 format"
 # imageAlt: "ALT text for the image"
-# images: ["path to preview image"]
-# webmSrc: "path to preview video"
-# mp4Src: "path to preview video"
 # videoAlt: "ALT text for the video"
 tags: ["tutorial"]
 draft: true # Change this when you're ready
-# Author: YOUR NAME
+authors: [] # Your Name
+languages: [] # Viam SDK programming languages used, if any
+viamresources: [] # Specific components or services used in this tutorial
+level: "" # Beginner, Intermediate, Advanced
+# Beginner means: high level of explanation and guidance
+# Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
+# Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
+date: "1 Jan 2023" # When the tutorial was created or last entirely checked
+cost: 0 # Aproximate cost in USD - Only specify number
 ---
 
 Outline the why.
@@ -41,5 +49,5 @@ Code and directions.
 Link to other tutorials with cards or text.
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" size="small" %}}
+  {{% card link="/tutorials/get-started/blink-an-led" %}}
 {{< /cards >}}

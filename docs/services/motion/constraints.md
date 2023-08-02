@@ -27,19 +27,46 @@ This has the following sub-options:
 
 **Example usage**:
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 ```python {class="line-numbers linkable-line-numbers"}
 # Move a gripper with a linear constraint
 moved = await motion.move(
     component_name=my_gripper,
     destination=PoseInFrame(
-        reference_frame="myFrame",
-        pose=goal_pose), 
-    world_state=worldState, 
+        reference_frame="my_frame",
+        pose=goal_pose),
+    world_state=worldState,
     constraints={
         Constraints(linear_constraint = [LinearConstraint(line_tolerance_mm=0.2)])
      },
      extra={})
 ```
+
+You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Move a gripper with a linear constraint
+myConstraints := &servicepb.Constraints{LinearConstraint: []*servicepb.LinearConstraint{&servicepb.LinearConstraint{}}}
+
+moved := motionService.Move(
+    context.Background(),
+    myGripperResourceName,
+    NewPoseInFrame("myFrame", myGoalPose),
+    worldState,
+    myConstraints,
+    nil
+    )
+```
+
+You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Orientation Constraint
 
@@ -53,12 +80,15 @@ If set to zero, a movement with identical starting and ending orientations will 
 
 **Example usage**:
 
-``` python
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
 ## Move a gripper with an orientation constraint
 moved = await motion.move(
-    component_name=my_gripper, 
+    component_name=my_gripper,
     destination=PoseInFrame(
-        reference_frame="myFrame",
+        reference_frame="my_frame",
         pose=goal_pose),
     world_state=worldState,
     constraints = Constraints(orientation_constraint = [OrientationConstraint()])
@@ -67,9 +97,33 @@ moved = await motion.move(
 
 You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
 
-<!--
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Move a gripper with an orientation constraint
+myConstraints := &servicepb.Constraints{OrientationConstraint: []*servicepb.OrientationConstraint{&servicepb.OrientationConstraint{}}}
+
+moved := motionService.Move(
+    context.Background(),
+    myGripperResourceName,
+    NewPoseInFrame("myFrame", myGoalPose),
+    worldState,
+    myConstraints,
+    nil
+    )
+```
+
+You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next steps
 
-Insert link to motion tutorial #3 about constraints
+Constraints are used in the following tutorials:
 
--->
+{{< cards >}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/tutorials/services/constrain-motion/" %}}
+{{< /cards >}}

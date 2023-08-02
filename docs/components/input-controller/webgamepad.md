@@ -4,15 +4,16 @@ linkTitle: "webgamepad"
 weight: 30
 type: "docs"
 description: "Configure a web-based gamepad as an input controller."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
 
 Configuring a `webgamepad` input controller allows you to use a web-based gamepad as a device to communicate with your robot.
 
-{{% alert title="Note" color="note" %}}
-You **must** use "WebGamepad" as the `name` of the web gamepad controller. This restriction will be removed in the future.
+{{% alert title="Important" color="note" %}}
+You **must** use "WebGamepad" as the `name` of the web gamepad controller.
+This restriction will be removed in the future.
 {{% /alert %}}
 
 ## Configuration
@@ -28,7 +29,7 @@ Enter the `WebGamepad` name for your input controller, select the type `input_co
 
 Click **Create component**.
 
-![An example configuration for a web-based gamepad input controller component in the Viam App config builder](../img/webgamepad-input-controller-ui-config.png)
+![An example configuration for a web-based gamepad input controller component in the Viam App config builder](/components/input-controller/webgamepad-input-controller-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -66,15 +67,15 @@ Click on the drop-down menu to expand it.
 Click **Enable**, and press a button on your controller.
 Then, you should see the [Controls](../#control-field) on your input controller appear:
 
-<img src="../img/gamepad-enabled-app.png" alt="The dropdown as a table of controls available and their inputs in the Control tab of the Viam app. This is for a WebGamepad model." style="width:100%"/>
+![The dropdown as a table of controls available and their inputs in the Control tab of the Viam app. This is for a WebGamepad model.](/components/input-controller/gamepad-enabled-app.png)
 
 You should now be able to see the row of control inputs respond to your button presses and stick toggles.
 
 For example, this is how the row of [Controls](../#control-field) appears after pressing the circle (west) button on the button pad of the connected PS4 controller:
 
-<img src="../img/gamepad-enabled-app-with-input.png" alt="The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app." style="width:100%"/>
+![The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app.](/components/input-controller/gamepad-enabled-app-with-input.png)
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
 For your security, the browser won't report a gamepad until an input has been sent.
 {{% /alert %}}

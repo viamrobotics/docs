@@ -5,12 +5,17 @@ weight: 60
 type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
-image: "/tutorials/img/ai-integration/rosey_robot.jpg"
-images: ["/tutorials/img/ai-integration/rosey_robot.jpg"]
+image: "/tutorials/ai-integration/rosey_robot.jpg"
+images: ["/tutorials/ai-integration/rosey_robot.jpg"]
 aliases:
   /tutorials/integrating-viam-with-openai/
-imageAlt: "Viam Rover Rosey."
-# SME: Matt Vella
+imageAlt: "An AI powered companion robot called Rosey."
+authors: [ "Matt Vella" ]
+languages: [ "python" ]
+viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
+level: "Beginner"
+date: "15 February 2023"
+cost: 200
 ---
 
 When we think of robots, most of us tend to group them into categories:
@@ -20,7 +25,7 @@ When we think of robots, most of us tend to group them into categories:
 * good robots
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/ai-integration/rosey.jpeg" class="alignright" alt="Rosey the robot, from the Jetsons." title="Rosey the robot, from the Jetsons." style="max-width: 350px" />
+  {{<imgproc src="/tutorials/ai-integration/rosey.jpeg" resize="400x" declaredimensions=true alt="Rosey the robot, from the Jetsons." class="alignright" style="max-width: 350px">}}
 </div>
 
 One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
@@ -73,12 +78,12 @@ If your servo wires are attached to one another and the order does not match the
 Using the bracket you printed or purchased, attach the servo mount to the Viam rover so that the servo output spline is facing outward in the front of the rover (screws required, mounting holes should line up).
 Attach the servo to the bracket.
 
-<img src="../../img/ai-integration/servo_mounted.jpg"   alt="Servo mounted on Viam rover." title="Servo mounted on Viam rover." width="300" />
+{{<imgproc src="/tutorials/ai-integration/servo_mounted.jpg" resize="400x" declaredimensions=true alt="Servo mounted on Viam rover.">}}
 
 ### 3. Servo disc
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/ai-integration/3emotion.png" class="alignright" alt="Emotion wheel." title="Emotion wheel." style="max-width: 220px" />
+  {{<imgproc src="/tutorials/ai-integration/3emotion.png" resize="300x" declaredimensions=true alt="Emotion wheel." class="alignright" style="max-width: 220px">}}
 </div>
 
 If you are 3D printing the servo disc, [download the STL file](https://github.com/viam-labs/tutorial-openai-integration/blob/main/servo_disc_large.stl) and print it.
@@ -113,20 +118,20 @@ It also contains an open source machine learning [detector model](https://github
 Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
 If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/tutorial-openai-integration
 ```
 
 If you don't have git installed on your Pi, you will need to first run:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install git
 ```
 
 Now that you have cloned the repository, you will need to install dependencies.
 If you do not have python3 and pip3 installed, do this first:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install python3
 sudo apt install python3-pip
@@ -134,7 +139,7 @@ sudo apt install python3-pip
 
 You will also need to install pyaudio, alsa, and flac:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pyaudio
 sudo apt-get install alsa-tools alsa-utils
 sudo apt-get install flac
@@ -142,7 +147,7 @@ sudo apt-get install flac
 
 Now, install the python library dependencies by running the following command from inside the directory where you cloned the code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip install -r requirements.txt
 ```
 
@@ -165,7 +170,7 @@ python rosey.py
 
 Then, make `run.sh` executable:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 chmod +x run.sh
 ```
 
@@ -184,7 +189,7 @@ Name it `servo1` (or something else if you prefer, but then you will need to upd
 Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
 Click **Create Component**.
 
-<img src="../../img/ai-integration/servo_component_add.png" style="border:1px solid #000" alt="Adding the servo component." title="Adding the servo component." width="900" />
+{{<imgproc src="/tutorials/ai-integration/servo_component_add.png" resize="900x" declaredimensions=true alt="Adding the servo component." style="border:1px solid #000" >}}
 
 Now, in the panel for *servo1*, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
 
@@ -213,7 +218,7 @@ Click the **Config** tab and then the **Services** subtab.
 From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
 Your robot will register this as a machine learning model and make it available for use.
 
-<img src="../../img/ai-integration/mlmodels_service_add.png" style="border:1px solid #000" alt="Adding the ML Models Service." title="Adding the ML Models Service." width="500" />
+{{<imgproc src="/tutorials/ai-integration/mlmodels_service_add.png" resize="500x" declaredimensions=true alt="Adding the ML Models Service." style="border:1px solid #000">}}
 
 Make sure `Path to Existing Model on Robot` is selected.
 
@@ -233,7 +238,7 @@ and the label path similar to:
 Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-detector'.
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
 
-<img src="../../img/ai-integration/vision_service_add.png" style="border:1px solid #000" alt="Adding the Vision Service." title="Adding the Vision Service." width="500" />
+{{<imgproc src="/tutorials/ai-integration/vision_service_add.png" resize="500x" declaredimensions=true alt="Adding the Vision Service." style="border:1px solid #000">}}
 
 Select the model that you added in the previous step.
 Click **Save config** to finish adding the detector.
@@ -248,7 +253,7 @@ Let's call her "Rosey", and bring her to life by running:
 ```
 
 Now, you can start talking to Rosey.
-<img src="../../img/ai-integration/rosey_robot.jpg" class="alignright" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 350px" />
+{{<imgproc src="/tutorials/ai-integration/rosey_robot.jpg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignright" style="max-width: 350px">}}
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
 For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today.
 Every day is different and unpredictable!"*
@@ -257,7 +262,7 @@ If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-
 For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/ai-integration/yoda.jpeg" class="alignleft" alt="Viam Rover Rosey." title="Viam Rover Rosey." style="max-width: 300px" />
+{{<imgproc src="/tutorials/ai-integration/yoda.jpeg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignleft" style="max-width: 300px">}}
 
 If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, detect what it sees, and then read a ChatGPT-generated response about what it sees.
 Also, a "mood" will be selected at random, and the response will be generated with that mood.
@@ -275,7 +280,7 @@ By default, Rosey will use Google TTS for audio voice generation.
 However, [ElevenLabs](https://elevenlabs.io/) can be used for enhanced AI voice generation.
 To use ElevenLabs, add your ElevenLabs API key to `run.sh` as follows:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 export ELEVENLABS_KEY=mykey
 ```
 

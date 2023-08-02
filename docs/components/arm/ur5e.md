@@ -4,7 +4,7 @@ linkTitle: "ur5e"
 weight: 40
 type: "docs"
 description: "Configure a ur5e arm."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 ---
 
@@ -19,7 +19,7 @@ Enter a name for your arm, select the type `arm`, and select the `ur5e` model.
 
 Click **Create component**.
 
-![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/ur5e-ui-config.png)
+![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/ur5e-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -28,7 +28,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "ur5e",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -37,7 +38,8 @@ Edit and fill in the attributes as applicable.
         "host": "<your-host-address>",
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 

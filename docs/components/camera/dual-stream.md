@@ -4,7 +4,7 @@ linkTitle: "dual_stream"
 weight: 37
 type: "docs"
 description: "Combine the streams of two camera servers to create colorful point clouds."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `dual_str
 
 Click **Create component**.
 
-![Configuration of a dual stream camera in the Viam app config builder.](../img/configure-dual-stream.png)
+![Configuration of a dual stream camera in the Viam app config builder.](/components/camera/configure-dual-stream.png)
 
 Edit and fill in the attributes as applicable.
 

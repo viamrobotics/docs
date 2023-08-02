@@ -4,7 +4,7 @@ linkTitle: "pi"
 weight: 20
 type: "docs"
 description: "Configure a pi board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `pi` model.
 
 Click **Create component**.
 
-![An example configuration for a pi board in the Viam app Config Builder.](../img/pi-ui-config.png)
+![An example configuration for a pi board in the Viam app Config Builder.](/components/board/pi-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

@@ -6,14 +6,15 @@ weight: 10
 type: "docs"
 description: "A NAME is a ... description of what the component is."
 tags: ["camera", "components"]
-icon: "../img/components.png"
-images: ["../img/components.png"]
+image: "/icons/components.png"
+# icon: "path/to/svg/file"
+images: ["/icons/components.png"]
 draft: true
 no_list: true
 # SMEs:
 ---
 
-<img src="../../img/components.png"  style="float:right" alt="Component picture" width="400" />
+{{<imgproc src="/icons/components.png" resize="400x" declaredimensions=true alt="ALT" class="alignright">}}
 
 Brief description of the component and what you can do with it.
 
@@ -197,6 +198,4 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/components/component/control-a-component" size="small" %}}
-    {{% card link="/components/component/install" size="small" %}}
 {{< /cards >}}

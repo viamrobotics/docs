@@ -4,13 +4,18 @@ linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and Vision Service to detect people and pets."
-webmSrc: "/tutorials/img/guardian/preview.webm"
-mp4Src: "/tutorials/img/guardian/preview.mp4"
+webmSrc: "/tutorials/guardian/preview.webm"
+mp4Src: "/tutorials/guardian/preview.mp4"
 videoAlt: "A guardian detecting a person or pet."
-images: ["/tutorials/img/guardian/preview.gif"]
+images: ["/tutorials/guardian/preview.gif"]
 tags: ["camera", "vision", "detector", "python"]
 no_list: true
-# Author: Naomi Pentrel
+authors: [ "Naomi Pentrel" ]
+languages: [ "python" ]
+viamresources: [ "camera", "vision", "servo", "mlmodel" ]
+level: "Beginner"
+date: "15 May 2023"
+cost: 90
 ---
 
 In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.
@@ -20,21 +25,21 @@ Luckily, I am not the first one to have the idea to build a guardian and there w
 In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [Vision Service](/services/vision/).
 Here's a video of the finished guardian detecting me:
 
-{{<video webm_src="../../img/guardian/guardian-detection.webm" mp4_src="../../img/guardian/guardian-detection.mp4" poster="../../img/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
+{{<video webm_src="/tutorials/guardian/guardian-detection.webm" mp4_src="/tutorials/guardian/guardian-detection.mp4" poster="/tutorials/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
 
 ## Hardware requirements
 
 To build your own guardian robot, you need the following hardware:
 
-- a **Raspberry Pi + power cable**
-- a **Raspberry Pi Camera v1.3 + 50cm ribbon cable**: The default 15cm ribbon cable is not long enough.
-- a **180 degree SG90 servo**: Because of the camera ribbon, I restricted the servo to only 180 degrees.
-- 3x **10mm RGB LEDs with common cathode**
-- **cables**
-- 4x **M2 screws** to attach the camera
-- a **speaker**: Optional if you want music.
-  I used a 4Ω 2W speaker with connected aux in.
-  You can use any speaker you can connect to your Pi.
+| Hardware | Approximate price |
+| -------- | ----------------- |
+| **Raspberry Pi + power cable** | $60 |
+| **Raspberry Pi Camera v1.3 + 50cm ribbon cable**: The default 15cm ribbon cable is not long enough. | $15 |
+| **180 degree SG90 servo**: Because of the camera ribbon, I restricted the servo to only 180 degrees. | $4 |
+| 3x **10mm RGB LEDs with common cathode** | $4 |
+| **cables** | $5 |
+| 4x **M2 screws** to attach the camera | $2 |
+| **speaker**: Optional if you want music. I used a 4Ω 2W speaker with connected aux in. You can use any speaker you can connect to your Pi. | Optional |
 
 Print or order the following printed 3D parts:
 
@@ -42,9 +47,7 @@ Print or order the following printed 3D parts:
 - the decorations for the head from [this Guardian Robot model](https://www.thingiverse.com/thing:2387723)
 - the body, base cover, claws, and leg segments from the [Guardian Robot, Hackable](https://www.thingiverse.com/thing:2391826)
 
-  <div style="max-width: 600px">
-  <img src="../../img/guardian/printed_parts.jpg" alt="3d printed parts">
-  </div>
+{{< imgproc src="/tutorials/guardian/printed_parts.jpg" alt="3d printed parts" resize="600x" >}}
 
 To make the guardian's lights shine through its body, use filament that allows the light to shine through and paint the parts that shouldn't allow light to shine through.
 
@@ -54,9 +57,7 @@ Optionally, if you want to decorate your guardian, I recommend the following mat
 - **acrylic paint**: I ordered armour modelling paint but found that mixing my own colors from a regular acrylic paint set worked best for me.
 - **modeling grass, stones, glue**: The Army Painter makes a Battlefields Basing Set which comes with all of this.
 - **a base for the guardian**: I used a wooden disk with a hole cut in the middle and a box with a hole in the top underneath.
-    <div style="max-width: 400px">
-    <img src="../../img/guardian/base.jpg" alt="Wooden guardian base">
-    </div>
+  {{< imgproc src="/tutorials/guardian/base.jpg" alt="Wooden guardian base" resize="400x" >}}
 - **ground texture**: If you want the base to look more natural, you can use Vallejo Ground Texture Acrylic or something similar to create patches that look like stone.
 - **wire**: To allow you to position the legs better, you can thread wire through them.
 
@@ -71,12 +72,14 @@ You will use the following software in this tutorial:
 
 You can view a timelapse of the robot assembly here:
 
-{{<video webm_src="../../img/guardian/timelapse.webm" mp4_src="../../img/guardian/timelapse.mp4" poster="../../img/guardian/timelapse.jpg" alt="Timelapse of guardian assembly">}}
+{{<video webm_src="/tutorials/guardian/timelapse.webm" mp4_src="/tutorials/guardian/timelapse.mp4" poster="/tutorials/guardian/timelapse.jpg" alt="Timelapse of guardian assembly">}}
 
 ### Assemble for testing
 
-<div class="td-max-width-on-larger-screens">
-  <img src="../../img/guardian/head.png" class="alignright" alt="Head with camera attachment" style="max-width: 200px" />
+{{< imgproc src="/tutorials/guardian/base.jpg" alt="Wooden guardian base" resize="400x" >}}
+
+<div class="td-max-width-on-larger-screens" class="alignright" style="max-width: 200px">
+  {{<imgproc src="/tutorials/guardian/head.png" resize="300x" declaredimensions=true alt="Head with camera attachment">}}
 </div>
 
 To assemble the guardian, start with the head and use four M2 screws to screw the camera with attached ribbon cable to the front half of the head.
@@ -89,21 +92,24 @@ Use the screws to attach the horn to the base of the head.
 Next, get your Raspberry Pi and your servo and connect the servo to the Raspberry Pi by connecting the PWM wire to pin 12, the power wire to pin 2, and the ground wire to pin 8.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this piece of paper at 100% scaling level](/try-viam/rover-resources/img/rpi4_rover_leaf_A4.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+
+If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
 To make attaching the paper easier, use a credit card or a small screwdriver.
 {{< /alert >}}
 
 Then attach the head to the servo.
 
-![A Raspberry Pi connected to a FS90R servo. The yellow PWM wire is attached to pin twelve on the raspberry pi. The red five-volt wire is attached to pin two. The black ground wire is attached to pin eight](/tutorials/img/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
+![A Raspberry Pi connected to a FS90R servo. The yellow PWM wire is attached to pin twelve on the raspberry pi. The red five-volt wire is attached to pin two. The black ground wire is attached to pin eight](/tutorials/single-component-tutorials-servo-mousemover/servo-wiring-diagram.png)
 
 Next, get the three 10mm RGB LEDs ready.
 Attach the common cathode of each LED to a [ground pin](https://pinout.xyz/pinout/ground) on your Raspberry Pi.
 Attach the wires for the red and the blue LEDs to [GPIO pins](https://pinout.xyz/pinout/wiringpi).
 
-<div class="td-max-width-on-larger-screens" style="margin: auto">
-  <img src="../../img/guardian/assembled-testing.jpg" alt="Components assembled for testing" style="max-width: 400px;" />
+<div class="td-max-width-on-larger-screens" style="margin: auto" style="max-width: 400px;">
+  ![Components assembled for testing](/tutorials/guardian/assembled-testing.jpg)
 </div>
 
 Before continuing with assembly, you should test your components work as expected.
@@ -199,34 +205,26 @@ Click **Save config** in the bottom left corner of the screen.
 
 Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test your components.
 
-<div style="max-width: 600px" >
-    <img src="../../img/guardian/test.png" alt="the control tab">
-</div>
+{{<imgproc src="/tutorials/guardian/test.png" resize="600x" declaredimensions=true alt="the control tab">}}
 
 Click on the servo panel and increase or decrease the servo angle to test that the servo moves.
 
-<div style="max-width: 600px" >
-    <img src="../../img/guardian/test-servo.png" alt="the control tab servo panel">
-</div>
+{{<imgproc src="/tutorials/guardian/test-servo.png" resize="600x" declaredimensions=true alt="the control tab servo panel">}}
 
 Next, click on the board panel.
 The board panel allows you to get and set pin states.
 Set the pin states for the pins your LEDs are connected to to high to test that they light up.
 
-<div style="max-width: 600px" >
-    <img src="../../img/guardian/test-board.png" alt="the control tab board panel">
-</div>
+{{<imgproc src="/tutorials/guardian/test-board.png" resize="600x" declaredimensions=true alt="the control tab board panel">}}
 
 Next, click on the camera panel and toggle the camera on to test that you get video from your camera.
 
-<div style="max-width: 600px" >
-    <img src="../../img/guardian/test-cam.jpg" alt="the control tab camera panel">
-</div>
+{{<imgproc src="/tutorials/guardian/test-cam.jpg" resize="600x" declaredimensions=true alt="the control tab camera panel">}}
 
 ### Assemble and decorate
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/guardian/finished.jpg" class="alignright" alt="Fully assembled guardian" style="max-width: 250px" />
+{{<imgproc src="/tutorials/guardian/finished.jpg" resize="300x" declaredimensions=true alt="Fully assembled guardian" style="max-width: 250px;" class="alignright" >}}
 </div>
 
 Now that you have tested your components, you can disconnect them again, paint and decorate your guardian, and then put the rest of the guardian together.
@@ -251,7 +249,7 @@ You can also [train your own custom model](/manage/ml/train-model/) based on ima
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp effdet0.tflite pi@guardian.local:/home/pi/effdet0.tflite
 scp labels.txt pi@guardian.local:/home/pi/labels.txt
 ```
@@ -396,9 +394,7 @@ Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test th
 Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
 You should see bounding boxes with labels around different objects.
 
-<div style="max-width: 600px" >
-    <img src="../../img/guardian/test-transform.jpg" alt="the control tab transform camera panel">
-</div>
+{{<imgproc src="/tutorials/guardian/test-transform.jpg" resize="600x" declaredimensions=true alt="the control tab transform camera panel">}}
 
 ## Program the Guardian
 
@@ -411,7 +407,7 @@ The full code is available at [the end of the tutorials](#full-code).
 We are going to use Virtualenv to set up a virtual environment for this project, in order to isolate the dependencies of this project from other projects.
 Run the following commands in your command-line to install virtualenv, set up an environment `venv` and activate it:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 -m pip install --user virtualenv
 python3 -m venv env
 source env/bin/activate
@@ -419,7 +415,7 @@ source env/bin/activate
 
 Now, install the Python Viam SDK and the VLC module:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk python-vlc
 ```
 
@@ -438,7 +434,7 @@ Run the code to verify that the Viam SDK is properly installed and that the `via
 
 You can run your code by typing the following into your terminal:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
@@ -512,13 +508,13 @@ async def main():
 
 You can test the code by running:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
 Your Guardian lights up blue:
 
-{{<gif webm_src="../../img/guardian/light-up.webm" mp4_src="../../img/guardian/light-up.mp4" alt="Guardian lights up blue" max-width="300px">}}
+{{<gif webm_src="/tutorials/guardian/light-up.webm" mp4_src="/tutorials/guardian/light-up.mp4" alt="Guardian lights up blue" max-width="300px">}}
 
 ### Detections
 
@@ -555,8 +551,7 @@ async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, r
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            img = await cam.get_image()
-            detections = await detector.get_detections(img)
+            detections = await detector.get_detections_from_camera(cam)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
@@ -616,9 +611,8 @@ The main logic for the guardian robot:
 - loads a music file `guardian.mp3`
 - runs an infinite loop where it calls the `idle_and_check_for_living_creatures()` function and when a creature is found calls the `focus_on_creature()` function
 
-{{< alert title="Note" color="note" >}}
-
-Please copy a suitable music file to the directory where your code is running and name it `guardian.mp3`.
+{{< alert title="Important" color="note" >}}
+Copy a suitable music file to the directory where your code is running and name it `guardian.mp3`.
 {{< /alert >}}
 
 Replace your `main()` function with the following:
@@ -660,13 +654,13 @@ if __name__ == '__main__':
 
 Now, run the code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
 If everything works, your guardian should now start to idle and when it detects humans or dogs or cats turn red, start music, and focus on the detected being:
 
-{{<video webm_src="../../img/guardian/guardian-finished.webm" mp4_src="../../img/guardian/guardian-finished.mp4" poster="../../img/guardian/guardian-finished.jpg" alt="FInished guardian">}}
+{{<video webm_src="/tutorials/guardian/guardian-finished.webm" mp4_src="/tutorials/guardian/guardian-finished.mp4" poster="/tutorials/guardian/guardian-finished.jpg" alt="FInished guardian">}}
 
 ## Run the program automatically
 
@@ -678,32 +672,32 @@ To be able to run the Python script from your Raspberry Pi, you need to install 
 
 [`ssh` into your Pi](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pip
 ```
 
 Create a folder `guardian` inside your home directory:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 mkdir guardian
 ```
 
 Then install the Viam Python SDK and the VLC module **into that folder**:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install --target=guardian viam-sdk python-vlc
 ```
 
 Exit out of your connection to your Pi and use `scp` to copy your code to your Pi into your new folder.
 Your hostname may be different:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp main.py pi@guardian.local:/home/pi/guardian/main.py
 ```
 
 Also copy your music file over:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 scp guardian.mp3 pi@guardian.local:/home/pi/guardian/guardian.mp3
 ```
 
@@ -726,7 +720,7 @@ Or simply use to greet you when you get back to your desk.
 
 Here is a video of how I set up my guardian to follow my dog around my living room:
 
-{{<video webm_src="../../img/guardian/ernieandtheguardian.webm" mp4_src="../../img/guardian/ernieandtheguardian.mp4" poster="../../img/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
+{{<video webm_src="/tutorials/guardian/ernieandtheguardian.webm" mp4_src="/tutorials/guardian/ernieandtheguardian.mp4" poster="/tutorials/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
 
 Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/manage/ml/train-model/) to use.
 
@@ -812,8 +806,7 @@ async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, r
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            img = await cam.get_image()
-            detections = await detector.get_detections(img)
+            detections = await detector.get_detections_from_camera(cam)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)

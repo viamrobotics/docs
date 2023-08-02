@@ -4,7 +4,7 @@ linkTitle: "webcam"
 weight: 33
 type: "docs"
 description: "Configure a standard camera that streams camera data."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `webcam` 
 
 Click **Create component**.
 
-![Configuration of a webcam camera in the Viam app config builder.](../img/configure-webcam.png)
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
@@ -131,13 +131,13 @@ The Unique ID displayed for each camera is the `video_path`.
 
 If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo systemctl restart viam-server
 ```
 
 If this doesn't work, you can reboot your machine by running:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo reboot
 ```
 
@@ -152,13 +152,17 @@ You can limit the CPU usage by reducing the image resolution.
 
 ### Timeout errors on a Raspberry Pi
 
-If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box):
+If you are getting "timeout" errors from GRPC when adding a `webcam` model on a Raspberry Pi, make sure the webcam port is enabled on the Pi (common if you are using a fresh Pi right out of the box).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+To enable the webcam port on a Raspberry Pi, run the following command:
+
+```sh {class="command-line" data-prompt="$"}
 sudo raspi-config
-Interface Options -> Camera -> Enable Camera
-Restart the Pi
 ```
+
+Then, select: **Interface Options -> Camera -> Enable Camera**.
+
+Restart the Pi to complete the configuration.
 
 ## Next Steps
 

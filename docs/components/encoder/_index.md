@@ -6,8 +6,8 @@ weight: 50
 type: "docs"
 description: "A special type of sensor that measures rotation of a motor or joint."
 tags: ["encoder", "components"]
-icon: "/components/img/components/encoder.svg"
-images: ["/components/img/components/encoder.svg"]
+icon: "/icons/components/encoder.svg"
+images: ["/icons/components/encoder.svg"]
 no_list: true
 # SME: Rand
 ---
@@ -313,5 +313,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/configure/scuttlebot" size="small" %}}
+  {{% card link="/tutorials/configure/scuttlebot" %}}
 {{< /cards >}}

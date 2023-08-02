@@ -4,7 +4,7 @@ linkTitle: "join_pointclouds"
 weight: 40
 type: "docs"
 description: "Combine the point clouds from multiple camera sources and project them to be from the point of view of target_frame."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -20,7 +20,7 @@ Enter a name for your camera, select the type `camera`, and select the `join_poi
 
 Click **Create component**.
 
-![Configuration of a Join Point Clouds view in the Viam App config builder.](../img/configure-join-pointclouds.png)
+![Configuration of a Join Point Clouds view in the Viam App config builder.](/components/camera/configure-join-pointclouds.png)
 
 Edit and fill in the attributes as applicable.
 

@@ -5,16 +5,19 @@ weight: 50
 type: "docs"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."
 tags: ["raspberry pi", "app", "board", "motor"]
-image: "/tutorials/img/pet-treat-dispenser/preview.png"
+image: "/tutorials/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
-images: ["/tutorials/img/pet-treat-dispenser/preview.png"]
-
-# Author: Arielle
-# Designs: Jessamy
+images: ["/tutorials/pet-treat-dispenser/preview.png"]
+authors: [ "Arielle Mella", "Jessamy Taylor", "Hazal Mestci" ]
+languages: [ "python" ]
+viamresources: [ "board", "camera", "motor", "mlmodel", "vision" ]
+level: "Beginner"
+date: "30 March 2023"
+cost: 143
 ---
 
 <div class="td-max-width-on-larger-screens">
-<img src="../../img/pet-treat-dispenser/pet-feeder.png" alt="Image of a dog interacting with the smart pet feeder." width="250px" class="alignright">
+{{<imgproc src="/tutorials/pet-treat-dispenser/pet-feeder.png" resize="300x" declaredimensions=true alt="Image of a dog interacting with the smart pet feeder." class="alignright">}}
 </div>
 
 If your dog is as insatiable as mine, you are familiar with having to wake up every morning to the sound of gentle whining at the door and the pitter patter of begging paws on the floor - two hours before the alarm.
@@ -69,7 +72,7 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 1. Prepare your 3D prints.
 The front of the main body of your print is the side with the dog bone.
 
-{{<gif webm_src="../../img/pet-treat-dispenser/3d-print-design.webm" mp4_src="../../img/pet-treat-dispenser/3d-print-design.gif" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
+{{<gif webm_src="/tutorials/pet-treat-dispenser/3d-print-design.webm" mp4_src="/tutorials/pet-treat-dispenser/3d-print-design.mp4" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
 
 2. Mount your Raspberry Pi to the side of the main body of your pet feeder using the provided mounting screw holes.
 1. Connect your power source to the Pi through the side hole.
@@ -81,7 +84,7 @@ This is what will funnel treats out of your pet feeder programmatically.
 1. Slide the motor driver holder into the body of your feeder, it should sit flush and fit nicely.
 1. Connect your stepper motor to the motor driver according to this wiring diagram:
 
-   ![Wiring diagram for the pet feeder showing the components used and the wiring plan to connect them.](../../img/pet-treat-dispenser/wiring-diagram.png)
+   ![Wiring diagram for the pet feeder showing the components used and the wiring plan to connect them.](/tutorials/pet-treat-dispenser/wiring-diagram.png)
 
 ## Configure and test your robot
 
@@ -102,7 +105,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 Select `board` as the type and `pi` as the model.
 Name the component `pi`.
 
-![The Viam app showing the configuration page for a board component with name pi.](../../img/pet-treat-dispenser/app-board-pi.png)
+![The Viam app showing the configuration page for a board component with name pi.](/tutorials/pet-treat-dispenser/app-board-pi.png)
 
 ### Configure your [webcam](/components/camera/webcam/)
 
@@ -113,7 +116,7 @@ Click on the **video path**.
 If the robot is connected, a drop down with available cameras will appear.
 Select your camera.
 
-![The Viam app showing the configuration page for a camera component with model webcam.](../../img/pet-treat-dispenser/app-camera-webcam.png)
+![The Viam app showing the configuration page for a camera component with model webcam.](/tutorials/pet-treat-dispenser/app-camera-webcam.png)
 
 {{< alert title="Tip" color="tip" >}}
 If you are unsure which camera to select, selecte one, save the configuration and go to the [**Control** tab](/components/camera/webcam/#view-the-camera-stream) to confirm you can see the expected video stream.
@@ -127,7 +130,7 @@ Finally, add another component with the type `motor` component and the model `gp
 1. Enable the pin setting as low and configure it to pin 18 GPIO 24.
 1. Set the `ticks per rotation` to `400` and select your board model,`pi`.
 
-![The Viam app showing the configuration page for a stepper motor component with model gpiostepper.](../../img/pet-treat-dispenser/app-stepper-gpiostepper.png)
+![The Viam app showing the configuration page for a stepper motor component with model gpiostepper.](/tutorials/pet-treat-dispenser/app-stepper-gpiostepper.png)
 
 Click **Save config** in the bottom left corner of the screen.
 
@@ -184,14 +187,14 @@ Start by testing the motor.
 Click on the motor panel and set the **RPM** to 20 and **# of Revolutions** to 100 to see your treat dispensing mechanism in action.
 Feel free to tweak these values to achieve the desired speed of your dispenser.
 
-![The Viam app showing the control page for a stepper motor with RPM set to 20 and revolutions set to 100.](../../img/pet-treat-dispenser/app-control-stepper.png)
+![The Viam app showing the control page for a stepper motor with RPM set to 20 and revolutions set to 100.](/tutorials/pet-treat-dispenser/app-control-stepper.png)
 
 Next, test your camera.
 Click on the camera panel and toggle the camera on.
 Now check if you can see your pet!
 Your pet may be a little skeptical of your robot at first, but once you get some treats in there, your furry friend will love it in no time!
 
-![The Viam app showing the control page for a camera with live video feed of a dog.](../../img/pet-treat-dispenser/app-control-camera.png)
+![The Viam app showing the control page for a camera with live video feed of a dog.](/tutorials/pet-treat-dispenser/app-control-camera.png)
 
 ## Use machine learning to recognize your pet
 
@@ -213,7 +216,7 @@ You can leave the default directory as is.
 This is where your captured data is stored on-robot.
 By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
 
-![The data management service configured with the name pet-data.](../../img/pet-treat-dispenser/app-service-data-management.png)
+![The data management service configured with the name pet-data.](/tutorials/pet-treat-dispenser/app-service-data-management.png)
 
 Next, enable the Data Management service on the camera component on your robot:
 
@@ -226,7 +229,7 @@ You want to capture data quickly so that you have as many pictures of your pet a
 You should also select the Mime Type that you want to capture.
 For this tutorial, we are capturing `image/jpeg` data.
 
-![The configuration page for a camera component.](../../img/pet-treat-dispenser/app-camera-configuration.png)
+![The configuration page for a camera component.](/tutorials/pet-treat-dispenser/app-camera-configuration.png)
 
 ### Capture images of your pet
 
@@ -243,7 +246,7 @@ Head over to the [**DATA** page](https://app.viam.com/data/view) and select an i
 After selecting the image, you can type a custom tag for some of the objects you see in the image.
 The first thing you want to consider is what tags you are trying to create and how you want your custom model to function.
 
-![The images tab of the data page with a number of images of the dog.](../../img/pet-treat-dispenser/app-data-images.png)
+![The images tab of the data page with a number of images of the dog.](/tutorials/pet-treat-dispenser/app-data-images.png)
 
 For the treat dispenser, you can tag images with the name of the pet.
 Notice that in our image collection, we captured images at different angles and with different background compositions.
@@ -252,13 +255,13 @@ This is to ensure that our model can continue to recognize the object no matter 
 Begin by selecting the image you would like to tag, and you will see all of the data that is associated with that image.
 Type in your desired tag in the Tags section.
 
-![The images detail pane of the data page shown selecting tags for an image.](../../img/pet-treat-dispenser/app-data-tags.png)
+![The images detail pane of the data page shown selecting tags for an image.](/tutorials/pet-treat-dispenser/app-data-tags.png)
 
 Be mindful of your naming as you can only use alphanumeric characters and underscores: this is because the model will be exported as a `.tflite` file with a corresponding `.txt` file for labeling.
 
 Add tags for each image that shows your pet.
 
-![The recently-used tags search window.](../../img/pet-treat-dispenser/app-data-recently-used.png)
+![The recently-used tags search window.](/tutorials/pet-treat-dispenser/app-data-recently-used.png)
 
 Note we are just tagging the whole image as we are training an image classification model.
 
@@ -273,7 +276,7 @@ Upon completion of tagging your data set, you can now [filter images](/manage/da
 Head over to the **Filtering** menu and select a tag from the drop down list.
 In the following screenshot, we have filtered the images in our data set according to one tag, in this case `toast`, (which is the name of our doggy test subject) and now we can easily view all images of Toast:
 
-![The filtering tab with toast entered as a filtered tag.](../../img/pet-treat-dispenser/app-data-filter-tags.png)
+![The filtering tab with toast entered as a filtered tag.](/tutorials/pet-treat-dispenser/app-data-filter-tags.png)
 
 ### Train a model
 
@@ -282,7 +285,7 @@ Click the **Train Model** button, name your model and select **Single label** as
 Then select the label that you sued to label your pet images.
 We called it `puppymodel` and selected the tag `toast` to train on images of the pup.
 
-![The data page with single model selected using name puppymodel.](../../img/pet-treat-dispenser/app-training.png)
+![The data page with single model selected using name puppymodel.](/tutorials/pet-treat-dispenser/app-training.png)
 
 If you want your model to be able to recognize multiple pets you can instead create a **Multi Label** model based on multiple tags.
 Go ahead and select all the tags you would like to include in your model and click **Train Model**.
@@ -295,7 +298,7 @@ Once the model has finished training, deploy it by adding a [ML model service](/
 1. Create a new service, select **ML Model** as the **Type**, and name it `puppymodel`.
 Select `tflite_cpu` as the **Model**.
 
-![The ML model service panel with the name puppymodel.](../../img/pet-treat-dispenser/app-service-mlmodel.png)
+![The ML model service panel with the name puppymodel.](/tutorials/pet-treat-dispenser/app-service-mlmodel.png)
 
 3. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
 1. Select your trained model (`puppymodel`) as your desired **Model**.
@@ -307,7 +310,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 1. Create a new **Service** and select **Vision**, and `mlmodel` as the Type.
 1. Select the model you previously created in the drop down menu.
 
-   ![The vision service panel with the puppymodel selected.](../../img/pet-treat-dispenser/app-service-vision.png)
+   ![The vision service panel with the puppymodel selected.](/tutorials/pet-treat-dispenser/app-service-vision.png)
 
 1. Navigate to the **Components** tab and scroll to the **Create Component** menu.
 1. Create a [transform camera](/components/camera/transform/) with the name `classifier_cam`, the type `camera` and the model `transform`.
@@ -330,7 +333,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 1. Head to your robots **Control** tab, click on your transform cam, toggle it on and you should be able to view your transform cam and if pointed at your pet, it should show it detecting your pet!
 
-<img src="../../img/pet-treat-dispenser/dog-model-matched.png" alt="Image of a dog sitting being recognized as a match by the training model." width="400px" class="aligncenter">
+{{<imgproc src="/tutorials/pet-treat-dispenser/dog-model-matched.png" resize="400x" declaredimensions=true alt="Image of a dog sitting being recognized as a match by the training model." class="aligncenter">}}
 
 ## Control your robot programmatically
 
@@ -342,7 +345,7 @@ This tutorial uses Python.
 Open your terminal and `ssh` into your Pi.
 Run the following command to install the Python package manager onto your Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pip
 ```
 
@@ -351,11 +354,11 @@ Create a folder named <file>petfeeder</file> for your code and create a file cal
 The [Viam Python SDK](https://python.viam.dev/) allows you to write programs in the Python programming language to operate robots using Viam.
 To install the Python SDK on your Raspberry Pi, run the following command in your existing `ssh` session to your Pi:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 pip3 install --target=petfeeder viam-sdk python-vlc
 ```
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 If you want your robot to automatically run your code upon startup, it is important to install the package into the <file>petfeeder</file> folder because of how the Viam platform runs the process.
 {{< /alert >}}
 
@@ -368,7 +371,7 @@ Select **Python**, then copy the generated sample code and paste it into the <fi
 
 Save the file and run this command to execute the code:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
@@ -437,7 +440,7 @@ if __name__ == '__main__':
 
 Save your file and run the code, put your pet in front of the robot to check it works:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 

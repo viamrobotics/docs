@@ -4,7 +4,7 @@ linkTitle: "mux"
 weight: 30
 type: "docs"
 description: "Configure a mux input controller to combine one or more input controllers."
-images: ["/components/img/components/controller.svg"]
+images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 # SMEs: James
 ---
@@ -30,7 +30,7 @@ Enter a name for your input controller, select the type `input_controller`, and 
 
 Click **Create component**.
 
-![An example configuration for a multiplexed input controller component in the Viam App config builder](../img/mux-input-controller-ui-config.png)
+![An example configuration for a multiplexed input controller component in the Viam App config builder](/components/input-controller/mux-input-controller-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -85,7 +85,7 @@ The following attributes are available for `mux` input controllers:
 | ---- | ---- | --------- | ----------- |
 | `sources` | array | **Required** | The `name` of every controller component you wish to combine input from. |
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 You must put each controller's `name` that you add in `sources` in `depends_on`.
 This tells the program loading the config to fully load the source components first.
 {{% /alert %}}

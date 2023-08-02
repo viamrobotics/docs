@@ -4,9 +4,9 @@ linkTitle: "Reserve a Viam Rover"
 weight: 10
 type: "docs"
 description: "Reserve a Viam Rover located on-site at Viam in NYC."
-image: "/try-viam/img/try-viam-reserve-preview.png"
+image: "/try-viam/try-viam-reserve-preview.png"
 imageAlt: "Rover reservation page"
-images: ["/try-viam/img/try-viam-reserve-preview.png"]
+images: ["/try-viam/try-viam-reserve-preview.png"]
 tags: ["try viam", "app"]
 ---
 
@@ -27,9 +27,9 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 Once your reservation starts and the system has configured your rover, click **TRY MY ROVER** from the [**TRY VIAM** page](https://app.viam.com/try) or, if you were queuing, click **Take Me to My Rover** in the confirmation email.
 
-{{<gif webm_src="../img/rover-reservation.webm" mp4_src="../img/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
+{{<gif webm_src="/try-viam/rover-reservation.webm" mp4_src="/try-viam/rover-reservation.mp4" alt="Rover reservation management page" max-width="1000px">}}
 
-![Navigation bar of the Viam app with the Viam Rover time remaining indicator.](../img/navigation-bar.png)
+{{<imgproc src="try-viam/navigation-bar.png" resize="800x" alt="Navigation bar of the Viam app with the Viam Rover time remaining indicator.">}}
 
 ## Extend your reservation
 
@@ -42,9 +42,9 @@ Once your reservation starts and the system has configured your rover, click **T
 ## Next steps
 
 {{< cards >}}
-    {{% card link="/try-viam/try-viam-tutorial" size="small" %}}
-    {{% card link="/tutorials/get-started/try-viam-sdk" size="small" %}}
-    {{% card link="/tutorials/services/try-viam-color-detection" size="small" %}}
+    {{% card link="/try-viam/try-viam-tutorial" %}}
+    {{% card link="/tutorials/get-started/try-viam-sdk" %}}
+    {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

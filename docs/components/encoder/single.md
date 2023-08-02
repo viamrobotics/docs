@@ -3,7 +3,7 @@ title: "Configure a single encoder"
 linkTitle: "single"
 type: "docs"
 description: "Configure a single encoder."
-images: ["/components/img/components/encoder.svg"]
+images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 # SMEs: Rand
 ---
@@ -20,7 +20,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `single
 
 Click **Create component**.
 
-![Configuration of a single encoder in the Viam app config builder.](../img/configure-single.png)
+![Configuration of a single encoder in the Viam app config builder.](/components/encoder/configure-single.png)
 
 Fill in and edit the attributes as applicable.
 

@@ -16,7 +16,7 @@ Below, we describe the flow of information through a Viam-based multipart robot 
 
 To begin, let's define our robot's topology:
 
-![robot-communication-diagram](../img/robot-to-robot-comms/robot-communication-diagram.png)
+![robot communication diagram](/internals/robot-to-robot-comms/robot-communication-diagram.png)
 
 This robot is made of two parts and a separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
 
@@ -46,7 +46,7 @@ Let's breakdown how these steps are executed.
 <ol>
 <li>Get segmented point clouds from the camera and the object segmentation service:</li>
 
-![getobjectpointcloud-flow](../img/robot-to-robot-comms/getobjectpointcloud-flow.png)
+![robot communication diagram](/internals/robot-to-robot-comms/getobjectpointcloud-flow.png)
 
 <OL type="a">
 <li>The SDK will send a GetObjectPointClouds request with Camera being referenced in the message to RDK Part 1's Object Segmentation Service.</li>
@@ -56,7 +56,7 @@ Let's breakdown how these steps are executed.
 <li>The Camera will return the PointCloud data to RDK Part</li>
 
 <li>RDK Part 1 will use a point cloud segmentation algorithm to segment geometries in the PointCloud.</li>
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 The points returned are respective to the reference frame of the camera.
 This will become important in a moment.
 {{% /alert %}}
@@ -70,7 +70,7 @@ This will become important in a moment.
 
 <li>Take the object's center pose and tell the Motion Service to move the arm to that point:</li>
 
-![motion-service-move-flow](../img/robot-to-robot-comms/motion-service-move-flow.png)
+![motion service move flow](/internals/robot-to-robot-comms/motion-service-move-flow.png)
 
 <ol type="a">
 <li>The SDK application will send a Move request for the arm to the Motion Service on RDK Part 1 with the destination set to the center point determined by the application.</li>

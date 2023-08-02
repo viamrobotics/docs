@@ -8,7 +8,12 @@ webmSrc: "/tutorials/videos/motion_armmoving.webm"
 mp4Src: "/tutorials/videos/motion_armmoving.mp4"
 videoAlt: "An arm moving with the Motion Service"
 tags: ["arm", "gripper", "motion", "services"]
-# SMEs: William S.
+authors: []
+languages: [ "python", "go" ]
+viamresources: [ "arm", "gripper", "motion" ]
+level: "Intermediate"
+date: "7 March 2023"
+cost: 8400
 ---
 
 {{< alert title="Caution" color="caution" >}}
@@ -20,8 +25,9 @@ Also pay attention to your surroundings, double-check your code for correctness,
 Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
 The [Motion Service](/services/motion/) enables sophisticated movement involving one or many components of your robot.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Tip" color="tip" >}}
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
 
@@ -86,14 +92,14 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](../../../services/frame-system/).
+The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the Motion Service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 ### Get the `ResourceName`
 
-When you use the [arm API](../../../components/arm/#api), you call methods on your arm component itself.
-To use the [Motion Service API](../../../services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
+When you use the [arm API](/components/arm/#api), you call methods on your arm component itself.
+To use the [Motion Service API](/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -212,14 +218,14 @@ Within the app, the **Frame System** subtab of your robot's **Config** tab gives
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/motion/plan_01_frame_system_tab.png" width="900px" alt="A picture of the Frame System tab in use.">
+  {{<imgproc src="/tutorials/motion/plan_01_frame_system_tab.png" resize="900x" declaredimensions=true alt="A picture of the Frame System tab in use.">}}
 </div>
 
 ## Command an arm to move with the Motion Service
 
 In previous examples you controlled motion of individual components.
 Now you will use the Motion Service to control the motion of the robot as a whole.
-You will use the Motion Service's [`Move`](../../../services/motion/#move) method to execute more general robotic motion.
+You will use the Motion Service's [`Move`](/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the Motion Service takes that information into account when planning.
 
@@ -295,7 +301,7 @@ We need to do several things to prepare a new gripper component for motion.
     * Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
-  <img src="../../img/motion/plan_03_gripper_config.png" width="700px" alt="Sample gripper configuration with several fields filled out.">
+{{<imgproc src="/tutorials/motion/plan_03_gripper_config.png" resize="700x" declaredimensions=true alt="Sample gripper configuration with several fields filled out.">}}
 </div>
 
 Because the new gripper component is "attached" (with the parent specification in the Frame) to `myArm`, we can produce motion plans using `myGripper` instead of `myArm`.
@@ -360,28 +366,18 @@ You do not need to calculate that exact pose with respect to the **arm** or **wo
 You must only provide the object name (instead of the `gripperName` you saw in the code samples above) when making the `PoseInFrame` to pass into the `Move` function.
 This has implications for how motion is calculated, and what final configuration your robot will rest in after moving.
 
-## Next Steps and References
+## Next steps
 
 If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" size="small" %}}
+  {{% card link="/tutorials/projects/claw-game/" %}}
+  {{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
 
-<!-- TODO: Content below struck out for the moment, saved to point at the next tutorial "Add Constraints to a Motion Plan" -->
-<!--
-## Next Steps
-
-If you would like to continue onto working with complex motion constraints:
-
-{{< cards >}}
-  {{% card link="/tutorials/services/add-constraints-to-motion-plan" size="small" %}}
-{{< /cards >}}
--->
-
-## Full Tutorial Code
+## Full tutorial code
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -426,8 +422,8 @@ async def main():
     my_arm_joint_positions = await my_arm_component.get_joint_positions()
     print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
-    # Command a joint position move: small adjustment to the last joint
-    cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
+    # Command a joint position move: move the forearm of the arm slightly up 
+    cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
     await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
@@ -540,8 +536,8 @@ func main() {
   }
   fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
-  // Command a joint position move: small adjustment to the last joint
-  cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, 0.0, 0.0, 0.0, 15.0}}
+  // Command a joint position move: move the forearm of the arm slightly up 
+  cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
   err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
   if err != nil {
     fmt.Println(err)

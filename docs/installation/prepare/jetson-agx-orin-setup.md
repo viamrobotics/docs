@@ -3,26 +3,27 @@ title: "NVIDIA Jetson AGX Orin Setup Guide"
 linkTitle: "Jetson AGX Orin Setup"
 weight: 20
 type: "docs"
-image: "/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"
+image: "/installation/thumbnails/jetson-agx-orin-dev-kit.png"
 imageAlt: "Jetson A G X Orin Developer Kit"
-images: ["/installation/img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png"]
+images: ["/installation/thumbnails/jetson-agx-orin-dev-kit.png"]
 description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Jetson AGX Orin for viam-server installation."
 no_list: true
 # SMEs: Pete Garafano
 ---
 
-<div class="td-max-width-on-larger-screens">
-<img src="../../img/jetson-agx-orin-setup/jetson-agx-orin-dev-kit.png" style="max-width:200px" class="alignright" alt="The grey and chunky front of the NVIDIA Jetson AGX Orin single-board computer development kit."></div>
+<div class="td-max-width-on-larger-screens text-center">
+{{<imgproc src="installation/thumbnails/jetson-agx-orin-dev-kit.png" alt="The grey and chunky front of the NVIDIA Jetson AGX Orin single-board computer development kit." resize="200x" declaredimensions=true >}}
+</div>
 
 The [Jetson AGX Orin](https://developer.nvidia.com/embedded/jetson-orin) from [NVIDIA](https://www.nvidia.com/) is a single-board computer that supports modern AI workloads and application development.
 Follow this guide to set up the [Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to prepare your NVIDIA Jetson AGX Orin for `viam-server` installation.
 
 <div style="clear:both;"><br /></div>
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Important" color="note" >}}
 
-This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board, but you may want to use a different carrier board to incorporate your Orin into your robot.
-If so, the type of carrier board you use will affect your hardware requirements.
+This guide assumes that you have a Jetson AGX Orin Developer Kit with a Jetson AGX Orin module and reference carrier board.
+If you want to use a different carrier board to incorporate your Orin into your robot, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 
@@ -91,7 +92,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
   - Headless Mode Tips:
-    - Once you reach **step e** which instructs you to connect through the host host serial port, the instructions to connect are immediately under **step e**.
+    - Once you reach **step e** which instructs you to connect through the host serial port, the instructions to connect are immediately under **step e**.
       Follow those steps according to the type of computer you're using.
     - After running `sudo screen`, note that the `Password` input prompt immediately following refers to your computer's system password.
   - "Jetson Initial configuration" (oem-config) Command Prompt Tips:

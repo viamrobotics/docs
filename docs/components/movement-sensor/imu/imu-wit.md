@@ -4,7 +4,7 @@ linkTitle: "imu-wit"
 weight: 10
 type: "docs"
 description: "Configure a WitMotion IMU."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
@@ -17,7 +17,7 @@ The `imu-wit` movement sensor model supports the following IMUs manufactured by 
 - [BWT901CL](https://witmotion-sensor.com/products/bluetooth-accelerometer-inclinometer-bwt901cl-mpu9250-high-precision-9-axis-gyroscope-anglexy-0-05-accuracy-magnetometer-with-kalman-filter-200hz-high-stability-3-axis-imu-sensor-for-arduino?_pos=1&_sid=68bf26406&_ss=r&variant=40580102226117)
 - [HWT901B TTL](https://witmotion-sensor.com/products/military-grade-accelerometer-inclinometer-hwt901b-mpu9250-9-axis-gyroscope-anglexy-0-05-accuracy-digital-compass-air-pressure-altitude-rm3100-magnetometer-compensation-and-kalman-filtering?_pos=1&_sid=dfbf7e412&_ss=r)
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 Other WitMotion IMUs that communicate over serial may also work with this model but have not been tested.
 
@@ -32,7 +32,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**.
 
-![Creation of an `imu-wit` movement sensor in the Viam app config builder.](../../img/imu-wit-builder.png)
+{{< imgproc src="/components/movement-sensor/imu-wit-builder.png" alt="Creation of an `imu-wit` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 
@@ -83,5 +83,5 @@ Edit and fill in the attributes as applicable.
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
-`serial_path` | string | **Required** | The name of the port through which the sensor communicates with the computer.
-`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor, between `9600` and `115200`. The default rate will work for all models. *Only the HWT901B can have a different serial baud rate.* Refer to your model's data sheet. <br> Default: `115200`
+`serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.
+`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor over the serial connection. Valid rates are `9600` and `115200`. The default rate will work for all models. *Only the HWT901B can have a different serial baud rate.* Refer to your model's data sheet. <br>Default: `115200`

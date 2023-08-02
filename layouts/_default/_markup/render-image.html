@@ -1,0 +1,42 @@
+{{ $image := resources.GetMatch (printf "%s" (.Destination | safeURL)) }}
+
+{{if $image }}
+    {{ $sizeInBytes := len $image.Content }}
+    {{ $sizeInBytes := div $sizeInBytes 1000 }}
+    {{ if gt $sizeInBytes 1000 }}
+      {{ warnf "Size of picture %s was %d kB - please use a smaller image" $image.RelPermalink $sizeInBytes  }}
+    {{ end }}
+
+    {{ $image_type_arr := split .Destination "." }}
+    {{ $image_ext := index $image_type_arr 1 }}
+
+    {{ if eq $image_ext "svg" }}
+        {{ warnf "Please use the imgproc shortcode for SVC images: %s" $image.RelPermalink }}
+    {{ else }}
+        {{ $webpsmall := $image.Resize "480x webp" }}
+        {{ $webpmedium := $image.Resize "768x webp" }}
+        {{ $webpbig := $image.Resize "1024x webp" }}
+        {{ $small := $image.Resize "480x" }}
+        {{ $medium := $image.Resize "768x" }}
+        {{ $big := $image.Resize "1024x" }}
+        {{ $alt := .PlainText | safeHTML }}
+<picture>
+    <source
+        srcset="{{ $webpsmall.RelPermalink }} 480w, {{ $webpmedium.RelPermalink }} 768w, {{ $webpbig.RelPermalink }} 1200w"
+        sizes="(min-width: 60rem) 80vw, (min-width: 40rem) 90vw, 100vw"
+    />
+    <img
+        sizes="(min-width: 60rem) 80vw, (min-width: 40rem) 90vw, 100vw"
+        srcset="{{ $small.RelPermalink }} 480w, {{ $medium.RelPermalink }} 768w, {{ $big.RelPermalink }} 1024w"
+        src="{{ $image.RelPermalink }}"
+        width="{{ $image.Width }}"
+        height="{{ $image.Height }}"
+        alt="{{ if $alt }}{{ $alt }}{{ else }}{{ warnf "Add alt text for %s" .RelPermalink }}{{ end }}"
+        loading="lazy"
+    >
+</picture>
+
+{{ end }}
+{{ else }}
+    {{ errorf "Image not found - is it in the assets folder? %s" (.Destination | safeURL) }}
+{{ end }}

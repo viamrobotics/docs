@@ -7,8 +7,8 @@ type: "docs"
 no_list: true
 description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
 tags: ["board", "components"]
-icon: "/components/img/components/board.svg"
-images: ["/components/img/components/board.svg"]
+icon: "/icons/components/board.svg"
+images: ["/icons/components/board.svg"]
 # SMEs: Gautham, Rand
 ---
 
@@ -17,9 +17,9 @@ A *board* is the signal wire hub of a robot that provides access to general purp
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
 This control is simplified with [`viam-server`](/installation/).
-When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to [resource](/appendix/glossary/#term-resource) APIs.
+When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
 
-{{% figure src="img/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
 The [RDK](/internals/rdk/) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
 
@@ -40,12 +40,12 @@ For model-specific configuration information, click on one of the following mode
 | ----- | ----------- |
 | [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
-| [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://beagleboard.org/ai-64) |
+| [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
 | [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
-| [`nanopi`](nanopi/) | [FriendlyElec’s NanoPi Mini Board](https://www.friendlyelec.com/index.php?route=product/category&path=69) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](#pwm)/[servo](/components/servo/) driver peripheral |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
+| other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
 
 ## Attribute Configuration
 
@@ -202,7 +202,7 @@ The following properties are available for `digital_interrupts`:
 
 To connect your board (controller) and a [component](/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 You must also enable SPI on your board if it is not enabled by default.
 See your [board model's configuration instructions](#configuration) if applicable.
@@ -250,7 +250,7 @@ The following properties are available for `spis`:
 
 {{% alert title="WIRING WITH SPI" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK [pin numbers](/appendix/glossary/#term-pin-number).
+Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
 
@@ -265,7 +265,7 @@ The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutor
 
 To connect your board (controller) and a [component](/components/) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Important" color="note" %}}
 
 You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
 See your [board model's configuration instructions](#configuration) if applicable.
@@ -318,7 +318,7 @@ The following properties are available for `i2cs`:
 
 {{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
 
-Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL [pin numbers](/appendix/glossary/#term-pin-number).
+Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
 
@@ -510,7 +510,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 **Parameters:**
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -531,7 +531,7 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 **Parameters:**
 
 - `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for [pin numbers](/appendix/glossary/#term-pin-number) and orientation.
+Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -747,7 +747,7 @@ attributes := myBoard.ModelAttributes()
 
 Set the board to the indicated `PowerMode`.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 This method may not receive a successful response from gRPC when you set the board to the offline power mode `PowerMode.POWER_MODE_OFFLINE_DEEP`.
 
@@ -927,7 +927,7 @@ high := pin.Get(context.Background(), nil)
 
 ### PWM
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 
 [Pulse-width modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
 With PWM on a *board*, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components/) wired to the pin that read analog signals.
@@ -1349,7 +1349,7 @@ rolling_avg, err := interrupt.Value(context.Background(), nil)
 
 Record an interrupt and notify any [channels](https://go.dev/tour/concurrency/2) that have been added with [AddCallback()](#addcallback).
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 You should only need to integrate this method into your application code for testing purposes, as the handling of `Tick()` should be automated once the interrupt is configured.
 
 Calling this method is not yet fully implemented with the Viam Python SDK.
@@ -1466,7 +1466,7 @@ err := interrupt.Tick(context.Background(), true, 12345)
 Add a [channel](https://go.dev/tour/concurrency/2) as a listener for when the state of the [configured GPIO pin](#digital_interrupts) changes.
 When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the returned value `high`.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Support Notice" color="note" %}}
 This method is not available for digital interrupts [configured](#digital_interrupts) with `"type": "servo"`.
 It is also not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
@@ -1533,8 +1533,8 @@ interrupt.AddCallback(ch)
 Add a [PostProcessor](https://pkg.go.dev/go.viam.com/rdk/components/board#PostProcessor) function that takes an integer input and transforms it into a new integer value.
 Functions added to an interrupt will be used to modify values before they are returned by [Value()](#value).
 
-{{% alert title="Note" color="note" %}}
-This method is  not yet fully implemented with the Viam Python SDK.
+{{% alert title="Support Notice" color="note" %}}
+This method is not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
 
 {{< tabs >}}
@@ -1599,6 +1599,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/make-an-led-blink-with-the-viam-app" size="small" %}}
-  {{% card link="/tutorials/projects/guardian" size="small" %}}
+  {{% card link="/tutorials/get-started/blink-an-led" %}}
+  {{% card link="/tutorials/projects/guardian" %}}
 {{< /cards >}}

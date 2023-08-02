@@ -4,14 +4,14 @@ linkTitle: "single-axis"
 weight: 70
 type: "docs"
 description: "Configure a single-axis gantry."
-images: ["/components/img/components/gantry.svg"]
+images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
     - "/components/gantry/oneaxis/"
-# SME: Rand
+# SME: Rand, Martha
 ---
 
-Configure a `single-axis` gantry to integrate a one-axis gantry into your robot:
+Configure a `single-axis` gantry to integrate a single-axis gantry into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -22,7 +22,7 @@ Enter a name for your sensor, select the type `gantry`, and select the `single-a
 
 Click **Create component**.
 
-![Creation of a single-axis gantry component in the Viam app config builder.](../img/single-axis-ui-config.png)
+![Creation of a single-axis gantry component in the Viam app config builder.](/components/gantry/single-axis-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -40,11 +40,7 @@ Edit and fill in the attributes as applicable.
       "attributes": {
         "motor": "<your-motor-name>",
         "length_mm": <int>,
-        "axis": {
-          "X": <int>,
-          "Y": <int>,
-          "Z": <int>
-        }
+        "mm_per_rev": <int>
       },
       "depends_on": []
     }
@@ -59,14 +55,13 @@ The following attributes are available for `single-axis` gantries:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------  |
-| `length_mm` | int | **Required** | The length of the axis of the gantry in millimeters. |
-| `motor` | string | **Required** | The `name` of the [motor](/components/motor/) that moves the gantry's actuator. |
-| `axis` | object | **Required** | The translational axis for the gantry. Must be exactly one of `x`, `y`, or `z`. |
-| `board`  |  string | Optional | The `name` of the [board](/components/board/) containing the limit switches and pins. If `limit_pins` is set, `board` is **required**. |
+| `length_mm` | int | **Required** | Length of the axis of the gantry in millimeters. |
+| `motor` | string | **Required** | `name` of the [motor](/components/motor/) that moves the gantry's actuator. |
+| `board`  |  Optional | string | `name` of the [board](/components/board/) containing the limit switches and pins. If `limit_pins` exist, `board` is required. |
 | `limit_pins`  | object | Optional | The pins on the `board` which are attached to the limit switches on either end. If the [motor](/components/motor/) used does not include an [encoder](/components/motor/gpio/encoded-motor/), you must set `limit_pins`.The order of these pins is important, as the gantry may try to travel beyond the limit switch (or switches) if the pins are specified in the wrong order. The switch representing the home (`0`) position must be first in the list. In addition, if you are configuring multiple `single-axis` gantries with `limit_pins`, you can [specify the order of homing routines](#specify-the-order-of-homing-routines) if needed. |
 | `limit_pin_enabled_high` | boolean | Optional | Whether the limit pin must be “high” or “low” to be considered “hit”, with a value of `true` representing "high". This attribute is **required** if `limit_pins` is set.<br> Default: `false` |
-| `mm_per_rev` | int | Optional | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter * pi, or the pitch of a linear screw. |
-| `gantry_rpm` | int | Optional | The gantry `motor`'s default revolutions per minute (RPM). |
+| `mm_per_rev` | int | **Required** | How far the gantry moves (linear, distance in mm) per one revolution of the motor’s output shaft. This typically corresponds to Distance = PulleyDiameter * pi, or the pitch of a linear screw. |
+| `gantry_mm_per_sec` | int | Optional | The speed at which the gantry moves in millimeters per second. Used to calculate the gantry `motor`'s revolutions per minute (RPM). <br> Default: `100` RPM |
 
 ## Specify the order of homing routines
 
@@ -105,7 +100,7 @@ The example below configures `myFirstGantry` to wait until the homing process fo
 }
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert="Note" color="note" %}}
 The order of axes in the `subaxes_list` for a [`multi-axis` gantry](/components/gantry/multi-axis/) does not influence the order of homing.
 To ensure that homing occurs in a set order, you must add a `depends_on` array specifying the axis or axes to be homed first for each `single-axis` gantry.
 {{% /alert %}}

@@ -7,15 +7,15 @@ no_list: true
 type: "docs"
 description: "A device that sends information about the outside world to the computer controlling a robot."
 tags: ["sensor", "components"]
-icon: "/components/img/components/sensor.svg"
-images: ["/components/img/components/sensor.svg"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
 A *sensor* is a device that can measure information about the outside world.
 Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Viam has two component types defined separately from *sensor* that you can use to implement sensors with specific functions:
 
@@ -46,7 +46,7 @@ Supported sensor models include:
 You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/extend/modular-resources/).
 This allows you to have the same access and control of the sensor through Viam as you would if it was a built-in model.
 
-For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module).
+For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/).
 
 ## Control your sensor with Viam's client SDK libraries
 
@@ -147,6 +147,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" size="small" %}}
-    {{% card link="/tutorials/projects/tipsy/" size="small" %}}
+    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
+    {{% card link="/tutorials/projects/tipsy/" %}}
 {{< /cards >}}

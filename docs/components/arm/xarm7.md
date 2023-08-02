@@ -4,7 +4,7 @@ linkTitle: "xArm7"
 weight: 34
 type: "docs"
 description: "Configure a UFACTORY xArm 7 for your robot."
-images: ["/components/img/components/arm.svg"]
+images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 # SMEs: William Spies
 ---
@@ -20,7 +20,7 @@ Enter a name for your arm, select the type `arm`, and select the `xArm7` model.
 
 Click **Create component**.
 
-![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](../img/xArm7-ui-config.png)
+![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/xArm7-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -29,7 +29,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "model": "xArm7",
       "name": "<your-arm-name>",
       "type": "arm",
@@ -37,7 +38,8 @@ Edit and fill in the attributes as applicable.
           "host": "<ip-address-to-connect-to-your-arm>"
       },
       "depends_on": []
-    }]
+    }
+  ]
 }
 ```
 
@@ -46,7 +48,8 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [{
+  "components": [
+    {
       "attributes": {
           "host": "10.0.0.97"
       },
@@ -71,7 +74,8 @@ Edit and fill in the attributes as applicable.
       "model": "xArm7",
       "name": "xArm7",
       "type": "arm"
-  }]
+    }
+  ]
 }
 ```
 

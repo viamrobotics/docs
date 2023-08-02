@@ -4,7 +4,7 @@ linkTitle: "Run Code"
 weight: 50
 type: "docs"
 description: "Execute the logic you've written to control your robot or fleet."
-images: ["/services/img/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags: ["client", "sdk", "application", "sdk", "fleet", "program"]
 ---
 
@@ -21,14 +21,14 @@ For example:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 python3 ~/myCode/myViamFile.py
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go run ~/myCode/myViamFile.py
 ```
 
@@ -63,7 +63,7 @@ You can find it at the top of the robot's **Control** tab.
 
 ## Run Code On-Robot
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 This method of running code locally is only implemented on the Viam Python SDK.
 {{< /alert >}}
 

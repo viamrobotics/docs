@@ -4,7 +4,7 @@ linkTitle: "beaglebone"
 weight: 40
 type: "docs"
 description: "Configure a beaglebone board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
@@ -15,7 +15,7 @@ Follow this [setup guide](/installation/prepare/beaglebone-setup/) to prepare yo
 
 {{% /alert %}}
 
-Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](https://beagleboard.org/ai-64) into your robot:
+Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](https://www.beagleboard.org/boards/beaglebone-ai-64) into your robot:
 
 {{< tabs name="Configure an beaglebone Board" >}}
 {{% tab name="Config Builder" %}}
@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `beaglebone
 
 Click **Create component**.
 
-![An example configuration for a beaglebone board in the Viam app Config Builder.](../img/beaglebone-ui-config.png)
+![An example configuration for a beaglebone board in the Viam app Config Builder.](/components/board/beaglebone-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

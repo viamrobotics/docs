@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Configure a fake movement sensor to test software without any hardware."
-images: ["/components/img/components/imu.svg"]
+images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
@@ -22,7 +22,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**.
 
-![Creation of an `fake` movement sensor in the Viam app config builder.](../img/fake-builder.png)
+{{< imgproc src="/components/movement-sensor/fake-builder.png" alt="Creation of an `fake` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 

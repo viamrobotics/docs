@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 description: "Configure an Agilex LIMO base for your robot."
 tags: ["base", "components"]
-images: ["/components/img/components/base.svg"]
+images: ["/icons/components/base.svg"]
 # SMEs: Matt Vella, Steve B
 ---
 
@@ -22,7 +22,7 @@ Enter a name for your base, select the type `base`, and select the `agilex-limo`
 
 Click **Create component**.
 
-![An example configuration for a agilex-limo base in the Viam app Config Builder.](../img/agilex-limo-ui-config.png)
+![An example configuration for a agilex-limo base in the Viam app Config Builder.](/components/base/agilex-limo-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -53,4 +53,4 @@ The following attributes are available for `agilex-limo` bases:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `drive_mode` | string | **Required** | LIMO [steering mode](https://docs.trossenrobotics.com/agilex_limo_docs/operation/steering_modes.html#switching-steering-modes). Options: `differential`, `ackermann`, `omni` (mecanum). |
-| `serial_path` | string | **Required** | Your serial port connection to your LIMO's [board](../../board/). Determine during setup and start of your LIMO. <br> Default: `/dev/ttyTHS1` |
+| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyTHS1`, to its device file, such as <file>/dev/ttyTHS1</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/ttyTHS1` |

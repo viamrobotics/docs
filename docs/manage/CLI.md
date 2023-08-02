@@ -18,7 +18,7 @@ The CLI lets you:
 
 For example, this CLI command moves a servo to the 75 degree position:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam robot part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
 --location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
@@ -28,7 +28,7 @@ viam.component.servo.v1.ServoService.MoveRequest
 
 If you have [Go installed](https://go.dev/doc/install), you can install the Viam CLI with the 'go install' command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
 ```
 
@@ -37,7 +37,7 @@ If you see help instructions, everything is correctly installed.
 If you do not see help instructions, add your local <file>go/bin/*</file> directory to your `PATH` variable.
 If you use `bash` as your shell, you can use the following command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 ```
 
@@ -50,7 +50,7 @@ If you are using a shell other than bash, you may need to modify the above comma
 Once you have successfully installed the Viam CLI, you need to authenticate your device for CLI usage with your Viam app account before you can control your robots with the CLI.
 Do this by issuing the command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam auth
 ```
 
@@ -58,10 +58,10 @@ This will open a new browser window with a prompt to start the authentication pr
 If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
 Follow the instructions to complete the authentication process.
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Info" color="info" %}}
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
-After the session expires or you log out, you must reauthenticate to use the CLI again.
+After the session expires or you log out, you must re-authenticate to use the CLI again.
 {{% /alert %}}
 
 ## Manage your robots with the Viam CLI
@@ -69,7 +69,7 @@ After the session expires or you log out, you must reauthenticate to use the CLI
 With the Viam CLI installed and authenticated, you can use it to issue commands to your robot fleet.
 All Viam CLI commands use the following format:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam [global options] command [command options] [arguments...]
 ```
 
@@ -85,13 +85,13 @@ viam [global options] command [command options] [arguments...]
 The Viam CLI has a built-in help system that lists all available commands.
 You can access it at any time by issuing the command:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam help
 ```
 
 You can also access contextual help by passing `help` as a command option for any CLI command, for example:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam organizations help
 ```
 
@@ -101,7 +101,7 @@ viam organizations help
 
 The `auth` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam auth
 viam auth print-access-token
 ```
@@ -119,21 +119,21 @@ The `data` command allows you to manage robot data.
 With it, you can export data in the format of your choice or delete specified data.
 You can filter the data this command operates on.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
 ```
 
 Examples:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 # export tabular data to /home/robot/data for org abc, location 123
 viam data export --destination=/home/robot/data --data_type=tabular \
---org_ids=abc --location_ids=123
+--org-ids=abc --location-ids=123
 
 # export binary data from all orgs and locations, component name myComponent
-viam data export --destination=/home/robot/data --data_type=binary \
---component_name myComponent
+viam data export --destination=/home/robot/data --data-type=binary \
+--component-name myComponent
 ```
 
 #### Command options
@@ -149,21 +149,21 @@ viam data export --destination=/home/robot/data --data_type=binary \
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--destination`      | output directory for downloaded data       |`export`|true |
-| `--data_type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
-| `--component_name`      | filter by specified component name  |`export`, `delete`| false |
-| `--component_type`     | filter by specified component type       |`export`, `delete`|false |
-| `--component_model`   | filter by specified component model       |`export`, `delete`|false |
+| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
+| `--component-name`      | filter by specified component name  |`export`, `delete`| false |
+| `--component-type`     | filter by specified component type       |`export`, `delete`|false |
+| `--component-model`   | filter by specified component model       |`export`, `delete`|false |
 | `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`|false |
 | `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`|false |
-| `--location_ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
+| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
 | `--method`       | filter by specified method       |`export`, `delete`|false |
-| `--mime_types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
-| `--org_ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
+| `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
 | `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part_id`      | filter by specified part id      |`export`, `delete`|false |
-| `--part_name`     | filter by specified part name       |`export`, `delete`|false |
-| `--robot_id`     | filter by specified robot id       |`export`, `delete`|false |
-| `--robot_name`      | filter by specified robot name       |`export`, `delete`|false |
+| `--part-id`      | filter by specified part id      |`export`, `delete`|false |
+| `--part-name`     | filter by specified part name       |`export`, `delete`|false |
+| `--robot-id`     | filter by specified robot id       |`export`, `delete`|false |
+| `--robot-name`      | filter by specified robot name       |`export`, `delete`|false |
 | `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
 
 ### locations
@@ -171,7 +171,7 @@ viam data export --destination=/home/robot/data --data_type=binary \
 The `locations` command lists all locations that the authenticated session has access to, grouped by organization.
 You can filter results by organization.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
 ```
 
@@ -186,7 +186,7 @@ viam locations list [<organization id>]
 
 The `logout` command ends an authenticated CLI session
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam logout
 ```
 
@@ -194,7 +194,7 @@ viam logout
 
 The *organizations* command lists all organizations that the authenticated session belongs to.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam organizations list
 ```
 
@@ -215,7 +215,7 @@ This includes:
 * Controlling a robot by issuing component and service commands
 * Accessing your robot with a secure shell (when this feature is enabled)
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam robot status --organization=<org name> --location=<location name> --robot=<robot id>
 viam robot logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
 viam robot part status --organization=<org name> --location=<location name> --robot=<robot id>
@@ -225,7 +225,7 @@ viam robot part shell --organization=<org name> --location=<location name> --rob
 
 Examples:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 # get robot status
 viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
@@ -283,7 +283,7 @@ The `--data` parameter is required and you must specify both:
 
 The format of what is passed to the `--data` argument is:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 '{"arg1": "val1"}' <protobuf path>
 ```
 
@@ -291,7 +291,7 @@ You can find the protobuf path for the Viam package and method in the [Viam api 
 
 For example:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 '{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
@@ -302,7 +302,7 @@ The `--stream` argument, when included in the CLI command prior to the `--data` 
 
 The `robots` command lists all robots that the authenticated session has access to, filtered by organization and location.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam robots list
 ```
 
@@ -324,7 +324,7 @@ viam robots list
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 viam whoami
 ```
 

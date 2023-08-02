@@ -7,11 +7,11 @@ tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/deploy-model/
 description: "Deploy Machine Learning models to a robot."
-icon: "/services/img/icons/ml.svg"
+icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-The ML Models service allows you to deploy machine learning models to your robots.
+The ML Model service allows you to deploy machine learning models to your robots.
 
 ## Create an ML model service
 
@@ -29,7 +29,7 @@ Scroll to the **Create Service** section.
 3. Select `tflite_cpu` as the **Model**.
 4. Click **Create Service**.
 
-![Create a machine learning models service](../img/ml-models-service.png)
+![Create a machine learning models service](/services/ml-models-service.png)
 
 You can choose to configure your service with an existing model on the robot or deploy a model onto your robot:
 
@@ -40,7 +40,7 @@ To configure your service with an existing model on the robot, select **Path to 
 
 Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
-![Create a machine learning models service with an existing model](../img/available-models.png)
+![Create a machine learning models service with an existing model](/services/available-models.png)
 
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
@@ -49,7 +49,7 @@ To configure your service and deploy a model onto your robot, select **Deploy Mo
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
-![Create a machine learning models service with a model to be deployed](../img/deploy-model.png)
+![Create a machine learning models service with a model to be deployed](/services/deploy-model.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -106,7 +106,7 @@ The following parameters are available for a `"tflite_cpu"` model:
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
 
-{{< alert title="Note" color="note" >}}
+{{< alert title="Info" color="info" >}}
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the  `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
 {{< /alert >}}

@@ -4,11 +4,11 @@ linkTitle: "multi-axis"
 weight: 80
 type: "docs"
 description: "Configure a multi-axis gantry."
-images: ["/components/img/components/gantry.svg"]
+images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
     - "/components/gantry/multiaxis/"
-# SME: Rand
+# SME: Rand, Martha
 ---
 
 Configure a `multi-axis` gantry to integrate a multi-axis gantry into your robot:
@@ -22,7 +22,7 @@ Enter a name for your gantry, select the type `gantry`, and select the `multi-ax
 
 Click **Create component**.
 
-![Creation of a multi-axis gantry component in the Viam app config builder.](../img/multi-axis-ui-config.png)
+![Creation of a multi-axis gantry component in the Viam app config builder.](/components/gantry/multi-axis-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -194,7 +194,8 @@ Edit and fill in the attributes as applicable.
                     "xaxis",
                     "yaxis",
                     "zaxis"
-                ]
+                ],
+                "move_simultaneously": "false"
             }
         }
     ]
@@ -209,5 +210,6 @@ The following attributes are available for `multi-axis` gantries:
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
 | `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |
+| `move_simultaneously` | boolean | Optional | A boolean indicating if the sub-axes should move together, or one at a time when `MoveToPosition` is called. <br> Default:  `false` |
 
 If you are using the `limit_pins` attribute with one or more of your `single-axis` gantries, and you require that homing routines for each `single-axis` gantry take place in a certain order, you can [specify the order of homing routines](/components/gantry/single-axis/#specify-the-order-of-homing-routines) if needed.

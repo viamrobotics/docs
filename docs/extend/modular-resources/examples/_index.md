@@ -1,14 +1,14 @@
 ---
-title: "Modular Resource Configuration Examples"
+title: "Modular Resource Examples"
 linkTitle: "Examples"
 childTitleEndOverwrite: "Modular Resource Example"
 description: "Tutorials and repositories with modular resources configuration examples."
-weight: 10
+weight: 70
 type: "docs"
 no_list: true
-image: "/tutorials/img/intermode/rover_outside.png"
+image: "/tutorials/intermode/rover_outside.png"
 imageAlt: "A large black intermode rover controlled with CANBUS protocol chilling outside in the snow."
-images: ["/tutorials/img/intermode/rover_outside.png"]
+images: ["/tutorials/intermode/rover_outside.png"]
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
 aliases:
     - "/program/extend/modular-resources/examples/"
@@ -20,10 +20,14 @@ Once you have created a modular resource, you can test your custom resource usin
 ## Tutorials
 
 {{< cards >}}
-    {{% card link="/extend/modular-resources/examples/add-rplidar-module" size="small" %}}
-    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" size="small" %}}
+    {{% card link="/extend/modular-resources/examples/rplidar/" customTitle="Add an RPlidar camera as a Modular Resource" %}}
+    {{% card link="/extend/modular-resources/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
+    {{% card link="/extend/modular-resources/examples/custom-arm/" %}}
+    {{% card link="/extend/modular-resources/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
+    {{% card link="/tutorials/custom/custom-base-dog/" %}}
+    {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
 {{< /cards >}}
 
 ## Repositories
 
-Detailed, working examples of various types of modular resources are included in [Viam's GitHub](https://github.com/viamrobotics) with [the RDK](https://github.com/viamrobotics/rdk/tree/main/examples/customresources), [the Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/module), and [Viam Labs](https://github.com/viam-labs/wifi-sensor).
+Detailed, working examples of various types of modular resources are included in [Viam's GitHub](https://github.com/viamrobotics) with [the RDK](https://github.com/viamrobotics/rdk/tree/main/examples/customresources), [the Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/), and [Viam Labs](https://github.com/viam-labs/wifi-sensor).

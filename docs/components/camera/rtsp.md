@@ -4,7 +4,7 @@ linkTitle: "rtsp"
 weight: 34
 type: "docs"
 description: "Configure a streaming camera with an MJPEG track."
-images: ["/components/img/components/camera.svg"]
+images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
@@ -21,7 +21,7 @@ Enter a name for your camera, select the type `camera`, and select the `rtsp` mo
 
 Click **Create component**.
 
-![Configuration of a rtsp camera in the Viam app config builder.](../img/configure-rtsp.png)
+![Configuration of a rtsp camera in the Viam app config builder.](/components/camera/configure-rtsp.png)
 
 Edit and fill in the attributes as applicable.
 

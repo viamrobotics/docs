@@ -5,7 +5,7 @@ weight: 90
 type: "docs"
 description: "Configure a gpio servo."
 tags: ["servo", "components"]
-icon: "img/components/servo.png"
+icon: "/icons/components/servo.svg"
 # SME: Rand
 ---
 
@@ -20,7 +20,7 @@ Enter a name for your servo, select the type `servo`, and select the `gpio` mode
 
 Click **Create component**:
 
-![An example configuration for a gpio servo in the Viam app Config Builder.](../img/gpio-servo-ui-config.png)
+![An example configuration for a gpio servo in the Viam app Config Builder.](/components/servo/gpio-servo-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

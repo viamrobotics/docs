@@ -4,7 +4,7 @@ linkTitle: "fake"
 weight: 20
 type: "docs"
 description: "Configure a fake board."
-images: ["/components/img/components/board.svg"]
+images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
 ---
@@ -20,7 +20,7 @@ Enter a name for your board, select the type `board`, and select the `fake` mode
 
 Click **Create component**.
 
-![An example configuration for a fake board in the Viam app Config Builder.](../img/fake-ui-config.png)
+![An example configuration for a fake board in the Viam app Config Builder.](/components/board/fake-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
