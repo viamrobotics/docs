@@ -8,11 +8,11 @@ images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-The `merged` movement sensor model supports a movement sensor that allows you to get multiple [`Readings`](/components/movement-sensor/#getreadings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
+The `merged` movement sensor model supports a movement sensor that allows you to get multiple types of [`Readings`](/components/movement-sensor/#getreadings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
 
 This lets you aggregate [`Readings`](/components/movement-sensor/#getreadings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources.
 
-In other words, when you call [`GetReadings()`](/components/movement-sensor/#getreadings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from your robot.
+In other words, the models of the `merged` sensors are combined, making the movement sensor API methods each aggregated model supports available on the `merged` model.
 
 This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#configuration) or [`IMU`](/components/movement-sensor/#configuration) models, respectively.
 
@@ -50,9 +50,9 @@ Edit and fill in the attributes as applicable.
         "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
         "orientation" : ["<your-imu-sensor-name-1>"],
         "compass_heading" : ["<your-gps-sensor-name-1>"],
-        "angular_velocity":["<your-angular-velocity-sensor-name-2>"],
+        "angular_velocity":["<your-imu-sensor-name-1>"],
         "linear_velocity": ["<your-gps-sensor-name-1>"],
-        "linear_acceleration": ["<your-adxl345-sensor-name-1>"]
+        "linear_acceleration": ["<your-accelerometer-sensor-name-1>"]
       },
     "depends_on": [] 
     }
@@ -73,7 +73,7 @@ Edit and fill in the attributes as applicable.
         "position": ["gps1"],
         "orientation" : ["vectornav"],
         "compass_heading" : ["gps1"],
-        "angular_velocity":[""],
+        "angular_velocity":["vectornav"],
         "linear_velocity": ["gps1"],
         "linear_acceleration": ["adxl345"]
     }, 
@@ -89,8 +89,9 @@ Edit and fill in the attributes as applicable.
 Configure an array of the `name` of each movement sensor you want to add to your robot as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
-- Retrieve this information for your movement sensor by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
+- Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
 - Use this information to determine which attribute to put its `name` inside the array of.
+You can use the same sensor for multiple attributes if it supports multiple properties.
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
