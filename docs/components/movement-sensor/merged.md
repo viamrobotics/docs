@@ -8,11 +8,11 @@ images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-The `merged` movement sensor model supports a movement sensor that allows you to get multiple [`Readings`](/components/movement-sensor/#get-readings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
+The `merged` movement sensor model supports a movement sensor that allows you to get multiple [`Readings`](/components/movement-sensor/#getreadings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
 
-This lets you aggregate [`Readings`](/components/movement-sensor/#get-readings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources.
+This lets you aggregate [`Readings`](/components/movement-sensor/#getreadings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources.
 
-In other words, when you call [`GetReadings()`](/components/movement-sensor/#get-readings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from `viam-server`.
+In other words, when you call [`GetReadings()`](/components/movement-sensor/#get-readings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from your robot.
 
 This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/gps/) or [`IMU`]((/components/movement-sensor/gps/)) models, respectively.
 
