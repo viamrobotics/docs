@@ -174,7 +174,7 @@ class MyBase(Base, Reconfigurable):
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-<file>mybase.go</file> implements a custom model of the base component built-in resource, "mybase", and registers the new model and API helper functions with the Go Client SDK.
+<file>mybase.go</file> implements "mybase", a custom model of the base component,  and registers the new model and API helper functions with the Go SDK.
 
 <details>
   <summary>Click to view sample code from <file>mybase.go</file></summary>
@@ -488,7 +488,7 @@ exec $PYTHON src/main.py $@
 To make this shell script executable, run the following command in your terminal:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo chmod +x <file-path-to-your-main-program>/<your-main-program-filename>
+sudo chmod +x <file-path-to-entrypoint>
 ```
 
 {{% /tab %}}
