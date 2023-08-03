@@ -147,7 +147,9 @@ Technically you could configure all the components within one part, but motion p
 
 Use the parts drop-down menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
 
+<p>
 {{<imgproc src="/tutorials/claw-game/app-planning.png" resize="500x" declaredimensions=true alt="UI for adding a sub part named planning." class="aligncenter">}}
+</p>
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
 
