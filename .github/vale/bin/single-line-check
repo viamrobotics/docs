@@ -4,14 +4,14 @@
 
 RC=0
 
-NEWLINE_CHECK=$(grep -v 'alt=' $(git diff --diff-filter=d --name-only $1 | grep '\.md$') | grep -v 'md:#' | grep -v '!\[' | grep -v '//' | grep -v '|' | grep -v '#' | grep '[a-z]\. [A-Z]')
+NEWLINE_CHECK=$(grep -v 'alt=' $(git diff --diff-filter=d --name-only $1 | grep '\.md$') | grep -v 'md:#' | grep -v '!\[' | grep -v '//' | grep -v '|' | grep -v '#' | grep '[a-z|)]\. ')
 if [ ! -z "$NEWLINE_CHECK" ]
 then
   RED='\033[0;31m'
   NC='\033[0m' # No Color
   PURPLE='\033[0;35m'
   echo "${PURPLE}--------------------------------------------NEWLINE CHECKS--------------------------------------------"
-  echo "${RED}Error: ${NC}You missed a new line after a sentence."
+  echo "${RED}Error: ${NC}You missed a new line after a sentence:"
   echo "$NEWLINE_CHECK"
   RC=1
 fi

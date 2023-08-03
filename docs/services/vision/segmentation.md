@@ -187,7 +187,7 @@ Add the Vision Service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"detector_3dsegmenter"`.
+The following parameters are available for a `detector_3d_segmenter`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
