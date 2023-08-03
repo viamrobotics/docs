@@ -20,7 +20,7 @@ cost: 80
 Have you ever been working from home and needed to step out for a moment?
 Maybe it was to clear your head, grab your lunch, answer the door, and you get in trouble because it showed you as offline?
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/sXWJE0ePHdA">}}
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/JVtZ7aU4k68">}}
 
 This tutorial will show you how to build a mouse mover using Viam, a Raspberry Pi, a servo, and an optical mouse.
 This robot will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse. This will keep your computer from falling asleep.
