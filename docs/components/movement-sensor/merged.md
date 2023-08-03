@@ -10,7 +10,7 @@ images: ["/icons/components/imu.svg"]
 
 The `merged` movement sensor model supports a movement sensor that allows you to get multiple types of [`Readings`](/components/movement-sensor/#getreadings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
 
-This lets you aggregate [`Readings`](/components/movement-sensor/#getreadings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources.
+This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources.
 
 In other words, the models of the `merged` sensors are combined, making the movement sensor API methods each aggregated model supports available on the `merged` model.
 
