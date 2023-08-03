@@ -73,7 +73,7 @@ Edit and fill in the attributes as applicable.
         "position": ["gps1"],
         "orientation" : ["vectornav"],
         "compass_heading" : ["gps1"],
-        "angular_velocity":["vectornav"],
+        "angular_velocity":["vectornav", "mpu6050"],
         "linear_velocity": ["gps1"],
         "linear_acceleration": ["adxl345"]
     }, 
@@ -104,3 +104,4 @@ Name | Type | Inclusion | Description
 
 Note that only one sensor from each array can be used to retrieve each type of reading.
 The first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime is used by your robot to get that type of reading.
+For instance, in the **JSON Example** above, if both `"vectornav"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read linear acceleration on the robot if `"vectornav"` returns an error at runtime.
