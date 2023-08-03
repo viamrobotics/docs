@@ -9,7 +9,7 @@ aliases:
     - "/internals/orientation-vector"
 ---
 
-How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="models" text="models" >}} of movement sensor components:
+How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="model" text="models" >}} of movement sensor components:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 - [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
