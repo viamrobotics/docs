@@ -3,7 +3,7 @@ title: "Add a TensorFlow Lite Modular Service"
 linkTitle: "TensorFlow Lite Modular Service"
 weight: 70
 type: "docs"
-description: "Add a MLModel modular-resource-based service which uses TensorFlow Lite to classify audio samples."
+description: "Add a ML model modular-resource-based service which uses TensorFlow Lite to classify audio samples."
 tags: ["ml", "model training", "services"]
 # SMEs: Andrew Morrow
 ---

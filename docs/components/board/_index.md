@@ -361,48 +361,25 @@ import (
 
 The board component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [AnalogReaderByName](#analogreaderbyname) | Get an [`AnalogReader`](#analogs) by `name`. |
-| [DigitalInterruptByName](#digitalinterruptbyname) | Get a [`DigitalInterrupt`](#digital_interrupts) by `name`. |
-| [GPIOPinByName](#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
-| [AnalogReaderNames](#analogreadernames) | Get the `name` of every [`AnalogReader`](#analogs). |
-| [DigitalInterruptNames](#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](#digital_interrupts). |
-| [Status](#status) | Get the current status of this board. |
-| [ModelAttributes](#modelattributes) | Get the attributes related to the model of this board. |
-| [SetPowerMode](#setpowermode) | Set the board to the indicated power mode. |
+{{< readfile "/static/include/components/apis/board.md" >}}
 
 Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` interfaces support the following methods:
 
 [`GPIOPin`](#gpiopin-api) API:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Set](#set) | Set the output of this pin to high/low. |
-| [Get](#get) | Get if this pin is active (high). |
-| [PWM](#pwm) | Get the pin’s pulse-width modulation duty cycle. |
-| [SetPWM](#pwmfreq) | Set the pin’s pulse-width modulation duty cycle. |
-| [PWMFreq](#pwmfreq) | Get the pulse-width modulation frequency of this pin. |
-| [SetPWMFreq](#setpwmfreq) | Set the pulse-width modulation frequency of this pin. |
+{{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
 <br>
 
 [`AnalogReader`](#analogreader-api) API:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Read](#read) | Read the current integer value of the digital signal output by the ADC. |
+{{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 <br>
 
 [`DigitalInterrupt`](#digitalinterrupt-api) API:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Value](#value) | Get the current value of this interrupt. |
-| [Tick](#tick) | Record an interrupt. |
-| [AddCallback](#addcallback) | Add a channel as a callback for [Tick()](#tick). |
-| [AddPostProcessor](#addpostprocessor) | Add a PostProcessor function for [Value()](#value). |
+{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
 ### AnalogReaderByName
 

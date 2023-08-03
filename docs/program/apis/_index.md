@@ -18,7 +18,7 @@ The API methods provided by the SDKs for each of these resource APIs wrap gRPC c
 
 ## ResourceBase Methods
 
-In the Python SDK, [the `ResourceBase` class](https://python.viam.dev/autoapi/viam/resource/base/index.html) defines a basic set of API methods that all child resources should provide for users.
+In the Python SDK, the [`ResourceBase`](https://python.viam.dev/autoapi/viam/resource/base/index.html) class defines a basic set of API methods that all child resources should provide for users.
 In the other SDKs, resource APIs implement but do not inherit these base requirements.
 
 `ResourceBase` methods include:
@@ -197,132 +197,76 @@ Documentation on using these methods in your SDK code is found on each [componen
 
 ### Arm
 
-The arm component supports the following methods:
+The [arm component](/components/arm/) supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [GetEndPosition](/components/arm/#getendposition) | Get the current position of the arm as a Pose. |
-| [MoveToPosition](/components/arm/#movetoposition) | Move the end of the arm to the desired Pose. |
-| [MoveToJointPositions](/components/arm/#movetojointpositions) | Move each joint on the arm to the desired position. |
-| [JointPositions](/components/arm/#jointpositions) | Get the current position of each joint on the arm. |
-| [Stop](/components/arm/#stop) | Stop the arm from moving. |
-| [IsMoving](/components/arm/#ismoving) | Get if the arm is currently moving. |
-| [Kinematics](/components/arm/#kinematics) | Get the kinematics information associated with the arm. |
-| [DoCommand](/components/arm/#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/arm.md" >}}
 
 ### Base
 
-The base component supports the following methods:
+The [base component](/components/base/) supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [MoveStraight](/components/base/#movestraight)  | Move the base in a straight line across the given distance at the given velocity. |
-| [Spin](/components/base/#spin) | Move the base to the given angle at the given angular velocity. |
-| [SetPower](/components/base/#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base. |
-| [SetVelocity](/components/base/#setvelocity) | Set the linear velocity and angular velocity of the base. |
-| [Stop](/components/base/#stop) | Stop the base. |
-| [GetProperties](/components/base/#getproperties) | Get the width and turning radius of the base in meters. |
-| [DoCommand](/components/base/#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/base.md" >}}
 
 ### Board
 
-The board component supports the following methods:
+The [board component](/components/board/) supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [AnalogReaderByName](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](/components/board/#analogs) by `name`. |
-| [DigitalInterruptByName](/components/board/#digitalinterruptbyname) | Get a [`DigitalInterrupt`](/components/board/#digital_interrupts) by `name`. |
-| [GPIOPinByName](/components/board/#gpiopinbyname) | Get a `GPIOPin` by its {{< glossary_tooltip term_id="pin-number" text="pin number" >}}. |
-| [AnalogReaderNames](/components/board/#analogreadernames) | Get the `name` of every [`AnalogReader`](/components/board/#analogs). |
-| [DigitalInterruptNames](/components/board/#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](/components/board/#digital_interrupts). |
-| [Status](/components/board/#status) | Get the current status of this board. |
-| [ModelAttributes](/components/board/#modelattributes) | Get the attributes related to the model of this board. |
-| [SetPowerMode](/components/board/#setpowermode) | Set the board to the indicated power mode. |
+{{< readfile "/static/include/components/apis/board.md" >}}
 
 ### Camera
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [GetImage](/components/camera/#getimage) | Return an image from the camera. |
-| [GetPointCloud](/components/camera/#getpointcloud) | Return a point cloud from the camera. |
-| [GetProperties](/components/camera/#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds. |
+The [camera component](/components/camera/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/camera.md" >}}
 
 ### Encoder
 
-Method Name | Description
------------ | -----------
-[Position](/components/encoder/#position) | Get the current position of the encoder.
-[ResetPosition](/components/encoder/#resetposition) | Reset the position to zero.
-[GetProperties](/components/encoder/#getproperties) | Get the supported properties of this encoder.
+The [encoder component](/components/encoder/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/encoder.md" >}}
 
 ### Gantry
 
-| Method Name | Description |
-| ----------- | ----------- |
-[Position](/components/gantry/#position) | Get the current positions of the axes of the gantry in mm. |
-[MoveToPosition](/components/gantry/#movetoposition) | Move the axes of the gantry to the desired positions. |
-[Lengths](/components/gantry/#lengths) | Get the lengths of the axes of the gantry in mm. |
-[Stop](/components/gantry/#stop) | Stop the gantry from moving. |
-[IsMoving](/components/gantry/#ismoving) | Get if the gantry is currently moving. |
+The [gantry component](/components/gantry/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/gantry.md" >}}
 
 ### Gripper
 
-Method Name | Description
------------ | -----------
-[`Open`](/components/gripper/#open) | Open the gripper.
-[`Grab`](/components/gripper/#grab) | Close the gripper until it grabs something or closes completely.
-[`Stop`](/components/gripper/#stop) | Stop the gripper's movement.
-[`IsMoving`](/components/gripper/#ismoving) | Report whether the gripper is currently moving.
+The [gripper component](/components/gripper/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/gripper.md" >}}
 
 ### Input Controller
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Controls](/components/input-controller/#controls) | Get a list of input `Controls` that this Controller provides. |
-| [Events](/components/input-controller/#events) | Get the current state of the Controller as a map of the most recent [Event](/components/input-controller/#event-object) for each [Control](/components/input-controller/#control-field). |
-| [RegisterControlCallback](/components/input-controller/#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](/components/input-controller/#eventtype-field) selected occurs on the given [Control](/components/input-controller/#control-field). |
+The [input controller component](/components/input-controller/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/input-controller.md" >}}
 
 ### Motor
 
-Method Name | Description
------------ | -----------
-[SetPower](/components/motor/#setpower) | Set the power to send to the motor as a portion of max power.
-[GoFor](/components/motor/#gofor) | Spin the motor the specified number of revolutions at specified RPM.
-[GoTo](/components/motor/#goto) | Send the motor to a specified position (in terms of revolutions from home) at a specified speed.
-[ResetZeroPosition](/components/motor/#resetzeroposition) | Set the current position to be the new zero (home) position.
-[GetPosition](/components/motor/#getposition) | Report the position of the motor based on its encoder. Not supported on all motors.
-[GetProperties](/components/motor/#getproperties) | Return whether or not the motor supports certain optional features.
-[Stop](/components/motor/#stop) | Cut power to the motor off immediately, without any gradual step down.
-[IsPowered](/components/motor/#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
-[IsMoving](/components/motor/#ismoving) | Return whether the motor is moving or not.
+The [motor component](/components/motor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/motor.md" >}}
 
 ### Movement Sensor
 
-Method Name | Description |
------------ | ----------- |
-[GetPosition](/components/movement-sensor/#getposition) | Get the current latitude, longitude and altitude. |
-[GetLinearVelocity](/components/movement-sensor/#getlinearvelocity) | Get the current linear velocity as a 3D vector. |
-[GetAngularVelocity](/components/movement-sensor/#getangularvelocity) | Get the current angular velocity as a 3D vector. |
-[GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) | Get the current linear acceleration as a 3D vector. |
-[GetCompassHeading](/components/movement-sensor/#getcompassheading) | Get the current compass heading in degrees. |
-[GetOrientation](/components/movement-sensor/#getorientation) | Get the current orientation. |
-[GetProperties](/components/movement-sensor/#getproperties) | Get the supported properties of this sensor. |
-[GetAccuracy](/components/movement-sensor/#getaccuracy) | Get the accuracy of the various sensors. |
-[GetReadings](/components/movement-sensor/#getreadings) | Obtain the measurements/data specific to this sensor. |
+The [movement sensor component](/components/movement-sensor/) supports the following methods.
+Some methods are only supported by certain models:
+
+{{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 ### Sensor
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Readings](/components/sensor/#readings) | Get the measurements or readings that this sensor provides. |
+The [sensor component](/components/sensor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/sensor.md" >}}
 
 ### Servo
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Move](/components/servo/#move) | Move the servo to the desired angle. |
-| [Position](/components/servo/#position) | Get the current angle of the servo. |
-| [Stop](/components/servo/#stop) | Stop the servo. |
+The [servo component](/components/servo/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/servo.md" >}}
 
 ## Service APIs
 
@@ -332,105 +276,71 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 ### Base Remote Control
 
-Method Name | Description
------------ | -----------
-[`Close`](/services/base-rc/#close) | Close out of all remote control related systems.
-[`ControllerInputs`](/services/base-rc/#controllerinputs) | Get a list of inputs from the controller that is being monitored for that control mode.
+The [Base Remote Control Service](/services/base-rc/) supports the following methods:
 
-### Data Manager
+{{< readfile "/static/include/services/apis/base-rc.md" >}}
 
-Method Name | Description
------------ | -----------
-[`Sync`](/services/data/#sync) | Sync data stored on the robot to the cloud.
+### Data Management
 
-### Navigation
+The [Data Management Service](/services/data/) supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
-[`SetMode`](/services/navigation/#setmode) | Set the mode the service is operating in.
-[`Location`](/services/navigation/#location) | Get the current location of the robot.
-[`Waypoints`](/services/navigation/#waypoints) | Get the waypoints currently in the service's data storage.
-[`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
-[`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
-[`GetObstacles`](/services/navigation/#getobstacles) | Get the obstacles currently in the service's data storage.
-
-### Sensors
-
-Method Name | Description
------------ | -----------
-[`Sensors`](/services/sensors/#sensors) | Returns a list of names of the available sensors.
-[`Readings`](/services/sensors/#readings) | Returns a list of readings from a given list of sensors.
-
-### Motion
-
-Method Name | Description
------------ | -----------
-[`Move`](/services/motion/#move) | Move multiple components in a coordinated way to achieve a desired motion.
-[`MoveSingleComponent`](/services/motion/#movesinglecomponent) | Move a single component "manually."
-[`GetPose`](/services/motion/#getpose) | Get the current location and orientation of a component.
-[`MoveOnMap`](/services/motion/#moveonmap) | Move a [base](/components/base/) component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
-[`MoveOnGlobe`](/services/motion/#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
-
-### SLAM
-
-Method Name | Description
------------ | -----------
-[`GetPosition`](/services/slam/#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
-[`GetPointCloudMap`](/services/slam/#getpointcloudmap) | Get the point cloud SLAM map.
-[`GetInternalState`](/services/slam/#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
-[`GetLatestMapInfo`](/services/slam/#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
+{{< readfile "/static/include/services/apis/data.md" >}}
 
 ### MLModel
 
-Method Name | Description
------------ | -----------
-`Infer` | Take an already ordered input tensor as an array, make an inference on the model, and return an output tensor map.
-`Metadata`| Get the metadata (such as name, type, expected tensor/array shape, inputs, and outputs) associated with the ML model.
+The [ML Model Service](/services/ml/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/ml.md" >}}
+
+### Motion
+
+The [Motion Service](/services/motion/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/motion.md" >}}
+
+### Navigation
+
+The [Navigation Service](/services/navigation/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/navigation.md" >}}
+
+### Sensors
+
+The [Sensors Service](/services/sensors/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/sensors.md" >}}
+
+### SLAM
+
+The [SLAM Service](/services/slam/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/slam.md" >}}
 
 ### Vision
 
-Method Name | Description |
------------ | ----------- |
-`DetectionsFromCamera` | Get a list of detections in the next image given a camera and a detector. |
-`Detections`| Get a list of detections in the given image using the specified detector. |
-`ClassificationsFromCamera` | Get a list of classifications in the next image given a camera and a classifier. |
-`Classifications` | Get a list of detections in the given image using the specified detector. |
-`ObjectPointClouds`| Returns a list of the 3D point cloud objects and associated metadata in the latest picture obtained from the specified 3D camera (using the specified segmenter). |
+Different [Vision Service](/services/vision/) models support different methods:
+
+{{< readfile "/static/include/services/apis/vision.md" >}}
 
 ## Signaling APIs
 
 ### GPIO Pins
 
-In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO Pins on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Set](/components/board/#set) | Set the output of this pin to high/low. |
-| [Get](/components/board/#get) | Get if this pin is active (high). |
-| [PWM](/components/board/#pwm) | Get the pin’s pulse-width modulation duty cycle. |
-| [SetPWM](/components/board/#pwmfreq) | Set the pin’s pulse-width modulation duty cycle. |
-| [PWMFreq](/components/board/#pwmfreq) | Get the pulse-width modulation frequency of this pin. |
-| [SetPWMFreq](/components/board/#setpwmfreq) | Set the pulse-width modulation frequency of this pin. |
+{{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
 ### Analog-to-Digital Converters (ADCs)
 
-In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Read](/components/board/#read) | Read the current integer value of the digital signal output by the ADC. |
+{{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 ### Digital Interrupts
 
-In addition to the [Board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts)  on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Value](/components/board/#value) | Get the current value of this interrupt. |
-| [Tick](/components/board/#tick) | Record an interrupt. |
-| [AddCallback](/components/board/#addcallback) | Add a channel as a callback for [Tick()](/components/board/#tick). |
-| [AddPostProcessor](/components/board/#addpostprocessor) | Add a PostProcessor function for [Value()](/components/board/#value). |
+{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
 ## Robot API
 
