@@ -86,7 +86,7 @@ Edit and fill in the attributes as applicable.
 
 ## Attributes
 
-Configure an array of the `name` of every movement sensor you want to add to your robot as a merged resource in the attributes of the `merged` movement sensor model:
+Configure an array of the `name` of each movement sensor you want to add to your robot as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
 - Retrieve this information for your movement sensor by calling [`GetProperties()`](/components/movement-sensor/#get-properties) on the sensor.
@@ -100,3 +100,5 @@ Name | Type | Inclusion | Description
 `linear_velocity` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear velocity. |
 `angular_velocity` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads angular velocity. |
 `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration |
+
+Note that `Readings` are only taken and merged from the first sensor in the respective attribute's array that does not produce an error at runtime.
