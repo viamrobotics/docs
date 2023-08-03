@@ -16,13 +16,14 @@ date: "21 April 2023"
 cost: "0"
 ---
 
-## Author's Note
+{{< alert title="Creator's note" color="note" >}}
 
-**"When I started at Viam, Eliot Horowitz told me the best way to test the product is to try to automate something I do in my life with a robot.
+"When I started at Viam, Eliot Horowitz told me the best way to test the product is to try to automate something I do in my life with a robot.
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
-When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around."**
+When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around."
 
-- Tess, Engineering Director at Viam
+<p style="text-align: right;">Tess, Engineering Director</p>
+{{< /alert >}}
 
 Follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
 
@@ -37,12 +38,12 @@ While following this tutorial, you'll complete the following steps to train and 
 
 1. [**Train your ML Model with pictures of toys:**](#train-your-ml-model-with-pictures-of-toys)
 
-- [Configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
+    [Configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
    After that, filter your image data with [tags](#tag-data) and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
 
 2. [**Use your ML Model to sing songs to your kids:**](#use-your-ml-model-to-sing-songs-to-your-kids)
 
-- [Configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
+    [Configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
 
 ## Train your ML Model with pictures of toys
 
@@ -182,7 +183,7 @@ Try to capture images from different angles and backgrounds.
 Try to get at least 50 images that fit your criteria for each tag.
 
 You set the rate of capture in your webcam's service configuration attribute `capture_frequency_hz`.
-If you set this to `.333`, your webcam will export 1 image roughly every 3 seconds as you hold up your toys to the camera.
+If you set this to `.333`, the data management service will capture 1 image roughly every 3 seconds as you hold up your toys to the camera.
 
 Go to the [**DATA tab**](https://app.viam.com/data/view?view=images) in the Viam app to see the images captured by your webcam.
 
@@ -311,7 +312,7 @@ Paste this code sample into a new file named <file>play-songs.go</file>, and sav
 
 For example, run the following commands on your Macbook to create and open the file:
 
-``` shell
+```sh {class="command-line" data-prompt="$"}
 cd <insert-path-to>/<my-bedtime-songs-bot-directory>
 touch play-songs.go
 vim play-songs.go
@@ -538,7 +539,7 @@ func main() {
 Save your <file>play-songs.go</file> program with this logic added in.
 Run the code on your personal computer as follows:
 
-``` shell
+```sh {class="command-line" data-prompt="$"}
 go run ~/<my-bedtime-songs-bot-directory>/play-songs.go
 ```
 
