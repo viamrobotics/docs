@@ -103,4 +103,4 @@ Name | Type | Inclusion | Description
 `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration |
 
 Note that only one sensor from each array can be used to retrieve each type of reading.
-The first sensor in the array that has implemented the relevant API method in its model server and does not raise an error at runtime is used by your robot to get that type of reading.
+The first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime is used by your robot to get that type of reading.
