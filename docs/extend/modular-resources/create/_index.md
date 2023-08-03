@@ -488,7 +488,7 @@ exec $PYTHON src/main.py $@
 To make this shell script executable, run the following command in your terminal:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo chmod +x <file-path-to-entrypoint>
+sudo chmod +x <your-file-path-to>/<run.sh>
 ```
 
 {{% /tab %}}
