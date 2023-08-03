@@ -8,10 +8,20 @@ images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-The `merged` movement sensor model supports a movement sensor that allows you to measure angular and linear velocity at the same time.
+The `merged` movement sensor model supports a movement sensor that allows you to get multiple [`Readings`](/components/movement-sensor/#get-readings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
 
-Use this model of sensor in the following cases:
-CASE 1: A SetVelocity call with Y and Z supplied, movement_sensor is LinearVelocitySupporting and AngularVelocitySupporting, use both readings in a feedback loop to reduce velocity error.
+This lets you aggregate [`Readings`](/components/movement-sensor/#get-readings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources.
+
+In other words, when you call [`GetReadings()`](/components/movement-sensor/#get-readings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from `viam-server`.
+
+This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/gps/) or [`IMU`]((/components/movement-sensor/gps/)) models, respectively.
+
+{{% alert title="Usage Tip: Navigation Service" color="tip" %}}
+Aggregating the readings of a [`GPS`](/components/movement-sensor/gps/) and [`IMU`]((/components/movement-sensor/gps/)) movement sensor in a `merged` model allows you to reduce velocity error when your robot is trying to [navigate](/services/navigation/) with these position and orientation readings.
+{{% /alert %}}
+
+Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#configuration).
+Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes as shown:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -22,7 +32,7 @@ Enter a name for your movement sensor, select the `movement-sensor` type, and se
 
 Click **Create Component**.
 
-{{< imgproc src="/components/movement-sensor/mpu6050-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
 
@@ -37,12 +47,12 @@ Edit and fill in the attributes as applicable.
       "type": "movement_sensor",
       "model": "merged",
       "attributes": {
-        "position": ["gps1"],
-        "orientation" : ["vectornav"],
-        "compass_heading" : ["gps1"],
-        "angular_velocity":[""],
-        "linear_velocity": ["gps1"],
-        "linear_acceleration": ["adxl345"]
+        "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
+        "orientation" : ["<your-imu-sensor-name-1>"],
+        "compass_heading" : ["<your-gps-sensor-name-1>"],
+        "angular_velocity":["<your-angular-velocity-sensor-name-2>"],
+        "linear_velocity": ["<your-gps-sensor-name-1>"],
+        "linear_acceleration": ["<your-adxl345-sensor-name-1>"]
       },
     "depends_on": [] 
     }
@@ -54,36 +64,20 @@ Edit and fill in the attributes as applicable.
 {{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
+// { "components": [ { ... },
 {
-  "components": [
-    {
-      "name": "local",
-      "type": "board",
-      "model": "pi",
-      "attributes": {
-        "i2cs": [
-          {
-            "name": "default_i2c_bus",
-            "bus": "1"
-          }
-        ]
-      }
-    },
-    {
-      "name": "<your-sensor-name>",
-      "type": "movement_sensor",
-      "model": "merged",
-      "attributes": {
+    "name": "<your-sensor-name>",
+    "type": "movement_sensor",
+    "model": "merged",
+    "attributes": {
         "position": ["gps1"],
         "orientation" : ["vectornav"],
         "compass_heading" : ["gps1"],
         "angular_velocity":[""],
         "linear_velocity": ["gps1"],
         "linear_acceleration": ["adxl345"]
-      }, 
+    }, 
       "depends_on":[]
-    }
-  ]
 }
 ```
 
@@ -92,11 +86,17 @@ Edit and fill in the attributes as applicable.
 
 ## Attributes
 
+Configure an array of the `name` of every movement sensor you want to add to your robot as a merged resource in the attributes of the `merged` movement sensor model:
+
+- The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
+- Retrieve this information for your movement sensor by calling [`GetProperties()`](/components/movement-sensor/#get-properties) on the sensor.
+- Use this information to determine which attribute to put its `name` inside the array of.
+
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
-`position` | string | **Dependent on Readings Type Supported** If your movement sensor reads position. |
-`orientation` | string | **Dependent on Readings Type Supported** If your movement sensor reads orientation. |
-`compass_heading` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads compass heading position. |
-`linear_velocity` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads linear velocity. |
-`angular_velocity` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads angular velocity. |
-`linear_acceleration` | boolean | **Dependent on Readings Type Supported** If your movement sensor reads angular velocity. |
+`position` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads position. |
+`orientation` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads orientation. |
+`compass_heading` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads compass heading position. |
+`linear_velocity` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear velocity. |
+`angular_velocity` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads angular velocity. |
+`linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration |

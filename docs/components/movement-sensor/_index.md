@@ -37,8 +37,8 @@ Model | Description <a name="model-table"></a>
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`camera_mono`](./cameramono/) | A model that derives movement data from a [camera](/components/camera/) stream (**experimental**)
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
-[`merged`](./merged/) | A model that allows you to get readings of both angular and linear velocity.
-[`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**).
+[`merged`](./merged/) | A model that allows you to aggregate [`Readings`](/components/movement-sensor/#get-readings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources
+[`rtk-station`](./gps/rtk-station/) | A model that allows you to configure your own correction source. Can be linked to an RTK-ready GPS module (**experimental**)
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your movement sensor with Viam's client SDK libraries
