@@ -12,7 +12,7 @@ The `merged` movement sensor model supports a movement sensor that allows you to
 
 This lets you aggregate [`Readings`](/components/movement-sensor/#getreadings) from multiple sensors into a singular sensor instance, effectively merging the models of the individual resources.
 
-In other words, when you call [`GetReadings()`](/components/movement-sensor/#get-readings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from your robot.
+In other words, when you call [`GetReadings()`](/components/movement-sensor/#getreadings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from your robot.
 
 This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/gps/) or [`IMU`]((/components/movement-sensor/gps/)) models, respectively.
 
