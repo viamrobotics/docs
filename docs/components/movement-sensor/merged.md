@@ -89,7 +89,7 @@ Edit and fill in the attributes as applicable.
 Configure an array of the `name` of each movement sensor you want to add to your robot as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
-- Retrieve this information for your movement sensor by calling [`GetProperties()`](/components/movement-sensor/#get-properties) on the sensor.
+- Retrieve this information for your movement sensor by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
 - Use this information to determine which attribute to put its `name` inside the array of.
 
 Name | Type | Inclusion | Description
