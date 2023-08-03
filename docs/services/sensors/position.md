@@ -6,7 +6,7 @@ type: "docs"
 description: "How Viam reads and utilizes the position measurements reported by some models of movement sensor."
 ---
 
-How Viam's platform reads and utilizes the position measurements reported as `Readings` by the following {{< glossary_tooltip term_id="models" text="models" >}} of movement sensor components:
+How Viam's platform reads and utilizes the position measurements reported as `Readings` by the following {{< glossary_tooltip term_id="model" text="models" >}} of movement sensor components:
 
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-rtk](/components/movement-sensor/gps/gps-rtk/)
