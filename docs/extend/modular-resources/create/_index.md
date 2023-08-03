@@ -301,6 +301,11 @@ func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, 
     return errUnimplemented
 }
 
+// Properties: unimplemented
+func (base *MyBase) Spin(ctx context.Context, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
 // SetPower: sets the linear and angular velocity of the left and right motors on the base
 func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
     // stop the base if absolute value of linear and angular velocity is less than .01
