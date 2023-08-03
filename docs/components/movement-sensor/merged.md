@@ -14,10 +14,10 @@ This lets you aggregate [`Readings`](/components/movement-sensor/#getreadings) f
 
 In other words, when you call [`GetReadings()`](/components/movement-sensor/#getreadings) on a `merged` sensor, the `Readings` each sensors has taken are combined in one response from your robot.
 
-This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/gps/) or [`IMU`]((/components/movement-sensor/gps/)) models, respectively.
+This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#configuration) or [`IMU`](/components/movement-sensor/#configuration) models, respectively.
 
 {{% alert title="Usage Tip: Navigation Service" color="tip" %}}
-Aggregating the readings of a [`GPS`](/components/movement-sensor/gps) and [`IMU`]((/components/movement-sensor/imu)) movement sensor in a `merged` model allows you to reduce velocity error when your robot is trying to [navigate](/services/navigation/) with these position and orientation readings.
+Aggregating the readings of a [`GPS`](/components/movement-sensor/#configuration) and [`IMU`](/components/movement-sensor/#configuration) movement sensor in a `merged` model allows you to reduce velocity error when your robot is trying to [navigate](/services/navigation/) with these position and orientation readings.
 {{% /alert %}}
 
 Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#configuration).
