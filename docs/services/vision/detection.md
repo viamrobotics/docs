@@ -145,7 +145,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 {{% /alert %}}
 
 Click **Save config** and head to the **Components** tab.
-Proceed to [Add a camera component and a "transform" model](#add-a-camera-component-and-a-transform-model).
+Proceed to [Add a camera component and a "transform" model](#test-your-detector).
 
 ## Configure a `mlmodel` detector
 
@@ -382,7 +382,6 @@ To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.d
 
 {{% /tab %}}
 {{< /tabs >}}
-
 
 ## Next Steps
 
