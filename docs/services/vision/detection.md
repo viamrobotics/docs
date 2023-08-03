@@ -213,32 +213,30 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save config** and head to the **Components** tab.
+Click **Save config**.
 
-## Add a camera component and a "transform" model
+## Test your detector
 
-You cannot interact directly with the [vision service](/services/vision/).
-To be able to interact with the vision service you must:
+You can test your detector with [live camera footage](#live-camera-footage) or [existing images](#existing-images).
 
-1. Configure a physical [camera component](../../../components/camera/).
-Pass the name of this camera to vision service methods.
-2. (Optional) To view output from the detector overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/).
+### Live Camera footage
 
-    After adding the component and its attributes, click **Save config**.
+If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/manage/fleet/robots/#control) or with code:
 
-    Wait for the robot to reload, and then go to the **Control** tab and open the transform camera card to test the stream of detections.
+1. Configure a [camera component](../../../components/camera/).
+   {{< alert title="Tip" color="tip" >}}
+   This is the camera whose name you need to pass to vision service methods.
+   {{< /alert >}}
+
+2. If you would like to see detections from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) to view output from the detector overlaid on images from the camera.
+   If you only want to access detections from code, you do not need to configure a transform camera.
+3. After adding the components and their attributes, click **Save config**.
+4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+   The transform camera will now show detections with bounding boxes around the object.
 
 ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
 
-## Code
-
-The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`.
-
-{{% alert title="Tip" color="tip" %}}
-
-Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the vision service methods.
-
-{{% /alert %}}
+The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -254,9 +252,8 @@ my_detector = VisionClient.from_robot(robot, "my_detector")
 
 detections = await my_detector.get_detections_from_camera(cam1)
 
-# If you need to get an image first and then run detections on it,
-# you can do it this way (generally slower but useful if you need to
-# use the image afterwards):
+# If you need to use the image based on the detections, get the image first
+# and then run detections on it. This process is slower.
 img = await cam1.get_image()
 detections_from_image = await my_detector.get_detections(img)
 
@@ -296,9 +293,8 @@ if len(directDetections) > 0 {
     logger.Info(detections[0])
 }
 
-// If you need to get an image first and then run detections on it,
-// you can do it this way (generally slower but useful if you need to
-// use the image afterwards):
+// If you need to use the image based on the detections, get the image first
+// and then run detections on it. This process is slower.
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
@@ -326,6 +322,67 @@ To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.d
 {{% alert title="Tip" color="tip" %}}
 To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
+
+### Existing images
+
+If you would like to test your detector with existing images, load the images and pass them to the detector:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from PIL import Image
+
+robot = await connect()
+# Grab Viam's vision service for the detector
+my_detector = VisionClient.from_robot(robot, "my_detector")
+
+# Load an image
+img = Image.open('test-image.png')
+
+# Apply the detector to the image
+detections_from_image = await my_detector.get_detections(img)
+
+await robot.close()
+```
+
+To learn more about how to use detection, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+"go.viam.com/rdk/config"
+"go.viam.com/rdk/services/vision"
+)
+
+visService, err := vision.from_robot(robot=robot, name='my_detector')
+if err != nil {
+    logger.Fatalf("Cannot get Vision Service: %v", err)
+}
+
+// Load an image
+// img, release, err := camStream.Next(context.Background())
+// defer release()
+
+// Apply the detector to the image
+detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
+if err != nil {
+    logger.Fatalf("Could not get detections: %v", err)
+}
+if len(detectionsFromImage) > 0 {
+    logger.Info(detectionsFromImage[0])
+}
+
+```
+
+To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 
 ## Next Steps
 
