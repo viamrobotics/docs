@@ -58,7 +58,7 @@ To build your own line follower robot, you need the following hardware:
 Go to the [Viam app](https://app.viam.com) and create a new robot called `follower`.
 
 Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/#install-viam-server).
-Follow the instructions until the Viam App shows that your robot has successfully connected.
+Follow the instructions until the Viam app shows that your robot has successfully connected.
 
 ## Configure your components
 
@@ -223,7 +223,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection/) as a vision service.
+   Next, add a vision service [detector](/services/vision/detection/).
    Create an vision service with the name `green_detector`, the type `vision` and the model `color_detector`.
    Then click **Create Service**.
 
@@ -377,7 +377,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test the transform camera.
+Navigate to your [robot's **Control** tab](/manage/fleet/robots/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
