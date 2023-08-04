@@ -1,7 +1,7 @@
 # Welcome to the Viam Documentation
 
 > **Note**
-> Looking to contribute? Check out the [Contributer Guide](https://github.com/viamrobotics/docs/blob/main/CONTRIBUTING.md).
+> Looking to contribute? Check out the [Contributor Guide](https://github.com/viamrobotics/docs/blob/main/CONTRIBUTING.md).
 
 ## Build the docs locally
 

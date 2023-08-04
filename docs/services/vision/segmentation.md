@@ -17,8 +17,8 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 The types of segmenters supported are:
 
-- [**radius_clustering_segmenter**](#configure-a-radius_clustering_segmenter): Radius clustering is a segmenter that identifies well separated objects above a flat plane.
-- [**detector_3d_segmenter**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
+- [**Radius clustering (`radius_clustering_segmenter`)**](#configure-a-radius_clustering_segmenter): A segmenter that identifies well separated objects above a flat plane.
+- [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 
 ## Configure a `radius_clustering_segmenter`
 
@@ -187,7 +187,7 @@ Add the Vision Service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"detector_3dsegmenter"`.
+The following parameters are available for a `detector_3d_segmenter`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |

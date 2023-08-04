@@ -23,7 +23,7 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **mlmodel**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+* **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ## Configure a `mlmodel` classifier
 
@@ -99,7 +99,8 @@ You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
 1. Configure a physical [camera component](../../../components/camera/).
-2. Configure a [transform camera](../../../components/camera/transform/) with the following attributes to view output from the classifier overlaid on images from the physical camera:
+Pass the name of this camera to Vision Service methods.
+2. (Optional) To view output from the classifier overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
 
     ```json
     {
@@ -123,7 +124,13 @@ To be able to interact with the Vision Service you must:
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a classifier vision model on an image from the robot's camera `"cam1"`:
+The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
+
+{{% alert title="Tip" color="tip" %}}
+
+Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -81,15 +81,7 @@ import (
 
 The gantry component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Position](#position) | Get the current positions of the axes of the gantry in mm. |
-| [MoveToPosition](#movetoposition) | Move the axes of the gantry to the desired positions at the requested speeds. |
-| [Home](#home) | Run the homing sequence of the gantry to re-calibrate the axes with respect to the limit switches. |
-| [Lengths](#lengths) | Get the lengths of the axes of the gantry in mm. |
-| [Stop](#stop) | Stop the gantry from moving. |
-| [IsMoving](#ismoving) | Get if the gantry is currently moving. |
-| [DoCommand](#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/gantry.md" >}}
 
 ### Position
 

@@ -10,6 +10,12 @@ tags: ["vision", "computer vision", "CV", "services", "detection"]
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/release-notes/#25-april-2023)_
 
+<div class="td-max-width-on-larger-screens">
+  <div class="alignright" >
+    {{< imgproc alt="A white dog with a bounding box around it labeled 'Dog: 0.71'" src="/services/vision/dog-detector.png" resize="300x" declaredimensions=true >}}
+  </div>
+</div>
+
 _2D Object Detection_ is the process of taking a 2D image from a camera and identifying and drawing a box around the distinct "objects" of interest in the scene.
 Any camera that can return 2D images can use 2D object detection.
 
@@ -24,8 +30,8 @@ The returned detections consist of the bounding box around the identified object
 
 You can use the following types of detectors:
 
-- [**color_detector**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**mlmodel**](#configure-a-mlmodel-detector): A machine learning detector that draws bounding boxes according to a ML model available on the robot’s hard drive.
+- [**Color detection (`color_detector`)**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
+- [**Object detection (`mlmodel`)**](#configure-a-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/services/ml/) available on the robot’s hard drive.
 
 ## Configure a `color_detector`
 
@@ -118,7 +124,7 @@ Add the Vision Service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"color_detector"`.
+The following parameters are available for a `color_detector`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
@@ -215,15 +221,24 @@ You cannot interact directly with the [Vision Service](/services/vision/).
 To be able to interact with the Vision Service you must:
 
 1. Configure a physical [camera component](../../../components/camera/).
-2. Configure a [transform camera](../../../components/camera/transform/) to view output from the detector overlaid on images from the physical camera.
+Pass the name of this camera to Vision Service methods.
+2. (Optional) To view output from the detector overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/).
 
-After adding the component and its attributes, click **Save config**.
+    After adding the component and its attributes, click **Save config**.
 
-Wait for the robot to reload, and then go to the **Control** tab to test the stream of detections.
+    Wait for the robot to reload, and then go to the **Control** tab and open the transform camera card to test the stream of detections.
+
+![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
 
 ## Code
 
-The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
+The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`.
+
+{{% alert title="Tip" color="tip" %}}
+
+Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}

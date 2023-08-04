@@ -83,12 +83,7 @@ import (
 
 The encoder component supports the following methods:
 
-Method Name | Description
------------ | -----------
-[Position](#position) | Get the current position of the encoder.
-[ResetPosition](#resetposition) | Reset the position to zero.
-[GetProperties](#getproperties) | Get the supported properties of this encoder.
-[DoCommand](#docommand) | Send or receive model-specific commands.
+{{< readfile "/static/include/components/apis/encoder.md" >}}
 
 ### Position
 
