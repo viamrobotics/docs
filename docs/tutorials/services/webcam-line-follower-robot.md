@@ -89,14 +89,19 @@ Click on the **Components** subtab and navigate to the **Create component** menu
     Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
     Click **Create Component** to add the camera.
     In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
-    Select `video0`.
+    Select the path to the camera you want to use.
 
-Click **Save config** in the bottom left corner of the screen.
+5. Click **Save config** in the bottom left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+
+{{< alert title="Note" color="note" >}}
+Your `"video_path"` value may be different.
+To find yours, follow [these instructions](/components/camera/webcam/#find-the-video_path).
+{{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -224,8 +229,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
    In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
    Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hex code to put in your config.
-   We used `#19FFD9` to match the color of our green electrical tape.
-   We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+   We used #19FFD9 to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
    Click **Save config** in the bottom left corner of the screen.
 
@@ -378,6 +382,8 @@ Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
 ![A screenshot of the CONTROL tab showing the base card with the show_detections transform camera stream displayed. A green line crosses the left portion of the camera image, and a red box around it is labeled "cyan: 1.00".](/tutorials/webcam-line-follower/bounding.png)
+
+If the camera feed does not render color detector overlays on top of the colored tape, adjust the color hex code and the hue tolerance in the Vision service configuration until it is able to do so successfully.
 
 ## Implement line following
 
