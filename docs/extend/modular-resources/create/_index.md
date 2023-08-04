@@ -75,8 +75,8 @@ from typing_extensions import Self
 
 from viam.components.base import Base
 from viam.components.motor import Motor
-from viam.module.types import Reconfigurable
 from viam.module.module import Module
+from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName, Vector3
 from viam.resource.base import ResourceBase
@@ -88,16 +88,14 @@ class MyBase(Base, Reconfigurable):
     """
     MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
 
-    It inherits from the built-in resource subtype Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
-
-    Additionally, it specifies a constructor function ``MyBase.new_base`` which confirms to the ``resource.types.ResourceCreator`` type required for all models.
+    It inherits from the built-in resource subtype Base, and has the constructor function ``MyBase.new_base``
     """
 
     # Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
     # acme = namespace, demo = family, mybase = model name.
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
-    def __init__(self, name: str, left: str, right: str):
+    def __init__(self, name:str, left: str, right: str):
         super().__init__(name, left, right)
 
     # Constructor
@@ -133,11 +131,11 @@ class MyBase(Base, Reconfigurable):
 
     # move_straight: unimplemented
     async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        raise NotImplementedError
+        pass
 
     # spin: unimplemented
     async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        raise NotImplementedError
+        pass
 
     # set_power: set the linear and angular velocity of the left and right motors on the base
     async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
@@ -154,11 +152,11 @@ class MyBase(Base, Reconfigurable):
 
     # set_velocity: unimplemented
     async def set_velocity(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        raise NotImplementedError
+        pass
 
     # get_properties: unimplemented
     async def get_properties(self, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        raise NotImplementedError
+        pass
 
     # stop: stop the base from moving by stopping both motors
     async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
@@ -168,7 +166,6 @@ class MyBase(Base, Reconfigurable):
     # is_moving: check if either motor on the base is moving with motors' is_powered
     async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
-
 ```
 
 {{% /tab %}}
