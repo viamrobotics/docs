@@ -15,7 +15,7 @@ languages: [ "python" ]
 viamresources: [ "vision", "camera" ]
 level: "Beginner"
 date: "26 August 2022"
-updated: "5 July 2023"
+updated: "4 August 2023"
 cost: 570
 ---
 
@@ -47,17 +47,17 @@ To build your own guardian robot, you need the following hardware:
 
 | Hardware | Approximate price |
 | -------- | ----------------- |
-| **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your [board](/components/board/) using the instructions for your board. | $60 |
-| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/), but any other wheeled base work as long as it can carry the compute module and camera, and can turn in place. | $99+ |
-| **RGB camera**: A common off-the-shelf webcam ([such as this](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera to the front of the rover pointing down towards the floor.** | $30 |
-| **Colored tape**: Any color is suitable as long as the color is somewhat different from the floor color. For our tutorial, we used green electrical tape. | $4 |
+| **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/installation/#prepare-your-board). | $60 |
+| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
+| **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera to the front of the rover pointing down towards the floor.** | $30 |
+| **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
 
 ### Install `viam-server` and connect to your robot
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `follower`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/#install-viam-server).
 Follow the instructions until the Viam App shows that your robot has successfully connected.
 
 ## Configure your components
@@ -218,20 +218,20 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 1. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
+   Next, add a [detector](/services/vision/detection/) as a vision service.
    Create an vision service with the name `green_detector`, the type `vision` and the model `color_detector`.
    Then click **Create Service**.
 
    In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hexadecimal hash to put in your config.
-   We used #19FFD9 to represent the color of green electrical tape.
+   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hex code to put in your config.
+   We used `#19FFD9` to match the color of our green electrical tape.
    We used a segment size of 100 pixels, and a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
    Click **Save config** in the bottom left corner of the screen.
 
-2. **Add a `transform` camera as a visualizer**
+2. (optional) **Add a `transform` camera as a visualizer**
 
-   This step is optional, but if you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
+   If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
    This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
    Click on the **Components** subtab and navigate to the **Create component** menu.
@@ -374,13 +374,14 @@ Click **Save config** in the bottom left corner of the screen.
 ## Test your color detector
 
 Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test the transform camera.
-Click on the transform camera panel and toggle the camera on, you should now be able to view the camera feed with color detector overlays superimposed on the image.
+Click on the transform camera panel and toggle the camera on.
+You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
 ![A screenshot of the CONTROL tab showing the base card with the show_detections transform camera stream displayed. A green line crosses the left portion of the camera image, and a red box around it is labeled "cyan: 1.00".](/tutorials/webcam-line-follower/bounding.png)
 
 ## Implement line following
 
-To make your rover follow your line, you need to install Python and the Viam Python SDK and then write the logic for the line following:
+To make your rover follow your line, you need to install Python and the Viam Python SDK and then write the logic that handles navigation along the line:
 
 ### Requirements
 
@@ -417,10 +418,10 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
    {{% snippet "show-secret.md" %}}
 
-   Copy the robot's address and secret and add them into your code.
+   Copy the robot's address and secret and paste them into the definition for the `connect()` function, replacing the two placeholders shown there.
 
 1. You can run the program from your computer or from your Pi.
-   If you would like to get your program onto your pi, you have a few options.
+   If you would like to get your program onto your Pi, you have a few options.
    If you’re just trying to get this running as quickly as possible, do the following:
 
    1. In your Pi terminal, navigate to the directory where you’d like to save your code.
@@ -496,13 +497,13 @@ The code you are using has several functions:
     await base.stop()
   ```
 
-The `main` function connects to the robot and initializes each component, it then does the following:
+The `main` function connects to the robot and initializes each component, then performs the following tasks:
 
 1. If the color of the line is detected in the top center of the camera frame, the rover drives forward.
-2. When it doesn’t see the line color there, it checks for the color in the camera frame starting on the left.
+2. If the color is not detected in the top center, it checks the left side of the camera frame for the color.
    If it detects the color on the left, the robot turns left.
-   If it doesn’t detect the color on the left, it checks the right and turns right if it detects the color on the right.
-3. After the line is back in the center front of the camera frame, the rover continues forward.
+   If it doesn’t detect the color on the left, it checks the right side of the camera frame, and turns right if it detects the color.
+3. Once the line is back in the center front of the camera frame, the rover continues forward.
 4. When the rover no longer sees any of the line color anywhere in the front portion of the camera frame, it stops and the program ends.
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -593,8 +594,8 @@ If you are wondering what to do next, why not try one of the following ideas:
 
 If your rover keeps driving off the line so fast that the color detector can’t keep up, you can try two things:
 
-- Slow down the move straight and turning speeds of the rover by decreasing the values of `linear_power` and `angular_power`.
-  - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to 1.0 which represents full power).
+- Slow down the forward movement and turning speeds of the rover by decreasing the values of `linear_power` and `angular_power` respectively.
+  - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to `1.0` which represents full power).
 - Position the camera differently, perhaps so that it is higher above the floor but still pointing downward.
 This will give it a wider field of view so it takes longer for the line to go out of view.
 
