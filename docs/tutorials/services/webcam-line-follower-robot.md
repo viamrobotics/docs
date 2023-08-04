@@ -203,7 +203,7 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [Vision Service color detector](/services/vision/detection/#configure-a-color_detector/) to programmatically identify the line to follow.
+You'll use the [Vision Service color detector](/services/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
 But first, you need to get creative and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
