@@ -375,7 +375,7 @@ async def main():
     """This function creates and starts a new module, after adding all desired resource models.
     Resource creators must be registered to the resource registry before the module adds the resource model. 
     """
-    Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new, MyBase.validate_config))
+    Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
     module = Module.from_args()
 
     module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
