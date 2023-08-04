@@ -37,7 +37,7 @@ Follow these instructions to find the appropriate source code before you start t
 The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "**client** interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
 
 View the appropriate `viam-server` client interface to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API.
-This way, you can make the client interface you code return the type of response `viam-server` intends to receive.
+This way, you can make the client interface you code return the type of response `viam-server` expects to receive.
 
 - Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
 - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
@@ -47,9 +47,9 @@ This way, you can make the client interface you code return the type of response
 
 - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
 - For example, the base subtype is defined in <file>rdk/components/base/base.go</file> as shown [on GitHub](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
-- Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file.
+- Base your edits to <file>main.go</file> or <file>main.py</file> on this second file.
 
-3. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
+1. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
 1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
