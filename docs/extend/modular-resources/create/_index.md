@@ -49,7 +49,7 @@ This way, you can make the code in your resource's server methods return the typ
 
    Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file.
 
-3. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
+3. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
 
 1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
