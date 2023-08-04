@@ -33,7 +33,7 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
 Follow these instructions to find the appropriate source code before you start the process:
 
     1. **To prepare to code a new resource model**:
-   The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "server interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
+   The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's server interface, or how your model's server will respond when `viam-server` asks your resource for something through the API.
 
    View the appropriate `viam-server` _client_ interface to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API. 
 This way, you can make the server interface you code return the type of response `viam-server` intends to receive.
