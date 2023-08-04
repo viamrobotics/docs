@@ -75,8 +75,8 @@ from typing_extensions import Self
 
 from viam.components.base import Base
 from viam.components.motor import Motor
-from viam.module.module import Module
 from viam.module.types import Reconfigurable
+from viam.module.module import Module
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName, Vector3
 from viam.resource.base import ResourceBase
@@ -88,7 +88,8 @@ class MyBase(Base, Reconfigurable):
     """
     MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
 
-    It inherits from the built-in resource subtype Base, and has the constructor function ``MyBase.new_base``
+    It inherits from the built-in resource subtype Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
+    Additionally, it specifies a constructor function ``MyBase.new_base`` which confirms to the ``resource.types.ResourceCreator`` type required for all models.
     """
 
     # Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
