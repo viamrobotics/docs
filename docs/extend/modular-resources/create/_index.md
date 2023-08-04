@@ -32,22 +32,22 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
 
 Follow these instructions to find the appropriate source code before you start the process:
 
-    1. **To prepare to code a new resource model**:
-   The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's **client interface**, or how your model's server will respond when `viam-server` asks your resource for something through the API.
+**To prepare to code a new resource model**:
 
-   View the appropriate `viam-server` **client interface** to see what your resource's _responses_ from `viam-server` will look like when your model is utilizing the subtype's API. 
+The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's **client interface**, or how your model's server will respond when `viam-server` asks your resource for something through the API.
+
+View the appropriate `viam-server` **client interface** to see what your resource's _responses_ from `viam-server` will look like when your model is utilizing the subtype's API.
 This way, you can make the client interface you code return the type of response `viam-server` intends to receive.
 
-    Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
-    For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+- Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
+- For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+- Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file.
 
-   Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file.
+ **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
-    2. **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK**:
-    Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
-    For example, the base subtype is defined in <file>rdk/components/base/base.go</file> as shown [on GitHub](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
-
-   Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file.
+- Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
+- For example, the base subtype is defined in <file>rdk/components/base/base.go</file> as shown [on GitHub](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
+- Base your edits to <file>main.go</file> or <file>main.py</file> off of this second file.
 
 3. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
 This main program is the "entry point" to your module.
