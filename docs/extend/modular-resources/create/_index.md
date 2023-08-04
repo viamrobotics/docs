@@ -27,17 +27,19 @@ To create your own modular resource, code a module in Go or Python using the mod
 {{% tab name="New Model" %}}
 Define a new model of a built-in resource subtype:
 
-1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the protobuf API's built-in client of its subtype (ex. `rdk:component:base`).
+1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-servers`'s built-in API client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
-Import your custom model and chosen resource subtype's API into the main program of your module and register them with your chosen SDK.
-Find the appropriate API client in the open-source RDK on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
-Follow these instructions to find those definitions to base your work off of before you start the process:
+
+Follow these instructions to find the appropriate source code before you start the process:
 
     1. **To prepare to code a new resource model**:
-   The methods you code in your model's "driver", <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>, are how your model is able to respond when `viam-server` asks your resource a question as the `Client` of the relevant resource.
-   View the client interface definition to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API so you can match your resource's method's to the appropriate `Client`.
-    Find the client interface definition as defined in the relevant `<resource-name>/client.go` file in the RDK on Viam's GitHub.
-    For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [on GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+   The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "server interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
+
+   View the appropriate `viam-server` _client_ interface to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API. 
+This way, you can make the code in your resource's server methods return the type of response `viam-server` intends to receive.
+
+    Find the relevant client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
+    For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
 
    Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file.
 
