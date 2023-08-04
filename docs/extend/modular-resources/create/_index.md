@@ -40,7 +40,7 @@ View the appropriate `viam-server` client interface to see what your resource's 
 This way, you can make the client interface you code return the type of response `viam-server` intends to receive.
 
 - Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
-- For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+- For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
 - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> off of this first file.
 
  **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
