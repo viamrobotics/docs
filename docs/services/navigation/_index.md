@@ -173,15 +173,7 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 
 The Navigation Service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Mode`](#mode) | Get the mode the service is operating in.
-[`SetMode`](#setmode) | Set the mode the service is operating in.
-[`Location`](#location) | Get the current location of the robot.
-[`Waypoints`](#waypoints) | Get the waypoints currently in the service's data storage.
-[`AddWaypoint`](#addwaypoint) | Add a waypoint to the service's data storage.
-[`RemoveWaypoint`](#removewaypoint) | Remove a waypoint from the service's data storage.
-[`GetObstacles`](#getobstacles) | Get the obstacles currently in the service's data storage.
+{{< readfile "/static/include/services/apis/navigation.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 

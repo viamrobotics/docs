@@ -115,7 +115,7 @@ You can get the version number from a specific model version by clicking on **CO
 The model package config looks like this:
 
 ```json
-{"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
+{"package":"<model_id>/allblack","version":"YYYYMMDDHHMMSS","name":"<model_name>"}
 ```
 
 ### `tflite_cpu` Limitations
