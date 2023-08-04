@@ -92,9 +92,6 @@ Click on the **Components** subtab and navigate to the **Create component** menu
     {{< alert title="Note" color="note" >}}
     Your robot must be connected for automatic path discovery to work.
     {{< /alert >}}
-    {{< alert title="Note" color="note" >}}
-    Your robot must be connected for automatic path discovery to work.
-    {{< /alert >}}
     Select the path to the camera you want to use.
 
 5. Click **Save config** in the bottom left corner of the screen.
