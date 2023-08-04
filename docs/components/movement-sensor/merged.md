@@ -18,10 +18,12 @@ This is especially useful if you want to get readings of position and orientatio
 
 {{% alert title="Usage Tip: Navigation Service" color="tip" %}}
 Aggregating `Position()` from a [`GPS`](/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/components/movement-sensor/#configuration) movement sensor in a `merged` model allows you to reduce velocity error when your robot is trying to [navigate](/services/navigation/).
+
+Configure a [navigation service](/services/navigation/) to use your merged sensor to navigate.
 {{% /alert %}}
 
 Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#configuration).
-Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes as shown:
+Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -103,5 +105,5 @@ Name | Type | Inclusion | Description
 `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration |
 
 Note that only one sensor from each array can be used to retrieve each type of reading.
-The first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime is used by your robot to get that type of reading.
-For instance, in the **JSON Example** above, if both `"vectornav"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read linear acceleration on the robot if `"vectornav"` returns an error at runtime.
+Your robot uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
+For instance, in the **JSON Example** above, if both `"vectornav"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the robot if `"vectornav"` returns an error at runtime.
