@@ -4,9 +4,9 @@ linkTitle: "Configure a Robot"
 weight: 25
 type: "docs"
 description: "Before you can program a robot, you must configure its components and services as well as any modules, remotes, processes and frames."
-image: "/installation/thumbnails/manage.png"
+image: "/installation/thumbnails/configure.svg"
 imageAlt: "Configure a Robot"
-images: ["/installation/thumbnails/manage.png"]
+images: ["/installation/thumbnails/configure.svg"]
 tags: ["manage", "components"]
 ---
 
