@@ -95,7 +95,7 @@ class MyBase(Base, Reconfigurable):
     # acme = namespace, demo = family, mybase = model name.
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
-    def __init__(self, name:str, left: str, right: str):
+    def __init__(self, name: str, left: str, right: str):
         super().__init__(name, left, right)
 
     # Constructor
@@ -131,11 +131,11 @@ class MyBase(Base, Reconfigurable):
 
     # move_straight: unimplemented
     async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
+        raise NotImplementedError
 
     # spin: unimplemented
     async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
+        raise NotImplementedError
 
     # set_power: set the linear and angular velocity of the left and right motors on the base
     async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
@@ -152,11 +152,11 @@ class MyBase(Base, Reconfigurable):
 
     # set_velocity: unimplemented
     async def set_velocity(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
+        raise NotImplementedError
 
     # get_properties: unimplemented
     async def get_properties(self, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
+        raise NotImplementedError
 
     # stop: stop the base from moving by stopping both motors
     async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
