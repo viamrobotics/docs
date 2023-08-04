@@ -221,7 +221,7 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 
 ## Next steps
 
-If you have questions, check out our <a href="/try-viam/faq">FAQ</a> or join our <a href="https://discord.gg/viam">Discord Community</a> ask questions and meet other people working on robots.
+If you have questions, check out our [FAQ](/try-viam/faq/) or join our [Discord Community](https://discord.gg/viam) ask questions and meet other people working on robots.
 
 {{< cards >}}
   {{% card link="/tutorials/get-started/try-viam-sdk" %}}
