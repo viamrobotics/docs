@@ -231,9 +231,9 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hex code to put in your config.
    We used #19FFD9 to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
-   Click **Save config** in the bottom left corner of the screen.
+2. Click **Save config** in the bottom left corner of the screen.
 
-2. (optional) **Add a `transform` camera as a visualizer**
+3. (optional) **Add a `transform` camera as a visualizer**
 
    If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
    This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
@@ -258,7 +258,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    }
    ```
 
-Click **Save config** in the bottom left corner of the screen.
+4. Click **Save config** in the bottom left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
