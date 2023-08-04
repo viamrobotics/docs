@@ -189,7 +189,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your components
 
-Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test your components.
+Navigate to your [robot's **Control** tab](/manage/fleet/robots/#control) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 
 1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
