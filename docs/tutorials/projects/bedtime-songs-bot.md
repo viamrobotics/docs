@@ -56,7 +56,12 @@ Navigate to your robot's page on the app and click on the [**Config** tab](/mana
 First, add your personal computer's webcam to your robot as a [camera](/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
 {{< tabs >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Builder UI" %}}
+
+Click on the **Components** subtab and navigate to the **Create component** menu.
+
+Add your [camera](https://docs.viam.com/components/board/) with the name `cam`, type `camera`, and model `webcam`.
+Click **Create Component**.
 
 ![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
 
@@ -64,7 +69,7 @@ You do not have to edit the attributes of your camera at this point.
 Optionally, select a fixed filepath for the camera from the automated options in the **video path** drop-down menu.
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Raw JSON" %}}
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "components": [
@@ -81,7 +86,6 @@ Optionally, select a fixed filepath for the camera from the automated options in
 {{% /tab %}}
 {{< /tabs >}}
 
-Name your camera `"cam"`.
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your camera.
 
 To view your webcam's image stream, navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
@@ -93,7 +97,7 @@ Click on **Export Screenshot** to capture an image, as shown below:
 Now, configure the [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
 {{< tabs >}}
-{{% tab name="Config Builder" %}}
+{{% tab name="Builder UI" %}}
 
 1. On the **Config** tab, select **Services**, and navigate to **Create service**.
 2. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the drop-down, and name your service `Data-Management-Service`.
@@ -547,7 +551,7 @@ The full example source code for <file>play-songs.go</file> is available on [Git
 
 Now, as shown below, your smart bedtime songs bot knows to play a song whenever it sees a shape on the camera:
 
-{{<gif webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
 
 ## Next Steps
 
