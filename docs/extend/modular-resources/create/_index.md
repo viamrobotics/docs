@@ -36,7 +36,7 @@ Follow these instructions to find the appropriate source code before you start t
    The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "server interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
 
    View the appropriate `viam-server` _client_ interface to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API. 
-This way, you can make the code in your resource's server methods return the type of response `viam-server` intends to receive.
+This way, you can make the server interface you code return the type of response `viam-server` intends to receive.
 
     Find the relevant client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
     For example, the base client is defined in <file>rdk/components/base/client.go</file> as shown [here](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
