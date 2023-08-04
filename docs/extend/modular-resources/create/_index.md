@@ -364,101 +364,25 @@ When executed, it registers the mybase custom model and API helper functions wit
   <summary>Click to view sample code from <file>main.py</file></summary>
 
 ``` python {class="line-numbers linkable-line-numbers"}
-from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
-
-from typing_extensions import Self
+import asyncio
+import sys
 
 from viam.components.base import Base
-from viam.components.motor import Motor
 from viam.module.module import Module
-from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import ResourceName, Vector3
-from viam.resource.base import ResourceBase
-from viam.resource.registry import Registry, ResourceCreatorRegistration
-from viam.resource.types import Model, ModelFamily
-from viam.utils import ValueTypes
+from my_base import MyBase
 
-class MyBase(Base):
+async def main():
+    """This function creates and starts a new module, after adding all desired resource models.
+    Resource creators must be registered to the resource registry before the module adds the resource model. 
     """
-    MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
+    Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new, MyBase.validate_config))
+    module = Module.from_args()
 
-    It inherits from the built-in resource subtype Base, and has the constructor function ``MyBase.new_base``
-    """
+    module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
+    await module.start()
 
-    # Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
-    # acme = namespace, demo = family, mybase = model name.
-    MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
-
-    def __init__(self, name:str, left: str, right: str):
-        super().__init__(name, left, right)
-
-    # Constructor
-    @classmethod
-    def new_base(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        base = cls(config.name)
-        return base
-
-    # Validates JSON Configuration
-    @classmethod
-    def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
-        left_name = config.attributes.fields["motorL"].string_value
-        if left_name == "":
-            raise Exception("A motorL attribute is required for a MyBase component.")
-        right_name= [config.attributes.fields["motorR"].string_value]
-        if right_name == "":
-            raise Exception("A motorR attribute is required for a MyBase component.")
-        return [left_name, right_name]
-
-    # Handles attribute reconfiguration
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
-        left_name = config.attributes.fields["motorL"].string_value
-        right_name = config.attributes.fields["motorR"].string_value
-
-        left_motor = dependencies[Motor.get_resource_name(left_name)]
-        right_motor = dependencies[Motor.get_resource_name(right_name)]
-
-        self.left = cast(Motor, left_motor)
-        self.right = cast(Motor, right_motor)
-
-    """ Implement the methods the Viam RDK defines for the base API (rdk:component:base) """
-
-    # move_straight: unimplemented
-    async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
-
-    # spin: unimplemented
-    async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
-
-    # set_power: set the linear and angular velocity of the left and right motors on the base
-    async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-
-        # stop the base if absolute value of linear and angular velocity is less than .01
-        if abs(linear.y) < 0.01 and abs(angular.z) < 0.01:
-            return self.stop(extra=extra, timeout=timeout)
-
-        # use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors
-        sum = abs(linear.y) + abs(angular.z)
-
-        self.left.set_power(power=((linear.y - angular.z) / sum), extra=extra, timeout=timeout)
-        self.right.set_power(power=((linear.y + angular.z) / sum), extra=extra, timeout=timeout)
-
-    # set_velocity: unimplemented
-    async def set_velocity(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
-
-    # get_properties: unimplemented
-    async def get_properties(self, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
-
-    # stop: stop the base from moving by stopping both motors
-    async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        self.left.stop(extra=extra, timeout=timeout)
-        self.right.stop(extra=extra, timeout=timeout)
-
-    # is_moving: check if either motor on the base is moving with motors' is_powered
-    async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
-        return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
 
 </details>
