@@ -88,10 +88,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
     Click **Create Component** to add the camera.
-    In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
-    {{< alert title="Note" color="note" >}}
-    Your robot must be connected for automatic path discovery to work.
-    {{< /alert >}}
+    If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a drop-down populated with camera paths that have been identified on your machine.
     Select the path to the camera you want to use.
 
 5. Click **Save config** in the bottom left corner of the screen.
@@ -202,7 +199,7 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
    If one or both drive motors are going backwards, you can power down the Pi by running `sudo poweroff`, unplug the battery, and switch the wires to the motor before powering it back on.
    {{< /alert >}}
 
-   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." max-width="600px">}}
+   {{<gif webm_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.webm" mp4_src="/tutorials/webcam-line-follower/lf-viamapp-base-view5.mp4" alt="Driving the base from the Viam app's CONTROL tab." class="aligncenter" max-width="600px">}}
 
 ## Configuring a color detector for the color of your tape line
 
@@ -214,7 +211,9 @@ Sharp corners will be more challenging for the robot to follow so consider creat
 Once you have created your path, set your robot on the line such that the line appears in the front of the camera’s view.
 Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the robot page.
 
-{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" declaredimensions=true alt="The camera view in the control tab on the robot page">}}
+<p>
+{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" class="aligncenter" declaredimensions=true alt="The camera view in the control tab on the robot page">}}
+</p>
 
 Now, let's configure the color detector so your rover can detect the line:
 
