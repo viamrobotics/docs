@@ -89,6 +89,9 @@ Click on the **Components** subtab and navigate to the **Create component** menu
     Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
     Click **Create Component** to add the camera.
     In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+    {{< alert title="Note" color="note" >}}
+    Your robot must be connected for automatic path discovery to work.
+    {{< /alert >}}
     Select the path to the camera you want to use.
 
 5. Click **Save config** in the bottom left corner of the screen.
