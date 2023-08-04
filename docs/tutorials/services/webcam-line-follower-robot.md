@@ -45,7 +45,7 @@ If you'd like to directly see the code, check out the [**Line Follower Code on G
 
 To build your own line follower robot, you need the following hardware:
 
-| Hardware | ~ Price |
+| Hardware | Avg. price |
 | -------- | ----------------- |
 | **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/installation/#prepare-your-board). | $60 |
 | **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
