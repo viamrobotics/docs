@@ -1,14 +1,14 @@
 ---
-title: "Configure an merged movement sensor"
+title: "Configure a merged movement sensor"
 linkTitle: "merged"
 weight: 40
 type: "docs"
-description: "Configure an merged movement sensor."
+description: "Configure a merged movement sensor."
 images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
 
-The `merged` movement sensor model supports a movement sensor that allows you to get multiple types of [`Readings`](/components/movement-sensor/#getreadings), including angular and linear velocity, from *one* movement sensor {{< glossary_tooltip term_id="resource" text="resource" >}} on your robot.
+The `merged` movement sensor model is an abstraction that combines data from multiple movement sensors.
 
 This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources.
 
