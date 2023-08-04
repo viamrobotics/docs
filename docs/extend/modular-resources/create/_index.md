@@ -46,7 +46,7 @@ This way, you can make the client interface you code return the type of response
  **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
 - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
-- For example, the base subtype is defined in <file>rdk/components/base/base.go</file> as shown [on GitHub](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
+- For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
 - Base your edits to <file>main.go</file> or <file>main.py</file> on this second file.
 
 1. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
