@@ -481,7 +481,7 @@ cd `dirname $0`
 exec $PYTHON src/main.py $@
 ```
 
-Make sure that you set up a Python virtual environment in the directory your module is in at this script's execution to compile your resource properly at runtime if using the above script.
+Make sure that you set up a Python virtual environment in the directory your module is in to compile your resource properly at execution if using the above script.
 See the [Python Documentation](https://docs.python-guide.org/dev/virtualenvs/) for help with this.
 
 Include `venv` set-up and manage dependencies in your script as in the following template:
