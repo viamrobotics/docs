@@ -43,7 +43,7 @@ If you'd like to directly see the code, check out the [**Line Follower Code on G
 
 ## Requirements
 
-To build your own guardian robot, you need the following hardware:
+To build your own line follower robot, you need the following hardware:
 
 | Hardware | ~ Price |
 | -------- | ----------------- |
