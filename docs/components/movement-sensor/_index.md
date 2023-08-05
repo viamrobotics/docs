@@ -594,7 +594,7 @@ reset_dict = {
 do_response = await my_movement_sensor.do_command(reset_dict)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

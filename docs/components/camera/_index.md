@@ -304,7 +304,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_camera.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

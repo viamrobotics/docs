@@ -288,7 +288,7 @@ raw_dict = {
 await my_gripper.do_command(raw_dict)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
