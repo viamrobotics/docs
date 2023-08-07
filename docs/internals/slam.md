@@ -4,12 +4,13 @@ linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
 draft: true
-description: "Background and technical information for the Viam SLAM Service, its configuration, its functionality, and its interfaces."
+description: "Background and technical information for the Viam SLAM service, its configuration, its functionality, and its interfaces."
 tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---
 
-SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers. At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various SLAM algorithms that may be useful in their mission.
+SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
+At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various SLAM algorithms that may be useful in their mission.
 
 As of June 01, 2022, we support the following SLAM libraries:
 
@@ -17,7 +18,8 @@ As of June 01, 2022, we support the following SLAM libraries:
 
 ## Current Architecture
 
-The SLAM Service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above. It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
+The SLAM service in rdk (located in /rdk/service/slam) is a wrapper for the C++ SLAM libraries mentioned above.
+It has three roles, interface with an executable C++ binary of the chosen library, start up a data process (if desired), and to pass GRPC requests/responses between servers.
 
 <img src="/services/slam-service-arch.png"/>
 
@@ -26,7 +28,8 @@ The SLAM Service in rdk (located in /rdk/service/slam) is a wrapper for the C++ 
 Coming soon!
 
 TODO: Do we want to discuss that RGBD cameras produce a rgb and depth folder inside data?
---> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (that is rgb, and rgbd + depth). Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
+--> Add an explanation of what kind of subfolders are created for the "mono" case and the "rgbd" case (that is rgb, and rgbd + depth).
+Elaborate on what the user should keep in mind when creating & integrating their own slam libraries, and whether or not it is important for them to document the subfolders that are created.
 
 <pre>
 .
@@ -36,13 +39,18 @@ TODO: Do we want to discuss that RGBD cameras produce a rgb and depth folder ins
     └── config
 </pre>
 
-The implemented SLAM libraries rely on the filename to know when this data was generated and what sensor was used to collect it. The format for the timestamp is currently (10 Oct 2022) `"2006-01-02T15_04_05.0000"`. Please note, this will be updated soon to align with the conventions used by the datamanager service.
+The implemented SLAM libraries rely on the filename to know when this data was generated and what sensor was used to collect it.
+The format for the timestamp is currently (10 Oct 2022) `"2006-01-02T15_04_05.0000"`.
+Please note, this will be updated soon to align with the conventions used by the datamanager service.
 
 ### **Interfacing with the C++ Binary**
 
 ### Interfacing with the C++ Binary
 
-The SLAM binaries used are stored in <file>/usr/local/bin</file>. If you wish to use an updated version, copy the new binary into this directory. If you use an identical name for this new binary, you will not need to change the RDK SLAM code. If you use a new name for the binary, then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata. Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
+The SLAM binaries used are stored in <file>/usr/local/bin</file>.
+If you wish to use an updated version, copy the new binary into this directory.
+If you use an identical name for this new binary, you will not need to change the RDK SLAM code. If you use a new name for the binary, then it must be relinked in <file>services/slam/slamlibraries.go</file> in the BinaryLocation metadata.
+Note: a new binary with a different name can be stored anywhere as long as it is included in your PATH.
 
 ## **RDK Config**
 
@@ -73,12 +81,13 @@ Current options are cartographer or orbslamv3.
 
 **data_dir** (string): This is the data directory used for saving input sensor/map data and output maps/visualizations.
 It has an architecture consisting of three internal folders, config, data and map.
-If these have not been provided, they will be created by the SLAM Service.
+If these have not been provided, they will be created by the SLAM service.
 The data in the data directory also dictate what type of SLAM will be run:
 
 - If no map is provided in the data folder, the SLAM algorithm will generate a new map using all the provided data (PURE MAPPING MODE)
 
-- If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used. (PURE LOCALIZATION MODE/UPDATING MODE)
+- If a map is found in the data folder, it will be used as a priori information for the SLAM run and only data generated after the map will be used.
+  (PURE LOCALIZATION MODE/UPDATING MODE)
 
 - If a map_rate_sec is provided, then the system will overlay new data on any given map (PURE MAPPING MODE/UPDATING MODE)
 
@@ -118,7 +127,8 @@ You can find details on which inputs you can include for the available libraries
 
 #### OrbSLAM
 
-OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (as "mono" or "rgbd"). In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
+OrbSLAM can perform sparse SLAM using monocular or RGB-D images (not stereo); this must be specified in the config_params (as "mono" or "rgbd").
+In addition the follow variables can be added to fine-tune cartographer's algorithm, all of which are optional:
 
 <table>
     <tr>

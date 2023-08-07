@@ -1,7 +1,7 @@
 ---
 title: "Export Data"
 linkTitle: "Export Data"
-description: "Export data from the Data Management Service."
+description: "Export data from the data management service."
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
@@ -15,7 +15,7 @@ go install go.viam.com/rdk/cli/viam@latest
 viam auth
 ```
 
-To export data from the Data Management Service in the cloud:
+To export data from the data management service in the cloud:
 
 1. Navigate to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
 2. Below the **SEARCH** button in the **Filtering** panel, click **Copy Export Command** to copy the export command to the clipboard.

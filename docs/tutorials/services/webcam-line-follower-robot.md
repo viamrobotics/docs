@@ -28,11 +28,11 @@ cost: 570
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/detection/">Vision Service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/detection/">vision service color detector</a>.
 
 **What you will learn**:
 
-- How to use the [Vision Service](/services/vision/)'s [color detectors](/services/vision/detection/#configure-a-color_detector)
+- How to use the [vision service](/services/vision/)'s [color detectors](/services/vision/detection/#configure-a-color_detector)
 - How to use the [Python SDK](https://python.viam.dev/), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -203,7 +203,7 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [Vision Service color detector](/services/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
+You'll use the [vision service color detector](/services/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
 But first, you need to get creative and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
@@ -611,7 +611,7 @@ This will give it a wider field of view so it takes longer for the line to go ou
 
 Things to try:
 
-- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/services/vision/detection/#configure-a-color_detector) to your Vision Service parameters.
+- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/services/vision/detection/#configure-a-color_detector) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
 Be sure to update your `detect_color` parameter accordingly.

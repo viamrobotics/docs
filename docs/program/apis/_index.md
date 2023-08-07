@@ -276,49 +276,49 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 ### Base Remote Control
 
-The [Base Remote Control Service](/services/base-rc/) supports the following methods:
+The [base remote control service](/services/base-rc/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/base-rc.md" >}}
 
 ### Data Management
 
-The [Data Management Service](/services/data/) supports the following methods:
+The [data management service](/services/data/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
 ### MLModel
 
-The [ML Model Service](/services/ml/) supports the following methods:
+The [ML model service](/services/ml/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/ml.md" >}}
 
 ### Motion
 
-The [Motion Service](/services/motion/) supports the following methods:
+The [motion service](/services/motion/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/motion.md" >}}
 
 ### Navigation
 
-The [Navigation Service](/services/navigation/) supports the following methods:
+The [navigation service](/services/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/navigation.md" >}}
 
 ### Sensors
 
-The [Sensors Service](/services/sensors/) supports the following methods:
+The [sensors service](/services/sensors/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/sensors.md" >}}
 
 ### SLAM
 
-The [SLAM Service](/services/slam/) supports the following methods:
+The [SLAM service](/services/slam/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/slam.md" >}}
 
 ### Vision
 
-Different [Vision Service](/services/vision/) models support different methods:
+Different [vision service](/services/vision/) models support different methods:
 
 {{< readfile "/static/include/services/apis/vision.md" >}}
 
@@ -431,7 +431,7 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 ### FrameSystemConfig
 
-Get the configuration of the Frame System of a given robot.
+Get the configuration of the frame system of a given robot.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -447,7 +447,7 @@ Get the configuration of the Frame System of a given robot.
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a list of each of the reference frames configured on the robot.
 frame_system = await robot.get_frame_system_config()
-print(f"Frame System Configuration: {frame_system}")
+print(f"frame system donfiguration: {frame_system}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
@@ -467,7 +467,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Print the Frame System configuration
+// Print the frame system configuration
 frameSystem, err := robot.FrameSystemConfig(context.Background(), nil)
 fmt.Println(frameSystem)
 ```
@@ -486,7 +486,7 @@ fmt.Println(frameSystem)
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#frameSystemConfig).
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Get the Frame System configuration.
+// Get the frame system configuration.
 console.log('FrameSytemConfig:', await robot.frameSystemConfig());
 ```
 

@@ -30,20 +30,20 @@ It is slower than other segmenters and can take up to 30 seconds to segment a sc
 {{% tab name="Builder" %}}
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision Service to.
+Click on the robot you wish to add the vision service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
-To create a [Vision Service](/services/vision/):
+To create a [vision service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
 3. Select **Radius Clustering Segmenter** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for radius_clustering_segmenter](/services/vision/radius_clustering_segmenter.png)
+![Create vision service for radius_clustering_segmenter](/services/vision/radius_clustering_segmenter.png)
 
-In your Vision Service's panel, fill in the **Attributes** field.
+In your vision service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -57,7 +57,7 @@ In your Vision Service's panel, fill in the **Attributes** field.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the Vision Service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your raw JSON configuration:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -119,20 +119,20 @@ The label and the pixels associated with the 2D detections become the label and 
 {{% tab name="Builder" %}}
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision Service to.
+Click on the robot you wish to add the vision service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
-To create a [Vision Service](/services/vision/):
+To create a [vision service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
 3. Select **Detector to 3D Segmenter** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for detector_3d_segmenter](/services/vision/detector_3d_segmenter.png)
+![Create vision service for detector_3d_segmenter](/services/vision/detector_3d_segmenter.png)
 
-In your Vision Service's panel, fill in the **Attributes** field.
+In your vision service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -146,7 +146,7 @@ In your Vision Service's panel, fill in the **Attributes** field.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the Vision Service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your raw JSON configuration:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -200,7 +200,7 @@ Click **Save config** and head to the **Components** tab.
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a segmenter vision model on an image from the robot's camera `"camera_1"`:
+The following code gets the robot’s vision service and then runs a segmenter vision model on an image from the robot's camera `"camera_1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -209,7 +209,7 @@ The following code gets the robot’s Vision Service and then runs a segmenter v
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
-# Grab Viam's Vision Service for the segmenter
+# Grab Viam's vision service for the segmenter
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
 objects = await my_segmenter.get_object_point_clouds("cam1")
@@ -233,7 +233,7 @@ cameraName := "cam1" // make sure to use the same component name that you have i
 
 visService, err := vision.from_robot(robot=robot, name='my_segmenter')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
@@ -252,5 +252,5 @@ To learn more about how to use segmentation, see the [Go SDK docs](https://pkg.g
 {{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
-To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
+To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}

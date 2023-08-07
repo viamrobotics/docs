@@ -13,7 +13,7 @@ icon: "/services/icons/data-capture.svg"
 # SME: Aaron Casas
 ---
 
-The Data Management Service captures data from Viam components and securely syncs data to Viam's cloud.
+The data management service captures data from Viam components and securely syncs data to Viam's cloud.
 You can configure capture frequency individually for each component.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
@@ -21,7 +21,7 @@ The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud
 
 ## Data Capture
 
-The Data Management Service captures data from one or more components locally on the robot's storage.
+The data management service captures data from one or more components locally on the robot's storage.
 The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
 
 If a robot restarts for any reason, capture automatically resumes.
@@ -45,7 +45,7 @@ To configure data capture, see [data capture](../data/configure-data-capture/).
 
 ## Cloud Sync
 
-The Data Management Service securely syncs the specified data to the cloud at the user-defined frequency.
+The data management service securely syncs the specified data to the cloud at the user-defined frequency.
 Viam does not impose a minimum or maximum on the frequency of data syncing.
 However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
 
@@ -63,10 +63,10 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
 
 ### Considerations
 
-- **Security**: The Data Management Service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
+- **Security**: The data management service uses {{< glossary_tooltip term_id="grpc" text="gRPC" >}} calls to send and receive data, so your data is encrypted while in flight.
   When data is stored in the cloud, it is encrypted at rest by the cloud storage provider.
 
-- **Data Integrity**: Viam's Data Management Service is designed to safeguard against data loss, data duplication and otherwise compromised data.
+- **Data Integrity**: Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
 
     If the internet becomes unavailable or the robot needs to restart during the sync process, the sync is interrupted.
     If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
@@ -79,30 +79,25 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
 If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
     {{< /alert >}}
 
-<!-- TODO(npentrel): uncomment once implemented
-- **Bandwidth**: Viam’s data synchronization is designed with bandwidth limitations in mind.
-    The Data Management Service compresses data before sending it over the network.
-    Currently, you cannot control the amount of bandwidth Viam's data synchronization processes uses. -->
-
 - **Storage** When a robot loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
 
     To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
 
     {{< alert title="Warning" color="warning" >}}
-Currently, the Data Management Service can use the entire available disk space to store data.
+Currently, the data management service can use the entire available disk space to store data.
 If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
 Currently, Viam does not safeguard against this.
     {{< /alert >}}
 
 ## API
 
-The Data Management Service supports the following methods:
+The data management service supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a Data Management Service called `"my_data_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -143,7 +138,7 @@ err := data.Sync(context.Background(), nil)
 
 ## Next Steps
 
-To use the Data Management Service, [add the Data Management Service](configure-data-capture/#add-the-data-management-service) to your robot.
+To use the data management service, [add the data management service](configure-data-capture/#add-the-data-management-service) to your robot.
 Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).

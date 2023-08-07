@@ -310,7 +310,7 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 
 ## Next Steps and References
 
-If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
+If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
 {{< cards >}}
   {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}

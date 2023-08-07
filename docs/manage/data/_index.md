@@ -16,7 +16,7 @@ Data Management is built into Viam allowing you to capture, sync, [view](view/),
 {{< cards >}}
 {{% manualcard %}}
 <h4>Capture and sync data</h4>
-<p>To configure data capture and cloud synchronization, see <a href="../../services/data/">Data Management Service</a>.</p>
+<p>To configure data capture and cloud synchronization, see <a href="../../services/data/">data management service</a>.</p>
 {{% /manualcard %}}
 
 {{% manualcard %}}

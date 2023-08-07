@@ -3,19 +3,19 @@ title: "Sensors Service"
 linkTitle: "Sensors"
 weight: 70
 type: "docs"
-description: "The Sensors Service provides a central interface for all of your robot's sensors."
+description: "The sensors service provides a central interface for all of your robot's sensors."
 tags: ["sensor", "services"]
 icon: "/services/icons/sensor.svg"
 images: ["/services/icons/sensor.svg"]
 # SME: Cheuk
 ---
 
-The Sensors Service is a built-in service that provides a central interface to all of your robot's [sensors](/components/sensor/), regardless of the sensor model.
+The sensors service is a built-in service that provides a central interface to all of your robot's [sensors](/components/sensor/), regardless of the sensor model.
 With it you can obtain readings from multiple sensors on your robot at once.
 
 ## API
 
-The Sensors Service supports the following methods:
+The sensors service supports the following methods:
 
 {{< readfile "/static/include/services/apis/sensors.md" >}}
 
@@ -44,7 +44,7 @@ Returns a list containing the `name` of each available sensor.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/sensors/index.html#viam.services.sensors.SensorsClient.get_sensors).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Access the Sensors Service
+# Access the sensors service
 sensors_svc = SensorsClient.from_robot(robot=robot, name="builtin")
 
 # Get available sensors
@@ -68,7 +68,7 @@ sensors = await sensors_svc.get_sensors()
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/sensors#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Access the Sensors Service
+// Access the sensors service
 sensorsService, err := sensors.FromRobot(robot, "builtin")
 if err != nil {
   logger.Fatal(err)
@@ -101,7 +101,7 @@ Returns a list of sensor readings from a given list of sensors.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/sensors/index.html#viam.services.sensors.SensorsClient.get_readings).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Access the Sensors Service
+# Access the sensors service
 sensors_svc = SensorsClient.from_robot(robot=robot, name="builtin")
 
 # Get available sensors
@@ -129,7 +129,7 @@ readings = await sensors_svc.get_readings(sensors)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/sensors#Service).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Access the Sensors Service
+// Access the sensors service
 sensorsService, err := sensors.FromRobot(robot, "builtin")
 if err != nil {
   logger.Fatal(err)

@@ -18,12 +18,12 @@ swap:
   Viam-Server: viam-server
   Config Tab: CONFIG tab
   Config tab: CONFIG tab
-  Vision service: Vision Service
-  vision service: Vision Service
-  Motion service: Motion Service
-  motion service: Motion Service
-  slam service: SLAM Service
-  Slam service: SLAM Service
-  SLAM service: SLAM Service
-  Data Management service: Data Management Service
-  Data Management service: Data Management Service
+  Vision service: vision service
+  Vision Service: vision service
+  Motion service: motion service
+  Motion Service: motion service
+  slam service: SLAM service
+  Slam service: SLAM service
+  SLAM Service: SLAM service
+  Data Management Service: data management service
+  Data Management service: data management service

@@ -311,7 +311,7 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 
 {{% alert title="Info" color="info" %}}
 
-These reference frames are ingested by the Frame System.
+These reference frames are ingested by the frame system.
 They are not exposed in the [client SDKs](/program/), with one exception.
 If your resource is an [arm component](/components/arm/), you can use the [Kinematics()](/components/arm/#kinematics) method to access its kinematics information.
 

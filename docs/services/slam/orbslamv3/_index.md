@@ -162,7 +162,7 @@ These are generated at runtime, so there is no need to add anything to this fold
 
 {{% alert title="Info" color="info" %}}
 
-If this directory structure is not present at runtime, the SLAM Service creates it.
+If this directory structure is not present at runtime, the SLAM service creates it.
 
 {{% /alert %}}
 
@@ -246,7 +246,8 @@ If you do not already have a dataset from running SLAM live or another dataset y
 
 1. Download Viam's [lab dataset](https://storage.googleapis.com/viam-labs-datasets/viam-office-hallway-1-rgbd.zip).
 
-2. Copy the zipped file to the machine running `viam-server` and unzip it. For example:
+2. Copy the zipped file to the machine running `viam-server` and unzip it.
+   For example:
 
     ```sh {class="command-line" data-prompt="$"}
     scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.

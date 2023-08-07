@@ -51,27 +51,27 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{% tab name="Builder" %}}
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision Service to.
+Click on the robot you wish to add the vision service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
-To create a [Vision Service](/services/vision/):
+To create a [vision service](/services/vision/):
 
 1. Select `vision` as the **Type**.
 2. Enter a name as the **Name**.
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for color detector](/services/vision/color_detector.png)
+![Create vision service for color detector](/services/vision/color_detector.png)
 
-In your Vision Service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
+In your vision service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
 ![Color detector panel with color and hue tolerance selection and a field for the segment size](/services/vision/color-detector-panel.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the Vision Service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your raw JSON configuration:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -150,10 +150,10 @@ Proceed to [Add a camera component and a "transform" model](#add-a-camera-compon
 ## Configure a `mlmodel` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml/).
+To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision Service to.
+Click on the robot you wish to add the vision service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
@@ -166,9 +166,9 @@ Scroll to the **Create Service** section.
 3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](/services/vision/mlmodel.png)
+![Create vision service for mlmodel](/services/vision/mlmodel.png)
 
-In your Vision Service's panel, fill in the **Attributes** field.
+In your vision service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -179,7 +179,7 @@ In your Vision Service's panel, fill in the **Attributes** field.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the Vision Service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your raw JSON configuration:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -217,11 +217,11 @@ Click **Save config** and head to the **Components** tab.
 
 ## Add a camera component and a "transform" model
 
-You cannot interact directly with the [Vision Service](/services/vision/).
-To be able to interact with the Vision Service you must:
+You cannot interact directly with the [vision service](/services/vision/).
+To be able to interact with the vision service you must:
 
 1. Configure a physical [camera component](../../../components/camera/).
-Pass the name of this camera to Vision Service methods.
+Pass the name of this camera to vision service methods.
 2. (Optional) To view output from the detector overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/).
 
     After adding the component and its attributes, click **Save config**.
@@ -236,7 +236,7 @@ The following code gets the robot’s vision service and then runs a color detec
 
 {{% alert title="Tip" color="tip" %}}
 
-Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
+Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the vision service methods.
 
 {{% /alert %}}
 
@@ -284,7 +284,7 @@ if err != nil {
 
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get detections from the camera output
@@ -324,7 +324,7 @@ To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.d
 {{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
-To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
+To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}
 
 ## Next Steps
