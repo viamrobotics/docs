@@ -108,7 +108,7 @@ The arm component supports the following methods:
 
 {{< readfile "/static/include/components/apis/arm.md" >}}
 
-### GetEndPosition
+### Get the end position
 
 Get the current position of the arm as a [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose).
 
@@ -163,7 +163,7 @@ err, pos := myArm.EndPosition(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### MoveToPosition
+### Move to desired position
 
 Move the end of the arm to the desired [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose), relative to the base of the arm.
 
@@ -226,7 +226,7 @@ err := myArm.MoveToPosition(context.Background(), pose: examplePose, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### MoveToJointPositions
+### Move each joint to specified positions
 
 Move each joint on the arm to the position specified in `positions`.
 
@@ -297,7 +297,7 @@ err := myArm.MoveToJointPositions(context.Background(), jointPos, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### JointPositions
+### Get current joint positions
 
 Get the current position of each joint on the arm.
 
@@ -349,7 +349,7 @@ pos, err := my_arm.JointPositions(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Stop
+### Stop motion
 
 Stop all motion of the arm.
 
@@ -436,7 +436,7 @@ k_bytes = kinematics[1]
 {{% /tab %}}
 {{< /tabs >}}
 
-### IsMoving
+### Check if the arm is moving
 
 Get if the arm is currently moving.
 
@@ -491,7 +491,7 @@ logger.Info(is_moving)
 {{% /tab %}}
 {{< /tabs >}}
 
-### DoCommand
+### Perform a command
 
 Execute model-specific commands that are not otherwise defined by the component API.
 For built-in models, model-specific commands are covered with each model's documentation.
