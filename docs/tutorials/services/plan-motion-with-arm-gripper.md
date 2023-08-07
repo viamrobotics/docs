@@ -3,10 +3,10 @@ title: "Plan Motion with an Arm and a Gripper"
 linkTitle: "Plan Motion with an Arm"
 weight: 20
 type: "docs"
-description: "Use the Motion Service to move robot arms and other components."
+description: "Use the motion service to move robot arms and other components."
 webmSrc: "/tutorials/videos/motion_armmoving.webm"
 mp4Src: "/tutorials/videos/motion_armmoving.mp4"
-videoAlt: "An arm moving with the Motion Service"
+videoAlt: "An arm moving with the motion service"
 tags: ["arm", "gripper", "motion", "services"]
 authors: []
 languages: [ "python", "go" ]
@@ -23,7 +23,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 {{< /alert >}}
 
 Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
-The [Motion Service](/services/motion/) enables sophisticated movement involving one or many components of your robot.
+The [motion service](/services/motion/) enables sophisticated movement involving one or many components of your robot.
 
 {{< alert title="Tip" color="tip" >}}
 Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
@@ -48,16 +48,16 @@ For a helpful recap of the code we previously added, look at [the full code samp
 The [robot configuration from the prior tutorial](../accessing-and-moving-robot-arm/#configure-a-robot) should be used for this tutorial.
 We will revisit that robot configuration and add new components during specific sections below.
 
-The Motion Service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
+The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
 All you need is a robot with a component that can move, such as a robotic arm.
 
-## Access the Motion Service
+## Access the motion service
 
-Accessing the Motion Service is very similar to accessing any other component or service within the Viam ecosystem.
+Accessing the motion service is very similar to accessing any other component or service within the Viam ecosystem.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-You must import an additional Python library to access the Motion Service.
+You must import an additional Python library to access the motion service.
 Add the following line to your import list:
 
 ```python
@@ -67,13 +67,13 @@ from viam.services.motion import MotionClient
 Then add the sample code below to your client script:
 
 ```python
-# Access the Motion Service
+# Access the motion service
 motion_service = MotionClient.from_robot(robot, "builtin")
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import an additional Go package to access the Motion Service.
+You must import an additional Go package to access the motion service.
 Add the following line to your import list:
 
 ```go
@@ -94,12 +94,12 @@ if err != nil {
 
 The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
-The `GetPose` method provided by the Motion Service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
+The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 ### Get the `ResourceName`
 
 When you use the [arm API](/components/arm/#api), you call methods on your arm component itself.
-To use the [Motion Service API](/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the Motion Service method.
+To use the [motion service API](/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -120,43 +120,43 @@ myArmResourceName := arm.Named("myArm")
 {{% /tab %}}
 {{< /tabs >}}
 
-Now you are ready to run a Motion Service method on your arm.
+Now you are ready to run a motion service method on your arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 Note the use of a hardcoded literal "world" in the following code example.
-Any components that have frame information (and, as a result, are added to the Frame System) are connected to the "world".
+Any components that have frame information (and, as a result, are added to the frame system) are connected to the "world".
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the pose of myArm from the Motion Service
+# Get the pose of myArm from the motion service
 my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
-print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
+print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 Note the use of `referenceframe.World` in the following code example.
 This is a constant string value in the RDK's `referenceframe` library that is maintained for user and programmer convenience.
-Any components that have frame information (and, as a result, are added to the Frame System) are connected to the "world".
+Any components that have frame information (and, as a result, are added to the frame system) are connected to the "world".
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the pose of myArm from the Motion Service
+// Get the pose of myArm from the motion service
 myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
 if err != nil {
   fmt.Println(err)
 }
-fmt.Println("Position of myArm from the Motion Service:", myArmMotionPose.Pose().Point())
-fmt.Println("Orientation of myArm from the Motion Service:", myArmMotionPose.Pose().Orientation())
+fmt.Println("Position of myArm from the motion service:", myArmMotionPose.Pose().Point())
+fmt.Println("Orientation of myArm from the motion service:", myArmMotionPose.Pose().Orientation())
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-In this example, we are asking the Motion Service where the end of `myArm` is with respect to the root "world" reference frame.
+In this example, we are asking the motion service where the end of `myArm` is with respect to the root "world" reference frame.
 
 ## Describe the robot's working environment
 
-The Motion Service can also use information you provide about the environment around a robot.
+The motion service can also use information you provide about the environment around a robot.
 The world around a robot may be full of objects that you may wish to prevent your robot from running into when it moves.
 There could be many reasons for this: there are places or things in the environment you want the robot to avoid, or you may have mounted your robot to a fixed object, such as a table.
 
@@ -218,16 +218,16 @@ Within the app, the **Frame System** subtab of your robot's **Config** tab gives
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
-  {{<imgproc src="/tutorials/motion/plan_01_frame_system_tab.png" resize="900x" declaredimensions=true alt="A picture of the Frame System tab in use.">}}
+  {{<imgproc src="/tutorials/motion/plan_01_frame_system_tab.png" resize="900x" declaredimensions=true alt="A picture of the frame system tab in use.">}}
 </div>
 
-## Command an arm to move with the Motion Service
+## Command an arm to move with the motion service
 
 In previous examples you controlled motion of individual components.
-Now you will use the Motion Service to control the motion of the robot as a whole.
-You will use the Motion Service's [`Move`](/services/motion/#move) method to execute more general robotic motion.
+Now you will use the motion service to control the motion of the robot as a whole.
+You will use the motion service's [`Move`](/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
-The `worldState` we constructed earlier is also passed in so that the Motion Service takes that information into account when planning.
+The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 
 The sample pose given below can be adjusted to fit your specific circumstances.
 Remember that X, Y, and Z coordinates are specified in millimeters.
@@ -273,13 +273,13 @@ if err != nil {
 <!-- TODO : In the future, we should add some specific information on the importance of the frame chosen as the point of reference for PoseInFrame variables -->
 <!-- ## Managing Pose References -->
 
-## Command other components to move with the Motion Service
+## Command other components to move with the motion service
 
 In this section you will add a new component to your robot.
 One device that is very commonly attached to the end of a robot arm is a [*gripper*](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
-Though various Motion Service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the Motion Service considers other components of the robot (through the [Frame System](/services/frame-system/)) when calculating how to achieve the desired motion.
+Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
+This is possible because the motion service considers other components of the robot (through the [frame system](/services/frame-system/)) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 
@@ -359,7 +359,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-For the gripper pose, you can change the reference frame information to consider other objects or user-generated frames that exist in the Frame System.
+For the gripper pose, you can change the reference frame information to consider other objects or user-generated frames that exist in the frame system.
 Specifying other reference frames is an easy way to move with respect to those frames.
 For example, you can specify a pose that is 100 millimeters above the table obstacle featured earlier in this tutorial.
 You do not need to calculate that exact pose with respect to the **arm** or **world**.
@@ -368,7 +368,7 @@ This has implications for how motion is calculated, and what final configuration
 
 ## Next steps
 
-If you would like to continue onto working with Viam's Motion Service, check out one of these tutorials:
+If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
 {{< cards >}}
   {{% card link="/tutorials/projects/claw-game/" %}}
@@ -422,7 +422,7 @@ async def main():
     my_arm_joint_positions = await my_arm_component.get_joint_positions()
     print(f"myArm get_joint_positions return value: {my_arm_joint_positions}")
 
-    # Command a joint position move: move the forearm of the arm slightly up 
+    # Command a joint position move: move the forearm of the arm slightly up
     cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
     await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 
@@ -431,12 +431,12 @@ async def main():
     cmd_arm_pose.z += 100.0
     await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
-    # Access the Motion Service
+    # Access the motion service
     motion_service = MotionClient.from_robot(robot, "builtin")
 
-    # Get the pose of myArm from the Motion Service
+    # Get the pose of myArm from the motion service
     my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
-    print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
+    print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 
     # Add a table obstacle to a WorldState
     table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
@@ -536,7 +536,7 @@ func main() {
   }
   fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
-  // Command a joint position move: move the forearm of the arm slightly up 
+  // Command a joint position move: move the forearm of the arm slightly up
   cmdJointPositions := &armapi.JointPositions{Values: []float64{0.0, 0.0, -30.0, 0.0, 0.0, 0.0}}
   err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
   if err != nil {
@@ -557,19 +557,19 @@ func main() {
     fmt.Println(err)
   }
 
-  // Access the Motion Service
+  // Access the motion service
   motionService, err := motion.FromRobot(robot, "builtin")
   if err != nil {
     logger.Fatal(err)
   }
 
-  // Get the pose of myArm from the Motion Service
+  // Get the pose of myArm from the motion service
   myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
   if err != nil {
     fmt.Println(err)
   }
-  fmt.Println("Position of myArm from the Motion Service:", myArmMotionPose.Pose().Point())
-  fmt.Println("Orientation of myArm from the Motion Service:", myArmMotionPose.Pose().Orientation())
+  fmt.Println("Position of myArm from the motion service:", myArmMotionPose.Pose().Point())
+  fmt.Println("Orientation of myArm from the motion service:", myArmMotionPose.Pose().Orientation())
 
   // Add a table obstacle to a WorldState
   obstacles := make([]spatialmath.Geometry, 0)

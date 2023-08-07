@@ -129,11 +129,11 @@ Examples:
 ```sh {class="command-line" data-prompt="$"}
 # export tabular data to /home/robot/data for org abc, location 123
 viam data export --destination=/home/robot/data --data_type=tabular \
---org_ids=abc --location_ids=123
+--org-ids=abc --location-ids=123
 
 # export binary data from all orgs and locations, component name myComponent
-viam data export --destination=/home/robot/data --data_type=binary \
---component_name myComponent
+viam data export --destination=/home/robot/data --data-type=binary \
+--component-name myComponent
 ```
 
 #### Command options
@@ -149,21 +149,21 @@ viam data export --destination=/home/robot/data --data_type=binary \
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--destination`      | output directory for downloaded data       |`export`|true |
-| `--data_type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
-| `--component_name`      | filter by specified component name  |`export`, `delete`| false |
-| `--component_type`     | filter by specified component type       |`export`, `delete`|false |
-| `--component_model`   | filter by specified component model       |`export`, `delete`|false |
+| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
+| `--component-name`      | filter by specified component name  |`export`, `delete`| false |
+| `--component-type`     | filter by specified component type       |`export`, `delete`|false |
+| `--component-model`   | filter by specified component model       |`export`, `delete`|false |
 | `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`|false |
 | `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`|false |
-| `--location_ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
+| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
 | `--method`       | filter by specified method       |`export`, `delete`|false |
-| `--mime_types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
-| `--org_ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
+| `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
 | `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part_id`      | filter by specified part id      |`export`, `delete`|false |
-| `--part_name`     | filter by specified part name       |`export`, `delete`|false |
-| `--robot_id`     | filter by specified robot id       |`export`, `delete`|false |
-| `--robot_name`      | filter by specified robot name       |`export`, `delete`|false |
+| `--part-id`      | filter by specified part id      |`export`, `delete`|false |
+| `--part-name`     | filter by specified part name       |`export`, `delete`|false |
+| `--robot-id`     | filter by specified robot id       |`export`, `delete`|false |
+| `--robot-name`      | filter by specified robot name       |`export`, `delete`|false |
 | `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
 
 ### locations

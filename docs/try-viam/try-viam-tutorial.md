@@ -8,6 +8,7 @@ image: "/try-viam/rover-resources/viam-rover/rover-front.jpg"
 imageAlt: "The front of the assembled Viam Rover"
 images: ["/try-viam/rover-resources/viam-rover/rover-front.jpg"]
 tags: ["try viam", "app"]
+no_list: true
 ---
 
 _Try Viam_ is a way to try out the Viam platform without setting up any hardware yourself.
@@ -220,10 +221,10 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 
 ## Next steps
 
+If you have questions, check out our [FAQ](/try-viam/faq/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
+
 {{< cards >}}
   {{% card link="/tutorials/get-started/try-viam-sdk" %}}
   {{% card link="/tutorials/services/try-viam-color-detection" %}}
   {{% card link="/try-viam/rover-resources" %}}
 {{< /cards >}}
-
-{{< snippet "social.md" >}}

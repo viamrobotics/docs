@@ -3,7 +3,7 @@ title: "A Person Detection Security Robot That Sends You Photos"
 linkTitle: "Detect a Person and Send a Photo"
 weight: 50
 type: "docs"
-description: "Use the Vision Service and the Python SDK to send yourself a text message when your webcam detects a person."
+description: "Use the vision service and the Python SDK to send yourself a text message when your webcam detects a person."
 image: "/tutorials/send-security-photo/text-message.png"
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
 images: ["/tutorials/send-security-photo/text-message.png"]
@@ -30,7 +30,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [Vision Service](/services/vision/) and the [ML Model Service](/services/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/services/vision/) and the [ML model service](/services/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -52,7 +52,8 @@ You will use the following software in this tutorial:
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
   Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [yagmail](https://github.com/kootenpv/yagmail)
-- A Gmail account to send emails. You can use an existing account, or create a new one.
+- A Gmail account to send emails.
+  You can use an existing account, or create a new one.
 
 ## Configure your robot on the Viam app
 
@@ -99,7 +100,7 @@ To use the provided Machine Learning model, copy the <file>[effdet0.tflite](http
 
 Click on the **Services** subtab and navigate to the **Create service** menu.
 
-1. **Configure the ML Model Service**
+1. **Configure the ML model service**
 
     Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
     Click **Create service**.
@@ -120,7 +121,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
     ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
 
-    In the new Vision Service panel, configure your service.
+    In the new vision service panel, configure your service.
 
     ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 
@@ -259,7 +260,7 @@ async def main():
 
     N = 100
     for i in range(N):
-        #make sure that your camera name in the app matches "my-camera"       
+        #make sure that your camera name in the app matches "my-camera"
         detections = await detector.get_detections_from_camera("my-camera")
         found = False
         for d in detections:
@@ -346,7 +347,7 @@ There's nobody here, don't send a message
 
 ## Summary and next steps
 
-In this tutorial, you learned how to build a security robot using the Vision Service, the ML Model Service, your computer, and your mobile phone, and we all learned not to trust Steve.
+In this tutorial, you learned how to build a security robot using the vision service, the ML model service, your computer, and your mobile phone, and we all learned not to trust Steve.
 
 Have you heard about the chocolate box thief?
 He's always got a few Twix up his Steve.

@@ -1,7 +1,7 @@
 ---
 title: "The Navigation Service"
 linkTitle: "Navigation"
-description: "The Navigation Service uses GPS to autonomously navigate a rover to user defined endpoints."
+description: "The navigation service uses GPS to autonomously navigate a rover to user defined endpoints."
 type: docs
 weight: 60
 no_list: true
@@ -11,7 +11,7 @@ tags: ["navigation", "services", "base", "rover"]
 # SMEs: Raymond
 ---
 
-The Navigation service is the stateful definition of Viam's [Motion Service](/services/motion/).
+The Navigation service is the stateful definition of Viam's [motion service](/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
 Once these waypoints are added and the mode of the service is [set to `MODE_WAYPOINT`](#setmode), the service begins to define the robot's path.
 
@@ -114,23 +114,23 @@ The following attributes are available for `Navigation` services:
 | `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the Navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. |
 | `base` | string | **Required** | The `name` you have configured for the [base](/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
-| `motion_service` | string | Optional | The `name` of the [Motion Service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a Motion Service to your robot, the default Motion Service will be used. Reference this default service in your code with the name `"builtin"`. |
+| `motion_service` | string | Optional | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `60` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.3` |
-| `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [Motion Service](/services/motion/) for more information. |
+| `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [motion service](/services/motion/) for more information. |
 
-### Configure and calibrate the Frame System Service for GPS Navigation
+### Configure and calibrate the frame system service for GPS navigation
 
 {{% alert title="Info" color="info" %}}
 
-The [Frame System Service](/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a robot within a coordinate system configured by the user.
+The [frame system service](/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a robot within a coordinate system configured by the user.
 
 It stores the required contextual information for Viam's services like [Motion](/services/motion/) and [Vision](/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/components/movement-sensor/).
 
 {{% /alert %}}
 
-To make sure your rover base's autonomous GPS navigation with the Navigation Service is accurate, configure and calibrate the Frame System Service for the components of your robot.
-To start, add the Frame System Service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
+To make sure your rover base's autonomous GPS navigation with the navigation service is accurate, configure and calibrate the frame system service for the components of your robot.
+To start, add the frame system service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
 - Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
@@ -156,9 +156,9 @@ To start, add the Frame System Service to your rover [base](/components/base/) a
 
     In other words, designate the origin of the base as `(0,0,0)`, and measure the distance between the origin of the base and the origin of the sensor to obtain the coordinates of the **Translation**.
 
-    See [the Frame System Service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
+    See [the frame system service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
 
-Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the Navigation Service:
+Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the navigation service:
 
 - After configuring your robot, navigate to the **Control** page and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
@@ -166,22 +166,14 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
   - Navigate back to your robot's **Config** page.
   Scroll to the card with the name of your movement sensor.
   Adjust the **Orientation** of the frame to compensate for the mismatch.
-  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your robot to be oriented accurately within the Frame System.
+  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your robot to be oriented accurately within the frame system.
   - If you cannot verify this, repeat as necessary.
 
 ## API
 
-The Navigation Service supports the following methods:
+The navigation service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Mode`](#mode) | Get the mode the service is operating in.
-[`SetMode`](#setmode) | Set the mode the service is operating in.
-[`Location`](#location) | Get the current location of the robot.
-[`Waypoints`](#waypoints) | Get the waypoints currently in the service's data storage.
-[`AddWaypoint`](#addwaypoint) | Add a waypoint to the service's data storage.
-[`RemoveWaypoint`](#removewaypoint) | Remove a waypoint from the service's data storage.
-[`GetObstacles`](#getobstacles) | Get the obstacles currently in the service's data storage.
+{{< readfile "/static/include/services/apis/navigation.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -514,7 +506,7 @@ await my_nav.remove_waypoint(waypoint_id)
 
 Get an array of obstacles currently in the service's data storage.
 These are locations designated for the robot to avoid when navigating.
-See the [Motion Service](/services/motion/) for more information.
+See the [motion service](/services/motion/) for more information.
 
 {{< tabs >}}
 {{% tab name="Go" %}}

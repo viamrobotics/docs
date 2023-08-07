@@ -79,12 +79,7 @@ import (
 
 The input controller component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Controls](#controls) | Get a list of input `Controls` that this Controller provides. |
-| [Events](#events) | Get the current state of the Controller as a map of the most recent [Event](#event-object) for each [Control](#control-field). |
-| [RegisterControlCallback](#registercontrolcallback) | Define a callback function to execute whenever one of the [`EventTypes`](#eventtype-field) selected occurs on the given [Control](#control-field). |
-| [DoCommand](#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/input-controller.md" >}}
 
 ### RegisterControlCallback
 

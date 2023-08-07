@@ -87,12 +87,7 @@ import (
 
 The servo component supports the following methods:
 
-| Method Name | Description |
-| ----------- | ----------- |
-| [Move](#move) | Move the servo to the desired angle. |
-| [Position](#position) | Get the current angle of the servo. |
-| [Stop](#stop) | Stop the servo. |
-| [DoCommand](#docommand) | Send or receive model-specific commands. |
+{{< readfile "/static/include/components/apis/servo.md" >}}
 
 ### Move
 

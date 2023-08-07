@@ -8,19 +8,19 @@ tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-Before you can configure [cloud sync](../#cloud-sync), you must [add the Data Management Service](../configure-data-capture/#add-the-data-management-service).
+Before you can configure [cloud sync](../#cloud-sync), you must [add the data management service](../configure-data-capture/#add-the-data-management-service).
 
-To enable cloud sync, navigate to the **Services** tab on your robot's **Config** tab and enable **Syncing** for your [Data Management Service](../).
+To enable cloud sync, navigate to the **Services** tab on your robot's **Config** tab and enable **Syncing** for your [data management service](../).
 Click **Save Config** at the bottom of the window.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
 
 ![data capture configuration](/tutorials/data-management/data-manager.png)
 
-By default, the Data Management Service syncs data to Viam's cloud every 0.1 minutes, that is every 6 seconds.
+By default, the data management service syncs data to Viam's cloud every 0.1 minutes, that is every 6 seconds.
 To change the sync interval, specify an interval in minutes in the interval field.
 
-{{%expand "Click to view the JSON configuration for the Data Management Service" %}}
+{{%expand "Click to view the JSON configuration for the data management service" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -46,7 +46,7 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 ### Pause sync
 
-You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **Config** tab and disabling **Syncing** for your [Data Management Service](../).
+You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **Config** tab and disabling **Syncing** for your [data management service](../).
 If you have captured data that you do not want to sync, delete the data on the robot before resuming Cloud Sync.
 To delete the data locally, `ssh` into your robot and delete the data in the directory where you capture data.
 
@@ -55,12 +55,12 @@ To delete the data locally, `ssh` into your robot and delete the data in the dir
 You may have additional files you want to sync to the cloud from your robot.
 For example, there may be components on your robot which are not controlled by Viam that are collecting data locally on your robot.
 Or there may be a set of logs indicating the status of the robot at different points in time.
-To include these types of files in cloud sync, click `ADD PATHWAY` in the Data Management Service panel and specify the directory where your files are located on your robot.
-Once you save the configuration, the Data Management Service begins syncing the files in the specified folder at the interval configured for the service.
-To avoid syncing files that are still being written to, the Data Management Service only syncs files that haven't been modified in the previous 10 seconds.
+To include these types of files in cloud sync, click `ADD PATHWAY` in the data management service panel and specify the directory where your files are located on your robot.
+Once you save the configuration, the data management service begins syncing the files in the specified folder at the interval configured for the service.
+To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
 
 {{< alert title="Caution" color="caution" >}}
-If a robot does not write to a file for 10 seconds, the Data Management Service syncs the file and deletes it.
+If a robot does not write to a file for 10 seconds, the data management service syncs the file and deletes it.
 {{< /alert >}}
 
 {{< alert title="Info" color="tip" >}}
@@ -68,7 +68,7 @@ Currently, if the internet becomes unavailable and the sync is interrupted mid-f
 This is only applicable for files in a directory added as an additional sync path.
 {{< /alert >}}
 
-In the example pictured here, the Data Management Service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
+In the example pictured here, the data management service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
 
 ![service config example](/services/data/data-service-config.png)
 

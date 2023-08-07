@@ -11,7 +11,7 @@ no_list: true
 ---
 
 {{% alert title="Stability Notice" color="note" %}}
-The SLAM Service is an experimental feature.
+The SLAM service is an experimental feature.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
@@ -19,7 +19,7 @@ Breaking changes are likely to occur, and occur often.
 [Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your robot to create a map of its surroundings and find its location within that map.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 
-The Viam SLAM Service supports the integration of SLAM as a service on your robot.
+The Viam SLAM service supports the integration of SLAM as a service on your robot.
 You can conduct SLAM with data collected live by a [RPlidar](/extend/modular-resources/examples/rplidar/) or with LIDAR data you provide in configuration, and easily view the map you build on the **Control** tab of your robot's page in the [Viam app](https://app.viam.com):
 
 ![SLAM map built with Viam of a triangle shaped building.](/services/slam/slam-map-example.png)
@@ -35,18 +35,13 @@ Click the model name for configuration instructions.
 
 ## API
 
-The SLAM Service supports the following methods:
+The SLAM service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`GetPosition`](#getposition) | Get the current position of the specified source component in the point cloud SLAM map.
-[`GetPointCloudMap`](#getpointcloudmap) | Get the point cloud SLAM map.
-[`GetInternalState`](#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization.
-[`GetLatestMapInfo`](#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map.
+{{< readfile "/static/include/services/apis/slam.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a SLAM Service called `"my_slam_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a SLAM service called `"my_slam_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}

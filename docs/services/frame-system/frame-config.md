@@ -1,7 +1,7 @@
 ---
 title: "Reference Frame Configuration"
 linkTitle: "Configure a Reference Frame"
-description: "How to configure the Frame System in an scenario where a component is fixed to a static object."
+description: "How to configure the frame system in an scenario where a component is fixed to a static object."
 type: docs
 weight: 45
 tags: ["frame system", "services"]
