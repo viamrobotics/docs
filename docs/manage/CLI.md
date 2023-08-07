@@ -300,10 +300,13 @@ The following example demonstrates this workflow for an example module `my-first
 ```sh {class="command-line" data-prompt="$"}
 ## Create a new module 'my-first-module' locally, which creates a placeholder `meta.json` file on the local filesystem:
 viam module create --name 'my-first-module' --org_id 'abc'
+
 ## Edit the newly-created meta.json file with the custom module-specific configuration:
 vi meta.json
+
 ## Update the module with the new configuration:
 viam module update --name 'my-first-module' --org_id 'abc'
+
 ## Upload the new custom module to the Viam Registry:
 viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.0" --module meta.json packaged-module.tar.gz
 ```
@@ -313,8 +316,10 @@ To later make changes to the module, the workflow is similar:
 ```sh {class="command-line" data-prompt="$"}
 ## Edit the same meta.json file from the previous workflow with the new configuration:
 vi meta.json
+
 ## Update the module with the new configuration:
 viam module update --name 'my-first-module' --org_id 'abc'
+
 ## Upload the new custom module to the Viam Registry:
 viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.1" --module meta.json packaged-module.tar.gz
 ```
