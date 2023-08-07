@@ -482,7 +482,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_base.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
