@@ -6,6 +6,7 @@ type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
 icon: "assets/tutorials/bedtime-songs-bot/export-screenshot.png"
+poster: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
 videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
