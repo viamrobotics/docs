@@ -5,7 +5,7 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-image: "assets/tutorials/bedtime-songs-bot/export-screenshot.png"
+image: "/tutorials/bedtime-songs-bot/export-screenshot.png"
 imageAlt: "Image of Tess and their computer."
 images: ["/tutorials/pet-treat-dispenser/preview.png"]
 poster: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
@@ -31,7 +31,7 @@ When I was testing out Viam's ML Model service, I came up with the idea of using
 
 Follow this tutorial to train a machine learning model to make your own "bedtime songs bot" out of a personal computer.
 
-## Get Started
+## Get started
 
 To make your own singing robot, you need the following hardware:
 
@@ -211,7 +211,7 @@ After selecting the image, you will see all of the data that is associated with 
 
 [Add tags](/manage/data/label/#image-tags) for each of the puzzle pieces.
 Type in your desired tag in the **Tags** section and save the tag.
-Since Tess wanted to classify their toys by shape, they used “octagon”, “circle”, “triangle”, “oval”, “rectangle”, “pentagon”, “diamond”, and “square”.
+Since Tess wanted to classify their toys by shape, they used “octagon,” “circle,” “triangle,” “oval,” “rectangle,” “pentagon,” “diamond,” and “square”.
 
 Scroll between your images.
 Add tags for each image that shows an object of the corresponding shape.
