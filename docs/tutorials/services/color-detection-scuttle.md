@@ -21,11 +21,11 @@ cost: 540
 ---
 
 {{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
+There are [breaking changes in the vision service](/appendix/release-notes/#25-april-2023).
 This tutorial has not yet been updated.
 {{< /alert >}}
 
-This tutorial shows how to use the Viam [Vision Service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
+This tutorial shows how to use the Viam [vision service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
 
 {{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
 
@@ -111,10 +111,10 @@ python ~/Desktop/scuttle.py
 
 ## Notes on color detection operation
 
-Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the Vision Service.
+Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the vision service.
 This particular detector is a [color detector](/services/vision/detection/), which means the relevant parameters are `detect_color` (hex string), `hue_tolerance_pct` (float from `0` to `1`), and `segment_size_px` (integer).
 Feel free to configure more detectors with different parameters!
-To learn about all the different detectors and parameters, check out the [Vision Service documentation](/services/vision/).
+To learn about all the different detectors and parameters, check out the [vision service documentation](/services/vision/).
 
 The `leftOrRight()` code splits the screen vertically into thirds (left, center, and right) and makes a determination about which third the object (red ball) is in.
 Within `main()`, this decides how the robot moves (as configured by the 4 given variables).

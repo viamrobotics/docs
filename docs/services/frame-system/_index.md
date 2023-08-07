@@ -1,7 +1,7 @@
 ---
 title: "The Robot Frame System"
 linkTitle: "Frame System"
-description: "The Frame System holds reference frame information for the relative position of components in space."
+description: "The frame system holds reference frame information for the relative position of components in space."
 type: docs
 weight: 45
 no_list: true
@@ -10,11 +10,11 @@ tags: ["frame system", "services"]
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Any robot configured in Viam comes with the Frame System service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
+Any robot configured in Viam comes with the frame system service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
 
-![Visualization of a wheeled base configured with motors and a mounted camera in the Frame System tab of the Viam app UI](/services/frame-system/frame_system_wheeled_base.png)
+![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/services/frame-system/frame_system_wheeled_base.png)
 
-The Frame System is the basis for many of Viam's other services, like [Motion](/services/motion/) and [Vision](/services/vision/).
+The frame system is the basis for many of Viam's other services, like [Motion](/services/motion/) and [Vision](/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 ## Configuration
@@ -81,7 +81,7 @@ Configure the reference frame as follows:
 
 {{% alert title="Info" color="info" %}}
 
-The `Orientation` parameter offers `Types` for ease of configuration, but the Frame System always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
+The `Orientation` parameter offers `Types` for ease of configuration, but the frame system always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
 `Degrees` and `Quaternion` will be converted to `Radians`.
 
 {{% /alert %}}
@@ -102,14 +102,14 @@ For more information about determining the appropriate values for these paramete
 
 ### Visualize the Frame System
 
-You can visualize how your robot is oriented in the Frame System in [the Viam app](https://app.viam.com).
+You can visualize how your robot is oriented in the frame system in [the Viam app](https://app.viam.com).
 Navigate to the **Config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
 
 ![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](/services/frame-system/frame_system_basic.png)
 
-This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a robot's components in the Frame System.
+This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a robot's components in the frame system.
 
 For example:
 
@@ -121,24 +121,24 @@ No reference frame configuration has been specified, so on the **Frame System** 
 
 The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
 
-Add this value to `"X"` in the base's reference frame `Translation` attribute, and the Frame System readjusts to show the base's translation:
+Add this value to `"X"` in the base's reference frame `Translation` attribute, and the frame system readjusts to show the base's translation:
 
 ![Base translated 200mm forwards shown in the Frame System Editor](/services/frame-system/demo_base_edited.png)
 
 The distance from the board to the camera mounted overhead is 50 millimeters.
 
-Add this value to `"Z"` in the camera's reference frame `Translation` attribute, and the Frame System readjusts to show the camera's translation:
+Add this value to `"Z"` in the camera's reference frame `Translation` attribute, and the frame system readjusts to show the camera's translation:
 
 ![Camera translated 50 mm overhead shown in the Frame System Editor](/services/frame-system/demo_camera_edited_1.png)
 
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
-Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the Frame System readjusts to show the camera's orientation:
+Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
 
 ![Camera oriented .5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
 
-Now that the Frame System is accurately configured with the robot's spatial orientation, [Motion Service](/services/motion/) methods that take in reference frame information can be utilized.
+Now that the frame system is accurately configured with the robot's spatial orientation, [motion service](/services/motion/) methods that take in reference frame information can be utilized.
 
 ### Display Options
 
@@ -211,7 +211,7 @@ The resulting tree of reference frames looks like:
 
 ## Access the Frame System
 
-The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the Frame System:
+The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the frame system:
 
 | Method Name | Description |
 | ----- | ----------- |
@@ -334,24 +334,24 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 
 ## Additional Transforms
 
-*Additional Transforms* exist to help the Frame System determine the location of and relationships between objects not initially known to the robot.
+*Additional Transforms* exist to help the frame system determine the location of and relationships between objects not initially known to the robot.
 
 For example:
 
-- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config/), the arm can be managed by the Frame System without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
+- In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
     However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
-    With the [Vision Service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
+    With the [vision service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
     If a [camera](/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 
     The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 
-    With this information, the Frame System could perform the right calculations to express the pose of the object in the `world` reference frame.
+    With this information, the frame system could perform the right calculations to express the pose of the object in the `world` reference frame.
 
 Usage:
 
-- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's Motion Service's [`GetPose`](/services/motion/#getpose) method.
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
 - [`TransformPose`](#access-the-frame-system) has the option to take in these additional transforms.

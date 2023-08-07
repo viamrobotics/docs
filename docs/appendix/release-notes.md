@@ -15,7 +15,7 @@ description: "Release Notes for Viam."
 
 ## Vision Service
 
-The [Vision Service](/services/vision/) is becoming more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
+The [vision service](/services/vision/) is becoming more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
 
 The following **breaking changes** will take effect:
 
@@ -366,7 +366,7 @@ You will no longer be able to add or remove models using the SDKs.
 ### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML Model Service](/services/ml/) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -414,7 +414,8 @@ You will need to first register the machine learning model file with the [ML Mod
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                The code sample included for each SDK dynamically updates as resources are added to the config. We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
+                The code sample included for each SDK dynamically updates as resources are added to the config.
+                We instantiate each resource and provide an example of how to call a simple <code>Get</code> method so that users can start coding right away without needing to import and provide the name of all of the components and services in their config.
 {{<gif webm_src="/appendix/dynamic-code-sample.webm" mp4_src="/appendix/dynamic-code-sample.mp4" alt="Example of the python code sample generated for the Viam Rover fragment">}}
 {{<gif webm_src="/appendix/example-output-try-viam.webm" mp4_src="/appendix/example-output-try-viam.mp4" alt="Example output from running the example code used in the Try Viam experience">}}
 </td>
@@ -429,7 +430,10 @@ You will need to first register the machine learning model file with the [ML Mod
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                Users that want to create web interfaces to control their robots can use the new TypeScript SDK as a client. Currently only web browser apps are supported due to how networking is handled. The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a configurable heartbeat, by default once every 2 seconds. Users can choose to opt-out of this session management.
+                Users that want to create web interfaces to control their robots can use the new TypeScript SDK as a client.
+                Currently only web browser apps are supported due to how networking is handled.
+                The RDK server running on the robot is able to detect if a given SDK client session has lost communication because it tries to maintain a configurable heartbeat, by default once every 2 seconds.
+                Users can choose to opt-out of this session management.
                 <ul>
                 <li>
                     <a href="https://ts.viam.dev/">TypeScript SDK Docs</a>
@@ -451,7 +455,9 @@ You will need to first register the machine learning model file with the [ML Mod
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                Users can now set up a frame system on their robot using a 3D visualizer located in the **Frame System** tab on the config UI. Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames. Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
+                Users can now set up a frame system on their robot using a 3D visualizer located in the **Frame System** tab on the config UI.
+                Setting up the frame system hierarchy of a robot enables the RDK to transform poses between different component reference frames.
+                Users can also give individual components a geometry so that the RDK’s builtin motion planner can avoid obstacles while path planning.
                 <ul>
                 <li>
 {{<gif webm_src="/appendix/frame-system-visualizer.webm" mp4_src="/appendix/frame-system-visualizer.mp4" alt="Example of configuring a frame system for a Viam Rover that has a camera and a lidar">}}
@@ -488,8 +494,10 @@ You will need to first register the machine learning model file with the [ML Mod
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                We have improved the UI of the base control card to make it easier to view multiple camera streams while remotely controlling a base. When a robots config contains SLAM, we also now provide a view of the SLAM Map with a dot to indicate where the robot is currently localized within that map.
-![Base component card UI](/appendix/base-control-card-ui.png)
+                We have improved the UI of the base control card to make it easier to view multiple camera streams while remotely controlling a base.
+                When a robots config contains SLAM, we also now provide a view of the SLAM Map with a dot to indicate where the robot is currently localized within that map.
+                <br>
+{{<imgproc src="/appendix/base-control-card-ui.png" resize="600x" declaredimensions=true alt="Base component card UI">}}
 </td>
         </tr>
     <tbody>
@@ -547,7 +555,7 @@ All component drivers can now declare dependencies, which are used to infer the 
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Users can now set the power of the base from the remote control UI. This sets the power percentage being sent to the motors that are driving the base which determines its overall speed.
+            <td>Users can now set the power of the base from the remote control UI. This sets the power percentage being sent to the motors that are driving the base which determines its overall speed.<br>
 {{<imgproc src="/appendix/base-power-control.png" alt="Base power control in the UI" resize="400x" >}}
 </td>
         </tr>
@@ -579,7 +587,8 @@ All component drivers can now declare dependencies, which are used to infer the 
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                We added a <code>GetLinearAcceleration</code> method to the movement sensor API. This allows us to represent IMUs that are commonly used by hobbyists using the movement sensor interface.
+                We added a <code>GetLinearAcceleration</code> method to the movement sensor API.
+                This allows us to represent IMUs that are commonly used by hobbyists using the movement sensor interface.
             </td>
         </tr>
     <tbody>
@@ -592,7 +601,8 @@ All component drivers can now declare dependencies, which are used to infer the 
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
             <td>
-                We have added support for capsule geometries to our motion planning service. Using this new geometry type, we have also improved our representation of the kinematics of a UR5 arm.
+                We have added support for capsule geometries to our motion planning service.
+                Using this new geometry type, we have also improved our representation of the kinematics of a UR5 arm.
             </td>
         </tr>
     <tbody>
@@ -607,7 +617,9 @@ All component drivers can now declare dependencies, which are used to infer the 
             <td width="120px"><strong>
                 Assertion Error
             </strong></td>
-            <td>We were previously not able to send error messages over webRTC to the python SDK. This meant that users would see an unhelpful error "Assertion Error" message. Now, we are able to surface those errors so that users have more feedback as they program in Python.</td>
+            <td>We were previously not able to send error messages over webRTC to the python SDK.
+            This meant that users would see an unhelpful error "Assertion Error" message.
+            Now, we are able to surface those errors so that users have more feedback as they program in Python.</td>
         </tr>
     <tbody>
 </table>
@@ -718,16 +730,16 @@ You will need to update to at the latest version of the RDK (V3.0.0) to access y
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>We made several improvements to the Motion Service that make it agnostic to the networking topology of a users robot.</td>
+            <td>We made several improvements to the motion service that make it agnostic to the networking topology of a users robot.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
             <td>
                 <ol>
                     <li>Kinematic information is now transferred over the robot API.
-                    This means that the Motion Service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
-                    <li>Arms are now an input to the Motion Service.
-                    This means that the Motion Service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
+                    This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote <code>viam-server</code>.</li>
+                    <li>Arms are now an input to the motion service.
+                    This means that the motion service can plan for a robot that has an arm component regardless of whether the arm is on a main or remote <code>viam-server</code>.</li>
                 </ol>
             </td>
         </tr>
@@ -965,11 +977,11 @@ This breaking change does NOT affect users of the Python SDK.
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM Service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
+            <td>Adding dependencies to services allows Viam to initialize and configure resources in the correct order. For example, if the SLAM service depends on a LiDAR, it will always initialize the LiDAR before the service.</td>
         </tr>
         <tr>
             <td><strong>What does it affect?</strong></td>
-            <td><strong>Breaking Change</strong>: This impacts users of the SLAM Service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
+            <td><strong>Breaking Change</strong>: This impacts users of the SLAM service. Users must now specify which sensors they are using in the <code>depends_on</code> field of the SLAM configuration.
             Other service configurations are not affected.</td>
         </tr>
     <tbody>

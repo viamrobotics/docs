@@ -28,9 +28,9 @@ To create your own modular resource, code a module in Go or Python using the mod
 Define a new model of a built-in resource subtype:
 
 1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in subtype (ex. `rdk:component:base`).
-Import your custom model and API into the main program and register them with your chosen SDK.
 
 2. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
+Import your custom model and API into the main program and register them with your chosen SDK.
 This main program is the "entry point" to your module.
 
 1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
@@ -63,7 +63,7 @@ The Go code for the custom model (<file>mybase.go</file>) and module entry point
 {{< tabs name="Sample SDK Code">}}
 {{% tab name="Python"%}}
 
-<file>my_base.py</file> implements a custom model of the base component built-in resource, "mybase".
+<file>my_base.py</file> implements "mybase", a custom model of the base component.
 
 <details>
   <summary>Click to view sample code from <file>my_base.py</file></summary>
@@ -73,14 +73,16 @@ from typing import ClassVar, Mapping, Sequence, Any, Dict, Optional, cast
 
 from typing_extensions import Self
 
+from viam.components.base import Base
+from viam.components.motor import Motor
 from viam.module.types import Reconfigurable
+from viam.module.module import Module
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName, Vector3
 from viam.resource.base import ResourceBase
+from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.resource.types import Model, ModelFamily
-
-from viam.components.base import Base
-from viam.components.motor import Motor
+from viam.utils import ValueTypes
 
 class MyBase(Base, Reconfigurable):
     """
@@ -95,8 +97,8 @@ class MyBase(Base, Reconfigurable):
     # acme = namespace, demo = family, mybase = model name.
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
-    left: Motor # Left motor
-    right: Motor # Right motor
+    def __init__(self, name: str, left: str, right: str):
+        super().__init__(name, left, right)
 
     # Constructor
     @classmethod
@@ -131,15 +133,11 @@ class MyBase(Base, Reconfigurable):
 
     # move_straight: unimplemented
     async def move_straight(self, distance: int, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
+        raise NotImplementedError
 
     # spin: unimplemented
     async def spin(self, angle: float, velocity: float, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
-
-    # set_velocity: unimplemented
-    async def set_velocity( self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
-        pass
+        raise NotImplementedError
 
     # set_power: set the linear and angular velocity of the left and right motors on the base
     async def set_power(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
@@ -154,6 +152,14 @@ class MyBase(Base, Reconfigurable):
         self.left.set_power(power=((linear.y - angular.z) / sum), extra=extra, timeout=timeout)
         self.right.set_power(power=((linear.y + angular.z) / sum), extra=extra, timeout=timeout)
 
+    # set_velocity: unimplemented
+    async def set_velocity(self, linear: Vector3, angular: Vector3, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        raise NotImplementedError
+
+    # get_properties: unimplemented
+    async def get_properties(self, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+        raise NotImplementedError
+
     # stop: stop the base from moving by stopping both motors
     async def stop(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
         self.left.stop(extra=extra, timeout=timeout)
@@ -162,35 +168,13 @@ class MyBase(Base, Reconfigurable):
     # is_moving: check if either motor on the base is moving with motors' is_powered
     async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
+
 ```
-
-</details>
-<br>
-<file>__init__.py</file> registers the mybase custom model and API helper functions with the SDK.
-
-<details>
-  <summary>Click to view sample code from <file>__init__.py</file></summary>
-
-``` python {class="line-numbers linkable-line-numbers"}
-"""
-This file registers the MyBase model with the Python SDK.
-"""
-
-from viam.components.motor import *
-from viam.components.base import Base
-from viam.resource.registry import Registry, ResourceCreatorRegistration
-
-from .my_base import MyBase
-
-Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
-```
-
-</details>
 
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-<file>mybase.go</file> implements a custom model of the base component built-in resource, "mybase", and registers the new model and API helper functions with the SDK.
+<file>mybase.go</file> implements "mybase", a custom model of the base component,  and registers the new model and API helper functions with the Go SDK.
 
 <details>
   <summary>Click to view sample code from <file>mybase.go</file></summary>
@@ -301,6 +285,11 @@ func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, 
     return errUnimplemented
 }
 
+// Properties: unimplemented
+func (base *MyBase) Spin(ctx context.Context, extra map[string]interface{}) error {
+    return errUnimplemented
+}
+
 // SetPower: sets the linear and angular velocity of the left and right motors on the base
 func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
     // stop the base if absolute value of linear and angular velocity is less than .01
@@ -372,7 +361,7 @@ func init() {
 {{% tab name="Python"%}}
 
 <file>main.py</file> is the Python module's entry point file.
-When executed, it initializes the `mybase` custom model and API helper functions from the registry.
+When executed, it registers the mybase custom model and API helper functions with the Python SDK and creates and starts the new module.
 
 <details>
   <summary>Click to view sample code from <file>main.py</file></summary>
@@ -385,22 +374,18 @@ from viam.components.base import Base
 from viam.module.module import Module
 from .my_base import MyBase
 
-async def main(address: str):
-    """This function creates and starts a new module, after adding all desired resources.
-    Resources must be pre-registered. For an example, see the `__init__.py` file.
-    Args:
-        address (str): The address to serve the module on
+async def main():
+    """This function creates and starts a new module, after adding all desired resource models.
+    Resource creators must be registered to the resource registry before the module adds the resource model. 
     """
-    module = Module(address)
+    Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new))
+    module = Module.from_args()
+
     module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
     await module.start()
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        raise Exception("Need socket path as command line argument")
-
-    asyncio.run(main(sys.argv[1]))
-
+    asyncio.run(main())
 ```
 
 </details>
@@ -493,15 +478,22 @@ For example:
 #!/bin/sh
 cd `dirname $0`
 
+# Create a virtual environment to run our code
+VENV_NAME="venv"
+PYTHON="$VENV_NAME/bin/python"
+
+python3 -m venv $VENV_NAME
+$PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
+
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec python3 -m <your-module-directory-name>.<main-program-filename-without-extension> $@
+exec $PYTHON src/main.py $@
 ```
 
 To make this shell script executable, run the following command in your terminal:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sudo chmod +x <FILEPATH>/<FILENAME>
+sudo chmod +x <your-file-path-to>/<run.sh>
 ```
 
 {{% /tab %}}

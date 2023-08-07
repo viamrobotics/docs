@@ -19,7 +19,7 @@ The ML Model service allows you to deploy machine learning models to your robots
 {{% tab name="Builder" %}}
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the ML Model Service to.
+Click on the robot you wish to add the ML model service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
@@ -115,7 +115,7 @@ You can get the version number from a specific model version by clicking on **CO
 The model package config looks like this:
 
 ```json
-{"package":"<model_id>/allblack","version":"1234567891011","name":"<model_name>"}
+{"package":"<model_id>/allblack","version":"YYYYMMDDHHMMSS","name":"<model_name>"}
 ```
 
 ### `tflite_cpu` Limitations

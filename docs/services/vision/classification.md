@@ -23,14 +23,14 @@ The returned classifications consist of the image's class label and confidence s
 
 The types of classifiers supported are:
 
-* **mlmodel**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+* **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ## Configure a `mlmodel` classifier
 
-To create a `mlmodel` classifier, you need an [ML Model Service with a suitable model](../../ml/).
+To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
 Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the Vision Service to.
+Click on the robot you wish to add the vision service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
@@ -43,9 +43,9 @@ Scroll to the **Create Service** section.
 3. Select **ML Model** as the **Model**.
 4. Click **Create Service**.
 
-![Create Vision Service for mlmodel](/services/vision/mlmodel.png)
+![Create vision service for mlmodel](/services/vision/mlmodel.png)
 
-In your Vision Service's panel, fill in the **Attributes** field.
+In your vision service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -56,7 +56,7 @@ In your Vision Service's panel, fill in the **Attributes** field.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the Vision Service object to the services array in your raw JSON configuration:
+Add the vision service object to the services array in your raw JSON configuration:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -95,11 +95,12 @@ Click **Save config** and head to the **Components** tab.
 
 ## Add a camera component and a "transform" model
 
-You cannot interact directly with the [Vision Service](/services/vision/).
-To be able to interact with the Vision Service you must:
+You cannot interact directly with the [vision service](/services/vision/).
+To be able to interact with the vision service you must:
 
 1. Configure a physical [camera component](../../../components/camera/).
-2. Configure a [transform camera](../../../components/camera/transform/) with the following attributes to view output from the classifier overlaid on images from the physical camera:
+Pass the name of this camera to vision service methods.
+2. (Optional) To view output from the classifier overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
 
     ```json
     {
@@ -123,7 +124,13 @@ To be able to interact with the Vision Service you must:
 
 ## Code
 
-The following code gets the robot’s Vision Service and then runs a classifier vision model on an image from the robot's camera `"cam1"`:
+The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
+
+{{% alert title="Tip" color="tip" %}}
+
+Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the vision service methods.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -171,7 +178,7 @@ if err != nil {
 
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get the top 2 classifications with the highest confidence scores from the camera output
@@ -211,5 +218,5 @@ To learn more about how to use classification, see the [Go SDK docs](https://pkg
 {{< /tabs >}}
 
 {{% alert title="Tip" color="tip" %}}
-To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
+To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
 {{% /alert %}}

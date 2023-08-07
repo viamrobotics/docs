@@ -27,7 +27,7 @@ In this tutorial, we will cover how to use Data Management, including capturing 
 
 One key feature of Viam is [Data Management](/manage/data/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
 
-Viam's Data Management Service has two distinct parts: data capture and cloud sync.
+Viam's data management service has two distinct parts: data capture and cloud sync.
 
 **Data capture** allows you to capture data from specific components on your robot running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
@@ -61,25 +61,25 @@ The data management setup process will be mostly the same, but you will need to 
     To use the [data export feature](#export-captured-data), you need to have the <a href="https://go.dev/dl/" target="_blank">Go binary</a> installed on your local development computer.
     We suggest that you install this before your reservation starts to maximize your time with your rover.
 
-## Add the Data Management Service
+## Add the data management service
 
-First, you need to add and configure the Data Management Service to capture data and store it at a specified location.
+First, you need to add and configure the data management service to capture data and store it at a specified location.
 To enable the data capture on your robot, do the following:
 
 1. On your robot's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page, create a service.
-   Choose `Data Management` as the type and specify `viam-data-manager` as the name for your instance of the Data Management Service.
+   Choose `Data Management` as the type and specify `viam-data-manager` as the name for your instance of the data management service.
    This service syncs data from your robot to the Viam app in the cloud.
 3. Then click **Create Service**.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
-   The Data Management Service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory by default.
+   The data management service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory by default.
 
    You can leave the default settings as they are.
    Click **Save Config** at the bottom of the window.
 
 ![Data Management Card](/tutorials/data-management/data-manager.png)
 
-For more detailed information see [Add the Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service).
+For more detailed information see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
 
 ## Configure data capture for a component
 
@@ -114,7 +114,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 4. Click **Save Config** at the bottom of the window.
 
-Now your image data will be saved locally on your robot in <file>~/.viam/capture</file>, or whatever directory you configured the captured data from your Data Management Service to be saved to.
+Now your image data will be saved locally on your robot in <file>~/.viam/capture</file>, or whatever directory you configured the captured data from your data management service to be saved to.
 
 ![Screenshot from the Viam app showing the data capture settings used for this tutorial.](/tutorials/data-management/image5.png)
 

@@ -3,49 +3,43 @@ title: "Motion Service"
 linkTitle: "Motion"
 weight: 40
 type: "docs"
-description: "The Motion Service enables your robot to plan and move its components relative to itself, other robots, and the world."
+description: "The motion service enables your robot to plan and move its components relative to itself, other robots, and the world."
 tags: ["motion", "motion planning", "services"]
 icon: "/services/icons/motion.svg"
 no_list: true
 # SME: Motion team
 ---
 
-The Motion Service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
-The Motion Service:
+The motion service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
+The motion service:
 
-1. Gathers the current positions of the robot’s components as defined with the [Frame System](../frame-system/).
+1. Gathers the current positions of the robot’s components as defined with the [frame system](../frame-system/).
 2. Plans the necessary motions to move a component to a given destination while obeying any [constraints you configure](constraints/).
 
-The Motion Service can:
+The motion service can:
 
 - use motion [planning algorithms](algorithms/) locally on your robot to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
 ## Configuration
 
-You need to configure frames for your robot's components with the [Frame System](../frame-system/).
-This defines the spatial context within which the Motion Service operates.
+You need to configure frames for your robot's components with the [frame system](../frame-system/).
+This defines the spatial context within which the motion service operates.
 
-The Motion Service itself is enabled on the robot by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+The motion service itself is enabled on the robot by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
 
 {{% alert title="Tip" color="tip" %}}
 
-Because the Motion Service is enabled by default, you don't give it a `"name"` while configuring it.
-Use the name `"builtin"` to access the built-in Motion Service in your code with methods like [`FromRobot()`](/program/apis/#fromrobot) that require a `ResourceName`.
+Because the motion service is enabled by default, you don't give it a `"name"` while configuring it.
+Use the name `"builtin"` to access the built-in motion service in your code with methods like [`FromRobot()`](/program/apis/#fromrobot) that require a `ResourceName`.
 
 {{% /alert %}}
 
 ## API
 
-The Motion Service supports the following methods:
+The motion service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Move`](#move) | Move multiple components in a coordinated way to achieve a desired motion.
-[`MoveSingleComponent`](#movesinglecomponent) | Move a single component "manually."
-[`GetPose`](#getpose) | Get the current location and orientation of a component as a `Pose`.
-[`MoveOnMap`](#moveonmap) | Move a [base](/components/base/) component to a `Pose` in respect to the origin of a [SLAM](/services/slam/) map.
-[`MoveOnGlobe`](#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
+{{< readfile "/static/include/services/apis/motion.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -64,7 +58,7 @@ Given a destination pose and a component to move to that destination, `Move` wil
 3. Execute that movement to move the actual robot.
 4. Return whether or not this process succeeded.
 
-The Motion Service takes the volumes associated with all configured robot components (local and remote) into account for each request to ensure that the robot does not collide with itself or other known objects.
+The motion service takes the volumes associated with all configured robot components (local and remote) into account for each request to ensure that the robot does not collide with itself or other known objects.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -89,7 +83,7 @@ The Motion Service takes the volumes associated with all configured robot compon
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles are static.
+    - The motion service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
     - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
@@ -151,7 +145,7 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
-    - The Motion Service assumes that obstacles are static.
+    - The motion service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
     - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
@@ -294,7 +288,7 @@ moved, err := motionService.MoveSingleComponent(context.TODO(), goalPose, worldS
 
 ### GetPose
 
-`GetPose` gets the location and orientation of a component within the [Frame System](../frame-system/).
+`GetPose` gets the location and orientation of a component within the [frame system](../frame-system/).
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
 You can use the `supplemental_transforms` argument to augment the robot's existing frame system with supplemental frames.
 
@@ -410,7 +404,7 @@ import (
 gripperName := Gripper.Named("my_gripper")
 myFrame := "my_gripper_offset"
 
- // Access the Motion Service
+ // Access the motion service
 motionService, err := motion.FromRobot(robot, "builtin")
 if err != nil {
   logger.Fatal(err)
@@ -420,8 +414,8 @@ myArmMotionPose, err := motionService.GetPose(context.Background(), my_gripper, 
 if err != nil {
   logger.Fatal(err)
 }
-logger.Info("Position of myArm from the Motion Service:", myArmMotionPose.Pose().Point())
-logger.Info("Orientation of myArm from the Motion Service:", myArmMotionPose.Pose().Orientation())
+logger.Info("Position of myArm from the motion service:", myArmMotionPose.Pose().Point())
+logger.Info("Orientation of myArm from the motion service:", myArmMotionPose.Pose().Orientation())
 ```
 
 {{% /tab %}}
@@ -438,7 +432,7 @@ Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev
 
 - `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the base to move.
 - `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the [SLAM Service](/services/slam/) from which the SLAM map is requested.
+- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -466,7 +460,7 @@ success = await motion.move_on_map(component_name="my_base", destination=my_pose
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the base to move.
 - `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the [SLAM Service](/services/slam/) from which the SLAM map is requested.
+- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -496,7 +490,7 @@ Use a [Movement Sensor](/components/movement-sensor/) to check the location of t
 
 {{< alert title="Usage" color="tip" >}}
 
-`MoveOnGlobe()` is intended for use with the [Navigation Service](/services/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
+`MoveOnGlobe()` is intended for use with the [navigation service](/services/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
 
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the robot.
 
@@ -514,7 +508,7 @@ The `heading` parameter is experimental.
 Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/services/motion/algorithms/).
 
 Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoObstacle` objects.
-Translation in obstacles is not supported by the [Navigation Service](/services/navigation/).
+Translation in obstacles is not supported by the [navigation service](/services/navigation/).
 
 {{< /alert >}}
 
@@ -586,7 +580,7 @@ success, err := motionService.MoveOnGlobe(context.Background(), "my_base", myDes
 
 ## Next Steps
 
-The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the Motion Service API, respectively:
+The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the motion service API, respectively:
 
 {{< cards >}}
   {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
