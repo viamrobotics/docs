@@ -9,12 +9,13 @@ aliases:
     - "/program/cli"
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your robots and modular resources across organizations and locations from the command line.
 The CLI lets you:
 
-* Retrieve organization and location information
-* Manage robot fleet data and logs
-* Control robots by issuing component and service commands.
+* Retrieve [organization](/manage/fleet/organizations/) and location information
+* Manage [robot fleet](/manage/fleet/) data and logs
+* Control robots by issuing component and service commands
+* Upload and manage [modular resources](/extend/modular-resources/) in the Viam Registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -117,7 +118,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 
 ## Manage your robots with the Viam CLI
 
-With the Viam CLI installed and authenticated, you can use it to issue commands to your robot fleet.
+With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your robot fleet or manage custom modules.
 All Viam CLI commands use the following format:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -130,6 +131,8 @@ viam [global options] command [command options] [arguments...]
 | [command](#commands)  | *required* - the specific CLI command to run        |
 | command options   | *required for some commands*  - the operation to run for the specified command.     |
 | arguments   | *required for some commands* - the arguments for the specified command operation. Some commands take positional arguments, some named arguments.     |
+
+See the list of [commands](#commands) below.
 
 ### CLI help
 
@@ -241,7 +244,82 @@ The `logout` command ends an authenticated CLI session
 viam logout
 ```
 
-### `organizations`
+### module
+
+The `module` command allows to you to manage custom modules.
+This includes:
+
+* Creating a new custom modular resource on your local filesystem
+* Updating an existing module with new changes
+* Uploading a new module to the Viam Registry
+* Updating an existing module in the Viam Registry
+
+```sh {class="command-line" data-prompt="$"}
+viam module create --organization=<org name> --name <module-id>
+viam module update --organization=<org name> --name <module-id>
+viam module upload --organization=<org name> --name <module-id> --platform <platform> --version <version> --module meta.json <packaged-module.tar.gz>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# create a new module named 'my-module' in organization 'abc':
+viam module create --organization='abc' --name 'my-module'
+
+# update the existing 'my-module' module with new changes to meta.json:
+viam module update --organization='abc' --name 'my-module'
+
+# upload a new or updated custom module 'my-module' to the Viam Registry:
+viam module upload --organization='abc' --platform "darwin/amd64" --version "1.0.0-rc1" --module meta.json packaged-module.tar.gz
+```
+
+#### Command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `create`    | create a new custom module on your local filesystem  | - |
+| `update`    | update an existing custom module on your local filesystem with recent changes to <file>meta.json</file> | - |
+| `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
+| `help`      | return help      | - |
+
+##### Named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--organization`      | organization name that the robot belongs to       |`create`, `update`, `upload`|true |
+| `--name`     |  name of the custom module to be created, updated, or uploaded    |`create`, `update`|true |
+| `--platform`      |  the platform to encode the resulting module binary as   |`upload`|true |
+| `--version`      |  the version of your module to set for this upload  |`upload`|true |
+| `--module`      |  the payload of the module to upload, including the <file>meta.json</file> configuration file and the packaged module as a `tar.gz` file    |`upload`|true |
+
+##### Custom module creation workflow example
+
+To upload a new module to the Viam Registry, you need to `create` it with a new name, `update` it with your customized changes, and `upload` it to the Viam Registry.
+The following example demonstrates this workflow for an example module `my-first-module`:
+
+```sh {class="command-line" data-prompt="$"}
+## Create a new module 'my-first-module' locally, which creates a placeholder `meta.json` file on the local filesystem:
+viam module create --name 'my-first-module' --org_id 'abc'
+## Edit the newly-created meta.json file with the custom module-specific configuration:
+vi meta.json
+## Update the module with the new configuration:
+viam module update --name 'my-first-module' --org_id 'abc'
+## Upload the new custom module to the Viam Registry:
+viam module upload --org_id 'abcbacbacbacbacbacbacbac' --platform "darwin/amd64" --version "1.0.0" --module meta.json packaged-module.tar.gz
+```
+
+To later make changes to the module, the workflow is similar:
+
+```sh {class="command-line" data-prompt="$"}
+## Edit the same meta.json file from the previous workflow with the new configuration:
+vi meta.json
+## Update the module with the new configuration:
+viam module update --name 'my-first-module' --org_id 'abc'
+## Upload the new custom module to the Viam Registry:
+viam module upload --org_id 'abcbacbacbacbacbacbacbac' --platform "darwin/amd64" --version "1.0.1" --module meta.json packaged-module.tar.gz
+```
+
+### organizations
 
 The *organizations* command lists all organizations that the authenticated session belongs to.
 
