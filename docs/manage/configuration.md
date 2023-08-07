@@ -189,7 +189,7 @@ Meanwhile the **Code sample** tab will also update to include code for some basi
 
 [Services](/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your robot.
 
-For services, the `type` specifies which of the Viam services you want to use on your robot, such as the Vision Service or the Motion Service.
+For services, the `type` specifies which of the Viam services you want to use on your robot, such as the vision service or the motion service.
 
 The `name` serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
 You can choose any unique name for a service.

@@ -148,7 +148,9 @@ The procedure for each side will look like:
 With the brushless motor controllers I used, you'll have to first solder a jumper where indicated in this diagram (label starts with "normally disconnected").
 This allows the pi to control the motor with PWM.
 You'll also need to solder two pins to the controller just to the left of the white wire harness mount.
-(P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the solder to it. When someone taught me this it changed my life.)
+(P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**!
+Once the pin is hot, touch the solder to it.
+When someone taught me this it changed my life.)
 
 <div class="td-max-width-on-larger-screens" style="max-width: 500px">
 {{<imgproc src="/tutorials/outdoor-rover-boxbot/motor-controller.jpg" resize="600x" declaredimensions=true alt="Brushless motor controller" class="alignleft">}}
@@ -298,7 +300,7 @@ Try driving your rover by keyboard.
 Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection/) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
 
-If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](https://docs.viam.com).
+If you're adding a camera, GPS, planning on using Viam's navigation service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](https://docs.viam.com).
 
 <div class="td-max-width-on-larger-screens">
   {{<imgproc src="/tutorials/outdoor-rover-boxbot/matt-done.png" resize="300x" declaredimensions=true alt="Matt working on project." class="alignleft" style="max-width: 250px">}}

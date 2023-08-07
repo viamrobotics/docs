@@ -56,7 +56,7 @@ Before adding a SLAM service, you must follow [these instructions](/extend/modul
 
 {{% /alert %}}
 
-### Add a SLAM Service
+### Add a SLAM service
 
 {{< tabs name="Add the Cartographer Service">}}
 {{% tab name="Config Builder" %}}
@@ -100,7 +100,8 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{< /tabs >}}
 
-Click on the **Modules** subtab. Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
+Click on the **Modules** subtab.
+Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
 
 {{< tabs name="Add Cartographer Service Module">}}
 {{% tab name="Linux/macOS x86_64" %}}
@@ -239,7 +240,7 @@ The SLAM Mapping Mode is determined by 2 conditions:
 
 {{% alert title="Info" color="info" %}}
 
-If this directory structure is not present at runtime, the SLAM Service creates it.
+If this directory structure is not present at runtime, the SLAM service creates it.
 
 {{% /alert %}}
 
@@ -285,7 +286,8 @@ For more information, see the Cartographer [algorithm walkthrough](https://googl
 
 ## SLAM Mapping Best Practices
 
-The best way to improve map quality is by taking extra care when creating the initial map. While in a mapping session, you should:
+The best way to improve map quality is by taking extra care when creating the initial map.
+While in a mapping session, you should:
 
 - turn gently and gradually, completely avoiding sudden quick turns
 - make frequent loop closures, arriving back at a previously mapped area so the robot can correct for errors in the map layout

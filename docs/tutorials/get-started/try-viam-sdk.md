@@ -694,4 +694,4 @@ Can you make it move in a circle?
 A figure-eight?
 You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
 
-You could also control Viam's services, by adding [data management](/manage/data/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).
+You could also control Viam's services, by adding [data management](/manage/data/) to collect data in real time or [vision services](/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).

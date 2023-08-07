@@ -14,14 +14,14 @@ Common use cases include object detection, image classification, natural languag
 
 Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/services/ml/#tflite_cpu-limitations).
 
-You can [train your own image classification models](/manage/ml/train-model/) or [add an existing model](/manage/ml/upload-model/) for object detection and classification within the platform using data from the [Data Management Service](../../services/data/).
+You can [train your own image classification models](/manage/ml/train-model/) or [add an existing model](/manage/ml/upload-model/) for object detection and classification within the platform using data from the [data management service](../../services/data/).
 Object detection and classification models are commonly used to enable robots to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
 
 To make use of ML models with your robot, you can use the built-in [ML model service](/services/ml/) to deploy and run the model.
 
 Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-service) to your robot, you can then add another service to make use of the model.
 
-* For object detection and classification, you can use the [Vision Service](/services/vision/), which provides both [mlmodel detector](/services/vision/detection/#configure-a-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-a-mlmodel-classifier) models.
+* For object detection and classification, you can use the [vision service](/services/vision/), which provides both [mlmodel detector](/services/vision/detection/#configure-a-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-a-mlmodel-classifier) models.
 * For other usage, you can create a [modular resource](/extend/modular-resources/) to integrate it with your robot.
   For an example, see [this tutorial](/extend/modular-resources/examples/tflite-module/) which adds a modular-resource-based service that uses TensorFlow Lite to classify audio samples.
 

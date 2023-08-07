@@ -127,7 +127,8 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 4. **Configure the camera**
 
-    Next, add the [camera component](/components/camera/). Name it `cam`, with the type `camera` and model `webcam`, and click **Create Component**.
+    Next, add the [camera component](/components/camera/).
+    Name it `cam`, with the type `camera` and model `webcam`, and click **Create Component**.
     In the configuration panel, click the video path field.
     If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
 
@@ -374,7 +375,7 @@ scp labels.txt tipsy@tipsy.local:/home/tipsy/labels.txt
 
 Click on the **Services** subtab and navigate to the **Create service** menu.
 
-1. **Configure the ML Model Service**
+1. **Configure the ML model service**
 
     Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
     Click **Create service**.
@@ -397,7 +398,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
     ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
 
-    In the new Vision Service panel, configure your service.
+    In the new vision service panel, configure your service.
 
     ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 

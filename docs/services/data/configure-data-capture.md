@@ -8,16 +8,16 @@ tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-## Add the Data Management Service
+## Add the data management service
 
-To capture data from one or more robots, you must first add the [Data Management Service](../):
+To capture data from one or more robots, you must first add the [data management service](../):
 
 1. On your robot's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page you can create a service.
-   Choose `Data Management` as the type and specify a name for your Data Management Service, for example `data-manager`.
+   Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
 3. Then click `Create Service`.
 4. On the panel that appears, you can manage the capturing and syncing functions individually and specify the interval and directory.
-   If the capture frequency or the directory is not specified, the Data Management Service captures data at the default frequency every 0.1 minutes that is every 6 seconds in the default `~/.viam/capture` directory.
+   If the capture frequency or the directory is not specified, the data management service captures data at the default frequency every 0.1 minutes that is every 6 seconds in the default `~/.viam/capture` directory.
 
    {{< alert title="Info" color="info" >}}
    If you change the directory for data capture only new data is stored in the new directory.
@@ -27,7 +27,7 @@ To capture data from one or more robots, you must first add the [Data Management
 
 ![data capture configuration](/tutorials/data-management/data-manager.png)
 
-{{%expand "Click to view the JSON configuration for the Data Management Service" %}}
+{{%expand "Click to view the JSON configuration for the data management service" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -75,7 +75,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click **Save Config** at the bottom of the window.
 
-Now your data will be saved locally on your robot to the directory specified in the Data Management Service.
+Now your data will be saved locally on your robot to the directory specified in the data management service.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
