@@ -9,18 +9,13 @@ images: ["/icons/components/imu.svg"]
 ---
 
 The `merged` movement sensor model is an abstraction that combines data from multiple movement sensors.
-
-This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources.
-
-In other words, the models of the `merged` sensors are combined, making the movement sensor API methods each aggregated model supports available on the `merged` model.
+This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client.
 
 This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#configuration) or [`IMU`](/components/movement-sensor/#configuration) models, respectively.
 
-{{% alert title="Usage Tip: Navigation Service" color="tip" %}}
-Aggregating `Position()` from a [`GPS`](/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/components/movement-sensor/#configuration) movement sensor in a `merged` model allows you to reduce velocity error when your robot is trying to [navigate](/services/navigation/).
+To reduce velocity error when your robot is using the [navigation service](/services/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/components/movement-sensor/#configuration) movement sensor in a `merged` model.
 
 Configure a [navigation service](/services/navigation/) to use your merged sensor to navigate.
-{{% /alert %}}
 
 Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/components/movement-sensor/#configuration).
 Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:
