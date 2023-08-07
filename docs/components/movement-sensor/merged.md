@@ -87,7 +87,7 @@ Configure an array of the `name` of each movement sensor you want to add to your
 
 - The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
 - Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
-- Use this information to determine which attribute to put its `name` inside the array of.
+- Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
 You can use the same sensor for multiple attributes if it supports multiple properties.
 
 Name | Type | Inclusion | Description
