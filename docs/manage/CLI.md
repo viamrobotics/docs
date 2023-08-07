@@ -305,7 +305,7 @@ vi meta.json
 ## Update the module with the new configuration:
 viam module update --name 'my-first-module' --org_id 'abc'
 ## Upload the new custom module to the Viam Registry:
-viam module upload --org_id 'abcbacbacbacbacbacbacbac' --platform "darwin/amd64" --version "1.0.0" --module meta.json packaged-module.tar.gz
+viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.0" --module meta.json packaged-module.tar.gz
 ```
 
 To later make changes to the module, the workflow is similar:
@@ -316,7 +316,7 @@ vi meta.json
 ## Update the module with the new configuration:
 viam module update --name 'my-first-module' --org_id 'abc'
 ## Upload the new custom module to the Viam Registry:
-viam module upload --org_id 'abcbacbacbacbacbacbacbac' --platform "darwin/amd64" --version "1.0.1" --module meta.json packaged-module.tar.gz
+viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.1" --module meta.json packaged-module.tar.gz
 ```
 
 ### organizations
