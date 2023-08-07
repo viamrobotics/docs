@@ -252,7 +252,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-radius_clustering_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-obstacles_pointcloud) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -262,7 +262,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
     {
         "name": "rc_segmenter",
         "type": "vision",
-        "model": "radius_clustering_segmenter"
+        "model": "obstacles_pointcloud"
         "attributes": {
             "min_points_in_plane": 1000,
             "min_points_in_segment": 50,

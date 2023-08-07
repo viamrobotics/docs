@@ -17,10 +17,10 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 The types of segmenters supported are:
 
-- [**Radius clustering (`radius_clustering_segmenter`)**](#configure-a-radius_clustering_segmenter): A segmenter that identifies well separated objects above a flat plane.
+- [**Obstacles Pointcloud (`obstacles_pointcloud`)**](#configure-a-obstacles_pointcloud): A segmenter that identifies well separated objects above a flat plane.
 - [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 
-## Configure a `radius_clustering_segmenter`
+## Configure a `obstacles_pointcloud`
 
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
@@ -41,7 +41,7 @@ To create a [vision service](/services/vision/):
 3. Select **Radius Clustering Segmenter** as the **Model**.
 4. Click **Create Service**.
 
-![Create vision service for radius_clustering_segmenter](/services/vision/radius_clustering_segmenter.png)
+![Create vision service for obstacles_pointcloud](/services/vision/obstacles_pointcloud.png)
 
 In your vision service's panel, fill in the **Attributes** field.
 
@@ -50,7 +50,10 @@ In your vision service's panel, fill in the **Attributes** field.
     "min_points_in_plane": <integer>,
     "min_points_in_segment": <integer>,
     "clustering_radius_mm": <number>,
-    "mean_k_filtering": <integer>
+    "mean_k_filtering": <integer>,
+    "max_dist_from_plane_mm": <integer>,
+    "ground_plane_normal_vec": <integer>,
+    "ground_angle_tolerance_degs": <>
 }
 ```
 
@@ -64,12 +67,19 @@ Add the vision service object to the services array in your raw JSON configurati
     {
     "name": "<segmenter_name>",
     "type": "vision",
-    "model": "radius_clustering_segmenter"
+    "model": "obstacles_pointcloud"
     "attributes": {
         "min_points_in_plane": <integer>,
         "min_points_in_segment": <integer>,
         "clustering_radius_mm": <number>,
-        "mean_k_filtering": <integer>
+        "mean_k_filtering": <integer>,
+        "max_dist_from_plane_mm": <number>,
+        "ground_plane_normal_vec": {
+          "x": <integer>,
+          "y": <integer>,
+          "z": <integer>
+        },
+        "ground_angle_tolerance_degs": <number>
     }
     },
     ... // Other services
@@ -84,7 +94,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {
   "name": "rc_segmenter",
   "type": "vision",
-  "model": "radius_clustering_segmenter"
+  "model": "obstacles_pointcloud"
   "attributes": {
     "min_points_in_plane": 1000,
     "min_points_in_segment": 50,
@@ -98,14 +108,17 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"radius_clustering_segmenter"`.
+The following parameters are available for a `"obstacles_pointcloud"`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `min_points_in_plane` | _Required_ | An integer that specifies how many points there must be in a flat surface for it to count as a plane. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. |
 | `min_points_in_segment` | _Required_ | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
-| `clustering_radius_mm` | _Required_ | A floating point number that specifies how far apart points can be (in units of mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object. 3.0 is a decent starting value. |
+| `clustering_radius_mm` | _Required_ | A float that specifies how far apart points can be (in units of mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object. 3.0 is a decent starting value. |
 | `mean_k_filtering` | _Optional_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
+| `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. |
+| `ground_plane_normal_vec` | Optional | A `(x,y,z)` vector that represents the normal vector of the ground plane. Different cameras have different coordinate systems. For example, a lidar's ground plane will point in the `+z` direction `(0, 0, 1)`. On the other hand, the intel realsense `+z` direction points out of the camera lens, and its ground plane is in the negative y direction `(0, -1, 0)`. The default value is `(0, 0, 1)`. |
+| `ground_angle_tolerance_degs` | Optional | A float that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. The default value is 30 degrees. |
 
 Click **Save config** and head to the **Components** tab.
 
