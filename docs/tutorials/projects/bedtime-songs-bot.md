@@ -76,15 +76,16 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
-"components": [
-  {
-    "model": "webcam",
-    "attributes": {},
-    "depends_on": [],
-    "name": "cam",
-    "type": "camera"
-  }
-]
+  "components": [
+    {
+      "model": "webcam",
+      "attributes": {},
+      "depends_on": [],
+      "name": "cam",
+      "type": "camera"
+    }
+  ]
+}
 ```
 
 {{% /tab %}}
