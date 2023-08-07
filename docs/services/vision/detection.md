@@ -236,7 +236,8 @@ If you intend to use the detector with a camera that is part of your robot, you 
 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
 
-5. To access detections with code, use the Vision Service methods on the physical camera you configured (not the transform camera).
+5. To access detections with code, use the Vision Service methods on the camera you configured.
+Do not use the name of the transform camera that you added in step 2.
 The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
 
 {{< tabs >}}
