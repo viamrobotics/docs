@@ -145,7 +145,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 {{% /alert %}}
 
 Click **Save config** and head to the **Components** tab.
-Proceed to [Add a camera component and a "transform" model](#test-your-detector).
+Proceed to [Test your detector](#test-your-detector).
 
 ## Configure a `mlmodel` detector
 
@@ -219,7 +219,7 @@ Click **Save config**.
 
 You can test your detector with [live camera footage](#live-camera-footage) or [existing images](#existing-images).
 
-### Live Camera footage
+### Live camera footage
 
 If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/manage/fleet/robots/#control) or with code:
 
@@ -234,8 +234,9 @@ If you intend to use the detector with a camera that is part of your robot, you 
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
    The transform camera will now show detections with bounding boxes around the object.
 
-![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
+   ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
 
+5. To access detections with code, use the Vision Service methods on the physical camera you configured (not the transform camera).
 The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
 
 {{< tabs >}}
