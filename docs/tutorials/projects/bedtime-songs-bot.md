@@ -5,7 +5,9 @@ weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
-icon: "assets/tutorials/bedtime-songs-bot/export-screenshot.png"
+image: "assets/tutorials/bedtime-songs-bot/export-screenshot.png"
+imageAlt: "Image of Tess and their computer."
+images: ["/tutorials/pet-treat-dispenser/preview.png"]
 poster: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
