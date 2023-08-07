@@ -279,7 +279,7 @@ viam module upload --organization='abc' --platform "darwin/amd64" --version "1.0
 | ----------- | ----------- | ----------- |
 | `create`    | create a new custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to <file>meta.json</file> | - |
-| `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
+| `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry (see [Using the upload command](#using-the-upload-command)) |
 | `help`      | return help      | - |
 
 ##### Named arguments
@@ -291,6 +291,8 @@ viam module upload --organization='abc' --platform "darwin/amd64" --version "1.0
 | `--platform`      |  the platform to encode the resulting module binary as   |`upload`|true |
 | `--version`      |  the version of your module to set for this upload  |`upload`|true |
 | `--module`      |  the payload of the module to upload, including the <file>meta.json</file> configuration file and the packaged module as a `tar.gz` file    |`upload`|true |
+
+See [Using the upload command](#using-the-upload-command) for more information on using these arguments with `module upload`.
 
 ##### Custom module creation workflow example
 
@@ -307,8 +309,11 @@ vi meta.json
 ## Update the module with the new configuration:
 viam module update --name 'my-first-module' --org_id 'abc'
 
+## Package the module as a tar.gz archive:
+tar -zcf my-first-module.tar.gz my-first-module
+
 ## Upload the new custom module to the Viam Registry:
-viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.0" --module meta.json packaged-module.tar.gz
+viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.0" --module meta.json my-first-module.tar.gz
 ```
 
 To later make changes to the module, the workflow is similar:
@@ -320,9 +325,25 @@ vi meta.json
 ## Update the module with the new configuration:
 viam module update --name 'my-first-module' --org_id 'abc'
 
+## Package the module as a tar.gz archive:
+tar -zcf my-first-module.tar.gz my-first-module
+
 ## Upload the new custom module to the Viam Registry:
-viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.1" --module meta.json packaged-module.tar.gz
+viam module upload --org_id 'abc' --platform "darwin/amd64" --version "1.0.1" --module meta.json my-first-module.tar.gz
 ```
+
+##### Using the upload command
+
+When using `module upload`, consider the following:
+
+* The `--platform` flag only accepts one of the following:
+  * `darwin/amd64` - macOS platforms running Apple Silicon
+  * `darwin/x86_64` - macOS platforms with Intel CPUs
+  * `linux/aarch64` - Linux platforms with the `aarch64` architecture
+  * `linux/x86_64` - Linux platforms with Intel architecture
+* The `--version` flag accepts any string value, and is passed to the Viam Registry without any validation.
+* The `--module` flag must include both the <file>meta.json</file> and also a `tar.gz` archive of your module.
+  Currently, `module upload` only supports `tar.gz` archives.
 
 ### organizations
 
