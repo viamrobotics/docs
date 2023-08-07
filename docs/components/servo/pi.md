@@ -95,6 +95,6 @@ The following attributes are available for `pi` servos:
 
 {{% alert title="Tip" color="tip" %}}
 
-Refer to your servo's data sheet for [pulse-width modulation (PWM)](/components/board/#pwm), rotation, and wiring specifications.
+Refer to your servo's data sheet for [pulse-width modulation (PWM)](/components/board/#getpwm), rotation, and wiring specifications.
 
 {{% /alert %}}

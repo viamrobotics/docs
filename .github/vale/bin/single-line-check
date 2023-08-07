@@ -4,7 +4,7 @@
 
 RC=0
 
-NEWLINE_CHECK=$(grep -v 'alt=' $(git diff --diff-filter=d --name-only $1 | grep '\.md$') | grep -v 'md:#' | grep -v '!\[' | grep -v '//' | grep -v '|' | grep -v '<.*>' | grep -v 'description:' | grep -v 'videoAlt:' | grep -v '#' | grep '[a-z|)]\. ')
+NEWLINE_CHECK=$(grep -v 'alt=' $(git diff --diff-filter=d --name-only $1 | grep '\.md$') | grep -v 'md:#' | grep -v '!\[' | grep -v '\/\/' | grep -v '|' | grep -v '<.*>' | grep -v 'description:' | grep -v 'videoAlt:' | grep -v '#' | grep '[a-z|)]\. ')
 if [ ! -z "$NEWLINE_CHECK" ]
 then
   RED='\033[0;31m'

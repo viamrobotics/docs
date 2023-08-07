@@ -87,7 +87,7 @@ The sensor component supports the following methods:
 
 {{< readfile "/static/include/components/apis/sensor.md" >}}
 
-### Readings
+### GetReadings
 
 Get the measurements or readings that this sensor provides.
 

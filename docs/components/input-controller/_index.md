@@ -17,7 +17,7 @@ Configuring an *input* component allows you to use devices like these with your 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
 
-The callback functions can then handle the [Events](#events) that are sent when the Control is activated or moved.
+The callback functions can then handle the [Events](#getevents) that are sent when the Control is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
 
 Most robots with an input controller need at least the following hardware:
@@ -216,7 +216,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 {{% /tab %}}
 {{< /tabs >}}
 
-### Events
+### GetEvents
 
 This method returns the current state of the controller as a map of [Event Objects](#event-object), representing the most recent event that has occured on each available [Control](#control-field).
 
@@ -274,7 +274,7 @@ logger.Info("Recent Events: %v", recent_events)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Controls
+### GetControls
 
 Get a list of the [Controls](#control-field) that your controller provides.
 

@@ -85,7 +85,7 @@ The encoder component supports the following methods:
 
 {{< readfile "/static/include/components/apis/encoder.md" >}}
 
-### Position
+### GetPosition
 
 Get the current position of the encoder in ticks or degrees.
 Relative encoders return ticks since last zeroing.

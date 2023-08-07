@@ -159,7 +159,7 @@ myServo.Move(context.Background(), 90, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Position
+### GetPosition
 
 Get the current set angle of the servo in degrees.
 

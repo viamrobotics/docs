@@ -398,7 +398,7 @@ err := myArm.Stop(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Kinematics
+### GetKinematics
 
 {{% alert title="Note" color="note" %}}
 This method is not yet available with the Viam Go SDK.
