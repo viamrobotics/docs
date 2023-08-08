@@ -51,7 +51,7 @@ Once you have successfully installed the Viam CLI, you need to authenticate your
 Do this by issuing the command:
 
 ```sh {class="command-line" data-prompt="$"}
-viam auth
+viam login
 ```
 
 This will open a new browser window with a prompt to start the authentication process.
@@ -96,23 +96,6 @@ viam organizations help
 ```
 
 ## Commands
-
-### auth
-
-The `auth` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
-
-```sh {class="command-line" data-prompt="$"}
-viam auth
-viam auth print-access-token
-```
-
-#### Command options
-
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
-| `help`      | return help      | - |
-
 ### data
 
 The `data` command allows you to manage robot data.
@@ -181,6 +164,23 @@ viam locations list [<organization id>]
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | `help`      | return help      | - |
+
+### login
+
+The `login` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
+
+```sh {class="command-line" data-prompt="$"}
+viam login
+viam login print-access-token
+```
+
+#### Command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
+| `help`      | return help      | - |
+
 
 ### logout
 
