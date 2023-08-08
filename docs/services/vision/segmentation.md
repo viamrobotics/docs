@@ -52,8 +52,12 @@ In your vision service's panel, fill in the **Attributes** field.
     "clustering_radius_mm": <number>,
     "mean_k_filtering": <integer>,
     "max_dist_from_plane_mm": <integer>,
-    "ground_plane_normal_vec": <integer>,
-    "ground_angle_tolerance_degs": <>
+        "ground_plane_normal_vec": {
+          "x": <integer>,
+          "y": <integer>,
+          "z": <integer>
+        },
+    "ground_angle_tolerance_degs": <number>
 }
 ```
 
