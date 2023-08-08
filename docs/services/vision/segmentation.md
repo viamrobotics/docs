@@ -20,7 +20,7 @@ The types of segmenters supported are:
 - [**Obstacles Pointcloud (`obstacles_pointcloud`)**](#configure-a-obstacles_pointcloud): A segmenter that identifies well separated objects above a flat plane.
 - [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 
-## Configure a `obstacles_pointcloud`
+## Configure an `obstacles_pointcloud`
 
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
