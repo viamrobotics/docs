@@ -83,7 +83,7 @@ The gantry component supports the following methods:
 
 {{< readfile "/static/include/components/apis/gantry.md" >}}
 
-### Position
+### GetPosition
 
 Get the current positions of the axis of the gantry (mm).
 
