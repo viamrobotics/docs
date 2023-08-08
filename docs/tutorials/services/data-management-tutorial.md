@@ -151,7 +151,7 @@ To export data from Viam:
 
    ```sh {class="command-line" data-prompt="$"}
    go install go.viam.com/rdk/cli/viam@latest
-   viam auth
+   viam login
    ```
 
 2. Head back to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
