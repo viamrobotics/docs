@@ -182,7 +182,6 @@ viam login print-access-token
 | `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
 | `help`      | return help      | - |
 
-
 ### logout
 
 The `logout` command ends an authenticated CLI session
