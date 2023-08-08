@@ -98,7 +98,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {
   "name": "rc_segmenter",
   "type": "vision",
-  "model": "obstacles_pointcloud"
+  "model": "obstacles_pointcloud",
   "attributes": {
     "min_points_in_plane": 1000,
     "min_points_in_segment": 50,
