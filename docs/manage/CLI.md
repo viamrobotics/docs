@@ -27,12 +27,16 @@ viam.component.servo.v1.ServoService.MoveRequest
 ## Install
 
 You can download the Viam CLI executable using one of the options below.
-Select the tab for your platform and architecture:
+Select the tab for your platform and architecture.
+
+{{% alert title="Tip" color="tip" %}}
+You can use the `uname -m` command to determine your system architecture.
+{{% /alert %}}
 
 {{< tabs >}}
-{{% tab name="Linux aarch64" %}}
+{{% tab name="Linux arm64" %}}
 
-To download the Viam CLI on a Linux computer with the `arm64` (Apple Silicon, Raspberry Pi) architecture:
+To download the Viam CLI on a Linux computer with the `arm64` architecture:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
@@ -52,7 +56,7 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="macOS Apple Silicon" %}}
 
-To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon, Raspberry Pi) architecture:
+To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-arm64
@@ -60,7 +64,7 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="macOS x86_64" %}}
+{{% tab name="macOS Intel" %}}
 
 To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture:
 
