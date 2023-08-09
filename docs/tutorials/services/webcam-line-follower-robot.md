@@ -230,8 +230,8 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    Then click **Create Service**.
 
    In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding hex code to put in your config.
-   We used #19FFD9 to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
+   We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 2. Click **Save config** in the bottom left corner of the screen.
 
@@ -449,7 +449,7 @@ The code you are using has several functions:
 - `is_color_in_front`: Checks if the color is detected in the front center of the camera's view.
 
   ```python {class="line-numbers linkable-line-numbers"}
-  async def is_color_in_front(camera, vis, detector_name):
+  async def is_color_in_front(camera, detector):
       """
       Returns whether the appropriate path color is detected in front of the center of the robot.
       """
@@ -460,7 +460,7 @@ The code you are using has several functions:
       # Crop the image to get only the middle fifth of the top third of the original image
       cropped_frame = frame.crop((x / 2.5, 0, x / 1.25, y / 3))
 
-      detections = await vis.get_detections(cropped_frame, detector_name)
+      detections = await detector.get_detections(cropped_frame)
 
       if detections != []:
           return True
@@ -470,7 +470,7 @@ The code you are using has several functions:
 - `is_color_there`: Returns whether the appropriate path color is detected to the left/right of the robot's front.
 
   ```python {class="line-numbers linkable-line-numbers"}
-  async def is_color_there(camera, vis, detector_name, location):
+  async def is_color_there(camera, detector, location):
       """
       Returns whether the appropriate path color is detected to the left/right of the robot's front.
       """
@@ -481,13 +481,13 @@ The code you are using has several functions:
           # Crop image to get only the left two fifths of the original image
           cropped_frame = frame.crop((0, 0, x / 2.5, y))
 
-          detections = await vis.get_detections(cropped_frame, detector_name)
+          detections = await detector.get_detections(cropped_frame)
 
       elif location == "right":
           # Crop image to get only the right two fifths of the original image
           cropped_frame = frame.crop((x / 1.25, 0, x, y))
 
-          detections = await vis.get_detections(cropped_frame, detector_name)
+          detections = await detector.get_detections(cropped_frame)
 
       if detections != []:
           return True
@@ -523,11 +523,9 @@ async def main():
     print("connected")
     camera = Camera.from_robot(robot, "my_camera")
     base = Base.from_robot(robot, "scuttlebase")
-    vision = VisionClient.from_robot(robot, "builtin")
+
     # Put your detector name in place of "green_detector"
-    detections = await vision.get_detections_from_camera("my_camera", "green_detector")
-    names = await vision.get_detector_names()
-    print(names)
+    green_detector = VisionClient.from_robot(robot, "green_detector")
 
     # counter to increase robustness
     counter = 0
@@ -537,20 +535,19 @@ async def main():
     angular_power = 0.3
 
     # The main control loop
-    # Put your detector name in place of "green_detector"
     while counter <= 3:
-        while await is_color_in_front(camera, vision, "green_detector"):
+        while await is_color_in_front(camera, green_detector):
             print("going straight")
             # Moves the base slowly forward in a straight line
             await base.set_power(Vector3(y=linear_power), Vector3())
             counter == 0
         # If there is green to the left, turns the base left at a continuous, slow speed
-        if await is_color_there(camera, vision, "green_detector", "left"):
+        if await is_color_there(camera, green_detector, "left"):
             print("going left")
             await base.set_power(Vector3(), Vector3(z=angular_power))
             counter == 0
         # If there is green to the right, turns the base right at a continuous, slow speed
-        elif await is_color_there(camera, vision, "green_detector", "right"):
+        elif await is_color_there(camera, green_detector, "right"):
             print("going right")
             await base.set_power(Vector3(), Vector3(z=-angular_power))
             counter == 0
