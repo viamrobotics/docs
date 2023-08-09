@@ -133,6 +133,8 @@ Edit and fill in the attributes as applicable.
 }
 ```
 
+Find attribute details in the [GPS-RTK documentation](../gps-nmea-rtk-pmtk/).
+
 {{% /tab %}}
 {{% tab name="JSON Example: Serial/USB" %}}
 
@@ -155,7 +157,7 @@ Edit and fill in the attributes as applicable.
 }
 ```
 
+Find attribute details in the [GPS-RTK documentation](../gps-nmea-rtk-serial/).
+
 {{% /tab %}}
 {{< /tabs >}}
-
-Find NTRIP and configuration attribute information in the [GPS-RTK documentation](../gps-rtk/#attributes).
