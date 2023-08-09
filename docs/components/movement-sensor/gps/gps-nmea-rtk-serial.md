@@ -30,7 +30,7 @@ The `gps-nmea-rtk-serial` model uses an over-the-internet correction source and 
 
 {{% alert title="Tip" color="tip" %}}
 
-If your movement sensor uses I<sup>2</sup> communication instead of serial, use the [`gps-nmea-rtk-pmtk`](../gps-nmea-rtk-pmtk/) model.
+If your movement sensor uses I<sup>2</sup>C communication instead of serial, use the [`gps-nmea-rtk-pmtk`](../gps-nmea-rtk-pmtk/) model.
 
 {{% /alert %}}
 
@@ -58,7 +58,6 @@ Edit and fill in the attributes as applicable.
       "type": "movement_sensor",
       "model": "gps-nmea-rtk-serial",
       "attributes": {
-        "board": "<your-board-name>",
         "serial_path": "<path_to_serial_port>",
         "serial_baud_rate": <int>,
         "ntrip_connect_attempts": <int>,
@@ -85,7 +84,7 @@ Edit and fill in the attributes as applicable.
       "model": "gps-nmea-rtk-serial",
       "attributes": {
         "board": "local",
-        "serial_path": "/dev/ttyS0",
+        "serial_path": "/dev/serial/by-path/ttyS0",
         "serial_baud_rate": 115200,
         "ntrip_connect_attempts": 12,
         "ntrip_mountpoint": "MNTPT",
@@ -106,7 +105,6 @@ The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor
 
 Name | Type | Inclusion | Description |
 ---- | ---- | --------- | ----------- |
-`board` | string | **Required** | The `name` of the [board](/components/board/) connected to the sensor.
 `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.
 `serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor. <br> Default: `38400`
 `ntrip_url` | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections.
