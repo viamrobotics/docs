@@ -526,8 +526,6 @@ async def main():
 
     # Put your detector name in place of "green_detector"
     green_detector = VisionClient.from_robot(robot, "green_detector")
-    detections = await green_detector.get_detections_from_camera(camera)
-    print(detections)
 
     # counter to increase robustness
     counter = 0
