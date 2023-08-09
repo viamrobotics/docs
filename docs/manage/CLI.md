@@ -74,9 +74,9 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="Build" %}}
+{{% tab name="Source" %}}
 
-If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly using the `go install` command:
+If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
 
 ```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
