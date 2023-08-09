@@ -56,7 +56,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` installation or update process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
 **Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
 
