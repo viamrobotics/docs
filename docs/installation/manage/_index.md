@@ -147,6 +147,48 @@ brew services restart viam-server
 {{% /tab %}}
 {{< /tabs >}}
 
+
+## Update `viam-server`
+
+Select the tab for your platform:
+
+{{< tabs name="Updating viam-server" >}}
+{{% tab name=Linux %}}
+
+`viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), and includes a built-in self-update feature. When you [run `viam-server`](#run-viam-server) as a service on Linux, it will check for updates automatically on launch, and update itself if a newer version is detected.
+
+If desired, you can also manually force an update with the `--aix-update` flag:
+
+```sh {class="command-line" data-prompt="$"}
+sudo viam-server --aix-update
+```
+
+### Disable Service-based Updates
+
+If you want to disable `viam-server` from automatically checking for updates each time you launch it, you can comment out the `ExecStartPre` line from your <file>/etc/systemd/system/viam-server.service</file> service file (by prepending with a `#` character), so that it matches the following:
+
+```sh {class="command-line" data-prompt="$"}
+# ExecStartPre=-/usr/local/bin/viam-server --aix-update
+```
+
+To resume automatic update checking, delete the leading `#` character once more.
+
+{{% /tab %}}
+{{% tab name=macOS %}}
+
+`viam-server` is distributed for macOS through the Homebrew package manager, which includes a built-in update feature.
+
+To upgrade to the latest version of `viam-server` using Homebrew:
+
+```sh {class="command-line" data-prompt="$"}
+brew upgrade viam-server
+```
+
+Homebrew does not support automatic updates, so you will need to manually perform this step each time you wish to check for updates. We recommend running `brew upgrade viam-server` on a regular basis.
+
+{{% /tab %}}
+{{% /tabs %}}
+
 ## View `viam-server` logs
 
 `viam-server` writes log messages as it starts up and runs, providing useful information when managing or troubleshooting the process.
