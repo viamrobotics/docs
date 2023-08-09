@@ -230,8 +230,8 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
    Then click **Create Service**.
 
    In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb value.
-   We used `rgb(25,255,217)` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
+   We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 2. Click **Save config** in the bottom left corner of the screen.
 
