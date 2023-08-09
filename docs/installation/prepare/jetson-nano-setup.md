@@ -12,7 +12,7 @@ no_list: true
 ---
 
 The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
-Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation. This installation also works with the newer model [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin). 
+Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation. This installation also works with the newer model [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin).
 
 <div class="td-max-width-on-larger-screens text-center">
 {{<imgproc src="installation/thumbnails/jetson-nano-dev-kit.png" resize="400x" alt="The front of the NVIDIA Jetson Nano single-board computer development kit.">}}
