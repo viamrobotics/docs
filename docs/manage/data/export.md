@@ -12,7 +12,7 @@ First, install the [Viam CLI](/manage/cli/) and [authenticate](/manage/cli/#auth
 
 ```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
-viam auth
+viam login
 ```
 
 To export data from the data management service in the cloud:
