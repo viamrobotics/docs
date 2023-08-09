@@ -44,7 +44,7 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="Linux x86_64" %}}
+{{% tab name="Linux amd64 (x86_64)" %}}
 
 To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture:
 
@@ -64,7 +64,7 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="macOS Intel" %}}
+{{% tab name="macOS Intel (x86_64)" %}}
 
 To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture:
 
