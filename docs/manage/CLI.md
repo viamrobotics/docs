@@ -296,7 +296,7 @@ For example:
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
-The `--stream` argument, when included in the CLI command prior to the `--data` command will streams data back at the specified interval.
+The `--stream` argument, when included in the CLI command prior to the `--data` command will stream data back at the specified interval.
 
 ### `robots`
 
