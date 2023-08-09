@@ -44,7 +44,7 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="Linux amd64 (x86_64)" %}}
+{{% tab name="Linux x86_64" %}}
 
 To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture:
 
@@ -54,7 +54,7 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="macOS Apple Silicon" %}}
+{{% tab name="macOS arm64" %}}
 
 To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture:
 
@@ -64,7 +64,7 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="macOS Intel (x86_64)" %}}
+{{% tab name="macOS x86_64" %}}
 
 To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture:
 
@@ -74,9 +74,9 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="Build from Source" %}}
+{{% tab name="Build" %}}
 
-Alternatively, if you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly using the `go install` command:
+If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly using the `go install` command:
 
 ```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
