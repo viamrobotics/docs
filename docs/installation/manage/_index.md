@@ -147,7 +147,6 @@ brew services restart viam-server
 {{% /tab %}}
 {{< /tabs >}}
 
-
 ## Update `viam-server`
 
 Select the tab for your platform:
