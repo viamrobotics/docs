@@ -36,7 +36,7 @@ You can use the `uname -m` command to determine your system architecture.
 {{< tabs >}}
 {{% tab name="Linux arm64" %}}
 
-To download the Viam CLI on a Linux computer with the `arm64` architecture:
+To download the Viam CLI on a Linux computer with the `arm64` architecture, run the following commands:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
@@ -46,7 +46,7 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture:
+To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
@@ -56,7 +56,7 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="macOS arm64" %}}
 
-To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture:
+To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture, run the following commands:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-arm64
@@ -66,7 +66,7 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="macOS x86_64" %}}
 
-To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture:
+To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-amd64
@@ -94,7 +94,7 @@ echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 {{% /tab %}}
 {{< /tabs >}}
 
-To update the Viam CLI tool, reinstall using the steps above.
+To later update the Viam CLI tool, you can use the steps above to reinstall the latest version.
 
 ## Authenticate
 
