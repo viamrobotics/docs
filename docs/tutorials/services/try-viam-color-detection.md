@@ -17,6 +17,7 @@ viamresources: [ "vision", "camera" ]
 level: "Beginner"
 date: "16 December 2022"
 cost: "0"
+no_list: true
 # SMEs: Hazal
 ---
 

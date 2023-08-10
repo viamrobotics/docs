@@ -17,6 +17,7 @@ viamresources: [ "arm" ]
 level: "Beginner"
 date: "7 March 2023"
 cost: 8400
+no_list: true
 ---
 
 {{< alert title="Caution" color="caution" >}}
