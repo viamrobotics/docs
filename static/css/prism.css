@@ -135,17 +135,19 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
 }
 
 .code-terminal > pre[class*="language-"] > code span {
+  text-shadow: none;
   color: white !important;
-
-  .token.class-name,
-  .token.function,
-  .token.punctuation,
-  .token.important,
-  .token.regex,
-  .token.variable {
-      color: white !important;
-  }
 }
+
+.code-terminal > pre[class*="language-"] > code span > .token.class-name,
+.code-terminal > pre[class*="language-"] > code span > .token.function,
+.code-terminal > pre[class*="language-"] > code span > .token.punctuation,
+.code-terminal > pre[class*="language-"] > code span > .token.important,
+.code-terminal > pre[class*="language-"] > code span > .token.regex,
+.code-terminal > pre[class*="language-"] > code span > .token.variable {
+    color: white !important;
+}
+
 
 div.code-toolbar.code-terminal > .toolbar > .toolbar-item > a,
 div.code-toolbar.code-terminal > .toolbar > .toolbar-item > button,
