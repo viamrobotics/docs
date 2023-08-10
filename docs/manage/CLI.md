@@ -279,7 +279,7 @@ viam module update --org-id 'abc'
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
-See [Create a custom module](#create-a-custom-module-using-the-viam-cli) and [Update an existing module](#update-an-existing-module-using-the-viam-cli) for a detailed walkthrough of the above commands.
+See [Create a custom module](/extend/modular-resources/create/#create-a-custom-module-using-the-viam-cli) and [Update an existing module](/extend/modular-resources/create/#update-an-existing-module-using-the-viam-cli) for a detailed walkthrough of the `viam module` commands.
 
 #### Command options
 
@@ -296,7 +296,7 @@ See [Create a custom module](#create-a-custom-module-using-the-viam-cli) and [Up
 | ----------- | ----------- | ----------- | ----------- |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to | `create`, `update` | true |
-| `--namespace`      | the namespace to associate the module to | `create`, | true |
+| `--namespace`      | the namespace to associate the module to | `create` | true |
 | `--platform`      |  the architecture of your module binary | `upload` | true |
 | `--version`      |  the version of your module to set for this upload  | `upload` | true |
 
@@ -309,7 +309,7 @@ The `--platform` flag accepts one of the following architectures:
 
 The `--version` flag accepts a valid [semantic version](https://semver.org/) (example: `1.0.0`). The Viam Registry does not perform any validation on this value. You can later increment this value with subsequent `viam module upload` commands.
 
-See [Create a custom module](#create-a-custom-module-using-the-viam-cli) and [Update an existing module](#update-an-existing-module-using-the-viam-cli) for a detailed walkthrough of the above commands.
+See [Create a custom module](/extend/modular-resources/create/#create-a-custom-module-using-the-viam-cli) and [Update an existing module](/extend/modular-resources/create/#update-an-existing-module-using-the-viam-cli) for a detailed walkthrough of the `viam module` commands.
 
 ### organizations
 
