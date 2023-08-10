@@ -144,8 +144,8 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 
 {{% /alert %}}
 
-Click **Save config** and head to the **Components** tab.
-Proceed to [Test your detector](#test-your-detector).
+Click **Save config**.
+Proceed to [test your detector](#test-your-detector).
 
 ## Configure a `mlmodel` detector
 
@@ -214,6 +214,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {{< /tabs >}}
 
 Click **Save config**.
+Proceed to [test your detector](#test-your-detector).
 
 ## Test your detector
 
@@ -228,7 +229,25 @@ If you intend to use the detector with a camera that is part of your robot, you 
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
 
+
 2. If you would like to see detections from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) to view output from the detector overlaid on images from the camera.
+   To configure a transform camera, use the following attributes:
+
+    ```json
+    {
+      "pipeline": [
+          {
+          "type": "detections",
+          "attributes": {
+              "confidence_threshold": 0.5,
+              "classifier_name": "my_detector"
+          }
+          }
+      ],
+      "source": "<camera-name>"
+    }
+    ```
+
    If you only want to access detections from code, you do not need to configure a transform camera.
 3. After adding the components and their attributes, click **Save config**.
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
@@ -239,6 +258,12 @@ If you intend to use the detector with a camera that is part of your robot, you 
 5. To access detections with code, use the Vision Service methods on the camera you configured.
 Do not use the name of the transform camera that you added in step 2.
 The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
+
+{{% alert title="Tip" color="tip" %}}
+
+Pass the name of the first camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -269,9 +294,9 @@ To learn more about how to use detection, see the [Python SDK docs](https://pyth
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-"go.viam.com/rdk/config"
-"go.viam.com/rdk/services/vision"
-"go.viam.com/rdk/components/camera"
+  "go.viam.com/rdk/config"
+  "go.viam.com/rdk/services/vision"
+  "go.viam.com/rdk/components/camera"
 )
 
 // Grab the camera from the robot
@@ -321,10 +346,6 @@ To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.d
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% alert title="Tip" color="tip" %}}
-To see more code examples of how to use Viam's vision service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
-{{% /alert %}}
-
 ### Existing images
 
 If you would like to test your detector with existing images, load the images and pass them to the detector:
@@ -356,8 +377,11 @@ To learn more about how to use detection, see the [Python SDK docs](https://pyth
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-"go.viam.com/rdk/config"
-"go.viam.com/rdk/services/vision"
+  "go.viam.com/rdk/config"
+  "go.viam.com/rdk/services/vision"
+  "image"
+  "image/png"
+  "os"
 )
 
 visService, err := vision.from_robot(robot=robot, name='my_detector')
@@ -365,9 +389,12 @@ if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
 
-// Load an image
-// img, release, err := camStream.Next(context.Background())
-// defer release()
+// Read image from existing file
+img, err := os.Open("test-image.png")
+if err != nil {
+    logger.Fatalf("Could not get image: %v", err)
+}
+defer img.Close()
 
 // Apply the detector to the image
 detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
@@ -384,6 +411,10 @@ To learn more about how to use detection, see the [Go SDK docs](https://pkg.go.d
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{% alert title="Tip" color="tip" %}}
+To see more code examples of how to use Viam's Vision Service, see [our example repo](https://github.com/viamrobotics/vision-service-examples).
+{{% /alert %}}
 
 ## Next Steps
 
