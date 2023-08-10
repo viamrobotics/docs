@@ -566,8 +566,7 @@ You can also create a private module that is shared only within your [organizati
 
    This command creates a new `meta.json` file in your current working directory, which serves as a template on which to base your custom configurations.
 
-1. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module.
-   Fill in the following fields. The `name` and `visibility` fields are pre-populated:
+1. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields. The `name` and `visibility` fields are pre-populated:
 
 <table>
   <tr>
@@ -611,11 +610,11 @@ You can also create a private module that is shared only within your [organizati
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The path to the module file that starts your program.</td>
+    <td>The full filesystem path to the module file that starts your program.</td>
   </tr>
 </table>
 
-   For example, the following represents the configuration of an example `my-module` module:
+   For example, the following represents the configuration of an example `my-module` module in the `acme` namespace:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -653,7 +652,7 @@ You can also create a private module that is shared only within your [organizati
 
    On successful update, the command will return a link to the updated module in the Viam Registry.
 
-1. Package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` format. Run the following command to zip your custom module as a `tar.gz` archive:
+1. Package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` format. Run the following command to compress your custom module as a `tar.gz` archive:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -zcf <module-name>.tar.gz <module-name>
@@ -710,7 +709,7 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
 
    On successful update, the command will return a link to the updated module in the Viam Registry.
 
-1. Re-package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` format. Run the following command to zip your custom module as a `tar.gz` archive:
+1. Re-package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` format. Run the following command to compress your custom module as a `tar.gz` archive:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -zcf <module-name>.tar.gz <module-name>
