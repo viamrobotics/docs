@@ -34,9 +34,9 @@ You can use the `uname -m` command to determine your system architecture.
 {{% /alert %}}
 
 {{< tabs >}}
-{{% tab name="Linux arm64" %}}
+{{% tab name="Linux aarch64" %}}
 
-To download the Viam CLI on a Linux computer with the `arm64` architecture, run the following commands:
+To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
 
 ```{class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
