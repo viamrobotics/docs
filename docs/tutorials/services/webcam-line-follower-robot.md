@@ -17,6 +17,7 @@ level: "Beginner"
 date: "26 August 2022"
 updated: "4 August 2023"
 cost: 570
+no_list: true
 ---
 
 <div class="td-max-width-on-larger-screens">
