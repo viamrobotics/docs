@@ -16,6 +16,7 @@ viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
 level: "Beginner"
 date: "15 February 2023"
 cost: 200
+no_list: true
 ---
 
 When we think of robots, most of us tend to group them into categories:
