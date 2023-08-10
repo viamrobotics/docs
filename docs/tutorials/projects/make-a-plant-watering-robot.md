@@ -14,6 +14,7 @@ viamresources: [ "board", "motor", "sensor" ]
 level: "Beginner"
 date: "29 March 2023"
 cost: 150
+no_list: true
 # SMES: Olivia Miller
 ---
 
