@@ -99,7 +99,7 @@ The `attributes` available vary depending on your implementation.
       "namespace": "<your-module-namespace>",
       "type": "<your-resource-subtype>",
       "model": "<model-namespace>:<model-family-name>:<model-name>",
-      "name": "<your-module-name>",
+      "name": "<your-model-instance-name>",
       "depends_on": [],
     }
   ],
