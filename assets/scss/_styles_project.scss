@@ -752,6 +752,10 @@ td > ul, td > ol {
   background-color: rgb(241, 241, 244)
 }
 
+.nav-tabs .nav-item {
+  margin-bottom: 0;
+}
+
 .nav-tabs .nav-item:last-child {
   border-right: 1px solid rgb(209, 213, 219);
 }

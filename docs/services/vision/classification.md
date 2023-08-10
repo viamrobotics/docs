@@ -104,7 +104,6 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 
 1. Configure a [camera component](../../../components/camera/).
 2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
-   To configure a transform camera, use the following attributes:
 
     ```json
     {
@@ -121,23 +120,22 @@ If you intend to use the classifier with a camera that is part of your robot, yo
     }
     ```
 
-   If you only want to access classifications from code, you do not need to configure a transform camera.
 3. After adding the components and their attributes, click **Save config**.
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
    The transform camera will now show classifications on the image.
 
-![Model recognizes a star on camera feed](/services/model-on-camera.png)
+   ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
-The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
+5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
 
-{{% alert title="Tip" color="tip" %}}
+    {{% alert title="Tip" color="tip" %}}
 
 Pass the name of the first camera you configured, _not_ the name of the transform camera, to the vision service methods.
 
-{{% /alert %}}
+    {{% /alert %}}
 
-{{< tabs >}}
-{{% tab name="Python" %}}
+    {{< tabs >}}
+    {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
@@ -162,8 +160,8 @@ await robot.close()
 
 To learn more about how to use classification, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
 
-{{% /tab %}}
-{{% tab name="Go" %}}
+    {{% /tab %}}
+    {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
@@ -217,8 +215,8 @@ if len(classificationsFromImage) > 0 {
 
 To learn more about how to use classification, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
 
-{{% /tab %}}
-{{< /tabs >}}
+    {{% /tab %}}
+    {{< /tabs >}}
 
 ### Existing images
 
@@ -264,9 +262,14 @@ if err != nil {
 }
 
 // Read image from existing file
-img, err := os.Open("test-image.png")
+file, err := os.Open("test-image.jpeg")
 if err != nil {
     logger.Fatalf("Could not get image: %v", err)
+}
+defer file.Close()
+img, err := jpeg.Decode(file)
+if err != nil {
+    logger.Fatalf("Could not decode image: %v", err)
 }
 defer img.Close()
 
