@@ -544,7 +544,7 @@ This feature is in beta, and may not be suitable for production use.
 
 You can use the [Viam CLI](/manage/cli/) to create and upload your own custom modules to the Viam Registry.
 With the CLI, you can create a new module from a template, register your module with the Viam Registry, and share it with other Viam users.
-You can also create a private module that is shared only within your [organization](/manage/fleet/organizations/). For more information, see the [`viam module` command](/manage/CLI/#module).
+You can also create a private module that is shared only within your [organization](/manage/fleet/organizations/). For more information, see the [`viam module` command](/manage/cli/#module).
 
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
 
@@ -683,7 +683,7 @@ You can also create a private module that is shared only within your [organizati
    viam module upload --version 1.0.0 --platform darwin/arm64 my-module.tar.gz
    ```
 
-For more information, see the [`viam module` command](/manage/CLI/#module)
+For more information, see the [`viam module` command](/manage/cli/#module)
 
 ### Update an existing module
 
@@ -730,7 +730,7 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-For more information, see the [`viam module` command](/manage/CLI/#module)
+For more information, see the [`viam module` command](/manage/cli/#module)
 
 ## Next steps
 
