@@ -250,7 +250,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
    The transform camera will now show detections with bounding boxes around the object.
 
-  ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
+   ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/services/vision/chair-detector.png)
 
 5. To access detections with code, use the Vision Service methods on the camera you configured in step 1.
    The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
