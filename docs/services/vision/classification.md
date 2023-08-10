@@ -274,7 +274,7 @@ if err != nil {
 defer img.Close()
 
 // Apply the classifier to the image
-classificationsFromImage, err := visService.GetClassifications(context.Background(), img, nil)
+classificationsFromImage, err := visService.Classifications(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }
