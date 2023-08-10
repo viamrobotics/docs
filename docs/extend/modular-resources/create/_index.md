@@ -548,21 +548,15 @@ You can also create a private module that is shared only within your [organizati
 
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
 
-1. Next, choose your custom module name and create a new module template using the `viam module create` subcommand:
+1. Next, choose your custom module name and create a new module template using the `viam module create` command:
 
-   1. To create a *public* module that will be visible to all Viam users, provide a unique [namespace](/extend/modular-resources/key-concepts/#namespace) when creating your module:
+   - To create a *public* module that will be visible to all Viam users, provide a unique [namespace](/extend/modular-resources/key-concepts/#namespace) when creating your module:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module create --name <your-module-name> --namespace <your-unique-namespace>
       ```
 
-      {{% alert title="INTERNAL NOTE" color="note" %}}
-      INTERNAL TESTING NOTICE:
-
-      The UX to register a namespace is not ready yet, and the `--namespace` command currently errors, even with extant namespaces provided. Please use `--org-id` instead, per next step.
-      {{% /alert %}}
-
-   1. To create a *private* module that will only be accessible to users within your [organization](/manage/fleet/organizations/), provide your organization ID when creating your module:
+   - To create a *private* module that will only be accessible to users within your [organization](/manage/fleet/organizations/), provide your organization ID when creating your module:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module create --name <your-module-name> --org-id <org-id>
@@ -570,17 +564,17 @@ You can also create a private module that is shared only within your [organizati
 
       You can find your organization ID by navigating to the [the Viam app](https://app.viam.com), selecting your user account in the upper-right corner, and clicking **Settings** from the drop down menu.
 
-   This command creates a new `meta.json` file in your current working directory.
+   This command creates a new `meta.json` file in your current working directory, which serves as a template on which to base your custom configurations.
 
 1. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module.
    Fill in the following fields:
 
-   | Name | Type | Inclusion | Pre-populated | Description |
-   | ---- | ---- | --------- | ------------- | ----------- |
-   | `name` | string | **Required** | Yes, do not edit | The name of the module. |
-   | `visibility` | string | **Required** | Yes, configurable | Whether the module is visible to all Viam users (`public`), or accessible only to members of your [organization](/manage/fleet/organizations/) (`private`). You can change this setting later using the `viam module update` command.<br>Default: `private` |
+   | Name | Type | Inclusion | Description |
+   | ---- | ---- | --------- | ----------- |
+   | `name` | string | **Required** | The name of the module. |
+   | `visibility` | string | **Required** | Whether the module is visible to all Viam users (`public`), or accessible only to members of your [organization](/manage/fleet/organizations/) (`private`). You can change this setting later using the `viam module update` command.<br>Default: `private` |
    | `url` | string | Optional | No | The URL of the GitHub repository containing the source code of the module. |
-   | `description` | string | **Required** | No | A description of your module and what it provides. |
+   | `description` | string | **Required** | A description of your module and what it provides. |
    | `models` | list | **Required** | A list of one or more [models](/extend/modular-resources/key-concepts/#models) provided by your custom module. You must provide at least one model, which consists of an `api` and `model` key pair. |
    | `entrypoint` | string | **Required** | The path to the module file that starts your program. |
 
@@ -588,9 +582,9 @@ You can also create a private module that is shared only within your [organizati
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "name": "viam:my-module",
+     "name": "acme:my-module",
      "visibility": "private",
-     "url": "https://github.com/viam-user/my-module",
+     "url": "https://github.com/acme-co/my-module",
      "description": "An example custom module.",
      "models": [
        {
@@ -603,7 +597,7 @@ You can also create a private module that is shared only within your [organizati
    ```
 
   {{% alert title="Important" color="note" %}}
-  If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/extend/modular-resources/key-concepts/#namespace). In the example above, the model namespace is set to `acme` to match the owning organization.
+  If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/extend/modular-resources/key-concepts/#namespace). In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
   {{% /alert %}}
 
 1. Run `viam module update` to register the configuration changes you just made to `meta.json`:
@@ -633,7 +627,7 @@ You can also create a private module that is shared only within your [organizati
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module upload --version <version> --platform <platform> <path-to-tar.gz>
+   viam module upload --version <version> --platform <platform> <packaged-module.tar.gz>
    ```
 
    Where:
@@ -663,13 +657,13 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
 
 1. Run `viam module update` to register the configuration changes to your module (and to `meta.json` if applicable):
 
-   1. To register a *public* module, run the following command from within the same directory as your `meta.json` file:
+   - To register a *public* module, run the following command from within the same directory as your `meta.json` file:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update
       ```
 
-   1. To register a *private* module, run the following command from within the same directory as your `meta.json` file, providing your organization ID:
+   - To register a *private* module, run the following command from within the same directory as your `meta.json` file, providing your organization ID:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update --org-id <org-id>
