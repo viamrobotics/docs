@@ -20,7 +20,7 @@ Then, to export data from the data management service in the cloud:
 3. Run the copied command in a terminal:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam data export --org-ids=<org-id> --data-type=binary --mime-types=image/jpeg,image/png --destination=.
+   viam data export --org-ids=<org-id> --data-type=binary --mime-types=<mime types> --destination=.
    ```
 
    This command uses the Viam CLI to download the data locally onto your computer based on the search criteria you select in the Viam app.
