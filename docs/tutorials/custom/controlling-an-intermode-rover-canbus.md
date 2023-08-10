@@ -14,6 +14,7 @@ viamresources: [ "base", "custom" ]
 level: "Intermediate"
 date: "22 January 2023"
 cost: 1500
+no_list: true
 # SME: Matt Vella, Matt Dannenberg, James Otting
 ---
 
