@@ -16,6 +16,7 @@ viamresources: [ "board", "motor", "base", "camera" ]
 level: "Beginner"
 date: "29 March 2023"
 cost: 420
+no_list: true
 ---
 
 Approaching robotics can be daunting.
