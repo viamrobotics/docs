@@ -83,7 +83,7 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 1. Go to the **Fragments** subtab of the **Config** tab.
 2. Click **Remove** next to the fragment.
 3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
-5. Toggle to **Raw JSON** mode.
+5. Toggle to [**Raw JSON** mode](/try-viam/try-viam-tutorial/#raw-json).
 6. Paste the raw fragment contents into the **Raw JSON** config field.
 7. Click **Save config**.
 8. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
