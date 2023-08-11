@@ -309,7 +309,7 @@ The `--platform` flag accepts one of the following architectures:
 
 The `--version` flag accepts a valid [semantic version](https://semver.org/) (example: `1.0.0`). The Viam Registry does not perform any validation on this value. You can later increment this value with subsequent `viam module upload` commands.
 
-See [Create a custom module](/extend/modular-resources/create/#create-a-custom-module-using-the-viam-cli) and [Update an existing module](/extend/modular-resources/create/#update-an-existing-module-using-the-viam-cli) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/extend/modular-resources/create/#upload-a-custom-module-using-the-viam-cli) and [Update an existing module](/extend/modular-resources/create/#update-an-existing-module-using-the-viam-cli) for a detailed walkthrough of the `viam module` commands.
 
 ### organizations
 
