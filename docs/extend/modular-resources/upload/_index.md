@@ -31,7 +31,7 @@ To upload your custom module to the Viam Registry, either as a public or private
       viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
       ```
 
-   - To create a *private* module that will only be accessible to users within your [organization](/manage/fleet/organizations/), provide your organization ID when running this command:
+   - To upload a *private* module that will only be accessible to users within your [organization](/manage/fleet/organizations/), provide your organization ID when running this command:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module create --name <your-module-name> --org-id <org-id>
