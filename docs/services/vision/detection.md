@@ -257,7 +257,8 @@ If you intend to use the detector with a camera that is part of your robot, you 
 
    {{% alert title="Tip" color="tip" %}}
 
-   Pass the name of the first camera you configured, _not_ the name of the transform camera, to the Vision Service methods.
+   Pass the name of the camera you configured in step 1.
+   Do not pass a transform camera that already already has the "detections" or "classifications" transform applied to it.
 
    {{% /alert %}}
 
