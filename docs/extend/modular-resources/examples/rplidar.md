@@ -105,7 +105,7 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 {{% tab name="JSON Template" %}}
 
 Navigate to the **Config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON:
+Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON. For M1 & M2, you will need to check your system's output for `ls /dev/ | grep tty.usbserial` and put the number seen there. For example, you may see `tty.usbserial-130`, in which case you should replace XXX with 130:
 
   {{< tabs name="Add the RPlidar component - configs" >}}
   {{% tab name="Linux" %}}
@@ -174,7 +174,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
         "depends_on": [],
         "model": "viam:lidar:rplidar",
         "attributes": {
-          "device_path": "/dev/tty.usbserial-0001"
+          "device_path": "/dev/tty.usbserial-XXX"
         },
         "name": "rplidar"
       }
