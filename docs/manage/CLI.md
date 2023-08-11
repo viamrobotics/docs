@@ -441,7 +441,16 @@ viam robots list
 | `--organization`     | organization name to filter by       |list|true |
 | `--location`    |  location name to filter by   |list|true |
 
-### `whoami`
+### version
+
+The `version` command returns the version of the Viam CLI.
+To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
+
+```sh {class="command-line" data-prompt="$"}
+viam version
+```
+
+### whoami
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
