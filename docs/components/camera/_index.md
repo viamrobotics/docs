@@ -176,7 +176,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ### GetImages
 
 Get simultaneous images from different sensors, along with associated metadata.
-This should not be used for getting a time series of images from the same sensor.
+The multiple images returned from GetImages do not represent a time series of images.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
