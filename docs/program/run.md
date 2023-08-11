@@ -43,6 +43,13 @@ For an example, see [this execution demo.](https://github.com/viamrobotics/viam-
 For information on running C++ code see [the instructions on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+```sh {class="command-line" data-prompt="$"}
+flutter run <DART_FILE>
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 This is useful because as long as that computer is able to establish a network connection with the robot's computer, your control logic will be executed on the robot.
