@@ -193,7 +193,9 @@ This should not be used for getting a time series of images from the same sensor
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-frame = await my_cam.get_images()
+images, metadata = await my_cam.get_images()
+img0 = images[0].image
+timestamp = metadata.captured_at
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_images).
