@@ -55,7 +55,7 @@ To create a [vision service](/services/vision/):
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-In your vision service's panel, select the following **Attributes**:
+In your vision service's panel, set the following **Attributes**:
 
 - Set the color to `#7a4f5c` or `rgb(122, 79, 92)`
 - Set hue tolerance to `0.06`
