@@ -255,8 +255,8 @@ This includes:
 * Updating an existing module in the Viam Registry
 
 ```sh {class="command-line" data-prompt="$"}
-viam module create --name <module-id> [--org-id <org-id>, --namespace <namespace>]
-viam module update [--org-id <org-id>, --namespace <namespace>]
+viam module create --name <module-id> [--org-id <org-id>, --public-namespace <namespace>]
+viam module update [--org-id <org-id>, --public-namespace <namespace>]
 viam module upload --version <version> --platform <platform> <packaged-module.tar.gz>
 ```
 
@@ -264,7 +264,7 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # create a new public module named 'my-module' in organization 'abc':
-viam module create --name 'my-module' --namespace 'my-namespace'
+viam module create --name 'my-module' --public-namespace 'my-namespace'
 
 # create a new private module named 'my-module' in organization 'abc':
 viam module create --name 'my-module' --org-id 'abc'
@@ -296,7 +296,7 @@ See [Create a custom module](/extend/modular-resources/create/#create-a-custom-m
 | ----------- | ----------- | ----------- | ----------- |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to | `create`, `update` | true |
-| `--namespace`      | the namespace to associate the module to | `create` | true |
+| `--public-namespace`      | the namespace to associate the module to | `create` | true |
 | `--platform`      |  the architecture of your module binary | `upload` | true |
 | `--version`      |  the version of your module to set for this upload  | `upload` | true |
 

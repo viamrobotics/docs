@@ -553,7 +553,7 @@ You can also create a private module that is shared only within your [organizati
    - To create a *public* module that will be visible to all Viam users, provide a unique [namespace](/extend/modular-resources/key-concepts/#namespace) when creating your module:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module create --name <your-module-name> --namespace <your-unique-namespace>
+      viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
       ```
 
    - To create a *private* module that will only be accessible to users within your [organization](/manage/fleet/organizations/), provide your organization ID when creating your module:
