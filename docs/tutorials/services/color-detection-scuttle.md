@@ -154,7 +154,7 @@ source env/bin/activate
 Then, install the Viam Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
-pip3 install viam-sdk python-vlc
+pip3 install viam-sdk
 ```
 
 ### Connect
