@@ -216,7 +216,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromRobot(robot, "my_camera")
 
-images, err := myCamera.Images(context.Background())
+images, metadata, err := myCamera.Images(context.Background())
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
