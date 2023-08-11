@@ -150,9 +150,8 @@ my_classifier = VisionClient.from_robot(robot, "my_classifier")
 # Get the top 2 classifications with the highest confidence scores from the camera output
 classifications = await my_classifier.get_classifications_from_camera(img, 2)
 
-# If you need to get an image first and then run classifications on it,
-# you can do it this way (generally slower but useful if you need to
-# use the image afterwards):
+# If you need to store the image, get the image first
+# and then run classifications on it. This process is slower:
 img = await cam1.get_image()
 classifications_from_image = await my_classifier.get_classifications(img, 2)
 
@@ -192,9 +191,8 @@ if len(directClassifications) > 0 {
     logger.Info(classifications[0])
 }
 
-// If you need to get an image first and then run classifications on it,
-// you can do it this way (generally slower but useful if you need to
-// use the image afterwards):
+// If you need to store the image, get the image first 
+// and then run classifications on it. This process is slower:
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
