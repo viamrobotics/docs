@@ -301,7 +301,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | `--platform`      |  the architecture of your module binary | `upload` | true |
 | `--version`      |  the version of your module to set for this upload  | `upload` | true |
 
-### Using the `--platform` and `--version` arguments
+##### Using the `--platform` and `--version` arguments
 
 The `--platform` flag accepts one of the following architectures:
 
