@@ -1,6 +1,6 @@
 ---
 title: "Upload your own modules to the Viam Registry"
-linkTitle: "Upload a custom module"
+linkTitle: "Upload"
 weight: 20
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
