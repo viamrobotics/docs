@@ -139,7 +139,7 @@ sitemap:
         <div>
           <div>Program your robots</div>
           <p style="text-align: left;">
-            Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, or <a href="https://ts.viam.dev/">TypeScript</a>.
+            Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, <a href="https://ts.viam.dev/">TypeScript</a>, <a href="https://cpp.viam.dev/" target="_blank">C++</a>, or <a href="https://flutter.viam.dev/" target="_blank">Flutter</a>.
           </p>
         </div>
         <div class="hover-card-img">
@@ -186,7 +186,7 @@ sitemap:
         <li><a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><div><p>Go SDK</p></div></a></li>
         <li><a href="https://ts.viam.dev/" target="_blank"><div><p>TypeScript SDK</p></div></a></li>
         <li><a href="https://cpp.viam.dev/" target="_blank"><div><p>C++ SDK (alpha)</p></div></a></li>
-        <li><a href="https://github.com/viamrobotics/viam-flutter-sdk" target="_blank"><div><p>Flutter SDK (alpha)</p></div></a></li>
+        <li><a href="https://flutter.viam.dev/" target="_blank"><div><p>Flutter SDK (beta)</p></div></a></li>
         </ul>
         </div>
     </div>
