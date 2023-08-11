@@ -131,7 +131,7 @@ If you intend to use the classifier with a camera that is part of your robot, yo
     {{% alert title="Tip" color="tip" %}}
 
 Pass the name of the camera you configured in step 1.
-Do not pass a transform camera that already already has the "detections" or "classifications" transform applied to it.
+Do not pass a transform camera that already has the "detections" or "classifications" transform applied to it.
 
     {{% /alert %}}
 
