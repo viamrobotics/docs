@@ -114,3 +114,11 @@ Name | Type | Inclusion | Description |
 `ntrip_password` | string | Optional | Password for the NTRIP server.
 `ntrip_connect_attempts` | int | Optional | How many times to attempt connection before timing out. <br> Default: `10`
 `ntrip_mountpoint` | string | Optional | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
+
+{{% alert title="Tip" color="tip" %}}
+
+How you connect your device to an NTRIP server varies by geographic region.
+You will need to research the options available to you.
+If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from SparkFun](https://learn.sparkfun.com/tutorials/gps-rtk2-hookup-guide/connecting-the-zed-f9p-to-a-correction-source).
+
+{{% /alert %}}
