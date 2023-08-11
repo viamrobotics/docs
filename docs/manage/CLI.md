@@ -140,13 +140,13 @@ The Viam CLI has a built-in help system that lists all available commands.
 You can access it at any time by issuing the command:
 
 ```sh {class="command-line" data-prompt="$"}
-viam help
+viam --help
 ```
 
-You can also access contextual help by passing `help` as a command option for any CLI command, for example:
+You can also access contextual help by passing the `--help` flag as a command option for any CLI command, for example:
 
 ```sh {class="command-line" data-prompt="$"}
-viam organizations help
+viam organizations --help
 ```
 
 ## Commands
@@ -180,7 +180,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
 | `delete`      | delete data  | - |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ##### Named arguments
 
@@ -218,7 +218,7 @@ viam locations list [<organization id>]
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ### `login`
 
@@ -256,7 +256,7 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id>, --namespace <namespace>]
-viam module update [--org-id <org-id>]
+viam module update [--org-id <org-id>, --namespace <namespace>]
 viam module upload --version <version> --platform <platform> <packaged-module.tar.gz>
 ```
 
@@ -288,7 +288,7 @@ See [Create a custom module](/extend/modular-resources/create/#create-a-custom-m
 | `create`    | create a new custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to <file>meta.json</file> | - |
 | `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ##### Named arguments
 
@@ -324,7 +324,7 @@ viam organizations list
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ### `robot`
 
@@ -368,7 +368,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ##### Positional arguments: `part`
 
@@ -378,7 +378,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data.
 | `logs`     |  get logs for the specified robot part
 | `shell`     |  access a robot part securely using a secure shell. This feature must be enabled.
-| `help`      | return help
+| `--help`      | return help
 
 ##### Named arguments
 
@@ -432,7 +432,7 @@ viam robots list
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots (name and id) that the authenticated session has access to in the specified organization and location  |- |
-| `help`      | return help|-|
+| `--help`      | return help|-|
 
 ##### Named arguments
 
