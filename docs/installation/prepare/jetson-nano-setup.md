@@ -6,12 +6,12 @@ type: "docs"
 image: "/installation/thumbnails/jetson-nano-dev-kit.png"
 imageAlt: "Jetson Nano"
 images: ["/installation/thumbnails/jetson-nano-dev-kit.png"]
-description: "Set up the Jetson Nano Developer Kit and Jetson Orin Nano Developer Kit to prepare your Jetson Nano or Orin Nano for viam-server installation."
+description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 no_list: true
 # SMEs: Pete Garafano
 ---
 
-The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) and the newer model [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin) from [NVIDIA](https://www.nvidia.com/) are small computers built for embedded applications and capable of supporting modern AI workloads.
+The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) and [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin) from [NVIDIA](https://www.nvidia.com/) are small computers built for embedded applications and capable of supporting modern AI workloads.
 Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or the [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation.
 
 <div class="td-max-width-on-larger-screens text-center">
@@ -62,7 +62,7 @@ You need the following hardware, tools, and software to install `viam-server` on
    Once you have reached *Next Steps*, return to the Viam docs.
 2. Your Jetson Nano or Jetson Orin Nano now has a Viam-compatible operating system installed.
    Continue to [install viam-server](/installation/#install-viam-server).
-   Note that the Jetson Nano and Jetson Orin Nano have aarch64 CPU architecture.
+   Note that the Jetson Nano and Jetson Orin Nano have `aarch64` CPU architecture.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
 
