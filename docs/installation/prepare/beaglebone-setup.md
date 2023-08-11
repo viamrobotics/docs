@@ -18,7 +18,7 @@ The [BeagleBone AI-64](https://docs.beagleboard.org/latest/boards/beaglebone/ai-
 Follow this guide to set up your BeagleBone AI-64 and prepare it for `viam-server` installation.
 
 <div class="td-max-width-on-larger-screens text-center">
-{{< imgproc alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle." src="/installation/beaglebone-setup/image4.png" resize="600x" declaredimensions=true >}}
+{{< imgproc alt="The front of a BeagleBone AI-64 single-board computer at a 45° angle." src="/installation/beaglebone-setup/image4.png" resize="400x" declaredimensions=true >}}
 </div>
 
 ## Hardware Requirements
