@@ -12,9 +12,9 @@ Viam provides a reusable {{% glossary_tooltip term_id="fragment" text="*fragment
 
 ## Prerequisites
 
-* An assembled Viam Rover with a Raspberry Pi.
+- An assembled Viam Rover with a Raspberry Pi.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial/)
-* The Pi is able to connect to [the Viam app](https://app.viam.com).
+- The Pi is connected to [the Viam app](https://app.viam.com).
   To add your Pi to the Viam app, refer to [the rover setup guide](/try-viam/rover-resources/rover-tutorial/#connect-to-the-viam-app).
 
 ## Add the fragment
@@ -33,7 +33,8 @@ Click **Save Config** to save the new configuration.
 
 {{<imgproc src="try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
 
-The fragment adds the following components to your robot's JSON configuration:
+The fragment adds the following components to your robot's JSON configuration.
+For details about how a given type of component is configured, see the [component documentation](/components/) for that type.
 
 * [Board component](/components/board/), which is the Raspberry Pi.
   * Within the board component attributes, digital interrupts: "re" to pin "37" and "le" to pin "35" and I2Cs: name "default_i2c_bus" and bus "1".
@@ -70,6 +71,9 @@ Typically, this would suggest that they should be configured as enable pins, but
   * and attributes of "i2c_bus": "default_i2c_bus", "use_alternate_i2c_address": false, and "board": "local".
   * Depends on: local.
 * A microphone, type: audio_input, with attributes "audio_path_pattern": "3a" and "debug": false.
+
+- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
+- Two [motors](/components/motor/gpio/) (`right` and `left`)
 
 ## See the components on the configuration page
 
