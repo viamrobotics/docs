@@ -276,7 +276,7 @@ my_detector = VisionClient.from_robot(robot, "my_detector")
 
 detections = await my_detector.get_detections_from_camera(cam1)
 
-# If you need to save the image, get the image first
+# If you need to store the image, get the image first
 # and then run detections on it. This process is slower:
 img = await cam1.get_image()
 detections_from_image = await my_detector.get_detections(img)
