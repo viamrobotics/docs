@@ -255,9 +255,9 @@ This includes:
 * Updating an existing module in the Viam Registry
 
 ```sh {class="command-line" data-prompt="$"}
-viam module create --name <module-id> [--org-id <org-id>, --public-namespace <namespace>]
-viam module update [--org-id <org-id>, --public-namespace <namespace>]
-viam module upload --version <version> --platform <platform> <packaged-module.tar.gz>
+viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
+viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
+viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <packaged-module.tar.gz>
 ```
 
 Examples:
@@ -294,6 +294,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
+| `--module`     |  the path to the `meta.json` file for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to | `create`, `update` | true |
 | `--public-namespace`      | the namespace to associate the module to | `create` | true |
