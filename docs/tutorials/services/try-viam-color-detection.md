@@ -36,7 +36,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Add the vision service to detect a color
 
-This tutorial uses the hex color #7a4f5c (a reddish color).
+This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="300x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
@@ -55,15 +55,11 @@ To create a [vision service](/services/vision/):
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-In your vision service's panel, fill in the **Attributes** field.
+In your vision service's panel, set the following **Attributes**:
 
-``` json {class="line-numbers linkable-line-numbers"}
-{
-      "segment_size_px": 100,
-      "detect_color": "#7a4f5c",
-      "hue_tolerance_pct": 0.06
-}
-```
+- Set the color to `#7a4f5c` or `rgb(122, 79, 92)`
+- Set hue tolerance to `0.06`
+- Set the segment size to `100`px
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
