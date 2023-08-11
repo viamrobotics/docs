@@ -317,8 +317,8 @@ if len(directDetections) > 0 {
     logger.Info(detections[0])
 }
 
-// If you need to use the image based on the detections, get the image first
-// and then run detections on it. This process is slower:
+# If you need to store the image, get the image first
+# and then run detections on it. This process is slower:
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
