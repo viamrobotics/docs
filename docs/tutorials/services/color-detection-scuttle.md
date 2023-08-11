@@ -19,10 +19,11 @@ level: "Beginner"
 date: "18 August 2022"
 updated: "11 August 2023"
 cost: 540
+no_list: true
 ---
 
 In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
-We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover.
+We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/try-viam/rover-resources/).
 
 <div class="aligncenter">
 {{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
@@ -63,7 +64,7 @@ To create a [color detector vision service](/services/vision/detection/):
 3. Select **Color Detector** as the **Model**.
 4. Click **Create Service**.
 
-In your vision service's panel, select the following **Attributes**:
+In your vision service's panel, set the following **Attributes**:
 
 - Set the color to `#a13b4c` or `rgb(161,59,76)`
 - Set hue tolerance to `0.06`
@@ -100,7 +101,7 @@ You have configured a heuristic-based detector that draws boxes around objects a
 {{< alert title="Tip" color="tip" >}}
 If you want to detect other colors, change the color parameter `detect_color`.
 Object colors can vary dramatically based on the light source.
-We recommend you verify the desired color detection value under actual lighting conditions.
+We recommend that you verify the desired color detection value under actual lighting conditions.
 To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 {{< /alert >}}
 
@@ -132,7 +133,7 @@ You can test your detector from the [**Control tab**](/manage/fleet/robots/#cont
    The transform camera will now show detections with bounding boxes around the detected colors.
 
 {{< alert title="Tip" color="tip" >}}
-If the color is not reliably detected, increase the `hue_tolerance_pct`.
+If the color is not reliably detected, try increasing the `hue_tolerance_pct` or adjusting the lighting of the area to make the color being detected more visible.
 
 Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
 {{< /alert >}}
@@ -142,7 +143,7 @@ Note that the detector does not detect black, perfect greys (greys where the red
 ### Set up your code environment
 
 We are going to use Virtualenv to set up a virtual environment for this project, in order to isolate the dependencies of this project from other projects.
-Run the following commands in your command-line to install virtualenv, set up an environment `venv` and activate it:
+Run the following commands in your command-line to install `virtualenv`, set up an environment `venv` and activate it:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m pip install --user virtualenv
@@ -150,7 +151,7 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-Now, install the Python Viam SDK:
+Then, install the Viam Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk python-vlc
@@ -158,18 +159,19 @@ pip3 install viam-sdk python-vlc
 
 ### Connect
 
-Next, go to the **Code sample** tab on your robot page and select **Python**, then click **Copy**.
+Next, go to the **Code sample** tab on your [robot page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary packages and sets up a connection with the Viam app in the cloud.
+This code snippet imports all the necessary packages and sets up a connection with the Viam app.
 
 Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
+If you haven't yet installed `viam-server`, follow the [installation guide](/installation/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
 
-You can run your code by typing the following into your terminal:
+You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 main.py
@@ -213,7 +215,7 @@ if __name__ == "__main__":
 
 You will update the `main()` function later.
 
-### Detect where the colored object is
+### Detect the location of a colored object
 
 With the configured color detector, you can programmatically retrieve a list of detections.
 Each detection comes with information about where in the camera's picture it is detected.
@@ -251,7 +253,7 @@ The `main` function:
 - defines variables for how the robot should move,
 - connects to the robot,
 - initializes the base, the camera, and the detector, and
-- repeatedly calls the `leftOrRight` function and turns the rover's base into the respective direction.
+- repeatedly calls the `leftOrRight` function and turns the rover's base in the respective direction.
 
 Replace the `main` function with the following code:
 
@@ -295,13 +297,13 @@ For `<camera-name>`, insert the name of your configured physical camera.
 
 ## Run the code
 
-Now, run the code:
+Now, run the code again, from the same directory as your `main.py` file:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 main.py
 ```
 
-If everything works, your rover should detect and navigate towards red objects.
+Your rover should detect and navigate towards any red objects that come into view of its camera.
 Use something like a red sports ball or book cover as a target to follow to test your rover:
 
 <div class="aligncenter">
