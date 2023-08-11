@@ -288,6 +288,10 @@ Now, configure the left and right encoders as follows:
     }
   ```
 
+{{< alert title="Caution" color="caution" >}}
+For SCUTTLE robots, the `position` you obtain when calling the [`GetPosition`](/components/encoder/#getposition) method increases by `2` ticks for each 360 degree turn of the wheel instead of `1`.
+{{< /alert >}}
+
 ## Configuring the camera
 
 Finally, we'll add a camera to your SCUTTLE Robot.
