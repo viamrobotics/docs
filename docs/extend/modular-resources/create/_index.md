@@ -604,13 +604,13 @@ You can also create a private module that is shared only within your [organizati
     <td><code>models</code></td>
     <td>object</td>
     <td><strong>Required</strong></td>
-    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. </td>
+    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
   </tr>
   <tr>
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The full filesystem path to the module file that starts your program.</td>
+    <td>The name of the module file that starts your program.</td>
   </tr>
 </table>
 
@@ -628,7 +628,7 @@ You can also create a private module that is shared only within your [organizati
          "model": "acme:demo:my-model"
        }
      ],
-     "entrypoint": "/usr/local/bin/my-module"
+     "entrypoint": "my-module"
    }
    ```
 
