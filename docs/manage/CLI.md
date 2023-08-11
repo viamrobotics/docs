@@ -300,6 +300,8 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | `--platform`      |  the architecture of your module binary | `upload` | true |
 | `--version`      |  the version of your module to set for this upload  | `upload` | true |
 
+### Using the `--platform` and `--version` arguments
+
 The `--platform` flag accepts one of the following architectures:
 
 * `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
@@ -307,7 +309,8 @@ The `--platform` flag accepts one of the following architectures:
 * `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
 * `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
 
-The `--version` flag accepts a valid [semantic version](https://semver.org/) (example: `1.0.0`). The Viam Registry does not perform any validation on this value. You can later increment this value with subsequent `viam module upload` commands.
+The `--version` flag accepts a valid [semantic version 2.0](https://semver.org/) (example: `1.0.0`).
+You can later increment this value with subsequent `viam module upload` commands.
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 

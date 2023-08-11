@@ -86,7 +86,7 @@ To upload your custom module to the Viam Registry, either as a public or private
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the module file that starts your program.</td>
+    <td>The path to the module file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. </td>
   </tr>
 </table>
 
@@ -129,13 +129,13 @@ To upload your custom module to the Viam Registry, either as a public or private
 
    On successful update, the command will return a link to the updated module in the Viam Registry.
 
-1. Package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` format. Run the following command to compress your custom module as a `tar.gz` archive:
+1. Package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` or `tar.xz` format. For example, run the following command to compress your custom module as a `tar.gz` archive:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -zcf <packaged-module.tar.gz> </path/to/module-directory>
    ```
 
-   Update the `/path/to/module-directory` to reflect the actual path to the directory containing your module code and compiled executable.
+   Update `/path/to/module-directory` to reflect the actual path to the directory containing your module code and compiled executable.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -145,13 +145,14 @@ To upload your custom module to the Viam Registry, either as a public or private
 
    Where:
 
-   - `version` - provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`). The Viam Registry does not perform any validation on this value. You can later increment this value with subsequent `viam module upload` commands.
+   - `version` - provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
+      You can later increment this value with subsequent `viam module upload` commands.
    - `platform` - provide one of the following, depending on the platform you have built your custom module for (You can use the `uname -m` command to determine your system architecture):
       - `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
       - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
       - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
       - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
-   - `path` - provide the path to the compressed tarball, in `tar.gz` format, that contains your custom module code.
+   - `path` - provide the path to the compressed archive, in `tar.gz` or `tar.xz` format, that contains your custom module code.
 
    For example, the following command uploads the compressed `my-module.tar.gz` archive to the Viam Registry when run in the same directory as the corresponding `meta.json` file:
 
@@ -186,14 +187,14 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
 
    On successful update, the command will return a link to the updated module in the Viam Registry.
 
-1. Re-package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` format. Run the following command to compress your custom module as a `tar.gz` archive:
+1. Re-package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` or `tar.xz` format. For example, run the following command to compress your custom module as a `tar.gz` archive:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    tar -zcf <packaged-module.tar.gz> </path/to/module-directory>
    ```
 
-   Update the `/path/to/module-directory` to reflect the actual path to the directory containing your module code and compiled executable.
-   If you already have a `tar.gz` archive of your module present in the same directory, this command will error: remove the older `tar.gz` archive first, and then re-run this command.
+   Update `/path/to/module-directory` to reflect the actual path to the directory containing your module code and compiled executable.
+   If you already have an archive of your module present in the same directory that has the same name, this command will error: remove the older archive first, and then re-run this command.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -208,7 +209,3 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
    ```
 
 For more information, see the [`viam module` command](/manage/cli/#module)
-
-## Next steps
-
-Once you have created your custom resource, follow [these configuration instructions](/extend/modular-resources/configure/) to add the custom resource to your robot.
