@@ -56,7 +56,7 @@ Click on the robot you wish to add the vision service to.
 Select the **Config** tab, and click on **Services**.
 
 Scroll to the **Create Service** section.
-To create a [color detector vision service](/services/vision/detector):
+To create a [color detector vision service](/services/vision/detection/):
 
 1. Select `vision` as the **Type**.
 2. Enter `my_color_detector` as the **Name**.
