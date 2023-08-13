@@ -419,7 +419,7 @@ class MoistureSensor(Sensor):
         return {'moisture': input}
 
 async def main():
-   srv = Server(components=[MoistureSensor("moisture_sensor")])
+   srv = Server(resources=[MoistureSensor("moisture_sensor")])
    await srv.serve()
 
 if __name__ == "__main__":
@@ -565,7 +565,7 @@ while True:
           print('this plant is too thirsty! giving it more water')
 
           # Run the water pump for 100 rev. at 1000 rpm
-          await water_pump.go_for(rpm=1000, revolutions=1000)
+          await water_pump.go_for(rpm=1000, revolutions=100)
 
           # Wait 60 seconds so that the water can soak into the soil a bit before trying to water again
           print('waiting a little bit for water to soak in')
