@@ -81,6 +81,8 @@ For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you ca
 sudo apt install jackd qjackctl libpulse-dev pulseaudio
 ```
 
+This error can be safely ignored if your do not intend to use audio on your robot.
+
 ## Common Viam App Errors
 
 ### Failed to connect; retrying
