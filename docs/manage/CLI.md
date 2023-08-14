@@ -318,9 +318,10 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 ##### The `meta.json` file
 
 When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
-This file is created for you when you run the `viam module create` command, and any changes made to it can be registered with the Viam Registry using the `viam module update` command.
+This file is created for you when you run the `viam module create` command, with the `name` and `visibility` fields pre-populated based on the flags you provided to `create`.
+If you later make changes to this file, you can register those changes with the Viam Registry by using the `viam module update` command.
 
-The `meta.json` files includes the following configuration options.
+The `meta.json` file includes the following configuration options:
 
 <table class="table table-striped">
   <tr>
