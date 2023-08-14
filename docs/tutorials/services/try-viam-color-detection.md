@@ -74,7 +74,7 @@ To create a [vision service](/services/vision/):
 
 Your configuration should look like the following:
 
-![Screenshot of the vision service configuration showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](try-viam/try-viam/vision-service-config.png)
+{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x500" alt="Screenshot of the vision service configuration showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
