@@ -286,7 +286,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `create`    | create a new custom module on your local filesystem  | - |
-| `update`    | update an existing custom module on your local filesystem with recent changes to <file>meta.json</file> | - |
+| `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
 | `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
 | `--help`      | return help      | - |
 
@@ -294,7 +294,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--module`     |  the path to the `meta.json` file for the custom module, if not in the current directory | `update`, `upload` | false |
+| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to | `create`, `update` | true |
 | `--public-namespace`      | the namespace to associate the module to | `create` | true |
@@ -310,10 +310,87 @@ The `--platform` flag accepts one of the following architectures:
 * `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
 * `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
 
-The `--version` flag accepts a valid [semantic version 2.0](https://semver.org/) (example: `1.0.0`).
+The `--version` flag accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You can later increment this value with subsequent `viam module upload` commands.
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+##### The `meta.json` file
+
+When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
+This file is created for you when you run the `viam module create` command, and any changes made to it can be registered with the Viam Registry using the `viam module update` command.
+
+The `meta.json` files includes the following configuration options.
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Inclusion</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>name</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>The name of the module.</td>
+
+  </tr>
+  <tr>
+    <td><code>visibility</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>Whether the module is visible to all Viam users (<code>public</code>), or accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+  </tr>
+  <tr>
+    <td><code>url</code></td>
+    <td>string</td>
+    <td>Optional</td>
+    <td>The URL of the GitHub repository containing the source code of the module.</td>
+  </tr>
+  <tr>
+    <td><code>description</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>A description of your module and what it provides.</td>
+  </tr>
+  <tr>
+    <td><code>models</code></td>
+    <td>object</td>
+    <td><strong>Required</strong></td>
+    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+  </tr>
+  <tr>
+    <td><code>entrypoint</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>The path to the module file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. </td>
+  </tr>
+</table>
+
+For example, the following represents the configuration of an example `my-module` module in the `acme` namespace:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "acme:my-module",
+  "visibility": "private",
+  "url": "https://github.com/acme-co/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "entrypoint": "my-module"
+}
+```
+
+{{% alert title="Important" color="note" %}}
+If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/extend/modular-resources/key-concepts/#namespace).
+In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+{{% /alert %}}
+
 
 ### organizations
 
