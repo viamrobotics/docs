@@ -34,18 +34,16 @@ Click **Save Config** to save the new configuration.
 {{<imgproc src="try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
 
 The fragment adds the following components to your robot's JSON configuration.
-For details about how a given type of component is configured, see the [component documentation](/components/) for that type.
+For details about how a given component is configured, see the documentation for that component by clicking the following links:
 
-* [Board component](/components/board/), which is the Raspberry Pi.
-  * Within the board component attributes, digital interrupts: "re" to pin "37" and "le" to pin "35" and I2Cs: name "default_i2c_bus" and bus "1".
-* Right gpio [motor](/components/motor/).
-  * Within the motor attributes, board: "local", encoder: "Renc", ticks per rotation: "1992".
-  * Within the component pin assignment, type: In1/In2, A/In1: "16 GPIO 23", B/In2: "18 GPIO 24", PWM: "22 GPIO 25".
-  * Depends on local and Renc.
-* Left gpio [motor](/components/motor/).
-  * Within the motor attributes, board: "local", encoder: "Lenc", ticks per rotation: "1992".
-  * Within the component pin assignment, type: In1/In2, A/In1: "11 GPIO 17", B/In2: "13 GPIO 27", PWM: "15 GPIO 22".
-  * Depends on local and Lenc.
+- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
+  - An I<sup>2</sup>C bus is configured on the board because the accelerometer connects to the board with I<sup>2</sup>C.
+- Two [motors](/components/motor/gpio/) (`right` and `left`)
+  - The configured pin numbers correspond to where the motor drivers are connected to the board.
+- Two [encoders](/components/encoder/single/), one for each motor
+- A wheeled [base](/components/base/), an abstraction that coordinates the motors for steering
+- A webcam [camera](/components/camera/webcam/)
+- An [accelerometer](/components/movement-sensor/adxl345/)
 
 {{% alert title="Info" color="info" %}}
 
@@ -54,31 +52,10 @@ Typically, this would suggest that they should be configured as enable pins, but
 
 {{% /alert %}}
 
-* A wheeled Viam [base](/components/base/) with attributes:
-  * Right Motors: right
-  * Left Motors: left
-  * Wheel circumference (mm): 217
-  * Width (mm): 260
-  * Spin slip factor: 1
-  * Depends on: left, right, local.
-* A webcam [camera](/components/camera/) with video_path: video0 and depends on: local.
-* Renc [encoder](/components/encoder/) with board: local, pins "i": "re" and depends on: local.
-* Lenc [encoder](/components/encoder/) with board: local, pins "i": "le" and depends on: local.
-* An [accelerometer](/components/movement-sensor/) with the following configuration:
-  * Model: "accel-adxl345"
-  * Name: "accelerometer"
-  * Type: "movement_sensor"
-  * and attributes of "i2c_bus": "default_i2c_bus", "use_alternate_i2c_address": false, and "board": "local".
-  * Depends on: local.
-* A microphone, type: audio_input, with attributes "audio_path_pattern": "3a" and "debug": false.
-
-- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
-- Two [motors](/components/motor/gpio/) (`right` and `left`)
-
 ## See the components on the configuration page
 
 Adding a fragment to your robot adds the configuration to your robot.
-The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** subtabs.
+The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ## Modify the config
 
