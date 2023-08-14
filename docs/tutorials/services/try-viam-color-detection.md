@@ -35,17 +35,17 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Enable the cameras
 
-Before configuring color detection, we recommend that you enable the rover's camera to get a better sense of what it perceives as it performs color classification.
+Before configuring color detection, enable the rover's camera to get a better sense of what it perceives as it performs color classification.
 
 * If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
   In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
   ![Screenshot of the viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
-  You can also view and control the camera streams from the [individual camera components](/try-viam/try-viam-tutorial/#camera-control).
+  You can also view and control the camera streams from the [individual camera component panels](/try-viam/try-viam-tutorial/#camera-control).
 
 * If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
-  If you are using the `ViamRover` [fragment](https://app.viam.com/fragments) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **Control** tab.
+  If you are using the `ViamRover` [fragment](/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **Control** tab.
 
 ## Add the vision service to detect a color
 
@@ -68,15 +68,7 @@ To create a [vision service](/services/vision/):
 1. Select **Color Detector** as the **Model**.
 1. Click **Create Service**.
 1. In the resulting vision service panel, click the color picker box to set the color to be detected.
-   For this tutorial, enter the following values:
-
-   Color | Value
-   ----- | -----
-   R | 122
-   G | 79
-   B | 92
-
-   Or use the contextual menu in the lower-right of the pop-up window to switch to hex mode, and enter the hex code `#7a4f5c`.
+   For this tutorial, set the color to `rgb(122, 79, 92)` or use hex code `#7a4f5c`.
 
 1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 
