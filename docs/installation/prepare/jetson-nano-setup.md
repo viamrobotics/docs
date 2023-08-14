@@ -1,21 +1,22 @@
 ---
-title: "NVIDIA Jetson Nano Setup Guide"
-linkTitle: "Jetson Nano Setup"
+title: "NVIDIA Jetson Nano and Orin Nano Setup Guide"
+linkTitle: "Jetson Nano and Orin Nano Setup"
 weight: 20
 type: "docs"
 image: "/installation/thumbnails/jetson-nano-dev-kit.png"
 imageAlt: "Jetson Nano"
 images: ["/installation/thumbnails/jetson-nano-dev-kit.png"]
-description: "Set up the Jetson Nano Developer Kit to prepare your NVIDIA Jetson Nano or Orin Nano for viam-server installation."
+description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 no_list: true
 # SMEs: Pete Garafano
 ---
 
-The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) from [NVIDIA](https://www.nvidia.com/) is a small computer that is built for embedded applications and is capable of supporting modern AI workloads.
-Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation. This installation also works with the newer model [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin).
+The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) and [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin) from [NVIDIA](https://www.nvidia.com/) are small computers built for embedded applications and capable of supporting modern AI workloads.
+Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or the [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit) to prepare your NVIDIA Jetson Nano for `viam-server` installation.
 
 <div class="td-max-width-on-larger-screens text-center">
-{{<imgproc src="installation/thumbnails/jetson-nano-dev-kit.png" resize="400x" alt="The front of the NVIDIA Jetson Nano single-board computer development kit.">}}
+{{<imgproc src="installation/thumbnails/jetson-nano-dev-kit.png" resize="200x" alt="The front of the NVIDIA Jetson Nano single-board computer development kit.">}}
+{{<imgproc src="installation/thumbnails/jetson-orin-nano.jpeg" resize="200x" alt="The front of the NVIDIA Jetson Orin Nano single-board computer development kit.">}}
 </div>
 
 {{% alert title="Stability Notice" color="note" %}}
@@ -27,18 +28,18 @@ Stability is not guaranteed.
 
 {{% alert title="Important" color="note" %}}
 
-This guide assumes that you have a Jetson Nano Developer Kit with a Jetson module and reference carrier board.
+This guide assumes that you have a Jetson Nano Developer Kit or a Jetson Orin Nano Developer Kit with a Jetson module and reference carrier board.
 If you want to use a different carrier board to incorporate your Nano into your robot, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 
 ## Hardware Requirements
 
-You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano:
+You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano or Jetson Orin Nano:
 
 **Initial Setup with Display Attached:**
 
-1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
 3. A computer display (HDMI or DP) with a USB keyboard and mouse
 4. A way to connect the microSD card to the computer (like a microSD slot or microSD reader)
@@ -47,7 +48,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 **Initial Setup in Headless Mode:**
 
-1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
+1. A [Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) or [Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/jetson-agx-orin-developer-kit)
 2. A microSD card (32GB UHS-1 minimum recommended)
 3. An internet-connected computer
 4. A way to connect the computer to the Nano (like a USB 2.0 A-Male to Micro B Cable)
@@ -55,13 +56,13 @@ You need the following hardware, tools, and software to install `viam-server` on
 6. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
 7. 5V-2A DC with barrel jack connector power supply, to power the Nano (Micro-USB port will be taken by the cable connection to computer)
 
-## Jetson Nano Setup Guide
+## Nano Setup Guide
 
-1. Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit).
+1. Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) or [Getting Started with Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
    Once you have reached *Next Steps*, return to the Viam docs.
-2. Your Jetson Nano now has a Viam-compatible operating system installed.
+2. Your Jetson Nano or Jetson Orin Nano now has a Viam-compatible operating system installed.
    Continue to [install viam-server](/installation/#install-viam-server).
-   Note that the Jetson Nano has aarch64 CPU architecture.
+   Note that the Jetson Nano and Jetson Orin Nano have `aarch64` CPU architecture.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
 

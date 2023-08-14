@@ -464,8 +464,6 @@ async def connect():
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
 
-{{% snippet "show-secret.md" %}}
-
 You will update the `main()` method later.
 
 ### Lighting
