@@ -38,7 +38,7 @@ Be aware that if you are running out of time during your rental, you can [extend
 Before configuring color detection, we recommend that you enable the rover's camera to get a better sense of what it perceives as it performs color classification.
 
 * If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
-  In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:cam` for an overhead view of your rover.
+  In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
   ![Screenshot of the viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
@@ -64,22 +64,22 @@ Scroll to the **Create Service** section.
 To create a [vision service](/services/vision/):
 
 1. Select `Vision` as the **Type**.
-2. Enter `my_color_detector` as the **Name**.
-3. Select **Color Detector** as the **Model**.
-4. Click **Create Service**.
+1. Enter `my_color_detector` as the **Name**.
+1. Select **Color Detector** as the **Model**.
+1. Click **Create Service**.
+1. In the resulting vision service panel, click the color picker box to set the color to be detected.
+   For this tutorial, enter the following values:
 
-In the resulting vision service panel, click the color picker box to set the color to be detected.
+   Color | Value
+   ----- | -----
+   R | 122
+   G | 79
+   B | 92
 
-For this tutorial, enter the following values:
+   Or use the contextual menu in the lower-right of the pop-up window to switch to hex mode, and enter the hex code `#7a4f5c`.
 
-Color | Value
-R | 122
-G | 79
-B | 92
+1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 
-Or use the contextual menu in the lower-right of the pop-up window to switch to hex mode, and enter the hex code `#7a4f5c`.
-
-Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 Your configuration should look like the following:
 
 ![Screenshot of the vision service configuration showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](try-viam/try-viam/vision-service-config.png)
