@@ -33,6 +33,19 @@ If you are [renting your rover](https://app.viam.com/try), we recommend that you
 Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
+## Enable the cameras
+
+Before configuring color detection, we recommend that you enable the rover's camera to get a better sense of what it perceives as it performs color classification.
+
+* If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
+   In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:cam` for an overhead view of your rover.
+
+   ![Screenshot of the viam_base component panel with the keyboard enabled (allowing use of the WASD keys to drive the base) and with the 'cam' camera feed enabled.](try-viam/try-viam/base-panel-both-cameras.png)
+
+   You can also view and control the camera streams from the [individual camera components](/try-viam/try-viam-tutorial/#camera-control).
+
+* If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front-facing camera `cam` in the `viam_base` component panel under the **Control** tab.
+
 ## Add the vision service to detect a color
 
 This tutorial uses the hex color #7a4f5c (a reddish color).
