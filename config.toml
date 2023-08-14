@@ -80,7 +80,7 @@ version_menu = "SDK Documentation"
  url="https://cpp.viam.dev/"
 [[params.versions]]
  version = "Flutter SDK Documentation"
- url="https://github.com/viamrobotics/viam-flutter-sdk"
+ url="https://flutter.viam.dev/"
 # [[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"
