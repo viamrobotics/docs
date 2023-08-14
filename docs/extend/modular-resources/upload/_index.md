@@ -44,51 +44,51 @@ To upload your custom module to the Viam Registry, either as a public or private
 1. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
    The `name` and `visibility` fields are pre-populated:
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Inclusion</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><code>name</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>The name of the module.</td>
+   <table class="table table-striped">
+     <tr>
+       <th>Name</th>
+       <th>Type</th>
+       <th>Inclusion</th>
+       <th>Description</th>
+     </tr>
+     <tr>
+       <td><code>name</code></td>
+       <td>string</td>
+       <td><strong>Required</strong></td>
+       <td>The name of the module.</td>
 
-  </tr>
-  <tr>
-    <td><code>visibility</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>Whether the module is visible to all Viam users (<code>public</code>), or accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
-  </tr>
-  <tr>
-    <td><code>url</code></td>
-    <td>string</td>
-    <td>Optional</td>
-    <td>The URL of the GitHub repository containing the source code of the module.</td>
-  </tr>
-  <tr>
-    <td><code>description</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>A description of your module and what it provides.</td>
-  </tr>
-  <tr>
-    <td><code>models</code></td>
-    <td>object</td>
-    <td><strong>Required</strong></td>
-    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
-  </tr>
-  <tr>
-    <td><code>entrypoint</code></td>
-    <td>string</td>
-    <td><strong>Required</strong></td>
-    <td>The path to the module file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. </td>
-  </tr>
-</table>
+     </tr>
+     <tr>
+       <td><code>visibility</code></td>
+       <td>string</td>
+       <td><strong>Required</strong></td>
+       <td>Whether the module is visible to all Viam users (<code>public</code>), or accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+     </tr>
+     <tr>
+       <td><code>url</code></td>
+       <td>string</td>
+       <td>Optional</td>
+       <td>The URL of the GitHub repository containing the source code of the module.</td>
+     </tr>
+     <tr>
+       <td><code>description</code></td>
+       <td>string</td>
+       <td><strong>Required</strong></td>
+       <td>A description of your module and what it provides.</td>
+     </tr>
+     <tr>
+       <td><code>models</code></td>
+       <td>object</td>
+       <td><strong>Required</strong></td>
+       <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+     </tr>
+     <tr>
+       <td><code>entrypoint</code></td>
+       <td>string</td>
+       <td><strong>Required</strong></td>
+       <td>The path to the module file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. </td>
+     </tr>
+   </table>
 
    For example, the following represents the configuration of an example `my-module` module in the `acme` namespace:
 
@@ -108,10 +108,10 @@ To upload your custom module to the Viam Registry, either as a public or private
    }
    ```
 
-  {{% alert title="Important" color="note" %}}
-  If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/extend/modular-resources/key-concepts/#namespace).
-  In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
-  {{% /alert %}}
+   {{% alert title="Important" color="note" %}}
+   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/extend/modular-resources/key-concepts/#namespace).
+   In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+   {{% /alert %}}
 
 1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry:
 
