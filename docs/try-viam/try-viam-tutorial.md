@@ -54,7 +54,7 @@ Click the `viam_base` component to expand the base control pane to reveal the ca
 In the `viam_base` component panel, select the `cam` for the front-facing camera and the `overhead-cam:cam` for an overhead view of your rover.
 We recommend enabling both cameras so you can have a better sense of what's happening in the space.
 
-![Screenshot of the viam_base component panel with the keyboard enabled (allowing use of the WASD keys to drive the base) and with the 'cam' camera feed enabled.](try-viam/try-viam/base-panel-both-cameras.png)
+![Screenshot of the viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
 You can also view and control the camera streams from the [individual camera components](/try-viam/try-viam-tutorial/#camera-control).
 
