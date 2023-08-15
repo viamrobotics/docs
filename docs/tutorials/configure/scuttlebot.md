@@ -31,8 +31,9 @@ cost: 540
 ## Start configuring your robot
 
 1. Go to [the Viam app](https://app.viam.com).
-1. Create a **robot** and follow the setup instructions until the robot successfully connects to the Viam app.
+1. Create a *robot* and follow the setup instructions until the robot successfully connects to the Viam app.
 1. Navigate to the robot's **Config** tab.
+
    ![The Viam app UI showing the config tab of the robot.](/tutorials/scuttlebot/createcomponent.png)
 
 ## Configure the board
@@ -82,7 +83,7 @@ Next, configure the left and right encoders as follows:
 {{< tabs name="Configure AMS-AS5048 Encoders" >}}
 {{% tab name="Config Builder" %}}
 
-**Left encoder:**
+### Left encoder
 
 Navigate to the **Create component** menu.
 Enter `lenc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
@@ -104,7 +105,7 @@ Paste the following in the **Attributes** field:
 }
 ```
 
-**Right encoder:**
+### Right encoder
 
 Navigate to the **Create component** menu.
 Enter `renc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
@@ -163,7 +164,7 @@ Add the following JSON objects to the `components` array:
 
 ## Configure the motors
 
-The next step is to add the motors and make them spin their wheels.
+The next step is to add the motors and make them spin the wheels.
 
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
@@ -175,7 +176,7 @@ Enter `right` for your motor name, select the type `motor`, and select the `gpio
 
 Click **Create component**.
 
-Then select `local` from the **Board** drop-down to choose the raspberry pi the motor is wired to.
+Then from the **Board** drop-down, select `local`, the Raspberry Pi the motor is wired to.
 
 Select `Encoded` in the **Encoder** section and select `renc` as the **encoder** and set **ticks per rotation** to `2`.
 
@@ -251,6 +252,7 @@ Add the following JSON objects to the `components` array:
 {{< /tabs >}}
 
 Save the config by clicking **Save config** at the bottom of the page.
+
 ### Test the motor configuration
 
 Now that you have configured your board, encoders, and motors, you can actuate your motors.
@@ -268,7 +270,7 @@ Try changing the motor's **power** level and click **Run**.
 
 {{< alert title="Caution" color="caution" >}}
 Be careful when using your motors!
-Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
+Start with the power level set to 20% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
 If you hear a "whining" sound from the motor, the power level is not high enough to turn the armature.
 If this happens, increase the power level by 10% increments until it starts to turn.
 {{< /alert >}}
@@ -292,8 +294,8 @@ Click **Create component**.
 {{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
 
 1. Select `right` as the **Right Motor** and `left` as the **Left Motor**.
-2. Enter "400" in `width_mm` (measured between the midpoints of the wheels).
-3. Enter "250" in `wheel_circumference_mm`.
+2. Enter `400` in **Width (mm)** (measured between the midpoints of the wheels).
+3. Enter `250` in **Wheel Circumference (mm)**.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
