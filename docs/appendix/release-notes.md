@@ -568,7 +568,7 @@ All component drivers can now declare dependencies, which are used to infer the 
     <tbody style="vertical-align:top;">
         <tr>
             <td width="120px"><strong>What is it?</strong></td>
-            <td>RDK now natively supports the AMS AS5048 encoder. This is the encoder that is included in the SCUTTLE Robot.
+            <td>RDK now natively supports the AMS AS5048 encoder. This is the encoder that is included in the SCUTTLE robot.
             </td>
         </tr>
     <tbody>

@@ -3,7 +3,7 @@ title: "Detect and Follow a Colored Object with a SCUTTLE Robot"
 linkTitle: "Colored Object Follower"
 weight: 30
 type: "docs"
-description: "Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software."
+description: "Instructions for detecting and following a colored object with a SCUTTLE robot on Viam software."
 webmSrc: "/tutorials/videos/scuttle-colordetection-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-colordetection-preview.mp4"
 videoAlt: "Detecting color with a Scuttle Robot"
@@ -36,7 +36,7 @@ This tutorial shows how to use the Viam [vision service](/services/vision/) to m
 ## Prerequisites
 
 The prerequisite of this tutorial is to have a [SCUTTLE rover](https://www.scuttlerobot.org/) connected to the [Viam app](https://app.viam.com).
-Please refer to the [Configure a SCUTTLE Robot tutorial](../../configure/scuttlebot/) if you have not already configured your SCUTTLE.
+Please refer to the [Configure a SCUTTLE robot tutorial](../../configure/scuttlebot/) if you have not already configured your SCUTTLE.
 
 ### Set up your code environment
 

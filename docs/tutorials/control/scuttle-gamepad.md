@@ -6,7 +6,7 @@ type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
-videoAlt: "Drive a SCUTTLE Robot with a Bluetooth gamepad."
+videoAlt: "Drive a Scuttle Robot with a Bluetooth gamepad."
 images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:
     - "/tutorials/scuttle-gamepad/"
@@ -40,7 +40,7 @@ You will need the following to complete this tutorial:
 - [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle.
   This is the controller that comes with the SCUTTLE rover.
 
-{{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
+{{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a Scuttle robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
 ## Set up the hardware
 

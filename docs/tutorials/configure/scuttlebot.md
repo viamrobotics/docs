@@ -3,7 +3,7 @@ title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
-description: "Configure a SCUTTLE Robot on the Viam platform."
+description: "Configure a Scuttle robot on the Viam platform."
 image: "/tutorials/scuttlebot/createcomponent.png"
 images: ["/tutorials/scuttlebot/createcomponent.png"]
 imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
@@ -25,7 +25,7 @@ cost: 540
 ## Requirements
 
 - A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed]((/installation/prepare/rpi-setup/#install-raspberry-pi-os))
-- [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
+- [A SCUTTLE robot](https://www.scuttlerobot.org/shop/)
 - A USB webcam
 
 ## Start configuring your robot
@@ -355,7 +355,7 @@ Save the config by clicking **Save config** at the bottom of the page.
 
 ### Test the base
 
-Now that you have configured the base you can try moving the SCUTTLE Robot with your keyboard.
+Now that you have configured the base you can try moving the SCUTTLE robot with your keyboard.
 Navigate to the **Control** tab.
 
 Click on the panel for the `base`.
@@ -365,7 +365,7 @@ Click on the panel for the `base`.
 On the **Keyboard** tab, toggle the keyboard control to active.
 Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
-Try driving your SCUTTLE Robot around using the WASD keyboard controls.
+Try driving your SCUTTLE robot around using the WASD keyboard controls.
 
 {{% alert title="Caution" color="caution" %}}
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
@@ -377,7 +377,7 @@ If you navigate to the **Discrete** tab, you can use movement modes such as `Str
 
 ## Configure the camera
 
-Finally, add a camera to your SCUTTLE Robot.
+Finally, add a camera to your SCUTTLE robot.
 
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
@@ -411,7 +411,7 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 ## View the camera stream
 
-Now that you have configured the base you can try moving the SCUTTLE Robot with your keyboard.
+Now that you have configured the base you can try moving the SCUTTLE robot with your keyboard.
 Navigate to the **Control** tab.
 
 Click on the panel for the `camera`.
@@ -424,7 +424,7 @@ You can change the refresh frequency as needed to change bandwidth.
 
 ## Next Steps
 
-Now that you have fully configured your SCUTTLE Robot, you can drive it around and view its camera stream.
+Now that you have fully configured your SCUTTLE robot, you can drive it around and view its camera stream.
 
 To take things to the next level, check out one of the following tutorials:
 
