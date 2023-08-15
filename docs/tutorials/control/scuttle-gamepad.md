@@ -32,7 +32,7 @@ If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a 
 
 ## Requirements
 
-You will need the following to complete this tutorial:
+You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.

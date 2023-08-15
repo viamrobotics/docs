@@ -26,7 +26,57 @@ viam.component.servo.v1.ServoService.MoveRequest
 
 ## Install
 
-If you have [Go installed](https://go.dev/doc/install), you can install the Viam CLI with the 'go install' command:
+You can download the Viam CLI executable using one of the options below.
+Select the tab for your platform and architecture.
+
+{{% alert title="Tip" color="tip" %}}
+You can use the `uname -m` command to determine your system architecture.
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Linux aarch64" %}}
+
+To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="Linux x86_64" %}}
+
+To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="macOS arm64" %}}
+
+To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-arm64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="macOS x86_64" %}}
+
+To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-amd64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="Source" %}}
+
+If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
 
 ```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
@@ -41,9 +91,10 @@ If you use `bash` as your shell, you can use the following command:
 echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 ```
 
-{{% alert title="Tip" color="tip" %}}
-If you are using a shell other than bash, you may need to modify the above command.
-{{% /alert %}}
+{{% /tab %}}
+{{< /tabs >}}
+
+To later update the Viam CLI tool, you can use the steps above to reinstall the latest version.
 
 ## Authenticate
 
