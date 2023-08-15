@@ -28,7 +28,6 @@ Click **Create component**.
 
 ![An example board configuration. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
 
-
 Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
