@@ -40,7 +40,10 @@ The fragment adds the following components to your robot's JSON configuration.
 - Two [motors](/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
 - Two [encoders](/components/encoder/single/), one for each motor
-- A wheeled [base](/components/base/), an abstraction that coordinates the motors for steering
+- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+  - Width between the wheel centers: 260 mm
+  - Wheel circumference: 217 mm
+  - Spin slip factor: 1
 - A webcam [camera](/components/camera/webcam/)
 - An [accelerometer](/components/movement-sensor/adxl345/)
 
