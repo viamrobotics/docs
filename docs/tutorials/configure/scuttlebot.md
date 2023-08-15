@@ -48,9 +48,9 @@ Enter `local` as the name for your board, select the type `board`, and select th
 
 Click **Create component**.
 
-![The component configuration panel for a board component.](/tutorials/scuttlebot/board-empty-json.png)
-
 Click on **Show more** and add `I2C` with **name** `main` and **bus** `1`.
+
+![The component configuration panel for a board component.](/tutorials/scuttlebot/board.png)
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
