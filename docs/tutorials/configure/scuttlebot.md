@@ -411,7 +411,16 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 ## View the camera stream
 
-{{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
+Now that you have configured the base you can try moving the SCUTTLE Robot with your keyboard.
+Navigate to the **Control** tab.
+
+Click on the panel for the `camera`.
+Then toggle the camera view to ON.
+
+If everything is configured correctly, you will see the live video feed from your camera.
+You can change the refresh frequency as needed to change bandwidth.
+
+{{< imgproc src="/components/camera/example_camera_image.png" alt="Example Camera view inside Viam app" resize="700x" >}}md" >}}
 
 ## Next Steps
 
