@@ -18,6 +18,7 @@ viamresources: [ "base", "camera", "motor", "board" ]
 level: "Beginner"
 date: "29 November 2022"
 cost: "145"
+no_list: true
 ---
 
 ## Introduction

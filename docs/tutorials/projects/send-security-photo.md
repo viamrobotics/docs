@@ -14,6 +14,7 @@ viamresources: [ "camera", "mlmodel", "vision" ]
 level: "Beginner"
 date: "30 March 2023"
 cost: "0"
+no_list: true
 ---
 
 {{% alert title="Tip" color="tip" %}}

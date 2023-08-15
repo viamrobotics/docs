@@ -210,7 +210,7 @@ espup install -s -f ~/esp/export-rs.sh -v 1.67.0
 To activate the ESP Rust toolchain, run the following command to source (`.`) the activation script `export-rs.sh`:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-. $HOME/esp/esp-idf/export-rs.sh
+. $HOME/esp/export-rs.sh
 ```
 
 {{< alert title="Tip" color="tip" >}}

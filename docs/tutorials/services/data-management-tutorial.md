@@ -18,6 +18,7 @@ viamresources: [ "data_manager", "camera" ]
 level: "Beginner"
 date: "8 February 2023"
 cost: "0"
+no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
@@ -145,21 +146,16 @@ For more detailed information see [View and Filter Data](/manage/data/view/).
 You've successfully saved data from your robot in the cloud.
 Now, let's export that image data from the Viam app onto your local computer.
 
-To export data from Viam:
+First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
 
-1. First, install the [Viam CLI](/manage/cli/) and [authenticate](/manage/cli/#authenticate):
+Then, to export data from the data management service in the cloud:
 
-   ```sh {class="command-line" data-prompt="$"}
-   go install go.viam.com/rdk/cli/viam@latest
-   viam auth
-   ```
-
-2. Head back to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
-3. Below the **SEARCH** button in the **Filtering** panel, click **Copy Export Command** to copy the export command to the clipboard.
+1. Navigate to the [**DATA** page in the Viam app](https://app.viam.com/data/view).
+2. Below the **SEARCH** button in the **Filtering** panel, click **Copy Export Command** to copy the export command to the clipboard.
 
    ![The "copy export command" button from the Viam app.](/tutorials/data-management/image4.png)
 
-4. Run the copied command in a terminal:
+3. Run the copied command in a terminal:
 
    ```sh {class="command-line" data-prompt="$"}
    viam data export --org_ids=<org_id> --data_type=binary --mime_types=<mime_types> --destination=.

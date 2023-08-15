@@ -26,7 +26,57 @@ viam.component.servo.v1.ServoService.MoveRequest
 
 ## Install
 
-If you have [Go installed](https://go.dev/doc/install), you can install the Viam CLI with the 'go install' command:
+You can download the Viam CLI executable using one of the options below.
+Select the tab for your platform and architecture.
+
+{{% alert title="Tip" color="tip" %}}
+You can use the `uname -m` command to determine your system architecture.
+{{% /alert %}}
+
+{{< tabs >}}
+{{% tab name="Linux aarch64" %}}
+
+To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="Linux x86_64" %}}
+
+To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="macOS arm64" %}}
+
+To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-arm64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="macOS x86_64" %}}
+
+To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+
+```{class="command-line" data-prompt="$"}
+sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-amd64
+sudo chmod a+rx /usr/local/bin/viam
+```
+
+{{% /tab %}}
+{{% tab name="Source" %}}
+
+If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
 
 ```sh {class="command-line" data-prompt="$"}
 go install go.viam.com/rdk/cli/viam@latest
@@ -41,9 +91,10 @@ If you use `bash` as your shell, you can use the following command:
 echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 ```
 
-{{% alert title="Tip" color="tip" %}}
-If you are using a shell other than bash, you may need to modify the above command.
-{{% /alert %}}
+{{% /tab %}}
+{{< /tabs >}}
+
+To later update the Viam CLI tool, you can use the steps above to reinstall the latest version.
 
 ## Authenticate
 
@@ -51,7 +102,7 @@ Once you have successfully installed the Viam CLI, you need to authenticate your
 Do this by issuing the command:
 
 ```sh {class="command-line" data-prompt="$"}
-viam auth
+viam login
 ```
 
 This will open a new browser window with a prompt to start the authentication process.
@@ -97,23 +148,7 @@ viam organizations help
 
 ## Commands
 
-### auth
-
-The `auth` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
-
-```sh {class="command-line" data-prompt="$"}
-viam auth
-viam auth print-access-token
-```
-
-#### Command options
-
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
-| `help`      | return help      | - |
-
-### data
+### `data`
 
 The `data` command allows you to manage robot data.
 With it, you can export data in the format of your choice or delete specified data.
@@ -166,7 +201,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | `--robot-name`      | filter by specified robot name       |`export`, `delete`|false |
 | `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
 
-### locations
+### `locations`
 
 The `locations` command lists all locations that the authenticated session has access to, grouped by organization.
 You can filter results by organization.
@@ -182,7 +217,23 @@ viam locations list [<organization id>]
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
 | `help`      | return help      | - |
 
-### logout
+### `login`
+
+The `login` command helps you authorize your device for CLI usage. See [Authenticate](#authenticate).
+
+```sh {class="command-line" data-prompt="$"}
+viam login
+viam login print-access-token
+```
+
+#### Command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
+| `help`      | return help      | - |
+
+### `logout`
 
 The `logout` command ends an authenticated CLI session
 
@@ -190,7 +241,7 @@ The `logout` command ends an authenticated CLI session
 viam logout
 ```
 
-### organizations
+### `organizations`
 
 The *organizations* command lists all organizations that the authenticated session belongs to.
 
@@ -205,7 +256,7 @@ viam organizations list
 | `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
 | `help`      | return help      | - |
 
-### robot
+### `robot`
 
 The `robot` command allows you to manage your robot fleet.
 This includes:
@@ -249,7 +300,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
 | `help`      | return help      | - |
 
-##### Positional arguments: part
+##### Positional arguments: `part`
 
 |        argument     |       description
 | ----------- | ----------- | -----------
@@ -272,7 +323,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
 
-##### Using the --stream and --data arguments
+##### Using the `--stream` and `--data` arguments
 
 Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected robot part.
 
@@ -296,9 +347,9 @@ For example:
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
-The `--stream` argument, when included in the CLI command prior to the `--data` command will streams data back at the specified interval.
+The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
-### robots
+### `robots`
 
 The `robots` command lists all robots that the authenticated session has access to, filtered by organization and location.
 
@@ -320,7 +371,7 @@ viam robots list
 | `--organization`     | organization name to filter by       |list|true |
 | `--location`    |  location name to filter by   |list|true |
 
-### whoami
+### `whoami`
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 

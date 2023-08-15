@@ -56,7 +56,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` installation or update process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
 **Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
 
@@ -67,6 +67,21 @@ FUSE is included in almost all modern Linux distributions by default, but some o
 In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
 
 **Solution:** See [I get some errors related to something called "FUSE" - AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html) for assistance in resolving FUSE errors on Linux or in Docker.
+
+### PulseAudio: Unable to connect: Connection refused
+
+**Additional Error:** `jack server is not running or cannot be started`
+
+**Description**: When configuring a Linux {{< glossary_tooltip term_id="board" text="board" >}}, Linux installations with broken or misconfigured sound libraries may experience one or both of these errors, even if not using audio components in the robot configuration.
+
+**Solution:** Consult the documentation for your Linux OS and chosen sound library for guidance on installing any missing software dependencies.
+For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you can run the following to install any missing dependencies:
+
+```sh
+sudo apt install jackd qjackctl libpulse-dev pulseaudio
+```
+
+This error can be safely ignored if you do not intend to use audio on your robot.
 
 ## Common Viam App Errors
 

@@ -15,6 +15,7 @@ viamresources: [ "camera", "mlmodel", "vision" ]
 level: "Beginner"
 date: "30 March 2023"
 cost: 20
+no_list: true
 ---
 
 This tutorial uses the Viam [vision service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.

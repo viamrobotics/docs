@@ -30,7 +30,7 @@ Viam currently offers SDKs for the following languages:
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
 - [C++ SDK (alpha)](https://cpp.viam.dev/)
-- [Flutter SDK (alpha)](https://github.com/viamrobotics/viam-flutter-sdk)
+- [Flutter SDK (beta)](https://flutter.viam.dev/)
 
 ## Requirements
 
@@ -67,7 +67,9 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 {{% /tab %}}
 {{% tab name="Flutter" %}}
 
-Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-flutter-sdk#viam-flutter-sdk).
+```sh {class="command-line" data-prompt="$"}
+flutter pub add viam_sdk
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -250,23 +252,30 @@ int main() {
 {{% tab name="Flutter" %}}
 
 {{< alert title="Stability Notice" color="note" >}}
-The Flutter SDK is currently in alpha.
+The Flutter SDK is currently in beta.
 {{< /alert >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
+// This must be run from inside an existing app,
+// e.g. the default Flutter app created by `flutter create APP_NAME`
+
+// Step 1: Import the viam_sdk
 import 'package:viam_sdk/viam_sdk.dart';
 
-// Connect to an existing robot
-// *NOTE* Get the <LOCATION> and <SECRET> from app.viam.com
-final options = RobotClientOptions.withLocationSecret('<SECRET>');
-final robot = await RobotClient.atAddress('<LOCATION>', options);
+// Step 2: Call this function from within your widget
+Future<void> connectToViam() async {
+  const host = 'billowing-brook-main.7kp7y4p393.viam.cloud';
+  // Replace '<SECRET>' (including brackets) with your robot's secret
+  const secret = '<SECRET>';
 
-// Print the available resources
-print(robot.resourceNames);
+  final robot = await RobotClient.atAddress(
+    host,
+    RobotClientOptions.withLocationSecret(secret),
+  );
 
-// Access a component
-final movementSensor = MovementSensor.fromRobot(robot, 'my_sensor');
-print(await movementSensor.readings())
+  // Print the available resources
+  print(robot.resourceNames);
+}
 ```
 
 {{% /tab %}}

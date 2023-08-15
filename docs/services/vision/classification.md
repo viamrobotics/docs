@@ -92,48 +92,51 @@ Add the vision service object to the services array in your raw JSON configurati
 {{< /tabs >}}
 
 Click **Save config** and head to the **Components** tab.
+Proceed to [Test your classifier](#test-your-classifier).
 
-## Add a camera component and a "transform" model
+## Test your classifier
 
-You cannot interact directly with the [vision service](/services/vision/).
-To be able to interact with the vision service you must:
+You can test your classifier with [live camera footage](#live-camera-footage) or [existing images](#existing-images).
 
-1. Configure a physical [camera component](../../../components/camera/).
-Pass the name of this camera to vision service methods.
-2. (Optional) To view output from the classifier overlaid on images from the physical camera, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
+### Live Camera footage
+
+If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/manage/fleet/robots/#control) or with code:
+
+1. Configure a [camera component](../../../components/camera/).
+2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
 
     ```json
     {
-    "pipeline": [
-        {
-        "type": "classifications",
-        "attributes": {
-            "confidence_threshold": 0.5,
-            "classifier_name": "my_classifier"
-        }
-        }
-    ],
-    "source": "<camera-name>"
+      "pipeline": [
+          {
+          "type": "classifications",
+          "attributes": {
+              "confidence_threshold": 0.5,
+              "classifier_name": "my_classifier"
+          }
+          }
+      ],
+      "source": "<camera-name>"
     }
     ```
 
-    After adding the component and its attributes, click **Save config**.
-    Wait for the robot to reload, and then go to the **Control** tab to test the stream of classifications.
+3. After adding the components and their attributes, click **Save config**.
+4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+   The transform camera will now show classifications on the image.
 
-    ![Model recognizes a star on camera feed](/services/model-on-camera.png)
+   ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
-## Code
+5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
 
-The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
+    {{% alert title="Tip" color="tip" %}}
 
-{{% alert title="Tip" color="tip" %}}
+Pass the name of the camera you configured in step 1.
+Do not pass a transform camera that already has the "detections" or "classifications" transform applied to it.
 
-Pass the name of the physical camera you configured, _not_ the name of the transform camera, to the vision service methods.
+    {{% /alert %}}
 
-{{% /alert %}}
-
-{{< tabs >}}
-{{% tab name="Python" %}}
+    {{< tabs >}}
+    {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
@@ -147,26 +150,24 @@ my_classifier = VisionClient.from_robot(robot, "my_classifier")
 # Get the top 2 classifications with the highest confidence scores from the camera output
 classifications = await my_classifier.get_classifications_from_camera(img, 2)
 
-# If you need to get an image first and then run classifications on it,
-# you can do it this way (generally slower but useful if you need to
-# use the image afterwards):
+# If you need to store the image, get the image first
+# and then run classifications on it. This process is slower:
 img = await cam1.get_image()
 classifications_from_image = await my_classifier.get_classifications(img, 2)
-
 
 await robot.close()
 ```
 
 To learn more about how to use classification, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
 
-{{% /tab %}}
-{{% tab name="Go" %}}
+    {{% /tab %}}
+    {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 import (
-"go.viam.com/rdk/config"
-"go.viam.com/rdk/services/vision"
-"go.viam.com/rdk/components/camera"
+  "go.viam.com/rdk/config"
+  "go.viam.com/rdk/services/vision"
+  "go.viam.com/rdk/components/camera"
 )
 
 // Grab the camera from the robot
@@ -176,7 +177,7 @@ if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-visService, err := vision.from_robot(robot=robot, name='my_classifier')
+visService, err := vision.from_robot(robot=robot, name="my_classifier")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
 }
@@ -190,9 +191,8 @@ if len(directClassifications) > 0 {
     logger.Info(classifications[0])
 }
 
-// If you need to get an image first and then run classifications on it,
-// you can do it this way (generally slower but useful if you need to
-// use the image afterwards):
+// If you need to store the image, get the image first 
+// and then run classifications on it. This process is slower:
 
 // Get the stream from a camera
 camStream, err := myCam.Stream(context.Background())
@@ -210,6 +210,77 @@ if err != nil {
 if len(classificationsFromImage) > 0 {
     logger.Info(classificationsFromImage[0])
 }
+```
+
+To learn more about how to use classification, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).
+
+    {{% /tab %}}
+    {{< /tabs >}}
+
+### Existing images
+
+If you would like to test your classifier with existing images, load the images and pass them to the classifier:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from PIL import Image
+
+robot = await connect()
+# Grab Viam's vision service for the classifier
+my_classifier = VisionClient.from_robot(robot, "my_classifier")
+
+# Load an image
+img = Image.open('test-image.png')
+
+# Apply the classifier to the image
+classifications_from_image = await my_classifier.get_classifications(img)
+
+await robot.close()
+```
+
+To learn more about how to use classification, see the [Python SDK docs](https://python.viam.dev/autoapi/viam/services/vision/index.html).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+import (
+  "go.viam.com/rdk/config"
+  "go.viam.com/rdk/services/vision"
+  "image"
+  "image/png"
+  "os"
+)
+
+visService, err := vision.from_robot(robot=robot, name="my_classifier")
+if err != nil {
+    logger.Fatalf("Cannot get Vision Service: %v", err)
+}
+
+// Read image from existing file
+file, err := os.Open("test-image.jpeg")
+if err != nil {
+    logger.Fatalf("Could not get image: %v", err)
+}
+defer file.Close()
+img, err := jpeg.Decode(file)
+if err != nil {
+    logger.Fatalf("Could not decode image: %v", err)
+}
+defer img.Close()
+
+// Apply the classifier to the image
+classificationsFromImage, err := visService.Classifications(context.Background(), img, nil)
+if err != nil {
+    logger.Fatalf("Could not get classifications: %v", err)
+}
+if len(classificationsFromImage) > 0 {
+    logger.Info(classificationsFromImage[0])
+}
+
 ```
 
 To learn more about how to use classification, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/vision).

@@ -17,6 +17,7 @@ viamresources: [ "vision", "camera" ]
 level: "Beginner"
 date: "16 December 2022"
 cost: "0"
+no_list: true
 # SMEs: Hazal
 ---
 
@@ -49,7 +50,7 @@ Before configuring color detection, enable the rover's camera to get a better se
 
 ## Add the vision service to detect a color
 
-This tutorial uses the hex color `#7a4f5c` (a reddish color).
+This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 

@@ -8,12 +8,7 @@ description: "Configure your rover by adding the Viam-provided configuration fra
 ---
 
 To be able to drive your rover, you need to configure it.
-Viam provides a reusable *fragment* for [Viam rovers](https://www.viam.com/resources/rover).
-
-{{< alert title="Tip" color="tip" >}}
-A fragment is a reusable configuration block representing a common hardware pattern.
-Using a fragment makes managing a fleet of multiple robots configured in the same way easy.
-{{< /alert >}}
+Viam provides a reusable {{% glossary_tooltip term_id="fragment" text="*fragment*" %}} for [Viam rovers](https://www.viam.com/resources/rover).
 
 ## Prerequisites
 
@@ -22,7 +17,7 @@ Using a fragment makes managing a fleet of multiple robots configured in the sam
 * The Pi is able to connect to [the Viam app](https://app.viam.com).
   To add your Pi to the Viam app, refer to [the rover setup guide](/try-viam/rover-resources/rover-tutorial/#connect-to-the-viam-app).
 
-## Add the Fragment
+## Add the fragment
 
 Navigate to your robot in [the Viam app](https://app.viam.com/robots).
 On the  **Config** tab, click on the **Fragments** subtab.
@@ -30,11 +25,10 @@ On the  **Config** tab, click on the **Fragments** subtab.
 {{<imgproc src="try-viam/rover-resources/fragments/fragments_tab.png" resize="1200x" alt="Fragments tab inside the Viam app">}}
 
 On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover202210b` and click `ADD` to add the fragment to your robot configuration.
+Find `ViamRover202210b` and click `Add` to add the fragment to your robot configuration.
 
 {{<imgproc src="try-viam/rover-resources/fragments/fragments_list.png" resize="1200x" alt="List of available fragments">}}
 
-After you add the fragment, the config on the right side shows the robot's configuration with the new fragment.
 Click **Save Config** to save the new configuration.
 
 {{<imgproc src="try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
@@ -81,6 +75,18 @@ Typically, this would suggest that they should be configured as enable pins, but
 
 Adding a fragment to your robot adds the configuration to your robot.
 The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** subtabs.
+
+## Modify the config
+
+The fragment you added is read-only, but if you need to modify your rover's config you can do the following:
+
+1. Go to the **Fragments** subtab of the **Config** tab.
+2. Click **Remove** next to the fragment.
+3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
+5. Toggle to [**Raw JSON** mode](/try-viam/try-viam-tutorial/#raw-json).
+6. Paste the raw fragment contents into the **Raw JSON** config field.
+7. Click **Save config**.
+8. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
 
 ## Next Steps
 

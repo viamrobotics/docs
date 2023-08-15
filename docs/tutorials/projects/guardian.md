@@ -76,8 +76,6 @@ You can view a timelapse of the robot assembly here:
 
 ### Assemble for testing
 
-{{< imgproc src="/tutorials/guardian/base.jpg" alt="Wooden guardian base" resize="400x" >}}
-
 <div class="td-max-width-on-larger-screens" class="alignright" style="max-width: 200px">
   {{<imgproc src="/tutorials/guardian/head.png" resize="300x" declaredimensions=true alt="Head with camera attachment">}}
 </div>
@@ -109,7 +107,7 @@ Attach the common cathode of each LED to a [ground pin](https://pinout.xyz/pinou
 Attach the wires for the red and the blue LEDs to [GPIO pins](https://pinout.xyz/pinout/wiringpi).
 
 <div class="td-max-width-on-larger-screens" style="margin: auto" style="max-width: 400px;">
-  ![Components assembled for testing](/tutorials/guardian/assembled-testing.jpg)
+  {{<imgproc src="/tutorials/guardian/assembled-testing.jpg" resize="400x" declaredimensions=true alt="Components assembled for testing">}}
 </div>
 
 Before continuing with assembly, you should test your components work as expected.
@@ -465,8 +463,6 @@ async def connect():
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
-
-{{% snippet "show-secret.md" %}}
 
 You will update the `main()` method later.
 
