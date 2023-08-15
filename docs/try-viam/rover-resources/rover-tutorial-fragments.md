@@ -34,8 +34,6 @@ Click **Save Config** to save the new configuration.
 {{<imgproc src="try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
 
 The fragment adds the following components to your robot's JSON configuration.
-For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component below.
-To see the pin numbers and other values specific to this fragment, [see the components on the configuration page](#see-the-components-on-the-configuration-page).
 
 - A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
   - An I<sup>2</sup>C bus is configured on the board because the accelerometer connects to the board with I<sup>2</sup>C.
@@ -52,6 +50,9 @@ This particular motor driver has pins labeled "ENA" and "ENB."
 Typically, this would suggest that they should be configured as enable pins, but on this specific driver these function as PWM pins, so we configure them as such.
 
 {{% /alert %}}
+
+For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
+To see the configured pin numbers and other values specific to this fragment, [see the components on the configuration page](#see-the-components-on-the-configuration-page).
 
 ## See the components on the configuration page
 
