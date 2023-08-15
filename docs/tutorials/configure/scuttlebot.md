@@ -16,6 +16,7 @@ languages: [ "python", "go" ]
 viamresources: [ "board", "arm", "motor" ]
 level: "Beginner"
 date: "2 August 2022"
+updated: "15 August 2023"
 cost: 540
 ---
 
@@ -23,68 +24,194 @@ cost: 540
 
 ## Requirements
 
-- A Raspberry Pi with Raspberry Pi OS 64-bit Lite and the `viam-server` installed.
-
-Refer to [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os), if necessary.
-
+- A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed]((/installation/prepare/rpi-setup/#install-raspberry-pi-os))
 - [A SCUTTLE Robot](https://www.scuttlerobot.org/shop/)
-- A USB camera (webcam)
+- A USB webcam
 
 ## Start configuring your robot
 
 1. Go to [the Viam app](https://app.viam.com).
-2. If you already created your robot in the app, navigate to its **Config** tab and skip to [Configuring the board](#configuring-the-board).
-3. Create an **Organization**.
-   If you already have an Organization, then this step is optional.
-   If you need help with organizations and locations, see our [guide to using the Viam app](/manage/fleet/).
-4. Create a **Location**.
-   If you already have a Location, then this step is optional.
-5. Create a **robot** and navigate to its **Config** tab.
-   We will stay in **Builder** mode for this tutorial (as opposed to **Raw JSON**).
-   ![A screenshot of the Viam app UI showing the CONFIG tab of a robot.](/tutorials/scuttlebot/createcomponent.png)
+1. Create a **robot** and follow the setup instructions until the robot successfully connects to the Viam app.
+1. Navigate to the robot's **Config** tab.
+   ![The Viam app UI showing the config tab of the robot.](/tutorials/scuttlebot/createcomponent.png)
 
-{{% alert title="Tip" color="tip" %}}
-When naming components, remember to use consistent letter casing to avoid problems with "missing" components.
-{{% /alert %}}
+## Configure the board
 
-## Configuring the board
+Add your first component, the [board](/components/board/):
 
-Add your first component, the [board](/components/board/) (in this case the Raspberry Pi).
+{{< tabs name="Configure an pi Board" >}}
+{{% tab name="Config Builder" %}}
 
-1. Enter a name for your board in the **Name** field.
-   In this tutorial, we've named the board "local."
-   As long as you're consistent, you can name the board whatever you want.
-2. Select the component **Type**, "board."
-3. Select "pi" from the **Model** drop-down.
-4. Click **Create Component** and the board component panel will expand.
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter `local` as the name for your board, select the type `board`, and select the `pi` model.
 
-We don't need to worry about any other attributes for this component.
-![Screenshot of the component configuration panel for a board component. The name (local), type (board) and model (pi) are shown at the top of the panel. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
+Click **Create component**.
 
-## Configuring the motors
+![The component configuration panel for a board component.](/tutorials/scuttlebot/board-empty-json.png)
 
-### Adding the right motor
+Click on **Show more** and add `I2C` with **name** `main` and **bus** `1`.
 
-The next step is to add a motor and make it spin a wheel.
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
 
-1. Begin by adding the right motor, naming the component "right".
-2. Select "motor" from the **Type** drop-down.
-3. Select "gpio" from the **Model** drop-down.
-4. Click **Create Component**, which will generate the motor component panel.
-5. Then select `local` from the **Board** drop-down (since the motor is wired to the Raspberry Pi named "local").
-6. Set **Max RPM** to `100`.
-7. Next, you'll need to describe how the motor is wired to the Pi:
-   1. Switch the Component Pin Assignment Type to **In1/In2**.
-   2. Set **A/In1** to `16`.
-   3. Set **B/In2** to `15`.
-   4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.
-
-![Screenshot of the motor config panel with the attributes set as described above.](/tutorials/scuttlebot/pi-rhwheel.png)
-<br><br>
-
-{{% expand "Click to view the raw JSON for the right motor" %}}
+Add the following JSON object to the `components` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "board",
+  "model": "pi",
+  "name": "local",
+  "attributes": {
+    "i2cs": [
+      {
+        "bus": "1",
+        "name": "main"
+      }
+    ]
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Configure the encoders
+
+Next, configure the left and right encoders as follows:
+
+{{< tabs name="Configure AMS-AS5048 Encoders" >}}
+{{% tab name="Config Builder" %}}
+
+**Left encoder:**
+
+Navigate to the **Create component** menu.
+Enter `lenc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
+
+Click **Create component**.
+
+![Configuration of an AS5048 encoder in the Viam app config builder.](/components/encoder/configure-am5.png)
+
+Paste the following in the **Attributes** field:
+
+```json
+{
+    "board": "local",
+    "connection_type": "i2c",
+    "i2c_attributes": {
+        "i2c_bus": "main",
+        "i2c_addr": 64
+    }
+}
+```
+
+**Right encoder:**
+
+Navigate to the **Create component** menu.
+Enter `renc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
+
+Click **Create component**.
+
+Paste the following in the **Attributes** field:
+
+```json
+{
+    "board": "local",
+    "connection_type": "i2c",
+    "i2c_attributes": {
+        "i2c_bus": "main",
+        "i2c_addr": 65
+    }
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the following JSON objects to the `components` array:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "lenc",
+    "type": "encoder",
+    "model" : "AMS-AS5048",
+    "attributes": {
+      "board": "local",
+      "connection_type": "i2c",
+      "i2c_attributes": {
+        "i2c_bus": "main",
+        "i2c_addr": 64
+      }
+    }
+},
+{
+    "name": "renc",
+    "type": "encoder",
+    "model" : "AMS-AS5048",
+    "attributes": {
+      "board": "local",
+      "connection_type": "i2c",
+      "i2c_attributes": {
+        "i2c_bus": "main",
+        "i2c_addr": 65
+      }
+    }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Configure the motors
+
+The next step is to add the motors and make them spin their wheels.
+
+{{< tabs name="gpio-config">}}
+{{% tab name="Config Builder" %}}
+
+**Right Motor:**
+
+Navigate to the **Create component** menu.
+Enter `right` for your motor name, select the type `motor`, and select the `gpio` model.
+
+Click **Create component**.
+
+Then select `local` from the **Board** drop-down to choose the raspberry pi the motor is wired to.
+
+Select `Encoded` in the **Encoder** section and select `renc` as the **encoder** and set **ticks per rotation** to `2`.
+
+Next, describe how the motor is wired to the Pi:
+
+1. Switch the Component Pin Assignment Type to `In1/In2`.
+2. Set **A/In1** to `16`.
+3. Set **B/In2** to `15`.
+4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
+
+![The motor config panel.](/tutorials/scuttlebot/pi-wheel.png)
+
+**Left Motor:**
+
+Navigate to the **Create component** menu.
+Enter `left` for your motor name, select the type `motor`, and select the `gpio` model.
+
+Click **Create component**.
+
+Then select `local` from the **Board** drop-down to choose the raspberry pi the motor is wired to.
+
+Select `Encoded` in the **Encoder** section and select `lenc` as the **encoder** and set **ticks per rotation** to `2`.
+
+Next, describe how the motor is wired to the Pi:
+
+1. Switch the Component Pin Assignment Type to `In1/In2`.
+2. Set **A/In1** to `12`.
+3. Set **B/In2** to `11`.
+4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+Add the following JSON objects to the `components` array:
+
+```json
 {
   "name": "right",
   "type": "motor",
@@ -93,61 +220,15 @@ The next step is to add a motor and make it spin a wheel.
     "pins": {
       "a": "16",
       "b": "15",
-      "pwm": ""
+      "pwm": "",
+      "dir": ""
     },
     "board": "local",
-    "max_rpm": 100,
-    "dir_flip": false
+    "dir_flip": false,
+    "ticks_per_rotation": 2
   },
-  "depends_on": []
-}
-```
-
-{{% /expand %}}
-
-{{% alert title="Tip" color="tip" %}}
-If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute (found by clicking **Show more**) and set it to "true."
-{{% /alert %}}
-
-### Testing the motor configuration
-
-Having configured a board and a motor component, you can now actuate your motor.
-Save the config by clicking **Save config** at the bottom of the page, then click over to the **Control** tab.
-
-Here you'll see a panel for the right `motor`.
-You'll use this panel to set the motor's `power` level.
-
-![Power level adjustment](/tutorials/scuttlebot/pi-moverhmotor.png)
-
-Be careful when activating your robot!
-Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
-
-{{% alert title="Tip" color="tip" %}}
-A "whining" sound emitted from the motor indicates that the power level is not high enough to turn the armature.
-If this happens, increase the power level by 10% increments until it starts to turn.
-{{% /alert %}}
-
-At this point, the right-side wheel should be working.
-
-### Adding the left motor
-
-Now, you're ready to add the left-side motor.
-This will be similar to adding the right motor.
-
-1. Name the component "left".
-2. Select "motor" from the **Type** drop-down.
-3. Select "gpio" from the **Model** drop-down.
-4. Click **Create Component**.
-5. Select `local` from the **Board** drop-down.
-6. Set the **Max RPM** attribute to `100`.
-7. Configure the motor's pins:
-   1. Switch the Component Pin Assignment Type to **In1/In2**.
-   2. Set **A/In1** to `12`.
-   3. Set **B/In2** to `11`.
-
-{{% expand "Click to view the raw JSON for the left motor" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
+  "depends_on": [ "local" ]
+},
 {
   "name": "left",
   "type": "motor",
@@ -159,168 +240,185 @@ This will be similar to adding the right motor.
       "pwm": ""
     },
     "board": "local",
-    "max_rpm": 100,
-    "dir_flip": false
+    "dir_flip": false,
+    "ticks_per_rotation": 2
   },
-  "depends_on": []
+  "depends_on": [ "local" ]
 }
 ```
 
-{{% /expand %}}
+{{% /tab %}}
+{{< /tabs >}}
 
-With both motors configured, the **Control** tab now display panels for both motors:
+Save the config by clicking **Save config** at the bottom of the page.
+### Test the motor configuration
+
+Now that you have configured your board, encoders, and motors, you can actuate your motors.
+Navigate to the **Control** tab.
+
+You'll see a panel for each configured component.
 
 ![Motor panels](/tutorials/scuttlebot/scuttle-bothmotors.png)
 
-Viam ([app.viam.com](https://app.viam.com)) displays component panels in order of their creation.
-Don't worry if your motor panels are not adjacent.
+Click on the panel for the right `motor`.
 
-## Configuring the base
+![Power level adjustment](/tutorials/scuttlebot/pi-moverhmotor.png)
 
-It's time to configure a [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
-Configuring a base component will give you a nice UI for moving the rover around.
+Try changing the motor's **power** level and click **Run**.
 
-From the **Config** tab:
+{{< alert title="Caution" color="caution" >}}
+Be careful when using your motors!
+Start with the power level set to 10% and increase it incrementally until the wheel rotates at a reasonable speed, clicking **Run** at each increment.
+If you hear a "whining" sound from the motor, the power level is not high enough to turn the armature.
+If this happens, increase the power level by 10% increments until it starts to turn.
+{{< /alert >}}
 
-1. Give your base a name.
-2. Enter "base" in **Type**.
-3. Enter "wheeled" in **Model**.
-4. In the **Right Motors** drop-down select "right."
-5. In the **Left Motors** drop-down select "left."
-6. Enter "400" in `width_mm` (measured between the midpoints of the wheels).
-7. Enter "250" in `wheel_circumference_mm`.
+If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute to the motor's configuration, by clicking **Show more** and setting the attribute to "true."
 
-    The `left` and `right` attributes represent the motors corresponding to the left and right sides of the rover.
-    Since we named the motors "left" and "right", you can simply add "left" and "right" between the brackets for your set of motors, respectively.
+## Configure the base
 
-The attributes of your base component's config should look something like this:
+Next, configure the [base component](/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
+Configuring a base component also provides you with a nice UI for moving the rover around.
 
-```json {class="line-numbers linkable-line-numbers"}
+{{< tabs name="Configure a Wheeled Base" >}}
+{{% tab name="Config Builder" %}}
+
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your base, select the type `base`, and select the `wheeled` model.
+
+Click **Create component**.
+
+{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
+
+1. Select `right` as the **Right Motor** and `left` as the **Left Motor**.
+2. Enter "400" in `width_mm` (measured between the midpoints of the wheels).
+3. Enter "250" in `wheel_circumference_mm`.
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+```json
 {
- "width_mm": 400,
- "wheel_circumference_mm": 250,
- "left": ["left"],
- "right": ["right"]
+  "components": [
+    {
+      "attributes": {},
+      "model": "pi",
+      "name": "local",
+      "type": "board"
+    },
+    {
+      "attributes": {
+        "board": "local",
+        "pins": {
+          "dir": "16",
+          "pwm": "15"
+        }
+      },
+      "model": "gpio",
+      "name": "right",
+      "type": "motor"
+    },
+    {
+      "attributes": {
+        "board": "local",
+        "pins": {
+          "dir": "13",
+          "pwm": "11"
+        }
+      },
+      "model": "gpio",
+      "name": "left",
+      "type": "motor"
+    },
+    {
+      "attributes": {
+        "left": [ "left" ],
+        "right": [ "right" ],
+        "wheel_circumference_mm": 250,
+        "width_mm": 400
+      },
+      "model": "wheeled",
+      "name": "scuttle-base",
+      "type": "base"
+    }
+  ]
 }
 ```
 
-When you save the config and switch to the **Control** tab, you'll see new control buttons for the base.
-In the **Keyboard** tab, toggle your keyboard control to active.
-Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
+{{% /tab %}}
+{{< /tabs >}}
+
+Save the config by clicking **Save config** at the bottom of the page.
+
+### Test the base
+
+Now that you have configured the base you can try moving the SCUTTLE Robot with your keyboard.
+Navigate to the **Control** tab.
+
+Click on the panel for the `base`.
 
 {{<imgproc src="/tutorials/scuttlebot/pi-kybrd-control.png" resize="300x" declaredimensions=true alt="WASD controls">}}
 
-If you click the **Discrete** tab, then you'll see different movement modes such as `Straight` and `Spin`; and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
+On the **Keyboard** tab, toggle the keyboard control to active.
+Use **W** and **S** to go forward and back, and **A** and **D** to arc and spin.
 
-![Discrete controls](/tutorials/scuttlebot/pi-discrete.png)
-
-Now you have a rover that you can drive using Viam's UI!
-Awesome!
-
-Try driving your SCUTTLE Robot around using the WASD keyboard controls described above.
+Try driving your SCUTTLE Robot around using the WASD keyboard controls.
 
 {{% alert title="Caution" color="caution" %}}
 Ensure that your robot has sufficient space to drive around without hitting anyone or anything.
 {{% /alert %}}
 
-## Configuring the encoders
+If you navigate to the **Discrete** tab, you can use movement modes such as `Straight` and `Spin` and different movement types such as `Continuous` and `Discrete` and directions such as `Forwards` and `Backwards`.
 
-Before configuring the encoders, you must configure I2C bus `1` on the board:
+![Discrete controls](/tutorials/scuttlebot/pi-discrete.png)
 
-```json
+## Configure the camera
+
+Finally, add a camera to your SCUTTLE Robot.
+
+{{< tabs name="Configure a Webcam" >}}
+{{% tab name="Config Builder" %}}
+
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Enter a name for your camera, select the type `camera`, and select the `webcam` model.
+
+Click **Create component**.
+
+{{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
+
+If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
 {
-      "name": "<board_name>",
-      "type": "board",
-      "model": "<model_name>"
-      "attributes": {
-        "i2cs": [
-          {
-            "bus": "1",
-            "name": "main"
-          }
-        ]
-      },
-      "depends_on": [],
+    "name": "Webcam",
+    "type": "camera",
+    "model" : "webcam",
+    "attributes": {
+        "video_path": "video0"
+    }
 }
 ```
 
-Now, configure the left and right encoders as follows:
+{{% /tab %}}
+{{< /tabs >}}
 
-- Left encoder:
-  - Configure the left encoder with *Name* `lenc`, **Type** `encoder`, and **Model** `AMS-AS5048`.
-  - Paste the following in the **Attributes** field, changing the board name to match the name of your board:
+## View the camera stream
 
-  ```json
-  {
-      "name": "<encoder_name>",
-      "type": "encoder",
-      "model": "AMS-AS5048"
-      "board": "<board_name>",
-       "attributes": {
-           "board": "<board_name>",
-           "connection_type": "i2c",
-            "i2c_attributes": {
-                "i2c_bus": "main",
-                "i2c_addr": 64
-            }
-       }
-    }
-  ```
+{{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
 
-- Right encoder:
-  - Configure the left encoder with *Name* `renc`, **Type** `encoder`, and **Model** `AMS-AS5048`.
-  - Paste the following in the **Attributes** field, changing the board name to match the name of your board:
+## Next Steps
 
-  ```json
-  {
-      "name": "<encoder_name>",
-      "type": "encoder",
-      "model": "AMS-AS5048"
-      "board": "<board_name>",
-       "attributes": {
-           "board": "<board_name>",
-           "connection_type": "i2c",
-            "i2c_attributes": {
-                "i2c_bus": "main",
-                "i2c_addr": 65
-            }
-       }
-    }
-  ```
+Now that you have fully configured your SCUTTLE Robot, you can drive it around and view its camera stream.
 
-{{< alert title="Caution" color="caution" >}}
-For SCUTTLE robots, the `position` you obtain when calling the [`GetPosition`](/components/encoder/#getposition) method increases by `2` ticks for each 360 degree turn of the wheel instead of `1`.
-{{< /alert >}}
+To take things to the next level, check out one of the following tutorials:
 
-## Configuring the camera
-
-Finally, we'll add a camera to your SCUTTLE Robot.
-
-1. Enter a name of your choice in **Name**.
-2. Enter "camera" in **Model**.
-3. Click **Create Component**.
-
-Now, you'll see the config panel for the camera component:
-![Camera component config panel](/tutorials/scuttlebot/pi-cam-control.png)
-
-On the camera config panel, set the `video_path`.
-
-Once you save the config, you'll be able to see your camera's stream in the **Control** tab.
-
-## On completion
-
-After successfully completing this tutorial, you have a fully configured SCUTTLE Robot.
-You can drive it around and view its camera stream.
-
-To take things to the next level, check out our [Color Detection with SCUTTLE Robot](/tutorials/services/color-detection-scuttle/) tutorial or create your own camera-related tutorial.
-Alternatively, you can  check out our [Bluetooth Gamepad For SCUTTLE](/tutorials/control/scuttle-gamepad/) tutorial or our [Line Follower Robot tutorial](/tutorials/services/webcam-line-follower-robot/).
-
-## Documents referenced
-
-- [Installing Raspberry Pi OS on the Raspberry Pi](/installation/prepare/rpi-setup/#install-raspberry-pi-os)
-
-- [Color Detection with SCUTTLE Robot on Viam](/tutorials/services/color-detection-scuttle/)
-
-- [Controlling a SCUTTLE Robot on Viam with a Bluetooth Gamepad](/tutorials/control/scuttle-gamepad/)
-
-- [Line Following with SCUTTLE Robot on Viam](/tutorials/services/webcam-line-follower-robot/)
+{{< cards >}}
+  {{% card link="/tutorials/services/color-detection-scuttle" %}}
+  {{% card link="/tutorials/control/scuttle-gamepad/" %}}
+  {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+{{< /cards >}}
