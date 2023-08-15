@@ -35,12 +35,12 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 ## Enable the cameras
 
-Before configuring color detection, enable the rover's camera to get a better sense of what it perceives as it performs color classification.
+Before configuring color detection, enable the rover's camera to get a better sense of what it perceives.
 
 * If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
   In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
-  ![Screenshot of the viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
+  ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
   You can also view and control the camera streams from the [individual camera component panels](/try-viam/try-viam-tutorial/#camera-control).
 
@@ -51,7 +51,7 @@ Before configuring color detection, enable the rover's camera to get a better se
 
 This tutorial uses the hex color `#7a4f5c` (a reddish color).
 
-**Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="300x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
+**Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -74,7 +74,7 @@ To create a [vision service](/services/vision/):
 
 Your configuration should look like the following:
 
-{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x500" alt="Screenshot of the vision service configuration showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
+{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x500" alt="The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

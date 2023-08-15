@@ -27,7 +27,7 @@ Click on the rover name at the top to go to the rental rover's **Control** tab w
 
 At the top of the page you can see the randomly assigned name of the rover, the host, and the IP address.
 
-![Screenshot of the top banner of a Try Viam rover robot page. The randomly generated name for this rover is 'silent-forest'](try-viam/try-viam/bannerinfo.png)
+![The top banner of a Try Viam rover robot page. The randomly generated name for this rover is 'silent-forest'](try-viam/try-viam/bannerinfo.png)
 
 The **Control** tab contains panels for each of the rover's components:
 
@@ -39,7 +39,7 @@ The **Control** tab contains panels for each of the rover's components:
 
 The order of these components may vary.
 
-{{<imgproc src="/try-viam/try-viam/control-panel-list.png" resize="700x" declaredimensions=true alt="Screenshot of the component panels on the CONTROL tab of the Try Viam rover. None of them are expanded yet so they display as thin rectangles with component names and types shown.">}}
+{{<imgproc src="/try-viam/try-viam/control-panel-list.png" resize="700x" declaredimensions=true alt="The component panels on the CONTROL tab of the Try Viam rover. None of them are expanded yet so they display as thin rectangles with component names and types shown.">}}
 
 ### Base control
 
@@ -47,14 +47,14 @@ The [base component](/components/base/) is the platform that the other parts of 
 
 Click the `viam_base` component to expand the base control pane to reveal the camera feed and driving interfaces.
 
-![Screenshot of the viam_base component panel on the CONTROL tab. The Keyboard Disabled toggle is grey and not yet enabled.](try-viam/try-viam/initial-base-control.png)
+![The viam_base component panel on the CONTROL tab. The Keyboard Disabled toggle is grey and not yet enabled.](try-viam/try-viam/initial-base-control.png)
 
 #### Camera views
 
 In the `viam_base` component panel, select the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 We recommend enabling both cameras so you can have a better sense of what's happening in the space.
 
-![Screenshot of the viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
+![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
 You can also view and control the camera streams from the [individual camera components](/try-viam/try-viam-tutorial/#camera-control).
 
@@ -85,7 +85,7 @@ If you go from the from **Keyboard** to the **Discrete** tab, you can choose bet
   In _discrete_ movement mode you can set a speed at which to move and a distance to cover before stopping.
 - Directions: `Forwards` and `Backwards`.
 
-![Screenshot of the DISCRETE tab of the viam_base component panel. Movement mode, movement type, and direction mode toggles are shown as well as a speed (mm/sec) field and a distance field (the latter of which is greyed out because the movement type toggle is set to continuous instead of discrete movement).](try-viam/try-viam/discrete.png)
+![The DISCRETE tab of the viam_base component panel. Movement mode, movement type, and direction mode toggles are shown as well as a speed (mm/sec) field and a distance field (the latter of which is greyed out because the movement type toggle is set to continuous instead of discrete movement).](try-viam/try-viam/discrete.png)
 
 ### Camera control
 
@@ -126,7 +126,7 @@ The [board component](/components/board/) is the signal wire hub of a robot whic
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
 
-![Screenshot of the board panel in the CONTROL tab, including fields to get and set GPIO pin states.](try-viam/try-viam/board-panel.png)
+![The board panel in the CONTROL tab, including fields to get and set GPIO pin states.](try-viam/try-viam/board-panel.png)
 
 #### Web gamepad control
 
@@ -137,7 +137,7 @@ The [web gamepad component](/components/input-controller/webgamepad/) is disable
 On the Viam app, navigate to the **Components** subtab, under **Config**.
 There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
 
-![Screenshot of the CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](try-viam/try-viam/config-builder.png)
+![The CONFIG tab in Builder mode (as opposed to Raw JSON). The board component panel and right motor panel are visible.](try-viam/try-viam/config-builder.png)
 
 ### Board configuration
 
@@ -154,7 +154,7 @@ In this case, the encoders on the left and right motors are `Lenc` and `Renc` an
 When configuring encoded motors for your own robot, you must configure the encoders before the motors because the motors depend on the encoders.
 {{< /alert >}}
 
-![Screenshot of the right encoder config panel with the board attribute set to 'local' and the pins struct containing 'i' set to 're'.](try-viam/try-viam/right-encoder.png)
+![The right encoder config panel with the board attribute set to 'local' and the pins struct containing 'i' set to 're'.](try-viam/try-viam/right-encoder.png)
 
 ### Motor configuration
 
@@ -178,7 +178,7 @@ The **Wheel Circumference** (in millimeters) is 217.
 The **Width** is the distance between wheel centerlines, 260mm in this case.
 The **Spin Slip Factor** of 1.76 is used in steering calculations to account for slippage of the wheels against the ground while turning.
 
-![Screenshot of the base configuration panel, showing right and left motors, wheel circumference set to 217, width set to 260mm, and spin slip factor set to 1.76.](try-viam/try-viam/base-config.png)
+![The base configuration panel, showing right and left motors, wheel circumference set to 217, width set to 260mm, and spin slip factor set to 1.76.](try-viam/try-viam/base-config.png)
 
 ### Camera configuration
 
@@ -207,7 +207,7 @@ The **Services** subtab contains the "Base Remote Control" service which uses th
 
 The names for **base** and **input_controller** correspond to the naming scheme from the **Components** tab.
 
-![Screenshot of the base remote control service named 'base_rc' on the Services subtab of the CONFIG tab.](try-viam/try-viam/base-rc.png)
+![The base remote control service named 'base_rc' on the Services subtab of the CONFIG tab.](try-viam/try-viam/base-rc.png)
 
 ### Raw JSON
 
@@ -215,7 +215,7 @@ The 'Builder' configuration mode provides a user-friendly, guided experience for
 In the background, the Viam app translates the Viam robot configuration into JSON.
 You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **Config** tab.
 
-![Screenshot of the CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](try-viam/try-viam/raw-json.png)
+![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](try-viam/try-viam/raw-json.png)
 
 You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i-reuse-my-rented-rover).
 
