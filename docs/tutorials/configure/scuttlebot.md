@@ -3,10 +3,10 @@ title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 weight: 15
 type: "docs"
-description: "Configure a Scuttle robot on the Viam platform."
+description: "Configure a SCUTTLE robot on the Viam platform."
 image: "/tutorials/scuttlebot/createcomponent.png"
 images: ["/tutorials/scuttlebot/createcomponent.png"]
-imageAlt: "The Viam app UI showing the CONFIG tab of a robot."
+imageAlt: "The Viam app UI showing the Config tab of a robot."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
   - "/tutorials/scuttlebot"
@@ -24,7 +24,7 @@ cost: 540
 
 ## Requirements
 
-- A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed]((/installation/prepare/rpi-setup/#install-raspberry-pi-os))
+- A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed](/installation/prepare/rpi-setup/#install-raspberry-pi-os)
 - [A SCUTTLE robot](https://www.scuttlerobot.org/shop/)
 - A USB webcam
 
@@ -420,7 +420,7 @@ Then toggle the camera view to ON.
 If everything is configured correctly, you will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
-{{< imgproc src="/components/camera/example_camera_image.png" alt="Example Camera view inside Viam app" resize="700x" >}}md" >}}
+{{< imgproc src="/components/camera/example_camera_image.png" alt="Example Camera view inside Viam app" resize="700x" >}}
 
 ## Next Steps
 
