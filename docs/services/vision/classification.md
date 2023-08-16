@@ -92,13 +92,13 @@ Add the vision service object to the services array in your raw JSON configurati
 {{< /tabs >}}
 
 Click **Save config** and head to the **Components** tab.
-Proceed to [Test your classifier](#test-your-classifier).
+Proceed to [test your classifier](#test-your-classifier).
 
 ## Test your classifier
 
 You can test your classifier with [live camera footage](#live-camera-footage) or [existing images](#existing-images).
 
-### Live Camera footage
+### Live camera footage
 
 If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/manage/fleet/robots/#control) or with code:
 
