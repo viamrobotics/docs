@@ -12,9 +12,9 @@ Viam provides a reusable {{% glossary_tooltip term_id="fragment" text="*fragment
 
 ## Prerequisites
 
-* An assembled Viam Rover with a Raspberry Pi.
+- An assembled Viam Rover with a Raspberry Pi.
   For assembly instructions, see [Unbox and Set Up your Viam Rover](../rover-tutorial/)
-* The Pi is able to connect to [the Viam app](https://app.viam.com).
+- The Pi is connected to [the Viam app](https://app.viam.com).
   To add your Pi to the Viam app, refer to [the rover setup guide](/try-viam/rover-resources/rover-tutorial/#connect-to-the-viam-app).
 
 ## Add the fragment
@@ -35,16 +35,17 @@ Click **Save Config** to save the new configuration.
 
 The fragment adds the following components to your robot's JSON configuration:
 
-* [Board component](/components/board/), which is the Raspberry Pi.
-  * Within the board component attributes, digital interrupts: "re" to pin "37" and "le" to pin "35" and I2Cs: name "default_i2c_bus" and bus "1".
-* Right gpio [motor](/components/motor/).
-  * Within the motor attributes, board: "local", encoder: "Renc", ticks per rotation: "1992".
-  * Within the component pin assignment, type: In1/In2, A/In1: "16 GPIO 23", B/In2: "18 GPIO 24", PWM: "22 GPIO 25".
-  * Depends on local and Renc.
-* Left gpio [motor](/components/motor/).
-  * Within the motor attributes, board: "local", encoder: "Lenc", ticks per rotation: "1992".
-  * Within the component pin assignment, type: In1/In2, A/In1: "11 GPIO 17", B/In2: "13 GPIO 27", PWM: "15 GPIO 22".
-  * Depends on local and Lenc.
+- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
+  - An I<sup>2</sup>C bus for connection to the accelerometer.
+- Two [motors](/components/motor/gpio/) (`right` and `left`)
+  - The configured pin numbers correspond to where the motor drivers are connected to the board.
+- Two [encoders](/components/encoder/single/), one for each motor
+- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
+  - Width between the wheel centers: 260 mm
+  - Wheel circumference: 217 mm
+  - Spin slip factor: 1
+- A webcam [camera](/components/camera/webcam/)
+- An [accelerometer](/components/movement-sensor/adxl345/)
 
 {{% alert title="Info" color="info" %}}
 
@@ -53,28 +54,13 @@ Typically, this would suggest that they should be configured as enable pins, but
 
 {{% /alert %}}
 
-* A wheeled Viam [base](/components/base/) with attributes:
-  * Right Motors: right
-  * Left Motors: left
-  * Wheel circumference (mm): 217
-  * Width (mm): 260
-  * Spin slip factor: 1
-  * Depends on: left, right, local.
-* A webcam [camera](/components/camera/) with video_path: video0 and depends on: local.
-* Renc [encoder](/components/encoder/) with board: local, pins "i": "re" and depends on: local.
-* Lenc [encoder](/components/encoder/) with board: local, pins "i": "le" and depends on: local.
-* An [accelerometer](/components/movement-sensor/) with the following configuration:
-  * Model: "accel-adxl345"
-  * Name: "accelerometer"
-  * Type: "movement_sensor"
-  * and attributes of "i2c_bus": "default_i2c_bus", "use_alternate_i2c_address": false, and "board": "local".
-  * Depends on: local.
-* A microphone, type: audio_input, with attributes "audio_path_pattern": "3a" and "debug": false.
+For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
+To see the configured pin numbers and other values specific to this fragment, [see the Viam Rover fragment in the Viam app](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
 
 ## See the components on the configuration page
 
 Adding a fragment to your robot adds the configuration to your robot.
-The components and services included in the fragment will appear inside a read-only fragment section in the **Components** and **Services** subtabs.
+The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ## Modify the config
 
