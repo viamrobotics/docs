@@ -26,7 +26,7 @@ Enter a name for your board, select the type `board`, and select the `pi` model.
 
 Click **Create component**.
 
-![An example configuration for a pi board in the Viam app Config Builder.](/components/board/pi-ui-config.png)
+![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -39,7 +39,7 @@ Edit and fill in the attributes as applicable.
     {
       "type": "board",
       "model": "pi",
-      "name": "<your_name>"
+      "name": "<board_name>"
     }
   ]
 }

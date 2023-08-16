@@ -40,7 +40,7 @@ This tutorial uses a standard webcam in place of these sensors, and allows a rob
 
 If you'd like to directly see the code, check out the [**Line Follower Code on GitHub**](https://github.com/viam-labs/line-follower/).
 
-{{<imgproc src="/tutorials/webcam-line-follower/lf-scuttle2.png" resize="600x" declaredimensions=true alt="A SCUTTLE Robot base with a camera mounted on the front, pointing mostly down and slightly forwards.">}}
+{{<imgproc src="/tutorials/webcam-line-follower/lf-scuttle2.png" resize="600x" declaredimensions=true alt="A Scuttle robot base with a camera mounted on the front, pointing mostly down and slightly forwards.">}}
 
 ## Requirements
 
@@ -49,7 +49,7 @@ To build your own line follower robot, you need the following hardware:
 | Hardware | Avg. price |
 | -------- | ----------------- |
 | **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/installation/#prepare-your-board). | $60 |
-| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE Robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
+| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
 | **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.uctronics.com/arducam-for-raspberry-pi-camera-module-with-case-5mp-1080p-for-raspberry-pi-3-3-b-and-more.html/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera on the front of the rover, pointing down towards the floor.** | $30 |
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
