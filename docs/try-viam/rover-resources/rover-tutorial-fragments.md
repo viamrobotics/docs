@@ -33,10 +33,10 @@ Click **Save Config** to save the new configuration.
 
 {{<imgproc src="try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
 
-The fragment adds the following components to your robot's JSON configuration.
+The fragment adds the following components to your robot's JSON configuration:
 
 - A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
-  - An I<sup>2</sup>C bus is configured on the board because the accelerometer connects to the board with I<sup>2</sup>C.
+  - An I<sup>2</sup>C bus for connection to the accelerometer.
 - Two [motors](/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
 - Two [encoders](/components/encoder/single/), one for each motor
@@ -55,7 +55,7 @@ Typically, this would suggest that they should be configured as enable pins, but
 {{% /alert %}}
 
 For information about how you would configure a component yourself if you weren't using the fragment, click the links on each component above.
-To see the configured pin numbers and other values specific to this fragment, [see the components on the configuration page](#see-the-components-on-the-configuration-page).
+To see the configured pin numbers and other values specific to this fragment, [see the Viam Rover fragment in the Viam app](https://app.viam.com/fragment?id=3e8e0e1c-f515-4eac-8307-b6c9de7cfb84).
 
 ## See the components on the configuration page
 
