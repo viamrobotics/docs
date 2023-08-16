@@ -25,7 +25,7 @@ The types of classifiers supported are:
 
 * **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
-## Configure a `mlmodel` classifier
+## Configure an `mlmodel` classifier
 
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
