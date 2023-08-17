@@ -470,7 +470,7 @@ Your options for completing this step are flexible, as this file does not need t
 
 One option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
-Make sure that you set up a Python virtual environment in the directory your module is in to compile your resource properly at execution if using the above script.
+Make sure that you set up a Python virtual environment in the directory your module is in to compile your resource properly at execution.
 See the [Python Documentation](https://docs.python-guide.org/dev/virtualenvs/) for help with this.
 
 Include `venv` set-up and manage dependencies in your script as in the following template:
