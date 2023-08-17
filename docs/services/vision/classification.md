@@ -25,7 +25,7 @@ The types of classifiers supported are:
 
 * **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
-## Configure a `mlmodel` classifier
+## Configure an `mlmodel` classifier
 
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
@@ -91,14 +91,14 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save config** and head to the **Components** tab.
-Proceed to [Test your classifier](#test-your-classifier).
+Click **Save config**.
+Proceed to [test your classifier](#test-your-classifier).
 
 ## Test your classifier
 
 You can test your classifier with [live camera footage](#live-camera-footage) or [existing images](#existing-images).
 
-### Live Camera footage
+### Live camera footage
 
 If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/manage/fleet/robots/#control) or with code:
 

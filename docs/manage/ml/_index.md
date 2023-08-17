@@ -21,7 +21,7 @@ To make use of ML models with your robot, you can use the built-in [ML model ser
 
 Once you have [deployed the ML model service](/services/ml/#create-an-ml-model-service) to your robot, you can then add another service to make use of the model.
 
-* For object detection and classification, you can use the [vision service](/services/vision/), which provides both [mlmodel detector](/services/vision/detection/#configure-a-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-a-mlmodel-classifier) models.
+* For object detection and classification, you can use the [vision service](/services/vision/), which provides both [mlmodel detector](/services/vision/detection/#configure-an-mlmodel-detector) and [mlmodel classifier](/services/vision/classification/#configure-an-mlmodel-classifier) models.
 * For other usage, you can create a [modular resource](/extend/modular-resources/) to integrate it with your robot.
   For an example, see [this tutorial](/extend/modular-resources/examples/tflite-module/) which adds a modular-resource-based service that uses TensorFlow Lite to classify audio samples.
 

@@ -31,7 +31,7 @@ The returned detections consist of the bounding box around the identified object
 You can use the following types of detectors:
 
 - [**Color detection (`color_detector`)**](#configure-a-color_detector): A heuristic detector that draws boxes around objects according to their hue (does not detect black, gray, and white).
-- [**Object detection (`mlmodel`)**](#configure-a-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/services/ml/) available on the robot’s hard drive.
+- [**Object detection (`mlmodel`)**](#configure-an-mlmodel-detector): A detector that draws bounding boxes according to an [ML model](/services/ml/) available on the robot’s hard drive.
 
 ## Configure a `color_detector`
 
@@ -147,7 +147,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 Click **Save config**.
 Proceed to [test your detector](#test-your-detector).
 
-## Configure a `mlmodel` detector
+## Configure an `mlmodel` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
