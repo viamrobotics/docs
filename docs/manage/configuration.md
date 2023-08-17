@@ -163,16 +163,22 @@ Components of the same model are supported using the same low-level code.
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.
 
-{{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
-Some optional attributes have default values.
-If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
+   Some optional attributes have default values.
+   If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
 
-{{% /alert %}}
+   {{% /alert %}}
 
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
+
+If you are configuring several similar components, you can use the **Duplicate component** button in the upper-right of a component's configuration pane to duplicate the existing configuration for that component.
+A new component with identical configuration settings will be created beneath your existing one, named `<existing-component>-copy`.
+This is useful when configuring several components together that have similar configurations, e.g., left and right [motors](/component/motor/).
+
+To delete a component, click the **trash** icon in the upper-right of the component configuration pane.
 
 For specific information on how to configure each supported component type, see the [components documentation](/components/).
 
