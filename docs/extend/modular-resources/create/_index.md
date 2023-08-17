@@ -47,7 +47,7 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
 
    - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
    - For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
-   - Base your edits to <file>main.go</file> or <file>main.py</file> on this second file.
+   - Base your edits to <file>main.go</file> or <file>main.py</file> on this second file. <br>
 
 2. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
 Import your custom model and API into the main program and register them with your chosen SDK.
