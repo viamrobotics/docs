@@ -62,7 +62,24 @@ Before adding a SLAM service, you must follow [these instructions](/extend/modul
 {{% tab name="Config Builder" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Navigate to the **Config** tab on your robot's page, and click on the **Modules** subtab.
+Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
+
+{{< tabs name="Add Cartographer Service Module">}}
+{{% tab name="Linux/macOS x86_64" %}}
+
+![adding cartographer module linux](/services/slam/add-cartographer-module-ui-linux.png)
+
+{{% /tab %}}
+
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
+
+![adding cartographer module M1 M2](/services/slam/add-cartographer-module-ui-M1-M2.png)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Click on the **Services** subtab.
 
 Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
 
@@ -96,23 +113,6 @@ Paste the following into the **Attributes** field of your new service:
   }
 }
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Click on the **Modules** subtab.
-Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
-
-{{< tabs name="Add Cartographer Service Module">}}
-{{% tab name="Linux/macOS x86_64" %}}
-
-![adding cartographer module linux](/services/slam/add-cartographer-module-ui-linux.png)
-
-{{% /tab %}}
-
-{{% tab name="macOS ARM64 (M1 & M2)" %}}
-
-![adding cartographer module M1 M2](/services/slam/add-cartographer-module-ui-M1-M2.png)
 
 {{% /tab %}}
 {{< /tabs >}}
