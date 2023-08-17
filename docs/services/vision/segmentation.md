@@ -124,7 +124,7 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 | `ground_plane_normal_vec` | Optional | A `(x,y,z)` vector that represents the normal vector of the ground plane. Different cameras have different coordinate systems. For example, a lidar's ground plane will point in the `+z` direction `(0, 0, 1)`. On the other hand, the intel realsense `+z` direction points out of the camera lens, and its ground plane is in the negative y direction `(0, -1, 0)`. The default value is `(0, 0, 1)`. |
 | `ground_angle_tolerance_degs` | Optional | A float that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. <br> Default: `30.00` </br> |
 
-Click **Save config** and head to the **Components** tab.
+Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Configure a `detector_3d_segmenter`
 
@@ -213,8 +213,7 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `mean_k` | _Required_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | _Required_ | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
 
-Click **Save config** and head to the **Components** tab.
-Proceed to [test your segmenter](#test-your-segmenter).
+Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
 ## Test your segmenter
 
