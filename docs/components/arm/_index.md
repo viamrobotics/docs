@@ -398,7 +398,7 @@ err := myArm.Stop(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Kinematics
+### GetKinematics
 
 {{% alert title="Note" color="note" %}}
 This method is not yet available with the Viam Go SDK.
@@ -515,7 +515,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_arm.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

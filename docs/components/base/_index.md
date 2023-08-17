@@ -100,11 +100,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Move the base 10 mm at a velocity of 1 mm/s, forward.
-await my_base.move_straight(distance=10, velocity=1)
+# Move the base 40 mm at a velocity of 90 mm/s, forward.
+await my_base.move_straight(distance=40, velocity=90)
 
-# Move the base 10 mm at a velocity of -1 mm/s, backward.
-await my_base.move_straight(distance=10, velocity=-1)
+# Move the base 40 mm at a velocity of -90 mm/s, backward.
+await my_base.move_straight(distance=40, velocity=-90)
 ```
 
 {{% /tab %}}
@@ -130,11 +130,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Move the base forward 10 mm at a velocity of 1 mm/s.
-myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: 1)
+// Move the base forward 40 mm at a velocity of 90 mm/s.
+myBase.MoveStraight(context.Background(), distanceMm: 40, mmPerSec: 90, nil)
 
-// Move the base backward 10 mm at a velocity of -1 mm/s.
-myBase.MoveStraight(context.Background(), distanceMm: 10, mmPerSec: -1)
+// Move the base backward 40 mm at a velocity of -90 mm/s.
+myBase.MoveStraight(context.Background(), distanceMm: 40, mmPerSec: -90, nil)
 ```
 
 {{% /tab %}}
@@ -163,8 +163,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Spin the base 10 degrees at an angular velocity of 1 deg/sec.
-await my_base.spin(angle=10, velocity=1)
+# Spin the base 10 degrees at an angular velocity of 15 deg/sec.
+await my_base.spin(angle=10, velocity=15)
 ```
 
 {{% /tab %}}
@@ -188,8 +188,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Spin the base 10 degrees at an angular velocity of 1 deg/sec.
-myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 1)
+// Spin the base 10 degrees at an angular velocity of 15 deg/sec.
+myBase.Spin(context.Background(), angleDeg: 10, degsPerSec: 15, nil)
 ```
 
 {{% /tab %}}
@@ -268,15 +268,15 @@ myBase, err := base.FromRobot(robot, "my_base")
 
 // Make your wheeled base move forward. Set linear power to 75%.
 logger.Info("move forward")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{})
+err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: .75}, angular: r3.Vector{}, nil)
 
 // Make your wheeled base move backward. Set linear power to -100%.
 logger.Info("move backward")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{})
+err = myBase.SetPower(context.Background(), linear: r3.Vector{Y: -1}, angular: r3.Vector{}, nil)
 
 // Make your wheeled base spin left. Set angular power to 100%.
 logger.Info("spin left")
-err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1})
+err = myBase.SetPower(context.Background(), linear: r3.Vector{}, angular: r3.Vector{Z: 1}, nil)
 
 // Make your wheeled base spin right. Set angular power to -75%.
 logger.Info("spin right")
@@ -309,8 +309,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Set the linear velocity to 1 mm/sec and the angular velocity to 1 degree/sec.
-await my_base.set_velocity(linear=Vector3(x=0,y=1,z=0), angular=Vector3(x=0,y=0,z=1))
+# Set the linear velocity to 50 mm/sec and the angular velocity to 15 degree/sec.
+await my_base.set_velocity(linear=Vector3(x=0,y=50,z=0), angular=Vector3(x=0,y=0,z=15))
 ```
 
 {{% /tab %}}
@@ -336,8 +336,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Set the linear velocity to 1 mm/sec and the angular velocity to 1 deg/sec.
-myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 1}, angular: r3.Vector{Z: 1})
+// Set the linear velocity to 50 mm/sec and the angular velocity to 15 deg/sec.
+myBase.SetVelocity(context.Background(), linear: r3.Vector{Y: 50}, angular: r3.Vector{Z: 15}, nil)
 ```
 
 {{% /tab %}}
@@ -363,8 +363,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Move the base forward 10 mm at a velocity of 1 mm/s.
-await my_base.move_straight(distance=10, velocity=1)
+# Move the base forward 10 mm at a velocity of 50 mm/s.
+await my_base.move_straight(distance=10, velocity=50)
 
 # Stop the base.
 await my_base.stop()
@@ -382,16 +382,16 @@ await my_base.stop()
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Move the base forward 10 mm at a velocity of 1 mm/s.
-myBase.MoveStraight(context.Background(), 10, 1)
+// Move the base forward 10 mm at a velocity of 50 mm/s.
+myBase.MoveStraight(context.Background(), 10, 50, nil)
 
 // Stop the base.
-myBase.Stop(context.Background())
+myBase.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -482,7 +482,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_base.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

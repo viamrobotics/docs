@@ -294,6 +294,19 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
 
+### Modify the config of a robot that uses a fragment
+
+When you modify a fragment, those changes are pushed to all robots that use that fragment.
+If you need to modify the config of just one robot that uses a fragment you can do the following:
+
+1. Go to the **Fragments** subtab of the **Config** tab.
+2. Click **Remove** next to the fragment.
+3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
+5. Toggle to **Raw JSON** mode.
+6. Paste the raw fragment contents into the **Raw JSON** config field.
+7. Click **Save config**.
+8. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
+
 ## Auth/network
 
 The auth section allows you to configure robot-level API keys for connecting over LAN.

@@ -159,7 +159,7 @@ myServo.Move(context.Background(), 90, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Position
+### GetPosition
 
 Get the current set angle of the servo in degrees.
 
@@ -306,7 +306,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_servo.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

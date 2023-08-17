@@ -43,6 +43,6 @@ No attributes are available for `fake` sensors.
 
 {{% alert title="Info" color="info" %}}
 
-A call to [`Readings()`](../#readings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
+A call to [`Readings()`](../#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 
 {{% /alert %}}

@@ -17,6 +17,7 @@ viamresources: [ "vision", "camera" ]
 level: "Beginner"
 date: "16 December 2022"
 cost: "0"
+no_list: true
 # SMEs: Hazal
 ---
 
@@ -33,11 +34,25 @@ If you are [renting your rover](https://app.viam.com/try), we recommend that you
 Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
+## Enable the cameras
+
+Before configuring color detection, enable the rover's camera to get a better sense of what it perceives.
+
+* If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
+  In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
+
+  ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
+
+  You can also view and control the camera streams from the [individual camera component panels](/try-viam/try-viam-tutorial/#camera-control).
+
+* If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
+  If you are using the `ViamRover` [fragment](/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **Control** tab.
+
 ## Add the vision service to detect a color
 
-This tutorial uses the hex color #7a4f5c (a reddish color).
+This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
-**Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="300x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
+**Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -49,20 +64,18 @@ Select the **Config** tab, and click on **Services**.
 Scroll to the **Create Service** section.
 To create a [vision service](/services/vision/):
 
-1. Select `vision` as the **Type**.
-2. Enter `my_color_detector` as the **Name**.
-3. Select **Color Detector** as the **Model**.
-4. Click **Create Service**.
+1. Select `Vision` as the **Type**.
+1. Enter `my_color_detector` as the **Name**.
+1. Select **Color Detector** as the **Model**.
+1. Click **Create Service**.
+1. In the resulting vision service panel, click the color picker box to set the color to be detected.
+   For this tutorial, set the color to `rgb(122, 79, 92)` or use hex code `#7a4f5c`.
 
-In your vision service's panel, fill in the **Attributes** field.
+1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 
-``` json {class="line-numbers linkable-line-numbers"}
-{
-      "segment_size_px": 100,
-      "detect_color": "#7a4f5c",
-      "hue_tolerance_pct": 0.06
-}
-```
+Your configuration should look like the following:
+
+{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x600" alt="The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

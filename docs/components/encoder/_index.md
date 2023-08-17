@@ -85,7 +85,7 @@ The encoder component supports the following methods:
 
 {{< readfile "/static/include/components/apis/encoder.md" >}}
 
-### Position
+### GetPosition
 
 Get the current position of the encoder in ticks or degrees.
 Relative encoders return ticks since last zeroing.
@@ -273,7 +273,7 @@ reset_dict = {
 do_response = await my_encoder.do_command(reset_dict)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

@@ -83,7 +83,7 @@ The gantry component supports the following methods:
 
 {{< readfile "/static/include/components/apis/gantry.md" >}}
 
-### Position
+### GetPosition
 
 Get the current positions of the axis of the gantry (mm).
 
@@ -421,7 +421,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_gantry.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

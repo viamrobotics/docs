@@ -584,7 +584,7 @@ raw_dict = {
 await my_motor.do_command(raw_dict)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
