@@ -17,10 +17,10 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 The types of segmenters supported are:
 
-- [**Obstacles Pointcloud (`obstacles_pointcloud`)**](#configure-an-obstacles_pointcloud): A segmenter that identifies well separated objects above a flat plane.
+- [**Obstacles point cloud (`obstacles_pointcloud`)**](#configure-an-obstacles_pointcloud): A segmenter that identifies well-separated objects above a flat plane.
 - [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 
-## Configure an `obstacles_pointcloud`
+## Configure an `obstacles_pointcloud` segmenter
 
 Radius clustering is a segmenter that identifies well separated objects above a flat plane.
 It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
@@ -214,10 +214,11 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `sigma` | _Required_ | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
 
 Click **Save config** and head to the **Components** tab.
+Proceed to [test your segmenter](#test-your-segmenter).
 
-## Code
+## Test your segmenter
 
-The following code gets the robot’s vision service and then runs a segmenter vision model on an image from the robot's camera `"camera_1"`:
+The following code uses the [`GetObjectPointClouds`](/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the robot's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -226,6 +227,7 @@ The following code gets the robot’s vision service and then runs a segmenter v
 from viam.services.vision import VisionClient, VisModelConfig, VisModelType
 
 robot = await connect()
+
 # Grab Viam's vision service for the segmenter
 my_segmenter = VisionClient.from_robot(robot, "my_segmenter")
 
@@ -246,15 +248,16 @@ import (
 "go.viam.com/rdk/components/camera"
 )
 
-cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
+cameraName := "cam1" // Use the same component name that you have in your robot configuration
 
-visService, err := vision.from_robot(robot=robot, name='my_segmenter')
+// Get the vision service you configured with name "my_segmenter" from the robot
+visService, err := vision.from_robot(robot=robot, name="my_segmenter")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
 }
 
-// Apply the color classifier to the image from your camera (configured as "cam1")
-segments, err := visService.GetObjectPointClouds(context.Background(), cameraName, nil)
+// Get segments
+segments, err := visService.ObjectPointClouds(context.Background(), cameraName, nil)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }
