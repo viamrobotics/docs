@@ -37,14 +37,18 @@ To make your own singing robot, you need the following hardware:
 
 While following this tutorial, you'll complete the following steps to train and utilize a machine learning model on a webcam:
 
-1. [**Train your ML Model with pictures of toys:**](#train-your-ml-model-with-pictures-of-toys)
-
-    [Configure the camera on your laptop to capture data](#configure-your-webcam-to-capture-data) with the Data Management service and use it to capture images.
-   After that, filter your image data with [tags](#tag-data) and use it to train a [machine learning model](/services/ml/) on [the Viam app](https://app.viam.com).
-
-2. [**Use your ML Model to sing songs to your kids:**](#use-your-ml-model-to-sing-songs-to-your-kids)
-
-    [Configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier) with Viam's [ML Model](/services/ml/) and [Vision](/services/vision/) Services, [record bedtime songs](#record-bedtime-songs), and [program the robot](#program-your-bedtime-songs-bot) to play a song when it recognizes a shape.
+- [Get started](#get-started)
+- [Train your ML Model with pictures of toys](#train-your-ml-model-with-pictures-of-toys)
+  - [Configure your webcam to capture data](#configure-your-webcam-to-capture-data)
+  - [Capture data](#capture-data)
+  - [Tag data](#tag-data)
+    - [Filter based on tags](#filter-based-on-tags)
+  - [Train a model](#train-a-model)
+- [Use your ML Model to sing songs to your kids](#use-your-ml-model-to-sing-songs-to-your-kids)
+  - [Configure your webcam to act as a shape classifier](#configure-your-webcam-to-act-as-a-shape-classifier)
+  - [Record bedtime songs](#record-bedtime-songs)
+  - [Program your bedtime-songs bot](#program-your-bedtime-songs-bot)
+- [Next steps](#next-steps)
 
 ## Train your ML Model with pictures of toys
 
@@ -556,7 +560,7 @@ The full example source code for <file>play-songs.go</file> is available on [Git
 
 Now, as shown below, your smart bedtime songs bot knows to play a song whenever it sees a shape on the camera:
 
-{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer." poster="/tutorials/bedtime-songs-bot/export-screenshot.png">}}
+{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer." poster="/tutorials/bedtime-songs-bot/robot-babysitter-preview.png">}}
 
 ## Next steps
 
