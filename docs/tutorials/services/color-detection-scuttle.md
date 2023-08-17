@@ -1,9 +1,9 @@
 ---
-title: "Detect and Follow a Colored Object with a SCUTTLE Robot"
+title: "Follow a Colored Object with a Rover (like SCUTTLE)"
 linkTitle: "Colored Object Follower"
 weight: 30
 type: "docs"
-description: "Instructions for detecting and following a colored object with a SCUTTLE Robot on Viam software."
+description: "Instructions for detecting and following a colored object with a rover, like a SCUTTLE robot."
 webmSrc: "/tutorials/videos/scuttle-colordetection-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-colordetection-preview.mp4"
 videoAlt: "Detecting color with a Scuttle Robot"
@@ -17,105 +17,385 @@ languages: [ "python" ]
 viamresources: [ "base", "vision", "camera" ]
 level: "Beginner"
 date: "18 August 2022"
+updated: "11 August 2023"
 cost: 540
+no_list: true
 ---
 
-{{< alert title="Caution" color="caution" >}}
-There are [breaking changes in the Vision Service](/appendix/release-notes/#25-april-2023).
-This tutorial has not yet been updated.
+In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
+We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/try-viam/rover-resources/).
+
+<div class="aligncenter">
+{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+</div>
+
+You can see the [full code](#full-code) at the bottom of the page.
+
+## Requirements
+
+You will need the following hardware to complete this tutorial:
+
+- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
+  - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
+- An attached and configured [webcam camera](/components/camera/webcam/).
+
+## Set up the hardware
+
+Connect the camera to the rover's board.
+Turn on the power to the rover.
+
+## Configure color detection
+
+This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
+
+{{< tabs >}}
+{{% tab name="Builder" %}}
+
+Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
+Click on the robot you wish to add the vision service to.
+Select the **Config** tab, and click on **Services**.
+
+Scroll to the **Create Service** section.
+To create a [color detector vision service](/services/vision/detection/):
+
+1. Select `vision` as the **Type**.
+2. Enter `my_color_detector` as the **Name**.
+3. Select **Color Detector** as the **Model**.
+4. Click **Create Service**.
+
+In your vision service's panel, set the following **Attributes**:
+
+- Set the color to `#a13b4c` or `rgb(161,59,76)`
+- Set hue tolerance to `0.06`
+- Set the segment size to `100`px
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the vision service object to the services array in your rover’s raw JSON configuration:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+  {
+    "name": "my_color_detector",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 100,
+      "detect_color": "#a13b4c",
+      "hue_tolerance_pct": 0.06
+    }
+  },
+  ... // Other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Click **Save config** and head to the **Components** tab.
+
+You have configured a heuristic-based detector that draws boxes around objects according to their color.
+
+{{< alert title="Tip" color="tip" >}}
+If you want to detect other colors, change the color parameter `detect_color`.
+Object colors can vary dramatically based on the light source.
+We recommend that you verify the desired color detection value under actual lighting conditions.
+To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 {{< /alert >}}
 
-This tutorial shows how to use the Viam [Vision Service](/services/vision/) to make a [SCUTTLE rover](https://www.scuttlerobot.org/) follow a colored object.
+### Test your color detector
 
-{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+You can test your detector from the [**Control tab**](/manage/fleet/robots/#control):
 
-### Code used in this tutorial
+1. Configure a [transform camera](../../../components/camera/transform/) with the following attributes:
 
-[`scuttle.py` GitHub Gist](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0)
+    ```json
+    {
+      "pipeline": [
+          {
+          "type": "detections",
+          "attributes": {
+              "confidence_threshold": 0.5,
+              "detector_name": "my_color_detector"
+          }
+          }
+      ],
+      "source": "<camera-name>"
+    }
+    ```
 
-## Prerequisites
+   For `<camera-name>`, insert the name of your configured physical camera.
 
-The prerequisite of this tutorial is to have a [SCUTTLE rover](https://www.scuttlerobot.org/) connected to the [Viam app](https://app.viam.com).
-Please refer to the [Configure a SCUTTLE Robot tutorial](../../configure/scuttlebot/) if you have not already configured your SCUTTLE.
+2. Click **Save config**.
+3. Navigate to the **Control** tab, click on your transform camera and toggle it on.
+   The transform camera will now show detections with bounding boxes around the detected colors.
+
+{{< alert title="Tip" color="tip" >}}
+If the color is not reliably detected, try increasing the `hue_tolerance_pct` or adjusting the lighting of the area to make the color being detected more visible.
+
+Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
+{{< /alert >}}
+
+## Program your rover
 
 ### Set up your code environment
 
-We highly suggest using a virtual Python environment like [Poetry](https://python-poetry.org) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
-
-Then create an environment for Python by running the following on the terminal:
-
-```sh {class="command-line" data-prompt="$"}
-poetry new pysdk  # new poetry project
-conda create -n pysdk python=3.9  # new (mini)conda environment
-```
-
-You can also name your environment as you wish, but please remember to keep it consistent.
-We named our environment pysdk, referring to the [Viam Python SDK](https://python.viam.dev/).
-
-NOTE: If using (mini)conda, activate the environment by running the following command:
+We are going to use Virtualenv to set up a virtual environment for this project, in order to isolate the dependencies of this project from other projects.
+Run the following commands in your command-line to install `virtualenv`, set up an environment `venv` and activate it:
 
 ```sh {class="command-line" data-prompt="$"}
-conda activate pysdk
+python3 -m pip install --user virtualenv
+python3 -m venv env
+source env/bin/activate
 ```
 
-Poetry environments are implicitly activated.
-
-Before you can run the code, you need to install the "viam" module.
-Follow the [Python SDK installation](https://github.com/viamrobotics/viam-python-sdk#installation) guide to properly install the package.
-
-NOTE: If using a python environment, ensure that the package is installed in the proper environment.
+Then, install the Viam Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
-pip freeze | grep viam  # generic
-poetry show | grep viam  # for poetry environments
-conda list | grep viam  # for (mini)conda environments
+pip3 install viam-sdk
 ```
 
-You should see `viam-sdk` listed near the end.
+### Connect
 
-## Save the code
-
-Download the [<file>scuttle.py</file>](https://gist.github.com/mestcihazal/e78e3b29c58aa301c9a197ada272e6a0) code to a directory on your computer.
-Feel free to choose your own location, but as an example, we’ve chosen the Desktop.
-
-In the Python code, you must add your robot's address and secret (payload), which are found on the **Code sample** tab of the [Viam app](https://app.viam.com).
-
-Viam pre-populates the **Code sample** tab with the robot name, address, and secret:
-
-![Remote configuration code sample](/tutorials/copy-remotes-code.png)
+Next, go to the **Code sample** tab on your [robot page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
 
 {{% snippet "show-secret.md" %}}
 
-In your local copy of <file>scuttle.py</file>, paste your robot payload and address where indicated.
-Save the file.
+This code snippet imports all the necessary packages and sets up a connection with the Viam app.
 
-Now you are ready to run the code!
+Next, create a file named <file>main.py</file> and paste the boilerplate code from the **Code sample** tab of the Viam app into your file.
+Then, save your file.
+
+Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
+If you haven't yet installed `viam-server`, follow the [installation guide](/installation/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
+
+You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
+
+```sh {class="command-line" data-prompt="$"}
+python3 main.py
+```
+
+The program prints a list of robot resources.
+
+On top of the packages that the code sample snippet imports, add the `random` and the `vlc` package to the imports.
+The top of your code should now look like this:
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+import random
+import vlc
+
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+from viam.components.board import Board
+from viam.components.camera import Camera
+from viam.components.servo import Servo
+from viam.services.vision import VisionClient
+
+async def connect():
+    creds = Credentials(
+        type="robot-location-secret",
+        payload="LOCATION SECRET FROM THE VIAM APP")
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
+
+async def main():
+    # Other code
+
+if __name__ == "__main__":
+  print("Starting up... ")
+  asyncio.run(main())
+  print("Done.")
+```
+
+You will update the `main()` function later.
+
+### Detect the location of a colored object
+
+With the configured color detector, you can programmatically retrieve a list of detections.
+Each detection comes with information about where in the camera's picture it is detected.
+
+The following `leftOrRight` function checks where in the picture the largest detection is and returns a responding integer: `0` for left, `1` for center, and `2` for right.
+
+Add the `leftOrRight` function below your `connect` function:
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get largest detection box and see if it's center is in the left, center, or right third
+def leftOrRight(detections, midpoint):
+   largest_area = 0
+   largest = Detection()
+   if not detections:
+      print("nothing detected :(")
+      return -1
+   for d in detections:
+      a = (d.x_max - d.x_min) * (d.y_max-d.y_min)
+      if a > largest_area:
+         a = largest_area
+         largest = d
+   centerX = largest.x_min + largest.x_max/2
+   if centerX < midpoint-midpoint/6:
+      return 0 # on the left
+   if centerX > midpoint+midpoint/6:
+      return 2 # on the right
+   else:
+      return 1  # basically centered
+```
+
+### Add the main function
+
+The `main` function:
+
+- defines variables for how the robot should move,
+- connects to the robot,
+- initializes the base, the camera, and the detector, and
+- repeatedly calls the `leftOrRight` function and turns the rover's base in the respective direction.
+
+Replace the `main` function with the following code:
+
+```python {class="line-numbers linkable-line-numbers"}
+async def main():
+   spinNum = 10         # when turning, spin the motor this much
+   straightNum = 300    # when going straight, spin motor this much
+   numCycles = 200      # run the loop X times
+   vel = 500            # go this fast when moving motor
+​
+   # Connect to robot client and set up components
+   robot = await connect()
+   base = Base.from_robot(robot, "base")
+   camera = Camera.from_robot(robot, "<camera-name>")
+
+   # Grab the vision service for the detector
+   my_detector = VisionClient.from_robot(robot, "my_color_detector")
+
+   # Main loop. Detect the ball, determine if it's on the left or right, and head that way.
+   # Repeat this for numCycles
+   for i in range(numCycles):
+      detections = await my_detector.get_detections_from_camera(camera)
+​
+      answer = leftOrRight(detections, frame.size[0]/2)
+      if answer == 0:
+         print("left")
+         await base.spin(spinNum, vel)  # CCW is positive
+         await base.move_straight(straightNum, vel)
+      if answer == 1:
+         print("center")
+         await base.move_straight(straightNum, vel)
+      if answer == 2:
+         print("right")
+         await base.spin(-spinNum, vel)
+      # If nothing is detected, nothing moves
+
+   await robot.close()​
+```
+
+For `<camera-name>`, insert the name of your configured physical camera.
 
 ## Run the code
 
-Now you should try to drive the SCUTTLE around following the color red.
-You can use something like a red sports ball or book cover as a target to follow.
-
-Navigate to the folder where you saved the Python script.
-From that folder, run this in the terminal:
+Now, run the code again, from the same directory as your `main.py` file:
 
 ```sh {class="command-line" data-prompt="$"}
-python scuttle.py
+python3 main.py
 ```
 
-Be sure to replace <file>~/Desktop/</file> with the <file>/path/toYour/directory/</file> where the Python code was saved.
+Your rover should detect and navigate towards any red objects that come into view of its camera.
+Use something like a red sports ball or book cover as a target to follow to test your rover:
 
-```sh {class="command-line" data-prompt="$"}
-python ~/Desktop/scuttle.py
+<div class="aligncenter">
+{{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
+</div>
+
+## Next Steps
+
+Congratulations! If you're ready for more, try making your rover detect other colors.
+You could also write some code with a Viam SDK to [make your rover move in a square](/tutorials/get-started/try-viam-sdk/).
+
+{{< snippet "social.md" >}}
+
+## Full Code
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+​
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+from viam.services.vision import VisionServiceClient
+from viam.services.vision import VisModelConfig, VisModelType, Detection
+from viam.components.camera import Camera
+from viam.components.base import Base
+​
+​
+async def connect():
+   creds = Credentials(
+        type="robot-location-secret",
+        payload="[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB]")
+   opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+   return await RobotClient.at_address("[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB]", opts)
+​
+# Get largest detection box and see if it's center is in the left, center, or right third
+def leftOrRight(detections, midpoint):
+   largest_area = 0
+   largest = Detection()
+   if not detections:
+      print("nothing detected :(")
+      return -1
+   for d in detections:
+      a = (d.x_max - d.x_min) * (d.y_max-d.y_min)
+      if a > largest_area:
+         a = largest_area
+         largest = d
+   centerX = largest.x_min + largest.x_max/2
+   if centerX < midpoint-midpoint/6:
+      return 0 # on the left
+   if centerX > midpoint+midpoint/6:
+      return 2 # on the right
+   else:
+      return 1  # basically centered
+​
+async def main():
+   spinNum = 10         # when turning, spin the motor this much
+   straightNum = 300    # when going straight, spin motor this much
+   numCycles = 200      # run the loop X times
+   vel = 500            # go this fast when moving motor
+​
+   # Connect to robot client and set up components
+   robot = await connect()
+   base = Base.from_robot(robot, "base")
+   camera = Camera.from_robot(robot, "<camera-name>")
+
+   # Grab the vision service for the detector
+   my_detector = VisionClient.from_robot(robot, "my_color_detector")
+
+   # Main loop. Detect the ball, determine if it's on the left or right, and head that way.
+   # Repeat this for numCycles
+   for i in range(numCycles):
+      detections = await my_detector.get_detections_from_camera(camera)
+​
+      answer = leftOrRight(detections, frame.size[0]/2)
+      if answer == 0:
+         print("left")
+         await base.spin(spinNum, vel)     # CCW is positive
+         await base.move_straight(straightNum, vel)
+      if answer == 1:
+         print("center")
+         await base.move_straight(straightNum, vel)
+      if answer == 2:
+         print("right")
+         await base.spin(-spinNum, vel)
+      # If nothing is detected, nothing moves
+
+   await robot.close()
+​
+if __name__ == "__main__":
+  print("Starting up... ")
+  asyncio.run(main())
+  print("Done.")
 ```
-
-## Notes on color detection operation
-
-Within `getVisService(robot)`, a detector is configured with particular properties and subsequently added to the Vision Service.
-This particular detector is a [color detector](/services/vision/detection/), which means the relevant parameters are `detect_color` (hex string), `hue_tolerance_pct` (float from `0` to `1`), and `segment_size_px` (integer).
-Feel free to configure more detectors with different parameters!
-To learn about all the different detectors and parameters, check out the [Vision Service documentation](/services/vision/).
-
-The `leftOrRight()` code splits the screen vertically into thirds (left, center, and right) and makes a determination about which third the object (red ball) is in.
-Within `main()`, this decides how the robot moves (as configured by the 4 given variables).
-Run the code as is before making changes to see how it affects the output!

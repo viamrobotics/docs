@@ -487,6 +487,10 @@ END MARKETING CSS
   border: 1px solid black;
 }
 
+.hover-card * img.fill {
+  object-fit: fill;
+}
+
 .hover-card * .hover-card-icon * img {
   object-fit: contain;
 }
@@ -746,6 +750,10 @@ td > ul, td > ol {
   padding: 0.25rem 1rem;
   color: rgb(78, 79, 82);
   background-color: rgb(241, 241, 244)
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: 0;
 }
 
 .nav-tabs .nav-item:last-child {

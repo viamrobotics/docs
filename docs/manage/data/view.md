@@ -8,7 +8,7 @@ tags: ["data management", "cloud", "sync"]
 # SME: Aaron Casas
 ---
 
-After the Data Management Service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).
+After the data management service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).
 
 ![Images, files, and sensors tabs](/manage/data/tabs.png)
 

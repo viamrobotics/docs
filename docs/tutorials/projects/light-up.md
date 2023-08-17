@@ -15,9 +15,10 @@ viamresources: [ "camera", "mlmodel", "vision" ]
 level: "Beginner"
 date: "30 March 2023"
 cost: 20
+no_list: true
 ---
 
-This tutorial uses the Viam [Vision Service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
+This tutorial uses the Viam [vision service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
@@ -88,7 +89,7 @@ To use the provided Machine Learning model, copy the <file>[effdet0.tflite](http
 
 Click on the **Services** subtab and navigate to the **Create service** menu.
 
-1. **Configure the ML Model Service**
+1. **Configure the ML model service**
 
     Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
     Click **Create service**.
@@ -109,7 +110,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
     ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
 
-    In the new Vision Service panel, configure your service.
+    In the new vision service panel, configure your service.
 
     ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 

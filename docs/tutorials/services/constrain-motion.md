@@ -3,7 +3,7 @@ title: "Add Constraints and Transforms to a Motion Plan"
 linkTitle: "Add Motion Constraints"
 weight: 25
 type: "docs"
-description: "Use constraints and transforms with the Motion Service."
+description: "Use constraints and transforms with the motion service."
 webmSrc: "/tutorials/videos/motion_constraints.webm"
 mp4Src: "/tutorials/videos/motion_constraints.mp4"
 images: ["/tutorials/videos/motion_constraints.gif"]
@@ -27,7 +27,7 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
-If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [Motion Service](/services/motion/) to move a robot arm and end effector to desired positions.
+If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/services/motion/) to move a robot arm and end effector to desired positions.
 This tutorial builds on this foundation and shows you how to use [constraints](/services/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
 
 In this tutorial, you will learn to move a cup across a table without hitting another object, and while remaining upright.
@@ -49,7 +49,7 @@ Before starting this tutorial, you must:
 Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](../../../services/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
-The Motion Service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
+The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
 
 {{% expand "Click to see what your raw JSON config should look like." %}}
 
@@ -138,8 +138,8 @@ If instead you are creating a new robot for this tutorial, copy the following co
 In the previous tutorial you [created a representation of a table](../plan-motion-with-arm-gripper/#describe-the-robots-working-environment) in your client code.
 You will use this same code later in this tutorial.
 
-Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the Frame System visualizer.
-This configured table won't be taken into account by the Motion Service, but it's useful to be able to see it.
+Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the frame system visualizer.
+This configured table won't be taken into account by the motion service, but it's useful to be able to see it.
 
 On your robot's **Config** tab, create a new component called `table` with **Type** `generic` and **Model** `fake`.
 Click **Create component**, then click **Add frame**.
@@ -208,7 +208,7 @@ If the axes are different from those described above, take these differences int
 Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
-You can pass transforms to the [Motion Service `move` method](../../../services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
+You can pass transforms to the [motion service `move` method](../../../services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
 To represent the drinking cup held in your robot's gripper, create a transform with the cup's measurements:
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -243,7 +243,7 @@ The previous tutorial [introduced the concept of defining poses](../plan-motion-
 For this tutorial, you'll define a pose for the gripper that is just above the table on one side of the tissue box, and another pose on the other side of the tissue box.
 
 You'll also want to define some waypoints.
-The Motion Service has the mathematical ability to plan complex motion from one position to another, even around an obstacle.
+The motion service has the mathematical ability to plan complex motion from one position to another, even around an obstacle.
 However, this is more computationally intensive than planning a linear path from one point to another.
 To increase your program's efficiency, add waypoints such that the path between any two consecutive points can be linear, without intersecting the tissue box or the table:
 
@@ -264,7 +264,7 @@ end_pose = Pose(x=300, y=-250, z=90.0+z_offset, o_x=1, o_y=0, o_z=0, theta=0)
 end_pose_in_frame = PoseInFrame(reference_frame="world", pose=end_pose)
 ```
 
-Though we are passing these waypoints in manually, the Motion Service will throw an error if we accidentally pass in a pose that would cause the arm or gripper to hit any obstacles we've defined.
+Though we are passing these waypoints in manually, the motion service will throw an error if we accidentally pass in a pose that would cause the arm or gripper to hit any obstacles we've defined.
 
 Note that the orientations of all the poses are the same.
 If we changed the orientation along the way, we might spill the tea!
@@ -346,12 +346,12 @@ async def main():
     cmd_arm_pose = await my_arm.get_end_position()
     print(f"Pose of end of myArm from get_end_position:", cmd_arm_pose)
 
-    # Access the Motion Service
+    # Access the motion service
     motion_service = MotionClient.from_robot(robot, "builtin")
 
-    # Get the pose of myArm from the Motion Service
+    # Get the pose of myArm from the motion service
     my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
-    print(f"Pose of myArm from the Motion Service: {my_arm_motion_pose}")
+    print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 
     # Use this offset to set your z to calibrate based on where your table actually is
     z_offset = 10
@@ -432,7 +432,7 @@ if __name__ == "__main__":
 
 ## Next steps
 
-If you would like to continue onto working with Viam's Motion Service, check out this tutorial:
+If you would like to continue onto working with Viam's motion service, check out this tutorial:
 
 {{< cards >}}
   {{% card link="/tutorials/projects/claw-game/" %}}

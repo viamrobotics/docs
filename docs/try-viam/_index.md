@@ -5,7 +5,11 @@ childTitleEndOverwrite: "Try Viam"
 weight: 15
 type: "docs"
 description: "Try Viam by taking over a Viam Rover in our robotics lab."
-images: ["/tutorials/try-viam-sdk/image1.gif"]
+webmSrc: "/try-viam/rover.webm"
+mp4Src: "/try-viam/rover.mp4"
+videoAlt: "Rover reservation management page"
+images: [ "/try-viam/rover.gif" ]
+no_list: true
 aliases:
     - "/getting-started/try-viam/"
 ---
@@ -13,24 +17,33 @@ aliases:
 Viam is a general robotics platform that can run on any hardware.
 The easiest way to try Viam is to [rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in New York:
 
-{{<gif webm_src="/try-viam/rover-reservation.webm" mp4_src="/try-viam/rover-reservation.mp4" alt="Rover reservation management page" max-width="800px">}}
-
-## Get started with Viam
-
-During your rover rental, you can [try out some of the Viam platform functionality](try-viam-tutorial/):
-
-- Drive the rover from wherever you are
-- Use services like computer vision to identify colors and objects
-- Explore the configuration and control interface for the rover's sensors and actuators in the Viam app
-- Write code to control the rover
-
-## Control your rover with SDKs
-
-If you want to control and automate your rover with Python or Go, use the [Viam SDKs](/program/apis/).
-
-Viam also exposes a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} [API for robot controls](https://github.com/viamrobotics/api).
-
-Both the API and the SDKs support {{< glossary_tooltip term_id="webrtc" >}}.
-The SDKs provide a wrapper around the `viam-server` [gRPC](https://grpc.io/) API and streamline connection, authentication, and encryption against a server.
+<table>
+  <tr>
+    <th>{{<imgproc src="/try-viam/try-viam-1.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="ALT">}}
+      <b>1. Click on TRY in Viam</b>
+      <p>Log into Viam and go to the <a href="https://app.viam.com/try">TRY tab</a>. Don’t have a Viam account? Follow the <a href="/manage/#create-account-and-log-in">instructions to sign up</a> for an account.</p>
+    </th>
+  </tr>
+  <tr>
+    <td>{{<imgproc src="/try-viam/try-viam-2.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="ALT">}}
+      <b>2. Reserve your slot</b>
+      <p>If no one’s using a Viam Rover, you’ll take over immediately.
+Otherwise, you’ll see an estimated time for the next slot, and we’ll send you an email when it’s your turn.
+See <a href="/try-viam/reserve-a-rover/">detailed instructions</a>.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>{{<imgproc src="/try-viam/try-viam-3.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="ALT">}}
+      <b>3. Get started with Viam</b>
+      <p>Try a Viam Rover in our robotics lab. <a href="/try-viam/try-viam-tutorial/">Control</a>, <a href="/try-viam/try-viam-tutorial/#base-control">drive</a>, or <a href="/tutorials/get-started/try-viam-sdk/">program</a> the rover to see how you can build a robot with Viam. You can also try services like <a href="/tutorials/services/try-viam-color-detection/">computer vision.</a></p>
+    </td>
+  </tr>
+</table>
 
 ## Next steps
+
+{{< cards >}}
+  {{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection/" %}}
+  {{% card link="/try-viam/rover-resources/" %}}
+{{< /cards >}}

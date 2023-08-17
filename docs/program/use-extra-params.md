@@ -16,7 +16,7 @@ How to [utilize](#utilize) and [define](#define) the `extra` parameters that man
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are *models* of built-in resource types.
 
-For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM Service](/services/slam/).
+For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM service](/services/slam/).
 
 The `extra` parameters in that built-in resource type's [API](/program/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
 This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
@@ -93,7 +93,7 @@ If `extra` information must be passed to a resource, it is handled within a new,
 To do this, define a custom implementation of the resource's API as a new *model*, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/extend/modular-resources/create/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#readings) method in the code of a [new sensor model](/extend/modular-resources/):
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#getreadings) method in the code of a [new sensor model](/extend/modular-resources/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}

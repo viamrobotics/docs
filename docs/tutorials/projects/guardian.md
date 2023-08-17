@@ -3,7 +3,7 @@ title: "A Guardian that Tracks Pets using a Pi, Camera, and Servo"
 linkTitle: "Security Guardian"
 weight: 50
 type: "docs"
-description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and Vision Service to detect people and pets."
+description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
 webmSrc: "/tutorials/guardian/preview.webm"
 mp4Src: "/tutorials/guardian/preview.mp4"
 videoAlt: "A guardian detecting a person or pet."
@@ -22,7 +22,7 @@ In the run up to the new Zelda release, I realized you can build a stationary gu
 Adding a bit of [machine learning](/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [Vision Service](/services/vision/).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [vision service](/services/vision/).
 Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="/tutorials/guardian/guardian-detection.webm" mp4_src="/tutorials/guardian/guardian-detection.mp4" poster="/tutorials/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
@@ -76,8 +76,6 @@ You can view a timelapse of the robot assembly here:
 
 ### Assemble for testing
 
-{{< imgproc src="/tutorials/guardian/base.jpg" alt="Wooden guardian base" resize="400x" >}}
-
 <div class="td-max-width-on-larger-screens" class="alignright" style="max-width: 200px">
   {{<imgproc src="/tutorials/guardian/head.png" resize="300x" declaredimensions=true alt="Head with camera attachment">}}
 </div>
@@ -109,7 +107,7 @@ Attach the common cathode of each LED to a [ground pin](https://pinout.xyz/pinou
 Attach the wires for the red and the blue LEDs to [GPIO pins](https://pinout.xyz/pinout/wiringpi).
 
 <div class="td-max-width-on-larger-screens" style="margin: auto" style="max-width: 400px;">
-  ![Components assembled for testing](/tutorials/guardian/assembled-testing.jpg)
+  {{<imgproc src="/tutorials/guardian/assembled-testing.jpg" resize="400x" declaredimensions=true alt="Components assembled for testing">}}
 </div>
 
 Before continuing with assembly, you should test your components work as expected.
@@ -465,8 +463,6 @@ async def connect():
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
-
-{{% snippet "show-secret.md" %}}
 
 You will update the `main()` method later.
 

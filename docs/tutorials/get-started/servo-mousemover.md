@@ -15,6 +15,7 @@ viamresources: [ "board", "servo" ]
 level: "Beginner"
 date: "30 March 2023"
 cost: 80
+no_list: true
 ---
 
 Have you ever been working from home and needed to step out for a moment?

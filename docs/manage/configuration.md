@@ -4,9 +4,9 @@ linkTitle: "Configure a Robot"
 weight: 25
 type: "docs"
 description: "Before you can program a robot, you must configure its components and services as well as any modules, remotes, processes and frames."
-image: "/installation/thumbnails/manage.png"
+image: "/installation/thumbnails/configure.svg"
 imageAlt: "Configure a Robot"
-images: ["/installation/thumbnails/manage.png"]
+images: ["/installation/thumbnails/configure.svg"]
 tags: ["manage", "components"]
 ---
 
@@ -189,7 +189,7 @@ Meanwhile the **Code sample** tab will also update to include code for some basi
 
 [Services](/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your robot.
 
-For services, the `type` specifies which of the Viam services you want to use on your robot, such as the Vision Service or the Motion Service.
+For services, the `type` specifies which of the Viam services you want to use on your robot, such as the vision service or the motion service.
 
 The `name` serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
 You can choose any unique name for a service.
@@ -293,6 +293,19 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
 ```
 
 For an example of adding a fragment to a robot, see the [Viam Rover fragment tutorial](/try-viam/rover-resources/rover-tutorial-fragments/).
+
+### Modify the config of a robot that uses a fragment
+
+When you modify a fragment, those changes are pushed to all robots that use that fragment.
+If you need to modify the config of just one robot that uses a fragment you can do the following:
+
+1. Go to the **Fragments** subtab of the **Config** tab.
+2. Click **Remove** next to the fragment.
+3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
+5. Toggle to **Raw JSON** mode.
+6. Paste the raw fragment contents into the **Raw JSON** config field.
+7. Click **Save config**.
+8. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
 
 ## Auth/network
 

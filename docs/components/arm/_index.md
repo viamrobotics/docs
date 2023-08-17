@@ -31,15 +31,15 @@ When controlling an arm with `viam-server`, the following features are implement
 Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
 While some arm models build inverse kinematics into their software, many do not.
 
-- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [Motion Service](/services/motion/) instead.
+- Most of the arm drivers for the Viam RDK bypass any onboard inverse kinematics, and use Viam's [motion service](/services/motion/) instead.
 
 - This driver handles turning the arm on and off, querying the arm for its current joint position, sending requests for the arm to move to a specified set of joint positions, and engaging brakes as needed, if supported.
 
 Arm drivers are also paired, in the RDK, with JSON files that describe the kinematics parameters of each arm.
 
-- When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [Frame System](/services/frame-system/) service to use.
+- When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [frame system](/services/frame-system/) service to use.
 
-- The [Frame System](/services/frame-system/) will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
+- The [frame system](/services/frame-system/) will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
 
 - All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 
@@ -398,7 +398,7 @@ err := myArm.Stop(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Kinematics
+### GetKinematics
 
 {{% alert title="Note" color="note" %}}
 This method is not yet available with the Viam Go SDK.
@@ -515,7 +515,7 @@ command = {"cmd": "test", "data1": 500}
 result = my_arm.do(command)
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/#the-do-method).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.do_command).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

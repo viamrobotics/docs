@@ -26,7 +26,7 @@ In this tutorial, you will:
 
 - assemble the claw game machine and learn how to fabricate your own encasement for the machine
 - learn how to configure the components using Viam
-- master the art of controlling your robot with our [Motion Service](/services/motion/) using the [Viam Python SDK](https://python.viam.dev/)
+- master the art of controlling your robot with our [motion service](/services/motion/) using the [Viam Python SDK](https://python.viam.dev/)
 - learn how to create a custom control interface using the [Viam TypeScript SDK](https://ts.viam.dev/)
 
 ## Requirements
@@ -421,7 +421,7 @@ Now select `low` and click **Set Pin State** again: the claw will open.
 
 ## Create obstacles and a world state
 
-The claw game machine will use the [Motion Service](/services/motion/) to plan its movements.
+The claw game machine will use the [motion service](/services/motion/) to plan its movements.
 To make sure the arm doesn't hit the walls of the enclosure or the prize drop hole, you need to create representations of obstacles around the arm that the motion service can use when planning.
 
 Obstacles are geometries located at a pose relative to some frame.
@@ -582,7 +582,7 @@ async def grab(board, doGrab):
        await pin.set(False)
 ```
 
-Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [Motion Service](/services/motion/).
+Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/services/motion/).
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def move_absolute(arm, motion_service, pose):
@@ -881,13 +881,13 @@ async function grab(boardClient: BoardClient) {
 In this tutorial, you learned how to:
 
 - Make your own claw machine.
-- Test, configure, and control a robot arm using Viam’s [Motion Service](/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and [the Viam app](https://app.viam.com).
+- Test, configure, and control a robot arm using Viam’s [motion service](/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and [the Viam app](https://app.viam.com).
 - Design your own custom interface using the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 For some next steps, you could:
 
-- Use the advanced interface included in the project repository to leverage the [Motion Service](/services/motion/) for larger, more complex arm movement within the enclosure.
-- Add a camera and use the [Vision Service](/services/vision/) to add color detection, or use an [ML model](/services/ml/) to determine grab success rate and create a score counter.
+- Use the advanced interface included in the project repository to leverage the [motion service](/services/motion/) for larger, more complex arm movement within the enclosure.
+- Add a camera and use the [vision service](/services/vision/) to add color detection, or use an [ML model](/services/ml/) to determine grab success rate and create a score counter.
 - Design a hard mode where the prizes are shuffled around with the arm every few attempts.
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 

@@ -42,12 +42,12 @@ Edit and fill in the attributes as applicable.
       "model": "gps-nmea",
       "attributes": {
         "connection_type": "<serial|I2C>",
-        "board": "<your-board-name-if-using-I2C>",
         "serial_attributes": {
             "serial_baud_rate": <int>,
             "serial_path": "<your-device-path>"
         },
         "i2c_attributes": {
+            "board": "<your-board-name>",
             "i2c_baud_rate": <int>,
             "i2c_addr": <int>,
             "i2c_bus": "<name-of-bus-on-board>"
@@ -101,7 +101,7 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
           "board": "local",
           "i2c_baud_rate": 38400,
           "i2c_addr": 111,
-          "i2c_bus": "<name_of_bus_on_board>"
+          "i2c_bus": "1"
         }
       },
       "depends_on": []
@@ -117,9 +117,42 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 Name | Type | Inclusion | Description |
 ---- | ---- | --------- | ----------- |
-`connection_type` | string | **Required** |`"I2C"` or `"serial"`. See [connection configuration info](#connection-attributes).
+`connection_type` | string | **Required** |`"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below.
 `disable_nmea` | boolean | Optional | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false`
 
 ### Connection Attributes
 
-{{< readfile "/static/include/components/movement-sensor/connection.md" >}}
+You need to configure attributes to specify how the GPS connects to your computer.
+You can use either serial communication (over USB) or I<sup>2</sup>C communication (through pins to a [board](../../../board/)).
+
+Use `connection_type` to specify `"serial"` or `"I2C"` connection in the main `attributes` config.
+Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
+
+{{< tabs >}}
+{{% tab name="Serial" %}}
+
+### Serial Config Attributes
+
+For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
+
+Name | Type | Inclusion | Description
+---- | ---- | --------- | -----------
+`serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.
+`serial_baud_rate` | int | Optional | The rate at which data is sent from the sensor. <br> Default: `38400`
+
+{{% /tab %}}
+{{% tab name="I2C" %}}
+
+### I2C Config Attributes
+
+For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
+
+Name | Type | Inclusion | Description
+---- | ---- | --------- | -----------
+`board` | string | **Required** | The `name` of the [board](/components/board/) to which the [I<sup>2</sup>C](/components/board/#i2cs) connection is being made.
+`i2c_bus` | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor.
+`i2c_addr` | int | **Required** | The device's I<sup>2</sup>C address.
+`i2c_baud_rate` | int | Optional | The rate at which data is sent from the sensor. Optional. <br> Default: `38400`
+
+{{% /tab %}}
+{{< /tabs >}}

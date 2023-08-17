@@ -29,7 +29,7 @@ This is to ensure that paths will be found when using defaults.
 CBiRRT returns the first valid path that it finds.
 The CBiRRT algorithm Viam uses is based on the algorithm described in the paper [Manipulation Planning on Constraint Manifolds](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf)
 
-## How the Motion Service applies these algorithms
+## How the motion service applies these algorithms
 
 By default, Viam's motion planning library uses a hybrid approach:
 

@@ -6,7 +6,7 @@ type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
 mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
-videoAlt: "Drive a SCUTTLE Robot with a Bluetooth gamepad."
+videoAlt: "Drive a Scuttle Robot with a Bluetooth gamepad."
 images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:
     - "/tutorials/scuttle-gamepad/"
@@ -32,7 +32,7 @@ If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a 
 
 ## Requirements
 
-You will need the following to complete this tutorial:
+You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
@@ -40,7 +40,7 @@ You will need the following to complete this tutorial:
 - [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle.
   This is the controller that comes with the SCUTTLE rover.
 
-{{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a SCUTTLE Robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
+{{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a Scuttle robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
 
 ## Set up the hardware
 
@@ -84,12 +84,12 @@ Inside the `components` array of your config, add the following configuration fo
 
 The controller config adds the gamepad controller to your robot.
 However, it is not functional yet.
-To make it functional, you need to add the Base Remote Control Service.
+To make it functional, you need to add the base remote control service.
 
-## Add the Base Remote Control Service
+## Add the base remote control service
 
 Services are software packages that provide robots with higher level functionality.
-To link the controller's input to the base functionality, you need to configure the [Base Remote Control Service](/services/base-rc/):
+To link the controller's input to the base functionality, you need to configure the [base remote control service](/services/base-rc/):
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

@@ -16,6 +16,7 @@ viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
 level: "Beginner"
 date: "15 February 2023"
 cost: 200
+no_list: true
 ---
 
 When we think of robots, most of us tend to group them into categories:
@@ -33,7 +34,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer Vision Service](/services/vision/), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer vision service](/services/vision/), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
 
 * Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 * Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -179,7 +180,7 @@ chmod +x run.sh
 Now that we've set up the rover by attaching the servo and making the tutorial software available on the Pi, we can configure the rover to:
 
 * Recognize and operate the servo
-* Make the ML detector model available for use by the Viam Vision Service
+* Make the ML detector model available for use by the Viam vision service
 
 ### 1. Configure the servo
 
@@ -212,7 +213,7 @@ We found that if set up this way, the following positions accurately show the co
 * angry: 75 degrees
 * sad: 157 degrees
 
-### 2. Configure the ML Model and Vision Services to use the detector
+### 2. Configure the ML Model and vision services to use the detector
 
 Click the **Config** tab and then the **Services** subtab.
 From there, scroll to the bottom and create a new service of **type** `ML Models`, **model** `tflite_cpu` named 'stuff_detector'.
@@ -238,7 +239,7 @@ and the label path similar to:
 Now, create a new service of **type** `vision`, **model** `ML Model` named 'vis-stuff-detector'.
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
 
-{{<imgproc src="/tutorials/ai-integration/vision_service_add.png" resize="500x" declaredimensions=true alt="Adding the Vision Service." style="border:1px solid #000">}}
+{{<imgproc src="/tutorials/ai-integration/vision_service_add.png" resize="500x" declaredimensions=true alt="Adding the vision service." style="border:1px solid #000">}}
 
 Select the model that you added in the previous step.
 Click **Save config** to finish adding the detector.
@@ -302,7 +303,7 @@ Some ideas:
 
 * Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 * Integrate another ML model that is used to follow a human (when told to do so).
-* Add Lidar and integrate Viam's [SLAM Service](/services/slam/) to map the world around it.
+* Add Lidar and integrate Viam's [SLAM service](/services/slam/) to map the world around it.
 * Use Viam's [Data Management](/manage/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

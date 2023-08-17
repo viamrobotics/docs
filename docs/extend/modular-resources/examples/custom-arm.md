@@ -31,7 +31,7 @@ See [Modular Resources](/extend/modular-resources/) for more information.
 
 The way arms move through space is more complicated than Viam's other [components](/components/).
 Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
-This provides the necessary information for the [Frame System Service](/services/frame-system/) and built-in [Motion Service](/services/motion/) to work with the arm.
+This provides the necessary information for the [frame system service](/services/frame-system/) and built-in [motion service](/services/motion/) to work with the arm.
 
 **Find a pre-built kinematics file:**
 
@@ -43,7 +43,7 @@ You can find <file>URDF</file> "robot descriptions" for many industrial robot ar
 - Follow the instructions on [Configure Complex Kinematic Chains](/internals/kinematic-chain-config/) to write a file detailing the geometry of your arm.
   - Use the [Spatial Vector Algebra (SVA)](/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
-  - Follow the Frame System's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientations](/internals/orientation-vector/) of the `links` on your arm.
+  - Follow the frame system's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientations](/internals/orientation-vector/) of the `links` on your arm.
   You can view existing examples of the SVA and JSON format in Viam's [built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm).
 
 Create a new directory.
@@ -132,7 +132,7 @@ This module template registers a modular resource implementing Viam's built-in [
                 if await operation.is_cancelled():
                     await self.stop()
                     break
-            
+
             self.joint_positions = positions
             self.is_stopped = True
 
@@ -188,7 +188,7 @@ import asyncio
 from viam.module.module import Module
 from viam.components.arm import Arm
 
-from .my_modular_arm import MyModularArm 
+from .my_modular_arm import MyModularArm
 
 
 async def main():

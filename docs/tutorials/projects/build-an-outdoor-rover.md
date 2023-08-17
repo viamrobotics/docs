@@ -16,6 +16,7 @@ viamresources: [ "board", "motor", "base", "camera" ]
 level: "Beginner"
 date: "29 March 2023"
 cost: 420
+no_list: true
 ---
 
 Approaching robotics can be daunting.
@@ -58,7 +59,7 @@ For example, you might not need a night-vision camera if you won't operate it at
 | Raspberry Pi 3B or 4B with microSD card|1|$100|$100|Note: Due to supply shortages, Raspberry Pi prices are fluctuating dramatically.|
 | [12V Battery](https://www.amazon.com/LiFePO4-Battery-Miady-Rechargeable-Maintenance-Free/dp/B089VXSBC6)|1|$65|$65|Lots of options here - some motors might run better on 24V. You can use a battery with less storage if you don't plan to run it continuously.|
 | [Brushless hub motor wheels](https://www.alibaba.com/product-detail/Electric-Wheel-Hoverboard-DC-Hub-6_60615157026.html)|2|$30|$60|Better yet - source them from a used [hoverboard](https://www.amazon.com/RIDE-SWFT-Hoverboard-Balancing-Front-Facing/dp/B08N5DSVY3) (this is what I did, sorry son).|
-|[GPS module](https://www.amazon.com/Receiver-Antenna-Gmouse-Laptop-Navigation/dp/B073P3Y48Q/)|1|$20|$20|optional|
+|[USB Gmouse GPS module](https://www.amazon.com/Navigation-External-Receiver-Raspberry-Geekstory/dp/B078Y52FGQ)|1|$20|$20|optional|
 |[Solar charge controller](https://www.amazon.com/Renogy-Wanderer-Amp-12V-24V/dp/B07NPDWZJ7)|1|$20|$20|optional|
 |[25w Solar panel](https://www.alibaba.com/product-detail/High-Efficiency-25W-Polycrystalline-Crystalline-Solar_60814369754.html)|1|$10|$10|optional|
 [12V to 5V DC USB Type-C Right Angle Step-Down Power Converter](https://www.amazon.com/gp/product/B086KTGRH1/)|1|$13.50|$13.50|To power the Pi from a 12V battery.|
@@ -148,7 +149,9 @@ The procedure for each side will look like:
 With the brushless motor controllers I used, you'll have to first solder a jumper where indicated in this diagram (label starts with "normally disconnected").
 This allows the pi to control the motor with PWM.
 You'll also need to solder two pins to the controller just to the left of the white wire harness mount.
-(P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**! Once the pin is hot, touch the solder to it. When someone taught me this it changed my life.)
+(P.S. - A truly clutch solder tip for those of you who may not be very experienced with soldering: **heat the pin** with the soldering iron, **not the solder itself**!
+Once the pin is hot, touch the solder to it.
+When someone taught me this it changed my life.)
 
 <div class="td-max-width-on-larger-screens" style="max-width: 500px">
 {{<imgproc src="/tutorials/outdoor-rover-boxbot/motor-controller.jpg" resize="600x" declaredimensions=true alt="Brushless motor controller" class="alignleft">}}
@@ -298,7 +301,7 @@ Try driving your rover by keyboard.
 Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection/) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
 
-If you're adding a camera, GPS, planning on using Viam's Navigation Service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](https://docs.viam.com).
+If you're adding a camera, GPS, planning on using Viam's navigation service, or want to attach a solar panel and charge controller - this is all fairly plug and play with Viam and is covered in the [Viam documentation](https://docs.viam.com).
 
 <div class="td-max-width-on-larger-screens">
   {{<imgproc src="/tutorials/outdoor-rover-boxbot/matt-done.png" resize="300x" declaredimensions=true alt="Matt working on project." class="alignleft" style="max-width: 250px">}}

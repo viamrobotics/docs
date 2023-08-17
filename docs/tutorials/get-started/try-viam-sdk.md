@@ -124,7 +124,7 @@ go run square.go
 2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:40
    Resources:
 2023-05-12T11:28:00.383+0200 INFO    client    rover/square.go:41
-   [rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:cam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base]
+   [rdk:component:camera/fakeCam rdk:service:data_manager/overhead-cam:dm rdk:component:motor/left rdk:component:camera/cam rdk:component:encoder/Lenc rdk:component:encoder/Renc rdk:service:base_remote_control/base_rc rdk:service:sensors/builtin rdk:component:motor/right rdk:service:sensors/overhead-cam:builtin rdk:service:motion/overhead-cam:builtin rdk:component:input_controller/WebGamepad rdk:component:camera/overhead-cam:overheadcam rdk:service:data_manager/builtin rdk:service:motion/builtin rdk:component:board/local rdk:component:base/viam_base]
 ```
 
 {{% /tab %}}
@@ -694,4 +694,4 @@ Can you make it move in a circle?
 A figure-eight?
 You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
 
-You could also control Viam's services, by adding [data management](/manage/data/) to collect data in real time or [Vision Services](/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).
+You could also control Viam's services, by adding [data management](/manage/data/) to collect data in real time or [vision services](/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).

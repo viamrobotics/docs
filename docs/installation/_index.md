@@ -117,6 +117,7 @@ By default, `viam-server` will start automatically when your system boots, but y
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/installation/manage" %}}
-  {{% card link="/installation/update" %}}
+  {{% card link="/manage/configuration/" %}}
+  {{% card link="/tutorials/" %}}
+  {{% card link="/try-viam/" %}}
 {{< /cards >}}

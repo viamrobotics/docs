@@ -3,18 +3,18 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "The Vision Service enables your robot to use its on-board cameras to intelligently see and interpret the world around it."
+description: "The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it."
 icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 # SMEs: Bijan, Khari
 ---
 
-The Vision Service enables your robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
-While the camera component lets you access what your robot's camera sees, the Vision Service allows you to interpret your image data.
-The Vision Service is a default service on the robot, and can be initialized without attributes.
+The vision service enables your robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+While the camera component lets you access what your robot's camera sees, the vision service allows you to interpret your image data.
+The vision service is a default service on the robot, and can be initialized without attributes.
 
-Currently, the Vision Service supports the following models:
+Currently, the vision service supports the following models:
 
 {{< cards >}}
   {{% card link="/services/vision/detection/" %}}
@@ -24,13 +24,13 @@ Currently, the Vision Service supports the following models:
 
 ## API
 
-Different Vision Service models support different methods:
+Different vision service models support different methods:
 
 {{< readfile "/static/include/services/apis/vision.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [camera](/components/camera/) and a Vision Service [detector](/services/vision/detection/), [classifier](/services/vision/classification/) or [segmenter](/services/vision/segmentation/), as applicable, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a [camera](/components/camera/) and a vision service [detector](/services/vision/detection/), [classifier](/services/vision/classification/) or [segmenter](/services/vision/segmentation/), as applicable, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -94,7 +94,7 @@ if err != nil {
 // Grab the detector you configured on your robot
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get the stream from a camera
@@ -173,7 +173,7 @@ if err != nil {
 // Grab the detector you configured on your robot
 visService, err := vision.from_robot(robot=robot, name='my_detector')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get detections from the camera output
@@ -252,7 +252,7 @@ if err != nil {
 // Grab the classifier you configured on your robot
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get the stream from a camera
@@ -335,7 +335,7 @@ if err != nil {
 // Grab the classifier you configured on your robot
 visService, err := vision.from_robot(robot=robot, name='my_classifier')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get the 2 classifications with the highest confidence scores from the camera output
@@ -407,7 +407,7 @@ if err != nil {
 // Grab the segmenter you configured on your robot
 visService, err := vision.from_robot(robot=robot, name='my_segmenter')
 if err != nil {
-    logger.Fatalf("Cannot get Vision Service: %v", err)
+    logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get the objects from the camera output
