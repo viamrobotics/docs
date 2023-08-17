@@ -258,7 +258,7 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab and navigate to the **Create service** menu.
 
-1. **Add a ML model service.**
+1. **Add an ML model service.**
 
    The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
    Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.

@@ -391,7 +391,7 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
     ![mlmodel service panel, Deployment selected as Path to Existing Model On Robot, Model Path filled as /home/tipsy/effdet0.tflite and Label Path filled as /home/tipsy/labels.txt, Number of threads is 1.](/tutorials/tipsy/app-service-ml-after.png)
 
-1. **Configure a mlmodel detector**
+1. **Configure an mlmodel detector**
 
     Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision`, and model `mlmodel`.
     Click **Create service**.
