@@ -176,7 +176,7 @@ Components of the same model are supported using the same low-level code.
 
 If you are configuring several similar components, you can use the **Duplicate component** button in the upper-right of a component's configuration pane to duplicate the existing configuration for that component.
 A new component with identical configuration settings will be created beneath your existing one, named `<existing-component>-copy`.
-This is useful when configuring several components together that have similar configurations, e.g., left and right [motors](/component/motor/).
+This is useful when configuring several components together that have similar configurations, such as left and right [motors](/component/motor/).
 
 To delete a component, click the **trash** icon in the upper-right of the component configuration pane.
 
