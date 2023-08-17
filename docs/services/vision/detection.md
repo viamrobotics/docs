@@ -147,7 +147,7 @@ The optional **saturation_cutoff_pct** and **value_cutoff_pct** attributes speci
 Click **Save config**.
 Proceed to [test your detector](#test-your-detector).
 
-## Configure a `mlmodel` detector
+## Configure an `mlmodel` detector
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
