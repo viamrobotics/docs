@@ -30,7 +30,7 @@ Define a new model of a built-in resource subtype:
 1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-servers`'s built-in API client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
 
-   Follow these instructions to find the appropriate source code before you start the process:
+   Follow these instructions to find the appropriate source code before you start the process.
 
    **To prepare to code a new resource model**:
 
@@ -43,7 +43,7 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
    - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
    - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
 
-    **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
+    <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
    - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
    - For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
