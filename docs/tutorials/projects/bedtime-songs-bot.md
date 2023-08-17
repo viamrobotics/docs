@@ -7,7 +7,7 @@ tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "bab
 description: "Create a robot babysitter with a webcam and machine learning."
 image: "/tutorials/bedtime-songs-bot/export-screenshot.png"
 imageAlt: "Image of Tess and their computer."
-images: ["/tutorials/pet-treat-dispenser/preview.png"]
+images: ["/tutorials/bedtime-songs-bot/export-screenshot.png"]
 webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
 videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
@@ -210,7 +210,7 @@ After selecting the image, you will see all of the data that is associated with 
 
 [Add tags](/manage/data/label/#image-tags) for each of the puzzle pieces.
 Type in your desired tag in the **Tags** section and save the tag.
-Since Tess wanted to classify their toys by shape, they used “octagon,” “circle,” “triangle,” “oval,” “rectangle,” “pentagon,” “diamond,” and “square”.
+Since Tess wanted to classify their toys by shape, they used `“octagon”`, `“circle”`, `“triangle”`, `“oval"`, `“rectangle”`, `“pentagon”`, `“diamond”`, and `“square”`.
 
 Scroll between your images.
 Add tags for each image that shows an object of the corresponding shape.
@@ -558,9 +558,9 @@ The full example source code for <file>play-songs.go</file> is available on [Git
 
 Now, as shown below, your smart bedtime songs bot knows to play a song whenever it sees a shape on the camera:
 
-{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer.">}}
+{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer." poster="/general/heart.jpg">}}
 
-## Next Steps
+## Next steps
 
 This project is just a start.
 
