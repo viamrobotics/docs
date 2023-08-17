@@ -558,7 +558,7 @@ The full example source code for <file>play-songs.go</file> is available on [Git
 
 Now, as shown below, your smart bedtime songs bot knows to play a song whenever it sees a shape on the camera:
 
-{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer." poster="/general/heart.jpg">}}
+{{<video webm_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.webm" mp4_src="/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4" max-width="500px" alt="A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer." poster="/tutorials/bedtime-songs-bot/export-screenshot.png">}}
 
 ## Next steps
 
