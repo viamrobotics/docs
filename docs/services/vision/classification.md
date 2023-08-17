@@ -91,7 +91,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save config** and head to the **Components** tab.
+Click **Save config**.
 Proceed to [test your classifier](#test-your-classifier).
 
 ## Test your classifier
