@@ -136,5 +136,5 @@ You can use one of these architectures or build your own.
 
 To make use of your new model, follow the instructions to create:
 
-- a [`mlmodel` detector](../vision/detection/#configure-a-mlmodel-detector) or
-- a [`mlmodel` classifier](../vision/classification/#configure-a-mlmodel-classifier)
+- a [`mlmodel` detector](../vision/detection/#configure-an-mlmodel-detector) or
+- a [`mlmodel` classifier](../vision/classification/#configure-an-mlmodel-classifier)

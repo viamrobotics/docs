@@ -132,7 +132,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/se
 
 #### TFLite Detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -192,7 +192,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/s
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/classification/#configure-a-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
