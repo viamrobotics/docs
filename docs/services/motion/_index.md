@@ -272,7 +272,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
-- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): The `resourece.Name` of the piece of the robot whose pose is returned.
+- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): The `resource.Name` of the piece of the robot whose pose is returned.
 
 - `destinationFrame` ([string](https://pkg.go.dev/builtin#string)):
   The name of the frame with respect to which the component's pose is reported.
