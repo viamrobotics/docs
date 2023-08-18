@@ -19,7 +19,7 @@ supports stopping actuating components when the connection is no longer active.
 When controlling a robot or fleet with the Viam platform, you want some kind of protocol or system-wide means to understand the presence of the clients that are talking and authenticated to each robot's `viam-server` through Viam's various [resource APIs](/program/apis/).
 
 The presence of these clients at one point in time can be referred to as a "session".
-A session technically is any presence mechanism at the application layer (i.e. RDK, not TCP) maintained by a client (e.g. SDK) with a server (e.g. RDK).
+A session technically is any presence mechanism at the RDK application layer maintained by any client with `viam-server`.
 Session management, as explained here, allows for safer robotic operation when you are dealing with moving parts on the robot (the "actuating controls").
 
 Specifically, without session management, controls that would be "sticky" (e.g. SetPower of a base) based on the last input of a **client**, meaning the API request from the client sets the flow of electricity on a part of the robot and then does not time out, could lead to **having a robot trying to continue doing what it was told to do forever.**
@@ -31,7 +31,7 @@ You do not want that to happen.
 A client has multiple meanings for a Viam robot.
 Essentially, it's anything that is receiving the information served by `viam-server` running on the robot.
 
-A **client** could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
+A **client** can be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot in its lifetime will include the "model servers" you instantiate on your robot for individual resources.
 
 Viam's Session Management API is your built-in solution to this.
