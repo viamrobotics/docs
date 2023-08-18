@@ -303,7 +303,7 @@ if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-visService, err := vision.from_robot(robot=robot, name='my_detector')
+visService, err := vision.from_robot(robot=robot, name="my_detector")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
 }
@@ -380,7 +380,7 @@ import (
   "os"
 )
 
-visService, err := vision.from_robot(robot=robot, name='my_detector')
+visService, err := vision.from_robot(robot=robot, name="my_detector")
 if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
