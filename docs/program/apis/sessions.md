@@ -22,7 +22,7 @@ The presence of these clients at one point in time can be referred to as a "sess
 A session technically is any presence mechanism at the RDK application layer maintained by any client with `viam-server`.
 Session management, as explained here, allows for safer robotic operation when you are dealing with moving parts on the robot (the "actuating controls").
 
-Specifically, without session management, controls that would be "sticky" (e.g. SetPower of a base) based on the last input of a **client**, meaning the API request from the client sets the flow of electricity on a part of the robot and then does not time out, could lead to **having a robot trying to continue doing what it was told to do forever.**
+Specifically, without session management, controls that would be "sticky" (for example [`SetPower()` of a base](/components/base/#setpower)) based on the last input of a **client**, meaning the API request from the client sets the flow of electricity on a part of the robot and then does not time out, could lead to **having a robot trying to continue doing what it was told to do forever.**
 
 You do not want that to happen.
 
