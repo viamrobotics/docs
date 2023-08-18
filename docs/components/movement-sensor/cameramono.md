@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: "Configure camera_mono, an experimental visual odometry model."
 images: ["/icons/components/imu.svg"]
+draft: true
 # SMEs: Rand
 ---
 
