@@ -44,7 +44,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 3. A computer display (HDMI or DP) with a USB keyboard and mouse
 4. A way to connect the microSD card to the computer (like a microSD slot or microSD reader)
 5. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
-6. 5V-2A DC with barrel jack connector and/or Micro-USB power supply, to power the Nano
+6. 5V-2A (Nano) or 9-19V (Orin Nano) DC power supply with barrel jack connector
 
 **Initial Setup in Headless Mode:**
 
@@ -54,7 +54,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 4. A way to connect the computer to the Nano (like a USB 2.0 A-Male to Micro B Cable)
 5. A way to connect the microSD card to the computer (like a microSD slot or microSD reader)
 6. Ethernet cable and/or Wifi dongle, to establish network connection on the Nano
-7. 5V-2A DC with barrel jack connector power supply, to power the Nano (Micro-USB port will be taken by the cable connection to computer)
+7. 5V-2A (Nano) or 9-19V (Orin Nano) DC power supply with barrel jack connector
 
 ## Nano Setup Guide
 
@@ -73,6 +73,9 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 {{% /alert %}}
 
 ## Troubleshooting
+
+Make sure the polarity on your barrel jack power supply is matched when powering your robot.
+See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
