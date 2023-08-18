@@ -174,11 +174,10 @@ Components of the same model are supported using the same low-level code.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
   For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
-If you are configuring several similar components, you can use the **Duplicate component** button in the upper-right of a component's configuration pane to duplicate the existing configuration for that component.
-A new component with identical configuration settings will be created beneath your existing one, named `<existing-component>-copy`.
+If you are configuring several similar components, you can use the **Duplicate component** button in the upper-right of a component's configuration pane to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name.
 
-To delete a component, click the **trash** icon in the upper-right of the component configuration pane.
+To delete a component, click the trash can icon in the upper-right of the component configuration pane.
 
 For specific information on how to configure each supported component type, see the [components documentation](/components/).
 
