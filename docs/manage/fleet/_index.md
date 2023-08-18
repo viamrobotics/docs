@@ -85,7 +85,7 @@ You can also revert to an earlier configuration from the History tab.
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
 
-### Package Deployment
+### Package deployment
 
 _Coming soon._
 
