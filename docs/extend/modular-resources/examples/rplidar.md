@@ -64,9 +64,6 @@ Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of yo
 
 Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux).
 
-If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration.
-For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`:
-
 {{< tabs name="Add RPlidar Configs">}}
 {{% tab name="macOS x86_64" %}}
 
@@ -79,6 +76,9 @@ For example, you may see `tty.usbserial-130`, in which case your device path wou
 {{% /tab %}}
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
+
+If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration. 
+For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`:
 
 ```json
 {
@@ -108,9 +108,7 @@ Click on the **Modules** subtab. Add the rplidar module with a name of your choi
 {{% tab name="JSON Template" %}}
 
 Navigate to the **Config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON.
-If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration. 
-For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`:
+Select the **Raw JSON** mode, then copy/paste the following `"components"` and `"modules"` JSON:
 
   {{< tabs name="Add the RPlidar component - configs" >}}
   {{% tab name="Linux" %}}
