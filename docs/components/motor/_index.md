@@ -397,54 +397,6 @@ logger.Info(properties)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Stop
-
-Cut the power to the motor immediately, without any gradual step down.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.stop).
-
-```python
-my_motor = Motor.from_robot(robot=robot, name="my_motor")
-
-# Stop the motor.
-await my_motor.stop()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
-
-```go
-myMotor, err := motor.FromRobot(robot, "my_motor")
-
-// Stop the motor.
-myMotor.Stop(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### IsPowered
 
 Returns whether or not the motor is currently running, and the portion of max power (between 0 and 1; if the motor is off the power will be 0).
@@ -519,7 +471,7 @@ Returns whether the motor is actively moving (or attempting to move) under its o
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): True if the motor is currently moving; false if not.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_moving).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/motor/index.html#viam.components.motor.motor.Motor.is_moving).
 
 ```python
 my_motor = Motor.from_robot(robot=robot, name="my_motor")
@@ -541,7 +493,7 @@ print('Moving: ', moving)
 - [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently moving.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
 ```go
 myMotor, err := motor.FromRobot(robot, "my_motor")
@@ -551,6 +503,54 @@ moving, err := myMotor.IsMoving(context.Background())
 
 logger.Info("Is moving?")
 logger.Info(moving)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Stop
+
+Cut the power to the motor immediately, without any gradual step down.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/motor/index.html#viam.components.motor.motor.Motor.stop).
+
+```python
+my_motor = Motor.from_robot(robot=robot, name="my_motor")
+
+# Stop the motor.
+await my_motor.stop()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/motor#Motor).
+
+```go
+myMotor, err := motor.FromRobot(robot, "my_motor")
+
+// Stop the motor.
+myMotor.Stop(context.Background(), nil)
 ```
 
 {{% /tab %}}

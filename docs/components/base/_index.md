@@ -397,6 +397,58 @@ myBase.Stop(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### IsMoving
+
+Returns whether the base is actively moving (or attempting to move) under its own power.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [(bool)](https://docs.python.org/3/library/functions.html#bool): True if the base is currently moving; false if not.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.is_moving).
+
+```python
+my_base = Base.from_robot(robot=robot, name="my_base")
+
+# Check whether the base is currently moving.
+moving = await my_base.is_moving()
+print('Moving: ', moving)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool): True if the base is currently moving.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
+
+```go
+myBase, err := base.FromRobot(robot, "my_base")
+
+// Check whether the base is currently moving.
+moving, err := myBase.IsMoving(context.Background())
+
+logger.Info("Is moving?")
+logger.Info(moving)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetProperties
 
 Get the width and turning radius of the {{< glossary_tooltip term_id="model" text="model" >}} of base in meters.
