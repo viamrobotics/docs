@@ -77,7 +77,7 @@ Paste the following into the **Attributes** field of your new component accordin
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration. 
+If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration.
 For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`:
 
 ```json
@@ -162,7 +162,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
   {{% /tab %}}
   {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-  If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration. 
+  If you are on an M1 or M2 Macbook,  run `ls /dev/ | grep tty.usbserial` to determine the device path and use it in your configuration.
   For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`:
 
   ```json
