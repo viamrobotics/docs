@@ -16,7 +16,7 @@ supports stopping actuating components when the connection is no longer active.
 
 ### Purpose of Session Management
 
-When controlling a robot or fleet with the Viam platform, you want some kind of protocol or system-wide means to understand the presence of the clients that are talking and authenticated to each robot's `viam-server` through Viam's various [resource APIs](/program/apis).
+When controlling a robot or fleet with the Viam platform, you want some kind of protocol or system-wide means to understand the presence of the clients that are talking and authenticated to each robot's `viam-server` through Viam's various [resource APIs](/program/apis/).
 
 The presence of these clients at one point in time can be referred to as a "session".
 A session technically is any presence mechanism at the application layer (i.e. RDK, not TCP) maintained by a client (e.g. SDK) with a server (e.g. RDK).
@@ -32,7 +32,7 @@ A client has multiple meanings for a Viam robot.
 Essentially, it's anything that is receiving the information served by `viam-server` running on the robot.
 
 A **client** could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
-For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources), the clients of your robot in its lifetime will include the "model servers" you instantiate on your robot for individual resources.
+For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot in its lifetime will include the "model servers" you instantiate on your robot for individual resources.
 
 Viam's Session Management API is your built-in solution to this.
 Your client maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the heartbeat window.
@@ -44,14 +44,14 @@ As soon as the window lapses/expires, the server will safely stop all resources 
 
 ## Usage
 
-Usage of the Sessions Management API differs across [Viam's SDKS](/program).
+Usage of the Sessions Management API differs across [Viam's SDKS](/program/).
 
 {{< tabs >}}
 {{% tab name="Go" %}}
 
 ### On-Robot Session Management
 
-To use the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, use your [`RobotClient`](/program/apis/#robot-client) instance (client of the Robot API) to instantiate a `SessionsManager` with `SessionManager()`.
+To use the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, use your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API) to instantiate a `SessionsManager` with `SessionManager()`.
 
 ### Sessions for RobotClients
 
