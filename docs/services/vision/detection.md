@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Select an algorithm that identifies objects in a 2D image and adds bounding boxes around identified objects."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
+images: [ "/services/vision/dog-detector.png" ]
 # SMEs: Bijan, Khari
 ---
 
