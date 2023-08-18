@@ -89,3 +89,7 @@ The following attributes are available for `gpio` servos:
 Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs.arduino.cc/learn/microcontrollers/analog-output), rotation, and wiring specifications.
 
 {{% /alert %}}
+
+## Test your servo
+
+{{< readfile "/static/include/components/servo-control.md" >}}
