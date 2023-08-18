@@ -471,7 +471,7 @@ Returns whether the motor is actively moving (or attempting to move) under its o
 
 - [(bool)](https://docs.python.org/3/library/functions.html#bool): True if the motor is currently moving; false if not.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_moving).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/motor/index.html#viam.components.motor.motor.Motor.is_moving).
 
 ```python
 my_motor = Motor.from_robot(robot=robot, name="my_motor")
@@ -493,7 +493,7 @@ print('Moving: ', moving)
 - [(bool)](https://pkg.go.dev/builtin#bool): True if the motor is currently moving.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
+For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/resource#MovingCheckable).
 
 ```go
 myMotor, err := motor.FromRobot(robot, "my_motor")
@@ -523,7 +523,7 @@ Cut the power to the motor immediately, without any gradual step down.
 
 - None
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.stop).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/motor/index.html#viam.components.motor.motor.Motor.stop).
 
 ```python
 my_motor = Motor.from_robot(robot=robot, name="my_motor")
