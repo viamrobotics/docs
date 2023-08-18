@@ -1,0 +1,7 @@
+## Test the encoder
+
+Once your encoder is configured and connected, go to the **Control** tab and click on the encoder's drop-down panel.
+The ticks count is displayed.
+Try moving the encoder (for example, by turning a motor it is attached to) and check whether the count increases as expected.
+
+![Encoder control panel.](/components/encoder/control.png)

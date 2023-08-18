@@ -59,3 +59,5 @@ The following attributes are available for `AMS-AS5048` encoders:
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which your encoder is connected. |
 | `connection_type` | string | **Required** | Use `"i2c"`. |
 | `i2c_attributes` | object | **Required** | The attributes to configure [I<sup>2</sup>C](/components/board/#i2cs) connection: <ul> <li> <code>i2c_bus</code>: The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this encoder. <br> Example: `"main"` </li> <li> <code>i2c_addr</code>: The address of the bus. <br> Example: `64` </li> </ul> |
+
+{{< readfile "/static/include/components/test-control/encoder-control.md" >}}
