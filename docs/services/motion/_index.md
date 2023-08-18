@@ -48,6 +48,14 @@ Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) f
 
 {{% /alert %}}
 
+{{% alert title="Important" color="note" %}}
+
+When using Viam component APIs, you generally pass the component name of type `string` as an argument to the methods.
+When using the motion service, you pass an argument of type `ResourceName` instead of the string name.
+For examples showing how to construct the `ResourceName`, see the code samples below or [this tutorial](/tutorials/services/plan-motion-with-arm-gripper/#get-the-resourcename).
+
+{{% /alert %}}
+
 ### Move
 
 The `Move` method is the primary way to move multiple components, or to move any object to any other location.
@@ -65,7 +73,7 @@ The motion service takes the volumes associated with all configured robot compon
 
 **Parameters:**
 
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): Name of the piece of the robot that should arrive at the destination.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the piece of the robot that should arrive at the destination.
   Note that `move` moves the distal end of the component to the destination.
   For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
 
@@ -127,7 +135,7 @@ moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(r
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
-- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): Name of the piece of the robot that should arrive at the destination.
+- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): The `resource.Name` of the piece of the robot that should arrive at the destination.
   Note that `Move` moves the distal end of the component to the destination.
   For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
 
@@ -186,106 +194,6 @@ moved, err := motionService.Move(context.Background(), gripperName, goalPose, wo
 {{% /tab %}}
 {{< /tabs >}}
 
-### MoveSingleComponent
-
-The `MoveSingleComponent` method allows you to bypass Viam’s internal motion planning entirely, if desired, for a single component.
-It looks similar to `Move` above but may result in radically different behavior.
-
-`MoveSingleComponent` translates the given destination into the frame of the specified component, and then calls `MoveToPosition` on that component to move it to the desired location.
-As of April 25, 2023, [arms](/components/arm/) are the only component supported by `MoveSingleComponent`.
-
-As the name of the method suggests, only the single component specified by `component_name` will actuate.
-
-An example of when this may be useful is if you have implemented your own custom arm model, and wish to use your own motion planning for it.
-Implement `MoveToPosition` on that arm using whatever method you desire to plan motion to the specified pose, and then use `MoveSingleComponent` to pass the destination in the frame of any other robot component.
-
-{{% alert title="Caution" color="caution" %}} <a id="move-vs-movetoposition">
-
-If you call this method on an arm that uses Viam’s motion planning on the backend, then this method is equivalent to using `robot.TransformPose` to transform the destination into the frame of the arm, and then calling [`MoveToPosition`](/components/arm/#movetoposition) on the arm directly.
-Note that `arm.MoveToPosition` does not use `world_state`, so collision checking and obstacle avoidance *will not* be performed.
-
-If you need collision checking and obstacle avoidance, use [`Move`](#move).
-
-{{% /alert %}}
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The name of the component to move.
-  This component must support the `move_to_position` API call with a Pose.
-  As of April 21, 2023, [arm](/components/arm/) is the only component so supported.
-
-- `destination` ([PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)):
-  Describes where the `component_name` should end up.
-  Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
-  The `destination` will be converted into the frame of the component specified in `component_name` when passed to `move_to_position`.
-
-- `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (*optional*): Not used. See [note above](#move-vs-movetoposition).
-
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Whether the move was successful.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.move_single_component).
-
-```python {class="line-numbers linkable-line-numbers"}
-motion = MotionClient.from_robot(robot=robot, name="builtin")
-
-# Assumes an arm configured with name "my_arm" on the robot
-my_frame = "my_arm_offset"
-
-goal_pose = Pose(x=0, y=400, z=0, o_x=0, o_y=0, o_z=1, theta=0)
-
-# Move the arm
-moved = await motion.move_to_position(component_name=my_arm, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, extra={})
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): The name of the component to move.
-This component must support the `MoveToPosition` API call with a Pose.
-As of April 21, 2023, [arm](/components/arm/) is the only component so supported.
-
-- `destination` ([PoseInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame)):
-  Describes where the `component_name` should end up.
-  Can be any pose, from the perspective of any component whose location is configured as a [`frame`](../frame-system/).
-  The `destination` will be converted into the frame of the component specified in `componentName` when passed to `MoveToPosition`.
-
-- `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Not used. See [note above](#move-vs-movetoposition).
-
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(bool)](https://pkg.go.dev/builtin#bool): Whether the move was successful.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
-
-```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(robot, "builtin")
-
-// Assumes an arm configured with name "my_arm" on the robot
-myFrame := "my_arm_offset"
-
-goalPose := PoseInFrame(0, 400, 0, 0, 0, 1, 0)
-
-// Move the arm
-moved, err := motionService.MoveSingleComponent(context.TODO(), goalPose, worldState, nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetPose
 
 `GetPose` gets the location and orientation of a component within the [frame system](../frame-system/).
@@ -297,7 +205,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 **Parameters:**
 
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): Name of the piece of the robot whose pose is returned.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the piece of the robot whose pose is returned.
 
 - `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)):
   The name of the frame with respect to which the component's pose is reported.
@@ -364,7 +272,7 @@ gripperPoseInObjectFrame = await motion.get_pose(
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 
-- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): Name of the piece of the robot whose pose is returned.
+- `componentName` ([resource.Name](https://pkg.go.dev/go.viam.com/rdk/resource#Name)): The `resource.Name` of the piece of the robot whose pose is returned.
 
 - `destinationFrame` ([string](https://pkg.go.dev/builtin#string)):
   The name of the frame with respect to which the component's pose is reported.
@@ -430,9 +338,9 @@ Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev
 
 **Parameters:**
 
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the base to move.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the base to move.
 - `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `"name"` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
+- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -445,11 +353,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
+# Get the ResourceNames of the base and SLAM service
+my_base_resource_name = Base.get_resource_name("my_base")
+my_slam_resource_name = SLAMClient.get_resource_name("my_slam_service")
+
 # Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service"
 my_pose = Pose(y=10)
 
-# Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success = await motion.move_on_map(component_name="my_base", destination=my_pose, slam_service_name="my_slam_service")
+# Move the base component to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
+success = await motion.move_on_map(component_name=my_base_resource_name, destination=my_pose, slam_service_name=my_slam_resource_name)
 ```
 
 {{% /tab %}}
@@ -458,9 +370,9 @@ success = await motion.move_on_map(component_name="my_base", destination=my_pose
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the base to move.
+- `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
+- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -473,11 +385,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
 
+// Get the resource.Names of the base and of the SLAM service
+myBaseResourceName := base.Named("myBase")
+mySLAMServiceResourceName := slam.Named("my_slam_service")
 // Define a destination Pose with respect to the origin of the map from the SLAM service "my_slam_service"
 myPose := spatialmath.NewPoseFromPoint(r3.Vector{Y: 10})
 
-// Move the base component "my_base" to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success, err := motionService.MoveOnMap(context.Background(), "my_base", myPose, "my_slam_service", nil)
+// Move the base component to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
+success, err := motionService.MoveOnMap(context.Background(), myBaseResourceName, myPose, mySLAMServiceResourceName, nil)
 ```
 
 {{% /tab %}}
@@ -486,7 +401,7 @@ success, err := motionService.MoveOnMap(context.Background(), "my_base", myPose,
 ### MoveOnGlobe
 
 Move a [base](/components/base/) component to a destination GPS point, represented in geographic notation *(latitude, longitude)*.
-Use a [Movement Sensor](/components/movement-sensor/) to check the location of the robot.
+Use a [movement sensor](/components/movement-sensor/) to check the location of the robot.
 
 {{< alert title="Usage" color="tip" >}}
 
@@ -494,7 +409,7 @@ Use a [Movement Sensor](/components/movement-sensor/) to check the location of t
 
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the robot.
 
-Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the robot's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
@@ -517,9 +432,9 @@ Translation in obstacles is not supported by the [navigation service](/services/
 
 **Parameters:**
 
-- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `"name"` of the base to move.
+- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to move.
 - `destination` [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) *(lat, lng)*.
-- `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `"name"` of the [Movement Sensor](/components/movement-sensor/) that you want to use to check the robot's location.
+- `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [(Optional[Sequence[GeoObstacle]])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `heading` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
 - `linear_meters_per_sec` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): The linear velocity in meters per second to target when moving the component. <ul><li> Default: `0.3` </li></ul>
@@ -536,11 +451,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 
+# Get the ResourceNames of the base and movement sensor
+my_base_resource_name = Base.get_resource_name("my_base")
+mvmnt_sensor_resource_name = MovementSensor.get_resource_name("my_movement_sensor")
 #  Define a destination GeoPoint at the GPS coordinates [0, 0]
 my_destination = movement_sensor.GeoPoint(latitude=0, longitude=0)
 
-# Move the base component "my_base" to the designated geographic location, as reported by the movement sensor "my_movement_sensor"
-success = await motion.move_on_globe(component_name="my_base", destination=my_destination, movement_sensor_name="my_movement_sensor")
+# Move the base component to the designated geographic location, as reported by the movement sensor
+success = await motion.move_on_globe(component_name=my_base_resource_name, destination=my_destination, movement_sensor_name=mvmnt_sensor_resource_name)
 ```
 
 {{% /tab %}}
@@ -549,10 +467,10 @@ success = await motion.move_on_globe(component_name="my_base", destination=my_de
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the base to move.
+- `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The location of the component's destination, represented in geographic notation as a [Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) *(lat, lng)*.
 - `heading` [(float64)](https://pkg.go.dev/builtin#float64): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
-- `movement_sensor_name` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `"name"` of the [Movement Sensor](/components/movement-sensor/) that you want to use to check the robot's location.
+- `movement_sensor_name` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [([]*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `linear_meters_per_sec` [(float64)](https://pkg.go.dev/builtin#float64): The linear velocity in meters per second to target when moving the component. <ul><li> Default: `0.3` </li></ul>
 - `angular_deg_per_sec` [(float64)](https://pkg.go.dev/builtin#float64): The [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) in degrees per second to target when turning the component. <ul><li> Default: `60.0` </li></ul>
@@ -568,17 +486,20 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
 
+// Get the resource.Names of the base and movement sensor
+myBaseResourceName := base.Named("myBase")
+myMvmntSensorResourceName := movement_sensor.Named("my_movement_sensor")
 // Define a destination Point at the GPS coordinates [0, 0]
 myDestination := geo.NewPoint(0, 0)
 
-// Move the base component "my_base" to the designated geographic location, as reported by the movement sensor "my_movement_sensor"
-success, err := motionService.MoveOnGlobe(context.Background(), "my_base", myDestination, "my_movement_sensor", nil)
+// Move the base component to the designated geographic location, as reported by the movement sensor
+success, err := motionService.MoveOnGlobe(context.Background(), myBaseResourceName, myDestination, myMvmntSensorResourceName, nil)
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the motion service API, respectively:
 
