@@ -63,6 +63,7 @@ Before adding a SLAM service, you must follow [these instructions](/extend/modul
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page, and click on the **Modules** subtab.
+
 Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
 
 {{< tabs name="Add Cartographer Service Module">}}
