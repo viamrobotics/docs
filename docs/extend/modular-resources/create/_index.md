@@ -89,7 +89,6 @@ class MyBase(Base, Reconfigurable):
     MyBase implements a base that only supports set_power (basic forward/back/turn controls) is_moving (check if in motion), and stop (stop all motion).
 
     It inherits from the built-in resource subtype Base and conforms to the ``Reconfigurable`` protocol, which signifies that this component can be reconfigured.
-
     Additionally, it specifies a constructor function ``MyBase.new_base`` which confirms to the ``resource.types.ResourceCreator`` type required for all models.
     """
 
@@ -168,7 +167,6 @@ class MyBase(Base, Reconfigurable):
     # is_moving: check if either motor on the base is moving with motors' is_powered
     async def is_moving(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> bool:
         return self.left.is_powered(extra=extra, timeout=timeout)[0] or self.right.is_powered(extra=extra, timeout=timeout)[0]
-
 ```
 
 {{% /tab %}}
@@ -372,13 +370,13 @@ import sys
 
 from viam.components.base import Base
 from viam.module.module import Module
-from .my_base import MyBase
+from my_base import MyBase
 
 async def main():
     """This function creates and starts a new module, after adding all desired resource models.
     Resource creators must be registered to the resource registry before the module adds the resource model. 
     """
-    Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new))
+    Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
     module = Module.from_args()
 
     module.add_model_from_registry(Base.SUBTYPE, MyBase.MODEL)
@@ -472,7 +470,10 @@ Your options for completing this step are flexible, as this file does not need t
 
 One option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
-For example:
+Make sure that you set up a Python virtual environment in the directory your module is in to compile your resource properly at execution.
+See the [Python Documentation](https://docs.python-guide.org/dev/virtualenvs/) for help with this.
+
+Include `venv` set-up and manage dependencies in your script as in the following template:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 #!/bin/sh
@@ -487,10 +488,10 @@ $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not
 
 # Be sure to use `exec` so that termination signals reach the python process,
 # or handle forwarding termination signals manually
-exec $PYTHON src/main.py $@
+exec $PYTHON <your-src-dir-if-inside>/main.py $@
 ```
 
-To make this shell script executable, run the following command in your terminal:
+To make your shell script executable, run the following command in your terminal:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo chmod +x <your-file-path-to>/<run.sh>
