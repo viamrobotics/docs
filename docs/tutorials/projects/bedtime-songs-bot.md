@@ -21,7 +21,7 @@ cost: "0"
 
 "When I started at Viam, Eliot Horowitz told me the best way to test the product is to try to automate something I do in my life with a robot.
 As a parent of a 3-year-old and a 1-year-old, I am often presented with a toy and asked to sing a song about it.
-When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this simple task for my kids when I'm not around."
+When I was testing out Viam's ML Model service, I came up with the idea of using machine learning to make my computer do this instead."
 
 <p style="text-align: right;">Tess, Engineering Director</p>
 {{< /alert >}}
