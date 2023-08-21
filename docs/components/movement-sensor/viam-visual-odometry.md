@@ -9,7 +9,7 @@ images: ["/icons/components/imu.svg"]
 ---
 
 Viam provides a `viam-visual-odometry` [modular resource](/extend/modular-resources/) which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated camera](/components/camera/calibrate/) to function as a movement sensor.
-In this way, you can add basic movement sensing to your camera-equipped robot without needing a dedicated hardware [movement sensor](/components/movement-sensor).
+In this way, you can add basic movement sensing to your camera-equipped robot without needing a dedicated hardware [movement sensor](/components/movement-sensor/).
 
 <div class="aligncenter">
 {{<video webm_src="/components/movement-sensor/visual-odometry.webm" poster="/components/movement-sensor/visual-odometry-poster.jpg" alt="Using a camera as a motion sensor to navigate a large office space">}}
@@ -23,7 +23,7 @@ The `viam-visual-odometry` module implements the following two methods of the [m
 Note that `GetLinearVelocity()` returns an estimation of the instantaneous linear velocity **without scale factor**.
 Therefore, you should not consider returned unit measurements trustworthy: instead, `GetLinearVelocity()` should serve as a direction estimation only.
 
-While `viam-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor) will generally provide more accurate readings.
+While `viam-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor/) will generally provide more accurate readings.
 If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor instead.
 
 The `viam-visual-odometry` module is open source and available at the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry#getting-started).
