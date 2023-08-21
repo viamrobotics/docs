@@ -14,8 +14,6 @@ A session:
 - allows a client to express that it is actively connected or authenticated to `viam-server` on your robot
 - supports stopping moving components when the connection is no longer active.
 
-{{< alert title="Info" color="info" >}}
-
 ### Purpose of session management
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server` through Viam's various [resource APIs](/program/apis/).
@@ -42,16 +40,14 @@ Your client maintains the session, telling the `viam-server` instance that it is
 Your client must send at least one session heartbeat within this window.
 As soon as the window lapses/expires, the server will safely stop all resources that are marked for safety monitoring that have been last used by that session, and no others; a lapsed client will attempt to establish a new session immediately prior to the next operation it performs.
 
-{{< /alert >}}
-
 ## Usage
 
 Usage of the session management API differs across [Viam's SDKS](/program/).
 
+### Manage on-robot sessions
+
 {{< tabs >}}
 {{% tab name="Go" %}}
-
-### On-Robot Session Management
 
 To use the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, use your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API) to instantiate a `SessionsManager` with `SessionManager()`.
 
@@ -69,7 +65,7 @@ Find `SessionsClient` defined on [Github](https://github.com/viamrobotics/rdk/bl
 The `Session Management API` is not currently provided in the Python SDK.
 Use the Go Client SDK instead.
 
-### Sessions for RobotClients
+### Manage sessions for robot clients
 
 First, use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://python.viam.dev/autoapi/viam/sessions_client/index.html#viam.sessions_client.SessionsClient) within your Python Client SDK program.
 This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
