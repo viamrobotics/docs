@@ -12,7 +12,7 @@ Viam provides a `viam-visual-odometry` [modular resource](/extend/modular-resour
 In this way, you can add basic movement sensing to your camera-equipped robot without needing a dedicated hardware [movement sensor](/components/movement-sensor).
 
 <div class="aligncenter">
-{{<video webm_src="/components/movement-sensor/visual-odometry.webm" poster="/components/movement-sensor/visual-odometry-poster.webm" alt="Using a camera as a motion sensor to navigate a large office space">}}
+{{<video webm_src="/components/movement-sensor/visual-odometry.webm" poster="/components/movement-sensor/visual-odometry-poster.jpg" alt="Using a camera as a motion sensor to navigate a large office space">}}
 </div>
 
 The `viam-visual-odometry` module implements the following two methods of the [movement sensor API](/components/movement-sensor/#api):
@@ -26,9 +26,7 @@ Therefore, you should not consider returned unit measurements trustworthy: inste
 While `viam-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor) will generally provide more accurate readings.
 If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor instead.
 
-{{% alert title="Source available" color="tip" %}}
-The `viam-visual-odometry` module is [open source](https://github.com/viamrobotics/viam-visual-odometry#getting-started).
-{{% /alert %}}
+The `viam-visual-odometry` module is open source and available at the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry#getting-started).
 
 ## Requirements
 
@@ -59,12 +57,6 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and find the **Create component** pane.
 1. Enter a name for your camera, select the `camera` type, and select the `webcam` model.
-
-   {{% alert title="Select camera component" color="note" %}}
-   Though the `viam-visual-odometry` module functions as a movement sensor, it uses the `camera` component as its data source.
-   Be sure to configure a `camera`, not a `movement_sensor` component, in this step.
-   {{% /alert %}}
-
 1. Click **Create Component**.
 1. In the resulting `camera` component configuration pane, select a **Video path** for your camera.
    If your robot is live, the drop-down menu auto-populates any identified camera stream paths.
@@ -92,7 +84,7 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-   "modules": [
+  "modules": [
     {
       "name": "<your-visual-odometer-name>",
       "executable_path": "</path/to/run.sh>",
@@ -237,7 +229,7 @@ When you copy the calibration results into your `camera` component configuration
 Specifically, note that the `height_px` and `width_px` attributes are not contained within the `intrinsic_parameters` array in the `camera` configuration, but are located outside of it.
 {{% /alert %}}
 
-### Attributes
+## Attributes
 
 The following attributes are available to configure the `viam-visual-odometry` module:
 
