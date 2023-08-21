@@ -9,17 +9,14 @@ aliases:
     - "/internals/orientation-vector"
 ---
 
-How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="model" text="models" >}} of movement sensor components:
+How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor):
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 - [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 
-An _orientation vector_ specifies the orientation of an object in 3D space.
-You use orientation vectors to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
-The first three properties (coordinates) of this vector, `OX`, `OY`, and `OZ`, form an axis pointing in the same direction as the object.
-**Theta** specifies the angle of the object's rotation about that axis.
-
 An `Orientation` reading specifies the orientation of an object in 3D space as an "orientation vector", or, its position within the [cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) relative to some specific `origin` point that you, the user, need to choose and configure for your robot.
+
+## Client side
 
 You compose "orientation vectors" following the same protocol to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
 
@@ -39,6 +36,9 @@ theta: 60.92769307372125
 }
 ```
 
+## Server side
+
+<!-- TODO: uhh the sample just doesn't include theta right? should I add it to the sample code? -->
 When you provide an orientation vector to Viam, Viam **normalizes** `(0X, OY, OZ))` to the unit sphere.
 Therefore, if you ran the following line of code simulating an orientation `Reading` from a sensor of `(0, -4, -1)`, it will be normalized to `(0, -0.97, -0.24)` as interpreted by `viam-server`:
 
@@ -60,9 +60,11 @@ theta: 60.92769307372125
 }
 ```
 
-<!-- TODO: uhh the sample just doesn't include theta right? should I add it to the sample code? -->
+## Usage
 
-## Configuration
+Use orientation vectors to specify relative orientations of components when using the [motion service](../../services/motion/) and [frame system](../../services/frame-system/).
+The first three properties (coordinates) of this vector, `OX`, `OY`, and `OZ`, form an axis pointing in the same direction as the object.
+**Theta** specifies the angle of the object's rotation about that axis.
 
 ### Example: A camera in a room
 
