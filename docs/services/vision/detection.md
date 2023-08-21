@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Select an algorithm that identifies objects in a 2D image and adds bounding boxes around identified objects."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
+images: [ "/services/vision/dog-detector.png" ]
 # SMEs: Bijan, Khari
 ---
 
@@ -303,13 +304,13 @@ if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-visService, err := vision.from_robot(robot=robot, name="my_detector")
+myDetector, err := vision.from_robot(robot, "my_detector")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get detections from the camera output
-detections, err := visService.DetectionsFromCamera(context.Background(), myCam, nil)
+detections, err := myDetector.DetectionsFromCamera(context.Background(), myCam, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -328,7 +329,7 @@ img, release, err := camStream.Next(context.Background())
 defer release()
 
 // Apply the color classifier to the image from your camera (configured as "cam1")
-detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
+detectionsFromImage, err := myDetector.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }
@@ -380,7 +381,7 @@ import (
   "os"
 )
 
-visService, err := vision.from_robot(robot=robot, name="my_detector")
+myDetector, err := vision.from_robot(robot, "my_detector")
 if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
@@ -398,7 +399,7 @@ if err != nil {
 defer img.Close()
 
 // Apply the detector to the image
-detectionsFromImage, err := visService.Detections(context.Background(), img, nil)
+detectionsFromImage, err := myDetector.Detections(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
 }

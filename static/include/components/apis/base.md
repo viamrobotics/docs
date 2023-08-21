@@ -4,6 +4,7 @@ Method Name | Description
 [`Spin`](/components/base/#spin) | Move the base to the given angle at the given angular velocity.
 [`SetPower`](/components/base/#setpower) | Set the relative power (out of max power) for linear and angular propulsion of the base.
 [`SetVelocity`](/components/base/#setvelocity) | Set the linear velocity and angular velocity of the base.
+[`IsMoving`](/components/base/#ismoving) | Return whether the base is moving or not.
 [`Stop`](/components/base/#stop) | Stop the base.
 [`GetProperties`](/components/base/#getproperties) | Get the width and turning radius of the base in meters.
 [`DoCommand`](/components/base/#docommand) | Send or receive model-specific commands.
