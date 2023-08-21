@@ -7,7 +7,7 @@ description: "How to use the session management API with Viam's Client SDKs."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session", "sessions", "session management"]
 ---
 
-The Session Management API provides support for robot session management.
+The session management API provides support for robot session management.
 
 A session:
 - allows a client to express that it is actively connected or authenticated to `viam-server` on your robot
