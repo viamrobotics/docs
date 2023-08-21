@@ -11,6 +11,10 @@ images: ["/icons/components/imu.svg"]
 Viam provides a `viam-visual-odometry` [modular resource](/extend/modular-resources/) which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated camera](/components/camera/calibrate/) to function as a movement sensor.
 In this way, you can add basic movement sensing to your camera-equipped robot without needing a dedicated hardware [movement sensor](/components/movement-sensor).
 
+<div class="aligncenter">
+{{<video webm_src="/components/movement-sensor/visual-odometry.webm" poster="/components/movement-sensor/visual-odometry-poster.webm" alt="Using a camera as a motion sensor to navigate a large office space">}}
+</div>
+
 The `viam-visual-odometry` module implements the following two methods of the [movement sensor API](/components/movement-sensor/#api):
 
 * [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
