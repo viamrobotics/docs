@@ -50,7 +50,7 @@ Usage of the session management API differs across [Viam's SDKS](/program/).
 {{< tabs >}}
 {{% tab name="Go" %}}
 
-To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, disable the default behavior of sessions. 
+To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, disable the default behavior of sessions.
 
 ### Sessions for RobotClients
 
