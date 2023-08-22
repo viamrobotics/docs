@@ -50,7 +50,7 @@ Usage of the session management API differs across [Viam's SDKS](/program/).
 {{< tabs >}}
 {{% tab name="Go" %}}
 
-To use the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, use your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API) to instantiate a `SessionsManager` with `SessionManager()`.
+To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, disable the default behavior of sessions. 
 
 ### Sessions for RobotClients
 
@@ -78,10 +78,11 @@ Find `SessionsClient` defined on [GitHub](https://github.com/viamrobotics/rdk/bl
 ### Disable the sessions client
 
 The `SessionsClient` is automatically enabled on your robot.
-If you want to disable it to keep any additional clients from authenticating to your robot's session while running a control program with Viam's client SDKs, access your `SessionsClient` instance with the `disabled` parameter set to `True`, as shown in the following Python code snippet:
+It is instantiated as part of your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API).
+If you want to disable it to keep any additional clients from authenticating to your robot's session while running a control program with Viam's client SDKs, you can pass the option to your robot, as shown in the following code snippets:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
+    opts = RobotClient.Options(disable_sessions=True, ...)
+    await RobotClient.at_address("my-robot-address", opts)
     robot = await connect()
-    sessions = SessionsClient.(channel: Channel, disabled: bool = True)
-```
