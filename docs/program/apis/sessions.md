@@ -16,7 +16,7 @@ A session:
 
 ### Purpose of session management
 
-When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server` through Viam's various [resource APIs](/program/apis/).
+When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
 
 The period of time during which these clients are present is called a *session*.
 A session technically is any presence mechanism at the RDK application layer maintained by any client with `viam-server`.
