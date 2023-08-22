@@ -18,13 +18,14 @@ A session:
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server` through Viam's various [resource APIs](/program/apis/).
 
-The presence of these clients at one point in time is called a *session*.
+The period of time during which these clients are present is called a *session*.
 A session technically is any presence mechanism at the RDK application layer maintained by any client with `viam-server`.
 
 Session management allows for safer operation of robots that physically move.
-Specifically, without session management, controls that would be "sticky" (for example [`SetPower()` of a base](/components/base/#setpower)) based on the last input of a **client**, meaning the API request from the client sets the flow of electricity on a part of the robot and then does not time out, could lead to **having a robot trying to continue doing what it was told to do forever.**
+For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower)) command as the last input from a client before the connection to the robot is interrupted.
+Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
-You do not want that to happen.
+With session management, if the robot does not receive a signal from the client at regular intervals, it will safely stop until the connection is reestablished.
 
 #### Clients and Viam's client SDKs
 
