@@ -101,5 +101,5 @@ robot, err := client.New(ctx, "my-robot-address", logger, client.WithDisableSess
 {{% /tab %}}
 {{% /tabs %}}
 
-This option allows you to have full control over sessions management. 
+This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API through the Go client SDK.
