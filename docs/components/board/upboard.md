@@ -9,7 +9,7 @@ tags: ["board", "components"]
 # SMEs: Susmita
 ---
 
-Configure a `upboard` board to integrate an Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot:
+Configure an `upboard` board to integrate an Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot:
 
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
