@@ -22,7 +22,7 @@ The period of time during which these clients are present is called a *session*.
 A session technically is any presence mechanism at the RDK application layer maintained by any client with `viam-server`.
 
 Session management allows for safer operation of robots that physically move.
-For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower)) command as the last input from a client before the connection to the robot is interrupted.
+For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
 With session management, if the robot does not receive a signal from the client at regular intervals, it will safely stop until the connection is reestablished.
@@ -54,7 +54,7 @@ To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/sessio
 
 ### Sessions for RobotClients
 
-First, use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your Go Client SDK program.
+Use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your Go Client SDK program.
 This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
 Find `SessionsClient` defined on [Github](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).
 
@@ -63,7 +63,7 @@ Find `SessionsClient` defined on [Github](https://github.com/viamrobotics/rdk/bl
 
 ### On-Robot Session Management
 
-The `Session Management API` is not currently provided in the Python SDK.
+The session management API is not currently provided in the Python SDK.
 Use the Go Client SDK instead.
 
 ### Manage sessions for robot clients
@@ -79,10 +79,26 @@ Find `SessionsClient` defined on [GitHub](https://github.com/viamrobotics/rdk/bl
 
 The `SessionsClient` is automatically enabled on your robot.
 It is instantiated as part of your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API).
-If you want to disable it to keep any additional clients from authenticating to your robot's session while running a control program with Viam's client SDKs, you can pass the option to your robot, as shown in the following code snippets:
+If you want to disable it to keep any additional clients from authenticating to your robot's session while running a control program with Viam's client SDKs, you can pass the option to your robot, as demonstrated in the following code snippets:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
     opts = RobotClient.Options(disable_sessions=True, ...)
     await RobotClient.at_address("my-robot-address", opts)
     robot = await connect()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+This option allows you to have full control over sessions management. 
+After disabling the client, you must now manage each of your sessions manually with the session management API through the Go client SDK.
