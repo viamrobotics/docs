@@ -48,7 +48,13 @@ weight = 1
     codeFences = true
 
 [outputs]
-section = ["HTML"]
+section = ["HTML", "Algolia"]
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
 
 [params]
 copyright = "Viam, Inc. - Documentation is licensed under Creative Commons ShareAlike License. "
@@ -132,6 +138,10 @@ enable = false
   url = "mailto:developers-help@viam.com"
   icon = "fa fa-envelope"
   desc = "Ask questions about the Viam SDK"
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink", "image"]
+params = ["categories", "tags"]
 
 [params.github]
 repository = "viamrobotics/docs"

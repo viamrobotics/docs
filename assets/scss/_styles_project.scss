@@ -566,6 +566,7 @@ END MARKETING CSS
 
 .hover-card.tutorial > a {
   width: 100%;
+  text-decoration: none;
 }
 
 // Text is black
@@ -1130,3 +1131,73 @@ ul.sectionlist > li:hover {
   padding: 0;
   font-size: 30px;
 }
+
+// Tutorials page start
+
+.search-panel__results.card-container {
+  max-width: 100%;
+}
+
+.ais-Hits-item {
+  display: flex;
+}
+
+#hits .ais-Hits-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.ais-Pagination-item {
+  display: inline-block;
+  padding: 0.2rem 1rem;
+  margin: 0 0.2rem;
+  border: 1px solid black;
+}
+
+#pagination {
+  margin: 2rem auto;
+}
+
+.search-panel__filters {
+  margin-top: 2rem;
+}
+
+.ais-RefinementList-item {
+  list-style-type: none;
+}
+
+.ais-RefinementList-list {
+  padding: 0;
+}
+
+.ais-Panel-header {
+  font-size: 1.0625rem !important;
+  line-height: 1.4375em;
+  margin-bottom: 0.5rem;
+}
+
+.ais-RefinementList-count {
+  display: none;
+}
+
+.ais-Hits-list {
+  padding: 0;
+}
+
+.ais-RangeInput-label, .ais-RangeInput-separator {
+  margin-right: 0.1rem;
+}
+
+.ais-Pagination-link {
+  text-decoration: none;
+  color: black
+}
+
+.ais-Pagination-list {
+  text-align: center;
+  padding: 0;
+}
+
+// Tutorials page end

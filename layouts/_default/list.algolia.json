@@ -1,0 +1,37 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- $section := $.Site.GetPage "section" .Section }}
+      {{- range .Site.AllPages -}}
+            {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
+                  {{- $.Scratch.Add "index"
+                    (dict
+                        "objectID" .File.UniqueID
+                        "date" .Date.UTC.Unix
+                        "description" .Description
+                        "expirydate" .ExpiryDate.UTC.Unix
+                        "fuzzywordcount" .FuzzyWordCount
+                        "lastmod" .Lastmod.UTC.Unix
+                        "permalink" .Permalink
+                        "publishdate" .PublishDate
+                        "readingtime" .ReadingTime
+                        "relpermalink" .RelPermalink
+                        "title" .Title
+                        "linktitle" .LinkTitle
+                        "weight" .Weight
+                        "wordcount" .WordCount
+                        "section" .Section
+                        "tags" .Params.Tags
+                        "authors" .Params.Authors
+                        "images" .Params.images
+                        "webm" .Params.webmSrc
+                        "mp4" .Params.mp4Src
+                        "image" .Params.image
+                        "languages" .Params.languages
+                        "viamservices" (intersect (.Params.viamresources) (slice "data" "motion" "frame_system" "mlmodel" "navigation" "base_rc" "sensors" "slam" "vision"))
+                        "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
+                        "level" .Params.level
+                        "cost" .Params.cost
+                        "content" ( .Plain | safeHTML | truncate 8000 )
+                    )}}
+                  {{- end -}}
+      {{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

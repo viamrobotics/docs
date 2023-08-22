@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}">
+    <header>
+      {{ partial "navbar.html" . }}
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+            <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+                <div class="search-panel__filters">
+                    <div id="languages-list"></div>
+                    <div id="components-list"></div>
+                    <div id="services-list"></div>
+                    <div id="cost-range"></div>
+                </div>
+                <!-- {{ partial "sidebar.html" . }} -->
+            </aside>
+            <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
+                <div class="td-content">
+                    <h1>{{ .Title }}</h1>
+                    <div class="search-panel__results card-container">
+                        <div id="hits" class="row-no-margin"></div>
+                        <div id="pagination"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+      </div>
+      {{ partial "footer.html" . }}
+    </div>
+
+    {{ partial "scripts.html" . }}
+
+    <!-- search only version -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/algoliasearch@4.19.1/dist/algoliasearch-lite.umd.js"
+        integrity="sha256-qzlNbRtZWHoUV5I2mI2t9QR7oYXlS9oNctX+0pECXI0="
+        crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.44.0"></script>
+    <script src="../js/tutorials.js"></script>
+
+  </body>
+</html>
