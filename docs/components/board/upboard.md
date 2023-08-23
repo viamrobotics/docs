@@ -19,7 +19,7 @@ Flash your Intel-based board with:
 Follow [these instructions](https://ubuntu.com/core/docs/install-nuc) to do so.
 1. The [pin control driver](https://github.com/up-division/pinctrl-upboard).
 Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
-This driver stabilizes the GPIO pin mapping on the board to make it identical to a [`pi`](/components/board/pi/) board.
+This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to a [`pi`](/components/board/pi/) board.
 
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
@@ -47,6 +47,8 @@ Edit and fill in the attributes as applicable.
       "type": "board",
       "model": "upboard",
       "attributes": {
+        "i2cs": [],
+        "digital_interrupts": []
       },
       "depends_on": []
     }
@@ -57,4 +59,9 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{< /tabs >}}
 
-No attributes are available for `upboard` boards.
+The following attributes are available for `upboard` boards:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](/components/board/#i2cs). |
