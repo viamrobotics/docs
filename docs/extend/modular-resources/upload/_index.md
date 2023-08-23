@@ -25,25 +25,15 @@ To upload your custom module to the Viam Registry, either as a public or private
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
 1. Next, run the `viam module create` command to select a new custom module name and generate module metadata.
-   When running this command, you can provide either the `--public-namespace` or the `--org-id` argument.
-   Run this command from the working directory in which you [created your module](/extend/modular-resources/create/):
 
-   - To generate metadata for your module using your public namespace, run the following command:
+   1. If you haven't already, [create a new namespace](/manage/fleet/organizations#create-a-namespace-for-your-organization) for your organization.
+      If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
+
+   1. To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
       ```
-
-     If you haven't already, you must set a namespace for your organization to use this form of the `viam module create` command.
-     If you don't have a namespace configured for your organization, or do not intend to make your module public, you can use the `--org-id` argument instead:
-
-   - To generate metadata for your module using your [organization ID](/manage/fleet/organizations/), run the following command:
-
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module create --name <your-module-name> --org-id <org-id>
-      ```
-
-      You can find your organization ID by navigating to the [the Viam app](https://app.viam.com), selecting your user account in the upper-right corner, and clicking **Settings** from the drop down menu.
 
    This command creates a new `meta.json` metadata file in your current working directory, which serves as a template on which to base your custom configurations.
    Editing and then uploading the `meta.json` file sets important configuration information about your module, such as whether it will be publicly available to all Viam users, or only available within your organization.
@@ -62,7 +52,7 @@ To upload your custom module to the Viam Registry, either as a public or private
        <td><code>name</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>The name of the module, including its namespace</td>
+       <td>The name of the module, including its <a href="/manage/fleet/organizations#create-a-namespace-for-your-organization">namespace</a></td>
 
      </tr>
      <tr>
@@ -118,31 +108,43 @@ To upload your custom module to the Viam Registry, either as a public or private
    ```
 
    {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the namespace of your organization.
+   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations#create-a-namespace-for-your-organization).
    In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
    If the two namespaces do not match, the command will return an error.
    {{% /alert %}}
 
    See [The `meta.json` file](/manage/CLI/#the-metajson-file) for more information.
 
-1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry:
-
-   - To register a new module, or to make changes to an existing module, run the following command from within the same directory as your `meta.json` file:
+1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry.
+   Run this command from within the same directory as your `meta.json` file:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update
       ```
 
-   On successful update, the command will return a link to the updated module in the Viam Registry.
+   On a successful update, the command will return a link to the updated module in the Viam Registry.
 
 1. Package your custom module to get it ready to upload to the Viam Registry.
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.
-   For example, the following command compresses your custom module as a `tar.gz` archive when run from the same directory as your `meta.json` file in your module's source directory:
+   Use the command below specific for the language of your module:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   touch module.tar.gz
-   tar -czf module.tar.gz --exclude=module.tar.gz .
-   ```
+   - To package a module written in Go, run the following command from the same directory as your `meta.json` file:
+
+     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     touch module.tar.gz
+     tar -czf module.tar.gz --exclude=module.tar.gz run.sh src
+     ```
+
+     Where `run.sh` is your entrypoint file, and `src` is the source directory of your module.
+
+   - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
+
+     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     touch module.tar.gz
+     tar -czf module.tar.gz --exclude=module.tar.gz run.sh requirements.txt src
+     ```
+
+     Where `run.sh` is your entrypoint file, `requirements.txt` is your dependency list file, and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -155,12 +157,18 @@ To upload your custom module to the Viam Registry, either as a public or private
    - `version` - provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
       You can later increment this value with subsequent `viam module upload` commands.
       See [Using the `--version` argument](/manage/CLI#using-the---version-argument) for more information.
-   - `platform` - provide one of the following, depending on the platform you have built your custom module for (You can use the `uname -m` command to determine your system architecture):
+   - `platform` - provide *one* of the following, depending on the platform you have built your custom module for (You can use the `uname -m` command to determine your system architecture):
       - `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
       - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
       - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
       - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
    - `path` - provide the path to the compressed archive, in `tar.gz` or `tar.xz` format, that contains your custom module code.
+
+   {{% alert title="Important" color="note" %}}
+   The `viam module upload` command only supports one `platform` argument at a time.
+   If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+   Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
+   {{% /alert %}}
 
    For example, the following command uploads the compressed `module.tar.gz` archive to the Viam Registry when run in the same directory as the corresponding `meta.json` file:
 

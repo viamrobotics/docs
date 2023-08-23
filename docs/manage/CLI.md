@@ -246,7 +246,7 @@ viam logout
 
 ### module
 
-The `module` command allows to you to manage custom modules.
+The `module` command allows to you to manage [custom modules](/extend/modular-resources/).
 This includes:
 
 * Creating a new custom modular resource
@@ -294,7 +294,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
-| `--public-namespace`      | the namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--public-namespace`      | the [namespace](/manage/fleet/organizations#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
 | `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
 | `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
 
@@ -302,10 +302,10 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-* Use the `--public-namespace` argument to supply the public namespace of your organization, suitable for uploading your module to the Viam Registry and sharing with other users.
+* Use the `--public-namespace` argument to supply the [namespace](/manage/fleet/organizations#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam Registry and sharing with other users.
 * Use the `--org-id` to provide your organization ID instead, suitable for sharing your module privately within your organization.
 
-You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update
+You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`visibility: "public"`) to the Viam Registry.
 
 ##### Using the `--platform` argument
 
@@ -315,6 +315,10 @@ The `--platform` argument accepts one of the following architectures:
 * `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
 * `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
 * `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
+
+The `viam module upload` command only supports one `platform` argument at a time.
+If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
 
 ##### Using the `--version` argument
 
@@ -346,7 +350,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>name</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the module, including its namespace</td>
+    <td>The name of the module, including its <a href="/manage/fleet/organizations#create-a-namespace-for-your-organization">namespace</a></td>
 
   </tr>
   <tr>
@@ -400,12 +404,12 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`visibility: "public"`), the [\namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the namespace of your organization.
+If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
-
 
 ### organizations
 
