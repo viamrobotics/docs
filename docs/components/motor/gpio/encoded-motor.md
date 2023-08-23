@@ -148,3 +148,5 @@ Here's an example of an encoded DC motor wired with [the MAX14870 Single Brushed
 This wiring example corresponds to the [example config above](#encoder-config).
 
 ![Example wiring diagram with a Raspberry Pi, brushed DC motor, 12V power supply, and Pololu MAX14870 motor driver. The DIR pin of the driver is wired to pin 18 on the Pi. PWM goes to pin 16. The motor's encoder signal wires (out a and out b) go to pins 11 and 13 on the Pi. The motor's main power wires are connected to the motor driver while its encoder logic power wires are connected to the Pi.](/icons/components/motor/motor-encoded-dc-wiring.png)
+
+{{< readfile "/static/include/components/test-control/motor-control.md" >}}
