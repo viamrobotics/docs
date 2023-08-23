@@ -264,10 +264,13 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
         "type": "vision",
         "model": "obstacles_pointcloud"
         "attributes": {
-            "min_points_in_plane": 1000,
-            "min_points_in_segment": 50,
-            "clustering_radius_mm": 3.2,
-            "mean_k_filtering": 10
+            "min_points_in_plane": 1500, // (optional: default 500)
+            "min_points_in_segment": 250, // (optional: default determined by size of point cloud)
+            "max_dist_from_plane_mm": 10.0, // (optional: default 100.0)
+            "ground_plane_normal_vec": {x: 0, y:0, z: 1}, // (optional: default [0,0,1])
+            "ground_angle_tolerance_degs": 20, // (optional: default 30)
+            "clustering_radius": 5, // (optional: default 1)
+            "clustering_strictness": 3 // (optional: default 5)
         }
     },
     ... // other services
@@ -286,10 +289,13 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
             "register_models": [
             {
                 "parameters": {
-                    "min_points_in_plane": 1000,
-                    "min_points_in_segment": 50,
-                    "clustering_radius_mm": 3.2,
-                    "mean_k_filtering": 10
+                    "min_points_in_plane": 1500, // (optional: default 500)
+                    "min_points_in_segment": 250, // (optional: default determined by size of point cloud)
+                    "max_dist_from_plane_mm": 10.0, // (optional: default 100.0)
+                    "ground_plane_normal_vec": {x: 0, y:0, z: 1}, // (optional: default [0,0,1])
+                    "ground_angle_tolerance_degs": 20, // (optional: default 30)
+                    "clustering_radius": 5, // (optional: default 1)
+                    "clustering_strictness": 3 // (optional: default 5)
                 },
                 "name": "rc_segmenter",
                 "type": "radius_clustering_segmenter"
