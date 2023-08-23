@@ -26,7 +26,7 @@ To upload your custom module to the Viam Registry, either as a public or private
 
 1. Next, run the `viam module create` command to select a new custom module name and generate module metadata.
 
-   1. If you haven't already, [create a new namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization/) for your organization.
+   1. If you haven't already, [create a new namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
       If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
 
    1. To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
@@ -52,7 +52,7 @@ To upload your custom module to the Viam Registry, either as a public or private
        <td><code>name</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization/">namespace</a></td>
+       <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
 
      </tr>
      <tr>
@@ -106,7 +106,7 @@ To upload your custom module to the Viam Registry, either as a public or private
    ```
 
    {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization/).
+   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
    In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
    If the two namespaces do not match, the command will return an error.
    {{% /alert %}}
