@@ -9,7 +9,7 @@ aliases:
     - "/internals/orientation-vector"
 ---
 
-How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor):
+How Viam's platform reads and utilizes the orientation measurements reported as `Readings` by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 - [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
@@ -18,7 +18,7 @@ An `Orientation` reading specifies the orientation of an object in 3D space as a
 
 ## Client side
 
-You compose "orientation vectors" following the same protocol to specify relative orientations of components when using the [Motion Service](../../services/motion/) and [Frame System](../../services/frame-system/).
+You compose "orientation vectors" following the same protocol to specify relative orientations of components when using the [motion service](/services/motion/) and [frame system](/services/frame-system/).
 
 An example of an `Orientation` reading or, an orientation vector:
 
@@ -38,7 +38,6 @@ theta: 60.92769307372125
 
 ## Server side
 
-<!-- TODO: uhh the sample just doesn't include theta right? should I add it to the sample code? -->
 When you provide an orientation vector to Viam, Viam **normalizes** `(0X, OY, OZ))` to the unit sphere.
 Therefore, if you ran the following line of code simulating an orientation `Reading` from a sensor of `(0, -4, -1)`, it will be normalized to `(0, -0.97, -0.24)` as interpreted by `viam-server`:
 
@@ -57,12 +56,11 @@ z: 12.320561743164061
 o_y: -4.0
 o_z: -1.0
 theta: 60.92769307372125
-}
 ```
 
 ## Usage
 
-Use orientation vectors to specify relative orientations of components when using the [motion service](../../services/motion/) and [frame system](../../services/frame-system/).
+Use orientation vectors to specify relative orientations of components when using the [motion service](/services/motion/) and [frame system](/services/frame-system/).
 The first three properties (coordinates) of this vector, `OX`, `OY`, and `OZ`, form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
 
@@ -92,9 +90,3 @@ If your camera is perpendicular to one of the axes of your Frame system,
 you can determine Theta by looking at the picture and changing the value to 0, 90, 180, or 270 until the orientation of the picture is correct.
 
 OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
-
-<!-- ## Why Viam uses orientation vectors
-
-- Easy to measure in the real world
-- No protractor needed
-- Rotation is pulled out as Theta which is often used independently and measured independently -->
