@@ -177,7 +177,7 @@ if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
 
-visService, err := vision.from_robot(robot=robot, name="my_classifier")
+myClassifier, err := vision.from_robot(robot, "my_classifier")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
 }
@@ -255,7 +255,7 @@ import (
   "os"
 )
 
-visService, err := vision.from_robot(robot=robot, name="my_classifier")
+myClassifier, err := vision.from_robot(robot, "my_classifier")
 if err != nil {
     logger.Fatalf("Cannot get Vision Service: %v", err)
 }
@@ -273,7 +273,7 @@ if err != nil {
 defer img.Close()
 
 // Apply the classifier to the image
-classificationsFromImage, err := visService.Classifications(context.Background(), img, nil)
+classificationsFromImage, err := myClassifier.Classifications(context.Background(), img, nil)
 if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
 }

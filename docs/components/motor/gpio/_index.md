@@ -181,4 +181,6 @@ Only the output side of the driver board is different in that more wires connect
 
 ![An example wiring diagram showing a Raspberry Pi, 12V power supply, RioRand 400W brushless DC motor controller, and 3 phase 12V brushless DC motor. The motor has three power wires (one for each phase) and five sensor wires (two to power the sensor and one for each of the three Hall effect sensors).](/components/motor/motor-brushless-dc-wiring.png)
 
+{{< readfile "/static/include/components/test-control/motor-control.md" >}}
+
 ## Next steps

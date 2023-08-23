@@ -83,3 +83,5 @@ The following attributes are available for `incremental` encoders:
 | `pins` | object | **Required** | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li> </ul> |
 
 Viam also supports a model of encoder called [`"single"`](../single/) which requires only one pin (`i`).
+
+{{< readfile "/static/include/components/test-control/encoder-control.md" >}}

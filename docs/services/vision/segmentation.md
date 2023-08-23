@@ -250,13 +250,13 @@ import (
 cameraName := "cam1" // Use the same component name that you have in your robot configuration
 
 // Get the vision service you configured with name "my_segmenter" from the robot
-visService, err := vision.from_robot(robot=robot, name="my_segmenter")
+mySegmenter, err := vision.from_robot(robot, "my_segmenter")
 if err != nil {
     logger.Fatalf("Cannot get vision service: %v", err)
 }
 
 // Get segments
-segments, err := visService.ObjectPointClouds(context.Background(), cameraName, nil)
+segments, err := mySegmenter.ObjectPointClouds(context.Background(), cameraName, nil)
 if err != nil {
     logger.Fatalf("Could not get segments: %v", err)
 }

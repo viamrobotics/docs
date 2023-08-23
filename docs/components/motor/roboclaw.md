@@ -92,3 +92,5 @@ The following attributes are available for `roboclaw` motors:
 | `ticks_per_rotation` | int | Optional | Number of full steps in a rotation. Update this if you connect [encoders](/components/encoder/) to your controller through its EN1 and EN2 pins. <br> Default: `0` |
 
 Refer to your motor and motor driver data sheets for specifics.
+
+{{< readfile "/static/include/components/test-control/motor-control.md" >}}
