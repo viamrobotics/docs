@@ -17,10 +17,7 @@ With it you can obtain readings from multiple sensors on your robot at once.
 
 The sensors service supports the following methods:
 
-Method Name | Description
------------ | -----------
-[`Sensors`](#sensors) | Returns a list of names of the available sensors.
-[`Readings`](#readings) | Returns a list of readings from a given list of sensors.
+{{< readfile "/static/include/services/apis/sensors.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -29,7 +26,7 @@ Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) f
 
 {{% /alert %}}
 
-### Sensors
+### GetSensors
 
 Returns a list containing the `name` of each available sensor.
 
@@ -84,7 +81,7 @@ sensor_names, err := sensorsService.Sensors(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### Readings
+### GetReadings
 
 Returns a list of sensor readings from a given list of sensors.
 
