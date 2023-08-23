@@ -19,11 +19,10 @@ An example of a `Linear Velocity` reading:
 ``` go
 sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
 ```
-
-## Server side
-<!-- TODO: add terminal output or short code snippet -->
+<!-- ## Server side
+TODO: add terminal output or short code snippet -->
 
 ## Usage
 
 Use linear velocity readings to determine the speed at which your robot is moving through space.
-Use [linear acceleration](/services/navigation/linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
+Use [linear acceleration](/services/navigation/linear-acceleration/) readings from another movement sensor to determine the rate of change of this speed.

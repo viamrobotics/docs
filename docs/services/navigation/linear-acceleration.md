@@ -17,10 +17,8 @@ An example of a `Linear Acceleration` reading:
 ``` go
 sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
 ```
-
-## Server side
-
-<!-- TODO: add terminal output or short code snippet -->
+<!-- ## Server side
+TODO: add terminal output or short code snippet -->
 
 ## Usage
 
