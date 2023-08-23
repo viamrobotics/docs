@@ -48,16 +48,16 @@ In the members section of the page enter their email address, select a role, and
 
 ### Create a namespace for your organization
 
-When uploading [custom modules](/extend/modular-resources) to the Viam Registry, you must set a namespace for your organization to register your module to.
+When uploading [custom modules](/extend/modular-resources/) to the Viam Registry, you must set a namespace for your organization to associate your module with.
 
 To create a new namepsace for your organization, click on the Org's **Settings** in the top right of the navigation bar, then click the **Set a public namespace** button.
 Enter a name for your namespace, and then click **Set namespace**.
 Consider the following as you chose a namespace:
 
 * A namespace may only contain letters, numbers, and the dash (`-`) character.
-* Once set, a namespace *cannot be edited*: choose your namespace carefully!
-* You must pick a unique namespace that is not already in use by a different organization.
-* As you enter your namespace, a message will appear to the right of the text box indicating whether the namespace is available, or whether an invalid character has been used.
+* Once set, a namespace *cannot be changed*: choose your namespace carefully!
+* You must pick a unique namespace that is not already in use by another organization.
+* As you enter your namespace, a message will appear to the right of the text box indicating whether the namespace is available, or whether an invalid character is detected.
 
 {{< imgproc alt="The namespace creation menu on the Organization settings page." src="/manage/app-usage/create-namespace.png" resize="700x" declaredimensions=true >}}
 
