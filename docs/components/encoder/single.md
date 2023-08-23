@@ -52,3 +52,5 @@ The following attributes are available for `single` encoders:
 | `pins` | object | **Required** | A struct holding the name of the pin wired to the encoder: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the encoder is wired. </li> </ul> |
 
 Viam also supports a model of encoder called [`"incremental"`](../incremental/) which uses two pins.
+
+{{< readfile "/static/include/components/test-control/encoder-control.md" >}}
