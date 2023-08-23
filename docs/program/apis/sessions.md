@@ -99,6 +99,18 @@ robot, err := client.New(ctx, "my-robot-address", logger, client.WithDisableSess
 ```
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robot = await VIAM.createRobotClient({
+// ...
+disableSessions: true
+// ...
+});
+```
+
+{{% /tab %}}
+
 {{% /tabs %}}
 
 This option allows you to have full control over sessions management.
