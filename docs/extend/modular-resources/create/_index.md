@@ -19,7 +19,7 @@ A configured *module* can make one or more *modular resources* available for con
 
 {{% /alert %}}
 
-Once you have created your custom resource, you can use the [Viam CLI](/manage/CLI/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
 
 Alternatively, you can add your module locally to your robot without uploading to the Viam Registry.
 
@@ -542,6 +542,6 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Next steps
 
-Once you have created your custom resource, you can use the [Viam CLI](/manage/CLI/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
 
 Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your robot without uploading to the Viam Registry.
