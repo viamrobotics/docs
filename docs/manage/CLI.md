@@ -263,17 +263,14 @@ viam module upload --version <version> --platform <platform> [--org-id <org-id> 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-# create a new public module named 'my-module' in organization 'abc':
+# generate metadata for a module named 'my-module' using your organization's public namespace:
 viam module create --name 'my-module' --public-namespace 'my-namespace'
 
-# create a new private module named 'my-module' in organization 'abc':
+# generate metadata for a module named 'my-module' using your organization's organization ID:
 viam module create --name 'my-module' --org-id 'abc'
 
-# update an existing public module:
+# update an existing module:
 viam module update
-
-# update an existing private module in organization 'abc':
-viam module update --org-id 'abc'
 
 # upload a new or updated custom module to the Viam Registry:
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
@@ -285,7 +282,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `create`    | create a new custom module on your local filesystem  | - |
+| `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
 | `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
 | `--help`      | return help      | - |
@@ -296,29 +293,44 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | ----------- | ----------- | ----------- | ----------- |
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
-| `--org-id`      | the organization ID to associate the module to | `create`, `update` | true |
-| `--public-namespace`      | the namespace to associate the module to | `create` | true |
-| `--platform`      |  the architecture of your module binary | `upload` | true |
-| `--version`      |  the version of your module to set for this upload  | `upload` | true |
+| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--public-namespace`      | the namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
+| `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
 
-##### Using the `--platform` and `--version` arguments
+##### Using the `--org-id` and `--public-namespace` arguments
 
-The `--platform` flag accepts one of the following architectures:
+All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
+
+* Use the `--public-namespace` argument to supply the public namespace of your organization, suitable for uploading your module to the Viam Registry and sharing with other users.
+* Use the `--org-id` to provide your organization ID instead, suitable for sharing your module privately within your organization.
+
+You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update
+
+##### Using the `--platform` argument
+
+The `--platform` argument accepts one of the following architectures:
 
 * `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
 * `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
 * `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
 * `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
 
-The `--version` flag accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
-You can later increment this value with subsequent `viam module upload` commands.
+##### Using the `--version` argument
 
-See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
+You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
+
+Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam Registry.
+Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
+
+When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
+Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
 ##### The `meta.json` file
 
 When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
-This file is created for you when you run the `viam module create` command, with the `name` and `visibility` fields pre-populated based on the flags you provided to `create`.
+This file is created for you when you run the `viam module create` command, with the `name` field pre-populated based on the `--name` you provided to `create`.
 If you later make changes to this file, you can register those changes with the Viam Registry by using the `viam module update` command.
 
 The `meta.json` file includes the following configuration options:
@@ -334,7 +346,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>name</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the module.</td>
+    <td>The name of the module, including its namespace</td>
 
   </tr>
   <tr>
@@ -365,7 +377,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The path to the module file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. </td>
+    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program.</td>
   </tr>
 </table>
 
@@ -374,8 +386,8 @@ For example, the following represents the configuration of an example `my-module
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "acme:my-module",
-  "visibility": "private",
-  "url": "https://github.com/acme-co/my-module",
+  "visibility": "public",
+  "url": "https://github.com/acme-co-example/my-module",
   "description": "An example custom module.",
   "models": [
     {
@@ -383,14 +395,16 @@ For example, the following represents the configuration of an example `my-module
       "model": "acme:demo:my-model"
     }
   ],
-  "entrypoint": "my-module"
+  "entrypoint": "run.sh"
 }
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/extend/modular-resources/key-concepts/#namespace).
+If you are publishing a public module (`visibility: "public"`), the [\namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the namespace of your organization.
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 {{% /alert %}}
+
+See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 
 ### organizations
