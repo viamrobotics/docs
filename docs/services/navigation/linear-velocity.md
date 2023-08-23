@@ -26,4 +26,4 @@ sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interfa
 ## Usage
 
 Use linear velocity readings to determine the speed at which your robot is moving through space.
-Use [linear acceleration](/services/sensors/linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
+Use [linear acceleration](/services/navigation/linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
