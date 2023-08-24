@@ -1,4 +1,5 @@
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
+const observer = lozad();
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
@@ -37,8 +38,8 @@ search.addWidgets([
         <div class="hover-card-video">
             <div>
             <video autoplay loop muted playsinline alt="{{ .alt }}" width="100%" style="max-width: {{ .maxWidth }}" class="{{- if .class -}}{{ .class}}{{- end }} lozad">
-                <source data-src="../{{webm}}" src="../{{webm}}" type="video/webm">
-                <source data-src="../{{mp4}}" src="../{{mp4}}" type="video/mp4">
+                <source data-src="..{{webm}}" type="video/webm">
+                <source data-src="..{{mp4}}" type="video/mp4">
                 There should have been a video here but your browser does not seem to support it.
             </video>
             </div>
@@ -108,3 +109,6 @@ search.addWidgets([
 ]);
 
 search.start();
+search.on('render', function() {
+  observer.observe()
+});
