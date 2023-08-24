@@ -43,12 +43,12 @@ Your client maintains the session, telling the `viam-server` instance that it is
 A **heartbeat** is a signal that indicates robot connectivity.
 Essentially, "heartbeats" are a Viam robot's way of letting a user reading data from it know the different parts of it are "alive."
 
-Heartbeats are sent automatically from our clients (golang, python, and typescript) unless disabled via a client option or session management is not implemented by the server.
+Heartbeats are sent automatically from Viam's Go, Python, and TypeScript client SDKs unless you disable this with the session management API, or session management is not implemented by the server in question.
 
-As of now, heartbeats are sent at an interval that is 1/5th of the heartbeat window.
+As of now, heartbeats are sent at an interval that is one fifth of the heartbeat window.
 For example, if the heartbeat window is 5 seconds, clients will each send a heartbeat every 1 second.
 
-You can adjust the heartbeat window via the robot config.
+You can adjust the heartbeat window through the configuration of your robot.
 To do so, add Raw JSON to the configuration of your robot in this format:
 
 ``` json
