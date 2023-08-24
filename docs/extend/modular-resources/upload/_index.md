@@ -129,20 +129,18 @@ To upload your custom module to the Viam Registry, either as a public or private
    - To package a module written in Go, run the following command from the same directory as your `meta.json` file:
 
      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     touch module.tar.gz
-     tar -czf module.tar.gz --exclude=module.tar.gz run.sh src
+     tar -czf module.tar.gz module.go
      ```
 
-     Where `run.sh` is your entrypoint file, and `src` is the source directory of your module.
+     Where `module.go` is your [compiled entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable).
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     touch module.tar.gz
-     tar -czf module.tar.gz --exclude=module.tar.gz run.sh requirements.txt src
+     tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your entrypoint file, `requirements.txt` is your dependency list file, and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your Python dependency list, and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -201,14 +199,25 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
 
    On successful update, the command will return a link to the updated module in the Viam Registry.
 
-1. Re-package your custom module to get it ready to upload to the Viam Registry. Currently, the Registry only supports `tar.gz` or `tar.xz` format. For example, run the following command to compress your custom module as a `tar.gz` archive:
+1. Package your custom module to get it ready to upload to the Viam Registry.
+   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
+   Use the command below specific for the language of your module:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   tar -zcf <packaged-module.tar.gz> </path/to/module-directory>
-   ```
+   - To package a module written in Go, run the following command from the same directory as your `meta.json` file:
 
-   Update `/path/to/module-directory` to reflect the actual path to the directory containing your module code and compiled executable.
-   If you already have an archive of your module present in the same directory that has the same name, this command will error: remove the older archive first, and then re-run this command.
+     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     tar -czf module.tar.gz module.go
+     ```
+
+     Where `module.go` is your [compiled entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+
+   - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
+
+     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     tar -czf module.tar.gz run.sh requirements.txt src
+     ```
+
+     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your Python dependency list, and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
