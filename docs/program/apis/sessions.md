@@ -25,7 +25,7 @@ Session management allows for safer operation of robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
-With session management, if the robot does not receive a signal from the client at regular intervals, it will safely stop until the connection is reestablished.
+With session management, if the robot does not receive a signal from the client at regular intervals, it safely stops until the connection is reestablished.
 
 #### Clients and Viam's client SDKs
 
@@ -35,11 +35,37 @@ Essentially, it's anything that is receiving the information served by `viam-ser
 A **client** can be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot in its lifetime will include the "model servers" you instantiate on your robot for individual resources.
 
-Viam's session management API is your built-in solution to this.
-Your client maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the heartbeat window.
+Viam's session management API is your built-in solution to manage this.
+Your client maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the **heartbeat** window.
 
-Your client must send at least one session heartbeat within this window.
-As soon as the window lapses/expires, the server will safely stop all resources that are marked for safety monitoring that have been last used by that session, and no others; a lapsed client will attempt to establish a new session immediately prior to the next operation it performs.
+#### Heartbeats
+
+A **heartbeat** is a signal that indicates robot connectivity.
+Essentially, "heartbeats" are a Viam robot's way of letting a user reading data from it know the different parts of it are "alive."
+
+Heartbeats are sent automatically from our clients (golang, python, and typescript) unless disabled via a client option or session management is not implemented by the server.
+
+As of now, heartbeats are sent at an interval that is 1/5th of the heartbeat window.
+For example, if the heartbeat window is 5 seconds, clients will each send a heartbeat every 1 second.
+
+You can adjust the heartbeat window via the robot config.
+To do so, add Raw JSON to the configuration of your robot in this format:
+
+``` json
+  ... // components {...}, services {...}, 
+  "network": {
+    "sessions": {
+      "heartbeat_window": "30s" // Changes heartbeat window to 30 seconds 
+    }
+  },
+  ...
+```
+
+The default heartbeat window is 2 seconds if this configuration is omitted.
+
+If you choose to use the session management API to manage sessions, your client must send at least one session heartbeat within the window you set.
+As soon as your window lapses or expires, the server will safely stop all resources that are marked for safety monitoring that have been last used by that session, and no others.
+A lapsed client will attempt to establish a new session immediately prior to the next operation it performs.
 
 ## Usage
 
