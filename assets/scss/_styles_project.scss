@@ -1204,4 +1204,20 @@ label.ais-RefinementList-label {
   margin-bottom: 0;
 }
 
+.td-sidebar__toggle {
+  float: right;
+}
+
+@include media-breakpoint-up(md) {
+  .search-panel__filters.show-on-wide { display: block }
+}
+
 // Tutorials page end
+
+// Search-autocomplete start
+
+.algolia-autocomplete {
+  flex-grow: 1;
+}
+
+// Search-autocomplete end
