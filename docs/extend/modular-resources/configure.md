@@ -1,14 +1,82 @@
 ---
-title: "Configure your module and modular resource"
+title: "Configure a module on your robot"
 linkTitle: "Configure"
 weight: 30
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
+description: "Configure a module on your robot."
 no_list: true
 ---
 
-Configure a module on your robot to make one or more modular resources available for configuration.
+Add and configure a module on your robot to make one or more modular resources available for configuration.
+You can add a module from the Viam Registry, or you can code your own module and add it to your robot locally.
+
+{{% alert title="Modules vs. modular resources" color="tip" %}}
+
+A configured *module* can make one or more *modular resources* available for configuration.
+See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
+
+{{% /alert %}}
+
+## Add a module from the Viam Registry
+
+The Viam Registry is a central repository of modules from both Viam and the robotics community that makes extending Viam's capabilities on your robot easy.
+You can add modules to your robot from the Viam Registry directly from your robot's configuration page in the Viam App.
+
+### Browse the Viam Registry
+
+### Add a module to your robot from the Viam Registry
+
+To add a module from the Viam Registry to your robot, perform the following:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Components** subtab and click the **Create component** button.
+1. Enter the name of the module you would like to add to your robot.
+   To find the name of a module you're interested in, you can:
+
+   - Start typing to search for modules by name.
+     Modules available from the Viam Registry will be listed under the `From Registry` section of the search results.
+   - [Browse the Viam Registry](#browse-the-viam-registry) directly to search available modules.
+
+1. When you have entered the name of the module that you would like to add to your robot, select the matching module in the search results and click the **Add module** button.
+1. On the next screen, give your module a custom name if desired, then click **Create**.
+
+The module is now visible in the **Components** tab like any other component.
+Modules added from the Viam Registry display with a grey banner at the top of their configuration pane in the **Components** tab, which includes links to the module's [Registry](https://app.viam.com/modules) page and your robot's [module configuration](#configure-a-module-from-the-viam-registry) page.
+
+To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
+
+### Configure a module from the Viam Registry
+
+Once you have added a module from the Viam Registry, you can view and configure the module from the **Modules** tab:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab, where you should see the new module listed under the **Deployed** section.
+
+Your module will list the model(s) it provides, as well as any components on your robot that are currently using those models, as well as a section for managing version updates of the module.
+
+#### Configure version update management for a Registry module
+
+When you add and configure a module on your robot, you may wish to control how that deployed module updates when a new version of the module is made available in the Viam Registry.
+You can use the **Update management** section of your modules configuration pane under the **Modules** subtab to configure version update behavior for your module, as follows:
+
+- **Automatic updates**: to ensure that your module is always updated to the latest version available in the Viam Registry as soon as it is made available.
+- **Pin to version**: to configure an explicit module update policy.
+
+When set to **Pin to version**, you can set the following update **Version types**:
+
+- **Patch (X.Y.Z)**: Do not update to any other version.
+- **Minor (X.Y.*)**: Only update to newer patch releases of the same minor release branch.
+  For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0`.
+- **Major (X.*)**: Only update to newer minor releases of the same major release branch.
+  For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0`.
+
+When configuring **Pin to version**, use the **Version** drop down menu to specific the version, minor release family, or major release family to pin to.
+
+Consider the your robot's role when you configure the module update method.
+You may wish to pin a module to a specific tested version on robots deployed in production, so that you can control when module code changes are pushed to your robot.
+
+## Add a local module to your robot
 
 If you are developing your own modular resource, you must first follow [these steps](/extend/modular-resources/create/) to code your own module and generate an executable.
 If you are using a pre-built modular resource, make sure you install the module and determine the filename of [the module's executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
@@ -18,12 +86,6 @@ Follow these steps to configure the module and modular resource:
 1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
 2. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
 3. [Add a new component or service](#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot.
-
-{{% alert title="Modules vs. modular resources" color="tip" %}}
-
-A configured *module* can make one or more *modular resources* available for configuration.
-
-{{% /alert %}}
 
 ### Make sure `viam-server` can access your executable
 
