@@ -122,7 +122,7 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 | `min_points_in_plane` | Optional | An integer that specifies how many points there must be in a flat surface for it to count as a plane. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. |
 | `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. 
-This parameter determines how big the candidate clusters should be. 
+This parameter determines how big the candidate clusters should be, or, how many points to designate on the flat surface of the point cloud. 
 A small clustering radius is likely to split different parts of a large cluster into distinct pointcloud objects. 
 A large clustering radius is likely to aggregate closely spaced clusters into one pointcloud object. <br> Default: `1` </br> |
 | `clustering_strictness` | Optional | An integer that determines the probability threshold for sorting neighboring points into the same cluster, or how "easy" `viam-server` should determine it is to sort the points the robot's camera sees into this pointcloud.
