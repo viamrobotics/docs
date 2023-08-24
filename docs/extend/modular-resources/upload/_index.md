@@ -126,13 +126,14 @@ To upload your custom module to the Viam Registry, either as a public or private
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.
    Use the command below specific for the language of your module:
 
-   - To package a module written in Go, run the following command from the same directory as your `meta.json` file:
+   - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
 
      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     tar -czf module.tar.gz module.go
+     go build -o bin/module ./module/main.go
+     tar -cxf module.tar.gz bin/module
      ```
 
-     Where `module.go` is your [compiled entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+     For more information, see [Compile a module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
