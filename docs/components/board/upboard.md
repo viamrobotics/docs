@@ -16,7 +16,7 @@ Configure an `upboard` board to integrate an Intel-based board like the [UP4000]
 Flash your Intel-based board with:
 
 1. The Ubuntu `"Server install image"` version of the operating system. For example, `ubuntu-22.04.2-live-server-amd64.iso`.
-Follow [these instructions](https://ubuntu.com/core/docs/install-nuc) to do so.
+Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to do so.
 1. The [pin control driver](https://github.com/up-division/pinctrl-upboard).
 Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
 This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to a [`pi`](/components/board/pi/) board.
