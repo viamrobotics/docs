@@ -62,7 +62,7 @@ Add a component with type `camera`, model `viam:lidar:rplidar`, and a name of yo
 
 ![adding rplidar component](/extend/modular-resources/add-rplidar/add-rplidar-component-ui.png)
 
-Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux):
+Paste the following into the **Attributes** field of your new component according to your machine's architecture (none needed for Linux).
 
 {{< tabs name="Add RPlidar Configs">}}
 {{% tab name="macOS x86_64" %}}
@@ -77,9 +77,18 @@ Paste the following into the **Attributes** field of your new component accordin
 
 {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
+If you are on an M1 or M2 Macbook, determine the device path by running the following command:
+
+```sh {class="command-line" data-prompt="$"}
+ls /dev/ | grep tty.usbserial
+```
+
+For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`.
+Use the device path in your configuration:
+
 ```json
 {
-  "device_path": "/dev/tty.usbserial-0001"
+  "device_path": "/dev/tty.usbserial-XXX"
 }
 ```
 
@@ -159,6 +168,15 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
   {{% /tab %}}
   {{% tab name="macOS ARM64 (M1 & M2)" %}}
 
+If you are on an M1 or M2 Macbook, determine the device path by running the following command:
+
+```sh {class="command-line" data-prompt="$"}
+ls /dev/ | grep tty.usbserial
+```
+
+For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`.
+Use the device path in your configuration:
+
   ```json
   {
     "modules": [
@@ -174,7 +192,7 @@ Select the **Raw JSON** mode, then copy/paste the following `"components"` and `
         "depends_on": [],
         "model": "viam:lidar:rplidar",
         "attributes": {
-          "device_path": "/dev/tty.usbserial-0001"
+          "device_path": "/dev/tty.usbserial-XXX"
         },
         "name": "rplidar"
       }
