@@ -26,9 +26,7 @@ This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-b
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your board, and select the type `board`.
-Next, select the **Model** card.
-Type in `upboard` and hit enter to select the `upboard` model.
+Enter a name for your board, select the type `board`, and select the `upboard` model.
 
 Click **Create component**.
 
