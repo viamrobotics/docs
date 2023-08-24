@@ -48,7 +48,7 @@ Once you have added a module from the Viam Registry, you can view and configure 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab, where you should see the new module listed under the **Deployed** section.
 
-Your module will list the model(s) it provides, as well as any components on your robot that are currently using those models, as well as a section for managing version updates of the module.
+Your module will list the models it provides, as well as any components on your robot that are currently using those models, as well as a section for managing version updates of the module.
 
 #### Configure version update management for a Registry module
 
