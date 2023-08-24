@@ -15,6 +15,7 @@
                     <div id="languages-list"></div>
                     <div id="components-list"></div>
                     <div id="services-list"></div>
+                    <div id="level-list"></div>
                     <div id="cost-range"></div>
                 </div>
                 <!-- {{ partial "sidebar.html" . }} -->
@@ -35,12 +36,7 @@
 
     {{ partial "scripts.html" . }}
 
-    <!-- search only version -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/algoliasearch@4.19.1/dist/algoliasearch-lite.umd.js"
-        integrity="sha256-qzlNbRtZWHoUV5I2mI2t9QR7oYXlS9oNctX+0pECXI0="
-        crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.44.0"></script>
     <script src="../js/tutorials.js"></script>

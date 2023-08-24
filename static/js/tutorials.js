@@ -1,6 +1,25 @@
-const { algoliasearch, instantsearch } = window;
+const { TypesenseInstantSearchAdapter, instantsearch } = window;
 
-const searchClient = algoliasearch('1CE6L976W0', '69b45c725273606d93690c9e89c56ad3');
+const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
+  server: {
+    apiKey: "oRW875O3vjeV3qX4ENl1iIA0u2IRDbTQ", // Be sure to use an API key that only allows search operations
+    nodes: [
+      {
+        host: "cgnvrk0xwyj9576lp-1.a1.typesense.net",
+        port: "443",
+        protocol: "https",
+      },
+    ],
+    cacheSearchResultsForSeconds: 2 * 60, // Cache search results from server. Defaults to 2 minutes. Set to 0 to disable caching.
+  },
+  // The following parameters are directly passed to Typesense's search API endpoint.
+  //  So you can pass any parameters supported by the search endpoint below.
+  //  query_by is required.
+  additionalSearchParameters: {
+    query_by: "title,description",
+  },
+});
+const searchClient = typesenseInstantsearchAdapter.searchClient;
 
 const search = instantsearch({
   indexName: 'tutorials',
@@ -61,18 +80,27 @@ search.addWidgets([
   })(instantsearch.widgets.refinementList)({
     container: '#components-list',
     attribute: 'viamcomponents',
+    operator: 'and'
   }),
   instantsearch.widgets.panel({
     templates: { header: 'Services' },
   })(instantsearch.widgets.refinementList)({
     container: '#services-list',
     attribute: 'viamservices',
+    operator: 'and'
   }),
   instantsearch.widgets.panel({
     templates: { header: 'Approximate cost' },
   })(instantsearch.widgets.rangeInput)({
     container: '#cost-range',
     attribute: 'cost',
+  }),
+  instantsearch.widgets.panel({
+    templates: { header: 'Level' },
+  })(instantsearch.widgets.refinementList)({
+    container: '#level-list',
+    attribute: 'level',
+    operator: 'and'
   }),
   instantsearch.widgets.pagination({
     container: '#pagination',
