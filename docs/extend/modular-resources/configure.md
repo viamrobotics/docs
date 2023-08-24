@@ -20,7 +20,7 @@ See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concep
 
 ## Add a module from the Viam Registry
 
-The Viam Registry is a central repository of modules from both Viam and the robotics community that simplifies extending Viam's capabilities on your robot.
+The Viam Registry is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
 To add a module from the Viam Registry to your robot:
 
@@ -48,25 +48,25 @@ Once you have added a module from the Viam Registry, you can view and configure 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab, where you should see the new module listed under the **Deployed** section.
 
-Your module will list the models it provides, as well as any components on your robot that are currently using those models, as well as a section for managing version updates of the module.
+This pane lists the models provided by the module, as well as any [components](/components/) on your robot that are currently using those models.
 
 #### Configure version update management for a Registry module
 
 When you add and configure a module on your robot, you may wish to control how that deployed module updates when a new version of the module is made available in the Viam Registry.
-You can use the **Update management** section of the modules configuration pane under the **Modules** subtab to configure version update behavior for your module, as follows:
+You can use the **Update management** section of the modules configuration pane under the **Modules** subtab to configure version update behavior for your module:
 
-- **Automatic updates**: to ensure that the module is always updated to the latest version available in the Viam Registry as soon as it is made available.
-  The module will automatically restart to install updated whenever new updates are available.
-- **Pin to version**: to configure an explicit module update policy.
+- **Automatic updates**: Ensure that the module is always updated to the latest version available in the Viam Registry as soon as it is made available.
+  The module will automatically restart and update itself whenever new updates are available in the Viam Registry.
+- **Pin to version**: Configure an explicit module update policy.
 
 When set to **Pin to version**, you can set the following update **Version types**:
 
 - **Patch (X.Y.Z)**: Do not update to any other version.
 - **Minor (X.Y.*)**: Only update to newer patch releases of the same minor release branch.
-  The module will automatically restart to install updates whenever new updates within the same minor release are available.
+  The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0` or `2.0.0`.
 - **Major (X.*)**: Only update to newer minor releases of the same major release branch.
-  The module will automatically restart to install updates whenever new updates within the same major release are available.
+  The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
 
 When configuring **Pin to version**, use the **Version** drop down menu to specify the version, minor release branch, or major release branch to pin to.
