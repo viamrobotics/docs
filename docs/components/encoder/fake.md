@@ -38,3 +38,10 @@ Click **Create component**.
 {{< /tabs >}}
 
 No attributes are available for `fake` encoders.
+
+## Test the encoder
+
+Once your encoder is configured and your robot is connected, go to the [**Control** tab](/manage/fleet/robots/#control) and click on the encoder's drop-down panel.
+The ticks count is displayed.
+
+![Encoder control panel.](/components/encoder/control.png)

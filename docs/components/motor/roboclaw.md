@@ -30,7 +30,7 @@ Enter a name for your motor, select the type `motor`, and select the `roboclaw` 
 
 Click **Create component**.
 
-![A roboclaw motor config.](/icons/components/motor/roboclaw-ui-config.png)
+![A roboclaw motor config.](/components/motor/roboclaw-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -92,3 +92,5 @@ The following attributes are available for `roboclaw` motors:
 | `ticks_per_rotation` | int | Optional | Number of full steps in a rotation. Update this if you connect [encoders](/components/encoder/) to your controller through its EN1 and EN2 pins. <br> Default: `0` |
 
 Refer to your motor and motor driver data sheets for specifics.
+
+{{< readfile "/static/include/components/test-control/motor-control.md" >}}

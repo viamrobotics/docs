@@ -26,7 +26,7 @@ Enter a name for your motor, select the type `motor`, and select the `gpiosteppe
 
 Click **Create component**.
 
-![Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15.](/icons/components/motor/gpiostepper-config-ui.png)
+![Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15.](/components/motor/gpiostepper-config-ui.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -95,7 +95,7 @@ Here’s an example of a basic stepper driver config:
 {{% /tab %}}
 {{% tab name="Annotated JSON" %}}
 
-![motor-gpiostepper-json.](/icons/components/motor/motor-gpiostepper-json.png)
+![motor-gpiostepper-json.](/components/motor/motor-gpiostepper-json.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -120,7 +120,9 @@ Refer to your motor data sheet and motor driver data sheet for correct wiring.
 
 The following example uses a Big Tree Tech breakout board with a [TMC2209 integrated circuit](https://www.trinamic.com/products/integrated-circuits/details/tmc2209-la/) to drive a two phase stepper motor.
 
-![An example wiring diagram for a four wire Nema 17 stepper motor driven by a Big Tree Tech TMC2209 stepper driver. The driver is connected to a Raspberry Pi with step and dir pins, as well as logic power wires. A separate 12V power supply is attached to the motor driver to power the motor.](/icons/components/motor/motor-gpiostepper-wiring.png)
+![An example wiring diagram for a four wire Nema 17 stepper motor driven by a Big Tree Tech TMC2209 stepper driver. The driver is connected to a Raspberry Pi with step and dir pins, as well as logic power wires. A separate 12V power supply is attached to the motor driver to power the motor.](/components/motor/motor-gpiostepper-wiring.png)
 
 In this particular example the enable pin on the upper left corner of the driver is connected to ground to pull it low.
 See the data sheet of your stepper motor and stepper motor driver for information on how to wire your specific hardware.
+
+{{< readfile "/static/include/components/test-control/motor-control.md" >}}
