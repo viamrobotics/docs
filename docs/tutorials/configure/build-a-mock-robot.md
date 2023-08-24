@@ -521,4 +521,4 @@ When you run this code, you will see your mock sub motor toggling between runnin
 
 In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using a Viam SDK.
 
-If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try building one of Viam's [introductory robots](/tutorials/#your-first-robots).
+If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try following another [tutorial](/tutorials/).

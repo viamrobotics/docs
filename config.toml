@@ -48,10 +48,10 @@ weight = 1
     codeFences = true
 
 [outputs]
-section = ["HTML", "Algolia"]
+section = ["HTML", "Typesense"]
 
-[outputFormats.Algolia]
-baseName = "algolia"
+[outputFormats.Typesense]
+baseName = "typesense"
 isPlainText = true
 mediaType = "application/json"
 notAlternative = true
