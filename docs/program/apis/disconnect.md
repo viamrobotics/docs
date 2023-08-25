@@ -17,7 +17,7 @@ If you lose connectivity, `viam-server` should stop this robot's session, theref
 
 As a client of your robot, the Python or TypeScript SDKs will have their connection to the robot stopped when the robot loses connectivity, if the session is ended properly.
 If you wish to implement your own client SDK, note that client implementation of session management is necessary to make this work.
-The Go Client SDK is a little bit different: as the session management API is implemented through the Go Client, the session can be managed from within this client, allowing for more flexibility in timing disconnection. 
+The Go Client SDK is a little bit different: as the session management API is implemented through the Go Client, the session can be managed from within this client, allowing for more flexibility in timing disconnection.
 
 ### How will your robot's primary parts and sub parts work if you lose connectivity during a session?
 
