@@ -367,7 +367,7 @@ Supported by IMU models.
 
 **Returns:**
 
-- [(Orientation)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation): Abstract base class for protocol messages, containing `o_x`, `o_y`, `o_z`, and `theta`, which together represent a vector pointing in the direction that the sensor is pointing, and the angle (`theta`) of the sensor's rotation about that axis.
+- [(Orientation)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation): Abstract base class for protocol messages, containing `o_x`, `o_y`, `o_z`, and `theta`, which together represent a vector pointing in the direction that the sensor is pointing, and the angle (`theta`) in degrees of the sensor's rotation about that axis.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_orientation).
 
@@ -406,7 +406,7 @@ orientation := sensorOrientation.OrientationVectorDegrees()
 logger.Info("The x component of the orientation vector: ", orientation.OX)
 logger.Info("The y component of the orientation vector: ", orientation.OY)
 logger.Info("The z component of the orientation vector: ", orientation.OZ)
-logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", orientation.OX)
+logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", orientation.Theta)
 ```
 
 {{% /tab %}}
