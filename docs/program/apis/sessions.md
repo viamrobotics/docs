@@ -18,9 +18,9 @@ A session:
 ### Purpose of session management
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
-
 The period of time during which these clients are present is called a *session*.
-*Session management* is a presence mechanism between a client and `viam-server`.
+Imagine a session as analogous to the lifetime of a robot, in regards to its network connection.
+*Session management* is a presence mechanism between a client and `viam-server`, or, a way to manage the lifetime of the robot yourself.
 
 Session management allows for safer operation of robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
@@ -32,7 +32,7 @@ A **client** within the ecosystem of Viam robot could be an SDK script controlli
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot in its lifetime will include the "model servers" you instantiate on your robot for individual resources.
 
 Viam's session management API is your built-in solution to manage this.
-Your client _of_ the session management API, in Go, maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the **heartbeat** window.
+Your client of the session management API can maintain the session, telling the `viam-server` instance that it is still present every so often, or staying within the **heartbeat** window.
 
 #### Heartbeats
 
@@ -73,7 +73,7 @@ To manage sessions on-robot manually, you can use the following client SDKs:
 {{< tabs >}}
 {{% tab name="Go" %}}
 
-To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, disable the default behavior of sessions, as shown [here](#disable-default-session-management).
+To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, [disable the default behavior of sessions](#disable-default-session-management).
 
 {{% /tab %}}
 {{% tab name="Other SDKs" %}}
