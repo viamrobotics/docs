@@ -31,7 +31,7 @@ To create your own modular resource, code a module in Go or Python using the mod
 {{% tab name="New Model" %}}
 Define a new model of a built-in resource subtype:
 
-1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-servers`'s built-in API client of its subtype (ex. `rdk:component:base`).
+1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-server`'s built-in API client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
 
    Follow these instructions to gather the information you will need before starting the process.
