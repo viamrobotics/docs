@@ -44,8 +44,7 @@ A **heartbeat** is a signal that indicates robot connectivity.
 Essentially, "heartbeats" are a Viam robot's way of letting a user reading data from it know the different parts of it are "alive."
 
 Heartbeats are sent automatically from Viam's Go, Python, and TypeScript client SDKs unless you disable this with the session management API, or session management is not implemented by the server in question.
-
-As of now, heartbeats are sent at an interval that is one fifth of the heartbeat window.
+Heartbeats are automatically sent at an interval that is one fifth of the heartbeat window.
 For example, if the heartbeat window is 5 seconds, clients will each send a heartbeat every 1 second.
 
 You can adjust the heartbeat window through the configuration of your robot.
@@ -71,39 +70,33 @@ A lapsed client will attempt to establish a new session immediately prior to the
 
 Usage of the session management API differs across [Viam's SDKS](/program/).
 
-### Manage on-robot sessions
+### Access the session management API
+
+To manage sessions on-robot manually, you can use the following client SDKs: 
 
 {{< tabs >}}
 {{% tab name="Go" %}}
 
-To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, disable the default behavior of sessions.
-
-### Sessions for RobotClients
-
-Use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your Go Client SDK program.
-This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
-Find `SessionsClient` defined on [Github](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).
+To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, [disable the default](#disable-the-sessions-client) behavior of sessions.
 
 {{% /tab %}}
-{{% tab name="Python" %}}
+{{% tab name="Other SDKs" %}}
 
-### On-Robot Session Management
-
-The session management API is not currently provided in the Python SDK.
+The session management API is not currently provided in the Python or TypeScript SDKs.
 Use the Go Client SDK instead.
-
-### Manage sessions for robot clients
-
-First, use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://python.viam.dev/autoapi/viam/sessions_client/index.html#viam.sessions_client.SessionsClient) within your Python Client SDK program.
-This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
-Find `SessionsClient` defined on [GitHub](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).
 
 {{% /tab %}}
 {{% /tabs %}}
 
-### Disable the sessions client
+### Use the session management API to manually manage sessions
 
-The `SessionsClient` is automatically enabled on your robot.
+First, use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
+This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
+Find `SessionsClient` defined on [GitHub](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).
+
+### Disable the session management API
+
+The `SessionsClient` that serves the session management API is automatically enabled on your robot.
 It is instantiated as part of your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API).
 If you want to disable it to keep any additional clients from authenticating to your robot's session while running a control program with Viam's client SDKs, you can pass the option to your robot, as demonstrated in the following code snippets:
 
