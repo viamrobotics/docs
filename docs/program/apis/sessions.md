@@ -129,4 +129,5 @@ disableSessions: true
 {{% /tabs %}}
 
 This option allows you to have full control over sessions management.
-After disabling the client, you must now manage each of your sessions manually with the session management API through the Go client SDK.
+After disabling the client, you must now manage each of your sessions manually with the session management API.
+You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
