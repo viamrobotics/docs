@@ -90,20 +90,11 @@ Enter `lenc` as the **name** for your encoder, select the type `encoder`, and se
 
 Click **Create component**.
 
-![Configuration of an AS5048 encoder in the Viam app config builder.](/components/encoder/configure-am5.png)
+Click the **board** drop-down list and select the name of your board, `local`.
 
-Paste the following in the **Attributes** field:
+In the **i2c bus** field type `main`, and in the **i2c address** field type `64`.
 
-```json
-{
-    "board": "local",
-    "connection_type": "i2c",
-    "i2c_attributes": {
-        "i2c_bus": "main",
-        "i2c_addr": 64
-    }
-}
-```
+![Configuration of an AMS-AS5048 encoder in the Viam app config builder.](/tutorials/scuttlebot/create-encoder.png)
 
 ### Right encoder
 
@@ -112,18 +103,11 @@ Enter `renc` as the **name** for your encoder, select the type `encoder`, and se
 
 Click **Create component**.
 
-Paste the following in the **Attributes** field:
+Click the **board** drop-down list and select the name of your board, `local`.
 
-```json
-{
-    "board": "local",
-    "connection_type": "i2c",
-    "i2c_attributes": {
-        "i2c_bus": "main",
-        "i2c_addr": 65
-    }
-}
-```
+In the **i2c bus** field type `main`, and in the **i2c address** field type `65`.
+
+Click **Save config**.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
