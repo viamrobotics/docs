@@ -7,6 +7,8 @@ description: "How to troubleshoot a resource losing connection during a robot se
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 ---
 
+A guide to what happens when your robot loses its network connection during a session.
+
 ### How does `viam-server` work if you lose connectivity during a session?
 
 If you lose connectivity, `viam-server` should stop this robot's session, therefore stopping the flow of power to all actuating resources.
