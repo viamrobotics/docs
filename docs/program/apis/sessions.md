@@ -8,7 +8,7 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "sessi
 ---
 
 The session management API provides support for robot session management.
-Normally, sessions are managed for you with default resource configuration, but if you want to manage sessions yourself, you can with Viam's sessions management API. 
+Normally, sessions are managed for you with default resource configuration, but if you want to manage sessions yourself, you can with Viam's sessions management API.
 
 A session:
 
