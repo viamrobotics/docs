@@ -30,7 +30,7 @@ Enter a name for your motor, select the type `motor`, and select the `roboclaw` 
 
 Click **Create component**.
 
-![A roboclaw motor config.](/icons/components/motor/roboclaw-ui-config.png)
+![A roboclaw motor config.](/components/motor/roboclaw-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 
