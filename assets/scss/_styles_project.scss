@@ -1221,3 +1221,15 @@ label.ais-RefinementList-label {
 }
 
 // Search-autocomplete end
+
+// Make videos work without js
+
+.no-js * .lozad {
+  display: none;
+}
+
+// ensure tutorials page is 100% of height
+
+.row.flex-xl-nowrap {
+  min-height: 100%;
+}

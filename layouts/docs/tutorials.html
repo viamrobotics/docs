@@ -11,24 +11,53 @@
       <div class="td-main">
         <div class="row flex-xl-nowrap">
             <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-                <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#tutorial-filters" aria-expanded="true" aria-label="Toggle tutorial filters" title="Toggle tutorial filters">
+                <noscript>
+                    {{ partial "sidebar.html" . }}
+                </noscript>
+                <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-filter lozad" type="button" data-toggle="collapse" data-target="#tutorial-filters" aria-expanded="true" aria-label="Toggle tutorial filters" title="Toggle tutorial filters">
                 </button>
-                <div class="search-panel__filters collapse show-on-wide" id="tutorial-filters">
+                <div class="search-panel__filters collapse show-on-wide lozad" id="tutorial-filters">
                     <div id="languages-list"></div>
                     <div id="components-list"></div>
                     <div id="services-list"></div>
                     <div id="level-list"></div>
                     <div id="cost-range"></div>
                 </div>
-                <!-- {{ partial "sidebar.html" . }} -->
             </aside>
             <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
                 <div class="td-content">
                     <h1>{{ .Title }}</h1>
-                    <div class="search-panel__results card-container">
+
+                    {{ if not hugo.IsProduction }}
+                    <div class="alert alert-caution" role="alert">
+                        <h4 class="alert-heading">Missing a tutorial?</h4>
+                        <p>This page relies on data from Typesense which is only generated on publish.
+                            Access your tutorial with its url or by using the sidebar navigation which is visible on any page but this one.
+                            (This message is only visible on staging.)
+                        </p>
+                    </div>
+                    {{ end }}
+
+                    <div class="search-panel__results card-container lozad">
                         <div id="hits" class="row-no-margin"></div>
                         <div id="pagination"></div>
                     </div>
+                    <!-- if no javscript show the tutorials -->
+                    <noscript>
+                        <div class="alert alert-caution" role="alert">
+                            <h4 class="alert-heading">Javascript</h4>
+                            <p>Please enable javascript to see all tutorials.</p>
+                        </div>
+                        <div class="card-container">
+                            <div class="row-no-margin">
+                                {{ range first 20 (where .Site.Pages "Section" "tutorials") }}
+                                {{ range .Pages }}
+{{ partial "tutorialcard-no-js.html" (dict "link" (.RelPermalink)) }}
+                                {{ end }}
+                                {{ end }}
+                            </div>
+                        </div>
+                    </noscript>
                 </div>
             </main>
         </div>
