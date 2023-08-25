@@ -72,12 +72,12 @@ Usage of the session management API differs across [Viam's SDKS](/program/).
 
 ### Access the session management API
 
-To manage sessions on-robot manually, you can use the following client SDKs: 
+To manage sessions on-robot manually, you can use the following client SDKs:
 
 {{< tabs >}}
 {{% tab name="Go" %}}
 
-To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, [disable the default](#disable-the-sessions-client) behavior of sessions.
+To enable the [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) the Go Client SDK provides, disable the default behavior of sessions, as shown [here](#disable-default-session-management).
 
 {{% /tab %}}
 {{% tab name="Other SDKs" %}}
@@ -94,7 +94,7 @@ First, use your [`RobotClient()`](/program/apis/#robot-api) instance to access t
 This is a [gRPC](https://grpc.io/) client that `viam-server` instantiates at robot runtime.
 Find `SessionsClient` defined on [GitHub](https://github.com/viamrobotics/rdk/blob/main/robot/client/client.go).
 
-### Disable the session management API
+### Disable default session management
 
 The `SessionsClient` that serves the session management API is automatically enabled on your robot.
 It is instantiated as part of your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API).
