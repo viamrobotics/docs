@@ -189,7 +189,7 @@ linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 
 ### GetAngularVelocity
 
-Report the current angular velocity about the x, y and z axes (as a 3D vector) in radians per second.
+Report the current angular velocity about the x, y and z axes (as a 3D vector) in degrees per second.
 
 Supported by IMU models and by `gyro-mpu6050`.
 
@@ -202,7 +202,7 @@ Supported by IMU models and by `gyro-mpu6050`.
 
 **Returns:**
 
-- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in radians per second.
+- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in degrees per second.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_angular_velocity).
 
@@ -226,7 +226,7 @@ y_ang_vel = ang_vel.y
 
 **Returns:**
 
-- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in radians per second.
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in degrees per second.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
