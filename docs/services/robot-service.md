@@ -3,11 +3,12 @@ title: "Robot Service"
 linkTitle: "Robot"
 description: "The Robot Service consists of a set of robot monitoring and management APIs that most robots support."
 type: "docs"
-draft: "true"
+draft: "false"
 weight: 10
 tags: ["robot state", "services"]
 # SME: Cheuk
 ---
+
 Robot Service constitutes a minimal set of APIs that most robots (Viam Server, [Viam Python SDK](https://python.viam.dev/) and various SDKs) should support.
 Users will likely use the Robot Service as an entrypoint to interact with Viam robots and provide a way to get updates from the robot as a whole.
 
