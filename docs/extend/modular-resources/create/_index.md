@@ -34,9 +34,37 @@ Define a new model of a built-in resource subtype:
 1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-servers`'s built-in API client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
 
-   Follow these instructions to find the appropriate source code before you start the process.
+   Follow these instructions to gather the information you will need before starting the process.
 
-   **To prepare to code a new resource model**:
+   **To choose a name for a new custom resource model**:
+
+   Model names are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`, and are named according to the Viam RDK API that your model implements.
+
+   - If your module provides a single model, the `family` should match `subtype` of whichever API your model implements.
+     For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so is named as follows:
+
+     ```json {class="line-numbers linkable-line-numbers"}
+     {
+       "api": "rdk:component:camera",
+       "model": "viam:camera:realsense"
+     }
+     ```
+
+   - If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
+     For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements the several `motor` component API, so is named as follows:
+
+     ```json {class="line-numbers linkable-line-numbers"}
+     {
+       "api": "rdk:component:motor",
+       "model": "viam:odrive:serial"
+     },
+     {
+       "api": "rdk:component:motor",
+       "model": "viam:odrive:canbus"
+     }
+     ```
+
+   **To prepare to code a new custom resource model**:
 
    The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "**client** interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
 
@@ -383,7 +411,7 @@ func init() {
 {{% tab name="Python"%}}
 
 <file>main.py</file> is the Python module's entry point file.
-When executed, it registers the mybase custom model and API helper functions with the Python SDK and creates and starts the new module.
+When executed, it registers the `mybase` custom model and API helper functions with the Python SDK and creates and starts the new module.
 
 <details>
   <summary>Click to view sample code from <file>main.py</file></summary>

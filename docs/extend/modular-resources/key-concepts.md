@@ -51,12 +51,16 @@ Regardless, you can power any motor model that implements the `rdk:component:mot
 
 ### Namespace
 
-Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
+Models are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
 
 For example:
 
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
+
+{{% alert title="Important" color="note" %}}
+If you are creating a custom module and uploading that module to the Viam Registry, the namespace of your model **must** match the namespace of your organization.
+{{% /alert %}}
 
 ## Management
 
