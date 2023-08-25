@@ -49,7 +49,7 @@ To upload your custom module to the Viam Registry, either as a public or private
        <th>Description</th>
      </tr>
      <tr>
-       <td><code>name</code></td>
+       <td><code>module_id</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
        <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
@@ -91,7 +91,7 @@ To upload your custom module to the Viam Registry, either as a public or private
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "name": "acme:my-module",
+     "module_id": "acme:my-module",
      "visibility": "public",
      "url": "https://github.com/acme-co-example/my-module",
      "description": "An example custom module.",
