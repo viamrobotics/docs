@@ -1,9 +1,9 @@
 ---
-title: "Session Connectivity Resource Disonnection during a Session"
-linkTitle: "Session Connectivity"
+title: "Session Connectivity: Network Disconnection during a Session"
+linkTitle: "Network Disconnection"
 weight: 20
 type: "docs"
-description: "How to troubleshoot a resource losing connection during a robot session."
+description: "How Viam handles losing connection to the internet during a robot session."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 ---
 
