@@ -29,12 +29,13 @@
                         "webm" .Params.webmSrc
                         "mp4" .Params.mp4Src
                         "image" .Params.image
+                        "imageAlt" .Params.imageAlt
+                        "videoAlt" .Params.videoAlt
                         "languages" .Params.languages
                         "viamservices" (intersect (.Params.viamresources) (slice "data" "motion" "frame_system" "mlmodel" "navigation" "base_rc" "sensors" "slam" "vision"))
                         "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
                         "level" .Params.level
                         "cost" (int (.Params.cost))
-                        "content" ( .Plain | safeHTML | truncate 8000 )
                     )}}
                   {{- end -}}
             {{- end -}}

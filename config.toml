@@ -139,10 +139,6 @@ enable = false
   icon = "fa fa-envelope"
   desc = "Ask questions about the Viam SDK"
 
-[params.algolia]
-vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink", "image"]
-params = ["categories", "tags"]
-
 [params.github]
 repository = "viamrobotics/docs"
 branch = "main"
