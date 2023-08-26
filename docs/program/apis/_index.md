@@ -342,6 +342,16 @@ In addition to the [board API](#board), the [board component](/components/board/
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 
-## Robot API
+## Robot Management APIs
+
+### Robot API
+
+All robots support the following methods through the [robot API](/program/apis/robot/):
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
+
+### Cloud API
+
+The [cloud API](/program/apis/cloud/) provides the following methods:
+
+{{< readfile "/static/include/services/apis/cloud.md" >}}
