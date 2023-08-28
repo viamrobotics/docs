@@ -141,7 +141,7 @@ To upload your custom module to the Viam Registry, either as a public or private
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your Python dependency list, and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -211,7 +211,7 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your Python dependency list, and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
