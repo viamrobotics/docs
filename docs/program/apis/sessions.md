@@ -33,11 +33,11 @@ A *client* of a Viam robot could be an SDK script controlling the robot, an inpu
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the "model servers" you instantiate on your robot for individual resources.
 
 Viam's session management API is your built-in solution to manage this.
-Your client of the session management API maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the **heartbeat** window.
+Your client of the session management API maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the *heartbeat* window.
 
 #### Heartbeats
 
-A **heartbeat** is a signal that indicates robot connectivity.
+A *heartbeat* is a signal that indicates robot connectivity.
 Essentially, "heartbeats" are a Viam robot's way of letting a user reading data from it know the different parts of it are "alive."
 
 Heartbeats are sent automatically from Viam's Go, Python, and TypeScript client SDKs unless you disable this with the session management API, or session management is not implemented by the server in question.
