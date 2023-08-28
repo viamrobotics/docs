@@ -39,7 +39,7 @@ To upload your custom module to the Viam Registry, either as a public or private
    Editing and then uploading the `meta.json` file sets important configuration information about your module, such as whether it will be publicly available to all Viam users, or only available within your organization.
 
 1. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
-   The `module_id` field is pre-populated using the `--name` you provided in the `viam module create` command, and `visibility` is set to `private` by default.
+   The `name` field is pre-populated using the `--name` you provided in the `viam module create` command, and `visibility` is set to `private` by default.
 
    <table class="table table-striped">
      <tr>

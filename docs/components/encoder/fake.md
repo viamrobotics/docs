@@ -20,7 +20,7 @@ Enter a name for your encoder, select the type `encoder`, and select the `fake` 
 
 Click **Create component**.
 
-{{< imgproc src="/components/encoder/configure-fake.png" alt="Configuration of a fake encoder in the Viam app config builder." resize="600x" >}}
+![Configuration of a fake encoder in the Viam app config builder.](/components/encoder/configure-fake.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -28,6 +28,18 @@ Click **Create component**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "<your-encoder-name>",
+    "type": "encoder",
+    "model" : "fake",
+    "attributes": {}
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "myEncoder",
     "type": "encoder",
     "model" : "fake",
     "attributes": {}
