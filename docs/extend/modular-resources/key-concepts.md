@@ -55,8 +55,10 @@ Models are uniquely namespaced as colon-delimited-triplets in the form `namespac
 
 Models are either:
 
-- Built-in to the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/)
-- Written by community users, and available from [the Viam Registry](https://app.viam.com/module).
+- Built-in to the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
+- Available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
+
+A model with the `viam` namespace is always Viam-provided.
 
 #### Built-in namespaces
 
@@ -67,13 +69,13 @@ For example:
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
 
-#### Community namespaces
+#### Viam Registry namespaces
 
 The [Viam Registry](https://app.viam.com/module) makes available both Viam-provided and community-written modules for download and use on your robot.
 Each module provides one or more models.
 Guidance for naming your models for upload to the Viam Registry depends on whether your module will be implementing a single model, or multiple models:
 
-- If your module provides a single model, the `family` should match `subtype` of whichever API your model implements.
+- If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
   For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
@@ -99,7 +101,7 @@ Guidance for naming your models for upload to the Viam Registry depends on wheth
 
 If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, the namespace of your model **must** match the [namespace of your organization](docs/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
-A model that begins with the `viam` namespace is always Viam-provided.
+A model with the `viam` namespace is always Viam-provided.
 
 ## Management
 
