@@ -184,21 +184,14 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
 1. Update your custom module's `meta.json` file with the changes, if any.
    For example, if you have altered your model's name, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
 
-1. Run `viam module update` to register the configuration changes to your module (and to `meta.json` if applicable):
-
-   - To register a *public* module, run the following command from within the same directory as your `meta.json` file:
+1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry.
+   Run this command from within the same directory as your `meta.json` file:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update
       ```
 
-   - To register a *private* module, run the following command from within the same directory as your `meta.json` file, providing your organization ID:
-
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module update --org-id <org-id>
-      ```
-
-   On successful update, the command will return a link to the updated module in the Viam Registry.
+   On a successful update, the command will return a link to the updated module in the Viam Registry.
 
 1. Package your custom module to get it ready to upload to the Viam Registry.
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.
