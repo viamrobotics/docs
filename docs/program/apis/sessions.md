@@ -9,20 +9,19 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "sessi
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
 The period of time during which these clients are present is called a *session*.
-Imagine a session as analogous to the lifetime of a robot in regards to its network connection.
 
-A session:
+Session management:
 
 - allows a client to express that it is actively connected or authenticated to `viam-server` on your robot
 - supports stopping moving components when the connection is no longer active.
 
-*Session management* is a presence mechanism between a client and `viam-server`, or, a way to manage the lifetime of the robot yourself.
+*Session management* is a presence mechanism between a client and `viam-server`.
 Session management allows for safer operation of robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
-The session management API provides support for robot session management.
-With default recourse configuration, sessions are automatically managed for you with Viam's `SessionsClient`, but if you want to manage sessions yourself, you can with Viam's sessions management API.
+With default configuration, sessions are automatically managed for you with Viam's `SessionsClient`.
+If you want to manage sessions yourself, use Viam's sessions management API.
 
 ### The `SessionsClient`
 
@@ -32,7 +31,7 @@ For example, if you use Viam's module registry to [add modular resources to your
 
 Viam's session management API's `SessionsClient` is a built-in solution that manages the connection between your robot's clients and your robot.
 With the `SessionsClient`, if the robot does not receive a signal from the client at regular intervals, it safely stops until the connection is reestablished.
-Your client of the session management API maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the *heartbeat* window.
+Your client of the session management API maintains the session, telling the `viam-server` instance that it is still present every so often; in other words, staying within the *heartbeat* window.
 
 #### Heartbeats
 
