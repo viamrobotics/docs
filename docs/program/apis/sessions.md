@@ -27,12 +27,13 @@ For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#set
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
 With session management, if the robot does not receive a signal from the client at regular intervals, it safely stops until the connection is reestablished.
+
 A Viam robot has many clients because a client is anything that is receiving the information served by `viam-server` running on the robot, which includes the primary part, sub-parts, client SDKs, and more.
-A **client** within the ecosystem of Viam robot could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
-For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot in its lifetime will include the "model servers" you instantiate on your robot for individual resources.
+A *client* of a Viam robot could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
+For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the "model servers" you instantiate on your robot for individual resources.
 
 Viam's session management API is your built-in solution to manage this.
-Your client of the session management API can maintain the session, telling the `viam-server` instance that it is still present every so often, or staying within the **heartbeat** window.
+Your client of the session management API maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the **heartbeat** window.
 
 #### Heartbeats
 
