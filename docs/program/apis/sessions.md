@@ -7,32 +7,31 @@ description: "How to use the session management API with Viam's Client SDKs."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session", "sessions", "session management"]
 ---
 
-The session management API provides support for robot session management.
-Normally, sessions are managed for you with default resource configuration, but if you want to manage sessions yourself, you can with Viam's sessions management API.
+When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
+The period of time during which these clients are present is called a *session*.
+Imagine a session as analogous to the lifetime of a robot in regards to its network connection.
 
 A session:
 
 - allows a client to express that it is actively connected or authenticated to `viam-server` on your robot
 - supports stopping moving components when the connection is no longer active.
 
-### Purpose of session management
-
-When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
-The period of time during which these clients are present is called a *session*.
-Imagine a session as analogous to the lifetime of a robot, in regards to its network connection.
 *Session management* is a presence mechanism between a client and `viam-server`, or, a way to manage the lifetime of the robot yourself.
-
 Session management allows for safer operation of robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
-With session management, if the robot does not receive a signal from the client at regular intervals, it safely stops until the connection is reestablished.
+The session management API provides support for robot session management.
+With default recourse configuration, sessions are automatically managed for you with Viam's `SessionsClient`, but if you want to manage sessions yourself, you can with Viam's sessions management API.
+
+### The `SessionsClient`
 
 A Viam robot has many clients because a client is anything that is receiving the information served by `viam-server` running on the robot, which includes the primary part, sub-parts, client SDKs, and more.
 A *client* of a Viam robot could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the "model servers" you instantiate on your robot for individual resources.
 
-Viam's session management API is your built-in solution to manage this.
+Viam's session management API's `SessionsClient` is a built-in solution that manages the connection between your robot's clients and your robot.
+With the `SessionsClient`, if the robot does not receive a signal from the client at regular intervals, it safely stops until the connection is reestablished.
 Your client of the session management API maintains the session, telling the `viam-server` instance that it is still present every so often, or staying within the *heartbeat* window.
 
 #### Heartbeats
