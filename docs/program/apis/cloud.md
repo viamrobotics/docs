@@ -27,16 +27,28 @@ As of August 24, 2023, the cloud app API is only available in Python.
 To use the Viam cloud app API, you need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient):
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
-from viam.app.app_client import AppClient
 
-# Make a ViamClient
-viam_client = await ViamClient.create_from_dial_options(auth_entity = auth, credentials = creds)
-# Instantiate an AppClient called "cloud" to run cloud app API methods on
-cloud = await viam_client.app_client()
+async def connect() -> ViamClient:
+    dial_options = DialOptions(
+        auth_entity='mrroboto.this_is_just_an_example.viam.cloud',  # The URL of your robot.
+        credentials=Credentials(
+            type='robot-location-secret',
+            payload='YOUR ROBOT LOCATION SECRET' # The location secret of your robot
+        )
+    )
+    return await ViamClient.create_from_dial_options(dial_options)
+
+async def main():
+
+  # Make a ViamClient
+  viam_client = await connect()
+  # Instantiate an AppClient called "cloud" to run the cloud app API methods on
+  cloud = await viam_client.app_client()
 ```
 
-Then, you run the methods on the `AppClient` according to the code examples for each method below.
+Then, run methods on the `AppClient` according to the code examples for each method below.
 
 {{% /alert %}}
 
