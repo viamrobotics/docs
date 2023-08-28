@@ -56,7 +56,7 @@ Models are uniquely namespaced as colon-delimited-triplets in the form `namespac
 Models are either:
 
 - Built-in to the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
-- Available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
+- Provided in custom modules available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
 
 A model with the `viam` namespace is always Viam-provided.
 
