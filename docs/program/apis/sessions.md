@@ -124,7 +124,6 @@ disableSessions: true
 ```
 
 {{% /tab %}}
-
 {{% /tabs %}}
 
 This option allows you to have full control over sessions management.
