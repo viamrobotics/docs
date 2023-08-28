@@ -84,7 +84,7 @@ Guidance for naming your models for upload to the Viam Registry depends on wheth
   ```
 
 - If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
-  For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component API, so is named as follows:
+  For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
@@ -98,6 +98,8 @@ Guidance for naming your models for upload to the Viam Registry depends on wheth
   ```
 
 If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, the namespace of your model **must** match the [namespace of your organization](docs/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
+A model that begins with the `viam` namespace is always Viam-provided.
 
 ## Management
 

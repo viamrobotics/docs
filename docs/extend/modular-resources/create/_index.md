@@ -36,7 +36,7 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
 
    Follow these instructions to find the appropriate source code before you start the process.
 
-   **To prepare to code a new custom resource model**:
+   **To prepare to code a new resource model**:
 
    The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "**client** interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
 
