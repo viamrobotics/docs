@@ -34,35 +34,7 @@ Define a new model of a built-in resource subtype:
 1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-server`'s built-in API client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
 
-   Follow these instructions to gather the information you will need before starting the process.
-
-   **To choose a name for a new custom resource model**:
-
-   Model names are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`, and are named according to the Viam RDK API that your model implements.
-
-   - If your module provides a single model, the `family` should match `subtype` of whichever API your model implements.
-     For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so is named as follows:
-
-     ```json {class="line-numbers linkable-line-numbers"}
-     {
-       "api": "rdk:component:camera",
-       "model": "viam:camera:realsense"
-     }
-     ```
-
-   - If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
-     For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements the several `motor` component API, so is named as follows:
-
-     ```json {class="line-numbers linkable-line-numbers"}
-     {
-       "api": "rdk:component:motor",
-       "model": "viam:odrive:serial"
-     },
-     {
-       "api": "rdk:component:motor",
-       "model": "viam:odrive:canbus"
-     }
-     ```
+   Follow these instructions to find the appropriate source code before you start the process.
 
    **To prepare to code a new custom resource model**:
 
@@ -74,12 +46,13 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
    - Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
    - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
    - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
+   - Name your model according to the namespace of the built-in API you are implementing. For more information see [Model namespace](/extend/modular-resources/key-concepts/#namespace-1).
 
     <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
    - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
    - For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
-   - Base your edits to <file>main.go</file> or <file>main.py</file> on this second file. <br>
+   - Base your edits to <file>main.go</file> or <file>main.py</file> on this second file.<br>
 
 2. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
 Import your custom model and API into the main program and register them with your chosen SDK.
@@ -108,7 +81,7 @@ This main program is the "entry point" to your module.
 
 ### Code a new resource model
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`. For more information on model naming see [Model namespace](/extend/modular-resources/key-concepts/#namespace-1).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 

@@ -28,7 +28,7 @@ Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
 
 ### Namespace
 
-Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form of `namespace:type:subtype`.
+Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form `namespace:type:subtype`.
 
 For example:
 
@@ -51,16 +51,53 @@ Regardless, you can power any motor model that implements the `rdk:component:mot
 
 ### Namespace
 
-Models are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
+Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`, and are named according to the Viam API that your model implements.
+
+Models are either:
+
+- Built-in to the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/)
+- Written by community users, and available from [the Viam Registry](https://app.viam.com/module).
+
+#### Built-in namespaces
+
+Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
 
 For example:
 
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
 
-{{% alert title="Important" color="note" %}}
-If you are creating a custom module and uploading that module to the Viam Registry, the namespace of your model **must** match the namespace of your organization.
-{{% /alert %}}
+#### Community namespaces
+
+The [Viam Registry](https://app.viam.com/module) makes available both Viam-provided and community-written modules for download and use on your robot.
+Each module provides one or more models.
+Guidance for naming your models for upload to the Viam Registry depends on whether your module will be implementing a single model, or multiple models:
+
+- If your module provides a single model, the `family` should match `subtype` of whichever API your model implements.
+  For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so is named as follows:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "api": "rdk:component:camera",
+    "model": "viam:camera:realsense"
+  }
+  ```
+
+- If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
+  For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component API, so is named as follows:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "api": "rdk:component:motor",
+    "model": "viam:odrive:serial"
+  },
+  {
+    "api": "rdk:component:motor",
+    "model": "viam:odrive:canbus"
+  }
+  ```
+
+If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, the namespace of your model **must** match the [namespace of your organization](docs/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 
 ## Management
 
