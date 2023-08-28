@@ -99,7 +99,7 @@ Guidance for naming your models for upload to the Viam Registry depends on wheth
   }
   ```
 
-If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, the namespace of your model **must** match the [namespace of your organization](docs/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, the namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
 A model with the `viam` namespace is always Viam-provided.
 
