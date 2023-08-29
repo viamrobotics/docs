@@ -30,9 +30,6 @@ sudo chmod 755 /usr/local/bin/viam-csi
 
 ### Module
 
-{{< tabs name="Add the csi module">}}
-{{% tab name="JSON Template" %}}
-
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
 Copy and paste the following raw JSON to add a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
@@ -67,9 +64,6 @@ Save the config.
 Edit and fill in the attributes as applicable.
 
 Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 The following attributes are available for the `viam:camera:csi` model:
 
