@@ -84,6 +84,13 @@ The following example module registers a modular resource implementing Viam's bu
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
+{{% alert title="Naming module models" color="tip" %}}
+
+Name your model with all lowercase letters for optimal performance with Viam's SDKs.
+For example, `mybase` or `my-cool-sensor`.
+
+{{% /alert %}}
+
 {{< tabs name="Sample SDK Code">}}
 {{% tab name="Python"%}}
 
