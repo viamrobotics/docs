@@ -13,7 +13,8 @@ authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "board", "motor" ]
 level: "Beginner"
-date: "29 May 2023"
+date: "2023-05-29"
+# updated: ""
 cost: 145
 ---
 

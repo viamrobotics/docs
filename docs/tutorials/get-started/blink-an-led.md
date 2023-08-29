@@ -18,9 +18,11 @@ authors: []
 languages: [ "python", "go" ]
 viamresources: [ "board" ]
 level: "Beginner"
-date: "4 October 2022"
+date: "2022-10-04"
+# updated: ""
 cost: 70
 no_list: true
+featured: 1
 ---
 
 This tutorial will show you how to use Viam to make an LED blink with a Raspberry Pi.

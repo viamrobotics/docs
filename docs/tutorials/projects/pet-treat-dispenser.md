@@ -12,7 +12,8 @@ authors: [ "Arielle Mella", "Jessamy Taylor", "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "board", "camera", "motor", "mlmodel", "vision" ]
 level: "Beginner"
-date: "30 March 2023"
+date: "2023-03-30"
+# updated: ""
 cost: 143
 ---
 

@@ -13,7 +13,8 @@ authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "camera", "mlmodel", "vision" ]
 level: "Beginner"
-date: "30 March 2023"
+date: "2023-03-30"
+# updated: ""
 cost: 20
 no_list: true
 ---

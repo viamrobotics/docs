@@ -13,7 +13,8 @@ authors: [ "Jessamy Taylor" ]
 languages: [ "python" ]
 viamresources: [ "data_manager", "camera" ]
 level: "Beginner"
-date: "3 July 2023"
+date: "2023-07-03"
+# updated: ""
 cost: 8400
 ---
 

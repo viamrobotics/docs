@@ -12,7 +12,8 @@ authors: []
 languages: [ "python", "go" ]
 viamresources: [ "arm", "gripper", "motion" ]
 level: "Intermediate"
-date: "7 March 2023"
+date: "2023-03-07"
+# updated: ""
 cost: 8400
 no_list: true
 ---

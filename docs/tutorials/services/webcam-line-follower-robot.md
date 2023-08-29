@@ -14,8 +14,8 @@ authors: [ "Jessamy Taylor" ]
 languages: [ "python" ]
 viamresources: [ "vision", "camera" ]
 level: "Beginner"
-date: "26 August 2022"
-updated: "4 August 2023"
+date: "2022-08-26"
+updated: "2023-08-04"
 cost: 570
 no_list: true
 ---

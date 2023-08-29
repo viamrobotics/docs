@@ -15,9 +15,11 @@ authors: [ "Hazal Mestci" ]
 languages: []
 viamresources: [ "vision", "camera" ]
 level: "Beginner"
-date: "16 December 2022"
+date: "2022-12-16"
+# updated: ""
 cost: "0"
 no_list: true
+featured: 3
 # SMEs: Hazal
 ---
 

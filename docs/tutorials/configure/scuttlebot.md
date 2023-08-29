@@ -15,8 +15,8 @@ authors: []
 languages: [ "python", "go" ]
 viamresources: [ "board", "motor", "camera" ]
 level: "Beginner"
-date: "2 August 2022"
-updated: "15 August 2023"
+date: "2022-08-02"
+updated: "2023-08-05"
 cost: 540
 ---
 

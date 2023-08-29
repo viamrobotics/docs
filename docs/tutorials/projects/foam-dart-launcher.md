@@ -16,7 +16,8 @@ authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "base", "camera", "motor", "board" ]
 level: "Beginner"
-date: "29 November 2022"
+date: "2022-11-29"
+# updated: ""
 cost: "145"
 no_list: true
 ---

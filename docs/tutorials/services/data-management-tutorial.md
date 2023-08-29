@@ -16,9 +16,11 @@ authors: []
 languages: []
 viamresources: [ "data_manager", "camera" ]
 level: "Beginner"
-date: "8 February 2023"
+date: "2023-02-08"
+# updated: ""
 cost: "0"
 no_list: true
+featured: 4
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 

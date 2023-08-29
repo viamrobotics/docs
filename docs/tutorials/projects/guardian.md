@@ -14,8 +14,10 @@ authors: [ "Naomi Pentrel" ]
 languages: [ "python" ]
 viamresources: [ "camera", "vision", "servo", "mlmodel" ]
 level: "Beginner"
-date: "15 May 2023"
+date: "2023-05-15"
+# updated: ""
 cost: 90
+featured: 6
 ---
 
 In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.

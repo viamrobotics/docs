@@ -2,6 +2,10 @@
 {{- $section := $.Site.GetPage "section" .Section }}
       {{- range .Site.AllPages -}}
             {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
+            {{ $latestdate := .Date.UTC.Unix -}}
+            {{- if .Params.updated -}}
+                  {{ $latestdate := ((time .Params.updated).UTC.Unix) -}}
+            {{ end }}
             {{ if eq .Section "tutorials" }}
                   {{- if not (.Params.cost) -}}
                         {{ errorf "No cost on tutorial: %s" .Title }}
@@ -9,9 +13,8 @@
                   {{- $.Scratch.Add "index"
                     (dict
                         "id" .File.UniqueID
-                        "date" .Date.UTC.Unix
+                        "date" $latestdate
                         "description" .Description
-                        "expirydate" .ExpiryDate.UTC.Unix
                         "fuzzywordcount" .FuzzyWordCount
                         "lastmod" .Lastmod.UTC.Unix
                         "permalink" .Permalink
@@ -36,6 +39,7 @@
                         "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
                         "level" .Params.level
                         "cost" (int (.Params.cost))
+                        "featured" .Params.featured
                     )}}
                   {{- end -}}
             {{- end -}}

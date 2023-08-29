@@ -12,9 +12,11 @@ authors: [ "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "board", "motor", "sensor" ]
 level: "Beginner"
-date: "29 March 2023"
+date: "2023-03-29"
+# updated: ""
 cost: 150
 no_list: true
+featured: 7
 # SMES: Olivia Miller
 ---
 

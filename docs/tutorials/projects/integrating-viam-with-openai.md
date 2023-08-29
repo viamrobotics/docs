@@ -14,9 +14,11 @@ authors: [ "Matt Vella" ]
 languages: [ "python" ]
 viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
 level: "Beginner"
-date: "15 February 2023"
+date: "2023-02-15"
+# updated: ""
 cost: 200
 no_list: true
+featured: 5
 ---
 
 When we think of robots, most of us tend to group them into categories:

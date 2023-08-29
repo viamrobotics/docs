@@ -23,8 +23,8 @@ level: "" # Beginner, Intermediate, Advanced
 # Beginner means: high level of explanation and guidance
 # Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
 # Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
-date: "1 Jan 2023" # When the tutorial was created or last entirely checked
-updated: ""  # When the tutorial was last entirely checked
+date: "2023-01-01" # When the tutorial was created or last entirely checked
+# updated: ""  # When the tutorial was last entirely checked
 cost: 0 # Aproximate cost in USD - Only specify number
 ---
 

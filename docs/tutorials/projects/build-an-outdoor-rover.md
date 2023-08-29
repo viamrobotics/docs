@@ -14,7 +14,8 @@ authors: [ "Matt Vella" ]
 languages: []
 viamresources: [ "board", "motor", "base", "camera" ]
 level: "Beginner"
-date: "29 March 2023"
+date: "2023-03-29"
+# updated: ""
 cost: 420
 no_list: true
 ---

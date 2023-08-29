@@ -13,7 +13,8 @@ authors: [ "Kacey Meier-Smith" ]
 languages: [ "python" ]
 viamresources: [ "board", "servo" ]
 level: "Beginner"
-date: "30 March 2023"
+date: "2023-03-30"
+# updated: ""
 cost: 80
 no_list: true
 ---

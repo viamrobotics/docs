@@ -15,7 +15,8 @@ authors: [ "Jessamy Taylor" ]
 languages: [ "python" ]
 viamresources: [ "base", "camera", "custom" ]
 level: "Beginner"
-date: "15 May 2023"
+date: "2023-05-15"
+# updated: ""
 cost: 190
 # SMEs: James Otting, Eric Daniels
 ---

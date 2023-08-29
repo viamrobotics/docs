@@ -13,7 +13,8 @@ authors: [ "Tess Avitabile", "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
 level: "Beginner"
-date: "21 April 2023"
+date: "2023-08-18"
+# updated: ""
 cost: "0"
 ---
 
@@ -499,7 +500,7 @@ func play(label string, logger golog.Logger) {
    <-done
 }
 
-// Code Sample Connect() Code 
+// Code Sample Connect() Code
 func main() {
  logger := golog.NewDevelopmentLogger("client")
  robot, err := client.New(
@@ -517,8 +518,8 @@ func main() {
 
 
  defer robot.Close(context.Background())
-  
-// Get the shape classifier from the robot 
+
+// Get the shape classifier from the robot
  visService, err := vision.FromRobot(robot, "shape-classifier")
  if err != nil {
    logger.Error(err)

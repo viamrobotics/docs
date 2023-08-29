@@ -16,7 +16,8 @@ authors: []
 languages: []
 viamresources: [ "base", "input_controller" ]
 level: "Beginner"
-date: "10 August 2022"
+date: "2022-08-10"
+# updated: ""
 cost: 575
 ---
 

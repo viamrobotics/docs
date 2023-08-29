@@ -18,6 +18,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  query_by is required.
   additionalSearchParameters: {
     query_by: "title,description",
+    sort_by: "featured:asc,date:desc"
   },
 });
 const searchClient = typesenseInstantsearchAdapter.searchClient;

@@ -16,7 +16,8 @@ authors: []
 languages: [ "python", "go" ]
 viamresources: [ "board", "arm", "motor" ]
 level: "Beginner"
-date: "11 October 2022"
+date: "2022-10-11"
+# updated: ""
 cost: "0"
 ---
 

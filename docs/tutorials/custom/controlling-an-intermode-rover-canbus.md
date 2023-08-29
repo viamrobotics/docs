@@ -12,7 +12,8 @@ authors: [ "Matt Vella" ]
 languages: [ "go" ]
 viamresources: [ "base", "custom" ]
 level: "Intermediate"
-date: "22 January 2023"
+date: "2023-01-22"
+# updated: ""
 cost: 1500
 no_list: true
 # SME: Matt Vella, Matt Dannenberg, James Otting

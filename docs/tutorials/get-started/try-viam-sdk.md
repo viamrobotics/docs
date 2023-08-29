@@ -15,8 +15,10 @@ authors: []
 languages: [ "python", "go", "typescript" ]
 viamresources: [ "base" ]
 level: "Beginner"
-date: "8 December 2022"
+date: "2022-12-08"
+# updated: ""
 cost: "0"
+featured: 2
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
