@@ -93,6 +93,8 @@ The following attributes are available for `pi` servos:
 | `hold_position` | boolean | Optional | If `false`, power down a servo if it has tried and failed to go to a position for a duration of 500 milliseconds. <br> Default = `true` |
 | `max_rotation_deg` | int | Optional | The maximum angle the servo can rotate. Must be in between `min` and `max`. <br> Default = `180` |
 
+{{< readfile "/static/include/components/servo-control.md" >}}
+
 {{% alert title="Tip" color="tip" %}}
 
 Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs.arduino.cc/learn/microcontrollers/analog-output), rotation, and wiring specifications.

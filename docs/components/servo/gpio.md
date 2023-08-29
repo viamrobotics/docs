@@ -84,6 +84,8 @@ The following attributes are available for `gpio` servos:
 | `min_width_us` | int | Optional | Override the safe minimum [PMW](https://docs.arduino.cc/learn/microcontrollers/analog-output) pulse width in microseconds. <br> Range > `450` |
 | `max_width_us` | int | Optional | Override the safe maximum [PMW](https://docs.arduino.cc/learn/microcontrollers/analog-output) pulse width in microseconds. <br> Range < `2500` |
 
+{{< readfile "/static/include/components/servo-control.md" >}}
+
 {{% alert title="Tip" color="tip" %}}
 
 Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs.arduino.cc/learn/microcontrollers/analog-output), rotation, and wiring specifications.
