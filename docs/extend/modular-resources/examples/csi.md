@@ -9,6 +9,7 @@ tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Pytho
 ---
 
 
+If after configuring a `jetson` board you want to add your Orin Nano's CSI camera to your robot, you can.
 Viam provides a modular resource [extending](/extend/modular-resources/) the [camera API](/components/camera/#api) as a new `viam:camera:csi` model of [camera](/components/camera/).
 
 This module includes a simple wrapper around `GStreamer` and a control interface for the **control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
