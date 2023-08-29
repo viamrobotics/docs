@@ -209,8 +209,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]image.Image)](https://pkg.go.dev/image#Image): The list of images returned from the camera system.
-- [(time.Time)](https://pkg.go.dev/time#Time): The metadata timestamp with this response.
+- [([]camera.NamedImage)](https://pkg.go.dev/go.viam.com/rdk/components/camera#NamedImage): The list of images returned from the camera system, with the name of the imager associated with the image.
+- [(resource.ResponseMetadata)](https://pkg.go.dev/go.viam.com/rdk/resource#ResponseMetadata): The metadata, which holds the timestamp of when the data was captured.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
