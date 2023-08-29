@@ -345,6 +345,7 @@ After setting up and establishing the connection for your servo, navigate to the
 
 ![A photo of the servo component in the control tab](assets/components/servo/servo-control-tab.png)
 
+Use the buttons to move the servo motor to the desired angle.
 
 ## Next Steps
 
