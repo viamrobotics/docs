@@ -50,11 +50,18 @@
                         </div>
                         <div class="card-container">
                             <div class="row-no-margin">
-                                {{ range first 20 (where .Site.Pages "Section" "tutorials") }}
-                                {{ range .Pages }}
-{{ partial "tutorialcard-no-js.html" (dict "link" (.RelPermalink)) }}
-                                {{ end }}
-                                {{ end }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/blink-an-led/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/try-viam-sdk/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/servo-mousemover/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/confetti-bot/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/get-started/lazy-susan/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/configure/build-a-mock-robot/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/accessing-and-moving-robot-arm/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/plan-motion-with-arm-gripper/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/constrain-motion/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/color-detection-scuttle/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/webcam-line-follower-robot/") }}
+                                {{ partial "tutorialcard-no-js.html" (dict "link" "/tutorials/services/data-management-tutorial/") }}
                             </div>
                         </div>
                     </noscript>

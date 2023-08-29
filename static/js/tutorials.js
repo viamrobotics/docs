@@ -75,20 +75,23 @@ search.addWidgets([
   })(instantsearch.widgets.refinementList)({
     container: '#languages-list',
     attribute: 'languages',
+    sortBy: ['name:asc']
   }),
   instantsearch.widgets.panel({
     templates: { header: 'Components' },
   })(instantsearch.widgets.refinementList)({
     container: '#components-list',
     attribute: 'viamcomponents',
-    operator: 'and'
+    operator: 'and',
+    sortBy: ['name:asc']
   }),
   instantsearch.widgets.panel({
     templates: { header: 'Services' },
   })(instantsearch.widgets.refinementList)({
     container: '#services-list',
     attribute: 'viamservices',
-    operator: 'and'
+    operator: 'and',
+    sortBy: ['name:asc']
   }),
   instantsearch.widgets.panel({
     templates: { header: 'Approximate cost' },
