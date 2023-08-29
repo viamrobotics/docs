@@ -35,7 +35,7 @@ sudo chmod 755 /usr/local/bin/viam-csi
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
-Copy and paste the following raw JSON to add a `csi` [camera](/components/camera) component with the name `my_test_csi_cam`:
+Copy and paste the following raw JSON to add a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

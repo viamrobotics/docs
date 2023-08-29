@@ -14,7 +14,7 @@ tags: ["board", "components"]
 Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
 If after configuring a `jetson` board you want to add your Orin Nano's CSI camera to your robot, you can with Viam's `viam:camera:csi` model.
-Follow [these instructions](/extend/modular-resources/examples/csi) to do so.
+Follow [these instructions](/extend/modular-resources/examples/csi/) to do so.
 
 {{% /alert %}}
 
