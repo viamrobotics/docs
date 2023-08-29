@@ -38,7 +38,7 @@ theta: 60.92769307372125
 
 ## Server side
 
-When you provide an orientation vector to Viam, Viam **normalizes** `(0X, OY, OZ))` to the unit sphere.
+When you input an orientation vector, Viam normalizes it to the unit sphere.
 Therefore, if you ran the following line of code simulating an orientation `Reading` from a sensor of `(0, -4, -1)`, it will be normalized to `(0, -0.97, -0.24)` as interpreted by `viam-server`:
 
 ``` golang

@@ -26,7 +26,9 @@ TODO: add terminal output or short code snippet -->
 
 ## Usage
 
-Use position readings to specify the *absolute* position of components when using the [motion service](/services/motion/) and [frame system](/services/frame-system/), as opposed to orientation vector readings, which you use to specify relative position.
+Use position readings to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
+This is in contrast to orientation vector readings, which you use to specify relative position.
 
-Because these absolute readings don't require spatial relationships to be defined, a *sensor* or *movement sensor* that reads `position` requires less [robot configuration](/manage/configuration/), as compared for you to utilize the [sensor API](/program/apis/#sensor) or [movement sensor API](/program/apis/#movement-sensor) than sensors or movement sensors that read [orientation](/services/navigation/orientation/).
+Absolute readings don't require spatial relationships to be defined.
+Compared to a sensor that reads [orientation](/services/navigation/orientation/), a sensor that reads position requires less [configuration](/manage/configuration/) to work with the motion and navigation services.
 If you want to read position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
