@@ -109,7 +109,7 @@ async def main():
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-robot, err := client.New(ctx, "my-robot-address", logger, client.WithDisableSessions(), ...)
+robot, err := client.New(ctx, "my-robot-address", logger, client.WithDisableSessions("true"), ...)
 ```
 
 {{% /tab %}}
