@@ -13,6 +13,8 @@ A guide to what happens when your robot loses its network connection during a se
 
 If you lose connectivity, `viam-server` should stop this robot's session, therefore stopping the flow of power to all actuating resources.
 
+To disable the default behavior here and manage resource timeout and reconfiguration over a networking session yourself, follow [these instructions](/program/apis/sessions/) to [disable the default behavior](/program/apis/sessions/#disable-default-session-management) of session management, then utilize [Viam's SDKs](/program/) to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
+
 ### How do Viam's SDKs work if you lose connectivity during a session?
 
 As a client of your robot, the Python or TypeScript SDKs will have their connection to the robot stopped when the robot loses connectivity, if the session is ended properly.
