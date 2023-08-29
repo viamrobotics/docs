@@ -3,7 +3,7 @@ title: "How Orientation is Measured in Viam"
 linkTitle: "Orientation"
 weight: 10
 type: "docs"
-description: "How to use the orientation measurements reported by some models of movement sensor."
+description: "Use the orientation measurements reported by some models of movement sensor."
 aliases:
     - "/appendix/orientation-vector"
     - "/internals/orientation-vector"

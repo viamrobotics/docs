@@ -3,7 +3,7 @@ title: "How Linear Velocity is Measured in Viam"
 linkTitle: "Linear Velocity"
 weight: 10
 type: "docs"
-description: "How to use the linear velocity measurements reported by some models of movement sensor."
+description: "Use the linear velocity measurements reported by some models of movement sensor."
 ---
 
 Linear velocity measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):

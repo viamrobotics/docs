@@ -3,7 +3,7 @@ title: "How Linear Acceleration is Measured in Viam"
 linkTitle: "Linear Acceleration"
 weight: 10
 type: "docs"
-description: "How to use the linear acceleration measurements reported by some models of movement sensor."
+description: "Use the linear acceleration measurements reported by some models of movement sensor."
 ---
 
 Linear acceleration measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):

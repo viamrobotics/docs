@@ -3,7 +3,7 @@ title: "How Compass Heading is Measured in Viam"
 linkTitle: "Compass Heading"
 weight: 10
 type: "docs"
-description: "How to use compass heading measurements reported by some models of movement sensor."
+description: "Use compass heading measurements reported by some models of movement sensor."
 ---
 
 Compass heading measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):

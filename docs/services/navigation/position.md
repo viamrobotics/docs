@@ -3,7 +3,7 @@ title: "How Position is Measured in Viam"
 linkTitle: "Position"
 weight: 10
 type: "docs"
-description: "How Viam reads and utilizes the position measurements reported by some models of movement sensor."
+description: "Use the position measurements reported by some models of movement sensor."
 ---
 
 Position measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
