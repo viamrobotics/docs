@@ -11,9 +11,13 @@ A guide to what happens when your robot loses its network connection during a se
 
 ### How does `viam-server` work if you lose connectivity during a session?
 
-If you lose connectivity, `viam-server` should stop this robot's session, therefore stopping the flow of power to all actuating resources.
+If you lose connectivity, `viam-server` will by default timeout all resource and end this robot's [*session*](/program/apis/sessions/), therefore stopping the flow of power to all actuating resources.
 
-To disable the default behavior here and manage resource timeout and reconfiguration over a networking session yourself, follow [these instructions](/program/apis/sessions/) to [disable the default behavior](/program/apis/sessions/#disable-default-session-management) of session management, then utilize [Viam's SDKs](/program/) to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
+This is because the robot cannot access Viam's APIs, including the robot API, without a connection to the cloud.
+
+To disable the default behavior here and manage resource timeout and reconfiguration over a networking session yourself, follow [these instructions](/program/apis/sessions/) to [disable the default behavior](/program/apis/sessions/#disable-default-session-management) of session management, then utilize [Viam's SDKs](/program/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
+If you do this, and configure the primary and sub-parts of your robot to cache all tokens so that authentication to Viam's cloud is not required for operation-related communication over the local network or directly through `viam-server`, you can operate your robot consistently without the need for a network connection.
+However, the low-network approach is not recommended if you want to utilize any of Viam's [services](/services/), like the vision service, motion planning, or the frame system.
 
 ### How do Viam's SDKs work if you lose connectivity during a session?
 
