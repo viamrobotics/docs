@@ -3,7 +3,7 @@ title: "Add a CSI Camera as a Modular Resource"
 linkTitle: "CSI Camera"
 weight: 40
 type: "docs"
-description: "How to add a CSI Camera as a modular resource of your robot."
+description: "Use the viam:camera:csi model to add a CSI Camera to your robot."
 tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Python", "python SDK", "nvidia", "jetson orin", "jetson orin nano", "nano", "camera"]
 # SMEs: Sean
 ---
