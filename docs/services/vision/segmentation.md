@@ -26,46 +26,15 @@ The types of segmenters supported are:
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
 If you have [configured the frame system](/services/frame-system/#configuration) for the components of your robot, then you can implement this model to identify well separated objects above a flat plane.
 
-To configure an `obstacles_depth` segmenter with intrinsic parameters, first follow [these instructions](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within the frame system service.
+To configure an `obstacles_depth` segmenter, first decide if you want to use the segmenter with or without intrinsic parameters:
+
+- This is determined by the value of the configuration attribute `with_geometries`.
+- If true, this segmenter will return 
+- If you want to configure it with intrinsic parameters, first follow [these instructions](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within the frame system service.
 
 Then, configure an `obstacles_depth` segmenter:
 
 {{< tabs >}}
-{{% tab name="Builder" %}}
-
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-To create a [vision service](/services/vision/):
-
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **Radius Clustering Segmenter** as the **Model**.
-4. Click **Create Service**.
-
-![Create vision service for obstacles_pointcloud](/services/vision/obstacles_pointcloud.png)
-
-In your vision service's panel, fill in the **Attributes** field.
-
-``` json {class="line-numbers linkable-line-numbers"}
-{
-    "min_points_in_plane": <integer>,
-    "min_points_in_segment": <integer>,
-    "max_dist_from_plane_mm": <number>,
-        "ground_plane_normal_vec": {
-            "x": <integer>,
-            "y": <integer>,
-            "z": <integer>
-        },
-    "ground_angle_tolerance_degs": <integer>,
-    "clustering_radius": <integer>,
-    "clustering_strictness": <integer>
-}
-```
-
-{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Add the vision service object to the services array in your raw JSON configuration:
@@ -119,17 +88,26 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"obstacles_depth"`.
+The following parameters are available for a `"obstacles_depth"` segmenter:
 
-| Parameter | Inclusion | Description |
-| --------- | --------- | ----------- |
-| `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
-| `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. |
-| `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. This parameter determines how big the candidate clusters should be, or, how many points should be put on a flat surface. A small clustering radius is likely to split different parts of a large cluster into distinct objects. A large clustering radius is likely to aggregate closely spaced clusters into one object. <br> Default: `1` </br> |
-| `clustering_strictness` | Optional | An integer that determines the probability threshold for sorting neighboring points into the same cluster, or how "easy" `viam-server` should determine it is to sort the points the robot's camera sees into this pointcloud. When the `clustering_radius` determines the size of the candidate clusters, then the clustering_strictness determines whether the candidates will count as a cluster. If `clustering_strictness` is set to a large value, many small clusters are likely to be made, rather than a few big clusters. The lower the number, the bigger your clusters will be. <br> Default: `5` </br> |
-| `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. <br> Default: `100` </br> |
-| `ground_plane_normal_vec` | Optional | A `(x,y,z)` vector that represents the normal vector of the ground plane. Different cameras have different coordinate systems. For example, a lidar's ground plane will point in the `+z` direction `(0, 0, 1)`. On the other hand, the intel realsense `+z` direction points out of the camera lens, and its ground plane is in the negative y direction `(0, -1, 0)`. <br> Default: `(0, 0, 1)` </br> |
-| `ground_angle_tolerance_degs` | Optional | An integer that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. <br> Default: `30` </br> |
+h_min_m (float64) : Vertical height (in m) such that any obstacle strictly lower than h_min would not be an obstacle
+h_max_m (float64) : Vertical height (in m) such that any obstacle strictly higher than h_max would not be an obstacle
+theta_max_deg (float64) : The largest slope (in degrees) acceptable for non-obstacle surface ramps
+return_pcds (bool) : whether or not the user would like pointclouds returned within their GeometryInFrame object.
+
+To answer Cheuk's question, the camera populates its own Properties with the intrinsic parameters, and we'd currently grab it from there with a call to Properties() (on call to GetObjectPointClouds() ).  (PR here if my explanation isn't good lol)
+
+Hope this clears things up.
+
+-Khari
+
+| Parameter | Type | Inclusion | Description |
+| --------- | ---- | --------- | ----------- |
+| `h_min_m` | number | Optional | The vertical height (in m) such that any obstacle strictly lower than would not be an obstacle. <br> Default: </br> |
+| `h_max_m` | number | Optional | The vertical height (in m) such that any obstacle strictly higher than would not be an obstacle. |
+| `theta_max_deg` | number | Optional | The largest slope (in degrees) acceptable for non-obstacle surface ramps. <br> Default:  </br> |
+| `return_pcds` | bool | Optional | Whether or not the user would like pointclouds returned within their GeometryInFrame object. <br> Default: </br> |
+| `with_geometries` | bool | Optional | It determines whether or not you get the "no intrinsics single point" version or the "I have intrinsics give me the full set of geometries" version. |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
