@@ -49,7 +49,7 @@ To upload your custom module to the Viam Registry, either as a public or private
        <th>Description</th>
      </tr>
      <tr>
-       <td><code>name</code></td>
+       <td><code>module_id</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
        <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
@@ -91,7 +91,7 @@ To upload your custom module to the Viam Registry, either as a public or private
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "name": "acme:my-module",
+     "module_id": "acme:my-module",
      "visibility": "public",
      "url": "https://github.com/acme-co-example/my-module",
      "description": "An example custom module.",
@@ -184,21 +184,14 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
 1. Update your custom module's `meta.json` file with the changes, if any.
    For example, if you have altered your model's name, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
 
-1. Run `viam module update` to register the configuration changes to your module (and to `meta.json` if applicable):
-
-   - To register a *public* module, run the following command from within the same directory as your `meta.json` file:
+1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry.
+   Run this command from within the same directory as your `meta.json` file:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update
       ```
 
-   - To register a *private* module, run the following command from within the same directory as your `meta.json` file, providing your organization ID:
-
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module update --org-id <org-id>
-      ```
-
-   On successful update, the command will return a link to the updated module in the Viam Registry.
+   On a successful update, the command will return a link to the updated module in the Viam Registry.
 
 1. Package your custom module to get it ready to upload to the Viam Registry.
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.

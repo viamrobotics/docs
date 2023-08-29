@@ -334,7 +334,7 @@ Therefore, you are able to change the `entrypoint` file from version to version,
 ##### The `meta.json` file
 
 When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
-This file is created for you when you run the `viam module create` command, with the `name` field pre-populated based on the `--name` you provided to `create`.
+This file is created for you when you run the `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
 If you later make changes to this file, you can register those changes with the Viam Registry by using the `viam module update` command.
 
 The `meta.json` file includes the following configuration options:
@@ -347,7 +347,7 @@ The `meta.json` file includes the following configuration options:
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>name</code></td>
+    <td><code>module_id</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
     <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
@@ -389,7 +389,7 @@ For example, the following represents the configuration of an example `my-module
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "acme:my-module",
+  "module_id": "acme:my-module",
   "visibility": "public",
   "url": "https://github.com/acme-co-example/my-module",
   "description": "An example custom module.",
