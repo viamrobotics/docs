@@ -21,12 +21,12 @@ However, the low-network approach is not recommended if you want to utilize any 
 
 ### How do Viam's SDKs work if you lose connectivity during a session?
 
-As a client of your robot, the Python or TypeScript SDKs will have their connection to the robot stopped when the robot loses connectivity, if the session is ended properly.
-If you wish to implement your own client SDK, note that client implementation of session management is necessary to make this work.
+As a client of your robot, the Python or TypeScript SDKs will have their connection to the Viam cloud and Viam app stopped when the robot loses its internet connection, if the session is ended properly.
 The Go Client SDK is a little bit different: as the session management API is implemented through the Go Client, the session can be managed from within this client, allowing for more flexibility in timing disconnection.
+Follow [these instructions](/program/apis/sessions/#use-the-session-management-api-to-manually-manage-sessions) to enable this manual session management.
 
 ### How will your robot's primary parts and sub parts work if you lose connectivity during a session?
 
-Resources on the robot will no longer be connected and signaling to each other if you lose connectivity and the session is ended.
+Resources on the robot will still be connected and signaling to each other if your robot running `viam-server` is no longer connected to the internet and the session is ended, but they will not be connected to the Viam cloud and Viam app.
 If opting to manage sessions yourself with the session management API, you must make sure the topographical hierachy of resources is respected when shutting down resources at session end.
 This means that sub-parts signal their shutdown to the primary part, which then closes the connection to accessing clients like SDKs.
