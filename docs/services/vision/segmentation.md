@@ -271,11 +271,11 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "obstacles_pointcloud",
     "attributes": {
-        "h_min_m": <number>,
-        "h_max_m": <number>,
-        "theta_max_deg": <number>,
-        "return_pcds": <boolean>,
-        "with_geometries": <boolean>,
+        "h_min_m": 0.0,
+        "h_max_m": 1.0,
+        "theta_max_deg": 45,
+        "return_pcds": "false",
+        "with_geometries": "false"
     }
 }
 ]
@@ -286,21 +286,13 @@ Add the vision service object to the services array in your raw JSON configurati
 
 The following parameters are available for a `"obstacles_depth"` segmenter:
 
-<!-- h_min_m (float64) : Vertical height (in m) such that any obstacle strictly lower than h_min would not be an obstacle
-h_max_m (float64) : Vertical height (in m) such that any obstacle strictly higher than h_max would not be an obstacle
-theta_max_deg (float64) : The largest slope (in degrees) acceptable for non-obstacle surface ramps
-return_pcds (bool) : whether or not the user would like pointclouds returned within their GeometryInFrame object. 
-
-The camera populates its own Properties with the intrinsic parameters, and we'd currently grab it from there with a call to Properties() (on call to GetObjectPointClouds() ).
--->
-
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `h_min_m` | Optional | The vertical height (in m) such that any obstacle strictly lower than would not be an obstacle. <br> Default: `0` </br> |
-| `h_max_m` | Optional | The vertical height (in m) such that any obstacle strictly higher than would not be an obstacle. <br> Default: `0` </br> |
-| `theta_max_deg` | Optional | The largest slope (in degrees) acceptable for non-obstacle surface ramps. <br> Default: `0` </br> |
-| `return_pcds` | Optional | Whether or not the user would like point clouds returned within their `GeometryInFrame` object. <br> Default: `false` </br> |
-| `with_geometries` | Optional | Whether or not the user would like point clouds returned within their `GeometryInFrame` object.  <br> Default: `false` </br> |
+| `return_pcds` | Required | If you would like point clouds or a single point returned within their `GeometryInFrame` object. `true` indicates wanting point clouds. <br> Example: `false` </br> |
+| `h_min_m` | Optional | The vertical height (in m) such that any obstacle strictly lower than would not be an obstacle. <br> Default: `0.0` </br> |
+| `h_max_m` | Optional | The vertical height (in m) such that any obstacle strictly higher than would not be an obstacle. <br> Default: `1.0` </br> |
+| `theta_max_deg` | Optional | The largest slope (in degrees) acceptable for non-obstacle surface ramps. <br> Default: `45` </br> |
+| `with_geometries` | Optional | If you have configured the geometries, or, spatial orientation of the components of your robot, within the frame system. `true` is necessary to `return_pcds` properly, if `"return_pcds": "true"`  <br> Example: `false` </br> |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
