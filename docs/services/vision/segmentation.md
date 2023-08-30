@@ -274,8 +274,8 @@ Add the vision service object to the services array in your raw JSON configurati
         "h_min_m": 0.0,
         "h_max_m": 1.0,
         "theta_max_deg": 45,
-        "return_pcds": "false",
-        "with_geometries": "false"
+        "return_pcds": "true",
+        "with_geometries": "true"
     }
 }
 ]
