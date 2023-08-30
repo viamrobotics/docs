@@ -288,11 +288,11 @@ The following parameters are available for a `"obstacles_depth"` segmenter:
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `return_pcds` | Required | If you would like point clouds or a single point returned within their `GeometryInFrame` object. `true` indicates wanting point clouds. <br> Example: `false` </br> |
-| `h_min_m` | Optional | The minumum vertical height in meters acceptable so that any obstacle strictly lower than is not deemed an obstacle by the segmenter. <br> Default: `0.0` </br> |
+| `return_pcds` | Required | If you would like point clouds or a single point returned within the `GeometryInFrame` object captured by this segmenter. `true` indicates wanting point clouds. <br> Example: `"false"` </br> |
+| `h_min_m` | Optional | The minimum vertical height in meters acceptable so that any obstacle strictly lower than is not deemed an obstacle by the segmenter. <br> Default: `0.0` </br> |
 | `h_max_m` | Optional | The maximum vertical height in meters acceptable so that any obstacle strictly higher than is not deemed an obstacle by the segmenter. <br> Default: `1.0` </br> |
 | `theta_max_deg` | Optional | The largest slope in degrees acceptable for non-obstacle surface ramps. <br> Default: `45` </br> |
-| `with_geometries` | Optional | If you have configured the geometries, or, spatial orientation of the components of your robot, within the frame system. `true` is necessary to `return_pcds` properly, if `"return_pcds": "true"`  <br> Example: `false` </br> |
+| `with_geometries` | Optional | If you have configured the geometries, or, spatial orientation of the components of your robot, within the frame system. `true` is necessary to `return_pcds` properly, if `"return_pcds": "true"`  <br> Example: `"false"` </br> |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
