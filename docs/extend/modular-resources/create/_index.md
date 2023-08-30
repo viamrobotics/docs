@@ -46,7 +46,8 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
    - Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
    - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
    - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
-   - Name your model according to the namespace of the built-in API you are implementing. For more information see [Model namespace](/extend/modular-resources/key-concepts/#namespace-1).
+   - Name your model according to the namespace of the built-in API you are implementing.
+     For more information see [Model Namespace](/extend/modular-resources/key-concepts/#namespace-1).
 
     <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
@@ -81,7 +82,8 @@ This main program is the "entry point" to your module.
 
 ### Code a new resource model
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`. For more information on model naming see [Model namespace](/extend/modular-resources/key-concepts/#namespace-1).
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+For more information on model naming see [Model Namespace](/extend/modular-resources/key-concepts/#namespace-1).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 

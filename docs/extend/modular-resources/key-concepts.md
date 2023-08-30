@@ -55,7 +55,7 @@ Models are uniquely namespaced as colon-delimited-triplets in the form `namespac
 
 Models are either:
 
-- Built-in to the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
+- Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
 - Provided in custom modules available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
 
 A model with the `viam` namespace is always Viam-provided.
@@ -76,7 +76,7 @@ Each module provides one or more models.
 Guidance for naming your models for upload to the Viam Registry depends on whether your module will be implementing a single model, or multiple models:
 
 - If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
-  For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so is named as follows:
+  For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
@@ -86,7 +86,7 @@ Guidance for naming your models for upload to the Viam Registry depends on wheth
   ```
 
 - If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
-  For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so is named as follows:
+  For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
