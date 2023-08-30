@@ -73,7 +73,15 @@ For example:
 
 The [Viam Registry](https://app.viam.com/module) makes available both Viam-provided and community-written modules for download and use on your robot.
 Each module provides one or more models.
-Guidance for naming your models for upload to the Viam Registry depends on whether your module will be implementing a single model, or multiple models:
+
+If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, ensure your model name meets the following requirements:
+
+- The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
+- Your model triplet must be all-lowercase.
+- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+
+In addition, you should chose a name for the `family` of your model based on the whether your module implements a single model, or multiple models:
 
 - If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
   For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
@@ -98,13 +106,6 @@ Guidance for naming your models for upload to the Viam Registry depends on wheth
     "model": "viam:odrive:canbus"
   }
   ```
-
-If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, ensure your model name meets the following requirements:
-
-- The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
-  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
-- Your entire model triplet must be all-lowercase.
-- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
 A model with the `viam` namespace is always Viam-provided.
 
