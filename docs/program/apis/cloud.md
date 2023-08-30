@@ -1,5 +1,5 @@
 ---
-title: "Accessing the Cloud with Viam's Client SDKs"
+title: "Managing Your Fleet with Viam's Cloud API"
 linkTitle: "Cloud Management"
 weight: 20
 type: "docs"
@@ -16,7 +16,7 @@ Functionality includes:
 
 {{% alert title="Support Notice" color="note" %}}
 
-As of August 24, 2023, the cloud app API is only available in Python.
+As of August 24, 2023, cloud app API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
