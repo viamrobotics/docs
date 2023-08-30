@@ -17,99 +17,9 @@ Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 The types of segmenters supported are:
 
-- [**Obstacles depth (`obstacles_depth`)**](#configure-an-obstacles_depth-segmenter): A segmenter for depth cameras, that returns a bounding box or boxes with a Pose as a vector from the depth camera lens to the center of the obstacle.
 - [**Obstacles point cloud (`obstacles_pointcloud`)**](#configure-an-obstacles_pointcloud-segmenter): A segmenter that identifies well-separated objects above a flat plane.
 - [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
-
-## Configure an `obstacles_depth` segmenter
-
-This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
-If you have [configured the frame system](/services/frame-system/#configuration) for the components of your robot, then you can implement this model to identify well separated objects above a flat plane.
-
-To configure an `obstacles_depth` segmenter, first decide if you want to use the segmenter with or without intrinsic parameters:
-
-- This is determined by the value of the configuration attribute `with_geometries`.
-- If true, this segmenter will return 
-- If you want to configure it with intrinsic parameters, first follow [these instructions](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within the frame system service.
-
-Then, configure an `obstacles_depth` segmenter:
-
-{{< tabs >}}
-{{% tab name="JSON Template" %}}
-
-Add the vision service object to the services array in your raw JSON configuration:
-
-``` json {class="line-numbers linkable-line-numbers"}
-"services": [
-    {
-    "name": "<segmenter_name>",
-    "type": "vision",
-    "model": "obstacles_pointcloud"
-    "attributes": {
-        "min_points_in_plane": <integer>,
-        "min_points_in_segment": <integer>,
-        "max_dist_from_plane_mm": <number>,
-        "ground_plane_normal_vec": {
-            "x": <integer>,
-            "y": <integer>,
-            "z": <integer>
-        },
-        "ground_angle_tolerance_degs": <integer>,
-        "clustering_radius": <integer>,
-        "clustering_strictness": <integer>
-    }
-    },
-    ... // Other services
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-{
-  "name": "rc_segmenter",
-  "type": "vision",
-  "model": "obstacles_pointcloud",
-  "attributes": {
-    "min_points_in_plane": 1500,
-    "min_points_in_segment": 250,
-    "max_dist_from_plane_mm": 10.0,
-    "ground_plane_normal_vec": {x: 0, y:0, z: 1},
-    "ground_angle_tolerance_degs": 20.0,
-    "clustering_radius": 5,
-    "clustering_strictness": 3
-  }
-}
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following parameters are available for a `"obstacles_depth"` segmenter:
-
-h_min_m (float64) : Vertical height (in m) such that any obstacle strictly lower than h_min would not be an obstacle
-h_max_m (float64) : Vertical height (in m) such that any obstacle strictly higher than h_max would not be an obstacle
-theta_max_deg (float64) : The largest slope (in degrees) acceptable for non-obstacle surface ramps
-return_pcds (bool) : whether or not the user would like pointclouds returned within their GeometryInFrame object.
-
-To answer Cheuk's question, the camera populates its own Properties with the intrinsic parameters, and we'd currently grab it from there with a call to Properties() (on call to GetObjectPointClouds() ).  (PR here if my explanation isn't good lol)
-
-Hope this clears things up.
-
--Khari
-
-| Parameter | Type | Inclusion | Description |
-| --------- | ---- | --------- | ----------- |
-| `h_min_m` | number | Optional | The vertical height (in m) such that any obstacle strictly lower than would not be an obstacle. <br> Default: </br> |
-| `h_max_m` | number | Optional | The vertical height (in m) such that any obstacle strictly higher than would not be an obstacle. |
-| `theta_max_deg` | number | Optional | The largest slope (in degrees) acceptable for non-obstacle surface ramps. <br> Default:  </br> |
-| `return_pcds` | bool | Optional | Whether or not the user would like pointclouds returned within their GeometryInFrame object. <br> Default: </br> |
-| `with_geometries` | bool | Optional | It determines whether or not you get the "no intrinsics single point" version or the "I have intrinsics give me the full set of geometries" version. |
-
-Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+- [**Obstacles depth (`obstacles_depth`)**](#configure-an-obstacles_depth-segmenter): A segmenter for depth cameras that returns a projection of a bounding box or boxes with a Pose as a vector from the depth camera lens to the center of the obstacle identified.
 
 ## Configure an `obstacles_pointcloud` segmenter
 
@@ -306,6 +216,91 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `confidence_threshold_pct` | _Optional_ | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |
 | `mean_k` | _Required_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | _Required_ | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
+
+Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+
+## Configure an `obstacles_depth` segmenter
+
+This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
+If you have [configured the frame system](/services/frame-system/#configuration) for the components of your robot, then you can implement this model to identify well separated objects above a flat plane.
+
+To configure an `obstacles_depth` segmenter, first decide if you want to use the segmenter with or without intrinsic parameters.
+
+This is determined by the value of the configuration attribute `with_geometries`:
+
+- `true`: this segmenter will return point clouds within the `GeometryInFrame` object it captures.
+- `false`: this segmenter will return a single point within the `GeometryInFrame` object it captures.
+
+If `true`, start configuring your segmenter by following [these instructions](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within Viam's [frame system service](/services/frame-system/).
+
+After doing this, your camera will populate its own `Properties` with the intrinsic parameters of the geometric configuration.
+You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
+
+Then, configure an `obstacles_depth` segmenter:
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+Add the vision service object to the services array in your raw JSON configuration:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+    {
+    "name": "<segmenter_name>",
+    "type": "vision",
+    "model": "obstacles_pointcloud"
+    "attributes": {
+        "h_min_m": <number>,
+        "h_max_m": <number>,
+        "theta_max_deg": <number>,
+        "return_pcds": <boolean>,
+        "with_geometries": <boolean>,
+    }
+    },
+    ... // Other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"services": [
+{
+    "name": "rc_segmenter",
+    "type": "vision",
+    "model": "obstacles_pointcloud",
+    "attributes": {
+        "h_min_m": <number>,
+        "h_max_m": <number>,
+        "theta_max_deg": <number>,
+        "return_pcds": <boolean>,
+        "with_geometries": <boolean>,
+    }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following parameters are available for a `"obstacles_depth"` segmenter:
+
+<!-- h_min_m (float64) : Vertical height (in m) such that any obstacle strictly lower than h_min would not be an obstacle
+h_max_m (float64) : Vertical height (in m) such that any obstacle strictly higher than h_max would not be an obstacle
+theta_max_deg (float64) : The largest slope (in degrees) acceptable for non-obstacle surface ramps
+return_pcds (bool) : whether or not the user would like pointclouds returned within their GeometryInFrame object. 
+
+The camera populates its own Properties with the intrinsic parameters, and we'd currently grab it from there with a call to Properties() (on call to GetObjectPointClouds() ).
+-->
+
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `h_min_m` | Optional | The vertical height (in m) such that any obstacle strictly lower than would not be an obstacle. <br> Default: `0` </br> |
+| `h_max_m` | Optional | The vertical height (in m) such that any obstacle strictly higher than would not be an obstacle. <br> Default: `0` </br> |
+| `theta_max_deg` | Optional | The largest slope (in degrees) acceptable for non-obstacle surface ramps. <br> Default: `0` </br> |
+| `return_pcds` | Optional | Whether or not the user would like point clouds returned within their `GeometryInFrame` object. <br> Default: `false` </br> |
+| `with_geometries` | Optional | Whether or not the user would like point clouds returned within their `GeometryInFrame` object.  <br> Default: `false` </br> |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
