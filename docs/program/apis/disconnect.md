@@ -11,7 +11,7 @@ What happens when your robot loses its connection to the internet and can no lon
 
 ### How does `viam-server` work if you lose connectivity during a session?
 
-If you lose connectivity, `viam-server` will by default timeout all resource and end this robot's [*session*](/program/apis/sessions/). 
+If you lose connectivity, `viam-server` will by default timeout all resource and end this robot's [*session*](/program/apis/sessions/).
 This does not immediately stop the flow of power to all actuating resources, but it signals that the robot can no longer receive operations over the internet, so any further operations will not be performed.
 
 This is because the robot cannot access Viam's APIs, including the robot API, without a connection to the cloud.
