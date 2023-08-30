@@ -226,7 +226,7 @@ If you have [configured the frame system](/services/frame-system/#configuration)
 
 To configure an `obstacles_depth` segmenter, first decide if you want to use the segmenter with or without intrinsic parameters.
 
-This is determined by the value of the configuration attribute `with_geometries`:
+This is determined by the value of the configuration attribute `return_pcds`:
 
 - `true`: this segmenter will return point clouds within the `GeometryInFrame` object it captures.
 - `false`: this segmenter will return a single point within the `GeometryInFrame` object it captures.
