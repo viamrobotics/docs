@@ -1,3 +1,5 @@
+See the [Python SDK docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient) for a full list.**
+
 Method Name | Description
 ----------- | -----------
 [`ListOrganizations`](/program/apis/cloud/#listorganizations) | List the organizations the user owns.
@@ -7,4 +9,3 @@ Method Name | Description
 [`NewRobot`](/program/apis/cloud/# ) | Create a new robot.
 
 **Many other methods are also part of the cloud API.
-See the [Python SDK docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient) for a full list.**

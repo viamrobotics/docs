@@ -16,7 +16,7 @@ Functionality includes:
 
 {{% alert title="Support Notice" color="note" %}}
 
-As of August 24, 2023, cloud app API methods are only available in the Python SDK.
+Cloud app API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
@@ -82,7 +82,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListOrganizationMembers
 
-List the members and invites of the currently authenticated-to organization.
+List the members and invites of the organization that you are currently authenticated to.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
