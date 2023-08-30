@@ -9,7 +9,7 @@ tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Pytho
 ---
 
 
-Many boards, like the Jetson Orin Nano, come with built-in Camera Serial Interface, or CSI, cameras. 
+Many boards, like the Jetson Orin Nano, come with built-in Camera Serial Interface, or CSI, cameras.
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
 If after configuring a `jetson` board you want to add your Orin Nano's CSI camera to your robot, you can.
 Viam provides a modular resource [extending](/extend/modular-resources/) the [camera API](/components/camera/#api) as a new `viam:camera:csi` model of [camera](/components/camera/).
@@ -75,5 +75,5 @@ The following attributes are available for the `viam:camera:csi` model:
 | `width_px` | int | Optional | Width of the image this camera captures in pixels. <br> Default: `1920` |
 | `height_px` | int | Optional | Height of the image this camera captures in pixels. <br> Default: `1080` |
 | `frame_rate` | int | Optional | The image capture frame rate this camera should use. <br> Default: `30` |
-| `video_path` | string | Optional | The filepath to the input sensor of this camera on your board. If none is given, your robot will attempt to detect the video path automatically. <br> Default: `"0"` |
+| `video_path` | string | Optional | The filepath to the input sensor of this camera on your board. If none is given, your robot will attempt to detect the video path automatically <br> Default: `"0"` </br>  |
 | `debug` | boolean | Optional | Whether or not you want debug input from this camera in your robot's logs. <br> Default: `false` |
