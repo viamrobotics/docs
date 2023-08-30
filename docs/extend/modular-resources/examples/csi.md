@@ -9,6 +9,8 @@ tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Pytho
 ---
 
 
+Many boards, like the Jetson Orin Nano, come with built-in Camera Serial Interface, or CSI, cameras. 
+These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
 If after configuring a `jetson` board you want to add your Orin Nano's CSI camera to your robot, you can.
 Viam provides a modular resource [extending](/extend/modular-resources/) the [camera API](/components/camera/#api) as a new `viam:camera:csi` model of [camera](/components/camera/).
 
