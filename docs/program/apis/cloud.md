@@ -185,7 +185,7 @@ Create a new robot.
 **Parameters:**
 
 - `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new robot.
-- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location under which to create the new robot.
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to create the new robot in.
   Defaults to the current authorized location.
 
 **Raises:**
