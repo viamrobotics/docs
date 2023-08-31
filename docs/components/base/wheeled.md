@@ -145,4 +145,6 @@ An example wiring diagram for a base with one motor on each side:
 
 Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.
 
+## Test the base
+
 {{< readfile "/static/include/components/base-control.md" >}}
