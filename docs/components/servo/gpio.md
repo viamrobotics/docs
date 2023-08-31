@@ -90,4 +90,6 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 
 {{% /alert %}}
 
+## Test the base
+
 {{< readfile "/static/include/components/servo-control.md" >}}
