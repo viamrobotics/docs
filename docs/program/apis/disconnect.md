@@ -7,7 +7,7 @@ description: "How Viam handles losing connection to the internet during a robot 
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 ---
 
-What happens when your robot loses its connection to the internet and can no longer talk to the Viam cloud through [the Viam app](https://app.viam.com).
+What happens when your robot loses its connection to the internet over a LAN or WAN and can no longer talk to the Viam cloud through [the Viam app](https://app.viam.com).
 
 ### How does `viam-server` work if your robot loses connectivity during a session?
 
