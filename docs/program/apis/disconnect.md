@@ -14,7 +14,6 @@ What happens when your robot loses its connection to the internet and can no lon
 If the robot loses connectivity, `viam-server` will timeout and end any client [*sessions*](/program/apis/sessions/) on this robot.
 When a session times out, any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the robot until the connection is restored.
 
-
 To disable the default behavior here and manage resource timeout and reconfiguration over a networking session yourself, follow [these instructions](/program/apis/sessions/).
 [Disable the default behavior](/program/apis/sessions/#disable-default-session-management) of session management, then utilize [Viam's SDKs](/program/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
 
