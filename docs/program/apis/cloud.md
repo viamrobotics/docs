@@ -24,7 +24,7 @@ Cloud app API methods are only available in the Python SDK.
 
 To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
-You can find the location secret and the URL of your robot on the [Viam app](https://app.viam.com/):
+You can find the location secret and the URL of your robot on the **Code sample** tab in [Viam app](https://app.viam.com/):
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.rpc.dial import DialOptions, Credentials
@@ -120,7 +120,7 @@ Namespaces can only contain lowercase alphanumeric and dash characters.
 
 **Raises:**
 
-- GRPCError: An error is raised if an invalid namespace (for example, `""`) is provided.
+- `GRPCError`: This error is raised if an invalid namespace (for example, `""`) is provided.
 
 **Returns:**
 
@@ -190,7 +190,7 @@ Create a new robot.
 
 **Raises:**
 
-- GRPCError: An error is raised if an invalid location ID is passed or one isn't passed and no location ID was provided at `AppClient` instantiation.
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
 
 **Returns:**
 
