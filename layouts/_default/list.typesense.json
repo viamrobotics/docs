@@ -23,7 +23,6 @@
                         "relpermalink" .RelPermalink
                         "title" .Title
                         "linktitle" .LinkTitle
-                        "weight" .Weight
                         "wordcount" .WordCount
                         "section" .Section
                         "tags" .Params.Tags
@@ -39,7 +38,7 @@
                         "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
                         "level" .Params.level
                         "cost" (int (.Params.cost))
-                        "featured" .Params.featured
+                        "featured" .Weight
                     )}}
                   {{- end -}}
             {{- end -}}
