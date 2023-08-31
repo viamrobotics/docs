@@ -58,8 +58,6 @@ Models are either:
 - Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
 - Provided in custom modules available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
 
-A model with the `viam` namespace is always Viam-provided.
-
 #### Built-in models
 
 Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
