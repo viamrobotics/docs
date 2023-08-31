@@ -20,11 +20,11 @@ Cloud app API methods are only available in the Python SDK.
 
 {{% /alert %}}
 
-## API
+## Establish a connection
 
-{{% alert title="Tip" color="tip" %}}
-
-To use the Viam cloud app API, you need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient):
+To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
+See the following example for reference.
+You can find the location secret and the URL of your robot on the [Viam app](https://app.viam.com/):
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.rpc.dial import DialOptions, Credentials
@@ -48,9 +48,9 @@ async def main():
   cloud = await viam_client.app_client()
 ```
 
-Then, run methods on the `AppClient` according to the code examples for each method below.
+Once you have instantiated an `AppClient`, you can run methods against the `AppClient` object (named `cloud` in the examples) according to the examples for each method below.
 
-{{% /alert %}}
+## API
 
 The cloud API supports the following methods:
 

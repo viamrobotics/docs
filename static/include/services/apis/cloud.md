@@ -1,3 +1,4 @@
+**Many other methods are also part of the cloud API.
 See the [Python SDK docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient) for a full list.**
 
 Method Name | Description
@@ -7,5 +8,3 @@ Method Name | Description
 [`ListOrganizationMembers`](/program/apis/cloud/#listorganizationmembers) | List the members and invites of the current organization.
 [`UpdateOrganizationInviteAuthorizations`](/program/apis/cloud/#updateorganizationinviteauthorizations) | Update the authorizations attached to an organization invite that has already been created.
 [`NewRobot`](/program/apis/cloud/# ) | Create a new robot.
-
-**Many other methods are also part of the cloud API.
