@@ -9,7 +9,7 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "sessi
 
 What happens when your robot loses its connection to the internet and can no longer talk to the Viam cloud through [the Viam app](https://app.viam.com).
 
-### How does `viam-server` work if you lose connectivity during a session?
+### How does `viam-server` work if your robot loses connectivity during a session?
 
 If the robot loses connectivity, `viam-server` will timeout and end any client [*sessions*](/program/apis/sessions/) on this robot.
 When a session times out, any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the robot until the connection is restored.
