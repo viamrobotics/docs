@@ -95,7 +95,7 @@ search.addWidgets([
     sortBy: ['name:asc']
   }),
   instantsearch.widgets.panel({
-    templates: { header: 'Approximate cost' },
+    templates: { header: 'Approximate cost ($)' },
   })(instantsearch.widgets.rangeInput)({
     container: '#cost-range',
     attribute: 'cost',

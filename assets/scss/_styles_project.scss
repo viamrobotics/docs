@@ -1151,9 +1151,6 @@ ul.sectionlist > li:hover {
 
 .ais-Pagination-item {
   display: inline-block;
-  padding: 0.2rem 1rem;
-  margin: 0 0.2rem;
-  border: 1px solid black;
 }
 
 #pagination {
@@ -1190,9 +1187,21 @@ ul.sectionlist > li:hover {
   margin-right: 0.1rem;
 }
 
+span.ais-Pagination-link {
+  background-color: #e7e5e4;
+}
+
 .ais-Pagination-link {
   text-decoration: none;
-  color: black
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0 0.2rem;
+  border: 1px solid black;
+}
+
+a.ais-Pagination-link:hover {
+  color: black;
+  background-color: #e7e5e4;
 }
 
 .ais-Pagination-list {
