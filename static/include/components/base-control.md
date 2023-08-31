@@ -2,4 +2,4 @@ After you configure the base, go to the [**Control**](/manage/fleet/robots/#cont
 If your base makes use of a [camera](/components/camera/) component, the **Control** tab for your base will also display a **Live Feed** section.
 This section contains buttons to toggle cameras on or off and to arrange how you view the camera feeds.
 
-![The base component in control tab](/components/base/base-control-tab.png)
+{{< imgproc src="/components/base/base-control-tab.png" alt="The base component in control tab" resize="350x" >}}
