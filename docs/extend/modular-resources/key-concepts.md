@@ -60,7 +60,7 @@ Models are either:
 
 A model with the `viam` namespace is always Viam-provided.
 
-#### Built-in namespaces
+#### Built-in models
 
 Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
 
@@ -69,10 +69,26 @@ For example:
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
 
-#### Viam Registry namespaces
+#### Custom models
 
 The [Viam Registry](https://app.viam.com/module) makes available both Viam-provided and community-written modules for download and use on your robot.
 Each module provides one or more models.
+
+##### Valid APIs to implement in your model
+
+When implementing a custom model of an existing [component](/components/), valid [APIs](/program/apis/) are always:
+
+- `namespace`: `rdk`
+- `type`: `component`
+- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
+
+When implementing a custom model of an existing [service](/services/), valid [APIs](/program/apis/) are always
+
+- `namespace`: `rdk`
+- `type`: `service`
+- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
+
+##### Naming your model
 
 If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, ensure your model name meets the following requirements:
 
