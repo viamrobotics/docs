@@ -17,7 +17,7 @@ Any active commands will be cancelled, stopping any moving parts, and no new com
 
 ### How will your robot's primary parts and sub parts communicate if internet connectivity is interrupted?
 
-Resources on the robot will still be able to send operations requests to each other if your robot running `viam-server` is no longer connected to the internet and the session is ended, but if your session has been ended, all operations will timeout automatically under the management of the `SessionsClient`.
+Resources on the robot will still be able to send operations requests to each other if your robot running `viam-server` is no longer connected to the internet and the session is ended, but all operations will timeout automatically and cancel if network connectivity is not re-established under the management of the `SessionsClient`.
 
 ### How do Viam's client SDKs work if your robot loses connectivity during a session?
 
