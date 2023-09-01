@@ -1,32 +1,33 @@
 ---
-title: "Session Management with Viam's Client SDKs"
-linkTitle: "Session Management API"
+title: "Session Management"
+linkTitle: "Session Management"
 weight: 20
 type: "docs"
-description: "How to use the session management API with Viam's Client SDKs."
+description: "Manage sessions between your robot and clients connected through Viam's SDKs."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session", "sessions", "session management"]
 ---
 
-When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
-The period of time during which these clients are present is called a *session*.
+When you connect to a robot using an SDK, the SDK connects to the robot's `viam-server` instance as a _client_.
+The period of time during which a client is connected to a robot is called a *session*.
 
-Session management:
+*Session management* is a presence mechanism that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
 
-- allows a client to express that it is actively connected or authenticated to `viam-server` on your robot
-- supports stopping moving components when the connection is no longer active.
-
-*Session management* is a presence mechanism between a client and `viam-server`.
-Session management allows for safer operation of robots that physically move.
+As a safety precaution, the default Session management configuration ensures that a robot only moves when a client is actively connected.
+This is especially important for robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
-Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
+Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
 
-With default configuration, sessions are automatically managed for you with Viam's `SessionsClient`.
-If you want to manage sessions yourself, use Viam's sessions management API.
+If you need to different functionality, you can manage sessions yourself.
+The Session Management API provides functionality for
+
+- clients to notify to the robot that the client is actively authenticated and connected
+- the robot to stop moving components when a session ends
 
 ### The `SessionsClient`
 
-A Viam robot has many clients because a client is anything that is receiving the information served by `viam-server` running on the robot, which includes the primary part, sub-parts, client SDKs, and more.
-A *client* of a Viam robot could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
+A *client* of a Viam robot can be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
+A Viam robot generally has many clients because a client is anything that is receiving the information served by `viam-server`, which includes the primary {{< glossary_tooltip term_id="part" text="part" >}}, sub-parts, client SDKs, and more.
+
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the "model servers" you instantiate on your robot for individual resources.
 
 Viam's session management API's `SessionsClient` is a built-in solution that manages the connection between your robot's clients and your robot.
