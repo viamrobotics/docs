@@ -12,7 +12,7 @@ tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Pytho
 Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras.
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
 Not all CSI cameras are supported by the [webcam camera model](/components/camera/webcam).
-Instead, Viam supports CSI cameras by providing a {{< glossary_tooltip term_id="modular resource" text="modular resource" >}} for your CSI camera: `viam:camera:csi`.
+Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera: `viam:camera:csi`.
 
 This module includes a simple wrapper around `GStreamer` and a control interface for the **control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
 
