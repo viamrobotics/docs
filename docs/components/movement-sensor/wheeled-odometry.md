@@ -29,6 +29,13 @@ You can access this property of a configured motor through the [motor API's `Get
 - Configure an [encoder component](/components/encoder/#configuration) for each of the encoders you attached to the position-reporting motors.
 - Then, proceed to [configure](#configuration) a `wheeledodometry` movement sensor with the name of each of the encoder components.
 
+{{% alert title="Tip" color="tip" %}}
+
+The `roboclaw` motor does not require you to configure [encoder components](/components/encoder/#configuration) for use with the `wheeled-odometry` movement sensor.
+It reports its own position with a built-in encoded motor.
+
+{{% /alert %}}
+
 ## Configuration
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
