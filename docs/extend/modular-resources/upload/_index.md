@@ -173,7 +173,7 @@ To upload your custom module to the Viam Registry, either as a public or private
    viam module upload --version 1.0.0 --platform darwin/arm64 module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/CLI/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
@@ -227,5 +227,7 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
+
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
