@@ -17,9 +17,6 @@ When a session times out, any active commands will be cancelled, stopping any mo
 To disable the default behavior here and manage resource timeout and reconfiguration over a networking session yourself, follow [these instructions](/program/apis/sessions/).
 [Disable the default behavior](/program/apis/sessions/#disable-default-session-management) of session management, then utilize [Viam's SDKs](/program/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
 
-If you do this, you can manage the network operations of your robot manually, and operate your robot without the need for a consistent network connection.
-However, the low-network approach is not recommended if you want to utilize any of Viam's [services](/services/), like the vision service, motion planning, or the frame system.
-
 ### How do Viam's client SDKs work if your robot loses connectivity during a session?
 
 As a client of your robot, the Python or TypeScript SDKs will have their connection to the Viam cloud and Viam app stopped when the robot loses its internet connection, if the session is ended properly.
