@@ -22,8 +22,7 @@ Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) 
 Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
 This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to that of a [Raspberry Pi](/components/board/pi/).
 
-<!-- {{< tabs name="Configure an upboard Board" >}}
-{{% tab name="Config Builder" %}}
+<!-- 
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
@@ -34,9 +33,7 @@ Click **Create component**.
 ![An example configuration for a upboard board in the Viam app Config Builder.](/components/board/upboard-ui-config.png)
 
 Edit and fill in the attributes as applicable.
-
-{{% /tab %}}
-{{% tab name="JSON Template" %}} -->
+ -->
 
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="JSON Template" %}}
