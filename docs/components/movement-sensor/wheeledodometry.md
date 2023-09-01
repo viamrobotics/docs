@@ -48,9 +48,9 @@ The following attributes are available for `wheeledodometry` movement sensors:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) to which the encoders making up this movement sensor are wired. |
-| `left_motors` | object | **Required** | A struct holding the name(s) of the bases' left [encoded motors](/components/encoder/). |
-| `right_motors` | object | **Required** | A struct holding the name(s) of the bases' right [encoded motors](/components/encoder/). |
-| `time_interval_msec` | number | **Required** | The time in between each wheeled odometry calculation. |
+| `left_motors` | object | **Required** | A struct holding the name of each of the bases' left [encoded motors](/components/encoder/). |
+| `right_motors` | object | **Required** | A struct holding the name of each of the bases' right [encoded motors](/components/encoder/). |
+| `time_interval_msec` | number | Optional | The time in between each wheeled odometry calculation. <br> Default: `500.0` </br> |
 
 With a configured `wheeledodometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
