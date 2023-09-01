@@ -9,7 +9,7 @@ tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Pytho
 ---
 
 
-Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras.
+Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [this camera from E-con Systems](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/ar0230-fhd-gmsl2-hdr-camera.asp?utm_source=google-ads&utm_campaign=GMSL-Pmax&utm_agid=&utm_term=&creative=&device=c&placement=&gclid=Cj0KCQjwl8anBhCFARIsAKbbpySvlcUIdUMjRzv9WW_cajgV4zrZ8W_MQo3NZz0xHPDXzYFXc7uMWocaAo8OEALw_wcB) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924?utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=PMax%20Shopping_Product_Low%20ROAS%20Categories&utm_term=&utm_content=&gclid=Cj0KCQjwl8anBhCFARIsAKbbpyTpIPUgyZ4JuJDRmDTX0gWfMpBmvbDFKP-uimxwqTKL7cOs8dIbtxQaAvF2EALw_wcB).
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
 Not all CSI cameras are supported by the [webcam camera model](/components/camera/webcam).
 Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera: `viam:camera:csi`.
@@ -31,11 +31,41 @@ sudo chmod 755 /usr/local/bin/viam-csi
 
 ## Configuration
 
-### Module
+{{< tabs name="Connect your CSI Module and Modular Resource">}}
+{{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
 Copy and paste the following raw JSON to add a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "modules": [
+      {
+        "executable_path": "</usr/bin/csi-mr>",
+        "name": "<your-csi-cam-module-name>"
+      }
+    ],
+    "components": [
+      {
+        "model": "viam:camera:csi",
+        "attributes": {
+          "width_px": <int>,
+          "height_px": <int>,
+          "frame_rate": <int>,
+          "debug": "<boolean>"
+        },
+        "depends_on": [],
+        "name": "<your-csi-cam-name>",
+        "namespace": "rdk",
+        "type": "camera"
+      }
+    ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -62,6 +92,9 @@ Copy and paste the following raw JSON to add a `csi` [camera](/components/camera
     ]
 }
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 Save the config.
 Edit and fill in the attributes as applicable.
