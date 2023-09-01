@@ -284,13 +284,14 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
-| `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information |
 | `--help`      | return help      | - |
 
 ##### Named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
+| `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
@@ -330,6 +331,16 @@ Users can choose to pin to a specific patch version, permit upgrades within majo
 
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
+
+##### Upload validation
+
+When you `upload` a module, the command validates your local packaged module to ensure that it meets the requirements to successfully upload to the Viam Registry.
+The following criteria are checked for every `upload`:
+
+* The packaged module must exist on the filesystem at the path provided to the `upload` command.
+* The packaged module must use the `.tar.gz` extension.
+* The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
+* The entry point file must be executable.
 
 ##### The `meta.json` file
 
