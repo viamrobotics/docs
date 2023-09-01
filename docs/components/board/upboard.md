@@ -10,6 +10,7 @@ tags: ["board", "components"]
 ---
 
 Configure an `upboard` board to integrate an Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
+Xomplete the following set-up requirements, then move on to configuring your board in the Viam app](https://app.viam.com):
 
 ## Set up requirements
 
@@ -21,7 +22,7 @@ Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) 
 Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
 This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to that of a [Raspberry Pi](/components/board/pi/).
 
-{{< tabs name="Configure an upboard Board" >}}
+<!-- {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
@@ -35,8 +36,7 @@ Click **Create component**.
 Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
-
+{{% tab name="JSON Template" %}} -->
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
@@ -53,9 +53,8 @@ Edit and fill in the attributes as applicable.
   ]
 }
 ```
-
-{{% /tab %}}
-{{< /tabs >}}
+<!-- {{% /tab %}}
+{{< /tabs >}} -->
 
 The following attributes are available for `upboard` boards:
 
