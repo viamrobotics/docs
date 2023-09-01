@@ -352,6 +352,6 @@ All robots support the following methods through the [robot API](/program/apis/r
 
 ### Cloud API
 
-The [cloud API](/program/apis/cloud/) provides the following methods:
+The [cloud API](/program/apis/cloud/) supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient)):
 
 {{< readfile "/static/include/services/apis/cloud.md" >}}

@@ -1,14 +1,14 @@
 ---
-title: "Managing Your Fleet with Viam's Cloud API"
+title: "Manage Your Fleet with Viam's Cloud API"
 linkTitle: "Cloud Management"
 weight: 20
 type: "docs"
-description: "How to use the cloud API with Viam's client SDKs."
+description: "Use the cloud app API with Viam's client SDKs to manage your robot fleet with code."
 tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api", "cloud management"]
 ---
 
 The cloud app API allows you to [manage your robot fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
-Functionality includes:
+With it you can
 
 - create and manage organizations, locations, and individual robots
 - manage permissions and authorization
@@ -24,7 +24,7 @@ Cloud app API methods are only available in the Python SDK.
 
 To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
-You can find the location secret and the URL of your robot on the **Code sample** tab in [Viam app](https://app.viam.com/):
+You can find the location secret and the URL of your robot on the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab in [Viam app](https://app.viam.com/):
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.rpc.dial import DialOptions, Credentials
@@ -48,11 +48,11 @@ async def main():
   cloud = await viam_client.app_client()
 ```
 
-Once you have instantiated an `AppClient`, you can run methods against the `AppClient` object (named `cloud` in the examples) according to the examples for each method below.
+Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `cloud` in the examples).
 
 ## API
 
-The cloud API supports the following methods:
+The cloud API supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient)):
 
 {{< readfile "/static/include/services/apis/cloud.md" >}}
 
@@ -137,7 +137,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### UpdateOrganizationInviteAuthorizations
 
-Update the authorizations attached to an organization invite that has already been created.
+Update (add or remove) the authorizations attached to an organization invite that has already been created.
+If an invitation has only one authorization and you want to remove it, delete the invitation instead of using this method.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -150,7 +151,7 @@ Update the authorizations attached to an organization invite that has already be
 
 **Raises:**
 
-- GRPCError: An error is raised if no authorizations are passed or if an invalid combination of authorizations is passed (for example, an authorization to remove when the invite only contains one authorization).
+- `GRPCError`: This error is raised if no authorizations are passed or if an invalid combination of authorizations is passed (for example, an authorization to remove when the invite only contains one authorization).
 
 **Returns:**
 
