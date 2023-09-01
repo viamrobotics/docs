@@ -9,9 +9,9 @@ tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Pytho
 ---
 
 
-Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [this camera from E-con Systems](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/ar0230-fhd-gmsl2-hdr-camera.asp?utm_source=google-ads&utm_campaign=GMSL-Pmax&utm_agid=&utm_term=&creative=&device=c&placement=&gclid=Cj0KCQjwl8anBhCFARIsAKbbpySvlcUIdUMjRzv9WW_cajgV4zrZ8W_MQo3NZz0xHPDXzYFXc7uMWocaAo8OEALw_wcB) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924?utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=PMax%20Shopping_Product_Low%20ROAS%20Categories&utm_term=&utm_content=&gclid=Cj0KCQjwl8anBhCFARIsAKbbpyTpIPUgyZ4JuJDRmDTX0gWfMpBmvbDFKP-uimxwqTKL7cOs8dIbtxQaAvF2EALw_wcB).
+Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924).
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
-Not all CSI cameras are supported by the [webcam camera model](/components/camera/webcam).
+Not all CSI cameras are supported by the [webcam camera model](/components/camera/webcam/).
 Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera: `viam:camera:csi`.
 
 This module includes a simple wrapper around `GStreamer` and a control interface for the **control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
