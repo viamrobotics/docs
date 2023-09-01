@@ -12,7 +12,7 @@ What happens when your robot loses its connection to the internet over a LAN or 
 ### How does `viam-server` work if your robot loses connectivity during a session?
 
 If the robot loses connectivity, `viam-server` will timeout and end any current client [*sessions*](/program/apis/sessions/) on this robot.
-When its session times out, each client is asked to time-out of any ongoing operations by the automatically-configured `SessionsClient` of your robot. 
+When its session times out, each client is asked to cancel any ongoing operations by the automatically-configured `SessionsClient` of your robot. 
 Any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the robot until the connection is restored.
 
 
