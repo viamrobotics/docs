@@ -52,7 +52,7 @@ The following attributes are available for `wheeledodometry` movement sensors:
 | `right_motors` | object | **Required** | A struct holding the name of each of the bases' right [encoded motors](/components/encoder/). |
 | `time_interval_msec` | number | Optional | The time in between each wheeled odometry calculation. <br> Default: `500.0` </br> |
 
-With a configured `wheeledodometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
+With a configured `wheeledodometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions/), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
 
 After configuring a `wheeledodometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
