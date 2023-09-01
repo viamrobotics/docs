@@ -10,7 +10,8 @@ tags: ["board", "components"]
 ---
 
 Configure an `upboard` board to integrate an Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
-Complete the following set-up requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
+
+Complete the following setup requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
 
 ## Set up requirements
 
