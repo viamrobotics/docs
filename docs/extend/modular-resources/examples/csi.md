@@ -18,9 +18,9 @@ This module includes a simple wrapper around `GStreamer` and a control interface
 
 The module is open-sourced and available on [GitHub](https://github.com/seanavery/viam-csi).
 
-[Install requirements](#requirements) and [configure](#configuration) the module to add an `viam:camera:csi` [camera](/components/camera/) {{< glossary_tooltip term_id="resource" text="resource" >}} to your robot.
+To use the CSI camera module, follow the [Installation](#installation) and [configuration](#configuration) steps.
 
-## Requirements
+## Installation
 
 On your robot's computer, download [the `viam:camera:csi` appimage](https://github.com/viamrobotics/odrive) and make it executable:
 
