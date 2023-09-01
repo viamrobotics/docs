@@ -62,9 +62,6 @@ Select **Raw JSON** mode and copy and paste the following:
 Save the config.
 Edit and fill in the attributes as applicable.
 
-<!-- {{% /tab %}}
-{{< /tabs >}} -->
-
 The following attributes are available for `upboard` boards:
 
 | Name | Type | Inclusion | Description |
