@@ -38,6 +38,7 @@ Model | Description <a name="model-table"></a>
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources
+[`wheeledodometry`](./wheeledodometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your movement sensor with Viam's client SDK libraries

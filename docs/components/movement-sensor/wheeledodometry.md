@@ -1,49 +1,45 @@
---
+---
 title: "Configure a wheeledodometry movement sensor"
 linkTitle: "wheeledodometry"
 type: "docs"
 description: "Configure a wheeledodometry movement sensor."
-images: ["/icons/components/movement-sensor.svg"]
+images: ["/icons/components/imu.svg"]
 tags: ["movement sensor", "components", "movement sensor"]
-# SMEs: Martha Johnston
+# SMEs: Rand, Martha
 ---
 
-Configure a `wheeledodometry` movement sensor to implement _wheeledodometry odometry_ on your robot.
+Configure a `wheeledodometry` movement sensor to implement _wheeled odometry_ on your robot.
 
-Wheeled odometry is the estimation of position, orientation, linear velocity, and angular velocity using the dimensions of a base. 
-<!-- Attach a `wheeledodometry` movement sensor to the motors on each wheel of a base to measure their rotation. -->
-Then, you can use your wheeledodometry base with Viam's built-in services like the [navigation service](/services/navigation/).
+_Wheeled odometry_ is the estimation of position, orientation, linear velocity, and angular velocity using the dimensions of a base.
+This model uses [encoders](/components/encoder/) to get an odometry estimate from an encoder wheeled base.
 
-{{< tabs name="Configure an wheeledodometry movement sensor" >}}
-{{% tab name="Config Builder" %}}
+## Set-up requirements
+
+To prepare your robot, attach [encoders](/components/encoder/) to each the motors of your base to measure their rotation.
+
+- Configure each of these encoded motors [as encoder components](/components/encoder/#configuration).
+- Then, proceed to [configure](#configuration) a `wheeledodometry` movement sensor with the name of each of the encoder components.
+
+## Configuration
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your movement sensor, select the type `movement sensor`, and select the `wheeledodometry` model.
-
-Click **Create component**.
-
-![Configuration of a wheeledodometry movement sensor in the Viam app config builder.](/components/movement-sensor/configure-wheeledodometry.png)
-
-Fill in and edit the attributes as applicable.
-
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
+Select **Raw JSON** mode.
+Copy and paste the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"name" : "your-wheeledodometry-movement-sensor",
+"name" : "<your-wheeledodometry-movement-sensor-name>",
 "type" : "movement_sensor",
 "model" : "wheeledodometry",
 "attributes" : {
-    "base" : "your--base-name",
-    "left_motors" : ["your-base-left-motor-name-1", "your-base-left-motor-name-2"],
-    "right_motors" : ["your-base-right-motor-name-1", "your-base-right-motor-name-2"],
+    "base" : "<your-base-name>",
+    "left_motors" : ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],
+    "right_motors" : ["<your-base-right-motor-name-1", "your-base-right-motor-name-2>"],
     "time-interval-msec": <number>
 }
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
+Fill in and edit the attributes as applicable.
 
 ## Attributes
 
@@ -51,7 +47,12 @@ The following attributes are available for `wheeledodometry` movement sensors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `base` | string | **Required** | The `name` of the [base](/components/base/) to which this movement sensor is wired. |
-| `left_motors` | object | **Required** | A struct holding the names of the bases' left motors wired to this movement sensor: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the movement sensor is wired. </li> </ul> |
-| `right_motors` | object | **Required** | A struct holding the name of the bases' right motors wired to this movement sensor: <ul> <li> <code>i</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the pin to which the movement sensor is wired. </li> </ul> |
-| `time_interval_msec` | number | **Required** | todo |
+| `base` | string | **Required** | The `name` of the [base](/components/base/) to which the encoders making up this movement sensor are wired. |
+| `left_motors` | object | **Required** | A struct holding the name(s) of the bases' left [encoded motors](/components/encoder/). |
+| `right_motors` | object | **Required** | A struct holding the name(s) of the bases' right [encoded motors](/components/encoder/). |
+| `time_interval_msec` | number | **Required** | The time in between each wheeled odometry calculation. |
+
+With a configured `wheeledodometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
+You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
+
+After configuring a `wheeledodometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
