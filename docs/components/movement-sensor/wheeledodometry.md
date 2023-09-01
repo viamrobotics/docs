@@ -1,17 +1,17 @@
 ---
 title: "Configure a wheeledodometry movement sensor"
-linkTitle: "wheeledodometry"
+linkTitle: "wheeled-odometry"
 type: "docs"
-description: "Configure a wheeledodometry movement sensor."
+description: "Configure a wheeled-odometry movement sensor."
 images: ["/icons/components/imu.svg"]
 tags: ["movement sensor", "components", "movement sensor"]
 # SMEs: Rand, Martha
 ---
 
-Configure a `wheeledodometry` movement sensor to implement _wheeled odometry_ on your robot.
+Configure a `wheeled-odometry` movement sensor to implement _wheeled odometry_ on your robot.
 
 _Wheeled odometry_ is the estimation of position, orientation, linear velocity, and angular velocity using the dimensions of a base.
-This model uses [encoders](/components/encoder/) to get an odometry estimate from an encoder wheeled base.
+This model uses [encoders](/components/encoder/) from Position Reporting motors to get an odometry estimate from a wheeled base.
 
 ## Set-up requirements
 
@@ -56,4 +56,4 @@ The following attributes are available for `wheeledodometry` movement sensors:
 With a configured `wheeledodometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions/), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
 
-After configuring a `wheeledodometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
+After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
