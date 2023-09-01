@@ -498,11 +498,10 @@ Make sure that you set up a Python virtual environment in the directory your mod
 See the [Python virtual environment documentation](https://docs.python-guide.org/dev/virtualenvs/) for more information.
 
 You will also need to create a `requirements.txt` file containing a list of all the dependencies your module relies on.
-For example, a `requirements.txt` file with the following contents ensures that version `4.23.4` of `protobuf` and version `0.4.6` or later of the Viam Python SDK (`viam-sdk`) is installed:
+For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed. You may also add additional dependencies as needed:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-protobuf == 4.23.4 ; python_version >= "3.9"
-viam-sdk >= 0.4.6 ; python_version >= "3.9"
+viam-sdk
 ```
 
 See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
