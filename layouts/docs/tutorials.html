@@ -11,20 +11,11 @@
       <div class="td-main">
         <div class="row flex-xl-nowrap">
             <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-                <noscript>
-                    {{ partial "sidebar.html" . }}
-                </noscript>
+                {{ partial "sidebar.html" . }}
                 <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-filter lozad" type="button" data-toggle="collapse" data-target="#tutorial-filters" aria-expanded="true" aria-label="Toggle tutorial filters" title="Toggle tutorial filters">
                 </button>
-                <div class="search-panel__filters collapse show-on-wide lozad" id="tutorial-filters">
-                    <div id="languages-list"></div>
-                    <div id="components-list"></div>
-                    <div id="services-list"></div>
-                    <div id="level-list"></div>
-                    <div id="cost-range"></div>
-                </div>
             </aside>
-            <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
+            <main class="col-12 col-md-6 col-xl-8 pl-md-5" role="main">
                 <div class="td-content">
                     <h1>{{ .Title }}</h1>
 
@@ -67,6 +58,15 @@
                     </noscript>
                 </div>
             </main>
+            <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+                <div class="search-panel__filters collapse show-on-wide lozad" id="tutorial-filters">
+                    <div id="languages-list"></div>
+                    <div id="components-list"></div>
+                    <div id="services-list"></div>
+                    <div id="level-list"></div>
+                    <div id="cost-range"></div>
+                </div>
+            </aside>
         </div>
       </div>
       {{ partial "footer.html" . }}
