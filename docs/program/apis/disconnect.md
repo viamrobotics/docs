@@ -1,5 +1,5 @@
 ---
-title: "Session Connectivity: Network Disconnection during a Session"
+title: "Client Sessions and Robot Networking"
 linkTitle: "Network Disconnection"
 weight: 20
 type: "docs"
