@@ -231,7 +231,7 @@ This is determined by the value of the configuration attribute `return_pcds`:
 - `true`: this segmenter will return point clouds within the `GeometryInFrame` object it captures.
 - `false`: this segmenter will return a single point within the `GeometryInFrame` object it captures.
 
-If `true`, start configuring your segmenter by following [these instructions](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within Viam's [frame system service](/services/frame-system/).
+If `true`, start by [configuring your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within Viam's [frame system service](/services/frame-system/).
 
 After doing this, your camera will populate its own `Properties` with the intrinsic parameters of the geometric configuration.
 You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
@@ -241,7 +241,7 @@ Then, configure an `obstacles_depth` segmenter:
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
 
-Add the vision service object to the services array in your raw JSON configuration:
+Add the following vision service object to the services array in your raw JSON configuration:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -284,15 +284,15 @@ Add the vision service object to the services array in your raw JSON configurati
 {{% /tab %}}
 {{< /tabs >}}
 
-The following parameters are available for a `"obstacles_depth"` segmenter:
+The following parameters are available for an `"obstacles_depth"` segmenter:
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `return_pcds` | Required | If you would like point clouds or a single point returned within the `GeometryInFrame` object captured by this segmenter. `true` indicates wanting point clouds. <br> Example: `"false"` </br> |
-| `h_min_m` | Optional | The minimum vertical height in meters acceptable so that any obstacle strictly lower than is not deemed an obstacle by the segmenter. <br> Default: `0.0` </br> |
-| `h_max_m` | Optional | The maximum vertical height in meters acceptable so that any obstacle strictly higher than is not deemed an obstacle by the segmenter. <br> Default: `1.0` </br> |
+| `return_pcds` | Required | Whether you would like point clouds or a single point returned within the `GeometryInFrame` object captured by this segmenter. If `true`, return point clouds. <br> Example: `"false"` </br> |
+| `h_min_m` | Optional | The minimum vertical height in meters for an object to be considered an obstacle. <br> Default: `0.0` </br> |
+| `h_max_m` | Optional | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br> |
 | `theta_max_deg` | Optional | The largest slope in degrees acceptable for non-obstacle surface ramps. <br> Default: `45` </br> |
-| `with_geometries` | Optional | If you have configured the geometries, or, spatial orientation of the components of your robot, within the frame system. `true` is necessary to `return_pcds` properly, if `"return_pcds": "true"`  <br> Example: `"false"` </br> |
+| `with_geometries` | Optional | If you have configured the geometries or spatial orientation of the components of your robot, within the frame system. `true` is necessary to `return_pcds` properly, if `"return_pcds": "true"`. <br> Example: `"false"` </br> |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
