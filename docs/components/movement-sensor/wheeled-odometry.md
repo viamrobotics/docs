@@ -10,7 +10,7 @@ tags: ["movement sensor", "components", "movement sensor"]
 
 Configure a `wheeled-odometry` movement sensor to implement _wheeled odometry_ on your robot.
 
-_Wheeled odometry_ is the estimation of position, orientation, linear velocity, and angular velocity using the dimensions of a base.
+_Wheeled odometry_ is the estimation of the rate of change of position, orientation, linear velocity, and angular velocity using the dimensions of a base, calculated by measuring the movement of the motors through encoders.
 This model uses [encoders](/components/encoder/) from [position reporting motors](/components/motor/) to get an odometry estimate from a wheeled base.
 
 With a configured `wheeled-odometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions/), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
