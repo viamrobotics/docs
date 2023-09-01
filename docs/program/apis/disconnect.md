@@ -3,7 +3,7 @@ title: "Client Sessions and Robot Networking"
 linkTitle: "Network Disconnection"
 weight: 20
 type: "docs"
-description: "How Viam handles losing connection to the internet during a robot session."
+description: "How a Viam robot handles losing its connection to the internet."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 ---
 
