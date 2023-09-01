@@ -37,6 +37,11 @@ Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}} -->
+
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Select **Raw JSON** mode and copy and paste the following: 
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
@@ -53,6 +58,10 @@ Edit and fill in the attributes as applicable.
   ]
 }
 ```
+
+Save the config.
+Edit and fill in the attributes as applicable.
+
 <!-- {{% /tab %}}
 {{< /tabs >}} -->
 
