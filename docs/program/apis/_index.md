@@ -739,3 +739,5 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Other APIs
