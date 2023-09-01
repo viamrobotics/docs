@@ -17,6 +17,7 @@ This model uses [encoders](/components/encoder/) to get an odometry estimate fro
 
 To prepare your robot, attach [encoders](/components/encoder/) to each the motors of your base to measure their rotation.
 
+- Configure your rover as a [wheeled base component](/components/base/wheeled/).
 - Configure each of these encoded motors [as encoder components](/components/encoder/#configuration).
 - Then, proceed to [configure](#configuration) a `wheeledodometry` movement sensor with the name of each of the encoder components.
 
