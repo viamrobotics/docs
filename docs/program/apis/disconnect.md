@@ -15,7 +15,6 @@ If the robot loses connectivity, `viam-server` will timeout and end any current 
 When its session times out, each client is asked to cancel any ongoing operations by the automatically-configured `SessionsClient` of your robot. 
 Any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the robot until the connection is restored.
 
-
 ### How will your robot's primary parts and sub parts work if you lose connectivity during a session?
 
 Resources on the robot will still be able to send operations requests to each other if your robot running `viam-server` is no longer connected to the internet and the session is ended, but if your session has been ended, all operations will timeout automatically under the management of the `SessionsClient`.
