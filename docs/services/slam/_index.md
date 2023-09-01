@@ -119,7 +119,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 slam_svc, err := slam.FromRobot(robot, "my_slam_service")
 
 // Get the point cloud map in standard PCD format.
-pcd_map, err := slam.GetPointCloudMap(context.Background())
+pcd_map, err := slam_svc.GetPointCloudMap(context.Background())
 ```
 
 {{% /tab %}}
@@ -139,7 +139,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
 # Get the point cloud map in standard PCD format.
-pcd_map = await slam_svc.get_point_cloud_map()
+pcd_map = await slam.get_point_cloud_map()
 ```
 
 {{% /tab %}}
