@@ -126,6 +126,98 @@ disableSessions: true
 {{% /tab %}}
 {{% /tabs %}}
 
-This option allows you to have full control over sessions management.
+This option allows you to have full control over session management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
 You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
+
+## API
+
+The session management API supports the following methods:
+
+{{< readfile "/static/include/program/apis/session-management.md" >}}
+
+{{% alert title="Tip" color="tip" %}}
+
+The following code examples assume that you have a robot configured with a `Navigation` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+
+{{% /alert %}}
+
+### SafetyMonitor
+
+`SafetyMonitor()` signals to the session that the given target {{< glossary_tooltip term_id="resource" text="resource" >}}, if present, should be safety monitored so that if this session ends and this session was the last to monitor the target, it will attempt to be stopped.
+
+This not be called by a resource being monitored itself, but instead by another client, like another resource, that is controlling a resource on behalf of some request or routine.
+For example, it would be appropriate for a remote [input controller](/components/input-controller/) resource to call a `SafetyMonitor()` on a base that it is remotely controlling the motion of.
+
+In the context of a gRPC handled request, this function can only be called before the first response is sent back.
+In the case of unary, it can only be called before the handler returns.
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `target` [(resource.Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.7.3/resource#Resource): The target resource.
+
+**Returns:**
+
+- None
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#SafetyMonitor).
+
+```go
+myBase, err := base.FromRobot(robot, "my_base")
+
+// Signal to the session that the given target resource should be safety monitered.
+session = session.SafetyMonitor(ctx, myBase)
+```
+
+### SafetyMonitorResourceName
+
+`SafetyMonitorResourceName()` works just like `SafetyMonitor()` but uses Viam {{< glossary_tooltip term_id="resource" text="resource" >}} names directly.
+You assign the name of a resource when [configuring your robot](/manage/configuration/).
+
+This method, when called, signals to the session that the given target {{< glossary_tooltip term_id="resource" text="resource" >}}, if present, should be safety monitored so that if this session ends and this session was the last to monitor the target, it will attempt to be stopped.
+
+This not be called by a resource being monitored itself, but instead by another client, like another resource, that is controlling a resource on behalf of some request or routine.
+For example, it would be appropriate for a remote [input controller](/components/input-controller/) resource to call a `SafetyMonitor()` on a base that it is remotely controlling the motion of.
+
+In the context of a gRPC handled request, this function can only be called before the first response is sent back.
+In the case of unary, it can only be called before the handler returns.
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `targetName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.7.3/resource#Name): The `name` you have set for the resource in configuration.
+
+**Returns:**
+
+- None
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#SafetyMonitorResourceName).
+
+```go
+myBase, err := base.FromRobot(robot, "my_base")
+
+// Signal to the session that the given target resource should be safety monitered.
+session = session.SafetyMonitor(ctx, "my_base")
+```
+
+### ToContext
+
+Attach a session to the given contxt.
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `sess` [(*Session)](https://pkg.go.dev/go.viam.com/rdk/session#Session): The session object that you wish to attach to this context.
+
+**Returns:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#ToContext).
+
+```go
+// Attach session "my session" to the given Context 
+session = session.ToContext(context.Background(), my_session)
+```
