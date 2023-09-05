@@ -13,7 +13,7 @@ aliases:
   - "/tutorials/scuttlebot/scuttlebot"
 authors: []
 languages: [ "python", "go" ]
-viamresources: [ "board", "arm", "motor" ]
+viamresources: [ "board", "motor", "camera" ]
 level: "Beginner"
 date: "2 August 2022"
 updated: "15 August 2023"
@@ -26,7 +26,6 @@ cost: 540
 
 - A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed](/installation/prepare/rpi-setup/#install-raspberry-pi-os)
 - [A SCUTTLE robot](https://www.scuttlerobot.org/shop/)
-- A USB webcam
 
 ## Start configuring your robot
 
@@ -90,20 +89,11 @@ Enter `lenc` as the **name** for your encoder, select the type `encoder`, and se
 
 Click **Create component**.
 
-![Configuration of an AS5048 encoder in the Viam app config builder.](/components/encoder/configure-am5.png)
+Click the **board** drop-down list and select the name of your board, `local`.
 
-Paste the following in the **Attributes** field:
+In the **i2c bus** field type `main`, and in the **i2c address** field type `64`.
 
-```json
-{
-    "board": "local",
-    "connection_type": "i2c",
-    "i2c_attributes": {
-        "i2c_bus": "main",
-        "i2c_addr": 64
-    }
-}
-```
+![Configuration of an AMS-AS5048 encoder in the Viam app config builder.](/tutorials/scuttlebot/create-encoder.png)
 
 ### Right encoder
 
@@ -112,18 +102,11 @@ Enter `renc` as the **name** for your encoder, select the type `encoder`, and se
 
 Click **Create component**.
 
-Paste the following in the **Attributes** field:
+Click the **board** drop-down list and select the name of your board, `local`.
 
-```json
-{
-    "board": "local",
-    "connection_type": "i2c",
-    "i2c_attributes": {
-        "i2c_bus": "main",
-        "i2c_addr": 65
-    }
-}
-```
+In the **i2c bus** field type `main`, and in the **i2c address** field type `65`.
+
+Click **Save config**.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -196,7 +179,7 @@ Enter `left` for your motor name, select the type `motor`, and select the `gpio`
 
 Click **Create component**.
 
-Then select `local` from the **Board** drop-down to choose the raspberry pi the motor is wired to.
+Then select `local` from the **Board** drop-down to choose the Raspberry Pi the motor is wired to.
 
 Select `Encoded` in the **Encoder** section and select `lenc` as the **encoder** and set **ticks per rotation** to `2`.
 
@@ -294,8 +277,8 @@ Click **Create component**.
 {{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
 
 1. Select `right` as the **Right Motor** and `left` as the **Left Motor**.
-2. Enter `400` in **Width (mm)** (measured between the midpoints of the wheels).
-3. Enter `250` in **Wheel Circumference (mm)**.
+2. Enter `250` in **Wheel Circumference (mm)**.
+3. Enter `400` in **Width (mm)** (measured between the midpoints of the wheels).
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -341,7 +324,7 @@ Click **Create component**.
         "width_mm": 400
       },
       "model": "wheeled",
-      "name": "scuttle-base",
+      "name": "your-wheeled-base",
       "type": "base"
     }
   ]
@@ -399,7 +382,7 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 {
     "name": "Webcam",
     "type": "camera",
-    "model" : "webcam",
+    "model": "webcam",
     "attributes": {
         "video_path": "video0"
     }
@@ -422,7 +405,7 @@ You can change the refresh frequency as needed to change bandwidth.
 
 {{< imgproc src="/components/camera/example_camera_image.png" alt="Example Camera view inside Viam app" resize="700x" >}}
 
-## Next Steps
+## Next steps
 
 Now that you have fully configured your SCUTTLE robot, you can drive it around and view its camera stream.
 

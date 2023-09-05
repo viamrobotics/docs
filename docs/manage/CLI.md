@@ -9,12 +9,13 @@ aliases:
     - "/program/cli"
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your robots and modular resources across organizations and locations from the command line.
 The CLI lets you:
 
-* Retrieve organization and location information
-* Manage robot fleet data and logs
-* Control robots by issuing component and service commands.
+* Retrieve [organization](/manage/fleet/organizations/) and location information
+* Manage [robot fleet](/manage/fleet/) data and logs
+* Control robots by issuing component and service commands
+* Upload and manage [modular resources](/extend/modular-resources/) in the Viam Registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -117,7 +118,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 
 ## Manage your robots with the Viam CLI
 
-With the Viam CLI installed and authenticated, you can use it to issue commands to your robot fleet.
+With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your robot fleet or manage custom modules.
 All Viam CLI commands use the following format:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -131,19 +132,21 @@ viam [global options] command [command options] [arguments...]
 | command options   | *required for some commands*  - the operation to run for the specified command.     |
 | arguments   | *required for some commands* - the arguments for the specified command operation. Some commands take positional arguments, some named arguments.     |
 
+See the list of [commands](#commands) below.
+
 ### CLI help
 
 The Viam CLI has a built-in help system that lists all available commands.
 You can access it at any time by issuing the command:
 
 ```sh {class="command-line" data-prompt="$"}
-viam help
+viam --help
 ```
 
-You can also access contextual help by passing `help` as a command option for any CLI command, for example:
+You can also access contextual help by passing the `--help` flag as a command option for any CLI command, for example:
 
 ```sh {class="command-line" data-prompt="$"}
-viam organizations help
+viam organizations --help
 ```
 
 ## Commands
@@ -177,7 +180,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
 | `delete`      | delete data  | - |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ##### Named arguments
 
@@ -215,7 +218,7 @@ viam locations list [<organization id>]
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ### `login`
 
@@ -241,7 +244,185 @@ The `logout` command ends an authenticated CLI session
 viam logout
 ```
 
-### `organizations`
+### module
+
+The `module` command allows to you to manage [custom modules](/extend/modular-resources/).
+This includes:
+
+* Creating a new custom modular resource
+* Updating an existing module with new changes
+* Uploading a new module to the Viam Registry
+* Updating an existing module in the Viam Registry
+
+```sh {class="command-line" data-prompt="$"}
+viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
+viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
+viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <packaged-module.tar.gz>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# generate metadata for a module named 'my-module' using your organization's public namespace:
+viam module create --name 'my-module' --public-namespace 'my-namespace'
+
+# generate metadata for a module named 'my-module' using your organization's organization ID:
+viam module create --name 'my-module' --org-id 'abc'
+
+# update an existing module:
+viam module update
+
+# upload a new or updated custom module to the Viam Registry:
+viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
+```
+
+See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+#### Command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `create`    | generate new metadata for a custom module on your local filesystem  | - |
+| `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
+| `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
+| `--name`     |  the name of the custom module to be created | `create` | true |
+| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--public-namespace`      | the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
+| `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
+
+##### Using the `--org-id` and `--public-namespace` arguments
+
+All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
+
+* Use the `--public-namespace` argument to supply the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam Registry and sharing with other users.
+* Use the `--org-id` to provide your organization ID instead, suitable for sharing your module privately within your organization.
+
+You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`visibility: "public"`) to the Viam Registry.
+
+##### Using the `--platform` argument
+
+The `--platform` argument accepts one of the following architectures:
+
+* `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
+* `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
+* `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
+* `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
+
+The `viam module upload` command only supports one `platform` argument at a time.
+If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
+Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
+
+##### Using the `--version` argument
+
+The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
+You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
+
+Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam Registry.
+Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
+
+When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
+Therefore, you are able to change the `entrypoint` file from version to version, if desired.
+
+##### Upload validation
+
+When you `upload` a module, the command validates your local packaged module to ensure that it meets the requirements to successfully upload to the Viam Registry.
+The following criteria are checked for every `upload`:
+
+* The packaged module must exist on the filesystem at the path provided to the `upload` command.
+* The packaged module must use the `.tar.gz` extension.
+* The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
+* The entry point file must be executable.
+
+##### The `meta.json` file
+
+When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
+This file is created for you when you run the `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
+If you later make changes to this file, you can register those changes with the Viam Registry by using the `viam module update` command.
+
+The `meta.json` file includes the following configuration options:
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Inclusion</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><code>module_id</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
+
+  </tr>
+  <tr>
+    <td><code>visibility</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>Whether the module is visible to all Viam users (<code>public</code>), or accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+  </tr>
+  <tr>
+    <td><code>url</code></td>
+    <td>string</td>
+    <td>Optional</td>
+    <td>The URL of the GitHub repository containing the source code of the module.</td>
+  </tr>
+  <tr>
+    <td><code>description</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>A description of your module and what it provides.</td>
+  </tr>
+  <tr>
+    <td><code>models</code></td>
+    <td>object</td>
+    <td><strong>Required</strong></td>
+    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+  </tr>
+  <tr>
+    <td><code>entrypoint</code></td>
+    <td>string</td>
+    <td><strong>Required</strong></td>
+    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program.</td>
+  </tr>
+</table>
+
+For example, the following represents the configuration of an example `my-module` module in the `acme` namespace:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/acme-co-example/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "entrypoint": "run.sh"
+}
+```
+
+{{% alert title="Important" color="note" %}}
+If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+If the two namespaces do not match, the command will return an error.
+{{% /alert %}}
+
+See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+### organizations
 
 The *organizations* command lists all organizations that the authenticated session belongs to.
 
@@ -254,7 +435,7 @@ viam organizations list
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ### `robot`
 
@@ -298,7 +479,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
-| `help`      | return help      | - |
+| `--help`      | return help      | - |
 
 ##### Positional arguments: `part`
 
@@ -308,7 +489,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data.
 | `logs`     |  get logs for the specified robot part
 | `shell`     |  access a robot part securely using a secure shell. This feature must be enabled.
-| `help`      | return help
+| `--help`      | return help
 
 ##### Named arguments
 
@@ -362,7 +543,7 @@ viam robots list
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots (name and id) that the authenticated session has access to in the specified organization and location  |- |
-| `help`      | return help|-|
+| `--help`      | return help|-|
 
 ##### Named arguments
 
@@ -371,7 +552,16 @@ viam robots list
 | `--organization`     | organization name to filter by       |list|true |
 | `--location`    |  location name to filter by   |list|true |
 
-### `whoami`
+### version
+
+The `version` command returns the version of the Viam CLI.
+To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
+
+```sh {class="command-line" data-prompt="$"}
+viam version
+```
+
+### whoami
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 

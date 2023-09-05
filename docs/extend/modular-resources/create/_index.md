@@ -19,6 +19,10 @@ A configured *module* can make one or more *modular resources* available for con
 
 {{% /alert %}}
 
+Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+
+Alternatively, you can add your module locally to your robot without uploading to the Viam Registry.
+
 ## Create a custom modular resource
 
 To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new {{< glossary_tooltip term_id="model" text="model" >}} or {{< glossary_tooltip term_id="subtype" text="subtype" >}} of {{< glossary_tooltip term_id="resource" text="resource" >}}:
@@ -79,6 +83,13 @@ This main program is the "entry point" to your module.
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`:
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
+
+{{% alert title="Naming module models" color="tip" %}}
+
+Name your model with all lowercase letters for optimal performance with Viam's SDKs.
+For example, `mybase` or `my-cool-sensor`.
+
+{{% /alert %}}
 
 {{< tabs name="Sample SDK Code">}}
 {{% tab name="Python"%}}
@@ -491,9 +502,18 @@ Your options for completing this step are flexible, as this file does not need t
 One option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
 Make sure that you set up a Python virtual environment in the directory your module is in to compile your resource properly at execution.
-See the [Python Documentation](https://docs.python-guide.org/dev/virtualenvs/) for help with this.
+See the [Python virtual environment documentation](https://docs.python-guide.org/dev/virtualenvs/) for more information.
 
-Include `venv` set-up and manage dependencies in your script as in the following template:
+You will also need to create a `requirements.txt` file containing a list of all the dependencies your module relies on.
+For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed. You may also add additional dependencies as needed:
+
+``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-sdk
+```
+
+See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+The following template sets up a new virtual enviroment (`venv`), installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 #!/bin/sh
@@ -538,4 +558,6 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Next steps
 
-Follow [these configuration instructions](/extend/modular-resources/configure/) to add your custom resource to your robot.
+Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+
+Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your robot without uploading to the Viam Registry.

@@ -1,6 +1,6 @@
 ---
 title: "Integrate Viam with ChatGPT to create a companion robot"
-linkTitle: "AI companion robot"
+linkTitle: "AI Companion Robot"
 weight: 60
 type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]

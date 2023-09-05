@@ -1,6 +1,6 @@
 ---
 title: "A Guardian that Tracks Pets using a Pi, Camera, and Servo"
-linkTitle: "Security Guardian"
+linkTitle: "Pet Guardian"
 weight: 50
 type: "docs"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
