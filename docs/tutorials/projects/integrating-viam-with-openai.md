@@ -1,7 +1,7 @@
 ---
 title: "Integrate Viam with ChatGPT to create a companion robot"
 linkTitle: "AI Companion Robot"
-weight: 60
+weight: 5
 type: "docs"
 tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
 description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
@@ -13,8 +13,9 @@ imageAlt: "An AI powered companion robot called Rosey."
 authors: [ "Matt Vella" ]
 languages: [ "python" ]
 viamresources: [ "custom", "servo", "board", "ml model", "vision",  ]
-level: "Beginner"
-date: "15 February 2023"
+level: "Intermediate"
+date: "2023-02-15"
+# updated: ""
 cost: 200
 no_list: true
 ---
