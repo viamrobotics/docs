@@ -138,7 +138,7 @@ The session management API supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a `Navigation` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a [base component](/components/base) resource, and that you add the required code to connect to your robot and import any required packages, including the `sessions` package, at the top of your client file.
 Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -221,3 +221,29 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 // Attach session "my session" to the given Context 
 session = session.ToContext(context.Background(), my_session)
 ```
+
+## Manager API 
+
+The sessions package provides the `SessionManager` as an interface for holding sessions for a particular robot and managing the lifetime of each of these sessions.
+
+Instantiate a `SessionManager` with `NewSessionManager()`:
+
+Then, the following functions are available for use with a `SessionManager`:
+
+{{< readfile "/static/include/program/apis/session-manager.md" >}}
+
+### Start
+
+Creates a new session that expects at least one heartbeat within the configured window.
+
+### FindByID
+
+FindByID finds a session by the given ID. If found, a heartbeat is triggered, extending the lifetime of the session. If ownerID is in use but the session in question has a different owner, this is a security violation and we report back no session found.
+
+### AssociateResource
+
+AssociateResource associates a session ID to a monitored resource such that when a session expires, if a resource is currently associated with that ID based on the order of AssociateResource calls, then it will have its resource stopped. If id is uuid.Nil, this has no effect other than disassociation with a session. Be sure to include any remote information in the name.
+
+### Close
+
+Close stops the session manager but will not explicitly expire any sessions.
