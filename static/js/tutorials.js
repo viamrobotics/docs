@@ -126,7 +126,7 @@ search.addWidgets([
   customRefinementList({
     container: 'languages-list',
     attribute: 'languages',
-    operator: 'and',
+    operator: 'or',
     sortBy: ['name:asc'],
     items: [
       {label: "go" },
