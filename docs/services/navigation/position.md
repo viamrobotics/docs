@@ -26,6 +26,3 @@ If you want to get a position, first [configure a capable movement sensor](/comp
 
 Position readings allow you to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
 This is in contrast to [orientation readings](/services/navigation/orientation/), which you use to specify relative position.
-
-Absolute readings don't require spatial relationships to be defined.
-Unlike a sensor that reads [orientation](/services/navigation/orientation/), a sensor that reads position does not require[configuration](/manage/configuration/) of the [frame system service](/services/frame-system/).
