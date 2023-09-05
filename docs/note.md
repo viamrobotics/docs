@@ -59,7 +59,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 - **Markdown Image Example**<br>
 ![expand example](/general/expander-markdown.png)<br>
-- **HTML Image Example*- (with border)<br>
+- **HTML Image Example**- (with border)<br>
 {{<imgproc src="/general/expander-markdown.png" resize="800x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage">}}
 
 </div>
