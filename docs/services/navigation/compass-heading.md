@@ -18,6 +18,4 @@ An example of a `Compass Heading` reading:
 sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
 ```
 
-## Usage
-
 Use compass heading readings to determine the *bearing* of your robot, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your robot is facing.
