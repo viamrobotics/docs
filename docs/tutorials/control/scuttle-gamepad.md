@@ -1,7 +1,6 @@
 ---
 title: "Drive a Rover (like SCUTTLE) Using a Gamepad with a Dongle"
 linkTitle: "Drive a Rover with a Dongle Gamepad"
-weight: 20
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
@@ -15,7 +14,7 @@ tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []
 viamresources: [ "base", "input_controller" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2022-08-10"
 # updated: ""
 cost: 575

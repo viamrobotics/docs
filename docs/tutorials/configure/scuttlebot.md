@@ -1,7 +1,6 @@
 ---
 title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
-weight: 15
 type: "docs"
 description: "Configure a SCUTTLE robot on the Viam platform."
 image: "/tutorials/scuttlebot/createcomponent.png"

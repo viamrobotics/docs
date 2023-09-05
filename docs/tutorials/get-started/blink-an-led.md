@@ -1,7 +1,6 @@
 ---
 title: "Make an LED Blink With Buttons And With Code"
 linkTitle: "Blink an LED"
-weight: 30
 type: "docs"
 description: "Use the Viam app and the SDKs to make an LED turn on and off with a Raspberry Pi."
 webmSrc: "/tutorials/blink-an-led/blink.webm"
@@ -22,7 +21,7 @@ date: "2022-10-04"
 # updated: ""
 cost: 70
 no_list: true
-featured: 1
+weight: 1
 ---
 
 This tutorial will show you how to use Viam to make an LED blink with a Raspberry Pi.

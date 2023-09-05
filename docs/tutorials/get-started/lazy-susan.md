@@ -1,7 +1,6 @@
 ---
 title: "Create a Lazy Susan Using a DC Motor"
 linkTitle: "Lazy Susan"
-weight: 50
 type: "docs"
 description: "Wire a DC motor to a board, attach a plate on top, and control the motor to rotate the plate."
 webmSrc: "/tutorials/lazy-susan/preview.webm"

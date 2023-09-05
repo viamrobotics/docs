@@ -2,18 +2,26 @@
 {{- $section := $.Site.GetPage "section" .Section }}
       {{- range .Site.AllPages -}}
             {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
-            {{ $latestdate := .Date.UTC.Unix -}}
-            {{- if .Params.updated -}}
-                  {{ $latestdate := ((time .Params.updated).UTC.Unix) -}}
-            {{ end }}
+
             {{ if eq .Section "tutorials" }}
+                  {{ $.Scratch.Set "latestDate" .Date.UTC.Unix}}
+                  {{- if .Params.updated -}}
+                        {{ $.Scratch.Set "latestDate" ((time .Params.updated).UTC.Unix) -}}
+                  {{ end }}
                   {{- if not (.Params.cost) -}}
                         {{ errorf "No cost on tutorial: %s" .Title }}
                   {{- end -}}
+
+                  {{- if .Weight -}}
+                        {{ $.Scratch.Set "featured" .Weight }}
+                  {{- else -}}
+                        {{ $.Scratch.Set "featured" 9999 }}
+                  {{- end -}}
+
                   {{- $.Scratch.Add "index"
                     (dict
                         "id" .File.UniqueID
-                        "date" $latestdate
+                        "date" ($.Scratch.Get "latestDate")
                         "description" .Description
                         "fuzzywordcount" .FuzzyWordCount
                         "lastmod" .Lastmod.UTC.Unix
@@ -38,7 +46,7 @@
                         "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
                         "level" .Params.level
                         "cost" (int (.Params.cost))
-                        "featured" .Weight
+                        "featured" ($.Scratch.Get "featured")
                     )}}
                   {{- end -}}
             {{- end -}}

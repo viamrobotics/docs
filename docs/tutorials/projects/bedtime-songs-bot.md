@@ -1,7 +1,6 @@
 ---
 title: "Build a bedtime songs bot with a custom ML model"
 linkTitle: "Bedtime Songs Bot"
-weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
@@ -12,7 +11,7 @@ videoAlt: "A demonstration of the bedtime songs bot is taking place in an office
 authors: [ "Tess Avitabile", "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2023-08-18"
 # updated: ""
 cost: "0"

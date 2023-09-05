@@ -1,7 +1,6 @@
 ---
 title: "Detect color with a Viam Rover"
 linkTitle: "Detect Color"
-weight: 41
 type: "docs"
 description: "Use the vision service in the Viam app to detect a color with the Viam Rover."
 image: "/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"
@@ -19,7 +18,7 @@ date: "2022-12-16"
 # updated: ""
 cost: "0"
 no_list: true
-featured: 3
+weight: 3
 # SMEs: Hazal
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Drive a Yahboom Rover with a Gamepad"
 linkTitle: "Drive a Yahboom Rover with a Gamepad"
-weight: 50
 type: "docs"
 description: "Drive a Yahboom 4WD Rover with a bluetooth gamepad from the Viam app."
 image: "/tutorials/yahboom-rover/bluetoothpair-connect.png"
@@ -13,7 +12,7 @@ tags: ["base", "gamepad", "yahboom", "app", "rover"]
 authors: [ "Hazal Mestci" ]
 languages: [ ]
 viamresources: [ "base", "input_controller", "motor" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2022-08-10"
 # updated: ""
 cost: 260

@@ -645,6 +645,11 @@ END MARKETING CSS
  font-weight: 400 !important;
 }
 
+.hover-card.tutorial * .pills > .pill.pill-highlight {
+  background-color: #000;
+  color: white;
+}
+
 .hover-card.tutorial * .pill.pill-lang {
   border-color: #00e8e8;
 }

@@ -1,7 +1,6 @@
 ---
 title: "Foam Dart Launcher Robot Tutorial"
 linkTitle: "Dart Launcher Robot"
-weight: 160
 type: "docs"
 description: "Build a foam dart launcher with a wheeled rover and a Raspberry Pi."
 webmSrc: "/tutorials/videos/foam-dart.webm"
@@ -15,7 +14,7 @@ tags: ["base", "motor", "camera", "raspberry pi"]
 authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "base", "camera", "motor", "board" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2022-11-29"
 # updated: ""
 cost: "145"

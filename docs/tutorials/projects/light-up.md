@@ -1,7 +1,6 @@
 ---
 title: "Use Object Detection to Turn Your Lights On"
 linkTitle: "Turn on Lights with Object Detection"
-weight: 49
 type: "docs"
 description: "How to turn a light on when your webcam sees a person."
 webmSrc: "/tutorials/light-up/light-up.webm"
@@ -12,7 +11,7 @@ tags: ["camera", "vision", "detector", "python"]
 authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "camera", "mlmodel", "vision" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2023-03-30"
 # updated: ""
 cost: 20

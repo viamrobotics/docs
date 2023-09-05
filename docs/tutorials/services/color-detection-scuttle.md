@@ -1,7 +1,6 @@
 ---
 title: "Follow a Colored Object with a Rover (like SCUTTLE)"
 linkTitle: "Colored Object Follower"
-weight: 30
 type: "docs"
 description: "Instructions for detecting and following a colored object with a rover, like a SCUTTLE robot."
 webmSrc: "/tutorials/videos/scuttle-colordetection-preview.webm"
@@ -15,7 +14,7 @@ tags: ["vision", "detector", "base", "scuttle", "services"]
 authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "base", "vision", "camera" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2022-08-18"
 updated: "2023-08-11"
 cost: 540

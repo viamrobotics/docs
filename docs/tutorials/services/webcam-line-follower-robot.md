@@ -1,7 +1,6 @@
 ---
 title: "Build a Line Follower with a Rover and a Webcam"
 linkTitle: "RGB Line Follower"
-weight: 50
 type: "docs"
 description: "Build a line-following robot that relies on a webcam and color detection."
 tags: ["base", "vision", "detector", "camera", "services", "python"]
@@ -13,7 +12,7 @@ aliases:
 authors: [ "Jessamy Taylor" ]
 languages: [ "python" ]
 viamresources: [ "vision", "camera" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2022-08-26"
 updated: "2023-08-04"
 cost: 570

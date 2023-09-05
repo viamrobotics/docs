@@ -1,3 +1,4 @@
+    document.querySelectorAll('.pill-lang').forEach(e => search.helper.state.facetsRefinements.languages.includes(e.textContent) ? e.classList.add('highlight') : e.classList.remove('highlight'));
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
 const observer = lozad();
 
@@ -38,7 +39,6 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
         const input = target.closest('input');
 
         if (input) {
-          console.log("!", input.value)
           refine(input.value.split(" ")[0]);
         }
       });
@@ -47,7 +47,6 @@ const customRefinementList = instantsearch.connectors.connectRefinementList(
     }
 
     const list = widgetParams.items.map(({label: staticLabel}) => {
-      console.log(staticLabel, items)
       const elem = items.find(
         ({label}) => label === staticLabel
       );
@@ -108,7 +107,7 @@ search.addWidgets([
     {{/image}}
     <div class="small-hover-card-div">
         <div>
-            <span>{{#helpers.highlight}}{ "attribute": "title" }{{/helpers.highlight}}</span>
+            <span>{{title}}</span>
             <div class="pills">
                 {{#languages}}<div class="pill pill-lang">{{.}}</div>{{/languages}}
                 {{#viamcomponents}}<div class="pill pill-component">{{.}}</div>{{/viamcomponents}}
@@ -208,5 +207,9 @@ search.on('render', function() {
   } else {
     document.getElementById("filter-level").textContent = "Level";
   }
+
+  document.querySelectorAll('.pill-lang').forEach(e => search.helper.state.facetsRefinements.languages.includes(e.textContent) ? e.classList.add('pill-highlight') : e.classList.remove('pill-highlight'));
+  document.querySelectorAll('.pill-component').forEach(e => (search.helper.state.facetsRefinements.viamcomponents.includes(e.textContent) || search.helper.state.facetsRefinements.viamservices.includes(e.textContent)) ? e.classList.add('pill-highlight') : e.classList.remove('pill-highlight'));
+
   observer.observe()
 });

@@ -1,7 +1,6 @@
 ---
 title: "Control a Robot Dog with a Custom Viam Base Component"
 linkTitle: "Custom Quadruped Base"
-weight: 55
 type: "docs"
 tags: ["sdk", "extending viam", "components", "base", "python", "modular resources"]
 description: "Integrate a custom base component with the Viam Python SDK."
@@ -14,7 +13,7 @@ aliases:
 authors: [ "Jessamy Taylor" ]
 languages: [ "python" ]
 viamresources: [ "base", "camera", "custom" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2023-05-15"
 # updated: ""
 cost: 190

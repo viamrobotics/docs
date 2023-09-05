@@ -1,7 +1,6 @@
 ---
 title: "Add Constraints and Transforms to a Motion Plan"
 linkTitle: "Add Motion Constraints"
-weight: 25
 type: "docs"
 description: "Use constraints and transforms with the motion service."
 webmSrc: "/tutorials/videos/motion_constraints.webm"
@@ -12,7 +11,7 @@ tags: ["arm", "gripper", "motion", "services"]
 authors: [ "Jessamy Taylor" ]
 languages: [ "python" ]
 viamresources: [ "data_manager", "camera" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2023-07-03"
 # updated: ""
 cost: 8400

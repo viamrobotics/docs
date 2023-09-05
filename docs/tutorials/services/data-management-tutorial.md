@@ -1,7 +1,6 @@
 ---
 title: "Introduction to the Data Management Service"
 linkTitle: "Intro to Data Management"
-weight: 60
 type: "docs"
 description: "Configure data capture and cloud sync, filter and view captured data, and export your data."
 image: "/tutorials/data-management/image1.png"
@@ -15,12 +14,12 @@ tags: ["data management", "data", "services", "try viam"]
 authors: []
 languages: []
 viamresources: [ "data_manager", "camera" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2023-02-08"
 # updated: ""
 cost: "0"
 no_list: true
-featured: 4
+weight: 4
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 

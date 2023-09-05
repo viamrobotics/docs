@@ -1,7 +1,7 @@
 ---
 title: "Drive a Rover with the Viam SDK"
 linkTitle: "Drive with the SDK"
-weight: 40
+weight: 2
 type: "docs"
 description: "Use a Viam SDK to program a rover to move in a square."
 webmSrc: "/tutorials/try-viam-sdk/image1.webm"
@@ -18,7 +18,6 @@ level: "Beginner"
 date: "2022-12-08"
 # updated: ""
 cost: "0"
-featured: 2
 ---
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}

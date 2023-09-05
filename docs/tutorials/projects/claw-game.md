@@ -1,7 +1,6 @@
 ---
 title: "Build a robotic claw game with a Raspberry Pi"
 linkTitle: "Claw Game"
-weight: 50
 type: "docs"
 description: "Create your own version of the famous arcade claw machine using a robotic arm and a claw grabber."
 tags: ["app", "board", "motor", "gripper"]
@@ -16,7 +15,7 @@ level: "Advanced"
 date: "2023-05-29"
 # updated: ""
 cost: 8910
-featured: 8
+weight: 8
 ---
 
 {{<gif webm_src="/tutorials/claw-game/claw-game.webm" mp4_src="/tutorials/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}

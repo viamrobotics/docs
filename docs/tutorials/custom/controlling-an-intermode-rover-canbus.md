@@ -1,7 +1,6 @@
 ---
 title: "Control an Intermode Rover with CAN Bus and Viam"
 linkTitle: "Control an Intermode Rover with Viam"
-weight: 60
 type: "docs"
 tags: ["modular resources", "extending viam", "components", "rover", "base", "CAN bus", "Intermode"]
 description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."

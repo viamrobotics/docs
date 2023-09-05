@@ -1,7 +1,6 @@
 ---
 title: "Build a Mock Robot"
 linkTitle: "Mock Robot"
-weight: 41
 type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
 webmSrc: "/tutorials/build-a-mock-robot/mock-robot.webm"
@@ -15,7 +14,7 @@ tags: ["mock", "simulation"]
 authors: []
 languages: [ "python", "go" ]
 viamresources: [ "board", "arm", "motor" ]
-level: "Beginner"
+level: "Intermediate"
 date: "2022-10-11"
 # updated: ""
 cost: "0"
