@@ -587,7 +587,7 @@ sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interfa
 ```
 
 If you want to read linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
+Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
 
 ### Linear Velocity
 
