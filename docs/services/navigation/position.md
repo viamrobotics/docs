@@ -20,8 +20,6 @@ An example of a `Position` reading:
 sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
 ```
 
-## Usage
-
 If you want to get a position, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 
 Position readings allow you to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
