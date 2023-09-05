@@ -502,9 +502,18 @@ Your options for completing this step are flexible, as this file does not need t
 One option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
 Make sure that you set up a Python virtual environment in the directory your module is in to compile your resource properly at execution.
-See the [Python Documentation](https://docs.python-guide.org/dev/virtualenvs/) for help with this.
+See the [Python virtual environment documentation](https://docs.python-guide.org/dev/virtualenvs/) for more information.
 
-Include `venv` set-up and manage dependencies in your script as in the following template:
+You will also need to create a `requirements.txt` file containing a list of all the dependencies your module relies on.
+For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed. You may also add additional dependencies as needed:
+
+``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam-sdk
+```
+
+See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
+
+The following template sets up a new virtual enviroment (`venv`), installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
 
 ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 #!/bin/sh
