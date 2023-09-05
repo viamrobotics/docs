@@ -58,7 +58,5 @@ o_z: -1.0
 theta: 60.92769307372125
 ```
 
-## Usage
-
 If you want to read orientation, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Additionally, follow [these instructions](/services/frame-system/#configuration) to configure the geometries of each component of your robot within the [frame system](/services/frame-system/).
