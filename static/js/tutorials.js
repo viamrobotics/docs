@@ -1,4 +1,3 @@
-    document.querySelectorAll('.pill-lang').forEach(e => search.helper.state.facetsRefinements.languages.includes(e.textContent) ? e.classList.add('highlight') : e.classList.remove('highlight'));
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
 const observer = lozad();
 
@@ -187,29 +186,30 @@ search.addWidgets([
 
 search.start();
 search.on('render', function() {
-  if (search.helper.state.facetsRefinements.languages.length) {
-    document.getElementById("filter-languages").textContent = "Languages (" + search.helper.state.facetsRefinements.languages.length + ")";
+  if (search.helper.state.disjunctiveFacetsRefinements.languages && search.helper.state.disjunctiveFacetsRefinements.languages.length) {
+    document.getElementById("filter-languages").textContent = "Languages (" + search.helper.state.disjunctiveFacetsRefinements.languages.length + ")";
   } else {
     document.getElementById("filter-languages").textContent = "Languages";
   }
-  if (search.helper.state.facetsRefinements.viamcomponents.length) {
+  if (search.helper.state.facetsRefinements.viamcomponents && search.helper.state.facetsRefinements.viamcomponents.length) {
     document.getElementById("filter-components").textContent = "Components (" + search.helper.state.facetsRefinements.viamcomponents.length + ")";
   } else {
     document.getElementById("filter-components").textContent = "Components";
   }
-  if (search.helper.state.facetsRefinements.viamservices.length) {
+  if (search.helper.state.facetsRefinements.viamservices && search.helper.state.facetsRefinements.viamservices.length) {
     document.getElementById("filter-services").textContent = "Services (" + search.helper.state.facetsRefinements.viamservices.length + ")";
   } else {
     document.getElementById("filter-services").textContent = "Services";
   }
-  if (search.helper.state.disjunctiveFacetsRefinements.level.length) {
+  if (search.helper.state.disjunctiveFacetsRefinements.level && search.helper.state.disjunctiveFacetsRefinements.level.length) {
     document.getElementById("filter-level").textContent = "Level (" + search.helper.state.disjunctiveFacetsRefinements.level.length + ")";
   } else {
     document.getElementById("filter-level").textContent = "Level";
   }
-
-  document.querySelectorAll('.pill-lang').forEach(e => search.helper.state.facetsRefinements.languages.includes(e.textContent) ? e.classList.add('pill-highlight') : e.classList.remove('pill-highlight'));
-  document.querySelectorAll('.pill-component').forEach(e => (search.helper.state.facetsRefinements.viamcomponents.includes(e.textContent) || search.helper.state.facetsRefinements.viamservices.includes(e.textContent)) ? e.classList.add('pill-highlight') : e.classList.remove('pill-highlight'));
+  if (search.helper.state.facetsRefinements && search.helper.state.disjunctiveFacetsRefinements.languages && search.helper.state.facetsRefinements.viamcomponents) {
+    document.querySelectorAll('.pill-lang').forEach(e => search.helper.state.disjunctiveFacetsRefinements.languages.includes(e.textContent) ? e.classList.add('pill-highlight') : e.classList.remove('pill-highlight'));
+    document.querySelectorAll('.pill-component').forEach(e => (search.helper.state.facetsRefinements.viamcomponents.includes(e.textContent) || search.helper.state.facetsRefinements.viamservices.includes(e.textContent)) ? e.classList.add('pill-highlight') : e.classList.remove('pill-highlight'));
+  }
 
   observer.observe()
 });
