@@ -15,6 +15,7 @@ This model uses [encoders](/components/encoder/) from [position reporting motors
 
 With a configured `wheeled-odometry` movement sensor, after every time `time_interval_msec` elapses during a [session](/program/apis/sessions/), your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base.
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
+For best accuracy, it is recommended you configure a time interval less of than `1000` milliseconds. 
 
 After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
 
