@@ -1247,6 +1247,11 @@ span.ais-Pagination-link {
   background-color: #e7e5e4;
 }
 
+.ais-Pagination-item.ais-Pagination-item--selected > a.ais-Pagination-link {
+  background-color: #000;
+  color: white;
+}
+
 .ais-Pagination-link {
   text-decoration: none;
   color: black;
