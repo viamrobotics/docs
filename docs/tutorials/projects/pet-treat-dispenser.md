@@ -1,7 +1,6 @@
 ---
 title: "Build a Smart Pet Feeder with Machine Learning"
 linkTitle: "Smart Pet Treat Dispenser"
-weight: 50
 type: "docs"
 description: "Use a Raspberry Pi, a motor, and machine learning to build a smart pet feeder."
 tags: ["raspberry pi", "app", "board", "motor"]
@@ -11,8 +10,9 @@ images: ["/tutorials/pet-treat-dispenser/preview.png"]
 authors: [ "Arielle Mella", "Jessamy Taylor", "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "board", "camera", "motor", "mlmodel", "vision" ]
-level: "Beginner"
-date: "30 March 2023"
+level: "Intermediate"
+date: "2023-03-30"
+# updated: ""
 cost: 143
 ---
 
