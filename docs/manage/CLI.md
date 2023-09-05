@@ -284,13 +284,14 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
-| `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information |
 | `--help`      | return help      | - |
 
 ##### Named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
+| `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
@@ -331,10 +332,20 @@ Users can choose to pin to a specific patch version, permit upgrades within majo
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
+##### Upload validation
+
+When you `upload` a module, the command validates your local packaged module to ensure that it meets the requirements to successfully upload to the Viam Registry.
+The following criteria are checked for every `upload`:
+
+* The packaged module must exist on the filesystem at the path provided to the `upload` command.
+* The packaged module must use the `.tar.gz` extension.
+* The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
+* The entry point file must be executable.
+
 ##### The `meta.json` file
 
 When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
-This file is created for you when you run the `viam module create` command, with the `name` field pre-populated based on the `--name` you provided to `create`.
+This file is created for you when you run the `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
 If you later make changes to this file, you can register those changes with the Viam Registry by using the `viam module update` command.
 
 The `meta.json` file includes the following configuration options:
@@ -347,7 +358,7 @@ The `meta.json` file includes the following configuration options:
     <th>Description</th>
   </tr>
   <tr>
-    <td><code>name</code></td>
+    <td><code>module_id</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
     <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a></td>
@@ -389,7 +400,7 @@ For example, the following represents the configuration of an example `my-module
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "acme:my-module",
+  "module_id": "acme:my-module",
   "visibility": "public",
   "url": "https://github.com/acme-co-example/my-module",
   "description": "An example custom module.",

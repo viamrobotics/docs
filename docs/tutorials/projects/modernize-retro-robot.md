@@ -1,7 +1,6 @@
 ---
 title: "Modernize a 1980s robot"
 linkTitle: "Modernize a 1980s Robot"
-weight: 60
 type: "docs"
 webmSrc: "/tutorials/maiv/maiv_front.webm"
 mp4Src: "/tutorials/maiv/maiv_front.mp4"
@@ -13,8 +12,9 @@ imageAlt: "The front of the Ombibot 2000 robot"
 authors: [ "Matt Vella" ]
 languages: []
 viamresources: [ "board", "motor", "base", "camera" ]
-level: "Beginner"
-date: "4 May 2023"
+level: "Intermediate"
+date: "2023-05-04"
+# updated: ""
 cost: 580
 ---
 

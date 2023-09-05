@@ -1,7 +1,6 @@
 ---
 title: "Create a Lazy Susan Using a DC Motor"
 linkTitle: "Lazy Susan"
-weight: 50
 type: "docs"
 description: "Wire a DC motor to a board, attach a plate on top, and control the motor to rotate the plate."
 webmSrc: "/tutorials/lazy-susan/preview.webm"
@@ -14,7 +13,8 @@ authors: [ "Arielle Mella" ]
 languages: [ "python" ]
 viamresources: [ "board", "motor" ]
 level: "Beginner"
-date: "29 May 2023"
+date: "2023-05-29"
+# updated: ""
 cost: 114
 ---
 
@@ -37,7 +37,7 @@ This project requires the following hardware:
 * [Raspberry Pi](https://a.co/d/bxEdcAT)
 * [microSD card](https://a.co/d/j4fp6aA)
 * microSD card reader
-* DC motor (for example [this motor](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114090046/10385097))
+* DC motor (for example [this motor](https://www.digikey.com/en/products/detail/seeed-technology-co.-ltd/114090046/10385097))
 * Motor driver (for example [this driver](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6))
 * Appropriate flange coupler for your motor (for example [6mm flange coupler](https://a.co/d/fRFsu90))
 * M3 Screws to fit the flange coupler to the board

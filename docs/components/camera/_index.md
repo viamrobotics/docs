@@ -173,6 +173,57 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetImages
+
+Get simultaneous images from different imagers, along with associated metadata.
+The multiple images returned from GetImages do not represent a time series of images.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(List[NamedImage])](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage): The list of images returned from the camera system.
+- [(ResponseMetadata)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResponseMetadata): The metadata timestamp with this response.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_camera = Camera.from_robot(robot=robot, name="my_camera")
+
+images, metadata = await my_cam.get_images()
+img0 = images[0].image
+timestamp = metadata.captured_at
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.get_images).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [([]camera.NamedImage)](https://pkg.go.dev/go.viam.com/rdk/components/camera#NamedImage): The list of images returned from the camera system, with the name of the imager associated with the image.
+- [(resource.ResponseMetadata)](https://pkg.go.dev/go.viam.com/rdk/resource#ResponseMetadata): The metadata, which holds the timestamp of when the data was captured.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myCamera, err := camera.FromRobot(robot, "my_camera")
+
+images, metadata, err := myCamera.Images(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetPointCloud
 
 Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
