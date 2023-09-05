@@ -222,7 +222,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 session = session.ToContext(context.Background(), my_session)
 ```
 
-## Manager API 
+## Manager API
 
 The sessions package provides the `SessionManager` as an interface for holding sessions for a particular robot and managing the lifetime of each of these sessions.
 
