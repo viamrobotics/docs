@@ -22,6 +22,7 @@ IgnoreURLs:
 - "slamtec.com"
 - "softroboticsinc.com"
 - "universal-robots.com"
+- "digikey.com"
 - "ufactory.cc"
 IgnoreDirs:
 - "lib"
