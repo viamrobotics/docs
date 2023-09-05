@@ -288,7 +288,7 @@ The following parameters are available for an `"obstacles_depth"` segmenter:
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `with_geometries` | Required | Whether you would like multiple boxes, if `true`, or a single point , if`false`, returned within the GeometryInFrame object captured by this segmenter.  <br> Example: `"false"` </br> |
+| `with_geometries` | Required | Whether you would like multiple boxes, if `true`, or a single point, if `false`, returned within the `GeometryInFrame` object captured by this segmenter.  <br> Example: `"false"` </br> |
 | `h_min_m` | Optional | The minimum vertical height in meters for an object to be considered an obstacle. <br> Default: `0.0` </br> |
 | `h_max_m` | Optional | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br> |
 | `theta_max_deg` | Optional | The maximum slope at which an object is still not an obstacle. <br> Default: `45` </br> |
