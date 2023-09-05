@@ -1,12 +1,12 @@
 ---
-title: "How Position is Measured in Viam"
+title: "Position Measurement"
 linkTitle: "Position"
 weight: 10
 type: "docs"
 description: "Use the position measurements reported by some models of movement sensor."
 ---
 
-Position measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
+The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component report Position measurements:
 
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
@@ -22,9 +22,9 @@ sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interfa
 
 ## Usage
 
-If you want to read position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+If you want to get a position, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 
-Use position readings to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
+Position readings allow you to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
 This is in contrast to orientation vector readings, which you use to specify relative position.
 
 Absolute readings don't require spatial relationships to be defined.

@@ -6,7 +6,7 @@ type: "docs"
 description: "Use compass heading measurements reported by some models of movement sensor."
 ---
 
-Compass heading measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
+The following [movement sensor](/components/movement-sensor/) {{< glossary_tooltip term_id="model" text="models" >}} read compass heading measurements:
 
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
