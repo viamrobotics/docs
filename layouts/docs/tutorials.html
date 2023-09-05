@@ -12,12 +12,24 @@
         <div class="row flex-xl-nowrap">
             <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
                 {{ partial "sidebar.html" . }}
-                <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-filter lozad" type="button" data-toggle="collapse" data-target="#tutorial-filters" aria-expanded="true" aria-label="Toggle tutorial filters" title="Toggle tutorial filters">
-                </button>
             </aside>
-            <main class="col-12 col-md-6 col-xl-8 pl-md-5" role="main">
+            <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
                 <div class="td-content">
                     <h1>{{ .Title }}</h1>
+                        <div id="tutorial-menu" class="lozad">
+                            <div id="tutorial-filters">
+                                <div class="filter" id="filter-languages" aria-expanded="false" data-toggle="collapse" data-target="#languages-list">Languages</div>
+                                <div class="filter" id="filter-components" aria-expanded="false" data-toggle="collapse" data-target="#components-list">Components</div>
+                                <div class="filter" id="filter-services" aria-expanded="false" data-toggle="collapse" data-target="#services-list">Services</div>
+                                <div class="filter" id="filter-level" aria-expanded="false" data-toggle="collapse" data-target="#level-list">Level</div>
+                            </div>
+                            <div class="accordion-group search-panel__filters show-on-wide lozad" id="tutorial-filter-items">
+                                <div id="languages-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="components-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="services-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                                <div id="level-list" class="search-facets collapse" data-parent="#tutorial-menu"></div>
+                            </div>
+                        </div>
 
                     {{ if not hugo.IsProduction }}
                     <div class="alert alert-caution" role="alert">
@@ -58,15 +70,6 @@
                     </noscript>
                 </div>
             </main>
-            <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-                <div class="search-panel__filters collapse show-on-wide lozad" id="tutorial-filters">
-                    <div id="languages-list"></div>
-                    <div id="components-list"></div>
-                    <div id="services-list"></div>
-                    <div id="level-list"></div>
-                    <div id="cost-range"></div>
-                </div>
-            </aside>
         </div>
       </div>
       {{ partial "footer.html" . }}
@@ -76,7 +79,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.44.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
     <script src="../js/tutorials.js"></script>
 
   </body>

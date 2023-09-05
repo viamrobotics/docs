@@ -28,6 +28,59 @@ const search = instantsearch({
   searchClient,
 });
 
+
+const customRefinementList = instantsearch.connectors.connectRefinementList(
+  ({ items, refine, widgetParams }, isFirstRender) => {
+    const container = document.getElementById(widgetParams.container);
+
+    if (isFirstRender) {
+      container.addEventListener('click', ({target}) => {
+        const input = target.closest('input');
+
+        if (input) {
+          console.log("!", input.value)
+          refine(input.value.split(" ")[0]);
+        }
+      });
+
+      return;
+    }
+
+    const list = widgetParams.items.map(({label: staticLabel}) => {
+      console.log(staticLabel, items)
+      const elem = items.find(
+        ({label}) => label === staticLabel
+      );
+      let count = 0
+      let isRefined = false;
+      if (elem) {
+        count = elem.count;
+        isRefined = elem.isRefined;
+      }
+
+      return `
+        <li>
+          <label>
+            <input
+              type="button"
+              value="${staticLabel} (${count})"
+              class="${isRefined ? 'refined' : ''}"
+              ${count ? '' : 'disabled'}
+            />
+          </label>
+        </li>
+      `;
+    });
+
+    container.innerHTML = `
+      <ul>
+        ${list.join('')}
+      </ul>
+    `;
+  }
+);
+
+
 search.addWidgets([
   instantsearch.widgets.hits({
     container: '#hits',
@@ -71,48 +124,89 @@ search.addWidgets([
   instantsearch.widgets.configure({
     hitsPerPage: 12,
   }),
-  instantsearch.widgets.panel({
-    templates: { header: 'Languages' },
-  })(instantsearch.widgets.refinementList)({
-    container: '#languages-list',
+  customRefinementList({
+    container: 'languages-list',
     attribute: 'languages',
-    sortBy: ['name:asc']
+    operator: 'and',
+    sortBy: ['name:asc'],
+    items: [
+      {label: "go" },
+      {label: "python" },
+      {label: "typescript"},
+    ],
   }),
-  instantsearch.widgets.panel({
-    templates: { header: 'Components' },
-  })(instantsearch.widgets.refinementList)({
-    container: '#components-list',
+  customRefinementList({
+    container: 'components-list',
     attribute: 'viamcomponents',
     operator: 'and',
-    sortBy: ['name:asc']
+    sortBy: ['name:asc'],
+    items: [
+      {label: "arm"},
+      {label: "base"},
+      {label: "board"},
+      {label: "camera"},
+      {label: "gripper"},
+      {label: "input_controller"},
+      {label: "motor"},
+      {label: "sensor"},
+      {label: "servo"},
+    ],
   }),
-  instantsearch.widgets.panel({
-    templates: { header: 'Services' },
-  })(instantsearch.widgets.refinementList)({
-    container: '#services-list',
+  customRefinementList({
+    container: 'services-list',
     attribute: 'viamservices',
     operator: 'and',
-    sortBy: ['name:asc']
+    sortBy: ['name:asc'],
+    items: [
+      {label: "data"},
+      {label: "motion"},
+      {label: "frame_system"},
+      {label: "mlmodel"},
+      {label: "navigation"},
+      {label: "base_rc"},
+      {label: "sensors"},
+      {label: "slam"},
+      {label: "vision"},
+    ],
   }),
-  instantsearch.widgets.panel({
-    templates: { header: 'Approximate cost ($)' },
-  })(instantsearch.widgets.rangeInput)({
-    container: '#cost-range',
-    attribute: 'cost',
-  }),
-  instantsearch.widgets.panel({
-    templates: { header: 'Level' },
-  })(instantsearch.widgets.refinementList)({
-    container: '#level-list',
+  customRefinementList({
+    container: 'level-list',
     attribute: 'level',
-    operator: 'and'
+    operator: 'or',
+    sortBy: ['name:asc'],
+    items: [
+      {label: "Beginner"},
+      {label: "Intermediate"},
+      {label: "Advanced"},
+    ],
   }),
   instantsearch.widgets.pagination({
     container: '#pagination',
   }),
 ]);
 
+
 search.start();
 search.on('render', function() {
+  if (search.helper.state.facetsRefinements.languages.length) {
+    document.getElementById("filter-languages").textContent = "Languages (" + search.helper.state.facetsRefinements.languages.length + ")";
+  } else {
+    document.getElementById("filter-languages").textContent = "Languages";
+  }
+  if (search.helper.state.facetsRefinements.viamcomponents.length) {
+    document.getElementById("filter-components").textContent = "Components (" + search.helper.state.facetsRefinements.viamcomponents.length + ")";
+  } else {
+    document.getElementById("filter-components").textContent = "Components";
+  }
+  if (search.helper.state.facetsRefinements.viamservices.length) {
+    document.getElementById("filter-services").textContent = "Services (" + search.helper.state.facetsRefinements.viamservices.length + ")";
+  } else {
+    document.getElementById("filter-services").textContent = "Services";
+  }
+  if (search.helper.state.disjunctiveFacetsRefinements.level.length) {
+    document.getElementById("filter-level").textContent = "Level (" + search.helper.state.disjunctiveFacetsRefinements.level.length + ")";
+  } else {
+    document.getElementById("filter-level").textContent = "Level";
+  }
   observer.observe()
 });

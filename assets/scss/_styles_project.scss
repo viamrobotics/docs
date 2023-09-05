@@ -1132,10 +1132,33 @@ ul.sectionlist > li:hover {
   font-size: 30px;
 }
 
+.td-sidebar__toggle {
+  float: right;
+}
+
 // Tutorials page start
 
 .search-panel__results.card-container {
   max-width: 100%;
+}
+
+#tutorial-menu {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+#tutorial-filters, #tutorial-filter-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tutorial-filters > .filter {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0.2rem;
+  border: 1px solid black;
 }
 
 .ais-Hits-item {
@@ -1149,42 +1172,69 @@ ul.sectionlist > li:hover {
   width: 100%;
 }
 
-.ais-Pagination-item {
-  display: inline-block;
-}
-
-#pagination {
-  margin: 2rem auto;
-}
-
 .search-panel__filters {
-  margin-top: 2rem;
+  display: flex;
 }
 
-.ais-RefinementList-item {
-  list-style-type: none;
+.search-facets {
+  width: 100%;
+  border: 1px solid black;
+  margin: 0.2rem;
+  padding: 0.2rem;
 }
 
-.ais-RefinementList-list {
+.search-facets > ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.2rem;
   padding: 0;
 }
 
-.ais-Panel-header {
-  font-size: 1.0625rem !important;
-  line-height: 1.4375em;
-  margin-bottom: 0.5rem;
+.search-facets * li {
+  list-style: none;
+  margin: 0.2rem
 }
 
-.ais-RefinementList-count {
-  display: none;
+.search-facets * label {
+  margin: 0;
+}
+
+.search-facets * input {
+  padding: 0.1rem 0.25rem;
+  border: 1px solid black;
+  margin: 0.1rem;
+  font-size: 0.833rem !important;
+  font-weight: 400 !important;
+  line-height: 1.4375em;
+  background-color: whitesmoke;
+}
+
+.search-facets * input.refined {
+  background-color: #000;
+  color: white;
+}
+
+#components-list * input,
+#services-list * input {
+  border-color: #a51aff;
+}
+
+#languages-list * input {
+  border-color: #00e8e8;
 }
 
 .ais-Hits-list {
   padding: 0;
 }
 
-.ais-RangeInput-label, .ais-RangeInput-separator {
-  margin-right: 0.1rem;
+// Pagination CSS start
+
+#pagination {
+  margin: 2rem auto;
+}
+
+.ais-Pagination-item {
+  display: inline-block;
 }
 
 span.ais-Pagination-link {
@@ -1208,18 +1258,7 @@ a.ais-Pagination-link:hover {
   text-align: center;
   padding: 0;
 }
-
-label.ais-RefinementList-label {
-  margin-bottom: 0;
-}
-
-.td-sidebar__toggle {
-  float: right;
-}
-
-@include media-breakpoint-up(md) {
-  .search-panel__filters.show-on-wide { display: block }
-}
+// Pagination CSS end
 
 // Tutorials page end
 
