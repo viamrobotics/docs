@@ -236,7 +236,7 @@ import os
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType, Detection
+from viam.services.vision import VisionClient, Detection
 import yagmail
 
 

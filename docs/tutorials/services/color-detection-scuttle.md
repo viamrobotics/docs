@@ -325,7 +325,7 @@ import asyncio
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionServiceClient
-from viam.services.vision import VisModelConfig, VisModelType, Detection
+from viam.services.vision import Detection
 from viam.components.camera import Camera
 from viam.components.base import Base
 ​
