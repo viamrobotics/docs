@@ -257,6 +257,8 @@ With everything configured and running, you can now run the inference client tha
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &
    ```
 
+   {{< /alert >}}
+
 1. Then, run the following to start the inference client, providing the necessary access credentials and the path to the labels file extracted earlier:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
