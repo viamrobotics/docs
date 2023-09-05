@@ -1,7 +1,6 @@
 ---
 title: "Control an Intermode Rover with CAN Bus and Viam"
 linkTitle: "Control an Intermode Rover with Viam"
-weight: 60
 type: "docs"
 tags: ["modular resources", "extending viam", "components", "rover", "base", "CAN bus", "Intermode"]
 description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
@@ -12,7 +11,8 @@ authors: [ "Matt Vella" ]
 languages: [ "go" ]
 viamresources: [ "base", "custom" ]
 level: "Intermediate"
-date: "22 January 2023"
+date: "2023-01-22"
+# updated: ""
 cost: 1500
 no_list: true
 # SME: Matt Vella, Matt Dannenberg, James Otting

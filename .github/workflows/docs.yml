@@ -28,14 +28,14 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2 
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
-          
+
       - name: Build
         run: make build-prod
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -52,7 +52,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 
-  generate-index:
+  generate-index-and-tutorials-collection:
     needs: build
     if: github.repository_owner == 'viamrobotics'
     runs-on: [self-hosted, x64]
@@ -73,6 +73,14 @@ jobs:
           echo TYPESENSE_HOST=cgnvrk0xwyj9576lp-1.a1.typesense.net >> typesense.env
           echo TYPESENSE_PORT=443 >> typesense.env
           echo TYPESENSE_PROTOCOL=https >> typesense.env
+
+      - name: Upload tutorials documents
+        run: |
+          jq -c '.[]' ./public/tutorials/typesense.json > documents.jsonl
+          curl -H "X-TYPESENSE-API-KEY: ${TYPESENSE_API_KEY}" \
+          -X POST \
+          -T documents.jsonl \
+          "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
 
       - name: Index
         run:  docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
