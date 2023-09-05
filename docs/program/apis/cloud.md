@@ -45,7 +45,7 @@ async def main():
   # Make a ViamClient
   viam_client = await connect()
   # Instantiate an AppClient called "cloud" to run the cloud app API methods on
-  cloud = await viam_client.app_client()
+  cloud = await viam_client.app_client
 ```
 
 Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `cloud` in the examples).
@@ -93,12 +93,12 @@ List the members and invites of the organization that you are currently authenti
 
 **Returns:**
 
-- [(Tuple[List[viam.proto.app.OrganizationMember]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember): A tuple containing to lists:
+- (Tuple[List[[viam.proto.app.OrganizationMember]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[viam.proto.app.OrganizationInvite]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): A tuple containing two lists:
   - The first (`[0]`) is a list of organization members.
   - The second (`[1]`) is a list of organization invites.
 
 ```python {class="line-numbers linkable-line-numbers"}
-member_list = await cloud.list_organization_members()
+member_list, invite_list = await cloud.list_organization_members()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organization_members).
