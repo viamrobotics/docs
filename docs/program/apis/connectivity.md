@@ -1,9 +1,9 @@
 ---
 title: "Client Sessions and Robot Network Connectivity"
-linkTitle: "Network Disconnection"
+linkTitle: "Network Connectivity Issues"
 weight: 20
 type: "docs"
-description: "How a Viam robot handles losing its connection to the internet."
+description: "Whan a robot loses its connection to the internet, all client sessions will timeout and end by default."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 ---
 
@@ -11,12 +11,12 @@ What happens when your robot loses its connection to the internet over a LAN or 
 
 ## How does `viam-server` work if your robot loses its network connection?
 
-If the robot loses its connection to the internet, `viam-server` will timeout and end any current client [*sessions*](/program/apis/sessions/) on this robot.
+When a robot loses its connection over LAN or WAN, it can no longer communicate with clients through [the Viam app](https://app.viam.com).
+`viam-server` will timeout and the `SessionsClient` will end any current client [*sessions*](/program/apis/sessions/) on this robot.
 
-## How do `viam-server`'s clients work if your robot loses its network connection?
+## What happens to clients connected to the robot when your robot loses its network connection?
 
-If your robot running `viam-server` is no longer connected to the internet and each client session is ended, all operations will timeout automatically and operations will be halted.
-When its session times out, each client is asked to cancel any ongoing operations by the automatically-configured `SessionsClient` of your robot.
+When your client cannot connect to your robot's `viam-server` instance, all client operations will timeout automatically and halt.
 Any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the robot until the connection is restored.
 
 ### How do Viam's client SDKs work if your robot loses its network connection?
