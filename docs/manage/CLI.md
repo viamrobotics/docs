@@ -141,14 +141,15 @@ To use an organization API key to authenticate your CLI session, you must first 
 
    Where:
 
-   * `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam App](https://app.viam.com/).
+   * `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
    * `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
 
-The command will return a `key id` and a `key value`; you will need both to authenticate using `viam login api-key`
+The command will return a `key id` and a `key value`.
+You will need both to authenticate using `viam login api-key`.
 
 {{% alert title="Important" color="note" %}}
 Secure these key values safely.
-Authenticating using an organization API key gives full write access to your organization, including to all robots within it.
+Authenticating using an organization API key gives the authenticated CLI session full read and write access to all robots within your organization.
 {{% /alert %}}
 
 Once created, you can then use the organization API key to authenticate future CLI sessions.
@@ -496,7 +497,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--org-id`      | your organization ID      |`api-key`|true |
-| `--name`     |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time    |`api-key`|false |
+| `--name` |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key`| false |
 
 ### organizations
 
