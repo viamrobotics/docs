@@ -18,7 +18,7 @@ This module includes a simple wrapper around `GStreamer` and a control interface
 
 The module is open-sourced and available on [GitHub](https://github.com/seanavery/viam-csi).
 
-To use the CSI camera module, follow the [Installation](#installation) and [configuration](#configuration) steps.
+To use the CSI camera module, follow the [installation](#installation) and [configuration](#configuration) steps.
 
 ## Installation
 
