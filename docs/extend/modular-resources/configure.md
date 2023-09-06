@@ -33,7 +33,7 @@ To add a module from the Viam Registry to your robot:
      Modules available from the Viam Registry will be listed under the `From Registry` section of the search results.
    - [Browse the Viam Registry](https://app.viam.com/modules) directly to search available modules.
 
-   <br>{{<imgproc src="extend/modular-resources/configure/add-module-from-registry.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-module-from-registry.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
 1. When you have entered the name of the module that you would like to add to your robot, select the matching module in the search results and click the **Add module** button.
 
