@@ -11,12 +11,12 @@ tags: ["movement sensor", "components", "encoder", "motor", "base", "wheeled", "
 Configure a `wheeled-odometry` movement sensor to implement _wheeled odometry_ on your robot.
 
 _Wheeled odometry_ is the estimation of the rate of change of position, orientation, linear velocity, and angular velocity using the dimensions of a base, calculated by measuring the movement of the motors through encoders.
-You don't have to have a specific piece of movement sensor hardware to implement this model of movement sensor on your robot. 
+Because of this method of estimation, you don't have to have a specific piece of movement sensor hardware to implement `wheeledodometry` on your robot. 
 This model uses [encoders](/components/encoder/) from [position reporting motors](/components/motor/) to get an odometry estimate of a wheeled base as it moves.
 
 With a configured `wheeled-odometry` movement sensor, your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/program/apis/sessions/).
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
-For the best accuracy with odometry calculations, it is recommended you configure a time interval less of than `1000` milliseconds.
+For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
 
 After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/services/navigation/).
 
