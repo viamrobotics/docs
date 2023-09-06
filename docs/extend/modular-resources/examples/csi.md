@@ -37,7 +37,7 @@ sudo chmod 755 /usr/local/bin/viam-csi
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
 
-Copy and paste the following raw JSON to add Viam's `csi-mr` module:
+Copy and paste the JSON object for the module into the modules array to add Viam's `csi-mr` module:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -48,13 +48,10 @@ Copy and paste the following raw JSON to add Viam's `csi-mr` module:
       }
     ]
 }
-```
 
-Next, add the following raw JSON to configure a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
+Next, add the following JSON object to your components array toconfigure a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
 
 ```json {class="line-numbers linkable-line-numbers"}
-{ // "modules": [ ...] ,
-    "components": [
       {
         "model": "viam:camera:csi",
         "attributes": {
@@ -68,9 +65,6 @@ Next, add the following raw JSON to configure a `csi` [camera](/components/camer
         "namespace": "rdk",
         "type": "camera"
       }
-    ]
-}
-```
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
