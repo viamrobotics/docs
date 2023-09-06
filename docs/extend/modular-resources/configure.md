@@ -80,7 +80,7 @@ When using the **Patch (X.Y.Z)** version type, you may select any patch version 
 The current deployed version of your module and the latest version of that module available from the Viam Registry are shown on this pane for your reference.
 
 {{% alert title="Updating production robots" color="caution" %}}
-For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**. If, for example, the module provides a motor component,and the motor is running, it will stop while the module updgrades.
+For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**. If, for example, the module provides a motor component, and the motor is running, it will stop while the module updgrades.
 {{% /alert %}}
 
 ### Configure a modular resource from a Registry module
