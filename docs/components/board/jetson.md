@@ -13,6 +13,8 @@ tags: ["board", "components"]
 
 Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
+If you have a CSI camera, follow [these instructions](/extend/modular-resources/examples/csi/) to configure it using the `viam:camera:csi` model.
+
 {{% /alert %}}
 
 Configure a `jetson` board to integrate a [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your robot:
