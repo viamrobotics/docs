@@ -498,7 +498,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 ### organizations
 
-The *organizations* command lists all organizations that the authenticated session belongs to, and can be used to create a new organization API key to use when authenticating your CLI session to Viam.
+The *organizations* command lists all organizations that the authenticated session belongs to.
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
