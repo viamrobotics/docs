@@ -41,6 +41,12 @@ jobs:
         with:
           path: ./public
 
+      - name: Upload tutorials search file
+        uses: actions/upload-pages-artifact@v1
+        with:
+          name: tutorials-search-file
+          path: ./public/tutorials/typesense.json
+
   deploy:
     environment:
       name: github-pages
@@ -51,6 +57,29 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+  upload-tutorials-page-entries:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'viamrobotics'
+    steps:
+      - name: Download the tutorials search file
+        uses: actions/download-artifact@v3
+        with:
+          name: tutorials-search-file
+      - name: Write env
+        run: |
+          echo TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} > typesense.env
+          echo TYPESENSE_HOST=cgnvrk0xwyj9576lp-1.a1.typesense.net >> typesense.env
+          echo TYPESENSE_PORT=443 >> typesense.env
+          echo TYPESENSE_PROTOCOL=https >> typesense.env
+      - name: Upload tutorials documents
+        run: |
+          jq -c '.[]' typesense.json > documents.jsonl
+          curl -H "X-TYPESENSE-API-KEY: ${TYPESENSE_API_KEY}" \
+          -X POST \
+          -T documents.jsonl \
+          "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
 
   generate-index:
     needs: build
