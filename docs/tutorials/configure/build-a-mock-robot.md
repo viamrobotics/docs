@@ -28,7 +28,7 @@ This tutorial will show you how to build a mock robot using just your personal l
 Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
 These fake components interact with Viam like real hardware but do not actually exist.
 
-In this tutorial, you will set up, control, and program a [`fake` robotic arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and add an additional mock _sub-part_ with a [motor](/components/motor).
+In this tutorial, you will set up, control, and program a [`fake` robotic arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and add an additional mock _sub-part_ with a [motor](/components/motor/).
 
 ### What is a mock sub-part?
 
