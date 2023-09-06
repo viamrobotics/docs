@@ -42,6 +42,8 @@ You can also [configure the module itself](#configure-a-module-from-the-viam-reg
 
 {{<imgproc src="extend/modular-resources/configure/conf-component-from-module.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
 
+If the module requires that specific **Atrributes** be configured, click the **URL** link in the module's configuration pane to view the specific documentation for that module on the module's Github page.
+
 To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
 
 ### Configure a module from the Viam Registry
@@ -78,11 +80,7 @@ When using the **Patch (X.Y.Z)** version type, you may select any patch version 
 The current deployed version of your module and the latest version of that module available from the Viam Registry are shown on this pane for your reference.
 
 {{% alert title="Updating production robots" color="caution" %}}
-By default, newly-added modules are set to pin to **Patch (X.Y.Z)**, meaning that they *will not auto-update*.
-While you can change this to pin to a specific release family, or even to always update to latest, consider that module updates require that that module be restarted.
-For example, if your robot is used in production and uses a custom module to supply motor functionality, allowing updates freely could cause the custom module providing that functionality to restart on its own, leading to unpredictable motor behavior.
-Instead, we recommend that you pin a module to a specific tested version on robots deployed in production, and only permit updates during a maintenance window or other convenient time so that you can control when module code changes are pushed to your robot.
-You can trigger an update to the latest by setting **Version type** to latest during your maintenance window.
+For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**. If, for example, the module provides a motor component,and the motor is running, it will stop while the module updgrades.
 {{% /alert %}}
 
 ### Configure a modular resource from a Registry module
