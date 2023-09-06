@@ -233,7 +233,7 @@ This is determined by the value of the configuration attribute `with_geometries`
 
 If `true`, start by [configuring your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within Viam's [frame system service](/services/frame-system/).
 
-After configuring your frame system, your camera will populate its own `Properties` with the intrinsic parameters of the geometric configuration.
+After configuring your frame system, your camera will populate its own `Properties` with the intrinsic parameters, as long you have configured the parameters as part of your camera.
 You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
 
 Then, configure an `obstacles_depth` segmenter:
