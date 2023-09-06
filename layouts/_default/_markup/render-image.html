@@ -11,7 +11,7 @@
     {{ $image_ext := index $image_type_arr 1 }}
 
     {{ if eq $image_ext "svg" }}
-        {{ warnf "Please use the imgproc shortcode for SVC images: %s" $image.RelPermalink }}
+        {{ warnf "Please use the imgproc shortcode for SVG images: %s" $image.RelPermalink }}
     {{ else }}
         {{ $webpsmall := $image.Resize "480x webp" }}
         {{ $webpmedium := $image.Resize "768x webp" }}
