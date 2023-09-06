@@ -564,6 +564,7 @@ Compass heading measurements are read by the following {{< glossary_tooltip term
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+- [imu-wit][/components/movement-sensor/imu-wit/imu-wit/]
 
 An example of a `Compass Heading` reading:
 
@@ -579,6 +580,9 @@ Use compass heading readings to determine the *bearing* of your robot, or, the [
 Linear acceleration measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
 
 - [accel-adxl345](/components/movement-sensor/adxl345/)
+- [gyro-mpu605](/components/movement-sensor/imu-wit)
+- [imu-vectornav](/components/movement-sensor/imu-vectornav)
+-[imu-wit](/components/movement-sensor/imu-wit)
 
 An example of a `Linear Acceleration` reading:
 
@@ -587,7 +591,7 @@ sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interfa
 ```
 
 If you want to read linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
+Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the acceleration of your robot through space.
 
 ### Linear Velocity
 
@@ -596,6 +600,7 @@ Linear velocity measurements are read by the following {{< glossary_tooltip term
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry))
 
 An example of a `Linear Velocity` reading:
 
