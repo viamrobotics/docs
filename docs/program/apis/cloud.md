@@ -155,8 +155,8 @@ If an invitation has only one authorization and you want to remove it, delete th
 **Parameters:**
 
 - `email` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Email of the user the invite was sent to.
-- `add_authorization` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Optional list of authorizations to add to the invite.
-- `remove_authorization` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Optional list of authorizations to remove from the invite.
+- `add_authorizations` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Optional list of authorizations to add to the invite.
+- `remove_authorizations` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Optional list of authorizations to remove from the invite.
 
 **Raises:**
 
@@ -167,16 +167,19 @@ If an invitation has only one authorization and you want to remove it, delete th
 - [(OrganizationInvite)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite): The updated invitation.
 
 ```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app import Authorization
+authorization_to_add=Authorization(
+    authorization_type="some type of auth",
+    authorization_id="identifier",
+    resource_type="abc",
+    resource_id="resource-identifier123",
+    identity_id="id12345",
+    organization_id="org_id_123"
+)
+
 update_invite = await cloud.update_organization_invite_authorizations(
     email="notarealemail@viam.com",
-    remove_authorization=[
-        authorization_type="some type of auth",
-        authorization_id="identifier",
-        resource_type="abc",
-        resource_id="resource-identifier123",
-        identity_id="id12345",
-        organization_id="org_id_123"
-    ]
+    remove_authorizations=[authorization_to_add]
 )
 ```
 
