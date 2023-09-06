@@ -1,0 +1,239 @@
+---
+title: "Power Sensor Component"
+linkTitle: "Power Sensor"
+childTitleEndOverwrite: "Power Sensor"
+weight: 70
+no_list: true
+type: "docs"
+description: "A device that provides information about a robot's systems, including voltage, current, and power consumption."
+tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
+icon: "/icons/components/sensor.svg"
+images: ["/icons/components/sensor.svg"]
+# SME: #team-bucket
+---
+
+A power sensor is a device that reports measurements of the voltage, current and power consumption in your robot's system.
+Integrate this into your robot's system to monitor its power levels.
+
+## Configuration
+
+For configuration information, click on your sensor’s model:
+
+Model | Description <a name="model-table"></a>
+----- | -----------
+[`fake`](./fake/) | Digital power sensor for testing
+[`ina219`](/components/sensor/power_ina219/) | [INA219](https://pdf1.alldatasheet.com/datasheet-pdf/view/249609/TI/INA219.html) current and power sensor
+[`ina226`](./ina226/) | [INA226](https://www.ti.com/lit/ds/symlink/ina226.pdf?ts=1688994548364&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fde-de%252FINA226) current and power sensor
+[`renogy`](/components/sensor/renogy/) | [Renogy](https://www.renogy.com/content/RSP200D/RSP200D%20G2%20Datasheet.pdf) solar charge controller
+
+## Control your power sensor with Viam’s client SDK libraries
+
+To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+
+{{% snippet "show-secret.md" %}}
+
+When executed, this sample code will create a connection to your robot as a client.
+Then control your robot programmatically by adding API method calls as shown in the following examples.
+
+These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your robot.
+If your power sensor has a different name, change the `name` in the code.
+
+Be sure to import the power sensor package for the SDK you are using:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.powersensor import powersensor
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+  "go.viam.com/rdk/components/powersensor"
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## API
+
+The power sensor component supports the following methods:
+
+{{< readfile "/static/include/components/apis/power-sensor.md" >}}
+
+### GetCurrent
+
+Return the current of a specified device and whether it is AC or DC.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional[Dict[str,Any]])](https://docs.python.org/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
+- `timeout` [(Optional[float])](https://docs.python.org/3/library/typing.html#typing.Optional): Specify a time limit (in seconds) for how long `get_current` should wait for a response.
+
+**Returns:**
+
+- [(Tuple[float, bool])](https://docs.python.org/3/library/functions.html#float): A float representing the current reading in amps. A bool indicating whether the current is AC (True) or DC (False).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_current).
+
+```python
+# Get the current reading from the power sensor
+current, is_ac = await my_power_sensor.get_current()
+print("The current is ", current, " A, Is AC: ", is_ac)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [Context](https://pkg.go.dev/context): Control the lifecycle of the operation by handling timeouts and managing cancellations.
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
+
+**Returns:**
+
+- `float64`: The measurement of the current, represented as a 64-bit float number.
+- `bool`: Indicate whether current is AC (True) or DC (False).
+- `error`: Report any errors that might occur during operation. Successful operation will be `nil`.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
+
+```go
+// Create a power sensor instance
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+if err != nil {
+  logger.Fatalf("cannot get power sensor: %v", err)
+}
+
+// Get the current reading from device in amps
+current, isAC, err := myPowerSensor.Current(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetVoltage
+
+Return the voltage reading of a specified device and whether it is AC or DC.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
+- `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit (in seconds) for how long `get_voltage` should wait for a response.
+
+**Returns:**
+
+- [(Tuple[float, bool])](https://docs.python.org/3/library/stdtypes.html): A float representing the current reading in amps. A bool indicating whether the voltage is AC (True) or DC (False).
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_voltage).
+
+```Python
+# Get the voltage reading from the power sensor
+    voltage, is_ac = await my_power_sensor.get_voltage()
+    print("The voltage is", voltage, "V, Is AC:", is_ac)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [Context](https://pkg.go.dev/context): Control the lifecycle of the operation by handling timeouts and managing cancellations.
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
+
+**Returns:**
+
+- `float64`: The measurement of the voltage, represented as a 64-bit float number.
+- `bool`: Indicate whether voltage is AC (True) or DC (False).
+- `error`: Report any errors that might occur during operation. Successful operation will be `nil`.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
+
+```Go
+// Create a power sensor instance
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+if err != nil {
+  logger.Fatalf("cannot get power sensor: %v", err)
+}
+
+// Get the voltage from device in volts
+voltage, isAC, err := myPowerSensor.Voltage(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetPower
+
+Return the power reading in watts.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
+- `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit (in seconds) for how long `get_power` should wait for a response.
+
+**Returns:**
+
+- `float`: The measurement of the power, represented as a float number.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_power).
+
+```Python
+# Get the power reading from the power sensor
+    power = await my_power_sensor.get_power()
+    print("The power is", power, "Watts")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [Context](https://pkg.go.dev/context): Control the lifecycle of the operation by handling timeouts and managing cancellations.
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
+
+**Returns:**
+
+- `float64`: The measurement of the power, represented as a 64-bit float number.
+- `error`: Report any errors that might occur during operation. Successful operation will be `nil`.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
+
+```Go
+// Create a power sensor instance
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+if err != nil {
+  logger.Fatalf("cannot get power sensor: %v", err)
+}
+
+// Get the power measurement from device in watts
+power, err := myPowerSensor.Power(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
+
+## Next Steps
+
+{{< cards >}}
+  {{% card link="/tutorials/projects/tipsy" %}}
+{{< /cards >}}
