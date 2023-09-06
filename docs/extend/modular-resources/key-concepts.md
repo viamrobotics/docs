@@ -13,25 +13,32 @@ A custom module can provide one or more modular resource models.
 
 ## Modules
 
-A *module* provides one or more *modular resources* ([components](/components/) and [services](/services/)), and is a flexible way to extend the functionality of your Viam robot.
-
-A module provides at least one [model](#models) that implements an [existing API](#valid-apis-to-implement-in-your-model).
+A *module* provides one or more [*modular resources*](#resources), and is a flexible way to extend the functionality of your Viam robot.
+Modules run alongside `viam-server` as a separate process, communicating with `viam-server` over a UNIX socket.
+A module provides definitions for one or more pairs of [APIs](#valid-apis-to-implement-in-your-model) and [model](#models).
+When the module initialized, it registered those pairs on your robot, making the functionality defined by that pair available for use.
 
 You can [upload your own modules to the Viam Registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure).
 
 See [Creating a custom module](/extend/modular-resources/create/) for more information.
 
+## Resources
+
+A resource is a [component](/components/) or [service](/services/).
+Each component or service is typed by a proto API, suhc as the [component proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
+
+Any resource on your robot needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
+
+A *modular resource* is a resource that is provided by a [module](#modules), and not built-in to the RDK.
+A modular resource runs in the module process. This differs from built in resources, which run as part of `viam-server`.
+
 ## Models
 
-A *model* describes a specific implementation of a resource that implements (speaks) its API.
-Models allow you to control different instances of resource {{< glossary_tooltip term_id="api-namespace-triplet" text="subtypes" >}} with a consistent interface.
+A *model* describes a specific implementation of a [resource](#resources) that implements (speaks) its API.
+Models allow you to control different instances of resource with a consistent interface, even if the underlying implementation differs.
 
-For example:
-
-Some DC motors use just [GPIO](/components/board/), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
+For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
-
-### Namespace
 
 Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`, and are named according to the Viam API that your model implements.
 
@@ -40,7 +47,7 @@ Models are either:
 - Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
 - Provided in custom modules available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
 
-#### Built-in models
+### Built-in models
 
 Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
 
@@ -49,12 +56,12 @@ For example:
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
 
-#### Custom models
+### Custom models
 
 The [Viam Registry](https://app.viam.com/registry) makes available both Viam-provided and community-written modules for download and use on your robot.
 Each module provides one or more models.
 
-##### Valid APIs to implement in your model
+#### Valid APIs to implement in your model
 
 When implementing a custom model of an existing [component](/components/), valid [APIs](/program/apis/) are always:
 
@@ -68,7 +75,7 @@ When implementing a custom model of an existing [service](/services/), valid [AP
 - `type`: `service`
 - `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
 
-##### Naming your model
+#### Naming your model
 
 If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, ensure your model name meets the following requirements:
 
