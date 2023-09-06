@@ -29,6 +29,8 @@ Toggle **Include secret** on and copy the `payload`.
 For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
 
 ```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
