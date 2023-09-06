@@ -8,36 +8,18 @@ description: "The key concepts behind how Viam's resource APIs and models are un
 no_list: true
 ---
 
-`viam-server` [manages](#management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot the same way it manages resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
-Two key concepts exist across all Viam resources, both built-in and modular, that make this flexible management possible: uniquely namespaced resource [*APIs*](#apis) and [*models*](#models).
+You can extend the features of an existing {{< glossary_tooltip term_id="resource" text="resource" >}} API by [creating a custom module](/extend/modular-resources/create/) to define a new [model](#models) that implements that API.
+A custom module can provide one or more modular resource models.
 
-If you create your [own module](/extend/modular-resources/create/), you must register any new APIs and models you define in your model with Viam's model registry in the appropriate namespaces to [configure](/extend/modular-resources/configure/) the modular resource on your robot.
+## Modules
 
-## APIs
+A *module* provides one or more *modular resources* ([components](/components/) and [services](/services/)), and is a flexible way to extend the functionality of your Viam robot.
 
-{{% alert title="Modules vs. modular resources" color="tip" %}}
+A module provides at least one [model](#models) that implements an [existing API](#valid-apis-to-implement-in-your-model).
 
-A configured *module* can make one or more *modular resources* available for configuration.
+You can [upload your own modules to the Viam Registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure).
 
-{{% /alert %}}
-
-Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} subtype exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API).
-This can be understood as a description of how you can interact with that resource.
-Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
-Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
-
-### Namespace
-
-Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form `namespace:type:subtype`.
-
-For example:
-
-- The API of built-in component [camera](/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
-- The API of built-in service [vision](/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
-
-{{% alert title="Tip" color="tip" %}}
-You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
-{{% /alert %}}
+See [Creating a custom module](/extend/modular-resources/create/) for more information.
 
 ## Models
 
@@ -69,7 +51,7 @@ For example:
 
 #### Custom models
 
-The [Viam Registry](https://app.viam.com/module) makes available both Viam-provided and community-written modules for download and use on your robot.
+The [Viam Registry](https://app.viam.com/registry) makes available both Viam-provided and community-written modules for download and use on your robot.
 Each module provides one or more models.
 
 ##### Valid APIs to implement in your model

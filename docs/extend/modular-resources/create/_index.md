@@ -8,28 +8,18 @@ description: "Use the Viam module system to implement custom resources that can 
 no_list: true
 ---
 
-The Viam module system allows you to integrate custom {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) into any robot running on Viam.
+You can extend Viam by creating a custom [module](/extend/modular-resources/key-concepts/#modules) that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)), and can be added to any robot running on Viam.
 
 A common use case for modular resources is to create a new model that implements an existing Viam API.
-However, you can also create and expose new APIs with modular resources.
-
-{{% alert title="Modules vs. modular resources" color="tip" %}}
-
-A configured *module* can make one or more *modular resources* available for configuration.
-
-{{% /alert %}}
 
 Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
 
 Alternatively, you can add your module locally to your robot without uploading to the Viam Registry.
 
-## Create a custom modular resource
+## Create a custom module
 
-To create your own modular resource, code a module in Go or Python using the module support libraries provided by [Viam's SDKs](/program/apis/) that implements at least one new {{< glossary_tooltip term_id="model" text="model" >}} or {{< glossary_tooltip term_id="subtype" text="subtype" >}} of {{< glossary_tooltip term_id="resource" text="resource" >}}:
-
-{{< tabs >}}
-{{% tab name="New Model" %}}
-Define a new model of a built-in resource subtype:
+To create a custom module, follow the steps below.
+A custom module can implement one or more [models](/extend/modular-resources/key-concepts/#models).
 
 1. [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-server`'s built-in API client of its subtype (ex. `rdk:component:base`).
 Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
@@ -61,25 +51,6 @@ Import your custom model and API into the main program and register them with yo
 This main program is the "entry point" to your module.
 
 3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
-
-{{% /tab %}}
-{{% tab name="New Type" %}}
-Define a new {{< glossary_tooltip term_id="api-namespace-triplet" text="type or subtype" >}} of resource:
-
-1. Define the methods and messages of the new API in [protobuf](https://github.com/protocolbuffers/protobuf) and in Python or Go, then use a protobuf compiler to [generate the rest of the required protobuf files](https://grpc.io/docs/languages/python/generated-code/) based on that Python or Go code.
-Find detailed instructions in [Define a New Resource Subtype](create-subtype/).
-
-1. [Code at least one model](#code-a-new-resource-model) of this new resource.
-Make sure to implement every method required in your API definition.
-Import your custom models and APIs into the main program and register them with your chosen SDK.
-
-1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
-This main program is the "entry point" to your module.
-
-1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
-
-{{% /tab %}}
-{{% /tabs %}}
 
 ### Code a new resource model
 
