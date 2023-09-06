@@ -141,7 +141,7 @@ To upload your custom module to the Viam Registry, either as a public or private
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your Python dependency list, and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -173,6 +173,8 @@ To upload your custom module to the Viam Registry, either as a public or private
    viam module upload --version 1.0.0 --platform darwin/arm64 module.tar.gz
    ```
 
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
+
 For more information, see the [`viam module` command](/manage/cli/#module)
 
 ## Update an existing module
@@ -197,13 +199,14 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.
    Use the command below specific for the language of your module:
 
-   - To package a module written in Go, run the following command from the same directory as your `meta.json` file:
+   - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
 
      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     tar -czf module.tar.gz module.go
+     go build -o bin/module ./module/main.go
+     tar -cxf module.tar.gz bin/module
      ```
 
-     Where `module.go` is your [compiled entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+     For more information, see [Compile a module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
@@ -211,7 +214,7 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your Python dependency list, and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
 
@@ -224,5 +227,7 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
+
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
 
 For more information, see the [`viam module` command](/manage/cli/#module)

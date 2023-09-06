@@ -11,6 +11,8 @@ tags: ["board", "components"]
 
 Configure an `upboard` board to integrate an Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
 
+Complete the following setup requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
+
 ## Set up requirements
 
 Flash your Intel-based board with:
@@ -37,6 +39,10 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
+Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and navigate to the **Create component** menu.
+Select **Raw JSON** mode and copy and paste the following:
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
@@ -55,7 +61,30 @@ Edit and fill in the attributes as applicable.
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "<your-upboard-board>",
+      "type": "board",
+      "model": "upboard",
+      "attributes": {
+        "i2cs": ["<your-i2cs-name-1>", "<your-i2cs-name-2>"],
+        "digital_interrupts": ["<your-digital_interrupts-name-1>", "<your-digital_interrupts-name-2>"]
+      },
+      "depends_on": []
+    }
+  ]
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
+
+Save the config.
+Edit and fill in the attributes as applicable.
 
 The following attributes are available for `upboard` boards:
 

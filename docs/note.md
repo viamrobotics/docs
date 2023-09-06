@@ -59,7 +59,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 - **Markdown Image Example**<br>
 ![expand example](/general/expander-markdown.png)<br>
-- **HTML Image Example*- (with border)<br>
+- **HTML Image Example** (with border)<br>
 {{<imgproc src="/general/expander-markdown.png" resize="800x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage">}}
 
 </div>
@@ -254,12 +254,12 @@ Use to notify the reader of information to avoid loss of life, personal injury, 
 ## Using the Figure Shortcode
 
 The figure shortcode enhances the existing figure and figurecaption html tags.
-Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr*- element for attribution text and **attrlink*- if you wish to add a link to the attribution text.
+Figure supports the standard html attributes associated with the html img and figure tags, as well as an **attr** element for attribution text and **attrlink** if you wish to add a link to the attribution text.
 
 {{< figure src="/general/figure-shortcode.png"  alt="The shortcode used to display an image, its caption, and its attribution." title="Figure Shortcode" >}}
 
 This shortcode places the caption (that is the "title") above the table.
-The **title*- is set in 12pt italic with a green underline.
+The **title** is set in 12pt italic with a green underline.
 
 Figure styles the Attribution text as body text.
 
