@@ -8,6 +8,7 @@ icon: "/services/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - "/program/sdks/"
+no_list: true
 ---
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).
