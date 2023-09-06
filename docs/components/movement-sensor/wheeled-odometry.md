@@ -54,7 +54,7 @@ Fill in and edit the attributes as applicable.
 
 ## Attributes
 
-The following attributes are available for `wheeledodometry` movement sensors:
+The following attributes are available for `wheeled-odometry` movement sensors:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
