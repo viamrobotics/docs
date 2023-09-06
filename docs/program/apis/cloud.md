@@ -24,7 +24,9 @@ Cloud app API methods are only available in the Python SDK.
 
 To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
-You can find the location secret and the URL of your robot on the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab in [Viam app](https://app.viam.com/):
+To find the location secret, go to [Viam app](https://app.viam.com/), and go to the  [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
+Toggle **Include secret** on and copy the `payload`.
+For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.rpc.dial import DialOptions, Credentials
@@ -32,10 +34,10 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        auth_entity='mrroboto.this_is_just_an_example.viam.cloud',  # The URL of your robot.
+        auth_entity='mrroboto.this_is_just_an_example.viam.cloud',  # The URL of a robot in the location.
         credentials=Credentials(
             type='robot-location-secret',
-            payload='YOUR ROBOT LOCATION SECRET' # The location secret of your robot
+            payload='YOUR LOCATION SECRET' # The location secret
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -45,7 +47,12 @@ async def main():
   # Make a ViamClient
   viam_client = await connect()
   # Instantiate an AppClient called "cloud" to run the cloud app API methods on
-  cloud = await viam_client.app_client
+  cloud = viam_client.app_client
+
+  viam_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
 ```
 
 Once you have instantiated an `AppClient`, you can run the following [API methods](#api) against the `AppClient` object (named `cloud` in the examples).
