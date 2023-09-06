@@ -564,7 +564,7 @@ Compass heading measurements are read by the following {{< glossary_tooltip term
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
-- [imu-wit][/components/movement-sensor/imu-wit/imu-wit/]
+- [imu-wit][/components/movement-sensor/imu-wit/]
 
 An example of a `Compass Heading` reading:
 
