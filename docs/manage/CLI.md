@@ -101,8 +101,8 @@ To later update the Viam CLI tool, you can use the steps above to reinstall the 
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token or your organization's API key.
-To use your organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
+You can authenticate your CLI session using either a personal access token or an organization API key.
+To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
 
 * To authenticate your CLI session using a personal access token:
 
@@ -114,10 +114,10 @@ To use your organization API key to authenticate, you must first [create an orga
    If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
    Follow the instructions to complete the authentication process.
 
-* To authenticate your CLI session using your organization API key:
+* To authenticate your CLI session using an organization API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam login api-key --key-id <api-key-uuid> --key <api-key-name>
+   viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
    ```
 
    If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
@@ -128,10 +128,10 @@ After the session expires or you log out, you must re-authenticate to use the CL
 
 ### Create an organization API key
 
-To use your organization API key to authenticate your CLI session, you must first create a organization API key:
+To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   You must authenticate using a personal access token in order to be able to create an organization API key.
+   If your organization does not already have an organization API key created, authenticate using a personal access token.
 
 1. Then, run the following command to create a new organization API key:
 
@@ -141,7 +141,7 @@ To use your organization API key to authenticate your CLI session, you must firs
 
    Where:
 
-   * `org-id` is your organization ID. You can find your organization ID on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
+   * `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam App](https://app.viam.com/).
    * `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
 
 The command will return a `key id` and a `key value`; you will need both to authenticate using `viam login api-key`
@@ -152,7 +152,9 @@ Authenticating using an organization API key gives full write access to your org
 {{% /alert %}}
 
 Once created, you can then use the organization API key to authenticate future CLI sessions.
-To switch to using your organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+
+An organization can have multiple API keys.
 
 ## Manage your robots with the Viam CLI
 
@@ -264,18 +266,18 @@ The `login` command helps you authorize your device for CLI usage. See [Authenti
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
-viam login api-key --key-id <api-key-uuid> --key <api-key-value>
+viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
 viam login print-access-token
 ```
 
-Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using your organization's API key.
+Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using an organization API key.
 If you haven't already, you must [create an organization API key](#create-an-organization-api-key) first in order to authenticate using one.
 
 #### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using your organization's API key      | - |
+| `api-key`      | authenticate to Viam using an organization API key      | - |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 
@@ -283,8 +285,8 @@ If you haven't already, you must [create an organization API key](#create-an-org
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--key-id`    | the `key id` (UUID) of your organization's API key | `api-key` | true |
-| `--key`    | the `key value` of your organization's API key | `api-key` | true |
+| `--key-id`    | the `key id` (UUID) of the organization API key | `api-key` | true |
+| `--key`    | the `key value` of the organization API key | `api-key` | true |
 
 ### `logout`
 
@@ -494,7 +496,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--org-id`      | your organization ID      |`api-key`|true |
-| `--name`     |  optional name for your organization API key. If omitted, a name will be auto-generated based on your login info and the current time    |`api-key`|false |
+| `--name`     |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time    |`api-key`|false |
 
 ### organizations
 
