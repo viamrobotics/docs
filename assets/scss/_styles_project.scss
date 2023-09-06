@@ -1213,6 +1213,9 @@ ul.sectionlist > li:hover {
   font-weight: 400 !important;
   line-height: 1.4375em;
   background-color: whitesmoke;
+  color: black;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
 }
 
 .search-facets * input.refined {
