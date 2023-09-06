@@ -50,7 +50,7 @@ Copy and paste the JSON object for the module into the modules array to add Viam
 }
 ```
 
-Next, add the following JSON object to your components array toconfigure a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
+Next, add the following JSON object to your components array to configure a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
 
 ```json {class="line-numbers linkable-line-numbers"}
       {
