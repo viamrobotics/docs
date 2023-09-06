@@ -29,7 +29,7 @@ You can access this property of a configured motor through the [motor API's `Get
 - Configure your rover as a [wheeled base component](/components/base/wheeled/).
 Make sure to configure the base width and circumference, as these measurements as a property of the base are vital for accurate odometry estimations by your movement sensor. This movement sensor accesses these values through the base's `GetProperties()` API method.
 - Configure each of the position-reporting motors [as motor components](/components/motor/).
-- Then, proceed to [configure](#configuration) a `wheeledodometry` movement sensor with the name of each of the motor components.
+- Then, proceed to [configure](#configuration) a `wheeled-odometry` movement sensor with the name of each of the motor components.
 
 ## Configuration
 
