@@ -404,7 +404,7 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
