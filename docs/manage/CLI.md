@@ -117,7 +117,7 @@ To use your organization API key to authenticate, you must first [create an orga
 * To authenticate your CLI session using your organization API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam login api-key --key-id <api-key-uuid> --key <api-key>
+   viam login api-key --key-id <api-key-uuid> --key <api-key-name>
    ```
 
    If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
@@ -142,7 +142,14 @@ To use your organization API key to authenticate your CLI session, you must firs
    Where:
 
    * `org-id` is your organization ID. You can find your organization ID on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
-   * `key-name` is an optional name for your API key.
+   * `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
+
+The command will return both a `key id` and a `key value`; you will need both to authenticate using `viam login api-key`
+
+{{% alert title="Important" color="note" %}}
+Secure these key values safely.
+Authenticating using your organization API key gives full write access to your organization, including to all robots within it.
+{{% /alert %}}
 
 Once created, you can then use the organization API key to authenticate future CLI sessions.
 To switch to using your organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
@@ -262,7 +269,7 @@ viam login print-access-token
 ```
 
 Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using your organization's API key.
-If you haven't already, you must [create an organization API key](create-an-organization-api-key) first in order to authenticate using one.
+If you haven't already, you must [create an organization API key](#create-an-organization-api-key) first in order to authenticate using one.
 
 #### Command options
 
@@ -277,7 +284,7 @@ If you haven't already, you must [create an organization API key](create-an-orga
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--key-id`    | the UUID of your organization's API key | `api-key` | true |
-| `--key`    | the name (value) of your organization's API key | `api-key` | true |
+| `--key`    | the name of your organization's API key | `api-key` | true |
 
 ### `logout`
 
@@ -471,7 +478,7 @@ The *organization* (singular) command allows you to create a new organization AP
 See [organizations](#organizations) instead to list organizations your sessions belongs to.
 
 ```sh {class="command-line" data-prompt="$"}
-viam organization api-key create --org-id <organization ID> [--name <string>]
+viam organization api-key create --org-id <org-id> [--name <key-name>]
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
@@ -488,7 +495,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--org-id`      | your organization ID      |`api-key`|true |
-| `--name`     |  optional name for your organization API key    |`api-key`|false |
+| `--name`     |  optional name for your organization API key. If omitted, a name will be auto-generated based on your login info and the current time    |`api-key`|false |
 
 ### organizations
 
