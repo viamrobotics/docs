@@ -99,22 +99,53 @@ To later update the Viam CLI tool, you can use the steps above to reinstall the 
 
 ## Authenticate
 
-Once you have successfully installed the Viam CLI, you need to authenticate your device for CLI usage with your Viam app account before you can control your robots with the CLI.
-Do this by issuing the command:
+Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-```sh {class="command-line" data-prompt="$"}
-viam login
-```
+You can authenticate your CLI session using either a personal access token or your organization's API key.
+To use your organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
 
-This will open a new browser window with a prompt to start the authentication process.
-If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
-Follow the instructions to complete the authentication process.
+* To authenticate your CLI session using a personal access token:
 
-{{% alert title="Info" color="info" %}}
+   ```sh {class="command-line" data-prompt="$"}
+   viam login
+   ```
+
+   This will open a new browser window with a prompt to start the authentication process.
+   If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
+   Follow the instructions to complete the authentication process.
+
+* To authenticate your CLI session using your organization API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam login api-key --key-id <api-key-uuid> --key <api-key>
+   ```
+
+   If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
+
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
 After the session expires or you log out, you must re-authenticate to use the CLI again.
-{{% /alert %}}
+
+### Create an organization API key
+
+To use your organization API key to authenticate your CLI session, you must first create a organization API key:
+
+1. First, [authenticate](#authenticate) your CLI session.
+   You must authenticate using a personal access token in order to be able to create an organization API key.
+
+1. Then, run the following command to create a new organization API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam organization api-key create --org-id <org-id> --name <key-name>
+   ```
+
+   Where:
+
+   * `org-id` is your organization ID. You can find your organization ID on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
+   * `key-name` is an optional name for your API key.
+
+Once created, you can then use the organization API key to authenticate future CLI sessions.
+To switch to using your organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 ## Manage your robots with the Viam CLI
 
@@ -226,19 +257,31 @@ The `login` command helps you authorize your device for CLI usage. See [Authenti
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
+viam login api-key --key-id <api-key-uuid> --key <api-key>
 viam login print-access-token
 ```
+
+Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using your organization's API key.
+If you haven't already, you must [create an organization API key](create-an-organization-api-key) first in order to authenticate using one.
 
 #### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
-| `help`      | return help      | - |
+| `api-key`      | authenticate to Viam using your organization's API key      | - |
+| `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--key-id`    | the UUID of your organization's API key | `api-key` | true |
+| `--key`    | the name (value) of your organization's API key | `api-key` | true |
 
 ### `logout`
 
-The `logout` command ends an authenticated CLI session
+The `logout` command ends an authenticated CLI session.
 
 ```sh {class="command-line" data-prompt="$"}
 viam logout
@@ -422,9 +465,35 @@ If the two namespaces do not match, the command will return an error.
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
+### organization
+
+The *organization* (singular) command allows you to create a new organization API key.
+See [organizations](#organizations) instead to list organizations your sessions belongs to.
+
+```sh {class="command-line" data-prompt="$"}
+viam organization api-key create --org-id <organization ID> [--name <string>]
+```
+
+See [create an organization API key](#create-an-organization-api-key) for more information.
+
+#### Command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `api-key`      | create a new organization API key    | - |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--org-id`      | your organization ID      |`api-key`|true |
+| `--name`     |  optional name for your organization API key    |`api-key`|false |
+
 ### organizations
 
-The *organizations* command lists all organizations that the authenticated session belongs to.
+The *organizations* command lists all organizations that the authenticated session belongs to, and can be used to create a new organization API key to use when authenticating your CLI session to Viam.
+See [organization](#organization) instead to create a new organization API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
