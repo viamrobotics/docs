@@ -144,11 +144,11 @@ To use your organization API key to authenticate your CLI session, you must firs
    * `org-id` is your organization ID. You can find your organization ID on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
    * `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
 
-The command will return both a `key id` and a `key value`; you will need both to authenticate using `viam login api-key`
+The command will return a `key id` and a `key value`; you will need both to authenticate using `viam login api-key`
 
 {{% alert title="Important" color="note" %}}
 Secure these key values safely.
-Authenticating using your organization API key gives full write access to your organization, including to all robots within it.
+Authenticating using an organization API key gives full write access to your organization, including to all robots within it.
 {{% /alert %}}
 
 Once created, you can then use the organization API key to authenticate future CLI sessions.
@@ -264,7 +264,7 @@ The `login` command helps you authorize your device for CLI usage. See [Authenti
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
-viam login api-key --key-id <api-key-uuid> --key <api-key>
+viam login api-key --key-id <api-key-uuid> --key <api-key-value>
 viam login print-access-token
 ```
 
@@ -283,8 +283,8 @@ If you haven't already, you must [create an organization API key](#create-an-org
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--key-id`    | the UUID of your organization's API key | `api-key` | true |
-| `--key`    | the name of your organization's API key | `api-key` | true |
+| `--key-id`    | the `key id` (UUID) of your organization's API key | `api-key` | true |
+| `--key`    | the `key value` of your organization's API key | `api-key` | true |
 
 ### `logout`
 
@@ -474,8 +474,7 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 ### organization
 
-The *organization* (singular) command allows you to create a new organization API key.
-See [organizations](#organizations) instead to list organizations your sessions belongs to.
+The *organization* command allows you to create a new organization API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam organization api-key create --org-id <org-id> [--name <key-name>]
@@ -500,7 +499,6 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 ### organizations
 
 The *organizations* command lists all organizations that the authenticated session belongs to, and can be used to create a new organization API key to use when authenticating your CLI session to Viam.
-See [organization](#organization) instead to create a new organization API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations list
