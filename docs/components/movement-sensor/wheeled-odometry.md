@@ -4,7 +4,7 @@ linkTitle: "wheeled-odometry"
 type: "docs"
 description: "Configure a wheeled-odometry movement sensor."
 images: ["/icons/components/imu.svg"]
-tags: ["movement sensor", "components", "movement sensor"]
+tags: ["movement sensor", "components", "encoder", "motor", "base", "wheeled", "odometry"]
 # SMEs: Rand, Martha
 ---
 
