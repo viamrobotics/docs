@@ -138,7 +138,7 @@ The session management API supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [base component](/components/base) resource, and that you add the required code to connect to your robot and import any required packages, including the `sessions` package, at the top of your client file.
+The following code examples assume that you have a robot configured with a [base component](/components/base/), and that you add the required code to connect to your robot and import any required packages, including the `sessions` package, at the top of your client file.
 Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -156,7 +156,7 @@ In the case of unary, it can only be called before the handler returns.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `target` [(resource.Resource)](https://pkg.go.dev/go.viam.com/rdk@v0.7.3/resource#Resource): The target resource.
+- `target` [(resource.Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Resource): The target resource.
 
 **Returns:**
 
@@ -187,7 +187,7 @@ In the case of unary, it can only be called before the handler returns.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `targetName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.7.3/resource#Name): The `name` you have set for the resource in configuration.
+- `targetName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `name` you have set for the resource in configuration.
 
 **Returns:**
 
@@ -226,24 +226,78 @@ session = session.ToContext(context.Background(), my_session)
 
 The sessions package provides the `SessionManager` as an interface for holding sessions for a particular robot and managing the lifetime of each of these sessions.
 
-Instantiate a `SessionManager` with `NewSessionManager()`:
+`viam-server`'s Robot API provides a built-in `SessionManager`, which you can instantiate with `NewSessionManager()`:
 
-Then, the following functions are available for use with a `SessionManager`:
+### NewSessionManager
+
+Create a new manager for holding sessions.
+
+**Parameters:**
+
+- `robot` [(Robot)](): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `heartbeatWindow` [(time.Duration)](): The heartbeat window you want this `SessionManager` to follow.
+
+**Returns:**
+
+- [(SessionManager)]: A new manager for holding sessions.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#SafetyMonitorResourceName).
+
+``` go
+robot, err := client.New(
+    context.Background(),
+    "3minutes-main.0b2qnylnp0.viam.cloud",
+    logger,
+    client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+        Type:    utils.CredentialsTypeRobotLocationSecret,
+    // Replace "<SECRET>" (including brackets) with your robot's secret
+        Payload: "<SECRET>",
+    })),
+)
+
+mySessionManager := robot.NewSessionManager(robot, 1000)
+```
+
+Then, the following functions are available for use with `viam-server`'s Robot API's built-in `SessionManager`:
 
 {{< readfile "/static/include/program/apis/session-manager.md" >}}
 
+Method Name | Description
+----------- | -----------
+[`Start`](/program/apis/sessions/#start) | Create a new session that expects at least one heartbeat within the configured window.
+[`All`](/program/apis/sessions/#all) | Get all active sessions.
+[`FindByID`](/program/apis/sessions/#findbyid) | Find a session by the given ID. If found, trigger a heartbeat and extend the lifetime of the session.
+[`AssociateResource`](/program/apis/sessions/#associateresource) | Associate a session ID to a monitored resource. All associated resources will be stopped with this session is expired.
+[`Close`](/program/apis/sessions/#close) | Stop the session manager without directing any sessions to expire.
+[`expireLoop`](/program/apis/sessions/#expireLoop) | Set an expiration loop to be associated with a specific context.
+
 ### Start
 
-Creates a new session that expects at least one heartbeat within the configured window.
+[Relevant github](https://github.com/viamrobotics/rdk/blob/473673baf8c395fe12b959f5579adbf614db53ab/robot/session_manager.go#L35).
+
+Create a new session that expects at least one heartbeat within the configured window.
+
+### All
+
+Get all sessions that are actively being held by this `SessionsManager`.
 
 ### FindByID
 
-FindByID finds a session by the given ID. If found, a heartbeat is triggered, extending the lifetime of the session. If ownerID is in use but the session in question has a different owner, this is a security violation and we report back no session found.
+Find a session by the given ID.
+If found, a heartbeat is triggered, extending the lifetime of the session.
+If ownerID is in use but the session in question has a different owner, this is a security violation and we report back no session found.
 
 ### AssociateResource
 
-AssociateResource associates a session ID to a monitored resource such that when a session expires, if a resource is currently associated with that ID based on the order of AssociateResource calls, then it will have its resource stopped. If id is uuid.Nil, this has no effect other than disassociation with a session. Be sure to include any remote information in the name.
+Associate a session ID to a monitored resource so that when a session expires:
+
+- If a resource is currently associated with that ID based on the order of AssociateResource calls, then it will have its resource stopped.
+- If id is uuid.Nil, this has no effect other than disassociation with a session. Be sure to include any remote information in the name.
 
 ### Close
 
-Close stops the session manager but will not explicitly expire any sessions.
+Stop the session manager without directing any sessions to expire.
+
+### expireLoop
+
+Set an expiration loop to be associated with a specific context.
