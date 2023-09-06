@@ -38,7 +38,7 @@ Provide this as a file inside of your module, <file>my_modular_resource.go</file
    - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
    - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
    - Name your model according to the namespace of the built-in API you are implementing.
-     For more information see [Model Namespace](/extend/modular-resources/key-concepts/#naming-your-model).
+     For more information see [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model).
 
     <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 

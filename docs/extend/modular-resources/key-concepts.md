@@ -31,7 +31,7 @@ Each component or service is typed by a proto API, such as the [component proto 
 Any resource on your robot needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
 
 A *modular resource* is a resource that is provided by a [module](#modules), and not built-in to the RDK.
-A modular resource runs in the module process. This differs from built in resources, which run as part of `viam-server`.
+A modular resource runs in the module process. This differs from built-in resources, which run as part of `viam-server`.
 
 ## Models
 
@@ -41,7 +41,8 @@ Models allow you to control different instances of resource with a consistent in
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`, and are named according to the Viam API that your model implements.
+Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`.
+See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model) for more information.
 
 Models are either:
 
