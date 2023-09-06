@@ -110,5 +110,5 @@ The following attributes are available for the `viam:camera:csi` model:
 | `width_px` | int | Optional | Width of the image this camera captures in pixels. <br> Default: `1920` |
 | `height_px` | int | Optional | Height of the image this camera captures in pixels. <br> Default: `1080` |
 | `frame_rate` | int | Optional | The image capture frame rate this camera should use. <br> Default: `30` |
-| `video_path` | string | Optional | The filepath to the input sensor of this camera on your board. If none is given, your robot will attempt to detect the video path automatically <br> Default: `"0"` </br>  |
+| `video_path` | string | Optional | The filepath to the input sensor of this camera on your board. If none is given, your robot will attempt to detect the video path automatically. <br> Default: `"0"` </br>  |
 | `debug` | boolean | Optional | Whether or not you want debug input from this camera in your robot's logs. <br> Default: `false` |
