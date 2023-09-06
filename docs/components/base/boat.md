@@ -62,3 +62,7 @@ Each [motor](/components/motor/) inside of `Motors` has the following attributes
 | `y_offset_mm` | int | **Required** | |
 | `angle_degs` | int | **Required** | |
 | `Weight` | int | **Required** | |
+
+## Test the base
+
+{{< readfile "/static/include/components/base-control.md" >}}

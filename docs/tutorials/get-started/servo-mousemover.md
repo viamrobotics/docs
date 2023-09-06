@@ -1,7 +1,6 @@
 ---
 title: "How to Create a Mouse Mover Using a Servo"
 linkTitle: "Mouse Mover"
-weight: 40
 type: "docs"
 description: "Use the Python SDK to move a continuous servo to keep a computer screen from sleeping."
 webmSrc: "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.webm"
@@ -13,7 +12,8 @@ authors: [ "Kacey Meier-Smith" ]
 languages: [ "python" ]
 viamresources: [ "board", "servo" ]
 level: "Beginner"
-date: "30 March 2023"
+date: "2023-03-30"
+# updated: ""
 cost: 80
 no_list: true
 ---

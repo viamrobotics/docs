@@ -1,7 +1,7 @@
 ---
 title: "A Guardian that Tracks Pets using a Pi, Camera, and Servo"
 linkTitle: "Pet Guardian"
-weight: 50
+weight: 6
 type: "docs"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
 webmSrc: "/tutorials/guardian/preview.webm"
@@ -13,8 +13,9 @@ no_list: true
 authors: [ "Naomi Pentrel" ]
 languages: [ "python" ]
 viamresources: [ "camera", "vision", "servo", "mlmodel" ]
-level: "Beginner"
-date: "15 May 2023"
+level: "Intermediate"
+date: "2023-05-15"
+# updated: ""
 cost: 90
 ---
 
