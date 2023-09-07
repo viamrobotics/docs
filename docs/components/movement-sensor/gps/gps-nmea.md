@@ -127,13 +127,14 @@ You can use either serial communication (over USB) or I<sup>2</sup>C communicati
 
 Use `connection_type` to specify `"serial"` or `"I2C"` connection in the main `attributes` config.
 Then create a struct within `attributes` for either `serial_attributes` or `i2c_attributes`, respectively.
+See examples of this struct in the example tabs above.
 
 {{< tabs >}}
 {{% tab name="Serial" %}}
 
 ### Serial Config Attributes
 
-For a movement sensor communicating over serial, you'll need to include a `serial_attributes` field containing:
+For a movement sensor communicating over serial, you'll need to include a `serial_attributes` struct containing:
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------
@@ -145,7 +146,7 @@ Name | Type | Inclusion | Description
 
 ### I2C Config Attributes
 
-For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` field containing:
+For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` struct containing:
 
 Name | Type | Inclusion | Description
 ---- | ---- | --------- | -----------

@@ -295,8 +295,9 @@ Click **Create component**.
       "attributes": {
         "board": "local",
         "pins": {
-          "dir": "16",
-          "pwm": "15"
+          "pwm": "",
+          "a": "16",
+          "b": "15",
         }
       },
       "model": "gpio",
@@ -307,8 +308,9 @@ Click **Create component**.
       "attributes": {
         "board": "local",
         "pins": {
-          "dir": "13",
-          "pwm": "11"
+          "pwm": "",
+          "a": "12",
+          "b": "11",
         }
       },
       "model": "gpio",

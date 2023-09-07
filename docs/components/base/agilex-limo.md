@@ -17,10 +17,9 @@ Configure an `agilex-limo` base as follows:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your base, select the type `base`, and select the `agilex-limo` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `base` type, then select the `agilex-limo` model.
+Enter a name for your base and click **Create**.
 
 ![An example configuration for a agilex-limo base in the Viam app Config Builder.](/components/base/agilex-limo-ui-config.png)
 
