@@ -557,7 +557,12 @@ obstacles = await my_nav.get_obstacles()
 
 ## Concepts
 
-### CompassHeading
+The following concepts are important to understand when utilizing the navigation service.
+Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your robot to navigate across space.
+
+Here's how to make use of the following types of measurements:
+
+### Compass Heading
 
 Compass heading measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
 
@@ -594,7 +599,7 @@ Orientation readings are taken through the movement sensor API's [`GetOrientatio
 If you want to read orientation, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Additionally, follow [these instructions](/services/frame-system/#configuration) to configure the geometries of each component of your robot within the [frame system](/services/frame-system/).
 
-### AngularVelocity
+### Angular Velocity
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component report angular velocity measurements:
 
@@ -636,7 +641,7 @@ If you want to get a position, first [configure a capable movement sensor](/comp
 Position readings allow you to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
 This is in contrast to [orientation readings](/services/navigation/#orientation), which you use to specify relative position.
 
-### LinearAcceleration
+### Linear Acceleration
 
 Linear acceleration measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
 
@@ -650,9 +655,9 @@ accel.GetLinearAcceleration{x: 6.497, y: 1.345, z: 12.32}
 
 Linear acceleration readings are taken through the movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration).
 If you want to get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linearvelocity) of your robot, or, the speed at which your robot is moving through space.
+Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
 
-### LinearVelocity
+### Linear Velocity
 
 Linear velocity measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
 
@@ -669,4 +674,4 @@ accel.GetLinearVelocity{x: 6.497, y: 1.345, z: 12.32}
 Linear velocity readings are taken through the movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity).
 If you want to get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Use linear velocity readings to determine the speed at which your robot is moving through space.
-Use [linear acceleration](/services/navigation/#linearacceleration) readings from another movement sensor to determine the rate of change of this speed.
+Use [linear acceleration](/services/navigation/#linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
