@@ -25,26 +25,25 @@ This tutorial will show you how to build a mock robot using just your personal l
 - Learn how to [configure](../../../manage/configuration/) robots with Viam.
 - Try using [Viam](/viam/) without any robotic hardware.
 
-Most Viam [components](../../../components/) have a _fake_ model that you can use for testing.
-These fake components interact with Viam like real hardware but do not actually exist.
-
-In this tutorial, you will set up, control, and program a [`fake` robotic arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and add an additional mock _sub-part_ with a [motor](/components/motor/).
+Follow this tutorial to set up and control a robot with a `fake` [arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and an additional mock {{< glossary_tooltip term_id="part" text="sub-part" >}} with a [motor](/components/motor/).
 
 ### What is a mock sub-part?
 
-A _{{< glossary_tooltip term_id="robot" text="robot" >}}_ in Viam is essentially a group of computers working together as one unit. Viam allows you to build robots from multiple computers.
-These individual computer-controlled units are called “{{< glossary_tooltip term_id="part" text="parts" >}}”.
-Typically, simple robots have just one part, but you can have as many parts as your project requires.
+Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
+You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
-A _{{< glossary_tooltip term_id="robot" text="robot" >}}_ in Viam consists of one or more computers combined into one logical unit.
-The bounds of a robot are usually pretty clear, but can be subjective.
-However, it's possible with Viam to create a robot that is made up of multiple computers.
-Each of these computer-controlled units is referred to as a _{{< glossary_tooltip term_id="part" text="part" >}}_.
-Most simple robots will have only one part, but they can have as many parts as needed.
+By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build your robot with Viam:
 
-Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
-You can access any sub-part either directly, or through any part above it in the tree.
-Each part runs a single `viam-server` instance.
+- Each individual computer-controlled unit of a robot is called a “{{< glossary_tooltip term_id="part" text="part" >}}” in Viam.
+- Typically, simple robots have just one part, but you can have as many parts as your project requires.
+- Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
+- You can access any sub-part either directly, or through any part above it in the tree.
+- Each part runs a single `viam-server` instance.
+
+### What is a `fake` component?
+
+Most Viam [components](../../../components/) have a `fake` model that you can use for testing.
+These `fake` components interact with Viam like real hardware but do not actually exist.
 
 ## Set up a mock robot
 
