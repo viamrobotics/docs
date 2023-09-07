@@ -7,14 +7,14 @@ description: "How to use the Robot API to monitor and manage your robots."
 tags: ["robot state", "sdk", "apis", "robot api"]
 ---
 
-The *robot API* is the designated interface for a robot, the root of all robotic parts.
+The *robot API* is the application programming interface that manages each of your robots running `viam-server`.
+It is the API for high level operations of each robot {{< glossary_tooltip term_id="part" text="part" >}}.
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-The robot API supports the following methods:
+These are some of the supported robot API methods. For a full list [see GitHub](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
-<!-- This isn't actually all of the methods; just the ones that were already in the APIs doc. -->
 
 ### DiscoverComponents
 
