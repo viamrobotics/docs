@@ -600,7 +600,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 - [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
-- [wheeled-odometry](/components/movement-sensor/wheeled-odometry)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
 An example of a `AngularVelocity` reading:
@@ -620,7 +620,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
-- [wheeled-odometry](/components/movement-sensor/wheeled-odometry) (provides a relative estimate only based on where the base component has started)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
 A `Position` reading specifies the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 
@@ -650,7 +650,7 @@ accel.GetLinearAcceleration{x: 6.497, y: 1.345, z: 12.32}
 
 Linear acceleration readings are taken through the movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration).
 If you want to get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
+Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linearvelocity) of your robot, or, the speed at which your robot is moving through space.
 
 ### LinearVelocity
 
@@ -669,4 +669,4 @@ accel.GetLinearVelocity{x: 6.497, y: 1.345, z: 12.32}
 Linear velocity readings are taken through the movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity).
 If you want to get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Use linear velocity readings to determine the speed at which your robot is moving through space.
-Use [linear acceleration](/services/navigation/#linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
+Use [linear acceleration](/services/navigation/#linearacceleration) readings from another movement sensor to determine the rate of change of this speed.
