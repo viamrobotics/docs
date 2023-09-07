@@ -11,7 +11,7 @@ aliases:
 ---
 
 At Viam, a robot is configured with one or more {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) which are each defined by a [public API](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
-While Viam offers a number of built-in implementations against these APIs, such as the [wheeled base](components/base/wheeled/), you may also write your own implementations in order to extend the capabilities of your robot.
+While Viam offers a number of built-in implementations against these APIs, such as the [wheeled base](/components/base/wheeled/), you may also write your own implementations in order to extend the capabilities of your robot.
 
 For example, you can:
 
