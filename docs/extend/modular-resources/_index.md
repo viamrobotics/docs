@@ -10,16 +10,16 @@ aliases:
     - "/program/extend/modular-resources/"
 ---
 
-At Viam, a robot is configured with one or more {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) which are each defined by a [public API](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
+At Viam, a robot is configured with one or more {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) or [services](/services/)) which are each defined by a [public API](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
 While Viam offers a number of built-in implementations against these APIs, such as the [wheeled base](/components/base/wheeled/), you may also write your own implementations in order to extend the capabilities of your robot.
 
 For example, you can:
 
-- ***Implement a custom component:** If your robot has specialty hardware, such as an unsupported [motor](/components/motor/), and you want to control it using Viam, you can write a driver to support your hardware by implementing the corresponding component API.
+- **Implement a custom component:** If your robot has specialty hardware, such as an unsupported [motor](/components/motor/), and you want to control it using Viam, you can write a driver to support your hardware by implementing the corresponding component API.
 
 - **Implement a custom service:** If your robot makes use of a specialty algorithm or data model when working with services such as [SLAM](/services/slam/), [Vision](/services/vision/), or [Motion planning](/services/motion/), you can implement your own algorithm or model against the corresponding service API.
 
-- **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such when managing a software development lifecyle, you can implement your own custom logic by wrapping the generic API.
+- **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the generic API.
 
 These custom implementations are called {{< glossary_tooltip term_id="module" text="modular resources" >}}, and are made available for use on a robot through [modules](/extend/modular-resources/key-concepts/#modules).
 A module can provide one or more modular resources, and can be added to your robot from the Viam Registry.
