@@ -74,15 +74,15 @@ Add these properties to your module's configuration:
 
 ### Configure your modular resource
 
-Once you have configured a module as part of your robot configuration, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new subtype or [model](/extend/modular-resources/key-concepts/#models).
+Once you have configured a module as part of your robot configuration, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the [API](/extend/modular-resources/key-concepts/#apis) (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the [API](/extend/modular-resources/key-concepts/#apis) (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). |
-| `name` | string | **Required** | What you want to name this instance of your modular resource. |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |
+| `name` | string | **Required** | A custom name for this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's [model](/extend/modular-resources/key-concepts/#models). |
 | `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/extend/modular-resources/key-concepts/#dependency-management). |
 
