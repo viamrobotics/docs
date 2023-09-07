@@ -111,11 +111,12 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the **Control** tab.
+When you add components to your robot, the Viam app automatically generates a UI for them under the **Control** tab:
 
-![Screenshot from the Viam app showing the Control tab with the fake arm, and motor components.](/tutorials/build-a-mock-robot/control-tab.png)
+{{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="Screenshot from the Viam app showing the Control tab with the fake arm, and motor components." resize="400x" >}}
 
 You can use the **Control** tab UI to send commands to your robot.
+
 For example, you can control the direction and speed of your motor, or change the joint positions of your robotic arm.
 You can also see the robot's reported positions and speeds change.
 With real physical components, you would not only be able to control and see your robot's readings on this tab, but you would also see your robot move in the physical world.
@@ -343,10 +344,10 @@ On your robot's page on the Viam app, click on the dropdown next to the main par
 
 ![Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
 
-Navigate to your new sub-part's **Config** tab and create a new motor using the **fake** model.
+Navigate to your new sub-part's **Config** tab and create a new motor using the `fake`` model.
 Name it `"motor2"`.
 
-![The config tab of the sub-part. A new motor component called motor2 is being created.](/tutorials/build-a-mock-robot/sub-part-motor.png)
+{{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The config tab of the sub-part. A new motor component called motor2 is being created." resize="400x" >}}
 
 Click **Create component** and then **Save config**.
 
