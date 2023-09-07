@@ -163,7 +163,7 @@ Follow these steps to configure a module and its modular resources locally:
 
 1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
 2. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
-3. [Add a new component or service](#configure-your-modular-resource) referencing the custom resource provided by the configured **module** to the configuration of your robot.
+3. [Add a new component or service](#configure-your-modular-resource) referencing the modular resource provided by the configured **module** to the configuration of your robot.
 
 ### Make sure `viam-server` can access your executable
 

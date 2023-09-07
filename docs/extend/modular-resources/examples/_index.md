@@ -15,7 +15,7 @@ aliases:
 ---
 
 To familiarize yourself with creating and using modular resources, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
-Once you have created a modular resource, you can test your custom resource using the [Control tab](/manage/fleet/#remote-control) and program it using the [Viam SDKs](/program/apis/).
+Once you have created a modular resource, you can test your modular resource using the [Control tab](/manage/fleet/#remote-control) and program it using the [Viam SDKs](/program/apis/).
 
 ## Tutorials
 
