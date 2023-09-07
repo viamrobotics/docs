@@ -58,6 +58,14 @@ You'll need the following hardware and software for this tutorial:
 First, set up your account on the Viam app.
 Go to [app.viam.com](https://app.viam.com) and sign up for an account.
 
+### Install and start `viam-server` on your computer
+
+Before you proceed with configuring and controlling your robot, install `viam-server`.
+
+Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to install `viam-server` on your computer as a system service.
+
+Find more information on running `viam-server` in the [installation guide](/installation/manage/).
+
 ### Configure your mock robot
 
 Next, [configure your robot](/manage/configuration/) to represent your robot's hardware.
@@ -65,14 +73,14 @@ Next, [configure your robot](/manage/configuration/) to represent your robot's h
 If you were using actual hardware, this process would tell `viam-server` what hardware is attached to it and how to communicate with it.
 Since you don't have physical hardware, you will use `fake` components.
 
-1. Create a new [robot](../../../manage/fleet/robots/) in your organization and location on [app.viam.com](https://app.viam.com/).
+1. Create a new [robot](/manage/fleet/robots/) in your organization and location on [app.viam.com](https://app.viam.com/).
 2. Go to the new robot's **Config** tab.
-3. Configure a [fake board component](../../../components/board/fake/):
+3. Configure a [fake board component](/components/board/fake/):
 
     - Create a new component called `myBoard` with **Type** `board` and **Model** `fake`.
     Click **Create component**.
 
-4. Configure a [fake arm component](../../../components/arm/fake/):
+4. Configure a [fake arm component](/components/arm/fake/):
 
     - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
     Click **Create component**.
@@ -100,14 +108,6 @@ Since you don't have physical hardware, you will use `fake` components.
 6. Click **Save config**.
 
 You will need to reference the component names later when you connect to your mock robot with code.
-
-### Install and start `viam-server` on your computer
-
-Before you proceed with controlling your robot, you need to install `viam-server`.
-
-Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to install `viam-server` on your computer as a system service.
-
-Find more information on running `viam-server` in the [installation guide](../../../installation/manage/).
 
 ## Control your mock robot using the Viam app
 
