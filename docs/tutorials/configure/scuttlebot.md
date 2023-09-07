@@ -202,8 +202,8 @@ Add the following JSON objects to the `components` array:
   "model": "gpio",
   "attributes": {
     "pins": {
-      "a": "15",
-      "b": "16",
+      "a": "16",
+      "b": "15",
       "pwm": "",
       "dir": ""
     },
@@ -258,7 +258,7 @@ If you hear a "whining" sound from the motor, the power level is not high enough
 If this happens, increase the power level by 10% increments until it starts to turn.
 {{< /alert >}}
 
-If you want your wheel to turn in reverse, you can add the `dir_flip` attribute to the motor's configuration, by clicking **Show more** and setting the attribute to "true."
+If your wheel turns in reverse when it should turn forward, add the `dir_flip` attribute to the motor's configuration, by clicking **Show more** and setting the attribute to "true."
 
 ## Configure the base
 
@@ -297,8 +297,8 @@ Click **Create component**.
         "board": "local",
         "pins": {
           "pwm": "",
-          "a": "15",
-          "b": "16",
+          "a": "16",
+          "b": "15",
         }
       },
       "model": "gpio",
