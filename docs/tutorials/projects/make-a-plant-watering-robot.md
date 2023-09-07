@@ -1,7 +1,7 @@
 ---
 title: "Plant Watering Robot with a Raspberry Pi"
 linkTitle: "Plant Watering Robot"
-weight: 50
+weight: 7
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
@@ -11,8 +11,9 @@ images: ["/tutorials/plant-watering-pi/preview.png"]
 authors: [ "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "board", "motor", "sensor" ]
-level: "Beginner"
-date: "29 March 2023"
+level: "Intermediate"
+date: "2023-03-29"
+# updated: ""
 cost: 150
 no_list: true
 # SMES: Olivia Miller

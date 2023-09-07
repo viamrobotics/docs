@@ -19,13 +19,6 @@ Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nv
 {{<imgproc src="installation/thumbnails/jetson-orin-nano.jpeg" resize="200x" alt="The front of the NVIDIA Jetson Orin Nano single-board computer development kit.">}}
 </div>
 
-{{% alert title="Stability Notice" color="note" %}}
-
-Support for this board is experimental.
-Stability is not guaranteed.
-
-{{% /alert %}}
-
 {{% alert title="Important" color="note" %}}
 
 This guide assumes that you have a Jetson Nano Developer Kit or a Jetson Orin Nano Developer Kit with a Jetson module and reference carrier board.

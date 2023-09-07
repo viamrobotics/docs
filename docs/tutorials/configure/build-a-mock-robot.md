@@ -1,7 +1,6 @@
 ---
 title: "Build a Mock Robot"
 linkTitle: "Mock Robot"
-weight: 41
 type: "docs"
 description: "Create a mock robot using just your personal computer to try using Viam without any robotic hardware."
 webmSrc: "/tutorials/build-a-mock-robot/mock-robot.webm"
@@ -15,8 +14,9 @@ tags: ["mock", "simulation"]
 authors: []
 languages: [ "python", "go" ]
 viamresources: [ "board", "arm", "motor" ]
-level: "Beginner"
-date: "11 October 2022"
+level: "Intermediate"
+date: "2022-10-11"
+# updated: ""
 cost: "0"
 ---
 
@@ -521,4 +521,4 @@ When you run this code, you will see your mock sub motor toggling between runnin
 
 In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using a Viam SDK.
 
-If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try building one of Viam's [introductory robots](/tutorials/#your-first-robots).
+If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try following another [tutorial](/tutorials/).

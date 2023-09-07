@@ -1,7 +1,6 @@
 ---
 title: "Plan Motion with an Arm and a Gripper"
 linkTitle: "Plan Motion with an Arm"
-weight: 20
 type: "docs"
 description: "Use the motion service to move robot arms and other components."
 webmSrc: "/tutorials/videos/motion_armmoving.webm"
@@ -12,7 +11,8 @@ authors: []
 languages: [ "python", "go" ]
 viamresources: [ "arm", "gripper", "motion" ]
 level: "Intermediate"
-date: "7 March 2023"
+date: "2023-03-07"
+# updated: ""
 cost: 8400
 no_list: true
 ---

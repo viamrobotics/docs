@@ -48,7 +48,13 @@ weight = 1
     codeFences = true
 
 [outputs]
-section = ["HTML"]
+section = ["HTML", "Typesense"]
+
+[outputFormats.Typesense]
+baseName = "typesense"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
 
 [params]
 copyright = "Viam, Inc. - Documentation is licensed under Creative Commons ShareAlike License. "

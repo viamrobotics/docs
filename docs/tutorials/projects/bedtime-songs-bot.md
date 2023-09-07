@@ -1,7 +1,6 @@
 ---
 title: "Build a bedtime songs bot with a custom ML model"
 linkTitle: "Bedtime Songs Bot"
-weight: 60
 type: "docs"
 tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
 description: "Create a robot babysitter with a webcam and machine learning."
@@ -12,8 +11,9 @@ videoAlt: "A demonstration of the bedtime songs bot is taking place in an office
 authors: [ "Tess Avitabile", "Sierra Guequierre" ]
 languages: [ "python" ]
 viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
-level: "Beginner"
-date: "21 April 2023"
+level: "Intermediate"
+date: "2023-08-18"
+# updated: ""
 cost: "0"
 ---
 
@@ -101,7 +101,7 @@ To view your webcam's image stream, navigate to the **Control** tab of your robo
 Click on the drop-down menu labeled **camera** and toggle the feed on.
 If you want to test your webcam's image capture, you can click on **Export Screenshot** to capture an image, as shown below:
 
-  {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on screen." >}}
+  {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
 
 Now, configure the [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
@@ -188,7 +188,7 @@ Make sure that you have added a `service_config` to the JSON configuration of yo
 Your webcam is now configured to automatically capture images when you are connected to your robot live on [the Viam app](https://app.viam.com).
 At this point, grab the toys or any objects you want the robot to be able to differentiate between.
 
-Tess's kids like playing with puzzle pieces, which come in different shape and color combinations.
+Tess's kids like playing with puzzle pieces, which come in different shapes and color combinations.
 They decided to filter between these puzzle pieces by tagging by shape, but you can filter your objects as you choose.
 
 Hold up the toys to the camera while photos are being taken.
@@ -305,7 +305,7 @@ Now, capture the audio of the songs you want your bot to play.
 - Navigate to a directory where you want to store your SDK code.
 Save your audio files inside of this directory.
 
-The audio files I used are available to download on [GitHub](https://github.com/viam-labs/bedtime-songs-bot).
+The audio files Tess used are available to download on [GitHub](https://github.com/viam-labs/bedtime-songs-bot).
 
 ### Program your bedtime-songs bot
 
@@ -499,7 +499,7 @@ func play(label string, logger golog.Logger) {
    <-done
 }
 
-// Code Sample Connect() Code 
+// Code Sample Connect() Code
 func main() {
  logger := golog.NewDevelopmentLogger("client")
  robot, err := client.New(
@@ -517,8 +517,8 @@ func main() {
 
 
  defer robot.Close(context.Background())
-  
-// Get the shape classifier from the robot 
+
+// Get the shape classifier from the robot
  visService, err := vision.FromRobot(robot, "shape-classifier")
  if err != nil {
    logger.Error(err)
