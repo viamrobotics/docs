@@ -17,7 +17,7 @@ Follow one of our Jetson [setup guides](/installation/) to prepare your board fo
 
 {{% alert title="CAUTION: Use 3.3V inputs and outputs" color="warning" %}}
 
-The jetson's gpio pins are rated for inputs and outputs at 3.3V. Signals from encoders and sensors at even 5V can cause damage to a pin. We recommend connecting hardware that can operate and send signals at 3.3V or lower. [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note)
+The jetson's GPIO pins are rated for inputs and outputs at 3.3V. Signals from encoders and sensors at even 5V can cause damage to a pin. We recommend connecting hardware that can operate and send signals at 3.3V or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note)
 
 {{% /alert %}}
 
