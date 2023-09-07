@@ -344,7 +344,7 @@ On your robot's page on the Viam app, click on the dropdown next to the main par
 
 ![Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
 
-Navigate to your new sub-part's **Config** tab and create a new motor using the `fake`` model.
+Navigate to your new sub-part's **Config** tab and create a new motor using the `fake` model.
 Name it `"motor2"`.
 
 {{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The config tab of the sub-part. A new motor component called motor2 is being created." resize="400x" >}}
