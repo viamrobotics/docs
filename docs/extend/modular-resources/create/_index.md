@@ -1,10 +1,10 @@
 ---
-title: "Code your own modules to create custom resources"
+title: "Code your own modules to create modular resources"
 linkTitle: "Create"
 weight: 20
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Use the Viam module system to implement custom resources that can be included in any Viam-powered robot."
+description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered robot."
 no_list: true
 ---
 
@@ -12,7 +12,7 @@ You can extend Viam by creating a custom [module](/extend/modular-resources/key-
 
 A common use case for modular resources is to create a new model that implements an existing Viam API.
 
-Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
 
 Alternatively, you can add your module locally to your robot without uploading to the Viam Registry.
 
