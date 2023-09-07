@@ -38,7 +38,7 @@ After you finish programming your module, you can [upload your module to the Via
 As part of the upload process, you decide whether your module is *public* (visible to all users) or *private* (visible only to other members of your [organization](/manage/fleet/organizations/)).
 
 You can see details about each module in [the Viam Registry](https://app.viam.com/registry) on its module details page.
-See the [Odrive module](https://app.viam.com/registry/viam/odrive) for an example.
+See the [Odrive module](https://app.viam.com/module/viam/odrive) for an example.
 Public modules also display the number of times a module has been deployed to a robot.
 
 When you make changes to your module, you can [uploaded the newer version](/extend/modular-resources/upload/#update-an-existing-module) with a new version number, and the Viam Registry will track each version that you upload.
