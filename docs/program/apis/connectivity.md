@@ -12,7 +12,7 @@ What happens when your robot loses its connection to the internet over a LAN or 
 ## How does `viam-server` work if your robot loses its network connection?
 
 When a robot loses its connection over LAN or WAN, it can no longer communicate with clients through [the Viam app](https://app.viam.com).
-`viam-server` will timeout and the `SessionsClient` will end any current client [*sessions*](/program/apis/sessions/) on this robot.
+After no heartbeat has been received over a timeout period, `viam-server` will timeout and end any current client [*sessions*](/program/apis/sessions/) on this robot.
 
 ## What happens to clients connected to the robot when your robot loses its network connection?
 
