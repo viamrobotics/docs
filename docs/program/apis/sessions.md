@@ -12,12 +12,12 @@ The period of time during which a client is connected to a robot is called a *se
 
 *Session management* is a presence mechanism that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
 
-As a safety precaution, the default Session management configuration ensures that a robot only moves when a client is actively connected.
+As a safety precaution, the default session management configuration ensures that a robot only moves when a client is actively connected.
 This is especially important for robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
 
-If you need to different functionality, you can manage sessions yourself.
+If you want to manage operations differently, you can manage sessions yourself.
 The Session Management API provides functionality for
 
 - clients to notify to the robot that the client is actively authenticated and connected
@@ -25,7 +25,7 @@ The Session Management API provides functionality for
 
 ### The `SessionsClient`
 
-A *client* of a Viam robot can be an SDK script controlling the robot, an input controller, or the different resources on the robot, including {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, communicating.
+A *client* of a Viam robot can be a program using an SDK to control the robot, an input controller, or the different resources on the robot, including {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, communicating.
 
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the model servers you instantiate on your robot for individual resources.
 
