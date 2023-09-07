@@ -84,7 +84,7 @@ If, for example, the module provides a motor component, and the motor is running
 
 ### Configure a modular resource from a Registry module
 
-Once you have configured a module from the Viam Registry, you can add any number of the resources that module makes available to your robot by adding new components or services configured with your modular resources' new subtype or [model](/extend/modular-resources/key-concepts/#models).
+Once you have configured a module from the Viam Registry, you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
@@ -127,26 +127,26 @@ You can send commands to the base according to the Viam [base API](/components/b
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "components": [
-        {
-            "type": "board",
-            "name": "main-board",
-            "model": "pi"
-        },
-        {
+  "components": [
+      {
+        "type": "board",
+        "name": "main-board",
+        "model": "pi"
+      },
+      {
         "type": "base",
         "name": "my-custom-base-1",
         "model": "acme:demo:mybase",
         "namespace": "rdk",
         "attributes": {},
         "depends_on": [ "main-board" ]
-        }
+      }
     ],
     "modules": [
-    {
-      "name": "my-custom-base",
-      "executable_path": "/home/my_username/my_base/run.sh"
-    }
+      {
+        "name": "my-custom-base",
+        "executable_path": "/home/my_username/my_base/run.sh"
+      }
   ]
 }
 ```
@@ -257,22 +257,22 @@ You can send commands to the base according to the Viam [base API](/components/b
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "components": [
-        {
-            "type": "board",
-            "name": "main-board",
-            "model": "pi"
-        },
-        {
-        "type": "base",
-        "name": "my-custom-base-1",
-        "model": "acme:demo:mybase",
-        "namespace": "rdk",
-        "attributes": {},
-        "depends_on": [ "main-board" ]
-        }
-    ],
-    "modules": [
+  "components": [
+    {
+      "type": "board",
+      "name": "main-board",
+      "model": "pi"
+    },
+    {
+      "type": "base",
+      "name": "my-custom-base-1",
+      "model": "acme:demo:mybase",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [ "main-board" ]
+    }
+  ],
+  "modules": [
     {
       "name": "my-custom-base",
       "executable_path": "/home/my_username/my_base/run.sh"
