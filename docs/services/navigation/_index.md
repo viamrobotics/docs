@@ -564,53 +564,15 @@ Compass heading measurements are read by the following {{< glossary_tooltip term
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
-- [imu-wit][/components/movement-sensor/imu-wit/]
 
 An example of a `Compass Heading` reading:
 
 ``` go
-sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
+sensors.Readings{Name: movementsensor.Named("your-cool-sensor"), Readings: map[string]interface{}{175}}
 ```
 
 If you want to read compass headings, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Use compass heading readings to determine the *bearing* of your robot, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your robot is facing.
-
-### Linear Acceleration
-
-Linear acceleration measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
-
-- [accel-adxl345](/components/movement-sensor/adxl345/)
-- [gyro-mpu605](/components/movement-sensor/imu-wit)
-- [imu-vectornav](/components/movement-sensor/imu-vectornav)
--[imu-wit](/components/movement-sensor/imu-wit)
-
-An example of a `Linear Acceleration` reading:
-
-``` go
-sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
-```
-
-If you want to read linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the acceleration of your robot through space.
-
-### Linear Velocity
-
-Linear velocity measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
-
-- [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
-- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
-- [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
-- [wheeled-odometry](/components/movement-sensor/wheeled-odometry))
-
-An example of a `Linear Velocity` reading:
-
-``` go
-sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
-```
-
-If you want to read linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use linear velocity readings to determine the speed at which your robot is moving through space.
-Use [linear acceleration](/services/navigation/#linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
 
 ### Orientation
 
@@ -649,6 +611,26 @@ sensors.Readings{Name: movementsensor.Named("imu"), Readings: map[string]interfa
 If you want to read orientation, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Additionally, follow [these instructions](/services/frame-system/#configuration) to configure the geometries of each component of your robot within the [frame system](/services/frame-system/).
 
+### Angular Velocity
+
+The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component report angular velocity measurements:
+
+All the imus, any gyroscopes like the mpu6050, visual and wheeled odometry models.
+- [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
+- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
+- [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+
+An `AngularVelocity` reading ... TODO
+Angular velocity readings are taken through the movement sensor API's [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity).
+
+An example of a `AngularVelocity` reading:
+
+``` go
+gps.GetAngularVelocity{}
+```
+
+If you want to get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+
 ### Position
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component report Position measurements:
@@ -656,16 +638,51 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+- [wheeled-odometry](/components/movement-sensor/wheeled-odometry) (provides a relative estimate only based on where the base component has started)
 
 A `Position` reading specifies the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
+Position readings are taken through the movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition).
 
 An example of a `Position` reading:
 
 ``` go
-sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
+gps.GetPosition{"a": 4.5, "b": 5.6, "c": 6.7}
 ```
 
 If you want to get a position, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 
 Position readings allow you to get the *absolute* position of components when using the [motion service](/services/motion/) and [navigation service](/services/navigation/).
 This is in contrast to [orientation readings](/services/navigation/#orientation), which you use to specify relative position.
+
+### Linear Acceleration
+
+Linear acceleration measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
+
+- [accel-adxl345](/components/movement-sensor/adxl345/)
+
+An example of a `Linear Acceleration` reading:
+
+``` go
+sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
+```
+
+If you want to read linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
+
+### Linear Velocity
+
+Linear velocity measurements are read by the following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/):
+
+- [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
+- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
+- [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+
+An example of a `Linear Velocity` reading:
+
+``` go
+sensors.Readings{Name: movementsensor.Named("gps"), Readings: map[string]interface{}{"a": 4.5, "b": 5.6, "c": 6.7}}
+```
+
+If you want to read linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+Use linear velocity readings to determine the speed at which your robot is moving through space.
+Use [linear acceleration](/services/navigation/#linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
