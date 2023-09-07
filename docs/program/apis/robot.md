@@ -15,7 +15,6 @@ These are some of the supported robot API methods. For a full list [see GitHub](
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
-
 ### DiscoverComponents
 
 Get a list of discovered component configurations.
