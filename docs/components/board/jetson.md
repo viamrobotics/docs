@@ -17,6 +17,12 @@ If you have a CSI camera, follow [these instructions](/extend/modular-resources/
 
 {{% /alert %}}
 
+{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="warning" %}}
+
+The jetson's GPIO pins are rated for inputs and outputs at 3.3V. Signals from encoders and sensors at even 5V can cause damage to a pin. We recommend connecting hardware that can operate and send signals at 3.3V or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note)
+
+{{% /alert %}}
+
 Configure a `jetson` board to integrate a [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your robot:
 
 {{< tabs name="Configure an jetson Board" >}}
