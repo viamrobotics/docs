@@ -166,8 +166,8 @@ Select `Encoded` in the **Encoder** section and select `renc` as the **encoder**
 Next, describe how the motor is wired to the Pi:
 
 1. Switch the Component Pin Assignment Type to `In1/In2`.
-2. Set **A/In1** to `15`.
-3. Set **B/In2** to `16`.
+2. Set **A/In1** to `16`.
+3. Set **B/In2** to `15`.
 4. Leave the `pwm` (pulse-width modulation) pin blank, because this specific motor driver's configuration does not require a separate PWM pin.
 
 ![The motor config panel.](/tutorials/scuttlebot/pi-wheel.png)
