@@ -32,8 +32,6 @@ cost: 540
 1. Create a *robot* and follow the setup instructions until the robot successfully connects to the Viam app.
 1. Navigate to the robot's **Config** tab.
 
-   ![The Viam app UI showing the config tab of the robot.](/tutorials/scuttlebot/createcomponent.png)
-
 ## Configure the board
 
 Add your first component, the [board](/components/board/):

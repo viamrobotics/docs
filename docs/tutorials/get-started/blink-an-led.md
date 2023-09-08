@@ -129,9 +129,7 @@ First, go to the [Viam app](https://app.viam.com/) on your web browser and navig
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-![The Create component field on the Components subtab of the Config tab.](/tutorials/blink-an-led/create-component.png)
-
-Add a [*board component*](/components/board/) to represent your single board computer, which in this case is the Raspberry Pi.
+Add a [*board component*](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
 To create the new component, click **Create component** in the lower left corner of the **Config** tab.
 
 - Select `board` as the component type.

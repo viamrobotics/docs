@@ -121,17 +121,17 @@ We named ours ConfettiBot.
 
 ![A robot page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
 
-Then navigate to the robot’s **Config** tab to start configuring your components.
+Then navigate to the robot’s **CONFIG** tab to start configuring your components.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
 ### Configure the Pi as a board
 
-Navigate to the **Components** subtab of the **Config** tab.
+Click on the **Components** subtab and navigate to the **Create component** menu.
 
-Click **Create Component** in the lower-left corner of the page.
 Add your {{< glossary_tooltip term_id="board" text="board" >}} with the name `party`, type `board` and model `pi`.
+Click **Create Component**.
 
 ![Create component panel, with the name attribute filled as party, type attribute filled as board and model attribute filled as pi.](/tutorials/confetti-bot/app-board-create.png)
 
