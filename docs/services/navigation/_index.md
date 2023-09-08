@@ -585,8 +585,8 @@ gps, err := gps.CompassHeading(context.Background, nil)
 gps.CompassHeading{175}
 ```
 
-The movement sensor API's [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) takes compass heading readings.
 If you want to read compass headings, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The movement sensor API's [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) takes compass heading readings.
 Use compass heading readings to determine the *bearing* of your robot, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your robot is facing.
 
 ### Orientation
@@ -603,12 +603,10 @@ orientation, err := imuwit.Orientation(context.Background, nil)
 imu.Orientation{o_x: -47.97, o_y: 142.63, o_z: -90.14, theta: 60}
 ```
 
-The movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) takes orientation readings.
-
-Use orientation readings to determine the orientation of an object in 3D space as an "orientation vector", or, its position within the [cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) relative to some specific `origin` point that you, the user, need to choose and configure for your robot in Viam's [frame system](/services/frame-system/).
-
 If you want to read orientation, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) takes orientation readings.
 Additionally, follow [these instructions](/services/frame-system/#configuration) to configure the geometries of each component of your robot within the [frame system](/services/frame-system/).
+Use orientation readings to determine the orientation of an object in 3D space as an "orientation vector", or, its position within the [cartesian coordinate system](https://en.wikipedia.org/wiki/Cartesian_coordinate_system) relative to some specific `origin` point that you, the user, need to choose and configure for your robot in Viam's [frame system](/services/frame-system/).
 
 ### Angular Velocity
 
@@ -626,8 +624,8 @@ ang_vel, err := imu.AngularVelocity{context.Background, nil}
 imu.AngularVelocity{x: -47.9736, y: 142.639, z: -90.1489}
 ```
 
-The movement sensor API's [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity) takes angular velocity readings.
 If you want to get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The movement sensor API's [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity) takes angular velocity readings.
 Use angular velocity readings to determine the speed and direction at which your robot is rotating.
 
 ### Position
@@ -645,8 +643,8 @@ position, err := imu.Position{context.Background, nil}
 gps.Position{x: 4.5, y: 5.6, z: 6.7}
 ```
 
-The movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) takes position readings.
 If you want to get a position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) takes position readings.
 The suggested components allow you to get the *absolute* position of components through their Positions readings for use in the [motion service](/services/motion/) and [navigation service](/services/navigation/).
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 
@@ -666,8 +664,8 @@ linear_velocity, err := imu.LinearVelocity{context.Background, nil}
 accel.LinearVelocity{x: 6.497, y: 1.345, z: 12.32}
 ```
 
-The movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity) takes linear velocity readings.
 If you want to get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity) takes linear velocity readings.
 Use linear velocity readings to determine the speed at which your robot is moving through space.
 Use [linear acceleration](/services/navigation/#linear-acceleration) readings from another movement sensor to determine the rate of change of this speed.
 
@@ -684,6 +682,6 @@ linear_acceleration, err := imu.LinearAcceleration{context.Background, nil}
 accel.LinearAcceleration{x: 6.497, y: 1.345, z: 12.32}
 ```
 
-The movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) takes linear acceleration readings.
 If you want to get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) takes linear acceleration readings.
 Use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
