@@ -127,10 +127,6 @@ This is **some markdown.**
 It can even contain shortcodes.
 {{< /alert >}}
 
-### Alerts Titles
-
-When creating alerts about important messages, set the title attribute as title="Important". If you want to include a more detailed title or message, use title="Important: $message" to provide additional context.
-
 ## Using Expanders
 
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
@@ -218,6 +214,8 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 They both use the same color.
 
 **Note/Important/Stability Notice**: These call attention to something important.
+ When creating alerts about important messages, set the title attribute as `title="Important"`.
+ If you want to include a more detailed title or message, use `title="Important: $message"` to provide additional context.
 
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
