@@ -3,9 +3,9 @@ title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 type: "docs"
 description: "Configure a SCUTTLE robot on the Viam platform."
-image: "/tutorials/scuttlebot/createcomponent.png"
-images: ["/tutorials/scuttlebot/createcomponent.png"]
-imageAlt: "The Viam app UI showing the Config tab of a robot."
+image: "/tutorials/scuttlebot/scuttle-on-floor-cropped.png"
+images: ["/tutorials/scuttlebot/scuttle-on-floor-cropped.png"]
+imageAlt: "A SCUTTLE robot on a carpeted floor."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
   - "/tutorials/scuttlebot"
@@ -31,6 +31,8 @@ cost: 540
 1. Go to [the Viam app](https://app.viam.com).
 1. Create a *robot* and follow the setup instructions until the robot successfully connects to the Viam app.
 1. Navigate to the robot's **Config** tab.
+
+![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
 ## Configure the board
 
