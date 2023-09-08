@@ -23,7 +23,9 @@ Without session management, the API request from the client sets the flow of ele
 With default configuration, sessions are automatically managed for you with Viam's `SessionsClient`.
 If you want to manage sessions yourself, use Viam's sessions management API.
 
-The session management API moderates `viam-server`'s client network connections, like the star to `viam-server`'s planet in a solar system of application clients:
+The session management API moderates `viam-server`'s client network connections.
+You can think about a user as one of many clients that are connected to `viam-server` like a star in a solar system of application clients.
+All stars (clients) are subject to forces of the planet (`viam-server`) and the sun ( the Session Management API), with the API being the larger force managing viam-server's clients' connection to the robot.
 
 {{<imgproc src="program/viam-session-management.png" resize="500x" declaredimensions=true alt="An analogy for Viam's session management API and viam-server's Robot APIs' partnership in managing client sessions within the Viam client ecosystem, with the API as a larger force managing viam-server's clients' connection to the robot. A star and its planet are pictured, with viam-server being the planet, orbiting the session management API but possessing many clients in its orbit itself.">}}
 
