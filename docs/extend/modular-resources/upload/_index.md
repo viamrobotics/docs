@@ -14,13 +14,13 @@ This feature is in beta, and may not be suitable for production use.
 
 Once you have [created a custom module](/extend/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam Registry.
 
-With the CLI, you can register your module with the Viam Registry to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
+With the CLI, you can register your module with [the Viam Registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
 
 For more information, see the [`viam module` command](/manage/cli/#module).
 
 ## Upload a custom module
 
-To upload your custom module to the Viam Registry, either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following the instructions below:
+To upload your custom module to [the Viam Registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following the instructions below:
 
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
@@ -179,7 +179,17 @@ For more information, see the [`viam module` command](/manage/cli/#module)
 
 ## Update an existing module
 
-You can also use the [Viam CLI](/manage/cli/) to update an existing custom module in the Viam Registry.
+You can update an existing module in [the Viam Registry](https://app.viam.com/registry) in one of two ways:
+
+- [Upload a newer version of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/manage/cli/).
+- [Upload a newer version of your module automatically](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
+
+Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
+Updating your module automatically using CI is better suited for larger, ongoing projects, especially those with multiple contributors.
+
+### Update an existing module using the Viam CLI
+
+To update an existing module in [the Viam Registry](https://app.viam.com/registry) manually, use the [Viam CLI](/manage/cli/):
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -231,3 +241,60 @@ You can also use the [Viam CLI](/manage/cli/) to update an existing custom modul
    When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
+
+### Update an existing module using a Github action
+
+To update an existing module in [the Viam Registry](https://app.viam.com/registry) using CI, use the [`upload-module` Github action](https://github.com/viamrobotics/upload-module).
+
+1. Edit your custom module with the changes you'd like to make.
+
+1. Navigate to the **Actions** tab of the GitHub repository you are using for your module code.
+   If you have already created GitHub actions for this repository, click the **New workflow** button to create a new one.
+   If you have not yet created any GitHub actions, click the **Set up a workflow yourself** link.
+   See the [GitHub actions documentation](https://docs.github.com/en/actions/creating-actions) for more information.
+
+1. Paste the following action template YAML into the edit window.
+
+   ```yaml {class="line-numbers linkable-line-numbers"}
+   on:
+     push:
+     release:
+       types: [released]
+
+   jobs:
+     publish:
+       runs-on: ubuntu-latest
+       steps:
+       - uses: actions/checkout@v3
+       - name: build
+         run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
+       - uses: viamrobotics/upload-module@main
+         # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
+         with:
+           module-path: module.tar.gz
+           org-id: your-org-id-uuid # <-- replace with your org ID. not required for public modules
+           platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
+           version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
+           key-id: ${{ secrets.viam_key_id }}
+           key-value: ${{ secrets.viam_key_value }}
+   ```
+
+1. Edit the copied code to include the configuration specific to your module.
+   Each item marked with a `<--` comment requires that you edit the configuration values accordingly.
+
+   Set `run` to the command you use to build and package your module.
+   When ready to test the action, uncomment `if: github.event_name == 'release'` to enable the action to trigger a run when you [issue a release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+
+   For guidance on configuring the other parameters, see the documentation for each:
+   - [`org-id`](#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
+   - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
+   - [`version`](/manage/cli/#using-the---version-argument)
+   - [`key-id` and `key-value`](/manage/cli/#create-an-organization-api-key) - You will set these values in the next step.
+
+1. Next, follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key), which the action will use to authenticate its run.
+   Provide the `key-id` and `key-value` generated in the YAML configuration above.
+
+1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
+   Your module should upload to [the Viam Registry](https://app.viam.com/registry) with the appropriate version automatically.
+
+For more details, see the [`upload-module` Github action documentation](https://github.com/viamrobotics/upload-module).
