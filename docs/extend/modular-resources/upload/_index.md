@@ -282,7 +282,7 @@ To update an existing module in the [Viam Registry](https://app.viam.com/registr
    When ready to test the action, uncomment `if: github.event_name == 'release'` to enable the action to trigger a run when you [issue a release](https://docs.github.com/en/repositories/releasing-projects-on-github).
 
    For guidance on configuring the other parameters, see the documentation for each:
-   - [`org-id`](#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
+   - [`org-id`](/manage/cli/#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
    - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
    - [`version`](/manage/cli/#using-the---version-argument)
    - [`key-id` and `key-value`](/manage/cli/#create-an-organization-api-key) - You will set these values in the next step.
