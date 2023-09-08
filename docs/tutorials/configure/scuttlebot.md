@@ -41,10 +41,9 @@ Add your first component, the [board](/components/board/):
 {{< tabs name="Configure an pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter `local` as the name for your board, select the type `board`, and select the `pi` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `pi` model.
+Enter `local` as the name for your board and click **Create**.
 
 Click on **Show more** and add `I2C` with **name** `main` and **bus** `1`.
 
@@ -83,10 +82,9 @@ Next, configure the left and right encoders as follows:
 
 ### Left encoder
 
-Navigate to the **Create component** menu.
-Enter `lenc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
-
 Click **Create component**.
+Select the `encoder` type, then select the `AMS-AS5048` model.
+Enter `lenc` as the name for your encoder and click **Create**.
 
 Click the **board** drop-down list and select the name of your board, `local`.
 
@@ -96,10 +94,9 @@ In the **i2c bus** field type `main`, and in the **i2c address** field type `64`
 
 ### Right encoder
 
-Navigate to the **Create component** menu.
-Enter `renc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
-
 Click **Create component**.
+Select the `encoder` type, then select the `AMS-AS5048` model.
+Enter `renc` as the name for your encoder and click **Create**.
 
 Click the **board** drop-down list and select the name of your board, `local`.
 
@@ -151,12 +148,11 @@ The next step is to add the motors and make them spin the wheels.
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-**Right Motor:**
-
-Navigate to the **Create component** menu.
-Enter `right` for your motor name, select the type `motor`, and select the `gpio` model.
+### Right motor
 
 Click **Create component**.
+Select the `motor` type, then select the `gpio` model.
+Enter `right` as the name for your encoder and click **Create**.
 
 Then from the **Board** drop-down, select `local`, the Raspberry Pi the motor is wired to.
 
@@ -171,12 +167,11 @@ Next, describe how the motor is wired to the Pi:
 
 ![The motor config panel.](/tutorials/scuttlebot/pi-wheel.png)
 
-**Left Motor:**
-
-Navigate to the **Create component** menu.
-Enter `left` for your motor name, select the type `motor`, and select the `gpio` model.
+### Left motor
 
 Click **Create component**.
+Select the `motor` type, then select the `gpio` model.
+Enter `left` as the name for your encoder and click **Create**.
 
 Then select `local` from the **Board** drop-down to choose the Raspberry Pi the motor is wired to.
 

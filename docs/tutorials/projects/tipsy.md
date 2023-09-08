@@ -80,8 +80,8 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 1. **Configure the Pi as a board**
 
-    Add your {{< glossary_tooltip term_id="board" text="board" >}} with the name `local`, type `board`, and model `pi`.
     Click **Create component**.
+    Add your {{< glossary_tooltip term_id="board" text="board" >}} with the type `board`, model `pi`, and name `local`.
 
     ![Create component panel, with the name attribute filled as local, type attribute filled as board and model attribute filled as Pi.](/tutorials/tipsy/app-board-create.png)
 

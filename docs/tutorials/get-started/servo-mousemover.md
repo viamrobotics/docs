@@ -163,7 +163,7 @@ In the **Config** tab, create a new component with the following attributes:
 
 ![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name local typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with board selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-board.png)
 
-Click **Create Component** to create the pi [board component](/components/board/) component.
+Click **Create** to create the pi [board component](/components/board/) component.
 
 ### Servo component
 
@@ -175,7 +175,7 @@ After the board component, create a new [servo component](/components/servo/) wi
 
 ![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name FS90R typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with servo selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-servo.png)
 
-Click **Create Component** to create the [servo component](/components/servo/).
+Click **Create** to create the [servo component](/components/servo/).
 
 You will then see where you can put in Attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
