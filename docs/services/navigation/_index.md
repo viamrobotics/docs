@@ -620,8 +620,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of an `AngularVelocity` reading:
 
 ``` go
-// angular_velocity is an AngularVelcoity{X:1, Y:2, Z:3}
-angular_velocity, err := imu.AngularVelocity{context.Background, nil}
+// angularVelocity is an AngularVelocity{X:1, Y:2, Z:3}
+angularVelocity, err := imu.AngularVelocity{context.Background, nil}
 ```
 
 If you want to get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -660,8 +660,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Velocity` reading:
 
 ``` go
-// linear_velocity is an r3.Vector{X:0, Y:1, Z:0}
-linear_velocity, err := imu.LinearVelocity{context.Background, nil}
+// linearVelocity is an r3.Vector{X:0, Y:1, Z:0}
+linearVelocity, err := imu.LinearVelocity{context.Background, nil}
 ```
 
 If you want to get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -681,8 +681,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Acceleration` reading:
 
 ``` go
-// linear_acceleration is an r3Vector {X:0, Y:0, Z:1}
-linear_acceleration, err := imu.LinearAcceleration{context.Background, nil}
+// linearAcceleration is an r3Vector {X:0, Y:0, Z:1}
+linearAcceleration, err := imu.LinearAcceleration{context.Background, nil}
 ```
 
 If you want to get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
