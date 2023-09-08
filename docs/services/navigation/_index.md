@@ -582,7 +582,7 @@ An example of a `Compass Heading` reading:
 
 ``` go
 gps, err := gps.CompassHeading(context.Background, nil)
-gps.CompassHeading{175}
+gps.CompassHeading{25}
 ```
 
 If you want to read compass headings, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -600,7 +600,7 @@ An example of an `Orientation` reading:
 
 ``` golang
 orientation, err := imuwit.Orientation(context.Background, nil)
-imu.Orientation{o_x: -47.97, o_y: 142.63, o_z: -90.14, theta: 60}
+imu.Orientation{"_type":"quat","i":0,"j":0,"k":0,"r":1}
 ```
 
 If you want to read orientation, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -621,7 +621,7 @@ An example of an `AngularVelocity` reading:
 
 ``` go
 ang_vel, err := imu.AngularVelocity{context.Background, nil}
-imu.AngularVelocity{x: -47.9736, y: 142.639, z: -90.1489}
+imu.AngularVelocity{"_type":"angular_velocity","x":0,"y":0,"z":1}
 ```
 
 If you want to get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -640,7 +640,7 @@ An example of a `Position` reading:
 
 ``` go
 position, err := imu.Position{context.Background, nil}
-gps.Position{x: 4.5, y: 5.6, z: 6.7}
+gps.Position{"_type":"geopoint","lat":40.7,"lng":-73.98}
 ```
 
 If you want to get a position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -661,7 +661,7 @@ An example of a `Linear Velocity` reading:
 
 ``` go
 linear_velocity, err := imu.LinearVelocity{context.Background, nil}
-accel.LinearVelocity{x: 6.497, y: 1.345, z: 12.32}
+accel.LinearVelocity{"_type":"vector3","x":0,"y":5.4,"z":0}
 ```
 
 If you want to get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -679,7 +679,7 @@ An example of a `Linear Acceleration` reading:
 
 ``` go
 linear_acceleration, err := imu.LinearAcceleration{context.Background, nil}
-accel.LinearAcceleration{x: 6.497, y: 1.345, z: 12.32}
+accel.LinearAcceleration{"_type":"vector3","x":2.2,"y":4.5,"z":2}
 ```
 
 If you want to get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
