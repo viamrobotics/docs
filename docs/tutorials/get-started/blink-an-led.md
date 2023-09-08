@@ -129,15 +129,13 @@ First, go to the [Viam app](https://app.viam.com/) on your web browser and navig
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-![The Create component field on the Components subtab of the Config tab.](/tutorials/blink-an-led/create-component.png)
+Add a [*board component*](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
+To create the new component, click **Create component** in the lower left corner of the **Config** tab.
 
-Add a [*board component*](/components/board/) to represent your single board computer, which in this case is the Raspberry Pi.
-To create the new component, navigate to the **Create component** panel.
-
+- Select `board` as the component type.
+- Select `pi` as the model.
 - Name the board whatever you like as long as you are consistent when referring to it later; we'll name it `local` since it is the board we will communicate with directly.
-- For the component **Type**, select `board`.
-- For **Model**, select `pi`.
-- Click **Create component**.
+- Click **Create**.
 
 Your board component panel will look like this:
 

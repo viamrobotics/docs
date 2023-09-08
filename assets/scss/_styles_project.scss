@@ -1183,10 +1183,20 @@ ul.sectionlist > li:hover {
 }
 
 .search-facets {
-  width: 100%;
+  width: 540px;
   border: 1px solid black;
   margin: 0.2rem;
   padding: 0.2rem;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+}
+
+@media (max-width: 800px) {
+.search-facets {
+  max-width: 86%;
+  width: 445px;
+}
 }
 
 .search-facets > ul {
@@ -1272,6 +1282,12 @@ a.ais-Pagination-link:hover {
   text-align: center;
   padding: 0;
 }
+
+// Speed up bootstraps transition animations
+.search-facets.collapsing {
+  transition-duration: 0.000002s;
+}
+
 // Pagination CSS end
 
 // Tutorials page end

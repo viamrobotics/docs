@@ -15,10 +15,9 @@ Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.c
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your arm, select the type `arm`, and select the `xArm6` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `arm` type, then select the `xArm6` model.
+Enter a name for your arm and click **Create**.
 
 ![Web UI configuration panel for an arm of model xArm6 in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/xArm6-ui-config.png)
 
