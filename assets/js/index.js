@@ -97,18 +97,21 @@ if (toc) {
 
         for (var i = 0; i < tocItems.length; i++) {
             let item = tocItems[i];
-            var targetBounds = item.target.getBoundingClientRect();
+            if (item.target) {
 
-            if( targetBounds.bottom > windowHeight * TOP_MARGIN && targetBounds.top < windowHeight * ( 1 - BOTTOM_MARGIN ) ) {
-                visibleItems += 1;
-                item.listItem.classList.add( 'toc-active' );
-                atLeastOne = true;
-            } else {
-                item.listItem.classList.remove( 'toc-active' );
-            }
+                var targetBounds = item.target.getBoundingClientRect();
 
-            if (targetBounds.bottom < windowHeight) {
-                lastElem = item;
+                if( targetBounds.bottom > windowHeight * TOP_MARGIN && targetBounds.top < windowHeight * ( 1 - BOTTOM_MARGIN ) ) {
+                    visibleItems += 1;
+                    item.listItem.classList.add( 'toc-active' );
+                    atLeastOne = true;
+                } else {
+                    item.listItem.classList.remove( 'toc-active' );
+                }
+
+                if (targetBounds.bottom < windowHeight) {
+                    lastElem = item;
+                }
             }
 
         }
