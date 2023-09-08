@@ -1272,6 +1272,12 @@ a.ais-Pagination-link:hover {
   text-align: center;
   padding: 0;
 }
+
+// Speed up bootstraps transition animations
+.search-facets.collapsing {
+  transition-duration: 0.000002s;
+}
+
 // Pagination CSS end
 
 // Tutorials page end
