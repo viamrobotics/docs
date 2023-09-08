@@ -127,6 +127,10 @@ This is **some markdown.**
 It can even contain shortcodes.
 {{< /alert >}}
 
+### Alerts Titles
+
+When creating alerts about important messages, set the title attribute as title="Important". If you want to include a more detailed title or message, use title="Important: $message" to provide additional context.
+
 ## Using Expanders
 
 Expanders allow to you add long sections of code to your topic and hide them until the reader decides to view it.
