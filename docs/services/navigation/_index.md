@@ -628,7 +628,7 @@ Use angular velocity readings to determine the speed and direction at which your
 
 ### Position
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take Position measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take position measurements:
 
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
