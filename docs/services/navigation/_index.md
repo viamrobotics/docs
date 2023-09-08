@@ -642,7 +642,7 @@ gps.GetPosition{x: 4.5, y: 5.6, z: 6.7}
 
 The movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) takes position readings.
 If you want to get a position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
-Use `Position` readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
+Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 
 ### Linear Velocity
 
