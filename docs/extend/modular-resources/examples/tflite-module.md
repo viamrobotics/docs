@@ -29,7 +29,7 @@ Follow the instructions below for your platform:
 {{< tabs >}}
 {{% tab name="macOS" %}}
 
-Follow the [Viam C++ SDK build instructions](https://.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) to build the SDK on your macOS computer using the `brew` package manager.
+Follow the [Viam C++ SDK build instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) to build the SDK on your macOS computer using the `brew` package manager.
 
 While your specific build steps may differ slightly, your installation should generally resemble the following:
 
