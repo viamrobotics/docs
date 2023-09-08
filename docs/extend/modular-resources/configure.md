@@ -44,7 +44,7 @@ To delete a module added from the Viam Registry, click the trash can icon in the
 
 ### Configure a module from the Viam Registry
 
-Once you have added a module from the [Viam Registry](https://app.viam.com/registry)
+Once you have added a module from the [Viam Registry](https://app.viam.com/registry), you can view and configure the module from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
