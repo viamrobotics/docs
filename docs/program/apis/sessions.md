@@ -21,7 +21,7 @@ For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#set
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
 With default configuration, sessions are automatically managed for you with Viam's `SessionsClient`.
-If you want to manage sessions yourself, use Viam's sessions management API.
+If you want to manage sessions yourself, use Viam's session management API.
 
 ### The `SessionsClient`
 
@@ -204,7 +204,7 @@ session = session.SafetyMonitor(ctx, "my_base")
 
 ### ToContext
 
-Attach a session to the given contxt.
+Attach a session to the given context.
 
 **Parameters:**
 
@@ -226,7 +226,8 @@ session = session.ToContext(context.Background(), my_session)
 
 The sessions package provides the `SessionManager` as an interface for holding sessions for a particular robot and managing the lifetime of each of these sessions.
 
-`viam-server`'s Robot API provides a built-in `SessionManager`, which you can instantiate with `NewSessionManager()`:
+`viam-server` provides an implementation of a `SessionManager` that is built into the Robot API.
+Instantiate a new built-in `SessionManager` manually with `NewSessionManager()`:
 
 ### NewSessionManager
 
@@ -234,14 +235,14 @@ Create a new manager for holding sessions.
 
 **Parameters:**
 
-- `robot` [(Robot)](): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `heartbeatWindow` [(time.Duration)](): The heartbeat window you want this `SessionManager` to follow.
+- `robot` [(Robot)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot that you want this `SessionManager` to manage the client sessions of.
+- `heartbeatWindow` [(time.Duration)](https://pkg.go.dev/time#Duration): The heartbeat window you want this `SessionManager` to follow. The window is the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
 
 **Returns:**
 
-- [(SessionManager)]: A new manager for holding sessions.
+- [(*SessionManager)](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager): A new manager for holding sessions.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#SafetyMonitorResourceName).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#NewSessionManager).
 
 ``` go
 robot, err := client.New(
@@ -262,30 +263,66 @@ Then, the following functions are available for use with `viam-server`'s Robot A
 
 {{< readfile "/static/include/program/apis/session-manager.md" >}}
 
-Method Name | Description
------------ | -----------
-[`Start`](/program/apis/sessions/#start) | Create a new session that expects at least one heartbeat within the configured window.
-[`All`](/program/apis/sessions/#all) | Get all active sessions.
-[`FindByID`](/program/apis/sessions/#findbyid) | Find a session by the given ID. If found, trigger a heartbeat and extend the lifetime of the session.
-[`AssociateResource`](/program/apis/sessions/#associateresource) | Associate a session ID to a monitored resource. All associated resources will be stopped with this session is expired.
-[`Close`](/program/apis/sessions/#close) | Stop the session manager without directing any sessions to expire.
-[`expireLoop`](/program/apis/sessions/#expireLoop) | Set an expiration loop to be associated with a specific context.
-
 ### Start
-
-[Relevant github](https://github.com/viamrobotics/rdk/blob/473673baf8c395fe12b959f5579adbf614db53ab/robot/session_manager.go#L35).
 
 Create a new session that expects at least one heartbeat within the configured window.
 
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `heartbeatWindow` [(string)](https://pkg.go.dev/time#Duration): .
+
+**Returns:**
+
+- [(*session.Session)](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager): A new session.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.Start).
+
+``` go
+newSession, err := mySessionManager.Start(context.Background(), nil)
+```
+
 ### All
 
-Get all sessions that are actively being held by this `SessionsManager`.
+Get all sessions that are actively being held by this `SessionManager`.
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- [([]*session.Session)](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/session#Session): All active sessions associated with this `SessionManager`.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.All).
+
+``` go
+sessions := mySessionManager.All(context.Background(), nil)
+```
 
 ### FindByID
 
 Find a session by the given ID.
-If found, a heartbeat is triggered, extending the lifetime of the session.
-If ownerID is in use but the session in question has a different owner, this is a security violation and we report back no session found.
+If found, trigger a heartbeat, extending the lifetime of the session.
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(uuid.UUID)](https://pkg.go.dev/github.com/google/uuid#UUID): The client's UUID associated with this session.
+- `ownerID` [(string)](https://pkg.go.dev/builtin#string): The client's ownerID associated with this session.
+If ownerID is in use but the session in question has a different owner, this is a security violation and Viam reports back that no session is found.
+
+**Returns:**
+
+- [(*session.Session)](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/session#Session): A new manager for holding sessions.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.Start).
+
+``` go
+newSession, err := mySessionManager.Start(context.Background(), nil)
+```
 
 ### AssociateResource
 
@@ -294,10 +331,55 @@ Associate a session ID to a monitored resource so that when a session expires:
 - If a resource is currently associated with that ID based on the order of AssociateResource calls, then it will have its resource stopped.
 - If id is uuid.Nil, this has no effect other than disassociation with a session. Be sure to include any remote information in the name.
 
+**Parameters:**
+
+- `id` [(uuid.UUID)](https://pkg.go.dev/github.com/google/uuid#UUID): The client's UUID associated with this session.
+- `resourceName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `name` you have configured for this resource on your robot.
+
+**Returns:**
+
+- None
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.AssociateResource).
+
+``` go
+newSession, err := mySessionManager.AssociateResource(TODO)
+```
+
 ### Close
 
 Stop the session manager without directing any sessions to expire.
 
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/robot#SessionManager.Start).
+
+``` go
+mySessionManager.Close()
+```
+
 ### expireLoop
 
 Set an expiration loop to be associated with a specific context.
+
+**Parameters:**
+
+- TODO
+
+**Returns:**
+
+- TODO
+
+<!-- 
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/robot#SessionManager.Start). 
+TODO: There are no Go SDK docs on this as there was never a comment added to describe the function (eric will escape blame on this as he is gone) -->
+
+``` go
+err := mySessionManager.expireLoop(context.Background(), nil)
+```
