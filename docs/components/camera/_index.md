@@ -51,7 +51,7 @@ For configuration information, click on one of the following models:
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 
-Viam also provides the following camera models as [modular resources](/extend/modular-resources):
+Viam also provides the following camera models as [modular resources](/extend/modular-resources/):
 
 | Model | Description |
 | ----- | ----------- |
