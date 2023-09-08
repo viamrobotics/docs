@@ -23,6 +23,7 @@ Once you have created a modular resource, you can test your modular resource usi
     {{% card link="/extend/modular-resources/examples/rplidar/" customTitle="Add an RPlidar camera as a Modular Resource" %}}
     {{% card link="/extend/modular-resources/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
     {{% card link="/extend/modular-resources/examples/csi/" customTitle="Add a CSI Camera as a Modular Resource" %}}
+    {{% card link="/components/movement-sensor/viam-visual-odometry/" customTitle="Add a Visual Odometry sensor as a Modular Resource" %}}
     {{% card link="/extend/modular-resources/examples/custom-arm/" %}}
     {{% card link="/extend/modular-resources/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
     {{% card link="/tutorials/custom/custom-base-dog/" %}}
