@@ -18,7 +18,7 @@ This code is for instructional purposes only, and is not intended for production
 
 You can find the example files in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
-- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides the `MLModelService` modular resource capable of running any TensorFlow Lite model.
+- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/tflite/main.cpp) - an example module which provides the `MLModelService` modular resource capable of running any TensorFlow Lite model.
 - [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the [`yamnet/classification` TensorFlow Lite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
 
 ## Build the C++ SDK
@@ -29,7 +29,7 @@ Follow the instructions below for your platform:
 {{< tabs >}}
 {{% tab name="macOS" %}}
 
-Follow the [Viam C++ SDK build instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) to build the SDK on your macOS computer using the `brew` package manager.
+Follow the [Viam C++ SDK build instructions](https://.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) to build the SDK on your macOS computer using the `brew` package manager.
 
 While your specific build steps may differ slightly, your installation should generally resemble the following:
 
