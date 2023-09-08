@@ -47,7 +47,7 @@ See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-mode
 Models are either:
 
 - Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
-- Provided in custom modules available for download from [the Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
+- Provided in custom modules available for download from the [Viam Registry](https://app.viam.com/module), and are written by either Viam or community users.
 
 ### Built-in models
 
@@ -90,7 +90,7 @@ If you are [creating a custom module](/extend/modular-resources/create/) and [up
 In addition, you should chose a name for the `family` of your model based on the whether your module implements a single model, or multiple models:
 
 - If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
-  For example, the Intel Realsense module `realsense`, available from [the Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
+  For example, the Intel Realsense module `realsense`, available from the [Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
@@ -100,7 +100,7 @@ In addition, you should chose a name for the `family` of your model based on the
   ```
 
 - If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
-  For example, the ODrive module `odrive`, available from [the Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
+  For example, the ODrive module `odrive`, available from the [Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {

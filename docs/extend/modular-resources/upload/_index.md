@@ -14,13 +14,13 @@ This feature is in beta, and may not be suitable for production use.
 
 Once you have [created a custom module](/extend/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam Registry.
 
-With the CLI, you can register your module with [the Viam Registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
+With the CLI, you can register your module with the [Viam Registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
 
 For more information, see the [`viam module` command](/manage/cli/#module).
 
 ## Upload a custom module
 
-To upload your custom module to [the Viam Registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following the instructions below:
+To upload your custom module to the [Viam Registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following the instructions below:
 
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
@@ -179,7 +179,7 @@ For more information, see the [`viam module` command](/manage/cli/#module)
 
 ## Update an existing module
 
-You can update an existing module in [the Viam Registry](https://app.viam.com/registry) in one of two ways:
+You can update an existing module in the [Viam Registry](https://app.viam.com/registry) in one of two ways:
 
 - [Upload a newer version of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/manage/cli/).
 - [Upload a newer version of your module automatically](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
@@ -189,7 +189,7 @@ Updating your module automatically using CI is better suited for larger, ongoing
 
 ### Update an existing module using the Viam CLI
 
-To update an existing module in [the Viam Registry](https://app.viam.com/registry) manually, use the [Viam CLI](/manage/cli/):
+To update an existing module in the [Viam Registry](https://app.viam.com/registry) manually, use the [Viam CLI](/manage/cli/):
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -244,7 +244,7 @@ For more information, see the [`viam module` command](/manage/cli/#module)
 
 ### Update an existing module using a Github action
 
-To update an existing module in [the Viam Registry](https://app.viam.com/registry) using CI, use the [`upload-module` Github action](https://github.com/viamrobotics/upload-module).
+To update an existing module in the [Viam Registry](https://app.viam.com/registry) using CI, use the [`upload-module` Github action](https://github.com/viamrobotics/upload-module).
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -295,6 +295,6 @@ To update an existing module in [the Viam Registry](https://app.viam.com/registr
    Provide the `key-id` and `key-value` generated in the YAML configuration above.
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
-   Your module should upload to [the Viam Registry](https://app.viam.com/registry) with the appropriate version automatically.
+   Your module should upload to the [Viam Registry](https://app.viam.com/registry) with the appropriate version automatically.
 
 For more details, see the [`upload-module` Github action documentation](https://github.com/viamrobotics/upload-module).

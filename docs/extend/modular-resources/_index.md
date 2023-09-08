@@ -37,7 +37,7 @@ Once the module has been uploaded to the Registry, you can [deploy the module](/
 After you finish programming your module, you can [upload your module to the Viam Registry](/extend/modular-resources/upload/) to make it available for deployment to robots.
 As part of the upload process, you decide whether your module is *public* (visible to all users) or *private* (visible only to other members of your [organization](/manage/fleet/organizations/)).
 
-You can see details about each module in [the Viam Registry](https://app.viam.com/registry) on its module details page.
+You can see details about each module in the [Viam Registry](https://app.viam.com/registry) on its module details page.
 See the [Odrive module](https://app.viam.com/module/viam/odrive) for an example.
 Public modules also display the number of times a module has been deployed to a robot.
 
@@ -61,7 +61,7 @@ To get started working with modular resources:
 
 - [Upload your module to the Viam Registry](/extend/modular-resources/upload/) to share with the community, or just to your own organization.
 
-- Browse [the Viam Registry](https://app.viam.com/registry) to see modules uploaded by other users.
+- Browse the [Viam Registry](https://app.viam.com/registry) to see modules uploaded by other users.
 
 - [Deploy a module](/extend/modular-resources/configure/) to your robot from the Registry.
 

@@ -16,7 +16,7 @@ See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concep
 
 ## Add a module from the Viam Registry
 
-The Viam Registry is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
+The [Viam Registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
 To add a module from the Viam Registry to your robot:
 
@@ -27,7 +27,7 @@ To add a module from the Viam Registry to your robot:
 
    - Start typing to search for modules by name.
      Modules available from the Viam Registry will be listed under the `From Registry` section of the search results.
-   - [Browse the Viam Registry](https://app.viam.com/modules) directly to search available modules.
+   - [Browse the Viam Registry](https://app.viam.com/registry) directly to search available modules.
 
    {{<imgproc src="extend/modular-resources/configure/add-module-from-registry.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
@@ -44,7 +44,7 @@ To delete a module added from the Viam Registry, click the trash can icon in the
 
 ### Configure a module from the Viam Registry
 
-Once you have added a module from the Viam Registry, you can view and configure the module from the **Modules** subtab:
+Once you have added a module from the [Viam Registry](https://app.viam.com/registry)
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
@@ -84,7 +84,7 @@ If, for example, the module provides a motor component, and the motor is running
 
 ### Configure a modular resource from a Registry module
 
-Once you have configured a module from the Viam Registry, you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have configured a module from the [Viam Registry](https://app.viam.com/registry), you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
