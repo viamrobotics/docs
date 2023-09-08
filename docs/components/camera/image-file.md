@@ -15,10 +15,9 @@ An `image_file` camera gets color and depth image frames or point clouds from a 
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your camera, select the type `camera`, and select the `image_file` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `camera` type, then select the `image_file` model.
+Enter a name for your camera and click **Create**.
 
 ![Configuration of an image file camera in the Viam app config builder.](/components/camera/configure-image-file.png)
 

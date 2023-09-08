@@ -54,12 +54,13 @@ Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-In the **Create component** panel, configure a [gamepad](/components/input-controller/gamepad/):
+Configure a [gamepad](/components/input-controller/gamepad/):
 
-- Enter `my-gamepad` as the component **Name**.
+- Click **Create component**.
 - Select `input_controller` for the component **Type**.
 - Select `gamepad` for the **Model**.
-- Click **Create component**.
+- Enter `my-gamepad` as the component **Name**.
+- Click **Create**.
 
 ![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
 

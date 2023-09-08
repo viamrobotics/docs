@@ -38,10 +38,9 @@ If your movement sensor uses I<sup>2</sup>C communication instead of serial, use
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your movement sensor, select the `movement-sensor` type, and select the `gps-nmea-rtk-serial` model.
-
-Click **Create Component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `movement-sensor` type, then select the `gps-nmea-rtk-serial` model.
+Enter a name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/gps-nmea-rtk-serial-builder.png" alt="Creation of a `gps-nmea-rtk-serial` movement sensor in the Viam app config builder." resize="600x" >}}
 

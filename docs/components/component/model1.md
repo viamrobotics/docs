@@ -21,9 +21,13 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
 Enter a name for your arm, select the `arm` type, and select the `model1` model.
 
+Click on the **Components** subtab and click **Create component**.
+Select the `arm` type, then select the `model1` model.
+Enter a name for your arm and click **Create**.
+
 {{< imgproc src="/components/component/model1-builder.png" alt="Creation of a `model1` arm in the Viam app config builder." resize="600x" >}}
 
-Click **Create component** and then fill in the attributes for your model.
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
