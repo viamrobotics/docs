@@ -8,10 +8,6 @@ description: "Use the Viam CLI to upload a custom module to the Viam Registry."
 no_list: true
 ---
 
-{{% alert title="Beta Notice" color="note" %}}
-This feature is in beta, and may not be suitable for production use.
-{{% /alert %}}
-
 Once you have [created a custom module](/extend/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam Registry.
 
 With the CLI, you can register your module with the [Viam Registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
