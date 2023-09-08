@@ -26,7 +26,10 @@ Therefore, you should not consider returned unit measurements trustworthy: inste
 While `viam-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor/) will generally provide more accurate readings.
 If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor in addition to the `viam-visual-odometry` module.
 
-The `viam-visual-odometry` module is open source and available at the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry#getting-started).
+The `viam-visual-odometry` module is available [from the Viam Registry](https://app.viam.com/module/viam/monocular-visual-odometry).
+See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam Registry on your robot.
+
+The source code for this module is available on the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry).
 
 ## Requirements
 
