@@ -14,7 +14,7 @@ tags: ["mock", "simulation"]
 authors: []
 languages: [ "python", "go" ]
 viamresources: [ "board", "arm", "motor" ]
-level: "Intermediate"
+level: "Beginner"
 date: "2022-10-11"
 # updated: ""
 cost: "0"
