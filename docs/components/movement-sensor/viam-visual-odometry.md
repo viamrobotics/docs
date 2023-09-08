@@ -24,7 +24,7 @@ Note that `GetLinearVelocity()` returns an estimation of the instantaneous linea
 Therefore, you should not consider returned unit measurements trustworthy: instead, `GetLinearVelocity()` should serve as a direction estimation only.
 
 While `viam-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor/) will generally provide more accurate readings.
-If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor instead.
+If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor in addition to the `viam-visual-odometry` module.
 
 The `viam-visual-odometry` module is open source and available at the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry#getting-started).
 
@@ -74,7 +74,7 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
    }
    ```
 
-   Provide the same camera name as you used inn step 3.
+   Provide the same camera name as you used in step 3.
    See the [Attributes](#attributes) section for more information on the other attributes.
 
 1. Click **Save config** at the bottom of the page.
@@ -126,9 +126,7 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
         "time_between_frames_s": <time_seconds>, 
         "lowe_ratio_threshold": <lowe_ratio_threshold>
       },
-      "depends_on": [
-        "<your-camera-name>"
-      ]
+      "depends_on": []
     }
   ]
 }
@@ -181,9 +179,7 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
         "time_between_frames_s": 0.2, 
         "lowe_ratio_threshold": 0.75
       },
-      "depends_on": [
-        "my-camera"
-      ]
+      "depends_on": []
     }
   ]
 }
