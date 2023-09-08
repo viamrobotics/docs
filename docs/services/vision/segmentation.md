@@ -224,9 +224,7 @@ Click **Save config** and proceed to [test your segmenter](#test-your-segmenter)
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
 If you have [configured the frame system](/services/frame-system/#configuration) for the components of your robot, then you can implement this model to identify well separated objects above a flat plane.
 
-To configure an `obstacles_depth` segmenter, first decide if you want to use the segmenter with or without intrinsic parameters.
-
-This is determined by the value of the configuration attribute `with_geometries`:
+To configure an `obstacles_depth` segmenter, first decide if you want to use the segmenter with or without intrinsic parameters and configure the `with_geometries` attribute accordingly:
 
 - `true`: this segmenter will return point clouds within the `GeometryInFrame` object it captures.
 - `false`: this segmenter will return a single point within the `GeometryInFrame` object it captures.
