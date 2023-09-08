@@ -581,8 +581,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Compass Heading` reading:
 
 ``` go
-gps, err := gps.CompassHeading(context.Background, nil)
-gps.CompassHeading{25}
+// heading is a float64 
+heading, err := gps.CompassHeading(context.Background, nil)
 ```
 
 If you want to read compass headings, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -599,8 +599,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of an `Orientation` reading:
 
 ``` golang
+// orientation is a OrientationVector{OX: 0, OY:0, OZ:1, Theta:0}
 orientation, err := imuwit.Orientation(context.Background, nil)
-imu.Orientation{"_type":"quat","i":0,"j":0,"k":0,"r":1}
 ```
 
 If you want to read orientation, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -620,8 +620,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of an `AngularVelocity` reading:
 
 ``` go
-ang_vel, err := imu.AngularVelocity{context.Background, nil}
-imu.AngularVelocity{"_type":"angular_velocity","x":0,"y":0,"z":1}
+// angular_velocity is an AngularVelcoity{X:1, Y:2, Z:3}
+angular_velocity, err := imu.AngularVelocity{context.Background, nil}
 ```
 
 If you want to get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -639,8 +639,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of a `Position` reading:
 
 ``` go
-position, err := imu.Position{context.Background, nil}
-gps.Position{"_type":"geopoint","lat":40.7,"lng":-73.98}
+// position is a geo.Point{Lat: 40.7, Long: -73.98}, altitude is a float64 100
+position, altitude, err:= imu.Position{context.Background, nil}
 ```
 
 If you want to get a position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -660,8 +660,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Velocity` reading:
 
 ``` go
+// linear_velocity is an r3.Vector{X:0, Y:1, Z:0}
 linear_velocity, err := imu.LinearVelocity{context.Background, nil}
-accel.LinearVelocity{"_type":"vector3","x":0,"y":5.4,"z":0}
 ```
 
 If you want to get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
@@ -681,8 +681,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Acceleration` reading:
 
 ``` go
+// linear_acceleration is an r3Vector {X:0, Y:0, Z:1}
 linear_acceleration, err := imu.LinearAcceleration{context.Background, nil}
-accel.LinearAcceleration{"_type":"vector3","x":2.2,"y":4.5,"z":2}
 ```
 
 If you want to get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
