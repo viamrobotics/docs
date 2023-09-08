@@ -12,7 +12,7 @@ aliases:
   - "/tutorials/scuttlebot/scuttlebot"
 authors: []
 languages: [ "python", "go" ]
-viamresources: [ "board", "motor", "camera" ]
+viamresources: [ "board", "motor", "camera", "base", "encoder" ]
 level: "Beginner"
 date: "2022-08-02"
 updated: "2023-08-05"
