@@ -51,6 +51,13 @@ For configuration information, click on one of the following models:
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 
+Viam also provides the following camera models as [modular resources](/extend/modular-resources):
+
+| Model | Description |
+| ----- | ----------- |
+| [`viam:lidar:rplidar`](/extend/modular-resources/examples/rplidar/) | A LIDAR scanning device like the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1). |
+| [`viam:camera:csi``](/extend/modular-resources/examples/csi/) | Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924). |
+
 ## Control your camera with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
