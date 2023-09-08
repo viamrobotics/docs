@@ -562,6 +562,13 @@ Each concept is a type of relative or absolute measurement, taken by a [movement
 
 Here's how to make use of the following types of measurements:
 
+- [Compass Heading](/services/navigation/#compass-heading)
+- [Orientation](/services/navigation/#orientation)
+- [Angular Velocity](/services/navigation/#angular-velocity)
+- [Position](/services/navigation/#position)
+- [Linear Acceleration](/services/navigation/#linear-acceleration)
+- [Linear Velocity](/services/navigation/#linear-velocity)
+
 ### Compass Heading
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take compass heading measurements:
@@ -590,7 +597,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of an `Orientation` reading:
 
 ``` golang
-imuwit.GetOrientation{o_x: -0.58, o_y: -0.37, o:z 0.72, theta: 60.93}
+orientation, err := imuwit.Orientation(context.Background, nil)
 ```
 
 The movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) takes orientation readings.
@@ -609,7 +616,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
-An example of a `AngularVelocity` reading:
+An example of an `AngularVelocity` reading:
 
 ``` go
 imu.GetAngularVelocity{x: -47.9736, y: 142.639, z: -90.1489}
@@ -626,7 +633,6 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
-- [wheeled-odometry](/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
 An example of a `Position` reading:
 
@@ -645,6 +651,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 - [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
 - [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
 - [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+[wheeled-odometry](/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
 An example of a `Linear Velocity` reading:
 
