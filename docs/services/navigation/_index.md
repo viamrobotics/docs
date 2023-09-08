@@ -581,7 +581,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Compass Heading` reading:
 
 ``` go
-gps.GetCompassHeading{175}
+gps, err := gps.CompassHeading(context.Background, nil)
+gps.CompassHeading{175}
 ```
 
 The movement sensor API's [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) takes compass heading readings.
@@ -599,6 +600,7 @@ An example of an `Orientation` reading:
 
 ``` golang
 orientation, err := imuwit.Orientation(context.Background, nil)
+imu.Orientation{o_x: -47.97, o_y: 142.63, o_z: -90.14, theta: 60}
 ```
 
 The movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) takes orientation readings.
@@ -620,7 +622,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of an `AngularVelocity` reading:
 
 ``` go
-imu.GetAngularVelocity{x: -47.9736, y: 142.639, z: -90.1489}
+ang_vel, err := imu.AngularVelocity{context.Background, nil}
+imu.AngularVelocity{x: -47.9736, y: 142.639, z: -90.1489}
 ```
 
 The movement sensor API's [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity) takes angular velocity readings.
@@ -638,11 +641,13 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of a `Position` reading:
 
 ``` go
-gps.GetPosition{x: 4.5, y: 5.6, z: 6.7}
+position, err := imu.Position{context.Background, nil}
+gps.Position{x: 4.5, y: 5.6, z: 6.7}
 ```
 
 The movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) takes position readings.
 If you want to get a position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
+The suggested components allow you to get the *absolute* position of components through their Positions readings for use in the [motion service](/services/motion/) and [navigation service](/services/navigation/).
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 
 ### Linear Velocity
@@ -657,7 +662,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Velocity` reading:
 
 ``` go
-accel.GetLinearVelocity{x: 6.497, y: 1.345, z: 12.32}
+linear_velocity, err := imu.LinearVelocity{context.Background, nil}
+accel.LinearVelocity{x: 6.497, y: 1.345, z: 12.32}
 ```
 
 The movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity) takes linear velocity readings.
@@ -674,7 +680,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Acceleration` reading:
 
 ``` go
-accel.GetLinearAcceleration{x: 6.497, y: 1.345, z: 12.32}
+linear_acceleration, err := imu.LinearAcceleration{context.Background, nil}
+accel.LinearAcceleration{x: 6.497, y: 1.345, z: 12.32}
 ```
 
 The movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) takes linear acceleration readings.
