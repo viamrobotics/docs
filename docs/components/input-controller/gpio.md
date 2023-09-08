@@ -21,10 +21,9 @@ Be aware that complete configuration is not visible in the "Config Builder" tab:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your input controller, select the type `input_controller`, and select the `gpio` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `input_controller` type, then select the `gpio` model.
+Enter a name for your input controller and click **Create**.
 
 ![An example configuration for a GPIO input controller component in the Viam App config builder](/components/input-controller/gpio-input-controller-ui-config.png)
 

@@ -248,7 +248,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `numato` model.
 Enter a name for your board and click **Create**.
 
- ![An example configuration for an esp21 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png)
+ ![An example configuration for an esp32 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png)
 
  Edit and fill in the attributes as applicable.
  -->
