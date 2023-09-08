@@ -17,10 +17,11 @@ To configure a `boat` base as a component of your robot, first configure the [bo
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your base, select the type `base`, and select the `boat` model.
+Click on the **Components** subtab and click **Create component**.
+Select the `base` type, then select the `boat` model.
+Enter a name for your base and click **Create**.
 
-Click **Create component** and then fill in the attributes for your model:
+Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -62,3 +63,7 @@ Each [motor](/components/motor/) inside of `Motors` has the following attributes
 | `y_offset_mm` | int | **Required** | |
 | `angle_degs` | int | **Required** | |
 | `Weight` | int | **Required** | |
+
+## Test the base
+
+{{< readfile "/static/include/components/base-control.md" >}}

@@ -139,7 +139,7 @@ Do not pass a transform camera that already has the "detections" or "classificat
     {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient
 
 robot = await connect()
 # Grab camera from the robot
@@ -191,7 +191,7 @@ if len(directClassifications) > 0 {
     logger.Info(classifications[0])
 }
 
-// If you need to store the image, get the image first 
+// If you need to store the image, get the image first
 // and then run classifications on it. This process is slower:
 
 // Get the stream from a camera
@@ -225,7 +225,7 @@ If you would like to test your classifier with existing images, load the images 
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient
 from PIL import Image
 
 robot = await connect()

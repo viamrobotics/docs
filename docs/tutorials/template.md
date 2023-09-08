@@ -14,14 +14,18 @@ description: "Short description of your tutorial (1 sentence)."
 tags: ["tutorial"]
 draft: true # Change this when you're ready
 authors: [] # Your Name
+weight: # A positive integer that determines the position of the tutorial on the tutorials page. New content is automatically featured. Only use this to highlight content that should permanently be near the top.
 languages: [] # Viam SDK programming languages used, if any
-viamresources: [] # Specific components or services used in this tutorial
+viamresources: [
+  "arm", "base", "board", "camera", "encoder", "gantry", "gripper", "input_controller", "motor", "movement_sensor", "sensor", "servo",
+  "data", "motion", "frame_system", "mlmodel", "navigation", "base_rc", "sensors", "slam", "vision"
+] # Specific components or services used in this tutorial
 level: "" # Beginner, Intermediate, Advanced
 # Beginner means: high level of explanation and guidance
 # Intermediate means: commands/concepts you can assume the reader knows do not need to be explained, instead link.
 # Advanced means: intricate tutorial that may require the reader to have knowledge to adapt
-date: "1 Jan 2023" # When the tutorial was created or last entirely checked
-updated: ""  # When the tutorial was last entirely checked
+date: "2023-01-01" # When the tutorial was created or last entirely checked
+# updated: ""  # When the tutorial was last entirely checked
 cost: 0 # Aproximate cost in USD - Only specify number
 ---
 

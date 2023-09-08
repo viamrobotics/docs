@@ -39,6 +39,7 @@ Model | Description <a name="model-table"></a>
 [`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/extend/modular-resources/) that derives movement data from a [camera](/components/camera/) stream
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources
+[`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
 [`fake`](./fake/) | Used to test code without hardware
 
 ## Control your movement sensor with Viam's client SDK libraries
@@ -190,7 +191,7 @@ linVel, err := myMovementSensor.LinearVelocity(context.Background(), nil)
 
 ### GetAngularVelocity
 
-Report the current angular velocity about the x, y and z axes (as a 3D vector) in radians per second.
+Report the current angular velocity about the x, y and z axes (as a 3D vector) in degrees per second.
 
 Supported by IMU models and by `gyro-mpu6050`.
 
@@ -203,7 +204,7 @@ Supported by IMU models and by `gyro-mpu6050`.
 
 **Returns:**
 
-- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in radians per second.
+- [(Vector3)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Vector3): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in degrees per second.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_angular_velocity).
 
@@ -227,7 +228,7 @@ y_ang_vel = ang_vel.y
 
 **Returns:**
 
-- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in radians per second.
+- [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): A 3D vector containing three floats representing the angular velocity about the x, y and z axes in degrees per second.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -368,7 +369,7 @@ Supported by IMU models.
 
 **Returns:**
 
-- [(Orientation)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation): Abstract base class for protocol messages, containing `o_x`, `o_y`, `o_z`, and `theta`, which together represent a vector pointing in the direction that the sensor is pointing, and the angle (`theta`) of the sensor's rotation about that axis.
+- [(Orientation)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.Orientation): Abstract base class for protocol messages, containing `o_x`, `o_y`, `o_z`, and `theta`, which together represent a vector pointing in the direction that the sensor is pointing, and the angle (`theta`) in degrees of the sensor's rotation about that axis.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_orientation).
 
@@ -407,7 +408,7 @@ orientation := sensorOrientation.OrientationVectorDegrees()
 logger.Info("The x component of the orientation vector: ", orientation.OX)
 logger.Info("The y component of the orientation vector: ", orientation.OY)
 logger.Info("The z component of the orientation vector: ", orientation.OZ)
-logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", orientation.OX)
+logger.Info("The number of degrees that the movement sensor is rotated about the vector: ", orientation.Theta)
 ```
 
 {{% /tab %}}

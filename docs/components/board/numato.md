@@ -16,10 +16,9 @@ Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https:/
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your board, select the type `board`, and select the `numato` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `numato` model.
+Enter a name for your board and click **Create**.
 
 ![An example configuration for a numato board in the Viam app Config Builder.](/components/board/numato-ui-config.png)
 

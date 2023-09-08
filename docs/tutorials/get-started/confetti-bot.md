@@ -1,7 +1,6 @@
 ---
 title: "Build a Confetti Bot with a Raspberry Pi"
 linkTitle: "Confetti Bot"
-weight: 50
 type: "docs"
 description: "Use a red button to activate a GPIO pin on the board and make a confetti popper go off."
 tags: ["raspberry pi", "python", "app", "board", "motor"]
@@ -13,7 +12,8 @@ authors: [ "Hazal Mestci" ]
 languages: [ "python" ]
 viamresources: [ "board", "motor" ]
 level: "Beginner"
-date: "29 May 2023"
+date: "2023-05-29"
+# updated: ""
 cost: 145
 ---
 

@@ -17,10 +17,9 @@ These two pins provide the phase outputs used to measure the speed and direction
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your encoder, select the type `encoder`, and select the `incremental` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `encoder` type, then select the `incremental` model.
+Enter a name for your encoder and click **Create**.
 
 ![Configuration of an incremental encoder in the Viam app config builder.](/components/encoder/configure-incremental.png)
 
@@ -83,3 +82,5 @@ The following attributes are available for `incremental` encoders:
 | `pins` | object | **Required** | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: Required for two phase encoder. {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} for the second board pin to which the encoder is wired. </li> </ul> |
 
 Viam also supports a model of encoder called [`"single"`](../single/) which requires only one pin (`i`).
+
+{{< readfile "/static/include/components/test-control/encoder-control.md" >}}

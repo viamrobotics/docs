@@ -1,7 +1,6 @@
 ---
 title: "Drive a Rover (like SCUTTLE) Using a Gamepad with a Dongle"
 linkTitle: "Drive a Rover with a Dongle Gamepad"
-weight: 20
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
@@ -15,8 +14,9 @@ tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []
 viamresources: [ "base", "input_controller" ]
-level: "Beginner"
-date: "10 August 2022"
+level: "Intermediate"
+date: "2022-08-10"
+# updated: ""
 cost: 575
 ---
 
@@ -37,7 +37,7 @@ You will need the following hardware to complete this tutorial:
 - A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
   - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
-- [EasySMX ESM-9101 Wireless Controller](https://droix.net/product/easysmx-esm-9101/) or a similar gamepad and dongle.
+- [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
   This is the controller that comes with the SCUTTLE rover.
 
 {{<video webm_src="/tutorials/videos/scuttledemos_gamepad.webm" mp4_src="/tutorials/videos/scuttledemos_gamepad.mp4" alt="Controlling a Scuttle robot using a Bluetooth gamepad" poster="/tutorials/scuttlebot/scuttledemos_gamepad.jpg">}}
@@ -54,12 +54,13 @@ Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-In the **Create component** panel, configure a [gamepad](/components/input-controller/gamepad/):
+Configure a [gamepad](/components/input-controller/gamepad/):
 
-- Enter `my-gamepad` as the component **Name**.
+- Click **Create component**.
 - Select `input_controller` for the component **Type**.
 - Select `gamepad` for the **Model**.
-- Click **Create component**.
+- Enter `my-gamepad` as the component **Name**.
+- Click **Create**.
 
 ![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
 

@@ -15,12 +15,11 @@ The `fake` encoder is an encoder model for testing code without any hardware.
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your encoder, select the type `encoder`, and select the `fake` model.
+Click on the **Components** subtab and click **Create component**.
+Select the `encoder` type, then select the `fake` model.
+Enter a name for your encoder and click **Create**.
 
-Click **Create component**.
-
-{{< imgproc src="/components/encoder/configure-fake.png" alt="Configuration of a fake encoder in the Viam app config builder." resize="600x" >}}
+![Configuration of a fake encoder in the Viam app config builder.](/components/encoder/configure-fake.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -35,6 +34,25 @@ Click **Create component**.
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "name": "myEncoder",
+    "type": "encoder",
+    "model" : "fake",
+    "attributes": {}
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 No attributes are available for `fake` encoders.
+
+## Test the encoder
+
+Once your encoder is configured and your robot is connected, go to the [**Control** tab](/manage/fleet/robots/#control) and click on the encoder's drop-down panel.
+The ticks count is displayed.
+
+![Encoder control panel.](/components/encoder/control.png)

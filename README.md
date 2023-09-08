@@ -10,7 +10,7 @@ To be able to build the docs locally, you need to install the following:
 - [`npm`](https://nodejs.org/en/download/)
 - Hugo
   - macOS/Linux: `brew install hugo`
-  - Windows: [https://gohugo.io/getting-started/installing/](https://nodejs.org/en/download/)
+  - Windows: [https://gohugo.io/getting-started/installing/](https://gohugo.io/getting-started/installing/)
 
 You can build the docs for local development using the following command:
 

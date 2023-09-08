@@ -15,12 +15,11 @@ For example, you can use a `fake` component as a placeholder while waiting on a 
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your motor, select the type `motor`, and select the `fake` model.
+Click on the **Components** subtab and click **Create component**.
+Select the `motor` type, then select the `fake` model.
+Enter a name for your motor and click **Create**.
 
-Click **Create component**.
-
-![A fake motor config.](/icons/components/motor/fake-config-ui.png)
+![A fake motor config.](/components/motor/fake-config-ui.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -102,3 +101,10 @@ The driver data sheet (for a real, not fake, motor) will specify which one to us
 - PWM/DIR: One digital input (such as a GPIO pin) sends a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another digital input sends a high or low signal to control the direction.
 - In1/In2 (or A/B): One digital input is set to high and another set to low turns the motor in one direction and vice versa, while speed is controlled with PWM through one or both pins.
 - In1/In2 + PWM: Three pins: an In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
+
+## Test the motor
+
+Once your motor is configured and your robot is connected, go to the [**Control** tab](/manage/fleet/robots/#control) and click on the motor's drop-down panel.
+Use the buttons to try turning your motor forwards or backwards at different power levels and notice how the **Position** number changes.
+
+![Motor control panel.](/components/motor/control.png)

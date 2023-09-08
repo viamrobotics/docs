@@ -49,15 +49,15 @@ In your vision service's panel, fill in the **Attributes** field.
 {
     "min_points_in_plane": <integer>,
     "min_points_in_segment": <integer>,
-    "clustering_radius_mm": <number>,
-    "mean_k_filtering": <integer>,
-    "max_dist_from_plane_mm": <integer>,
+    "max_dist_from_plane_mm": <number>,
         "ground_plane_normal_vec": {
-          "x": <integer>,
-          "y": <integer>,
-          "z": <integer>
+            "x": <integer>,
+            "y": <integer>,
+            "z": <integer>
         },
-    "ground_angle_tolerance_degs": <number>
+    "ground_angle_tolerance_degs": <integer>,
+    "clustering_radius": <integer>,
+    "clustering_strictness": <integer>
 }
 ```
 
@@ -75,15 +75,15 @@ Add the vision service object to the services array in your raw JSON configurati
     "attributes": {
         "min_points_in_plane": <integer>,
         "min_points_in_segment": <integer>,
-        "clustering_radius_mm": <number>,
-        "mean_k_filtering": <integer>,
         "max_dist_from_plane_mm": <number>,
         "ground_plane_normal_vec": {
-          "x": <integer>,
-          "y": <integer>,
-          "z": <integer>
+            "x": <integer>,
+            "y": <integer>,
+            "z": <integer>
         },
-        "ground_angle_tolerance_degs": <number>
+        "ground_angle_tolerance_degs": <integer>,
+        "clustering_radius": <integer>,
+        "clustering_strictness": <integer>
     }
     },
     ... // Other services
@@ -100,10 +100,13 @@ Add the vision service object to the services array in your raw JSON configurati
   "type": "vision",
   "model": "obstacles_pointcloud",
   "attributes": {
-    "min_points_in_plane": 1000,
-    "min_points_in_segment": 50,
-    "clustering_radius_mm": 3.2,
-    "mean_k_filtering": 10
+    "min_points_in_plane": 1500,
+    "min_points_in_segment": 250,
+    "max_dist_from_plane_mm": 10.0,
+    "ground_plane_normal_vec": {x: 0, y:0, z: 1},
+    "ground_angle_tolerance_degs": 20.0,
+    "clustering_radius": 5,
+    "clustering_strictness": 3
   }
 }
 ]
@@ -116,13 +119,13 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `min_points_in_plane` | _Required_ | An integer that specifies how many points there must be in a flat surface for it to count as a plane. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. |
-| `min_points_in_segment` | _Required_ | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size.
-| `clustering_radius_mm` | _Required_ | A float that specifies how far apart points can be (in units of mm) in order to be considered part of the same object. A small clustering radius will more likely split different parts of a large object into distinct objects. A large clustering radius may aggregate closely spaced objects into one object. 3.0 is a decent starting value. |
-| `mean_k_filtering` | _Optional_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the number of min_points_in_segment. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
-| `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. |
-| `ground_plane_normal_vec` | Optional | A `(x,y,z)` vector that represents the normal vector of the ground plane. Different cameras have different coordinate systems. For example, a lidar's ground plane will point in the `+z` direction `(0, 0, 1)`. On the other hand, the intel realsense `+z` direction points out of the camera lens, and its ground plane is in the negative y direction `(0, -1, 0)`. The default value is `(0, 0, 1)`. |
-| `ground_angle_tolerance_degs` | Optional | A float that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. <br> Default: `30.00` </br> |
+| `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
+| `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. |
+| `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. This parameter determines how big the candidate clusters should be, or, how many points should be put on a flat surface. A small clustering radius is likely to split different parts of a large cluster into distinct objects. A large clustering radius is likely to aggregate closely spaced clusters into one object. <br> Default: `1` </br> |
+| `clustering_strictness` | Optional | An integer that determines the probability threshold for sorting neighboring points into the same cluster, or how "easy" `viam-server` should determine it is to sort the points the robot's camera sees into this pointcloud. When the `clustering_radius` determines the size of the candidate clusters, then the clustering_strictness determines whether the candidates will count as a cluster. If `clustering_strictness` is set to a large value, many small clusters are likely to be made, rather than a few big clusters. The lower the number, the bigger your clusters will be. <br> Default: `5` </br> |
+| `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. <br> Default: `100` </br> |
+| `ground_plane_normal_vec` | Optional | A `(x,y,z)` vector that represents the normal vector of the ground plane. Different cameras have different coordinate systems. For example, a lidar's ground plane will point in the `+z` direction `(0, 0, 1)`. On the other hand, the intel realsense `+z` direction points out of the camera lens, and its ground plane is in the negative y direction `(0, -1, 0)`. <br> Default: `(0, 0, 1)` </br> |
+| `ground_angle_tolerance_degs` | Optional | An integer that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. <br> Default: `30` </br> |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
@@ -223,7 +226,7 @@ The following code uses the [`GetObjectPointClouds`](/services/vision/#getobject
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient
 
 robot = await connect()
 
