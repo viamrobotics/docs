@@ -51,12 +51,12 @@ You'll need the following hardware and software for this tutorial:
 
 - A laptop or desktop running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
-- A code editor of your choice
 
 ### Make an account on the Viam app
 
 First, set up your account on the Viam app.
 Go to [app.viam.com](https://app.viam.com) and sign up for an account.
+Create a new robot in the organization and location of your choice.
 
 ### Install and start `viam-server` on your computer
 
@@ -68,10 +68,10 @@ Find more information on running `viam-server` in the [installation guide](/inst
 
 ### Configure your mock robot
 
-Next, [configure your robot](/manage/configuration/) to represent your robot's hardware.
+[Configure your robot](/manage/configuration/) to represent your robot's hardware.
 
-If you were using actual hardware, this process would tell `viam-server` what hardware is attached to it and how to communicate with it.
-Since you don't have physical hardware, you will use `fake` components.
+If you were using actual hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
+For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware:
 
 1. Create a new [robot](/manage/fleet/robots/) in your organization and location on [app.viam.com](https://app.viam.com/).
 2. Go to the new robot's **Config** tab.
@@ -111,9 +111,9 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the **Control** tab:
+When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](https://docs.viam.com/manage/fleet/robots/#control):
 
-{{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="Screenshot from the Viam app showing the Control tab with the fake arm, and motor components." resize="400x" >}}
+{{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
 
 You can use the **Control** tab UI to send commands to your robot.
 
@@ -168,7 +168,7 @@ go run index.go
 {{% /tab %}}
 {{< /tabs >}}
 
-If you successfully configured your robot and it is able to connect to the Viam app you should see something like this, a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your robot in the Viam app:
+If you successfully configured your robot and it is able to connect to the Viam app you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your robot in the Viam app:
 
 ![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. The list includes the motion service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](/tutorials/build-a-mock-robot/resource-output.png)
 
@@ -382,7 +382,7 @@ Now that you have two instances of `viam-server` running on your local machine, 
 ![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub part motor component.](/tutorials/build-a-mock-robot/control-all.png)
 
 To test that your motor sub-part has been added to your robot, run your Python or Go script again.
-Review the output of `print(robot.resource_names)` to see your sub-part's motor's `name` listed.
+Review the output of your program that prints the robot's resources to see your sub-part's motor's `name` listed.
 
 ## Control a sub-part using the Viam SDK
 
