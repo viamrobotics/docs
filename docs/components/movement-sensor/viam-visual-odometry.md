@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: "Configure viam-visual-odometry, a modular resource that derives movement data from a camera."
 images: ["/icons/components/imu.svg"]
+katex: true
 # SMEs: Robin In
 ---
 
