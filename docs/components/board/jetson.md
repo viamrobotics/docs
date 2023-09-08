@@ -29,10 +29,9 @@ Configure a `jetson` board to integrate a [NVIDIA Jetson Orin Module and Develop
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your board, select the type `board`, and select the `jetson` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `jetson` model.
+Enter a name for your board and click **Create**.
 
 ![An example configuration for a jetson board in the Viam app Config Builder.](/components/board/jetson-ui-config.png)
 

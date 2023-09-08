@@ -21,10 +21,9 @@ Then, add the motor:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your motor, select the type `motor`, and select the `gpiostepper` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `motor` type, then select the `gpiostepper` model.
+Enter a name for your motor and click **Create**.
 
 ![Screenshot of a gpiostepper motor config with the step and dir pins configured to pins 13 and 15.](/components/motor/gpiostepper-config-ui.png)
 
