@@ -126,24 +126,26 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 {{% tab name="Builder UI" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab.
 
 1. **Add the board.**
 
-    Enter `local` for the name for your [board component](/components/board/), select the type `board`, and select the `pi` model.
-    Then click **Create component**.
+    Click **Create component** in the lower-left corner of the page.
+    Select `board` for the type, then select `pi` for the model.
+    Enter `local` for the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the camera.**
 
-    Create a [camera component](/components/camera/) with the name `cam`, the type `camera` and the model `webcam`.
-    Click **Create Component** to add the camera.
+    Click **Create Component** to add the [camera](/components/camera/).
+    Choose type `camera`, model `webcam`, and for the name enter `cam`.
+    Click **Create**.
     In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
     Select `mmal service 16.1 (platform:bcm2835_v4l2-0)`.
 
 3. **Add the servo.**
 
-    Create a [servo component](/components/servo/) with the name `servo`, the type `servo` and the model `pi`.
-    Click **Create Component** to add the servo.
+    Create a [servo component](/components/servo/) with the type `servo`, the model `pi`, and the name `servo`.
+    Click **Create** to add the servo.
     Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
     ```json

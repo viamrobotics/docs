@@ -171,11 +171,13 @@ Try activating the solenoid manually to ensure that it hits the foam dart launch
 ## Configure Your Foam Dart Launcher Robot with the Viam App
 
 Create a new robot in the Viam app and give it a name.
+Navigate to your new robot's **Config** tab and click the **Components** subtab.
 
 ### Board Configuration (Raspberry Pi)
 
-Add your board with the **Name** `local`, **Type** `board`, and **Model** `pi`.
-Click **Create Component**.
+Click **Create component** and add your [board](/components/board/).
+Choose type `board` and model `pi`.
+Name it `local` and click **Create**.
 
 {{<imgproc src="/tutorials/foam-dart-launcher/add-board.png" resize="800x" declaredimensions=true alt="Viam app board component attribute pane.">}}
 
@@ -186,8 +188,8 @@ Just remember to use that name consistently in the following steps.
 
 #### Left Motor
 
-Add the left [motor](/components/motor/) with the **Name** `left`, **Type** `motor`, and **Model** `gpio`.
-Click **Create Component**.
+Click **Create component** and add the left [motor](/components/motor/) with type `motor` and model `gpio`.
+Name it `left` and click **Create**.
 
 Select the name of the board the motor controller is wired to (for example, "local") from the **Board** drop-down.
 
@@ -203,8 +205,8 @@ Click **Save config** at the bottom of the screen.
 
 #### Right Motor
 
-Add the right motor with the **Name** `right`, **Type** `motor` and **Model** `gpio`.
-Click **Create Component**.
+Click **Create component** and add the right [motor](/components/motor/) with type `motor` and model `gpio`.
+Name it `right` and click **Create**.
 
 Select the name of the board the motor controller is wired to (for example, "local") from the **Board** drop-down.
 
@@ -228,7 +230,8 @@ Let’s add a base to be able to control them together.
 
 Configure a [base component](/components/base/) to coordinate your motors so you can move the base around with your keyboard.
 
-Give it a **Name** (you can just call it "base"), set **Type** to `base`, set **Model** to `wheeled`, and click **Create Component**.
+Click **Create component** and add the base with type `base` and model `wheeled`.
+Give it a name (you can call it `base`) and click **Create**.
 
 From the **Right Motors** and **Left Motors** drop downs, select `right` and `left`, respectively (the motors you configured in the previous step).
 

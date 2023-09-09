@@ -66,28 +66,31 @@ Follow the instructions until the Viam app shows that your robot has successfull
 {{% tab name="Builder UI" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab.
 
-1. **Add the board.**
+1. **Add the [board](/components/board/).**
 
-    Enter `local` for the name for your [board component](/components/board/), select the type `board`, and select the `pi` model.
-    Then click **Create component**.
+    Click **Create component**.
+    Select the type `board`, and select the `pi` model.
+    Enter `local` for the name, then click **Create**.
 
-2. **Add the motors.**
+2. **Add the [motors](/components/motor/).**
 
-    Enter `leftm` for the name for your left [motor component](/components/base/), select the type `motor`, and select the `gpio` model.
-    Then click **Create component** and fill in the appropriate properties for your motor.
+    Click **Create component**.
+    Select the type `motor`, and select the `gpio` model.
+    Enter `leftm` for the name, then click **Create** and fill in the appropriate properties for your motor.
     Repeat the same for the right motor and call it `rightm`.
 
-3. **Add the base.**
+3. **Add the [base](/components/base/).**
 
-    Enter `scuttlebase` for the name for your [base component](/components/base/), select the type `base`, and select the `wheeled` model.
-    Then click **Create component** and select the motors.
+    Click **Create component**.
+    Select the type `base`, and select the `wheeled` model.
+    For the name enter `scuttlebase`, then click **Create** and select the motors.
 
 4. **Add the camera.**
 
     Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
-    Click **Create Component** to add the camera.
+    Click **Create component** to add the camera.
     If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a drop-down populated with camera paths that have been identified on your machine.
     Select the path to the camera you want to use.
 

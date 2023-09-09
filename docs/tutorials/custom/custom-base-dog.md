@@ -345,42 +345,58 @@ Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
 Click **Save Config** at the bottom of the page.
 
-![Screenshot of the Viam app CONFIG tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
+![Screenshot of the Viam app Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
 
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **Components** subtab of the **Config** tab.
-
-### Configure the base
-
-In the **Create Component** field, give your base a name.
-We called ours "quadruped".
-In the **Type** drop-down select `base`.
-In the **Model** field, type in `viamlabs:base:robotdog`.
-Click **Create Component**.
-
-![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](/tutorials/custom-base-dog/config-modular-component.png)
-
-You need to add the `ip_address` and `port` attributes to your base config.
-In the attributes field, paste the following, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`):
-
-```json
-{
-  "ip_address": "<HOSTNAME>.local",
-  "port": 5001
-}
-```
-
-If this doesn't work, you can instead try using the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
-
-`5001` is the default port for sending and receiving instructions to and from the Freenove server.
-
-Click **Save Config**.
+Navigate to the **Components** subtab of your robot's **Config** tab.
 
 ### Configure the camera
 
 Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam/).
+
+Click **Save config**.
+
+### Configure the base
+
+Because your custom base relies on a local module, you need to use raw JSON to configure your modular resource.
+Use the **Mode** selector in the upper-left corner of the **Config** tab to switch to **Raw JSON** mode.
+
+Locate the `"components": []` portion of the config file.
+At the end of your camera configuration, add a comma and then add the following base configuration:
+
+```json
+    {
+      "namespace": "rdk",
+      "name": "quadruped",
+      "type": "base",
+      "model": "viamlabs:base:robotdog",
+      "attributes": {
+          "ip_address": "<HOSTNAME>.local",
+        "port": 5001
+      },
+      "depends_on": []
+    }
+```
+
+Edit the `ip_address` attribute to match your robot's IP address, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`).
+If this doesn't work, you can instead try using the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
+
+If you are using a port other than `5001`, edit the `port` attribute.
+`5001` is the default port for sending and receiving instructions to and from the Freenove server.
+
+Click **Save config**.
+
+Your raw JSON configuration should look similar to the following:
+
+![Raw JSON mode on the Config tab, showing the components and modules sections of the robot's raw JSON config.](/tutorials/custom-base-dog/raw-json.png)
+
+Toggle back to **Builder** mode and make sure a card has been generated:
+
+![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](/tutorials/custom-base-dog/config-modular-component.png)
+
+If yours doesn't look like this, go back to the raw JSON and double-check your JSON formatting.
 
 ## Start the Freenove server
 
