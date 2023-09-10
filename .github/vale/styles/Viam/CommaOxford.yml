@@ -2,7 +2,7 @@
 
 extends: existence
 message: "Use the Oxford comma in '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/punctuation#commas'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/punctuation#commas.rst'
 level: suggestion
 nonword: true
 tokens:

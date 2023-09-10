@@ -1,6 +1,6 @@
 extends: existence
 message: "IPv6 addresses should use colons (:) as separators ('%s')."
-link: 'https://docs.rackspace.com/docs/style-guide/style/ip-addresses'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/ip-addresses.rst'
 level: error
 nonword: true
 tokens:

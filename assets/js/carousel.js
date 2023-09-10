@@ -32,8 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
           });
           const scrolllength = carousel.querySelector('ul li:nth-child(2)').offsetLeft - carousel.querySelector('ul li:nth-child(1)').offsetLeft;
           const nthchild = (Math.round((ele.scrollLeft/scrolllength)+1));
-          carousel.querySelector('ol li:nth-child('+nthchild+')').classList.add('selected');
-          carousel.querySelector('ul li:nth-child('+nthchild+')').classList.add('selected');
+          let ol_elem = carousel.querySelector('ol li:nth-child('+nthchild+')');
+          let ul_elem = carousel.querySelector('ul li:nth-child('+nthchild+')');
+          if (ol_elem) { ol_elem.classList.add('selected'); }
+          if (ul_elem) { ul_elem.classList.add('selected'); }
           if(carousel.parentElement.parentElement.querySelector('.dynamictitle')) {
               const title = carousel.querySelector('ul li:nth-child('+nthchild+') img').getAttribute('title');
               if(title) carousel.parentElement.parentElement.querySelector('.dynamictitle').innerHTML = title;
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
   // Add CSS to hide arrows when all elements visible
-  var styles = "@media (min-width:" + (slides.length * 100 + 400) "px) {#board-carousel { padding: 0 !important; }#board-carousel div.prev, #board-carousel div.next {visibility: hidden;}}"
+  var styles = "@media (min-width:" + (slides.length * 100 + 400) + "px) {#board-carousel { padding: 0 !important; }#board-carousel div.prev, #board-carousel div.next {visibility: hidden;}}"
 
   var styleSheet = document.createElement("style")
   styleSheet.innerText = styles

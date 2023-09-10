@@ -1,7 +1,7 @@
 # Based on: https://github.com/errata-ai/Google/blob/master/Google/Periods.yml
 extends: existence
 message: "Don't use periods with acronyms or initialisms such as '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/abbreviations'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/abbreviations.rst'
 level: warning
 nonword: true
 tokens:

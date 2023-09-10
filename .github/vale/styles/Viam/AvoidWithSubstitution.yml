@@ -1,6 +1,6 @@
 extends: substitution
 message: "Consider if '%s' makes sense instead of '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/alphabetical-terms.rst'
 level: suggestion
 ignorecase: true
 action:

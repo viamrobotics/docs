@@ -1,7 +1,7 @@
 extends: conditional
 message: "Use @example.com or @example.org as the domain name for example
 email addresses instead of '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/email-addresses'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/email-addresses.rst'
 level: suggestion
 ignorecase: false
 # This is a hack to allow us to make use of exceptions.

@@ -216,5 +216,3 @@ sitemap:
     {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}
   </div>
 </div>
-
-<script type="text/javascript" src="js/carousel-min.js"></script>
