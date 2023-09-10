@@ -73,13 +73,13 @@ Find more information on running `viam-server` in the [installation guide](/inst
 If you were using actual hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware:
 
-1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com) 
+1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
 2. Configure a [fake board component](/components/board/fake/):
 
     - Click on the Components subtab and click Create component.
     - Select the `board` type, then select the `fake` model.
     - Enter the name `myBoard` for your board and click **Create**.
-    
+
 3. Configure a [fake arm component](/components/arm/fake/):
 
     - Click Create component.
@@ -102,7 +102,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
    - Click Create component.
    - Select the `motor` type, then select the `fake` model.
-    - Enter the name `myMotor` for your board and click **Create**.
+   - Enter the name `myMotor` for your board and click **Create**.
    - Most motors are wired to a board which sends them signals.
    Even though your motor is fake, make it more realistic by assigning it a `board`.
    Select `myBoard` from the **board** drop-down.
