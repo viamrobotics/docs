@@ -49,7 +49,7 @@ These `fake` components interact with Viam like real hardware but do not actuall
 
 You'll need the following hardware and software for this tutorial:
 
-- A laptop or desktop running Linux or macOS
+- A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
 ### Make an account on the Viam app
@@ -333,11 +333,11 @@ Watch the robotic arm's [`JointPositions()`](/components/arm/#jointpositions) ch
 
 ## Create a mock sub-part
 
-Now that you have your mock robotic arm working, add a mock sub-part to your robot.
+Now that you have your `fake` robotic arm, board, and motor working, add a sub-part to your robot.
 
 ## Configure a sub-part in the Viam app
 
-Now, create a mock sub-part to control a motor.
+Now, create a mock sub-part of another `fake` motor.
 Imagine for the purpose of this tutorial that this motor controls a conveyor belt in front of your mock arm on an assembly line.
 
 On your robot's page on the Viam app, click on the dropdown next to the main part, name your part and click **Add new**.
@@ -347,7 +347,7 @@ On your robot's page on the Viam app, click on the dropdown next to the main par
 Navigate to your new sub-part's **Config** tab and create a new motor using the `fake` model.
 Name it `"motor2"`.
 
-{{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The config tab of the sub-part. A new motor component called motor2 is being created." resize="400x" >}}
+{{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The config tab of the sub-part. A new fake motor component called motor2 is being created." resize="400x" >}}
 
 Click **Create component** and then **Save config**.
 
