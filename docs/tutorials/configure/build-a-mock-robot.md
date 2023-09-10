@@ -20,12 +20,11 @@ date: "2022-10-11"
 cost: "0"
 ---
 
-This tutorial will show you how to build a mock robot using just your personal laptop so you can:
-
-- Learn how to [configure](../../../manage/configuration/) robots with Viam.
-- Try using [Viam](/viam/) without any robotic hardware.
+In this tutorial you will build a mock robot to learn how to configure robots with Viam.
+You do not need any hardware to do this tutorial.
 
 Follow this tutorial to set up and control a robot with a `fake` [arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and an additional mock {{< glossary_tooltip term_id="part" text="sub-part" >}} with a [motor](/components/motor/).
+These `fake` components interact with Viam like real hardware but do not physically exist.
 
 ### What is a mock sub-part?
 
@@ -55,8 +54,9 @@ You'll need the following hardware and software for this tutorial:
 ### Make an account on the Viam app
 
 First, set up your account on the Viam app.
-Go to [app.viam.com](https://app.viam.com) and sign up for an account.
+Go to [the Viam app](https://app.viam.com) and sign up for an account.
 Create a new robot in the organization and location of your choice.
+Go to this robot's **Setup** tab.
 
 ### Install and start `viam-server` on your computer
 
@@ -68,22 +68,24 @@ Find more information on running `viam-server` in the [installation guide](/inst
 
 ### Configure your mock robot
 
-[Configure your robot](/manage/configuration/) to represent your robot's hardware.
+[Configure your mock robot](/manage/configuration/) to represent a physical smart machine with robotic board, arm, and motor hardware.
 
 If you were using actual hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware:
 
-1. Create a new [robot](/manage/fleet/robots/) in your organization and location on [app.viam.com](https://app.viam.com/).
-2. Go to the new robot's **Config** tab.
-3. Configure a [fake board component](/components/board/fake/):
+1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com) 
+2. Configure a [fake board component](/components/board/fake/):
 
-    - Create a new component called `myBoard` with **Type** `board` and **Model** `fake`.
-    Click **Create component**.
+    - Click on the Components subtab and click Create component.
+    - Select the `board` type, then select the `fake` model.
+    - Enter the name `myBoard` for your board and click **Create**.
+    
 
-4. Configure a [fake arm component](/components/arm/fake/):
+3. Configure a [fake arm component](/components/arm/fake/):
 
-    - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
-    Click **Create component**.
+    - Click Create component.
+    - Select the `arm` type, then select the `fake` model.
+    - Enter the name `myArm` for your board and click **Create**.
     - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
 
       ```json
@@ -97,15 +99,16 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
     ![A fake arm being configured in Builder mode in the Viam app config tab.](/tutorials/build-a-mock-robot/create-arm.png)
     - Click **Save config**.
 
-5. Configure a [fake motor component](../../../components/motor/fake/):
+4. Configure a [fake motor component](../../../components/motor/fake/):
 
-   - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
-     Click **Create component**.
+   - Click Create component.
+   - Select the `motor` type, then select the `fake` model.
+    - Enter the name `myMotor` for your board and click **Create**.
    - Most motors are wired to a board which sends them signals.
    Even though your motor is fake, make it more realistic by assigning it a `board`.
    Select `myBoard` from the **board** drop-down.
 
-6. Click **Save config**.
+5. Click **Save config**.
 
 You will need to reference the component names later when you connect to your mock robot with code.
 
@@ -121,13 +124,11 @@ For example, you can control the direction and speed of your motor, or change th
 You can also see the robot's reported positions and speeds change.
 With real physical components, you would not only be able to control and see your robot's readings on this tab, but you would also see your robot move in the physical world.
 
-Next, install a Viam SDK (software development kit) so you can write custom logic to control the mock robot.
-
 ## Control your mock robot using a Viam SDK
 
 ### Install a Viam SDK
 
-In this step, you will install either the [Viam Python SDK](https://python.viam.dev/) or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk).
+Install a Viam SDK (software development kit) so you can write custom logic to control the mock robot.
 Use which ever programming language you are most comfortable with.
 
 Refer to the appropriate SDK documentation for SDK installation instructions:
@@ -176,12 +177,12 @@ If you successfully configured your robot and it is able to connect to the Viam 
 
 Now, write a program that moves the mock robotic arm to a new random position every second.
 
-At the top of your <file>index.py</file> file, paste the following:
-
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 First, import the [arm component](https://python.viam.dev/autoapi/viam/components/arm/client/index.html) from the Viam Python SDK, and the [random](https://docs.python.org/3/library/random.html) and [async.io](https://docs.python.org/3/library/asyncio.html) libraries.
+
+At the top of your <file>index.py</file> file, paste the following:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.arm import ArmClient, JointPositions
@@ -191,6 +192,8 @@ import asyncio
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+At the top of your <file>index.go</file> file, paste the following:
 
 First, import the [arm component](https://github.com/viamrobotics/rdk/blob/main/components/arm/client.go) from the Viam Go SDK, and the [random](https://pkg.go.dev/math/rand) and [time](https://pkg.go.dev/time) libraries.
 
