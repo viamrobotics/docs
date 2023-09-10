@@ -239,7 +239,6 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient, Detection
 import yagmail
 
-
 # These must be set. You can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
@@ -274,6 +273,8 @@ async def main():
             if found:
                 print("sending a message")
                 # Change this path to your own
+                my_camera = Camera.from_robot(robot=robot, name="my_camera")
+                image = await my_camera.get_image()
                 image.save('/yourpath/foundyou.png')
                 # yagmail section
                 # Create a yagmail.SMTP instance to initialize the server connection
