@@ -1,6 +1,6 @@
 extends: existence
 message: "If you can't use specific references, use following or preceding to reference an item in text or copy."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/general-term-guidelines/use-consistent-time-references'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/general-term-guidelines/use-consistent-time-references.rst'
 nonword: false
 level: suggestion
 tokens:

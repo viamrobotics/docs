@@ -2,7 +2,7 @@ extends: existence
 message: "Spell out numbers like '%s' from zero through nine unless the numers are
 as displayed or need to be input, are followed by a unit, or indicate
 dimensions or time."
-link: 'https://docs.rackspace.com/docs/style-guide/style/numbers'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/numbers.rst'
 ignorecase: true
 scope: sentence
 level: suggestion

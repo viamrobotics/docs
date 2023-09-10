@@ -1,6 +1,6 @@
 extends: existence
 message: "Avoid negative statements where possible ('%s')."
-link: 'https://docs.rackspace.com/docs/style-guide/writing/use-positive-statements'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/use-positive-statements.rst'
 ignorecase: true
 level: suggestion
 nonword: true

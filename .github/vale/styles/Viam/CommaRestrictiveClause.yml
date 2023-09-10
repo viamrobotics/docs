@@ -1,6 +1,6 @@
 extends: existence
 message: "Don’t use a comma to set off a restrictive clause (one that begins with that)."
-link: 'https://docs.rackspace.com/docs/style-guide/style/punctuation#commas'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/punctuation#commas.rst'
 ignorecase: true
 level: suggestion
 nonword: true

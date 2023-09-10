@@ -1,6 +1,6 @@
 extends: existence
 message: "Use a comma before and after the year '%s' when the month, day, and year are embedded in a sentence."
-link: 'https://docs.rackspace.com/docs/style-guide/style/dates'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/dates.rst'
 ignorecase: true
 level: error
 nonword: true

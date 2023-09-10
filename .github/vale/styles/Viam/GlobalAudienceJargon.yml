@@ -1,6 +1,6 @@
 extends: substitution
 message: "Consider using '%s' instead of the jargon '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/terms-for-global-audience#use-jargon-carefully'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/terms-for-global-audience#use-jargon-carefully.rst'
 level: suggestion
 ignorecase: true
 action:
