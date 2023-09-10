@@ -22,9 +22,9 @@ For configuration information, click on your sensor’s model:
 Model | Description <a name="model-table"></a>
 ----- | -----------
 [`fake`](./fake/) | a digital power sensor for testing
-[`ina219`](./ina219) | INA219 power sensor; current and power monitor
-[`ina226`](./ina226) | INA219 power sensor; current and power monitor
-[`renogy`](./renogy) | solar charge controller
+[`ina219`](./ina219/) | INA219 power sensor; current and power monitor
+[`ina226`](./ina226/) | INA219 power sensor; current and power monitor
+[`renogy`](./renogy/) | solar charge controller
 
 ## Control your power sensor with Viam’s client SDK libraries
 
