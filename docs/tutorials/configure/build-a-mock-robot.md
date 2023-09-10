@@ -80,7 +80,6 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
     - Select the `board` type, then select the `fake` model.
     - Enter the name `myBoard` for your board and click **Create**.
     
-
 3. Configure a [fake arm component](/components/arm/fake/):
 
     - Click Create component.
