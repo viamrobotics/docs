@@ -13,7 +13,7 @@ images: ["/icons/components/sensor.svg"]
 ---
 
 A power sensor is a device that reports measurements of the voltage, current and power consumption in your robot's system.
-Integrate this into your robot's system to monitor its power levels.
+Integrate this component to monitor your power levels.
 
 ## Configuration
 
@@ -21,10 +21,10 @@ For configuration information, click on your sensor’s model:
 
 Model | Description <a name="model-table"></a>
 ----- | -----------
-[`fake`](./fake/) | Digital power sensor for testing
-[`ina219`](/components/sensor/power_ina219/) | [INA219](https://pdf1.alldatasheet.com/datasheet-pdf/view/249609/TI/INA219.html) current and power sensor
-[`ina226`](./ina226/) | [INA226](https://www.ti.com/lit/ds/symlink/ina226.pdf?ts=1688994548364&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252Fde-de%252FINA226) current and power sensor
-[`renogy`](/components/sensor/renogy/) | [Renogy](https://www.renogy.com/content/RSP200D/RSP200D%20G2%20Datasheet.pdf) solar charge controller
+[`fake`](./fake/) | a digital power sensor for testing
+[`ina219`](./ina219) | INA219 power sensor; current and power monitor
+[`ina226`](./ina226) | INA219 power sensor; current and power monitor
+[`renogy`](./renogy) | solar charge controller
 
 ## Control your power sensor with Viam’s client SDK libraries
 
