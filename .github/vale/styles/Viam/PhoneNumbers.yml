@@ -2,7 +2,7 @@ extends: existence
 message: "Use a space, not a dash or parentheses, to separate parts of the
 telephone number. Precede phone numbers with the applicable country code
 ('%s')."
-link: 'https://docs.rackspace.com/docs/style-guide/style/telephone-numbers'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/telephone-numbers.rst'
 nonword: true
 level: suggestion
 tokens:

@@ -1,6 +1,6 @@
 extends: existence
 message: "Spell out all ordinal numbers ('%s'). For example, don’t use January 1st; use January 1 instead."
-link: 'https://docs.rackspace.com/docs/style-guide/style/dates'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/dates.rst'
 level: error
 nonword: true
 tokens:

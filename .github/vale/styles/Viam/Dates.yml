@@ -1,7 +1,7 @@
 # Based on: https://github.com/errata-ai/Microsoft/blob/master/Microsoft/DateFormat.yml
 extends: existence
 message: "Unless space is limited, use 'November 12, 2010' format, not '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/dates'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/dates.rst'
 ignorecase: true
 level: error
 nonword: true

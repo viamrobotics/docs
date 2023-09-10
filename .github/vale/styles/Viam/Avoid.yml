@@ -1,6 +1,6 @@
 extends: existence
 message: "Don't use '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/alphabetical-terms.rst'
 ignorecase: true
 level: warning
 tokens:

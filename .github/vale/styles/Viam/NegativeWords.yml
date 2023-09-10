@@ -1,6 +1,6 @@
 extends: substitution
 message: "Use '%s' instead of the negative word '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/writing/use-positive-statements'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/use-positive-statements.rst'
 level: warning
 ignorecase: true
 action:

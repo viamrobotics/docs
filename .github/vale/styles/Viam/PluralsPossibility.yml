@@ -4,7 +4,7 @@ indicate the possibility of more than one item, and don’t combine the
 singular and plural forms of a verb, such as is/are. Use the singular
 form or the plural form, use both forms joined by a conjunction, or use
 the phrase one or more."
-link: 'https://docs.rackspace.com/docs/style-guide/style/plurals'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/plurals.rst'
 ignorecase: false
 level: error
 nonword: true
