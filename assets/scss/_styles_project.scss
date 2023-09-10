@@ -1298,6 +1298,24 @@ a.ais-Pagination-link:hover {
   flex-grow: 1;
 }
 
+.ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+  max-height: 500px !important;
+}
+
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-height: 600px) {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+    max-height: 300px !important;
+  }
+}
+
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-height: 400px) {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+    max-height: 200px !important;
+  }
+}
+
 // Search-autocomplete end
 
 // Make videos work without js
