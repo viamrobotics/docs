@@ -24,6 +24,7 @@ Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
@@ -41,8 +42,10 @@ Edit and fill in the attributes as applicable.
   ]
 }
 ```
+
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
@@ -60,6 +63,7 @@ Edit and fill in the attributes as applicable.
   ]
 }
 ```
+
 {{% /tab %}}
 {{% /tabs %}}
 The following attributes are available for `renogy` sensors:
