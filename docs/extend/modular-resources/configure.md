@@ -8,53 +8,80 @@ description: "Add and configure a module from the Viam Registry on your robot."
 no_list: true
 ---
 
-You can extend Viam by adding a module on your robot to make one or more modular resources available for configuration.
+You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
 You can [add a module from the Viam Registry](#add-a-module-from-the-viam-registry), or you can [code your own module and add it to your robot locally](#add-a-local-module-to-your-robot).
 
-A *module* makes one or more *modular resources* available for configuration.
 See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
 
 ## Add a module from the Viam Registry
 
-The Viam Registry is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
+The [Viam Registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
-To add a module from the Viam Registry to your robot:
+A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/components/) or [service](/services/)).
+
+Follow the instructions below depending on the type of modular resource you would like to add to your robot:
+
+- [Add a modular component](#add-a-modular-component-from-the-viam-registry)
+- [Add a modular service](#add-a-modular-service-from-the-viam-registry)
+
+### Add a modular component from the Viam registry
+
+To add a modular [component](/components) from the Viam Registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
-1. Enter the name of the module you would like to add to your robot.
-   To find the name of a module you're interested in, you can:
-
-   - Start typing to search for modules by name.
-     Modules available from the Viam Registry will be listed under the `From Registry` section of the search results.
-   - [Browse the Viam Registry](https://app.viam.com/modules) directly to search available modules.
+1. Browse the list of available component types, and select the specific modular component you'd like to add.
 
    {{<imgproc src="extend/modular-resources/configure/add-module-from-registry.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
-1. After entering the name of the module that you would like to add to your robot, select the matching module in the search results and click the **Add module** button.
+1. After selecting the modular component, click the **+ Add Module** button, enter a name for your modular component, and click **Create** to add it to your robot.
 
 When you add a module from the Viam Registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
 {{<imgproc src="extend/modular-resources/configure/conf-component-from-module.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
 
-If the module requires you to configure specific **Atrributes**, click the **URL** link in the module's configuration pane to view the specific documentation on the module's GitHub page.
+If the module requires you to configure specific **Attributes**, click the **URL** link in the module's configuration pane to view the specific attribute requirements on the module's GitHub page.
 
 To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
+Deleting a module **does not** delete any configured modular resources it provides.
 
-### Configure a module from the Viam Registry
+### Add a modular service from the Viam registry
 
-Once you have added a module from the Viam Registry, you can view and configure the module from the **Modules** subtab:
+To add a modular [service](/services) from the Viam Registry to your robot:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Services** subtab and click the **Create service** button.
+1. Browse the list of available service types and select the specific modular service you'd like to add.
+   You can also start typing the name of a module to add it directly, or to narrow down the search results.
+
+   {{<imgproc src="extend/modular-resources/configure/add-module-from-registry.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+
+1. After selecting the modular service, click the **+ Add Module** button, enter a name for your modular service, and click **Create** to add it to your robot.
+
+When you add a module from the Viam Registry, the custom modular service it provides appears under the **Services** subtab like any other service.
+You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
+
+{{<imgproc src="extend/modular-resources/configure/conf-component-from-module.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
+
+If the module requires you to configure specific **Attributes**, click the **URL** link in the module's configuration pane to view the specific attribute requirements on the module's GitHub page.
+
+To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Services** tab.
+Deleting a module **does not** delete any configured modular resources it provides.
+
+## Configure a module from the Viam Registry
+
+Once you have added a modular resource to your robot, you can view and configure the module itself from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
    All modules you have added to your robot appear under the **Deployed** section.
 
-This pane lists the models provided by the module, any [components](/components/) on your robot that are currently using those models, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam Registry.
+This pane lists the models provided by the module, any [components](/components/) or [services](/services) on your robot that are currently using the module, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam Registry.
 
 {{<imgproc src="extend/modular-resources/configure/conf-module-from-registry.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
-#### Configure version update management for a Registry module
+### Configure version update management for a Registry module
 
 When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam Registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will *never automatically update itself*.
@@ -82,9 +109,9 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-### Configure a modular resource from a Registry module
+### Create a new modular resource from a Registry module
 
-Once you have configured a module from the Viam Registry, you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have [added a module](add-a-module-from-the-viam-registry), from the Viam Registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
@@ -98,6 +125,7 @@ The following properties are available for modular resources:
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
+If the module requires you to configure specific **Attributes**, click the **URL** link in the module's configuration pane to view the specific attribute requirements on the module's GitHub page.
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -106,47 +134,51 @@ The `attributes` available vary depending on your implementation.
 {
   "components": [
     {
-      "namespace": "<your-module-namespace>",
-      "type": "<your-resource-subtype>",
-      "model": "<model-namespace>:<model-family>:<model-name>",
       "name": "<your-model-instance-name>",
-      "depends_on": [],
+      "model": "<model-namespace>:<model-family>:<model-name>",
+      "type": "<your-resource-subtype>",
+      "namespace": "<your-module-namespace>",
+      "attributes": {},
+      "depends_on": []
     }
   ],
-  "modules": [ ... ] // < INSERT YOUR MODULE CONFIGURATION >
+  "modules": [
+    {
+      "type": "registry",
+      "name": "<module-name>",
+      "module_id": "<module-namespace>:<module-name>",
+      "version": "<module-version>"
+    }
+  ]
 }
 ```
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-The following is an example configuration for a base modular resource implementation.
-The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
-The custom model is configured as a component with the name "my-custom-base-1".
-You can send commands to the base according to the Viam [base API](/components/base/#api):
+The following is an example configuration for for the [Intel Realsense module](https://app.viam.com/module/viam/realsense).
+The configuration adds `viam:camera:realsense` as a modular resource from the module `viam:realsense`.
+The custom model is configured as a component with the name "my-realsense".
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
-      {
-        "type": "board",
-        "name": "main-board",
-        "model": "pi"
-      },
-      {
-        "type": "base",
-        "name": "my-custom-base-1",
-        "model": "acme:demo:mybase",
-        "namespace": "rdk",
-        "attributes": {},
-        "depends_on": [ "main-board" ]
-      }
-    ],
-    "modules": [
-      {
-        "name": "my-custom-base",
-        "executable_path": "/home/my_username/my_base/run.sh"
-      }
+    {
+      "name": "my-realsense",
+      "model": "viam:camera:realsense",
+      "type": "camera",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_realsense",
+      "module_id": "viam:realsense",
+      "version": "0.0.3"
+    }
   ]
 }
 ```
@@ -240,7 +272,8 @@ The `attributes` available vary depending on your implementation.
       "type": "<your-resource-subtype>",
       "model": "<model-namespace>:<model-family>:<model-name>",
       "name": "<your-model-instance-name>",
-      "depends_on": [],
+      "attributes": {},
+      "depends_on": []
     }
   ],
   "modules": [ ... ] // < INSERT YOUR MODULE CONFIGURATION >
