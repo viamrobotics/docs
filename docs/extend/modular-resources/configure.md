@@ -45,7 +45,7 @@ To add a modular [component](/components/) from the Viam Registry to your robot:
 When you add a module from the Viam Registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
-{{<imgproc src="extend/modular-resources/configure/deployed-module-with-service.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
+{{<imgproc src="extend/modular-resources/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
@@ -92,7 +92,7 @@ Once you have added a modular resource to your robot, you can view and configure
 
 This pane lists the models provided by the module, any [components](/components/) or [services](/services/) on your robot that are currently using the module, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam Registry.
 
-{{<imgproc src="extend/modular-resources/configure/conf-module-from-registry.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
+{{<imgproc src="extend/modular-resources/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 ### Configure version update management for a Registry module
 
