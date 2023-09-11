@@ -14,7 +14,7 @@ You can [add a module from the Viam registry](#add-a-module-from-the-viam-regist
 A *module* makes one or more *modular resources* available for configuration.
 See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
 
-## Add a module from the Viam registry
+## Add a module from the Viam Registry
 
 The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
