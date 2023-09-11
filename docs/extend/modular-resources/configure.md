@@ -32,20 +32,18 @@ To add a modular [component](/components/) from the Viam Registry to your robot:
 1. Click on the **Components** subtab and click the **Create component** button.
 1. Browse the list of available component types, and select the specific modular component you'd like to add.
 
-   {{<imgproc src="extend/modular-resources/configure/add-component-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-component-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="extend/modular-resources/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
 1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your robot.
 
-   {{<imgproc src="extend/modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
 When you add a module from the Viam Registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
-
-{{<imgproc src="extend/modular-resources/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
@@ -60,20 +58,18 @@ To add a modular [service](/services/) from the Viam Registry to your robot:
 1. Click on the **Services** subtab and click the **Create service** button.
 1. Browse the list of available service types and select the specific modular service you'd like to add.
 
-   {{<imgproc src="extend/modular-resources/configure/add-service-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-service-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="extend/modular-resources/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
 1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot.
 
-   {{<imgproc src="extend/modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
+   {{<imgproc src="extend/modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
 When you add a module from the Viam Registry, the custom modular service it provides appears under the **Services** subtab like any other service.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
-
-{{<imgproc src="extend/modular-resources/configure/deployed-module-with-service.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
