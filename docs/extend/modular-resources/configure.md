@@ -4,21 +4,21 @@ linkTitle: "Configure"
 weight: 30
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Add and configure a module from the Viam Registry on your robot."
+description: "Add and configure a module from the Viam registry on your robot."
 no_list: true
 ---
 
 You can extend Viam by adding a module on your robot to make one or more modular resources available for configuration.
-You can [add a module from the Viam Registry](#add-a-module-from-the-viam-registry), or you can [code your own module and add it to your robot locally](#add-a-local-module-to-your-robot).
+You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [code your own module and add it to your robot locally](#add-a-local-module-to-your-robot).
 
 A *module* makes one or more *modular resources* available for configuration.
 See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
 
-## Add a module from the Viam Registry
+## Add a module from the Viam registry
 
-The [Viam Registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
+The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
-To add a module from the Viam Registry to your robot:
+To add a module from the Viam registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
@@ -26,56 +26,56 @@ To add a module from the Viam Registry to your robot:
    To find the name of a module you're interested in, you can:
 
    - Start typing to search for modules by name.
-     Modules available from the Viam Registry will be listed under the `From Registry` section of the search results.
-   - [Browse the Viam Registry](https://app.viam.com/registry) directly to search available modules.
+     Modules available from the Viam registry will be listed under the `From Registry` section of the search results.
+   - [Browse the Viam registry](https://app.viam.com/registry) directly to search available modules.
 
    {{<imgproc src="extend/modular-resources/configure/add-module-from-registry.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
 1. After entering the name of the module that you would like to add to your robot, select the matching module in the search results and click the **Add module** button.
 
-When you add a module from the Viam Registry, the custom modular component it provides appears under the **Components** subtab like any other component.
+When you add a module from the Viam registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
 {{<imgproc src="extend/modular-resources/configure/conf-component-from-module.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
 
 If the module requires you to configure specific **Atrributes**, click the **URL** link in the module's configuration pane to view the specific documentation on the module's GitHub page.
 
-To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
+To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
 
-### Configure a module from the Viam Registry
+### Configure a module from the Viam registry
 
-Once you have added a module from the [Viam Registry](https://app.viam.com/registry), you can view and configure the module from the **Modules** subtab:
+Once you have added a module from the [Viam registry](https://app.viam.com/registry), you can view and configure the module from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
    All modules you have added to your robot appear under the **Deployed** section.
 
-This pane lists the models provided by the module, any [components](/components/) on your robot that are currently using those models, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam Registry.
+This pane lists the models provided by the module, any [components](/components/) on your robot that are currently using those models, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry.
 
 {{<imgproc src="extend/modular-resources/configure/conf-module-from-registry.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 #### Configure version update management for a Registry module
 
-When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam Registry.
+When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will *never automatically update itself*.
 
-If you wish to allow automatic module updates when a new version of the module becomes available in the Viam Registry, you can set the **Version type** for your module in the **Modules** subtab.
+If you wish to allow automatic module updates when a new version of the module becomes available in the Viam registry, you can set the **Version type** for your module in the **Modules** subtab.
 Updating to a newer version of a module brings new functionality and bug fixes, but requires restarting the module to apply the update.
 The following update options are available:
 
 - **Patch (X.Y.Z)**: Do not update to any other version.
   This is the default.
 - **Minor (X.Y.*)**: Only update to newer patch releases of the same minor release branch.
-  The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam Registry.
+  The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0` or `2.0.0`.
 - **Major (X.*)**: Only update to newer minor releases of the same major release branch.
-  The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam Registry.
+  The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
-- **Latest**: Always update to the latest version of this module available from the Viam Registry as soon as a new version becomes available.
+- **Latest**: Always update to the latest version of this module available from the Viam registry as soon as a new version becomes available.
 
 When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** drop down menu, including past versions if desired.
 
-The current deployed version of your module and the latest version of that module available from the Viam Registry are shown on this pane for your reference.
+The current deployed version of your module and the latest version of that module available from the Viam registry are shown on this pane for your reference.
 
 {{% alert title="Caution" color="caution" %}}
 For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
@@ -84,7 +84,7 @@ If, for example, the module provides a motor component, and the motor is running
 
 ### Configure a modular resource from a Registry module
 
-Once you have configured a module from the [Viam Registry](https://app.viam.com/registry), you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have configured a module from the [Viam registry](https://app.viam.com/registry), you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 

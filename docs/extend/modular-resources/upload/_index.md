@@ -1,22 +1,22 @@
 ---
-title: "Upload your own modules to the Viam Registry"
+title: "Upload your own modules to the Viam registry"
 linkTitle: "Upload"
 weight: 20
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Use the Viam CLI to upload a custom module to the Viam Registry."
+description: "Use the Viam CLI to upload a custom module to the Viam registry."
 no_list: true
 ---
 
-Once you have [created a custom module](/extend/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam Registry.
+Once you have [created a custom module](/extend/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam registry.
 
-With the CLI, you can register your module with the [Viam Registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
+With the CLI, you can register your module with the [Viam registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
 
 For more information, see the [`viam module` command](/manage/cli/#module).
 
 ## Upload a custom module
 
-To upload your custom module to the [Viam Registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following the instructions below:
+To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following the instructions below:
 
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
@@ -109,16 +109,16 @@ To upload your custom module to the [Viam Registry](https://app.viam.com/registr
 
    See [The `meta.json` file](/manage/cli/#the-metajson-file) for more information.
 
-1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry.
+1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update
       ```
 
-   On a successful update, the command will return a link to the updated module in the Viam Registry.
+   On a successful update, the command will return a link to the updated module in the Viam registry.
 
-1. Package your custom module to get it ready to upload to the Viam Registry.
+1. Package your custom module to get it ready to upload to the Viam registry.
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.
    Use the command below specific for the language of your module:
 
@@ -139,7 +139,7 @@ To upload your custom module to the [Viam Registry](https://app.viam.com/registr
 
      Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
-1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
+1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> module.tar.gz
@@ -163,19 +163,19 @@ To upload your custom module to the [Viam Registry](https://app.viam.com/registr
    Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
    {{% /alert %}}
 
-   For example, the following command uploads the compressed `module.tar.gz` archive to the Viam Registry when run in the same directory as the corresponding `meta.json` file:
+   For example, the following command uploads the compressed `module.tar.gz` archive to the Viam registry when run in the same directory as the corresponding `meta.json` file:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.0 --platform darwin/arm64 module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam registry.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
 ## Update an existing module
 
-You can update an existing module in the [Viam Registry](https://app.viam.com/registry) in one of two ways:
+You can update an existing module in the [Viam registry](https://app.viam.com/registry) in one of two ways:
 
 - [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/manage/cli/).
 - [Automatically upload new versions of your module on release](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
@@ -185,23 +185,23 @@ Updating your module automatically using CI is better suited for larger, ongoing
 
 ### Update an existing module using the Viam CLI
 
-To update an existing module in the [Viam Registry](https://app.viam.com/registry) manually, use the [Viam CLI](/manage/cli/):
+To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, use the [Viam CLI](/manage/cli/):
 
 1. Edit your custom module with the changes you'd like to make.
 
 1. Update your custom module's `meta.json` file with the changes, if any.
    For example, if you have altered your model's name, or adjusted the endpoint name, you'll need to update `meta.json` with these changes.
 
-1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam Registry.
+1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
 
       ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module update
       ```
 
-   On a successful update, the command will return a link to the updated module in the Viam Registry.
+   On a successful update, the command will return a link to the updated module in the Viam registry.
 
-1. Package your custom module to get it ready to upload to the Viam Registry.
+1. Package your custom module to get it ready to upload to the Viam registry.
    Currently, the Registry only supports `tar.gz` or `tar.xz` format.
    Use the command below specific for the language of your module:
 
@@ -222,25 +222,25 @@ To update an existing module in the [Viam Registry](https://app.viam.com/registr
 
      Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
-1. Run `viam module upload` to upload the updated custom module to the Viam Registry:
+1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <path-to-tar.gz>
    ```
 
-   For example, the following command uploads the compressed `my-module.tar.gz` archive to the Viam Registry when run in the same directory, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
+   For example, the following command uploads the compressed `my-module.tar.gz` archive to the Viam registry when run in the same directory, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
    ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam Registry.
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam registry.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
 ### Update an existing module using a Github action
 
-To update an existing module in the [Viam Registry](https://app.viam.com/registry) using CI, use the [`upload-module` Github action](https://github.com/viamrobotics/upload-module).
+To update an existing module in the [Viam registry](https://app.viam.com/registry) using CI, use the [`upload-module` Github action](https://github.com/viamrobotics/upload-module).
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -292,7 +292,7 @@ To update an existing module in the [Viam Registry](https://app.viam.com/registr
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
-   Once complete, your module should upload to the [Viam Registry](https://app.viam.com/registry) with the appropriate version automatically.
+   Once complete, your module should upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
 For more details, see the [`upload-module` Github action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 

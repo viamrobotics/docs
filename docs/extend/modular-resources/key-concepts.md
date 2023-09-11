@@ -19,7 +19,7 @@ A module provides definitions for one or more pairs of [APIs](#valid-apis-to-imp
 
 When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
-You can [upload your own modules to the Viam Registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure/).
+You can [upload your own modules to the Viam registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure/).
 
 See [Creating a custom module](/extend/modular-resources/create/) for more information.
 
@@ -47,7 +47,7 @@ See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-mode
 Models are either:
 
 - Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
-- Provided in custom modules available for download from the [Viam Registry](https://app.viam.com/registry), and are written by either Viam or community users.
+- Provided in custom modules available for download from the [Viam registry](https://app.viam.com/registry), and are written by either Viam or community users.
 
 ### Built-in models
 
@@ -61,7 +61,7 @@ For example:
 
 ### Custom models
 
-The [Viam Registry](https://app.viam.com/registry) makes available both Viam-provided and community-written modules for download and use on your robot.
+The [Viam registry](https://app.viam.com/registry) makes available both Viam-provided and community-written modules for download and use on your robot.
 These models run outside `viam-server` as a separate process.
 
 #### Valid APIs to implement in your model
@@ -80,7 +80,7 @@ When implementing a custom model of an existing [service](/services/), valid [AP
 
 #### Naming your model
 
-If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam Registry, ensure your model name meets the following requirements:
+If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
 
 - The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
   For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
@@ -90,7 +90,7 @@ If you are [creating a custom module](/extend/modular-resources/create/) and [up
 In addition, you should chose a name for the `family` of your model based on the whether your module implements a single model, or multiple models:
 
 - If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
-  For example, the Intel Realsense module `realsense`, available from the [Viam Registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
+  For example, the Intel Realsense module `realsense`, available from the [Viam registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
@@ -100,7 +100,7 @@ In addition, you should chose a name for the `family` of your model based on the
   ```
 
 - If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
-  For example, the ODrive module `odrive`, available from the [Viam Registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
+  For example, the ODrive module `odrive`, available from the [Viam registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
