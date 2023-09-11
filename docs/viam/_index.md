@@ -15,6 +15,7 @@ images: ["/general/understand.png"]
 ---
 
 Viam is a complete software platform that supports every step of your {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} development lifecycle.
+
 ## Plan your smart machine
 
 When using Viam, this is what you'll need to know to plan your smart machine:
