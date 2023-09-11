@@ -8,9 +8,9 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "sessi
 ---
 
 When you connect to a robot using an SDK, the SDK connects to the robot's `viam-server` instance as a _client_.
-The period of time during which a client is connected to a robot is called a *session*.
+The period of time during which a client is connected to a robot is called a _session_.
 
-*Session management* is a presence mechanism that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
+_Session management_ is a presence mechanism that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
 
 As a safety precaution, the default session management configuration ensures that a robot only moves when a client is actively connected.
 This is especially important for robots that physically move.
@@ -25,12 +25,12 @@ The Session Management API provides functionality for
 
 ### The `SessionsClient`
 
-A *client* of a Viam robot can be a program using an SDK to control the robot, an input controller, or the different resources on the robot, including {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, communicating.
+A _client_ of a Viam robot can be a program using an SDK to control the robot, an input controller, or the different resources on the robot, including {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, communicating.
 
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the model servers you instantiate on your robot for individual resources.
 
 Viam's session management API's `SessionsClient` is a built-in solution that manages the connection between your robot's clients and your robot.
-If you connect to your robot using one of Viam's SDKs, the resulting client will automatically maintain the session by sending a *heartbeat* notifying the robot's `viam-server` instance of its continued presence.
+If you connect to your robot using one of Viam's SDKs, the resulting client will automatically maintain the session by sending a _heartbeat_ notifying the robot's `viam-server` instance of its continued presence.
 The `SessionsClient` on the robot maintains an overview of all sessions based on the clients' heartbeat messages.
 
 If the robot does not receive a signal from the client in the expected interval, the robot ends the session and stop all resources that are marked for safety monitoring and have been last used by that session.
@@ -44,7 +44,7 @@ A disconnected client will attempt to establish a new session immediately prior 
 
 #### Heartbeats
 
-A *heartbeat* is a signal that indicates robot connectivity.
+A _heartbeat_ is a signal that indicates robot connectivity.
 Essentially, heartbeats are a client's way of letting a robot know that they are still connected.
 
 Heartbeats are sent automatically from Viam's SDKs unless you disable them with the session management API or session management is not implemented by the server in question.
