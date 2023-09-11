@@ -1,7 +1,7 @@
 extends: existence
 message: Show the hours, minutes, and seconds with two digits each, even
          if the leading digit is 0 ('%s').
-link: 'https://docs.rackspace.com/docs/style-guide/style/time'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/time.rst'
 level: error
 nonword: true
 tokens:

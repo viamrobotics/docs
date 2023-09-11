@@ -1,6 +1,6 @@
 extends: substitution
 message: "'%s' is preferred over '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/concise-terms#concise-terms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/concise-terms#concise-terms.rst'
 level: suggestion
 ignorecase: false
 action:

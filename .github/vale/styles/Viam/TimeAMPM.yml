@@ -4,7 +4,7 @@ extends: existence
 message: Use uppercase letters for abbreviations of ante meridiem (AM)
          and post meridiem (PM). Separate these abbreviations from the time with
          a space. Do not use periods in the abbreviations. ('%s')
-link: 'https://docs.rackspace.com/docs/style-guide/style/time'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/time.rst'
 level: error
 nonword: true
 tokens:

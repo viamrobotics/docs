@@ -2,7 +2,7 @@ extends: existence
 message: 'Avoid using past tense where possible: "%s".'
 ignorecase: true
 level: warning
-link: 'https://docs.rackspace.com/docs/style-guide/writing/use-present-tense/'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/use-present-tense.rst'
 scope: sentence
 tokens:
   - abode

@@ -15,10 +15,9 @@ Configure a `fake` arm to test different models of robotic arms without any phys
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your arm, select the type `arm`, and select the `fake` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `arm` type, then select the `fake` model.
+Enter a name for your arm and click **Create**.
 
 ![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 

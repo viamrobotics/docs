@@ -1,6 +1,6 @@
 extends: existence
 message: If you need to show a time zone ('%s'), use Coordinated Universal Time (UTC), and indicate the time-zone offset from UTC.
-link: 'https://docs.rackspace.com/docs/style-guide/style/time'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/time.rst'
 level: error
 nonword: true
 tokens:

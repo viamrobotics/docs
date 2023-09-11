@@ -1,6 +1,6 @@
 extends: existence
 message: "Verify your usage of '%s' with the Alphabetical List of Terms in the style guide."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/alphabetical-terms.rst'
 level: suggestion
 ignorecase: true
 tokens:

@@ -21,10 +21,9 @@ Configure a `pi` servo to integrate a hobby servo controlled by general-purpose 
 {{% tab name="Config Builder" %}}
 
 Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your servo, select the type `servo`, and select the `pi` model.
-
-Click **Create component**:
+Click on the **Components** subtab and click **Create component**.
+Select the `servo` type, then select the `pi` model.
+Enter a name for your servo and click **Create**.
 
 {{< imgproc src="/components/servo/pi-servo-ui-config.png" alt="An example configuration for a pi servo in the Viam app Config Builder." resize="600x" >}}
 

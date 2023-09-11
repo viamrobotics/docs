@@ -302,7 +302,7 @@ The following code uses the [`GetObjectPointClouds`](/services/vision/#getobject
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient
 
 robot = await connect()
 

@@ -67,16 +67,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: tutorials-search-file
-      - name: Write env
-        run: |
-          echo TYPESENSE_API_KEY=${{ secrets.TYPESENSE_API_KEY }} > typesense.env
-          echo TYPESENSE_HOST=cgnvrk0xwyj9576lp-1.a1.typesense.net >> typesense.env
-          echo TYPESENSE_PORT=443 >> typesense.env
-          echo TYPESENSE_PROTOCOL=https >> typesense.env
       - name: Upload tutorials documents
         run: |
           jq -c '.[]' typesense.json > documents.jsonl
-          curl -H "X-TYPESENSE-API-KEY: ${TYPESENSE_API_KEY}" \
+          curl -H "X-TYPESENSE-API-KEY: ${{secrets.TYPESENSE_TUTORIALS_API_KEY}}" \
           -X POST \
           -T documents.jsonl \
           "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"

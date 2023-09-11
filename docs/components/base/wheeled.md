@@ -18,10 +18,9 @@ Configure a `wheeled` base as follows:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your base, select the type `base`, and select the `wheeled` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `base` type, then select the `wheeled` model.
+Enter a name for your arm and click **Create**.
 
 {{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame." resize="600x" >}}
 

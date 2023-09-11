@@ -1,6 +1,6 @@
 extends: existence
 message: "You can remove most adverbs. Use your best judgment."
-link: 'https://docs.rackspace.com/docs/style-guide/writing/write-clear-concise-sentences-paragraphs/'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/write-clear-concise-sentences-paragraphs.rst'
 level: suggestion
 ignorecase: true
 scope: sentence
