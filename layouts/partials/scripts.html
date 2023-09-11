@@ -1,3 +1,10 @@
+
+{{ $jsCarousel := resources.Get "js/carousel.js" }}
+{{ $jsCarousel := $jsCarousel | minify }}
+{{ if eq .Page.Title "Viam Documentation" }}
+<script type="text/javascript" src="{{$jsCarousel.RelPermalink}}" crossorigin="anonymous"></script>
+{{ end }}
+
 <!-- START script for lazy loading -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 {{ $jsLozad := resources.Get "js/lozad.js" }}

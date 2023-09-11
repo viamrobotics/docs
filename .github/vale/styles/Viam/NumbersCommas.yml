@@ -2,7 +2,7 @@ extends: existence
 message: "Use commas in '%s' unless it is an address, a fractional part of
 a decimal number, a page number, or a literal representation of a
 user-entered or displayed value."
-link: 'https://docs.rackspace.com/docs/style-guide/style/numbers'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/numbers.rst'
 ignorecase: true
 level: suggestion
 scope: sentence

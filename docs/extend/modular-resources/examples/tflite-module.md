@@ -18,7 +18,7 @@ This code is for instructional purposes only, and is not intended for production
 
 You can find the example files in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk):
 
-- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/example_mlmodelservice_tflite.cpp) - an example module which provides the `MLModelService` modular resource capable of running any TensorFlow Lite model.
+- [`example_mlmodelservice_tflite.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/modules/tflite/main.cpp) - an example module which provides the `MLModelService` modular resource capable of running any TensorFlow Lite model.
 - [`example_audio_classification_client.cpp`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/examples/mlmodel/example_audio_classification_client.cpp) - an example inference client which generates audio samples and invokes the `example_mlmodelservice_tflite` module to classify those samples using the [`yamnet/classification` TensorFlow Lite model](https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1).
 
 ## Build the C++ SDK
@@ -67,16 +67,10 @@ While your specific build steps may differ slightly, your installation should ge
    export PKG_CONFIG_PATH="`brew --prefix`/opt/openssl/lib/pkgconfig"
    ```
 
-1. Add an additional path to the `DYLD_LIBRARY_PATH` environment variable, which allows the built binaries to find the libraries they need:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   export DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/:$DYLD_LIBRARY_PATH
-   ```
-
 1. Build the C++ SDK by running the following commands:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
+   cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
    ninja all
    ninja install
    ```
@@ -84,7 +78,6 @@ While your specific build steps may differ slightly, your installation should ge
    For this tutorial, the build process uses the following configuration options. See [Viam C++ SDK Build Instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) for more information:
 
    - `VIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE` to request building the example module for this tutorial.
-   - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
    - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>~/example_workspace/opt</file> instead of the default <file>./install</file> location.
 
 {{% /tab %}}
@@ -150,7 +143,7 @@ While your specific build steps may differ slightly, your installation should ge
 1. Build the C++ SDK by running the following commands:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
+   cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
    ninja all
    ninja install
    ```
@@ -158,7 +151,6 @@ While your specific build steps may differ slightly, your installation should ge
    For this tutorial, the build process uses the following configuration options. See [Viam C++ SDK Build Instructions](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) for more information:
 
    - `VIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE` to request building the example module for this tutorial.
-   - [`VIAMCPPSDK_USE_DYNAMIC_PROTOS`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#viamcppsdk_use_dynamic_protos) to request that proto generation happen along with the build.
    - [`CMAKE_INSTALL_PREFIX`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md#cmake_install_prefix) to install to <file>~/example_workspace/opt</file> instead of the default <file>./install</file> location.
 
 {{% /tab %}}
@@ -229,15 +221,6 @@ To generate your robot's configuration using `example_audio_classification_clien
    ./example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
    ```
 
-   {{< alert title="Important" color="note" >}}
-   If you receive a `Library not loaded` error when running the above on macOS, run the following command again:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   export DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/:$DYLD_LIBRARY_PATH
-   ```
-
-   {{< /alert >}}
-
 1. Verify that the resulting configuration file was created successfully:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -272,15 +255,6 @@ With everything configured and running, you can now run the inference client tha
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &
-   ```
-
-   {{< /alert >}}
-
-   {{< alert title="Important" color="note" >}}
-   If you receive a `Library not loaded` error when running the above on macOS, run the following command again:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   export DYLD_LIBRARY_PATH=~/example_workspace/opt/lib/:$DYLD_LIBRARY_PATH
    ```
 
    {{< /alert >}}

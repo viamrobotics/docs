@@ -1,6 +1,6 @@
 extends: substitution
 message: "Use '%s' instead of the idiom/colloquialism '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/terms-for-global-audience#don-t-use-idioms-or-colloquialisms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/terms-for-global-audience#don-t-use-idioms-or-colloquialisms.rst'
 level: suggestion
 ignorecase: true
 action:

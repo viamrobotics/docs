@@ -1,7 +1,7 @@
 extends: existence
 message: "Unless space is limited use either 'from 10 to 20 diagrams' or
 'between 2010 and 2020' instead of '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/numbers'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/numbers.rst'
 ignorecase: true
 level: warning
 scope: sentence

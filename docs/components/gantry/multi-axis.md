@@ -17,10 +17,9 @@ Configure a `multi-axis` gantry to integrate a multi-axis gantry into your robot
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your gantry, select the type `gantry`, and select the `multi-axis` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `gantry` type, then select the `multi-axis` model.
+Enter a name for your gantry and click **Create**.
 
 ![Creation of a multi-axis gantry component in the Viam app config builder.](/components/gantry/multi-axis-ui-config.png)
 

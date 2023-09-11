@@ -29,7 +29,7 @@ You will not need to write a single line of code to integrate them, and swapping
 You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
 You can build simple robots or multi-part robots that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage community contributed and custom resources to [extend](/extend/) Viam.
+- **Extensibility**: If you need additional functionality, you can leverage community contributed and modular resources to [extend](/extend/) Viam from [the Viam Registry](/extend/modular-resources/).
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 
@@ -131,6 +131,16 @@ With it you can:
 - Manage permissions within your organization and locations.
 - Manage software across your fleet, including deployment of code and machine learning models.
 - Keep your robot configuration and capabilities up-to-date.
+
+## Extensibility
+
+You can also extend Viam to support additional hardware components or software services by deploying a module from the [Viam Registry](https://app.viam.com/registry) to your robot.
+
+The Viam Registry allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
+You can add a module from the Viam Registry directly from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
+You can also [upload your own module to the Viam Registry](/extend/modular-resources/upload/).
+
+See [Modular resources](/extend/modular-resources/) for more information.
 
 ## Next steps
 

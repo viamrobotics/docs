@@ -244,12 +244,11 @@ The`esp32` [board](/components/board/) model is not currently provided for you a
 TODO: UNCOMMENT WHEN AVAILABLE IN APP UI, AND MOVE THIS CHUNK TO BOARD PAGE (SG)
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your board, select the type `board`, and select the `numato` model.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `numato` model.
+Enter a name for your board and click **Create**.
 
-Click **Create component**.
-
- ![An example configuration for an esp21 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png)
+ ![An example configuration for an esp32 board in the Viam app Config Builder.](/components/board/esp32-ui-config.png)
 
  Edit and fill in the attributes as applicable.
  -->

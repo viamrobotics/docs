@@ -1,6 +1,6 @@
 ---
-title: "Custom Resource Tutorials"
-linkTitle: "Custom Resources"
+title: "Modular Resource Tutorials"
+linkTitle: "Modular Resources"
 childTitleEndOverwrite: "Tutorial"
 weight: 50
 type: docs

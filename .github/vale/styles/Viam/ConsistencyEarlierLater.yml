@@ -1,6 +1,6 @@
 extends: existence
 message: "To refer to product releases, use earlier or later."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/general-term-guidelines/use-consistent-time-references'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/general-term-guidelines/use-consistent-time-references.rst'
 nonword: false
 level: suggestion
 tokens:

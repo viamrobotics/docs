@@ -1,6 +1,6 @@
 extends: existence
 message: "Avoid the subjuntive '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/writing/write-to-the-user/'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/write-to-the-user.rst'
 ignorecase: true
 level: warning
 scope: sentence

@@ -3,16 +3,16 @@ title: "Configure a SCUTTLE Robot"
 linkTitle: "Configure a SCUTTLE Robot"
 type: "docs"
 description: "Configure a SCUTTLE robot on the Viam platform."
-image: "/tutorials/scuttlebot/createcomponent.png"
-images: ["/tutorials/scuttlebot/createcomponent.png"]
-imageAlt: "The Viam app UI showing the Config tab of a robot."
+image: "/tutorials/scuttlebot/scuttle-on-floor-cropped.png"
+images: ["/tutorials/scuttlebot/scuttle-on-floor-cropped.png"]
+imageAlt: "A SCUTTLE robot on a carpeted floor."
 tags: ["base", "camera", "raspberry pi", "scuttle"]
 aliases:
   - "/tutorials/scuttlebot"
   - "/tutorials/scuttlebot/scuttlebot"
 authors: []
 languages: [ "python", "go" ]
-viamresources: [ "board", "motor", "camera" ]
+viamresources: [ "board", "motor", "camera", "base", "encoder" ]
 level: "Beginner"
 date: "2022-08-02"
 updated: "2023-08-05"
@@ -32,7 +32,7 @@ cost: 540
 1. Create a *robot* and follow the setup instructions until the robot successfully connects to the Viam app.
 1. Navigate to the robot's **Config** tab.
 
-   ![The Viam app UI showing the config tab of the robot.](/tutorials/scuttlebot/createcomponent.png)
+![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
 ## Configure the board
 
@@ -41,10 +41,9 @@ Add your first component, the [board](/components/board/):
 {{< tabs name="Configure an pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter `local` as the name for your board, select the type `board`, and select the `pi` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `pi` model.
+Enter `local` as the name for your board and click **Create**.
 
 Click on **Show more** and add `I2C` with **name** `main` and **bus** `1`.
 
@@ -83,10 +82,9 @@ Next, configure the left and right encoders as follows:
 
 ### Left encoder
 
-Navigate to the **Create component** menu.
-Enter `lenc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
-
 Click **Create component**.
+Select the `encoder` type, then select the `AMS-AS5048` model.
+Enter `lenc` as the name for your encoder and click **Create**.
 
 Click the **board** drop-down list and select the name of your board, `local`.
 
@@ -96,10 +94,9 @@ In the **i2c bus** field type `main`, and in the **i2c address** field type `64`
 
 ### Right encoder
 
-Navigate to the **Create component** menu.
-Enter `renc` as the **name** for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
-
 Click **Create component**.
+Select the `encoder` type, then select the `AMS-AS5048` model.
+Enter `renc` as the name for your encoder and click **Create**.
 
 Click the **board** drop-down list and select the name of your board, `local`.
 
@@ -151,12 +148,11 @@ The next step is to add the motors and make them spin the wheels.
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-**Right Motor:**
-
-Navigate to the **Create component** menu.
-Enter `right` for your motor name, select the type `motor`, and select the `gpio` model.
+### Right motor
 
 Click **Create component**.
+Select the `motor` type, then select the `gpio` model.
+Enter `right` as the name for your encoder and click **Create**.
 
 Then from the **Board** drop-down, select `local`, the Raspberry Pi the motor is wired to.
 
@@ -171,12 +167,11 @@ Next, describe how the motor is wired to the Pi:
 
 ![The motor config panel.](/tutorials/scuttlebot/pi-wheel.png)
 
-**Left Motor:**
-
-Navigate to the **Create component** menu.
-Enter `left` for your motor name, select the type `motor`, and select the `gpio` model.
+### Left motor
 
 Click **Create component**.
+Select the `motor` type, then select the `gpio` model.
+Enter `left` as the name for your encoder and click **Create**.
 
 Then select `local` from the **Board** drop-down to choose the Raspberry Pi the motor is wired to.
 
@@ -268,10 +263,9 @@ Configuring a base component also provides you with a nice UI for moving the rov
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your base, select the type `base`, and select the `wheeled` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `base` type, then select the `wheeled` model.
+Enter a name for your base and click **Create**.
 
 {{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
 
@@ -295,8 +289,9 @@ Click **Create component**.
       "attributes": {
         "board": "local",
         "pins": {
-          "dir": "16",
-          "pwm": "15"
+          "pwm": "",
+          "a": "16",
+          "b": "15",
         }
       },
       "model": "gpio",
@@ -307,8 +302,9 @@ Click **Create component**.
       "attributes": {
         "board": "local",
         "pins": {
-          "dir": "13",
-          "pwm": "11"
+          "pwm": "",
+          "a": "12",
+          "b": "11",
         }
       },
       "model": "gpio",
@@ -365,10 +361,9 @@ Finally, add a camera to your SCUTTLE robot.
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your camera, select the type `camera`, and select the `webcam` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `camera` type, then select the `webcam` model.
+Enter a name for your camera and click **Create**.
 
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 

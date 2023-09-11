@@ -16,10 +16,9 @@ Configure an `ultrasonic` sensor to integrate an [HC-S204 ultrasonic distance se
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your sensor, select the type `sensor`, and select the `ultrasonic` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `sensor` type, then select the `ultrasonic` model.
+Enter a name for your sensor and click **Create**.
 
 ![Creation of a ultrasonic sensor in the Viam app config builder.](/components/sensor/ultrasonic-sensor-ui-config.png)
 

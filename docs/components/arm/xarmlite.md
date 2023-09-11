@@ -14,10 +14,9 @@ Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/p
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your arm, select the type `arm`, and select the `xArmLite` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `arm` type, then select the `xArmLite` model.
+Enter a name for your arm and click **Create**.
 
 ![Web UI configuration panel for an arm of model xArmLite in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/xArmLite-ui-config.png)
 

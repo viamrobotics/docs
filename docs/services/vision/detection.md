@@ -267,7 +267,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
     {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient
 
 robot = await connect()
 # Grab camera from the robot
@@ -352,7 +352,7 @@ If you would like to test your detector with existing images, load the images an
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.services.vision import VisionClient, VisModelConfig, VisModelType
+from viam.services.vision import VisionClient
 from PIL import Image
 
 robot = await connect()
