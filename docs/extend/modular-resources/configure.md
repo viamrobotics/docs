@@ -38,7 +38,7 @@ To add a modular [component](/components/) from the Viam Registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
-1. After selecting the modular component, click the **+ Add Module** button, enter a name for your modular component, and click **Create** to add it to your robot.
+1. After selecting the modular component, click the **Add Module** button, enter a name for your modular component, and click **Create** to add it to your robot.
 
    {{<imgproc src="extend/modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
@@ -66,11 +66,9 @@ To add a modular [service](/services/) from the Viam Registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
-1. After selecting the modular service, click the **+ Add Module** button, enter a name for your modular service, and click **Create** to add it to your robot.
+1. After selecting the modular service, click the **Add Module** button, enter a name for your modular service, and click **Create** to add it to your robot.
 
    {{<imgproc src="extend/modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
-
-1. After selecting the modular service, click the **+ Add Module** button, enter a name for your modular service, and click **Create** to add it to your robot.
 
 When you add a module from the Viam Registry, the custom modular service it provides appears under the **Services** subtab like any other service.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
