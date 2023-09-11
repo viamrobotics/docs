@@ -177,8 +177,8 @@ For more information, see the [`viam module` command](/manage/cli/#module)
 
 You can update an existing module in the [Viam Registry](https://app.viam.com/registry) in one of two ways:
 
-- [Upload a newer version of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/manage/cli/).
-- [Upload a newer version of your module automatically](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
+- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/manage/cli/).
+- [Automatically upload new versions of your module on release](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
 
 Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
 Updating your module automatically using CI is better suited for larger, ongoing projects, especially those with multiple contributors.
@@ -284,13 +284,19 @@ To update an existing module in the [Viam Registry](https://app.viam.com/registr
    For guidance on configuring the other parameters, see the documentation for each:
    - [`org-id`](/manage/cli/#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
    - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
-   - [`version`](/manage/cli/#using-the---version-argument)
+   - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning) - Also see [Using the --version argument](/manage/cli/#using-the---version-argument) for more details on the types of versioning supported.
    - [`key-id` and `key-value`](/manage/cli/#create-an-organization-api-key) - You will set these values in the next step.
 
-1. Next, follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key), which the action will use to authenticate its run.
+1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key), which the action will use to authenticate its run.
    Provide the `key-id` and `key-value` generated in the YAML configuration above.
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
-   Your module should upload to the [Viam Registry](https://app.viam.com/registry) with the appropriate version automatically.
+   The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
+   Once complete, your module should upload to the [Viam Registry](https://app.viam.com/registry) with the appropriate version automatically.
 
-For more details, see the [`upload-module` Github action documentation](https://github.com/viamrobotics/upload-module).
+For more details, see the [`upload-module` Github action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
+
+- [Python with virtualenv](https://github.com/viam-labs/python-example-module)
+- [Python with docker](https://github.com/viamrobotics/python-container-module)
+- [Golang](https://github.com/viam-labs/wifi-sensor)
+- [C++](https://github.com/viamrobotics/module-example-cpp)
