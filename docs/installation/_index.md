@@ -45,7 +45,7 @@ If you are using one of the following boards, you can follow our guide for that 
 <br>
 
 Viam also provides a lightweight version of `viam-server` which can run on resource-limited embedded systems that cannot run the fully-featured Robot Development Kit (RDK).
-If you are using an ESP32 microcontroller, prepare your board using the following guide:
+If you are using a microcontroller, prepare your board using the following guide:
 
 {{< cards >}}
 {{% card link="/installation/prepare/microcontrollers" class="small" %}}
