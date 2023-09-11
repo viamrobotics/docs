@@ -271,7 +271,7 @@ Create a new session that expects at least one heartbeat within the configured w
 
 **Returns:**
 
-- [(*session.Session)](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager): A new session.
+- [(*Session)](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager): A new session.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.Start).
@@ -290,7 +290,7 @@ Get all sessions that are actively being held by this `SessionManager`.
 
 **Returns:**
 
-- [([]*session.Session)](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/session#Session): All active sessions associated with this `SessionManager`.
+- [([]*Session)](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/session#Session): All active sessions associated with this `SessionManager`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.All).
 
@@ -312,7 +312,7 @@ If ownerID is in use but the session in question has a different owner, this is 
 
 **Returns:**
 
-- [(*session.Session)](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/session#Session): A new manager for holding sessions.
+- [(*Session)](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/session#Session): A new manager for holding sessions.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.Start).
