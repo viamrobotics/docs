@@ -18,7 +18,7 @@ jobs:
               with:
                   ref: ${{github.event.pull_request.head.sha}}
                   fetch-depth: 0
-            - uses: npentrel/lexi@v1.7
+            - uses: Rebilly/lexi@v1
               with:
                   github-token: ${{ secrets.PR_TOKEN }}
                   glob: '**/*.md'
