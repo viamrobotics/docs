@@ -9,7 +9,7 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "sessi
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
 The period of time during which these clients are present is called a *session.*
-Sessions each have [their own API](/program/apis/session), which is a client of `viam-server`.
+Sessions each have [their own API](/program/apis/session/), which is a client of `viam-server`.
 
 Session management:
 
