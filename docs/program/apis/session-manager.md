@@ -8,7 +8,8 @@ tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "sessi
 ---
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
-The period of time during which these clients are present is called a *session*.
+The period of time during which these clients are present is called a *session.*
+Sessions each have [their own API](/program/apis/session), which is a client of `viam-server`.
 
 Session management:
 
@@ -20,10 +21,10 @@ Session management allows for safer operation of robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client sets the flow of electricity to the motors of the robot and then does not time out, causing the robot to continue driving forever, colliding with objects and people.
 
-With default configuration, sessions are automatically managed for you with Viam's `SessionsClient`.
+With default configuration, sessions are automatically managed for you with Viam's session management API's default `SessionsClient`.
 If you want to manage sessions yourself, use Viam's session management API.
 
-### The `SessionsClient`
+### What is a `SessionsClient`
 
 A Viam robot has many clients because a client is anything that is receiving the information served by `viam-server` running on the robot, which includes the primary part, sub-parts, client SDKs, and more.
 A *client* of a Viam robot could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
@@ -130,100 +131,11 @@ This option allows you to have full control over session management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
 You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
 
-## Session API
-
-The `Session` API supports the following methods:
-
-{{< readfile "/static/include/program/apis/session.md" >}}
-
-{{% alert title="Tip" color="tip" %}}
-
-The following code examples assume that you have a robot configured with a [base component](/components/base/), and that you add the required code to connect to your robot and import any required packages, including the `sessions` package, at the top of your client file.
-Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
-
-{{% /alert %}}
-
-### SafetyMonitor
-
-Safety monitor this target {{< glossary_tooltip term_id="resource" text="resource" >}} so that, if it exists, if this session ends as the last session to monitor it, the `SessionManager` attempts to stop the resource by calling the `Stop()` method of the resource API.
-
-Do not call this method from the resource being monitored itself, but instead from another client, like another resource, that controls the monitored resource on behalf of some request or routine.
-For example, it would be appropriate for a remote [input controller](/components/input-controller/) resource to call a `SafetyMonitor()` on a base that it is remotely controlling the motion of.
-
-In the context of a gRPC handled request, this function can only be called before the first response is sent back.
-In the case of unary, it can only be called before the handler returns.
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `target` [(resource.Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Resource): The target resource.
-
-**Returns:**
-
-- None
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#SafetyMonitor).
-
-```go
-myBase, err := base.FromRobot(robot, "my_base")
-
-// Signal to the session that the given target resource should be safety monitored.
-session = session.SafetyMonitor(ctx, myBase)
-```
-
-### SafetyMonitorResourceName
-
-Safety monitor this target {{< glossary_tooltip term_id="resource" text="resource" >}} so that, if it exists, if this session ends as the last session to monitor it, the `SessionManager` attempts to stop the resource by calling the `Stop()` method of the resource API.
-
-Do not call this method from the resource being monitored itself, but instead from another client, like another resource, that controls the monitored resource on behalf of some request or routine.
-For example, it would be appropriate for a remote [input controller](/components/input-controller/) resource to call a `SafetyMonitor()` on a base that it is remotely controlling the motion of.
-
-In the context of a gRPC handled request, this function can only be called before the first response is sent back.
-In the case of unary, it can only be called before the handler returns.
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `targetName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `name` you have set for the resource in configuration.
-
-**Returns:**
-
-- None
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#SafetyMonitorResourceName).
-
-```go
-myBase, err := base.FromRobot(robot, "my_base")
-
-// Signal to the session that the given target resource should be safety monitored.
-session = session.SafetyMonitor(ctx, "my_base")
-```
-
-### ToContext
-
-Attach a session to the given context.
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `sess` [(*Session)](https://pkg.go.dev/go.viam.com/rdk/session#Session): The session object that you wish to attach to this context.
-
-**Returns:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/session#ToContext).
-
-```go
-// Attach session "my session" to the given Context 
-session = session.ToContext(context.Background(), my_session)
-```
-
-## SessionManager API
+## API
 
 The `SessionManager` API supports the following methods:
 
-{{< readfile "/static/include/program/apis/session-manager.md" >}}
+{{< readfile "/static/include/program/apis/session-management.md" >}}
 
 ### Start
 
