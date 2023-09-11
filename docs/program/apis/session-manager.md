@@ -135,7 +135,7 @@ You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/ses
 
 ## API
 
-The `SessionManager` API supports the following methods:
+The `SessionManager` API built-in to the [Robot API](/program/apis/robot/) supports the following methods:
 
 {{< readfile "/static/include/program/apis/session-manager.md" >}}
 
