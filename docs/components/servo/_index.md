@@ -40,7 +40,8 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-Supported servo models include:
+The servo component supports the following models.
+Click on the component model name for detailed configuration information.
 
 | Model | Description |
 | ----- | ----------- |

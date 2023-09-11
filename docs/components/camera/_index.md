@@ -33,7 +33,8 @@ You can use different models to:
 
 ## Configuration
 
-For configuration information, click on one of the following models:
+The camera component supports the following models.
+Click on the component model name for detailed configuration information.
 
 | Model | Description |
 | ----- | ----------- |
