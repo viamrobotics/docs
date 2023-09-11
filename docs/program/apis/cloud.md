@@ -190,7 +190,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### CreateLocation
 
-Create and name a [location](/manage/fleet/locations/) under the organization and location you are currently authenticated to.
+Create and name a {{< glossary_tooltip term_id="location" text="location" >}} under the organization and location you are currently authenticated to.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -220,7 +220,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### UpdateLocation
 
-Change the name of a location and/or assign it a new [parent location](/manage/fleet/locations/).
+Change the name of a location and/or assign it a new {{< glossary_tooltip term_id="location" text="parent location" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
