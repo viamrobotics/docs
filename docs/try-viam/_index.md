@@ -14,7 +14,7 @@ aliases:
     - "/getting-started/try-viam/"
 ---
 
-Viam is a general robotics platform that can run on any hardware.
+Viam is a general {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} platform that can run on any hardware.
 The easiest way to try Viam is to [rent and remotely configure and control a Viam Rover](https://app.viam.com/try) located on-site at Viam in New York:
 
 <table>
@@ -35,7 +35,7 @@ See <a href="/try-viam/reserve-a-rover/">detailed instructions</a>.</p>
   <tr>
     <td>{{<imgproc src="/try-viam/try-viam-3.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="ALT">}}
       <b>3. Get started with Viam</b>
-      <p>Try a Viam Rover in our robotics lab. <a href="/try-viam/try-viam-tutorial/">Control</a>, <a href="/try-viam/try-viam-tutorial/#base-control">drive</a>, or <a href="/tutorials/get-started/try-viam-sdk/">program</a> the rover to see how you can build a robot with Viam. You can also try services like <a href="/tutorials/services/try-viam-color-detection/">computer vision.</a></p>
+      <p>Try a Viam Rover in our robotics lab. <a href="/try-viam/try-viam-tutorial/">Control</a>, <a href="/try-viam/try-viam-tutorial/#base-control">drive</a>, or <a href="/tutorials/get-started/try-viam-sdk/">program</a> the rover to see how you can build a smart machine with Viam. You can also try services like <a href="/tutorials/services/try-viam-color-detection/">computer vision.</a></p>
     </td>
   </tr>
 </table>
