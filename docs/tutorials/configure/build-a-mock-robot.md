@@ -53,8 +53,8 @@ You'll need the following hardware and software for this tutorial:
 
 ### Make an account on the Viam app
 
-First, set up your account on the Viam app.
-Go to [the Viam app](https://app.viam.com) and sign up for an account.
+If you don't already have an account, create a free one.
+Sign up for an account on [the Viam app](https://app.viam.com).
 Create a new robot in the organization and location of your choice.
 Go to this robot's **Setup** tab.
 
@@ -76,13 +76,13 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
 2. Configure a [fake board component](/components/board/fake/):
 
-    - Click on the Components subtab and click Create component.
+    - Click on the **Components** subtab and click **Create component**.
     - Select the `board` type, then select the `fake` model.
-    - Enter the name `myBoard` for your board and click **Create**.
+    - Enter the name `myBoard` for your board and click **Create component**.
 
 3. Configure a [fake arm component](/components/arm/fake/):
 
-    - Click Create component.
+    - Click **Create component.**
     - Select the `arm` type, then select the `fake` model.
     - Enter the name `myArm` for your board and click **Create**.
     - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
