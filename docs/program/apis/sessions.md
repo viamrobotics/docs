@@ -145,9 +145,9 @@ Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) f
 
 ### SafetyMonitor
 
-`SafetyMonitor()` signals to the session that the given target {{< glossary_tooltip term_id="resource" text="resource" >}}, if present, should be safety monitored so that if this session ends and this session was the last to monitor the target, it will attempt to be stopped.
+Safety monitor this target {{< glossary_tooltip term_id="resource" text="resource" >}} so that, if it exists, if this session ends as the last session to monitor it, the `SessionManager` attempts to stop the resource by calling the `Stop()` method of the resource API.
 
-This not be called by a resource being monitored itself, but instead by another client, like another resource, that is controlling a resource on behalf of some request or routine.
+Do not call this method from the resource being monitored itself, but instead from another client, like another resource, that controls the monitored resource on behalf of some request or routine.
 For example, it would be appropriate for a remote [input controller](/components/input-controller/) resource to call a `SafetyMonitor()` on a base that it is remotely controlling the motion of.
 
 In the context of a gRPC handled request, this function can only be called before the first response is sent back.
@@ -173,12 +173,9 @@ session = session.SafetyMonitor(ctx, myBase)
 
 ### SafetyMonitorResourceName
 
-`SafetyMonitorResourceName()` works just like `SafetyMonitor()` but uses Viam {{< glossary_tooltip term_id="resource" text="resource" >}} names directly.
-You assign the name of a resource when [configuring your robot](/manage/configuration/).
+Safety monitor this target {{< glossary_tooltip term_id="resource" text="resource" >}} so that, if it exists, if this session ends as the last session to monitor it, the `SessionManager` attempts to stop the resource by calling the `Stop()` method of the resource API.
 
-This method, when called, signals to the session that the given target {{< glossary_tooltip term_id="resource" text="resource" >}}, if present, should be safety monitored so that if this session ends and this session was the last to monitor the target, it will attempt to be stopped.
-
-This not be called by a resource being monitored itself, but instead by another client, like another resource, that is controlling a resource on behalf of some request or routine.
+Do not call this method from the resource being monitored itself, but instead from another client, like another resource, that controls the monitored resource on behalf of some request or routine.
 For example, it would be appropriate for a remote [input controller](/components/input-controller/) resource to call a `SafetyMonitor()` on a base that it is remotely controlling the motion of.
 
 In the context of a gRPC handled request, this function can only be called before the first response is sent back.
