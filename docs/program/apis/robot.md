@@ -1,5 +1,5 @@
 ---
-title: "Manage Robots with Viam's Client SDKs"
+title: "Manage Robots with Viam's Robot API"
 linkTitle: "Robot Management"
 weight: 20
 type: "docs"

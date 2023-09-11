@@ -377,6 +377,8 @@ The `viam module upload` command only supports one `platform` argument at a time
 If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
 Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
 
+The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
+
 ##### Using the `--version` argument
 
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
