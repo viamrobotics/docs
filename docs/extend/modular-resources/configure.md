@@ -26,7 +26,7 @@ Follow the instructions below depending on the type of modular resource you woul
 
 ### Add a modular component from the Viam registry
 
-To add a modular [component](/components) from the Viam Registry to your robot:
+To add a modular [component](/components/) from the Viam Registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
@@ -48,7 +48,7 @@ Deleting a module **does not** delete any configured modular resources it provid
 
 ### Add a modular service from the Viam registry
 
-To add a modular [service](/services) from the Viam Registry to your robot:
+To add a modular [service](/services/) from the Viam Registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click the **Create service** button.
@@ -77,7 +77,7 @@ Once you have added a modular resource to your robot, you can view and configure
 1. Click on the **Modules** subtab.
    All modules you have added to your robot appear under the **Deployed** section.
 
-This pane lists the models provided by the module, any [components](/components/) or [services](/services) on your robot that are currently using the module, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam Registry.
+This pane lists the models provided by the module, any [components](/components/) or [services](/services/) on your robot that are currently using the module, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam Registry.
 
 {{<imgproc src="extend/modular-resources/configure/conf-module-from-registry.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
@@ -111,7 +111,7 @@ If, for example, the module provides a motor component, and the motor is running
 
 ### Create a new modular resource from a Registry module
 
-Once you have [added a module](add-a-module-from-the-viam-registry), from the Viam Registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have [added a module](#add-a-module-from-the-viam-registry), from the Viam Registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
