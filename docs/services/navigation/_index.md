@@ -573,15 +573,15 @@ Here's how to make use of the following types of measurements:
 
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take compass heading measurements:
 
-- [gps-nmea](/components/movement-sensor/gps/gps-nmea/)
-- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/)
-- [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/)
+- [gps-nmea](/components/movement-sensor/gps/gps-nmea/) - some GPS hardware only report heading while moving.
+- [gps-nmea-rtk-pmtk](/components/movement-sensor/gps/gps-nmea-rtk-pmtk/) - some GPS hardware only report heading while moving.
+- [gps-nmea-rtk-serial](/components/movement-sensor/gps/gps-nmea-rtk-serial/) - some GPS hardware only report heading while moving.
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
 
 An example of a `Compass Heading` reading:
 
 ``` go
-// heading is a float64 
+// heading is a float64 between 0-360
 heading, err := gps.CompassHeading(context.Background, nil)
 ```
 
@@ -600,7 +600,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of an `Orientation` reading:
 
 ``` golang
-// orientation is a OrientationVector{OX: 0, OY:0, OZ:1, Theta:0}
+// orientation is a OrientationVector struct with OX, OY, OZ denoting the coordinates of the vector and rotation about z-axis, Theta
 orientation, err := imuwit.Orientation(context.Background, nil)
 ```
 
@@ -625,7 +625,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of an `AngularVelocity` reading:
 
 ``` go
-// angularVelocity is an AngularVelocity{X:1, Y:2, Z:3}
+// angularVelocity is an AngularVelocity r3 Vector with X, Y, and Z magnitudes
 angularVelocity, err := imu.AngularVelocity(context.Background, nil)
 ```
 
@@ -645,7 +645,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 An example of a `Position` reading:
 
 ``` go
-// position is a geo.Point{Lat: 40.7, Long: -73.98}, altitude is a float64 100
+// position is a geo.Point consisting  of Lat and Long: -73.98 and an altitude in float64
 position, altitude, err:= imu.Position(context.Background, nil)
 ```
 
@@ -667,7 +667,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Velocity` reading:
 
 ``` go
-// linearVelocity is an r3.Vector{X:0, Y:1, Z:0}
+// linearVelocity is an r3.Vector with X, Y, and Z magnitudes 
 linearVelocity, err := imu.LinearVelocity(context.Background, nil)
 ```
 
@@ -688,11 +688,11 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Acceleration` reading:
 
 ``` go
-// linearAcceleration is an r3Vector {X:0, Y:0, Z:1}
+// linearAcceleration is an r3Vector with X, Y, and Z magnitudes
 linearAcceleration, err := imu.LinearAcceleration(context.Background, nil)
 ```
 
-You can use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the speed at which your robot is moving through space.
+You can use linear acceleration readings to determine the rate of change of the [linear velocity](/services/navigation/#linear-velocity) of your robot, or, the acceleration at which your robot is moving through space.
 
 To get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Then use the movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
