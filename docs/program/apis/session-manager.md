@@ -26,7 +26,7 @@ Without session management, the API request from the client sets the flow of ele
 With default configuration, sessions are automatically managed for you with Viam's session management API's default `SessionsClient`.
 If you want to manage sessions yourself, use Viam's session management API.
 
-### What is a `SessionsClient`
+### What is a `SessionsClient`?
 
 A Viam robot has many clients because a client is anything that is receiving the information served by `viam-server` running on the robot, which includes the primary part, sub-parts, client SDKs, and more.
 A *client* of a Viam robot could be an SDK script controlling the robot, an input controller, or just the different resources on the robot talking amongst themselves.
