@@ -51,19 +51,15 @@ You'll need the following hardware and software for this tutorial:
 - A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
-### Make an account on the Viam app
-
 If you don't already have an account, create a free one.
-Sign up for an account on [the Viam app](https://app.viam.com).
+Sign up on [the Viam app](https://app.viam.com).
 Create a new robot in the organization and location of your choice.
 Go to this robot's **Setup** tab.
 
 ### Install and start `viam-server` on your computer
 
 Before you proceed with configuring and controlling your robot, install `viam-server`.
-
 Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to install `viam-server` on your computer as a system service.
-
 Find more information on running `viam-server` in the [installation guide](/installation/manage/).
 
 ### Configure your mock robot
