@@ -36,7 +36,8 @@ Most robots with a gantry need at least the following hardware:
 
 ## Configuration
 
-Supported gantry models include:
+The gantry component supports the following models.
+Click on the component model name for detailed configuration information.
 
 | Model | Description |
 | ----- | ----------- |
