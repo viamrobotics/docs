@@ -5,11 +5,13 @@ weight: 20
 type: "docs"
 description: "How to use the session management API with Viam's Client SDKs."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session", "sessions", "session management"]
+aliases:
+  /program/apis/sessions/
 ---
 
 When controlling a robot or fleet with Viam, you want a way to understand the presence of the clients that are communicating with and authenticated to each robot's `viam-server`.
 The period of time during which these clients are present is called a *session.*
-Sessions each have [their own API](/program/apis/session/), which is a client of both `viam-server` and the [session management API](/program/apis/sessions).
+Sessions each have [their own API](/program/apis/session/), which is a client of both `viam-server` and the session management API.
 
 Session management:
 
