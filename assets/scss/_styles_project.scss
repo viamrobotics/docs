@@ -1167,6 +1167,15 @@ ul.sectionlist > li:hover {
   border: 1px solid black;
 }
 
+#tutorial-filters > .filter:hover {
+  background-color: #e7e5e4;
+  cursor: pointer;
+}
+
+#tutorial-filters > .filter[aria-expanded="true"]{
+  background-color: #e7e5e4;
+}
+
 .ais-Hits-item {
   display: flex;
 }
