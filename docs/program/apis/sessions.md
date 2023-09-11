@@ -236,7 +236,7 @@ Create a new manager for holding sessions.
 **Parameters:**
 
 - `robot` [(Robot)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot that you want this `SessionManager` to manage the client sessions of.
-- `heartbeatWindow` [(time.Duration)](https://pkg.go.dev/time#Duration): The heartbeat window you want this `SessionManager` to follow. The window is the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
+- `heartbeatWindow` [(time.Duration)](https://pkg.go.dev/time#Duration): The heartbeat window you want this `SessionManager` to follow by default for managed sessions. The window is the elapsed time between two instants as an [int64](https://pkg.go.dev/builtin#int64) nanosecond count. The representation limits the largest representable duration to approximately 290 years.
 
 **Returns:**
 
@@ -270,7 +270,7 @@ Create a new session that expects at least one heartbeat within the configured w
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `heartbeatWindow` [(string)](https://pkg.go.dev/time#Duration): .
+- `heartbeatWindow` [(string)](https://pkg.go.dev/time#Duration): The heartbeat window you want this `SessionManager` to follow for this session. The window is the elapsed time between two instants as an [int64](https://pkg.go.dev/builtin#int64) nanosecond count. The representation limits the largest representable duration to approximately 290 years
 
 **Returns:**
 
@@ -321,7 +321,7 @@ If ownerID is in use but the session in question has a different owner, this is 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.Start).
 
 ``` go
-newSession, err := mySessionManager.Start(context.Background(), nil)
+newSession, err := mySessionManager.Start(context.Background(), uuid, ownerID)
 ```
 
 ### AssociateResource
@@ -329,7 +329,7 @@ newSession, err := mySessionManager.Start(context.Background(), nil)
 Associate a session ID to a monitored resource so that when a session expires:
 
 - If a resource is currently associated with that ID based on the order of AssociateResource calls, then it will have its resource stopped.
-- If id is uuid.Nil, this has no effect other than disassociation with a session. Be sure to include any remote information in the name.
+- If id is `uuid.Nil`, this has no effect other than disassociation with a session. Be sure to include any remote information in the name.
 
 **Parameters:**
 
@@ -343,7 +343,7 @@ Associate a session ID to a monitored resource so that when a session expires:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager.AssociateResource).
 
 ``` go
-newSession, err := mySessionManager.AssociateResource(TODO)
+newSession, err := mySessionManager.AssociateResource(uuid.Nil, "my_base")
 ```
 
 ### Close
@@ -362,24 +362,4 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v
 
 ``` go
 mySessionManager.Close()
-```
-
-### expireLoop
-
-Set an expiration loop to be associated with a specific context.
-
-**Parameters:**
-
-- TODO
-
-**Returns:**
-
-- TODO
-
-<!-- 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk@v0.8.0/robot#SessionManager.Start). 
-TODO: There are no Go SDK docs on this as there was never a comment added to describe the function (eric will escape blame on this as he is gone) -->
-
-``` go
-err := mySessionManager.expireLoop(context.Background(), nil)
 ```
