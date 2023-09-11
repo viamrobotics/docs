@@ -599,9 +599,8 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 An example of an `Orientation` reading:
 
-``` golang
-// orientation is a OrientationVector struct with OX, OY, OZ denoting the coordinates of the vector
-// and rotation about z-axis, Theta
+``` go
+// orientation is a OrientationVector struct with OX, OY, OZ denoting the coordinates of the vector and rotation about z-axis, Theta
 orientation, err := imuwit.Orientation(context.Background, nil)
 ```
 
