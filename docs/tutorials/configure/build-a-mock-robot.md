@@ -74,11 +74,11 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
     - Click on the **Components** subtab and click **Create component**.
     - Select the `board` type, then select the `fake` model.
-    - Enter the name `myBoard` for your board and click **Create component**.
+    - Enter the name `myBoard` for your board and click **Create**.
 
 3. Configure a [fake arm component](/components/arm/fake/):
 
-    - Click **Create component.**
+    - Click **Create**.
     - Select the `arm` type, then select the `fake` model.
     - Enter the name `myArm` for your board and click **Create**.
     - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
@@ -96,7 +96,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
 4. Configure a [fake motor component](../../../components/motor/fake/):
 
-   - Click Create component.
+   - Click **Create component**.
    - Select the `motor` type, then select the `fake` model.
    - Enter the name `myMotor` for your board and click **Create**.
    - Most motors are wired to a board which sends them signals.
