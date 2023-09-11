@@ -1,7 +1,7 @@
 extends: existence
 message: When referring to 12 AM, use 12 midnight or just midnight. When
          referring to 12 PM, use 12 noon or just noon ('%s').
-link: 'https://docs.rackspace.com/docs/style-guide/style/time'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/time.rst'
 level: error
 nonword: true
 tokens:

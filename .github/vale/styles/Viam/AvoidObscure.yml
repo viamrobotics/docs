@@ -1,6 +1,6 @@
 extends: substitution
 message: "Use '%s' instead of '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/general-term-guidelines/avoid-obscure-words'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/general-term-guidelines/avoid-obscure-words.rst'
 level: error
 ignorecase: true
 action:

@@ -21,10 +21,9 @@ To configure the encoder, you must first [configure an I<sup>2</sup>C bus](/comp
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your encoder, select the type `encoder`, and select the `AMS-AS5048` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `encoder` type, then select the `AMS-AS5048` model.
+Enter a name for your encoder and click **Create**.
 
 ![Configuration of an AS5048 encoder in the Viam app config builder.](/components/encoder/configure-am5.png)
 

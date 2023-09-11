@@ -85,7 +85,7 @@ search.addWidgets([
     templates: {
       item: `
 <div class="col tutorial hover-card">
-    <a href="{{permalink}}">
+    <a href="..{{relpermalink}}">
     {{#webm}}
         <div class="hover-card-video">
             <div>
@@ -213,3 +213,13 @@ search.on('render', function() {
 
   observer.observe()
 });
+
+document.body.addEventListener('click', function(event) {
+  let filter_box = document.getElementById('tutorial-filter-items');
+    if (!filter_box.contains(event.target)) {
+      open_elem = filter_box.getElementsByClassName("show");
+      if (open_elem) {
+        open_elem[0].classList.remove("show");
+      }
+    }
+}, true);

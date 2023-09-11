@@ -2,7 +2,7 @@
 
 extends: existence
 message: "Use interjections with care."
-link: 'https://docs.rackspace.com/docs/style-guide/writing/use-interjections-with-care/'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/use-interjections-with-care.rst'
 nonword: true
 level: warning
 tokens:

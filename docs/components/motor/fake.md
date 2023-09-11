@@ -15,10 +15,9 @@ For example, you can use a `fake` component as a placeholder while waiting on a 
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your motor, select the type `motor`, and select the `fake` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `motor` type, then select the `fake` model.
+Enter a name for your motor and click **Create**.
 
 ![A fake motor config.](/components/motor/fake-config-ui.png)
 

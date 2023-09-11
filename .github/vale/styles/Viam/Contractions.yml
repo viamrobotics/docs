@@ -1,6 +1,6 @@
 extends: substitution
 message: "Feel free to use '%s' instead of '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/contractions'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/contractions.rst'
 level: suggestion
 ignorecase: true
 action:

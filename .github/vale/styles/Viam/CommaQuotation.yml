@@ -1,6 +1,6 @@
 extends: existence
 message: "When a comma is required after a quotation that’s embedded in text, place the comma inside the closing quotation mark."
-link: 'https://docs.rackspace.com/docs/style-guide/style/punctuation#commas'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/punctuation#commas.rst'
 level: error
 scope: text
 nonword: true

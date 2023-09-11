@@ -1,7 +1,7 @@
 # Based on: https://github.com/errata-ai/Microsoft/blob/master/Microsoft/Dashes.yml
 extends: existence
 message: "Remove whitespace around '%s'."
-link: 'https://docs.rackspace.com/docs/style-guide/style/punctuation#dashes'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/punctuation#dashes.rst'
 ignorecase: true
 scope: sentence
 nonword: true
