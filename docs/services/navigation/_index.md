@@ -688,7 +688,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Acceleration` reading:
 
 ``` go
-// linearAcceleration is an r3Vector with X, Y, and Z magnitudes
+// linearAcceleration is an r3.Vector with X, Y, and Z magnitudes
 linearAcceleration, err := imu.LinearAcceleration(context.Background, nil)
 ```
 
