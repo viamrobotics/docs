@@ -167,7 +167,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Signal to the session that the given target resource should be safety monitered.
+// Signal to the session that the given target resource should be safety monitored.
 session = session.SafetyMonitor(ctx, myBase)
 ```
 
@@ -195,7 +195,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Signal to the session that the given target resource should be safety monitered.
+// Signal to the session that the given target resource should be safety monitored.
 session = session.SafetyMonitor(ctx, "my_base")
 ```
 
