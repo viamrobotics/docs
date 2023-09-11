@@ -45,7 +45,7 @@ To add a modular [component](/components/) from the Viam Registry to your robot:
 When you add a module from the Viam Registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
-{{<imgproc src="extend/modular-resources/configure/conf-component-from-module.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
+{{<imgproc src="extend/modular-resources/configure/deployed-module-with-service.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
@@ -75,7 +75,7 @@ To add a modular [service](/services/) from the Viam Registry to your robot:
 When you add a module from the Viam Registry, the custom modular service it provides appears under the **Services** subtab like any other service.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
-{{<imgproc src="extend/modular-resources/configure/conf-component-from-module.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
+{{<imgproc src="extend/modular-resources/configure/deployed-module-with-service.png" resize="400x" declaredimensions=true alt="The components subtab of the config tab showing the camera component configuration pane for the realsense module">}}
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
