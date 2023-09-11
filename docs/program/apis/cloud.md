@@ -67,7 +67,7 @@ The cloud API supports the following methods (among [others](https://python.viam
 
 ### ListOrganizations
 
-List the organizations the user is an authorized user of.
+List the {{< glossary_tooltip term_id="organization" text="organizations" >}} the user is an authorized user of.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -91,7 +91,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListOrganizationMembers
 
-List the members and invites of the organization that you are currently authenticated to.
+List the members and invites of the {{< glossary_tooltip term_id="organization" text="organizations" >}} that you are currently authenticated to.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -117,7 +117,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetOrganizationNamespaceAvailability
 
-Check the availability of an organization namespace.
+Check the availability of an {{< glossary_tooltip term_id="organization" text="organization" >}} namespace.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -188,6 +188,69 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### CreateLocation
+
+Create and name a [location](/manage/fleet/locations/) under the organization and location you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new location.
+- `parent_location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional parent location to put the location under.
+Defaults to to a root-level loation if you do not provide a location ID.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if either an invalid name (such as "") or invalid parent location ID is passed.
+
+**Returns:**
+
+- [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The newly created location.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_new_location = await cloud.create_location(name="Robotville")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateLocation
+
+Change the name of a location and/or assign it a new [parent location](/manage/fleet/locations/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to update.
+- `name` [Optional(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional new name to update the location name to.
+If nothing is passed, the name is not changed.
+- `parent_location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional ID of the new location to move the location to.
+If nothing is passed, the location does not move.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+
+**Returns:**
+
+- [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The newly updated location.
+
+```python {class="line-numbers linkable-line-numbers"}
+# The following line takes the location called "Robotville" and moves it to be a sub-location of "Province of Robots"
+my_updated_location = await cloud.update_location(location_id="Robotville", name="", parent_location_id="Province of Robots")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobot
 
 Create a new robot.
@@ -213,7 +276,7 @@ Create a new robot.
 new_robot_id = await cloud.new_robot(name="beepboop")
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization_namespace_availability).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
 
 {{% /tab %}}
 {{< /tabs >}}
