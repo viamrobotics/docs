@@ -38,7 +38,7 @@ To add a modular [component](/components/) from the Viam Registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
-1. After selecting the modular component, click the **Add Module** button, enter a name for your modular component, and click **Create** to add it to your robot.
+1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your robot.
 
    {{<imgproc src="extend/modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
@@ -50,7 +50,7 @@ You can also find [the module itself](#configure-a-module-from-the-viam-registry
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
 To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
-Deleting a module **does not** delete any configured modular resources it provides.
+Deleting a module *does not* delete any configured modular resources it provides.
 
 ### Add a modular service from the Viam registry
 
@@ -66,7 +66,7 @@ To add a modular [service](/services/) from the Viam Registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
-1. After selecting the modular service, click the **Add Module** button, enter a name for your modular service, and click **Create** to add it to your robot.
+1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot.
 
    {{<imgproc src="extend/modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module ">}}
 
@@ -78,7 +78,7 @@ You can also find [the module itself](#configure-a-module-from-the-viam-registry
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
 To delete a module added from the Viam Registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Services** tab.
-Deleting a module **does not** delete any configured modular resources it provides.
+Deleting a module *does not* delete any configured modular resources it provides.
 
 ## Configure a module from the Viam Registry
 
