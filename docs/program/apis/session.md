@@ -1,9 +1,9 @@
 ---
-title: "The Session API"
+title: "Monitor resource sessions with the Session API"
 linkTitle: "Session API"
 weight: 20
 type: "docs"
-description: "The session API offers resource safety monitoring and context attachment."
+description: "Safety monitor resources and attach contexts to sessions with the Session API."
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session", "sessions", "session management"]
 ---
 

@@ -137,7 +137,7 @@ You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/ses
 
 The `SessionManager` API supports the following methods:
 
-{{< readfile "/static/include/program/apis/session-management.md" >}}
+{{< readfile "/static/include/program/apis/session-manager.md" >}}
 
 ### Start
 
