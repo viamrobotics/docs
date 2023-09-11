@@ -238,7 +238,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
-### Update an existing module using a Github action
+### Update an existing module using a GitHub action
 
 To update an existing module in the [Viam registry](https://app.viam.com/registry) using CI, use the [`upload-module` GitHub action](https://github.com/viamrobotics/upload-module).
 
