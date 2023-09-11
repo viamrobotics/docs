@@ -1,7 +1,7 @@
 ---
 title: Organization
 id: organization
-full_link:
+full_link: /manage/fleet/organizations/
 short_description: An organization is a group of one or more locations that helps you organize your fleet and manage who has access to your fleet.
 aka:
 ---

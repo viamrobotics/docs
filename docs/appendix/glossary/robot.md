@@ -1,7 +1,7 @@
 ---
 title: Robot
 id: robot
-full_link: /manage/fleet/#robots
+full_link: /manage/fleet/robots/
 short_description: An organizational concept, consisting of either one part, or multiple parts working closely together to complete tasks.
 aka:
 ---
