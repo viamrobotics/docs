@@ -294,7 +294,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
    Once complete, your module should upload to the [Viam registry](https://app.viam.com/registry) with the appropriate version automatically.
 
-For more details, see the [`upload-module` Github action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
+For more details, see the [`upload-module` GitHub action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
 - [Python with virtualenv](https://github.com/viam-labs/python-example-module)
 - [Python with docker](https://github.com/viamrobotics/python-container-module)
