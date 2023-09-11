@@ -1,5 +1,5 @@
 Method Name | Description
 ----------- | -----------
-[`SafetyMonitor`](/program/apis/sessions/#safetymonitor) | Signal to the session that the given target resource should be safety monitored so that if the session ends and this session was the last to monitor the target, it will attempt to be stopped.
-[`SafetyMonitorResourceName`](/program/apis/sessions/#safetymonitorresourcename) | Signal to the session that the given target resource attached to this resource name should be safety monitored so that if the session ends and this session was the last to monitor the target, it will attempt to be stopped.
+[`SafetyMonitor`](/program/apis/sessions/#safetymonitor) | Safety monitor this target {{< glossary_tooltip term_id="resource" text="resource" >}} so that if this session ends as the last session to monitor it, the `SessionManager` attempts to stop the resource by calling the `Stop()` method of the resource API.
+[`SafetyMonitorResourceName`](/program/apis/sessions/#safetymonitorresourcename) | Safety monitor this target {{< glossary_tooltip term_id="resource" text="resource" >}} so that if this session ends as the last session to monitor it, the `SessionManager` attempts to stop the resource by calling the `Stop()` method of the resource API.
 [`ToContext`](/program/apis/sessions/#tocontext) | Attach a session to the given context.
