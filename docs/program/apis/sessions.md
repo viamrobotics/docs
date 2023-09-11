@@ -130,11 +130,11 @@ This option allows you to have full control over session management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
 You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
 
-## API
+## Session API
 
-The session management API supports the following methods:
+The `Session` API supports the following methods:
 
-{{< readfile "/static/include/program/apis/session-management.md" >}}
+{{< readfile "/static/include/program/apis/session.md" >}}
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -219,44 +219,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 session = session.ToContext(context.Background(), my_session)
 ```
 
-## Manager API
+## SessionManager API
 
-The sessions package provides the `SessionManager` as an interface for holding sessions for a particular robot and managing the lifetime of each of these sessions.
-
-`viam-server` provides an implementation of a `SessionManager` that is built into the Robot API.
-Instantiate a new built-in `SessionManager` manually with `NewSessionManager()`:
-
-### NewSessionManager
-
-Create a new manager for holding sessions.
-
-**Parameters:**
-
-- `robot` [(Robot)](https://pkg.go.dev/go.viam.com/rdk/robot#Robot): The robot that you want this `SessionManager` to manage the client sessions of.
-- `heartbeatWindow` [(time.Duration)](https://pkg.go.dev/time#Duration): The heartbeat window you want this `SessionManager` to follow by default for managed sessions. The window is the elapsed time between two instants as an [int64](https://pkg.go.dev/builtin#int64) nanosecond count. The representation limits the largest representable duration to approximately 290 years.
-
-**Returns:**
-
-- [(*SessionManager)](https://pkg.go.dev/go.viam.com/rdk/robot#SessionManager): A new manager for holding sessions.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#NewSessionManager).
-
-``` go
-robot, err := client.New(
-    context.Background(),
-    "3minutes-main.0b2qnylnp0.viam.cloud",
-    logger,
-    client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-        Type:    utils.CredentialsTypeRobotLocationSecret,
-    // Replace "<SECRET>" (including brackets) with your robot's secret
-        Payload: "<SECRET>",
-    })),
-)
-
-mySessionManager := robot.NewSessionManager(robot, 1000)
-```
-
-Then, the following functions are available for use with `viam-server`'s Robot API's built-in `SessionManager`:
+The `SessionManager` API supports the following methods:
 
 {{< readfile "/static/include/program/apis/session-manager.md" >}}
 
