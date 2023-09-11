@@ -40,7 +40,6 @@ If you are using one of the following boards, you can follow our guide for that 
 {{% card link="/installation/prepare/sk-tda4vm/" class="small" %}}
 {{% card link="/installation/prepare/jetson-nano-setup/" class="small" %}}
 {{% card link="/installation/prepare/jetson-agx-orin-setup/" class="small" %}}
-{{% card link="/installation/prepare/microcontrollers" class="small" %}}
 {{< /cards >}}
 
 <br>
