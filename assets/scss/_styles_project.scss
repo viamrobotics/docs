@@ -562,10 +562,12 @@ END MARKETING CSS
 .hover-card.tutorial {
   background-color: white;
   padding: 10px;
+  margin: 1rem 0.8rem 1rem 0.2rem;
 }
 
 .hover-card.tutorial > a {
   width: 100%;
+  text-decoration: none;
 }
 
 // Text is black
@@ -642,6 +644,11 @@ END MARKETING CSS
  margin: 0.1rem;
  font-size: 0.833rem !important;
  font-weight: 400 !important;
+}
+
+.hover-card.tutorial * .pills > .pill.pill-highlight {
+  background-color: #000;
+  color: white;
 }
 
 .hover-card.tutorial * .pill.pill-lang {
@@ -1129,4 +1136,205 @@ ul.sectionlist > li:hover {
 #board-carousel div.next {
   padding: 0;
   font-size: 30px;
+}
+
+.td-sidebar__toggle {
+  float: right;
+}
+
+// Tutorials page start
+
+.search-panel__results.card-container {
+  max-width: 100%;
+}
+
+#tutorial-menu {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+#tutorial-filters, #tutorial-filter-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tutorial-filters > .filter {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0.2rem;
+  border: 1px solid black;
+}
+
+#tutorial-filters > .filter:hover {
+  background-color: #e7e5e4;
+  cursor: pointer;
+}
+
+#tutorial-filters > .filter[aria-expanded="true"]{
+  background-color: #e7e5e4;
+}
+
+.ais-Hits-item {
+  display: flex;
+}
+
+#hits .ais-Hits-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.search-panel__filters {
+  display: flex;
+}
+
+.search-facets {
+  width: 540px;
+  border: 1px solid black;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+}
+
+@media (max-width: 800px) {
+.search-facets {
+  max-width: 86%;
+  width: 445px;
+}
+}
+
+.search-facets > ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.2rem;
+  padding: 0;
+}
+
+.search-facets * li {
+  list-style: none;
+  margin: 0.2rem
+}
+
+.search-facets * label {
+  margin: 0;
+}
+
+.search-facets * input {
+  padding: 0.1rem 0.25rem;
+  border: 1px solid black;
+  margin: 0.1rem;
+  font-size: 0.833rem !important;
+  font-weight: 400 !important;
+  line-height: 1.4375em;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+.search-facets * input.refined {
+  background-color: #000;
+  color: white;
+}
+
+#components-list * input,
+#services-list * input {
+  border-color: #a51aff;
+}
+
+#languages-list * input {
+  border-color: #00e8e8;
+}
+
+.ais-Hits-list {
+  padding: 0;
+}
+
+// Pagination CSS start
+
+#pagination {
+  margin: 2rem auto;
+}
+
+.ais-Pagination-item {
+  display: inline-block;
+}
+
+span.ais-Pagination-link {
+  background-color: #e7e5e4;
+}
+
+.ais-Pagination-item.ais-Pagination-item--selected > a.ais-Pagination-link {
+  background-color: #000;
+  color: white;
+}
+
+.ais-Pagination-link {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0 0.2rem;
+  border: 1px solid black;
+}
+
+a.ais-Pagination-link:hover {
+  color: black;
+  background-color: #e7e5e4;
+}
+
+.ais-Pagination-list {
+  text-align: center;
+  padding: 0;
+}
+
+// Speed up bootstraps transition animations
+.search-facets.collapsing {
+  transition-duration: 0.000002s;
+}
+
+// Pagination CSS end
+
+// Tutorials page end
+
+// Search-autocomplete start
+
+.algolia-autocomplete {
+  flex-grow: 1;
+}
+
+.ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+  max-height: 500px !important;
+}
+
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-height: 600px) {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+    max-height: 300px !important;
+  }
+}
+
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-height: 400px) {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+    max-height: 200px !important;
+  }
+}
+
+// Search-autocomplete end
+
+// Make videos work without js
+
+.no-js * .lozad {
+  display: none;
+}
+
+// ensure tutorials page is 100% of height
+
+.row.flex-xl-nowrap {
+  min-height: 100%;
 }

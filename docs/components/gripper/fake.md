@@ -18,10 +18,9 @@ Configure a `fake` gripper as follows:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your gripper, select the type `gripper`, and select the `fake` model.
-
-Click **Create component**:
+Click on the **Components** subtab and click **Create component**.
+Select the `gripper` type, then select the `fake` model.
+Enter a name for your gripper and click **Create**.
 
 ![An example configuration for a fake gripper in the Viam app Config Builder.](/components/gripper/fake-gripper-ui-config.png)
 

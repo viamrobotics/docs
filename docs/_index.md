@@ -44,9 +44,9 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide5">
-      <a href="installation/prepare/sk-tda4vm/">
-        {{<imgproc src="installation/thumbnails/tda4vm.png" resize="148x120" declaredimensions=true alt="S K - T D A 4 V M">}}
-        <p>Texas Instruments TDA4VM</p>
+      <a href="components/board/upboard/">
+        {{<imgproc src="installation/thumbnails/up_4000.png" resize="148x120" declaredimensions=true alt="Intel Up board 4000">}}
+        <p>Intel UP4000</p>
       </a>
     </li>
     <li id="c1_slide6">
@@ -89,6 +89,12 @@ sitemap:
       <a href="components/board/pca9685/">
         {{<imgproc src="installation/thumbnails/pca9685.png" alt="P C A 9685 I 2 C Interface" resize="148x120" declaredimensions=true >}}
         <p>PCA9686 I<sup>2</sup>C Interface</p>
+      </a>
+    </li>
+    <li id="c1_slide13">
+      <a href="installation/prepare/sk-tda4vm/">
+        {{<imgproc src="installation/thumbnails/tda4vm.png" resize="148x120" declaredimensions=true alt="S K - T D A 4 V M">}}
+        <p>Texas Instruments TDA4VM</p>
       </a>
     </li>
   </ul>
@@ -210,5 +216,3 @@ sitemap:
     {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}
   </div>
 </div>
-
-<script type="text/javascript" src="js/carousel-min.js"></script>

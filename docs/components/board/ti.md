@@ -21,10 +21,9 @@ Configure a `ti` board to integrate a [Texas Instruments TDA4VM](https://devices
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your board, select the type `board`, and select the `ti` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `ti` model.
+Enter a name for your board and click **Create**.
 
 ![An example configuration for a ti board in the Viam app Config Builder.](/components/board/ti-ui-config.png)
 

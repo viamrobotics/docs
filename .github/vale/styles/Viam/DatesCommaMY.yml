@@ -2,7 +2,7 @@ extends: existence
 message: "Do not use a comma before and after the year '%s' when only
 the month and year are embedded in a sentence unless the syntax would
 ordinarily require a comma following the year."
-link: 'https://docs.rackspace.com/docs/style-guide/style/dates'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/dates.rst'
 ignorecase: true
 level: warning
 nonword: true

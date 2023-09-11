@@ -1,6 +1,6 @@
 extends: existence
 message: "Use accessible only to refer to things that all people, including those with disabilities, can easily use. Don’t use it to mean simple or open."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/alphabetical-terms.rst'
 level: warning
 ignorecase: false
 nonword: false

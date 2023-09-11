@@ -15,7 +15,7 @@ The CLI lets you:
 * Retrieve [organization](/manage/fleet/organizations/) and location information
 * Manage [robot fleet](/manage/fleet/) data and logs
 * Control robots by issuing component and service commands
-* Upload and manage [modular resources](/extend/modular-resources/) in the Viam Registry
+* Upload and manage [modular resources](/extend/modular-resources/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -99,22 +99,63 @@ To later update the Viam CLI tool, you can use the steps above to reinstall the 
 
 ## Authenticate
 
-Once you have successfully installed the Viam CLI, you need to authenticate your device for CLI usage with your Viam app account before you can control your robots with the CLI.
-Do this by issuing the command:
+Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-```sh {class="command-line" data-prompt="$"}
-viam login
-```
+You can authenticate your CLI session using either a personal access token or an organization API key.
+To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
 
-This will open a new browser window with a prompt to start the authentication process.
-If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
-Follow the instructions to complete the authentication process.
+* To authenticate your CLI session using a personal access token:
 
-{{% alert title="Info" color="info" %}}
+   ```sh {class="command-line" data-prompt="$"}
+   viam login
+   ```
+
+   This will open a new browser window with a prompt to start the authentication process.
+   If a browser window does not open, the CLI will present a URL for you to manually open in your browser.
+   Follow the instructions to complete the authentication process.
+
+* To authenticate your CLI session using an organization API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
+   ```
+
+   If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
+
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
 After the session expires or you log out, you must re-authenticate to use the CLI again.
+
+### Create an organization API key
+
+To use an organization API key to authenticate your CLI session, you must first create one:
+
+1. First, [authenticate](#authenticate) your CLI session.
+   If your organization does not already have an organization API key created, authenticate using a personal access token.
+
+1. Then, run the following command to create a new organization API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam organization api-key create --org-id <org-id> --name <key-name>
+   ```
+
+   Where:
+
+   * `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+   * `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
+
+The command will return a `key id` and a `key value`.
+You will need both to authenticate using `viam login api-key`.
+
+{{% alert title="Important" color="note" %}}
+Secure these key values safely.
+Authenticating using an organization API key gives the authenticated CLI session full read and write access to all robots within your organization.
 {{% /alert %}}
+
+Once created, you can then use the organization API key to authenticate future CLI sessions.
+To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+
+An organization can have multiple API keys.
 
 ## Manage your robots with the Viam CLI
 
@@ -226,19 +267,31 @@ The `login` command helps you authorize your device for CLI usage. See [Authenti
 
 ```sh {class="command-line" data-prompt="$"}
 viam login
+viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
 viam login print-access-token
 ```
+
+Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using an organization API key.
+If you haven't already, you must [create an organization API key](#create-an-organization-api-key) first in order to authenticate using one.
 
 #### Command options
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `print-access-token`      | prints the access token the CLI uses during an authenticated CLI session      | - |
-| `help`      | return help      | - |
+| `api-key`      | authenticate to Viam using an organization API key      | - |
+| `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--key-id`    | the `key id` (UUID) of the organization API key | `api-key` | true |
+| `--key`    | the `key value` of the organization API key | `api-key` | true |
 
 ### `logout`
 
-The `logout` command ends an authenticated CLI session
+The `logout` command ends an authenticated CLI session.
 
 ```sh {class="command-line" data-prompt="$"}
 viam logout
@@ -251,8 +304,8 @@ This includes:
 
 * Creating a new custom modular resource
 * Updating an existing module with new changes
-* Uploading a new module to the Viam Registry
-* Updating an existing module in the Viam Registry
+* Uploading a new module to the Viam registry
+* Updating an existing module in the Viam registry
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
@@ -272,11 +325,14 @@ viam module create --name 'my-module' --org-id 'abc'
 # update an existing module:
 viam module update
 
-# upload a new or updated custom module to the Viam Registry:
+# upload a new or updated custom module to the Viam registry:
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+If you update and release your module as part of a continuous integration (CI) workflow, you can also
+[automatically upload new versions of your module on release](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 #### Command options
 
@@ -284,13 +340,14 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
-| `upload`    | upload a new or existing custom module on your local filesystem to the Viam Registry |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information |
 | `--help`      | return help      | - |
 
 ##### Named arguments
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
+| `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
 | `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
@@ -302,10 +359,10 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-* Use the `--public-namespace` argument to supply the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam Registry and sharing with other users.
+* Use the `--public-namespace` argument to supply the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) of your organization, suitable for uploading your module to the Viam registry and sharing with other users.
 * Use the `--org-id` to provide your organization ID instead, suitable for sharing your module privately within your organization.
 
-You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`visibility: "public"`) to the Viam Registry.
+You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`visibility: "public"`) to the Viam registry.
 
 ##### Using the `--platform` argument
 
@@ -320,22 +377,34 @@ The `viam module upload` command only supports one `platform` argument at a time
 If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
 Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
 
+The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
+
 ##### Using the `--version` argument
 
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
 
-Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam Registry.
+Once your module is uploaded, users can select which version of your module to use on their robot from your module's page on the Viam registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](#the-metajson-file) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
+##### Upload validation
+
+When you `upload` a module, the command validates your local packaged module to ensure that it meets the requirements to successfully upload to the Viam registry.
+The following criteria are checked for every `upload`:
+
+* The packaged module must exist on the filesystem at the path provided to the `upload` command.
+* The packaged module must use the `.tar.gz` extension.
+* The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
+* The entry point file must be executable.
+
 ##### The `meta.json` file
 
-When uploading a custom module, the Viam Registry tracks your module's metadata in a `meta.json` file.
+When uploading a custom module, the Viam registry tracks your module's metadata in a `meta.json` file.
 This file is created for you when you run the `viam module create` command, with the `module_id` field pre-populated based on the `--name` you provided to `create`.
-If you later make changes to this file, you can register those changes with the Viam Registry by using the `viam module update` command.
+If you later make changes to this file, you can register those changes with the Viam registry by using the `viam module update` command.
 
 The `meta.json` file includes the following configuration options:
 
@@ -404,12 +473,36 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#namespace-1) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+### organization
+
+The *organization* command allows you to create a new organization API key.
+
+```sh {class="command-line" data-prompt="$"}
+viam organization api-key create --org-id <org-id> [--name <key-name>]
+```
+
+See [create an organization API key](#create-an-organization-api-key) for more information.
+
+#### Command options
+
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `api-key`      | create a new organization API key    | - |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--org-id`      | your organization ID      |`api-key`|true |
+| `--name` |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key`| false |
 
 ### organizations
 

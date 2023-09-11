@@ -15,10 +15,9 @@ Configure a `fake` board to test integrating a board into your robot without phy
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your board, select the type `board`, and select the `fake` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `board` type, then select the `fake` model.
+Enter a name for your board and click **Create**.
 
 ![An example configuration for a fake board in the Viam app Config Builder.](/components/board/fake-ui-config.png)
 

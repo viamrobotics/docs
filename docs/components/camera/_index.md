@@ -51,6 +51,13 @@ For configuration information, click on one of the following models:
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
 
+Viam also provides the following camera models as [modular resources](/extend/modular-resources/):
+
+| Model | Description |
+| ----- | ----------- |
+| [`viam:lidar:rplidar`](/extend/modular-resources/examples/rplidar/) | A LIDAR scanning device like the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1). |
+| [`viam:camera:csi`](/extend/modular-resources/examples/csi/) | Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924). |
+
 ## Control your camera with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
@@ -111,7 +118,7 @@ If the server does not know how to return the specified MIME type, the server re
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-frame = await my_cam.get_image()
+frame = await my_camera.get_image()
 ```
 
 <br>
@@ -193,7 +200,7 @@ The multiple images returned from GetImages do not represent a time series of im
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-images, metadata = await my_cam.get_images()
+images, metadata = await my_camera.get_images()
 img0 = images[0].image
 timestamp = metadata.captured_at
 ```
@@ -335,7 +342,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 Execute model-specific commands that are not otherwise defined by the component API.
 For native models, model-specific commands are covered with each model's documentation.
-If you are implementing your own camera and add features that have no native API method, you can access them with `DoCommand`.
+If you are implementing your own camera and adding features that have no native API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -1,7 +1,7 @@
 ---
 title: "Drive a Rover with the Viam SDK"
 linkTitle: "Drive with the SDK"
-weight: 40
+weight: 2
 type: "docs"
 description: "Use a Viam SDK to program a rover to move in a square."
 webmSrc: "/tutorials/try-viam-sdk/image1.webm"
@@ -15,7 +15,8 @@ authors: []
 languages: [ "python", "go", "typescript" ]
 viamresources: [ "base" ]
 level: "Beginner"
-date: "8 December 2022"
+date: "2022-12-08"
+# updated: ""
 cost: "0"
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Session Management"
+title: "Session Management with Viam's Client SDKs"
 linkTitle: "Session Management"
 weight: 20
 type: "docs"

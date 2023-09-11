@@ -15,10 +15,9 @@ Combine the point clouds from multiple camera sources and project them to be fro
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your camera, select the type `camera`, and select the `join_pointclouds` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `camera` type, then select the `join_pointclouds` model.
+Enter a name for your camera and click **Create**.
 
 ![Configuration of a Join Point Clouds view in the Viam App config builder.](/components/camera/configure-join-pointclouds.png)
 

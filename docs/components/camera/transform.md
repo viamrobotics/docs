@@ -16,10 +16,9 @@ The transformations are applied in the order they are written in the `pipeline`.
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Enter a name for your camera, select the type `camera`, and select the `transform` model.
-
-Click **Create component**.
+Click on the **Components** subtab and click **Create component**.
+Select the `camera` type, then select the `transform` model.
+Enter a name for your camera and click **Create**.
 
 ![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 

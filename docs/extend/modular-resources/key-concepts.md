@@ -8,55 +8,112 @@ description: "The key concepts behind how Viam's resource APIs and models are un
 no_list: true
 ---
 
-`viam-server` [manages](#management) modular {{< glossary_tooltip term_id="resource" text="resources" >}} configured on your robot the same way it manages resources that are already built into the Robot Development Kit [(RDK)](/internals/rdk/).
-Two key concepts exist across all Viam resources, both built-in and modular, that make this flexible management possible: uniquely namespaced resource [*APIs*](#apis) and [*models*](#models).
+You can extend the features of an existing {{< glossary_tooltip term_id="resource" text="resource" >}} API by [creating a custom module](/extend/modular-resources/create/) to define a new [model](#models) that implements that API.
+A custom module can provide one or more modular resource models.
 
-If you create your [own module](/extend/modular-resources/create/), you must register any new APIs and models you define in your model with Viam's model registry in the appropriate namespaces to [configure](/extend/modular-resources/configure/) the modular resource on your robot.
+## Modules
 
-## APIs
+A *module* provides one or more [*modular resources*](#resources), and is a flexible way to extend the functionality of your Viam robot.
+Modules run alongside `viam-server` as a separate process, communicating with `viam-server` over a UNIX socket.
+A module provides definitions for one or more pairs of [APIs](#valid-apis-to-implement-in-your-model) and [models](#models).
 
-{{% alert title="Modules vs. modular resources" color="tip" %}}
+When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
-A configured *module* can make one or more *modular resources* available for configuration.
+You can [upload your own modules to the Viam registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure/).
 
-{{% /alert %}}
+See [Creating a custom module](/extend/modular-resources/create/) for more information.
 
-Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} subtype exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API).
-This can be understood as a description of how you can interact with that resource.
-Each API is described through [protocol buffers](https://developers.google.com/protocol-buffers).
-Viam SDKs [expose these APIs](/internals/robot-to-robot-comms/).
+## Resources
 
-### Namespace
+A resource is a [component](/components/) or [service](/services/).
+Each component or service is typed by a proto API, such as the [component proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
 
-Each Viam resource's API is uniquely namespaced as a colon-delimited-triplet in the form of `namespace:type:subtype`.
+Any resource on your robot needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
 
-For example:
-
-- The API of built-in component [camera](/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
-- The API of built-in service [vision](/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
-
-{{% alert title="Tip" color="tip" %}}
-You can see built-in Viam resource APIs in the [Viam GitHub](https://github.com/viamrobotics/api).
-{{% /alert %}}
+A *modular resource* is a resource that is provided by a [module](#modules), and not built-in to the RDK.
+A modular resource runs in the module process. This differs from built-in resources, which run as part of `viam-server`.
 
 ## Models
 
-A *model* describes a specific implementation of a resource that implements (speaks) its API.
-Models allow you to control different instances of resource {{< glossary_tooltip term_id="api-namespace-triplet" text="subtypes" >}} with a consistent interface.
+A *model* describes a specific implementation of a [resource](#resources) that implements (speaks) its API.
+Models allow you to control different instances of resource with a consistent interface, even if the underlying implementation differs.
 
-For example:
-
-Some DC motors use just [GPIO](/components/board/), while other DC motors use serial protocols like [SPI bus](/components/board/#spis).
+For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-### Namespace
+Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`.
+See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model) for more information.
 
-Models are also uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
+Models are either:
+
+- Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
+- Provided in custom modules available for download from the [Viam registry](https://app.viam.com/registry), and are written by either Viam or community users.
+
+### Built-in models
+
+Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
+These models run within `viam-server`.
 
 For example:
 
 - The `rdk:builtin:gpio` model of the `rdk:component:motor` API provides RDK support for [GPIO-controlled DC motors](/components/motor/gpio/).
 - The `rdk:builtin:DMC4000` model of the same `rdk:component:motor` API provides RDK support for the [DMC4000](/components/motor/dmc4000/) motor.
+
+### Custom models
+
+The [Viam registry](https://app.viam.com/registry) makes available both Viam-provided and community-written modules for download and use on your robot.
+These models run outside `viam-server` as a separate process.
+
+#### Valid APIs to implement in your model
+
+When implementing a custom model of an existing [component](/components/), valid [APIs](/program/apis/) are always:
+
+- `namespace`: `rdk`
+- `type`: `component`
+- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
+
+When implementing a custom model of an existing [service](/services/), valid [APIs](/program/apis/) are always
+
+- `namespace`: `rdk`
+- `type`: `service`
+- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
+
+#### Naming your model
+
+If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
+
+- The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
+- Your model triplet must be all-lowercase.
+- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+
+In addition, you should chose a name for the `family` of your model based on the whether your module implements a single model, or multiple models:
+
+- If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
+  For example, the Intel Realsense module `realsense`, available from the [Viam registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "api": "rdk:component:camera",
+    "model": "viam:camera:realsense"
+  }
+  ```
+
+- If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
+  For example, the ODrive module `odrive`, available from the [Viam registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
+
+  ```json {class="line-numbers linkable-line-numbers"}
+  {
+    "api": "rdk:component:motor",
+    "model": "viam:odrive:serial"
+  },
+  {
+    "api": "rdk:component:motor",
+    "model": "viam:odrive:canbus"
+  }
+  ```
+
+A model with the `viam` namespace is always Viam-provided.
 
 ## Management
 

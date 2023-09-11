@@ -3,7 +3,7 @@ extends: existence
 message: 'Avoid using future tense where possible.'
 ignorecase: true
 level: warning
-link: 'https://docs.rackspace.com/docs/style-guide/writing/use-present-tense/'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/use-present-tense.rst'
 raw:
   - "(going to( |\n|[[:punct:]])[a-zA-Z]*|"
   - "will( |\n|[[:punct:]])[a-zA-Z]*|"

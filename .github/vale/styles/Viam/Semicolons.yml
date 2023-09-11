@@ -1,6 +1,6 @@
 extends: existence
 message: "Avoid using semicolons, which are often misused and, even when used correctly, can make sentences longer and more difficult to understand."
-link: 'https://docs.rackspace.com/docs/style-guide/writing/use-correct-punctuation'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/writing/use-correct-punctuation.rst'
 nonword: true
 level: suggestion
 tokens:

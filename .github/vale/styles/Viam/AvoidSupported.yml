@@ -1,7 +1,7 @@
 extends: existence
 message: "Avoid making claims as to supported software unless we are
 tracking how this software evolves."
-link: 'https://docs.rackspace.com/docs/style-guide/terminology/alphabetical-terms'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/terminology/alphabetical-terms.rst'
 level: suggestion
 ignorecase: false
 nonword: true

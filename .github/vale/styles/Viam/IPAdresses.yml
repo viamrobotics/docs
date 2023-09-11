@@ -1,6 +1,6 @@
 extends: conditional
 message: "If you need to show an example IP address like '%s', don’t use one that is or might be assigned to an actual host. Use an address that’s globally defined for documentation."
-link: 'https://docs.rackspace.com/docs/style-guide/style/ip-addresses'
+link: 'https://github.com/rackerlabs/docs-style-guide/blob/master/style-guide/style/ip-addresses.rst'
 level: suggestion
 ignorecase: false
 # This is a hack to allow us to make use of exceptions.

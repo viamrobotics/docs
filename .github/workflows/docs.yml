@@ -28,18 +28,24 @@ jobs:
         uses: actions/configure-pages@v2
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2 
+        uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
           extended: true
-          
+
       - name: Build
         run: make build-prod
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
+
+      - name: Upload tutorials search file
+        uses: actions/upload-artifact@v3
+        with:
+          name: tutorials-search-file
+          path: ./public/tutorials/typesense.json
 
   deploy:
     environment:
@@ -51,6 +57,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+  upload-tutorials-page-entries:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'viamrobotics'
+    steps:
+      - name: Download the tutorials search file
+        uses: actions/download-artifact@v3
+        with:
+          name: tutorials-search-file
+      - name: Upload tutorials documents
+        run: |
+          jq -c '.[]' typesense.json > documents.jsonl
+          curl -H "X-TYPESENSE-API-KEY: ${{secrets.TYPESENSE_TUTORIALS_API_KEY}}" \
+          -X POST \
+          -T documents.jsonl \
+          "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
 
   generate-index:
     needs: build

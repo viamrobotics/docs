@@ -1,7 +1,6 @@
 ---
 title: "Drive a Rover (like SCUTTLE) Using a Gamepad with a Dongle"
 linkTitle: "Drive a Rover with a Dongle Gamepad"
-weight: 20
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
@@ -15,8 +14,9 @@ tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []
 viamresources: [ "base", "input_controller" ]
-level: "Beginner"
-date: "10 August 2022"
+level: "Intermediate"
+date: "2022-08-10"
+# updated: ""
 cost: 575
 ---
 
@@ -54,12 +54,13 @@ Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-In the **Create component** panel, configure a [gamepad](/components/input-controller/gamepad/):
+Configure a [gamepad](/components/input-controller/gamepad/):
 
-- Enter `my-gamepad` as the component **Name**.
+- Click **Create component**.
 - Select `input_controller` for the component **Type**.
 - Select `gamepad` for the **Model**.
-- Click **Create component**.
+- Enter `my-gamepad` as the component **Name**.
+- Click **Create**.
 
 ![Blank configuration JSON](/tutorials/scuttle-gamepad/gamepad-config.png)
 

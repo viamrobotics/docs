@@ -1,0 +1,24 @@
+name: Report readability
+
+# This action only works on pull request events
+on:
+  pull_request_target:
+    branches: [ main ]
+    types: [ labeled, synchronize ]
+
+jobs:
+    report-readability:
+        if: ${{ contains(github.event.*.labels.*.name, 'safe to build') }}
+        name: Report readability
+        runs-on: ubuntu-latest
+        permissions: write-all
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  ref: ${{github.event.pull_request.head.sha}}
+                  fetch-depth: 0
+            - uses: npentrel/lexi@v1.1
+              with:
+                  github-token: ${{ secrets.PR_TOKEN }}
+                  glob: '**/*.md'
