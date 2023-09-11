@@ -331,6 +331,9 @@ viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.t
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
+If you update and release your module as part of a continuous integration (CI) workflow, you can also
+[automatically upload new versions of your module on release](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
+
 #### Command options
 
 |        command option     |       description      | positional arguments
