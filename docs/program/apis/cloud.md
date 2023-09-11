@@ -210,7 +210,7 @@ Defaults to to a root-level loation if you do not provide a location ID.
 - [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The newly created location.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_new_location = await cloud.create_location(name="Robotville")
+my_new_location = await cloud.create_location(name="Robotville", parent_location_id="111ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location).
@@ -218,9 +218,38 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetLocation
+
+Get a {{< glossary_tooltip term_id="location" text="location" >}} by its location ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to get.
+Defaults to the location ID provided at `AppClient` instantiation.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+
+**Returns:**
+
+- [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The location corresponding to the provided ID.
+
+```python {class="line-numbers linkable-line-numbers"}
+location = await cloud.get_location(name="123ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### UpdateLocation
 
-Change the name of a location and/or assign it a new {{< glossary_tooltip term_id="location" text="parent location" >}}.
+Change the name of a {{< glossary_tooltip term_id="location" text="parent location" >}} and/or assign it a new location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -242,8 +271,9 @@ If nothing is passed, the location does not move.
 - [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The newly updated location.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# The following line takes the location called "Robotville" and moves it to be a sub-location of "Province of Robots"
-my_updated_location = await cloud.update_location(location_id="Robotville", name="", parent_location_id="Province of Robots")
+# The following line takes the location with ID "abc12abcde" and moves it
+# to be a sub-location of the location with ID "xyz34xxxxx"
+my_updated_location = await cloud.update_location(location_id="abc12abcde", name="", parent_location_id="xyz34xxxxx")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location).
@@ -251,9 +281,90 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### DeleteLocation
+
+Delete a {{< glossary_tooltip term_id="location" text="location" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed.
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_location(location_id="abc12abcde")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListLocations
+
+Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} under the organization you are currently autheticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- (List[[viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)]): The list of locations.
+
+```python {class="line-numbers linkable-line-numbers"}
+locations = await cloud.list_locations()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_locations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### LocationAuth
+
+Get a location’s `LocationAuth` (location secret or secrets).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to retrieve `LocationAuth` from.
+Defaults to the location ID provided at `AppClient` instantiation.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+
+**Returns:**
+
+- [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The `LocationAuth` containing location secrets.
+
+```python {class="line-numbers linkable-line-numbers"}
+loc_auth = await cloud.location_auth(location_id="123xy12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.location_auth).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobot
 
-Create a new robot.
+Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
