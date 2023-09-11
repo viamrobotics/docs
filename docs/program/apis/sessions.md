@@ -1,6 +1,6 @@
 ---
 title: "Session Management with Viam's Client SDKs"
-linkTitle: "Session Management API"
+linkTitle: "Session Management"
 weight: 20
 type: "docs"
 description: "How to use the session management API with Viam's Client SDKs."
