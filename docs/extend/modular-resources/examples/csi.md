@@ -36,7 +36,8 @@ sudo chmod 755 /usr/local/bin/viam-csi
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 
 Click on the **Modules** subtab and navigate to the **Local** section.
-Enter a name, for example `my_csi_cam_module_name`, and the executable path, for example `/usr/bin/csi-mr`.
+Enter a name, for example `my_csi_cam_module_name`, then enter the executable path.
+If you used the above install command, the executable path should be: `/usr/local/bin/viam-csi`.
 Then click **Add module**.
 
 Click on the **Components** subtab and click **Create component**.
