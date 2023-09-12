@@ -25,7 +25,7 @@ The Session Management API provides functionality for
 
 ### The `SessionsClient`
 
-A _client_ of a Viam robot can be a program using an SDK to control the robot, an input controller, or the different resources on the robot, including {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, communicating.
+A _client_ of a Viam robot can be a program using an SDK to control the robot, or all the different resources on the robot,  including all {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, like an input controller and a base, communicating.
 
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the model servers you instantiate on your robot for individual resources.
 
