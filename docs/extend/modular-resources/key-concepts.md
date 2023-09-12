@@ -8,7 +8,7 @@ description: "The key concepts behind how Viam's resource APIs and models are un
 no_list: true
 ---
 
-You can extend the features of an existing {{< glossary_tooltip term_id="resource" text="resource" >}} API by [creating a module](/extend/modular-resources/create/) to define a new [model](#models) that implements that API.
+You can extend the features of an existing {{< glossary_tooltip term_id="resource" text="resource" >}} API by [creating a custom module](/extend/modular-resources/create/) to define a new [model](#models) that implements that API.
 A custom module can provide one or more modular resource models.
 
 ## Modules
