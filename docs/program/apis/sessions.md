@@ -118,7 +118,6 @@ This option allows you to have full control over sessions management.
 After disabling the client, you must now manage each of your sessions manually with the session management API.
 You can do this with Viam's [client SDKs](https://pkg.go.dev/go.viam.com/rdk/session).
 
-
 ### Use the session management API to manually manage sessions
 
 Use your [`RobotClient()`](/program/apis/#robot-api) instance to access the [`SessionsClient`](https://pkg.go.dev/go.viam.com/rdk/session) within your client SDK program.
