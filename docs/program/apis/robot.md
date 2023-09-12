@@ -115,7 +115,7 @@ Get the configuration of the frame system of a given robot.
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a list of each of the reference frames configured on the robot.
 frame_system = await robot.get_frame_system_config()
-print(f"frame system donfiguration: {frame_system}")
+print(f"frame system configuration: {frame_system}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
