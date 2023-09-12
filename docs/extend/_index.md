@@ -6,7 +6,7 @@ simple_list: true
 no_list: true
 type: docs
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Extend Viam with modular resources from the Viam Registry."
+description: "Extend Viam with modular resources from the Viam registry."
 aliases:
   - "/program/extend/"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
-description: "Viam is a complete software platform for robots that runs on any 64-bit Linux OS and macOS."
+description: "Viam is a complete software platform for smart machines that runs on any 64-bit Linux OS and macOS."
 weight: 1
 no_list: true
 type: "docs"
@@ -13,7 +13,7 @@ sitemap:
 <div class="max-page">
   <p>
     Welcome to the Viam Documentation!
-    Viam is a complete software platform for robots that runs on Linux and macOS and supports a wide variety of popular systems, including:
+    Viam is a complete software platform for {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} that runs on Linux and macOS and supports a wide variety of popular systems, including:
   </p>
 </div>
 
@@ -136,13 +136,13 @@ sitemap:
       </div>
       <div class="col hover-card landing purple">
         <div>
-          <div>Configure your robots</div>
+          <div>Configure your smart machine</div>
           <div style="text-align: left">
             <ol style="padding-inline-start: 1.1rem">
-              <li><a href="manage/configuration/">Configure your robot</a> or <a href="manage/fleet/">fleet</a></li>
-              <li><a href="installation/">Install Viam on your robot</a></li>
-              <li><a href="components/">Configure robot components</a> and <a href="services/">add services</a></li>
-              <li><a href="manage/fleet/robots/#control">Control and test your robot</a></li>
+              <li>Configure a <a href="manage/configuration/"> machine</a> or a <a href="manage/fleet/">fleet</a></li>
+              <li><a href="installation/">Install Viam on your machine</a></li>
+              <li>Configure <a href="components/">components</a> and <a href="services/">add services</a></li>
+              <li><a href="manage/fleet/robots/#control">Control and test your machine</a></li>
             </ol>
           </div>
         </div>
@@ -150,9 +150,9 @@ sitemap:
       </div>
       <div class="col hover-card landing teal">
         <div>
-          <div>Program your robots</div>
+          <div>Program your machine</div>
           <p style="text-align: left;">
-            Program and control your robots in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, <a href="https://ts.viam.dev/">TypeScript</a>, <a href="https://cpp.viam.dev/" target="_blank">C++</a>, or <a href="https://flutter.viam.dev/" target="_blank">Flutter</a>.
+            Program and control your machines in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, <a href="https://ts.viam.dev/">TypeScript</a>, <a href="https://cpp.viam.dev/" target="_blank">C++</a>, or <a href="https://flutter.viam.dev/" target="_blank">Flutter</a>.
           </p>
         </div>
         <div class="hover-card-img">
@@ -162,7 +162,7 @@ sitemap:
       <div class="col hover-card landing pink">
         <div>
           <div>Community</div>
-          <p style="text-align: left;">Have questions, or want to meet other people working on robots? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
+          <p style="text-align: left;">Have questions, or want to meet other people working on smart machines? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
         </div>
         {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
       </div>

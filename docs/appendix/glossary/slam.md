@@ -7,3 +7,5 @@ aka:
 ---
 
 Simultaneous Localization and Mapping (SLAM) is an algorithm that allows your robot to create a map of its surroundings and find its location within that map.
+
+For more information, see [SLAM](/services/slam/).
