@@ -3,7 +3,7 @@ title: "Add an ODrive motor as a Modular Resource"
 linkTitle: "ODrive"
 weight: 40
 type: "docs"
-description: "How to add an ODrive motor with serial or CANbus communication as a modular resource of your robot."
+description: "Configure an ODrive motor with serial or CANbus communication as a modular resource of your robot."
 tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Python", "python SDK", "CAN"]
 # SMEs: Kim, Martha, Rand
 ---
