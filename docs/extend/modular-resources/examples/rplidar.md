@@ -3,7 +3,7 @@ title: "Add an RPlidar as a Modular Resource"
 linkTitle: "RPlidar"
 weight: 40
 type: "docs"
-description: "Configure a RPlidar camera as a modular resource of your robot."
+description: "Configure an RPlidar camera as a modular resource of your robot."
 image: "/program/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
 images: ["/program/modular-resources/rplidar-on-robot.png"]
