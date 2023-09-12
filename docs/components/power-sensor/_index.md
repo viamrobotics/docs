@@ -5,7 +5,7 @@ childTitleEndOverwrite: "Power Sensor"
 weight: 70
 no_list: true
 type: "docs"
-description: "A device that provides information about a robot's systems, including voltage, current, and power consumption."
+description: "A device that provides information about a robot's power systems, including voltage, current, and power consumption."
 tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
 icon: "/icons/components/sensor.svg"
 images: ["/icons/components/sensor.svg"]
@@ -23,7 +23,7 @@ Model | Description <a name="model-table"></a>
 ----- | -----------
 [`fake`](./fake/) | a digital power sensor for testing
 [`ina219`](./ina219/) | INA219 power sensor; current and power monitor
-[`ina226`](./ina226/) | INA219 power sensor; current and power monitor
+[`ina226`](./ina226/) | INA226 power sensor; current and power monitor
 [`renogy`](./renogy/) | solar charge controller
 
 ## Control your power sensor with Viam’s client SDK libraries
@@ -33,13 +33,12 @@ To get started using Viam's SDKs to connect to and control your robot, go to you
 {{% snippet "show-secret.md" %}}
 
 When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+Once connected, you can control your robot programmatically by adding API method calls as shown in the following examples.
 
 These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your robot.
 If your power sensor has a different name, change the `name` in the code.
 
-Be sure to import the power sensor package for the SDK you are using:
-
+Import the power sensor package for the SDK you are using:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -74,12 +73,12 @@ Return the current of a specified device and whether it is AC or DC.
 
 **Parameters:**
 
-- `extra` [(Optional[Dict[str,Any]])](https://docs.python.org/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
-- `timeout` [(Optional[float])](https://docs.python.org/3/library/typing.html#typing.Optional): Specify a time limit (in seconds) for how long `get_current` should wait for a response.
+- `extra` [(Optional[Dict[str,Any]])](https://docs.python.org/library/typing.html#typing.Optional): Pass additional data and configuration options to the {{< glossary_tooltip term_id="grpc" text="RPC call" >}}.
+- `timeout` [(Optional[float])](https://docs.python.org/3/library/typing.html#typing.Optional): Specify a time limit in seconds for how long `get_current` should wait for a response.
 
 **Returns:**
 
-- [(Tuple[float, bool])](https://docs.python.org/3/library/functions.html#float): A float representing the current reading in amps. A bool indicating whether the current is AC (True) or DC (False).
+- [(Tuple[float, bool])](https://docs.python.org/3/library/functions.html#float): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the current is AC (`true`) or DC (`false`).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_current).
 
