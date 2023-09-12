@@ -8,9 +8,9 @@ description: "Use the Viam module system to implement modular resources that can
 no_list: true
 ---
 
-You can extend Viam by creating a custom [module](/extend/modular-resources/key-concepts/#modules) that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)), and can be added to any robot running on Viam.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)), and can be added to any robot running on Viam.
 
-A common use case for modular resources is to create a new model that implements an existing Viam API.
+A common use case for modular resources is to create a new [model](/extend/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
 Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/extend/modular-resources/upload/) to the Viam registry, to share it with other Viam users or just to other users in your organization.
 
