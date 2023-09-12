@@ -467,7 +467,7 @@ Otherwise, the class won’t instantiate.
 
 ### Compile the module into an executable
 
-To [add a module](/extend/modular-resources/configure/#configure-your-module) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+To [add a module](/extend/modular-resources/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
