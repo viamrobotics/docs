@@ -10,4 +10,7 @@ Method Name | Description
 [`DeleteLocation`](/program/apis/cloud/#deletelocation ) | Delete a location.
 [`ListLocations`](/program/apis/cloud/#listlocations ) | List locations.
 [`LocationAuth`](/program/apis/cloud/#locationauth ) | Get a location's authorization (location secrets).
+[`CreateLocationSecret`](/program/apis/cloud/#createlocationsecret ) | Create a new location secret.
+[`DeleteLocationSecret`](/program/apis/cloud/#deletelocationsecret ) | Delete a location secret.
+[`GetRobot`](/program/apis/cloud/#getrobot ) | Get a robot by robot ID.
 [`NewRobot`](/program/apis/cloud/#newrobot ) | Create a new robot.

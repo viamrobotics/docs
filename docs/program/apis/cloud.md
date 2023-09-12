@@ -362,6 +362,94 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### CreateLocationSecret
+
+Create a new location secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to generate a new secret for.
+  Defaults to the location ID provided at `AppClient` instantiation.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+
+**Returns:**
+
+- [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The specified location's `LocationAuth` containing the newly created secret.
+
+```python {class="line-numbers linkable-line-numbers"}
+new_loc_auth = await cloud.create_location_secret()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteLocationSecret
+
+Delete a location secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to delete the secret from.
+  Defaults to the location ID provided at `AppClient` instantiation.
+- `secret_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The secret to delete (the secret string itself).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): 
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_location_secret(secret_id="abcd1234567890abcxyz98989898xyzxyz")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetRobot
+
+Get a robot by its ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to get.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The robot.
+
+```python {class="line-numbers linkable-line-numbers"}
+robot = await cloud.get_robot(id="<robotID>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+
 ### NewRobot
 
 Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
