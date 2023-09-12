@@ -119,7 +119,7 @@ Then click **Add module**.
 ![The ODrive module with the name 'odrive' and executable path '~/desktop/odrive/odrive-motor/run.sh' added to a robot in the Viam app config builder](/extend/modular-resources/add-odrive/add-odrive-module-ui.png)
 
 Click on the **Components** subtab and click **Create component**.
-Select the `local modular resources` type.
+Select the `local modular resource` type.
 Then select `motor` as the type, enter the triplet `viam:odrive:serial`, and give your resource a name, for example `my_test_odrive`.
 Click **Create**.
 
