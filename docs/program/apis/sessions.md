@@ -72,7 +72,7 @@ If you manually manage sessions, each client must send at least one heartbeat wi
 The [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) is not currently provided in the Python or TypeScript SDKs.
 Use the Go Client SDK instead.
 
-To manage your sessions with the session management API:
+To manage your session with the session management API:
 
 1. [Disable the default session management](#disable-default-session-management)
 1. [Use the session management API to manually manage sessions](#use-the-session-management-api-to-manually-manage-sessions)
