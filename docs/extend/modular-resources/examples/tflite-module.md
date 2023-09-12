@@ -232,7 +232,7 @@ To generate your robot's configuration using `example_audio_classification_clien
 
    {{< alert title="Important" color="note" >}}
    If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.
-   If you do not already have cconfigured components, you can replace the contents in **Raw JSON** with the generated contents.
+   If you do not already have configured components, you can replace the contents in **Raw JSON** with the generated contents.
    {{< /alert >}}
 
 1. Click the **Save config** button at the bottom of the page.
