@@ -1,13 +1,13 @@
 ---
-title: "Program a Robot"
-linkTitle: "Program Robots"
-childTitleEndOverwrite: "Program Robots"
-description: "Use the SDK of your preferred language to write code to control your robots."
+title: "Program a Smart Machine"
+linkTitle: "Program Machines"
+childTitleEndOverwrite: "Program Machines"
+description: "Use the SDK of your preferred language to write code to control your smart machines."
 weight: 45
 no_list: true
 type: docs
 image: "/general/code.png"
-imageAlt: "Program a Robot"
+imageAlt: "Program a smart machine"
 images: ["/general/code.png"]
 aliases:
   - "product-overviews/sdk-as-client"
@@ -17,12 +17,12 @@ aliases:
 
 Viam offers software development kits (SDKs) in popular languages which
 
-- Broker connection, authentication, and encryption for communication with robots running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
+- Broker connection, authentication, and encryption for communication with {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
 - Enable you to interface with robot [gRPC APIs](https://github.com/viamrobotics/api) in a way that is idiomatic to that programming language
 
 ![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/program/sdks/robot-client.png)
 
-Use the SDK of your preferred language to write code to control your robots.
+Use the SDK of your preferred language to write code to control your smart machine.
 
 Viam currently offers SDKs for the following languages:
 
