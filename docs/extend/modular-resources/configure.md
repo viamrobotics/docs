@@ -9,7 +9,7 @@ no_list: true
 ---
 
 You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
-You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [code your own module and add it to your robot locally](#add-a-local-module-to-your-robot).
+You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [code your own module and add it to your robot locally](#local-modules).
 
 See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
 
