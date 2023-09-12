@@ -17,7 +17,7 @@ This is especially important for robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
 
-If you want to manage operations differently, you can manage sessions yourself.
+If you want to manage operations differently, you can manage your robot's client sessions yourself.
 The Session Management API provides functionality for
 
 - clients to notify to the robot that the client is actively authenticated and connected
