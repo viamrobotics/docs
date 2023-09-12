@@ -193,39 +193,71 @@ The custom model is configured as a component with the name "my-realsense".
 {{% /tab %}}
 {{% /tabs %}}
 
-## Add a local module to your robot
+## Local modules
 
-If you are developing your own modular resource, and intend to deploy it to your robot locally, first follow [these steps](/extend/modular-resources/create/) to code your own module and generate an executable.
-If you are using a pre-built modular resource, make sure you install the module and determine the filename of [the module's executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+If you wish to add a module to your robot without uploading it to the Viam registry, you can add your module as a *local module*.
 
-Follow these steps to configure a module and its modular resources locally:
+You can add your own custom modules as local modules, or you can add pre-built modules written by other Viam users.
 
-1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
-2. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
-3. [Add a new component or service](#configure-your-modular-resource) referencing the modular resource provided by the configured **module** to the configuration of your robot.
+### Prepare a local module
 
-### Make sure `viam-server` can access your executable
+First determine the module you wish to add as a local module:
 
-Ensure that your module executable is saved where the instance of `viam-server` behind your robot can read and execute it.
+- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/extend/modular-resources/create/) to code and compile your module and generate an executable.
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
 
-For example, if you are running `viam-server` on an Raspberry Pi, you'll need to save the module on the Pi's filesystem.
+Then, ensure that `viam-server` is able to find and run the executable:
 
-Obtain the real (absolute) path to the executable file on your computer's filesystem by running the following command in your terminal:
+- Ensure that the module executable is saved to a location on the filesystem of your robot that `viam-server` can access.
+  For example, if you are running `viam-server` on an Raspberry Pi, you must save the module executable on the Pi's filesystem.
+- Ensure that this file is executable (runnable) with the following command:
 
-``` shell
-realpath <path-to-your-module-directory>/<your-module>
-```
+   ``` shell
+   sudo chmod a+rx <path-to-your-module-directory>/<your-module-executable>
+   ```
 
-### Configure your module
+See [Compile your module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable) for more information.
 
-To configure your new *module* on your robot, navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** subtab.
+### Add a local module
+
+To add a local module on your robot:
+
+1. Navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com).
+   - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
+   - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
+
+1. Then, select the `local modular resource` type from the list.
+
+1. On the next screen:
+   - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
+   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models).
+   - Enter a name for this instance of your modular resource.
+     This name must be different from the module name.
+
+1. Click **Create** when done to create the modular resource provided by the local module.
+
+You can also add the module directly, without first adding its modular component or service, from the **Modules** subtab:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab.
+1. Scroll to the **Add local module** section.
+1. Enter a **Name** for this instance of your modular resource.
+1. Enter the [module's executable path](/extend/modular-resources/create/#compile-the-module-into-an-executable)
+
+## Configure a local module
+
+Once you have added a modular resource to your robot, you can view and configure the module itself from the **Modules** subtab:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab.
+   Local modules you have added to your robot appear under the **Local** section.
 
 The following properties are available for modules:
 
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 `name` | string | **Required**| Name of the module you are registering. |
-`executable_path` | string | **Required**| The robot's computer's filesystem path to the module executable. |
+`executable_path` | string | **Required**| The filesystem path to the module executable on your robot. |
 
 Add these properties to your module's configuration:
 
@@ -251,9 +283,9 @@ Add these properties to your module's configuration:
 {{% /tab %}}
 {{% /tabs %}}
 
-### Configure your modular resource
+### Configure a modular resource
 
-Once you have configured a module as part of your robot configuration, you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the resources provided by that module to your robot by adding new components or services that make use of your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
