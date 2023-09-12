@@ -41,7 +41,7 @@ If you used the above install command, the executable path should be: `/usr/loca
 Then click **Add module**.
 
 Click on the **Components** subtab and click **Create component**.
-Select the `local modular resources` type.
+Select the `local modular resource` type.
 Then select the `camera` as the type, enter the triplet `viam:camera:csi` and give your resource a name, for example `my_test_csi_cam`.
 Click **Create**.
 
