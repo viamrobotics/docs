@@ -33,8 +33,7 @@ Most robots with an encoder need at least the following hardware:
 
 ## Configuration
 
-The encoder component supports the following models.
-Click on the component model name for detailed configuration information.
+For configuration information, click on one of the supported encoder models:
 
 | Model | Description |
 | ----- | ----------- |

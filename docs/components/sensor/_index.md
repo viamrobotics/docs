@@ -31,8 +31,7 @@ Most robots with a sensor need at least the following hardware:
 
 ## Configuration
 
-The servo component supports the following models.
-Click on the component model name for detailed configuration information.
+For configuration information, click on one of the supported sensor models:
 
 | Model | Description |
 | ----- | ----------- |

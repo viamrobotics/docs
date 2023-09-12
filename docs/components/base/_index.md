@@ -28,8 +28,7 @@ Most mobile robots with a base need at least the following hardware:
 
 ## Configuration
 
-The base component supports the following models.
-Click on the component model name for detailed configuration information.
+For configuration information, click on one of the supported base models:
 
 | Model | Description |
 | ----- | ----------- |
