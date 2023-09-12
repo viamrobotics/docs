@@ -120,7 +120,7 @@ Then click **Add module**.
 
 Click on the **Components** subtab and click **Create component**.
 Select the `local modular resources` type.
-Then select the `camera` as the type, enter the triplet `viam:camera:csi` and give your resource a name, for example `my_test_csi_cam`.
+Then select `motor` as the type, enter the triplet `viam:odrive:serial`, and give your resource a name, for example `my_test_odrive`.
 Click **Create**.
 
 On the new component panel, copy and paste the following JSON object into the attributes field:
