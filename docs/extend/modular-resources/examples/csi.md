@@ -66,7 +66,7 @@ Copy and paste the JSON object for the module into the modules array to add Viam
 
 ```json
 {
-    "executable_path": "</usr/bin/csi-mr>",
+    "executable_path": "</usr/local/bin/viam-csi>",
     "name": "<your-csi-cam-module-name>",
     "type": "local"
 }
