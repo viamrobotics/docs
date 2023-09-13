@@ -449,7 +449,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
-
 ### NewRobot
 
 Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
