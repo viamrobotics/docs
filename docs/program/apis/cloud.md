@@ -320,7 +320,6 @@ Delete a {{< glossary_tooltip term_id="location" text="location" >}}.
 - None
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Replace string with a valid location ID
 await cloud.delete_location(location_id="abc12abcde")
 ```
 
@@ -374,7 +373,6 @@ Defaults to the location ID provided at `AppClient` instantiation.
 - [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The `LocationAuth` containing location secrets and secret IDs.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Replace string with a valid location ID
 loc_auth = await cloud.location_auth(location_id="123xy12345")
 ```
 
@@ -434,7 +432,6 @@ Delete a location secret.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str):
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Replace string with a valid secret ID
 await cloud.delete_location_secret(secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
 ```
 
@@ -463,7 +460,6 @@ Get a robot by its ID.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The robot.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Replace string with a valid robot ID
 robot = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
