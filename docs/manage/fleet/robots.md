@@ -111,6 +111,6 @@ Click on the **Generate Key** button to generate a new key.
 
 ## Delete a robot
 
-You can delete a robot by checking the **Sure?** box in the lower left of the robot page and clicking **Delete robot**.
+You can delete a robot by navigating to its page in [the Viam app](https://app.viam.com) and selecting **Sure?** and **Delete robot** in the lower left corner of the page.
 
 {{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}
