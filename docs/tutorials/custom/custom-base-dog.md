@@ -373,14 +373,15 @@ At the end of your camera configuration, add a comma and then add the following 
       "type": "base",
       "model": "viamlabs:base:robotdog",
       "attributes": {
-          "ip_address": "<HOSTNAME>.local",
+        "ip_address": "<HOSTNAME>.local",
+
         "port": 5001
       },
       "depends_on": []
     }
 ```
 
-Edit the `ip_address` attribute to match your robot's IP address, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`).
+Edit the `ip_address` attribute to match your robot's hostname, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`).
 If this doesn't work, you can instead try using the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
 
 If you are using a port other than `5001`, edit the `port` attribute.
@@ -392,7 +393,7 @@ Your raw JSON configuration should look similar to the following:
 
 ![Raw JSON mode on the Config tab, showing the components and modules sections of the robot's raw JSON config.](/tutorials/custom-base-dog/raw-json.png)
 
-Toggle back to **Builder** mode and make sure a card has been generated:
+Toggle back to **Builder** mode and make sure a configuration panel has been generated:
 
 ![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](/tutorials/custom-base-dog/config-modular-component.png)
 

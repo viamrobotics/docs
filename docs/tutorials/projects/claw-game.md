@@ -211,7 +211,8 @@ Use the parts drop-down menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click on the **Components** subtab click the **Create component** button.
+Click the **Components** subtab.
+Click the **Create component** button in the lower-left corner.
 
 Add your [arm](/components/arm/) with type `arm`, and model `xArm6`.
 Name it `myArm` and click **Create**.

@@ -273,11 +273,11 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
-1. **Add the [board](/components/board/)**.
+1. **Add the board**.
 
     Click the **Create component** button in the lower-left corner of the page.
     Select the type `board`, then select the `pi` model.
-    Enter `local` for the name, then click **Create**.
+    Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the left motor.**
 

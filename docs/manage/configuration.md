@@ -149,7 +149,7 @@ Depending on your robot, you may not need to configure any modules, remotes, pro
 
 Components represent the pieces of hardware on your robot that you want to control with Viam.
 
-You must configure each component with a model, a type, a name, attributes, and dependencies:
+You must configure each component with a type, a model, a name, attributes, and dependencies:
 
 - `type`: The broad component category, such as `motor`, `arm` or `camera`.
   Components of a given type have a common API.

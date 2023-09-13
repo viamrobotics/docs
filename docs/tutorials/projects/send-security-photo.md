@@ -136,7 +136,7 @@ To be able to test that the vision service is working, add a `transform` camera 
 
 Click on the **Components** subtab and click **Create component** in the lower-left corner.
 Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
-Name it`detectionCam` and click **Create**.
+Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 

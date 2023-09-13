@@ -68,24 +68,24 @@ Follow the instructions until the Viam app shows that your robot has successfull
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
-1. **Add the [board](/components/board/).**
+1. **Add the board.**
 
     Click **Create component**.
     Select the type `board`, and select the `pi` model.
-    Enter `local` for the name, then click **Create**.
+    Enter `local` as the name of your [board component](/components/board/), then click **Create**.
 
-2. **Add the [motors](/components/motor/).**
+2. **Add the motors.**
 
     Click **Create component**.
     Select the type `motor`, and select the `gpio` model.
-    Enter `leftm` for the name, then click **Create** and fill in the appropriate properties for your motor.
+    Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
     Repeat the same for the right motor and call it `rightm`.
 
-3. **Add the [base](/components/base/).**
+3. **Add the base.**
 
     Click **Create component**.
     Select the type `base`, and select the `wheeled` model.
-    For the name enter `scuttlebase`, then click **Create** and select the motors.
+    Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 

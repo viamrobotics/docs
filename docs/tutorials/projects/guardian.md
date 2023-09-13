@@ -132,20 +132,21 @@ Click on the **Components** subtab.
 
     Click **Create component** in the lower-left corner of the page.
     Select `board` for the type, then select `pi` for the model.
-    Enter `local` for the name for your [board component](/components/board/), then click **Create**.
+    Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the camera.**
 
     Click **Create Component** to add the [camera](/components/camera/).
-    Choose type `camera`, model `webcam`, and for the name enter `cam`.
-    Click **Create**.
+    Select `camera` for the type, then select `webcam` for the model.
+    Enter `cam` as the name for the camera, then click **Create**.
     In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
     Select `mmal service 16.1 (platform:bcm2835_v4l2-0)`.
 
 3. **Add the servo.**
 
-    Create a [servo component](/components/servo/) with the type `servo`, the model `pi`, and the name `servo`.
-    Click **Create** to add the servo.
+    Click **Create component** in the lower-left corner of the page.
+    Select `servo` for the type, then select `pi` for the model.
+    Enter `servo` as the name for your [servo component](/components/servo/), then click **Create**.
     Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
     ```json
