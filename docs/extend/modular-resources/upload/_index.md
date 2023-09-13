@@ -287,22 +287,17 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
    - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning) - Also see [Using the --version argument](/manage/cli/#using-the---version-argument) for more details on the types of versioning supported.
 
-1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key).
-   These steps will return a `key id` and a `key value` which together comprise your organization API key.
-   Then:
+1. Create an organization API key and configure your GitHub repository to use it to authenticate during GitHub action runs, following the steps below:
+
+   1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key).
+      These steps will return a `key id` and a `key value` which together comprise your organization API key.
+      If you have already created an organization API key, you can skip this step.
 
    1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
 
-   1. Click the green **New repository secret** button.
-   1. Give your new organization API key a [name](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#naming-your-secrets) of your choosing, like "my_organization_secret"
-   1. Copy the `key id` and a `key value` from earlier into the **Secret** text area like so:
+   1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
 
-      ```yaml {class="line-numbers linkable-line-numbers"}
-      viam_key_id: <key id>
-      viam_key_value: <key value>
-      ```
-
-   1. Click **Add secret**.
+   1. Then, click the green **New repository secret** button, enter `key-value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
 
    For more information see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
