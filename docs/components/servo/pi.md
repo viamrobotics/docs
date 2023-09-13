@@ -86,8 +86,8 @@ The following attributes are available for `pi` servos:
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board/). |
 | `board` | string | **Required** | `name` of the [board](/components/board/) the servo is wired to. |
-| `min` | float | Optional | The minimum angle in degrees you want your servo to reach while rotating. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
-| `max` | float | Optional | The maximum angle in degrees you want your servo to reach while rotating. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
+| `min` | float | Optional | Sets a software limit on the minimum angle in degrees your servo can rotate to. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
+| `max` | float | Optional | Sets a software limit on the maximum angle in degrees your servo can rotate to. <br> Default = `180.0` <br> Range = [`0.0`, `180.0`] |
 | `starting_position_degs` | float | Optional | Starting position of the servo in degrees. <br> Default = `0.0` <br> Range = [`0.0`, `180.0`] |
 | `hold_position` | boolean | Optional | If `false`, power down a servo if it has tried and failed to go to a position for a duration of 500 milliseconds. <br> Default = `true` |
 | `max_rotation_deg` | int | Optional | The maximum angle that you know your servo can possibly rotate to, according to its hardware. Refer to your servo's data sheet for clarification. Must be in between the values you choose for `min` and `max`. <br> Default = `180` |
