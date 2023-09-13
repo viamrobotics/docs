@@ -299,7 +299,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    1. Then, click the green **New repository secret** button, enter `key-value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
 
-   For more information see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
+   For more information on GitHub secrets, see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
