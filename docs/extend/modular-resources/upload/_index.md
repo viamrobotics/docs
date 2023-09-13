@@ -297,7 +297,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
 
-   1. Then, click the green **New repository secret** button, enter `key-value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
+   1. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
 
    For more information on GitHub secrets, see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
