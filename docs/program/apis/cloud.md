@@ -371,7 +371,7 @@ Defaults to the location ID provided at `AppClient` instantiation.
 
 **Returns:**
 
-- [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The `LocationAuth` containing location secrets.
+- [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The `LocationAuth` containing location secrets and secret IDs.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Replace string with a valid location ID
