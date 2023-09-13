@@ -419,7 +419,7 @@ Delete a location secret.
 
 **Returns:**
 
-- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): 
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str):
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Replace string with a valid secret ID
