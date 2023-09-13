@@ -54,7 +54,7 @@ Viam also provides the following sensor model as a [modular resource](/extend/mo
  ----- | -----------
  [`viam:visual_odometry:opencv_orb`](/extend/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
 
-This module can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
+This module can be [added to your robot from the Viam registry.](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
 
 ## Control your sensor with Viam's client SDK libraries
 
