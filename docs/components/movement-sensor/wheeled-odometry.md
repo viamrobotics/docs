@@ -34,7 +34,6 @@ Make sure to configure the base width and circumference, as these measurements a
 ## Configuration
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
 Select **Raw JSON** mode.
 Copy and paste the following:
 

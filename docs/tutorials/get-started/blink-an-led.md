@@ -130,7 +130,7 @@ First, go to the [Viam app](https://app.viam.com/) on your web browser and navig
 {{% tab name="Config Builder" %}}
 
 Add a [*board component*](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
-To create the new component, click **Create component** in the lower left corner of the **Config** tab.
+To create the new component, click **Create component** in the lower-left corner of the **Config** tab.
 
 - Select `board` as the component type.
 - Select `pi` as the model.
