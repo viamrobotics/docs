@@ -99,8 +99,8 @@ print("The current is ", current, " A, Is AC: ", is_ac)
 **Returns:**
 
 - `float64`: The measurement of the current, represented as a 64-bit float number.
-- `bool`: Indicate whether current is AC (True) or DC (False).
-- `error`: Report any errors that might occur during operation. Successful operation will be `nil`.
+- `bool`: Indicate whether current is AC (`true`) or DC (`false`).
+- `error`: Report any errors that might occur during operation. For a successful operation, `error` returns `nil`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -128,11 +128,11 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 **Parameters:**
 
 - `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
-- `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit (in seconds) for how long `get_voltage` should wait for a response.
+- `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit in seconds for how long `get_voltage` should wait for a response.
 
 **Returns:**
 
-- [(Tuple[float, bool])](https://docs.python.org/3/library/stdtypes.html): A float representing the current reading in amps. A bool indicating whether the voltage is AC (True) or DC (False).
+- [(Tuple[float, bool])](https://docs.python.org/3/library/stdtypes.html): A float representing the current reading in amps. A bool indicating whether the voltage is AC (`true`) or DC (`false`).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_voltage).
 
@@ -153,8 +153,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - `float64`: The measurement of the voltage, represented as a 64-bit float number.
-- `bool`: Indicate whether voltage is AC (True) or DC (False).
-- `error`: Report any errors that might occur during operation. Successful operation will be `nil`.
+- `bool`: Indicate whether voltage is AC (`true`) or DC (`false`).
+- `error`: Report any errors that might occur during operation. For a successful operation, `error` returns `nil`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -182,7 +182,7 @@ Return the power reading in watts.
 **Parameters:**
 
 - `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
-- `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit (in seconds) for how long `get_power` should wait for a response.
+- `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit in seconds for how long `get_power` should wait for a response.
 
 **Returns:**
 
@@ -207,7 +207,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - `float64`: The measurement of the power, represented as a 64-bit float number.
-- `error`: Report any errors that might occur during operation. Successful operation will be `nil`.
+- `error`: Report any errors that might occur during operation. For a successful operation, `error` returns `nil`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -230,9 +230,3 @@ power, err := myPowerSensor.Power(context.Background(), nil)
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
-
-## Next Steps
-
-{{< cards >}}
-  {{% card link="/tutorials/projects/tipsy" %}}
-{{< /cards >}}

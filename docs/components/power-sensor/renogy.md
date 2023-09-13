@@ -10,7 +10,7 @@ images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/battery-temperature-sensor-for-renogy-solar-charge-controllers/) into your robot's system:
+Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/battery-temperature-sensor-for-renogy-solar-charge-controllers/) into your robot:
 
 {{< tabs name="Configure an Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
