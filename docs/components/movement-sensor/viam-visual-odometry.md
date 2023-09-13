@@ -251,3 +251,5 @@ The following attributes are available to configure the `viam-visual-odometry` m
 | `ransac_threshold_px` | float | Optional | `0.5` | Maximum error to be classified as an inlier.|
 
 See the [ORB openCV documentation](https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html) for more details.
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}

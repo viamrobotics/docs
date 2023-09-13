@@ -131,3 +131,5 @@ Name | Type | Inclusion | Default Value | Description
 `interrupt_pin` | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`.
 `threshold` | float | Optional | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between 0 and 15,937). <br> Default: `437.5`
 `time_ms` | float | Optional | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275). <br> Default: `160`
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}

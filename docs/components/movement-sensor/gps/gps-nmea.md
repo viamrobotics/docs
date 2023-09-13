@@ -156,3 +156,5 @@ Name | Type | Inclusion | Description
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}
