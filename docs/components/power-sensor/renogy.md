@@ -1,7 +1,7 @@
 ---
 title: "Configure a renogy power sensor"
 linkTitle: "renogy"
-weight: 80
+weight: 10
 type: "docs"
 description: "Configure a renogy model power sensor to return battery temperature."
 tags: ["power sensor", "components", "renogy"]
