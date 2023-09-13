@@ -154,7 +154,7 @@ docsearch({
         protocol: 'https'
       }],
       apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
-    },
+    }
   });
   docsearch({
     inputSelector: '.td-sidebar__search .td-search-input',
@@ -166,5 +166,5 @@ docsearch({
         protocol: 'https'
       }],
       apiKey: 'GHQK6od8KfpvTEh4YpA113gUc2dU5fGR'
-    },
+    }
 });

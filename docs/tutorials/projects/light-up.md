@@ -122,8 +122,9 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera` and the model `transform`.
+Click the **Components** subtab and click the **Create component** button in the lower-left corner.
+Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 

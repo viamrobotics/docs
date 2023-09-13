@@ -1167,6 +1167,15 @@ ul.sectionlist > li:hover {
   border: 1px solid black;
 }
 
+#tutorial-filters > .filter:hover {
+  background-color: #e7e5e4;
+  cursor: pointer;
+}
+
+#tutorial-filters > .filter[aria-expanded="true"]{
+  background-color: #e7e5e4;
+}
+
 .ais-Hits-item {
   display: flex;
 }
@@ -1296,6 +1305,24 @@ a.ais-Pagination-link:hover {
 
 .algolia-autocomplete {
   flex-grow: 1;
+}
+
+.ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+  max-height: 500px !important;
+}
+
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-height: 600px) {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+    max-height: 300px !important;
+  }
+}
+
+/* Add margin in front of breadcrumbs on small screens */
+@media (max-height: 400px) {
+  .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
+    max-height: 200px !important;
+  }
 }
 
 // Search-autocomplete end

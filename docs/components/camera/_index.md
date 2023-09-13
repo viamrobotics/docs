@@ -118,7 +118,7 @@ If the server does not know how to return the specified MIME type, the server re
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-frame = await my_cam.get_image()
+frame = await my_camera.get_image()
 ```
 
 <br>
@@ -200,7 +200,7 @@ The multiple images returned from GetImages do not represent a time series of im
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-images, metadata = await my_cam.get_images()
+images, metadata = await my_camera.get_images()
 img0 = images[0].image
 timestamp = metadata.captured_at
 ```
@@ -342,7 +342,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 Execute model-specific commands that are not otherwise defined by the component API.
 For native models, model-specific commands are covered with each model's documentation.
-If you are implementing your own camera and add features that have no native API method, you can access them with `DoCommand`.
+If you are implementing your own camera and adding features that have no native API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

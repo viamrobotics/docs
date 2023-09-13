@@ -271,17 +271,19 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 {{% tab name="Builder UI" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab.
 
-1. **Add the board**
+1. **Add the board**.
 
-    Enter `local` for the name for your [board component](/components/board/), select the type `board`, and select the `pi` model.
-    Then click **Create component**.
+    Click the **Create component** button in the lower-left corner of the page.
+    Select the type `board`, then select the `pi` model.
+    Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
-2. **Add the left base motor.**
+2. **Add the left motor.**
 
-    Enter `base-l` for the name for your left base [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
-    Then click **Create component**.
+    Click **Create component** to add the [motor component](/components/motor/) on the left side of the robot base.
+    Select the type `motor`, and select the `gpio` model.
+    Enter `base-l` for the name, then click **Create**.
 
     Next, select `local` for the board attribute.
     Set `Max RPM` to 200.
@@ -294,10 +296,11 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     Finally, add `local` to `Depends on` - this ensures that the `local` board component is fully initialize prior to this motor.
 
-3. **Add the right base motor**
+3. **Add the right motor**
 
-    Enter `base-r` for the name for your right base [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
-    Then click **Create component**.
+    Click **Create component**.
+    For your right base [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
+    Enter `base-r` for the name, then click **Create**.
 
     Next, select `local` for the board attribute.
     Set `Max RPM` to 200.
@@ -314,8 +317,9 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     Configuring a [base component](/components/base/) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
 
-    Enter `base` for the name for your base, select the type `base`, and select the `wheeled` model.
-    Then click **Create component**.
+    Click **Create component**.
+    Select the type `base`, and select the `wheeled` model.
+    Enter `base` for the name for your base, then click **Create**.
 
     Next, add `base-r` to `Right Motors` and add `base-l` to `Left Motors`.
 
@@ -481,10 +485,10 @@ You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 To add the neck motor, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
-Enter `neck` for the name for your neck [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
-Then click **Create component**.
+To create your [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
+Enter `neck` as the name for your neck motor, then click **Create**.
 
 Next, select `local` for the board attribute.
 Set `Max RPM` to 200.
@@ -563,11 +567,11 @@ Fit MAIV's neck into the torso, and re-assemble the torso.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
-Add the camera to your robot by navigating to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Add the [camera component](/components/camera/) to your robot by navigating to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Click on the **Components** subtab and click the **Create component** button in the lower-left corner.
 
-Enter `face-cam` for the name for your [camera component](/components/camera/), select the type `camera`, and select the `webcam` model.
-Then click **Create component**.
+Select the type `camera`, and select the `webcam` model.
+Enter `face-cam` for the name, then click **Create**.
 
 Being that this is the only camera currently configured for MAIV, keep 'video path' blank, and viam-server will auto-detect the path on startup or reconfiguration.
 

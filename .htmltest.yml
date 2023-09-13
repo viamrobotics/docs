@@ -24,6 +24,7 @@ IgnoreURLs:
 - "universal-robots.com"
 - "digikey.com"
 - "ufactory.cc"
+- "medium.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"

@@ -216,10 +216,15 @@ search.on('render', function() {
 
 document.body.addEventListener('click', function(event) {
   let filter_box = document.getElementById('tutorial-filter-items');
-    if (!filter_box.contains(event.target)) {
-      open_elem = filter_box.getElementsByClassName("show");
-      if (open_elem) {
-        open_elem[0].classList.remove("show");
-      }
+  let tutorial_menu = document.getElementById('tutorial-menu');
+  if (!filter_box.contains(event.target) && !tutorial_menu.contains(event.target)) {
+    document.querySelectorAll('.filter').forEach( el => {
+      el.setAttribute("aria-expanded", false);
+      el.classList.add("collapsed");
+    });
+    let open_elem = filter_box.getElementsByClassName("show");
+    if (open_elem) {
+      open_elem[0].classList.remove("show");
     }
+  }
 }, true);

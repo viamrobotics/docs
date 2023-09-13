@@ -228,7 +228,12 @@ To generate your robot's configuration using `example_audio_classification_clien
    ```
 
 1. Copy the contents of this file.
-   Then return to your robot's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and paste the configuration into the text area.
+   Then return to your robot's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and add the configuration into the text area.
+
+   {{< alert title="Important" color="note" >}}
+   If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.
+   If you do not already have configured components, you can replace the contents in **Raw JSON** with the generated contents.
+   {{< /alert >}}
 
 1. Click the **Save config** button at the bottom of the page.
    Now, when you switch back to **Builder** mode, you can see the new configuration settings under the **Services** and **Modules** subtabs.
