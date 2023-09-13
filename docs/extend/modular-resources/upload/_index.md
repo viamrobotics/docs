@@ -286,10 +286,25 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    - [`org-id`](/manage/cli/#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
    - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
    - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning) - Also see [Using the --version argument](/manage/cli/#using-the---version-argument) for more details on the types of versioning supported.
-   - [`key-id` and `key-value`](/manage/cli/#create-an-organization-api-key) - You will set these values in the next step.
 
-1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key), which the action will use to authenticate its run.
-   Provide the `key-id` and `key-value` generated in the YAML configuration above.
+1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key).
+   These steps will return a `key id` and a `key value` which together comprise your organization API key.
+   Then:
+
+   1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
+
+   1. Click the green **New repository secret** button.
+   1. Give your new organization API key a [name](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#naming-your-secrets) of your choosing, like "my_organization_secret"
+   1. Copy the `key id` and a `key value` from earlier into the **Secret** text area like so:
+
+      ```yaml {class="line-numbers linkable-line-numbers"}
+      viam_key_id: <key id>
+      viam_key_value: <key value>
+      ```
+
+   1. Click **Add secret**.
+
+   For more information see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.
