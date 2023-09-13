@@ -48,7 +48,7 @@ Viam also provides the following motor models as [modular resources](/extend/mod
  [`viam:odrive:canbus`](/extend/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with CANbus communication
  [`viam:odrive:serial`](/extend/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with serial communication
 
-These modules can be [added to your robot from the Viam registry](https://docs.viam.com/extend/modular-resources/configure/#add-a-module-from-the-viam-registry)
+These modules can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry)
 
 ## Control your motor with Viam's client SDK libraries
 
