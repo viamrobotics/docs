@@ -55,23 +55,13 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
-{{% tab name="macOS arm64" %}}
+{{% tab name="macOS" %}}
 
-To download the Viam CLI on a macOS computer with the `arm64` (Apple Silicon) architecture, run the following commands:
-
-```{class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-arm64
-sudo chmod a+rx /usr/local/bin/viam
-```
-
-{{% /tab %}}
-{{% tab name="macOS x86_64" %}}
-
-To download the Viam CLI on a macOS computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+To download the Viam CLI on a macOS computer, run the following commands:
 
 ```{class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-darwin-amd64
-sudo chmod a+rx /usr/local/bin/viam
+brew tap viamrobotics/brews
+brew install viam
 ```
 
 {{% /tab %}}
@@ -95,7 +85,8 @@ echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 {{% /tab %}}
 {{< /tabs >}}
 
-To later update the Viam CLI tool, you can use the steps above to reinstall the latest version.
+To later update the Viam CLI tool on Linux, use the steps above to reinstall the latest version.
+to later update the Viam CLI tool on macOS, run `brew upgrade viamrobotics/brews/viam`.
 
 ## Authenticate
 
