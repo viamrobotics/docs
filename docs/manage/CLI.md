@@ -287,12 +287,11 @@ viam logout
 
 ### module
 
-The `module` command allows to you to manage [custom modules](/extend/modular-resources/).
+The `module` command allows to you to manage custom {{< glossary_tooltip term_id="module" text="modules" >}}
 This includes:
 
-* Creating a new custom modular resource
-* Updating an existing module with new changes
-* Uploading a new module to the Viam registry
+* Creating a new custom {{< glossary_tooltip term_id="resource" text="modular resource" >}}
+* Uploading a new module to the [Viam registry](https://app.viam.com/registry)
 * Updating an existing module in the Viam registry
 
 ```sh {class="command-line" data-prompt="$"}
@@ -467,6 +466,8 @@ If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
 See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+
+See [Modular resources](/extend/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
 
 ### organization
 
