@@ -1,10 +1,10 @@
 ---
-title: "Configure a renogy sensor"
+title: "Configure a renogy power sensor"
 linkTitle: "renogy"
 weight: 80
 type: "docs"
-description: "Configure a renogy model sensor."
-tags: ["sensor", "components"]
+description: "Configure a renogy model power sensor to return battery temperature."
+tags: ["power sensor", "components", "renogy"]
 icon: "/icons/components/sensor.svg"
 images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
