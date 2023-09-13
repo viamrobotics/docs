@@ -397,7 +397,7 @@ Toggle back to **Builder** mode and make sure a configuration panel has been gen
 
 ![Screenshot of the Viam app CONFIG tab with the Config subtab open, showing quadruped configured.](/tutorials/custom-base-dog/config-modular-component.png)
 
-If yours doesn't look like this, go back to the raw JSON and double-check your JSON formatting.
+If yours doesn't resemble the following, go back to the raw JSON and double-check your JSON formatting.
 
 ## Start the Freenove server
 
