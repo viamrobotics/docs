@@ -186,7 +186,7 @@ Return the power reading in watts.
 
 **Returns:**
 
-- `float`: The measurement of the power, represented as a float number.
+- `float`: The measurement of the power, represented as a float.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_power).
 
