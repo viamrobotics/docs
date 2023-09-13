@@ -226,6 +226,7 @@ The following properties are available for modules:
 | ---- | ---- | --------- | ----------- |
 `name` | string | **Required**| Name of the module you are registering. |
 `executable_path` | string | **Required**| The robot's computer's filesystem path to the module executable. |
+`type` | string | **Required**| Either `registry` or `local`. |
 
 Add these properties to your module's configuration:
 
@@ -242,7 +243,8 @@ Add these properties to your module's configuration:
   "modules": [
     {
       "name": "<your-module-name>",
-      "executable_path": "<path-on-your-filesystem-to/your-module-directory>/<your_executable.sh>"
+      "executable_path": "<path-on-your-filesystem-to/your-module-directory>/<your_executable.sh>",
+      "type": "local"
     }
   ]
 }
