@@ -228,12 +228,16 @@ To add a local module on your robot:
 
 1. Then, select the `local modular resource` type from the list.
 
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="400x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+
 1. On the next screen:
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models).
      If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
+
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
 
 1. Click **Create** to create the modular resource provided by the local module.
 
@@ -245,6 +249,11 @@ You can also add the module directly, without first adding its modular component
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/extend/modular-resources/create/#compile-the-module-into-an-executable).
    This path must be the absolute path on the filesystem to the executable.
+1. Then, click the **Add module** button, and click **Save config**.
+
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-csi-cam.png" resize="400x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+
+   This example shows the configuration for adding a [CSI camera](/extend/modular-resources/examples/csi/) as a local module.
 
 ## Configure a local module
 
@@ -266,7 +275,7 @@ Add these properties to your module's configuration:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-{{< imgproc src="/program/modular-resources/module-ui-config.png" alt="Creation of a new module in the Viam app config builder." resize="1000x" >}}
+{{<imgproc src="extend/modular-resources/configure/add-local-module-config-builder.png" resize="400x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
