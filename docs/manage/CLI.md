@@ -62,6 +62,16 @@ sudo chmod a+rx /usr/local/bin/viam
 ```
 
 {{% /tab %}}
+{{% tab name="Linux x86_64 (brew)" %}}
+
+To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, install [brew](https://brew.sh/) and then run the following commands:
+
+```{class="command-line" data-prompt="$"}
+brew tap viamrobotics/brews
+brew install viam
+```
+
+{{% /tab %}}
 {{% tab name="Source" %}}
 
 If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
