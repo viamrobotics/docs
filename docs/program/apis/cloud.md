@@ -239,7 +239,7 @@ Defaults to the location ID provided at `AppClient` instantiation.
 - [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The location corresponding to the provided ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-location = await cloud.get_location(name="123ab12345")
+location = await cloud.get_location(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location).
@@ -259,8 +259,9 @@ Change the name of a {{< glossary_tooltip term_id="location" text="parent locati
 - `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to update.
 - `name` [Optional(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional new name to update the location name to.
 If nothing is passed, the name is not changed.
-- `parent_location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional ID of the new location to move the location to.
+- `parent_location_id` [Optional(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional ID of the new location to move the location to.
 If nothing is passed, the location does not move.
+If an empty string is passed, the location moves up to the top level.
 
 **Raises:**
 
@@ -274,6 +275,12 @@ If nothing is passed, the location does not move.
 # The following line takes the location with ID "abc12abcde" and moves it
 # to be a sub-location of the location with ID "xyz34xxxxx"
 my_updated_location = await cloud.update_location(location_id="abc12abcde", name="", parent_location_id="xyz34xxxxx")
+
+# The following line changes the name of the location without changing its parent location
+my_updated_location = await cloud.update_location(location_id="abc12abcde", name="Land Before Robots")
+
+# The following line moves the location back up to be a top level location without changing its name
+my_updated_location = await cloud.update_location(location_id="abc12abcde", name="", parent_location_id="")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location).
@@ -290,7 +297,7 @@ Delete a {{< glossary_tooltip term_id="location" text="location" >}}.
 
 **Parameters:**
 
-- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to delete.
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to delete.
 
 **Raises:**
 
@@ -301,6 +308,7 @@ Delete a {{< glossary_tooltip term_id="location" text="location" >}}.
 - None
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Replace string with a valid location ID
 await cloud.delete_location(location_id="abc12abcde")
 ```
 
@@ -354,6 +362,7 @@ Defaults to the location ID provided at `AppClient` instantiation.
 - [(viam.proto.app.LocationAuth)](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.LocationAuth): The `LocationAuth` containing location secrets.
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Replace string with a valid location ID
 loc_auth = await cloud.location_auth(location_id="123xy12345")
 ```
 
@@ -402,7 +411,7 @@ Delete a location secret.
 
 - `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to delete the secret from.
   Defaults to the location ID provided at `AppClient` instantiation.
-- `secret_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The secret to delete (the secret string itself).
+- `secret_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `id` of the secret to delete (not the secret string itself).
 
 **Raises:**
 
@@ -413,7 +422,8 @@ Delete a location secret.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): 
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_location_secret(secret_id="abcd1234567890abcxyz98989898xyzxyz")
+# Replace string with a valid secret ID
+await cloud.delete_location_secret(secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).
@@ -430,7 +440,7 @@ Get a robot by its ID.
 
 **Parameters:**
 
-- `id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to get.
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to get.
 
 **Raises:**
 
@@ -441,7 +451,8 @@ Get a robot by its ID.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The robot.
 
 ```python {class="line-numbers linkable-line-numbers"}
-robot = await cloud.get_robot(id="<robotID>")
+# Replace string with a valid robot ID
+robot = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot).
