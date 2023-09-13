@@ -29,10 +29,7 @@ viam.component.servo.v1.ServoService.MoveRequest
 
 You can download the Viam CLI executable using one of the options below.
 Select the tab for your platform and architecture.
-
-{{% alert title="Tip" color="tip" %}}
-You can use the `uname -m` command to determine your system architecture.
-{{% /alert %}}
+If you are on Linux, you can use the `uname -m` command to determine your system architecture.
 
 {{< tabs >}}
 {{% tab name="Linux aarch64" %}}
