@@ -12,7 +12,7 @@ images: ["/icons/components/sensor.svg"]
 
 Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/battery-temperature-sensor-for-renogy-solar-charge-controllers/) into your robot:
 
-{{< tabs name="Configure an Renogy Sensor" >}}
+{{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
