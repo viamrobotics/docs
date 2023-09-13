@@ -10,13 +10,27 @@ tags: ["client", "sdk", "application", "sdk", "fleet", "program"]
 
 After saving your [code sample](/program/#hello-world-the-code-sample-tab) and adding control logic with [Viam's SDKs](/program/apis/), run your program to control your Viam-connected robot.
 
+### Authentication
+
+You must reference a robot's location secret to authenticate yourself to the robot.
+However, the app hides the robot location secret from the sample by default for your security.
+
+To copy the robot location secret, select **Include Secret** on the **Code sample** tab of your robot's page on the [Viam app](https://app.viam.com).
+Paste it into your SDK code as directed by the code sample.
+
+You must also include the robot's remote address, like `12345.somerobot-main.viam.cloud`, as an external or public address to connect to your robot.
+The code sample should include this address at default.
+You can find it at the top of the robot's **Control** tab.
+
+{{% snippet "secret-share.md" %}}
+
 ## Run Code Remotely
 
-As long as you are connecting to your robot through an external signaling address, you can remotely control your robot without editing the app-generated connection code in your SDK program beyond including the necessary [authentication credentials](#authentication).
+Most of the time, as long as both you and your robot are connected to the internet, you will want to upload code to your robot remotely.
+The advantage of this method is that your robot and your computer do not even have to connected to the same WAN/LAN to issue control commands, as your robot receives operation requests from your client program over the cloud.
 
-Do this by running a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed.
-
-For example:
+As long as you are connecting to your robot through an external signaling address, you can remotely control your robot from anywhere in the world.
+After editing your code to include your robot's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -53,20 +67,6 @@ flutter run <DART_FILE>
 {{< /tabs >}}
 
 This is useful because as long as that computer is able to establish a network connection with the robot's computer, your control logic will be executed on the robot.
-
-### Authentication
-
-You must reference a robot's location secret to authenticate yourself to the robot.
-However, the app hides the robot location secret from the sample by default for your security.
-
-To copy the robot location secret, select **Include Secret** on the **Code sample** tab of your robot's page on the [Viam app](https://app.viam.com).
-Paste it into your SDK code as directed by the code sample.
-
-You must also include the robot's remote address, like `12345.somerobot-main.viam.cloud`, as an external or public address to connect to your robot.
-The code sample should include this address at default.
-You can find it at the top of the robot's **Control** tab.
-
-{{% snippet "secret-share.md" %}}
 
 ## Run Code On-Robot
 
