@@ -190,7 +190,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### CreateLocation
 
-Create and name a {{< glossary_tooltip term_id="location" text="location" >}} under the organization and location you are currently authenticated to.
+Create and name a {{< glossary_tooltip term_id="location" text="location" >}} under the organization you are currently authenticated to.
+Optionally, put the new location under a specified parent location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -199,11 +200,11 @@ Create and name a {{< glossary_tooltip term_id="location" text="location" >}} un
 
 - `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new location.
 - `parent_location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional parent location to put the location under.
-Defaults to to a root-level loation if you do not provide a location ID.
+Defaults to creating a location in your organization at root level if you do not provide a location ID.
 
 **Raises:**
 
-- `GRPCError`: This error is raised if either an invalid name (such as "") or invalid parent location ID is passed.
+- `GRPCError`: This error is raised if an invalid name (such as "") or invalid parent location ID is passed.
 
 **Returns:**
 
@@ -274,13 +275,24 @@ If an empty string is passed, the location moves up to the top level.
 ```python {class="line-numbers linkable-line-numbers"}
 # The following line takes the location with ID "abc12abcde" and moves it
 # to be a sub-location of the location with ID "xyz34xxxxx"
-my_updated_location = await cloud.update_location(location_id="abc12abcde", name="", parent_location_id="xyz34xxxxx")
+my_updated_location = await cloud.update_location(
+    location_id="abc12abcde",
+    name="",
+    parent_location_id="xyz34xxxxx"
+)
 
 # The following line changes the name of the location without changing its parent location
-my_updated_location = await cloud.update_location(location_id="abc12abcde", name="Land Before Robots")
+my_updated_location = await cloud.update_location(
+    location_id="abc12abcde",
+    name="Land Before Robots"
+)
 
 # The following line moves the location back up to be a top level location without changing its name
-my_updated_location = await cloud.update_location(location_id="abc12abcde", name="", parent_location_id="")
+my_updated_location = await cloud.update_location(
+    location_id="abc12abcde",
+    name="",
+    parent_location_id=""
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location).
@@ -319,7 +331,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListLocations
 
-Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} under the organization you are currently autheticated to.
+Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} under the organization you are currently authenticated to.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
