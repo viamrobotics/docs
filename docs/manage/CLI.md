@@ -20,7 +20,7 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam robot part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
+viam robots part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
 --location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
