@@ -51,6 +51,13 @@ sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.co
 sudo chmod a+rx /usr/local/bin/viam
 ```
 
+You can also install the Viam CLI using [brew](https://brew.sh/):
+
+```{class="command-line" data-prompt="$"}
+brew tap viamrobotics/brews
+brew install viam
+```
+
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
@@ -61,10 +68,7 @@ sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.co
 sudo chmod a+rx /usr/local/bin/viam
 ```
 
-{{% /tab %}}
-{{% tab name="Linux x86_64 (brew)" %}}
-
-To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, install [brew](https://brew.sh/) and then run the following commands:
+You can also install the Viam CLI using [brew](https://brew.sh/):
 
 ```{class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews
