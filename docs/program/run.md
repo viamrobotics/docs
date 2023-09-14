@@ -19,7 +19,7 @@ To copy the robot location secret, select **Include Secret** on the **Code sampl
 Paste it into your SDK code as directed by the code sample.
 
 You must also include the robot's remote address, like `12345.somerobot-main.viam.cloud`, as an external or public address to connect to your robot.
-The code sample should include this address at default.
+The code sample includes this address at default.
 You can find it at the top of the robot's **Control** tab.
 
 {{% snippet "secret-share.md" %}}
