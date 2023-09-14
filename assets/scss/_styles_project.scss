@@ -1307,6 +1307,12 @@ a.ais-Pagination-link:hover {
   flex-grow: 1;
 }
 
+@media (max-width: 600px) {
+.algolia-autocomplete .ds-dropdown-menu {
+  min-width: 90% !important;
+}
+}
+
 .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {
   max-height: 500px !important;
 }
