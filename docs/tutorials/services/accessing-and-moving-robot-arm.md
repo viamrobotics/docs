@@ -53,12 +53,12 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 2. Create a new robot.
 3. Follow the instructions on the **Setup** tab.
 4. Select the **Config** tab.
-5. Under the **Components** section, create a component with the following attributes:
+5. Under the **Components** subtab, click **Create component** in the lower-left corner and create a component with the following attributes:
 
-    * Choose `Arm` as the **Type** selection
-    * Choose your desired model in the **Model** selection
-      * If you're using an xArm 6, choose the `xArm6` model from the drop-down list
-    * Enter `myArm` as the **Name** for this component
+    * Choose `Arm` as the type.
+    * Choose your desired model.
+      * If you're using an xArm 6, choose the `xArm6` model from the drop-down list.
+    * Enter `myArm` as the **Name** for this component, then click **Create**.
 
 5. In the newly created `myArm` component panel, fill in some additional details:
 

@@ -34,7 +34,7 @@ You can expand on this project to turn a motor based on other types of inputs, s
 ### Hardware
 
 * A macOS or Linux computer
-* A [Raspberry Pi](https://a.co/d/bxEdcAT), with a [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up using [these instructions](https://docs.viam.com/installation/prepare/rpi-setup/).
+* A [Raspberry Pi](https://a.co/d/bxEdcAT), with a [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up using [these instructions](/installation/prepare/rpi-setup/).
 * A big button, like [this one](https://www.amazon.com/EG-STARTS-Buttons-Illuminated-Machine/dp/B01LZMANZ7/ref=sxts_b2b_sx_reorder_acb_business).
 Check the wiring diagram for the specific model you have as you wire the button.
 * A mini confetti cannon, like [this one](https://www.amazon.com/Confetti-Poppers-Party-Accessory-Pack/dp/B074SP7FZH/ref=sr_1_4)
@@ -52,7 +52,7 @@ The STL files we use for 3D printing are adapted to the size of this motor, but 
 
 * [Python3](https://www.python.org/download/releases/3.0/)
 * [pip](https://pip.pypa.io/en/stable/#)
-* [viam-server](https://docs.viam.com/installation/#install-viam-server)
+* [viam-server](/installation/#install-viam-server)
 * [Viam Python SDK](https://python.viam.dev/)
 
 ## Set up your hardware
@@ -121,33 +121,31 @@ We named ours ConfettiBot.
 
 ![A robot page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
 
-Then navigate to the robot’s **CONFIG** tab to start configuring your components.
+Then navigate to the robot’s **Config** tab to start configuring your components.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
 ### Configure the Pi as a board
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 
-Add your {{< glossary_tooltip term_id="board" text="board" >}} with the name `party`, type `board` and model `pi`.
-Click **Create Component**.
+Add your {{< glossary_tooltip term_id="board" text="board" >}} with type `board` and model `pi`.
+Enter `party` for the name of your [board component](/components/board/), then click **Create**.
 
-![Create component panel, with the name attribute filled as party, type attribute filled as board and model attribute filled as pi.](/tutorials/confetti-bot/app-board-create.png)
-
-You can name your board whatever you want as long as you refer to it the same way in your code, we picked `party` for fun.
+You can name your board whatever you want as long as you refer to it the same way in your code; we picked `party` for fun.
 Your board configuration should now look like this:
 
 ![Board component configured in the Viam app, the component tab is named party, with a type attribute board and model attribute pi.](/tutorials/confetti-bot/app-board-attribute.png)
 
 ### Configure the motor
 
-Add your [motor](https://docs.viam.com/components/motor/) with the name “start”, type `motor`, and model `gpio`.
+Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
+Select `motor` for the type and `gpio` for the model.
+Enter `start` for the name of your [motor component](/components/motor/), then click **Create**.
 Again, we named it “start” to refer to the button being pressed, but this name is up to you as long as you remember the name and use the same name in the code later.
 
-![Create component panel, with the name attribute filled as start, type attribute filled as motor and model attribute filled as gpio.](/tutorials/confetti-bot/app-motor-create.png)
-
-After clicking **Create Component**, there is a pin assignment type toggle.
+After clicking **Create**, there is a pin assignment type toggle.
 Select **In1/In2** since that is compatible with the type of input our motor controller expects.
 In the drop downs for A/In1 and B/In2, choose `13 GPIO 27` and `15 GPIO 22` and for PWM choose `11 GPIO 17` corresponding to our wiring.
 

@@ -224,45 +224,47 @@ Now, let's configure the color detector so your rover can detect the line:
 {{% tab name="Builder UI" %}}
 
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click on the **Services** subtab.
 
 1. **Add a vision service.**
 
-   Next, add a vision service [detector](/services/vision/detection/).
-   Create an vision service with the name `green_detector`, the type `vision` and the model `color_detector`.
-   Then click **Create Service**.
+  Next, add a vision service [detector](/services/vision/detection/):
 
-   In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
-   We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+  Click the **Create service** button in the lower-left corner of the **Services** subtab.
+  Select type `Vision` and model `Color Detector`.
+  Enter `green_detector` for the name, then click **Create**.
+
+  In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
+  Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
+  We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 2. Click **Save config** in the bottom left corner of the screen.
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-   If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
-   This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
+  If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
+  This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-   Click on the **Components** subtab and click **Create component**.
-   Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
-   Name it `transform_cam` and click **Create**.
+  Click on the **Components** subtab and click **Create component**.
+  Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+  Name it `transform_cam` and click **Create**.
 
-   Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+  Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
-   ```json
-   {
-     "source": "my_camera",
-     "pipeline": [
-        {
-          "type": "detections",
-          "attributes": {
-              "detector_name": "green_detector",
-              "confidence_threshold": 0.6
-          }
+  ```json
+  {
+    "source": "my_camera",
+    "pipeline": [
+      {
+        "type": "detections",
+        "attributes": {
+            "detector_name": "green_detector",
+            "confidence_threshold": 0.6
         }
-      ]
-   }
-   ```
+      }
+    ]
+  }
+  ```
 
 4. Click **Save config** in the bottom left corner of the screen.
 

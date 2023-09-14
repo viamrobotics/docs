@@ -33,10 +33,9 @@ Make sure the [movement sensor](/components/movement-sensor/) you use supports [
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab and navigate to the **Create service** menu.
-Select the type `navigation` and enter a name for your service.
-
-Click **Create service**:
+Click the **Services** subtab, then click **Create service** in the lower-left corner.
+Select the type `Navigation`.
+Enter a name for your service, then click **Create**.
 
 ![An example configuration for a Navigation service in the Viam app Config Builder.](/services/navigation/navigation-ui-config.png)
 
@@ -106,7 +105,7 @@ Click **Create service**:
 {{% /tab %}}
 {{< /tabs >}}
 
-Next, add the JSON `"attributes"` you want the service to have.
+Edit and fill in the attributes as applicable.
 The following attributes are available for `Navigation` services:
 
 | Name | Type | Inclusion | Description |
