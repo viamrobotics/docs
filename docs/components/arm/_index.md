@@ -49,7 +49,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 ## Configuration
 
-Supported arm models include:
+For configuration information, click on one of the supported arm models:
 
 | Model | Description |
 | ----- | ----------- |
