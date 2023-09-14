@@ -43,6 +43,9 @@ To add a modular [component](/components/) from the Viam registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
+   Be sure the modular component you select supports the [platform](/manage/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
+   You can see which platforms the module supports at bottom of the module information screen before you add it.
+
 When you add a module from the Viam registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
@@ -68,6 +71,9 @@ To add a modular [service](/services/) from the Viam registry to your robot:
 1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot.
 
    {{<imgproc src="extend/modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
+
+   Be sure the modular service you select supports the [platform](/manage/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
+   You can see which platforms the module supports at bottom of the module information screen before you add it.
 
 When you add a module from the Viam registry, the custom modular service it provides appears under the **Services** subtab like any other service.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.

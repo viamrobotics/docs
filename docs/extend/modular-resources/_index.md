@@ -21,7 +21,7 @@ For example, you can:
 
 - **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the generic API.
 
-These custom implementations are called {{< glossary_tooltip term_id="module" text="modular resources" >}}, and are made available for use on a robot through [modules](/extend/modular-resources/key-concepts/#modules).
+These custom implementations are called *modular resources*, and are made available for use on a robot through {{< glossary_tooltip term_id="module" text="modules" >}}.
 A module can provide one or more modular resources, and can be added to your robot from the Viam registry.
 
 ## The Viam Registry
@@ -29,7 +29,7 @@ A module can provide one or more modular resources, and can be added to your rob
 The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
 
-The code behind any modular resource can be packaged as a [module](/extend/modular-resources/key-concepts/#modules) and uploaded to the Viam registry.
+The code behind any modular resource can be packaged as a {{< glossary_tooltip term_id="module" text="module" >}} and uploaded to the Viam registry.
 Once the module has been uploaded to the Registry, you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
 
 ### Uploading to Viam Registry

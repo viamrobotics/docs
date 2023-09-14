@@ -286,10 +286,20 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    - [`org-id`](/manage/cli/#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
    - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
    - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning) - Also see [Using the --version argument](/manage/cli/#using-the---version-argument) for more details on the types of versioning supported.
-   - [`key-id` and `key-value`](/manage/cli/#create-an-organization-api-key) - You will set these values in the next step.
 
-1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key), which the action will use to authenticate its run.
-   Provide the `key-id` and `key-value` generated in the YAML configuration above.
+1. Create an organization API key and configure your GitHub repository to use it to authenticate during GitHub action runs, following the steps below:
+
+   1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key).
+      These steps will return a `key id` and a `key value` which together comprise your organization API key.
+      If you have already created an organization API key, you can skip this step.
+
+   1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
+
+   1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
+
+   1. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
+
+   For more information on GitHub secrets, see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.

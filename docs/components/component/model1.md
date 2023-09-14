@@ -17,10 +17,6 @@ Optional additional description/information.
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
-
-Enter a name for your arm, select the `arm` type, and select the `model1` model.
-
 Click on the **Components** subtab and click **Create component**.
 Select the `arm` type, then select the `model1` model.
 Enter a name for your arm and click **Create**.

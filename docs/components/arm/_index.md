@@ -60,6 +60,8 @@ Supported arm models include:
 | [`yahboom-dofbot`](yahboom-dofbot/) | [Yahboom DOFBOT](https://category.yahboom.net/collections/r-robotics-arm) |
 | [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
+Follow [this guide](/extend/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/extend/modular-resources/).
+
 ## Control your arm with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
