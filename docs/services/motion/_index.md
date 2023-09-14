@@ -470,10 +470,8 @@ success = await motion.move_on_globe(component_name=my_base_resource_name, desti
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The location of the component's destination, represented in geographic notation as a [Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) *(lat, lng)*.
 - `heading` [(float64)](https://pkg.go.dev/builtin#float64): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
-- `movement_sensor_name` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
+- `movementSensorName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [([]*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
-- `linear_meters_per_sec` [(float64)](https://pkg.go.dev/builtin#float64): The linear velocity in meters per second to target when moving the component. <ul><li> Default: `0.3` </li></ul>
-- `angular_deg_per_sec` [(float64)](https://pkg.go.dev/builtin#float64): The [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) in degrees per second to target when turning the component. <ul><li> Default: `60.0` </li></ul>
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
