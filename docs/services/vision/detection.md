@@ -56,8 +56,6 @@ Click the **Services** subtab and click **Create service** in the lower-left cor
 Select the `ML Model` type, then select the `Color Detector` model.
 Enter a name for your service and click **Create**.
 
-![Create vision service for color detector](/services/vision/color_detector.png)
-
 In your vision service's panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels):
 
 ![Color detector panel with color and hue tolerance selection and a field for the segment size](/services/vision/color-detector-panel.png)
@@ -146,21 +144,13 @@ Proceed to [test your detector](#test-your-detector).
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
 To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **ML Model** as the **Model**.
-4. Click **Create Service**.
-
-![Create vision service for mlmodel](/services/vision/mlmodel.png)
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `ML Model` model.
+Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 

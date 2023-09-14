@@ -298,9 +298,7 @@ Once the model has finished training, deploy it by adding a [ML model service](/
 1. Create a new service, select **ML Model** as the **Type**, and name it `puppymodel`.
 Select `tflite_cpu` as the **Model**.
 
-![The ML model service panel with the name puppymodel.](/tutorials/pet-treat-dispenser/app-service-mlmodel.png)
-
-3. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
 1. Select your trained model (`puppymodel`) as your desired **Model**.
 
 ### Use the vision service to detect your pet

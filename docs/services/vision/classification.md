@@ -37,8 +37,6 @@ Click the **Services** subtab and click **Create service** in the lower-left cor
 Select the `Vision` type, then select the `ML Model` model.
 Enter a name for your service and click **Create**.
 
-![Create vision service for mlmodel](/services/vision/mlmodel.png)
-
 In your vision service's panel, fill in the **Attributes** field.
 
 ``` json {class="line-numbers linkable-line-numbers"}
