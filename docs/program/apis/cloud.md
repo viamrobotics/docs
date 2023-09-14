@@ -278,7 +278,7 @@ If an empty string is passed, the location moves up to the top level.
 my_updated_location = await cloud.update_location(
     location_id="abc12abcde",
     name="",
-    parent_location_id="xyz34xxxxx"
+    parent_location_id="xyz34xxxxx",
 )
 
 # The following line changes the name of the location without changing its parent location
