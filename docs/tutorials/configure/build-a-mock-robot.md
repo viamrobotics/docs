@@ -310,7 +310,7 @@ Watch the robotic arm's [`JointPositions()`](/components/arm/#jointpositions) ch
   {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
 </div>
 
-## Create a mock sub-part
+## Configure your robot's mock sub-part
 
 Now that you have your `fake` robotic arm, board, and motor working, add a sub-part to your robot.
 
