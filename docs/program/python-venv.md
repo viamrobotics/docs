@@ -52,7 +52,7 @@ pip3 install viam-sdk
 This will install Viam and all required dependencies.
 
 Should you need to install your own requirements, be sure to do so in this virtual environment.
-You can [make a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> and include all necessary packages within, then install the requirements for your client application using `pip install -r requirements.txt`.
+You can [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> with all the packages you need and then install the requirements for your client application by running `pip install -r requirements.txt`.
 
 ## Setup your IDE
 
