@@ -26,24 +26,6 @@ You do not need any hardware to do this tutorial.
 Follow this tutorial to set up and control a robot with a `fake` [arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and an additional mock {{< glossary_tooltip term_id="part" text="sub-part" >}} with a [motor](/components/motor/).
 These `fake` components interact with Viam like real hardware but do not physically exist.
 
-### What is a sub-part?
-
-Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
-You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
-
-By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build your robot with Viam:
-
-- Each individual computer-controlled unit of a robot is called a “{{< glossary_tooltip term_id="part" text="part" >}}” in Viam.
-- Typically, simple robots have just one part, but you can have as many parts as your project requires.
-- Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
-- You can access any sub-part either directly, or through any part above it in the tree.
-- Each part runs a single `viam-server` instance.
-
-### What is a `fake` component?
-
-Most Viam [components](../../../components/) have a `fake` model that you can use for testing.
-These `fake` components interact with Viam like real hardware but do not actually exist.
-
 ## Set up a mock robot
 
 You'll need the following hardware and software for this tutorial:
@@ -66,7 +48,7 @@ Follow the steps outlined for your computer's architecture on the **Setup** tab 
 [Configure your mock robot](/manage/configuration/) to represent a physical smart machine with robotic board, arm, and motor hardware.
 
 If you were using physical hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
-For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware:
+For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
 
 1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
 2. Configure a [fake board component](/components/board/fake/):
@@ -331,6 +313,19 @@ Watch the robotic arm's [`JointPositions()`](/components/arm/#jointpositions) ch
 ## Create a mock sub-part
 
 Now that you have your `fake` robotic arm, board, and motor working, add a sub-part to your robot.
+
+### What is a sub-part?
+
+Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
+You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
+
+By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build your robot with Viam:
+
+- Each individual computer-controlled unit of a robot is called a “{{< glossary_tooltip term_id="part" text="part" >}}” in Viam.
+- Typically, simple robots have just one part, but you can have as many parts as your project requires.
+- Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
+- You can access any sub-part either directly, or through any part above it in the tree.
+- Each part runs a single `viam-server` instance.
 
 ## Configure a sub-part in the Viam app
 
