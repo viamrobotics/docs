@@ -9,6 +9,7 @@ no_list: true
 ---
 
 You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
+
 You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [add a local module](#local-modules).
 
 See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
@@ -228,7 +229,7 @@ To add a local module on your robot:
 
 1. Then, select the `local modular resource` type from the list.
 
-   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="400x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 
 1. On the next screen:
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
@@ -251,7 +252,7 @@ You can also add the module directly, without first adding its modular component
    This path must be the absolute path on the filesystem to the executable.
 1. Then, click the **Add module** button, and click **Save config**.
 
-   {{<imgproc src="extend/modular-resources/configure/add-local-module-csi-cam.png" resize="400x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
    This example shows the configuration for adding a [CSI camera](/extend/modular-resources/examples/csi/) as a local module.
 
@@ -275,7 +276,7 @@ Add these properties to your module's configuration:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-{{<imgproc src="extend/modular-resources/configure/add-local-module-config-builder.png" resize="400x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
+{{<imgproc src="extend/modular-resources/configure/add-local-module-config-builder.png" resize="600x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
