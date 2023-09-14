@@ -92,7 +92,11 @@ Click on the **Components** subtab.
 
 2. **Configure the motors**
 
-    Add your right [motor](/components/motor/) with the name `rightMotor`, type `motor`, and model `gpio`.
+    Add your right [motor](/components/motor/):
+
+    Click **Create component** in the lower-left corner of the page.
+    Select type `motor`, then select model `gpio`.
+    Enter `rightMotor` as the name, then click **Create**.
 
     After clicking **Create**, a panel will pop up with empty sections for Attributes, Component Pin Assignment, and other information.
 
@@ -115,8 +119,12 @@ Click on the **Components** subtab.
 
 3. **Configure the base**
 
-    Next, add a [base component](/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way.
-    Name your base `tipsy-base`. Select `base` for **Type** and `wheeled` for **Model**.
+    Next, add a [base component](/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
+
+    Click **Create component**.
+    Select `base` for type and `wheeled` for model.
+    Name your base `tipsy-base`, then click **Create**.
+
     In the **Right Motors** drop-down, select `rightMotor` and in the **Left Motors** drop-down select `leftMotor`.
     Enter `250` for **Wheel Circumference (mm)** and `400` for **Width (mm)**.
     The width describes the distance between the midpoints of the wheels.
@@ -126,8 +134,12 @@ Click on the **Components** subtab.
 
 4. **Configure the camera**
 
-    Next, add the [camera component](/components/camera/).
-    Name it `cam`, with the type `camera` and model `webcam`, and click **Create Component**.
+    Add the [camera component](/components/camera/):
+
+    Click **Create component**.
+    Select type `camera` and model `webcam`.
+    Name it `cam` and click **Create**.
+
     In the configuration panel, click the video path field.
     If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
 
@@ -140,7 +152,12 @@ Click on the **Components** subtab.
 
 5. **Configure the ultrasonic sensors**
 
-    Add a [sensor component](/components/sensor/) with the name `ultrasonic`, type `sensor`, and model `ultrasonic`.
+    Add a [sensor component](/components/sensor/):
+
+    Click **Create component**.
+    Select type `sensor` and model `ultrasonic`.
+    Name your sensor `ultrasonic`, then click **Create**.
+
     Then fill in the attributes: enter `38` for `echo_interrupt_pin` and `40` for `trigger_pin`, according to the wiring diagram.
     Enter `local` for `board`.
 

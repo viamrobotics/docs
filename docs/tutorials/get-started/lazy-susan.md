@@ -102,29 +102,24 @@ Wait a moment until your robot connects to the Viam app.
 
 1. **Configure the board**
 
-    First, configure your {{< glossary_tooltip term_id="board" text="board" >}} component.
-    Navigate to the **Config** tab of your robot’s page in the [Viam app](https://app.viam.com).
-    Add a new component with the following attributes:
+   First, configure your {{< glossary_tooltip term_id="board" text="board" >}} component:
 
-    * **Name**: `local`  - you can name this whatever you want: remember that you will reference it later in your code.
-    * **Type**: `board`
-    * **Model**: `pi`
+   Navigate to the **Config** tab of your robot’s page in the [Viam app](https://app.viam.com).
+   Click the **Components** subtab, then click **Create component** in the lower-left corner.
 
-    <br>
+   Select `board` for type and `pi` for model.
 
-    ![The board component being created with the name local, type board, and  model pi.](/tutorials/lazy-susan/config-board.png)
+   Enter `local` as the name for your board, then click **Create**.
 
 2. **Configure the motor**
 
-   Next, add a new motor component:
+   Next, add a [motor component](/components/motor/):
 
-   * **Name**:  `dcmotor`
-   * **Type**:  `motor`
-   * **Model**:  `gpio`
+   Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
-    <br>
+   Select `motor` for type and `gpio` for model.
 
-   ![The motor component being built with the name dcmotor, type motor, and model gpio.](/tutorials/lazy-susan/config-motor.png)
+   Enter `dcmotor` as the name for your motor, then click **Create**.
 
    After creating your motor component, fill in the [required attributes for a gpio motor](/components/motor/gpio/):
 

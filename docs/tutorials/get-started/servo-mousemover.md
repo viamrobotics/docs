@@ -63,7 +63,8 @@ This project is a good place to begin if you're new to robotics and would like t
 
 First, install `viam-server` according to our [installation guide](/installation/)
 
-Next, run this command in your Raspberry Pi terminal to install the pip package manager. Select "yes" when it asks if you want to continue.
+Next, run this command in your Raspberry Pi terminal to install the pip package manager.
+Select "yes" when it asks if you want to continue.
 
 ```sh {class="command-line" data-prompt="$"}
 sudo apt-get install pip
@@ -151,38 +152,39 @@ The servo is now physically connected to the Raspberry Pi, but the Viam app hasn
 
 Go to the [Viam app](https://app.viam.com), and navigate to the **Config** tab.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box for a Name to be typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam. To the far right it says Model, but it's greyed out because none of the previous two fields have been filled in. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-component.png)
-
 ### Board component
 
-In the **Config** tab, create a new component with the following attributes:
+Create a [board component](/components/board/):
 
-- **Name**: `local` - you can name this whatever you want, you will reference it later.
-- **Type**: `board`
-- **Model**: `pi`
+Navigate to the **Components** subtab of your robot's **Config** tab.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name local typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with board selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-board.png)
+Click **Create component** in the lower-left corner.
 
-Click **Create Component** to create the pi [board component](/components/board/) component.
+Select `board` for type and `pi` for model.
+
+Enter `local` as the name for your board, then click **Create**.
+
+You can name the board whatever you want.
+You will reference it later.
 
 ### Servo component
 
-After the board component, create a new [servo component](/components/servo/) with the following attributes:
+Create a [servo component](/components/servo/):
 
-- **Name**: `FS90R` - we named the servo using the model number, but you can use whatever you want, you will reference it later.
-- **Type**: `servo`
-- **Model**: `pi`
+Click **Create component** in the lower-left corner.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name FS90R typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with servo selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-servo.png)
+Select `servo` for type and `pi` for model.
 
-Click **Create Component** to create the [servo component](/components/servo/).
+Enter `FS90R` as the name for your servo, then click **Create**.
 
-You will then see where you can put in Attributes for the servo.
+We named the servo using the model number, but you can use whatever you want.
+You will reference it later.
+
+After clicking **Create** you will see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
 
-- For "pin": use "12" - this is the pin you attached the PWM (Pulse Width Modulation) jumper wire to.
-- For "board": use "local"
-- For **Depends On** click **local.** This ensures that the board is initialized before the servo.
+- For `"pin"` use `12` - this is the pin you attached the PWM (Pulse Width Modulation) jumper wire to.
+- For `"board"` use `"local"`.
 
 The attribute section will look like this:
 

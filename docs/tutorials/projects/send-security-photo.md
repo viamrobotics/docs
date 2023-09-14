@@ -70,23 +70,19 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 
 ### Configure the camera component
 
-On your new robot's page, go to the **Config** tab.
+On your new robot's page, go to the **Config** tab and create a [camera component](/components/camera/):
 
-![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
+Click **Create component** in the lower-left corner of the screen.
 
-On the **Config** tab, create a new component:
+Select type `camera` and model `webcam`.
 
-- **Name**: `my-camera`
-- **Type**: `camera`
-- **Model**: `webcam`
-
-Click **Create Component** to add the camera.
+Enter `my-camera` as the name, then click **Create** to add the camera.
 
 Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
-Click **Save Config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 Navigate to the **Control** tab where you can see your camera working.
 
@@ -106,7 +102,9 @@ Click the **Services** subtab.
     Add an [mlmodel](/services/ml/) service:
 
     Click **Create service** in the lower-left corner of the **Services** subtab.
+    
     Select type `mlmodel`, then select model `tflite_cpu`.
+
     Enter `people` as the name, then click **Create**.
 
     In the new ML Model service panel, configure your service.
