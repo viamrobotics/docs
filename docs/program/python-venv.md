@@ -65,8 +65,8 @@ If you're not using VS Code, please read your IDE's documentation on selecting p
 1. Open the Command Palette (using `⇧⌘P` or through the menus View -> Command Palette)
 1. Select the command `Python: Select Interpreter`.
 There, you should see all the interpreters available to you.
-You're looking for one the on you just made: `viam-env`.
-It will look something like: `Python 3.11.5 ('viam-env': venv) ./viam-env/bin/python`.
+You're looking for the on you just made: `viam-env`.
+It will look something like: `Python 3.XX.X ('viam-env': venv) ./viam-env/bin/python`.
 If you don't see it, click the `Refresh` icon on the top right of the Command Palette.
 
 Your IDE will now recognize all packages installed in this environment.
