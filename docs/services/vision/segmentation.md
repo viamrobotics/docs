@@ -224,15 +224,14 @@ Click **Save config** and proceed to [test your segmenter](#test-your-segmenter)
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
 
 Use the segmenter to identify well separated objects above a flat plane.
-Configure the `with_geometries` attribute according to whether you've [configured the frame system](/services/frame-system/#configuration) to provide intrinsic parameters:
-
-- `true`: this segmenter will return point clouds within the `GeometryInFrame` object it captures.
-- `false`: this segmenter will return a single point within the `GeometryInFrame` object it captures.
-
-If `true`, start by [configuring your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within Viam's [frame system service](/services/frame-system/).
-
+If you want to identify well separated point clouds over the flat plane, set `with_geometries: true`.
+[Configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot within Viam's [frame system service](/services/frame-system/).
 After configuring your frame system, your camera will populate its own `Properties` with the intrinsic parameters from the frame system, as long you have configured the parameters as part of your camera.
 You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
+The segmenter now returns point clouds within the `GeometryInFrame` object it captures.
+
+If you choose not to configure the frame system to provide instrinsic parameters, set `with_geometries: false`.
+   The segmenter now returns a single point within the `GeometryInFrame` object it captures.
 
 Then, configure an `obstacles_depth` segmenter:
 
