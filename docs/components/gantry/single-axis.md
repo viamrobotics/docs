@@ -11,7 +11,8 @@ aliases:
 # SME: Rand, Martha
 ---
 
-Configure a `single-axis` gantry to integrate a single-axis gantry into your robot:
+Configure a `single-axis` gantry to integrate a single-axis gantry into your robot.
+Before configuring the gantry, configure any [motor components](/components/motor/) that are part of the gantry.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
