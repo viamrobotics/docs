@@ -217,7 +217,7 @@ Then, ensure that `viam-server` is able to find and run the executable:
    sudo chmod a+rx <path-to-your-module-executable>
    ```
 
-See [Compile your module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable) for more information.
+See the instructions to [compile your module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable) for more information.
 
 ### Add a local module
 
@@ -249,7 +249,7 @@ You can also add the module directly, without first adding its modular component
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/extend/modular-resources/create/#compile-the-module-into-an-executable).
-   This path must be the absolute path on the filesystem to the executable.
+   This path must be the absolute path on your robot's filesystem to the executable.
 1. Then, click the **Add module** button, and click **Save config**.
 
    {{<imgproc src="extend/modular-resources/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
@@ -297,7 +297,7 @@ Add these properties to your module's configuration:
 
 ### Configure a modular resource
 
-Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that make use of your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
