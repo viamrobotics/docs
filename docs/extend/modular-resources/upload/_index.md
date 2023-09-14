@@ -265,7 +265,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
        - uses: actions/checkout@v3
        - name: build
          run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
-       - uses: viamrobotics/upload-module@main
+       - uses: viamrobotics/upload-module@v1
          # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
          with:
            module-path: module.tar.gz

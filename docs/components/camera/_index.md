@@ -33,7 +33,7 @@ You can use different models to:
 
 ## Configuration
 
-For configuration information, click on one of the following models:
+For configuration information, click on one of the supported camera models:
 
 | Model | Description |
 | ----- | ----------- |
