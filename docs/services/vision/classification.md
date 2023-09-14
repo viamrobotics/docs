@@ -27,21 +27,15 @@ The types of classifiers supported are:
 
 ## Configure an `mlmodel` classifier
 
-To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
-
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
+To create an `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **ML Model** as the **Model**.
-4. Click **Create Service**.
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `ML Model` model.
+Enter a name for your service and click **Create**.
 
 ![Create vision service for mlmodel](/services/vision/mlmodel.png)
 

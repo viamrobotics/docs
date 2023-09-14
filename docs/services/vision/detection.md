@@ -51,17 +51,10 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-To create a [vision service](/services/vision/):
-
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **Color Detector** as the **Model**.
-4. Click **Create Service**.
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `ML Model` type, then select the `Color Detector` model.
+Enter a name for your service and click **Create**.
 
 ![Create vision service for color detector](/services/vision/color_detector.png)
 

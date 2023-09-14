@@ -409,10 +409,7 @@ Click on the **Services** subtab.
 
 1. **Configure the detection camera**
 
-    To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
-
-
-    Create a [transform camera](/components/camera/transform/):
+    To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
     Click on the **Components** subtab, then click **Create component** in the lower-left corner of the page.
     Select type `camera`, then select model `transform`.
