@@ -269,7 +269,7 @@ The following properties are available for modules:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 `name` | string | **Required**| Name of the module you are registering. |
-`executable_path` | string | **Required**| The absolute path on the filesystem to the module executable on your robot. |
+`executable_path` | string | **Required**| The absolute path to the executable on your robot's filesystem. |
 
 Add these properties to your module's configuration:
 
