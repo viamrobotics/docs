@@ -131,7 +131,7 @@ The **Config** tab has subtabs for each section of your robot's config:
 
 - [Components](#components): Components are the hardware of your robot.
 - [Services](#services): Services are the software that runs on your robot.
-- [Modules](#modules): Modular resources are a way to add resource types or models that are not built into Viam.
+- [Modules](#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide [modular resources](/extend/modular-resources/), which are a way to add resource types or models that are not built into Viam.
 - [Remotes](#remotes): Remotes are a way to connect two separate robots so one can access the resources of the other.
 - [Processes](#processes): Processes automatically run specified scripts when the robot boots.
 - [Fragments](#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
@@ -149,16 +149,16 @@ Depending on your robot, you may not need to configure any modules, remotes, pro
 
 Components represent the pieces of hardware on your robot that you want to control with Viam.
 
-You must configure each component with a name, a model, a type, attributes, and dependencies:
-
-- `name`: Serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
-You can choose any unique name for a component.
+You must configure each component with a type, a model, a name, attributes, and dependencies:
 
 - `type`: The broad component category, such as `motor`, `arm` or `camera`.
   Components of a given type have a common API.
 
 - `model`: Indicates the more specific category of hardware.
 Components of the same model are supported using the same low-level code.
+
+- `name`: Serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
+You can choose any unique name for a component.
 
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.

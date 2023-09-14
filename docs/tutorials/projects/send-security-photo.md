@@ -134,12 +134,13 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera`, and the model `transform`.
+Click on the **Components** subtab and click **Create component** in the lower-left corner.
+Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 
-In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
+In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
     {
@@ -156,7 +157,7 @@ In the new transform camera panel, replace the attributes JSON object with the f
     }
  ```
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
 

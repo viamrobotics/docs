@@ -164,10 +164,11 @@ Navigate to the **Config** tab of your robot's page and select your main part fr
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click the **Components** subtab.
+Click the **Create component** button in the lower-left corner.
 
-Add your [board](https://docs.viam.com/components/board/) with the name `myBoard`, type `board`, and model `pi`.
-Click **Create Component**.
+Add your [board](https://docs.viam.com/components/board/) with type `board` and model `pi`.
+Name your board `myBoard` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](/tutorials/claw-game/app-component-myboard.png)
 
@@ -175,7 +176,7 @@ You can name your board whatever you want as long as you use the same name to re
 We named it `myBoard` for simplicity.
 This is the only component in the main robot.
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -196,7 +197,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 }
 ```
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -210,10 +211,11 @@ Use the parts drop-down menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click the **Components** subtab.
+Click the **Create component** button in the lower-left corner.
 
-Add your [arm](/components/arm/) with the name `myArm`, type `arm`, and model `xArm6`.
-Click **Create Component**.
+Add your [arm](/components/arm/) with type `arm`, and model `xArm6`.
+Name it `myArm` and click **Create**.
 
    ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
 
@@ -222,7 +224,7 @@ Our arm's address was `10.1.1.26`, but you should use the IP address for your ar
 
 For more information on xArm6 configuration, see [Configure an xArm6 Arm](/components/arm/xarm6/).
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -274,8 +276,9 @@ Click **Save config** in the bottom left corner of the screen.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Add your [gripper](/components/gripper/) with the name `gripper`, type `gripper`, and model `fake`.
-Click **Create Component**.
+Click **Create component** and add your [gripper](/components/gripper/).
+Choose type `gripper` and model `fake`.
+Name it `gripper` and click **Create**.
 
 ![Create component panel, with the name attribute filled as gripper, type attribute filled as gripper and model attribute filled as fake. In the Frame section, there is a myArm parent in the frame.](/tutorials/claw-game/app-gripper.png)
 
@@ -285,7 +288,7 @@ You will only use this as a placeholder for the size of the gripper to use with 
 Measure the claw's height and width, and enter these values for the `fake` model.
 Ours was 120mm for the width and 180mm for the height.
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
