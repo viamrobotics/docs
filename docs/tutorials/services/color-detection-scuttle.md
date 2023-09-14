@@ -48,20 +48,15 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
+To create a [color detector vision service](/services/vision/detection/):
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-To create a [color detector vision service](/services/vision/detection/):
-
-1. Select `vision` as the **Type**.
-2. Enter `my_color_detector` as the **Name**.
-3. Select **Color Detector** as the **Model**.
-4. Click **Create Service**.
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `Color Detector` model.
+Enter `my_color_detector` as the name for your service and click **Create**.
 
 In your vision service's panel, set the following **Attributes**:
 

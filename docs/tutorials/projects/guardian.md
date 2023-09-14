@@ -260,59 +260,66 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 {{% tab name="Builder UI" %}}
 
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click the **Services** subtab.
 
 1. **Add an ML model service.**
 
-   The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
-   Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.
-   Then click **Create Service**.
+  The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
 
-   In the new ML Model panel, select **Path to Existing Model On Robot** for the **Deployment**.
+  Click **Create service** in the lower-left corner of the page.
+  Select type `ML Model`, then select model `TFLite CPU`.
+  Enter `mlmodel` as the name for your ML model service, then click **Create**.
 
-   Then specify the absolute **Model Path** as `/home/pi/effdet0.tflite` and the **Label Path** as `/home/pi/labels.txt`.
+  In the new ML Model panel, select **Path to existing model on robot** for the **Deployment**.
+
+  Then specify the absolute **Model path** as `/home/pi/effdet0.tflite` and the **Label path** as `/home/pi/labels.txt`.
 
 2. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
-   Create an vision service with the name `detector`, the type `vision` and the model `mlmodel`.
-   Then click **Create Service**.
+  Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
 
-   In the new detector panel, select the `mlmodel` you configured in the previous step.
+  Click **Create service** in the lower-left corner of the page.
+  Select type `Vision`, then select model `ML Model`.
+  Enter `detector` as the name, then click **Create**.
 
-   Click **Save config** in the bottom left corner of the screen.
+  In the new detector panel, select the `mlmodel` you configured in the previous step.
+
+  Click **Save config** in the bottom left corner of the screen.
 
 3. **Add a `transform` camera.**
 
-   To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+  To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
-   Click on the **Components** subtab and navigate to the **Create component** menu.
-   Create a [transform camera](/components/camera/transform/) with the name `transform_cam`, the type `camera` and the model `transform`.
+  Navigate to the **Components** subtab of the **Config** tab.
+  Click **Create component** in the lower-left corner of the page.
 
-   Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+  Select `camera` for the type, then select `transform` for the model.
+  Enter `transform_cam` as the name for your [transform camera](/components/camera/transform/), then click **Create**.
 
-   ```json
-   {
-   "source": "cam",
-   "pipeline": [
-       {
-       "type": "detections",
-       "attributes": {
-           "detector_name": "detector",
-           "confidence_threshold": 0.6
-       }
-       }
-   ]
-   }
-   ```
+  Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
-   Click **Save config** in the bottom left corner of the screen.
+  ```json
+  {
+  "source": "cam",
+  "pipeline": [
+      {
+      "type": "detections",
+      "attributes": {
+          "detector_name": "detector",
+          "confidence_threshold": 0.6
+      }
+      }
+  ]
+  }
+  ```
+
+  Click **Save config** in the bottom left corner of the screen.
 
 {{% /tab %}}
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
+Next, on the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {

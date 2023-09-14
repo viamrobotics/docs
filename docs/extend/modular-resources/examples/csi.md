@@ -123,6 +123,8 @@ Next, add the following JSON object to your components array to configure a `csi
 {{% /tab %}}
 {{< /tabs >}}
 
+For more information, see [installing local modules](/extend/modular-resources/configure/#local-modules).
+
 Edit and fill in the attributes to configure your component.
 
 The following attributes are available for the `viam:camera:csi` model:
@@ -138,3 +140,5 @@ The following attributes are available for the `viam:camera:csi` model:
 Then, save the config.
 
 Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
+
+For more information, see [installing local modules](/extend/modular-resources/configure/#local-modules).
