@@ -482,7 +482,7 @@ success = await motion.move_on_globe(component_name=my_base_resource_name, desti
 - `linear_meters_per_sec` [(float64)](https://pkg.go.dev/builtin#float64): The linear velocity in meters per second to target when moving the component. <ul><li> Default: `0.3` </li></ul>
 - `angular_deg_per_sec` [(float64)](https://pkg.go.dev/builtin#float64): The [angular velocity](https://en.wikipedia.org/wiki/Angular_velocity) in degrees per second to target when turning the component. <ul><li> Default: `60.0` </li></ul>
 - `motionConfig` [(*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
-  - `VisionSvc` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk@v0.8.1/resource#Name): The name you configured for each vision service you want to use while moving this resource.
+  - `VisionSvc` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The name you configured for each vision service you want to use while moving this resource.
   - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the robot.
   - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
   - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan.
