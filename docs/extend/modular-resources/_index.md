@@ -1,5 +1,5 @@
 ---
-title: "Integrate Modular Resources into your Robot"
+title: "Extend Viam with Modular Resources"
 linkTitle: "Modular Resources"
 weight: 10
 type: "docs"
@@ -21,33 +21,34 @@ For example, you can:
 
 - **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the generic API.
 
-These custom implementations are called {{< glossary_tooltip term_id="module" text="modular resources" >}}, and are made available for use on a robot through [modules](/extend/modular-resources/key-concepts/#modules).
-A module can provide one or more modular resources, and can be added to your robot from the Viam Registry.
+These custom implementations are called *modular resources*, and are made available for use on a robot through {{< glossary_tooltip term_id="module" text="modules" >}}.
+A module can provide one or more modular resources, and can be added to your robot from the Viam registry.
 
 ## The Viam Registry
 
-The [Viam Registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
-You can add a module from the Viam Registry directly from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
+The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
+You can add a module from the Viam registry directly from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
 
-The code behind any modular resource can be packaged as a [module](/extend/modular-resources/key-concepts/#modules) and uploaded to the Viam Registry.
+The code behind any modular resource can be packaged as a {{< glossary_tooltip term_id="module" text="module" >}} and uploaded to the Viam registry.
 Once the module has been uploaded to the Registry, you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
 
 ### Uploading to Viam Registry
 
-After you finish programming your module, you can [upload your module to the Viam Registry](/extend/modular-resources/upload/) to make it available for deployment to robots.
-As part of the upload process, you decide whether your module is *public* (visible to all users) or *private* (visible only to other members of your [organization](/manage/fleet/organizations/)).
+After you finish programming your module, you can [upload your module to the Viam registry](/extend/modular-resources/upload/) to make it available for deployment to robots.
+As part of the upload process, you decide whether your module is *private* (visible only to other members of your [organization](/manage/fleet/organizations/)), or *public* (visible to all Viam users).
 
-You can see details about each module in [the Viam Registry](https://app.viam.com/registry) on its module details page.
+You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its module details page.
 See the [Odrive module](https://app.viam.com/module/viam/odrive) for an example.
 Public modules also display the number of times a module has been deployed to a robot.
 
-When you make changes to your module, you can [uploaded the newer version](/extend/modular-resources/upload/#update-an-existing-module) with a new version number, and the Viam Registry will track each version that you upload.
+When you make changes to your module, you can [uploaded the newer version](/extend/modular-resources/upload/#update-an-existing-module) with a new version number, and the Viam registry will track each version that you upload.
 
 ### Deploying to a Robot
 
-Once you [upload a module to the Viam Registry](/extend/modular-resources/upload/), you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
+Once you [upload a module to the Viam registry](/extend/modular-resources/upload/), you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
 Navigate to your robot's **Configuration** tab, click the **+ Create component** button, then start typing the name of the module you would like to deploy.
-If you uploaded your module and set its visibility to private, the module will only appear for users within your [organization](/manage/fleet/organizations/).
+
+By default, a newly-created module is *private*, meaning that the module will only appear for users within your [organization](/manage/fleet/organizations/), but you can later [update your module](/extend/modular-resources/upload/#update-an-existing-module) to set it to be *public*, which makes your module available to all Viam users.
 
 When you deploy a module to your robot, you can [choose how to update that module](/extend/modular-resources/configure/#configure-version-update-management-for-a-registry-module) when new versions become available.
 
@@ -59,9 +60,9 @@ To get started working with modular resources:
 
 - [Create your own module](/extend/modular-resources/create/) implementing at least one modular resource.
 
-- [Upload your module to the Viam Registry](/extend/modular-resources/upload/) to share with the community, or just to your own organization.
+- [Upload your module to the Viam registry](/extend/modular-resources/upload/) to share with the community, or just to your own organization.
 
-- Browse [the Viam Registry](https://app.viam.com/registry) to see modules uploaded by other users.
+- Browse the [Viam registry](https://app.viam.com/registry) to see modules uploaded by other users.
 
 - [Deploy a module](/extend/modular-resources/configure/) to your robot from the Registry.
 

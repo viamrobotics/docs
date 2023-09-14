@@ -214,6 +214,8 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 They both use the same color.
 
 **Note/Important/Stability Notice**: These call attention to something important.
+ When creating alerts about important messages, set the title attribute as `title="Important"`.
+ If you want to include a more detailed title or message, use `title="Important: $message"` to provide additional context.
 
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 

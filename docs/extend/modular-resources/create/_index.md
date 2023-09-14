@@ -8,13 +8,14 @@ description: "Use the Viam module system to implement modular resources that can
 no_list: true
 ---
 
-You can extend Viam by creating a custom [module](/extend/modular-resources/key-concepts/#modules) that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)), and can be added to any robot running on Viam.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any robot running on Viam.
 
-A common use case for modular resources is to create a new model that implements an existing Viam API.
+A common use case for modular resources is to create a new [model](/extend/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
-Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/extend/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry), to share it with other Viam users or just to other users in your organization.
+You can also configure [automatic uploads of new versions of your module](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
 
-Alternatively, you can add your module locally to your robot without uploading to the Viam Registry.
+You can also add your module to your robot as a [local module](/extend/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
 
 ## Create a custom module
 
@@ -467,7 +468,7 @@ Otherwise, the class won’t instantiate.
 
 ### Compile the module into an executable
 
-To [add a module](/extend/modular-resources/configure/#configure-your-module) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+To [add a module](/extend/modular-resources/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
@@ -533,6 +534,6 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Next steps
 
-Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam Registry, to share it with other Viam users or just to other users in your organization.
+Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam registry, to share it with other Viam users or just to other users in your organization.
 
-Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your robot without uploading to the Viam Registry.
+Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your robot without uploading to the Viam registry.

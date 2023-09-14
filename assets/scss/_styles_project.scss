@@ -1167,6 +1167,15 @@ ul.sectionlist > li:hover {
   border: 1px solid black;
 }
 
+#tutorial-filters > .filter:hover {
+  background-color: #e7e5e4;
+  cursor: pointer;
+}
+
+#tutorial-filters > .filter[aria-expanded="true"]{
+  background-color: #e7e5e4;
+}
+
 .ais-Hits-item {
   display: flex;
 }
@@ -1296,6 +1305,12 @@ a.ais-Pagination-link:hover {
 
 .algolia-autocomplete {
   flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+.algolia-autocomplete .ds-dropdown-menu {
+  min-width: 90% !important;
+}
 }
 
 .ds-dataset-1, .ds-dataset-2, .ds-dataset-3 {

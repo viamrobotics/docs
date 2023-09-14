@@ -66,28 +66,31 @@ Follow the instructions until the Viam app shows that your robot has successfull
 {{% tab name="Builder UI" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab.
 
 1. **Add the board.**
 
-    Enter `local` for the name for your [board component](/components/board/), select the type `board`, and select the `pi` model.
-    Then click **Create component**.
+    Click **Create component**.
+    Select the type `board`, and select the `pi` model.
+    Enter `local` as the name of your [board component](/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
-    Enter `leftm` for the name for your left [motor component](/components/base/), select the type `motor`, and select the `gpio` model.
-    Then click **Create component** and fill in the appropriate properties for your motor.
+    Click **Create component**.
+    Select the type `motor`, and select the `gpio` model.
+    Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
     Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
-    Enter `scuttlebase` for the name for your [base component](/components/base/), select the type `base`, and select the `wheeled` model.
-    Then click **Create component** and select the motors.
+    Click **Create component**.
+    Select the type `base`, and select the `wheeled` model.
+    Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
     Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
-    Click **Create Component** to add the camera.
+    Click **Create component** to add the camera.
     If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a drop-down populated with camera paths that have been identified on your machine.
     Select the path to the camera you want to use.
 
@@ -221,44 +224,47 @@ Now, let's configure the color detector so your rover can detect the line:
 {{% tab name="Builder UI" %}}
 
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click on the **Services** subtab.
 
 1. **Add a vision service.**
 
-   Next, add a vision service [detector](/services/vision/detection/).
-   Create an vision service with the name `green_detector`, the type `vision` and the model `color_detector`.
-   Then click **Create Service**.
+  Next, add a vision service [detector](/services/vision/detection/):
 
-   In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-   Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
-   We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+  Click the **Create service** button in the lower-left corner of the **Services** subtab.
+  Select type `Vision` and model `Color Detector`.
+  Enter `green_detector` for the name, then click **Create**.
+
+  In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
+  Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
+  We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 2. Click **Save config** in the bottom left corner of the screen.
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-   If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
-   This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
+  If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
+  This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-   Click on the **Components** subtab and navigate to the **Create component** menu.
-   Create a [transform camera](/components/camera/transform/) with the name `transform_cam`, the type `camera` and the model `transform`.
+  Click on the **Components** subtab and click **Create component**.
+  Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+  Name it `transform_cam` and click **Create**.
 
-   Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+  Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
-   ```json
-   {
-     "source": "my_camera",
-     "pipeline": [
-        {
-          "type": "detections",
-          "attributes": {
-              "detector_name": "green_detector",
-              "confidence_threshold": 0.6
-          }
+  ```json
+  {
+    "source": "my_camera",
+    "pipeline": [
+      {
+        "type": "detections",
+        "attributes": {
+            "detector_name": "green_detector",
+            "confidence_threshold": 0.6
         }
-      ]
-   }
-   ```
+      }
+    ]
+  }
+  ```
 
 4. Click **Save config** in the bottom left corner of the screen.
 

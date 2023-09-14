@@ -99,14 +99,15 @@ If you want to train your own, you can [train a model](/manage/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
 
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click the **Services** subtab.
 
 1. **Configure the ML model service**
 
-    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
-    Click **Create service**.
+    Add an [mlmodel](/services/ml/) service:
 
-    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
+    Click **Create service** in the lower-left corner of the **Services** subtab.
+    Select type `mlmodel`, then select model `tflite_cpu`.
+    Enter `people` as the name, then click **Create**.
 
     In the new ML Model service panel, configure your service.
 
@@ -120,8 +121,6 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
     Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
     Click **Create service**.
 
-    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
-
     In the new vision service panel, configure your service.
 
     ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
@@ -134,12 +133,13 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
-Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera`, and the model `transform`.
+Click on the **Components** subtab and click **Create component** in the lower-left corner.
+Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 
-In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
+In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
     {
@@ -156,7 +156,7 @@ In the new transform camera panel, replace the attributes JSON object with the f
     }
  ```
 
-Click **Save config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
 

@@ -30,19 +30,10 @@ It is slower than other segmenters and can take up to 30 seconds to segment a sc
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-To create a [vision service](/services/vision/):
-
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **Radius Clustering Segmenter** as the **Model**.
-4. Click **Create Service**.
-
-![Create vision service for obstacles_pointcloud](/services/vision/obstacles_pointcloud.png)
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `Radius Clustering Segmenter` model.
+Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 
@@ -139,19 +130,10 @@ The label and the pixels associated with the 2D detections become the label and 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-To create a [vision service](/services/vision/):
-
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **Detector to 3D Segmenter** as the **Model**.
-4. Click **Create Service**.
-
-![Create vision service for detector_3d_segmenter](/services/vision/detector_3d_segmenter.png)
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `Detector to 3D Segmenter` model.
+Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 

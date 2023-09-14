@@ -55,20 +55,17 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/services/vision/detection/):
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
+1. Click the **Services** subtab and click **Create service** in the lower-left corner.
 
-Scroll to the **Create Service** section.
-To create a [vision service](/services/vision/):
+1. Select the `Vision` type, then select the `ML Model` model.
 
-1. Select `Vision` as the **Type**.
-1. Enter `my_color_detector` as the **Name**.
-1. Select **Color Detector** as the **Model**.
-1. Click **Create Service**.
+1. Enter `my_color_detector` as the name for your detector and click **Create**.
+
 1. In the resulting vision service panel, click the color picker box to set the color to be detected.
    For this tutorial, set the color to `rgb(122, 79, 92)` or use hex code `#7a4f5c`.
 
