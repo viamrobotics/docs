@@ -59,14 +59,13 @@ Go to this robot's **Setup** tab.
 ### Install and start `viam-server` on your computer
 
 Before you proceed with configuring and controlling your robot, install `viam-server`.
-Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to install `viam-server` on your computer as a system service.
-Find more information on running `viam-server` in the [installation guide](/installation/manage/).
+Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/installation/manage/) on your computer as a system service.
 
 ### Configure your mock robot
 
 [Configure your mock robot](/manage/configuration/) to represent a physical smart machine with robotic board, arm, and motor hardware.
 
-If you were using actual hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
+If you were using physical hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware:
 
 1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
