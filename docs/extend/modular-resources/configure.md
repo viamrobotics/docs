@@ -249,7 +249,7 @@ You can also add the module directly, without first adding its modular component
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/extend/modular-resources/create/#compile-the-module-into-an-executable).
-   This path must be the absolute path on your robot's filesystem to the executable.
+   This path must be the absolute path to the executable on your robot's filesystem.
 1. Then, click the **Add module** button, and click **Save config**.
 
    {{<imgproc src="extend/modular-resources/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
