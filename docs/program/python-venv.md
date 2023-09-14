@@ -1,6 +1,6 @@
 ---
 title: "Prepare your Python Virtual Environment"
-linkTitle: "Viam with your Python Virtualenv"
+linkTitle: "Prepare your Python Virtualenv for Viam"
 weight: 50
 type: "docs"
 description: "Prepare your Python Virtual Environment to program robots with the Python SDK."
