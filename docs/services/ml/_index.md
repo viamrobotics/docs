@@ -18,18 +18,10 @@ The ML Model service allows you to deploy machine learning models to your robots
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the ML model service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
-
-1. Select `mlmodel` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select `tflite_cpu` as the **Model**.
-4. Click **Create Service**.
-
-![Create a machine learning models service](/services/ml-models-service.png)
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `ML Model` type, then select the `TFLite CPU` model.
+Enter a name for your service and click **Create**.
 
 You can choose to configure your service with an existing model on the robot or deploy a model onto your robot:
 
