@@ -3,7 +3,7 @@ title: "Prepare your Python Virtual Environment"
 linkTitle: "Prepare your Python Virtualenv for Viam"
 weight: 50
 type: "docs"
-description: "Prepare your Python Virtual Environment to program robots with the Python SDK."
+description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
 images: ["/services/icons/sdk.svg"]
 tags: ["client", "sdk", "application", "sdk", "fleet", "program", "python", "venv"]
 ---
