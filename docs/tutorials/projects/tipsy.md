@@ -377,7 +377,7 @@ Click on the **Services** subtab.
 1. **Configure the ML model service**
 
     Add an [mlmodel](/services/ml/) service:
-    
+
     Click **Create service** in the lower-left corner of the page.
     Select type `ML Model` and model `TFLite CPU`.
     Enter `people` for the name of your service, then click **Create**.
@@ -394,7 +394,7 @@ Click on the **Services** subtab.
 1. **Configure an ML model detector**
 
     Add a [vision service](/services/vision/) detector:
-    
+
     Click **Create service** in the lower-left corner of the page.
     Select type `Vision`, then select model `mlmodel`.
     Enter `myPeopleDetector` as the name, then click **Create**.
