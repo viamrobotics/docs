@@ -55,7 +55,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
        <td><code>visibility</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>Whether the module is visible to all Viam users (<code>public</code>), or accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+       <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
      </tr>
      <tr>
        <td><code>url</code></td>
@@ -102,7 +102,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
    ```
 
    {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+   If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
    In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
    If the two namespaces do not match, the command will return an error.
    {{% /alert %}}
