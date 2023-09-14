@@ -119,7 +119,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
 1. Package your custom module to get it ready to upload to the Viam registry.
-   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
+   Your packaged module must use the `.tar.gz` or `.tgz` extension.
    Use the command below specific for the language of your module:
 
    - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
@@ -155,7 +155,8 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
       - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
       - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
       - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
-   - `path` - provide the path to the compressed archive, in `tar.gz` or `tar.xz` format, that contains your custom module code.
+   - `path` - provide the path to the compressed archive that contains your custom module code.
+      Your archive must use the `.tar.gz` or `.tgz` extension.
 
    {{% alert title="Important" color="note" %}}
    The `viam module upload` command only supports one `platform` argument at a time.
@@ -203,7 +204,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
 1. Package your custom module to get it ready to upload to the Viam registry.
-   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
+   Your packaged module must use the `.tar.gz` or `.tgz` extension.
    Use the command below specific for the language of your module:
 
    - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
