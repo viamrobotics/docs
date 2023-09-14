@@ -1,5 +1,5 @@
 ---
-title: "Integrate Modular Resources into your Robot"
+title: "Extend Viam with Modular Resources"
 linkTitle: "Modular Resources"
 weight: 10
 type: "docs"
