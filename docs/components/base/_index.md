@@ -225,19 +225,27 @@ my_base = Base.from_robot(robot=robot, name="my_base")
 
 # Make your wheeled base move forward. Set linear power to 75%.
 print("move forward")
-await my_base.set_power(linear=Vector3(x=0,y=-.75,z=0), angular=Vector3(x=0,y=0,z=0))
+await my_base.set_power(
+    linear=Vector3(x=0, y=-.75, z=0),
+    angular=Vector3(x=0, y=0, z=0))
 
 # Make your wheeled base move backward. Set linear power to -100%.
 print("move backward")
-await my_base.set_power(linear=Vector3(x=0,y=-1.0,z=0), angular=Vector3(x=0,y=0,z=0))
+await my_base.set_power(
+    linear=Vector3(x=0, y=-1.0, z=0),
+    angular=Vector3(x=0, y=0, z=0))
 
 # Make your wheeled base spin left. Set angular power to 100%.
 print("spin left")
-await my_base.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=1))
+await my_base.set_power(
+    linear=Vector3(x=0, y=0, z=0),
+    angular=Vector3(x=0, y=0, z=1))
 
 # Make your wheeled base spin right. Set angular power to -75%.
 print("spin right")
-await my_base.set_power(linear=Vector3(x=0,y=0,z=0), angular=Vector3(x=0,y=0,z=-.75))
+await my_base.set_power(
+    linear=Vector3(x=0, y=0, z=0),
+    angular=Vector3(x=0, y=0, z=-.75))
 ```
 
 {{% /tab %}}
@@ -309,8 +317,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Set the linear velocity to 50 mm/sec and the angular velocity to 15 degree/sec.
-await my_base.set_velocity(linear=Vector3(x=0,y=50,z=0), angular=Vector3(x=0,y=0,z=15))
+# Set the linear velocity to 50 mm/sec and the angular velocity to
+# 15 degree/sec.
+await my_base.set_velocity(
+    linear=Vector3(x=0, y=50, z=0), angular=Vector3(x=0, y=0, z=15))
 ```
 
 {{% /tab %}}
@@ -469,10 +479,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 my_base = Base.from_robot(robot=robot, name="my_base")
 
-# Get the width and turning radius of the base 
+# Get the width and turning radius of the base
 properties = await my_base.get_properties()
 
-# Get the width 
+# Get the width
 print(f"Width of base in meters: {properties.width}")
 
 # Get the turning radius
@@ -497,7 +507,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
 
-// Get the width and turning radius of the base 
+// Get the width and turning radius of the base
 properties, err := myBase.Properties(context.Background(), nil)
 
 // Get the width

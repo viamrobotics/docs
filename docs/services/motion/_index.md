@@ -125,7 +125,12 @@ my_frame = "my_gripper_offset"
 goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
 
 # Move the gripper
-moved = await motion.move(component_name=gripper_name, destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose), world_state=worldState, constraints={}, extra={})
+moved = await motion.move(component_name=gripper_name,
+                          destination=PoseInFrame(reference_frame="myFrame",
+                                                  pose=goal_pose),
+                          world_state=worldState,
+                          constraints={},
+                          extra={})
 ```
 
 {{% /tab %}}
@@ -240,7 +245,8 @@ robot = await connect()
 
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("my_gripper")
-gripperPoseInWorld = await robot.get_pose(component_name=gripperName, destination_frame="world")
+gripperPoseInWorld = await robot.get_pose(component_name=gripperName,
+                                          destination_frame="world")
 ```
 
 For a more complicated example, take the same scenario and get the pose of the same gripper with respect to an object situated at a location (100, 200, 0) relative to the "world" frame:
@@ -256,7 +262,8 @@ robot = await connect()
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
-objectTransform = Transform(reference_frame="object", pose_in_observer_frame=objectPoseInFrame)
+objectTransform = Transform(reference_frame="object",
+                            pose_in_observer_frame=objectPoseInFrame)
 gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInObjectFrame = await motion.get_pose(
   component_name=gripperName,
@@ -357,11 +364,15 @@ motion = MotionClient.from_robot(robot=robot, name="builtin")
 my_base_resource_name = Base.get_resource_name("my_base")
 my_slam_resource_name = SLAMClient.get_resource_name("my_slam_service")
 
-# Define a destination pose with respect to the origin of the map from the SLAM service "my_slam_service"
+# Define a destination pose with respect to the origin of the map from the SLAM
+# service "my_slam_service"
 my_pose = Pose(y=10)
 
-# Move the base component to the destination pose of Y=10, a location of (0, 10, 0) in respect to the origin of the map
-success = await motion.move_on_map(component_name=my_base_resource_name, destination=my_pose, slam_service_name=my_slam_resource_name)
+# Move the base component to the destination pose of Y=10, a location of
+# (0, 10, 0) in respect to the origin of the map
+success = await motion.move_on_map(component_name=my_base_resource_name,
+                                   destination=my_pose,
+                                   slam_service_name=my_slam_resource_name)
 ```
 
 {{% /tab %}}
@@ -460,12 +471,17 @@ motion = MotionClient.from_robot(robot=robot, name="builtin")
 
 # Get the ResourceNames of the base and movement sensor
 my_base_resource_name = Base.get_resource_name("my_base")
-mvmnt_sensor_resource_name = MovementSensor.get_resource_name("my_movement_sensor")
+mvmnt_sensor_resource_name = MovementSensor.get_resource_name(
+    "my_movement_sensor")
 #  Define a destination GeoPoint at the GPS coordinates [0, 0]
 my_destination = movement_sensor.GeoPoint(latitude=0, longitude=0)
 
-# Move the base component to the designated geographic location, as reported by the movement sensor
-success = await motion.move_on_globe(component_name=my_base_resource_name, destination=my_destination, movement_sensor_name=mvmnt_sensor_resource_name)
+# Move the base component to the designated geographic location, as reported by
+# the movement sensor
+success = await motion.move_on_globe(
+    component_name=my_base_resource_name,
+    destination=my_destination,
+    movement_sensor_name=mvmnt_sensor_resource_name)
 ```
 
 {{% /tab %}}

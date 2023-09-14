@@ -188,6 +188,7 @@ from viam.components.camera import Camera
 from viam.components.servo import Servo
 from viam.services.vision import VisionClient
 
+
 async def connect():
     creds = Credentials(
         type="robot-location-secret",
@@ -198,13 +199,15 @@ async def connect():
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
 
+
 async def main():
     # Other code
+    print("Starting main")
 
 if __name__ == "__main__":
-  print("Starting up... ")
-  asyncio.run(main())
-  print("Done.")
+    print("Starting up... ")
+    asyncio.run(main())
+    print("Done.")
 ```
 
 You will update the `main()` function later.
@@ -219,25 +222,26 @@ The following `leftOrRight` function checks where in the picture the largest det
 Add the `leftOrRight` function below your `connect` function:
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get largest detection box and see if it's center is in the left, center, or right third
+# Get largest detection box and see if it's center is in the left, center, or
+# right third
 def leftOrRight(detections, midpoint):
-   largest_area = 0
-   largest = Detection()
-   if not detections:
-      print("nothing detected :(")
-      return -1
-   for d in detections:
-      a = (d.x_max - d.x_min) * (d.y_max-d.y_min)
-      if a > largest_area:
-         a = largest_area
-         largest = d
-   centerX = largest.x_min + largest.x_max/2
-   if centerX < midpoint-midpoint/6:
-      return 0 # on the left
-   if centerX > midpoint+midpoint/6:
-      return 2 # on the right
-   else:
-      return 1  # basically centered
+    largest_area = 0
+    largest = Detection()
+    if not detections:
+        print("nothing detected :(")
+        return -1
+    for d in detections:
+        a = (d.x_max - d.x_min) * (d.y_max-d.y_min)
+        if a > largest_area:
+            a = largest_area
+            largest = d
+    centerX = largest.x_min + largest.x_max/2
+    if centerX < midpoint-midpoint/6:
+        return 0  # on the left
+    if centerX > midpoint+midpoint/6:
+        return 2  # on the right
+    else:
+        return 1  # basically centered
 ```
 
 ### Add the main function
@@ -253,38 +257,38 @@ Replace the `main` function with the following code:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
-   spinNum = 10         # when turning, spin the motor this much
-   straightNum = 300    # when going straight, spin motor this much
-   numCycles = 200      # run the loop X times
-   vel = 500            # go this fast when moving motor
-​
-   # Connect to robot client and set up components
-   robot = await connect()
-   base = Base.from_robot(robot, "base")
-   camera = Camera.from_robot(robot, "<camera-name>")
+    spinNum = 10         # when turning, spin the motor this much
+    straightNum = 300    # when going straight, spin motor this much
+    numCycles = 200      # run the loop X times
+    vel = 500            # go this fast when moving motor
 
-   # Grab the vision service for the detector
-   my_detector = VisionClient.from_robot(robot, "my_color_detector")
+    # Connect to robot client and set up components
+    robot = await connect()
+    base = Base.from_robot(robot, "base")
+    camera = Camera.from_robot(robot, "<camera-name>")
 
-   # Main loop. Detect the ball, determine if it's on the left or right, and head that way.
-   # Repeat this for numCycles
-   for i in range(numCycles):
-      detections = await my_detector.get_detections_from_camera(camera)
-​
-      answer = leftOrRight(detections, frame.size[0]/2)
-      if answer == 0:
-         print("left")
-         await base.spin(spinNum, vel)  # CCW is positive
-         await base.move_straight(straightNum, vel)
-      if answer == 1:
-         print("center")
-         await base.move_straight(straightNum, vel)
-      if answer == 2:
-         print("right")
-         await base.spin(-spinNum, vel)
-      # If nothing is detected, nothing moves
+    # Grab the vision service for the detector
+    my_detector = VisionClient.from_robot(robot, "my_color_detector")
 
-   await robot.close()​
+    # Main loop. Detect the ball, determine if it's on the left or right, and
+    # head that way. Repeat this for numCycles
+    for i in range(numCycles):
+        detections = await my_detector.get_detections_from_camera(camera)
+
+        answer = leftOrRight(detections, frame.size[0]/2)
+        if answer == 0:
+            print("left")
+            await base.spin(spinNum, vel)  # CCW is positive
+            await base.move_straight(straightNum, vel)
+        if answer == 1:
+            print("center")
+            await base.move_straight(straightNum, vel)
+        if answer == 2:
+            print("right")
+            await base.spin(-spinNum, vel)
+        # If nothing is detected, nothing moves
+
+    await robot.close()
 ```
 
 For `<camera-name>`, insert the name of your configured physical camera.
@@ -315,81 +319,86 @@ You could also write some code with a Viam SDK to [make your rover move in a squ
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-​
+
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionServiceClient
 from viam.services.vision import Detection
 from viam.components.camera import Camera
 from viam.components.base import Base
-​
-​
+
+
 async def connect():
-   creds = Credentials(
+    creds = Credentials(
         type="robot-location-secret",
-        payload="[PLEASE ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB]")
-   opts = RobotClient.Options(
+        payload="[PLEASE ADD YOUR SECRET HERE. "
+                "YOU CAN FIND THIS ON THE CODE SAMPLE TAB]")
+    opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-   return await RobotClient.at_address("[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CODE SAMPLE TAB]", opts)
-​
-# Get largest detection box and see if it's center is in the left, center, or right third
+    return await RobotClient.at_address("""[ADD YOUR ROBOT ADDRESS HERE. YOU
+         CAN FIND THIS ON THE CODE SAMPLE TAB]""", opts)
+
+
+# Get largest detection box and see if it's center is in the left, center, or
+# right third
 def leftOrRight(detections, midpoint):
-   largest_area = 0
-   largest = Detection()
-   if not detections:
-      print("nothing detected :(")
-      return -1
-   for d in detections:
-      a = (d.x_max - d.x_min) * (d.y_max-d.y_min)
-      if a > largest_area:
-         a = largest_area
-         largest = d
-   centerX = largest.x_min + largest.x_max/2
-   if centerX < midpoint-midpoint/6:
-      return 0 # on the left
-   if centerX > midpoint+midpoint/6:
-      return 2 # on the right
-   else:
-      return 1  # basically centered
-​
+    largest_area = 0
+    largest = Detection()
+    if not detections:
+        print("nothing detected :(")
+        return -1
+    for d in detections:
+        a = (d.x_max - d.x_min) * (d.y_max-d.y_min)
+        if a > largest_area:
+            a = largest_area
+            largest = d
+    centerX = largest.x_min + largest.x_max/2
+    if centerX < midpoint-midpoint/6:
+        return 0  # on the left
+    if centerX > midpoint+midpoint/6:
+        return 2  # on the right
+    else:
+        return 1  # basically centered
+
+
 async def main():
-   spinNum = 10         # when turning, spin the motor this much
-   straightNum = 300    # when going straight, spin motor this much
-   numCycles = 200      # run the loop X times
-   vel = 500            # go this fast when moving motor
-​
-   # Connect to robot client and set up components
-   robot = await connect()
-   base = Base.from_robot(robot, "base")
-   camera = Camera.from_robot(robot, "<camera-name>")
+    spinNum = 10         # when turning, spin the motor this much
+    straightNum = 300    # when going straight, spin motor this much
+    numCycles = 200      # run the loop X times
+    vel = 500            # go this fast when moving motor
 
-   # Grab the vision service for the detector
-   my_detector = VisionClient.from_robot(robot, "my_color_detector")
+    # Connect to robot client and set up components
+    robot = await connect()
+    base = Base.from_robot(robot, "base")
+    camera = Camera.from_robot(robot, "<camera-name>")
 
-   # Main loop. Detect the ball, determine if it's on the left or right, and head that way.
-   # Repeat this for numCycles
-   for i in range(numCycles):
-      detections = await my_detector.get_detections_from_camera(camera)
-​
-      answer = leftOrRight(detections, frame.size[0]/2)
-      if answer == 0:
-         print("left")
-         await base.spin(spinNum, vel)     # CCW is positive
-         await base.move_straight(straightNum, vel)
-      if answer == 1:
-         print("center")
-         await base.move_straight(straightNum, vel)
-      if answer == 2:
-         print("right")
-         await base.spin(-spinNum, vel)
-      # If nothing is detected, nothing moves
+    # Grab the vision service for the detector
+    my_detector = VisionClient.from_robot(robot, "my_color_detector")
 
-   await robot.close()
-​
+    # Main loop. Detect the ball, determine if it's on the left or right, and
+    # head that way. Repeat this for numCycles
+    for i in range(numCycles):
+        detections = await my_detector.get_detections_from_camera(camera)
+
+        answer = leftOrRight(detections, frame.size[0]/2)
+        if answer == 0:
+            print("left")
+            await base.spin(spinNum, vel)     # CCW is positive
+            await base.move_straight(straightNum, vel)
+        if answer == 1:
+            print("center")
+            await base.move_straight(straightNum, vel)
+        if answer == 2:
+            print("right")
+            await base.spin(-spinNum, vel)
+        # If nothing is detected, nothing moves
+
+    await robot.close()
+
 if __name__ == "__main__":
-  print("Starting up... ")
-  asyncio.run(main())
-  print("Done.")
+    print("Starting up... ")
+    asyncio.run(main())
+    print("Done.")
 ```

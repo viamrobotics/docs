@@ -740,9 +740,9 @@ Replace these values with your robot’s own location secret and address, which 
 ```python {class="line-numbers linkable-line-numbers"}
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
-#change this if you named your base differently in your robot configuration
+# change this if you named your base differently in your robot configuration
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
-#change this if you named your camera differently in your robot configuration
+# change this if you named your camera differently in your robot configuration
 camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
 pause_interval = os.getenv('PAUSE_INTERVAL') or 3
 ```
@@ -754,19 +754,20 @@ The first method, `obstacle_detect()`, gets readings from a sensor, and the seco
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def obstacle_detect(sensor):
-   reading = (await sensor.get_readings())["distance"]
-   return reading
+    reading = (await sensor.get_readings())["distance"]
+    return reading
+
 
 async def obstacle_detect_loop(sensor, sensor2, base):
-   while(True):
-       reading = await obstacle_detect(sensor)
-       reading2 = await obstacle_detect(sensor2)
-       if reading < 0.4 or reading2 <0.4:
-           # stop the base if moving straight
-           if base_state == "straight":
-               await base.stop()
-               print("obstacle in front")
-       await asyncio.sleep(.01)
+    while (True):
+        reading = await obstacle_detect(sensor)
+        reading2 = await obstacle_detect(sensor2)
+        if reading < 0.4 or reading2 < 0.4:
+            # stop the base if moving straight
+            if base_state == "straight":
+                await base.stop()
+                print("obstacle in front")
+        await asyncio.sleep(.01)
 ```
 
 Then, we define a person detection loop, where the robot is constantly looking for a person, and if it finds the person, it goes toward them as long as there are no obstacles in front.
@@ -776,35 +777,36 @@ Lines 12 and 13 are where it checks specifically for detections with the label `
 
 ```python {class="line-numbers linkable-line-numbers" data-line="12-13"}
 async def person_detect(detector, sensor, sensor2, base):
-   while(True):
-       # look for a person
-       found = False
-       global base_state
-       print("will detect")
-       detections = await detector.get_detections_from_camera(camera_name)
-       for d in detections:
-           if d.confidence > .7:
-               print(d.class_name)
-              #specify it is just the person we want to detect
-               if (d.class_name == "Person"):
-                   found = True
-       if (found):
-           print("I see a person")
-           # first manually call obstacle_detect - don't even start moving if someone in the way
-           distance = await obstacle_detect(sensor)
-           distance2 = await obstacle_detect(sensor2)
-           if (distance > .4 or distance2 > .4):
-               print("will move straight")
-               base_state = "straight"
-               await base.move_straight(distance=800, velocity=250)
-               base_state = "stopped"
-       else:
-           print("I will turn and look for a person")
-           base_state = "spinning"
-           await base.spin(45, 45)
-           base_state = "stopped"
+    while (True):
+        # look for a person
+        found = False
+        global base_state
+        print("will detect")
+        detections = await detector.get_detections_from_camera(camera_name)
+        for d in detections:
+            if d.confidence > .7:
+                print(d.class_name)
+                # specify it is just the person we want to detect
+                if (d.class_name == "Person"):
+                    found = True
+        if (found):
+            print("I see a person")
+            # first manually call obstacle_detect - don't even start moving if
+            # someone in the way
+            distance = await obstacle_detect(sensor)
+            distance2 = await obstacle_detect(sensor2)
+            if (distance > .4 or distance2 > .4):
+                print("will move straight")
+                base_state = "straight"
+                await base.move_straight(distance=800, velocity=250)
+                base_state = "stopped"
+        else:
+            print("I will turn and look for a person")
+            base_state = "spinning"
+            await base.spin(45, 45)
+            base_state = "stopped"
 
-       await asyncio.sleep(pause_interval)
+        await asyncio.sleep(pause_interval)
 ```
 
 Finally, the `main()` function initializes the base, the sensors, and the detector.
@@ -812,18 +814,24 @@ It also creates two background tasks running asynchronously, one looking for obs
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
-   robot = await connect()
-   base = Base.from_robot(robot, base_name)
-   sensor = Sensor.from_robot(robot, "ultrasonic")
-   sensor2 = Sensor.from_robot(robot, "ultrasonic2")
-   detector = VisionServiceClient.from_robot(robot, "myPeopleDetector")
+    robot = await connect()
+    base = Base.from_robot(robot, base_name)
+    sensor = Sensor.from_robot(robot, "ultrasonic")
+    sensor2 = Sensor.from_robot(robot, "ultrasonic2")
+    detector = VisionServiceClient.from_robot(robot, "myPeopleDetector")
 
-   # create a background task that looks for obstacles and stops the base if it's moving
-   obstacle_task = asyncio.create_task(obstacle_detect_loop(sensor, sensor2, base))
-   # create a background task that looks for a person and moves towards them, or turns and keeps looking
-   person_task = asyncio.create_task(person_detect(detector, sensor, sensor2, base))
-   results= await asyncio.gather(obstacle_task, person_task, return_exceptions=True)
-   print(results)
+    # create a background task that looks for obstacles and stops the base if
+    # it's moving
+    obstacle_task = asyncio.create_task(
+        obstacle_detect_loop(sensor, sensor2, base))
+    # create a background task that looks for a person and moves towards them,
+    # or turns and keeps looking
+    person_task = asyncio.create_task(
+        person_detect(detector, sensor, sensor2, base))
+    results = await asyncio.gather(obstacle_task,
+                                   person_task,
+                                   return_exceptions=True)
+    print(results)
 ```
 
 When you run the code, you should see results like this:

@@ -253,14 +253,15 @@ Now that your mock arm has been initialized, you can write some code to control 
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Gets a random position for each servo on the arm that is within the safe range of motion of the arm.
-# Returns a new array of safe joint positions.
+# Gets a random position for each servo on the arm that is within the safe
+# range of motion of the arm. Returns a new array of safe joint positions.
 def getRandoms():
     return [random.randint(-90, 90),
-    random.randint(-120, -45),
-    random.randint(-45, 45),
-    random.randint(-45, 45),
-    random.randint(-45, 45)]
+            random.randint(-120, -45),
+            random.randint(-45, 45),
+            random.randint(-45, 45),
+            random.randint(-45, 45)]
+
 
 # Moves the arm to a new random position every second
 async def randomMovement(arm: ArmClient):

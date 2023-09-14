@@ -54,10 +54,10 @@ For example, if the heartbeat window is 5 seconds, clients will each send a hear
 You can adjust the heartbeat window in the configuration of your robot by adding the following to your robot's Raw JSON configuration:
 
 ``` json
-  ... // components {...}, services {...}, 
+  ... // components {...}, services {...},
   "network": {
     "sessions": {
-      "heartbeat_window": "30s" // Changes heartbeat window to 30 seconds 
+      "heartbeat_window": "30s" // Changes heartbeat window to 30 seconds
     }
   },
   ...
@@ -88,7 +88,7 @@ If you want to disable it to keep any additional clients from authenticating to 
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def main():
-    opts = RobotClient.Options(disable_sessions=True, ...)
+    opts = RobotClient.Options(disable_sessions=True)
     await RobotClient.at_address("my-robot-address", opts)
     robot = await connect()
 ```

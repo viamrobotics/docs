@@ -495,6 +495,7 @@ from viam.components.base import Base
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -505,6 +506,7 @@ async def connect():
     )
     return await RobotClient.at_address('ADDRESS_FROM_VIAM_APP', opts)
 
+
 async def moveInSquare(base):
     for _ in range(4):
         # moves the rover forward 500mm at 500mm/s
@@ -513,6 +515,7 @@ async def moveInSquare(base):
         # spins the rover 90 degrees at 100 degrees per second
         await base.spin(velocity=100, angle=90)
         print("spin 90 degrees")
+
 
 async def main():
     robot = await connect()

@@ -87,16 +87,17 @@ Your SDK code should now look like:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def connect():
-  creds = Credentials(type='robot-location-secret', payload=YOUR_LOCATION_SECRET)
-  opts = RobotClient.Options(
-    refresh_interval=0,
-    dial_options=DialOptions(
-        credentials=creds,
-        disable_webrtc=True,
-        auth_entity="<YOUR_ROBOT_NAME>"
+    creds = Credentials(type='robot-location-secret',
+                        payload=YOUR_LOCATION_SECRET)
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(
+            credentials=creds,
+            disable_webrtc=True,
+            auth_entity="<YOUR_ROBOT_NAME>"
+        )
     )
-  )
-  return await RobotClient.at_address('localhost:8080', opts)
+    return await RobotClient.at_address('localhost:8080', opts)
 ```
 
 Your localhost can now make a secure connection to `viam-server` locally.

@@ -347,6 +347,7 @@ async def connect():
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
 
+
 async def main():
     robot = await connect()
 
@@ -366,7 +367,8 @@ async def main():
 
     # Command a joint position move: small adjustment to the last joint
     cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
-    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+    await my_arm_component.move_to_joint_positions(
+        positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
