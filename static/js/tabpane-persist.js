@@ -37,12 +37,9 @@ function tdGetTabSelectEventCountAndInc() {
 // Main functions
 
 function tdActivateTabsWithKey(key) {
-  console.log(key)
-
   if (!key) return;
 
   document.querySelectorAll(`.nav-tabs > .nav-item > a[data-td-tp-persist='${key}']`).forEach((element) => {
-    console.log(element)
     new bootstrap.Tab(element).show();
   });
 }
@@ -91,7 +88,6 @@ function tdRegisterTabClickHandler(tabs) {
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       const activeTabKey = tab.getAttribute("data-td-tp-persist");
-      console.log("!!", activeTabKey)
       tdPersistActiveTab(activeTabKey);
       tdActivateTabsWithKey(activeTabKey)
     });
@@ -103,7 +99,6 @@ window.addEventListener('DOMContentLoaded', () => {
   if (!_tdSupportsLocalStorage()) return;
 
   var allTabsInThisPage = document.querySelectorAll(".nav-tabs > .nav-item > a");
-  console.log(allTabsInThisPage);
   tdRegisterTabClickHandler(allTabsInThisPage);
   tdGetAndActivatePersistedTabs(allTabsInThisPage);
 });
