@@ -87,43 +87,37 @@ If you want to train your own, you can [train a model](/manage/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
 
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Navigate to the **Services** subtab of your robot's **Config** tab.
 
-1. **Configure the ML model service**
+### Configure the ML model service
 
-    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
-    Click **Create service**.
+Click **Create service** in the lower-left corner of the page.
+Select `ML Model` for the type, then select `TFLite CPU` for the model.
+Enter `people` as the name for your [mlmodel](/services/ml/), then click **Create**.
 
-    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
+In the new ML Model service panel, configure your service.
 
-    In the new ML Model service panel, configure your service.
+![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+Select the **Path to existing model on robot** for the **Deployment** field.
+Then specify the absolute **Model path** as where your tflite file lives and any **Optional settings** such as the absolute **Label path** as where your labels.txt file lives and the **Number of threads** as `1`.
 
-    Select the **Path to Existing Model On Robot** for the **Deployment** field.
-    Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
+### Configure an mlmodel detector
 
-   1. **Configure an mlmodel detector**
+Click **Create service** in the lower-left corner of the page.
+For your [vision service](/services/vision/), select type `vision` and model `mlmodel`.
+Enter `myPeopleDetector` for the name, then click **Create**.
 
-    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
-    Click **Create service**.
+In the new vision service panel, configure your service.
 
-    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
+From the **Select model** drop-down, select the name of the TFLite model (`people`).
 
-    In the new vision service panel, configure your service.
-
-    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
-
-    Name the ml model name `people`.
-
-    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
-
-## Configure the detection camera
+### Configure the detection camera
 
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
 Click the **Components** subtab and click the **Create component** button in the lower-left corner.
-Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
 Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)

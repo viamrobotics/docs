@@ -100,20 +100,20 @@ Now that you've set up your robot, you can start configuring and testing it.
 ### Configure your {{< glossary_tooltip term_id="board" text="board" >}}
 
 Head to the **Config** tab on your robot's page.
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab and click the **Create component** button in the lower-left corner.
 
 Select `board` as the type and `pi` as the model.
-Name the component `pi`.
+Name the component `pi`, then click **Create**.
 
 ![The Viam app showing the configuration page for a board component with name pi.](/tutorials/pet-treat-dispenser/app-board-pi.png)
 
 ### Configure your [webcam](/components/camera/webcam/)
 
-Add another component with the type `camera` component and the model `webcam`.
-Name the component `petcam`.
+Click **Create component** and add your webcam with type `camera` and model `webcam`.
+Name the component `petcam`, then click **Create**.
 
 Click on the **video path**.
-If the robot is connected, a drop down with available cameras will appear.
+If the robot is connected, a drop-down menu with available cameras will appear.
 Select your camera.
 
 ![The Viam app showing the configuration page for a camera component with model webcam.](/tutorials/pet-treat-dispenser/app-camera-webcam.png)
@@ -124,11 +124,11 @@ If you are unsure which camera to select, selecte one, save the configuration an
 
 ### Configure your [stepper motor](/components/motor/gpiostepper/)
 
-Finally, add another component with the type `motor` component and the model `gpiostepper`.
+Finally, click **Create component** and add another component with type `motor` and model `gpiostepper`.
 
-1. If you used the same pins as in the wiring diagram, set the `direction` to pin 15 GPIO 22, and the `step` logic to pin 16 GPIO 23.
-1. Enable the pin setting as low and configure it to pin 18 GPIO 24.
-1. Set the `ticks per rotation` to `400` and select your board model,`pi`.
+1. If you used the same pins as in the wiring diagram, set the **direction** to pin `15 GPIO 22`, and the **step** logic to pin `16 GPIO 23`.
+1. Set the **Enable pins** toggle to `low`, then set the resulting **Enabled Low** drop-down to pin `18 GPIO 24`.
+1. Set the **ticks per rotation** to `400` and select your board model, `pi`.
 
 ![The Viam app showing the configuration page for a stepper motor component with model gpiostepper.](/tutorials/pet-treat-dispenser/app-stepper-gpiostepper.png)
 

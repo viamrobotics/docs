@@ -76,14 +76,15 @@ Follow the instructions on the **Setup** tab to install `viam-server` on your Ra
 {{% tab name="Builder UI" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab.
 
-1. **Configure the Pi as a board**
+1. **Configure the board**
 
-    Add your {{< glossary_tooltip term_id="board" text="board" >}} with the name `local`, type `board`, and model `pi`.
-    Click **Create component**.
+    Add a {{< glossary_tooltip term_id="board" text="board component" >}} to represent the Raspberry Pi:
 
-    ![Create component panel, with the name attribute filled as local, type attribute filled as board and model attribute filled as Pi.](/tutorials/tipsy/app-board-create.png)
+    Click the **Create component** button in the lower-left corner of the page.
+    Select type `board` and model `pi`.
+    Enter `local` as the name, then click **Create**.
 
     You can name your board whatever you want as long as you refer to it by the same name in your code.
 
@@ -93,9 +94,7 @@ Click on the **Components** subtab and navigate to the **Create component** menu
 
     Add your right [motor](/components/motor/) with the name `rightMotor`, type `motor`, and model `gpio`.
 
-    ![Create component panel, with the name attribute filled as rightMotor, type attribute filled as motor and model attribute filled as gpio.](/tutorials/tipsy/app-motor-create.png)
-
-    After clicking **Create component**, a panel will pop up with empty sections for Attributes, Component Pin Assignment, and other information.
+    After clicking **Create**, a panel will pop up with empty sections for Attributes, Component Pin Assignment, and other information.
 
     ![Alt text: rightMotor component panel with empty sections for Attributes, Component Pin Assignment, and other information.](/tutorials/tipsy/app-motor-attribute.png)
 
@@ -373,30 +372,32 @@ scp labels.txt tipsy@tipsy.local:/home/tipsy/labels.txt
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click on the **Services** subtab.
 
 1. **Configure the ML model service**
 
-    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
-    Click **Create service**.
-
-    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
+    Add an [mlmodel](/services/ml/) service:
+    
+    Click **Create service** in the lower-left corner of the page.
+    Select type `ML Model` and model `TFLite CPU`.
+    Enter `people` for the name of your service, then click **Create**.
 
     In the new ML Model service panel, configure your service.
 
     ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-    Select the **Path to Existing Model On Robot** for the **Deployment** field.
-    Then specify the absolute **Model Path** as <file>/home/tipsy/effdet0.tflite</file> and any **Optional Settings** such as the absolute **Label Path** as <file>/home/tipsy/labels.txt</file> and the **Number of threads** as 1.
+    Select the **Path to existing model on robot** for the **Deployment** field.
+    Then specify the absolute **Model path** as <file>/home/tipsy/effdet0.tflite</file> and any **Optional settings** such as the absolute **Label path** as <file>/home/tipsy/labels.txt</file> and the **Number of threads** as 1.
 
     ![mlmodel service panel, Deployment selected as Path to Existing Model On Robot, Model Path filled as /home/tipsy/effdet0.tflite and Label Path filled as /home/tipsy/labels.txt, Number of threads is 1.](/tutorials/tipsy/app-service-ml-after.png)
 
-1. **Configure an mlmodel detector**
+1. **Configure an ML model detector**
 
-    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision`, and model `mlmodel`.
-    Click **Create service**.
-
-    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
+    Add a [vision service](/services/vision/) detector:
+    
+    Click **Create service** in the lower-left corner of the page.
+    Select type `Vision`, then select model `mlmodel`.
+    Enter `myPeopleDetector` as the name, then click **Create**.
 
     In the new vision service panel, configure your service.
 
@@ -410,8 +411,12 @@ Click on the **Services** subtab and navigate to the **Create service** menu.
 
     To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
-    Click on the **Components** subtab and navigate to the **Create component** menu.
-    Create a [transform camera](/components/camera/transform/) with the name `detectionCam`, the type `camera`, and the model `transform`.
+
+    Create a [transform camera](/components/camera/transform/):
+
+    Click on the **Components** subtab, then click **Create component** in the lower-left corner of the page.
+    Select type `camera`, then select model `transform`.
+    Enter `detectionCam` as the name, then click **Create**.
 
     ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 
