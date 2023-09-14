@@ -49,7 +49,7 @@ Once you [upload a module to the Viam registry](/extend/modular-resources/upload
 Navigate to your robot's **Configuration** tab, click the **+ Create component** button, then start typing the name of the module you would like to deploy.
 
 By default, a newly-created module is *private*, meaning that the module will only appear for users within your [organization](/manage/fleet/organizations/).
-You can change this to *public*, which makes your module available to all Viam users.
+When you [upload your module](/extend/modular-resources/upload/#upload-a-custom-module) to the registry, or later [update your module](/extend/modular-resources/upload/#update-an-existing-module) with new changes, you can set your module to be *public*, which makes your module available to all Viam users.
 
 When you deploy a module to your robot, you can [choose how to update that module](/extend/modular-resources/configure/#configure-version-update-management-for-a-registry-module) when new versions become available.
 
