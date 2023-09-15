@@ -15,6 +15,7 @@
             </aside>
             <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
                 <div class="td-content">
+                    {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial "breadcrumb.html" . }}{{ end }}
                     <h1>{{ .Title }}</h1>
                         <div id="tutorial-menu" class="lozad">
                             <div id="tutorial-filters">
