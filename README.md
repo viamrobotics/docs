@@ -43,7 +43,11 @@ python3 -m http.server 9000 --directory public
 
 ## Test the docs locally
 
-To ensure all python snippets are properly formatted before creating a PR, create a [pre-commit hook](https://github.com/johnfraney/flake8-markdown#pre-commit-hook) for [flake8-markdown](https://github.com/johnfraney/flake8-markdown).
+To ensure all python snippets are properly formatted before creating a PR, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following like to `.git/hooks/pre-commit`:
+
+```sh
+flake8-markdown "docs/**/*.md"
+```
 
 To ensure your markdown is properly formatted, run `make markdowntest`.
 
