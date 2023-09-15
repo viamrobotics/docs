@@ -1,6 +1,6 @@
 ---
 title: "Prepare your Python Virtual Environment"
-linkTitle: "Prepare your Python Virtualenv for Viam"
+linkTitle: "Prepare Virtualenv"
 weight: 10
 type: "docs"
 description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
@@ -9,7 +9,7 @@ tags: ["client", "sdk", "application", "sdk", "fleet", "program", "python", "ven
 ---
 
 To manage Python packages for your Viam application, it is recommended that you use a virtual environment, or `venv`.
-By using a `venv`, you can install Python packages like Viam's client SDK just within the virtual environment, and not globally, which could cause conflicts with other projects or cause issues within your system.
+By using a `venv`, you can install Python packages like Viam's client SDK within a virtual environment, avoiding conflicts with other projects or your system.
 
 Follow this guide to set up a fresh virtual environment on your working computer and install the Python SDK as a requirement for your Viam client application.
 
@@ -25,7 +25,7 @@ cd viam-python
 
 ## Create and Activate a Virtual Environment
 
-Now that you are in the project directory, create and activate a virtual environment for Python to run in.
+In the project directory, create and activate a virtual environment for Python to run in.
 
 ```bash
 python3 -m venv viam-env
@@ -43,14 +43,14 @@ Inside the activated `viam-env` python environment, you can now install the Viam
 pip3 install viam-sdk
 ```
 
-This will install Viam and all required dependencies.
+This installs Viam and all required dependencies.
 
-Should you need to install your own requirements, be sure to do so in this virtual environment.
-If you have more requirements, you can [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> with all the packages you need and then install the requirements for your client application by running `pip3 install -r requirements.txt`.
+If you need to install your own requirements, also install them in this virtual environment.
+To make your required packages easier to install in the future, you can also [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> file with a list of all the packages you need and then install the requirements for your client application by running `pip3 install -r requirements.txt`.
 
 ## Setup your IDE
 
-Now, point your IDE to use the python interpreter of your new environment, rather than the default interpreter, likely the global python interpreter.
+If you would like to be able to use the environment you created with your IDE, point your IDE to use the python interpreter of your new environment, rather than the default interpreter, likely the global python interpreter.
 
 The following steps are for VS Code.
 If you're not using VS Code, please read your IDE's documentation on selecting python interpreters.
