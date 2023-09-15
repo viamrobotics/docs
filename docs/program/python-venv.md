@@ -1,7 +1,7 @@
 ---
 title: "Prepare your Python Virtual Environment"
 linkTitle: "Prepare your Python Virtualenv for Viam"
-weight: 50
+weight: 10
 type: "docs"
 description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
 images: ["/services/icons/sdk.svg"]
@@ -23,22 +23,16 @@ mkdir viam-python
 cd viam-python
 ```
 
-## Create a Virtual Environment
+## Create and Activate a Virtual Environment
 
 Now that you are in the project directory, create and activate a virtual environment for Python to run in.
-
-> **INFO**
-> Creating a virtual environment (`venv`) is important as it isolates this python environment from any other you might already have.
-This allows you to ensure a clean project and easier dependency management, as well as not bloating your global python environment.
 
 ```bash
 python3 -m venv viam-env
 source viam-env/bin/activate
 ```
 
-Now, you should see `(viam-env)` prepend the commands in your terminal window.
-This shows that the python packages being used are from this particular environment.
-
+Now, `(viam-env)` prepends the commands in your terminal window to indicate the Python packages being used are from this particular environment.
 You can exit this environment by running `deactivate`.
 
 ## Install Viam
@@ -52,7 +46,7 @@ pip3 install viam-sdk
 This will install Viam and all required dependencies.
 
 Should you need to install your own requirements, be sure to do so in this virtual environment.
-You can [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> with all the packages you need and then install the requirements for your client application by running `pip install -r requirements.txt`.
+If you have more requirements, you can [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> with all the packages you need and then install the requirements for your client application by running `pip3 install -r requirements.txt`.
 
 ## Setup your IDE
 
