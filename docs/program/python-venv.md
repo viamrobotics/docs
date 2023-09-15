@@ -15,10 +15,10 @@ Follow this guide to set up a fresh virtual environment on your working computer
 
 ## Setup your project
 
-First, create a directory to house your project.
+First, create a directory for your project.
 For example, name your directory `viam-python`:
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 mkdir viam-python
 cd viam-python
 ```
@@ -50,7 +50,7 @@ If you have more requirements, you can [create a](https://openclassrooms.com/en/
 
 ## Setup your IDE
 
-You'll now want to point your IDE to use the python interpreter of your new environment, rather than the default interpreter, likely the global python interpreter.
+Now, point your IDE to use the python interpreter of your new environment, rather than the default interpreter, likely the global python interpreter.
 
 The following steps are for VS Code.
 If you're not using VS Code, please read your IDE's documentation on selecting python interpreters.
@@ -62,6 +62,7 @@ There, you should see all the interpreters available to you.
 You're looking for the on you just made: `viam-env`.
 It will look something like: `Python 3.XX.X ('viam-env': venv) ./viam-env/bin/python`.
 If you don't see it, click the `Refresh` icon on the top right of the Command Palette.
+Select the `viam-env` interpreter.
 
 Your IDE will now recognize all packages installed in this environment.
 
