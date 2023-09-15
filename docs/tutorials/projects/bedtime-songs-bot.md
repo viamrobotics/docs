@@ -63,10 +63,10 @@ First, add your personal computer's webcam to your robot as a [camera](/componen
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click the **Components** subtab, then click **Create component** in the lower-left corner of the page.
 
-Add your [camera](https://docs.viam.com/components/board/) with the name `cam`, type `camera`, and model `webcam`.
-Click **Create Component**.
+Select `camera` for the type, then select `webcam` for the model.
+Enter `cam` for the name of your [camera component](/components/camera/), then click **Create**.
 
 ![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
 

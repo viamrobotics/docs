@@ -101,3 +101,5 @@ Name | Type | Inclusion | Description
 Note that only one sensor from each array can be used to retrieve each type of reading.
 Your robot uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
 For instance, in the **JSON Example** above, if both `"vectornav"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the robot if `"vectornav"` returns an error at runtime.
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}

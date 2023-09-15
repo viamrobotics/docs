@@ -45,7 +45,7 @@ If you are writing your module using Python, you can use this [module generator 
 
     - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
       - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
-      - [Example modular service proto file](https://github.com/viam-labs/speech/blob/main/src/proto/speech.proto)
+      - [Example modular service proto file](https://github.com/viam-labs/speech/blob/main/src/speech/proto/speech.proto)
       - [Built-in Viam resource proto files for reference](https://github.com/viamrobotics/api/tree/main/proto/viam)
     - And define the proto methods in a protobuf-supported language such as Python or Go in a file called `api.py` or `api.go`.
       - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/gizmo/api.py)
@@ -61,7 +61,7 @@ If you are writing your module using Python, you can use this [module generator 
 
 6. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<subtype name>.proto` file you wrote.
 
-    - [Example generated files for a Python-based service](https://github.com/viam-labs/speech/tree/main/src/proto)
+    - [Example generated files for a Python-based service](https://github.com/viam-labs/speech/tree/main/src/speech/proto)
       - (<file>speech.proto</file> was manually written, not generated.)
 
 ## Next steps
