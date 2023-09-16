@@ -1,8 +1,9 @@
 name: Alias reminder
 
 on:
-  workflow_dispatch:
-  pull_request:
+  pull_request_target:
+    branches: [ main ]
+    types: [ labeled, synchronize ]
 
 jobs:
     alias_reminder:
@@ -18,15 +19,16 @@ jobs:
               shell: pwsh
               id: check_files_moved
               run: |
-                $diff = git diff -M --find-renames=10 --summary main
-                $SourceDiff = $diff | Where-Object { $_ -match '.md$' }
+                $diff = git diff -M --find-renames=10 --summary ${{github.event.pull_request.base.sha}}
+                $SourceDiff = $diff | Where-Object { $_ -match '.md.*$' }
                 $HasDiff = $SourceDiff.Length -gt 0
 
                 Write-Host "::set-output name=files_moved::$HasDiff"
+                Write-Host "::set-output name=files::$SourceDiff"
             - name: Comment on PR with changed files
               if: steps.check_files_moved.outputs.files_moved == 'True'
               uses: marocchino/sticky-pull-request-comment@v2.2.0
               with:
                 recreate: true
-                message: 'It looks like the following files were renamed. Please ensure you set aliases correctly:\n $(git diff -M --find-renames=10 --summary main | grep md)'
+                message: 'It looks like the following files were renamed. Please ensure you set aliases correctly:\n ${{ steps.check_files_moved.outputs.files }}'
                 GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
