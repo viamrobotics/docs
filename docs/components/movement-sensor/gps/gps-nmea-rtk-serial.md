@@ -119,3 +119,5 @@ You will need to research the options available to you.
 If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from SparkFun](https://learn.sparkfun.com/tutorials/gps-rtk2-hookup-guide/connecting-the-zed-f9p-to-a-correction-source).
 
 {{% /alert %}}
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}
