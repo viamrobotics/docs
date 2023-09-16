@@ -1,9 +1,8 @@
 ---
 name: Other
 about: File a general ticket
-title: "[General] Ticket title"
-labels: ''
-assignees: ''
+title: ''
+labels: 'general'
 
 ---
 
