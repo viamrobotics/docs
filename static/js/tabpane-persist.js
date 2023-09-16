@@ -7,7 +7,6 @@ const _tdSupportsLocalStorage = () => typeof Storage !== 'undefined';
 // Helpers
 function tdPersistKey(key, value) {
   // @requires: tdSupportsLocalStorage();
-    console.log("key", key, "value", value);
   try {
     if (value) {
       localStorage.setItem(key, value);
@@ -36,10 +35,15 @@ function tdGetTabSelectEventCountAndInc() {
 
 // Main functions
 
-function tdActivateTabsWithKey(key) {
+function tdActivateTabsWithKey(key, clicked_element, rectangle) {
   if (!key) return;
 
-  document.querySelectorAll(`.nav-tabs > .nav-item > a[data-td-tp-persist='${key}']`).forEach((element) => {
+    document.querySelectorAll(`.nav-tabs > .nav-item > a[data-td-tp-persist='${key}']`).forEach((element) => {
+    if (element == clicked_element) {
+      // Ensures that if the dom changes above the element, the user's view
+      // doesn't jump
+      window.scrollBy(0, element.getBoundingClientRect().top - rectangle.top);
+    }
     new bootstrap.Tab(element).show();
   });
 }
@@ -51,7 +55,6 @@ function tdPersistActiveTab(activeTabKey) {
     _tdStoragePersistKey(activeTabKey),
     tdGetTabSelectEventCountAndInc()
   );
-  tdActivateTabsWithKey(activeTabKey);
 }
 
 // Handlers
@@ -86,10 +89,10 @@ function tdGetAndActivatePersistedTabs(tabs) {
 
 function tdRegisterTabClickHandler(tabs) {
   tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', (event) => {
       const activeTabKey = tab.getAttribute("data-td-tp-persist");
       tdPersistActiveTab(activeTabKey);
-      tdActivateTabsWithKey(activeTabKey)
+      tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
     });
   });
 }
