@@ -226,7 +226,7 @@ One option is to create and save a new shell script (<file>.sh</file>) that runs
 
 For example:
 
-``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` sh { class="command-line" data-prompt="$"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -238,7 +238,7 @@ If you omit this, be sure to handle the forwarding of termination signals accord
 
 To make this shell script executable, run the following command in your terminal:
 
-``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` sh { class="command-line" data-prompt="$"}
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
