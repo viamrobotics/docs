@@ -2,7 +2,7 @@
 name: Other
 about: File a general ticket
 title: ''
-labels: 'general'
+labels: 'question'
 
 ---
 
