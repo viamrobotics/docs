@@ -10,7 +10,7 @@
         "lvl3": ".td-content h3",
         "lvl4": ".td-content h4",
         "lvl5": ".td-content h5, .td-content .tab-content .tab-pane .search-helper",
-        "text": ".td-content p, .td-content div, .td-content ul li, .td-content ol li, .td-content table tbody tr"
+        "text": ".td-content p, .td-content div, .td-content ul li, .td-content ol li, .td-content .tab-content .tab-pane, .td-content table tbody tr"
     },
     "selectors_exclude": [".footer", "#edit-on-github"]
 }
