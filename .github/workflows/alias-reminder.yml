@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-    alias-reminder:
+    alias_reminder:
         name: Check for moved files
         runs-on: ubuntu-latest
         steps:
@@ -17,8 +17,6 @@ jobs:
             - name: Check for moved files
               shell: pwsh
               id: check_files_moved
-              outputs:
-                docs_changed: ${{ steps.check_files_moved.outputs.files_moved }}
               run: |
                 $diff = git diff -M --find-renames=10 --summary main
                 $SourceDiff = $diff | Where-Object { $_ -match '.md$' }
@@ -26,7 +24,7 @@ jobs:
 
                 Write-Host "::set-output name=files_moved::$HasDiff"
             - name: Comment on PR with changed files
-              if: steps.check_file_changed.outputs.files_moved == 'True'
+              if: steps.check_files_moved.outputs.files_moved == 'True'
               uses: marocchino/sticky-pull-request-comment@v2.2.0
               with:
                 recreate: true
