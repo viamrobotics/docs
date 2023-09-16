@@ -30,5 +30,7 @@ jobs:
               uses: marocchino/sticky-pull-request-comment@v2.2.0
               with:
                 recreate: true
-                message: 'It looks like the following files were renamed. Please ensure you set aliases correctly:\n ${{ steps.check_files_moved.outputs.files }}'
+                message: |
+                  It looks like the following files may have been renamed. Please ensure you set all needed aliases:
+                  ${{ steps.check_files_moved.outputs.files }}
                 GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
