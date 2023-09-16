@@ -53,6 +53,21 @@ To ensure your markdown is properly formatted, run `make markdowntest`.
 
 To check for broken links run `make htmltest`.
 
+## Linters and Checks
+
+To ensure that you do not accidentally add `EXIF` data on images, please add the following lines to your `.git/hooks/pre-commit` file:
+
+```sh
+if [ git diff --name-only | grep -EI ".*(png|jpg|jpeg)$" | wc -l ]
+then
+list= $(git diff --name-only | grep -EI ".*(png|jpg|jpeg)$")
+for item in $list
+do
+exiftool -all= $item
+end
+fi
+```
+
 ## Publishing
 
 The docs are automatically published when a PR merges.
