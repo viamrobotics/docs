@@ -20,7 +20,6 @@
 <div id="{{ $id }}" class="tab-pane show active" role="tabpanel" aria-labelledby="{{ $id }}">
 	{{ else }}
 <div id="{{ $id }}" class="tab-pane" role="tabpanel" aria-labelledby="{{ $id }}">
-	<span id="{{ $id }}" class="search-helper"> {{- trim .name " " -}} </span>
 	{{ end }}
 		{{- with .content -}}
 			{{- . -}}
