@@ -1,6 +1,8 @@
 name: Alias reminder
 
-on: pull_request
+on:
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
     alias-reminder:
