@@ -20,7 +20,7 @@ jobs:
               id: check_files_moved
               run: |
                 $diff = git diff -M --find-renames=10 --summary ${{github.event.pull_request.base.sha}}
-                $SourceDiff = $diff | Where-Object { $_ -match '.md.*$' }
+                $SourceDiff = $diff | Where-Object { $_ -match 'rename.*.md.*$' }
                 $HasDiff = $SourceDiff.Length -gt 0
 
                 Write-Host "::set-output name=files_moved::$HasDiff"
