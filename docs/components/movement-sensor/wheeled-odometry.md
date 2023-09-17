@@ -61,3 +61,5 @@ The following attributes are available for `wheeled-odometry` movement sensors:
 | `left_motors` | object | **Required** | A list containing the name of each of the bases' left [position-reporting motors](/components/motor/gpio/). |
 | `right_motors` | object | **Required** | A list containing the name of each of the bases' right [position-reporting motors](/components/motor/gpio/). |
 | `time_interval_msec` | number | Optional | The time in milliseconds between each wheeled odometry calculation.<br>Default: `500.0`</br> |
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}
