@@ -373,10 +373,10 @@ When executed, it registers the `mybase` custom model and API helper functions w
 
 ``` python {class="line-numbers linkable-line-numbers"}
 import asyncio
-import sys
 
 from viam.components.base import Base
 from viam.module.module import Module
+from viam.resource.registry import Registry, ResourceCreatorRegistration
 from my_base import MyBase
 
 async def main():
