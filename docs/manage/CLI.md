@@ -131,7 +131,7 @@ To use an organization API key to authenticate your CLI session, you must first 
 1. Then, run the following command to create a new organization API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam organization api-key create --org-id <org-id> --name <key-name>
+   viam organizations api-key create --org-id <org-id> --name <key-name>
    ```
 
    Where:
@@ -481,7 +481,7 @@ See [Modular resources](/extend/modular-resources/) for a conceptual overview of
 The *organization* command allows you to create a new organization API key.
 
 ```sh {class="command-line" data-prompt="$"}
-viam organization api-key create --org-id <org-id> [--name <key-name>]
+viam organizations api-key create --org-id <org-id> [--name <key-name>]
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
