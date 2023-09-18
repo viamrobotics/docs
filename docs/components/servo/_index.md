@@ -40,7 +40,7 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-Supported servo models include:
+For configuration information, click on one of the supported servo models:
 
 | Model | Description |
 | ----- | ----------- |

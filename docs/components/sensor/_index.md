@@ -31,7 +31,7 @@ Most robots with a sensor need at least the following hardware:
 
 ## Configuration
 
-Supported sensor models include:
+For configuration information, click on one of the supported sensor models:
 
 | Model | Description |
 | ----- | ----------- |
