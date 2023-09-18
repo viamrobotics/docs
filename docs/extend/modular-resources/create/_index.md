@@ -373,15 +373,15 @@ When executed, it registers the `mybase` custom model and API helper functions w
 
 ``` python {class="line-numbers linkable-line-numbers"}
 import asyncio
-import sys
 
 from viam.components.base import Base
 from viam.module.module import Module
+from viam.resource.registry import Registry, ResourceCreatorRegistration
 from my_base import MyBase
 
 async def main():
     """This function creates and starts a new module, after adding all desired resource models.
-    Resource creators must be registered to the resource registry before the module adds the resource model. 
+    Resource creators must be registered to the resource registry before the module adds the resource model.
     """
     Registry.register_resource_creator(Base.SUBTYPE, MyBase.MODEL, ResourceCreatorRegistration(MyBase.new_base, MyBase.validate_config))
     module = Module.from_args()
@@ -483,7 +483,7 @@ See the [Python virtual environment documentation](https://docs.python-guide.org
 You will also need to create a `requirements.txt` file containing a list of all the dependencies your module relies on.
 For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed. You may also add additional dependencies as needed:
 
-``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` sh { class="command-line" data-prompt="$"}
 viam-sdk
 ```
 
@@ -491,7 +491,7 @@ See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stabl
 
 The following template sets up a new virtual enviroment (`venv`), installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
 
-``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` sh { class="command-line" data-prompt="$"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -509,7 +509,7 @@ exec $PYTHON <your-src-dir-if-inside>/main.py $@
 
 To make your shell script executable, run the following command in your terminal:
 
-``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+``` sh { class="command-line" data-prompt="$"}
 sudo chmod +x <your-file-path-to>/<run.sh>
 ```
 
