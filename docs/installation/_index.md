@@ -8,7 +8,7 @@ type: docs
 image: "/installation/thumbnails/install.png"
 imageAlt: "Install Viam"
 images: ["/installation/thumbnails/install.png"]
-description: "To use Viam software with your robot, install and run the viam-server binary on the computer that you want to use to control the robot."
+description: "To use Viam software with your smart machine, install and run the viam-server binary on the computer that you want to use to control the smart machine."
 aliases:
     - /installation/prepare/
     - /installation/macos-install/
@@ -21,7 +21,7 @@ aliases:
     - /getting-started/linux-install/
 ---
 
-To use Viam software with your robot, install and run the `viam-server` binary on the computer that you want to use to control the robot.
+To use Viam software with your smart machine, install and run the `viam-server` binary on the computer that you want to use to control the smart machine.
 In most cases, this will be a [single board computer (SBC)](#install-on-a-single-board-computer), like a Raspberry Pi, but you can also install `viam-server` on a [macOS or Linux computer](#install-on-a-macos-or-linux-computer).
 
 For an overview of the Viam software platform, see [Viam in 3 minutes](/viam/).

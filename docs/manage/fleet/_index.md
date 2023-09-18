@@ -3,7 +3,7 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "Configure, control, debug, and manage your robots from the cloud at app.viam.com on your own or with a team."
+description: "Configure, control, debug, and manage your smart machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
 no_list: true
 aliases:
@@ -13,9 +13,9 @@ aliases:
     - "/fleet"
 ---
 
-The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of robots alone or in collaboration with others.
+The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of smart machines alone or in collaboration with others.
 
-## Work with groups of robots
+## Work with groups of smart machines
 
 With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >}} into {{< glossary_tooltip term_id="location" text="locations" >}} and {{< glossary_tooltip term_id="organization" text="organizations" >}}.
 

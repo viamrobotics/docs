@@ -3,14 +3,14 @@ title: "Manage Your Fleet with Viam's Cloud API"
 linkTitle: "Cloud Management"
 weight: 20
 type: "docs"
-description: "Use the cloud app API with Viam's client SDKs to manage your robot fleet with code."
+description: "Use the cloud app API with Viam's client SDKs to manage your smart machine fleet with code."
 tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api", "cloud management"]
 ---
 
-The cloud app API allows you to [manage your robot fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The cloud app API allows you to [manage your smart machine fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 With it you can
 
-- create and manage organizations, locations, and individual robots
+- create and manage organizations, locations, and individual smart machines
 - manage permissions and authorization
 - create and manage fragments
 

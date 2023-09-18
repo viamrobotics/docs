@@ -13,11 +13,11 @@ A custom module can provide one or more modular resource models.
 
 ## Modules
 
-A *module* provides one or more [*modular resources*](#resources), and is a flexible way to extend the functionality of your Viam robot.
+A *module* provides one or more [*modular resources*](#resources), and is a flexible way to extend the functionality of your smart machine.
 Modules run alongside `viam-server` as a separate process, communicating with `viam-server` over a UNIX socket.
 A module provides definitions for one or more pairs of [APIs](#valid-apis-to-implement-in-your-model) and [models](#models).
 
-When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
+When the module initializes, it registers those pairs on your smart machine, making the functionality defined by that pair available for use.
 
 You can [upload your own modules to the Viam registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure/).
 
@@ -28,7 +28,7 @@ See [Creating a custom module](/extend/modular-resources/create/) for more infor
 A resource is a [component](/components/) or [service](/services/).
 Each component or service is typed by a proto API, such as the [component proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
 
-Any resource on your robot needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
+Any resource on your smart machine needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
 
 A *modular resource* is a resource that is provided by a [module](#modules), and not built-in to the RDK.
 A modular resource runs in the module process. This differs from built-in resources, which run as part of `viam-server`.
@@ -130,8 +130,8 @@ The RDK ensures that any configured modules are loaded automatically on start-up
 
 ### Reconfiguration
 
-When you change the configuration of a Viam robot, the behavior of modular resource instances versus built-in resource instances is equivalent.
-This means you can add, modify, and remove a modular resource instance from a running robot as normal.
+When you change the configuration of a smart machine, the behavior of modular resource instances versus built-in resource instances is equivalent.
+This means you can add, modify, and remove a modular resource instance from a running smart machine as normal.
 
 ### Data management
 
@@ -145,4 +145,4 @@ During robot shutdown, the RDK handles modular resource instances similarly to b
 ### Modular resources as remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
-This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
+This means that you can compose a smart machine of any number of parts running in different compute locations, each containing both built-in and custom resources.
