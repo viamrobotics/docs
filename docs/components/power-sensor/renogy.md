@@ -3,14 +3,14 @@ title: "Configure a renogy power sensor"
 linkTitle: "renogy"
 weight: 10
 type: "docs"
-description: "Configure a renogy model power sensor to return battery temperature."
+description: "Configure a renogy model power sensor to return battery voltage and load current, power, and various other readings."
 tags: ["power sensor", "components", "renogy"]
 icon: "/icons/components/sensor.svg"
 images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/battery-temperature-sensor-for-renogy-solar-charge-controllers/) into your robot:
+Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your robot:
 
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
@@ -31,13 +31,13 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "<your-renogy-sensor-name>",
-      "type": "sensor",
+      "name": "ren1",
+      "type": "power_sensor",
       "model": "renogy",
       "attributes": {
-        "serial_path": "<your-serial-path>",
-        "serial_baud_rate": <int>,
-        "modbus_id": <int>
+        "serial_path": "string",
+        "serial_baud_rate": "integer",
+        "modbus_id": "integer"
       },
       "depends_on": []
     }
@@ -53,7 +53,7 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "your-renogy-sensor",
-      "type": "sensor",
+      "type": "power_sensor",
       "model": "renogy",
       "attributes": {
         "serial_path": "/dev/serial0",
@@ -72,6 +72,6 @@ The following attributes are available for `renogy` sensors:
 
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `serial_path` | string | Optional | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Default: `/dev/serial0` |
+| `serial_path` | string | Optional | The full filesystem path to the serial device, starting with /dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. On a Raspberry Pi, you can also run `ls /dev/serial/by-path` to list USB serial devices. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Example: `"/dev/serial/by-path/usb-0:1.1:1.0"` <br>Default: `/dev/serial0` |
 | `serial_baud_rate` | integer | Optional | The baud rate to use for serial communications. <br> Default: `9600` |
 | `modbus_id`  | integer | Optional | Controller MODBUS address. <br> Default: `1` |
