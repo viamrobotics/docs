@@ -390,7 +390,7 @@ When you `upload` a module, the command validates your local packaged module to 
 The following criteria are checked for every `upload`:
 
 * The packaged module must exist on the filesystem at the path provided to the `upload` command.
-* The packaged module must use the `.tar.gz` extension.
+* The packaged module must use the `.tar.gz` or `.tgz` extension.
 * The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
 * The entry point file must be executable.
 
