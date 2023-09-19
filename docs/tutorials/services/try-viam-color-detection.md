@@ -73,7 +73,7 @@ Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/r
 
 Your configuration should look like the following:
 
-{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x600" alt="The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
+![The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](/try-viam/try-viam/vision-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -133,7 +133,7 @@ To create a [transform camera](/components/camera/transform/):
 3. Select `transform` as the model.
 4. Enter a name for **Name**, for example `detectionCam`, and click **Create**.
 
-{{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="900x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
+{{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="350x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
 
 Viam generates an empty **Attributes** section for the detection camera's component panel.
 The panel's **Attribute Guide** section displays the available attributes for the selected component.
@@ -142,7 +142,7 @@ The panel's **Attribute Guide** section displays the available attributes for th
 Attribute Guides always prefix required attributes with an asterisk.
 {{% /alert %}}
 
-{{<imgproc src="/tutorials/try-viam-color-detection/transform-camera-config.png" resize="900x" declaredimensions=true alt="The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.">}}
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-config.png)
 
 Copy the following JSON configuration into the **Attributes** section:
 
@@ -169,7 +169,7 @@ Copy the following JSON configuration into the **Attributes** section:
 | `attributes.confidence_threshold` | `0.3` (30%) |  The percentage of confidence needed by the detection service to identify a color. |
 | `type` | `detections` | The type of the component. |
 
-{{<imgproc src="/tutorials/try-viam-color-detection/transform-camera-attributes.png" resize="900x" declaredimensions=true alt="The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.">}}
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
 
 After adding the component and its attributes, click **Save config**.
 
