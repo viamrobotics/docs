@@ -24,15 +24,15 @@ For example, you can:
 These custom implementations are called *modular resources*, and are made available for use on a robot through {{< glossary_tooltip term_id="module" text="modules" >}}.
 A module can provide one or more modular resources, and can be added to your robot from the Viam registry.
 
-## The Viam Registry
+## The Viam registry
 
 The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
 
 The code behind any modular resource can be packaged as a {{< glossary_tooltip term_id="module" text="module" >}} and uploaded to the Viam registry.
-Once the module has been uploaded to the Registry, you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
+Once the module has been uploaded to the registry, you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
 
-### Uploading to Viam Registry
+### Uploading to Viam registry
 
 After you finish programming your module, you can [upload your module to the Viam registry](/extend/modular-resources/upload/) to make it available for deployment to robots.
 As part of the upload process, you decide whether your module is *private* (visible only to other members of your [organization](/manage/fleet/organizations/)), or *public* (visible to all Viam users).
@@ -64,7 +64,7 @@ To get started working with modular resources:
 
 - Browse the [Viam registry](https://app.viam.com/registry) to see modules uploaded by other users.
 
-- [Deploy a module](/extend/modular-resources/configure/) to your robot from the Registry.
+- [Deploy a module](/extend/modular-resources/configure/) to your robot from the registry.
 
 - Browse the [modular resources tutorials](/extend/modular-resources/examples/) for examples of deploying and using custom modular resources on your robot.
 

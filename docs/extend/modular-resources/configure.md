@@ -95,7 +95,7 @@ This pane lists the models provided by the module, any [components](/components/
 
 {{<imgproc src="extend/modular-resources/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
-### Configure version update management for a Registry module
+### Configure version update management for a registry module
 
 When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will *never automatically update itself*.
@@ -123,7 +123,7 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-### Create a new modular resource from a Registry module
+### Create a new modular resource from a registry module
 
 Once you have [added a module](#add-a-module-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
