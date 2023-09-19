@@ -514,6 +514,7 @@ This includes:
 * Accessing your robot with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
+viam robots list
 viam robots status --organization=<org name> --location=<location name> --robot=<robot id>
 viam robots logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
 viam robots part status --organization=<org name> --location=<location name> --robot=<robot id>
