@@ -20,7 +20,7 @@ The CLI lets you:
 For example, this CLI command moves a servo to the 75 degree position:
 
 ```sh {class="command-line" data-prompt="$"}
-viam robot part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
+viam robots part run --robot 82c608a-1be9-46a5 --organization "Robot's Org" \
 --location myLoc --part "myrobot-main" --data '{"name": "myServo", "angle_deg":75}' \
 viam.component.servo.v1.ServoService.MoveRequest
 ```
@@ -187,7 +187,7 @@ viam organizations --help
 
 ## Commands
 
-### `data`
+### data
 
 The `data` command allows you to manage robot data.
 With it, you can export data in the format of your choice or delete specified data.
@@ -240,7 +240,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | `--robot-name`      | filter by specified robot name       |`export`, `delete`|false |
 | `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
 
-### `locations`
+### locations
 
 The `locations` command lists all locations that the authenticated session has access to, grouped by organization.
 You can filter results by organization.
@@ -284,7 +284,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 | `--key-id`    | the `key id` (UUID) of the organization API key | `api-key` | true |
 | `--key`    | the `key value` of the organization API key | `api-key` | true |
 
-### `logout`
+### logout
 
 The `logout` command ends an authenticated CLI session.
 
@@ -476,11 +476,12 @@ See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-m
 
 See [Modular resources](/extend/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
 
-### organization
+### organizations
 
-The *organization* command allows you to create a new organization API key.
+The `organizations` command allows you to list the organizations your authenticated session belongs to, and to create a new organization API key.
 
 ```sh {class="command-line" data-prompt="$"}
+viam organizations list
 viam organizations api-key create --org-id <org-id> [--name <key-name>]
 ```
 
@@ -490,6 +491,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
+| `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
 | `api-key`      | create a new organization API key    | - |
 | `--help`      | return help      | - |
 
@@ -500,51 +502,41 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--org-id`      | your organization ID      |`api-key`|true |
 | `--name` |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key`| false |
 
-### organizations
+### robots
 
-The *organizations* command lists all organizations that the authenticated session belongs to.
-
-```sh {class="command-line" data-prompt="$"}
-viam organizations list
-```
-
-#### Command options
-
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
-| `--help`      | return help      | - |
-
-### `robot`
-
-The `robot` command allows you to manage your robot fleet.
+The `robots` command allows you to manage your robot fleet.
 This includes:
 
+* Listing all robots that you have access to, filtered by organization and location.
 * Retrieving robot and robot part status
 * Retrieving robot and robot part logs
 * Controlling a robot by issuing component and service commands
 * Accessing your robot with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
-viam robot status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robot logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
-viam robot part status --organization=<org name> --location=<location name> --robot=<robot id>
-viam robot part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
-viam robot part shell --organization=<org name> --location=<location name> --robot=<robot id>
+viam robots status --organization=<org name> --location=<location name> --robot=<robot id>
+viam robots logs --organization=<org name> --location=<location name> --robot=<robot id> [...named args]
+viam robots part status --organization=<org name> --location=<location name> --robot=<robot id>
+viam robots part run --organization=<org name> --location=<location name> --robot=<robot id> [--stream] --data <meth>
+viam robots part shell --organization=<org name> --location=<location name> --robot=<robot id>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
+
+# list all robots you have access to
+viam robots list
+
 # get robot status
-viam robot status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
+viam robots status  --robot 82c608a-1be9-46a5-968d-bad3a8a6daa --organization "Robot's Org" --location myLoc
 
 # stream error level logs from a robot part
-viam robot part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+viam robots part logs --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --tail true
 
 # stream classifications from a robot part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
-viam robot part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
+viam robots part run --robot 82c608a-1be9-46a5-968d-bad3a8a6daa \
 --organization "Robot's Org" --location myLoc --part "myrover-main" --stream 500ms \
 --data '{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_detector", "n":1}' \
 viam.service.vision.v1.VisionService.GetClassificationsFromCamera
@@ -554,6 +546,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
+| `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
@@ -573,8 +566,8 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--organization`      | organization name that the robot belongs to       |`status`, `logs`, `part`|true |
-| `--location`     |  location name that the robot belongs to    |`status`, `logs`, `part`|true |
+| `--organization`      | organization name that the robot belongs to       |`list`, `status`, `logs`, `part`|true |
+| `--location`     |  location name that the robot belongs to    |`list`, `status`, `logs`, `part`|true |
 | `--robot`      |  robot id for which the command is being issued   |`status`, `logs`, `part`|true |
 | `--errors`      |  boolean, return only errors (default: false)   |`logs`|false |
 | `--part`      |  part name for which the command is being issued    |`logs`|false |
@@ -607,28 +600,6 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 ```
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
-
-### `robots`
-
-The `robots` command lists all robots that the authenticated session has access to, filtered by organization and location.
-
-```sh {class="command-line" data-prompt="$"}
-viam robots list
-```
-
-#### Command options
-
-|        command option     |       description      | positional arguments
-| ----------- | ----------- | ----------- |
-| `list`      | list all robots (name and id) that the authenticated session has access to in the specified organization and location  |- |
-| `--help`      | return help|-|
-
-##### Named arguments
-
-|        argument     |       description | applicable commands | required
-| ----------- | ----------- | ----------- | ----------- |
-| `--organization`     | organization name to filter by       |list|true |
-| `--location`    |  location name to filter by   |list|true |
 
 ### version
 
