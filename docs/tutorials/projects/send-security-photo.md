@@ -116,7 +116,7 @@ Click the **Services** subtab.
     Select the **Path to Existing Model On Robot** for the **Deployment** field.
     Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
 
-   1. **Configure an mlmodel detector**
+1. **Configure an mlmodel detector**
 
     Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
     Click **Create service**.
