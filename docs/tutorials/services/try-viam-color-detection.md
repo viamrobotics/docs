@@ -141,7 +141,7 @@ The panel's **Attribute Guide** section displays the available attributes for th
 Attribute Guides always prefix required attributes with an asterisk.
 {{% /alert %}}
 
-{{<imgproc src="/tutorials/try-viam-color-detection/transform-camera-config.png" resize="900x" declaredimensions=true alt="The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.">}}
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](transform-camera-config.png)
 
 Copy the following JSON configuration into the **Attributes** section:
 
@@ -168,7 +168,7 @@ Copy the following JSON configuration into the **Attributes** section:
 | `attributes.confidence_threshold` | `0.3` (30%) |  The percentage of confidence needed by the detection service to identify a color. |
 | `type` | `detections` | The type of the component. |
 
-{{<imgproc src="/tutorials/try-viam-color-detection/transform-camera-attributes.png" resize="900x" declaredimensions=true alt="The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.">}}
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon."](transform-camera-attributes.png)
 
 After adding the component and its attributes, click **Save config**.
 
