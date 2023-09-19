@@ -62,7 +62,7 @@ Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/r
 
 1. Click the **Services** subtab and click **Create service** in the lower-left corner.
 
-1. Select the `Vision` type, then select the `ML Model` model.
+1. Select the `Vision` type, then select the `Color Detector` model.
 
 1. Enter `my_color_detector` as the name for your detector and click **Create**.
 

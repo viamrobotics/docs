@@ -39,8 +39,6 @@ For configuration information, click on one of the supported sensor models:
 | [`ultrasonic`](ultrasonic/) | [HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) |
 | [`bme280`](bme280/) | [BME280 environmental sensor](https://www.adafruit.com/product/2652) |
 | [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
-| [`power_ina219`](power_ina219/) | [INA219 current sensor](https://www.amazon.com/dp/B07QJW6L4C) |
-| [`renogy`](renogy/) | [Renogy battery temperature sensor](https://www.amazon.com/Renogy-Battery-Temperature-Sensor-Controllers/dp/B07WMMJFWY) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
 You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/extend/modular-resources/).
