@@ -122,17 +122,16 @@ Note that the detector does not detect black, perfect greys (greys where the red
 Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
 A virtual camera transforms the output from a physical camera.
 
-To view output from the color detector overlaid on images from a physical camera, configure a [transform camera](/components/camera/transform/).
+To view output from the color detector overlaid on images from a physical camera, configure a transform camera.
 
 Navigate to the **Components** tab in the Viam app and click the **Components** subtab.
-To create a [transform camera](/components/camera/transform/):
 
-1. Click **Create Component** in the lower-left corner of the page.
-2. Select `camera` as the type.
-3. Select `transform` as the model.
-4. Enter a name, for example `detectionCam`, and click **Create**.
+2. Click **Create Component** in the lower-left corner of the page.
+3. Select `camera` as the type.
+4. Select `transform` as the model.
+5. Enter a name, for example `detectionCam`, and click **Create**.
 
-{{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="350x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
+{{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="500x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
 
 Viam generates an empty **Attributes** section for the detection camera's component panel.
 The panel's **Attribute Guide** section displays the available attributes for the selected component.
