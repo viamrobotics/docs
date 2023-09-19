@@ -99,7 +99,6 @@ Add the vision service object to the services array in your rover’s raw JSON c
 {{% /tab %}}
 {{< /tabs >}}
 
-The configuration adds a model of type `color_detector` with the color as a parameter.
 The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.
 
 Click **Save config** and head to the **Components** tab.
@@ -113,7 +112,7 @@ Object colors can vary dramatically based on the light source.
 We recommend you verify the desired color detection value under actual lighting conditions.
 To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 
-If the color is not reliably detected, drag the `Hue Tolerance` slider to the right or navigate to the `Raw JSON` tab to increase the `hue_tolerance_pct`.
+If the color is not reliably detected, drag the **Hue Tolerance** slider to the right or navigate to the **Raw JSON** tab to increase the `hue_tolerance_pct`.
 
 Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
 {{< /alert >}}
@@ -123,15 +122,15 @@ Note that the detector does not detect black, perfect greys (greys where the red
 Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
 A virtual camera transforms the output from a physical camera.
 
-To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform/).
+To view output from the color detector overlaid on images from a physical camera, configure a [transform camera](/components/camera/transform/).
 
-Navigate to the **Components** tab in the Viam app and scroll to the **Create Component** section.
+Navigate to the **Components** tab in the Viam app and click the **Components** subtab.
 To create a [transform camera](/components/camera/transform/):
 
-1. Click **Create Component**.
+1. Click **Create Component** in the lower-left corner of the page.
 2. Select `camera` as the type.
 3. Select `transform` as the model.
-4. Enter a name for **Name**, for example `detectionCam`, and click **Create**.
+4. Enter a name, for example `detectionCam`, and click **Create**.
 
 {{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="350x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
 
