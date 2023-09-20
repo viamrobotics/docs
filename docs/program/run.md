@@ -12,11 +12,11 @@ After saving your [code sample](/program/#hello-world-the-code-sample-tab) and a
 
 ### Authentication
 
-You must reference a robot's location secret to authenticate yourself to the robot.
+You must authenticate yourself to the robot using the robot's location secret.
 However, the app hides the robot location secret from the sample by default for your security.
 
 To copy the robot location secret, select **Include Secret** on the **Code sample** tab of your robot's page on the [Viam app](https://app.viam.com).
-Paste it into your SDK code as directed by the code sample.
+Paste it into your environment variables or directly into your code.
 
 You must also include the robot's remote address, like `12345.somerobot-main.viam.cloud`, as an external or public address to connect to your robot.
 The code sample includes this address at default.
