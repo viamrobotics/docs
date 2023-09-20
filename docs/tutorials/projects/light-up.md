@@ -60,17 +60,13 @@ Go to the **Setup** tab of your new robot's page and follow the steps to install
 
 On your new robot's page, go to the **Config** tab.
 
-![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
+Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
-On the **Config** tab, create a new component:
+Select `camera` for type and `webcam` for model.
 
-- **Name**: `my-camera`
-- **Type**: `camera`
-- **Model**: `webcam`
+Enter `my-camera` as the name for your camera, then click **Create**.
 
-Click **Create Component** to add the camera.
-
-Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+Click the **video path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
