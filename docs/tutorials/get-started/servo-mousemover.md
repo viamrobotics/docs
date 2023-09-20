@@ -64,7 +64,7 @@ This project is a good place to begin if you're new to robotics and would like t
 First, install `viam-server` according to our [installation guide](/installation/)
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager.
-Select "yes" when it asks if you want to continue.
+Select "yes" when asked if you want to continue.
 
 ```sh {class="command-line" data-prompt="$"}
 sudo apt-get install pip
@@ -175,10 +175,8 @@ Click **Create component** in the lower-left corner.
 
 Select `servo` for type and `pi` for model.
 
-Enter `FS90R` as the name for your servo, then click **Create**.
+Enter `fsr90r` as the name for your servo, then click **Create**.
 
-We named the servo using the model number, but you can use whatever you want.
-You will reference it later.
 
 After clicking **Create** you will see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
