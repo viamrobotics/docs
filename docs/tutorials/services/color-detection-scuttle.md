@@ -331,8 +331,7 @@ from viam.components.base import Base
 async def connect():
     creds = Credentials(
         type="robot-location-secret",
-        payload="[PLEASE ADD YOUR SECRET HERE. "
-                "YOU CAN FIND THIS ON THE CODE SAMPLE TAB]")
+        payload="<location_secret>")
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
