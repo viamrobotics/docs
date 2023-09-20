@@ -122,10 +122,9 @@ Note that the detector does not detect black, perfect greys (greys where the red
 Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
 A virtual camera transforms the output from a physical camera.
 
-To view output from the color detector overlaid on images from a physical camera, configure a transform camera.
+To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
 
-Navigate to the **Components** tab in the Viam app and click the **Components** subtab.
-
+1. Navigate to the **Components** tab in the Viam app.
 2. Click **Create Component** in the lower-left corner of the page.
 3. Select `camera` as the type.
 4. Select `transform` as the model.
@@ -175,12 +174,12 @@ After adding the component and its attributes, click **Save config**.
 
 In the **Control** tab, click on your base component and enable the detection camera from the **Live Feeds** section.
 
-Next, enable the keyboard and move your rover around until your camera detects the configured color.
+Next, enable the keyboard and move your rover around until your camera detects the specified color.
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
-If you scroll down in the **Control** tab, you can also click on the detectionCam's own section to view its stream there.
+Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 
 ## Next Steps
 
