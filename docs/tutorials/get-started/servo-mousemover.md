@@ -177,7 +177,6 @@ Select `servo` for type and `pi` for model.
 
 Enter `fsr90r` as the name for your servo, then click **Create**.
 
-
 After clicking **Create** you will see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
 
