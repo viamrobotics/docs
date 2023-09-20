@@ -12,9 +12,7 @@ on:
 jobs:
   pr-deploy-and-comment:
     if: ${{ contains(github.event.*.labels.*.name, 'safe to build') }}
-    runs-on: [self-hosted, x64, private]
-    container:
-      image: ghcr.io/viamrobotics/canon:amd64
+    runs-on: [self-hosted, x64, linux]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
