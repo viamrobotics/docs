@@ -102,7 +102,6 @@ Click the **Services** subtab.
     Add an [mlmodel](/services/ml/) service:
 
     Click **Create service** in the lower-left corner of the **Services** subtab.
-    
     Select type `mlmodel`, then select model `tflite_cpu`.
 
     Enter `people` as the name, then click **Create**.
