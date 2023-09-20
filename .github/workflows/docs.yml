@@ -13,9 +13,7 @@ permissions:
 jobs:
   build:
     if: github.repository_owner == 'viamrobotics'
-    runs-on: [self-hosted, x64, private]
-    container:
-      image: ghcr.io/viamrobotics/canon:amd64
+    runs-on: [self-hosted, x64, linux]
     steps:
       - name: Checkout Push/Workflow Dispatch
         uses: actions/checkout@v3
