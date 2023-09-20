@@ -259,10 +259,10 @@ Gently push on the box to get a mark on the inside of the box, then create a cut
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/cut-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/cut-box.mp4" alt="This is sped up gif showing using a marker and marking the screw of the servo, then shutting the box quick and getting the marker on the lid, then opening it back up. Then using that mark to make a cut with a box cutter, and on the other side of the lid which is the outside, marking that cut hole and putting a large roll of tape down to draw a circle. Finally, cutting the circle out with box cutters.">}}
 </div>
 
-### Tape the box shut, add "babygates", and plug in the Raspberry Pi
+### Tape the box shut, add "baby gates", and plug in the Raspberry Pi
 
 When taping the box shut be sure the servo with the circle cut out sits fairly flush to the top of the box.
-Add "babygates" or rails to keep the mouse from wandering off if it catches some friction.
+Add "baby gates" or rails to keep the mouse from wandering off if it catches some friction.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the Raspberry Pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end, they place the mouse on top.">}}
@@ -270,10 +270,10 @@ Add "babygates" or rails to keep the mouse from wandering off if it catches some
 
 ### Control your robot with code
 
-Copy the code from the [mousemover Github repository](https://github.com/viam-labs/tutorial-mousemover) into your nano file, save it, and run it.
+Copy the code from the [mousemover GitHub repository](https://github.com/viam-labs/tutorial-mousemover) into your nano file, save it, and run it.
 
 The code uses the Python SDK to securely connect to your robot through Viam app.
-Then, it enters a for loop in which **position** tells us the servo **myServo** to move to positions (angle, or speed/direction) between 80 and 93 degrees as specified in the **sequence** list.
+Then, it enters a for loop in which **position** tells us the servo to move to positions (angles) between 80 and 93 degrees as specified in the **sequence** list.
 The code uses **pause_time** to wait for a random amount of time between 5 and 20 seconds to stay at that position.
 
 You can adjust the range (or speed/direction) by changing the two numbers in the position statement. (Currently set at 80 and 93).
