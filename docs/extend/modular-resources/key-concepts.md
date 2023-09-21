@@ -130,8 +130,8 @@ The RDK ensures that any configured modules are loaded automatically on start-up
 
 ### Reconfiguration
 
-When you change the configuration of a smart machine, the behavior of modular resource instances versus built-in resource instances is equivalent.
-This means you can add, modify, and remove a modular resource instance from a running smart machine as normal.
+When you change the configuration of a robot the behavior of modular resource instances versus built-in resource instances is equivalent.
+This means you can add, modify, and remove a modular resource instance from a running robot as normal.
 
 ### Data management
 
@@ -145,4 +145,4 @@ During robot shutdown, the RDK handles modular resource instances similarly to b
 ### Modular resources as remotes
 
 [Remote](/manage/parts-and-remotes/) parts may load their own modules and provide modular resources, just as the main part can.
-This means that you can compose a smart machine of any number of parts running in different compute locations, each containing both built-in and custom resources.
+This means that you can compose a robot of any number of parts running in different compute locations, each containing both built-in and custom resources.
