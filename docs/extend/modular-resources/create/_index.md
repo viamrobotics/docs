@@ -536,4 +536,4 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam registry, to share it with other Viam users or just to other users in your organization.
 
-Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your smart machine without uploading to the Viam registry.
+Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your robot without uploading to the Viam registry.
