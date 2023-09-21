@@ -33,8 +33,7 @@ You'll need the following hardware and software for this tutorial:
 - A computer running Linux or macOS
 - [Go](https://go.dev/doc/install) or [Python 3.9+](https://www.python.org/downloads/)
 
-If you don't already have an account, create a free one.
-Sign up on [the Viam app](https://app.viam.com).
+If you don't already have a Viam account, sign up for one on [the Viam app](https://app.viam.com).
 Create a new robot in the organization and location of your choice.
 Go to this robot's **Setup** tab.
 
@@ -312,7 +311,8 @@ Watch the robotic arm's [`JointPositions()`](/components/arm/#jointpositions) ch
 
 ## Configure your robot's mock sub-part
 
-Now that you have your `fake` robotic arm, board, and motor working, add a sub-part to your robot.
+Now that you have your `fake` robotic arm, board, and motor working, add a `fake` motor sub-part to your robot.
+Imagine for the purpose of this tutorial that the `fake` motor we are adding controls a conveyor belt in front of your mock arm on an assembly line.
 
 ### What is a sub-part?
 
@@ -329,8 +329,6 @@ By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expan
 
 ## Configure a sub-part in the Viam app
 
-Now, create a mock sub-part of another `fake` motor.
-Imagine for the purpose of this tutorial that this motor controls a conveyor belt in front of your mock arm on an assembly line.
 
 On your robot's page on the Viam app, click on the dropdown next to the main part, name your part and click **Add new**.
 
