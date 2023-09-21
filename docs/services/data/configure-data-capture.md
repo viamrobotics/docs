@@ -162,7 +162,7 @@ To add them to your JSON configuration you must explicitly add the remote compon
 | Key | Description |
 | --- | ----------- |
 | `type` | The type tells your smart machine what the component is. For example, a board. |
-| `model` | The model is a __colon-delimited-triplet_ that specifies the namespace, the type of the part, and the part itself. |
+| `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
