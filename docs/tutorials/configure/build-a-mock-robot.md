@@ -327,8 +327,7 @@ By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expan
 - You can access any sub-part either directly, or through any part above it in the tree.
 - Each part runs a single `viam-server` instance.
 
-## Configure a sub-part in the Viam app
-
+### Add a new sub-part in the Viam app
 
 On your robot's page on the Viam app, click on the dropdown next to the main part, name your part and click **Add new**.
 
