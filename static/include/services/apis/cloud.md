@@ -13,4 +13,12 @@ Method Name | Description
 [`CreateLocationSecret`](/program/apis/cloud/#createlocationsecret ) | Create a new location secret.
 [`DeleteLocationSecret`](/program/apis/cloud/#deletelocationsecret ) | Delete a location secret.
 [`GetRobot`](/program/apis/cloud/#getrobot ) | Get a robot by robot ID.
+[`GetRobotParts`](/program/apis/cloud/#getrobotparts ) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific robot.
+[`GetRobotPart`](/program/apis/cloud/#getrobotpart ) | Get a robot {{< glossary_tooltip term_id="part" text="part" >}}.
+[`GetRobotPartLogs`](/program/apis/cloud/#getrobotpartlogs ) | Get the logs associated with a robot part.
+[`TailRobotPartLogs`](/program/apis/cloud/#tailrobotpartlogs ) | Get an asynchronous iterator that receives live robot part logs.
+[`GetRobotPartHistory`](/program/apis/cloud/#getrobotparthistory ) | Get a list containing the history of a robot part.
+[`UpdateRobotPart`](/program/apis/cloud/#updaterobotpart ) | 
+[`NewRobotPart`](/program/apis/cloud/#newrobotpart ) | 
+[`DeleteRobotPart`](/program/apis/cloud/#deleterobotpart ) | 
 [`NewRobot`](/program/apis/cloud/#newrobot ) | Create a new robot.
