@@ -112,31 +112,38 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Controller.register_control_callback).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Define a function to handle pressing the Start Menu Button "BUTTON_START" on your controller, printing out the start time.
+# Define a function to handle pressing the Start Menu Button "BUTTON_START" on
+# your controller, printing out the start time.
 def print_start_time(event):
     print(f"Start Menu Button was pressed at this time:\n{event.time}")
 
+
 # Define a function that handles the controller.
 async def handle_controller(controller):
-
     # Get the list of Controls on the controller.
     controls = await controller.get_controls()
 
-    # If the "BUTTON_START" Control is found, register the function print_start_time to fire when "BUTTON_START" has the event "ButtonPress" occur.
+    # If the "BUTTON_START" Control is found, register the function
+    # print_start_time to fire when "BUTTON_START" has the event "ButtonPress"
+    # occur.
     if Control.BUTTON_START in controls:
-        controller.register_control_callback(Control.BUTTON_START, [EventType.BUTTON_PRESS], print_start_time)
+        controller.register_control_callback(
+            Control.BUTTON_START, [EventType.BUTTON_PRESS], print_start_time)
     else:
-        print("Oops! Couldn't find the start button control! Is your controller connected?")
+        print("Oops! Couldn't find the start button control! Is your "
+              "controller connected?")
         exit()
 
     while True:
         await asyncio.sleep(1.0)
 
+
 async def main():
     # ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
 
     # Get your controller from the robot.
-    my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+    my_controller = Controller.from_robot(
+        robot=myRobotWithController, name="my_controller")
 
     # Run the handleController function.
     await handleController(my_controller)
@@ -236,7 +243,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
-my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+my_controller = Controller.from_robot(
+    robot=myRobotWithController, name="my_controller")
 
 # Get the most recent Event for each Control.
 recent_events = await my_controller.get_events()
@@ -294,7 +302,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
-my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+my_controller = Controller.from_robot(
+    robot=myRobotWithController, name="my_controller")
 
 # Get the list of Controls provided by the controller.
 controls = await my_controller.get_controls()
@@ -357,9 +366,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Define a "Button is Pressed" event for the control BUTTON_START.
-button_is_pressed_event = Event(time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
+button_is_pressed_event = Event(
+    time(), EventType.BUTTON_PRESS, Control.BUTTON_START, 1.0)
 
-# Trigger the event on your controller. Set this trigger to timeout if it has not completed in 7 seconds.
+# Trigger the event on your controller. Set this trigger to timeout if it has
+# not completed in 7 seconds.
 await myController.trigger_event(event=my_event, timeout=7.0)
 ```
 
@@ -414,7 +425,8 @@ If you are implementing your own input controller and add features that have no 
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
-my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+my_controller = Controller.from_robot(
+    robot=myRobotWithController, name="my_controller")
 
 command = {"cmd": "test", "data1": 500}
 result = my_controller.do(command)

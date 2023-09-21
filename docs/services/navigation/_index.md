@@ -283,7 +283,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
-# Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
+# Set the Mode the service is operating in to MODE_WAYPOINT and begin
+# navigation
 await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 ```
 
@@ -666,7 +667,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 An example of a `Linear Velocity` reading:
 
 ``` go
-// linearVelocity is an r3.Vector with X, Y, and Z magnitudes 
+// linearVelocity is an r3.Vector with X, Y, and Z magnitudes
 linearVelocity, err := imu.LinearVelocity(context.Background, nil)
 ```
 

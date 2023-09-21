@@ -97,7 +97,7 @@ This allows you to capture not just image data, but sensor data, smart machine s
 
 To enable image data capture for a camera component, follow these steps:
 
-1. Navigate to the **Components** tab on your smart machine's **Config** page.
+1. Navigate to the **Components** subtab on your smart machine's **Config** page.
 2. Scroll down to the camera component.
    If you are using a Viam Rover, the camera is named `cam`.
    The camera component has a section labeled **Data Capture Configuration**.

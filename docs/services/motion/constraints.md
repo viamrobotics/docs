@@ -39,9 +39,10 @@ moved = await motion.move(
         pose=goal_pose),
     world_state=worldState,
     constraints={
-        Constraints(linear_constraint = [LinearConstraint(line_tolerance_mm=0.2)])
-     },
-     extra={})
+        Constraints(
+            linear_constraint=[LinearConstraint(line_tolerance_mm=0.2)])
+    },
+    extra={})
 ```
 
 You can find more information in the [Python SDK Docs](https://python.viam.dev/autoapi/viam/gen/service/motion/v1/motion_pb2/index.html#viam.gen.service.motion.v1.motion_pb2.Constraints).
@@ -84,14 +85,14 @@ If set to zero, a movement with identical starting and ending orientations will 
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-## Move a gripper with an orientation constraint
+# Move a gripper with an orientation constraint
 moved = await motion.move(
     component_name=my_gripper,
     destination=PoseInFrame(
         reference_frame="my_frame",
         pose=goal_pose),
     world_state=worldState,
-    constraints = Constraints(orientation_constraint = [OrientationConstraint()])
+    constraints=Constraints(orientation_constraint=[OrientationConstraint()]),
     extra={})
 ```
 

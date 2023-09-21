@@ -385,17 +385,20 @@ import RPi.GPIO as GPIO
 
 from typing import Any, Dict, List, Mapping, Optional
 
+
 class MoistureSensor(Sensor):
 
     def __init__(self, name: str):
-        super(MoistureSensor,self).__init__(name)
+        super(MoistureSensor, self).__init__(name)
         sensor_pin = 4
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(sensor_pin, GPIO.IN)
 
-
     # Implement the Viam Sensor API's get_readings() method
-    async def get_readings(self, *, extra: Optional[Mapping[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+    async def get_readings(self,
+                           *,
+                           extra: Optional[Mapping[str, Any]] = None,
+                           timeout: Optional[float] = None, **kwargs):
         x = 0
         input = []
 
@@ -411,20 +414,21 @@ class MoistureSensor(Sensor):
         # Create an analog input channel on Pin 0
         chan = AnalogIn(mcp, MCP.P0)
 
-        while x<10:
+        while x < 10:
             # read adc channel 0
             reading = chan.value
             input.append(reading)
-            x+=1
+            x += 1
 
         return {'moisture': input}
 
+
 async def main():
-   srv = Server(resources=[MoistureSensor("moisture_sensor")])
-   await srv.serve()
+    srv = Server(resources=[MoistureSensor("moisture_sensor")])
+    await srv.serve()
 
 if __name__ == "__main__":
-   asyncio.run(main())
+    asyncio.run(main())
 ```
 
 You can modify this example code as necessary.
@@ -545,7 +549,8 @@ Use the Viam [motor](/components/motor/#api) and [sensor](/components/sensor/#co
 You can get your components from the robot like this:
 
 ```python
-sensor = Sensor.from_robot(robot=robot, name='moisture_sensor') # Note that this name, `moisture_sensor`, is defined in sensor.py
+# Note that this name, `moisture_sensor`, is defined in sensor.py
+sensor = Sensor.from_robot(robot=robot, name='moisture_sensor')
 water_pump = Motor.from_robot(robot=robot, name='water-pump')
 ```
 
@@ -554,23 +559,26 @@ And you can add your system logic to run continuously like this:
 ```python
 while True:
 
-      # Get the moisture sensor's readings
-      readings = await sensor.get_readings()
-      soil_moisture = readings.get('moisture')
+    # Get the moisture sensor's readings
+    readings = await sensor.get_readings()
+    soil_moisture = readings.get('moisture')
 
-      # Calculate average moisture reading from the list of readings, to account for outliers
-      avg_moisture = sum(soil_moisture) / len(soil_moisture)
+    # Calculate average moisture reading from the list of readings, to account
+    # for outliers
+    avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
-      # If the average moisture reading is greater than 60000, trigger pump watering
-      if(avg_moisture > 60000):
-          print('this plant is too thirsty! giving it more water')
+    # If the average moisture reading is greater than 60000, trigger pump
+    # watering
+    if (avg_moisture > 60000):
+        print('this plant is too thirsty! giving it more water')
 
-          # Run the water pump for 100 rev. at 1000 rpm
-          await water_pump.go_for(rpm=1000, revolutions=100)
+        # Run the water pump for 100 rev. at 1000 rpm
+        await water_pump.go_for(rpm=1000, revolutions=100)
 
-          # Wait 60 seconds so that the water can soak into the soil a bit before trying to water again
-          print('waiting a little bit for water to soak in')
-          time.sleep(60)
+        # Wait 60 seconds so that the water can soak into the soil a bit before
+        # trying to water again
+        print('waiting a little bit for water to soak in')
+        time.sleep(60)
 ```
 
 {{% alert title="Tip" color="tip" %}}

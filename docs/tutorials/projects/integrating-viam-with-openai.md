@@ -185,11 +185,15 @@ Now that we've set up the rover by attaching the servo and making the tutorial s
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo/), go to your rover's **Config** page, scroll to the bottom and create a new instance of the `servo` component.
-Name it `servo1` (or something else if you prefer, but then you will need to update references to it in the tutorial code).
+To configure your [servo](/components/servo/), go to your rover's **Config** tab and click the **Components** subtab.
 
+Click **Create component** in the lower-left corner of the screen.
+
+Select type `servo`.
 Since you've attached your servo to a Raspberry Pi, choose the model `pi`.
-Click **Create Component**.
+
+Name it `servo1`.
+Click **Create**.
 
 {{<imgproc src="/tutorials/ai-integration/servo_component_add.png" resize="900x" declaredimensions=true alt="Adding the servo component." style="border:1px solid #000" >}}
 

@@ -143,8 +143,8 @@ Paste the following code snippet into the file you created:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # dog_test.py is for testing the connection
-
-import socket, time
+import socket
+import time
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(("PASTE DOG IP ADDRESS HERE", 5001))
@@ -265,7 +265,9 @@ class robotdog(Base, Reconfigurable):
 
     # Constructor
     @classmethod
-    def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(cls,
+            config: ComponentConfig,
+            dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         my_class = cls(config.name)
         my_class.reconfigure(config, dependencies)
         return my_class
@@ -279,7 +281,8 @@ class robotdog(Base, Reconfigurable):
             raise ValueError("No IP address provided")
 
         port = config.attributes.fields["port"].number_value
-        # Per the Freenove code, 5001 is for sending/receiving instructions. Port 8001 is used for video.
+        # Per the Freenove code, 5001 is for sending/receiving instructions.
+        # Port 8001 is used for video.
         if port == "":
             port = 5001
         return
@@ -292,7 +295,9 @@ class robotdog(Base, Reconfigurable):
             LOGGER.error(e)
 
     # Handles attribute reconfiguration
-    def reconfigure(self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]):
+    def reconfigure(self,
+                    config: ComponentConfig,
+                    dependencies: Mapping[ResourceName, ResourceBase]):
         # Here we initialize the resource instance
         ip_address = config.attributes.fields["ip_address"].string_value
         port = config.attributes.fields["port"].number_value
@@ -314,11 +319,11 @@ It defines each method by specifying which corresponding commands to send to the
 For example, the `stop` method sends a command (`CMD_MOVE_STOP#8`) to the robot dog server to stop the dog from moving:
 
 ```python
-    async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
-        self.is_stopped = True
+async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
+    self.is_stopped = True
 
-        command = "CMD_MOVE_STOP#8\n"
-        self.send_data(command)
+    command = "CMD_MOVE_STOP#8\n"
+    self.send_data(command)
 ```
 
 Copy and paste that code into your <file>robotdog.py</file> file.

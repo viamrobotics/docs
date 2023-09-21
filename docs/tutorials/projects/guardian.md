@@ -464,6 +464,7 @@ from viam.components.camera import Camera
 from viam.components.servo import Servo
 from viam.services.vision import VisionClient
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -551,7 +552,8 @@ Underneath the `check_for_living_creatures()` function, add the following functi
 If a creature is detected, the red LEDs will light up and music will play.
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player):
+async def idle_and_check_for_living_creatures(
+  cam, detector, servo, blue_leds, red_leds, music_player):
     living_creature = None
     while True:
         random_number_checks = random.randint(0, 5)
@@ -650,7 +652,8 @@ async def main():
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
-        living_creature = await idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player)
+        living_creature = await idle_and_check_for_living_creatures(
+            cam, detector, servo, blue_leds, red_leds, music_player)
         await focus_on_creature(living_creature, img.width, servo)
     # Don't forget to close the robot when you're done!
     await robot.close()
@@ -760,7 +763,8 @@ async def connect():
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud', opts)
+    return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud',
+                                        opts)
 
 
 async def check_for_living_creatures(detections):
@@ -806,7 +810,12 @@ class LedGroup:
             await pin.set(on)
 
 
-async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player):
+async def idle_and_check_for_living_creatures(cam,
+                                              detector,
+                                              servo,
+                                              blue_leds,
+                                              red_leds,
+                                              music_player):
     living_creature = None
     while True:
         random_number_checks = random.randint(0, 5)
@@ -854,7 +863,8 @@ async def main():
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
-        living_creature = await idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player)
+        living_creature = await idle_and_check_for_living_creatures(
+            cam, detector, servo, blue_leds, red_leds, music_player)
         await focus_on_creature(living_creature, img.width, servo)
     # Don't forget to close the robot when you're done!
     await robot.close()

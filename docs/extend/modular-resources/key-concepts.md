@@ -19,7 +19,7 @@ A module provides definitions for one or more pairs of [APIs](#valid-apis-to-imp
 
 When the module initializes, it registers those pairs on your smart machine, making the functionality defined by that pair available for use.
 
-You can [upload your own modules to the Viam registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure/).
+You can [upload your own modules to the Viam registry](/extend/modular-resources/upload/) or can [add existing modules from the registry](/extend/modular-resources/configure/).
 
 See [Creating a custom module](/extend/modular-resources/create/) for more information.
 

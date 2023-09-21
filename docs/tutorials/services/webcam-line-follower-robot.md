@@ -457,13 +457,15 @@ The code you are using has several functions:
   ```python {class="line-numbers linkable-line-numbers"}
   async def is_color_in_front(camera, detector):
       """
-      Returns whether the appropriate path color is detected in front of the center of the robot.
+      Returns whether the appropriate path color is detected in front of the
+      center of the robot.
       """
       frame = await camera.get_image(mime_type="image/jpeg")
 
       x, y = frame.size[0], frame.size[1]
 
-      # Crop the image to get only the middle fifth of the top third of the original image
+      # Crop the image to get only the middle fifth of the top third of the
+      # original image
       cropped_frame = frame.crop((x / 2.5, 0, x / 1.25, y / 3))
 
       detections = await detector.get_detections(cropped_frame)
@@ -478,7 +480,8 @@ The code you are using has several functions:
   ```python {class="line-numbers linkable-line-numbers"}
   async def is_color_there(camera, detector, location):
       """
-      Returns whether the appropriate path color is detected to the left/right of the robot's front.
+      Returns whether the appropriate path color is detected to the left/right
+      of the robot's front.
       """
       frame = await camera.get_image(mime_type="image/jpeg")
       x, y = frame.size[0], frame.size[1]
@@ -547,12 +550,14 @@ async def main():
             # Moves the base slowly forward in a straight line
             await base.set_power(Vector3(y=linear_power), Vector3())
             counter == 0
-        # If there is green to the left, turns the base left at a continuous, slow speed
+        # If there is green to the left, turns the base left at a continuous,
+        # slow speed
         if await is_color_there(camera, green_detector, "left"):
             print("going left")
             await base.set_power(Vector3(), Vector3(z=angular_power))
             counter == 0
-        # If there is green to the right, turns the base right at a continuous, slow speed
+        # If there is green to the right, turns the base right at a continuous,
+        # slow speed
         elif await is_color_there(camera, green_detector, "right"):
             print("going right")
             await base.set_power(Vector3(), Vector3(z=-angular_power))

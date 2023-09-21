@@ -385,7 +385,8 @@ The following code initializes a camera and the puppyclassifier and shows you ho
 ```python
 petcam = Camera.from_robot(robot, "petcam")
 puppyclassifier = VisionClient.from_robot(robot, "puppyclassifier")
-classifications = await puppyclassifier.get_classifications_from_camera(camera_name)
+classifications = await puppyclassifier.get_classifications_from_camera(
+    camera_name)
 ```
 
 Remove the existing code in the `main` function and replace it with the following logic where the the code gets classifications from the puppyclassifier based on the camera stream, and if a pet is found, activates the stepper motor using the [`go_for()` method](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.go_for) to move a certain amount to dispense a treat.
@@ -394,7 +395,8 @@ Remove the existing code in the `main` function and replace it with the followin
 async def main():
     robot = await connect()
 
-    # robot components + services below, update these based on how you named them in configuration
+    # robot components + services below, update these based on how you named
+    # them in configuration
     pi = Board.from_robot(robot, "pi")
     petcam = Camera.from_robot(robot, "petcam")
     stepper = Motor.from_robot(robot, "stepper")
@@ -403,7 +405,8 @@ async def main():
     while True:
         # look if the camera is seeing the dog
         found = False
-        classifications = await puppyclassifier.get_classifications_from_camera(camera_name)
+        classifications = await \
+            puppyclassifier.get_classifications_from_camera(camera_name)
         for d in classifications:
             # check if the model is confident in the classification
             if d.confidence > 0.7:
@@ -416,7 +419,7 @@ async def main():
             # turn on the stepper motor
             print("giving snack")
             state = "on"
-            await stepper.go_for(rpm=80,revolutions=2)
+            await stepper.go_for(rpm=80, revolutions=2)
             # stops the treat from constantly being dispensed
             time.sleep(300)
 
@@ -481,6 +484,7 @@ robot_address = os.getenv('ROBOT_ADDRESS') or ''
 # change this if you named your camera differently in your robot configuration
 camera_name = os.getenv('ROBOT_CAMERA') or 'petcam'
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -491,10 +495,12 @@ async def connect():
     )
     return await RobotClient.at_address(robot_address, opts)
 
+
 async def main():
     robot = await connect()
 
-    # robot components + services below, update these based on how you named them in configuration
+    # robot components + services below, update these based on how you named
+    # them in configuration
     pi = Board.from_robot(robot, "pi")
     petcam = Camera.from_robot(robot, "petcam")
     stepper = Motor.from_robot(robot, "stepper")
@@ -503,7 +509,8 @@ async def main():
     while True:
         # look if the camera is seeing the dog
         found = False
-        classifications = await puppyclassifier.get_classifications_from_camera(camera_name)
+        classifications = await \
+            puppyclassifier.get_classifications_from_camera(camera_name)
         for d in classifications:
             # check if the model is confident in the classification
             if d.confidence > 0.7:
@@ -516,7 +523,7 @@ async def main():
             # turn on the stepper motor
             print("giving snack")
             state = "on"
-            await stepper.go_for(rpm=80,revolutions=2)
+            await stepper.go_for(rpm=80, revolutions=2)
             # stops the treat from constantly being dispensed
             time.sleep(300)
 

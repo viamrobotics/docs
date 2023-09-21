@@ -43,6 +43,12 @@ python3 -m http.server 9000 --directory public
 
 ## Test the docs locally
 
+To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following like to `.git/hooks/pre-commit`:
+
+```sh
+flake8-markdown  $(git diff --diff-filter=d --name-only HEAD | grep '\.md$')
+```
+
 To ensure your markdown is properly formatted, run `make markdowntest`.
 
 To check for broken links run `make htmltest`.

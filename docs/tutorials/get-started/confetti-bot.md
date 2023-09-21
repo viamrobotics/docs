@@ -279,7 +279,8 @@ In your `main` function add the following code, which instantiates a variable `p
 
 ```python {class="line-numbers linkable-line-numbers"}
 party = Board.from_robot(robot, "party")
-# Note that the pin supplied is the pin we use. Please change this to the pin you are using.
+# Note that the pin supplied is the pin we use. Please change this to the pin
+# you are using.
 party_return_value = await party.gpio_pin_by_name("37")
 print(f"party gpio_pin_by_name return value: {party_return_value.get()}")
 
@@ -294,10 +295,10 @@ Copy this code and add it to your own code within the main function block:
 ```python {class="line-numbers linkable-line-numbers"}
 while True:
     print(party_return_value.get())
-    while (await party_return_value.get()) == True:
+    while (await party_return_value.get()):
         await start.set_power(.8)
         await asyncio.sleep(0.1)
-        if (await GPIO.get()) == False:
+        if not (await GPIO.get()):
             break
     await start.set_power(0)
 ```

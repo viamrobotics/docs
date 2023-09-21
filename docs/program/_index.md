@@ -94,6 +94,7 @@ import asyncio
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -103,6 +104,7 @@ async def connect():
         dial_options=DialOptions(credentials=creds)
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+
 
 async def main():
     robot = await connect()

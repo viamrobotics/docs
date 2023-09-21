@@ -90,7 +90,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 slam_svc = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
-# Get the current position of the specified source component in the SLAM map as a Pose.
+# Get the current position of the specified source component in the SLAM map as
+# a Pose.
 pose = await slam.get_position()
 ```
 
@@ -186,7 +187,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 slam = SLAMClient.from_robot(robot=robot, name="my_slam_service")
 
-# Get the internal state of the SLAM algorithm required to continue mapping/localization.
+# Get the internal state of the SLAM algorithm required to continue
+# mapping/localization.
 internal_state = await slam.get_internal_state()
 ```
 

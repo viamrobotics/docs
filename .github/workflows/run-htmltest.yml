@@ -8,9 +8,9 @@ name: run-htmltest
 on: pull_request
 jobs:
   htmltest:
-    runs-on: [self-hosted, x64, private]
+    runs-on: [self-hosted, x64, linux]
     container:
-      image: ghcr.io/viamrobotics/canon:amd64
+       image: ghcr.io/viamrobotics/canon:amd64
     steps:
       - name: Check out repository
         uses: actions/checkout@v3

@@ -448,10 +448,11 @@ Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_by_name).
 
 ```python
-my_board = Board.from_robot(robot=robot, name=)
+my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 ```
 
 {{% /tab %}}
@@ -1047,7 +1048,8 @@ my_board = Board.from_robot(robot=robot, name="my_board")
 # Get the GPIOPin with pin number 15.
 pin = await my_board.GPIO_pin_by_name(name="15")
 
-# Set the duty cycle to .6, meaning that this pin will be in the high state for 60% of the duration of the PWM interval period.
+# Set the duty cycle to .6, meaning that this pin will be in the high state for
+# 60% of the duration of the PWM interval period.
 await pin.set_pwm(cycle=.6)
 ```
 
@@ -1225,9 +1227,11 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 duty_cycle = await pin.get_pwm()
 
 # Get the AnalogReader "my_example_analog_reader".
-reader = await my_board.analog_reader_by_name(name="my_example_analog_reader")
+reader = await my_board.analog_reader_by_name(
+    name="my_example_analog_reader")
 
-# Get the value of the digital signal "my_example_analog_reader" has most recently measured.
+# Get the value of the digital signal "my_example_analog_reader" has most
+# recently measured.
 reading = reader.read()
 ```
 
@@ -1288,9 +1292,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 
-# Get the amount of times this DigitalInterrupt has been interrupted with a tick.
+# Get the amount of times this DigitalInterrupt has been interrupted with a
+# tick.
 count = await interrupt.value()
 ```
 
@@ -1341,9 +1347,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 
-# Get the rolling average of the pulse width across each time the DigitalInterrupt is interrupted with a tick.
+# Get the rolling average of the pulse width across each time the
+# DigitalInterrupt is interrupted with a tick.
 rolling_avg = await interrupt.value()
 ```
 
@@ -1407,7 +1415,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 
 # Record an interrupt and notify any interested callbacks.
 await interrupt.tick(high=true, nanos=12345)
@@ -1431,7 +1440,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 
 # Record an interrupt and notify any interested callbacks.
 await interrupt.tick(high=true, nanos=12345)
@@ -1524,7 +1534,8 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 callback_queue = Queue(maxsize=10)
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 
 # Add a queue to the interrupt.
 interrupt.add_callback(callback_queue)
@@ -1618,7 +1629,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the DigitalInterrupt "my_example_digital_interrupt".
-interrupt = await my_board.digital_interrupt_by_name(name="my_example_digital_interrupt")
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
 ```
 ``` -->
 

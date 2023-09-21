@@ -302,7 +302,8 @@ cam1 = Camera.from_robot(robot, "cam1")
 # Grab the classifier you configured on your robot
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the 2 classifications with the highest confidence scores from the next image from the camera
+# Get the 2 classifications with the highest confidence scores from the next
+# image from the camera
 classifications = await my_classifier.get_classifications_from_camera(cam1, 2)
 ```
 

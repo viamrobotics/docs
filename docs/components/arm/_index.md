@@ -257,14 +257,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python {class="line-numbers linkable-line-numbers"}
 my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
-# Declare a list of values with your desired rotational value for each joint on the arm.
+# Declare a list of values with your desired rotational value for each joint on
+# the arm.
 degrees = [0.0, 45.0, 0.0, 0.0, 0.0]
 
 # Declare a new JointPositions with these values.
-jointPos = arm.move_to_joint_positions(JointPositions(values=[0.0, 45.0, 0.0, 0.0, 0.0]))
+jointPos = arm.move_to_joint_positions(
+    JointPositions(values=[0.0, 45.0, 0.0, 0.0, 0.0]))
 
 # Move each joint of the arm to the position these values specify.
-await my_arm.move_to_joint_positions(positions= jointPos)
+await my_arm.move_to_joint_positions(positions=jointPos)
 ```
 
 {{% /tab %}}
@@ -425,14 +427,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_arm = Arm.from_robot(robot=robot, name="my_arm")
 
 # Get the kinematics information associated with the arm.
-kinematics := await my_arm.get_kinematics()
+kinematics = await my_arm.get_kinematics()
 
 # Get the format of the kinematics file.
 k_file = kinematics[0]
 
 # Get the byte contents of the file.
 k_bytes = kinematics[1]
-
 ```
 
 {{% /tab %}}

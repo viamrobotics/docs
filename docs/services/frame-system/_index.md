@@ -292,10 +292,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 first_pose = Pose(x=0.0, y=0.0, z=0.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
 first_pif = PoseInFrame(reference_frame="world", pose=first_pose)
 transformed_pif = await robot.transform_pose(first_pif, "myArm")
-print("Position: (x:", transformed_pif.pose.x, ", y:", transformed_pif.pose.y, ", z:", transformed_pif.pose.z, ")")
+print("Position: (x:", transformed_pif.pose.x,
+      ", y:", transformed_pif.pose.y,
+      ", z:", transformed_pif.pose.z, ")")
 print("Orientation: (o_x:", transformed_pif.pose.o_x,
       ", o_y:", transformed_pif.pose.o_y,
-      ", o_z:",transformed_pif.pose.o_z,
+      ", o_z:", transformed_pif.pose.o_z,
       ", theta:", transformed_pif.pose.theta, ")")
 ```
 
