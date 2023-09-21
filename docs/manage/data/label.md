@@ -61,7 +61,7 @@ Select the **Image Tags** option.
 
 {{<gif webm_src="/manage/data/tag-star.webm" mp4_src="/manage/data/tag-star.mp4" alt="Tag image with a star label">}}
 
-If you want to see the image in bigger, click on the expand side menu arrow.
+If you want to see the image bigger, click on the expand side menu arrow.
 
 Repeat this with all images in your dataset.
 
