@@ -45,7 +45,7 @@ When you make changes to your module, you can [uploaded the newer version](/exte
 
 ### Deploying to a Robot
 
-Once you [upload a module to the Viam registry](/extend/modular-resources/upload/), you can [deploy the module](/extend/modular-resources/configure/) to any smart machine in your organization from [the Viam app](https://app.viam.com/).
+Once you [upload a module to the Viam registry](/extend/modular-resources/upload/), you can [deploy the module](/extend/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
 Navigate to your robot's **Configuration** tab, click the **+ Create component** button, then start typing the name of the module you would like to deploy.
 
 By default, a newly-created module is *private*, meaning that the module will only appear for users within your [organization](/manage/fleet/organizations/), but you can later [update your module](/extend/modular-resources/upload/#update-an-existing-module) to set it to be *public*, which makes your module available to all Viam users.
