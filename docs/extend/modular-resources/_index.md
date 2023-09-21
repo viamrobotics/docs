@@ -64,7 +64,7 @@ To get started working with modular resources:
 
 - Browse the [Viam registry](https://app.viam.com/registry) to see modules uploaded by other users.
 
-- [Deploy a module](/extend/modular-resources/configure/) to your smart machine from the Registry.
+- [Deploy a module](/extend/modular-resources/configure/) to your robot from the Registry.
 
 - Browse the [modular resources tutorials](/extend/modular-resources/examples/) for examples of deploying and using custom modular resources on your smart machines.
 
