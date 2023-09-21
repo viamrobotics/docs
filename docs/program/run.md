@@ -29,7 +29,7 @@ You can find it at the top of the robot's **Control** tab.
 Most of the time, as long as both you and your robot are connected to the internet, you will want to run code to control your robot remotely.
 The advantage of this method is that your robot and your computer do not have to be connected to the same WAN/LAN to issue control commands.
 You can remotely control your robot with any application you implement from anywhere in the world.
-For example, you can run code on your personal computer, creating a client [session](/program/apis/sessions/), where the code running on that computer sends instructions to your robot's computer's `viam-server` instance over the internet.
+For example, you can run code on your personal computer, creating a client [session](/program/apis/sessions/), where the code running on that computer sends instructions to your robot's `viam-server` instance over the internet.
 
 After editing your code to include your robot's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
 
