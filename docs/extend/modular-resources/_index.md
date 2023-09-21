@@ -17,7 +17,7 @@ For example, you can:
 
 - **Implement a custom component:** If your smart machine has specialty hardware, such as an unsupported [motor](/components/motor/), and you want to control it using Viam, you can write a driver to support your hardware by implementing the corresponding component API.
 
-- **Implement a custom service:** If your smart machine requires a custom algorithm or data model when working with services such as [SLAM](/services/slam/), [Vision](/services/vision/), or [Motion planning](/services/motion/), you can implement your own algorithm or model against the corresponding service API.
+- **Implement a custom service:** If your smart machine uses a custom algorithm or data model when working with services such as [SLAM](/services/slam/), [Vision](/services/vision/), or [Motion planning](/services/motion/), you can implement your own algorithm or model against the corresponding service API.
 
 - **Implement fully custom logic:** If your smart machine runs custom or proprietary logic and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the generic API.
 
@@ -50,7 +50,7 @@ Navigate to your robot's **Configuration** tab, click the **+ Create component**
 
 By default, a newly-created module is *private*, meaning that the module will only appear for users within your [organization](/manage/fleet/organizations/), but you can later [update your module](/extend/modular-resources/upload/#update-an-existing-module) to set it to be *public*, which makes your module available to all Viam users.
 
-When you deploy a module to your smart machine, you can [choose how to update that module](/extend/modular-resources/configure/#configure-version-update-management-for-a-registry-module) when new versions become available.
+When you deploy a module to your robot, you can [choose how to update that module](/extend/modular-resources/configure/#configure-version-update-management-for-a-registry-module) when new versions become available.
 
 ## Get Started
 

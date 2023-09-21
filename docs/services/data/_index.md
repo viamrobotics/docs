@@ -98,7 +98,7 @@ The data management service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a smart machine configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your smart machine and import any required packages at the top of your code file.
-Go to your smart machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your smart machine.
+Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
 
