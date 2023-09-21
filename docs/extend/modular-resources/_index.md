@@ -66,7 +66,7 @@ To get started working with modular resources:
 
 - [Deploy a module](/extend/modular-resources/configure/) to your robot from the Registry.
 
-- Browse the [modular resources tutorials](/extend/modular-resources/examples/) for examples of deploying and using custom modular resources on your smart machines.
+- Browse the [modular resources tutorials](/extend/modular-resources/examples/) for examples of deploying and using custom modular resources on your robot.
 
 Once you have deployed a modular resource, you can test the custom resource using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
