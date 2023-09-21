@@ -1,14 +1,14 @@
 ---
-title: "Configure a module on your smart machine"
+title: "Configure a module on your robot"
 linkTitle: "Configure"
 weight: 30
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Add and configure a module from the Viam registry on your smart machine."
+description: "Add and configure a module from the Viam registry on your robot."
 no_list: true
 ---
 
-You can extend Viam by adding a module on your smart machine that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
+You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
 
 You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [add a local module](#local-modules).
 
@@ -16,18 +16,18 @@ See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concep
 
 ## Add a module from the Viam registry
 
-The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your smart machine.
+The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
 A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/components/) or [service](/services/)).
 
-Follow the instructions below depending on the type of modular resource you would like to add to your smart machine:
+Follow the instructions below depending on the type of modular resource you would like to add to your robot:
 
 - [Add a modular component](#add-a-modular-component-from-the-viam-registry)
 - [Add a modular service](#add-a-modular-service-from-the-viam-registry)
 
 ### Add a modular component from the Viam registry
 
-To add a modular [component](/components/) from the Viam registry to your smart machine:
+To add a modular [component](/components/) from the Viam registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
@@ -56,7 +56,7 @@ Deleting a module *does not* delete any configured modular resources it provides
 
 ### Add a modular service from the Viam registry
 
-To add a modular [service](/services/) from the Viam registry to your smart machine:
+To add a modular [service](/services/) from the Viam registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click the **Create service** button.
@@ -85,7 +85,7 @@ Deleting a module *does not* delete any configured modular resources it provides
 
 ## Configure a module from the Viam registry
 
-Once you have added a modular resource to your smart machine, you can view and configure the module itself from the **Modules** subtab:
+Once you have added a modular resource to your robot, you can view and configure the module itself from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
@@ -97,7 +97,7 @@ This pane lists the models provided by the module, any [components](/components/
 
 ### Configure version update management for a Registry module
 
-When you add a module to your smart machine, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
+When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will *never automatically update itself*.
 
 If you wish to allow automatic module updates when a new version of the module becomes available in the Viam registry, you can set the **Version type** for your module in the **Modules** subtab.
@@ -202,7 +202,7 @@ The custom model is configured as a component with the name "my-realsense".
 
 ## Local modules
 
-If you wish to add a module to your smart machine without uploading it to the Viam registry, you can add your module as a *local module*.
+If you wish to add a module to your robot without uploading it to the Viam registry, you can add your module as a *local module*.
 
 You can add your own custom modules as local modules, or you can add pre-built modules written by other Viam users.
 
@@ -227,7 +227,7 @@ See the instructions to [compile your module into an executable](/extend/modular
 
 ### Add a local module
 
-To add a local module on your smart machine:
+To add a local module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com).
    - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
@@ -264,7 +264,7 @@ You can also add the module directly, without first adding its modular component
 
 ## Configure a local module
 
-Once you have added a modular resource to your smart machine, you can view and configure the module itself from the **Modules** subtab:
+Once you have added a modular resource to your robot, you can view and configure the module itself from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
@@ -303,7 +303,7 @@ Add these properties to your module's configuration:
 
 ### Configure a modular resource
 
-Once you have added a local module to your smart machine, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your smart machine by adding new components or services that use your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
