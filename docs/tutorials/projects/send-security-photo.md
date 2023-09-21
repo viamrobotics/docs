@@ -195,7 +195,6 @@ As an example, if you have T-Mobile your code will look like this:
 
 ```python
 yag.send('xxxxxxxxxx@tmomail.net', 'subject', contents)
-
 ```
 
 This allows you to route the email to your phone as a text message.
@@ -241,6 +240,7 @@ import yagmail
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -251,14 +251,14 @@ async def connect():
     )
     return await RobotClient.at_address(robot_address, opts)
 
+
 async def main():
     robot = await connect()
-
     detector = VisionClient.from_robot(robot, "myPeopleDetector")
 
     N = 100
     for i in range(N):
-        #make sure that your camera name in the app matches "my-camera"
+        # make sure that your camera name in the app matches "my-camera"
         detections = await detector.get_detections_from_camera("my-camera")
         found = False
         for d in detections:
@@ -273,16 +273,20 @@ async def main():
                 # Change this path to your own
                 image.save('/yourpath/foundyou.png')
                 # yagmail section
-                # Create a yagmail.SMTP instance to initialize the server connection
-                # Replace username and password with your actual credentials
+                # Create a yagmail.SMTP instance to initialize the server
+                # connection. Replace username and password with your actual
+                # credentials
                 yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
                 # Specify the message contents
-                contents = ['There is someone at your desk - beware','/yourpath/foundyou.png']
-                # Add phone number and gateway address found in the SMS gateway step
+                contents = ['There is someone at your desk - beware',
+                            '/yourpath/foundyou.png']
+                # Add phone number and gateway address found in the SMS gateway
+                # step
                 yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
-                # If the robot detects a person and sends a text, we don't need it to keep sending us more texts
-                # so we sleep it for 60 seconds before looking for a person again
+                # If the robot detects a person and sends a text, we don't need
+                # it to keep sending us more texts so we sleep it for 60
+                # seconds before looking for a person again
                 await asyncio.sleep(60)
             else:
                 print("There's nobody here, don't send a message")
@@ -293,7 +297,6 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
-
 ```
 
 {{% /expand %}}

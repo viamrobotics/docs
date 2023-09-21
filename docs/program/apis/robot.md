@@ -307,7 +307,8 @@ Cancel all current and outstanding operations for the robot and stop all actuato
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.stop_all).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+# Cancel all current and outstanding operations for the robot and stop all
+# actuators and movement.
 await robot.stop_all()
 ```
 

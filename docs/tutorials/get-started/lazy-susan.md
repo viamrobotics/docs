@@ -303,8 +303,8 @@ nano turnsusan.py
 You can start by adding this call to `set_power` to your `main function` above the line that closes the robot connection with `robot.close()`:
 
 ```python
-    #Use the set power method before you close the code loop
-    await dc_motor.set_power(power = 0.2)
+# Use the set power method before you close the code loop
+await dc_motor.set_power(power=0.2)
 ```
 
 Enter CTRL+X to save and exit: press y when prompted to accept changes, and the return key to accept the original filename.

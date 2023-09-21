@@ -34,24 +34,28 @@ import asyncio
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
+
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        auth_entity='mrroboto.this_is_just_an_example.viam.cloud',  # The URL of a robot in the location.
+        # The URL of a robot in the location.
+        auth_entity='mrroboto.this_is_just_an_example.viam.cloud',
         credentials=Credentials(
             type='robot-location-secret',
-            payload='YOUR LOCATION SECRET' # The location secret
+            payload='YOUR LOCATION SECRET'  # The location secret
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
+
 async def main():
 
-  # Make a ViamClient
-  viam_client = await connect()
-  # Instantiate an AppClient called "cloud" to run the cloud app API methods on
-  cloud = viam_client.app_client
+    # Make a ViamClient
+    viam_client = await connect()
+    # Instantiate an AppClient called "cloud" to run the cloud app API methods
+    # on
+    cloud = viam_client.app_client
 
-  viam_client.close()
+    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -136,7 +140,8 @@ Namespaces can only contain lowercase alphanumeric and dash characters.
 - [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): `True` if the provided namespace is available.
 
 ```python {class="line-numbers linkable-line-numbers"}
-available = await cloud.get_organization_namespace_availability(public_namespace="my-cool-organization")
+available = await cloud.get_organization_namespace_availability(
+    public_namespace="my-cool-organization")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization_namespace_availability).
@@ -168,7 +173,8 @@ If an invitation has only one authorization and you want to remove it, delete th
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import Authorization
-authorization_to_add=Authorization(
+
+authorization_to_add = Authorization(
     authorization_type="some type of auth",
     authorization_id="identifier",
     resource_type="abc",
@@ -211,7 +217,8 @@ Defaults to creating a location in your organization at root level if you do not
 - [(viam.proto.app.Location)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location): The newly created location.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_new_location = await cloud.create_location(name="Robotville", parent_location_id="111ab12345")
+my_new_location = await cloud.create_location(name="Robotville",
+                                              parent_location_id="111ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location).
@@ -281,13 +288,15 @@ my_updated_location = await cloud.update_location(
     parent_location_id="xyz34xxxxx",
 )
 
-# The following line changes the name of the location without changing its parent location
+# The following line changes the name of the location without changing its
+# parent location
 my_updated_location = await cloud.update_location(
     location_id="abc12abcde",
     name="Land Before Robots"
 )
 
-# The following line moves the location back up to be a top level location without changing its name
+# The following line moves the location back up to be a top level location
+# without changing its name
 my_updated_location = await cloud.update_location(
     location_id="abc12abcde",
     name="",
@@ -432,7 +441,8 @@ Delete a location secret.
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str):
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_location_secret(secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
+await cloud.delete_location_secret(
+    secret_id="abcd123-456-7890ab-cxyz98-989898xyzxyz")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).

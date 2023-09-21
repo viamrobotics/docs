@@ -133,7 +133,7 @@ frame = await my_cam.get_image()
 
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
-standard_frame frame.bytes_to_depth_array()
+standard_frame = frame.bytes_to_depth_array()
 ```
 
 {{% alert title="Tip" color="tip" %}}
@@ -253,7 +253,7 @@ To deserialize the returned information into a numpy array, use the Open3D libra
 import numpy as np
 import open3d as o3d
 
-my_camera= Camera.from_robot(robot=robot, name="my_camera")
+my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
 data, _ = await my_camera.get_point_cloud()
 
@@ -306,7 +306,7 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 - [(Properties)](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties): The properties of the camera.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera= Camera.from_robot(robot=robot, name="my_camera")
+my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
 properties = await my_camera.get_properties()
 ```
@@ -356,7 +356,7 @@ If you are implementing your own camera and adding features that have no native 
 - [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera= Camera.from_robot(robot, "my_camera")
+my_camera = Camera.from_robot(robot, "my_camera")
 
 command = {"cmd": "test", "data1": 500}
 result = my_camera.do(command)

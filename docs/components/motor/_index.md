@@ -113,7 +113,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
 # Set the power to 40% forwards.
-await my_motor.set_power(power = 0.4)
+await my_motor.set_power(power=0.4)
 ```
 
 {{% /tab %}}
@@ -370,7 +370,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python
 my_motor = Motor.from_robot(robot=robot, name="my_motor")
 
-# Report a dictionary mapping optional properties to whether it is supported by this motor.
+# Report a dictionary mapping optional properties to whether it is supported by
+# this motor.
 properties = await my_motor.get_properties()
 
 # Print out the properties.

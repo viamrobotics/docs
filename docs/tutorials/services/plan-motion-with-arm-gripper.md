@@ -130,7 +130,8 @@ Any components that have frame information (and, as a result, are added to the f
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the pose of myArm from the motion service
-my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
+my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name,
+                                                   "world")
 print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 ```
 
@@ -173,9 +174,11 @@ You must add additional imports to access `Pose`, `PoseInFrame`, `Vector3`, `Geo
 # Add a table obstacle to a WorldState
 table_origin = Pose(x=0.0, y=0.0, z=-19.0)
 table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
-table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
+table_object = Geometry(center=table_origin,
+                        box=RectangularPrism(dims_mm=table_dims))
 
-obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[table_object])
+obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                       geometries=[table_object])
 
 # Create a WorldState that has the GeometriesInFrame included
 world_state = WorldState(obstacles=[obstacles_in_frame])
@@ -245,10 +248,19 @@ Keep the space around the arm clear!
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a sample "start" pose to demonstrate motion
-test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
-test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
+test_start_pose = Pose(x=510.0,
+                       y=0.0,
+                       z=526.0,
+                       o_x=0.7071,
+                       o_y=0.0,
+                       o_z=-0.7071,
+                       theta=0.0)
+test_start_pose_in_frame = PoseInFrame(reference_frame="world",
+                                       pose=test_start_pose)
 
-await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_arm_resource_name,
+                          destination=test_start_pose_in_frame,
+                          world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -324,10 +336,21 @@ Then add this code to your `main()`:
 my_gripper_resource = Gripper.get_resource_name("myGripper")
 
 # Move the gripper in the -Z direction with respect to its own reference frame
-gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
-gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
+gripper_pose_rev = Pose(x=0.0,
+                        y=0.0,
+                        z=-100.0,
+                        o_x=0.0,
+                        o_y=0.0,
+                        o_z=1.0,
+                        theta=0.0)
+# Note the change in frame name
+gripper_pose_rev_in_frame = PoseInFrame(
+    reference_frame=my_gripper_resource.name,
+    pose=gripper_pose_rev)
 
-await motion_service.move(component_name=my_gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_gripper_resource,
+                          destination=gripper_pose_rev_in_frame,
+                          world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -388,7 +411,8 @@ import asyncio
 
 from viam.components.arm import Arm
 from viam.components.gripper import Gripper
-from viam.proto.common import Geometry, GeometriesInFrame, Pose, PoseInFrame, RectangularPrism, Vector3, WorldState
+from viam.proto.common import Geometry, GeometriesInFrame, Pose, PoseInFrame, \
+    RectangularPrism, Vector3, WorldState
 from viam.proto.component.arm import JointPositions
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
@@ -404,6 +428,7 @@ async def connect():
         dial_options=DialOptions(credentials=creds)
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
+
 
 async def main():
     robot = await connect()
@@ -425,7 +450,8 @@ async def main():
 
     # Command a joint position move: move the forearm of the arm slightly up
     cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
-    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+    await my_arm_component.move_to_joint_positions(
+        positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
@@ -436,32 +462,56 @@ async def main():
     motion_service = MotionClient.from_robot(robot, "builtin")
 
     # Get the pose of myArm from the motion service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
+    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name,
+                                                       "world")
     print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 
     # Add a table obstacle to a WorldState
     table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
     table_dims = Vector3(x=635.0, y=1271.0, z=38.0)
-    table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
+    table_object = Geometry(center=table_origin,
+                            box=RectangularPrism(dims_mm=table_dims))
 
-    obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[table_object])
+    obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                           geometries=[table_object])
 
     # Create a WorldState that has the GeometriesInFrame included
     world_state = WorldState(obstacles=[obstacles_in_frame])
 
     # Generate a sample "start" pose to demonstrate motion
-    test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
-    test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
+    test_start_pose = Pose(x=510.0,
+                           y=0.0,
+                           z=526.0,
+                           o_x=0.7071,
+                           o_y=0.0,
+                           o_z=-0.7071,
+                           theta=0.0)
+    test_start_pose_in_frame = PoseInFrame(reference_frame="world",
+                                           pose=test_start_pose)
 
-    await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_arm_resource_name,
+                              destination=test_start_pose_in_frame,
+                              world_state=world_state)
 
     my_gripper_resource = Gripper.get_resource_name("myGripper")
 
-    # This will move the gripper in the -Z direction with respect to its own reference frame
-    gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
-    gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
+    # This will move the gripper in the -Z direction with respect to its own
+    # reference frame
+    gripper_pose_rev = Pose(x=0.0,
+                            y=0.0,
+                            z=-100.0,
+                            o_x=0.0,
+                            o_y=0.0,
+                            o_z=1.0,
+                            theta=0.0)
+    # Note the change in frame name
+    gripper_pose_rev_in_frame = PoseInFrame(
+        reference_frame=my_gripper_resource.name,
+        pose=gripper_pose_rev)
 
-    await motion_service.move(component_name=my_gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_gripper_resource,
+                              destination=gripper_pose_rev_in_frame,
+                              world_state=world_state)
 
     # Don't forget to close the robot when you're done!
     await robot.close()

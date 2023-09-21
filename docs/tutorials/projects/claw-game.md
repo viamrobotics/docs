@@ -505,8 +505,10 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.components.board import Board
 from viam.components.arm import Arm
 from viam.services.motion import MotionClient
-from viam.proto.common import Pose, PoseInFrame, Vector3, Geometry, GeometriesInFrame, RectangularPrism, WorldState
-from viam.proto.service.motion import Constraints, LinearConstraint, OrientationConstraint
+from viam.proto.common import Pose, PoseInFrame, Vector3, Geometry, \
+    GeometriesInFrame, RectangularPrism, WorldState
+from viam.proto.service.motion import Constraints, LinearConstraint, \
+    OrientationConstraint
 ```
 
 Then it creates an argument parser, defining required and optional arguments to create a user-friendly command line interface:
@@ -540,7 +542,7 @@ Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/serv
 The orientation constraint places a restriction on the orientation change during a motion, as the arm in a claw game should always face down so the gripper is always in a position where is can descend and grab a prize:
 
 ```python
-constraints = Constraints(orientation_constraint = [OrientationConstraint()])
+constraints = Constraints(orientation_constraint=[OrientationConstraint()])
 ```
 
 Next the code imports the <file>obstacles.json</file> file and defines the `world_state` representing the robot's physical environment:
@@ -564,10 +566,15 @@ def get_world_state():
             theta=orientation['th'],
         )
         dims = Vector3(x=geometry['x'], y=geometry['y'], z=geometry['z'])
-        world_state_obstacles.append(Geometry(center=center, box=RectangularPrism(dims_mm=dims), label=geometry['label']))
+        world_state_obstacles.append(
+            Geometry(center=center,
+                     box=RectangularPrism(dims_mm=dims),
+                     label=geometry['label']))
 
-    obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=world_state_obstacles)
+    obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                           geometries=world_state_obstacles)
     return WorldState(obstacles=[obstacles_in_frame])
+
 
 world_state = get_world_state()
 ```
@@ -576,14 +583,15 @@ Next, the code defines a grab function to use GPIO to open and close the gripper
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def grab(board, doGrab):
-    # Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
+    # Note that the pin supplied is a placeholder. Please change this to a
+    # valid pin you are using.
     pin = await board.gpio_pin_by_name('8')
-    if doGrab == True:
+    if doGrab:
         # opens the gripper/release
         await pin.set(True)
     else:
-       # closes the gripper/grab
-       await pin.set(False)
+        # closes the gripper/grab
+        await pin.set(False)
 ```
 
 Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/services/motion/).
@@ -591,7 +599,11 @@ Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_off
 ```python {class="line-numbers linkable-line-numbers"}
 async def move_absolute(arm, motion_service, pose):
     destination = PoseInFrame(reference_frame="world", pose=pose)
-    await motion_service.move(component_name=arm, destination=destination, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=destination,
+                              world_state=world_state,
+                              constraints=constraints)
+
 
 async def home(arm, motion_service):
     # Makes sure to first move the arm up in z axis
@@ -600,11 +612,18 @@ async def home(arm, motion_service):
     # Generate a sample "home" pose around the drop hole and demonstrate motion
     home_pose_in_frame = PoseInFrame(reference_frame="world", pose=home_pose)
 
-    await motion_service.move(component_name=arm, destination=home_pose_in_frame, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=home_pose_in_frame,
+                              world_state=world_state,
+                              constraints=constraints)
+
 
 async def move_to_offset(arm, motion_service, offset):
     # Get current position of the arm
-    current_position = await motion_service.get_pose(component_name=arm, destination_frame = "", supplemental_transforms = None)
+    current_position = await motion_service.get_pose(
+        component_name=arm,
+        destination_frame="",
+        supplemental_transforms=None)
     print('current position: ', current_position)
 
     # Calculate new pose to move the arm to
@@ -614,36 +633,45 @@ async def move_to_offset(arm, motion_service, offset):
         z=current_position.pose.z + offset.z,
         o_x=0,
         o_y=0,
-        o_z=-1, # negative z means claw will point down
+        o_z=-1,  # negative z means claw will point down
         theta=0
     )
     print('moving to position: ', pose)
 
     # Move arm
     destination = PoseInFrame(reference_frame="world", pose=pose)
-    await motion_service.move(component_name=arm, destination=destination, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=destination,
+                              world_state=world_state,
+                              constraints=constraints)
 
 
 async def move_z(arm, motion_service, z):
     # Get current position of the arm
-    current_position = await motion_service.get_pose(component_name=arm, destination_frame = "", supplemental_transforms = None)
+    current_position = await motion_service.get_pose(
+        component_name=arm,
+        destination_frame="",
+        supplemental_transforms=None)
     print('current_position: ', current_position)
 
     # Construct new pose to get to desired z position
     pose = Pose(
         x=current_position.pose.x,
         y=current_position.pose.y,
-        z = z,
-        o_x= 0,
+        z=z,
+        o_x=0,
         o_y=0,
-        o_z=-1, # negative z means claw will point down
+        o_z=-1,  # negative z means claw will point down
         theta=0
     )
     print('moving to position: ', pose)
 
     # Move arm
     destination = PoseInFrame(reference_frame="world", pose=pose)
-    await motion_service.move(component_name=arm, destination=destination, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=destination,
+                              world_state=world_state,
+                              constraints=constraints)
 ```
 
 The `main()` function initializes different resources and then handles command line arguments to move the arm in a sequence for testing and debugging:
@@ -660,8 +688,8 @@ async def main():
     # myBoard
     my_board = Board.from_robot(robot, "myBoard")
     # my Subpart name, arm
-    my_arm_resource= Arm.get_resource_name("planning:myArm")
-    my_arm_resource.name= "myArm"
+    my_arm_resource = Arm.get_resource_name("planning:myArm")
+    my_arm_resource.name = "myArm"
     print("arm resource", my_arm_resource)
 
     commands = [args.command]
@@ -684,19 +712,27 @@ async def main():
         if command == "left":
             print("will move left")
             # Moves the arm's y position to left
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=0, y=-move_increment, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=0, y=-move_increment, z=0))
         if command == "right":
             print("will move right")
             # Moves the arm's y position to right
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=0, y=move_increment, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=0, y=move_increment, z=0))
         if command == "forward":
             print("will move forward")
             # Moves the arm's x position to forward
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=move_increment, y=0, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=move_increment, y=0, z=0))
         if command == "backward":
             print("will move backward")
             # Moves the arm's x position to backwards
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=-move_increment, y=0, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=-move_increment, y=0, z=0))
         if command == "grab":
             print("will grab")
             # Closes the gripper
@@ -709,8 +745,13 @@ async def main():
             print("will sleep one second")
             await asyncio.sleep(1)
         if command == "test":
-            print("will move to the test position, drop, grab, return home and release")
-            await move_absolute(my_arm_resource, motion_service, Pose(x=0.0, y=380, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0))
+            print("""will move to the test position, drop, grab, return home
+                  and release""")
+            await move_absolute(
+                my_arm_resource,
+                motion_service,
+                Pose(x=0.0, y=380, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0)
+            )
             await move_z(my_arm_resource, motion_service, grab_plane)
             await grab(my_board, True)
             await home(my_arm_resource, motion_service)
@@ -732,7 +773,8 @@ python3 CLI-test.py --password mypass --location mylocation --command grab
 Or, you can run sequences of these commands together, for example:
 
 ```sh {class="command-line" data-prompt="$"}
-python3 CLI-test.py --password mypass --location mylocation --command sequence --sequence grab,sleep,release,sleep,grab,sleep,release
+python3 CLI-test.py --password mypass --location mylocation --command sequence \
+    --sequence grab,sleep,release,sleep,grab,sleep,release
 ```
 
 Now that the arm is set up and you have a CLI script you can use for testing - try testing the motion and claw grab with different items.

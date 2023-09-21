@@ -139,7 +139,8 @@ cam1 = Camera.from_robot(robot, "cam1")
 # Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the top 2 classifications with the highest confidence scores from the camera output
+# Get the top 2 classifications with the highest confidence scores from the
+# camera output
 classifications = await my_classifier.get_classifications_from_camera(img, 2)
 
 # If you need to store the image, get the image first

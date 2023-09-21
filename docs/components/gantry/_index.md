@@ -156,13 +156,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
+# Create a list of positions for the axes of the gantry to move to. Assume in
+# this example that the gantry is multi-axis, with 3 axes.
 examplePositions = [1, 2, 3]
 
 exampleSpeeds = [3, 9, 12]
 
 # Move the axes of the gantry to the positions specified.
-await my_gantry.move_to_position(positions=examplePositions, speeds=exampleSpeeds)
+await my_gantry.move_to_position(
+    positions=examplePositions, speeds=exampleSpeeds)
 ```
 
 {{% /tab %}}
@@ -315,7 +317,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+# Stop all motion of the gantry. It is assumed that the gantry stops
+# immediately.
 await my_gantry.stop()
 ```
 
@@ -363,7 +366,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+# Stop all motion of the gantry. It is assumed that the
+# gantry stops immediately.
 await my_gantry.stop()
 
 # Print if the gantry is currently moving.
