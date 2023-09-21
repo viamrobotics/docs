@@ -366,8 +366,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Stop all motion of the gantry. It is assumed that the gantry stops
-# immediately.
+# Stop all motion of the gantry. It is assumed that the
+# gantry stops immediately.
 await my_gantry.stop()
 
 # Print if the gantry is currently moving.
