@@ -295,7 +295,7 @@ This connection must be established for your program to be executed properly on 
 
 ### Set up your virtual environment
 
-If you are using the Python SDK, [set up a virtual environment](/program/apis/python-venv) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
+If you are using the Python SDK, [set up a virtual environment](/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 ### Run the sample code
 
