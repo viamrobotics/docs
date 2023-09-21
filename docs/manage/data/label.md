@@ -38,7 +38,7 @@ Click on the image where you would like to add the bounding box and drag to wher
 
 {{<gif webm_src="/manage/data/label-dog.webm" mp4_src="/manage/data/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
 
-If you want to see the image in bigger, click on the expand side menu arrow:
+If you want to expand the image, click on the expand side menu arrow:
 
 {{<gif webm_src="/manage/data/label-dog-big.webm" mp4_src="/manage/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
 
