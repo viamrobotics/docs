@@ -22,10 +22,10 @@ weight: 3
 # SMEs: Hazal
 ---
 
+In this tutorial you will learn how to configure a color detector with the vision service and how to leverage that detector with a [transform camera](/components/camera/transform/) to detect the color red.
+
 The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
-
-In this tutorial you will learn how to configure a color detector with the vision service and how to leverage that detector with a [transform camera](/components/camera/transform/) to detect the color red.
 
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
