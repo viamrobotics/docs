@@ -3,16 +3,16 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it."
+description: "The vision service enables your smart machine to use its on-board cameras to intelligently see and interpret the world around it."
 icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 # SMEs: Bijan, Khari
 ---
 
-The vision service enables your robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
-While the camera component lets you access what your robot's camera sees, the vision service allows you to interpret your image data.
-The vision service is a default service on the robot, and can be initialized without attributes.
+The vision service enables your smart machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+While the camera component lets you access what your smart machine's camera sees, the vision service allows you to interpret your image data.
+The vision service is a default service on the smart machine, and can be initialized without attributes.
 
 Currently, the vision service supports the following models:
 

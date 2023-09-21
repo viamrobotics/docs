@@ -4,11 +4,11 @@ linkTitle: "Create"
 weight: 20
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered robot."
+description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered smart machine."
 no_list: true
 ---
 
-You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any robot running on Viam.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any smart machine running on Viam.
 
 A common use case for modular resources is to create a new [model](/extend/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 

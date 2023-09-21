@@ -3,7 +3,7 @@ title: "Manage Robots with Viam's Robot API"
 linkTitle: "Robot Management"
 weight: 20
 type: "docs"
-description: "How to use the Robot API to monitor and manage your robots."
+description: "How to use the Robot API to monitor and manage your smart machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 ---
 

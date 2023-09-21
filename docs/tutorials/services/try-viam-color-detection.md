@@ -22,8 +22,8 @@ weight: 3
 # SMEs: Hazal
 ---
 
-The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
-The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
+The [vision service](/services/vision/) enables a smart machine to use its cameras to see and interpret the world around it.
+The service also allows you to create different types of detectors with which the smart machine can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 In this tutorial you will learn how to configure a color detector with the vision service and how to leverage that detector with a transform camera to detect the color red.
 

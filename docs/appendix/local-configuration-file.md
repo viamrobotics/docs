@@ -14,16 +14,16 @@ The `viam-server` binary uses a JSON-formatted configuration file to define all 
 
 When you [install `viam-server`](/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
 
-However, if your robot will never connect to the internet, you will need to create your own local configuration file, using one of these options:
+However, if your smart machine will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
-* [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
+* [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your smart machine, without connecting your smart machine to the Viam app.
 * [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
 For information on the individual configuration options available, see [Configuration](/manage/configuration/).
 
 ## Build a local configuration file in the Viam app
 
-If your robot will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your robot to it.
+If your robot will never connect to the internet, and you want to create a local configuration file manually, you can still use the Viam app to build the configuration file even without connecting your smart machine to it.
 Follow the steps below to build and then download your configuration file:
 
 1. Navigate to [the Viam app](https://app.viam.com) and select the **Config** tab.
