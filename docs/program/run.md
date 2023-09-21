@@ -26,7 +26,7 @@ You can find it at the top of the robot's **Control** tab.
 
 ## Run Code Remotely
 
-Most of the time, as long as both you and your robot are connected to the internet, you will want to upload code to your robot remotely.
+Most of the time, as long as both you and your robot are connected to the internet, you will want to run code on your robot remotely.
 The advantage of this method is that your robot and your computer do not have to be connected to the same WAN/LAN to issue control commands.
 You can remotely control your robot with any application you implement from anywhere in the world.
 After editing your code to include your robot's [authentication credentials](#authentication), run a command to execute the program in the terminal of a machine with the appropriate programming language and Viam SDK installed:
