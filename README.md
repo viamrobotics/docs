@@ -55,7 +55,7 @@ To check for broken links run `make htmltest`.
 
 ## Linters and Checks
 
-To ensure that you do not accidentally add `EXIF` data on images, please add the following lines to your `.git/hooks/pre-commit` file:
+To ensure that you do not accidentally add `EXIF` data on images, please add the following lines to your `.git/hooks/pre-commit` file. If you do not have a file of that name in that location, create one, or rename the existing `pre-commit.sample` file in that directory as `pre-commit`, and add the code below:
 
 ```sh
 if [ git diff --name-only | grep -EI ".*(png|jpg|jpeg)$" | wc -l ]
