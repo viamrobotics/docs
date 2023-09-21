@@ -15,7 +15,7 @@ A common use case for modular resources is to create a new [model](/extend/modul
 Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/extend/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry), to share it with other Viam users or just to other users in your organization.
 You can also configure [automatic uploads of new versions of your module](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
 
-You can also add your module to your smart machine as a [local module](/extend/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
+You can also add your module to your robot as a [local module](/extend/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
 
 ## Create a custom module
 
