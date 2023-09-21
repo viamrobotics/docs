@@ -1,6 +1,6 @@
 ---
 title: "Prepare your Python Virtual Environment"
-linkTitle: "Prepare Virtualenv"
+linkTitle: "Virtualenv for Python SDK"
 weight: 10
 type: "docs"
 description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
