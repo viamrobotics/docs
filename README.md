@@ -43,15 +43,40 @@ python3 -m http.server 9000 --directory public
 
 ## Test the docs locally
 
+### Python snippets
+
 To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following like to `.git/hooks/pre-commit`:
 
 ```sh
-flake8-markdown  $(git diff --diff-filter=d --name-only HEAD | grep '\.md$')
+if [ "git diff --diff-filter=d --name-only HEAD | grep '\.md$' | wc -l" ];
+then
+list= $(git diff --diff-filter=d --name-only HEAD | grep '\.md$')
+for item in $list
+do
+flake8-markdown $item
+done
+fi
 ```
 
 To ensure your markdown is properly formatted, run `make markdowntest`.
 
 To check for broken links run `make htmltest`.
+
+### Remove EXIF data automatically
+
+To ensure that you do not accidentally add `EXIF` data on images, please install [exiftool](https://exiftool.org/install.html) and add the following lines to the `.git/hooks/pre-commit` file in your local files.
+If you do not have a file of that name in that location, create one, or rename the existing `pre-commit.sample` file in that directory as `pre-commit`, and add the code below:
+
+```sh
+if [ "git diff --name-only | grep -EI '.*(png|jpg|jpeg)$' | wc -l" ];
+then
+list= $(git diff --diff-filter=d --name-only | grep -EI ".*(png|jpg|jpeg)$")
+for item in $list
+do
+exiftool -all= $item
+done
+fi
+```
 
 ## Publishing
 
