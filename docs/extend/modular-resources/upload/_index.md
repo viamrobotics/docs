@@ -27,7 +27,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
    1. To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+      ``` sh { class="command-line" data-prompt="$"}
       viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
       ```
 
@@ -112,19 +112,19 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
 
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+      ``` sh { class="command-line" data-prompt="$"}
       viam module update
       ```
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
 1. Package your custom module to get it ready to upload to the Viam registry.
-   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
+   Your packaged module must use the `.tar.gz` or `.tgz` extension.
    Use the command below specific for the language of your module:
 
    - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ``` sh { class="command-line" data-prompt="$"}
      go build -o bin/module ./module/main.go
      tar -cxf module.tar.gz bin/module
      ```
@@ -133,7 +133,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ``` sh { class="command-line" data-prompt="$"}
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
@@ -141,7 +141,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
 1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ``` sh { class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> module.tar.gz
    ```
 
@@ -155,7 +155,8 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
       - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
       - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
       - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
-   - `path` - provide the path to the compressed archive, in `tar.gz` or `tar.xz` format, that contains your custom module code.
+   - `path` - provide the path to the compressed archive that contains your custom module code.
+      Your archive must use the `.tar.gz` or `.tgz` extension.
 
    {{% alert title="Important" color="note" %}}
    The `viam module upload` command only supports one `platform` argument at a time.
@@ -166,7 +167,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
    For example, the following command uploads the compressed `module.tar.gz` archive to the Viam registry when run in the same directory as the corresponding `meta.json` file:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ``` sh { class="command-line" data-prompt="$"}
    viam module upload --version 1.0.0 --platform darwin/arm64 module.tar.gz
    ```
 
@@ -196,19 +197,19 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
 
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+      ``` sh { class="command-line" data-prompt="$"}
       viam module update
       ```
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
 1. Package your custom module to get it ready to upload to the Viam registry.
-   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
+   Your packaged module must use the `.tar.gz` or `.tgz` extension.
    Use the command below specific for the language of your module:
 
    - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ``` sh { class="command-line" data-prompt="$"}
      go build -o bin/module ./module/main.go
      tar -cxf module.tar.gz bin/module
      ```
@@ -217,7 +218,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ``` sh { class="command-line" data-prompt="$"}
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
@@ -225,13 +226,13 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
 1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ``` sh { class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <path-to-tar.gz>
    ```
 
    For example, the following command uploads the compressed `my-module.tar.gz` archive to the Viam registry when run in the same directory, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ``` sh { class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 

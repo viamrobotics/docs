@@ -63,24 +63,29 @@ h1, .h1 {
 h2, .h2 {
   font-size: 1.5rem !important;
   line-height: 2.625rem;
+  clear: both;
 }
 
 h3, .h3 {
   font-size: 1.1667rem !important;
+  clear: both;
 }
 
 h4, .h4 {
   font-size: 1.0625rem !important;
   line-height: 1.4375em;
+  clear: both;
 }
 
 h5, .h5 {
   font-size: 0.833 !important;
+  clear: both;
 }
 
 h6, .h6 {
   font-size: 0.833rem !important;
   line-height: 1.0625rem;
+  clear: both;
 }
 
 h7, .h7 {
@@ -88,6 +93,7 @@ h7, .h7 {
   line-height: 1.0625rem;
   font-weight: 400;
   font-style: italic;
+  clear: both;
 }
 
 .td-content > h3 {
@@ -1343,4 +1349,10 @@ a.ais-Pagination-link:hover {
 
 .row.flex-xl-nowrap {
   min-height: 100%;
+}
+
+// Helper to allow search to link to tabs
+
+.search-helper {
+  display: none;
 }

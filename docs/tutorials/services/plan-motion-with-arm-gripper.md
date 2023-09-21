@@ -298,12 +298,12 @@ This is possible because the motion service considers other components of the ro
 
 We need to do several things to prepare a new gripper component for motion.
 
-1. Go back to your robot configuration in the Viam app.
-2. Under the **Components** section, add a new `gripper` component to your robot with the following attributes:
-    * Set `myGripper` as the **Name** of this new component.
-    * Set the **Type** to `gripper`.
-    * Set the **Model** to `fake`.
-3. Add a **Frame** to this component.
+1. Go back to your robot configuration in the [Viam app](https://app.viam.com).
+2. Navigate to the **Components** tab and click **Create component** in the lower-left corner to add a new gripper component to your robot:
+    * Select `gripper` for the type and `fake` for the model.
+    * Enter `myGripper` for the name of your gripper component.
+    * Click **Create**.
+3. Add a **Frame** to the gripper component:
     * Set the parent as `myArm`.
     * Set the translation as something small in the +Z direction, such as `90` millimeters.
     * Leave the orientation as the default.

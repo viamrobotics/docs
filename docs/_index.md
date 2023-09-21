@@ -111,6 +111,7 @@ sitemap:
     <li><a href="#c1_slide10">Raspberry Pi Zero 2W</a></li>
     <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
     <li><a href="#c1_slide12">PCA9686 I<sup>2</sup>C Interface</a></li>
+    <li><a href="#c1_slide13">Texas Instruments TDA4VM</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>
