@@ -207,15 +207,15 @@ This segmenter model is for depth cameras, and is best for motion planning with 
 
 Use the segmenter to identify well separated objects above a flat plane.
 
-If you want to identify point clouds over the flat plane with your segmenter:
+If you want to identify multiple boxes over the flat plane with your segmenter:
 
 - First, configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
     - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
     You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
 - Then, set the segmenter's attribute `with_geometries: true`.
-- The segmenter now returns point clouds within the `GeometryInFrame` object it captures.
+- The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
 
-If you choose not to configure the frame system, you can still identify points over the flat plane with your segmenter.
+If you choose not to configure the frame system, you can still identify single points over the flat plane with your segmenter:
 
 - Set `with_geometries: false`.
 - The segmenter now returns a single point within the `GeometryInFrame` object it captures.
