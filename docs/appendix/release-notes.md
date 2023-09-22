@@ -19,9 +19,9 @@ The [vision service](/services/vision/) is becoming more modular in RDK [v0.2.36
 
 The following **breaking changes** will take effect:
 
-* [Use individual vision service instances](#use-individual-vision-service-instances)
-* [Add and remove models using the robot config](#add-and-remove-models-using-the-robot-config)
-* [Add machine learning vision models to a vision service](#add-machine-learning-vision-models-to-a-vision-service)
+- [Use individual vision service instances](#use-individual-vision-service-instances)
+- [Add and remove models using the robot config](#add-and-remove-models-using-the-robot-config)
+- [Add machine learning vision models to a vision service](#add-machine-learning-vision-models-to-a-vision-service)
 
 ### Use individual vision service instances
 
@@ -378,12 +378,12 @@ You will need to first register the machine learning model file with the [ML mod
 
 ## Release Versions
 
-* rdk - **v0.2.18**
-* api - **v0.1.83**
-* slam - **v0.1.22**
-* viam-python-sdk - **v0.2.10**
-* goutils - **v0.1.13**
-* rust-utils - **v0.0.10**
+- rdk - **v0.2.18**
+- api - **v0.1.83**
+- slam - **v0.1.22**
+- viam-python-sdk - **v0.2.10**
+- goutils - **v0.1.13**
+- rust-utils - **v0.0.10**
 
 (**Bold=updated version**)
 
@@ -518,7 +518,7 @@ We have changed components that stored an <code>I2CHandle</code>, so that they i
 
 #### Sensor does not show GPS readings
 
-We changed <code>sensor.Readings ["position"]</code> field to return the values of the <code>*geo.Point</code> being accessed.
+We changed `sensor.Readings ["position"]` field to return the values of the `*geo.Point` being accessed.
 
 #### Add implicit dependencies to servo implementation
 
@@ -534,12 +534,12 @@ All component drivers can now declare dependencies, which are used to infer the 
 
 ## Release Versions
 
-* rdk - **v0.2.14**
-* api - **v0.1.63**
-* slam - **v0.1.17**
-* viam-python-sdk - **v0.2.8**
-* goutils - **v0.1.9**
-* rust-utils - **v0.0.9**
+- rdk - **v0.2.14**
+- api - **v0.1.63**
+- slam - **v0.1.17**
+- viam-python-sdk - **v0.2.8**
+- goutils - **v0.1.9**
+- rust-utils - **v0.0.9**
 
 (**Bold=updated version**)
 
@@ -634,12 +634,12 @@ All component drivers can now declare dependencies, which are used to infer the 
 
 ## Release Versions
 
-* rdk - **v0.2.9**
-* api - **v0.1.31**
-* slam - **v0.1.13**
-* viam-python-sdk - **v0.2.6**
-* goutils - **v0.1.6**
-* rust-utils - **v0.0.6**
+- rdk - **v0.2.9**
+- api - **v0.1.31**
+- slam - **v0.1.13**
+- viam-python-sdk - **v0.2.6**
+- goutils - **v0.1.6**
+- rust-utils - **v0.0.6**
 
 (**Bold=updated version**)
 
@@ -811,12 +811,12 @@ If you have previously captured data on your robot that has not yet been synced,
 
 ### Release Versions
 
-* rdk - **v0.2.3**
-* api - **v0.1.12**
-* slam - **v0.1.9**
-* viam-python-sdk - v0.2.0
-* goutils - v0.1.4
-* rust-utils - v0.0.5
+- rdk - **v0.2.3**
+- api - **v0.1.12**
+- slam - **v0.1.9**
+- viam-python-sdk - v0.2.0
+- goutils - v0.1.4
+- rust-utils - v0.0.5
 
 (**Bold=updated version**)
 
@@ -883,12 +883,12 @@ If you have previously captured data on your robot that has not yet been synced,
 
 ### Release Versions
 
-* rdk - v0.2.0
-* api - v0.1.7
-* slam - v0.1.7
-* viam-python-sdk - v0.2.0
-* goutils - v0.1.4
-* rust-utils - v0.0.5
+- rdk - v0.2.0
+- api - v0.1.7
+- slam - v0.1.7
+- viam-python-sdk - v0.2.0
+- goutils - v0.1.4
+- rust-utils - v0.0.5
 
 {{% /tab %}}
 {{% tab name="New Features" %}}

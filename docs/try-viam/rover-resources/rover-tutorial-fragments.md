@@ -20,7 +20,7 @@ Viam provides a reusable {{% glossary_tooltip term_id="fragment" text="*fragment
 ## Add the fragment
 
 Navigate to your robot in [the Viam app](https://app.viam.com/robots).
-On the  **Config** tab, click on the **Fragments** subtab.
+On the **Config** tab, click on the **Fragments** subtab.
 
 {{<imgproc src="try-viam/rover-resources/fragments/fragments_tab.png" resize="1200x" alt="Fragments tab inside the Viam app">}}
 
@@ -69,14 +69,14 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 1. Go to the **Fragments** subtab of the **Config** tab.
 2. Click **Remove** next to the fragment.
 3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
-5. Toggle to [**Raw JSON** mode](/try-viam/try-viam-tutorial/#raw-json).
-6. Paste the raw fragment contents into the **Raw JSON** config field.
-7. Click **Save config**.
-8. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
+4. Toggle to [**Raw JSON** mode](/try-viam/try-viam-tutorial/#raw-json).
+5. Paste the raw fragment contents into the **Raw JSON** config field.
+6. Click **Save config**.
+7. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
 
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/try-viam-sdk" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/get-started/try-viam-sdk" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}

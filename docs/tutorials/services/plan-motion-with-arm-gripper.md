@@ -8,8 +8,8 @@ mp4Src: "/tutorials/videos/motion_armmoving.mp4"
 videoAlt: "An arm moving with the motion service"
 tags: ["arm", "gripper", "motion", "services"]
 authors: []
-languages: [ "python", "go" ]
-viamresources: [ "arm", "gripper", "motion" ]
+languages: ["python", "go"]
+viamresources: ["arm", "gripper", "motion"]
 level: "Intermediate"
 date: "2023-03-07"
 # updated: ""
@@ -93,7 +93,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](/services/frame-system/).
+The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
@@ -215,7 +215,7 @@ This example adds a "table" with the assumption that you mounted your robot arm 
 The 2000 millimeter by 2000 millimeter dimensions ensure that a sufficiently large box is constructed, regardless of the real physical footprint of your mounting surface.
 Setting the Z component of the origin to -19 mm (half the table's thickness) conveniently positions the top surface of the table at 0.
 Feel free to change these dimensions, including thickness (the Z coordinate in the above code samples), to match your environment more closely.
-Additional obstacles can also be *appended* as desired.
+Additional obstacles can also be _appended_ as desired.
 
 {{< alert title="Tip" color="note" >}}
 Within the app, the **Frame System** subtab of your robot's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
@@ -239,7 +239,7 @@ Remember that X, Y, and Z coordinates are specified in millimeters.
 Again, a note:
 
 {{< alert title="Caution" color="caution" >}}
-Executing code presented after this point *will* induce motion in a connected robotic arm!
+Executing code presented after this point _will_ induce motion in a connected robotic arm!
 Keep the space around the arm clear!
 {{< /alert >}}
 <br><br>
@@ -289,7 +289,7 @@ if err != nil {
 ## Command other components to move with the motion service
 
 In this section you will add a new component to your robot.
-One device that is very commonly attached to the end of a robot arm is a [*gripper*](/components/gripper/).
+One device that is very commonly attached to the end of a robot arm is a [_gripper_](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
 This is possible because the motion service considers other components of the robot (through the [frame system](/services/frame-system/)) when calculating how to achieve the desired motion.
@@ -300,18 +300,18 @@ We need to do several things to prepare a new gripper component for motion.
 
 1. Go back to your robot configuration in the [Viam app](https://app.viam.com).
 2. Navigate to the **Components** tab and click **Create component** in the lower-left corner to add a new gripper component to your robot:
-    * Select `gripper` for the type and `fake` for the model.
-    * Enter `myGripper` for the name of your gripper component.
-    * Click **Create**.
+   - Select `gripper` for the type and `fake` for the model.
+   - Enter `myGripper` for the name of your gripper component.
+   - Click **Create**.
 3. Add a **Frame** to the gripper component:
-    * Set the parent as `myArm`.
-    * Set the translation as something small in the +Z direction, such as `90` millimeters.
-    * Leave the orientation as the default.
-    * For **Geometry Type** choose **Box**.
-    * Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
+   - Set the parent as `myArm`.
+   - Set the translation as something small in the +Z direction, such as `90` millimeters.
+   - Leave the orientation as the default.
+   - For **Geometry Type** choose **Box**.
+   - Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
 4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`.
 5. Save this new robot configuration.
-    * Your `viam-server` instance should update automatically.
+   - Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/motion/plan_03_gripper_config.png" resize="700x" declaredimensions=true alt="Sample gripper configuration with several fields filled out.">}}
@@ -395,8 +395,8 @@ This has implications for how motion is calculated, and what final configuration
 If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" %}}
-  {{% card link="/tutorials/services/constrain-motion/" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
+{{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

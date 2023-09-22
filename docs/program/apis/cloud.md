@@ -4,7 +4,16 @@ linkTitle: "Cloud Management"
 weight: 20
 type: "docs"
 description: "Use the cloud app API with Viam's client SDKs to manage your smart machine fleet with code."
-tags: ["cloud", "sdk", "viam-server", "networking", "apis", "robot api", "cloud management"]
+tags:
+  [
+    "cloud",
+    "sdk",
+    "viam-server",
+    "networking",
+    "apis",
+    "robot api",
+    "cloud management",
+  ]
 ---
 
 The cloud app API allows you to [manage your smart machine fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
@@ -24,7 +33,7 @@ Cloud app API methods are only available in the Python SDK.
 
 To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
-To find the location secret, go to [Viam app](https://app.viam.com/), and go to the  [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
+To find the location secret, go to [Viam app](https://app.viam.com/), and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
 Toggle **Include secret** on and copy the `payload`.
 For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
 
@@ -129,7 +138,7 @@ Check the availability of an {{< glossary_tooltip term_id="organization" text="o
 **Parameters:**
 
 - `public_namespace` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The organization namespace to check.
-Namespaces can only contain lowercase alphanumeric and dash characters.
+  Namespaces can only contain lowercase alphanumeric and dash characters.
 
 **Raises:**
 
@@ -206,7 +215,7 @@ Optionally, put the new location under a specified parent location.
 
 - `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new location.
 - `parent_location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional parent location to put the location under.
-Defaults to creating a location in your organization at root level if you do not provide a location ID.
+  Defaults to creating a location in your organization at root level if you do not provide a location ID.
 
 **Raises:**
 
@@ -236,7 +245,7 @@ Get a {{< glossary_tooltip term_id="location" text="location" >}} by its locatio
 **Parameters:**
 
 - `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to get.
-Defaults to the location ID provided at `AppClient` instantiation.
+  Defaults to the location ID provided at `AppClient` instantiation.
 
 **Raises:**
 
@@ -266,10 +275,10 @@ Change the name of a {{< glossary_tooltip term_id="location" text="parent locati
 
 - `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to update.
 - `name` [Optional(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional new name to update the location name to.
-If nothing is passed, the name is not changed.
+  If nothing is passed, the name is not changed.
 - `parent_location_id` [Optional(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional ID of the new location to move the location to.
-If nothing is passed, the location does not move.
-If an empty string is passed, the location moves up to the top level.
+  If nothing is passed, the location does not move.
+  If an empty string is passed, the location moves up to the top level.
 
 **Raises:**
 
@@ -371,7 +380,7 @@ Get a location’s `LocationAuth` (location secret or secrets).
 **Parameters:**
 
 - `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to retrieve `LocationAuth` from.
-Defaults to the location ID provided at `AppClient` instantiation.
+  Defaults to the location ID provided at `AppClient` instantiation.
 
 **Raises:**
 

@@ -5,13 +5,14 @@ type: "docs"
 webmSrc: "/tutorials/maiv/maiv_front.webm"
 mp4Src: "/tutorials/maiv/maiv_front.mp4"
 images: ["/tutorials/maiv/maiv_front.gif"]
-tags: ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
+tags:
+  ["base", "retro", "vision", "computer vision", "camera", "motor", "python"]
 no_list: true
 description: "Modernize the Omnibot 2000 from the 1980s with Viam and AI."
 imageAlt: "The front of the Ombibot 2000 robot"
-authors: [ "Matt Vella" ]
+authors: ["Matt Vella"]
 languages: []
-viamresources: [ "board", "motor", "base", "camera" ]
+viamresources: ["board", "motor", "base", "camera"]
 level: "Intermediate"
 date: "2023-05-04"
 # updated: ""
@@ -32,11 +33,11 @@ Let’s bring the Omnibot 2000 closer to the home robot vision that many had (an
 
 We will keep the original housing, style and motors where possible - but bring it into the modern era with:
 
-* Programmatic control
-* Secure internet communication
-* Upgraded sensors
-* Computer vision
-* Machine learning and AI
+- Programmatic control
+- Secure internet communication
+- Upgraded sensors
+- Computer vision
+- Machine learning and AI
 
 By the end of this tutorial, you'll be able to securely control your Omnibot from anywhere, and leverage machine learning capabilities to have MAIV interact with the world.
 
@@ -44,6 +45,7 @@ By the end of this tutorial, you'll be able to securely control your Omnibot fro
 
 Other than the Omnibot 2000, which you'll need to find on a used marketplace like eBay, the rest are commodity parts you can find easily:
 
+<!-- prettier-ignore -->
 |Part  | Price | Notes |
 | --- | --- | --- |
 [Omnibot 2000](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2047675.m570.l1312&_nkw=omnibot+2000&_sacat=0)|$250|Prices can vary dramatically - we paid about $200 for an "as-is, non-working" copy. You do not need one with the remote control or tray included.|
@@ -63,13 +65,13 @@ Other than the Omnibot 2000, which you'll need to find on a used marketplace lik
 
 You'll also need some basic tools and supplies:
 
-* Screwdrivers
-* Drill and drill bits
-* Wire cutters/strippers
-* Soldering iron and solder
-* Paper towels
-* Window cleaner or other cleaner to remove dust, etc.
-* Multimeter
+- Screwdrivers
+- Drill and drill bits
+- Wire cutters/strippers
+- Soldering iron and solder
+- Paper towels
+- Window cleaner or other cleaner to remove dust, etc.
+- Multimeter
 
 ## Introduce yourself to Omnibot 2000
 
@@ -77,7 +79,7 @@ You'll also need some basic tools and supplies:
 {{<imgproc src="/tutorials/maiv/maiv_here.jpg" resize="300x" declaredimensions=true alt="The Omnibot 2000." class="alignright" style="max-width: 250px">}}
 </div>
 
-Your Omnibot 2000 arrival will likely be both exciting *and* full of dust.
+Your Omnibot 2000 arrival will likely be both exciting _and_ full of dust.
 Get out your window cleaner and paper towels and get to know it while giving it a good cleaning.
 
 The Omnibot is driven by two wheels on each side, with a third un-powered wheel per side.
@@ -226,12 +228,12 @@ Finally, run the unconnected wire from the switch (the positive to power the rob
 
 #### Connect the power sources to the motors and Pi
 
-Working in the robot base, use a 4-terminal quick connector to connect the positive power supply wire (from the previous step) to the step down converter *positive* input wire.
+Working in the robot base, use a 4-terminal quick connector to connect the positive power supply wire (from the previous step) to the step down converter _positive_ input wire.
 Using a length of 18 gauge wire, connect another terminal in this quick connector to the 12V VCC screw terminal on the L298N motor driver to which you previously connected the base motors and Pi.
 One of the terminals to the quick connector is empty.
 This is expected, you will use it later.
 
-Now use another 4-terminal quick connector to connect the negative power supply wire from the torso to the step down converter *negative* wire.
+Now use another 4-terminal quick connector to connect the negative power supply wire from the torso to the step down converter _negative_ wire.
 Using a length of 18 gauge wire, connect another terminal in this quick connector to the GND screw terminal on the L298N motor driver to which you previously connected the base motors and Pi.
 As with the positive connector, one of the negative terminals will be left empty.
 
@@ -275,57 +277,57 @@ Click on the **Components** subtab.
 
 1. **Add the board**.
 
-    Click the **Create component** button in the lower-left corner of the page.
-    Select the type `board`, then select the `pi` model.
-    Enter `local` as the name for your [board component](/components/board/), then click **Create**.
+   Click the **Create component** button in the lower-left corner of the page.
+   Select the type `board`, then select the `pi` model.
+   Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the left motor.**
 
-    Click **Create component** to add the [motor component](/components/motor/) on the left side of the robot base.
-    Select the type `motor`, and select the `gpio` model.
-    Enter `base-l` for the name, then click **Create**.
+   Click **Create component** to add the [motor component](/components/motor/) on the left side of the robot base.
+   Select the type `motor`, and select the `gpio` model.
+   Enter `base-l` for the name, then click **Create**.
 
-    Next, select `local` for the board attribute.
-    Set `Max RPM` to 200.
-    Toggle `Direction Flip` on (depending on how you wired your motor, you may need to turn this off later).
-    Toggle `Type` to `In1/In2`.
+   Next, select `local` for the board attribute.
+   Set `Max RPM` to 200.
+   Toggle `Direction Flip` on (depending on how you wired your motor, you may need to turn this off later).
+   Toggle `Type` to `In1/In2`.
 
-    Now, select `32 GPIO 12` for `A/In1`.
-    Select `38 GPIO 20` for `B/In2`.
-    Select `35 GPIO 19` for `PWM`.
+   Now, select `32 GPIO 12` for `A/In1`.
+   Select `38 GPIO 20` for `B/In2`.
+   Select `35 GPIO 19` for `PWM`.
 
-    Finally, add `local` to `Depends on` - this ensures that the `local` board component is fully initialize prior to this motor.
+   Finally, add `local` to `Depends on` - this ensures that the `local` board component is fully initialize prior to this motor.
 
 3. **Add the right motor**
 
-    Click **Create component**.
-    For your right base [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
-    Enter `base-r` for the name, then click **Create**.
+   Click **Create component**.
+   For your right base [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
+   Enter `base-r` for the name, then click **Create**.
 
-    Next, select `local` for the board attribute.
-    Set `Max RPM` to 200.
-    Leave `Direction Flip` off (depending on how you wired your motor, you may need to turn this off later).
-    Toggle `Type` to `In1/In2`.
+   Next, select `local` for the board attribute.
+   Set `Max RPM` to 200.
+   Leave `Direction Flip` off (depending on how you wired your motor, you may need to turn this off later).
+   Toggle `Type` to `In1/In2`.
 
-    Now, select `31 GPIO 6` for `A/In1`.
-    Select `36 GPIO 16` for `B/In2`.
-    Select `22 GPIO 25` for `PWM`.
+   Now, select `31 GPIO 6` for `A/In1`.
+   Select `36 GPIO 16` for `B/In2`.
+   Select `22 GPIO 25` for `PWM`.
 
-    Finally, add `local` to `Depends on`.
+   Finally, add `local` to `Depends on`.
 
 4. **Add the base**
 
-    Configuring a [base component](/components/base/) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
+   Configuring a [base component](/components/base/) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
 
-    Click **Create component**.
-    Select the type `base`, and select the `wheeled` model.
-    Enter `base` for the name for your base, then click **Create**.
+   Click **Create component**.
+   Select the type `base`, and select the `wheeled` model.
+   Enter `base` for the name for your base, then click **Create**.
 
-    Next, add `base-r` to `Right Motors` and add `base-l` to `Left Motors`.
+   Next, add `base-r` to `Right Motors` and add `base-l` to `Left Motors`.
 
-    Now, set `Wheel Circumference` to `90` and `Width` to `220`.
+   Now, set `Wheel Circumference` to `90` and `Width` to `220`.
 
-    Finally, add `base-l` and `base-r` to `Depends on`.
+   Finally, add `base-l` and `base-r` to `Depends on`.
 
 Click **Save config** in the bottom left corner of the screen.
 
@@ -345,9 +347,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "depends_on": []
     },
     {
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "model": "gpio",
       "name": "base-l",
       "type": "motor",
@@ -363,9 +363,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       }
     },
     {
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "model": "gpio",
       "name": "base-r",
       "type": "motor",
@@ -385,19 +383,12 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "name": "base",
       "type": "base",
       "attributes": {
-        "left": [
-          "base-l"
-        ],
-        "right": [
-          "base-r"
-        ],
+        "left": ["base-l"],
+        "right": ["base-r"],
         "wheel_circumference_mm": 90,
         "width_mm": 220
       },
-      "depends_on": [
-        "base-l",
-        "base-r"
-      ]
+      "depends_on": ["base-l", "base-r"]
     }
   ]
 }
@@ -451,12 +442,12 @@ Now, run the long breadboard wires through the robot neck, torso, and into the b
 
 With the robot powered off:
 
-* Plug the positive breadboard wire into pin 1 on the Raspberry Pi (3.3V).
-* Plug the negative breadboard wire into pin 18 (GPIO 24) on the Pi.
+- Plug the positive breadboard wire into pin 1 on the Raspberry Pi (3.3V).
+- Plug the negative breadboard wire into pin 18 (GPIO 24) on the Pi.
 
 Power your robot back on to test the eyes.
 You will use GPIO directly to control the eyes through the `board` component you already configured.
-Once `viam-server` is running (it will take a minute or so to initialize), go to the **Control** tab and open the *local* board card.
+Once `viam-server` is running (it will take a minute or so to initialize), go to the **Control** tab and open the _local_ board card.
 From here, you can test MAIV's eyes by setting GPIO pin 18 to high (to turn the eyes on) or low (to turn the eyes off).
 
 {{<video webm_src="/tutorials/maiv/maiv_eye_test.webm" mp4_src="/tutorials/maiv/maiv_eye_test.mp4" poster="/tutorials/maiv/maiv_eye_test.jpg" alt="MAIV eye flashing test" max-width="300px">}}
@@ -508,7 +499,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 If you are editing the configuration of MAIV using JSON directly, add the neck motor by adding the following within the components list in your configuration.
 
-``` JSON
+```JSON
     {
       "type": "motor",
       "model": "gpio",
@@ -584,7 +575,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 If you are editing the configuration of MAIV using JSON directly, add the camera by adding the following within the components list in your configuration.
 
-``` JSON
+```JSON
     {
       "attributes": {
         "video_path": ""
@@ -608,8 +599,8 @@ Turning MAIV's head while streaming video will give you a sense of how MAIV is s
 
 Now that you've wired, configured, and tested all the components, put MAIV back together:
 
-* Screw the upper base to the torso.
-* Screw the lower base to the upper base.
+- Screw the upper base to the torso.
+- Screw the lower base to the upper base.
 
 Now MAIV is ready to interact with the world!
 

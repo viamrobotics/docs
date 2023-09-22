@@ -12,16 +12,16 @@ This document explains how to establish secure connections between robots.
 
 ### Robot parts
 
-Robots are organized into *parts*, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) [running `viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
+Robots are organized into _parts_, where each part represents a computer (a single-board computer, desktop, laptop, or other computer) [running `viam-server`](/installation/), the hardware [components](/components/) attached to it, and any [services](/services/) or other resources running on it.
 
 Every robot has a main part which is automatically created when you create the robot.
-Multi-part robots also have one or more *sub-parts* representing additional computers running `viam-server`.
+Multi-part robots also have one or more _sub-parts_ representing additional computers running `viam-server`.
 
 There are two ways to link robot parts:
 
-- **Sub-part**: If you have two computers within the *same robot*, use one as the main part and [connect the other to it as a sub-part](#configure-a-sub-part).
+- **Sub-part**: If you have two computers within the _same robot_, use one as the main part and [connect the other to it as a sub-part](#configure-a-sub-part).
 
-- **Remote**: To connect two computers that are parts of *different robots*, [add one robot part as a remote part of the other robot](#configure-a-remote).
+- **Remote**: To connect two computers that are parts of _different robots_, [add one robot part as a remote part of the other robot](#configure-a-remote).
 
 Connections between robots are established using the best network path available.
 
@@ -36,7 +36,7 @@ This is a one-way connection: the main robot part can access the resources of th
 
 You can make a multi-part robot by first configuring one part which is the "main" part, and then configuring one or more sub-parts.
 The main part will be able to access the resources of its sub-parts.
-Sub-parts will *not* have access to the resources of the main part.
+Sub-parts will _not_ have access to the resources of the main part.
 
 Use the parts drop-down menu in the top banner of your robot's page on the [Viam app](https://app.viam.com) to add a new sub-part:
 

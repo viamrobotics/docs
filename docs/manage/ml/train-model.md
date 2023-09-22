@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
-    - /manage/data/train-model/
+  - /manage/data/train-model/
 description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
@@ -36,10 +36,10 @@ If the underlying data matching the filter changes because data is deleted or mo
 1. Select **New Model**.
 2. Specify a **Model Name**.
 3. Select a **Model Type** and one or more labels to train on:
-    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
-      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
-    - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
-    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
+   - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
+     If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
+   - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
+   - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 4. Click **TRAIN MODEL**
 
 ![Train model menu](/manage/ml/train-model-menu.png)
@@ -66,7 +66,11 @@ You can get the version number from a specific model version by clicking on **CO
 The model package config looks like this:
 
 ```json
-{"package":"<model_id>/allblack","version":"YYYYMMDDHHMMSS","name":"<model_name>"}
+{
+  "package": "<model_id>/allblack",
+  "version": "YYYYMMDDHHMMSS",
+  "name": "<model_name>"
+}
 ```
 
 ## Next Steps

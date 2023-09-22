@@ -233,6 +233,7 @@ The SLAM Mapping Mode is determined by 2 conditions:
 
 ### SLAM Mapping Modes
 
+<!-- prettier-ignore -->
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new internal state in <file>/internal_state</file>. | No internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes). |
@@ -255,6 +256,7 @@ Watch a map start to appear.
 
 ### Attributes
 
+<!-- prettier-ignore -->
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
@@ -267,6 +269,7 @@ Watch a map start to appear.
 
 Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in aspects like submap size, mapping update rate, and feature matching details:
 
+<!-- prettier-ignore -->
 | Parameter Mode | Description | Inclusion | Default Value | Notes |
 | -------------- | ----------- | --------- | ------------- | ----- |
 | `mode` | `2d` | **Required** | None | |

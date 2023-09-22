@@ -47,6 +47,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `fake` cameras:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `width` | int | Optional | The width of the image in pixels. The default width is 1280. |

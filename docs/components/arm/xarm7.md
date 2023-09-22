@@ -34,7 +34,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
-          "host": "<ip-address-to-connect-to-your-arm>"
+        "host": "<ip-address-to-connect-to-your-arm>"
       },
       "depends_on": []
     }
@@ -50,25 +50,25 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "attributes": {
-          "host": "10.0.0.97"
+        "host": "10.0.0.97"
       },
       "depends_on": [],
       "frame": {
-          "orientation": {
-              "type": "ov_degrees",
-              "value": {
-                  "th": 0,
-                  "x": 0,
-                  "y": 0,
-                  "z": 1
-              }
-          },
-          "parent": "world",
-          "translation": {
-              "x": 0,
-              "y": 0,
-              "z": 0
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "th": 0,
+            "x": 0,
+            "y": 0,
+            "z": 1
           }
+        },
+        "parent": "world",
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
       },
       "model": "xArm7",
       "name": "xArm7",
@@ -83,6 +83,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `xArm7` arms:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | ----------| ---- | ----------| ----------- |
 | `host`  | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |

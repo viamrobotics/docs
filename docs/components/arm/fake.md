@@ -29,12 +29,12 @@ This example sets the `fake` arm to act as a `ur5e` arm.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm_name>",
-    "type": "arm",
-    "model": "fake",
-    "attributes": {
-        "arm-model": "<your_arm_model>",
-    }
+  "name": "<arm_name>",
+  "type": "arm",
+  "model": "fake",
+  "attributes": {
+    "arm-model": "<your_arm_model>"
+  }
 }
 ```
 
@@ -43,6 +43,7 @@ This example sets the `fake` arm to act as a `ur5e` arm.
 
 The following attributes are available for `fake` arms:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `arm-model` | string | Optional | `name` of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#configuration) for supported model names. |
@@ -63,12 +64,12 @@ Refer to the following JSON examples for differences in configuration between th
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm-name>",
-    "type": "arm",
-    "model": "fake",
-    "attributes": {
-        "arm-model": "ur5e"
-    }
+  "name": "<arm-name>",
+  "type": "arm",
+  "model": "fake",
+  "attributes": {
+    "arm-model": "ur5e"
+  }
 }
 ```
 
@@ -77,12 +78,12 @@ Refer to the following JSON examples for differences in configuration between th
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm-name>",
-    "type": "arm",
-    "model": "fake",
-    "attributes": {
-        "model-path": "</Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json>"
-    }
+  "name": "<arm-name>",
+  "type": "arm",
+  "model": "fake",
+  "attributes": {
+    "model-path": "</Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json>"
+  }
 }
 ```
 

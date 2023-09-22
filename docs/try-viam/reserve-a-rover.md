@@ -42,9 +42,9 @@ Once your reservation starts and the system has configured your rover, click **T
 ## Next steps
 
 {{< cards >}}
-    {{% card link="/try-viam/try-viam-tutorial" %}}
-    {{% card link="/tutorials/get-started/try-viam-sdk" %}}
-    {{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/try-viam/try-viam-tutorial" %}}
+{{% card link="/tutorials/get-started/try-viam-sdk" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

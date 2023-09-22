@@ -7,10 +7,10 @@ description: "Configure, control, debug, and manage your smart machines from the
 tags: ["fleet management", "cloud", "app"]
 no_list: true
 aliases:
-    - "/manage/fleet-management"
-    - "/manage/app-usage"
-    - "/product-overviews/fleet-management/"
-    - "/fleet"
+  - "/manage/fleet-management"
+  - "/manage/app-usage"
+  - "/product-overviews/fleet-management/"
+  - "/fleet"
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of smart machines alone or in collaboration with others.

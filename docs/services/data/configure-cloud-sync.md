@@ -24,7 +24,7 @@ To change the sync interval, specify an interval in minutes in the interval fiel
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [ ],
+  "components": [],
   "services": [
     {
       "name": "data_manager",
@@ -76,7 +76,7 @@ In the example pictured here, the data management service syncs the configured c
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [ ],
+  "components": [],
   "services": [
     {
       "name": "data_manager",
@@ -85,9 +85,7 @@ In the example pictured here, the data management service syncs the configured c
         "sync_interval_mins": 5,
         "capture_dir": "",
         "sync_disabled": false,
-        "additional_sync_paths": [
-          "/logs"
-        ]
+        "additional_sync_paths": ["/logs"]
       }
     }
   ]

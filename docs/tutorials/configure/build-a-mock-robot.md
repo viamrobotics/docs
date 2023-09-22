@@ -8,12 +8,12 @@ mp4Src: "/tutorials/build-a-mock-robot/mock-robot.mp4"
 images: ["/tutorials/build-a-mock-robot/mock-robot.gif"]
 videoAlt: "A mock arm's joint positions from the control tab of the Viam app."
 aliases:
-    - "/tutorials/build-a-mock-robot/"
-    - "/tutorials/how-to-build-a-mock-robot/"
+  - "/tutorials/build-a-mock-robot/"
+  - "/tutorials/how-to-build-a-mock-robot/"
 tags: ["mock", "simulation"]
 authors: []
-languages: [ "python", "go" ]
-viamresources: [ "board", "arm", "motor" ]
+languages: ["python", "go"]
+viamresources: ["board", "arm", "motor"]
 level: "Beginner"
 date: "2022-10-11"
 # updated: ""
@@ -57,33 +57,34 @@ Since this is an imaginary robot, you will use `fake` components so that the Via
 3. Go to the new robot's **Config** tab.
 4. Configure a [fake board component](../../../components/board/fake/):
 
-    - Create a new component called `myBoard` with **Type** `board` and **Model** `fake`.
-    Click **Create component**.
+   - Create a new component called `myBoard` with **Type** `board` and **Model** `fake`.
+     Click **Create component**.
 
 5. Configure a [fake arm component](../../../components/arm/fake/):
 
-    - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
-    Click **Create component**.
-    - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
+   - Create a new component called `myArm` with **Type** `arm` and **Model** `fake`.
+     Click **Create component**.
+   - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
 
-      ```json
-      {
-          "arm-model": "ur5e"
-      }
-      ```
+     ```json
+     {
+       "arm-model": "ur5e"
+     }
+     ```
 
-    The config panel should look like this:
+   The config panel should look like this:
 
-    ![A fake arm being configured in Builder mode in the Viam app config tab.](/tutorials/build-a-mock-robot/create-arm.png)
-    - Click **Save config**.
+   ![A fake arm being configured in Builder mode in the Viam app config tab.](/tutorials/build-a-mock-robot/create-arm.png)
+
+   - Click **Save config**.
 
 6. Configure a [fake motor component](../../../components/motor/fake/):
 
    - Create a new component called `myMotor` with **Type** `motor` and **Model** `fake`.
      Click **Create component**.
    - Most motors are wired to a board which sends them signals.
-   Even though your motor is fake, make it more realistic by assigning it a `board`.
-   Select `myBoard` from the **board** drop-down.
+     Even though your motor is fake, make it more realistic by assigning it a `board`.
+     Select `myBoard` from the **board** drop-down.
 
 7. Click **Save config**.
 

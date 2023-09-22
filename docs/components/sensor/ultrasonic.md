@@ -73,6 +73,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `ultrasonic` sensors:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
 | `board`  | string | **Required** | The `name` of the [board](/components/board/) the sensor is wired to. |

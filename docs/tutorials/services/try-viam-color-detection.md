@@ -8,11 +8,11 @@ imageAlt: "detectionCam stream displaying a color detection"
 images: ["/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"]
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
-    - /tutorials/viam-rover/try-viam-color-detection
-    - /tutorials/try-viam-color-detection
-authors: [ "Hazal Mestci" ]
+  - /tutorials/viam-rover/try-viam-color-detection
+  - /tutorials/try-viam-color-detection
+authors: ["Hazal Mestci"]
 languages: []
-viamresources: [ "vision", "camera" ]
+viamresources: ["vision", "camera"]
 level: "Beginner"
 date: "2022-12-16"
 # updated: ""
@@ -39,14 +39,14 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 Before configuring color detection, enable the rover's camera to get a better sense of what it perceives.
 
-* If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
+- If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
   In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
   ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
   You can also view and control the camera streams from the [individual camera component panels](/try-viam/try-viam-tutorial/#camera-control).
 
-* If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
+- If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
   If you are using the `ViamRover` [fragment](/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **Control** tab.
 
 ## Add the vision service to detect a color
@@ -80,7 +80,7 @@ Your configuration should look like the following:
 
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "my_color_detector",
@@ -145,19 +145,20 @@ Copy the following JSON configuration into the Attributes section:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
- "source": "cam",
- "pipeline": [
-   {
-     "attributes": {
-       "detector_name": "my_color_detector",
-       "confidence_threshold": 0.3
-     },
-     "type": "detections"
-   }
- ]
+  "source": "cam",
+  "pipeline": [
+    {
+      "attributes": {
+        "detector_name": "my_color_detector",
+        "confidence_threshold": 0.3
+      },
+      "type": "detections"
+    }
+  ]
 }
 ```
 
+<!-- prettier-ignore -->
 | Field | Default value | Description |
 | ----- | ------------- | ----------- |
 | `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
