@@ -6,12 +6,12 @@ type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/deploy-model/
-description: "Deploy Machine Learning models to a robot."
+description: "Deploy Machine Learning models to a smart machine."
 icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-The ML Model service allows you to deploy machine learning models to your robots.
+The ML Model service allows you to deploy machine learning models to your smart machine.
 
 ## Create an ML model service
 
@@ -23,7 +23,7 @@ Click the **Services** subtab and click **Create service** in the lower-left cor
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
 
-You can choose to configure your service with an existing model on the robot or deploy a model onto your robot:
+You can choose to configure your service with an existing model on the smart machine or deploy a model onto your smart machine:
 
 {{< tabs >}}
 {{% tab name="Existing Model" %}}

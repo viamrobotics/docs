@@ -4,11 +4,11 @@ linkTitle: "Create"
 weight: 20
 type: "docs"
 tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
-description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered robot."
+description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered smart machine."
 no_list: true
 ---
 
-You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any robot running on Viam.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any smart machine running on Viam.
 
 A common use case for modular resources is to create a new [model](/extend/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
@@ -201,36 +201,90 @@ import (
     "go.uber.org/multierr"
 
     "go.viam.com/rdk/components/base"
-    "go.viam.com/rdk/components/generic"
+    "go.viam.com/rdk/components/base/kinematicbase"
     "go.viam.com/rdk/components/motor"
-    "go.viam.com/rdk/config"
-    "go.viam.com/rdk/registry"
     "go.viam.com/rdk/resource"
-    "go.viam.com/rdk/utils"
+    "go.viam.com/rdk/spatialmath"
 )
 
-// Here is where we define our new model's colon-delimited-triplet (acme:demo:mybase)
+// Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
 // acme = namespace, demo = family, mybase = model name.
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")
 )
 
-// Constructor
-func newBase(ctx context.Context, deps registry.Dependencies, config config.Component, logger golog.Logger) (interface{}, error) {
-    b := &MyBase{logger: logger}
-    err := b.Reconfigure(config, deps)
-    return b, err
+const (
+    myBaseWidthMm        = 500.0 // Base has a wheel tread of 500 millimeters
+    myBaseTurningRadiusM = 0.3   // Base turns around a circle of radius .3 meters
+)
+
+func init() {
+    resource.RegisterComponent(base.API, Model, resource.Registration[base.Base, *Config]{
+        Constructor: newBase,
+    })
 }
 
-// Defines what the JSON configuration should look like
-type MyBaseConfig struct {
+func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (base.Base, error) {
+    b := &myBase{
+        Named:  conf.ResourceName().AsNamed(),
+        logger: logger,
+    }
+    if err := b.Reconfigure(ctx, deps, conf); err != nil {
+        return nil, err
+    }
+    return b, nil
+}
+
+
+// Reconfigure reconfigures with new settings.
+func (b *myBase) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
+    b.left = nil
+    b.right = nil
+
+    // This takes the generic resource.Config passed down from the parent and converts it to the
+    // model-specific (aka "native") Config structure defined, above making it easier to directly access attributes.
+    baseConfig, err := resource.NativeConfig[*Config](conf)
+    if err != nil {
+        return err
+    }
+
+    b.left, err = motor.FromDependencies(deps, baseConfig.LeftMotor)
+    if err != nil {
+        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.LeftMotor)
+    }
+
+    b.right, err = motor.FromDependencies(deps, baseConfig.RightMotor)
+    if err != nil {
+        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.RightMotor)
+    }
+
+    geometries, err := kinematicbase.CollisionGeometry(conf.Frame)
+    if err != nil {
+        b.logger.Warnf("base %v %s", b.Name(), err.Error())
+    }
+    b.geometries = geometries
+
+    // Stop motors when reconfiguring.
+    return multierr.Combine(b.left.Stop(context.Background(), nil), b.right.Stop(context.Background(), nil))
+}
+
+// DoCommand simply echos whatever was sent.
+func (b *myBase) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    return cmd, nil
+}
+
+// Config contains two component (motor) names.
+type Config struct {
     LeftMotor  string `json:"motorL"`
     RightMotor string `json:"motorR"`
 }
 
-// Validates JSON configuration
-func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
+// Validate validates the config and returns implicit dependencies,
+// this Validate checks if the left and right motors exist for the module's base model.
+func (cfg *Config) Validate(path string) ([]string, error) {
+    // check if the attribute fields for the right and left motors are non-empty
+    // this makes them reuqired for the model to successfully build
     if cfg.LeftMotor == "" {
         return nil, fmt.Errorf(`expected "motorL" attribute for mybase %q`, path)
     }
@@ -238,90 +292,56 @@ func (cfg *MyBaseConfig) Validate(path string) ([]string, error) {
         return nil, fmt.Errorf(`expected "motorR" attribute for mybase %q`, path)
     }
 
+    // Return the left and right motor names so that `newBase` can access them as dependencies.
     return []string{cfg.LeftMotor, cfg.RightMotor}, nil
 }
 
-// Handles attribute reconfiguration
-func (base *MyBase) Reconfigure(cfg config.Component, deps registry.Dependencies) error {
-    base.left = nil
-    base.right = nil
-    baseConfig, ok := cfg.ConvertedAttributes.(*MyBaseConfig)
-    if !ok {
-        return utils.NewUnexpectedTypeError(baseConfig, cfg.ConvertedAttributes)
-    }
-    var err error
-
-    base.left, err = motor.FromDependencies(deps, baseConfig.LeftMotor)
-    if err != nil {
-        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.LeftMotor)
-    }
-
-    base.right, err = motor.FromDependencies(deps, baseConfig.RightMotor)
-    if err != nil {
-        return errors.Wrapf(err, "unable to get motor %v for mybase", baseConfig.RightMotor)
-    }
-
-    // Stopping motors at reconfiguration
-    return multierr.Combine(base.left.Stop(context.Background(), nil), base.right.Stop(context.Background(), nil))
+type myBase struct {
+    resource.Named
+    left       motor.Motor
+    right      motor.Motor
+    logger     golog.Logger
+    geometries []spatialmath.Geometry
 }
 
-// Attributes of the base
-type MyBase struct {
-    generic.Echo
-    left   motor.Motor
-    right  motor.Motor
-    logger golog.Logger
-}
-
-// Implement the methods the Viam RDK defines for the base API (rdk:component:base)
-
-// MoveStraight: unimplemented
-func (base *MyBase) MoveStraight(ctx context.Context, distanceMm int, mmPerSec float64, extra map[string]interface{}) error {
+// MoveStraight does nothing.
+func (b *myBase) MoveStraight(ctx context.Context, distanceMm int, mmPerSec float64, extra map[string]interface{}) error {
     return errUnimplemented
 }
 
-// Spin: unimplemented
-func (base *MyBase) Spin(ctx context.Context, angleDeg, degsPerSec float64, extra map[string]interface{}) error {
+// Spin does nothing.
+func (b *myBase) Spin(ctx context.Context, angleDeg, degsPerSec float64, extra map[string]interface{}) error {
     return errUnimplemented
 }
 
-// SetVelocity: unimplemented
-func (base *MyBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+// SetVelocity does nothing.
+func (b *myBase) SetVelocity(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
     return errUnimplemented
 }
 
-// Properties: unimplemented
-func (base *MyBase) Spin(ctx context.Context, extra map[string]interface{}) error {
-    return errUnimplemented
-}
-
-// SetPower: sets the linear and angular velocity of the left and right motors on the base
-func (base *MyBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
-    // stop the base if absolute value of linear and angular velocity is less than .01
+// SetPower computes relative power between the wheels and sets power for both motors.
+func (b *myBase) SetPower(ctx context.Context, linear, angular r3.Vector, extra map[string]interface{}) error {
+    b.logger.Debugf("SetPower Linear: %.2f Angular: %.2f", linear.Y, angular.Z)
     if math.Abs(linear.Y) < 0.01 && math.Abs(angular.Z) < 0.01 {
-        return base.Stop(ctx, extra)
+        return b.Stop(ctx, extra)
     }
-
-    // use linear and angular velocity to calculate percentage of max power to pass to SetPower for left & right motors
     sum := math.Abs(linear.Y) + math.Abs(angular.Z)
-    err1 := base.left.SetPower(ctx, (linear.Y-angular.Z)/sum, extra)
-    err2 := base.right.SetPower(ctx, (linear.Y+angular.Z)/sum, extra)
+    err1 := b.left.SetPower(ctx, (linear.Y-angular.Z)/sum, extra)
+    err2 := b.right.SetPower(ctx, (linear.Y+angular.Z)/sum, extra)
     return multierr.Combine(err1, err2)
 }
 
-// Stop: stops the base from moving by stopping both motors
-func (base *MyBase) Stop(ctx context.Context, extra map[string]interface{}) error {
-    base.logger.Debug("Stop")
-
-    err1 := base.left.Stop(ctx, extra)
-    err2 := base.right.Stop(ctx, extra)
-
+// Stop halts motion.
+func (b *myBase) Stop(ctx context.Context, extra map[string]interface{}) error {
+    b.logger.Debug("Stop")
+    err1 := b.left.Stop(ctx, extra)
+    err2 := b.right.Stop(ctx, extra)
     return multierr.Combine(err1, err2)
 }
 
-// IsMoving: checks if either motor on the base is moving with motors' IsPowered
-func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
-    for _, m := range []motor.Motor{base.left, base.right} {
+// IsMoving returns true if either motor is active.
+func (b *myBase) IsMoving(ctx context.Context) (bool, error) {
+    for _, m := range []motor.Motor{b.left, b.right} {
         isMoving, _, err := m.IsPowered(ctx, nil)
         if err != nil {
             return false, err
@@ -333,25 +353,22 @@ func (base *MyBase) IsMoving(ctx context.Context) (bool, error) {
     return false, nil
 }
 
-// Stop the base from moving when closing a client's connection to the base
-func (base *MyBase) Close(ctx context.Context) error {
-    return base.Stop(ctx, nil)
+// Properties returns details about the physics of the base.
+func (b *myBase) Properties(ctx context.Context, extra map[string]interface{}) (base.Properties, error) {
+    return base.Properties{
+        TurningRadiusMeters: myBaseTurningRadiusM,
+        WidthMeters:         myBaseWidthMm * 0.001, // converting millimeters to meters
+    }, nil
 }
 
-// Register the component with the Go SDK
-func init() {
-    registry.RegisterComponent(base.Subtype, Model, registry.Component{Constructor: newBase})
+// Geometries returns physical dimensions.
+func (b *myBase) Geometries(ctx context.Context, extra map[string]interface{}) ([]spatialmath.Geometry, error) {
+    return b.geometries, nil
+}
 
-    // VALIDATION: Uses RegisterComponentAttributeMapConverter to register a custom configuration struct that has a Validate(string) ([]string, error) method.
-    // The Validate method will automatically be called in RDK's module manager to validate MyBase's configuration and register implicit dependencies.
-    config.RegisterComponentAttributeMapConverter(
-        base.Subtype,
-        Model,
-        func(attributes config.AttributeMap) (interface{}, error) {
-            var conf MyBaseConfig
-            return config.TransformAttributeMapToStruct(&conf, attributes)
-        },
-        &MyBaseConfig{})
+// Close stops motion during shutdown.
+func (b *myBase) Close(ctx context.Context) error {
+    return b.Stop(ctx, nil)
 }
 ```
 

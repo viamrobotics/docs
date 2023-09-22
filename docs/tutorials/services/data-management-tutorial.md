@@ -23,38 +23,38 @@ weight: 4
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
-In this tutorial, we will cover how to use Data Management, including capturing camera data, syncing that data from your robot to the cloud, viewing and filtering synced data, and downloading it to your computer.
+In this tutorial, we will cover how to use Data Management, including capturing camera data, syncing that data from your smart machine to the cloud, viewing and filtering synced data, and downloading it to your computer.
 
 ## Data Management
 
-One key feature of Viam is [Data Management](/manage/data/), which helps you manage data on your robot every step of the way, from capturing component data on your robot, to managing your data securely in the cloud.
+One key feature of Viam is [Data Management](/manage/data/), which helps you manage data on your smart machine every step of the way, from capturing component data on your smart machine, to managing your data securely in the cloud.
 
 Viam's data management service has two distinct parts: data capture and cloud sync.
 
-**Data capture** allows you to capture data from specific components on your robot running Viam.
+**Data capture** allows you to capture data from specific components on your smart machine running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
-**Cloud sync** runs in the background and uploads your robot's captured data to Viam's cloud at a defined frequency.
-Cloud sync is designed to be resilient and to preserve your data even during a network outage or if your robot has low network bandwidth.
-It also manages syncing data from your robot to the Viam app and deletes the captured data from your robot after a successful sync.
+**Cloud sync** runs in the background and uploads your smart machine's captured data to Viam's cloud at a defined frequency.
+Cloud sync is designed to be resilient and to preserve your data even during a network outage or if your smart machine has low network bandwidth.
+It also manages syncing data from your smart machine to the Viam app and deletes the captured data from your smart machine after a successful sync.
 Plus, your data is encrypted in transit and at rest in the cloud, so it is always protected.
 
 Data capture is frequently used with data sync.
-However, if you want to manage your robot's captured data yourself, it's possible to enable data capture for components on your robot, but disable data sync.
+However, if you want to manage your smart machine's captured data yourself, it's possible to enable data capture for components on your smart machine, but disable data sync.
 
 ## Requirements
 
-1. **A rented or owned robot**
+1. **A rented or owned smart machine**
 
-   Viam's Data Management features will work on any robot running Viam.
-   To follow along with this tutorial, you can use one of your own robots, or you can [rent a rover](https://app.viam.com/try) and use it to try out Viam's Data Manager without having to configure your own hardware.
+   Viam's Data Management features will work on any smart machine running Viam.
+   To follow along with this tutorial, you can use one of your own smart machine, or you can [rent a rover](https://app.viam.com/try) and use it to try out Viam's Data Manager without having to configure your own hardware.
 
    To learn more about the Try Viam experience, see [Try Viam](/try-viam/).
 
     {{% alert title="Tip" color="tip" %}}
 
-If you are using your own robot, be sure that you have [`viam-server` installed](/installation/) on your robot.
-The data management setup process will be mostly the same, but you will need to substitute your robot's components.
+If you are using your own smart machine, be sure that you have [`viam-server` installed](/installation/) on your smart machine.
+The data management setup process will be mostly the same, but you will need to substitute your smart machine's components.
 
     {{% /alert %}}
 
@@ -66,12 +66,12 @@ The data management setup process will be mostly the same, but you will need to 
 ## Add the data management service
 
 First, you need to add and configure the data management service to capture data and store it at a specified location.
-To enable the data capture on your robot, do the following:
+To enable the data capture on your smart machine, do the following:
 
-1. On your robot's **Config** page, navigate to the **Services** tab.
+1. On your smart machine's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page, create a service.
    Choose `Data Management` as the type and specify `viam-data-manager` as the name for your instance of the data management service.
-   This service syncs data from your robot to the Viam app in the cloud.
+   This service syncs data from your smart machine to the Viam app in the cloud.
 3. Then click **Create Service**.
 4. On the panel that appears, you can manage the capturing and syncing functions individually.
    The data management service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory by default.
@@ -85,19 +85,19 @@ For more detailed information see [Add the data management service](/services/da
 
 ## Configure data capture for a component
 
-With the Data Management service added, you can now configure data capture for specific components on your robot running Viam.
+With the Data Management service added, you can now configure data capture for specific components on your smart machine running Viam.
 You can choose the components, corresponding methods, and the frequency of the data capture all within the Viam app.
 
 {{% alert title="Tip" color="tip" %}}
 
 We're enabling data capture from a camera for this tutorial, but you can enable data capture on most [Viam components](/components/).
-This allows you to capture not just image data, but sensor data, robot state data, and so on.
+This allows you to capture not just image data, but sensor data, smart machine state data, and so on.
 
 {{% /alert %}}
 
 To enable image data capture for a camera component, follow these steps:
 
-1. Navigate to the **Components** subtab of your robot's **Config** tab.
+1. Navigate to the **Components** subtab on your smart machine's **Config** page.
 2. Scroll down to the camera component.
    If you are using a Viam Rover, the camera is named `cam`.
    The camera component has a section labeled **Data Capture Configuration**.
@@ -116,14 +116,14 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 4. Click **Save Config** at the bottom of the window.
 
-Now your image data will be saved locally on your robot in <file>~/.viam/capture</file>, or whatever directory you configured the captured data from your data management service to be saved to.
+Now your image data will be saved locally on your smart machine in <file>~/.viam/capture</file>, or whatever directory you configured the captured data from your data management service to be saved to.
 
 ![Screenshot from the Viam app showing the data capture settings used for this tutorial.](/tutorials/data-management/image5.png)
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are following along using your own robot, you can confirm that your data is being captured locally.
-On your robot, navigate to the <file>~/.viam/capture</file> directory and check for files being created in real-time.
+If you are following along using your own smart machine, you can confirm that your data is being captured locally.
+On your smart machine, navigate to the <file>~/.viam/capture</file> directory and check for files being created in real-time.
 
 {{% /alert %}}
 
@@ -131,7 +131,7 @@ For more detailed information see [Configure Data Capture](/services/data/config
 
 ## View and filter captured data
 
-Now that you have data capture enabled for a camera on your Viam Rover, you can see the images from your robot in the Viam app.
+Now that you have data capture enabled for a camera on your Viam Rover, you can see the images from your smart machine in the Viam app.
 
 - Head over to the [**DATA** page](https://app.viam.com/data/view).
 
@@ -144,7 +144,7 @@ For more detailed information see [View and Filter Data](/manage/data/view/).
 
 ## Export captured data
 
-You've successfully saved data from your robot in the cloud.
+You've successfully saved data from your smart machine in the cloud.
 Now, let's export that image data from the Viam app onto your local computer.
 
 First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
@@ -173,8 +173,8 @@ For more detailed information see [Export Data](/manage/data/export/).
 
 ## Next steps
 
-In this tutorial, you have learned how to use Data Management to capture camera data, sync that data from your robot to the cloud, and view and export the data.
+In this tutorial, you have learned how to use Data Management to capture camera data, sync that data from your smart machine to the cloud, and view and export the data.
 
-You can now set up data management for your robots to track your robot's usage over time, build dashboards to visualize the data from your robot, or train machine learning models to detect hand gestures or objects.
+You can now set up data management for your smart machines to track your smart machine's usage over time, build dashboards to visualize the data from your smart machine, or train machine learning models to detect hand gestures or objects.
 
 {{< snippet "social.md" >}}

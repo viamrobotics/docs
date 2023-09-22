@@ -126,7 +126,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
      ``` sh { class="command-line" data-prompt="$"}
      go build -o bin/module ./module/main.go
-     tar -cxf module.tar.gz bin/module
+     tar -czf module.tar.gz bin/module
      ```
 
      For more information, see [Compile a module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
