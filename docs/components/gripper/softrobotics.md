@@ -83,6 +83,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `softrobotics` grippers:
 
+<!-- prettier-ignore -->
 | Name            | Inclusion    | Type   | Description                                                                                                                                                                                    |
 | --------------- | ------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `board`         | **Required** | string | The `name` of the [board](../../board/) to which your gripper [control unit](https://www.softroboticsinc.com/uploads/2020/05/Tech_Sheet_coDrive_Control_Unit_-__TS-200210_Rev_B.pdf) is wired. |
