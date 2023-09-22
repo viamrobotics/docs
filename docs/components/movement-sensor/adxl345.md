@@ -99,6 +99,7 @@ Edit and fill in the attributes as applicable.
 
 ## Attributes
 
+<!-- prettier-ignore -->
 | Name                  | Type   | Inclusion    | Description                                                                                                                                                                                    |
 | --------------------- | ------ | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `board`               | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired.                                                                                                                    |
