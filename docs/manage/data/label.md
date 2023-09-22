@@ -38,6 +38,10 @@ Click on the image where you would like to add the bounding box and drag to wher
 
 {{<gif webm_src="/manage/data/label-dog.webm" mp4_src="/manage/data/label-dog.mp4" alt="Add a bounding box around the dog in an image">}}
 
+If you want to expand the image, click on the expand side menu arrow in the corner of the image:
+
+{{<gif webm_src="/manage/data/label-dog-big.webm" mp4_src="/manage/data/label-dog-big.mp4" alt="Add a bounding box around the dog in an image in a big menu">}}
+
 Repeat this with all images in your dataset.
 To see all the images that have bounding boxes, you can filter your dataset by selecting the label from the **Bounding box labels** dropdown in the **Filtering** menu.
 
@@ -56,6 +60,8 @@ More information about the image will open up to the right side.
 Select the **Image Tags** option.
 
 {{<gif webm_src="/manage/data/tag-star.webm" mp4_src="/manage/data/tag-star.mp4" alt="Tag image with a star label">}}
+
+If you want to expand the image, click on the expand side menu arrow in the corner of the image.
 
 Repeat this with all images in your dataset.
 
