@@ -64,12 +64,12 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "my_cam",
-    "type": "camera",
-    "model" : "webcam",
-    "attributes": {
-        "video_path": "video0"
-    }
+  "name": "my_cam",
+  "type": "camera",
+  "model": "webcam",
+  "attributes": {
+    "video_path": "video0"
+  }
 }
 ```
 

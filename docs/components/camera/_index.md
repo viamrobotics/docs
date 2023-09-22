@@ -400,7 +400,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/vision" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle" %}}
+{{% card link="/services/vision" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

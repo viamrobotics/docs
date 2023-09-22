@@ -34,7 +34,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
-          "host": "<your-arms-ip-address-on-your-network>"
+        "host": "<your-arms-ip-address-on-your-network>"
       },
       "depends_on": []
     }
@@ -50,25 +50,25 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "attributes": {
-          "host": "10.0.0.97"
+        "host": "10.0.0.97"
       },
       "depends_on": [],
       "frame": {
-          "orientation": {
-              "type": "ov_degrees",
-              "value": {
-                  "th": 0,
-                  "x": 0,
-                  "y": 0,
-                  "z": 1
-              }
-          },
-          "parent": "world",
-          "translation": {
-              "x": 0,
-              "y": 0,
-              "z": 0
+        "orientation": {
+          "type": "ov_degrees",
+          "value": {
+            "th": 0,
+            "x": 0,
+            "y": 0,
+            "z": 1
           }
+        },
+        "parent": "world",
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
       },
       "model": "xArm6",
       "name": "xArm6",

@@ -86,11 +86,11 @@ Move the base in a straight line across the given distance (mm) at the given vel
 **Parameters:**
 
 - `distance` [(int)](https://docs.python.org/3/library/functions.html#int): The distance to move in millimeters.
-Positive implies forwards.
-Negative implies backwards.
+  Positive implies forwards.
+  Negative implies backwards.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The velocity at which to move in millimeters per second.
-Positive implies forwards.
-Negative implies backwards.
+  Positive implies forwards.
+  Negative implies backwards.
 
 **Returns:**
 
@@ -115,11 +115,11 @@ await my_base.move_straight(distance=40, velocity=-90)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `distanceMm` [(int)](https://pkg.go.dev/builtin#int): The distance to move the base in millimeters.
-Positive implies forwards.
-Negative implies backwards.
+  Positive implies forwards.
+  Negative implies backwards.
 - `mmPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The velocity at which to move the base in millimeters per second.
-Positive implies forwards.
-Negative implies backwards.
+  Positive implies forwards.
+  Negative implies backwards.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -151,9 +151,9 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 **Parameters:**
 
 - `angle` [(float)](https://docs.python.org/3/library/functions.html#float): The angle to spin in degrees.
-Positive implies turning to the left.
+  Positive implies turning to the left.
 - `velocity` [(float)](https://docs.python.org/3/library/functions.html#float): The angular velocity at which to spin in degrees per second.
-Given a positive angle and a positive velocity, the base turns to the left (for built-in base models).
+  Given a positive angle and a positive velocity, the base turns to the left (for built-in base models).
 
 **Returns:**
 
@@ -175,9 +175,9 @@ await my_base.spin(angle=10, velocity=15)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `angleDeg` [(float64)](https://pkg.go.dev/builtin#float64): The angle to spin in degrees.
-Positive implies turning to the left.
+  Positive implies turning to the left.
 - `degsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): The angular velocity at which to spin in degrees per second.
-Given a positive angle and a positive velocity, the base turns to the left (for built-in base models).
+  Given a positive angle and a positive velocity, the base turns to the left (for built-in base models).
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -257,13 +257,13 @@ await my_base.set_power(
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's linear propulsion.
   In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Viam's coordinate system considers +Y to be the forward axis (+/- X right/left, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
-Positive "Y" values imply moving forwards.
-Negative "Y" values imply moving backwards.
+  Viam's coordinate system considers +Y to be the forward axis (+/- X right/left, +/- Z up/down), so use the Y component of this vector to move forward and backward when controlling a wheeled base.
+  Positive "Y" values imply moving forwards.
+  Negative "Y" values imply moving backwards.
 - `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The percentage of max power of the base's angular propulsion.
-In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
-Use the Z component of this vector to spin left or right when controlling a wheeled base.
-Positive "Z" values imply spinning to the left (for built-in base models).
+  In the range of -1.0 to 1.0, with 1.0 meaning 100% power.
+  Use the Z component of this vector to spin left or right when controlling a wheeled base.
+  Positive "Z" values imply spinning to the left (for built-in base models).
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -305,9 +305,9 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 **Parameters:**
 
 - `linear` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The linear velocity in millimeters per second.
-Only the Y component of the vector is used for a wheeled base, since Viam's coordinate system considers +Y to be the forward axis.
+  Only the Y component of the vector is used for a wheeled base, since Viam's coordinate system considers +Y to be the forward axis.
 - `angular` [(Vector3)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Vector3): The angular velocity in degrees per second.
-Only the Z component of the vector is used for a wheeled base, since Viam's coordinate system considers +Z to point up and the angular velocity to rotate around the Z axis.
+  Only the Z component of the vector is used for a wheeled base, since Viam's coordinate system considers +Z to point up and the angular velocity to rotate around the Z axis.
 
 **Returns:**
 
@@ -331,9 +331,9 @@ await my_base.set_velocity(
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `linear` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The linear velocity in millimeters per second.
-Only the Y component of the vector is used for a wheeled base.
+  Only the Y component of the vector is used for a wheeled base.
 - `angular` [(r3.Vector)](https://pkg.go.dev/github.com/golang/geo/r3#Vector): The angular velocity in degrees per second.
-Only the Z component of the vector is used for a wheeled base.
+  Only the Z component of the vector is used for a wheeled base.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -473,7 +473,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with two fields, `width` and `turning_radius_meters`, representing the width and turning radius of the physical base in meters *(m)*.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with two fields, `width` and `turning_radius_meters`, representing the width and turning radius of the physical base in meters _(m)_.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
 
@@ -500,7 +500,7 @@ print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with two fields, `WidthMeters` and `TurningRadiusMeters`, representing the width and turning radius of the physical base in meters *(m)*.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with two fields, `WidthMeters` and `TurningRadiusMeters`, representing the width and turning radius of the physical base in meters _(m)_.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
@@ -581,7 +581,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/control/yahboom-rover" %}}
-  {{% card link="/tutorials/get-started/try-viam-sdk" %}}
-  {{% card link="/tutorials/services/webcam-line-follower-robot" %}}
+{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/get-started/try-viam-sdk" %}}
+{{% card link="/tutorials/services/webcam-line-follower-robot" %}}
 {{< /cards >}}

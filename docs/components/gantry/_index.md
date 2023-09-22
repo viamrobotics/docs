@@ -12,7 +12,7 @@ images: ["/icons/components/gantry.svg"]
 # SME: Rand
 ---
 
-A robotic *gantry* is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
+A robotic _gantry_ is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
@@ -31,7 +31,7 @@ Most robots with a gantry need at least the following hardware:
 - A [motor](/components/motor/) that can move linear rails
   - Encoded motor: See [DC motor with encoder](/components/motor/gpio/encoded-motor/) and [encoder component](/components/encoder/).
   - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
-  Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
+    Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
 ## Configuration

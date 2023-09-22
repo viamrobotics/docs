@@ -51,7 +51,7 @@ Then select the **Models** and any **Optional Settings** such as the **Number of
 
 Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "<mlmodel_name>",
@@ -101,14 +101,18 @@ Save the configuration and your model will be added to your robot at <file>$HOME
 
 {{< alert title="Info" color="info" >}}
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the  `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
 {{< /alert >}}
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
 
 ```json
-{"package":"<model_id>/allblack","version":"YYYYMMDDHHMMSS","name":"<model_name>"}
+{
+  "package": "<model_id>/allblack",
+  "version": "YYYYMMDDHHMMSS",
+  "name": "<model_name>"
+}
 ```
 
 ### `tflite_cpu` Limitations

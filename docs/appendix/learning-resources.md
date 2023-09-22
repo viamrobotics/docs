@@ -5,6 +5,7 @@ description: "A collection of links to external sources discussing robotics topi
 type: "docs"
 draft: true
 ---
+
 ## Overview
 
 The following sections contain links that we think you will find useful during your journey into robotics.
@@ -68,7 +69,7 @@ And their values on a resistor:
 
 - The bands 1 and 2 indicate the first two significant digits on a resistor.
 - Band 3 is a multiplier on four-band resistors.
-For example, a resistor with brown, green, orange bands representing, 1, 5, and  3, respectively, which equates to 15 times ten to the third, or 15,000 Ohms, or 15 kOhms.
+  For example, a resistor with brown, green, orange bands representing, 1, 5, and 3, respectively, which equates to 15 times ten to the third, or 15,000 Ohms, or 15 kOhms.
 - On resistors with four bands, the band 4 indicates tolerance, with gold being +/- 5% and silver being +/- 10%.
 - On five-band resistors, band 3 becomes an additional significant digit, band 4 becomes the multiplier, and band 5 becomes the tolerance band.
 - Six-band resistors are read identically to five-band resistors, their difference being that the sixth band indicates the resistor's temperature coefficient.

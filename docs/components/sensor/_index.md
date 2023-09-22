@@ -12,12 +12,12 @@ images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
-A *sensor* is a device that can measure information about the outside world.
+A _sensor_ is a device that can measure information about the outside world.
 Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
 
 {{% alert title="Tip" color="tip" %}}
 
-Viam has two component types defined separately from *sensor* that you can use to implement sensors with specific functions:
+Viam has two component types defined separately from _sensor_ that you can use to implement sensors with specific functions:
 
 1. [Movement sensors](/components/movement-sensor/) for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
 2. [Encoders](/components/encoder/) for sensors that can detect speed and direction of rotation of a motor or a joint.
@@ -49,6 +49,7 @@ For an example of creating a custom component, see a [WiFi strength sensor built
 
 Viam also provides the following sensor model as a [modular resource](/extend/modular-resources/):
 
+<!-- prettier-ignore -->
  Model | Description
  ----- | -----------
  [`viam:visual_odometry:opencv_orb`](/extend/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
@@ -206,6 +207,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
-    {{% card link="/tutorials/projects/tipsy/" %}}
+{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
+{{% card link="/tutorials/projects/tipsy/" %}}
 {{< /cards >}}

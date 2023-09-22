@@ -94,7 +94,7 @@ Absolute encoders return degrees.
 **Parameters:**
 
 - `position_type` [(Optional[PositionType.ValueType])](https://docs.python.org/library/typing.html#typing.Optional): Specify whether to get the current position in ticks (`encoder.PositionTypeTicks`) or in degrees (`encoder.PositionTypeDegrees`).
-If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) or empty and it will default to the correct position type.
+  If you are not sure which position type your encoder supports but it is a built-in Viam-supported model, you can leave this parameter unspecified (`encoder.PositionTypeUnspecified`) or empty and it will default to the correct position type.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -305,5 +305,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/configure/scuttlebot" %}}
 {{< /cards >}}

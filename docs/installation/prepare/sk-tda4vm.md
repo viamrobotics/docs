@@ -13,22 +13,22 @@ no_list: true
 
 ## Hardware requirements
 
-* A [Texas Instruments TDA4VM single-board computer](https://www.ti.com/tool/SK-TDA4VM)
-* A USB-C power cable to power the TDA4VM board
-* A microSD card
-* A desktop or laptop computer for flashing the microSD card
-* A way to connect the microSD card to the computer (a microSD slot or microSD reader)
-* An Ethernet cable
-* An HDMI cable
+- A [Texas Instruments TDA4VM single-board computer](https://www.ti.com/tool/SK-TDA4VM)
+- A USB-C power cable to power the TDA4VM board
+- A microSD card
+- A desktop or laptop computer for flashing the microSD card
+- A way to connect the microSD card to the computer (a microSD slot or microSD reader)
+- An Ethernet cable
+- An HDMI cable
 
 ## Required downloads
 
 Download the following files to your computer:
 
-* Download the <a href="https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-SK-TDA4VM" target="_blank">PROCESSOR-SDK-LINUX-SK-TDA4VM — Linux SDK for edge AI applications on TDA4VM Jacinto™ processors</a> image.
+- Download the <a href="https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-SK-TDA4VM" target="_blank">PROCESSOR-SDK-LINUX-SK-TDA4VM — Linux SDK for edge AI applications on TDA4VM Jacinto™ processors</a> image.
 
-* Next, download and install the <a href="https://github.com/balena-io/etcher/releases/tag/v1.7.0" target="_blank">Balena Etcher</a> for your desktop/laptop OS.
-You will use the Balena Etcher to flash the microSD card.
+- Next, download and install the <a href="https://github.com/balena-io/etcher/releases/tag/v1.7.0" target="_blank">Balena Etcher</a> for your desktop/laptop OS.
+  You will use the Balena Etcher to flash the microSD card.
 
 ## Flash the image
 

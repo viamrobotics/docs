@@ -36,7 +36,7 @@ Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "min_points_in_plane": <integer>,
     "min_points_in_segment": <integer>,
@@ -57,7 +57,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 Add the vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
     {
     "name": "<segmenter_name>",
@@ -137,7 +137,7 @@ Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
     "detector_name": "<detector_name>",
     "confidence_threshold_pct": <number>,
@@ -151,7 +151,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 Add the vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
     {
         "name": "<segmenter_name>",

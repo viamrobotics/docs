@@ -8,9 +8,10 @@ images: ["/tutorials/tipsy/tipsy-preview.gif"]
 videoAlt: "Tipsy robot carrying drinks"
 webmSrc: "/tutorials/tipsy/tipsy-preview.webm"
 mp4Src: "/tutorials/tipsy/tipsy-preview.mp4"
-authors: [ "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "board", "motor", "base", "camera", "sensor", "mlmodel", "vision" ]
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources:
+  ["board", "motor", "base", "camera", "sensor", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-05-29"
 # updated: ""
@@ -32,30 +33,30 @@ This tutorial will teach you how to build your own drink-carrying robot.
 
 To build your own drink-carrying robot, you need the following hardware:
 
-* [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
-* Assembled [SCUTTLE rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
-* [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
-These are for the height of the robot.
-* [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 2 single 4 slot rail, 30 mm square, hollow, 12 inches long.
-These are to create a base inside the robot to securely hold the drink box.
-* [T-slotted framing structural brackets](https://www.amazon.com/Aluminum-Connector-Extrusion-Profiles-Accessories/dp/B08NC46L9K/ref=sr_1_14): 30mm rail height.
-* Two [ultrasonic sensors](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP/ref=sr_1_4)
-* A [12V battery](https://www.amazon.com/ExpertPower-EXP1270-Rechargeable-Lead-Battery/dp/B003S1RQ2S/ref=sr_1_4) with [charger](https://www.amazon.com/dp/B0BC3Y5N3Q/ref=vp_d_pd_b2b_qd_vp_pd)
-* DC-DC converter, 12V in, 5V out
-* USB camera
-* A box to hold drinks
-* Optional: Hook-and-loop tape
-* Optional: Acrylic panels to cover the sides
-* Optional: 3D printer
+- [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
+- Assembled [SCUTTLE rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
+- [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
+  These are for the height of the robot.
+- [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 2 single 4 slot rail, 30 mm square, hollow, 12 inches long.
+  These are to create a base inside the robot to securely hold the drink box.
+- [T-slotted framing structural brackets](https://www.amazon.com/Aluminum-Connector-Extrusion-Profiles-Accessories/dp/B08NC46L9K/ref=sr_1_14): 30mm rail height.
+- Two [ultrasonic sensors](https://www.amazon.com/WWZMDiB-HC-SR04-Ultrasonic-Distance-Measuring/dp/B0B1MJJLJP/ref=sr_1_4)
+- A [12V battery](https://www.amazon.com/ExpertPower-EXP1270-Rechargeable-Lead-Battery/dp/B003S1RQ2S/ref=sr_1_4) with [charger](https://www.amazon.com/dp/B0BC3Y5N3Q/ref=vp_d_pd_b2b_qd_vp_pd)
+- DC-DC converter, 12V in, 5V out
+- USB camera
+- A box to hold drinks
+- Optional: Hook-and-loop tape
+- Optional: Acrylic panels to cover the sides
+- Optional: 3D printer
 
 ### Software
 
 To build your own drink-carrying robot, you need the following software:
 
-* [`viam-server`](/installation/#install-viam-server)
-* [Python 3.8 or newer](https://www.python.org/downloads/)
-* [Viam Python SDK](https://python.viam.dev/).
-* [Project repository on GitHub](https://github.com/viam-labs/devrel-demos/)
+- [`viam-server`](/installation/#install-viam-server)
+- [Python 3.8 or newer](https://www.python.org/downloads/)
+- [Viam Python SDK](https://python.viam.dev/).
+- [Project repository on GitHub](https://github.com/viam-labs/devrel-demos/)
 
 ## Wire your robot
 
@@ -80,95 +81,95 @@ Click on the **Components** subtab.
 
 1. **Configure the board**
 
-    Add a {{< glossary_tooltip term_id="board" text="board component" >}} to represent the Raspberry Pi:
+   Add a {{< glossary_tooltip term_id="board" text="board component" >}} to represent the Raspberry Pi:
 
-    Click the **Create component** button in the lower-left corner of the page.
-    Select type `board` and model `pi`.
-    Enter `local` as the name, then click **Create**.
+   Click the **Create component** button in the lower-left corner of the page.
+   Select type `board` and model `pi`.
+   Enter `local` as the name, then click **Create**.
 
-    You can name your board whatever you want as long as you refer to it by the same name in your code.
+   You can name your board whatever you want as long as you refer to it by the same name in your code.
 
-    ![Board component configured in the Viam app, the component tab is named local, with a type attribute board and model attribute Pi.](/tutorials/tipsy/app-board-attribute.png)
+   ![Board component configured in the Viam app, the component tab is named local, with a type attribute board and model attribute Pi.](/tutorials/tipsy/app-board-attribute.png)
 
 2. **Configure the motors**
 
-    Add your right [motor](/components/motor/):
+   Add your right [motor](/components/motor/):
 
-    Click **Create component** in the lower-left corner of the page.
-    Select type `motor`, then select model `gpio`.
-    Enter `rightMotor` as the name, then click **Create**.
+   Click **Create component** in the lower-left corner of the page.
+   Select type `motor`, then select model `gpio`.
+   Enter `rightMotor` as the name, then click **Create**.
 
-    After clicking **Create**, a panel will pop up with empty sections for Attributes, Component Pin Assignment, and other information.
+   After clicking **Create**, a panel will pop up with empty sections for Attributes, Component Pin Assignment, and other information.
 
-    ![Alt text: rightMotor component panel with empty sections for Attributes, Component Pin Assignment, and other information.](/tutorials/tipsy/app-motor-attribute.png)
+   ![Alt text: rightMotor component panel with empty sections for Attributes, Component Pin Assignment, and other information.](/tutorials/tipsy/app-motor-attribute.png)
 
-    In the **Board** drop-down within attributes, choose the name of the board `local` to which the motor is wired.
-    This will ensure that the board initializes before the motor when the robot boots up.
+   In the **Board** drop-down within attributes, choose the name of the board `local` to which the motor is wired.
+   This will ensure that the board initializes before the motor when the robot boots up.
 
-    Then set **Max RPM** to 100 and enable direction flip.
+   Then set **Max RPM** to 100 and enable direction flip.
 
-    In the **Component Pin Assignment** section, toggle the type to **In1/In2.**
-    In the drop downs for A/In1 and B/In2, choose `15 GPIO 22` and `16 GPIO 23` corresponding to the right motor wiring.
-    Leave PWM (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.
+   In the **Component Pin Assignment** section, toggle the type to **In1/In2.**
+   In the drop downs for A/In1 and B/In2, choose `15 GPIO 22` and `16 GPIO 23` corresponding to the right motor wiring.
+   Leave PWM (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.
 
-    ![Motor component configured in the Viam app, the component tab is named rightMotor, with a type attribute motor and model attribute gpio. It has the attributes as of the board as local, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 15 GPIO 22, b/In2 as 16 GPIO 23, pwm as blank.](/tutorials/tipsy/app-motor-pins.png)
+   ![Motor component configured in the Viam app, the component tab is named rightMotor, with a type attribute motor and model attribute gpio. It has the attributes as of the board as local, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 15 GPIO 22, b/In2 as 16 GPIO 23, pwm as blank.](/tutorials/tipsy/app-motor-pins.png)
 
-    Now let’s add the left motor which is similar to the right motor.
-    Add your left [motor](/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
-    Select `local` from the **Board** drop-down, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
+   Now let’s add the left motor which is similar to the right motor.
+   Add your left [motor](/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
+   Select `local` from the **Board** drop-down, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
 
 3. **Configure the base**
 
-    Next, add a [base component](/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
+   Next, add a [base component](/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
 
-    Click **Create component**.
-    Select `base` for type and `wheeled` for model.
-    Name your base `tipsy-base`, then click **Create**.
+   Click **Create component**.
+   Select `base` for type and `wheeled` for model.
+   Name your base `tipsy-base`, then click **Create**.
 
-    In the **Right Motors** drop-down, select `rightMotor` and in the **Left Motors** drop-down select `leftMotor`.
-    Enter `250` for **Wheel Circumference (mm)** and `400` for **Width (mm)**.
-    The width describes the distance between the midpoints of the wheels.
-    Add `local`, `rightMotor`, and `leftMotor` to the **Depends on** field.
+   In the **Right Motors** drop-down, select `rightMotor` and in the **Left Motors** drop-down select `leftMotor`.
+   Enter `250` for **Wheel Circumference (mm)** and `400` for **Width (mm)**.
+   The width describes the distance between the midpoints of the wheels.
+   Add `local`, `rightMotor`, and `leftMotor` to the **Depends on** field.
 
-    ![tipsy-base component panel filled with attributes right motors as rightMotor, left motors as leftMotor, wheel circumference as 250, and width as 400. It depends on local, rightMotor, and leftMotor. ](/tutorials/tipsy/app-base-attribute.png)
+   ![tipsy-base component panel filled with attributes right motors as rightMotor, left motors as leftMotor, wheel circumference as 250, and width as 400. It depends on local, rightMotor, and leftMotor. ](/tutorials/tipsy/app-base-attribute.png)
 
 4. **Configure the camera**
 
-    Add the [camera component](/components/camera/):
+   Add the [camera component](/components/camera/):
 
-    Click **Create component**.
-    Select type `camera` and model `webcam`.
-    Name it `cam` and click **Create**.
+   Click **Create component**.
+   Select type `camera` and model `webcam`.
+   Name it `cam` and click **Create**.
 
-    In the configuration panel, click the video path field.
-    If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
+   In the configuration panel, click the video path field.
+   If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
 
-    Select the camera you want to use.
-    If you are unsure which camera to select, select one, save the configuration, and go to the **Control** tab to confirm you can see the expected video stream.
+   Select the camera you want to use.
+   If you are unsure which camera to select, select one, save the configuration, and go to the **Control** tab to confirm you can see the expected video stream.
 
-    ![cam component panel with type camera and model webcam, and the usb camera selected as the video path.](/tutorials/tipsy/app-camera-attribute.png)
+   ![cam component panel with type camera and model webcam, and the usb camera selected as the video path.](/tutorials/tipsy/app-camera-attribute.png)
 
-    Then make it depend on `local` so it initializes after the board component.
+   Then make it depend on `local` so it initializes after the board component.
 
 5. **Configure the ultrasonic sensors**
 
-    Add a [sensor component](/components/sensor/):
+   Add a [sensor component](/components/sensor/):
 
-    Click **Create component**.
-    Select type `sensor` and model `ultrasonic`.
-    Name your sensor `ultrasonic`, then click **Create**.
+   Click **Create component**.
+   Select type `sensor` and model `ultrasonic`.
+   Name your sensor `ultrasonic`, then click **Create**.
 
-    Then fill in the attributes: enter `38` for `echo_interrupt_pin` and `40` for `trigger_pin`, according to the wiring diagram.
-    Enter `local` for `board`.
+   Then fill in the attributes: enter `38` for `echo_interrupt_pin` and `40` for `trigger_pin`, according to the wiring diagram.
+   Enter `local` for `board`.
 
-    ![Ultrasonic component panel with Attributes trigger_pin as 40, echo_interrupt_pin as 38, and board as local.](/tutorials/tipsy/app-ultrasonic-attribute.png)
+   ![Ultrasonic component panel with Attributes trigger_pin as 40, echo_interrupt_pin as 38, and board as local.](/tutorials/tipsy/app-ultrasonic-attribute.png)
 
-    You have to configure the other ultrasonic sensors.
-    Tipsy uses 5 in total: two up top underneath the beer box, two on the sides of the robot, and one at the bottom.
-    You can change the amount based on your preference.
+   You have to configure the other ultrasonic sensors.
+   Tipsy uses 5 in total: two up top underneath the beer box, two on the sides of the robot, and one at the bottom.
+   You can change the amount based on your preference.
 
-    For each of the additional ultrasonic sensors, create a new component with the name `ultrasonic2`, type `sensor`, and model `ultrasonic`.
-    In the attributes textbox, fill in the `trigger_pin` and  `echo_interrupt_pin` corresponding to the pins your ultrasonic sensors are connected to.
+   For each of the additional ultrasonic sensors, create a new component with the name `ultrasonic2`, type `sensor`, and model `ultrasonic`.
+   In the attributes textbox, fill in the `trigger_pin` and `echo_interrupt_pin` corresponding to the pins your ultrasonic sensors are connected to.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -224,29 +225,19 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "type": "motor"
     },
     {
-      "depends_on": [
-        "local",
-        "rightMotor",
-        "leftMotor"
-      ],
+      "depends_on": ["local", "rightMotor", "leftMotor"],
       "model": "wheeled",
       "name": "tipsy-base",
       "type": "base",
       "attributes": {
         "wheel_circumference_mm": 250,
         "width_mm": 400,
-        "left": [
-          "leftMotor"
-        ],
-        "right": [
-          "rightMotor"
-        ]
+        "left": ["leftMotor"],
+        "right": ["rightMotor"]
       }
     },
     {
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "cam",
       "type": "camera",
       "model": "webcam",
@@ -263,9 +254,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "board": "local",
         "trigger_pin": "40"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "attributes": {
@@ -273,9 +262,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "trigger_pin": "13",
         "echo_interrupt_pin": "7"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic2",
       "type": "sensor",
       "model": "ultrasonic"
@@ -287,9 +274,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "trigger_pin": "35",
         "echo_interrupt_pin": "37"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic3",
       "type": "sensor"
     },
@@ -299,9 +284,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "trigger_pin": "28",
         "echo_interrupt_pin": "32"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic4",
       "type": "sensor",
       "model": "ultrasonic"
@@ -313,9 +296,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "echo_interrupt_pin": "26",
         "board": "local"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic5",
       "type": "sensor"
     },
@@ -327,9 +308,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "i2c_bus": "default_i2c",
         "board": "local"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     }
   ]
 }
@@ -393,69 +372,69 @@ Click on the **Services** subtab.
 
 1. **Configure the ML model service**
 
-    Add an [mlmodel](/services/ml/) service:
+   Add an [mlmodel](/services/ml/) service:
 
-    Click **Create service** in the lower-left corner of the page.
-    Select type `ML Model` and model `TFLite CPU`.
-    Enter `people` for the name of your service, then click **Create**.
+   Click **Create service** in the lower-left corner of the page.
+   Select type `ML Model` and model `TFLite CPU`.
+   Enter `people` for the name of your service, then click **Create**.
 
-    In the new ML Model service panel, configure your service.
+   In the new ML Model service panel, configure your service.
 
-    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+   ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-    Select the **Path to existing model on robot** for the **Deployment** field.
-    Then specify the absolute **Model path** as <file>/home/tipsy/effdet0.tflite</file> and any **Optional settings** such as the absolute **Label path** as <file>/home/tipsy/labels.txt</file> and the **Number of threads** as 1.
+   Select the **Path to existing model on robot** for the **Deployment** field.
+   Then specify the absolute **Model path** as <file>/home/tipsy/effdet0.tflite</file> and any **Optional settings** such as the absolute **Label path** as <file>/home/tipsy/labels.txt</file> and the **Number of threads** as 1.
 
-    ![mlmodel service panel, Deployment selected as Path to Existing Model On Robot, Model Path filled as /home/tipsy/effdet0.tflite and Label Path filled as /home/tipsy/labels.txt, Number of threads is 1.](/tutorials/tipsy/app-service-ml-after.png)
+   ![mlmodel service panel, Deployment selected as Path to Existing Model On Robot, Model Path filled as /home/tipsy/effdet0.tflite and Label Path filled as /home/tipsy/labels.txt, Number of threads is 1.](/tutorials/tipsy/app-service-ml-after.png)
 
 1. **Configure an ML model detector**
 
-    Add a [vision service](/services/vision/) detector:
+   Add a [vision service](/services/vision/) detector:
 
-    Click **Create service** in the lower-left corner of the page.
-    Select type `Vision`, then select model `mlmodel`.
-    Enter `myPeopleDetector` as the name, then click **Create**.
+   Click **Create service** in the lower-left corner of the page.
+   Select type `Vision`, then select model `mlmodel`.
+   Enter `myPeopleDetector` as the name, then click **Create**.
 
-    In the new vision service panel, configure your service.
+   In the new vision service panel, configure your service.
 
-    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
+   ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 
-    Name the ml model name `people`.
+   Name the ml model name `people`.
 
-    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
+   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
 
 1. **Configure the detection camera**
 
-    To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
+   To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
-    Click on the **Components** subtab, then click **Create component** in the lower-left corner of the page.
-    Select type `camera`, then select model `transform`.
-    Enter `detectionCam` as the name, then click **Create**.
+   Click on the **Components** subtab, then click **Create component** in the lower-left corner of the page.
+   Select type `camera`, then select model `transform`.
+   Enter `detectionCam` as the name, then click **Create**.
 
-    ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
+   ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
 
-    In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
+   In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
 
-    ```json
-    {
-    "source": "cam",
-    "pipeline": [
-        {
-        "type": "detections",
-        "attributes": {
-            "detector_name": "myPeopleDetector",
-            "confidence_threshold": 0.5
-        }
-        }
-    ]
-    }
-    ```
+   ```json
+   {
+     "source": "cam",
+     "pipeline": [
+       {
+         "type": "detections",
+         "attributes": {
+           "detector_name": "myPeopleDetector",
+           "confidence_threshold": 0.5
+         }
+       }
+     ]
+   }
+   ```
 
-    Click **Save config** in the bottom left corner of the screen.
+   Click **Save config** in the bottom left corner of the screen.
 
-    Your configuration should now resemble the following:
+   Your configuration should now resemble the following:
 
-    ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
+   ![detectionCam component panel with type camera and model transform, Attributes section filled with source and pipeline information.](/tutorials/tipsy/app-detection-after.png)
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -531,29 +510,19 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "type": "motor"
     },
     {
-      "depends_on": [
-        "local",
-        "rightMotor",
-        "leftMotor"
-      ],
+      "depends_on": ["local", "rightMotor", "leftMotor"],
       "model": "wheeled",
       "name": "tipsy-base",
       "type": "base",
       "attributes": {
         "wheel_circumference_mm": 250,
         "width_mm": 400,
-        "left": [
-          "leftMotor"
-        ],
-        "right": [
-          "rightMotor"
-        ]
+        "left": ["leftMotor"],
+        "right": ["rightMotor"]
       }
     },
     {
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "cam",
       "type": "camera",
       "model": "webcam",
@@ -588,9 +557,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "board": "local",
         "trigger_pin": "40"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "attributes": {
@@ -598,9 +565,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "trigger_pin": "13",
         "echo_interrupt_pin": "7"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic2",
       "type": "sensor",
       "model": "ultrasonic"
@@ -612,9 +577,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "trigger_pin": "35",
         "echo_interrupt_pin": "37"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic3",
       "type": "sensor"
     },
@@ -624,9 +587,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "trigger_pin": "28",
         "echo_interrupt_pin": "32"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic4",
       "type": "sensor",
       "model": "ultrasonic"
@@ -638,9 +599,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "echo_interrupt_pin": "26",
         "board": "local"
       },
-      "depends_on": [
-        "local"
-      ],
+      "depends_on": ["local"],
       "name": "ultrasonic5",
       "type": "sensor"
     },
@@ -652,9 +611,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "i2c_bus": "default_i2c",
         "board": "local"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     }
   ]
 }
@@ -884,10 +841,10 @@ With its people detection and obstacle avoidance technology, convenient autonomo
 
 To make Tipsy even more advanced, you can try to:
 
-* Add more ultrasonic sensors so it doesn’t hit objects at different heights, you can also attach them to a moving gantry along the side rails
-* Add a depth camera to detect obstacles and how close they are to Tipsy
-* Add an imu to see if Tipsy is tipping backward
-* Add a lidar
+- Add more ultrasonic sensors so it doesn’t hit objects at different heights, you can also attach them to a moving gantry along the side rails
+- Add a depth camera to detect obstacles and how close they are to Tipsy
+- Add an imu to see if Tipsy is tipping backward
+- Add a lidar
 
 You can also design another robot for collecting the empty beer cans, or a bartender robot with pumps that can mix some drinks.
 Till then, sit back, relax, and let Tipsy handle the beer-carrying duties for you!

@@ -127,6 +127,6 @@ You can find more information in the [Go SDK Docs](https://pkg.go.dev/go.viam.co
 Constraints are used in the following tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" %}}
-  {{% card link="/tutorials/services/constrain-motion/" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
+{{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}

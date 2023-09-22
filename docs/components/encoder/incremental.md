@@ -30,16 +30,16 @@ Fill in and edit the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-encoder-name>",
-    "type": "encoder",
-    "model" : "incremental",
-    "attributes": {
-      "board": "<your-board-name>",
-      "pins": {
-        "a": "<your-first-pin-number>",
-        "b": "<your-second-pin-number>"
-      }
+  "name": "<your-encoder-name>",
+  "type": "encoder",
+  "model": "incremental",
+  "attributes": {
+    "board": "<your-board-name>",
+    "pins": {
+      "a": "<your-first-pin-number>",
+      "b": "<your-second-pin-number>"
     }
+  }
 }
 ```
 

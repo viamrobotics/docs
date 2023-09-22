@@ -62,7 +62,7 @@ Get the current position of the component the SLAM service is configured to sour
 
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A `Pose` representing the current position of the specified component.
 - [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
-For example, a [camera](/components/camera/) named `"cam"`.
+  For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).
@@ -84,7 +84,7 @@ pos, name, err := slam_svc.GetPosition(context.Background())
 **Returns:**
 
 - [(Pose)](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose): A `Pose` representing the current position of the component the SLAM service is configured to source point cloud data from.
-For example, a [camera](/components/camera/) named `"cam"`.
+  For example, a [camera](/components/camera/) named `"cam"`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_position).
 

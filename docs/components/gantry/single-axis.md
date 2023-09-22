@@ -7,7 +7,7 @@ description: "Configure a single-axis gantry."
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
-    - "/components/gantry/oneaxis/"
+  - "/components/gantry/oneaxis/"
 # SME: Rand, Martha
 ---
 

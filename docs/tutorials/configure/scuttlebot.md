@@ -11,8 +11,8 @@ aliases:
   - "/tutorials/scuttlebot"
   - "/tutorials/scuttlebot/scuttlebot"
 authors: []
-languages: [ "python", "go" ]
-viamresources: [ "board", "motor", "camera", "base", "encoder" ]
+languages: ["python", "go"]
+viamresources: ["board", "motor", "camera", "base", "encoder"]
 level: "Beginner"
 date: "2022-08-02"
 updated: "2023-08-05"
@@ -29,7 +29,7 @@ cost: 540
 ## Start configuring your robot
 
 1. Go to [the Viam app](https://app.viam.com).
-1. Create a *robot* and follow the setup instructions until the robot successfully connects to the Viam app.
+1. Create a _robot_ and follow the setup instructions until the robot successfully connects to the Viam app.
 1. Navigate to the robot's **Config** tab.
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
@@ -291,7 +291,7 @@ Enter a name for your base and click **Create**.
         "pins": {
           "pwm": "",
           "a": "16",
-          "b": "15",
+          "b": "15"
         }
       },
       "model": "gpio",
@@ -304,7 +304,7 @@ Enter a name for your base and click **Create**.
         "pins": {
           "pwm": "",
           "a": "12",
-          "b": "11",
+          "b": "11"
         }
       },
       "model": "gpio",
@@ -313,8 +313,8 @@ Enter a name for your base and click **Create**.
     },
     {
       "attributes": {
-        "left": [ "left" ],
-        "right": [ "right" ],
+        "left": ["left"],
+        "right": ["right"],
         "wheel_circumference_mm": 250,
         "width_mm": 400
       },
@@ -374,12 +374,12 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "Webcam",
-    "type": "camera",
-    "model": "webcam",
-    "attributes": {
-        "video_path": "video0"
-    }
+  "name": "Webcam",
+  "type": "camera",
+  "model": "webcam",
+  "attributes": {
+    "video_path": "video0"
+  }
 }
 ```
 
@@ -406,7 +406,7 @@ Now that you have fully configured your SCUTTLE robot, you can drive it around a
 To take things to the next level, check out one of the following tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/color-detection-scuttle" %}}
-  {{% card link="/tutorials/control/scuttle-gamepad/" %}}
-  {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+{{% card link="/tutorials/services/color-detection-scuttle" %}}
+{{% card link="/tutorials/control/scuttle-gamepad/" %}}
+{{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
 {{< /cards >}}

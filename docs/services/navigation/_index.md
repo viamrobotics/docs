@@ -64,42 +64,45 @@ Enter a name for your service, then click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "test_navigation",
-    "type": "navigation",
-    "attributes": {
-        "store": {
-            "type": "mongodb",
-            // Remove "config": { ... } below if using "type": "memory"
-            "config": {
-                "uri": "mongodb://127.0.0.1:12345"
+  "name": "test_navigation",
+  "type": "navigation",
+  "attributes": {
+    "store": {
+      "type": "mongodb",
+      // Remove "config": { ... } below if using "type": "memory"
+      "config": {
+        "uri": "mongodb://127.0.0.1:12345"
+      }
+    }
+  },
+  "movement_sensor": "your-movement-sensor",
+  "base": "your-base",
+  "obstacles": [
+    {
+      "geometries": [
+        {
+          "label": "your-label-for-this-obstacle",
+          "orientation": {
+            "type": "ov_degrees",
+            "value": {
+              "x": 1,
+              "y": 0,
+              "z": 0,
+              "th": 90
             }
+          },
+          "x": 10,
+          "y": 10,
+          "z": 10
         }
-    },
-    "movement_sensor": "your-movement-sensor",
-    "base": "your-base",
-    "obstacles":[{
-        "geometries": [{
-            "label":"your-label-for-this-obstacle",
-            "orientation":{
-                "type":"ov_degrees",
-                    "value":{
-                        "x":1,
-                        "y":0,
-                        "z":0,
-                        "th": 90
-                    }
-            },
-            "x":10,
-            "y":10,
-            "z":10
-        }],
-        "location": {
-            "latitude":1,
-            "longitude":1
-        }
-    }]
+      ],
+      "location": {
+        "latitude": 1,
+        "longitude": 1
+      }
+    }
+  ]
 }
-
 ```
 
 {{% /tab %}}
@@ -135,22 +138,23 @@ To start, add the frame system service to your rover [base](/components/base/) a
 - Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
 
-    {{< imgproc src="/services/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
+  {{< imgproc src="/services/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
 
 - Click **Add Frame**.
 
   - Keep the `parent` frame as `world`.
-  Select the **Geometry** drop-down menu.
+    Select the **Geometry** drop-down menu.
   - Configure a **Geometry** for the base that reflects its physical dimensions.
-  Reference [these instructions](/services/frame-system/#bounding-geometries) to configure your geometry and measure the physical dimensions of your base.
+    Reference [these instructions](/services/frame-system/#bounding-geometries) to configure your geometry and measure the physical dimensions of your base.
 
     ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-base-ui.png)
 
 - Scroll to the card with the name of your movement sensor.
   Click **Add Frame** and select the **Parent** box.
+
   - Type in the `name` of your base to specify this component as the `parent` of the sensor in the reference frame coordinate system, and click **Save Config** to save your configuration.
-  See [how to configure nested reference frames](/services/frame-system/nested-frame-config/) for an explanation of this configuration process.
-  ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-movement-sensor-ui.png)
+    See [how to configure nested reference frames](/services/frame-system/nested-frame-config/) for an explanation of this configuration process.
+    ![The frame card for the base in the Viam app config builder.](/services/navigation/full-frame-movement-sensor-ui.png)
 
   - Give the movement sensor a **Translation** that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
 
@@ -164,8 +168,8 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
   - Navigate back to your robot's **Config** page.
-  Scroll to the card with the name of your movement sensor.
-  Adjust the **Orientation** of the frame to compensate for the mismatch.
+    Scroll to the card with the name of your movement sensor.
+    Adjust the **Orientation** of the frame to compensate for the mismatch.
   - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your robot to be oriented accurately within the frame system.
   - If you cannot verify this, repeat as necessary.
 
@@ -226,7 +230,7 @@ mode, err := myNav.Mode(context.Background(), nil)
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_mode).
 
-``` python
+```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 # Get the Mode the service is operating in
@@ -306,7 +310,7 @@ Get the current location of the robot in the navigation service.
 
 **Returns:**
 
-- [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude and longitude values.
+- [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude and longitude values.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
@@ -378,7 +382,7 @@ waypoints, err := myNav.Waypoints(context.Background(), nil)
 **Returns:**
 
 - [(List[navigation.Waypoint])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint): An array comprised of each `Waypoint` in the service's data storage.
-These are locations designated within a path for the robot to navigate to.
+  These are locations designated within a path for the robot to navigate to.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_waypoints).
 
@@ -402,7 +406,7 @@ Add a waypoint to the service's data storage.
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `point` [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
+- `point` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -519,8 +523,8 @@ See the [motion service](/services/motion/) for more information.
 
 **Returns:**
 
-- [([]*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
-These are locations designated for the robot to avoid when navigating.
+- [([]\*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
+  These are locations designated for the robot to avoid when navigating.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
@@ -542,7 +546,7 @@ obstacles, err := myNav.GetObstacles(context.Background(), nil)
 **Returns:**
 
 - [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
-These are locations designated for the robot to avoid when navigating.
+  These are locations designated for the robot to avoid when navigating.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
 
@@ -581,12 +585,12 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 An example of a `Compass Heading` reading:
 
-``` go
+```go
 // heading is a float64 between 0-360
 heading, err := gps.CompassHeading(context.Background, nil)
 ```
 
-Use compass heading readings to determine the *bearing* of your robot, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your robot is facing.
+Use compass heading readings to determine the _bearing_ of your robot, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your robot is facing.
 
 To read compass headings, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) method to get readings from the sensor.
@@ -600,12 +604,12 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 An example of an `Orientation` reading:
 
-``` go
+```go
 // orientation is a OrientationVector struct with OX, OY, OZ denoting the coordinates of the vector and rotation about z-axis, Theta
 orientation, err := imuwit.Orientation(context.Background, nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [*orientation vector*](/internals/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
 You can choose the origin reference frame by configuring it using Viam's [frame system](/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
@@ -625,7 +629,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 
 An example of an `AngularVelocity` reading:
 
-``` go
+```go
 // angularVelocity is an AngularVelocity r3 Vector with X, Y, and Z magnitudes
 angularVelocity, err := imu.AngularVelocity(context.Background, nil)
 ```
@@ -645,13 +649,13 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of the [mov
 
 An example of a `Position` reading:
 
-``` go
+```go
 // position is a geo.Point consisting  of Lat and Long: -73.98 and an altitude in float64
 position, altitude, err:= imu.Position(context.Background, nil)
 ```
 
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
-These position readings reflect the *absolute* position of components.
+These position readings reflect the _absolute_ position of components.
 
 To get a position, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Then use the movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) method to get position readings from the sensor.
@@ -667,7 +671,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 An example of a `Linear Velocity` reading:
 
-``` go
+```go
 // linearVelocity is an r3.Vector with X, Y, and Z magnitudes
 linearVelocity, err := imu.LinearVelocity(context.Background, nil)
 ```
@@ -688,7 +692,7 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 An example of a `Linear Acceleration` reading:
 
-``` go
+```go
 // linearAcceleration is an r3.Vector with X, Y, and Z magnitudes
 linearAcceleration, err := imu.LinearAcceleration(context.Background, nil)
 ```

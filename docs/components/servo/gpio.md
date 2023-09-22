@@ -49,18 +49,18 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-        "name": "local",
-        "type": "board",
-        "model": "jetson"
+      "name": "local",
+      "type": "board",
+      "model": "jetson"
     },
     {
-        "name": "my_servo",
-        "type": "servo",
-        "model": "gpio",
-        "attributes": {
-            "pin": "16",
-            "board": "local"
-        }
+      "name": "my_servo",
+      "type": "servo",
+      "model": "gpio",
+      "attributes": {
+        "pin": "16",
+        "board": "local"
+      }
     }
   ]
 }

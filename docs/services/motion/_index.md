@@ -84,30 +84,31 @@ The motion service takes the volumes associated with all configured robot compon
   Note that the destination pose is relative to the distal end of the specified frame.
   This means that if the `destination` is the same as the `component_name` frame, for example an arm's frame, then a pose of {X: 10, Y: 0, Z: 0} will move that arm’s end effector by 10 mm in the local X direction.
 
-- `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (*optional*): Data structure specifying information about the world around the robot.
+- `world_state` ([WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (_optional_): Data structure specifying information about the world around the robot.
   Used to augment the motion solving process.
   `world_state` includes obstacles and transforms:
+
   - **Obstacles**: Geometries located at a pose relative to some frame.
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The motion service assumes that obstacles are static.
-      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with _transforms_.
     - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
-    - Obstacle locations are defined with respect to the *origin* of the specified frame.
-      Their poses are relative to the *origin* of the specified frame.
+    - Obstacle locations are defined with respect to the _origin_ of the specified frame.
+      Their poses are relative to the _origin_ of the specified frame.
       An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `component_name`, where poses are relative to the distal end of a frame.
   - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
-  Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
-  For example, you could use a transform to represent the volume of a marker held in your robot's gripper.
-  Transforms are not added to the config or carried into later processes.
+    Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
+    For example, you could use a transform to represent the volume of a marker held in your robot's gripper.
+    Transforms are not added to the config or carried into later processes.
 
-- `constraints` ([Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (*optional*): Pass in [motion constraints](./constraints/).
-By default, motion is unconstrained with the exception of obstacle avoidance.
+- `constraints` ([Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (_optional_): Pass in [motion constraints](./constraints/).
+  By default, motion is unconstrained with the exception of obstacle avoidance.
 
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -154,22 +155,23 @@ moved = await motion.move(component_name=gripper_name,
 - `worldState` ([WorldState](https://pkg.go.dev/go.viam.com/rdk/referenceframe#WorldState)): Data structure specifying information about the world around the robot.
   Used to augment the motion solving process.
   `worldState` includes obstacles and transforms:
+
   - **Obstacles**: Geometries located at a pose relative to some frame.
     When solving a motion plan with movable frames that contain inherent geometries, the solved path is constrained such that none of those inherent geometries intersect with the obstacles.
     Important considerations:
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The motion service assumes that obstacles are static.
-      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with *transforms*.
+      If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with _transforms_.
     - Obstacles are defined by a pose and a [geometry](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
-    - Obstacle locations are defined with respect to the *origin* of the specified frame.
-      Their poses are relative to the *origin* of the specified frame.
+    - Obstacle locations are defined with respect to the _origin_ of the specified frame.
+      Their poses are relative to the _origin_ of the specified frame.
       An obstacle associated with the frame of an arm with a pose of {X: 0, Y: 0, Z: -10} is interpreted as being 10mm below the base of the arm, not 10mm below the end effector.
       This is different from `destination` and `componentName`, where poses are relative to the distal end of a frame.
   - **Transforms**: A list of `PoseInFrame` messages that specify other transformations to temporarily add to the frame system at solve time.
-  Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
-  For example, you could use a transform to represent the volume of a marker held in your robot's gripper.
-  Transforms are not added to the config or carried into later processes.
+    Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
+    For example, you could use a transform to represent the volume of a marker held in your robot's gripper.
+    Transforms are not added to the config or carried into later processes.
 
 - `constraints` ([Constraints](https://pkg.go.dev/go.viam.com/api/service/motion/v1#Constraints)): Pass in optional [motion constraints](./constraints/).
   By default, motion is unconstrained with the exception of obstacle avoidance.
@@ -215,9 +217,10 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 - `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)):
   The name of the frame with respect to which the component's pose is reported.
 
-- `supplemental_transforms` ([Optional\[List\[Transforms\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (*optional*): A list of `Transform` objects.
+- `supplemental_transforms` ([Optional\[List\[Transforms\]\]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Transform)) (_optional_): A list of `Transform` objects.
   A `Transform` represents an additional frame which is added to the robot's frame system.
   It consists of the following fields:
+
   - `pose_in_observer_frame`: Provides the relationship between the frame being added and another frame.
   - `physical_object`: An optional `Geometry` can be added to the frame being added.
   - `reference_frame`: Specifies the name of the frame which will be added to the frame system.
@@ -226,7 +229,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
   This new frame system builds off the robot's frame system and incorporates the `Transform`s provided.
   If the result of adding the `Transform`s results in a disconnected frame system, an error is thrown.
 
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -287,11 +290,12 @@ gripperPoseInObjectFrame = await motion.get_pose(
 - `supplementalTransforms` ([LinkInFrame](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame)): An optional list of `LinkInFrame`s.
   A `LinkInFrame` represents an additional frame which is added to the robot's frame system.
   It consists of:
+
   - a `PoseInFrame`: Provides the relationship between the frame being added and another frame.
   - `Geometry`: An optional `Geometry` can be added to the frame being added.
-  When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
-  This new frame system builds off the robot's frame system and incorporates the `LinkInFrame`s provided.
-  If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
+    When `supplementalTransforms` are provided, a frame system is created within the context of the `GetPose` function.
+    This new frame system builds off the robot's frame system and incorporates the `LinkInFrame`s provided.
+    If the result of adding the `LinkInFrame`s results in a disconnected frame system, an error is thrown.
 
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
@@ -411,7 +415,7 @@ success, err := motionService.MoveOnMap(context.Background(), myBaseResourceName
 
 ### MoveOnGlobe
 
-Move a [base](/components/base/) component to a destination GPS point, represented in geographic notation *(latitude, longitude)*.
+Move a [base](/components/base/) component to a destination GPS point, represented in geographic notation _(latitude, longitude)_.
 Use a [movement sensor](/components/movement-sensor/) to check the location of the robot.
 
 {{< alert title="Usage" color="tip" >}}
@@ -444,7 +448,7 @@ Translation in obstacles is not supported by the [navigation service](/services/
 **Parameters:**
 
 - `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to move.
-- `destination` [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) *(lat, lng)*.
+- `destination` [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) _(lat, lng)_.
 - `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [(Optional[Sequence[GeoObstacle]])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `heading` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
@@ -489,11 +493,11 @@ success = await motion.move_on_globe(
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
-- `destination` [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The location of the component's destination, represented in geographic notation as a [Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) *(lat, lng)*.
+- `destination` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The location of the component's destination, represented in geographic notation as a [Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) _(lat, lng)_.
 - `heading` [(float64)](https://pkg.go.dev/builtin#float64): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
 - `movementSensorName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
-- `obstacles` [([]*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
-- `motionConfig` [(*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
+- `obstacles` [([]\*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
+- `motionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
   - `VisionSvc` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The name you configured for each vision service you want to use while moving this resource.
   - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the robot.
   - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
@@ -530,6 +534,6 @@ success, err := motionService.MoveOnGlobe(context.Background(), myBaseResourceNa
 The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the motion service API, respectively:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
+{{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

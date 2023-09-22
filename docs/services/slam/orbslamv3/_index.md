@@ -78,7 +78,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM3_DIR>",
   "use_live_data": true,
   "delete_processed_data": true,
-  "sensors": [ "<your-webcam-name>" ],
+  "sensors": ["<your-webcam-name>"],
   "config_params": {
     "mode": "rgbd"
   }
@@ -250,17 +250,17 @@ If you do not already have a dataset from running SLAM live or another dataset y
 2. Copy the zipped file to the machine running `viam-server` and unzip it.
    For example:
 
-    ```sh {class="command-line" data-prompt="$"}
-    scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.
-    unzip viam-office-hallway-1-rgbd.zip
-    ```
+   ```sh {class="command-line" data-prompt="$"}
+   scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.
+   unzip viam-office-hallway-1-rgbd.zip
+   ```
 
 3. Rename the unzipped folder to <file>data</file> and place inside of the folder at <file>data_dir</file>. For example:
 
-    ```sh {class="command-line" data-prompt="$"}
-    cd /home/<YOUR_USERNAME>/<ORBSLAM3_DIR>
-    mv ~/Downloads/viam-office-hallway-1-rgbd data/
-    ```
+   ```sh {class="command-line" data-prompt="$"}
+   cd /home/<YOUR_USERNAME>/<ORBSLAM3_DIR>
+   mv ~/Downloads/viam-office-hallway-1-rgbd data/
+   ```
 
 {{% /tab %}}
 {{% tab name="/map" %}}

@@ -55,14 +55,14 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 1. Follow the instructions in [Getting Started with Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to boot up your Orin for the first time.
 
-    If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have installed the latest NVIDIA JetPack components.
+   If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have installed the latest NVIDIA JetPack components.
 
-    Look at the Troubleshooting section below for help navigating these instructions.
-    Once you have reached *Next Steps*, return to the Viam docs.
+   Look at the Troubleshooting section below for help navigating these instructions.
+   Once you have reached _Next Steps_, return to the Viam docs.
 
 2. Your Jetson AGX Orin now has a Viam-compatible operating system installed.
-    Continue to our [viam-server installation guide](/installation/#install-viam-server).
-    Note that the Jetson AGX Orin has aarch64 CPU architecture.
+   Continue to our [viam-server installation guide](/installation/#install-viam-server).
+   Note that the Jetson AGX Orin has aarch64 CPU architecture.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
 
@@ -92,6 +92,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 ## Troubleshooting
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
+
   - Headless Mode Tips:
     - Once you reach **step e** which instructs you to connect through the host serial port, the instructions to connect are immediately under **step e**.
       Follow those steps according to the type of computer you're using.

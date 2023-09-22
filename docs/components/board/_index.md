@@ -12,7 +12,7 @@ images: ["/icons/components/board.svg"]
 # SMEs: Gautham, Rand
 ---
 
-A *board* is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
+A _board_ is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
 
 You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
@@ -25,7 +25,7 @@ The [RDK](/internals/rdk/) also provides the [`GPIOPin` interface](#gpiopin-api)
 
 ## Configuration
 
-Configure a *board* component on your robot to communicate with the other [components](/components/) of the robot.
+Configure a _board_ component on your robot to communicate with the other [components](/components/) of the robot.
 Signaling is overseen by a computer running `viam-server`.
 
 A board can be:
@@ -202,7 +202,7 @@ The following properties are available for `digital_interrupts`:
 - Main Out/Secondary In: MOSI
 - Main In/Secondary Out: MISO
 - Clock, an oscillating signal line: SCLK
-- Chip Select, with 1 line for each peripheral connected to controller: CS*
+- Chip Select, with 1 line for each peripheral connected to controller: CS\*
 
 To connect your board (controller) and a [component](/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
 
@@ -494,7 +494,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 **Parameters:**
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+  Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -515,7 +515,7 @@ pin = await my_board.GPIO_pin_by_name(name="15")
 **Parameters:**
 
 - `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+  Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -692,7 +692,7 @@ Get the attributes related to the model of this board.
 **Returns:**
 
 - [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
-Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
+  Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.model_attributes).
 
@@ -713,7 +713,7 @@ attributes = await my_board.model_attributes()
 **Returns:**
 
 - [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
-Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
+  Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes).
 
@@ -771,7 +771,7 @@ status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-- `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+- `duration` [(\*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
 
@@ -856,7 +856,7 @@ Set the digital signal output of this pin to low (0V) or high (active, >0V).
 **Parameters:**
 
 - `high` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, set the state of the pin to high.
-If `false`, set the state of the pin to low.
+  If `false`, set the state of the pin to low.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -883,7 +883,7 @@ await pin.set(high="true")
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, set the state of the pin to high.
-If `false`, set the state of the pin to low.
+  If `false`, set the state of the pin to low.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -920,7 +920,7 @@ Get if the digital signal output of this pin is high (active, >0V).
 **Returns:**
 
 - [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
-If `false`, the state of the pin is low.
+  If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.get).
 
@@ -945,7 +945,7 @@ high = await pin.get()
 **Returns:**
 
 - [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is high.
-If `false`, the state of the pin is low.
+  If `false`, the state of the pin is low.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#GPIOPin).
@@ -968,7 +968,7 @@ high := pin.Get(context.Background(), nil)
 {{% alert title="Info" color="info" %}}
 
 [Pulse-width modulation (PWM)](https://www.digikey.com/en/blog/pulse-width-modulation) is a method where of transmitting a digital signal in the form of pulses to control analog circuits.
-With PWM on a *board*, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components/) wired to the pin that read analog signals.
+With PWM on a _board_, the continuous digital signal output by a GPIO pin is sampled at regular intervals and transmitted to any [hardware components](/components/) wired to the pin that read analog signals.
 This enables the board to communicate with these components.
 
 {{% /alert %}}
@@ -1043,7 +1043,7 @@ Set the pin's [Pulse-width modulation (PWM) duty cycle](https://learn.sparkfun.c
 **Returns:**
 
 - [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): If `true`, the state of the pin is high.
-If `false`, the state of the pin is low.
+  If `false`, the state of the pin is low.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.GPIOPin.set_pwm).
 
@@ -1460,7 +1460,7 @@ await interrupt.tick(high=true, nanos=12345)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
+  If `false`, the state of the pin is set to low.
 - `now` [(uint64)](https://pkg.go.dev/builtin#uint64): The time that has elapsed in nanoseconds since the last time the interrupt was ticked.
 
 **Returns:**
@@ -1469,7 +1469,7 @@ If `false`, the state of the pin is set to low.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#BasicDigitalInterrupt).
 
-``` go
+```go
 myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
@@ -1486,7 +1486,7 @@ err := interrupt.Tick(context.Background(), true, 12345)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `high` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the state of the pin is set to high.
-If `false`, the state of the pin is set to low.
+  If `false`, the state of the pin is set to low.
 - `nanoseconds` [(uint64)](https://pkg.go.dev/builtin#uint64): The time in nanoseconds between two successive low signals (pulse width).
 
 **Returns:**
@@ -1517,6 +1517,7 @@ When [Tick()](#tick) is called, callbacks added to an interrupt will be sent the
 This method is not available for digital interrupts [configured](#digital_interrupts) with `"type": "servo"`.
 It is also not yet fully implemented with the Viam Python SDK.
 {{% /alert %}}
+
 <!-- NOT YET IMPLEMENTED: see https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/board/client.py#L63
 
 **Parameters:**
@@ -1648,6 +1649,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/blink-an-led" %}}
-  {{% card link="/tutorials/projects/guardian" %}}
+{{% card link="/tutorials/get-started/blink-an-led" %}}
+{{% card link="/tutorials/projects/guardian" %}}
 {{< /cards >}}

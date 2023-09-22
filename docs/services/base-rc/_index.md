@@ -44,12 +44,12 @@ Enter a name for your service, then click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-base-remote-control-service>",
-    "type": "base_remote_control",
-    "attributes": {
-        "base": "<your-base-name>",
-        "input_controller": "<your-controller-name>"
-    }
+  "name": "<your-base-remote-control-service>",
+  "type": "base_remote_control",
+  "attributes": {
+    "base": "<your-base-name>",
+    "input_controller": "<your-controller-name>"
+  }
 }
 ```
 
@@ -58,13 +58,13 @@ Enter a name for your service, then click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "my-base-remote-control-service",
-    "type": "base_remote_control",
-    "attributes": {
-        "base": "my-base",
-        "input_controller": "my-input-controller",
-        "control_mode": "arrowControl"
-    }
+  "name": "my-base-remote-control-service",
+  "type": "base_remote_control",
+  "attributes": {
+    "base": "my-base",
+    "input_controller": "my-input-controller",
+    "control_mode": "arrowControl"
+  }
 }
 ```
 

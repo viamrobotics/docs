@@ -17,13 +17,13 @@ The class labels used for classification vary and depend on the machine learning
 
 The returned classifications consist of the image's class label and confidence score.
 
-* `class_name` (string): specifies the label of the found object.
-* `confidence` (float): specifies the confidence of the assigned label.
+- `class_name` (string): specifies the label of the found object.
+- `confidence` (float): specifies the confidence of the assigned label.
   Between `0.0` and `1.0`, inclusive.
 
 The types of classifiers supported are:
 
-* **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+- **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ## Configure an `mlmodel` classifier
 
@@ -39,7 +39,7 @@ Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "mlmodel_name": "<classifier_name>"
 }
@@ -50,7 +50,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 Add the vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "<service_name>",
@@ -97,20 +97,20 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 1. Configure a [camera component](../../../components/camera/).
 2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
 
-    ```json
-    {
-      "pipeline": [
-          {
-          "type": "classifications",
-          "attributes": {
-              "confidence_threshold": 0.5,
-              "classifier_name": "my_classifier"
-          }
-          }
-      ],
-      "source": "<camera-name>"
-    }
-    ```
+   ```json
+   {
+     "pipeline": [
+       {
+         "type": "classifications",
+         "attributes": {
+           "confidence_threshold": 0.5,
+           "classifier_name": "my_classifier"
+         }
+       }
+     ],
+     "source": "<camera-name>"
+   }
+   ```
 
 3. After adding the components and their attributes, click **Save config**.
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
@@ -120,7 +120,7 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 
 5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
 
-    {{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
 Pass the name of the camera you configured in step 1.
 Do not pass a transform camera that already has the "detections" or "classifications" transform applied to it.

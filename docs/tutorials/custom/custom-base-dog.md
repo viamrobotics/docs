@@ -2,17 +2,18 @@
 title: "Control a Robot Dog with a Custom Viam Base Component"
 linkTitle: "Custom Quadruped Base"
 type: "docs"
-tags: ["sdk", "extending viam", "components", "base", "python", "modular resources"]
+tags:
+  ["sdk", "extending viam", "components", "base", "python", "modular resources"]
 description: "Integrate a custom base component with the Viam Python SDK."
 webmSrc: "/tutorials/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/custom-base-dog/base-control-dog.mp4"
 videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
 images: ["/tutorials/custom-base-dog/base-control-dog.gif"]
 aliases:
-    - /tutorials/custom-base-dog/
-authors: [ "Jessamy Taylor" ]
-languages: [ "python" ]
-viamresources: [ "base", "camera", "custom" ]
+  - /tutorials/custom-base-dog/
+authors: ["Jessamy Taylor"]
+languages: ["python"]
+viamresources: ["base", "camera", "custom"]
 level: "Intermediate"
 date: "2023-05-15"
 # updated: ""
@@ -45,7 +46,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 - [Freenove Robot Dog Kit for Raspberry Pi](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi)
   - Currently (05 July 2023) [available on Amazon](https://www.amazon.com/gp/product/B08C254F73/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
   - Significant assembly is required.
-  Follow Freenove hardware assembly instructions before starting this tutorial.
+    Follow Freenove hardware assembly instructions before starting this tutorial.
 - Raspberry Pi 4B
 
 ## Raspberry Pi setup
@@ -60,11 +61,11 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 {{% /alert %}}
 
-1. [Install `viam-server` and connect your robot to the Viam app](/installation/#install-viam-server).
+1.  [Install `viam-server` and connect your robot to the Viam app](/installation/#install-viam-server).
 
-2. SSH into the Pi to complete the following steps.
+2.  SSH into the Pi to complete the following steps.
 
-3. Install pip and then git:
+3.  Install pip and then git:
 
     ```sh {class="command-line" data-prompt="$"}
     sudo apt install pip
@@ -74,12 +75,12 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
     sudo apt install git
     ```
 
-4. Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
-Get the code by running the following command:
+4.  Navigate to the directory on the Pi where you'd like to install the Freenove robot dog code (for example `/home/fido/`).
+    Get the code by running the following command:
 
-    ```sh {class="command-line" data-prompt="$"}
-    git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
-    ```
+        ```sh {class="command-line" data-prompt="$"}
+        git clone https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi
+        ```
 
 {{% alert title="Important" color="note" %}}
 
@@ -90,17 +91,17 @@ If the name of the directory where you store and run your code is different, be 
 
 6. Check which version of Python you have installed on the Pi:
 
-    ```sh {class="command-line" data-prompt="$"}
-    python --version
-    ```
+   ```sh {class="command-line" data-prompt="$"}
+   python --version
+   ```
 
-    If it isn’t Python 3.8 or later, install an updated version of Python and double-check that you're running the latest Raspberry Pi OS.
+   If it isn’t Python 3.8 or later, install an updated version of Python and double-check that you're running the latest Raspberry Pi OS.
 
 7. Install the [Viam Python SDK](https://python.viam.dev/):
 
-    ```sh {class="command-line" data-prompt="$"}
-    pip install viam-sdk
-    ```
+   ```sh {class="command-line" data-prompt="$"}
+   pip install viam-sdk
+   ```
 
 8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enable-communication-protocols).
 
@@ -236,7 +237,7 @@ You can use a different model name, module namespace, and family, but you need t
 {{% /alert %}}
 
 Look in your <file>robotdog</file> directory and you'll see the tool has created a requirements file and an executable.
-Look inside the <file>src</file> subdirectory which now contains <file>\_\_init__.py</file>, <file>main.py</file>, and <file>robotdog.py</file>.
+Look inside the <file>src</file> subdirectory which now contains <file>\_\_init\_\_.py</file>, <file>main.py</file>, and <file>robotdog.py</file>.
 <file>robotdog.py</file> is the file that defines the behavior of your custom base.
 This is the file you will modify in the next steps.
 
@@ -372,18 +373,18 @@ Locate the `"components": []` portion of the config file.
 At the end of your camera configuration, add a comma and then add the following base configuration:
 
 ```json
-    {
-      "namespace": "rdk",
-      "name": "quadruped",
-      "type": "base",
-      "model": "viamlabs:base:robotdog",
-      "attributes": {
-        "ip_address": "<HOSTNAME>.local",
+{
+  "namespace": "rdk",
+  "name": "quadruped",
+  "type": "base",
+  "model": "viamlabs:base:robotdog",
+  "attributes": {
+    "ip_address": "<HOSTNAME>.local",
 
-        "port": 5001
-      },
-      "depends_on": []
-    }
+    "port": 5001
+  },
+  "depends_on": []
+}
 ```
 
 Edit the `ip_address` attribute to match your robot's hostname, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`).
@@ -408,7 +409,7 @@ If yours doesn't resemble the following, go back to the raw JSON and double-chec
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-You can configure a [*process*](../../../manage/configuration/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+You can configure a [_process_](../../../manage/configuration/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Navigate to the **Processes** subtab of your robot's **Config** tab.
 
@@ -416,10 +417,10 @@ Create a new process and give it a name (for example `freenove`).
 Fill out the config panel as follows:
 
 - **Executable**: The path to Python on your Pi, for example `/usr/bin/python`.
-If you're not sure what this path should be, run `which python` on your Pi command line to find it.
+  If you're not sure what this path should be, run `which python` on your Pi command line to find it.
 - **Arguments**: Type in `main.py` and click **Add argument**.
-Then type `-tn` and click **Add argument** again.
-This flag starts the Freenove server without launching Freenove's GUI (which you don't need for this use case).
+  Then type `-tn` and click **Add argument** again.
+  This flag starts the Freenove server without launching Freenove's GUI (which you don't need for this use case).
 - **Working Directory**: `/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server` (changing "/home/fido" to the name of your home directory where you downloaded the Freenove code).
 - **Logging**: Toggle to the **on** position so you can view logs for this server process.
 - **Execute once**: Leave this **off** so that the Freenove server will continue to run, and will restart if it crashes.
@@ -484,7 +485,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 - If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
 
 - Make sure the robot's batteries have adequate charge.
-If you have otherwise unexplained connection errors, try powering things off and charging the batteries for a while before attempting to SSH to the Pi again.
+  If you have otherwise unexplained connection errors, try powering things off and charging the batteries for a while before attempting to SSH to the Pi again.
 
 - If certain sensors or servos aren't being found by the software, turn off the robot and make sure all wires are fully connected before turning it back on.
 
@@ -492,23 +493,23 @@ If you have otherwise unexplained connection errors, try powering things off and
 
   1. Install Netcat if it isn't already installed:
 
-      ```sh {class="command-line" data-prompt="$"}
-      sudo apt install netcat
-      ```
+     ```sh {class="command-line" data-prompt="$"}
+     sudo apt install netcat
+     ```
 
   2. Connect directly to the robot dog by running the following command (replacing <DOG IP ADDRESS> with the correct IP address, for example `nc 10.0.0.123`) from the command line while SSHed into the Pi:
 
-      ```sh {class="command-line" data-prompt="$"}
-      nc <DOG IP ADDRESS> 5001
-      ```
+     ```sh {class="command-line" data-prompt="$"}
+     nc <DOG IP ADDRESS> 5001
+     ```
 
   3. You can now type commands ([list of available commands](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Code/Client/Command.py)) and hit enter to send them to the Freenove robot dog server.
-    For example:
+     For example:
 
-      ```sh {class="command-line" data-prompt="$"}
-      CMD_TURN_LEFT#30
-      CMD_STOP
-      ```
+     ```sh {class="command-line" data-prompt="$"}
+     CMD_TURN_LEFT#30
+     CMD_STOP
+     ```
 
 ## Next steps
 

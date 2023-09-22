@@ -13,7 +13,7 @@ no_list: true
 
 Electric motors are machines that convert electricity into rotary motion.
 They are the most common form of [actuator](https://en.wikipedia.org/wiki/Actuator) in robotics.
-The *motor* component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
+The _motor_ component type natively supports brushed DC motors, brushless DC motors, and stepper motors controlled by a variety of [motor drivers](https://www.wellpcb.com/what-is-motor-driver.html).
 
 Most robots with a motor need at least the following hardware:
 
@@ -31,6 +31,7 @@ Most robots with a motor need at least the following hardware:
 How you configure your motor with Viam depends more on the motor driver than on the motor itself.
 Click the model names below for configuration information:
 
+<!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>
 ----- | -----------
 [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor)
@@ -43,6 +44,7 @@ Model | Description <a name="model-table"></a>
 
 Viam also provides the following motor models as [modular resources](/extend/modular-resources/):
 
+<!-- prettier-ignore -->
  Model | Description
  ----- | -----------
  [`viam:odrive:canbus`](/extend/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with CANbus communication
@@ -422,7 +424,7 @@ Stepper motors will report `true` if they are being powered while holding a posi
 **Returns:**
 
 - [(tuple[bool, float])](https://docs.python.org/3/library/functions.html#bool): The bool is `true` if the motor is currently running; `false` if not.
-The float represents the current portion of max power to the motor (between 0 and 1).
+  The float represents the current portion of max power to the motor (between 0 and 1).
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/index.html#viam.components.motor.Motor.is_powered).
 
@@ -629,8 +631,8 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/get-started/confetti-bot/" %}}
-    {{% card link="/tutorials/get-started/lazy-susan/" %}}
-    {{% card link="/tutorials/control/yahboom-rover" %}}
-    {{% card link="/tutorials/configure/scuttlebot" %}}
+{{% card link="/tutorials/get-started/confetti-bot/" %}}
+{{% card link="/tutorials/get-started/lazy-susan/" %}}
+{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/configure/scuttlebot" %}}
 {{< /cards >}}

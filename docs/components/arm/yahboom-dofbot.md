@@ -70,9 +70,7 @@ Edit and fill in the attributes as applicable.
         "board": "local",
         "i2c": "bus1"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     }
   ]
 }

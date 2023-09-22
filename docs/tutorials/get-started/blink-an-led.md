@@ -8,14 +8,14 @@ mp4Src: "/tutorials/blink-an-led/blink.mp4"
 videoAlt: "A blinking L.E.D. connected to a Raspberry Pi"
 images: ["/tutorials/blink-an-led/blink.gif"]
 aliases:
-    - /tutorials/make-an-led-blink-with-the-viam-app/
-    - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/
-    - /tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/
-    - /tutorials/get-started/make-an-led-blink-with-the-viam-app/
+  - /tutorials/make-an-led-blink-with-the-viam-app/
+  - /tutorials/make-an-led-blink-with-a-raspberry-pi-and-sdk/
+  - /tutorials/get-started/make-an-led-blink-with-a-raspberry-pi-and-sdk/
+  - /tutorials/get-started/make-an-led-blink-with-the-viam-app/
 tags: ["board", "raspberry pi", "app", "sdk"]
 authors: []
-languages: [ "python", "go" ]
-viamresources: [ "board" ]
+languages: ["python", "go"]
+viamresources: ["board"]
 level: "Beginner"
 date: "2022-10-04"
 # updated: ""
@@ -56,14 +56,14 @@ If you encounter issues, reach out to us on the [Viam Community Discord](https:/
 ## Build the circuit
 
 The next step is to build a simple LED circuit consisting of an LED and a resistor.
-The resistor protects the LED by limiting the flow of electricity through the circuit and is called a *current-limiting resistor*.
+The resistor protects the LED by limiting the flow of electricity through the circuit and is called a _current-limiting resistor_.
 
-You will connect the LED and resistor to the [pins](https://en.wikipedia.org/wiki/Pin_(electronics)) on the Raspberry Pi to complete the circuit.
+You will connect the LED and resistor to the [pins](<https://en.wikipedia.org/wiki/Pin_(electronics)>) on the Raspberry Pi to complete the circuit.
 Since the only power for this circuit comes from a Pi pin, controlling the state of the pin will toggle the LED on or off.
 
 ### Understand GPIO pinout
 
-A *general-purpose input/output* (GPIO) pin is a digital signal pin on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
+A _general-purpose input/output_ (GPIO) pin is a digital signal pin on a circuit board, like a Raspberry Pi, which may be used as an input or output, or both, and is controllable by software.
 
 ![Photo showing a Raspberry Pi 4 with a white box around the GPIO pins on the Pi and big letters that say, 'GPIO Pins.'](/tutorials/blink-an-led/pi-gpio.png)
 
@@ -77,7 +77,7 @@ The website [pinout.xyz](https://pinout.xyz/) is a helpful resource with the exa
 
 {{<imgproc src="/tutorials/blink-an-led/pinout.jpg" resize="x1100" declaredimensions=true alt="Diagram showing all of the GPIO pins on a Raspberry Pi 4 and their corresponding pin number and function." >}}
 
-One thing that might be confusing is the *board pin numbering* versus *GPIO pin numbering*.
+One thing that might be confusing is the _board pin numbering_ versus _GPIO pin numbering_.
 There are 40 physical pins numbered from 1 to 40.
 That is board pin numbering, corresponding to the pin's physical location on the board.
 Then there's numbering them by function or GPIO connection.
@@ -111,7 +111,7 @@ You can use a multimeter to double-check the resistor value or check yours using
 
 ![Photo of a 100-ohm resistor with text overlaid that says, in order, brown-black-brown-gold.](/tutorials/blink-an-led/resistor.jpg)
 
-When hooking up the circuit, **note the *polarity* of the LED**.
+When hooking up the circuit, **note the _polarity_ of the LED**.
 You will notice that the LED has long and short leads.
 The long lead is the positive side, which is known as the anode.
 The short lead is the negative side, which is known as the cathode.
@@ -129,7 +129,7 @@ First, go to the [Viam app](https://app.viam.com/) on your web browser and navig
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Add a [*board component*](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
+Add a [_board component_](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
 To create the new component, click **Create component** in the lower-left corner of the **Config** tab.
 
 - Select `board` as the component type.

@@ -53,8 +53,7 @@ Edit and fill in the attributes as applicable.
       "model": "pi",
       "name": "local",
       "type": "board",
-      "attributes": {
-      }
+      "attributes": {}
     },
     {
       "name": "my-arm",

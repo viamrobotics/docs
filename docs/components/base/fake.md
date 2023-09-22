@@ -28,10 +28,10 @@ Enter a name for your base and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-base-name>",
-    "type": "base",
-    "model": "fake",
-    "attributes": {}
+  "name": "<your-base-name>",
+  "type": "base",
+  "model": "fake",
+  "attributes": {}
 }
 ```
 

@@ -44,6 +44,7 @@ The following is an example of the <file>secret-share.md</file> alert added usin
 
 ```md
 # remove spaces
+
 { {<imgproc src="/general/tabbed-panel-markdown.png" resize="300x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage" style="border:solid 1px black">} }
 ```
 
@@ -58,9 +59,9 @@ The following is an example of the <file>secret-share.md</file> alert added usin
  For example, these two images:</p>
 
 - **Markdown Image Example**<br>
-![expand example](/general/expander-markdown.png)<br>
+  ![expand example](/general/expander-markdown.png)<br>
 - **HTML Image Example** (with border)<br>
-{{<imgproc src="/general/expander-markdown.png" resize="800x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage">}}
+  {{<imgproc src="/general/expander-markdown.png" resize="800x" declaredimensions=true alt="Screen capture of Tab/Tabs Shortcode Usage">}}
 
 </div>
 <br>
@@ -78,7 +79,7 @@ Line numbering is off by default.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-"word":"As before, three backticks and the language name enables Prism syntax highlighting.",
+  "word": "As before, three backticks and the language name enables Prism syntax highlighting."
 }
 ```
 
@@ -154,7 +155,7 @@ The shortcode displays your expander's title in a light blue bar to make it noti
 
 **Prism syntax highlighting works in expanders, as do most other shortcodes.**
 
-``` python
+```python
 motion_svc = MotionClient.from_robot(robot, "NAME")
 arm = Arm.from_robot(robot=robot, name='xArm6')
 pos = await arm.get_end_position()
@@ -173,7 +174,8 @@ await arm.move_to_position(pose=pos, world_state=WorldState())
 
 print("~~~~TESTING MOTION SERVICE MOVE~~~~~")
 
-geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z), box=RectangularPrism(width_mm =2, length_mm =5, depth_mm =5))
+geom = Geometry(center=Pose(x=pos.x + 150, y=pos.y, z=pos.z),
+                box=RectangularPrism(width_mm=2, length_mm=5, depth_mm=5))
 geomFrame = GeometriesInFrame(reference_frame="xArm6", geometries=[geom])
 worldstate = WorldState(obstacles=[geomFrame])
 
@@ -184,25 +186,33 @@ print("joints", jpos)
 pos.x += 300
 
 for resname in robot.resource_names:
-  if resname.name == "xArm6":
-    armRes = resname
+    if resname.name == "xArm6":
+        armRes = resname
 
-# We pass the WorldState above with the geometry. The arm should successfully route around it.
-await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
+# We pass the WorldState above with the geometry.
+# The arm should successfully route around it.
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate)
 pos = await arm.get_end_position()
 jpos = await arm.get_joint_positions()
 print(pos)
 print("joints", jpos)
 pos.x -= 300
 await asyncio.sleep(1)
-await motionServ.move(component_name=armRes, destination=PoseInFrame(reference_frame="world", pose=pos), world_state=worldstate)
+await motionServ.move(
+    component_name=armRes,
+    destination=PoseInFrame(reference_frame="world", pose=pos),
+    world_state=worldstate)
 
 print("~~~~TESTING ARM MOVE- SHOULD FAIL~~~~~")
 pos = await arm.get_end_position()
 print(pos)
 pos.x += 300
-# We pass the WorldState above with the geometry. As arm.move_to_position will enforce linear motion, this should fail
-# since there is no linear path from start to goal that does not intersect the obstacle.
+# We pass the WorldState above with the geometry. As arm.move_to_position will
+# enforce linear motion, this should fail since there is no linear path from
+# start to goal that does not intersect the obstacle.
 await arm.move_to_position(pose=pos, world_state=worldstate)
 ```
 
@@ -214,8 +224,8 @@ await arm.move_to_position(pose=pos, world_state=worldstate)
 They both use the same color.
 
 **Note/Important/Stability Notice**: These call attention to something important.
- When creating alerts about important messages, set the title attribute as `title="Important"`.
- If you want to include a more detailed title or message, use `title="Important: $message"` to provide additional context.
+When creating alerts about important messages, set the title attribute as `title="Important"`.
+If you want to include a more detailed title or message, use `title="Important: $message"` to provide additional context.
 
 **Caution**: Provide notice that a certain action or event could damage hardware or cause data loss.
 
@@ -284,6 +294,7 @@ For regular videos that should use the video shortcode as follows:
 
 ```md
 <!-- remove space -->
+
 { {<video webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart" poster="/general/heart.jpg">} }
 ```
 
@@ -357,6 +368,7 @@ Instead, we use a video div with two sources:
 
 ```md
 <!-- remove space -->
+
 { {<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
 ```
 
@@ -531,6 +543,7 @@ If you really need to use html directly, place the image in the static folder.
 
 ```md
 <!-- remove space -->
+
 ![Raspberry Pi](/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 
 { {<imgproc src="/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">} }

@@ -8,10 +8,10 @@ description: "Try Viam by taking over a Viam Rover in our robotics lab."
 webmSrc: "/try-viam/rover.webm"
 mp4Src: "/try-viam/rover.mp4"
 videoAlt: "Rover reservation management page"
-images: [ "/try-viam/rover.gif" ]
+images: ["/try-viam/rover.gif"]
 no_list: true
 aliases:
-    - "/getting-started/try-viam/"
+  - "/getting-started/try-viam/"
 ---
 
 Viam is a general {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} platform that can run on any hardware.
@@ -43,7 +43,7 @@ See <a href="/try-viam/reserve-a-rover/">detailed instructions</a>.</p>
 ## Next steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/try-viam-sdk/" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection/" %}}
-  {{% card link="/try-viam/rover-resources/" %}}
+{{% card link="/tutorials/get-started/try-viam-sdk/" %}}
+{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/try-viam/rover-resources/" %}}
 {{< /cards >}}

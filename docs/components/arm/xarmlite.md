@@ -33,7 +33,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
-          "host": "<your-arms-ip-address-on-your-network>"
+        "host": "<your-arms-ip-address-on-your-network>"
       },
       "depends_on": []
     }

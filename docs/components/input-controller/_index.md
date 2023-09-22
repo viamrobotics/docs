@@ -12,7 +12,7 @@ icon: "/icons/components/controller.svg"
 
 You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
 
-Configuring an *input* component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
+Configuring an _input_ component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
@@ -342,6 +342,7 @@ logger.Info(controls)
 
 {{% /tab %}}
 {{< /tabs >}}
+
 <!-- ### TriggerEvent NOTE: This method should be documented when support is available for all input components.
 
 Directly send an [Event Object](#event-object) from external code.
@@ -480,17 +481,18 @@ A string-like type indicating the specific type of input event, such as a button
 
 - To select for events of all type when registering callback function with [RegisterControlCallback](#registercontrolcallback), you can use `AllEvents` as your `EventType`.
 - The registered function is then called in addition to any other callback functions you've registered, every time an `Event` happens on your controller.
-This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
+  This is useful for debugging without interrupting normal controls, or for capturing extra or unknown events.
 
 Registered `EventTypes` definitions:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-``` python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 ALL_EVENTS = "AllEvents"
 """
-Callbacks registered for this event will be called in ADDITION to other registered event callbacks.
+Callbacks registered for this event will be called in ADDITION to other
+registered event callbacks.
 """
 
 CONNECT = "Connect"
@@ -530,7 +532,8 @@ Absolute position is reported via Value, a la joysticks.
 
 POSITION_CHANGE_RELATIVE = "PositionChangeRel"
 """
-Relative position is reported via Value, a la mice, or simulating axes with up/down buttons.
+Relative position is reported via Value, a la mice, or simulating axes with
+up/down buttons.
 """
 ```
 
@@ -539,7 +542,7 @@ See [the Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-``` go {class="line-numbers linkable-line-numbers"}
+```go {class="line-numbers linkable-line-numbers"}
  // Callbacks registered for this event will be called in ADDITION to other registered event callbacks.
 AllEvents EventType = "AllEvents"
 
@@ -582,38 +585,38 @@ Registered `Control` types are defined as follows:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-``` python {class="line-numbers linkable-line-numbers"}
-    # Axes
-    ABSOLUTE_X = "AbsoluteX"
-    ABSOLUTE_Y = "AbsoluteY"
-    ABSOLUTE_Z = "AbsoluteZ"
-    ABSOLUTE_RX = "AbsoluteRX"
-    ABSOLUTE_RY = "AbsoluteRY"
-    ABSOLUTE_RZ = "AbsoluteRZ"
-    ABSOLUTE_HAT0_X = "AbsoluteHat0X"
-    ABSOLUTE_HAT0_Y = "AbsoluteHat0Y"
+```python {class="line-numbers linkable-line-numbers"}
+# Axes
+ABSOLUTE_X = "AbsoluteX"
+ABSOLUTE_Y = "AbsoluteY"
+ABSOLUTE_Z = "AbsoluteZ"
+ABSOLUTE_RX = "AbsoluteRX"
+ABSOLUTE_RY = "AbsoluteRY"
+ABSOLUTE_RZ = "AbsoluteRZ"
+ABSOLUTE_HAT0_X = "AbsoluteHat0X"
+ABSOLUTE_HAT0_Y = "AbsoluteHat0Y"
 
-    # Buttons
-    BUTTON_SOUTH = "ButtonSouth"
-    BUTTON_EAST = "ButtonEast"
-    BUTTON_WEST = "ButtonWest"
-    BUTTON_NORTH = "ButtonNorth"
-    BUTTON_LT = "ButtonLT"
-    BUTTON_RT = "ButtonRT"
-    BUTTON_LT2 = "ButtonLT2"
-    BUTTON_RT2 = "ButtonRT2"
-    BUTTON_L_THUMB = "ButtonLThumb"
-    BUTTON_R_THUMB = "ButtonRThumb"
-    BUTTON_SELECT = "ButtonSelect"
-    BUTTON_START = "ButtonStart"
-    BUTTON_MENU = "ButtonMenu"
-    BUTTON_RECORD = "ButtonRecord"
-    BUTTON_E_STOP = "ButtonEStop"
+# Buttons
+BUTTON_SOUTH = "ButtonSouth"
+BUTTON_EAST = "ButtonEast"
+BUTTON_WEST = "ButtonWest"
+BUTTON_NORTH = "ButtonNorth"
+BUTTON_LT = "ButtonLT"
+BUTTON_RT = "ButtonRT"
+BUTTON_LT2 = "ButtonLT2"
+BUTTON_RT2 = "ButtonRT2"
+BUTTON_L_THUMB = "ButtonLThumb"
+BUTTON_R_THUMB = "ButtonRThumb"
+BUTTON_SELECT = "ButtonSelect"
+BUTTON_START = "ButtonStart"
+BUTTON_MENU = "ButtonMenu"
+BUTTON_RECORD = "ButtonRecord"
+BUTTON_E_STOP = "ButtonEStop"
 
-    # Pedals
-    ABSOLUTE_PEDAL_ACCELERATOR = "AbsolutePedalAccelerator"
-    ABSOLUTE_PEDAL_BRAKE = "AbsolutePedalBrake"
-    ABSOLUTE_PEDAL_CLUTCH = "AbsolutePedalClutch"
+# Pedals
+ABSOLUTE_PEDAL_ACCELERATOR = "AbsolutePedalAccelerator"
+ABSOLUTE_PEDAL_BRAKE = "AbsolutePedalBrake"
+ABSOLUTE_PEDAL_CLUTCH = "AbsolutePedalClutch"
 ```
 
 See [the Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.Control) for the most current version of supported `Control` types.
@@ -682,25 +685,23 @@ These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 
 If your input controller has an analog stick, this is what the stick's controls report as.
 
-Alternatively, if your input controller has *two* analog sticks, this is what the left joystick's controls report as.
+Alternatively, if your input controller has _two_ analog sticks, this is what the left joystick's controls report as.
 
-<!-- prettier-ignore -->
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteX` | Stick Left | Neutral | Stick Right |
+| Name        | `-1.0`        | `0.0`   | `1.0`           |
+| ----------- | ------------- | ------- | --------------- |
+| `AbsoluteX` | Stick Left    | Neutral | Stick Right     |
 | `AbsoluteY` | Stick Forward | Neutral | Stick Backwards |
 
 #### AbsoluteR-XY Axes
 
-If your input controller has *two* analog sticks, this is what the right joystick's controls report as.
+If your input controller has _two_ analog sticks, this is what the right joystick's controls report as.
 
-<!-- prettier-ignore -->
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteRX` | Stick Left | Neutral | Stick Right |
+| Name         | `-1.0`        | `0.0`   | `1.0`           |
+| ------------ | ------------- | ------- | --------------- |
+| `AbsoluteRX` | Stick Left    | Neutral | Stick Right     |
 | `AbsoluteRY` | Stick Forward | Neutral | Stick Backwards |
 
-- For `Y` axes, the positive direction is "nose up," and indicates *pulling* back on the joystick.
+- For `Y` axes, the positive direction is "nose up," and indicates _pulling_ back on the joystick.
 
 #### Hat/D-Pad Axes
 
@@ -719,11 +720,10 @@ Devices like analog triggers and gas or brake pedals use `Absolute` axes, but th
 The neutral point of the axes is still `0.0`.
 {{% /alert %}}
 
-<!-- prettier-ignore -->
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteZ` | | Neutral | Stick Pulled |
-| `AbsoluteRZ` | | Neutral | Stick Pulled |
+| Name         | `-1.0` | `0.0`   | `1.0`        |
+| ------------ | ------ | ------- | ------------ |
+| `AbsoluteZ`  |        | Neutral | Stick Pulled |
+| `AbsoluteRZ` |        | Neutral | Stick Pulled |
 
 `Z` axes are usually not present on most controller joysticks.
 
@@ -731,13 +731,12 @@ If present, they are typically analog trigger sticks, and unidirectional, scalin
 
 `AbsoluteZ` is reported if there is one trigger stick, and `AbsoluteZ` (left) and `AbsoluteRZ` (right) is reported if there are two trigger sticks.
 
-Z axes can be present on flight-style joysticks, reporting *yaw*, or left/right rotation, as shown below.
+Z axes can be present on flight-style joysticks, reporting _yaw_, or left/right rotation, as shown below.
 This is not common.
 
-<!-- prettier-ignore -->
-| Name | `-1.0` | `0.0` | `1.0` |
-| ---- | ------ | ----- | ----- |
-| `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
+| Name         | `-1.0`         | `0.0`   | `1.0`           |
+| ------------ | -------------- | ------- | --------------- |
+| `AbsoluteZ`  | Stick Left Yaw | Neutral | Stick Right Yaw |
 | `AbsoluteRZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
 
 ### Button Controls
@@ -758,21 +757,22 @@ As different systems label the actual buttons differently, we use compass direct
 
 - `ButtonSouth` corresponds to "B" on Nintendo, "A" on XBox, and "X" on Playstation.
 - `ButtonNorth` corresponds to "X" on Nintendo, "Y" on XBox, and "Triangle" on Playstation.
-{{% /alert %}}
-
-|Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonWest`</td><td>Left</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top-left</td></tr><tr><td>`ButtonSouth`</td><td>Bottom-right</td></tr><tr><td>`ButtonEast`</td><td>Top-right</td></tr><tr><td>`ButtonWest`</td><td>Bottom-left</td></tr> </table>|
+  {{% /alert %}}
 
 <!-- prettier-ignore -->
-| Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Left</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Bottom</td></tr> </table>|
+| Diamond 4-Action Button Pad | Rectangle 4-Action Button Pad | |
+| - | - | - |
+| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonWest`</td><td>Left</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top-left</td></tr><tr><td>`ButtonSouth`</td><td>Bottom-right</td></tr><tr><td>`ButtonEast`</td><td>Top-right</td></tr><tr><td>`ButtonWest`</td><td>Bottom-left</td></tr> </table> |
 
 <!-- prettier-ignore -->
-| Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table>|
+| Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad | |
+| - | - | - |
+| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Left</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Bottom</td></tr> </table> |
+
+<!-- prettier-ignore -->
+| Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad | |
+| - | - | - |
+| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table> |
 
 #### Trigger Buttons (Bumper)
 
@@ -780,17 +780,16 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 
 <!-- prettier-ignore -->
 | 2-Trigger Button Pad | 4-Trigger Button Pad |
-|--|--|
-|<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table>|
+| - | - | - |
+| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table> | <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table> |
 
 #### Digital Buttons for Sticks
 
 If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
-<!-- prettier-ignore -->
-| Name | Description |
-| ---- | ----------- |
-| `ButtonLThumb` | Left or upper button for stick |
+| Name           | Description                     |
+| -------------- | ------------------------------- |
+| `ButtonLThumb` | Left or upper button for stick  |
 | `ButtonRThumb` | Right or lower button for stick |
 
 #### Miscellaneous Buttons
@@ -798,14 +797,13 @@ If your input controller is a gamepad with "clickable" thumbsticks, this is what
 Many devices have additional buttons.
 If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
 
-<!-- prettier-ignore -->
-| Name | Description |
-| ---- | ----------- |
-| `ButtonSelect` | Select or - |
-| `ButtonStart` | Start or + |
-| `ButtonMenu` | Usually the central "Home" or Xbox/PS "Logo" button |
-| `ButtonRecord` | Recording |
-| `ButtonEStop` | Emergency Stop (on some industrial controllers) |
+| Name           | Description                                         |
+| -------------- | --------------------------------------------------- |
+| `ButtonSelect` | Select or -                                         |
+| `ButtonStart`  | Start or +                                          |
+| `ButtonMenu`   | Usually the central "Home" or Xbox/PS "Logo" button |
+| `ButtonRecord` | Recording                                           |
+| `ButtonEStop`  | Emergency Stop (on some industrial controllers)     |
 
 ## Usage Examples
 
@@ -813,7 +811,7 @@ If your input controller is a gamepad with these common buttons, this is what th
 
 The following Python code is an example of controlling a wheeled {{% glossary_tooltip term_id="base" text="base"%}} with a Logitech G920 steering wheel controller, configured as a `gamepad` input controller.
 
-``` python {id="python-example" class="line-numbers linkable-line-numbers"}
+```python {id="python-example" class="line-numbers linkable-line-numbers"}
 import asyncio
 
 from viam.components.base import Base
@@ -826,6 +824,7 @@ turn_amt = 0
 modal = 0
 cmd = {}
 
+
 async def connect_robot(host, payload):
     creds = Credentials(
         type='robot-location-secret',
@@ -836,10 +835,12 @@ async def connect_robot(host, payload):
     )
     return await RobotClient.at_address(host, opts)
 
+
 def handle_turning(event):
     global turn_amt
     turn_amt = -event.value
     print("turning:", turn_amt)
+
 
 def handle_brake(event):
     if event.value != 0:
@@ -847,6 +848,7 @@ def handle_brake(event):
         global cmd
         cmd = {"y": 0}
         print("broke")
+
 
 def handle_accelerator(event):
     print("moving!:", event.value)
@@ -857,6 +859,7 @@ def handle_accelerator(event):
 
     cmd = {"y": accel}
 
+
 def handle_clutch(event):
     print("moving!:", event.value)
     global cmd
@@ -866,31 +869,46 @@ def handle_clutch(event):
 
     cmd = {"y": -accel}
 
+
 async def handleController(controller):
     resp = await controller.get_events()
     # Show the input controller's buttons/axes
     print(f'Controls:\n{resp}')
 
     if Control.ABSOLUTE_PEDAL_ACCELERATOR in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_ACCELERATOR, [EventType.POSITION_CHANGE_ABSOLUTE], handle_accelerator)
+        controller.register_control_callback(
+            Control.ABSOLUTE_PEDAL_ACCELERATOR,
+            [EventType.POSITION_CHANGE_ABSOLUTE],
+            handle_accelerator)
     else:
-        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
+        print("Accelerator Pedal not found! Exiting! Are your steering wheel" +
+              " and pedals hooked up?")
         exit()
 
     if Control.ABSOLUTE_PEDAL_BRAKE in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_BRAKE, [EventType.POSITION_CHANGE_ABSOLUTE], handle_brake)
+        controller.register_control_callback(
+            Control.ABSOLUTE_PEDAL_BRAKE,
+            [EventType.POSITION_CHANGE_ABSOLUTE],
+            handle_brake)
     else:
         print("Brake Pedal not found! Exiting!")
         exit()
 
     if Control.ABSOLUTE_PEDAL_CLUTCH in resp:
-        controller.register_control_callback(Control.ABSOLUTE_PEDAL_CLUTCH, [EventType.POSITION_CHANGE_ABSOLUTE], handle_clutch)
+        controller.register_control_callback(
+            Control.ABSOLUTE_PEDAL_CLUTCH,
+            [EventType.POSITION_CHANGE_ABSOLUTE],
+            handle_clutch)
     else:
-        print("Accelerator Pedal not found! Exiting! Are your steering wheel and pedals hooked up?")
+        print("Accelerator Pedal not found! Exiting! Are your steering wheel" +
+              " and pedals hooked up?")
         exit()
 
     if Control.ABSOLUTE_X in resp:
-        controller.register_control_callback(Control.ABSOLUTE_X, [EventType.POSITION_CHANGE_ABSOLUTE], handle_turning)
+        controller.register_control_callback(
+            Control.ABSOLUTE_X,
+            [EventType.POSITION_CHANGE_ABSOLUTE],
+            handle_turning)
     else:
         print("Wheel not found! Exiting!")
         exit()
@@ -899,16 +917,21 @@ async def handleController(controller):
         await asyncio.sleep(0.01)
         global cmd
         if "y" in cmd:
-            respon = await modal.set_power(linear=Vector3(x=0,y=cmd["y"],z=0), angular=Vector3(x=0,y=0,z=turn_amt))
+            res = await modal.set_power(
+                linear=Vector3(x=0, y=cmd["y"], z=0),
+                angular=Vector3(x=0, y=0, z=turn_amt))
             cmd = {}
-            print(respon)
+            print(res)
+
 
 async def main():
     # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
     # These can be found in the Code sample tab of app.viam.com.
     # Toggle 'Include secret' to show the location secret.
-    g920_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
-    modal_robot = await connect_robot("robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+    g920_robot = await connect_robot(
+        "robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+    modal_robot = await connect_robot(
+        "robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
 
     g920 = Controller.from_robot(g920_robot, 'wheel')
     global modal
@@ -970,6 +993,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/tutorials/control/yahboom-rover" %}}
-    {{% card link="/tutorials/control/scuttle-gamepad" %}}
+{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/control/scuttle-gamepad" %}}
 {{< /cards >}}

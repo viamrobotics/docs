@@ -150,8 +150,8 @@ Depth Preprocessing applies some basic hole-filling and edge smoothing to a dept
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "depth_preprocess",
-    "attributes": { }
+  "type": "depth_preprocess",
+  "attributes": {}
 }
 ```
 
@@ -168,8 +168,8 @@ The actual depth information is lost in the transform.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "depth_to_pretty",
-    "attributes": { }
+  "type": "depth_to_pretty",
+  "attributes": {}
 }
 ```
 
@@ -207,7 +207,7 @@ You can use this transform to change the underlying camera source's intrinsic pa
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "identity"
+  "type": "identity"
 }
 ```
 
@@ -278,8 +278,8 @@ This feature is useful for when the camera is installed upside down on your robo
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "rotate",
-    "attributes": { }
+  "type": "rotate",
+  "attributes": {}
 }
 ```
 
@@ -342,16 +342,16 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "camera_name",
-    "type": "camera",
-    "model": "transform",
-    "attributes" : {
-        "source" : "physical_cam",
-        "pipeline": [
-            { "type": "rotate", "attributes": { } },
-            { "type": "resize", "attributes": {"width_px": 200, "height_px": 100} }
-        ]
-    }
+  "name": "camera_name",
+  "type": "camera",
+  "model": "transform",
+  "attributes": {
+    "source": "physical_cam",
+    "pipeline": [
+      { "type": "rotate", "attributes": {} },
+      { "type": "resize", "attributes": { "width_px": 200, "height_px": 100 } }
+    ]
+  }
 }
 ```
 
@@ -362,7 +362,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 ## Next Steps
 
 {{< cards >}}
-    {{% card link="/services/vision" %}}
-    {{% card link="/tutorials/services/try-viam-color-detection" %}}
-    {{% card link="/tutorials/services/color-detection-scuttle" %}}
+{{% card link="/services/vision" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

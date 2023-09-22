@@ -55,18 +55,18 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-        "name": "local",
-        "type": "board",
-        "model": "pi"
+      "name": "local",
+      "type": "board",
+      "model": "pi"
     },
     {
-        "name": "my_servo",
-        "type": "servo",
-        "model": "pi",
-        "attributes": {
-            "pin": "16",
-            "board": "local"
-        }
+      "name": "my_servo",
+      "type": "servo",
+      "model": "pi",
+      "attributes": {
+        "pin": "16",
+        "board": "local"
+      }
     }
   ]
 }

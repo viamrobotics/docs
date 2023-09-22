@@ -23,6 +23,7 @@ To capture data from one or more smart machines, you must first add the [data ma
    If you change the directory for data capture only new data is stored in the new directory.
    Existing data remains in the directory where it was stored.
    {{< /alert >}}
+
 5. Click **Save Config**.
 
 ![data capture configuration](/tutorials/data-management/data-manager.png)
@@ -31,7 +32,7 @@ To capture data from one or more smart machines, you must first add the [data ma
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [ ],
+  "components": [],
   "services": [
     {
       "name": "data_manager",
@@ -172,19 +173,19 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "type": {
-      "Type": {
-          "type": "component",
-          "namespace": "rdk"
-      },
-      "subtype": "board"
+    "Type": {
+      "type": "component",
+      "namespace": "rdk"
+    },
+    "subtype": "board"
   },
   "model": {
-      "name": "rdk:esp32:board"
+    "name": "rdk:esp32:board"
   },
   "name": "rdk:component:board/board",
   "additional_params": {
-      "A2": "",
-      "A1": ""
+    "A2": "",
+    "A1": ""
   }
 }
 ```
@@ -227,7 +228,7 @@ The following example captures data from two analog readers that provide a volta
                   "A2": "",
                   "A1": ""
                 },
-                "disabled": false,
+                "disabled": false
               },
               // Captures data from pin 27 of the board's GPIO
               {
@@ -273,24 +274,24 @@ The following example captures data from the `ReadImage` method of a camera:
     {
       "name": "pi-test-main",
       "address": "pi-test-main.vw3iu72d8n.viam.cloud",
-        "service_configs": [
-          {
-            "type": "data_manager",
-            "attributes": {
-              "capture_methods": [
-                {
-                  "capture_frequency_hz": 1,
-                  "name": "rdk:component:camera/cam",
-                  "disabled": false,
-                  "method": "ReadImage",
-                  "additional_params": {
-                    "mime_type": "image/jpeg"
-                  }
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "capture_frequency_hz": 1,
+                "name": "rdk:component:camera/cam",
+                "disabled": false,
+                "method": "ReadImage",
+                "additional_params": {
+                  "mime_type": "image/jpeg"
                 }
-              ]
-            }
+              }
+            ]
           }
-        ],
+        }
+      ],
       "secret": "REDACTED"
     }
   ]

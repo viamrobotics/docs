@@ -41,8 +41,7 @@ Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-ro
       "model": "pi",
       "name": "local",
       "type": "board",
-      "attributes": {
-      }
+      "attributes": {}
     },
     {
       "name": "my-arm",

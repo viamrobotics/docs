@@ -101,12 +101,8 @@ Edit and fill in the attributes as applicable.
     },
     {
       "attributes": {
-        "left": [
-          "leftm"
-        ],
-        "right": [
-          "rightm"
-        ],
+        "left": ["leftm"],
+        "right": ["rightm"],
         "wheel_circumference_mm": 183,
         "width_mm": 195
       },

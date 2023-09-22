@@ -5,7 +5,7 @@ description: "Label image data on the DATA page in the Viam Cloud."
 weight: 39
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-images: [ "/manage/data/label-dog.gif" ]
+images: ["/manage/data/label-dog.gif"]
 # SME: Tahiya Salam and Alexis Wei
 ---
 
@@ -64,6 +64,6 @@ To delete a tag, click the cross next to the corresponding label.
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/manage/ml/train-model/" %}}
-  {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
+{{% card link="/manage/ml/train-model/" %}}
+{{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{< /cards >}}
