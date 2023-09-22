@@ -19,6 +19,7 @@ The types of segmenters supported are:
 
 - [**Obstacles point cloud (`obstacles_pointcloud`)**](#configure-an-obstacles_pointcloud-segmenter): A segmenter that identifies well-separated objects above a flat plane.
 - [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
+- [**Obstacles depth (`obstacles_depth`)**](#configure-an-obstacles_depth-segmenter): A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector.
 
 ## Configure an `obstacles_pointcloud` segmenter
 
@@ -197,6 +198,84 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `confidence_threshold_pct` | _Optional_ | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |
 | `mean_k` | _Required_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | _Required_ | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
+
+Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+
+## Configure an `obstacles_depth` segmenter
+
+This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
+Use the segmenter to identify well separated objects above a flat plane.
+
+Configure an `obstacles_depth` segmenter:
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+Add the following vision service object to the services array in your raw JSON configuration:
+
+``` json {class="line-numbers linkable-line-numbers"}
+"services": [
+    {
+    "name": "<segmenter_name>",
+    "type": "vision",
+    "model": "obstacles_depth"
+    "attributes": {
+        "h_min_m": <number>,
+        "h_max_m": <number>,
+        "theta_max_deg": <number>,
+        "return_pcds": <boolean>,
+        "with_geometries": <boolean>,
+    }
+    },
+    ... // Other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"services": [
+{
+    "name": "rc_segmenter",
+    "type": "vision",
+    "model": "obstacles_depth",
+    "attributes": {
+        "h_min_m": 0.0,
+        "h_max_m": 1.0,
+        "theta_max_deg": 45,
+        "return_pcds": "true",
+        "with_geometries": "true"
+    }
+}
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following parameters are available for an `"obstacles_depth"` segmenter:
+
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `with_geometries` | Required | Whether you would like multiple boxes, if `true`, or a single point, if `false`, returned within the `GeometryInFrame` object captured by this segmenter.  <br> Example: `"false"` </br> |
+| `h_min_m` | Optional | The minimum vertical height in meters for an object to be considered an obstacle. <br> Default: `0.0` </br> |
+| `h_max_m` | Optional | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br> |
+| `theta_max_deg` | Optional | The maximum slope at which an object is still not an obstacle. <br> Default: `45` </br> |
+| `return_pcds` | Optional | Whether you would like pointclouds to be included within the GeometryInFrame object captured by this segmenter.  <br> Example: `"false"` </br> |
+
+If you want to identify multiple boxes over the flat plane with your segmenter:
+
+- First, [configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
+  - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
+  - You can get those parameters from your camera through the [camera API](/components/camera/#getproperties).
+- Next, set your segmenter's attribute `with_geometries: true`.
+- The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
+
+If you choose not to configure the frame system, you can still identify single points over the flat plane with your segmenter:
+
+- Set `with_geometries: false`.
+- The segmenter now returns a single point within the `GeometryInFrame` object it captures.
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
