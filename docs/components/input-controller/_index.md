@@ -32,6 +32,7 @@ Configuration depends on the `model` of your device.
 
 For configuration information, click on one of the following models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`gamepad`](gamepad/) | X-box, Playstation, and similar controllers with Linux support. |
@@ -683,6 +684,7 @@ If your input controller has an analog stick, this is what the stick's controls 
 
 Alternatively, if your input controller has *two* analog sticks, this is what the left joystick's controls report as.
 
+<!-- prettier-ignore -->
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteX` | Stick Left | Neutral | Stick Right |
@@ -692,6 +694,7 @@ Alternatively, if your input controller has *two* analog sticks, this is what th
 
 If your input controller has *two* analog sticks, this is what the right joystick's controls report as.
 
+<!-- prettier-ignore -->
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteRX` | Stick Left | Neutral | Stick Right |
@@ -703,6 +706,7 @@ If your input controller has *two* analog sticks, this is what the right joystic
 
 If your input controller has a directional pad with analog buttons on the pad, this is what those controls report as.
 
+<!-- prettier-ignore -->
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteHat0X` | Left DPAD Button Press | Neutral | Right DPAD Button Press |
@@ -715,6 +719,7 @@ Devices like analog triggers and gas or brake pedals use `Absolute` axes, but th
 The neutral point of the axes is still `0.0`.
 {{% /alert %}}
 
+<!-- prettier-ignore -->
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteZ` | | Neutral | Stick Pulled |
@@ -729,6 +734,7 @@ If present, they are typically analog trigger sticks, and unidirectional, scalin
 Z axes can be present on flight-style joysticks, reporting *yaw*, or left/right rotation, as shown below.
 This is not common.
 
+<!-- prettier-ignore -->
 | Name | `-1.0` | `0.0` | `1.0` |
 | ---- | ------ | ----- | ----- |
 | `AbsoluteZ` | Stick Left Yaw | Neutral | Stick Right Yaw |
@@ -758,10 +764,12 @@ As different systems label the actual buttons differently, we use compass direct
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonWest`</td><td>Left</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonNorth`</td><td>Top-left</td></tr><tr><td>`ButtonSouth`</td><td>Bottom-right</td></tr><tr><td>`ButtonEast`</td><td>Top-right</td></tr><tr><td>`ButtonWest`</td><td>Bottom-left</td></tr> </table>|
 
+<!-- prettier-ignore -->
 | Horizontal 3-Action Button Pad | Vertical 3-Action Button Pad |
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Left</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonWest`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Center</td></tr><tr><td>`ButtonEast`</td><td>Bottom</td></tr> </table>|
 
+<!-- prettier-ignore -->
 | Horizontal 2-Action Button Pad | Vertical 2-Action Button Pad |
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Right</td></tr><tr><td>`ButtonSouth`</td><td>Left</td></tr><tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonEast`</td><td>Top</td></tr><tr><td>`ButtonSouth`</td><td>Bottom</td></tr> </table>|
@@ -770,6 +778,7 @@ As different systems label the actual buttons differently, we use compass direct
 
 If your input controller is a gamepad with digital trigger buttons, this is what the controls for those buttons report as.
 
+<!-- prettier-ignore -->
 | 2-Trigger Button Pad | 4-Trigger Button Pad |
 |--|--|
 |<table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Left</td></tr><tr><td>`ButtonRT`</td><td>Right</td></tr> </table>| <table> <tr><th>Name</th><th>Description</th></tr><tr><td>`ButtonLT`</td><td>Top-left</td></tr><tr><td>`ButtonRT`</td><td>Top-right</td></tr><tr><td>`ButtonLT2`</td><td>Bottom-left</td></tr><tr><td>`ButtonRT2`</td><td>Bottom-right</td></tr> </table>|
@@ -778,6 +787,7 @@ If your input controller is a gamepad with digital trigger buttons, this is what
 
 If your input controller is a gamepad with "clickable" thumbsticks, this is what thumbstick presses report as.
 
+<!-- prettier-ignore -->
 | Name | Description |
 | ---- | ----------- |
 | `ButtonLThumb` | Left or upper button for stick |
@@ -788,6 +798,7 @@ If your input controller is a gamepad with "clickable" thumbsticks, this is what
 Many devices have additional buttons.
 If your input controller is a gamepad with these common buttons, this is what the controls for those buttons report as.
 
+<!-- prettier-ignore -->
 | Name | Description |
 | ---- | ----------- |
 | `ButtonSelect` | Select or - |

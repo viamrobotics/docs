@@ -159,6 +159,7 @@ For example, if you use a component that does not have a Linux operating system 
 Currently, you can only configure data capture from remote components by adding them to your JSON configuration.
 To add them to your JSON configuration you must explicitly add the part's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
+<!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
 | `type` | The type tells your smart machine what the part is. For example, a board. |

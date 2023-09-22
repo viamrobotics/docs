@@ -129,6 +129,7 @@ Edit and fill in the attributes to configure your component.
 
 The following attributes are available for the `viam:camera:csi` model:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `width_px` | int | Optional | Width of the image this camera captures in pixels. <br> Default: `1920` |

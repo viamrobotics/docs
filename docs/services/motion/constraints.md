@@ -20,6 +20,7 @@ The linear constraint (`{"motion_profile": "linear"}`) forces the path taken by 
 If the start and goal orientations are different, the orientation along the path will follow the quaternion [Slerp (Spherical Linear Interpolation)](https://en.wikipedia.org/wiki/Slerp) of the orientation from start to goal.
 This has the following sub-options:
 
+<!-- prettier-ignore -->
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
 | line_tolerance_mm | float | 0.1 | Max linear deviation from straight-line between start and goal, in mm. |
@@ -75,6 +76,7 @@ The orientation constraint (`{"motion_profile": "orientation"}`) places a restri
 This is similar to the "orient_tolerance" option in the linear profile, but without any path restrictions.
 If set to zero, a movement with identical starting and ending orientations will hold that orientation throughout the movement.
 
+<!-- prettier-ignore -->
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
 | orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |

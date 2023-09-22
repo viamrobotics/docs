@@ -129,6 +129,7 @@ Once you have [added a module](#add-a-module-from-the-viam-registry) from the Vi
 
 The following properties are available for modular resources:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) |
@@ -272,6 +273,7 @@ Once you have added a modular resource to your robot, you can view and configure
 
 The following properties are available for modules:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 `name` | string | **Required**| Name of the module you are registering. |
@@ -307,6 +309,7 @@ Once you have added a local module to your robot, you can add any number of the 
 
 The following properties are available for modular resources:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |

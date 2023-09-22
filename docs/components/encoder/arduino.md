@@ -45,6 +45,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `arduino` encoders:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the board to which the encoder is wired. |

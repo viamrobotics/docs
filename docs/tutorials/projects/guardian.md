@@ -32,6 +32,7 @@ Here's a video of the finished guardian detecting me:
 
 To build your own guardian robot, you need the following hardware:
 
+<!-- prettier-ignore -->
 | Hardware | Approximate price |
 | -------- | ----------------- |
 | **Raspberry Pi + power cable** | $60 |

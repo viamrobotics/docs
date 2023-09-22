@@ -232,6 +232,7 @@ Edit and fill in the attributes as applicable to your model of ODrive.
 
 The following attributes are available for the motor resources available in the Viam ODrive module:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `canbus_node_id` | int | Optional | Required for successful initialization of the `"canbus"` type. <br> Node ID of the CAN node you would like to use. You configured this when [setting up your ODrive](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive). <br> Example: `0` |

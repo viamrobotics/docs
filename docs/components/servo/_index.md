@@ -42,6 +42,7 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 For configuration information, click on one of the supported servo models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |

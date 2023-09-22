@@ -106,6 +106,7 @@ An example configuration for a `gpio` motor:
 
 The following attributes are available for `gpio` motors:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
@@ -127,7 +128,8 @@ There are three common ways for your computer to communicate with a brushed DC m
 
 - PWM/DIR: Use this if one of your motor driver's pins (labeled "PWM") takes a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another pin labeled "DIR" takes a high or low signal to control the direction.
   - Configure `pwm` and `dir`.
-- In1/In2: Use this if your motor driver has pins labeled "IN1" and "IN2" or "A" and "B," or similar. One digital signal set to a high voltage and another set to a low voltage turns the motor in one direction and vice versa.
+- In1/In2: Use this if your motor driver has pins labeled "IN1" and "IN2" or "A" and "B," or similar.
+  One digital signal set to a high voltage and another set to a low voltage turns the motor in one direction and vice versa.
 Speed is controlled with PWM through one or both pins.
   - Configure `a` and `b`.
 - In1/In2 and PWM: Use this if your motor driver uses three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
@@ -135,6 +137,7 @@ Speed is controlled with PWM through one or both pins.
 
 Inside the `pins` struct you need to configure **two or three** of the following, depending on your motor driver:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `a` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN1" or "A" pin is wired to. |

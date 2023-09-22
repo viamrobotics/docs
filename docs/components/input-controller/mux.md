@@ -80,6 +80,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `mux` input controllers:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `sources` | array | **Required** | The `name` of every controller component you wish to combine input from. |

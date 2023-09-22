@@ -32,6 +32,7 @@ Configure an `eva` arm as follows:
 
 The following attributes are available for fake arms:
 
+<!-- prettier-ignore -->
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | | |  |

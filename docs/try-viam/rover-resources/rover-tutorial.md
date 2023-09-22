@@ -190,6 +190,7 @@ Wire your Pi to the buck converter, the acceleration tilt module, and the DC mot
 
 The following pinout corresponds to the diagram:
 
+<!-- prettier-ignore -->
 | Component | Component Pin | Raspberry Pi Pin | Wire Color |
 | --------- | --- | ---------------- | ---------- |
 | Buck Converter | GND | 39 | black |

@@ -81,6 +81,7 @@ Use this to orient the ADC to determine the location to insert your wires.
 Insert the MCP3008 into your breadboard so that it bridges both sides of the divide.
 Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your PI to connect the pins with wires as follows:
 
+<!-- prettier-ignore -->
 | MCP3008 ADC Pin | Raspberry Pi Pin |
 | ----------- | ---------------- |
 | VDD | 3.3V |
@@ -104,6 +105,7 @@ Start by connecting the female jumper wires at the end of the sensor prongs to t
 
 Then, wire the rest of the pins on the module to the Pi and ADC as follows:
 
+<!-- prettier-ignore -->
 | Pi | ADC |
 |--|--|
 |<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|

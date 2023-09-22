@@ -83,6 +83,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `yahboom-dofbot` arms:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
 | `i2c`  | string | **Required** | The `name` of the Inter-Integrated Circuit (I<sup>2</sup>C) bus on your GPIO [board](/components/board/) where the connection to the `yahboom-dofbot` is made. See [configuration info](/components/board/#i2cs). |

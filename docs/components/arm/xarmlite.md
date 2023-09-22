@@ -82,6 +82,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `xArmLite` arms:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
 | `host`  | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |

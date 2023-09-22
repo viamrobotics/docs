@@ -43,6 +43,7 @@ This example sets the `fake` arm to act as a `ur5e` arm.
 
 The following attributes are available for `fake` arms:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `arm-model` | string | Optional | `name` of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#configuration) for supported model names. |

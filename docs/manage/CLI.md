@@ -137,7 +137,8 @@ To use an organization API key to authenticate your CLI session, you must first 
    Where:
 
    * `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
-   * `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
+   * `key-name` is an optional name for your API key.
+     If omitted, a name will be auto-generated based on your login info and the current time.
 
 The command will return a `key id` and a `key value`.
 You will need both to authenticate using `viam login api-key`.
@@ -161,6 +162,7 @@ All Viam CLI commands use the following format:
 viam [global options] command [command options] [arguments...]
 ```
 
+<!-- prettier-ignore -->
 |        parameter     |       description      |
 | ----------- | ----------- |
 | [global options](#global-options)      | *optional* - list of flags that apply for commands      |
@@ -212,6 +214,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 
 #### Command options
 
+<!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
@@ -220,6 +223,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 
 ##### Named arguments
 
+<!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--destination`      | output directory for downloaded data       |`export`|true |
@@ -251,6 +255,7 @@ viam locations list [<organization id>]
 
 #### Command options
 
+<!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
@@ -271,6 +276,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 
 #### Command options
 
+<!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `api-key`      | authenticate to Viam using an organization API key      | - |
@@ -279,6 +285,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 
 ##### Named arguments
 
+<!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--key-id`    | the `key id` (UUID) of the organization API key | `api-key` | true |
@@ -330,6 +337,7 @@ If you update and release your module as part of a continuous integration (CI) w
 
 #### Command options
 
+<!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
@@ -339,6 +347,7 @@ If you update and release your module as part of a continuous integration (CI) w
 
 ##### Named arguments
 
+<!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
@@ -489,6 +498,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 #### Command options
 
+<!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
@@ -497,6 +507,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 ##### Named arguments
 
+<!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--org-id`      | your organization ID      |`api-key`|true |
@@ -545,6 +556,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 #### Command options
 
+<!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
@@ -555,6 +567,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 ##### Positional arguments: `part`
 
+<!-- prettier-ignore -->
 |        argument     |       description
 | ----------- | ----------- | -----------
 | `status`     | retrieve robot status for a specified robot part
@@ -565,6 +578,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 ##### Named arguments
 
+<!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
 | `--organization`      | organization name that the robot belongs to       |`list`, `status`, `logs`, `part`|true |
@@ -623,6 +637,7 @@ viam whoami
 
 You can pass global options after the `viam` CLI keyword with any command.
 
+<!-- prettier-ignore -->
 |        global option     |       description |
 | ----------- | ----------- |
 | `--debug` | enable debug logging (default: false) |

@@ -123,12 +123,12 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
     },
     {
       "name": "<your_movement_sensor_name>",
-      "type": "movement_sensor",    
+      "type": "movement_sensor",
       "namespace": "rdk",
       "model": "viam:visual_odometry:opencv_orb",
       "attributes": {
-        "camera_name": "<your-camera-name>", 
-        "time_between_frames_s": <time_seconds>, 
+        "camera_name": "<your-camera-name>",
+        "time_between_frames_s": <time_seconds>,
         "lowe_ratio_threshold": <lowe_ratio_threshold>
       },
       "depends_on": []
@@ -180,8 +180,8 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
       "namespace": "rdk",
       "model": "viam:visual_odometry:opencv_orb",
       "attributes": {
-        "camera_name": "my-camera", 
-        "time_between_frames_s": 0.2, 
+        "camera_name": "my-camera",
+        "time_between_frames_s": 0.2,
         "lowe_ratio_threshold": 0.75
       },
       "depends_on": []
@@ -234,6 +234,7 @@ Specifically, note that the `height_px` and `width_px` attributes are not contai
 
 The following attributes are available to configure the `viam-visual-odometry` module:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Default | Description |
 | ---- | ---- | --------- | --------| ------------ |
 | `camera_name` | string | **Required** | | Camera name to be used for inferring the motion. |

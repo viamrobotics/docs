@@ -78,6 +78,7 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 The following attributes are available for `webcam` cameras:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. |

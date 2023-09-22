@@ -35,6 +35,7 @@ You can use different models to:
 
 For configuration information, click on one of the supported camera models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`ffmpeg`](ffmpeg/) | Uses a camera, a video file, or a stream as a camera. |
@@ -53,6 +54,7 @@ For configuration information, click on one of the supported camera models:
 
 Viam also provides the following camera models as [modular resources](/extend/modular-resources/):
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`viam:lidar:rplidar`](/extend/modular-resources/examples/rplidar/) | A LIDAR scanning device like the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1). |

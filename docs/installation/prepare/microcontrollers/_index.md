@@ -311,6 +311,7 @@ Click **Save config**.
 
 The following attributes are available for `esp32` boards:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |

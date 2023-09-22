@@ -30,6 +30,7 @@ Most mobile robots with a base need at least the following hardware:
 
 For configuration information, click on one of the supported base models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`wheeled`](wheeled/) | Mobile wheeled robot |

@@ -63,6 +63,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `transform` views:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `source` | string | **Required** | `name` of the camera to transform. |

@@ -72,6 +72,7 @@ Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and
 
 Configure the reference frame as follows:
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
@@ -213,6 +214,7 @@ The resulting tree of reference frames looks like:
 
 The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the frame system:
 
+<!-- prettier-ignore -->
 | Method Name | Description |
 | ----- | ----------- |
 | [`TransformPose`](#transformpose) | Transform a pose measured in one reference frame to the same pose as it would have been measured in another. |

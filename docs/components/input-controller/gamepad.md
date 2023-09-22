@@ -51,6 +51,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `gamepad` input controllers:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `dev_file` | string | Optional | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |

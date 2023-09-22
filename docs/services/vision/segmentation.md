@@ -108,6 +108,7 @@ Add the vision service object to the services array in your raw JSON configurati
 
 The following parameters are available for a `"obstacles_pointcloud"`.
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
@@ -191,6 +192,7 @@ Add the vision service object to the services array in your raw JSON configurati
 
 The following parameters are available for a `detector_3d_segmenter`.
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `detector_name`| _Required_  | The name of a registered detector vision service. The segmenter vision service uses the detections from `"detector_name"` to create the 3D segments. |

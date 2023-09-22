@@ -206,6 +206,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `multi-axis` gantries:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
 | `subaxes_list` | array | **Required** | An array of the `name` of each of the sub-axes, the [`single-axis`](/components/gantry/single-axis/) gantries that make up the `multi-axis` gantry. |

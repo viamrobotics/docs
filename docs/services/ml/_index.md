@@ -90,6 +90,7 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 
 The following parameters are available for a `"tflite_cpu"` model:
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `model_path` | _Required_ | The absolute path to the `.tflite model` file, as a `string`. |

@@ -82,6 +82,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 ## Serial Communication Protocol Tips
 
+<!-- prettier-ignore -->
 | Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` Path ID | Notes |
 | ------------- | --------------- | ----------- | ----------------- | ----------- | ----- |
 | I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | `7` | `i2c2` | `/dev/i2c-2` | |

@@ -74,6 +74,7 @@ Enter a name for your service, then click **Create**.
 Edit and fill in the attributes as applicable.
 The following attributes are available for base remote control services:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |

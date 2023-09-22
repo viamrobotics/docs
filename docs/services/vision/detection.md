@@ -118,6 +118,7 @@ Add the vision service object to the services array in your raw JSON configurati
 
 The following parameters are available for a `color_detector`.
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `segment_size_px` | _Required_ | An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size. |

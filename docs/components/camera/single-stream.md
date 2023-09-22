@@ -69,6 +69,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `single_stream` cameras:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `url` | string | **Required** | The color or depth stream URL. |

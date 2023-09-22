@@ -51,6 +51,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `beaglebone` boards:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |

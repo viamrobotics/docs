@@ -36,6 +36,7 @@ A board can be:
 
 For model-specific configuration information, click on one of the following models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
@@ -122,6 +123,7 @@ Then, integrate `analogs` into the `attributes` of your board by adding the foll
 
 The following properties are available for `analogs`:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the analog reader. |
@@ -186,6 +188,7 @@ Integrate `digital_interrupts` into your robot in the `attributes` of your board
 
 The following properties are available for `digital_interrupts`:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name` | string | **Required** | Your name for the digital interrupt. |
@@ -244,6 +247,7 @@ Integrate `spis` into your robot in the `attributes` of your board by adding the
 
 The following properties are available for `spis`:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string | **Required** | The `name` of the SPI bus. |
@@ -312,6 +316,7 @@ Integrate `i2cs` into your robot in the `attributes` of your board as follows:
 
 The following properties are available for `i2cs`:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |

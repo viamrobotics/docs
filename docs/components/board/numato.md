@@ -56,6 +56,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `numato` boards:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |

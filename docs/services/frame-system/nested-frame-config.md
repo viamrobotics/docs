@@ -98,6 +98,7 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
 {{% /tab %}}
 {{< /tabs >}}
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |

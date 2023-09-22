@@ -51,6 +51,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 For configuration information, click on one of the supported arm models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |

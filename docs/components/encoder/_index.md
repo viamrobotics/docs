@@ -35,6 +35,7 @@ Most robots with an encoder need at least the following hardware:
 
 For configuration information, click on one of the supported encoder models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`AMS-AS5048`](ams-as5048/) | The `AMS-AS5048` encoder is an absolute encoder that which can connect using an I2C interface. |

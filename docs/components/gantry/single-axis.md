@@ -53,6 +53,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `single-axis` gantries:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------  |
 | `length_mm` | int | **Required** | Length of the axis of the gantry in millimeters. |

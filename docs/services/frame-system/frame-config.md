@@ -65,6 +65,7 @@ Select the `parent` frame as `world` and fill in the coordinates for `translatio
 {{% /tab %}}
 {{< /tabs >}}
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |

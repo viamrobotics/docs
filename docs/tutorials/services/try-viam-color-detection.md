@@ -161,6 +161,7 @@ Copy the following JSON configuration into the Attributes section:
 }
 ```
 
+<!-- prettier-ignore -->
 | Field | Default value | Description |
 | ----- | ------------- | ----------- |
 | `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |

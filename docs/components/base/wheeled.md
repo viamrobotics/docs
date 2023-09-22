@@ -128,6 +128,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `wheeled` bases:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `left` | array | **Required** | Array with the `name` of any drive motors on the left side of the base. |

@@ -38,6 +38,7 @@ Most robots with a gantry need at least the following hardware:
 
 For configuration information, click on one of the supported gantry models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |

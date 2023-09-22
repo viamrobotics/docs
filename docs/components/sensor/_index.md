@@ -33,6 +33,7 @@ Most robots with a sensor need at least the following hardware:
 
 For configuration information, click on one of the supported sensor models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
