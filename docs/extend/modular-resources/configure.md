@@ -59,7 +59,7 @@ You can also find [the module itself](#configure-a-module-from-the-viam-registry
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
+To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the robot's **Config** tab.
 Deleting a module _does not_ delete any configured modular resources it provides.
 
 ### Add a modular service from the Viam registry

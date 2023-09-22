@@ -292,12 +292,13 @@ Go ahead and select all the tags you would like to include in your model and cli
 
 ### Deploy your model to your robot
 
-Once the model has finished training, deploy it by adding a [ML model service](/services/ml/#tabset-servicesml-1-1):
+Once the model has finished training, deploy it by adding an [ML model service](/services/ml/#tabset-servicesml-1-1) to your robot:
 
-1. To deploy a new model onto your robot, navigate to the robot page on the Viam app, and in the **Config** tab, select **Services**.
-1. Create a new service, select **ML Model** as the **Type**, and name it `puppymodel`.
-   Select `tflite_cpu` as the **Model**.
-
+1. Navigate to the robot page on the Viam app.
+   Click to the **Config** tab, then select the **Services** subtab.
+1. Click **Create service** in the lower-left corner.
+1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
+1. Enter `puppymodel` as the name, then click **Create**.
 1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
 1. Select your trained model (`puppymodel`) as your desired **Model**.
 
@@ -305,13 +306,16 @@ Once the model has finished training, deploy it by adding a [ML model service](/
 
 To detect your pet with your machine learning model, you need to add a [vision service](/services/vision/) that uses the model and a [transform camera](/components/camera/transform/) that applies the vision service to an existing camera stream and specifies a confidence threshold:
 
-1. Create a new **Service** and select **Vision**, and `mlmodel` as the Type.
+1. From the **Services** subtab, click **Create service** in the lower-left corner.
+1. Select `Vision` as the type and `ML Model` as the model.
+1. Enter a name for your ML model service and click **Create**.
 1. Select the model you previously created in the drop down menu.
 
    ![The vision service panel with the puppymodel selected.](/tutorials/pet-treat-dispenser/app-service-vision.png)
 
-1. Navigate to the **Components** tab and scroll to the **Create Component** menu.
-1. Create a [transform camera](/components/camera/transform/) with the name `classifier_cam`, the type `camera` and the model `transform`.
+1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
+1. Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
+1. Enter `classifier_cam` as the name for your camera, then click **Create**.
 1. Replace the JSON attributes with the following object which specifies the camera source for the transform cam and also defines a pipeline that adds the `classifier` you created.
 
    ```js
@@ -338,7 +342,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/program/apis/) in the language of your choice.
 This tutorial uses Python.
 
-### Set up your python environment
+### Set up your Python environment
 
 Open your terminal and `ssh` into your Pi.
 Run the following command to install the Python package manager onto your Pi:
@@ -549,7 +553,7 @@ Take your smart pet feeder to the next level!
 You could try one of the following:
 
 - Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
-- Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
+- Train an [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
 - Add a button that your pet must press to access the treat.
   If you add several treat types, you might include a different color button for each treat type, allowing your pet to choose.
 - If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.
