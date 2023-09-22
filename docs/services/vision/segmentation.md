@@ -204,7 +204,6 @@ Click **Save config** and proceed to [test your segmenter](#test-your-segmenter)
 ## Configure an `obstacles_depth` segmenter
 
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
-
 Use the segmenter to identify well separated objects above a flat plane.
 
 If you want to identify multiple boxes over the flat plane with your segmenter:
