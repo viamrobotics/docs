@@ -33,6 +33,7 @@ Most robots with a COMPONENT need at least the following hardware:
 The COMPONENT component supports the following models.
 Click on the component model name for detailed configuration information.
 
+<!-- prettier-ignore -->
 | Model               | Description                                                         |
 | ------------------- | ------------------------------------------------------------------- |
 | [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
