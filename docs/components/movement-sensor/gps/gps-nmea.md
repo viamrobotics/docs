@@ -114,9 +114,10 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
 
 ## Attributes
 
-| Name              | Type    | Inclusion    | Description                                                                                                            |
-| ----------------- | ------- | ------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below.                                      |
+<!-- prettier-ignore -->
+| Name              | Type    | Inclusion    | Description  |
+| ----------------- | ------- | ------------ | ---------------- |
+| `connection_type` | string  | **Required** | `"I2C"` or `"serial"`. See [Connection Attributes](#connection-attributes) below. |
 | `disable_nmea`    | boolean | Optional     | If set to `true`, changes the NMEA message protocol to RTCM when using a chip as a base station. <br> Default: `false` |
 
 ### Connection Attributes
@@ -135,10 +136,11 @@ See examples of this struct in the example tabs above.
 
 For a movement sensor communicating over serial, you'll need to include a `serial_attributes` struct containing:
 
-| Name               | Type   | Inclusion    | Description                                                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------ | ------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+<!-- prettier-ignore -->
+| Name               | Type   | Inclusion    | Description  |
+| ------------------ | ------ | ------------ | ------------------------- |
 | `serial_path`      | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. |
-| `serial_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. <br> Default: `38400`                                                                                                                                                                                                                                                                                                                                    |
+| `serial_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. <br> Default: `38400` |
 
 {{% /tab %}}
 {{% tab name="I2C" %}}
@@ -147,12 +149,13 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 
 For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attributes` struct containing:
 
-| Name            | Type   | Inclusion    | Description                                                                                                                    |
-| --------------- | ------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+<!-- prettier-ignore -->
+| Name            | Type   | Inclusion    | Description |
+| --------------- | ------ | ------------ | ------------------------ |
 | `board`         | string | **Required** | The `name` of the [board](/components/board/) to which the [I<sup>2</sup>C](/components/board/#i2cs) connection is being made. |
-| `i2c_bus`       | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor.                                             |
-| `i2c_addr`      | int    | **Required** | The device's I<sup>2</sup>C address.                                                                                           |
-| `i2c_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400`                                                |
+| `i2c_bus`       | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor. |
+| `i2c_addr`      | int    | **Required** | The device's I<sup>2</sup>C address. |
+| `i2c_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400` |
 
 {{% /tab %}}
 {{< /tabs >}}
