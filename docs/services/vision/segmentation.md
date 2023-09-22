@@ -207,15 +207,18 @@ This segmenter model is for depth cameras, and is best for motion planning with 
 
 Use the segmenter to identify well separated objects above a flat plane.
 
-If you want to identify point clouds over the flat plane with your segmenter, [configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
-After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
-You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
-Then, set the segmenter's attribute `with_geometries: true`.
-The segmenter now returns point clouds within the `GeometryInFrame` object it captures.
+If you want to identify point clouds over the flat plane with your segmenter:
+
+- First, configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
+    - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
+    You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
+- Then, set the segmenter's attribute `with_geometries: true`.
+- The segmenter now returns point clouds within the `GeometryInFrame` object it captures.
 
 If you choose not to configure the frame system, you can still identify points over the flat plane with your segmenter.
-Set `with_geometries: false`.
-   The segmenter now returns a single point within the `GeometryInFrame` object it captures.
+
+- Set `with_geometries: false`.
+- The segmenter now returns a single point within the `GeometryInFrame` object it captures.
 
 Then, configure an `obstacles_depth` segmenter:
 
@@ -229,7 +232,7 @@ Add the following vision service object to the services array in your raw JSON c
     {
     "name": "<segmenter_name>",
     "type": "vision",
-    "model": "obstacles_pointcloud"
+    "model": "obstacles_depth"
     "attributes": {
         "h_min_m": <number>,
         "h_max_m": <number>,
@@ -250,7 +253,7 @@ Add the following vision service object to the services array in your raw JSON c
 {
     "name": "rc_segmenter",
     "type": "vision",
-    "model": "obstacles_pointcloud",
+    "model": "obstacles_depth",
     "attributes": {
         "h_min_m": 0.0,
         "h_max_m": 1.0,
