@@ -46,7 +46,7 @@ Follow the steps outlined for your computer's architecture on the **Setup** tab 
 
 [Configure your mock robot](/manage/configuration/) to represent a physical smart machine with robotic board, arm, and motor hardware.
 
-If you were using physical hardware, this process would provide `viam-server` with the information what hardware is attached to it and how to communicate with it.
+If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
 
 1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
@@ -58,7 +58,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
 3. Configure a [fake arm component](/components/arm/fake/):
 
-    - Click **Create**.
+    - Click **Create component**.
     - Select the `arm` type, then select the `fake` model.
     - Enter the name `myArm` for your board and click **Create**.
     - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
@@ -104,7 +104,7 @@ With real physical components, you would not only be able to control and see you
 ### Install a Viam SDK
 
 Install a Viam SDK (software development kit) so you can write custom logic to control the mock robot.
-Use which ever programming language you are most comfortable with.
+Use the programming language you are most comfortable with.
 
 Refer to the appropriate SDK documentation for SDK installation instructions:
 
@@ -319,7 +319,7 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
 You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
-By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build your robot with Viam:
+By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:
 
 - Each individual computer-controlled unit of a robot is called a “{{< glossary_tooltip term_id="part" text="part" >}}” in Viam.
 - Typically, simple robots have just one part, but you can have as many parts as your project requires.
@@ -333,12 +333,15 @@ On your robot's page on the Viam app, click on the dropdown next to the main par
 
 ![Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
 
-Navigate to your new sub-part's **Config** tab and create a new motor using the `fake` model.
-Name it `"motor2"`.
+Navigate to your new sub-part's **Config** tab and create a new motor:
+
+Click **Create component** in the lower-left corner of the page.
+Select type `motor` and model `fake`.
+Enter `motor2` as the name and click **Create**.
 
 {{< imgproc src="/tutorials/build-a-mock-robot/sub-part-motor.png" alt="The config tab of the sub-part. A new fake motor component called motor2 is being created." resize="400x" >}}
 
-Click **Create component** and then **Save config**.
+Click **Save config**.
 
 ### Start a new instance of `viam-server` for your mock sub-part
 
@@ -479,7 +482,7 @@ func main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-Run this code to see your mock sub motor toggling between running and idle in real time from the Viam app!
+Run this code to see your mock sub-part's motor toggling between running and idle in real time from the Viam app!
 
 {{<gif webm_src="/tutorials/build-a-mock-robot/go-start-demo.webm" mp4_src="/tutorials/build-a-mock-robot/go-start-demo.mp4" alt="Code runs and prints resource list">}}
 
