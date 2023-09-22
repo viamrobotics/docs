@@ -75,6 +75,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `model1` arms:
 
+<!-- prettier-ignore -->
 | Name         | Inclusion    | Type   | Default Value | Description                                                                                                                                                                                      |
 | ------------ | ------------ | ------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `board`      | **Required** | string | -             | The name of the board to which the device is wired.                                                                                                                                              |
