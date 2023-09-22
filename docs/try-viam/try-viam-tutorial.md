@@ -83,6 +83,7 @@ If you go from the from **Keyboard** to the **Discrete** tab, you can choose bet
 
   In _continuous_ movement mode you can set a speed at which the rover will move indefinitely in the specified direction.
   In _discrete_ movement mode you can set a speed at which to move and a distance to cover before stopping.
+
 - Directions: `Forwards` and `Backwards`.
 
 ![The DISCRETE tab of the viam_base component panel. Movement mode, movement type, and direction mode toggles are shown as well as a speed (mm/sec) field and a distance field (the latter of which is greyed out because the movement type toggle is set to continuous instead of discrete movement).](try-viam/try-viam/discrete.png)
@@ -224,7 +225,7 @@ You can [copy this `JSON` config between rental rovers](/try-viam/faq/#how-can-i
 If you have questions, check out our [FAQ](/try-viam/faq/) or join our [Discord Community](https://discord.gg/viam), where you can ask questions and meet other people working on robots.
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/try-viam-sdk" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" %}}
-  {{% card link="/try-viam/rover-resources" %}}
+{{% card link="/tutorials/get-started/try-viam-sdk" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/try-viam/rover-resources" %}}
 {{< /cards >}}

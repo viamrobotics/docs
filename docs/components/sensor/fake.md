@@ -29,10 +29,10 @@ Enter a name for your sensor and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-sensor-name>",
-    "type": "sensor",
-    "model": "fake",
-    "attributes": {}
+  "name": "<your-sensor-name>",
+  "type": "sensor",
+  "model": "fake",
+  "attributes": {}
 }
 ```
 

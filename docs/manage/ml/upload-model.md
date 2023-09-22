@@ -38,7 +38,11 @@ You can get the version number from a specific model version by clicking on **CO
 The model package config looks like this:
 
 ```json
-{"package":"<model_id>/allblack","version":"YYYYMMDDHHMMSS","name":"<model_name>"}
+{
+  "package": "<model_id>/allblack",
+  "version": "YYYYMMDDHHMMSS",
+  "name": "<model_name>"
+}
 ```
 
 ## Next Steps

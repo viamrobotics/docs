@@ -5,6 +5,7 @@ weight: 20
 type: "docs"
 description: "Explanation of how a robot and its parts interact at the communication layer."
 ---
+
 When building a robot application in the [Viam app](https://app.viam.com), a user typically begins by configuring their robot which can consist of one or more parts.
 Next they will test that it is wired up properly using the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
@@ -20,9 +21,9 @@ To begin, let's define our robot's topology:
 
 This robot is made of two parts and a separate SDK-based application, which we'll assume is on a third machine, though it could just as easily run on the main part without any changes.
 
-* The first and main part, RDK Part 1, consists of a Raspberry Pi and a single USB connected camera called Camera.
+- The first and main part, RDK Part 1, consists of a Raspberry Pi and a single USB connected camera called Camera.
 
-* The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
+- The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
 
 RDK Part 1 will establish a bidirectional gRPC/{{< glossary_tooltip term_id="webrtc" >}} connection to RDK Part 2.
 RDK Part 1 is considered the controlling peer (client).
@@ -32,6 +33,7 @@ Let's suppose our SDK application uses the camera to track the largest object in
 
 Since RDK Part 1 is the main part and has access to all other parts, the application will connect to it using the SDK.
 Once connected, it will take the following series of actions:
+
 <OL>
 <li>Get segmented point clouds from the camera and the object segmentation service.</li>
 

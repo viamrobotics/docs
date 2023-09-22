@@ -101,6 +101,7 @@ Here’s an example of a basic stepper driver config:
 
 The following attributes are available for `gpiostepper` motors:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ---------- |
 | `board` | string | **Required** | `name` of the [board](/components/board/) the motor driver is wired to. |

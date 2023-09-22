@@ -37,206 +37,206 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "UR5e",
-    "kinematic_param_type": "SVA",
-    "links": [
-        {
-            "id": "base_link",
-            "parent": "world",
-            "translation": {
-                "x": 0,
-                "y": 0,
-                "z": 162.5
-            },
-            "geometry": {
-                "x": 120,
-                "y": 120,
-                "z": 260,
-                "translation": {
-                  "x": 0,
-                  "y": 0,
-                  "z": 130
-                }
-            }
-        },
-        {
-            "id": "shoulder_link",
-            "parent": "shoulder_pan_joint",
-            "translation": {
-                "x": 0,
-                "y": 0,
-                "z": 0
-            }
-        },
-        {
-            "id": "upper_arm_link",
-            "parent": "shoulder_lift_joint",
-            "translation": {
-                "x": -425,
-                "y": 0,
-                "z": 0
-            },
-            "geometry": {
-                "x": 550,
-                "y": 150,
-                "z": 120,
-                "translation": {
-                    "x": -215,
-                    "y": -130,
-                    "z": 0
-                }
-            }
-        },
-        {
-            "id": "forearm_link",
-            "parent": "elbow_joint",
-            "translation": {
-                "x": -392.2,
-                "y": 0,
-                "z": 0
-            },
-            "geometry": {
-                "x": 480,
-                "y": 120,
-                "z": 100,
-                "translation": {
-                    "x": -190,
-                    "y": 0,
-                    "z": 0
-                }
-            }
-        },
-        {
-            "id": "wrist_1_link",
-            "parent": "wrist_1_joint",
-            "translation": {
-                "x": 0,
-                "y": -133.3,
-                "z": 0
-            },
-            "geometry": {
-                "x": 90,
-                "y": 130,
-                "z": 130,
-                "translation": {
-                    "x": 0,
-                    "y": -110,
-                    "z": 0
-                }
-            }
-        },
-        {
-            "id": "wrist_2_link",
-            "parent": "wrist_2_joint",
-            "translation": {
-                "x": 0,
-                "y": 0,
-                "z": -99.7
-            },
-            "geometry": {
-                "x": 80,
-                "y": 150,
-                "z": 100,
-                "translation": {
-                    "x": 0,
-                    "y": 0,
-                    "z": -100
-                }
-            }
-        },
-        {
-            "id": "ee_link",
-            "parent": "wrist_3_joint",
-            "translation": {
-                "x": 0,
-                "y": -99.6,
-                "z": 0
-            },
-            "orientation": {
-                "type" : "ov_degrees",
-                "value" : {
-                    "x": 0,
-                    "y": -1,
-                    "z": 0,
-                    "th": 90
-                }
-            }
+  "name": "UR5e",
+  "kinematic_param_type": "SVA",
+  "links": [
+    {
+      "id": "base_link",
+      "parent": "world",
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": 162.5
+      },
+      "geometry": {
+        "x": 120,
+        "y": 120,
+        "z": 260,
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": 130
         }
-    ],
-    "joints": [
-        {
-            "id": "shoulder_pan_joint",
-            "type": "revolute",
-            "parent": "base_link",
-            "axis": {
-                "x": 0,
-                "y": 0,
-                "z": 1
-            },
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "shoulder_lift_joint",
-            "type": "revolute",
-            "parent": "shoulder_link",
-            "axis": {
-                "x": 0,
-                "y": -1,
-                "z": 0
-            },
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "elbow_joint",
-            "type": "revolute",
-            "parent": "upper_arm_link",
-            "axis": {
-                "x": 0,
-                "y": -1,
-                "z": 0
-            },
-            "max": 180,
-            "min": -180
-        },
-        {
-            "id": "wrist_1_joint",
-            "type": "revolute",
-            "parent": "forearm_link",
-            "axis": {
-                "x": 0,
-                "y": -1,
-                "z": 0
-            },
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "wrist_2_joint",
-            "type": "revolute",
-            "parent": "wrist_1_link",
-            "axis": {
-                "x": 0,
-                "y": 0,
-                "z": -1
-            },
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "wrist_3_joint",
-            "type": "revolute",
-            "parent": "wrist_2_link",
-            "axis": {
-                "x": 0,
-                "y": -1,
-                "z": 0
-            },
-            "max": 360,
-            "min": -360
+      }
+    },
+    {
+      "id": "shoulder_link",
+      "parent": "shoulder_pan_joint",
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "id": "upper_arm_link",
+      "parent": "shoulder_lift_joint",
+      "translation": {
+        "x": -425,
+        "y": 0,
+        "z": 0
+      },
+      "geometry": {
+        "x": 550,
+        "y": 150,
+        "z": 120,
+        "translation": {
+          "x": -215,
+          "y": -130,
+          "z": 0
         }
-    ]
+      }
+    },
+    {
+      "id": "forearm_link",
+      "parent": "elbow_joint",
+      "translation": {
+        "x": -392.2,
+        "y": 0,
+        "z": 0
+      },
+      "geometry": {
+        "x": 480,
+        "y": 120,
+        "z": 100,
+        "translation": {
+          "x": -190,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "id": "wrist_1_link",
+      "parent": "wrist_1_joint",
+      "translation": {
+        "x": 0,
+        "y": -133.3,
+        "z": 0
+      },
+      "geometry": {
+        "x": 90,
+        "y": 130,
+        "z": 130,
+        "translation": {
+          "x": 0,
+          "y": -110,
+          "z": 0
+        }
+      }
+    },
+    {
+      "id": "wrist_2_link",
+      "parent": "wrist_2_joint",
+      "translation": {
+        "x": 0,
+        "y": 0,
+        "z": -99.7
+      },
+      "geometry": {
+        "x": 80,
+        "y": 150,
+        "z": 100,
+        "translation": {
+          "x": 0,
+          "y": 0,
+          "z": -100
+        }
+      }
+    },
+    {
+      "id": "ee_link",
+      "parent": "wrist_3_joint",
+      "translation": {
+        "x": 0,
+        "y": -99.6,
+        "z": 0
+      },
+      "orientation": {
+        "type": "ov_degrees",
+        "value": {
+          "x": 0,
+          "y": -1,
+          "z": 0,
+          "th": 90
+        }
+      }
+    }
+  ],
+  "joints": [
+    {
+      "id": "shoulder_pan_joint",
+      "type": "revolute",
+      "parent": "base_link",
+      "axis": {
+        "x": 0,
+        "y": 0,
+        "z": 1
+      },
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "shoulder_lift_joint",
+      "type": "revolute",
+      "parent": "shoulder_link",
+      "axis": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "elbow_joint",
+      "type": "revolute",
+      "parent": "upper_arm_link",
+      "axis": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "max": 180,
+      "min": -180
+    },
+    {
+      "id": "wrist_1_joint",
+      "type": "revolute",
+      "parent": "forearm_link",
+      "axis": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "wrist_2_joint",
+      "type": "revolute",
+      "parent": "wrist_1_link",
+      "axis": {
+        "x": 0,
+        "y": 0,
+        "z": -1
+      },
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "wrist_3_joint",
+      "type": "revolute",
+      "parent": "wrist_2_link",
+      "axis": {
+        "x": 0,
+        "y": -1,
+        "z": 0
+      },
+      "max": 360,
+      "min": -360
+    }
+  ]
 }
 ```
 
@@ -245,64 +245,64 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "UR5e",
-    "kinematic_param_type": "DH",
-    "dhParams": [
-        {
-            "id": "base",
-            "parent": "world",
-            "a": 0,
-            "d": 162.5,
-            "alpha": 1.57079632679,
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "shoulder",
-            "parent": "base",
-            "a": -425,
-            "d": 0,
-            "alpha": 0,
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "elbow",
-            "parent": "shoulder",
-            "a": -392.2,
-            "d": 0,
-            "alpha": 0,
-            "max": 180,
-            "min": -180
-        },
-        {
-            "id": "wrist_1",
-            "parent": "elbow",
-            "a": 0,
-            "d": 133.3,
-            "alpha": 1.57079632679,
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "wrist_2",
-            "parent": "wrist_1",
-            "a": 0,
-            "d": 99.7,
-            "alpha": -1.57079632679,
-            "max": 360,
-            "min": -360
-        },
-        {
-            "id": "wrist_3",
-            "parent": "wrist_2",
-            "a": 0,
-            "d": 99.6,
-            "alpha": 0,
-            "max": 360,
-            "min": -360
-        }
-    ]
+  "name": "UR5e",
+  "kinematic_param_type": "DH",
+  "dhParams": [
+    {
+      "id": "base",
+      "parent": "world",
+      "a": 0,
+      "d": 162.5,
+      "alpha": 1.57079632679,
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "shoulder",
+      "parent": "base",
+      "a": -425,
+      "d": 0,
+      "alpha": 0,
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "elbow",
+      "parent": "shoulder",
+      "a": -392.2,
+      "d": 0,
+      "alpha": 0,
+      "max": 180,
+      "min": -180
+    },
+    {
+      "id": "wrist_1",
+      "parent": "elbow",
+      "a": 0,
+      "d": 133.3,
+      "alpha": 1.57079632679,
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "wrist_2",
+      "parent": "wrist_1",
+      "a": 0,
+      "d": 99.7,
+      "alpha": -1.57079632679,
+      "max": 360,
+      "min": -360
+    },
+    {
+      "id": "wrist_3",
+      "parent": "wrist_2",
+      "a": 0,
+      "d": 99.6,
+      "alpha": 0,
+      "max": 360,
+      "min": -360
+    }
+  ]
 }
 ```
 

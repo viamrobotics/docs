@@ -6,6 +6,7 @@ type: "docs"
 draft: true
 description: "Explanation of how a robot and the Viam app [app.viam.com](https://app.viam.com) interact."
 ---
+
 ## Coming soon
 
 This page will contain:

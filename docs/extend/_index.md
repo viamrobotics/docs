@@ -5,7 +5,15 @@ weight: 63
 simple_list: true
 no_list: true
 type: docs
-tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+tags:
+  [
+    "server",
+    "rdk",
+    "extending viam",
+    "modular resources",
+    "components",
+    "services",
+  ]
 description: "Extend Viam with modular resources from the Viam registry."
 aliases:
   - "/program/extend/"
@@ -21,8 +29,8 @@ However, if you want to work with a new hardware component that is not already s
 Click on the cards below for instructions on implementing modular resources through {{< glossary_tooltip term_id="module" text="modules" >}} or {{< glossary_tooltip term_id="remote" text="remotes" >}}:
 
 {{< cards >}}
-    {{% card link="/extend/modular-resources" %}}
-    {{% card link="/extend/custom-components-remotes" %}}
+{{% card link="/extend/modular-resources" %}}
+{{% card link="/extend/custom-components-remotes" %}}
 {{< /cards >}}
 
 {{% alert title="Tip" color="tip" %}}

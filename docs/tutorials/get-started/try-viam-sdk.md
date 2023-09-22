@@ -10,10 +10,10 @@ videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
 tags: ["base", "viam rover", "try viam", "sdk", "python"]
 aliases:
-    - /tutorials/get-started/try-viam-sdk
+  - /tutorials/get-started/try-viam-sdk
 authors: []
-languages: [ "python", "go", "typescript" ]
-viamresources: [ "base" ]
+languages: ["python", "go", "typescript"]
+viamresources: ["base"]
 level: "Beginner"
 date: "2022-12-08"
 # updated: ""
@@ -175,12 +175,9 @@ Add the following markup:
   </head>
   <body>
     <div id="main">
-      <button id="main-button" disabled=true>
-        Click me
-      </button>
+      <button id="main-button" disabled="true">Click me</button>
     </div>
-    <script type="module" src="main.js">
-    </script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
 ```
@@ -361,45 +358,45 @@ Your main function should look similar to this but only the first few lines that
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="1-12"}
 async function main() {
-  const host = 'ADDRESS_FROM_VIAM_APP';
+  const host = "ADDRESS_FROM_VIAM_APP";
 
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'robot-location-secret',
-      payload: 'SECRET_FROM_VIAM_APP',
+      type: "robot-location-secret",
+      payload: "SECRET_FROM_VIAM_APP",
     },
     authEntity: host,
-    signalingAddress: 'https://app.viam.com:443',
+    signalingAddress: "https://app.viam.com:443",
   });
 
   // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
   // local
-  const localClient = new VIAM.BoardClient(robot, 'local');
-  const localReturnValue = await localClient.getGPIO('16');
-  console.log('local getGPIO return value:', localReturnValue);
+  const localClient = new VIAM.BoardClient(robot, "local");
+  const localReturnValue = await localClient.getGPIO("16");
+  console.log("local getGPIO return value:", localReturnValue);
 
   // right
-  const rightClient = new VIAM.MotorClient(robot, 'right');
+  const rightClient = new VIAM.MotorClient(robot, "right");
   const rightReturnValue = await rightClient.isMoving();
-  console.log('right isMoving return value:', rightReturnValue);
+  console.log("right isMoving return value:", rightReturnValue);
 
   // left
-  const leftClient = new VIAM.MotorClient(robot, 'left');
+  const leftClient = new VIAM.MotorClient(robot, "left");
   const leftReturnValue = await leftClient.isMoving();
-  console.log('left isMoving return value:', leftReturnValue);
+  console.log("left isMoving return value:", leftReturnValue);
 
   // viam_base
-  const viamBaseClient = new VIAM.BaseClient(robot, 'viam_base');
+  const viamBaseClient = new VIAM.BaseClient(robot, "viam_base");
   const viamBaseReturnValue = await viamBaseClient.isMoving();
-  console.log('viam_base isMoving return value:', viamBaseReturnValue);
+  console.log("viam_base isMoving return value:", viamBaseReturnValue);
 
   // cam
-  const camClient = new VIAM.CameraClient(robot, 'cam');
+  const camClient = new VIAM.CameraClient(robot, "cam");
   const camReturnValue = await camClient.getImage();
-  console.log('cam getImage return value:', camReturnValue);
+  console.log("cam getImage return value:", camReturnValue);
 
-  console.log('Resources:');
+  console.log("Resources:");
   console.log(await robot.resourceNames());
 }
 ```
@@ -415,12 +412,12 @@ If you have a different base name, update the name in your code.
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
   // Replace with the name of a motor on your robot.
-  const name = 'viam_base';
+  const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
   try {
     button().disabled = true;
-    for(let i=0; i<4; i++) {
+    for (let i = 0; i < 4; i++) {
       console.log("move straight");
       await baseClient.moveStraight(500, 500);
       console.log("spin 90 degrees");
@@ -437,7 +434,7 @@ Underneath the `moveInSquare` function, add this `button` function which gets th
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function gets the button element
 function button() {
-    return <HTMLButtonElement>document.getElementById('main-button');
+  return <HTMLButtonElement>document.getElementById("main-button");
 }
 ```
 
@@ -449,16 +446,16 @@ Your main function should now look like this:
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="14-17"}
 async function main() {
-  const host = 'ADDRESS_FROM_VIAM_APP';
+  const host = "ADDRESS_FROM_VIAM_APP";
 
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'robot-location-secret',
-      payload: 'SECRET_FROM_VIAM_APP',
+      type: "robot-location-secret",
+      payload: "SECRET_FROM_VIAM_APP",
     },
     authEntity: host,
-    signalingAddress: 'https://app.viam.com:443',
+    signalingAddress: "https://app.viam.com:443",
   });
 
   button().onclick = async () => {
@@ -624,12 +621,9 @@ func main() {
   </head>
   <body>
     <div id="main">
-      <button id="main-button" disabled=true>
-        Click me
-      </button>
+      <button id="main-button" disabled="true">Click me</button>
     </div>
-    <script type="module" src="main.js">
-    </script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
 ```
@@ -639,19 +633,19 @@ func main() {
 ```ts {class="line-numbers linkable-line-numbers"}
 // This code must be run in a browser environment.
 
-import * as VIAM from '@viamrobotics/sdk';
+import * as VIAM from "@viamrobotics/sdk";
 
 async function main() {
-  const host = 'ADDRESS_FROM_VIAM_APP';
+  const host = "ADDRESS_FROM_VIAM_APP";
 
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'robot-location-secret',
-      payload: 'SECRET_FROM_VIAM_APP',
+      type: "robot-location-secret",
+      payload: "SECRET_FROM_VIAM_APP",
     },
     authEntity: host,
-    signalingAddress: 'https://app.viam.com:443',
+    signalingAddress: "https://app.viam.com:443",
   });
 
   button().onclick = async () => {
@@ -662,29 +656,29 @@ async function main() {
 
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-    // Replace with the name of a motor on your robot.
-    const name = 'viam_base';
-    const baseClient = new VIAM.BaseClient(client, name);
+  // Replace with the name of a motor on your robot.
+  const name = "viam_base";
+  const baseClient = new VIAM.BaseClient(client, name);
 
-    try {
-      button().disabled = true;
-      for(let i=0; i<4; i++) {
-        console.log("move straight");
-        await baseClient.moveStraight(500, 500);
-        console.log("spin 90 degrees");
-        await baseClient.spin(90, 100);
-      }
-    } finally {
-      button().disabled = false;
+  try {
+    button().disabled = true;
+    for (let i = 0; i < 4; i++) {
+      console.log("move straight");
+      await baseClient.moveStraight(500, 500);
+      console.log("spin 90 degrees");
+      await baseClient.spin(90, 100);
     }
+  } finally {
+    button().disabled = false;
+  }
 }
 
 function button() {
-    return <HTMLButtonElement>document.getElementById('main-button');
+  return <HTMLButtonElement>document.getElementById("main-button");
 }
 
 main().catch((error) => {
-  console.error('encountered an error:', error)
+  console.error("encountered an error:", error);
 });
 ```
 

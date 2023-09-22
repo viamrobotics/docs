@@ -6,9 +6,9 @@ weight: 10
 no_list: true
 type: docs
 aliases:
-    - "/getting-started/"
-    - "/getting-started/high-level-overview"
-    - "/product-overviews/"
+  - "/getting-started/"
+  - "/getting-started/high-level-overview"
+  - "/product-overviews/"
 image: "/general/understand.png"
 imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
@@ -23,19 +23,19 @@ When using Viam, this is what you'll need to know to plan your smart machine:
 <img src="https://assets-global.website-files.com/62fba5686b6d47fe2a1ed2a6/633d91b848050946efcf0690_viam-overview-illustrations-build.svg" alt="A diagram of smart machine parts and software" class="alignright" style="width:250px;"></img>
 
 - **Hardware**:
-Many {{< glossary_tooltip term_id="component" text="components">}} are natively supported by the Viam platform.
-You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
+  Many {{< glossary_tooltip term_id="component" text="components">}} are natively supported by the Viam platform.
+  You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
 - **Functionality**:
-You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
+  You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
-You can build simple smart machines or multi-part smart machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
+  You can build simple smart machines or multi-part smart machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage community contributed and modular resources to [extend](/extend/) Viam from [the Viam registry](/extend/modular-resources/).
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 
 ## Get started
 
-A *smart machine* in Viam consists of at least one computer, typically a [single-board computer](/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
+A _smart machine_ in Viam consists of at least one computer, typically a [single-board computer](/installation/), running `viam-server` and communicating with any hardware connected to it by signaling through digital data pins.
 Viam supports devices running **any** 64-bit Linux OS or macOS.
 
 {{< imgproc src="/viam/board-viam-server.png" alt="A diagram of a single-board computer running viam-server." resize="270x" class="alignleft" style="max-width:270px" >}}
@@ -59,7 +59,7 @@ Everything Viam runs on your smart machine is [open-source](https://github.com/v
 Robots can be small and simple or very complex.
 A smart machine can be a single-board computer with a single sensor or LED wired to it, or a smart machine can consist of multiple computers with many physical components connected, acting as one unit.
 
-The term {{% glossary_tooltip term_id="component" text="*component*" %}} describes a piece of hardware that a computer controls, like an arm or a motor.
+The term {{% glossary_tooltip term_id="component" text="_component_" %}} describes a piece of hardware that a computer controls, like an arm or a motor.
 
 For each component that makes up your smart machine:
 

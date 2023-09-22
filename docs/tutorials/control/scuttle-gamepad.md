@@ -8,12 +8,12 @@ mp4Src: "/tutorials/videos/scuttle-gamepad-preview.mp4"
 videoAlt: "Drive a Scuttle Robot with a Bluetooth gamepad."
 images: ["/tutorials/videos/scuttle-gamepad-preview.gif"]
 aliases:
-    - "/tutorials/scuttle-gamepad/"
-    - "/tutorials/scuttlebot/scuttle-gamepad/"
+  - "/tutorials/scuttle-gamepad/"
+  - "/tutorials/scuttlebot/scuttle-gamepad/"
 tags: ["base", "scuttle", "gamepad"]
 authors: []
 languages: []
-viamresources: [ "base", "input_controller" ]
+viamresources: ["base", "input_controller"]
 level: "Intermediate"
 date: "2022-08-10"
 # updated: ""
@@ -71,13 +71,13 @@ If instead of using the config builder, you prefer to write raw JSON, switch to 
 Inside the `components` array of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
-    {
-      "name": "my-gamepad",
-      "type": "input_controller",
-      "model": "gamepad",
-      "attributes": {},
-      "depends_on": []
-    }
+{
+  "name": "my-gamepad",
+  "type": "input_controller",
+  "model": "gamepad",
+  "attributes": {},
+  "depends_on": []
+}
 ```
 
 {{% /tab %}}
@@ -104,8 +104,8 @@ Copy and paste the following into the empty **Attributes** field, replacing `<yo
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
- "base": "<your-base-name>",
- "input_controller": "my-gamepad"
+  "base": "<your-base-name>",
+  "input_controller": "my-gamepad"
 }
 ```
 
@@ -168,6 +168,7 @@ Testing these attributes tells you which mode you are in.
 ## EasySMX ESM-9101 wireless controller information
 
 Here is a diagram of the gamepad.
+
 <table>
 <tr>
 <td>{{<imgproc src="/tutorials/scuttle-gamepad/pi-game-gamepad-diagram.png" resize="800x" alt="gamepad diagram">}}</td>
@@ -177,6 +178,7 @@ Here is a diagram of the gamepad.
 
 To change the movement/direction control on the gamepad between the D-pad and the joystick, press and hold the Home button (#11) until it displays the lighted segment combination for the gamepad configuration you need.
 Each red color arrangement allows you to control the gamepad in the Viam app:
+
 <table>
 <tr><td>LED 1 and 3: Use the D-Pad<BR>
 {{<imgproc src="/tutorials/scuttle-gamepad/pi-game-cont-1and3.jpg" resize="300x" declaredimensions=true alt="Led 1 and 3 are lit">}}

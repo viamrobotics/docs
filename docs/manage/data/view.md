@@ -32,7 +32,7 @@ For example, if you specify `Rover Rental` for location and click **SEARCH**, yo
 
 You can delete image or file data from the [Viam app](https://app.viam.com).
 To delete image data, click on an image in the **Images** subtab and click on **DELETE SELECTED**.
-To delete a file, click on the file  in the **Files** subtab and click the **Delete** icon.
+To delete a file, click on the file in the **Files** subtab and click the **Delete** icon.
 
 To delete all image, file, or sensor data respectively, click on **DELETE ALL** in the top right corner.
 

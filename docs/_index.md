@@ -10,6 +10,7 @@ hide_feedback: true
 sitemap:
   priority: 1.0
 ---
+
 <div class="max-page">
   <p>
     Welcome to the Viam Documentation!

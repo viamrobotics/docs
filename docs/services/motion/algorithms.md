@@ -11,9 +11,9 @@ Many algorithms already exist for this problem, and motion planning is a domain 
 Viam does not implement all motion planning algorithms but has implemented two in its strategy for planning general robot motion.
 The two algorithms Viam supports are both based in principle on [RRT](https://en.wikipedia.org/wiki/Rapidly-exploring_random_tree):
 
-## RRT*-Connect
+## RRT\*-Connect
 
-RRT*-Connect is an asymptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
+RRT\*-Connect is an asymptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
 It continues sampling after it finds its first valid path, and if it finds future paths that are more efficient, it updates to report those instead.
 For Viam, efficiency/path quality is measured in terms of total kinematics state excursion.
 For an arm, the sum of all joint changes is minimized.

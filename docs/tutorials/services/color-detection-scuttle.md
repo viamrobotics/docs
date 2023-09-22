@@ -8,12 +8,12 @@ mp4Src: "/tutorials/videos/scuttle-colordetection-preview.mp4"
 videoAlt: "Detecting color with a Scuttle Robot"
 images: ["/tutorials/videos/scuttle-colordetection-preview.gif"]
 aliases:
-    - "/tutorials/color-detection-scuttle"
-    - "/tutorials/scuttlebot/color-detection-scuttle/"
+  - "/tutorials/color-detection-scuttle"
+  - "/tutorials/scuttlebot/color-detection-scuttle/"
 tags: ["vision", "detector", "base", "scuttle", "services"]
-authors: [ "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "base", "vision", "camera" ]
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources: ["base", "vision", "camera"]
 level: "Intermediate"
 date: "2022-08-18"
 updated: "2023-08-11"
@@ -69,7 +69,7 @@ In your vision service's panel, set the following **Attributes**:
 
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "my_color_detector",
@@ -105,20 +105,20 @@ You can test your detector from the [**Control tab**](/manage/fleet/robots/#cont
 
 1. Configure a [transform camera](../../../components/camera/transform/) with the following attributes:
 
-    ```json
-    {
-      "pipeline": [
-          {
-          "type": "detections",
-          "attributes": {
-              "confidence_threshold": 0.5,
-              "detector_name": "my_color_detector"
-          }
-          }
-      ],
-      "source": "<camera-name>"
-    }
-    ```
+   ```json
+   {
+     "pipeline": [
+       {
+         "type": "detections",
+         "attributes": {
+           "confidence_threshold": 0.5,
+           "detector_name": "my_color_detector"
+         }
+       }
+     ],
+     "source": "<camera-name>"
+   }
+   ```
 
    For `<camera-name>`, insert the name of your configured physical camera.
 

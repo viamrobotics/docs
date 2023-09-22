@@ -7,9 +7,9 @@ tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/pet-treat-dispenser/preview.png"
 imageAlt: "Image of a dog interacting with the smart pet feeder."
 images: ["/tutorials/pet-treat-dispenser/preview.png"]
-authors: [ "Arielle Mella", "Jessamy Taylor", "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "board", "camera", "motor", "mlmodel", "vision" ]
+authors: ["Arielle Mella", "Jessamy Taylor", "Hazal Mestci"]
+languages: ["python"]
+viamresources: ["board", "camera", "motor", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
 # updated: ""
@@ -60,26 +60,26 @@ You will also need the following tools and materials:
 
 You will need the following software:
 
-* [Python 3](https://www.python.org/download/releases/3.0/)
-* [pip](https://pip.pypa.io/en/stable/#)
-* [`viam-server`](/installation/#install-viam-server) installed to your {{< glossary_tooltip term_id="board" text="board" >}}.
-If you haven't done this, we'll walk you through it in the next section.
+- [Python 3](https://www.python.org/download/releases/3.0/)
+- [pip](https://pip.pypa.io/en/stable/#)
+- [`viam-server`](/installation/#install-viam-server) installed to your {{< glossary_tooltip term_id="board" text="board" >}}.
+  If you haven't done this, we'll walk you through it in the next section.
 
 ## Assemble your robot
 
 The STL files for the smart feeder robot are available on [GitHub](https://github.com/viam-labs/smart-pet-feeder).
 
 1. Prepare your 3D prints.
-The front of the main body of your print is the side with the dog bone.
+   The front of the main body of your print is the side with the dog bone.
 
 {{<gif webm_src="/tutorials/pet-treat-dispenser/3d-print-design.webm" mp4_src="/tutorials/pet-treat-dispenser/3d-print-design.mp4" alt="Rotating 3d rendered model of the pet feeder design." class="alignright" max-width="300px" class="aligncenter">}}
 
 2. Mount your Raspberry Pi to the side of the main body of your pet feeder using the provided mounting screw holes.
 1. Connect your power source to the Pi through the side hole.
 1. Mount your webcam to the front of your pet feeder.
-Connect the USB cable to your Pi.
+   Connect the USB cable to your Pi.
 1. Insert the 3D printed stepper motor wheel into your pet feeder.
-This is what will funnel treats out of your pet feeder programmatically.
+   This is what will funnel treats out of your pet feeder programmatically.
 1. Place your stepper motor into the motor holder part and gently slide the wires through the hole that leads through the body of your feeder and feeds the cables out on the Raspberry Pi side.
 1. Slide the motor driver holder into the body of your feeder, it should sit flush and fit nicely.
 1. Connect your stepper motor to the motor driver according to this wiring diagram:
@@ -207,14 +207,14 @@ Then you can use these images to train a machine learning model on your pet.
 To enable the [data capture](/services/data/configure-data-capture/) on your robot, do the following:
 
 1. Under the **Config** tab, select **Services**, and navigate to **Create service**.
-Here, you will add a service so your robot can sync data to the Viam app in the cloud.
+   Here, you will add a service so your robot can sync data to the Viam app in the cloud.
 1. For **type**, select **Data Management** from the drop-down, and give your service a name.
-We used `pet-data` for this tutorial.
+   We used `pet-data` for this tutorial.
 1. Ensure that **Data Capture** is enabled and **Cloud Sync** is enabled.
-Enabling data capture here will allow you to view the saved images in the Viam app and allow you to easily tag them and train your own machine learning model.
-You can leave the default directory as is.
-This is where your captured data is stored on-robot.
-By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
+   Enabling data capture here will allow you to view the saved images in the Viam app and allow you to easily tag them and train your own machine learning model.
+   You can leave the default directory as is.
+   This is where your captured data is stored on-robot.
+   By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
 
 ![The data management service configured with the name pet-data.](/tutorials/pet-treat-dispenser/app-service-data-management.png)
 
@@ -223,11 +223,11 @@ Next, enable the Data Management service on the camera component on your robot:
 1. Go to the **Components** tab and scroll down to the camera component you previously configured.
 1. Click **+ Add method** in the **Data Capture Configuration** section.
 1. Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
-This will capture an image from the camera roughly once every 3 seconds.
-Feel free to adjust the frequency if you want the camera to capture more or less image data.
-You want to capture data quickly so that you have as many pictures of your pet as possible so your classifier model can be very accurate.
-You should also select the Mime Type that you want to capture.
-For this tutorial, we are capturing `image/jpeg` data.
+   This will capture an image from the camera roughly once every 3 seconds.
+   Feel free to adjust the frequency if you want the camera to capture more or less image data.
+   You want to capture data quickly so that you have as many pictures of your pet as possible so your classifier model can be very accurate.
+   You should also select the Mime Type that you want to capture.
+   For this tutorial, we are capturing `image/jpeg` data.
 
 ![The configuration page for a camera component.](/tutorials/pet-treat-dispenser/app-camera-configuration.png)
 
@@ -296,7 +296,7 @@ Once the model has finished training, deploy it by adding a [ML model service](/
 
 1. To deploy a new model onto your robot, navigate to the robot page on the Viam app, and in the **Config** tab, select **Services**.
 1. Create a new service, select **ML Model** as the **Type**, and name it `puppymodel`.
-Select `tflite_cpu` as the **Model**.
+   Select `tflite_cpu` as the **Model**.
 
 1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
 1. Select your trained model (`puppymodel`) as your desired **Model**.
@@ -548,10 +548,10 @@ if __name__ == '__main__':
 Take your smart pet feeder to the next level!
 You could try one of the following:
 
-* Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
-* Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
-* Add a button that your pet must press to access the treat.
+- Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
+- Train a [ML model](/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
+- Add a button that your pet must press to access the treat.
   If you add several treat types, you might include a different color button for each treat type, allowing your pet to choose.
-* If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.
+- If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.
 
 For more robotics projects, check out our [other tutorials](/tutorials/).

@@ -63,6 +63,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `join_color_depth` views:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `output_image_type` | string | **Required** | Specify `color` or `depth` for the output stream. |

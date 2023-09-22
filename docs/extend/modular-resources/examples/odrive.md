@@ -4,7 +4,18 @@ linkTitle: "ODrive"
 weight: 40
 type: "docs"
 description: "Configure an ODrive motor with serial or CANbus communication as a modular resource of your robot."
-tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Python", "python SDK", "CAN"]
+tags:
+  [
+    "motor",
+    "odrive",
+    "canbus",
+    "serial",
+    "module",
+    "modular resources",
+    "Python",
+    "python SDK",
+    "CAN",
+  ]
 # SMEs: Kim, Martha, Rand
 ---
 
@@ -23,13 +34,13 @@ The methods other SDKs provide for the [motor API](/components/motor/#api) will 
 
 On your robot's computer, clone the [Viam ODrive module](https://github.com/viamrobotics/odrive):
 
-``` {class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 git clone https://github.com/viamrobotics/odrive.git
 ```
 
 Install `python-can`, `cantools`, and the [Python `viam-sdk`](https://python.viam.dev/):
 
-``` {class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 pip3 install python-can cantools viam-sdk
 ```
 
@@ -41,7 +52,7 @@ Find and copy the path (either absolute, or relative to the working directory) t
 
 Navigate to the `odrive/odrive-motor` directory of the ODrive module you cloned on a Terminal session with your computer and run `pwd` to obtain the path to `run.sh` on your robot's computer.
 
-``` {class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 cd <your/path/to/odrive/odrive-motor>
 pwd
 ```
@@ -52,7 +63,7 @@ pwd
 
 1. Read through the [ODrive documentation](https://docs.odriverobotics.com/v/latest/getting-started.html) to wire, calibrate, and configure your ODrive natively.
 
-    {{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
 This configuration remains on the same ODrive motor controller across reboots, and only changes when you go through the configuration of the ODrive again.
 
@@ -70,7 +81,7 @@ This option is not recommend for the `canbus` model.
 
 3. See the [ODrive CAN documentation](https://docs.odriverobotics.com/v/latest/can-guide.html) for detailed information on how to set up CAN on your ODrive.
 
-    {{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
 If you are using a Raspberry Pi as your [board](/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
 See "[Troubleshooting](#troubleshooting): [CAN Link Issues](https://github.com/viamrobotics/odrive#can-link-issues)" for more information.
@@ -79,10 +90,11 @@ Additionally, make sure you have [enabled SPI communication on your Pi](/install
 
     {{% /alert %}}
 
-4. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
+4.  Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
 
-    {{< tabs name="Connect your ODrive">}}
-{{% tab name="serial" %}}
+        {{< tabs name="Connect your ODrive">}}
+
+    {{% tab name="serial" %}}
 
 Plug the [USB Isolator for Odrive](https://odriverobotics.com/shop/usb-c-to-usb-a-cable-and-usb-isolator) into a USB port on your board.
 Plug a USB-C to USB-A cable from the isolator to the ODrive.
@@ -101,7 +113,7 @@ Note that if you want to only use the CAN pins, you cannot specify an `"odrive_c
 The ODrive would not be able to make the serial connection it needs to perform reconfiguration.
 
 {{% /tab %}}
-    {{< /tabs >}}
+{{< /tabs >}}
 
     After preparing your ODrive, configure the module to configure `serial` or `canbus` model motors on your robot.
 
@@ -137,53 +149,52 @@ On the new component panel, copy and paste the following JSON object into the at
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-  Navigate to the **Config** tab.
-  Select the **Raw JSON** mode.
+Navigate to the **Config** tab.
+Select the **Raw JSON** mode.
 
-  To add the module, copy and paste the JSON object into the `"modules"` array:
+To add the module, copy and paste the JSON object into the `"modules"` array:
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "name": "odrive",
-    "executable_path": "<your/path/to/odrive/odrive-motor/run.sh>"
-  }
-  ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "odrive",
+  "executable_path": "<your/path/to/odrive/odrive-motor/run.sh>"
+}
+```
 
-  To add the modular resource from the module, copy and paste the JSON object into the `"components"` array:
+To add the modular resource from the module, copy and paste the JSON object into the `"components"` array:
 
-  {{< tabs name="Add an ODrive motor">}}
-  {{% tab name="serial" %}}
+{{< tabs name="Add an ODrive motor">}}
+{{% tab name="serial" %}}
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-      "model": "viam:odrive:serial",
-      "namespace": "rdk",
-      "attributes": {
-      },
-      "depends_on": [],
-      "type": "motor",
-      "name": "<your-odrive-motor>"
-  }
-  ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "model": "viam:odrive:serial",
+  "namespace": "rdk",
+  "attributes": {},
+  "depends_on": [],
+  "type": "motor",
+  "name": "<your-odrive-motor>"
+}
+```
 
-  {{% /tab %}}
-  {{% tab name="canbus" %}}
+{{% /tab %}}
+{{% tab name="canbus" %}}
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-      "model": "viam:odrive:canbus",
-      "namespace": "rdk",
-      "attributes": {
-        "canbus_node_id": <int>,
-      },
-      "depends_on": [],
-      "type": "motor",
-      "name": "<your-odrive-motor>"
-  }
-  ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+    "model": "viam:odrive:canbus",
+    "namespace": "rdk",
+    "attributes": {
+      "canbus_node_id": <int>,
+    },
+    "depends_on": [],
+    "type": "motor",
+    "name": "<your-odrive-motor>"
+}
+```
 
-  {{% /tab %}}
-  {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -232,6 +243,7 @@ Edit and fill in the attributes as applicable to your model of ODrive.
 
 The following attributes are available for the motor resources available in the Viam ODrive module:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `canbus_node_id` | int | Optional | Required for successful initialization of the `"canbus"` type. <br> Node ID of the CAN node you would like to use. You configured this when [setting up your ODrive](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive). <br> Example: `0` |
@@ -253,9 +265,9 @@ The `"canbus"` type allows you to connect multiple ODrives without providing a `
 To add an `odrive_config_file` and reconfigure your ODrive natively each time the motor is initialized on the robot, use [`odrivetool`](https://docs.odriverobotics.com/v/latest/odrivetool.html) to extract your configuration from your ODrive:
 
 1. Run `odrivetool backup-config config.json` to extract your configs to a file called `config.json`.
-See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
+   See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
 2. `iq_msg_rate_ms` in the config defaults to `0`.
-You must set this to or around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
+   You must set this to or around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
 3. If you add an `odrive_config_file` to an `canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
 
 An alternative to adding an `odrive_config_file` is running the command `odrivetool restore-config /path/to/config.json` in your terminal.

@@ -53,8 +53,7 @@ Edit and fill in the attributes as applicable.
       "model": "pi",
       "name": "local",
       "type": "board",
-      "attributes": {
-      }
+      "attributes": {}
     },
     {
       "name": "my-arm",
@@ -75,6 +74,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `ur5e` arms:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
 | `speed_degs_per_sec`  | float | **Required** | Desired maximum speed of joint movement in degrees/sec. <br> Range: `[.1, 1]` |

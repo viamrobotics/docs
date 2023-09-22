@@ -9,10 +9,8 @@ imageAlt: "E S P 32 - espressif"
 images: ["/installation/thumbnails/esp32-espressif.png"]
 description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
-    - /installation/microcontrollers
-
+  - /installation/microcontrollers
 # SMEs: Nicolas Menard
-
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}
@@ -22,7 +20,7 @@ aliases:
 Follow these steps to install and build the micro-rdk on your ESP32:
 
 1. Install the [required software](#software-requirements)
-2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility *(recommended)*
+2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility _(recommended)_
 3. [Install the Micro-RDK](#install-the-micro-rdk)
 
 ### Hardware Requirements
@@ -30,8 +28,8 @@ Follow these steps to install and build the micro-rdk on your ESP32:
 You need an Espressif ESP32 microcontroller to use the micro-RDK.
 Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).
 
-* **Minimal configuration:** 384kB Ram 4MB flash
-* **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
+- **Minimal configuration:** 384kB Ram 4MB flash
+- **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
 
 ### Software Requirements
 
@@ -75,7 +73,7 @@ See the [Rust Installation guide](https://www.rust-lang.org/tools/install) for m
 
 #### Install `cargo-generate` with `cargo`
 
- `cargo` installs automatically when downloading Rust with rustup.
+`cargo` installs automatically when downloading Rust with rustup.
 
 Run the following command to install `cargo-generate`:
 
@@ -286,9 +284,7 @@ Copy the following JSON template and paste it into your configuration inside the
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "attributes": {
-    "pins": [
-      15
-    ],
+    "pins": [15],
     "analogs": [
       {
         "pin": "34",
@@ -311,6 +307,7 @@ Click **Save config**.
 
 The following attributes are available for `esp32` boards:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
@@ -332,12 +329,12 @@ cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.gi
 You will be prompted to paste your robot's JSON configuration into the terminal.
 To obtain this:
 
-* Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
-* Click on the **Setup** tab.
-Keep your `Mode` and `Architecture` selections at default.
-* Click the **Copy viam-server config** button on the right side of the **Setup** tab.
-The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
-* Paste the `viam-server` config into your terminal when prompted.
+- Navigate to [your new robot's](/installation/prepare/microcontrollers/#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+- Click on the **Setup** tab.
+  Keep your `Mode` and `Architecture` selections at default.
+- Click the **Copy viam-server config** button on the right side of the **Setup** tab.
+  The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+- Paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
 

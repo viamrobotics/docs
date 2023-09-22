@@ -30,7 +30,7 @@ _viam-server_ is responsible for:
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/program/apis/" %}}
-  {{% card link="/extend/" %}}
-  {{% card link="/internals/micro-rdk/" %}}
+{{% card link="/program/apis/" %}}
+{{% card link="/extend/" %}}
+{{% card link="/internals/micro-rdk/" %}}
 {{< /cards >}}

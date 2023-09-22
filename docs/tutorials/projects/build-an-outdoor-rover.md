@@ -6,12 +6,11 @@ tags: ["base", "outdoor", "solar", "rover"]
 description: "Build and control an affordable, functional outdoor rover (choose 3)."
 image: "/tutorials/outdoor-rover-boxbot/completed-rover.jpg"
 images: ["/tutorials/outdoor-rover-boxbot/completed-rover.jpg"]
-aliases:
-  /tutorials/build-an-outdoor-rover/
+aliases: /tutorials/build-an-outdoor-rover/
 imageAlt: "Rover with mounted solar panel."
-authors: [ "Matt Vella" ]
+authors: ["Matt Vella"]
 languages: []
-viamresources: [ "board", "motor", "base", "camera" ]
+viamresources: ["board", "motor", "base", "camera"]
 level: "Intermediate"
 date: "2023-03-29"
 # updated: ""
@@ -23,16 +22,16 @@ Approaching robotics can be daunting.
 Many of us who have tried have ended up with empty wallets, life to catch up on, and spare parts in our closets.
 Some of us have had some success starting with robotic kits or learning robots.
 You know - the ones that are fairly easy to get up and running, but ultimately are expensive toys?
-In my humble opinion, these robots are somewhat missing the point: people want to create robots *that* *do real things, that solve real-life problems*.
+In my humble opinion, these robots are somewhat missing the point: people want to create robots _that_ _do real things, that solve real-life problems_.
 What to do?
-Well, you *can* certainly purchase a very capable outdoor robotic rover for upwards of 12 thousand dollars.
+Well, you _can_ certainly purchase a very capable outdoor robotic rover for upwards of 12 thousand dollars.
 It will still be hard to learn how to expand and program it, but it's at least capable, right?
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/9OzwozzckdY">}}
 
 Fortunately I work at Viam, where we are building a platform that makes robotics and robotic automation approachable, and therefore much easier to build useful robots.
-Now, when I am an employee at *any* company one of the most important things is that I truly believe in the product.
-Therefore, I challenged myself with the following proof: *"Can I build a weatherproof, outdoor rover that is capable of doing useful things for under $500?"*
+Now, when I am an employee at _any_ company one of the most important things is that I truly believe in the product.
+Therefore, I challenged myself with the following proof: _"Can I build a weatherproof, outdoor rover that is capable of doing useful things for under $500?"_
 
 **Good news: the answer is yes, and it can be done in less than a day.**
 
@@ -52,6 +51,7 @@ Other advantages of using a case of this type is that you can easily open and cl
 Some of the equipment listed here is optional.
 For example, you might not need a night-vision camera if you won't operate it at night and you will not need a solar panel and charge controller if you plan on using your rover occasionally and charging it in-between.
 
+<!-- prettier-ignore -->
 |Part | Quantity | Price (each) | Price total | Notes |
 | --- | --- | --- | --- | --- |
 | [Weatherproof plastic case](https://www.alibaba.com/product-detail/Waterproof-Foam-Pu-eva-epe-xpe_1600097495864.html) | 1 | $30.50 | $30.50 | This is the key to protecting your electronics and holding the robot together. Make sure it is a thick, strong plastic and can fit the solar panel mounted on top. Finally, get one with adjustable foam inside - this is very handy for cushioning your electronic components.|
@@ -92,7 +92,7 @@ Hard work, but someone's gotta do it.
   {{<imgproc src="/tutorials/outdoor-rover-boxbot/caster-wheels.png" resize="300x" declaredimensions=true alt="Mounted caster wheels." class="alignleft" style="max-width: 200px">}}
 </div>
 
-Next, you'll mount the caster wheels to the "front" of the box (meaning what *will be* the front of the robot, which in reality is the left or right side of the box when facing the side of the box with the handle), and the hub motors to the rear, trying to ensure that the hub motor wheels are parallel to each other, and are not too close to the sides of the case.
+Next, you'll mount the caster wheels to the "front" of the box (meaning what _will be_ the front of the robot, which in reality is the left or right side of the box when facing the side of the box with the handle), and the hub motors to the rear, trying to ensure that the hub motor wheels are parallel to each other, and are not too close to the sides of the case.
 The caster wheels I bought had bolts attached, so I simply drilled holes through the bottom of the case, pushed them through, added washers and tightened the nuts securely.
 
 For the hub motor mounts, drill two holes through each mount, line each one up, then drill through these holes into the bottom of the plastic case.
@@ -107,7 +107,7 @@ For this, I used marine epoxy from the hardware store, surrounding where the bol
 You can do the same where you pass the wires into the case; for added strength you can also use [wire pass-throughs](https://www.amazon.com/Black-Plastic-Waterproof-Cable-Connectors/dp/B0081DDUW8).
 
 To attach the hub motors, use galvanized carriage bolts with washers inserted from the inside of the case out to the bottom, then put the bolts through the mounts, add washers and nuts and tighten securely.
-The bolts I had were *way* too long, so I had to remove the excess length with the hacksaw - you can avoid this by getting the correct length from the beginning - just measure the depth of the mount plus the case thickness, plus some excess for the washer and securing the nut!
+The bolts I had were _way_ too long, so I had to remove the excess length with the hacksaw - you can avoid this by getting the correct length from the beginning - just measure the depth of the mount plus the case thickness, plus some excess for the washer and securing the nut!
 
 At this point, you should have a not-yet-powered but assembled wheeled base!
 
