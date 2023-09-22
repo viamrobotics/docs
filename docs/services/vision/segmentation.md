@@ -206,20 +206,7 @@ Click **Save config** and proceed to [test your segmenter](#test-your-segmenter)
 This segmenter model is for depth cameras, and is best for motion planning with transient obstacles.
 Use the segmenter to identify well separated objects above a flat plane.
 
-If you want to identify multiple boxes over the flat plane with your segmenter:
-
-- First, configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
-    - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
-    You can then get those parameters from your camera through the [camera API](/components/camera/#getproperties).
-- Then, set the segmenter's attribute `with_geometries: true`.
-- The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
-
-If you choose not to configure the frame system, you can still identify single points over the flat plane with your segmenter:
-
-- Set `with_geometries: false`.
-- The segmenter now returns a single point within the `GeometryInFrame` object it captures.
-
-Then, configure an `obstacles_depth` segmenter:
+Configure an `obstacles_depth` segmenter:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -276,6 +263,19 @@ The following parameters are available for an `"obstacles_depth"` segmenter:
 | `h_max_m` | Optional | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br> |
 | `theta_max_deg` | Optional | The maximum slope at which an object is still not an obstacle. <br> Default: `45` </br> |
 | `return_pcds` | Optional | Whether you would like pointclouds to be included within the GeometryInFrame object captured by this segmenter.  <br> Example: `"false"` </br> |
+
+If you want to identify multiple boxes over the flat plane with your segmenter:
+
+- First, [configure your frame system](/services/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/services/frame-system/).
+  - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
+  - You can get those parameters from your camera through the [camera API](/components/camera/#getproperties).
+- Next, set your segmenter's attribute `with_geometries: true`.
+- The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
+
+If you choose not to configure the frame system, you can still identify single points over the flat plane with your segmenter:
+
+- Set `with_geometries: false`.
+- The segmenter now returns a single point within the `GeometryInFrame` object it captures.
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
