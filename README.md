@@ -78,6 +78,25 @@ done
 fi
 ```
 
+### Lint JS and Markdown files with Prettier on save
+
+1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+2. Run `npm install` in the docs folder you have the docs checked out in.
+3. Inside VS code, open `settings.json` and ensure the following settings are in the file:
+
+```json
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.configPath": ".prettierrc",
+  "prettier.documentSelectors": ["**/*.md"],
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
+  "prettier.withNodeModules": true,
+  "prettier.resolveGlobalModules": true,
+  "prettier.requirePragma": true
+```
+
 ## Publishing
 
 The docs are automatically published when a PR merges.
