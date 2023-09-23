@@ -6,6 +6,7 @@ draft: true
 type: "docs"
 description: "A guide to viewing and contributing to Viam's open source efforts."
 ---
+
 ## Coming soon
 
 This page will contain information on:

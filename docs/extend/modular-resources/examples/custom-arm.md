@@ -4,7 +4,18 @@ linkTitle: "Custom Arm"
 weight: 100
 type: "docs"
 description: "Implement your own robot arm driver. Code a module with the Go or Python SDKs that provides a custom model of arm as a modular resource."
-tags: ["motor", "odrive", "canbus", "serial", "module", "modular resources", "Python", "python SDK", "CAN"]
+tags:
+  [
+    "motor",
+    "odrive",
+    "canbus",
+    "serial",
+    "module",
+    "modular resources",
+    "Python",
+    "python SDK",
+    "CAN",
+  ]
 # SMEs: Nicole Jung
 ---
 
@@ -12,7 +23,7 @@ The {{< glossary_tooltip term_id="rdk" text="RDK" >}} provides a number of built
 
 {{% alert title="Info" color="info" %}}
 
-*Built-in* models each have a software driver in the RDK.
+_Built-in_ models each have a software driver in the RDK.
 For example, the `ur5e`'s driver is implemented in [`ur.go`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur.go) in the RDK.
 
 Each of these models must also include a [kinematics file](/internals/kinematic-chain-config/), which specifies the relative [orientation](/internals/orientation-vector/) of links and joints in its kinematic chain.
@@ -35,8 +46,8 @@ This provides the necessary information for the [frame system service](/services
 
 **Find a pre-built kinematics file:**
 
-- `viam-server` will work with <file>URDF</file>  [(United Robot Description Format)]( https://wiki.ros.org/urdf) kinematics files, which are currently the standard for ROS drivers.
-You can find <file>URDF</file> "robot descriptions" for many industrial robot arm models on GitHub that are compatible with the Viam platform.
+- `viam-server` will work with <file>URDF</file> [(United Robot Description Format)](https://wiki.ros.org/urdf) kinematics files, which are currently the standard for ROS drivers.
+  You can find <file>URDF</file> "robot descriptions" for many industrial robot arm models on GitHub that are compatible with the Viam platform.
 
 **Create your own kinematics file:**
 
@@ -44,7 +55,7 @@ You can find <file>URDF</file> "robot descriptions" for many industrial robot ar
   - Use the [Spatial Vector Algebra (SVA)](/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
   - Follow the frame system's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientations](/internals/orientation-vector/) of the `links` on your arm.
-  You can view existing examples of the SVA and JSON format in Viam's [built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm).
+    You can view existing examples of the SVA and JSON format in Viam's [built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm).
 
 Create a new directory.
 Give it the name your want you call your custom {{< glossary_tooltip term_id="model" text="model" >}} of arm.
@@ -56,10 +67,10 @@ While completing the following step, make sure to save any new files that you ge
 To create a custom arm model, code a module in Python with the module support libraries provided by [Viam's SDKs](/program/apis/):
 
 1. [Code a new resource model](#code-a-new-resource-model) implementing all methods the Viam RDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}}, `rdk:component:arm`, which is available for reference [on GitHub](https://github.com/viamrobotics/rdk/blob/main/components/arm/arm.go).
-Import your custom model and API into the main program and register the new resource model with the Python SDK.
+   Import your custom model and API into the main program and register the new resource model with the Python SDK.
 
 1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
-This main program is the "entry point" to your module.
+   This main program is the "entry point" to your module.
 
 1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from `viam-server`, open the socket, and start the module at the entry point.
 
@@ -72,7 +83,7 @@ Follow [this guide](/extend/modular-resources/create/#code-a-new-resource-model)
 
 {{% /alert %}}
 
-Save the following two files, <file>my_modular_arm.py</file> and <file>_\_init__.py</file>, on your computer and edit the code as applicable.
+Save the following two files, <file>my_modular_arm.py</file> and <file>\_\_init\_\_.py</file>, on your computer and edit the code as applicable.
 
 This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) [(rdk:service:arm)](/extend/modular-resources/key-concepts/#models) as a new model, `"myarm"`:
 
@@ -81,96 +92,96 @@ This module template registers a modular resource implementing Viam's built-in [
     <details>
     <summary>Click to view sample code from <file>my_modular_arm.py</file></summary>
 
-    ``` python {class="line-numbers linkable-line-numbers"}
-    import asyncio
-    import os
-    from typing import Any, ClassVar, Dict, Mapping, Optional, Tuple
-    from typing_extensions import Self
+  ```python {class="line-numbers linkable-line-numbers"}
+  import asyncio
+  import os
+  from typing import Any, ClassVar, Dict, Mapping, Optional, Tuple
+  from typing_extensions import Self
 
-    from viam.components.arm import Arm, JointPositions, KinematicsFileFormat, Pose
-    from viam.operations import run_with_operation
-    from viam.proto.app.robot import ComponentConfig
-    from viam.proto.common import ResourceName
-    from viam.resource.base import ResourceBase
-    from viam.resource.types import Model, ModelFamily
+  from viam.components.arm import Arm, JointPositions, KinematicsFileFormat, Pose
+  from viam.operations import run_with_operation
+  from viam.proto.app.robot import ComponentConfig
+  from viam.proto.common import ResourceName
+  from viam.resource.base import ResourceBase
+  from viam.resource.types import Model, ModelFamily
 
 
-    class MyModularArm(Arm):
-        # Subclass the Viam Arm component and implement the required functions
-        MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "myarm")
+  class MyModularArm(Arm):
+      # Subclass the Viam Arm component and implement the required functions
+      MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "myarm")
 
-        def __init__(self, name: str):
-            # Starting joint positions
-            self.joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0])
-            super().__init__(name)
+      def __init__(self, name: str):
+          # Starting joint positions
+          self.joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 0])
+          super().__init__(name)
 
-        @classmethod
-        def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-            arm = cls(config.name)
-            return arm
+      @classmethod
+      def new(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+          arm = cls(config.name)
+          return arm
 
-        async def get_end_position(self, extra: Optional[Dict[str, Any]] = None, **kwargs) -> Pose:
-            raise NotImplementedError()
+      async def get_end_position(self, extra: Optional[Dict[str, Any]] = None, **kwargs) -> Pose:
+          raise NotImplementedError()
 
-        async def move_to_position(self, pose: Pose, extra: Optional[Dict[str, Any]] = None, **kwargs):
-            raise NotImplementedError()
+      async def move_to_position(self, pose: Pose, extra: Optional[Dict[str, Any]] = None, **kwargs):
+          raise NotImplementedError()
 
-        async def get_joint_positions(self, extra: Optional[Dict[str, Any]] = None, **kwargs) -> JointPositions:
-            return self.joint_positions
+      async def get_joint_positions(self, extra: Optional[Dict[str, Any]] = None, **kwargs) -> JointPositions:
+          return self.joint_positions
 
-        @run_with_operation
-        async def move_to_joint_positions(self, positions: JointPositions, extra: Optional[Dict[str, Any]] = None, **kwargs):
-            operation = self.get_operation(kwargs)
+      @run_with_operation
+      async def move_to_joint_positions(self, positions: JointPositions, extra: Optional[Dict[str, Any]] = None, **kwargs):
+          operation = self.get_operation(kwargs)
 
-            self.is_stopped = False
+          self.is_stopped = False
 
-            # Simulate the length of time it takes for the arm to move to its new joint position
-            for x in range(10):
-                await asyncio.sleep(1)
+          # Simulate the length of time it takes for the arm to move to its new joint position
+          for x in range(10):
+              await asyncio.sleep(1)
 
-                # Check if the operation is cancelled and, if it is, stop the arm's motion
-                if await operation.is_cancelled():
-                    await self.stop()
-                    break
+              # Check if the operation is cancelled and, if it is, stop the arm's motion
+              if await operation.is_cancelled():
+                  await self.stop()
+                  break
 
-            self.joint_positions = positions
-            self.is_stopped = True
+          self.joint_positions = positions
+          self.is_stopped = True
 
-        async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
-            self.is_stopped = True
+      async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
+          self.is_stopped = True
 
-        async def is_moving(self) -> bool:
-            return not self.is_stopped
+      async def is_moving(self) -> bool:
+          return not self.is_stopped
 
-        async def get_kinematics(self, **kwargs) -> Tuple[KinematicsFileFormat.ValueType, bytes]:
-            dirname = os.path.dirname(__file__)
-            filepath = os.path.join(dirname, "./xarm6_kinematics.json")
-            with open(filepath, mode="rb") as f:
-                file_data = f.read()
-            return (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA, file_data)
-    ```
+      async def get_kinematics(self, **kwargs) -> Tuple[KinematicsFileFormat.ValueType, bytes]:
+          dirname = os.path.dirname(__file__)
+          filepath = os.path.join(dirname, "./xarm6_kinematics.json")
+          with open(filepath, mode="rb") as f:
+              file_data = f.read()
+          return (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA, file_data)
+  ```
 
     </details><br>
 
-- <file>_\_init__.py</file> registers the `my_modular_arm` custom model and API helper functions with the Python SDK.
+- <file>\_\_init\_\_.py</file> registers the `my_modular_arm` custom model and API helper functions with the Python SDK.
 
     <details>
     <summary>Click to view sample code from <file>__init__.py</file></summary>
 
-    ``` python {class="line-numbers linkable-line-numbers"}
-    from viam.components.arm import Arm
-    from viam.resource.registry import Registry, ResourceCreatorRegistration
-    from .my_modular_arm import MyModularArm
+  ```python {class="line-numbers linkable-line-numbers"}
+  from viam.components.arm import Arm
+  from viam.resource.registry import Registry, ResourceCreatorRegistration
+  from .my_modular_arm import MyModularArm
 
 
-    Registry.register_resource_creator(Arm.SUBTYPE, MyModularArm.MODEL, ResourceCreatorRegistration(MyModularArm.new))
-    ```
+  Registry.register_resource_creator(Arm.SUBTYPE, MyModularArm.MODEL, ResourceCreatorRegistration(MyModularArm.new))
+  ```
 
     </details>
 
 {{% alert title="Info" color="info" %}}
 
-The Python code for the custom model (<file>my_modular_arm.py</file>), resource registration file (<file>_\_init__.py</file>), and module entry point file (<file>main.py</file>) is adapted from the [Python SDK modular arm example](https://python.viam.dev/examples/example.html#custom-modular-arm-example).
+The Python code for the custom model (<file>my_modular_arm.py</file>), resource registration file (<file>\_\_init\_\_.py</file>), and module entry point file (<file>main.py</file>) is adapted from the [Python SDK modular arm example](https://python.viam.dev/examples/example.html#custom-modular-arm-example).
 
 {{% /alert %}}
 
@@ -182,7 +193,7 @@ When executed, it initializes the `myarm` custom model and API helper functions 
 <details>
 <summary>Click to view sample code from <file>main.py</file></summary>
 
-``` python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 import asyncio
 
 from viam.module.module import Module
@@ -192,8 +203,9 @@ from .my_modular_arm import MyModularArm
 
 
 async def main():
-    """This function creates and starts a new module, after adding all desired resources.
-    Resources must be pre-registered. For an example, see the `__init__.py` file.
+    """This function creates and starts a new module, after adding all desired
+    resources. Resources must be pre-registered. For an example, see the
+    `__init__.py` file.
     """
 
     module = Module.from_args()
@@ -226,7 +238,7 @@ One option is to create and save a new shell script (<file>.sh</file>) that runs
 
 For example:
 
-``` sh { class="command-line" data-prompt="$"}
+```sh { class="command-line" data-prompt="$"}
 #!/bin/sh
 cd `dirname $0`
 
@@ -238,7 +250,7 @@ If you omit this, be sure to handle the forwarding of termination signals accord
 
 To make this shell script executable, run the following command in your terminal:
 
-``` sh { class="command-line" data-prompt="$"}
+```sh { class="command-line" data-prompt="$"}
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 

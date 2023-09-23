@@ -61,6 +61,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `join_pointclouds` views:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `target_frame` | string | **Required** | The frame of reference for the points in the merged point cloud. |

@@ -5,8 +5,8 @@ weight: 99
 type: "docs"
 tags: ["server", "sdk"]
 aliases:
-    - "/program/extend/sdk-as-server/"
-    - "/program/extend/custom-components-remotes/"
+  - "/program/extend/sdk-as-server/"
+  - "/program/extend/custom-components-remotes/"
 
 description: "Implement custom components and register them on a server configured as a remote of your robot."
 ---
@@ -43,12 +43,12 @@ Each remote server can host one or many custom components.
 {{% tab name="Python" %}}
 
 1. Code a new model of a built-in resource type.
-You can do this by subclassing a built in resource type like `sensor` or `arm`.
-The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
+   You can do this by subclassing a built in resource type like `sensor` or `arm`.
+   The new model must implement any functions of the built-in resource type marked as required in its RDK API definition.
 1. Register the custom component on a new gRPC server instance and start the server.
-You can do this with the [`viam.rpc` library](https://python.viam.dev/autoapi/viam/rpc/index.html) by creating a new `rpc.server.Server` instance.
+   You can do this with the [`viam.rpc` library](https://python.viam.dev/autoapi/viam/rpc/index.html) by creating a new `rpc.server.Server` instance.
 1. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.
-2. Configure a command to launch this remote server as a {{< glossary_tooltip term_id="process" text="process" >}} of your robot to make sure the remote server is always running alongside the rest of your robot.
+1. Configure a command to launch this remote server as a {{< glossary_tooltip term_id="process" text="process" >}} of your robot to make sure the remote server is always running alongside the rest of your robot.
 
 Each remote server can host one or many custom components.
 
@@ -69,5 +69,5 @@ Otherwise, the class won’t instantiate.
 The following tutorial also explains how to add a custom component as a remote:
 
 {{< cards >}}
-    {{% card link="/tutorials/projects/make-a-plant-watering-robot" %}}
+{{% card link="/tutorials/projects/make-a-plant-watering-robot" %}}
 {{< /cards >}}

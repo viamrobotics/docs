@@ -53,6 +53,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `AMS-AS5048` encoders:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which your encoder is connected. |

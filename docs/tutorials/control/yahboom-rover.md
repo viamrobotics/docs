@@ -7,11 +7,11 @@ image: "/tutorials/yahboom-rover/bluetoothpair-connect.png"
 imageAlt: "A Pi terminal showing the bluetoothctl commands and their outputs."
 images: ["/tutorials/yahboom-rover/bluetoothpair-connect.png"]
 aliases:
-    - /tutorials/yahboom-rover/
+  - /tutorials/yahboom-rover/
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
-authors: [ "Hazal Mestci" ]
-languages: [ ]
-viamresources: [ "base", "input_controller", "motor" ]
+authors: ["Hazal Mestci"]
+languages: []
+viamresources: ["base", "input_controller", "motor"]
 level: "Intermediate"
 date: "2022-08-10"
 # updated: ""
@@ -21,7 +21,7 @@ cost: 260
 ## Requirements
 
 - A Raspberry Pi 4 running an instance of `viam-server`.
-See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instructions.
+  See our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) for instructions.
 - A [Yahboom 4WD Smart Robot](https://category.yahboom.net/collections/robotics/products/4wdrobot)
 - A Bluetooth gamepad controller. For this tutorial we used an 8BitDo controller.
 
@@ -103,7 +103,7 @@ In the **Create Component** box, name the component `yahboom-base`.
 For the `Type` select `base` and for the `Model` select `wheeled`.
 Click **Create Component**.
 For **Right Motors** select `right` (the name we cleverly gave to the motor on the right side).
-For  **Left Motors** select `left`.
+For **Left Motors** select `left`.
 For `width_mm`, use `150`, which is the approximate distance between the right and left wheels.
 For `wheel_circumference_mm` use `220`.
 

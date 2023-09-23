@@ -96,5 +96,5 @@ Once you have received support, you can remove Viam Support from your location b
 
 ### Delete a location
 
-You can delete a location that is *empty of robots* by clicking the trash can icon next to the location name at the top of the page for that location.
+You can delete a location that is _empty of robots_ by clicking the trash can icon next to the location name at the top of the page for that location.
 The icon will not appear if there are any robots in the location.

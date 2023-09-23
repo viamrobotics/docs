@@ -190,7 +190,7 @@ Next, install `viam-server` on your robot, if you have not done so already:
 1. Follow the steps listed under the **Setup** tab to install `viam-server` on your system.
 
    {{< alert title="Important" color="note" >}}
-   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command *instead* of the command listed in step 2 **Download and install viam-server** in the Viam app:
+   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command _instead_ of the command listed in step 2 **Download and install viam-server** in the Viam app:
 
    ```sh { class="command-line" data-prompt="$"}
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --appimage-extract-and-run -config /etc/viam.json
@@ -256,7 +256,7 @@ With everything configured and running, you can now run the inference client tha
    ```
 
    {{< alert title="Important" color="note" >}}
-   If you are working within the `bullseye` Docker container on Linux, run the following command *instead* of the above, from within the directory you installed `viam-server` to:
+   If you are working within the `bullseye` Docker container on Linux, run the following command _instead_ of the above, from within the directory you installed `viam-server` to:
 
    ```sh { class="command-line" data-prompt="$"}
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &

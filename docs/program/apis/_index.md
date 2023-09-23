@@ -39,9 +39,9 @@ Get a resource configured on a robot by `"name"`.
 **Returns:**
 
 - [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your robot.
-For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+  For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
-``` python
+```python
 my_arm = Arm.from_robot(robot, "my_arm")
 ```
 
@@ -58,7 +58,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your robot.
-For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+  For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
 my_arm = arm.FromRobot(robot, "my_arm")
@@ -81,7 +81,7 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 **Returns:**
 
 - [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your robot.
-For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
+  For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript
 const myArmClient = new VIAM.ArmClient(robot, "my_arm");
@@ -113,7 +113,7 @@ Get the [`ResourceName`](https://python.viam.dev/autoapi/viam/proto/common/index
 
 - `name` [(`proto.common.ResourceName`)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The [`ResourceName`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName) of the resource, including string fields for the `namespace`, `type`, `subtype`, and `name`.
 
-``` python
+```python
 my_arm_name = my_arm.get_resource_name("my_arm")
 ```
 
@@ -132,7 +132,7 @@ Get the [`Name`](https://pkg.go.dev/go.viam.com/rdk/resource#Name) of the resour
 
 - `name` [(Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The [`Name`](https://pkg.go.dev/go.viam.com/rdk/resource#Name) of the resource, including fields for the `API` with `Type` and `SubtypeName`, and string `Remote` and `Name`.
 
-``` go
+```go
 MyArmName := MyArm.Name()
 ```
 
@@ -165,11 +165,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` [(map[string]interface{})](<https://go.dev/blog/maps>): The command to execute.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
 
 **Returns:**
 
-- [(map[string]interface{})](<https://go.dev/blog/maps>): The result of the executed command.
+- [(map[string]interface{})](https://go.dev/blog/maps): The result of the executed command.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

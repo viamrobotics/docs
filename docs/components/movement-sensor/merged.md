@@ -11,7 +11,7 @@ images: ["/icons/components/imu.svg"]
 The `merged` movement sensor model is an abstraction that combines data from multiple movement sensors.
 This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client.
 
-This is especially useful if you want to get readings of position and orientation *or* linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#configuration) or [`IMU`](/components/movement-sensor/#configuration) models, respectively.
+This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/components/movement-sensor/#configuration) or [`IMU`](/components/movement-sensor/#configuration) models, respectively.
 
 To reduce velocity error when your robot is using the [navigation service](/services/navigation/), aggregate `Position()` from a [`GPS`](/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/components/movement-sensor/#configuration) movement sensor in a `merged` model.
 
@@ -44,13 +44,13 @@ Edit and fill in the attributes as applicable.
       "model": "merged",
       "attributes": {
         "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
-        "orientation" : ["<your-imu-sensor-name-1>"],
-        "compass_heading" : ["<your-gps-sensor-name-1>"],
-        "angular_velocity":["<your-imu-sensor-name-1>"],
+        "orientation": ["<your-imu-sensor-name-1>"],
+        "compass_heading": ["<your-gps-sensor-name-1>"],
+        "angular_velocity": ["<your-imu-sensor-name-1>"],
         "linear_velocity": ["<your-gps-sensor-name-1>"],
         "linear_acceleration": ["<your-accelerometer-sensor-name-1>"]
       },
-    "depends_on": [] 
+      "depends_on": []
     }
   ]
 }
@@ -62,18 +62,18 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 // { "components": [ { ... },
 {
-    "name": "<your-sensor-name>",
-    "type": "movement_sensor",
-    "model": "merged",
-    "attributes": {
-        "position": ["gps1"],
-        "orientation" : ["vectornav"],
-        "compass_heading" : ["gps1"],
-        "angular_velocity":["vectornav", "mpu6050"],
-        "linear_velocity": ["gps1"],
-        "linear_acceleration": ["adxl345"]
-    }, 
-      "depends_on":[]
+  "name": "<your-sensor-name>",
+  "type": "movement_sensor",
+  "model": "merged",
+  "attributes": {
+    "position": ["gps1"],
+    "orientation": ["vectornav"],
+    "compass_heading": ["gps1"],
+    "angular_velocity": ["vectornav", "mpu6050"],
+    "linear_velocity": ["gps1"],
+    "linear_acceleration": ["adxl345"]
+  },
+  "depends_on": []
 }
 ```
 
@@ -87,16 +87,16 @@ Configure an array of the `name` of each movement sensor you want to add to your
 - The name of each attribute represents the `Property` that that particular movement sensor supports, or the type of reading or measurement that it takes.
 - Get the properties supported by each model from its [model configuration documentation](/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/components/movement-sensor/#getproperties) on the sensor.
 - Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
-You can use the same sensor for multiple attributes if it supports multiple properties.
+  You can use the same sensor for multiple attributes if it supports multiple properties.
 
-Name | Type | Inclusion | Description
----- | ---- | --------- | -----------
-`position` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads position. |
-`orientation` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads orientation. |
-`compass_heading` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads compass heading position. |
-`linear_velocity` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear velocity. |
-`angular_velocity` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads angular velocity. |
-`linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration |
+| Name                  | Type  | Inclusion                                | Description                                                                                |
+| --------------------- | ----- | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `position`            | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads position.                 |
+| `orientation`         | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads orientation.              |
+| `compass_heading`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads compass heading position. |
+| `linear_velocity`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear velocity.          |
+| `angular_velocity`    | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads angular velocity.         |
+| `linear_acceleration` | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads linear acceleration       |
 
 Note that only one sensor from each array can be used to retrieve each type of reading.
 Your robot uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.

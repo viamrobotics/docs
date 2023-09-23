@@ -17,11 +17,12 @@ Complete the following setup requirements, then move on to configuring your boar
 
 Flash your Intel-based board with:
 
-1. The Ubuntu `"Server install image"` version of the operating system. For example, `ubuntu-22.04.2-live-server-amd64.iso`.
-Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to do so.
+1. The Ubuntu `"Server install image"` version of the operating system.
+   For example, `ubuntu-22.04.2-live-server-amd64.iso`.
+   Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to do so.
 1. The [pin control driver](https://github.com/up-division/pinctrl-upboard).
-Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
-This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to that of a [Raspberry Pi](/components/board/pi/).
+   Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
+   This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to that of a [Raspberry Pi](/components/board/pi/).
 
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
@@ -67,7 +68,10 @@ Edit and fill in the attributes as applicable.
       "model": "upboard",
       "attributes": {
         "i2cs": ["<your-i2cs-name-1>", "<your-i2cs-name-2>"],
-        "digital_interrupts": ["<your-digital_interrupts-name-1>", "<your-digital_interrupts-name-2>"]
+        "digital_interrupts": [
+          "<your-digital_interrupts-name-1>",
+          "<your-digital_interrupts-name-2>"
+        ]
       },
       "depends_on": []
     }
@@ -80,6 +84,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `upboard` boards:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |

@@ -14,7 +14,7 @@ How to [utilize](#utilize) and [define](#define) the `extra` parameters that man
 
 ## Utilize
 
-You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are *models* of built-in resource types.
+You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
 For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM service](/services/slam/).
 
@@ -32,9 +32,9 @@ An object of type `Dict[str, Any]` is a [dictionary](https://docs.python.org/3/t
 
 For example:
 
-``` python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 async def main():
-    ... # Connect to the robot.
+    # ... Connect to the robot.
 
     # Get your sensor resource from the robot.
     your_sensor = YourSensor.from_robot(robot, "your-sensor")
@@ -86,11 +86,11 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 
 ## Define
 
-If `extra` information must be passed to a resource, it is handled within a new, *modular* resource model's [custom API](/extend/modular-resources/) wrapper.
+If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/extend/modular-resources/) wrapper.
 
 {{%expand "Click for instructions on defining a custom model to utilize extra params" %}}
 
-To do this, define a custom implementation of the resource's API as a new *model*, and modify the resource's API methods to handle the `extra` information you send.
+To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/extend/modular-resources/create/) to do so.
 
 For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#getreadings) method in the code of a [new sensor model](/extend/modular-resources/):
@@ -98,18 +98,24 @@ For an example of how to check the values of keys in an `extra` parameter of a b
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-``` python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 # Readings depends on extra parameters.
 @abc.abstractmethod
-async def get_readings(self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs):
+async def get_readings(self,
+                       *,
+                       extra: Optional[Dict[str, Any]] = None,
+                       timeout: Optional[float] = None,
+                       **kwargs):
 
     # Define an empty dictionary for readings.
     readings = {}
 
-    # If extra["type"] is temperature or humidity, get the temperature or humidity from helper functions and return these values as the readings the sensor has provided.
-    if extra["type"] is "temperature":
+    # If extra["type"] is temperature or humidity, get the temperature or
+    # humidity from helper functions and return these values as the readings
+    # the sensor has provided.
+    if extra["type"] == "temperature":
         readings["type"] = get_temp()
-    elif extra["type"] is "humidity":
+    elif extra["type"] == "humidity":
         readings["type"] = get_humidity()
     # If the type is not one of these two cases, raise an exception.
     else:

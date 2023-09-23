@@ -5,7 +5,7 @@ weight: 50
 type: "docs"
 description: "Frequently Asked Questions about Try Viam."
 aliases:
-   - "/appendix/try-viam-faq"
+  - "/appendix/try-viam-faq"
 ---
 
 Try Viam allows you to try the Viam platform without setting up any hardware yourself.
@@ -18,7 +18,7 @@ No matter where you are in the world you can take over and play around with a Vi
 ## My robot had an error, a system crash, or is physically stuck
 
 1. Please notify Viam support on [our Community Discord](https://discord.gg/viam).
-2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your *location*.
+2. Use the **Add Viam Support** button on your robot's Location page to give Viam Support access to your _location_.
    Refer to [Managing Locations and sub-locations](/manage/fleet/locations/).
 
 ## Can I extend my time?

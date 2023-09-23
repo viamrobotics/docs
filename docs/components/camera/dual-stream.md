@@ -61,6 +61,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `dual_stream` cameras views:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `stream` | string | **Required** | `color` or `depth`. The image stream to return when you call `Next()` or `NextPointCloud()`. |
