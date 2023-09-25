@@ -557,7 +557,7 @@ Get the logs associated with a specific robot {{< glossary_tooltip term_id="part
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
 - `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the log entries to.
-- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to include only error logs.
+- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `num_log_entries` [(int)](https://docs.python.org/3/library/functions.html#int): Number of log entries to return.
   Passing `0` returns all logs.
@@ -592,7 +592,7 @@ Get an asynchronous iterator that receives live robot part logs.
 **Parameters:**
 
 - `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to retrieve logs from.
-- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to include only error logs.
+- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
