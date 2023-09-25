@@ -273,8 +273,9 @@ async def main():
             # Change this path to your own
             img.save('/yourpath/foundyou.png')
             # Yagmail section
-            # Create a yagmail.SMTP instance to initialize the server connection.                
-            # Replace username and password with your actual credentials
+            # Create a yagmail.SMTP instance
+            # to initialize the server connection.
+            # Replace username and password with actual credentials.
             yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
             # Specify the message contents
             contents = ['There is someone at your desk - beware',
