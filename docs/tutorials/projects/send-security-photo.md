@@ -266,33 +266,27 @@ async def main():
             if d.confidence > 0.8 and d.class_name.lower == "person":
             print("This is a person!")
             found = True
-                print(d.class_name)
-                if d.class_name.lower() == "person":
-                    print("This is a person!")
-                    found = True
+        if found:
+            print("sending a message")
+            # Change this path to your own
+            img.save('/yourpath/foundyou.png')
+            # Yagmail section
+            # Create a yagmail.SMTP instance to initialize the server connection.                
+            # Replace username and password with your actual credentials
+            yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
+            # Specify the message contents
+            contents = ['There is someone at your desk - beware',
+                        '/yourpath/foundyou.png']
+            # Add phone number and gateway address found in the SMS gateway step
+            yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
-            if found:
-                print("sending a message")
-                # Change this path to your own
-                img.save('/yourpath/foundyou.png')
-                # yagmail section
-                # Create a yagmail.SMTP instance to initialize the server connection.
-                # Replace username and password with your actual credentials
-                yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
-                # Specify the message contents
-                contents = ['There is someone at your desk - beware',
-                            '/yourpath/foundyou.png']
-                # Add phone number and gateway address found in the SMS gateway step
-                yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
-
-                # If the robot detects a person and sends a text, we don't need
-                # it to keep sending us more texts so we sleep it for 60
-                # seconds before looking for a person again
-                await asyncio.sleep(60)
-            else:
-                print("There's nobody here, don't send a message")
-                await asyncio.sleep(10)
-
+            # If the robot detects a person and sends a text, we don't need
+            # it to keep sending us more texts so we sleep it for 60
+            # seconds before looking for a person again
+            await asyncio.sleep(60)
+        else:
+            print("There's nobody here, don't send a message")
+            await asyncio.sleep(10)
     await asyncio.sleep(5)
     await robot.close()
 
@@ -323,26 +317,23 @@ Your terminal should look like this as your project runs if you are in front of 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 chocolate_security.py
 This is a person!
-sending message
+sending a message
 x_min: 7
 y_min: 0
 x_max: 543
 y_max: 480
 confidence: 0.94140625
-class_name: "Person"
-
 
 This is a person!
-sending message
+sending a message
 x_min: 51
 y_min: 0
 x_max: 588
 y_max: 480
 confidence: 0.9375
-class_name: "Person"
 
 This is a person!
-sending message
+sending a message
 There's nobody here, don't send a message
 There's nobody here, don't send a message
 ```
