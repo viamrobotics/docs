@@ -180,8 +180,8 @@ chmod +x run.sh
 
 Now, configure your rover to:
 
-* Recognize and operate the servo
-* Make the ML detector model available for use by the Viam vision service
+- Recognize and operate the servo
+- Make the ML detector model available for use by the Viam vision service
 
 ### 1. Configure the servo
 
