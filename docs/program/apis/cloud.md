@@ -64,7 +64,7 @@ async def main():
   # Instantiate an AppClient called "cloud" to run cloud app API methods on
   cloud = viam_client.app_client
 
-    viam_client.close()
+  viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
