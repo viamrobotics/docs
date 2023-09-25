@@ -181,10 +181,10 @@ On the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the co
           "b": "15",
           "pwm": "11"
         },
-        "board": "local",
+        "board": "party",
         "max_rpm": 1000
       },
-      "depends_on": ["local"]
+      "depends_on": ["party"]
     }
   ]
 }
