@@ -254,12 +254,14 @@ If you intend to use the detector with a camera that is part of your robot, you 
 from viam.services.vision import VisionClient
 
 robot = await connect()
+camera_name = "cam1"
+
 # Grab camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the detector
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
-detections = await my_detector.get_detections_from_camera(cam1)
+detections = await my_detector.get_detections_from_camera(camera_name)
 
 # If you need to store the image, get the image first
 # and then run detections on it. This process is slower:
