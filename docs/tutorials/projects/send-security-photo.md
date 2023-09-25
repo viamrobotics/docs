@@ -232,7 +232,7 @@ import os
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import VisionClient, Detection
+from viam.services.vision import VisionClient
 import yagmail
 
 # These must be set. You can get them from your robot's 'Code sample' tab
@@ -263,7 +263,9 @@ async def main():
 
         found = False
         for d in detections:
-            if d.confidence > 0.8:
+            if d.confidence > 0.8 and d.class_name.lower == "person":
+            print("This is a person!")
+            found = True
                 print(d.class_name)
                 if d.class_name.lower() == "person":
                     print("This is a person!")
