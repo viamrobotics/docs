@@ -252,13 +252,12 @@ async def connect():
 async def main():
     robot = await connect()
     # make sure that your detector name in the app matches "myPeopleDetector"
-    detector = VisionClient.from_robot(robot, "myPeopleDetector")
+    myPeopleDetector = VisionClient.from_robot(robot, "myPeopleDetector")
     # make sure that your camera name in the app matches "my-camera"
     my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
     N = 100
     for i in range(N):
-        detections = await detector.get_detections_from_camera("my-camera")
         img = await my_camera.get_image()
         detections = await myPeopleDetector.get_detections(img)
 
