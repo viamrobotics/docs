@@ -68,27 +68,29 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
 
 - **Data Integrity**: Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
 
-      If the internet becomes unavailable or the robot needs to restart during the sync process, the sync is interrupted.
-      If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
-      When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
+  If the internet becomes unavailable or the robot needs to restart during the sync process, the sync is interrupted.
+  If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
+  When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
 
-      For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
-      Once the service retries and successfully connects, data synchronization resumes at 33%.
+  For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
+  Once the service retries and successfully connects, data synchronization resumes at 33%.
 
-      {{< alert title="Caution" color="caution" >}}
+  {{< alert title="Caution" color="caution" >}}
 
   If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
+
   {{< /alert >}}
 
 - **Storage** When a robot loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
 
-      To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
+  To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
 
-      {{< alert title="Warning" color="warning" >}}
+  {{< alert title="Warning" color="warning" >}}
 
   Currently, the data management service can use the entire available disk space to store data.
   If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
   Currently, Viam does not safeguard against this.
+  
   {{< /alert >}}
 
 ## API
