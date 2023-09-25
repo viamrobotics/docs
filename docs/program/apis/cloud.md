@@ -46,11 +46,12 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of a robot in the location.
-        auth_entity='mrroboto.this_is_just_an_example.viam.cloud',
+        # The URL of any robot in the location.
+        auth_entity='beepboop-main.YOUR LOCATION ID.viam.cloud', 
         credentials=Credentials(
             type='robot-location-secret',
-            payload='YOUR LOCATION SECRET'  # The location secret
+            # The location secret
+            payload='YOUR LOCATION SECRET' 
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -534,7 +535,7 @@ Get a robot {{< glossary_tooltip term_id="part" text="part" >}}.
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot {{< glossary_tooltip term_id="part" text="part" >}}.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_robot_part = await cloud.get_robot_part(robot_part_id="1a123456-x1yz-0ab0-a12xyzabc")
+my_robot_part = await cloud.get_robot_part(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part).
@@ -564,14 +565,14 @@ Get the logs associated with the robot {{< glossary_tooltip term_id="part" text=
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
 
 **Returns:**
 
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The list of log entries.
 
 ```python {class="line-numbers linkable-line-numbers"}
-part_logs = await cloud.get_robot_part_logs(robot_part_id="1a123456-x1yz-0ab0-a12xyzabc", num_log_entries=20)
+part_logs = await cloud.get_robot_part_logs(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", num_log_entries=20)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_logs).
@@ -599,7 +600,7 @@ Get an asynchronous iterator that receives live robot part logs.
 - (_LogsStream[[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
 
 ```python {class="line-numbers linkable-line-numbers"}
-logs_stream = await cloud.tail_robot_part_logs(robot_part_id="1a123456-x1yz-0ab0-a12xyzabc")
+logs_stream = await cloud.tail_robot_part_logs(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.tail_robot_part_logs).
@@ -620,14 +621,14 @@ Get a list containing the history of a robot {{< glossary_tooltip term_id="part"
 
 **Raises:**
 
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
 
 **Returns:**
 
 - (List[[viam.app.app_client.RobotPartHistoryEntry](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)]): The list of the robot part’s history.
 
 ```python {class="line-numbers linkable-line-numbers"}
-part_history = await cloud.get_robot_part_history(robot_part_id="1a123456-x1yz-0ab0-a12xyzabc")
+part_history = await cloud.get_robot_part_history(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_history).
@@ -658,7 +659,7 @@ Change the name of and assign an optional new configuration to a robot {{< gloss
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly-updated robot part.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_robot_part = await cloud.update_robot_part(robot_part_id="1a123456-x1yz-0ab0-a12xyzabc")
+my_robot_part = await cloud.update_robot_part(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_part).
@@ -691,6 +692,30 @@ new_part_id = await cloud.new_robot_part(robot_id="1a123456-x1yz-0ab0-a12xyzabc"
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot_part).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRobotPart
+
+Delete the specified robot {{< glossary_tooltip term_id="part" text="part" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_robot_part(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part).
 
 {{% /tab %}}
 {{< /tabs >}}

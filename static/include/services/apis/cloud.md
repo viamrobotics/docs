@@ -18,7 +18,7 @@ Method Name | Description
 [`GetRobotPartLogs`](/program/apis/cloud/#getrobotpartlogs ) | Get the logs associated with a robot part.
 [`TailRobotPartLogs`](/program/apis/cloud/#tailrobotpartlogs ) | Get an asynchronous iterator that receives live robot part logs.
 [`GetRobotPartHistory`](/program/apis/cloud/#getrobotparthistory ) | Get a list containing the history of a robot part.
-[`UpdateRobotPart`](/program/apis/cloud/#updaterobotpart ) | 
-[`NewRobotPart`](/program/apis/cloud/#newrobotpart ) | 
-[`DeleteRobotPart`](/program/apis/cloud/#deleterobotpart ) | 
+[`UpdateRobotPart`](/program/apis/cloud/#updaterobotpart ) | Update the name or configuration of a robot part.
+[`NewRobotPart`](/program/apis/cloud/#newrobotpart ) | Create a new robot part.
+[`DeleteRobotPart`](/program/apis/cloud/#deleterobotpart ) | Delete a robot part.
 [`NewRobot`](/program/apis/cloud/#newrobot ) | Create a new robot.
