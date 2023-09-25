@@ -264,8 +264,8 @@ async def main():
         found = False
         for d in detections:
             if d.confidence > 0.8 and d.class_name.lower == "person":
-            print("This is a person!")
-            found = True
+                print("This is a person!")
+                found = True
         if found:
             print("sending a message")
             # Change this path to your own
