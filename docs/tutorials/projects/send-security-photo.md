@@ -233,6 +233,7 @@ import os
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient
+from viam.components.camera import Camera
 import yagmail
 
 # These must be set. You can get them from your robot's 'Code sample' tab
