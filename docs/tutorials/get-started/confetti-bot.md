@@ -204,43 +204,43 @@ Now that you have tested your motor in the app and confirmed that everything wor
 
 1.  Attach the motor driver to the enclosure wall with four M2.5 x 16mm screws and M2.5 nuts.
 
-    {{<imgproc src="/tutorials/confetti-bot/install-driver-1.jpg" resize="400x" declaredimensions=true alt="Back view of the motor driver being installed inside the 3D printed enclosure with screws." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-driver-1.jpg" resize="400x" declaredimensions=true alt="Back view of the motor driver being installed inside the 3D printed enclosure with screws." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
-    {{<imgproc src="/tutorials/confetti-bot/install-driver-2.jpg" resize="400x" declaredimensions=true alt="Front view of the motor driver being installed inside the 3D printed enclosure with screws." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-driver-2.jpg" resize="400x" declaredimensions=true alt="Front view of the motor driver being installed inside the 3D printed enclosure with screws." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
 2.  Slip the Raspberry Pi into the designated slot in the enclosure.
     Be careful of the wires during this so they don’t pop off.
 
-        {{<imgproc src="/tutorials/confetti-bot/install-pi-1.jpg" resize="400x" declaredimensions=true alt="Back view of the Raspberry Pi being installed inside the 3D printed enclosure within the designated slot." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-pi-1.jpg" resize="400x" declaredimensions=true alt="Back view of the Raspberry Pi being installed inside the 3D printed enclosure within the designated slot." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
-        {{<imgproc src="/tutorials/confetti-bot/install-pi-2.jpg" resize="400x" declaredimensions=true alt="Front view of the Raspberry Pi being installed inside the 3D printed enclosure within the designated slot." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-pi-2.jpg" resize="400x" declaredimensions=true alt="Front view of the Raspberry Pi being installed inside the 3D printed enclosure within the designated slot." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
 3.  Add the confetti cannon to the enclosure by tightening the 3D printed holder around the confetti socket using one M2.5 x 16mm screw and a M2.5 nut.
     Then connect the enclosure to the front panel.
 
-        {{<imgproc src="/tutorials/confetti-bot/install-cannon-front.jpg" resize="400x" declaredimensions=true alt="Front photo of the confetti cannon attached to the 3D printed parts." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-cannon-front.jpg" resize="400x" declaredimensions=true alt="Front photo of the confetti cannon attached to the 3D printed parts." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
-        {{<imgproc src="/tutorials/confetti-bot/install-cannon-side.jpg" resize="400x" declaredimensions=true alt="Side photo of the confetti cannon attached to the 3D printed parts." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-cannon-side.jpg" resize="400x" declaredimensions=true alt="Side photo of the confetti cannon attached to the 3D printed parts." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
 4.  Next, attach the 3d-printed circular holder to the base of the confetti cannon to hold its place, then to the motor.
     Secure the two together with a screw from the side.
     Depending on your motor size, you may need a different screw size.
 
-        {{<imgproc src="/tutorials/confetti-bot/install-motor-holder.jpg" resize="400x" declaredimensions=true alt="The 3D printed black piece attached to motor with a screw securing it in place over the motor head." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-motor-holder.jpg" resize="400x" declaredimensions=true alt="The 3D printed black piece attached to motor with a screw securing it in place over the motor head." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
-        {{<imgproc src="/tutorials/confetti-bot/install-cannon-holder.jpg" resize="400x" declaredimensions=true alt="Motor attachment with a 3D printed black piece wrapped around the confetti cannon secured over the motor head." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-cannon-holder.jpg" resize="400x" declaredimensions=true alt="Motor attachment with a 3D printed black piece wrapped around the confetti cannon secured over the motor head." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
-        {{<imgproc src="/tutorials/confetti-bot/install-cannon-enclosure.jpg" resize="400x" declaredimensions=true alt="Motor attachment with a 3D printed black piece wrapped around the confetti cannon secured over the motor head attached to the enclosure." class="center-if-small" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-cannon-enclosure.jpg" resize="400x" declaredimensions=true alt="Motor attachment with a 3D printed black piece wrapped around the confetti cannon secured over the motor head attached to the enclosure." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
 5.  Add the front section you just built to the rest of the enclosure using M2.5 x 16mm screws and M2.5 nuts.
     Make sure to do this step before closing the side walls to be able to access the slots for screws.
 
-        ![Side view photo of the front section attached to the rest of the enclosure.](/tutorials/confetti-bot/install-front-enclosure.jpg)
+{{<imgproc src="/tutorials/confetti-bot/install-front-enclosure.jpg" resize="400x" declaredimensions=true alt="Side view photo of the front section attached to the rest of the enclosure." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
 ### Optional: Laser cut or print the sides
 
 Laser cut the sides of the enclosure and attach with screws.
-You can find the designs here:
+You can find the designs [on Viam Labs' GitHub](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot/stl-files).
 
 If you don’t have a laser cutter, you can 3D print the sides instead, or leave them empty.
 
