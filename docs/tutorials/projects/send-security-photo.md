@@ -239,6 +239,7 @@ import yagmail
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -248,6 +249,7 @@ async def connect():
         dial_options=DialOptions(credentials=creds)
     )
     return await RobotClient.at_address(robot_address, opts)
+
 
 async def main():
     robot = await connect()
