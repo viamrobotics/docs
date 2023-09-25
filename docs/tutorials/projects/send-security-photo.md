@@ -235,11 +235,9 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient, Detection
 import yagmail
 
-
 # These must be set. You can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
-
 
 async def connect():
     creds = Credentials(
@@ -251,15 +249,19 @@ async def connect():
     )
     return await RobotClient.at_address(robot_address, opts)
 
-
 async def main():
     robot = await connect()
+    # make sure that your detector name in the app matches "myPeopleDetector"
     detector = VisionClient.from_robot(robot, "myPeopleDetector")
+    # make sure that your camera name in the app matches "my-camera"
+    my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
     N = 100
     for i in range(N):
-        # make sure that your camera name in the app matches "my-camera"
         detections = await detector.get_detections_from_camera("my-camera")
+        img = await my_camera.get_image()
+        detections = await myPeopleDetector.get_detections(img)
+
         found = False
         for d in detections:
             if d.confidence > 0.8:
@@ -271,17 +273,15 @@ async def main():
             if found:
                 print("sending a message")
                 # Change this path to your own
-                image.save('/yourpath/foundyou.png')
+                img.save('/yourpath/foundyou.png')
                 # yagmail section
-                # Create a yagmail.SMTP instance to initialize the server
-                # connection. Replace username and password with your actual
-                # credentials
+                # Create a yagmail.SMTP instance to initialize the server connection.
+                # Replace username and password with your actual credentials
                 yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
                 # Specify the message contents
                 contents = ['There is someone at your desk - beware',
                             '/yourpath/foundyou.png']
-                # Add phone number and gateway address found in the SMS gateway
-                # step
+                # Add phone number and gateway address found in the SMS gateway step
                 yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
                 # If the robot detects a person and sends a text, we don't need
