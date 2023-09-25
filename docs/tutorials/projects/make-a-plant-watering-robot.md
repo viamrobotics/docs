@@ -366,7 +366,7 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
   "sensor_pin": 8
 }
 
-This module allows you to get multiple readings at the same time from different channels of the ADC sensor. So if you wire and configure another sensor, such as temperature sensor on channel 1, you can add the sensor to the channel_map and get a reading from it.
+This module allows you to get multiple readings at the same time from different channels of the ADC sensor. If you wire and configure another sensor, such as temperature sensor on channel 1, you can add the sensor to the channel_map and get a reading from it.
 
 ### Add Python control code
 
