@@ -16,7 +16,7 @@ date: "2023-02-08"
 cost: "0"
 no_list: true
 weight: 4
-# SMEs: Ray Bjorkman
+# SMEs: Ray Bjorkman, Fahmina
 ---
 
 TODO: edit this intro because it's basically just copy-pasted from Nav service intro as-is 
@@ -211,6 +211,9 @@ For more detailed information see [Add the data management service](/services/da
 ## Start navigating with the Navigation service
 
 Next, add waypoints to your navigation service.
+
+<!-- TODO: UI For adding waypoints, and then set to Waypoint mode -->
+
 
 ## Next steps
 
