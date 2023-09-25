@@ -297,10 +297,8 @@ This opens up some really interesting possibilities, like having your robot talk
 
 ## Alternative Option: Configure Viam Labs speech module
 
-As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech) as a [modular resource](/extend/modular-resources).
+As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/services/) providing text-to-speech (TTS) and speech-to-text(STT) capabilities for robots running on the Viam platform.
 Usage is documented on [Viam Lab's GitHub](https://github.com/viam-labs/speech).
-
-First, configure the Viam labs speech module to configure the `viam-labs:service:speech` modular [service](/services/) providing text-to-speech (TTS) and speech-to-text(STT) capabilities for robots running on the Viam platform.
 
 ### Configuration
 
@@ -345,7 +343,7 @@ Copy and paste the following into your **modules** array to add [**speech**](htt
     "type": "registry",
     "name": "viam-labs_speech",
     "module_id": "viam-labs:speech",
-    "version": "0.1.0"
+    "version": "latest"
   }
 ]
 
@@ -383,7 +381,7 @@ Edit the attributes as applicable:
 
 - Edit `"completion_provider_org"` and `"completion_provider_key"` to match your AI API organization and API credentials, for example your [OpenAI organization header and API key credentials](https://platform.openai.com/account/api-keys).
 - Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-reference/quick-start/authentication) or another speech provider.
-- Edit `"mic_device_name"` to match the name of your microphone on your robot's computer, if labelled. Available microphone device names will logged on module startup. If left blank, the module will attempt to auto-detect the microphone.
+- Edit `"mic_device_name"` to match the name your microphone is assigned on your robot's computer. Available microphone device names will logged on module startup. If left blank, the module will attempt to auto-detect the microphone.
 
 ## Next steps
 
