@@ -120,7 +120,7 @@ If the server does not know how to return the specified MIME type, the server re
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-frame = await my_camera.get_image()
+frame = await my_camera.get_image(mime_type="image/jpeg")
 ```
 
 <br>
@@ -131,7 +131,7 @@ For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Assume "frame" has a mime_type of "image/vnd.viam.dep"
-frame = await my_cam.get_image()
+frame = await my_camera.get_image()
 
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].

@@ -22,6 +22,10 @@ Locations do not have to correspond with physical locations.
 Each robot you add to Viam belongs to a location.
 Each location belongs to an organization.
 
+{{< alert title="Limit" color="note" >}}
+You can create up to 500 locations.
+{{< /alert >}}
+
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
 ### Add a location

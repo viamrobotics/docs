@@ -550,14 +550,14 @@ If a creature is detected, the red LEDs will light up and music will play.
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def idle_and_check_for_living_creatures(
-  cam, detector, servo, blue_leds, red_leds, music_player):
+  camera_name, detector, servo, blue_leds, red_leds, music_player):
     living_creature = None
     while True:
         random_number_checks = random.randint(0, 5)
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            detections = await detector.get_detections_from_camera(cam)
+            detections = await detector.get_detections_from_camera(camera_name)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
@@ -627,8 +627,9 @@ Replace your `main()` function with the following:
 async def main():
     robot = await connect()
     local = Board.from_robot(robot, 'local')
-    cam = Camera.from_robot(robot, "cam")
-    img = await cam.get_image()
+    camera_name = "cam"
+    cam = Camera.from_robot(robot, camera_name)
+    img = await cam.get_image(mime_type="image/jpeg")
     servo = Servo.from_robot(robot, "servo")
     red_leds = LedGroup([
         await local.gpio_pin_by_name('22'),
@@ -650,7 +651,7 @@ async def main():
     while True:
         # move head periodically left and right until movement is spotted.
         living_creature = await idle_and_check_for_living_creatures(
-            cam, detector, servo, blue_leds, red_leds, music_player)
+            camera_name, detector, servo, blue_leds, red_leds, music_player)
         await focus_on_creature(living_creature, img.width, servo)
     # Don't forget to close the robot when you're done!
     await robot.close()
@@ -807,7 +808,7 @@ class LedGroup:
             await pin.set(on)
 
 
-async def idle_and_check_for_living_creatures(cam,
+async def idle_and_check_for_living_creatures(camera_name,
                                               detector,
                                               servo,
                                               blue_leds,
@@ -819,7 +820,7 @@ async def idle_and_check_for_living_creatures(cam,
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            detections = await detector.get_detections_from_camera(cam)
+            detections = await detector.get_detections_from_camera(camera_name)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
@@ -838,8 +839,9 @@ async def idle_and_check_for_living_creatures(cam,
 async def main():
     robot = await connect()
     local = Board.from_robot(robot, 'local')
-    cam = Camera.from_robot(robot, "cam")
-    img = await cam.get_image()
+    camera_name = "cam"
+    cam = Camera.from_robot(robot, camera_name)
+    img = await cam.get_image(mime_type="image/jpeg")
     servo = Servo.from_robot(robot, "servo")
     red_leds = LedGroup([
         await local.gpio_pin_by_name('22'),
@@ -861,7 +863,7 @@ async def main():
     while True:
         # move head periodically left and right until movement is spotted.
         living_creature = await idle_and_check_for_living_creatures(
-            cam, detector, servo, blue_leds, red_leds, music_player)
+            camera_name, detector, servo, blue_leds, red_leds, music_player)
         await focus_on_creature(living_creature, img.width, servo)
     # Don't forget to close the robot when you're done!
     await robot.close()

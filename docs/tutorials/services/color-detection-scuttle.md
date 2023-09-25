@@ -178,15 +178,12 @@ The top of your code should now look like this:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-import random
-import vlc
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.components.board import Board
-from viam.components.camera import Camera
-from viam.components.servo import Servo
 from viam.services.vision import VisionClient
+from viam.components.camera import Camera
+from viam.components.base import Base
 
 
 async def connect():
@@ -226,7 +223,7 @@ Add the `leftOrRight` function below your `connect` function:
 # right third
 def leftOrRight(detections, midpoint):
     largest_area = 0
-    largest = Detection()
+    largest = {"x_max": 0, "x_min": 0, "y_max": 0, "y_min": 0}
     if not detections:
         print("nothing detected :(")
         return -1
@@ -264,8 +261,10 @@ async def main():
 
     # Connect to robot client and set up components
     robot = await connect()
-    base = Base.from_robot(robot, "base")
-    camera = Camera.from_robot(robot, "<camera-name>")
+    base = Base.from_robot(robot, "my_base")
+    camera_name = "<camera-name>"
+    camera = Camera.from_robot(robot, camera_name)
+    frame = await camera.get_image(mime_type="image/jpeg")
 
     # Grab the vision service for the detector
     my_detector = VisionClient.from_robot(robot, "my_color_detector")
@@ -273,12 +272,12 @@ async def main():
     # Main loop. Detect the ball, determine if it's on the left or right, and
     # head that way. Repeat this for numCycles
     for i in range(numCycles):
-        detections = await my_detector.get_detections_from_camera(camera)
+        detections = await my_detector.get_detections_from_camera(camera_name)
 
         answer = leftOrRight(detections, frame.size[0]/2)
         if answer == 0:
             print("left")
-            await base.spin(spinNum, vel)  # CCW is positive
+            await base.spin(spinNum, vel)     # CCW is positive
             await base.move_straight(straightNum, vel)
         if answer == 1:
             print("center")
@@ -322,8 +321,7 @@ import asyncio
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import VisionServiceClient
-from viam.services.vision import Detection
+from viam.services.vision import VisionClient
 from viam.components.camera import Camera
 from viam.components.base import Base
 
@@ -331,20 +329,19 @@ from viam.components.base import Base
 async def connect():
     creds = Credentials(
         type="robot-location-secret",
-        payload="<location_secret>")
+        payload="LOCATION SECRET FROM THE VIAM APP")
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address("""[ADD YOUR ROBOT ADDRESS HERE. YOU
-         CAN FIND THIS ON THE CODE SAMPLE TAB]""", opts)
+    return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
 
 
 # Get largest detection box and see if it's center is in the left, center, or
 # right third
 def leftOrRight(detections, midpoint):
     largest_area = 0
-    largest = Detection()
+    largest = {"x_max": 0, "x_min": 0, "y_max": 0, "y_min": 0}
     if not detections:
         print("nothing detected :(")
         return -1
@@ -370,8 +367,10 @@ async def main():
 
     # Connect to robot client and set up components
     robot = await connect()
-    base = Base.from_robot(robot, "base")
-    camera = Camera.from_robot(robot, "<camera-name>")
+    base = Base.from_robot(robot, "my_base")
+    camera_name = "<camera-name>"
+    camera = Camera.from_robot(robot, camera_name)
+    frame = await camera.get_image(mime_type="image/jpeg")
 
     # Grab the vision service for the detector
     my_detector = VisionClient.from_robot(robot, "my_color_detector")
@@ -379,7 +378,7 @@ async def main():
     # Main loop. Detect the ball, determine if it's on the left or right, and
     # head that way. Repeat this for numCycles
     for i in range(numCycles):
-        detections = await my_detector.get_detections_from_camera(camera)
+        detections = await my_detector.get_detections_from_camera(camera_name)
 
         answer = leftOrRight(detections, frame.size[0]/2)
         if answer == 0:
