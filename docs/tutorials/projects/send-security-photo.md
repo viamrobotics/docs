@@ -280,7 +280,7 @@ async def main():
             # Specify the message contents
             contents = ['There is someone at your desk - beware',
                         '/yourpath/foundyou.png']
-            # Add phone number and gateway address 
+            # Add phone number and gateway address
             # found in the SMS gateway step
             yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
