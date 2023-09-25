@@ -134,14 +134,16 @@ Do not pass a transform camera that already has the "detections" or "classificat
 from viam.services.vision import VisionClient
 
 robot = await connect()
+camera_name = "cam1"
 # Grab camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get the top 2 classifications with the highest confidence scores from the
 # camera output
-classifications = await my_classifier.get_classifications_from_camera(img, 2)
+classifications = await my_classifier.get_classifications_from_camera(
+    camera_name, 2)
 
 # If you need to store the image, get the image first
 # and then run classifications on it. This process is slower:

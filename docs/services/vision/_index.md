@@ -12,9 +12,8 @@ no_list: true
 
 The vision service enables your smart machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your smart machine's camera sees, the vision service allows you to interpret your image data.
-The vision service is a default service on the smart machine, and can be initialized without attributes.
 
-Currently, the vision service supports the following models:
+Currently, the vision service supports the following kinds of operations:
 
 {{< cards >}}
 {{% card link="/services/vision/detection/" %}}
@@ -136,14 +135,13 @@ Get a list of detections from the next image from a specified camera using a con
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+camera_name = "cam1"
 
 # Grab the detector you configured on your robot
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get detections from the next image from the camera
-detections = await my_detector.get_detections_from_camera(cam1)
+detections = await my_detector.get_detections_from_camera(camera_name)
 ```
 
 {{% /tab %}}
@@ -296,15 +294,15 @@ Get a list of classifications from the next image from a specified camera using 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications_from_camera).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+camera_name = "cam1"
 
 # Grab the classifier you configured on your robot
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get the 2 classifications with the highest confidence scores from the next
 # image from the camera
-classifications = await my_classifier.get_classifications_from_camera(cam1, 2)
+classifications = await my_classifier.get_classifications_from_camera(
+    camera_name, 2)
 ```
 
 {{% /tab %}}
