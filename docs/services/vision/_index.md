@@ -12,9 +12,8 @@ no_list: true
 
 The vision service enables your smart machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your smart machine's camera sees, the vision service allows you to interpret your image data.
-The vision service is a default service on the smart machine, and can be initialized without attributes.
 
-Currently, the vision service supports the following models:
+Currently, the vision service supports the following kinds of operations:
 
 {{< cards >}}
 {{% card link="/services/vision/detection/" %}}
