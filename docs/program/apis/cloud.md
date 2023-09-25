@@ -514,7 +514,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotPart
 
-Get a robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Get a specific robot {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -546,7 +546,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotPartLogs
 
-Get the logs associated with the robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Get the logs associated with a specific robot {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -558,7 +558,7 @@ Get the logs associated with the robot {{< glossary_tooltip term_id="part" text=
   Defaults to empty string `""`, meaning no filter.
 - `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the log entries to.
 - `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to include error logs.
-  Defaults to `True`, including logs by default.
+  Defaults to `True`, including only error-level messages by default.
 - `num_log_entries` [(int)](https://docs.python.org/3/library/functions.html#int): Number of log entries to return.
   Passing `0` returns all logs.
   Defaults to `100`.
