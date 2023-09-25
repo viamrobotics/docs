@@ -82,7 +82,7 @@ fi
 
 1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 2. Run `npm install` in the docs folder you have the docs checked out in.
-3. Inside VS code, open `settings.json` and ensure the following settings are in the file:
+3. Inside VS code, open `settings.json` by pressing `CMD+SHIFT+P` and typing in settings and ensure the following settings are in the file:
 
 ```json
   "[markdown]": {
