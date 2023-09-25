@@ -240,7 +240,7 @@ Now that you have tested your motor in the app and confirmed that everything wor
 ### Optional: Laser cut or print the sides
 
 Laser cut the sides of the enclosure and attach with screws.
-You can find the designs here:
+You can find the designs [here](https://github.com/viam-labs/devrel-demos/tree/main/confetti_bot/stl-files).
 
 If you don’t have a laser cutter, you can 3D print the sides instead, or leave them empty.
 
