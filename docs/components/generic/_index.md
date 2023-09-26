@@ -6,8 +6,7 @@ weight: 55
 type: "docs"
 description: "Use a generic component to implement a component that does not fit any of the other APIs."
 tags: ["generic", "components"]
-image: "/icons/components.png"
-# icon: "path/to/svg/file"
+icon: "/icons/components.png"
 images: ["/icons/components.png"]
 no_list: true
 # SMEs:
