@@ -492,6 +492,8 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 Next, add waypoints to your navigation service.
 If you want to do this programmatically, use the service's [API method `AddWaypoint()`](/services/navigation/#addwaypoint) like the following:
 
+<!-- TODO: find latitude and longitude from ui, ui way of doing it -->
+
 {{< tabs >}}
 {{% tab name="Go" %}}
 
@@ -513,7 +515,6 @@ my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
 # Create a new waypoint with latitude and longitude values of 0 degrees
 location = GeoPoint(latitude=0, longitude=0)
-
 
 # Add your waypoint to the service's data storage
 await my_nav.add_waypoint(point=location)
