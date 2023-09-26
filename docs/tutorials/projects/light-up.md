@@ -157,15 +157,15 @@ Click **Save config** in the bottom left corner of the screen.
 
 4.  <a name=kasa ></a> Run the following command to return information about your smart device:
 
-        ```sh {class="command-line" data-prompt="$"}
-        kasa discover
-        ```
+    ```sh {class="command-line" data-prompt="$"}
+    kasa discover
+    ```
 
-        You should see this command output something like this:
+    You should see this command output something like this:
 
-        ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
+    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
 
-        Write down or save the host address (for example, `10.1.11.221`).
+    Write down or save the host address (for example, `10.1.11.221`).
 
     You will need to include it in your Python code in a later step.
 
