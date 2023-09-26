@@ -39,14 +39,14 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 Before configuring color detection, enable the rover's camera to get a better sense of what it perceives.
 
-* If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
+- If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
   In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
   ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
   You can also view and control the camera streams from the [individual camera component panels](/try-viam/try-viam-tutorial/#camera-control).
 
-* If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
+- If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
   If you are using the `ViamRover` [fragment](/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **Control** tab.
 
 ## Add the vision service to detect a color
@@ -119,13 +119,13 @@ Note that the detector does not detect black, perfect greys (greys where the red
 
 ## Configure a transform camera to use the color detector
 
-Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
-A virtual camera transforms the output from a physical camera.
+Viam [camera](/components/camera/) components can be physical like the one already configured on the rover, or virtual.
+A virtual [_transform camera_](/components/camera/transform/) transforms the output from a physical camera.
 
 To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
 
 1. Navigate to the **Config** tab in the Viam app and click the **Components** subtab.
-2. Click **Create Component** in the lower-left corner of the page.
+2. Click **Create component** in the lower-left corner of the page.
 3. Select `camera` as the type.
 4. Select `transform` as the model.
 5. Enter a name, for example `detectionCam`, and click **Create**.
@@ -145,16 +145,16 @@ Copy the following JSON configuration into the **Attributes** section:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
- "source": "cam",
- "pipeline": [
-   {
-     "attributes": {
-       "detector_name": "my_color_detector",
-       "confidence_threshold": 0.3
-     },
-     "type": "detections"
-   }
- ]
+   "source": "cam",
+   "pipeline": [
+     {
+       "attributes": {
+         "detector_name": "my_color_detector",
+         "confidence_threshold": 0.3
+       },
+       "type": "detections"
+     }
+   ]
 }
 ```
 
@@ -180,7 +180,6 @@ Each time the camera detects the color, you will see a red rectangle around the 
 
 ![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
-Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 
 ## Next Steps
