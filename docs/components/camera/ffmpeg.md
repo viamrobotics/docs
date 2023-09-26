@@ -67,6 +67,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `ffmpeg` cameras:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | **Required** | The file path to the color image. |

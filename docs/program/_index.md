@@ -161,15 +161,15 @@ The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Client, createRobotClient, RobotClient } from '@viamrobotics/sdk';
+import { Client, createRobotClient, RobotClient } from "@viamrobotics/sdk";
 
 async function connect() {
   // You can remove this block entirely if your robot is not authenticated.
   // Otherwise, replace with an actual secret.
-  const secret = '<SECRET>';
+  const secret = "<SECRET>";
   const credential = {
     payload: secret,
-    type: 'robot-location-secret',
+    type: "robot-location-secret",
   };
 
   // Replace with the host of your actual robot running Viam.
@@ -177,16 +177,16 @@ async function connect() {
 
   // Replace with the signaling address. If you are running your robot on Viam,
   // it is most likely https://app.viam.com:443.
-  const signalingAddress = 'https://app.viam.com:443';
+  const signalingAddress = "https://app.viam.com:443";
 
-  const iceServers = [{ urls: 'stun:global.stun.twilio.com:3478' }];
+  const iceServers = [{ urls: "stun:global.stun.twilio.com:3478" }];
 
   return createRobotClient({
     host,
     credential,
     authEntity: host,
     signalingAddress,
-    iceServers
+    iceServers,
   });
 }
 
@@ -195,10 +195,10 @@ async function main() {
   let client: Client;
   try {
     client = await connect();
-    console.log('connected!');
+    console.log("connected!");
 
     let resources = await client.resourceNames();
-    console.log('Resources:');
+    console.log("Resources:");
     console.log(resources);
   } catch (error) {
     console.log(error);
@@ -310,7 +310,7 @@ Once you have successfully run the sample code, you can edit the boilerplate cod
 You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}
-    {{% card link="/program/apis/" customTitle="Add Logic to Interface with Resources" %}}
-    {{% card link="/program/run/" %}}
-    {{% card link="/program/debug/" %}}
+{{% card link="/program/apis/" customTitle="Add Logic to Interface with Resources" %}}
+{{% card link="/program/run/" %}}
+{{% card link="/program/debug/" %}}
 {{< /cards >}}

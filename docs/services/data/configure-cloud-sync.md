@@ -24,7 +24,7 @@ To change the sync interval, specify an interval in minutes in the interval fiel
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [ ],
+  "components": [],
   "services": [
     {
       "name": "data_manager",
@@ -47,20 +47,20 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 ### Pause sync
 
 You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **Config** tab and disabling **Syncing** for your [data management service](../).
-If you have captured data that you do not want to sync, delete the data on the robot before resuming Cloud Sync.
-To delete the data locally, `ssh` into your robot and delete the data in the directory where you capture data.
+If you have captured data that you do not want to sync, delete the data on the smart machine before resuming Cloud Sync.
+To delete the data locally, `ssh` into your smart machine and delete the data in the directory where you capture data.
 
 ## Sync files from another directory
 
-You may have additional files you want to sync to the cloud from your robot.
-For example, there may be components on your robot which are not controlled by Viam that are collecting data locally on your robot.
-Or there may be a set of logs indicating the status of the robot at different points in time.
-To include these types of files in cloud sync, click `ADD PATHWAY` in the data management service panel and specify the directory where your files are located on your robot.
+You may have additional files you want to sync to the cloud from your smart machine.
+For example, there may be components on your smart machine which are not controlled by Viam that are collecting data locally on your smart machine.
+Or there may be a set of logs indicating the status of the smart machine at different points in time.
+To include these types of files in cloud sync, click `ADD PATHWAY` in the data management service panel and specify the directory where your files are located on your smart machine.
 Once you save the configuration, the data management service begins syncing the files in the specified folder at the interval configured for the service.
 To avoid syncing files that are still being written to, the data management service only syncs files that haven't been modified in the previous 10 seconds.
 
 {{< alert title="Caution" color="caution" >}}
-If a robot does not write to a file for 10 seconds, the data management service syncs the file and deletes it.
+If a smart machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it.
 {{< /alert >}}
 
 {{< alert title="Info" color="tip" >}}
@@ -76,7 +76,7 @@ In the example pictured here, the data management service syncs the configured c
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [ ],
+  "components": [],
   "services": [
     {
       "name": "data_manager",
@@ -85,9 +85,7 @@ In the example pictured here, the data management service syncs the configured c
         "sync_interval_mins": 5,
         "capture_dir": "",
         "sync_disabled": false,
-        "additional_sync_paths": [
-          "/logs"
-        ]
+        "additional_sync_paths": ["/logs"]
       }
     }
   ]

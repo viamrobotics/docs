@@ -16,8 +16,8 @@ When you [install `viam-server`](/installation/) from [the Viam app](https://app
 
 However, if your robot will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
-* [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
-* [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
+- [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
+- [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
 For information on the individual configuration options available, see [Configuration](/manage/configuration/).
 
@@ -53,8 +53,8 @@ For most users, we recommend [using the Viam app to create the configuration fil
 
 If you followed the instructions to [install `viam-server` on an SBC](/installation/#install-viam-server) or [install on a macOS or Linux computer](/installation/#install-on-a-macos-or-linux-computer), the installation process provides an example configuration file in the following location:
 
-* Linux: <file>/etc/viam.json</file>
-* macOS: <file>/opt/homebrew/etc/viam.json</file>
+- Linux: <file>/etc/viam.json</file>
+- macOS: <file>/opt/homebrew/etc/viam.json</file>
 
 You can also use the [example configuration file](#example-json-configuration-file) below to base your robot's configuration on.
 
@@ -71,159 +71,153 @@ This file contains some basic example [component](/components/) and [service](/s
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "network": {
-        "fqdn": "something-unique",
-        "bind_address": ":8080"
+  "network": {
+    "fqdn": "something-unique",
+    "bind_address": ":8080"
+  },
+  "components": [
+    {
+      "name": "arm1",
+      "type": "arm",
+      "model": "fake",
+      "attributes": {
+        "arm-model": "xArm6"
+      }
     },
-    "components": [
-        {
-            "name": "arm1",
-            "type": "arm",
-            "model": "fake",
-            "attributes": {
-                "arm-model": "xArm6"
-            }
+    {
+      "name": "audio_input1",
+      "type": "audio_input",
+      "model": "fake"
+    },
+    {
+      "name": "base1",
+      "type": "base",
+      "model": "fake"
+    },
+    {
+      "name": "board1",
+      "type": "board",
+      "model": "fake",
+      "attributes": {
+        "analogs": [
+          {
+            "name": "analog1",
+            "pin": "0"
+          }
+        ],
+        "digital_interrupts": [
+          {
+            "name": "di1",
+            "pin": "14"
+          }
+        ]
+      }
+    },
+    {
+      "name": "camera1",
+      "type": "camera",
+      "model": "fake"
+    },
+    {
+      "name": "encoder1",
+      "type": "encoder",
+      "model": "fake",
+      "attributes": {
+        "update_rate_msec": 200
+      }
+    },
+    {
+      "name": "gantry1",
+      "type": "gantry",
+      "model": "fake"
+    },
+    {
+      "name": "generic1",
+      "type": "generic",
+      "model": "fake"
+    },
+    {
+      "name": "gripper1",
+      "type": "gripper",
+      "model": "fake"
+    },
+    {
+      "name": "input_controller1",
+      "type": "input_controller",
+      "model": "fake"
+    },
+    {
+      "name": "motor1",
+      "type": "motor",
+      "model": "fake",
+      "attributes": {
+        "encoder": "encoder1",
+        "pins": {
+          "a": "1",
+          "b": "2",
+          "pwm": "3"
         },
-        {
-            "name": "audio_input1",
-            "type": "audio_input",
-            "model": "fake"
-        },
-        {
-            "name": "base1",
-            "type": "base",
-            "model": "fake"
-        },
-        {
-            "name": "board1",
-            "type": "board",
-            "model": "fake",
-            "attributes": {
-                "analogs": [
-                    {
-                        "name": "analog1",
-                        "pin": "0"
-                    }
-                ],
-                "digital_interrupts": [
-                    {
-                        "name": "di1",
-                        "pin": "14"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "camera1",
-            "type": "camera",
-            "model": "fake"
-        },
-        {
-            "name": "encoder1",
-            "type": "encoder",
-            "model": "fake",
-            "attributes": {
-                "update_rate_msec": 200
-            }
-        },
-        {
-            "name": "gantry1",
-            "type": "gantry",
-            "model": "fake"
-        },
-        {
-            "name": "generic1",
-            "type": "generic",
-            "model": "fake"
-        },
-        {
-            "name": "gripper1",
-            "type": "gripper",
-            "model": "fake"
-        },
-        {
-            "name": "input_controller1",
-            "type": "input_controller",
-            "model": "fake"
-        },
-        {
-            "name": "motor1",
-            "type": "motor",
-            "model": "fake",
-            "attributes": {
-                "encoder": "encoder1",
-                "pins": {
-                    "a": "1",
-                    "b": "2",
-                    "pwm": "3"
-                },
-                "ticks_per_rotation": 100
-            },
-            "depends_on": [
-                "board1",
-                "encoder1"
-            ]
-        },
-        {
-            "name": "movement_sensor1",
-            "type": "movement_sensor",
-            "model": "fake"
-        },
+        "ticks_per_rotation": 100
+      },
+      "depends_on": ["board1", "encoder1"]
+    },
+    {
+      "name": "movement_sensor1",
+      "type": "movement_sensor",
+      "model": "fake"
+    },
 
-        {
-            "name": "sensor1",
-            "type": "sensor",
-            "model": "fake"
+    {
+      "name": "sensor1",
+      "type": "sensor",
+      "model": "fake"
+    },
+    {
+      "name": "servo1",
+      "type": "servo",
+      "model": "fake"
+    }
+  ],
+  "processes": [
+    {
+      "id": "1",
+      "name": "echo",
+      "args": ["hello", "world"],
+      "one_shot": true
+    },
+    {
+      "id": "2",
+      "name": "bash",
+      "args": [
+        "-c",
+        "trap \"exit 0\" SIGINT; while true; do echo hey; sleep 2; done"
+      ],
+      "log": true
+    }
+  ],
+  "services": [
+    {
+      "name": "navigation1",
+      "type": "navigation",
+      "attributes": {
+        "store": {
+          "type": "memory"
         },
-        {
-            "name": "servo1",
-            "type": "servo",
-            "model": "fake"
-        }
-    ],
-    "processes": [
-        {
-            "id": "1",
-            "name": "echo",
-            "args": [
-                "hello",
-                "world"
-            ],
-            "one_shot": true
-        },
-        {
-            "id": "2",
-            "name": "bash",
-            "args": [
-                "-c",
-                "trap \"exit 0\" SIGINT; while true; do echo hey; sleep 2; done"
-            ],
-            "log": true
-        }
-    ],
-    "services": [
-        {
-            "name": "navigation1",
-            "type": "navigation",
-            "attributes": {
-                "store": {
-                    "type": "memory"
-                },
-                "movement_sensor": "movement_sensor1",
-                "base": "base1"
-            }
-        },
-        {
-            "name": "slam1",
-            "type": "slam",
-            "model": "fake"
-        },
-        {
-            "name": "dm",
-            "type": "data_manager",
-            "model": "builtin"
-        }
-    ]
+        "movement_sensor": "movement_sensor1",
+        "base": "base1"
+      }
+    },
+    {
+      "name": "slam1",
+      "type": "slam",
+      "model": "fake"
+    },
+    {
+      "name": "dm",
+      "type": "data_manager",
+      "model": "builtin"
+    }
+  ]
 }
 ```
 

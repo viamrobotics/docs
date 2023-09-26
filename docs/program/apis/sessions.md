@@ -4,7 +4,18 @@ linkTitle: "Session Management"
 weight: 20
 type: "docs"
 description: "Manage sessions between your robot and clients connected through Viam's SDKs."
-tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session", "sessions", "session management"]
+tags:
+  [
+    "client",
+    "sdk",
+    "viam-server",
+    "networking",
+    "apis",
+    "robot api",
+    "session",
+    "sessions",
+    "session management",
+  ]
 ---
 
 When you connect to a robot using an SDK, the SDK connects to the robot's `viam-server` instance as a _client_.
@@ -17,6 +28,8 @@ This is especially important for robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
 
+For more information, see [Client Sessions and Robot Network Connectivity](/program/connectivity/).
+
 If you want to manage operations differently, you can manage your robot's client sessions yourself.
 The Session Management API provides functionality for:
 
@@ -25,7 +38,7 @@ The Session Management API provides functionality for:
 
 ### The `SessionsClient`
 
-A _client_ of a Viam robot can be a program using an SDK to control the robot, or all the different resources on the robot,  including all {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, like an input controller and a base, communicating.
+A _client_ of a Viam robot can be a program using an SDK to control the robot, or all the different resources on the robot, including all {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, like an input controller and a base, communicating.
 
 For example, if you use Viam's module registry to [add modular resources to your robot](/extend/modular-resources/), the clients of your robot will include the model servers you instantiate on your robot for individual resources, as well as the SDKs you are using to program the modular resources.
 
@@ -53,7 +66,7 @@ For example, if the heartbeat window is 5 seconds, clients will each send a hear
 
 You can adjust the heartbeat window in the configuration of your robot by adding the following to your robot's Raw JSON configuration:
 
-``` json
+```json
   ... // components {...}, services {...},
   "network": {
     "sessions": {
@@ -105,9 +118,9 @@ robot, err := client.New(ctx, "my-robot-address", logger, client.WithDisableSess
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const robot = await VIAM.createRobotClient({
-// ...
-disableSessions: true
-// ...
+  // ...
+  disableSessions: true,
+  // ...
 });
 ```
 

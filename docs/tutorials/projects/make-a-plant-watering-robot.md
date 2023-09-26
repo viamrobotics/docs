@@ -8,9 +8,9 @@ tags: ["raspberry pi", "app", "board", "motor"]
 image: "/tutorials/plant-watering-pi/preview.png"
 imageAlt: "Picture of the plant watering robot"
 images: ["/tutorials/plant-watering-pi/preview.png"]
-authors: [ "Sierra Guequierre" ]
-languages: [ "python" ]
-viamresources: [ "board", "motor", "sensor" ]
+authors: ["Sierra Guequierre"]
+languages: ["python"]
+viamresources: ["board", "motor", "sensor"]
 level: "Intermediate"
 date: "2023-03-29"
 # updated: ""
@@ -81,6 +81,7 @@ Use this to orient the ADC to determine the location to insert your wires.
 Insert the MCP3008 into your breadboard so that it bridges both sides of the divide.
 Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your PI to connect the pins with wires as follows:
 
+<!-- prettier-ignore -->
 | MCP3008 ADC Pin | Raspberry Pi Pin |
 | ----------- | ---------------- |
 | VDD | 3.3V |
@@ -104,6 +105,7 @@ Start by connecting the female jumper wires at the end of the sensor prongs to t
 
 Then, wire the rest of the pins on the module to the Pi and ADC as follows:
 
+<!-- prettier-ignore -->
 | Pi | ADC |
 |--|--|
 |<table> <tr><th>Moisture Sensor Pin</th><th>Raspberry Pi Pin</th></tr><tr><td>VCC</td><td>3.3V</td></tr><tr><td>GND</td><td>GND</td></tr> </table>| <table> <tr><th>Moisture Sensor Pin</th><th>MCP3008 ADC Pin</th></tr><tr><td>A0 (Analog Signal Output)</td><td>CH0</td></tr> </table>|
@@ -119,11 +121,11 @@ Reference this diagram of the motor speed controller:
 ![Pinout diagram for the motor speed controller.](/tutorials/plant-watering-pi/motor-speed-controller-diagram.png)
 
 1. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to your battery to connect it to the DC power pins on your motor speed controller.
-Match the **+** notation on the battery to the **+** DC power pin.
+   Match the **+** notation on the battery to the **+** DC power pin.
 2. Attach [alligator wire clips](https://www.amazon.com/Goupchn-Alligator-Breadboard-Flexible-Electrical/dp/B08M5P6LHR/) to the pump to connect the output pins on your motor speed controller to the pump.
 3. Connect the GND pin hole on the controller to GND on the Pi.
 4. Connect the PWM pin hole on the pump to [Pin 12 (GPIO 18)](https://pinout.xyz/pinout/pin12_gpio18) of the Pi.
-Note that the controller does not come with header pins.
+   Note that the controller does not come with header pins.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -145,7 +147,7 @@ Enabling this protocol is necessary to allow the Pi to communicate with the mois
 
 SSH into your Pi and run the following command:
 
-``` shell
+```shell
 sudo raspi-config
 ```
 
@@ -170,33 +172,33 @@ Next, install the Adafruit ADC library [`Adafruit_CircuitPython_MCP3xxx`](https:
 
 Before installation, make sure any packages on your Pi are up to date:
 
-``` shell
+```shell
 sudo apt update
 sudo apt upgrade
 ```
 
 Make sure you have `pip` installed for Python 3:
 
-``` shell
+```shell
 pip --version
 ```
 
 If not, run the following command:
 
-``` shell
+```shell
 sudo apt install python3-pip
 ```
 
 Run the following command while connected to your Pi with SSH to install [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/):
 
-``` shell
+```shell
 sudo pip3 install adafruit-circuitpython-mcp3xxx
 ```
 
 Create a new directory for your plant watering robot's files and navigate to this directory in your terminal session.
 For example, run the following commands:
 
-``` shell
+```shell
 mkdir plant-watering-robot
 cd plant-watering-robot
 ```
@@ -204,14 +206,14 @@ cd plant-watering-robot
 After navigating to this directory, create a new Python file called <file>adctesting.py</file> and open up the file.
 For example, run the following commands:
 
-``` shell
+```shell
 touch adctesting.py
 nano adctesting.py
 ```
 
 Now, add the following Python code to <file>adctesting.py</file> to test reading values from your capacitive soil moisture sensor through your MCP3008 ADC:
 
-``` python
+```python
 import time
 import busio
 import digitalio
@@ -239,7 +241,7 @@ while True:
 
 Run the code as follows:
 
-``` shell
+```shell
 sudo python3 adctesting.py
 ```
 
@@ -247,7 +249,7 @@ sudo python3 adctesting.py
 
 If running this code returns `ImportError: No module named busio`, try again after reinstalling `adafruit-blinka`:
 
-``` shell
+```shell
 sudo pip3 install --force-reinstall adafruit-blinka
 ```
 
@@ -284,7 +286,7 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
       "model": "pi",
       "attributes": {},
       "depends_on": []
-    }, // Motor JSON ...
+    } // Motor JSON ...
   ]
 }
 ```
@@ -294,7 +296,7 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 
 Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
-Set the motor's attributes **Max RPM** to `1000` and **PWM**  to `12 GPIO 18` (the number and GPIO number of the pin that you wired the pump's PWM to).
+Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (the number and GPIO number of the pin that you wired the pump's PWM to).
 
 {{< tabs name="Configure an Pump Motor" >}}
 {{% tab name="Config Builder" %}}
@@ -307,20 +309,20 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM**  to `12 GPIO 18` (t
 ```json {class="line-numbers linkable-line-numbers"}
 // Board JSON ... },
 {
-    "name": "water-pump",
-    "type": "motor",
-    "model": "gpio",
-    "attributes": {
+  "name": "water-pump",
+  "type": "motor",
+  "model": "gpio",
+  "attributes": {
     "pins": {
-        "a": "",
-        "b": "",
-        "dir": "",
-        "pwm": "12"
+      "a": "",
+      "b": "",
+      "dir": "",
+      "pwm": "12"
     },
     "board": "local",
     "max_rpm": 1000
-    },
-    "depends_on": []
+  },
+  "depends_on": []
 }
 ```
 
@@ -341,8 +343,8 @@ Now that you have set up your robot and are able to control your motor, you can 
 
 ### Configure the Capacitive Soil Moisture Sensor as a Custom Resource
 
-*Resources* refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
-*Components* refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
+_Resources_ refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
+_Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
 For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
@@ -352,7 +354,7 @@ Create your custom sensor resource in 3 steps:
 
 1. Code a `MoistureSensor` class implementing the `GetReadings()` method that belongs to all members of the Viam sensor class, and instantiate this class on a RPC server in the `main()` function of your code.
 2. Add this "sensor server" as a [remote part](/manage/parts-and-remotes/) of your `plant-watering-robot`.
-3. Add a command that runs the program you coded instantiating the "sensor server" as a *process* of your robot.
+3. Add a command that runs the program you coded instantiating the "sensor server" as a _process_ of your robot.
 
 #### Code the `MoistureSensor` Class
 
@@ -362,7 +364,7 @@ Navigate to the directory you created when [testing your soil moisture readings]
 
 For example, run the following commands to create and open the file:
 
-``` shell
+```shell
 cd plant-watering-robot
 touch sensor.py
 nano sensor.py
@@ -484,12 +486,7 @@ Then, navigate to the **Processes** subtab and create a process called `run-sens
       "id": "run-sensor-server",
       "log": true,
       "name": "sudo",
-      "args": [
-        "-u",
-        "<my_username>",
-        "python",
-        "sensor.py"
-      ],
+      "args": ["-u", "<my_username>", "python", "sensor.py"],
       "cwd": "/home/<my_username>/plant-watering-robot"
     }
   ]
@@ -535,7 +532,7 @@ Follow these instructions to start working on your Python control code:
 
 For example, run the following commands on your Pi to create and open the file:
 
-``` shell
+```shell
 cd plant-watering-robot
 touch plant-watering-robot.py
 nano plant-watering-robot.py
@@ -590,7 +587,7 @@ See the motor component's [API documentation](/components/motor/#gofor) for more
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 
-``` shell
+```shell
 sudo python3 plant-watering-robot.py
 ```
 
@@ -601,4 +598,4 @@ Also, consider how often you would like to check the moisture levels of the plan
 
 Now that you have created your automatic plant watering system with a capacitive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
 For example, you can use a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US)!
-If you build something based on this please share it in our [Community Discord](https://discord.gg/viam)  - we'd love to see it.
+If you build something based on this please share it in our [Community Discord](https://discord.gg/viam) - we'd love to see it.

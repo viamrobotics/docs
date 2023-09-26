@@ -76,6 +76,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `align_color_depth_extrinsics` views:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `camera_system` | object | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>color_intrinsic_parameters</code>: The model uses the color camera intrinsics to project the 3D points to a 2D depth map, but "as if" it was taken from the POV of the color camera. </li> <li> <code>depth_intrinsic_parameters</code>: The model uses the depth camera intrinsics to de-project the 2D depth points to 3D points, from the point of view of the depth camera. </li> <li> <code>depth_to_color_extrinsic_parameters</code>: The model uses the extrinsic parameters to shift the 3D depth points to be from the POV of the color camera. </li> </ul> |

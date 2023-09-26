@@ -8,6 +8,9 @@ options:
 MD010:
   spaces_per_tab: 4
 
+MD007:
+  indent: 2
+
 # MD013/line-length - Line length
 MD013: false
 
@@ -25,3 +28,9 @@ MD041: false
 
 # Code block style expect indented
 MD046: false
+
+# Emphasis style
+MD049: "underscore"
+
+# Space after list marker - needed for prettier linter
+MD030: false

@@ -18,8 +18,8 @@ In this way, you can add basic movement sensing to your camera-equipped robot wi
 
 The `viam-visual-odometry` module implements the following two methods of the [movement sensor API](/components/movement-sensor/#api):
 
-* [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
-* [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
+- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
+- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
 
 Note that `GetLinearVelocity()` returns an estimation of the instantaneous linear velocity **without scale factor**.
 Therefore, you should not consider returned unit measurements trustworthy: instead, `GetLinearVelocity()` should serve as a direction estimation only.
@@ -59,28 +59,27 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
 {{% tab name="Config Builder" %}}
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-1. Click on the **Components** subtab and click **Create component** in the lower-left corner.
-1. Select the `camera` type, then select the `webcam` model.
-1. Enter a name for your camera, then click **Create**.
-1. In the resulting camera component configuration pane, select a **Video path** for your camera.
+1. Click on the **Components** subtab and find the **Create component** pane.
+1. Enter a name for your camera, select the `camera` type, and select the `webcam` model.
+1. Click **Create Component**.
+1. In the resulting `camera` component configuration pane, select a **Video path** for your camera.
    If your robot is live, the drop-down menu auto-populates any identified camera stream paths.
 1. Switch to the **Modules** subtab and find the **Add module** pane.
 1. Enter a name for your visual odometry module, and provide the full path to the `run.sh` file in the **Executable path** field, then click **Add module**.
-1. Switch back to the **Components** subtab and click the **Create component** button.
-1. Select the `movement_sensor` type, and select `viam:visual_odometry:opencv_orb` for model.
-1. Enter a name for your odometry movement sensor, then click **Create**.
+1. Switch back to the **Components** subtab and find the **Create component** pane.
+1. Enter a name for your odometry movement sensor, select the `movement_sensor` type, and enter `viam:visual_odometry:opencv_orb` for `model`, then click **Create component**.
 1. In the resulting `movement_sensor` component configuration pane, paste the following configuration into the **Attributes** text window:
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "camera_name": "<your-camera-name>",
-    "time_between_frames_s": <time_seconds>,
-    "lowe_ratio_threshold": <lowe_ratio_threshold>
-  }
-  ```
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "camera_name": "<your-camera-name>",
+     "time_between_frames_s": <time_seconds>,
+     "lowe_ratio_threshold": <lowe_ratio_threshold>
+   }
+   ```
 
-  Provide the same camera name as you used in step 4.
-  See the [Attributes](#attributes) section for more information on the other attributes.
+   Provide the same camera name as you used in step 3.
+   See the [Attributes](#attributes) section for more information on the other attributes.
 
 1. Click **Save config** at the bottom of the page.
 
@@ -123,12 +122,12 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
     },
     {
       "name": "<your_movement_sensor_name>",
-      "type": "movement_sensor",    
+      "type": "movement_sensor",
       "namespace": "rdk",
       "model": "viam:visual_odometry:opencv_orb",
       "attributes": {
-        "camera_name": "<your-camera-name>", 
-        "time_between_frames_s": <time_seconds>, 
+        "camera_name": "<your-camera-name>",
+        "time_between_frames_s": <time_seconds>,
         "lowe_ratio_threshold": <lowe_ratio_threshold>
       },
       "depends_on": []
@@ -180,8 +179,8 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
       "namespace": "rdk",
       "model": "viam:visual_odometry:opencv_orb",
       "attributes": {
-        "camera_name": "my-camera", 
-        "time_between_frames_s": 0.2, 
+        "camera_name": "my-camera",
+        "time_between_frames_s": 0.2,
         "lowe_ratio_threshold": 0.75
       },
       "depends_on": []
@@ -234,6 +233,7 @@ Specifically, note that the `height_px` and `width_px` attributes are not contai
 
 The following attributes are available to configure the `viam-visual-odometry` module:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Default | Description |
 | ---- | ---- | --------- | --------| ------------ |
 | `camera_name` | string | **Required** | | Camera name to be used for inferring the motion. |

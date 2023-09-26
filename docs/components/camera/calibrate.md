@@ -106,7 +106,7 @@ The following is a full example config:
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/components/camera/transform" %}}
-  {{% card link="/services/vision" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/components/camera/transform" %}}
+{{% card link="/services/vision" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}

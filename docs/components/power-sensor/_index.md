@@ -19,12 +19,12 @@ Integrate this component to monitor your power levels.
 
 For configuration information, click on your sensor’s model:
 
-Model | Description <a name="model-table"></a>
------ | -----------
-[`fake`](./fake/) | a digital power sensor for testing
-[`ina219`](./ina219/) | INA219 power sensor; current and power monitor
-[`ina226`](./ina226/) | INA226 power sensor; current and power monitor
-[`renogy`](./renogy/) | solar charge controller
+| Model                 | Description <a name="model-table"></a>         |
+| --------------------- | ---------------------------------------------- |
+| [`fake`](./fake/)     | a digital power sensor for testing             |
+| [`ina219`](./ina219/) | INA219 power sensor; current and power monitor |
+| [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
+| [`renogy`](./renogy/) | solar charge controller                        |
 
 ## Control your power sensor with Viam’s client SDK libraries
 
@@ -100,7 +100,8 @@ print("The current is ", current, " A, Is AC: ", is_ac)
 
 - `float64`: The measurement of the current, represented as a 64-bit float number.
 - `bool`: Indicate whether current is AC (`true`) or DC (`false`).
-- `error`: Report any errors that might occur during operation. For a successful operation, `error` returns `nil`.
+- `error`: Report any errors that might occur during operation.
+  For a successful operation, `error` returns `nil`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -154,7 +155,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `float64`: The measurement of the voltage, represented as a 64-bit float number.
 - `bool`: Indicate whether voltage is AC (`true`) or DC (`false`).
-- `error`: Report any errors that might occur during operation. For a successful operation, `error` returns `nil`.
+- `error`: Report any errors that might occur during operation.
+  For a successful operation, `error` returns `nil`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 
@@ -207,7 +209,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - `float64`: The measurement of the power, represented as a 64-bit float number.
-- `error`: Report any errors that might occur during operation. For a successful operation, `error` returns `nil`.
+- `error`: Report any errors that might occur during operation.
+  For a successful operation, `error` returns `nil`.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#PowerSensor).
 

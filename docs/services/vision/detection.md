@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "Select an algorithm that identifies objects in a 2D image and adds bounding boxes around identified objects."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
-images: [ "/services/vision/dog-detector.png" ]
+images: ["/services/vision/dog-detector.png"]
 # SMEs: Bijan, Khari
 ---
 
@@ -65,7 +65,7 @@ In your vision service's panel, select the color your vision service will be det
 
 Add the vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "<service_name>",
@@ -118,6 +118,7 @@ Add the vision service object to the services array in your raw JSON configurati
 
 The following parameters are available for a `color_detector`.
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `segment_size_px` | _Required_ | An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size. |
@@ -154,7 +155,7 @@ Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "mlmodel_name": "<detector_name>"
 }
@@ -165,7 +166,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 Add the vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "<service_name>",
@@ -215,20 +216,20 @@ If you intend to use the detector with a camera that is part of your robot, you 
 
 2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes:
 
-    ```json
-    {
-      "pipeline": [
-          {
-          "type": "detections",
-          "attributes": {
-              "confidence_threshold": 0.5,
-              "detector_name": "my_detector"
-          }
-          }
-      ],
-      "source": "<camera-name>"
-    }
-    ```
+   ```json
+   {
+     "pipeline": [
+       {
+         "type": "detections",
+         "attributes": {
+           "confidence_threshold": 0.5,
+           "detector_name": "my_detector"
+         }
+       }
+     ],
+     "source": "<camera-name>"
+   }
+   ```
 
 3. After adding the components and their attributes, click **Save config**.
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
@@ -246,19 +247,21 @@ If you intend to use the detector with a camera that is part of your robot, you 
 
    {{% /alert %}}
 
-    {{< tabs >}}
-    {{% tab name="Python" %}}
+   {{< tabs >}}
+   {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient
 
 robot = await connect()
+camera_name = "cam1"
+
 # Grab camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the detector
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
-detections = await my_detector.get_detections_from_camera(cam1)
+detections = await my_detector.get_detections_from_camera(camera_name)
 
 # If you need to store the image, get the image first
 # and then run detections on it. This process is slower:
@@ -404,7 +407,7 @@ To see more code examples of how to use Viam's Vision Service, see [our example 
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/try-viam-color-detection/" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle/" %}}
-  {{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
+{{% card link="/tutorials/services/try-viam-color-detection/" %}}
+{{% card link="/tutorials/services/color-detection-scuttle/" %}}
+{{% card link="/tutorials/services/webcam-line-follower-robot/" %}}
 {{< /cards >}}

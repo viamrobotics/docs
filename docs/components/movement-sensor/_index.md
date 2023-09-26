@@ -10,7 +10,7 @@ icon: "/icons/components/imu.svg"
 images: ["/icons/components/imu.svg"]
 no_list: true
 aliases:
-    - /components/movement-sensor/
+  - /components/movement-sensor/
 # SME: Rand
 ---
 
@@ -28,6 +28,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 Viam supports several different models of GPS, IMU and accelerometer.
 Click the model names below for configuration information:
 
+<!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>
 ----- | -----------
 [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
@@ -311,7 +312,7 @@ xAngVel := linAccel.X
 
 ### GetCompassHeading
 
-Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
+Report the current [compass heading](<https://en.wikipedia.org/wiki/Heading_(navigation)>) in degrees.
 
 Supported by GPS models and `imu-vectornav`.
 
@@ -457,7 +458,7 @@ properties = await my_movement_sensor.get_properties()
 
 **Returns:**
 
-- [(*movementsensor.Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
+- [(\*movementsensor.Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -542,7 +543,7 @@ If a sensor is not configured to take a certain measurement or fails to read a p
 **Returns:**
 
 - [(Mapping [str, Any])](https://docs.python.org/3/glossary.html#term-mapping): An object containing the measurements from the sensor.
-Contents depend on sensor model and can be of any type.
+  Contents depend on sensor model and can be of any type.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
 
@@ -565,7 +566,7 @@ readings = await my_movement_sensor.get_readings()
 **Returns:**
 
 - [(map[string]interface{})](https://go.dev/blog/maps): A map containing the measurements from the sensor.
-    Contents depend on sensor model and can be of any type.
+  Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).

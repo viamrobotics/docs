@@ -8,9 +8,9 @@ mp4Src: "/tutorials/light-up/light-up.mp4"
 images: ["/tutorials/light-up/light-up.gif"]
 videoAlt: "A person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on."
 tags: ["camera", "vision", "detector", "python"]
-authors: [ "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "camera", "mlmodel", "vision" ]
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
 # updated: ""
@@ -47,7 +47,7 @@ You will use the following software in this tutorial:
 - [`viam-server`](/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
-  Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
+    Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [Project repo on GitHub](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot)
 
 ## Install `viam-server` and connect to your robot
@@ -121,19 +121,19 @@ Name it `detectionCam` and click **Create**.
 In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
+{
+  "source": "my-camera",
+  "pipeline": [
     {
-    "source": "my-camera",
-    "pipeline": [
-        {
-        "type": "detections",
-        "attributes": {
-            "detector_name": "myPeopleDetector",
-            "confidence_threshold": 0.5
-        }
-        }
-    ]
+      "type": "detections",
+      "attributes": {
+        "detector_name": "myPeopleDetector",
+        "confidence_threshold": 0.5
+      }
     }
- ```
+  ]
+}
+```
 
 Click **Save config** in the bottom left corner of the screen.
 
@@ -141,32 +141,33 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Set up the Kasa Smart Plug
 
-1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
-To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
-When you first open the app, you will be prompted to create an account.
-As you do this, you will receive an email with the subject line "TP-Link ID: Activation Required" to complete your account registration.
+1.  Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
+    To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
+    When you first open the app, you will be prompted to create an account.
+    As you do this, you will receive an email with the subject line "TP-Link ID: Activation Required" to complete your account registration.
 
-2. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
-Once it is connected, you will no longer need to use the mobile app.
+2.  Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
+    Once it is connected, you will no longer need to use the mobile app.
 
-3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+3.  Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
     ```sh {class="command-line" data-prompt="$"}
     pip3 install python-kasa
     ```
 
-4. <a name=kasa ></a> Run the following command to return information about your smart device:
+4.  <a name=kasa ></a> Run the following command to return information about your smart device:
 
-    ```sh {class="command-line" data-prompt="$"}
-    kasa discover
-    ```
+        ```sh {class="command-line" data-prompt="$"}
+        kasa discover
+        ```
 
-    You should see this command output something like this:
+        You should see this command output something like this:
 
-    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
+        ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
 
-    Write down or save the host address (for example, `10.1.11.221`).
-You will need to include it in your Python code in a later step.
+        Write down or save the host address (for example, `10.1.11.221`).
+
+    You will need to include it in your Python code in a later step.
 
 ## Write Python code to control your object detection robot
 
@@ -196,7 +197,7 @@ You need to tell the code how to access your specific robot (which in this case 
 
    You also need to tell the code how to access your smart plug.
 
-1. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
+4. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
 
 ### Run the code
 
