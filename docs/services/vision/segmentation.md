@@ -196,10 +196,10 @@ The following parameters are available for a `detector_3d_segmenter`.
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `detector_name`| _Required_  | The name of a registered detector vision service. The segmenter vision service uses the detections from `"detector_name"` to create the 3D segments. |
-| `confidence_threshold_pct` | _Optional_ | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |
-| `mean_k` | _Required_ | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
-| `sigma` | _Required_ | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
+| `detector_name`| **Required**  | The name of a registered detector vision service. The segmenter vision service uses the detections from `"detector_name"` to create the 3D segments. |
+| `confidence_threshold_pct` | Optional | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |
+| `mean_k` | **Required** | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
+| `sigma` | **Required** | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
 
@@ -215,7 +215,7 @@ Configure an `obstacles_depth` segmenter:
 
 Add the following vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
     {
     "name": "<segmenter_name>",
@@ -258,13 +258,13 @@ Add the following vision service object to the services array in your raw JSON c
 
 The following parameters are available for an `"obstacles_depth"` segmenter:
 
-| Parameter | Inclusion | Description |
-| --------- | --------- | ----------- |
-| `with_geometries` | Required | Whether you would like multiple boxes, if `true`, or a single point, if `false`, returned within the `GeometryInFrame` object captured by this segmenter.  <br> Example: `"false"` </br> |
-| `h_min_m` | Optional | The minimum vertical height in meters for an object to be considered an obstacle. <br> Default: `0.0` </br> |
-| `h_max_m` | Optional | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br> |
-| `theta_max_deg` | Optional | The maximum slope at which an object is still not an obstacle. <br> Default: `45` </br> |
-| `return_pcds` | Optional | Whether you would like pointclouds to be included within the GeometryInFrame object captured by this segmenter.  <br> Example: `"false"` </br> |
+| Parameter         | Inclusion | Description                                                                                                                                                                             |
+| ----------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `with_geometries` | Required  | Whether you would like multiple boxes, if `true`, or a single point, if `false`, returned within the `GeometryInFrame` object captured by this segmenter. <br> Example: `"false"` </br> |
+| `h_min_m`         | Optional  | The minimum vertical height in meters for an object to be considered an obstacle. <br> Default: `0.0` </br>                                                                             |
+| `h_max_m`         | Optional  | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br>                                                                           |
+| `theta_max_deg`   | Optional  | The maximum slope at which an object is still not an obstacle. <br> Default: `45` </br>                                                                                                 |
+| `return_pcds`     | Optional  | Whether you would like pointclouds to be included within the GeometryInFrame object captured by this segmenter. <br> Example: `"false"` </br>                                           |
 
 If you want to identify multiple boxes over the flat plane with your segmenter:
 
