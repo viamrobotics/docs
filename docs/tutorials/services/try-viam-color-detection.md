@@ -8,11 +8,11 @@ imageAlt: "detectionCam stream displaying a color detection"
 images: ["/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"]
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
-    - /tutorials/viam-rover/try-viam-color-detection
-    - /tutorials/try-viam-color-detection
-authors: [ "Hazal Mestci" ]
+  - /tutorials/viam-rover/try-viam-color-detection
+  - /tutorials/try-viam-color-detection
+authors: ["Hazal Mestci"]
 languages: []
-viamresources: [ "vision", "camera" ]
+viamresources: ["vision", "camera"]
 level: "Beginner"
 date: "2022-12-16"
 # updated: ""
@@ -73,14 +73,14 @@ Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/r
 
 Your configuration should look like the following:
 
-{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x600" alt="The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
+![The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](/try-viam/try-viam/vision-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "my_color_detector",
@@ -163,22 +163,24 @@ Copy the following JSON configuration into the **Attributes** section:
 | `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
 | `attributes` | | The attributes of this detectionCam. |
 | `attributes.detector_name` | `my_color_detector` | The name of this detectionCam. |
-| `attributes.confidence_threshold` | `0.3` (30%) |  The percentage of confidence needed by the detection service to identify a color. |
+| `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence needed by the detection service to identify a color. |
 | `type` | `detections` | The type of the component. |
 
-![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon."](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
 
 After adding the component and its attributes, click **Save config**.
 
 ## Test your transform camera in the **Control** tab
 
-In the **Control** tab, click on your base component and enable the detection camera from the **Live Feeds** section.
+In the **Control** tab, click on your base component and enable the detection camera in the **Live Feeds** section.
 
+Next, enable the keyboard and move your rover around until your camera detects the specified color.
 Next, enable the keyboard and move your rover around until your camera detects the specified color.
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
+Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 
 ## Next Steps
