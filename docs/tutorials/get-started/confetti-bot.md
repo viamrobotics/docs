@@ -17,7 +17,7 @@ date: "2023-05-29"
 cost: 145
 ---
 
-{ {<gif webm_src="/tutorials/confetti-bot/confetti-bot-explodes.webm" mp4_src="/tutorials/confetti-bot/confetti-bot-explodes.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti">}}
+{{<gif webm_src="/tutorials/confetti-bot/confetti-bot-explodes.webm" mp4_src="/tutorials/confetti-bot/confetti-bot-explodes.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="275px">}}
 
 Are you tired of boring celebrations with the same old confetti popping techniques?
 You can now design your very own confetti-popping robot with a big red button that will make your parties a colorful blast, literally!
