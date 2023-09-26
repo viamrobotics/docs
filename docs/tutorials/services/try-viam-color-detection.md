@@ -73,7 +73,7 @@ Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/r
 
 Your configuration should look like the following:
 
-{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x600" alt="The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
+![The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](/try-viam/try-viam/vision-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -175,10 +175,12 @@ After adding the component and its attributes, click **Save config**.
 In the **Control** tab, click on your base component and enable the detection camera from the **Live Feeds** section.
 
 Next, enable the keyboard and move your rover around until your camera detects the specified color.
+Next, enable the keyboard and move your rover around until your camera detects the specified color.
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
+Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 
 ## Next Steps
