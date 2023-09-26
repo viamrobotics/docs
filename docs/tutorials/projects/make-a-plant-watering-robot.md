@@ -29,7 +29,7 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 1. [Complete the physical assembly and wiring](#set-up-your-plant-watering-robot).
 2. [Create and connect to the robot](#configure-the-components-of-your-robot-in-the-viam-app).
 3. [Configure your robot's components](#configure-the-components-of-your-robot-in-the-viam-app).
-4. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry) along with the capacitive moisture sensor.
+4. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
 5. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
 The tutorial uses the following hardware, but you can adjust it as needed:
@@ -351,7 +351,8 @@ However, there are many different types of sensors used for sensing different th
 
 A _module_ provides one or more modular resources, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam. A module can be added to your robot from the Viam registry.
 
-The [Viam registry](/extend/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other. You can add a module from the Viam registry directly from your robot’s Configuration tab in the Viam app, using the + Create component button.
+The [Viam registry](/extend/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other. 
+You can add a module from the Viam registry directly from your robot’s Configuration tab in the Viam app, using the + Create component button.
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
@@ -369,6 +370,7 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
 This module allows you to get multiple readings at the same time from different channels of the ADC sensor.
 If you wire and configure another sensor, such as a temperature sensor on channel 1, you can add the sensor to the `"channel_map"` and get a reading from it.
+{{< alert title="Info" color="info" >}} If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor). {{< /alert >}} 
 
 ### Add Python control code
 
@@ -444,7 +446,7 @@ Save your <file>plant-watering-robot.py</file> program with this logic added in,
 sudo python3 plant-watering-robot.py
 ```
 
-To tinker this example code to work best for you, determine at what [analog value from the Soil Moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `60000`.
+To tinker this example code to work best for you, determine at what [analog value from the soil moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `60000`.
 Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 ## Next steps
