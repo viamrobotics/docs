@@ -58,7 +58,7 @@ done
 fi
 ```
 
-If you don't already have at `.git/hooks/pre-commit` in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
+If you don't already have a `.git/hooks/pre-commit` file in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
 If you create a new file, you must also make it executable with: `chmod 755 /path/to/my/.git/hooks/pre-commit`.
 
 To ensure your markdown is properly formatted, run `make markdowntest`.
@@ -80,7 +80,7 @@ done
 fi
 ```
 
-If you don't already have at `.git/hooks/pre-commit` in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
+If you don't already have a `.git/hooks/pre-commit` file in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
 If you create a new file, you must also make it executable with: `chmod 755 /path/to/my/.git/hooks/pre-commit`.
 
 With this configuration in place, each commit you make will remove EXIF data from any image files (with extension `.png`, `.jpg`, or `.jpeg`) that are part of your commit.
