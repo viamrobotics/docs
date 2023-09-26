@@ -170,12 +170,12 @@ Copy the following JSON configuration into the **Attributes** section:
 
 After adding the component and its attributes, click **Save config**.
 
-## Test your transform camera in the **Control** tab
+## Test your transform camera in the Control tab
 
 In the **Control** tab, click on your base component and enable the detection camera in the **Live Feeds** section.
 
 Next, enable the keyboard and move your rover around until your camera detects the specified color.
-Next, enable the keyboard and move your rover around until your camera detects the specified color.
+
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
