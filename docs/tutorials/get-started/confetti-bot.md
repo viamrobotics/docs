@@ -4,10 +4,10 @@ linkTitle: "Confetti Bot"
 type: "docs"
 description: "Use a red button to activate a GPIO pin on the board and make a confetti popper go off."
 tags: ["raspberry pi", "python", "app", "board", "motor"]
-webmSrc: "/tutorials/confetti-bot/preview.webm"
-mp4Src: "/tutorials/confetti-bot/preview.mp4"
+webmSrc: "/tutorials/confetti-bot/confetti-bot-explodes.webm"
+mp4Src: "/tutorials/confetti-bot/confetti-bot-explodes.mp4"
 videoAlt: "A GIF of a red button being pressed and the cannon spraying confetti"
-images: ["/tutorials/confetti-bot/preview.gif"]
+images: ["/tutorials/confetti-bot/confetti-bot-explodes.gif"]
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["board", "motor"]
