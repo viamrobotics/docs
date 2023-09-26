@@ -11,7 +11,7 @@ aliases:
   - "/tutorials/webcam-line-follower-robot/"
 authors: ["Jessamy Taylor"]
 languages: ["python"]
-viamresources: ["vision", "camera"]
+viamresources: ["vision", "camera", "base"]
 level: "Intermediate"
 date: "2022-08-26"
 updated: "2023-08-04"
