@@ -12,15 +12,10 @@ no_list: true
 # SMEs:
 ---
 
-The _generic_ component type is for custom components that do not fit into any of the other component {{< glossary_tooltip term_id="subtype" text="subtypes" >}}.
+The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
 
 There are no built-in generic component models (other than `fake`).
-Generic is only for [modular resource](/extend/modular-resources/) models that don't fit into any of the typical categories.
-
-Use cases:
-
-- You want to implement a new model of component as a modular resource, and your device isn't an arm, a base, a board, a camera, or any of the other [built-in Viam component types](/components/).
-- You are using someone else's modular resource, which they implemented with the generic subtype.
+Use generic for a [modular resource](/extend/modular-resources/) model that represents a unique type of hardware.
 
 {{% alert title="Important" color="note" %}}
 
