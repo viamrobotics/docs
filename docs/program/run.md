@@ -71,6 +71,6 @@ This is useful because as long as that computer is able to establish a network c
 
 ## Run Code On-Robot
 
-In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your robots have intermittent network connectivity, you can ensure this does not interfere with the code's execution, by running the the control code on the same board that is running `viam-server`.
+In case you run [PID control loops](https://en.wikipedia.org/wiki/PID_controller) or your robots have intermittent network connectivity, you can ensure this does not interfere with the code's execution, by running the control code on the same board that is running `viam-server`.
 
 When connecting to a robot using the connection code from the [code sample tab](/program/#hello-world-the-code-sample-tab), a [client session](/program/apis/sessions/) automatically uses the [most efficient route](/program/connectivity/) to connect to your robot, which means the favored route for commands will be over localhost.
