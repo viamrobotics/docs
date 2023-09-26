@@ -181,10 +181,10 @@ On the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the co
           "b": "15",
           "pwm": "11"
         },
-        "board": "local",
+        "board": "party",
         "max_rpm": 1000
       },
-      "depends_on": ["local"]
+      "depends_on": ["party"]
     }
   ]
 }
@@ -244,7 +244,7 @@ You can find the designs [on Viam Labs' GitHub](https://github.com/viam-labs/dev
 
 If you don’t have a laser cutter, you can 3D print the sides instead, or leave them empty.
 
-{{<imgproc src="/tutorials/confetti-bot/install-lasercut-side.jpg" resize="400x" declaredimensions=true alt="Lasercut side attached to the enclosure, with few cables going out of the enclosure." class="aligncenter" style="min-height:275px; max-height:350px">}}
+{{<imgproc src="/tutorials/confetti-bot/install-lasercut-side.jpg" resize="400x" declaredimensions=true alt="Lasercut side attached to the enclosure, with few cables going out of the enclosure." class="center-if-small" style="min-height:275px; max-height:350px">}}
 
 ### Final design
 
