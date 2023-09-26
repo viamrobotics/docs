@@ -351,14 +351,14 @@ However, there are many different types of sensors used for sensing different th
 
 A _module_ provides one or more modular resources, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam. A module can be added to your robot from the Viam registry.
 
-The [Viam registry](/extend/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other. 
+The [Viam registry](/extend/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your robot’s Configuration tab in the Viam app, using the + Create component button.
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
 1. Go to your robot and from the create component section, search mcp300x.
 2. Add this module to your robot.
-3. Add the necessary attributes. 
+3. Add the necessary attributes.
     For example, if you have a moisture sensor on channel 0, and your sensor_pin is 8, your configuration should look like this:
 
 {
@@ -370,7 +370,7 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
 This module allows you to get multiple readings at the same time from different channels of the ADC sensor.
 If you wire and configure another sensor, such as a temperature sensor on channel 1, you can add the sensor to the `"channel_map"` and get a reading from it.
-{{< alert title="Info" color="info" >}} If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor). {{< /alert >}} 
+{{< alert title="Info" color="info" >}} If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor). {{< /alert >}}
 
 ### Add Python control code
 
