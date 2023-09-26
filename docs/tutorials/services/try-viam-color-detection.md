@@ -30,7 +30,7 @@ The service also allows you to create different types of detectors with which th
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
 {{< alert title="Tip" color="tip" >}}
-If you are [renting your rover](https://app.viam.com/try), we recommend that you skim through this page before renting your rover
+If you are [renting your rover](https://app.viam.com/try), we recommend that you skim through this page before renting your rover.
 
 Be aware that if you are running out of time during your rental, you can [extend your rover rental](/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
