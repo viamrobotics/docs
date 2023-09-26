@@ -60,7 +60,9 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
     {{< imgproc alt="Raspberry Pi Imager window showing gear-shaped settings icon is selected." src="/installation/rpi-setup/advanced-options.png" resize="800x" declaredimensions=true >}}
 
     {{% alert title="Important" color="note" %}}
-    If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
+
+If you are using a non-Raspberry Pi OS, altering the Advanced options will cause the initial boot to fail.
+
     {{% /alert %}}
 
     {{< imgproc alt="Raspberry Pi Imager window showing the advanced options menu." src="/installation/rpi-setup/imager-set-hostname.png" resize="800x" declaredimensions=true >}}
@@ -83,14 +85,15 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{< imgproc alt="Raspberry Pi Imager window showing the 'Set username and password' option is selected." src="/installation/rpi-setup/imager-set-passwordauthentication.png" resize="800x" declaredimensions=true >}}
 
-        {{% alert title="Tip" color="tip" %}}
+    {{% alert title="Tip" color="tip" %}}
 
-    Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
+Be sure that you remember the `hostname`, `username`, and `password` you use, as you will need this when you SSH into your Pi.
+
     {{% /alert  %}}
 
-        {{< alert title="Caution" color="caution" >}}
+    {{< alert title="Caution" color="caution" >}}
 
-    The default username and password on Raspberry Pis are
+The default username and password on Raspberry Pis are
 
 - username: pi
 - password: raspberry
