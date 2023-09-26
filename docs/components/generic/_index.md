@@ -4,7 +4,7 @@ linkTitle: "Generic"
 childTitleEndOverwrite: "Generic Component"
 weight: 55
 type: "docs"
-description: "Use a generic component to implement a component that does not fit any of the other APIs."
+description: "A component that does not fit any of the other APIs."
 tags: ["generic", "components"]
 icon: "/icons/components.png"
 images: ["/icons/components.png"]
@@ -34,8 +34,7 @@ If you want to use most of an existing API but need just a few other functions, 
 
 ## Configuration
 
-The generic component supports the following models.
-Click on the component model name for detailed configuration information.
+For configuration information, click on one of the supported generic models:
 
 <!-- prettier-ignore -->
 Model | Description
@@ -79,7 +78,7 @@ import (
 
 ## API
 
-The generic component supports the following methods:
+The generic component supports the following method:
 
 {{< readfile "/static/include/components/apis/generic.md" >}}
 
