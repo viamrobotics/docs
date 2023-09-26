@@ -335,7 +335,7 @@ Save the config.
 {{% tab name="JSON Template" %}}
 
 Select **Raw JSON** mode.
-Copy and paste the following into your **modules** array to add [**speech**](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
+Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
 
 ``` json  {class="line-numbers linkable-line-numbers"}
 "modules": [
@@ -349,7 +349,7 @@ Copy and paste the following into your **modules** array to add [**speech**](htt
 
 ```
 
-Then, copy and paste the following into your **services** array to add [elevenlabs.io](https://elevenlabs.io/) as your `speech` modular service provider:
+Then, copy and paste the following into your `services` array to add [elevenlabs.io](https://elevenlabs.io/) as your `speech` modular service provider:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
@@ -375,7 +375,7 @@ Save the config.
 {{% /tab %}}
 {{< /tabs >}}
 
-The above configuration would set up listening mode, use an ElevenLabs voice `"Antoni"`, make AI completions available, and use a 'Gollum' persona for AI completion from OpenAI.
+Use the above configuration to set up listening mode, use an ElevenLabs voice `"Antoni"`, make AI completions available, and use a 'Gollum' persona for AI completion from OpenAI.
 
 Edit the attributes as applicable:
 
