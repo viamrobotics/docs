@@ -41,9 +41,7 @@ Next, to install your preferred Viam SDK on your Linux or macOS development mach
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```sh {class="command-line" data-prompt="$"}
-pip install viam-sdk
-```
+If you are using the Python SDK, [set up a virtual environment](/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -292,10 +290,6 @@ You can think of these as keys or access tokens to your robot that are important
 This connection must be established for your program to be executed properly on your robot.
 
 {{< readfile "/static/include/snippet/secret-share.md" >}}
-
-### Set up your virtual environment
-
-If you are using the Python SDK, [set up a virtual environment](/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 ### Run the sample code
 
