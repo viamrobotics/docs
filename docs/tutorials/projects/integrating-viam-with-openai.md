@@ -348,7 +348,7 @@ Copy and paste the following into your `modules` array to add [`speech`](https:/
 ]
 ```
 
-Then, copy and paste the following into your `services` array to add [elevenlabs.io](https://elevenlabs.io/) as your `speech` modular service provider:
+Then, copy and paste the following into your `services` array to add [elevenlabs.io](https://elevenlabs.io/) as your `speechio` modular service provider:
 
 ``` json {class="line-numbers linkable-line-numbers"}
 {
