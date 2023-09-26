@@ -3,13 +3,13 @@ title: "Navigate with a Rover Base"
 linkTitle: "Navigate with a Rover"
 type: "docs"
 description: "Introduction to using a rover base."
-# image: "/tutorials/data-management/image1.png"
-# imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
-# images: ["/services/data-management/image1.png"]
+image: "/tutorials/navigate-with-rover-base/leo-in-office.png"
+imageAlt: "The leo rover navigating in the Viam Lab."
+images: ["/tutorials/navigate-with-rover-base/leo-in-office.png"]
 tags: ["try viam", "navigation", "movement sensor"]
-authors: []
-languages: []
-viamresources: [ "navigation", "camera" ]
+authors: ["Sierra Guequierre"]
+languages: ["python", "go"]
+viamresources: ["navigation", "camera"]
 level: "Intermediate"
 date: "2023-02-08"
 # updated: ""
