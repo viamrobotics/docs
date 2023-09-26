@@ -107,9 +107,10 @@ To enable image data capture for a camera component, follow these steps:
       This will capture an image from the camera roughly once every 3 seconds.
       Feel free to adjust the frequency if you want the camera to capture more or less image data.
 
-           {{< alert title="Caution" color="caution" >}}
+      {{< alert title="Caution" color="caution" >}}
 
-      Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
+Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
+
       {{< /alert >}}
 
     - Select the MIME type you want to capture.
