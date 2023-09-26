@@ -4,7 +4,16 @@ linkTitle: "wheeled-odometry"
 type: "docs"
 description: "Configure a wheeled-odometry movement sensor."
 images: ["/icons/components/imu.svg"]
-tags: ["movement sensor", "components", "encoder", "motor", "base", "wheeled", "odometry"]
+tags:
+  [
+    "movement sensor",
+    "components",
+    "encoder",
+    "motor",
+    "base",
+    "wheeled",
+    "odometry",
+  ]
 # SMEs: Rand, Martha
 ---
 
@@ -25,9 +34,10 @@ After configuring a `wheeled-odometry` movement sensor, you can operate your bas
 To prepare your robot, attach [encoders](/components/encoder/) to each of the position-reporting motors on your base to measure their rotation.
 
 - Select motors that can report their own position, like an encoded [`roboclaw`](/components/motor/roboclaw/) or [`gpio` motors](/components/motor/gpio/) with [encoders](/components/encoder/#configuration), or the [`odrive`](/extend/modular-resources/examples/odrive/) module.
-You can access this property of a configured motor through the [motor API's `GetProperties()`](/components/motor/#getproperties).
+  You can access this property of a configured motor through the [motor API's `GetProperties()`](/components/motor/#getproperties).
 - Configure your rover as a [wheeled base component](/components/base/wheeled/).
-Make sure to configure the base width and circumference, as these measurements as a property of the base are vital for accurate odometry estimations by your movement sensor. This movement sensor accesses these values through the base's `GetProperties()` API method.
+  Make sure to configure the base width and circumference, as these measurements as a property of the base are vital for accurate odometry estimations by your movement sensor.
+  This movement sensor accesses these values through the base's `GetProperties()` API method.
 - Configure each of the position-reporting motors [as motor components](/components/motor/).
 - Then, proceed to [configure](#configuration) a `wheeled-odometry` movement sensor with the name of each of the motor components.
 
@@ -55,9 +65,12 @@ Fill in and edit the attributes as applicable.
 
 The following attributes are available for `wheeled-odometry` movement sensors:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) to which the encoders making up this movement sensor are wired. |
 | `left_motors` | object | **Required** | A list containing the name of each of the bases' left [position-reporting motors](/components/motor/gpio/). |
 | `right_motors` | object | **Required** | A list containing the name of each of the bases' right [position-reporting motors](/components/motor/gpio/). |
 | `time_interval_msec` | number | Optional | The time in milliseconds between each wheeled odometry calculation.<br>Default: `500.0`</br> |
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}

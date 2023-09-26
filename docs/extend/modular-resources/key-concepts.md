@@ -3,7 +3,15 @@ title: "Key Concepts of Modular Resource APIs"
 linkTitle: "Concepts"
 weight: 10
 type: "docs"
-tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+tags:
+  [
+    "server",
+    "rdk",
+    "extending viam",
+    "modular resources",
+    "components",
+    "services",
+  ]
 description: "The key concepts behind how Viam's resource APIs and models are uniquely namespaced and modular resource management with the RDK."
 no_list: true
 ---
@@ -13,7 +21,7 @@ A custom module can provide one or more modular resource models.
 
 ## Modules
 
-A *module* provides one or more [*modular resources*](#resources), and is a flexible way to extend the functionality of your Viam robot.
+A _module_ provides one or more [_modular resources_](#resources), and is a flexible way to extend the functionality of your Viam robot.
 Modules run alongside `viam-server` as a separate process, communicating with `viam-server` over a UNIX socket.
 A module provides definitions for one or more pairs of [APIs](#valid-apis-to-implement-in-your-model) and [models](#models).
 
@@ -30,13 +38,13 @@ Each component or service is typed by a proto API, such as the [component proto 
 
 Any resource on your robot needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
 
-A *modular resource* is a resource that is provided by a [module](#modules), and not built-in to the RDK.
+A _modular resource_ is a resource that is provided by a [module](#modules), and not built-in to the RDK.
 A modular resource runs in the module process. This differs from built-in resources, which run as part of `viam-server`.
 
 ## Models
 
-A *model* describes a specific implementation of a [resource](#resources) that implements (speaks) its API.
-Models allow you to control different instances of resource with a consistent interface, even if the underlying implementation differs.
+A _model_ describes a specific implementation of a [resource](#resources) that implements (speaks) its [API](/program/apis/).
+Models allow you to control different instances of a resource with a consistent interface, even if the underlying implementation differs.
 
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
@@ -47,7 +55,7 @@ See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-mode
 Models are either:
 
 - Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
-- Provided in custom modules available for download from the [Viam registry](https://app.viam.com/registry), and are written by either Viam or community users.
+- Provided in [custom modules](#modules) available for download from the [Viam registry](https://app.viam.com/registry), and are written by either Viam or community users.
 
 ### Built-in models
 
@@ -66,13 +74,13 @@ These models run outside `viam-server` as a separate process.
 
 #### Valid APIs to implement in your model
 
-When implementing a custom model of an existing [component](/components/), valid [APIs](/program/apis/) are always:
+When implementing a custom [model](#models) of an existing [component](/components/), valid [APIs](/program/apis/) are always:
 
 - `namespace`: `rdk`
 - `type`: `component`
 - `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
 
-When implementing a custom model of an existing [service](/services/), valid [APIs](/program/apis/) are always
+When implementing a custom [model](#models) of an existing [service](/services/), valid [APIs](/program/apis/) are always
 
 - `namespace`: `rdk`
 - `type`: `service`

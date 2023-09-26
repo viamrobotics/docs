@@ -17,37 +17,29 @@ The class labels used for classification vary and depend on the machine learning
 
 The returned classifications consist of the image's class label and confidence score.
 
-* `class_name` (string): specifies the label of the found object.
-* `confidence` (float): specifies the confidence of the assigned label.
+- `class_name` (string): specifies the label of the found object.
+- `confidence` (float): specifies the confidence of the assigned label.
   Between `0.0` and `1.0`, inclusive.
 
 The types of classifiers supported are:
 
-* **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
+- **Object classification (`mlmodel`)**: a machine learning classifier that returns a class label and confidence score according to the specified `tensorflow-lite` model file available on the robot’s hard drive.
 
 ## Configure an `mlmodel` classifier
 
-To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
-
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
-
-Scroll to the **Create Service** section.
+To create an `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-1. Select `vision` as the **Type**.
-2. Enter a name as the **Name**.
-3. Select **ML Model** as the **Model**.
-4. Click **Create Service**.
-
-![Create vision service for mlmodel](/services/vision/mlmodel.png)
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `ML Model` model.
+Enter a name for your service and click **Create**.
 
 In your vision service's panel, fill in the **Attributes** field.
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "mlmodel_name": "<classifier_name>"
 }
@@ -58,7 +50,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 Add the vision service object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "<service_name>",
@@ -105,20 +97,20 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 1. Configure a [camera component](../../../components/camera/).
 2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
 
-    ```json
-    {
-      "pipeline": [
-          {
-          "type": "classifications",
-          "attributes": {
-              "confidence_threshold": 0.5,
-              "classifier_name": "my_classifier"
-          }
-          }
-      ],
-      "source": "<camera-name>"
-    }
-    ```
+   ```json
+   {
+     "pipeline": [
+       {
+         "type": "classifications",
+         "attributes": {
+           "confidence_threshold": 0.5,
+           "classifier_name": "my_classifier"
+         }
+       }
+     ],
+     "source": "<camera-name>"
+   }
+   ```
 
 3. After adding the components and their attributes, click **Save config**.
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
@@ -128,7 +120,7 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 
 5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
 
-    {{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
 Pass the name of the camera you configured in step 1.
 Do not pass a transform camera that already has the "detections" or "classifications" transform applied to it.
@@ -142,13 +134,16 @@ Do not pass a transform camera that already has the "detections" or "classificat
 from viam.services.vision import VisionClient
 
 robot = await connect()
+camera_name = "cam1"
 # Grab camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+cam1 = Camera.from_robot(robot, camera_name)
 # Grab Viam's vision service for the classifier
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the top 2 classifications with the highest confidence scores from the camera output
-classifications = await my_classifier.get_classifications_from_camera(img, 2)
+# Get the top 2 classifications with the highest confidence scores from the
+# camera output
+classifications = await my_classifier.get_classifications_from_camera(
+    camera_name, 2)
 
 # If you need to store the image, get the image first
 # and then run classifications on it. This process is slower:

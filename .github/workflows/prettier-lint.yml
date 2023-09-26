@@ -1,0 +1,23 @@
+name: Lint JS files with Prettier
+
+# This action works with pull requests and pushes
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check for prettified code
+        uses: creyD/prettier_action@v4.3
+        with:
+          dry: True
+          # This part is also where you can pass other options, for example:
+          prettier_options: docs/**/*.md

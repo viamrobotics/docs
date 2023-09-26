@@ -58,6 +58,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `rtsp` cameras:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `rtsp_address` | string | **Required** | The RTSP address where the camera streams. |

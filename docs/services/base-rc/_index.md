@@ -1,6 +1,6 @@
 ---
 title: "Base Remote Control Service"
-linkTitle: "Remote Control"
+linkTitle: "Base Remote Control"
 weight: 60
 type: "docs"
 description: "The base remote control service allows you to remotely control a base with an input controller like a gamepad."
@@ -33,24 +33,23 @@ You must configure a [base](/components/base/) with a [movement sensor](/compone
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab and navigate to the **Create service** menu.
-Select the type `Navigation` and enter a name for your service.
+Click the **Services** subtab, then click **Create service** in the lower-left corner.
+Select the type `Base Remote Control`.
+Enter a name for your service, then click **Create**.
 
-Click **Create service**:
-
-![An example configuration for a Base Remote Control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
+![An example configuration for a base remote control service in the Viam app Config Builder.](/services/base-rc/base-rc-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-base-remote-control-service>",
-    "type": "base_remote_control",
-    "attributes": {
-        "base": "<your-base-name>",
-        "input_controller": "<your-controller-name>"
-    }
+  "name": "<your-base-remote-control-service>",
+  "type": "base_remote_control",
+  "attributes": {
+    "base": "<your-base-name>",
+    "input_controller": "<your-controller-name>"
+  }
 }
 ```
 
@@ -59,22 +58,23 @@ Click **Create service**:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "my-base-remote-control-service",
-    "type": "base_remote_control",
-    "attributes": {
-        "base": "my-base",
-        "input_controller": "my-input-controller",
-        "control_mode": "arrowControl"
-    }
+  "name": "my-base-remote-control-service",
+  "type": "base_remote_control",
+  "attributes": {
+    "base": "my-base",
+    "input_controller": "my-input-controller",
+    "control_mode": "arrowControl"
+  }
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-Next, add the JSON `"attributes"` you want the service to have.
-The following attributes are available for Base Remote Control services:
+Edit and fill in the attributes as applicable.
+The following attributes are available for base remote control services:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |

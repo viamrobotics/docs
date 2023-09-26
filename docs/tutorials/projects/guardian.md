@@ -10,9 +10,9 @@ videoAlt: "A guardian detecting a person or pet."
 images: ["/tutorials/guardian/preview.gif"]
 tags: ["camera", "vision", "detector", "python"]
 no_list: true
-authors: [ "Naomi Pentrel" ]
-languages: [ "python" ]
-viamresources: [ "camera", "vision", "servo", "mlmodel" ]
+authors: ["Naomi Pentrel"]
+languages: ["python"]
+viamresources: ["camera", "vision", "servo", "mlmodel"]
 level: "Intermediate"
 date: "2023-05-15"
 # updated: ""
@@ -32,6 +32,7 @@ Here's a video of the finished guardian detecting me:
 
 To build your own guardian robot, you need the following hardware:
 
+<!-- prettier-ignore -->
 | Hardware | Approximate price |
 | -------- | ----------------- |
 | **Raspberry Pi + power cable** | $60 |
@@ -130,38 +131,38 @@ Click on the **Components** subtab.
 
 1. **Add the board.**
 
-    Click **Create component** in the lower-left corner of the page.
-    Select `board` for the type, then select `pi` for the model.
-    Enter `local` as the name for your [board component](/components/board/), then click **Create**.
+   Click **Create component** in the lower-left corner of the page.
+   Select `board` for the type, then select `pi` for the model.
+   Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the camera.**
 
-    Click **Create Component** to add the [camera](/components/camera/).
-    Select `camera` for the type, then select `webcam` for the model.
-    Enter `cam` as the name for the camera, then click **Create**.
-    In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
-    Select `mmal service 16.1 (platform:bcm2835_v4l2-0)`.
+   Click **Create Component** to add the [camera](/components/camera/).
+   Select `camera` for the type, then select `webcam` for the model.
+   Enter `cam` as the name for the camera, then click **Create**.
+   In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+   Select `mmal service 16.1 (platform:bcm2835_v4l2-0)`.
 
 3. **Add the servo.**
 
-    Click **Create component** in the lower-left corner of the page.
-    Select `servo` for the type, then select `pi` for the model.
-    Enter `servo` as the name for your [servo component](/components/servo/), then click **Create**.
-    Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
+   Click **Create component** in the lower-left corner of the page.
+   Select `servo` for the type, then select `pi` for the model.
+   Enter `servo` as the name for your [servo component](/components/servo/), then click **Create**.
+   Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
-    ```json
-    {
-        "pin": "12",
-        "board": "local"
-    }
-    ```
+   ```json
+   {
+     "pin": "12",
+     "board": "local"
+   }
+   ```
 
 Click **Save config** in the bottom left corner of the screen.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to  {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
+On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -190,9 +191,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "pin": "12",
         "board": "local"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     }
   ]
 }
@@ -260,59 +259,66 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 {{% tab name="Builder UI" %}}
 
 Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click the **Services** subtab.
 
 1. **Add an ML model service.**
 
-   The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
-   Create an ML model with the name `mlmodel`, the type `mlmodel` and the model `tflite_cpu`.
-   Then click **Create Service**.
+The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
 
-   In the new ML Model panel, select **Path to Existing Model On Robot** for the **Deployment**.
+Click **Create service** in the lower-left corner of the page.
+Select type `ML Model`, then select model `TFLite CPU`.
+Enter `mlmodel` as the name for your ML model service, then click **Create**.
 
-   Then specify the absolute **Model Path** as `/home/pi/effdet0.tflite` and the **Label Path** as `/home/pi/labels.txt`.
+In the new ML Model panel, select **Path to existing model on robot** for the **Deployment**.
+
+Then specify the absolute **Model path** as `/home/pi/effdet0.tflite` and the **Label path** as `/home/pi/labels.txt`.
 
 2. **Add a vision service.**
 
-   Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
-   Create an vision service with the name `detector`, the type `vision` and the model `mlmodel`.
-   Then click **Create Service**.
+Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
 
-   In the new detector panel, select the `mlmodel` you configured in the previous step.
+Click **Create service** in the lower-left corner of the page.
+Select type `Vision`, then select model `ML Model`.
+Enter `detector` as the name, then click **Create**.
 
-   Click **Save config** in the bottom left corner of the screen.
+In the new detector panel, select the `mlmodel` you configured in the previous step.
+
+Click **Save config** in the bottom left corner of the screen.
 
 3. **Add a `transform` camera.**
 
-   To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
+To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
-   Click on the **Components** subtab and navigate to the **Create component** menu.
-   Create a [transform camera](/components/camera/transform/) with the name `transform_cam`, the type `camera` and the model `transform`.
+Navigate to the **Components** subtab of the **Config** tab.
+Click **Create component** in the lower-left corner of the page.
 
-   Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+Select `camera` for the type, then select `transform` for the model.
+Enter `transform_cam` as the name for your [transform camera](/components/camera/transform/), then click **Create**.
 
-   ```json
-   {
-   "source": "cam",
-   "pipeline": [
-       {
-       "type": "detections",
-       "attributes": {
-           "detector_name": "detector",
-           "confidence_threshold": 0.6
-       }
-       }
-   ]
-   }
-   ```
+Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
-   Click **Save config** in the bottom left corner of the screen.
+```json
+{
+  "source": "cam",
+  "pipeline": [
+    {
+      "type": "detections",
+      "attributes": {
+        "detector_name": "detector",
+        "confidence_threshold": 0.6
+      }
+    }
+  ]
+}
+```
+
+Click **Save config** in the bottom left corner of the screen.
 
 {{% /tab %}}
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
+Next, on the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {
@@ -341,9 +347,7 @@ Next, on the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace th
         "pin": "12",
         "board": "local"
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "name": "transform_cam",
@@ -457,6 +461,7 @@ from viam.components.camera import Camera
 from viam.components.servo import Servo
 from viam.services.vision import VisionClient
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
@@ -544,14 +549,15 @@ Underneath the `check_for_living_creatures()` function, add the following functi
 If a creature is detected, the red LEDs will light up and music will play.
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player):
+async def idle_and_check_for_living_creatures(
+  camera_name, detector, servo, blue_leds, red_leds, music_player):
     living_creature = None
     while True:
         random_number_checks = random.randint(0, 5)
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            detections = await detector.get_detections_from_camera(cam)
+            detections = await detector.get_detections_from_camera(camera_name)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
@@ -621,8 +627,9 @@ Replace your `main()` function with the following:
 async def main():
     robot = await connect()
     local = Board.from_robot(robot, 'local')
-    cam = Camera.from_robot(robot, "cam")
-    img = await cam.get_image()
+    camera_name = "cam"
+    cam = Camera.from_robot(robot, camera_name)
+    img = await cam.get_image(mime_type="image/jpeg")
     servo = Servo.from_robot(robot, "servo")
     red_leds = LedGroup([
         await local.gpio_pin_by_name('22'),
@@ -643,7 +650,8 @@ async def main():
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
-        living_creature = await idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player)
+        living_creature = await idle_and_check_for_living_creatures(
+            camera_name, detector, servo, blue_leds, red_leds, music_player)
         await focus_on_creature(living_creature, img.width, servo)
     # Don't forget to close the robot when you're done!
     await robot.close()
@@ -753,7 +761,8 @@ async def connect():
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud', opts)
+    return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud',
+                                        opts)
 
 
 async def check_for_living_creatures(detections):
@@ -799,14 +808,19 @@ class LedGroup:
             await pin.set(on)
 
 
-async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player):
+async def idle_and_check_for_living_creatures(camera_name,
+                                              detector,
+                                              servo,
+                                              blue_leds,
+                                              red_leds,
+                                              music_player):
     living_creature = None
     while True:
         random_number_checks = random.randint(0, 5)
         if music_player.is_playing():
             random_number_checks = 15
         for i in range(random_number_checks):
-            detections = await detector.get_detections_from_camera(cam)
+            detections = await detector.get_detections_from_camera(camera_name)
             living_creature = await check_for_living_creatures(detections)
             if living_creature:
                 await red_leds.led_state(True)
@@ -825,8 +839,9 @@ async def idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, r
 async def main():
     robot = await connect()
     local = Board.from_robot(robot, 'local')
-    cam = Camera.from_robot(robot, "cam")
-    img = await cam.get_image()
+    camera_name = "cam"
+    cam = Camera.from_robot(robot, camera_name)
+    img = await cam.get_image(mime_type="image/jpeg")
     servo = Servo.from_robot(robot, "servo")
     red_leds = LedGroup([
         await local.gpio_pin_by_name('22'),
@@ -847,7 +862,8 @@ async def main():
     detector = VisionClient.from_robot(robot, "detector")
     while True:
         # move head periodically left and right until movement is spotted.
-        living_creature = await idle_and_check_for_living_creatures(cam, detector, servo, blue_leds, red_leds, music_player)
+        living_creature = await idle_and_check_for_living_creatures(
+            camera_name, detector, servo, blue_leds, red_leds, music_player)
         await focus_on_creature(living_creature, img.width, servo)
     # Don't forget to close the robot when you're done!
     await robot.close()

@@ -8,9 +8,9 @@ mp4Src: "/tutorials/light-up/light-up.mp4"
 images: ["/tutorials/light-up/light-up.gif"]
 videoAlt: "A person sitting at a desk with a computer and light bulb set up in front of her. As she leaves the light turns off, and as she enters the frame, the light turns back on."
 tags: ["camera", "vision", "detector", "python"]
-authors: [ "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "camera", "mlmodel", "vision" ]
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
 # updated: ""
@@ -47,7 +47,7 @@ You will use the following software in this tutorial:
 - [`viam-server`](/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
-  Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
+    Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [Project repo on GitHub](https://github.com/viam-labs/devrel-demos/tree/main/Light%20up%20bot)
 
 ## Install `viam-server` and connect to your robot
@@ -60,17 +60,13 @@ Go to the **Setup** tab of your new robot's page and follow the steps to install
 
 On your new robot's page, go to the **Config** tab.
 
-![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
+Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
-On the **Config** tab, create a new component:
+Select `camera` for type and `webcam` for model.
 
-- **Name**: `my-camera`
-- **Type**: `camera`
-- **Model**: `webcam`
+Enter `my-camera` as the name for your camera, then click **Create**.
 
-Click **Create Component** to add the camera.
-
-Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+Click the **video path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
@@ -87,43 +83,37 @@ If you want to train your own, you can [train a model](/manage/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
 
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Navigate to the **Services** subtab of your robot's **Config** tab.
 
-1. **Configure the ML model service**
+### Configure the ML model service
 
-    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
-    Click **Create service**.
+Click **Create service** in the lower-left corner of the page.
+Select `ML Model` for the type, then select `TFLite CPU` for the model.
+Enter `people` as the name for your [mlmodel](/services/ml/), then click **Create**.
 
-    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
+In the new ML Model service panel, configure your service.
 
-    In the new ML Model service panel, configure your service.
+![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+Select the **Path to existing model on robot** for the **Deployment** field.
+Then specify the absolute **Model path** as where your tflite file lives and any **Optional settings** such as the absolute **Label path** as where your labels.txt file lives and the **Number of threads** as `1`.
 
-    Select the **Path to Existing Model On Robot** for the **Deployment** field.
-    Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
+### Configure an mlmodel detector
 
-   1. **Configure an mlmodel detector**
+Click **Create service** in the lower-left corner of the page.
+For your [vision service](/services/vision/), select type `vision` and model `mlmodel`.
+Enter `myPeopleDetector` for the name, then click **Create**.
 
-    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
-    Click **Create service**.
+In the new vision service panel, configure your service.
 
-    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
+From the **Select model** drop-down, select the name of the TFLite model (`people`).
 
-    In the new vision service panel, configure your service.
-
-    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
-
-    Name the ml model name `people`.
-
-    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
-
-## Configure the detection camera
+### Configure the detection camera
 
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
 Click the **Components** subtab and click the **Create component** button in the lower-left corner.
-Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
 Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)
@@ -131,19 +121,19 @@ Name it `detectionCam` and click **Create**.
 In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
+{
+  "source": "my-camera",
+  "pipeline": [
     {
-    "source": "my-camera",
-    "pipeline": [
-        {
-        "type": "detections",
-        "attributes": {
-            "detector_name": "myPeopleDetector",
-            "confidence_threshold": 0.5
-        }
-        }
-    ]
+      "type": "detections",
+      "attributes": {
+        "detector_name": "myPeopleDetector",
+        "confidence_threshold": 0.5
+      }
     }
- ```
+  ]
+}
+```
 
 Click **Save config** in the bottom left corner of the screen.
 
@@ -151,32 +141,33 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Set up the Kasa Smart Plug
 
-1. Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
-To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
-When you first open the app, you will be prompted to create an account.
-As you do this, you will receive an email with the subject line "TP-Link ID: Activation Required" to complete your account registration.
+1.  Plug your smart plug into any power outlet and turn it on by pressing the white button on the smart plug.
+    To connect the plug to your wifi, download the Kasa Smart app from the [App Store](https://apps.apple.com/us/app/kasa-smart/id1034035493) or [Google Play](https://play.google.com/store/apps/details?id=com.tplink.kasa_android) to your mobile phone.
+    When you first open the app, you will be prompted to create an account.
+    As you do this, you will receive an email with the subject line "TP-Link ID: Activation Required" to complete your account registration.
 
-2. Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
-Once it is connected, you will no longer need to use the mobile app.
+2.  Follow the steps in Kasa's [setup guide](https://www.tp-link.com/us/support/faq/946/) to add your device and connect it to your wifi.
+    Once it is connected, you will no longer need to use the mobile app.
 
-3. Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
+3.  Open a terminal on your computer and run the following command to install the [smart plug Python API](https://github.com/python-kasa/python-kasa):
 
     ```sh {class="command-line" data-prompt="$"}
     pip3 install python-kasa
     ```
 
-4. <a name=kasa ></a> Run the following command to return information about your smart device:
+4.  <a name=kasa ></a> Run the following command to return information about your smart device:
 
-    ```sh {class="command-line" data-prompt="$"}
-    kasa discover
-    ```
+        ```sh {class="command-line" data-prompt="$"}
+        kasa discover
+        ```
 
-    You should see this command output something like this:
+        You should see this command output something like this:
 
-    ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
+        ![Terminal output with information about the smart plug including the host, device state (on), timestamp, hardware and software versions, MAC address, location (latitude and longitude), whether the LED is currently on, and the timestamp of when it last turned on. There is also a list of modules (schedule, usage, antitheft, time, and cloud).](/tutorials/light-up/kasa-discover-output.png)
 
-    Write down or save the host address (for example, `10.1.11.221`).
-You will need to include it in your Python code in a later step.
+        Write down or save the host address (for example, `10.1.11.221`).
+
+    You will need to include it in your Python code in a later step.
 
 ## Write Python code to control your object detection robot
 
@@ -206,7 +197,7 @@ You need to tell the code how to access your specific robot (which in this case 
 
    You also need to tell the code how to access your smart plug.
 
-1. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
+4. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
 
 ### Run the code
 

@@ -12,15 +12,16 @@ no_list: true
 # SMEs: Bucket Team
 ---
 
-A *gripper* is a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
+A _gripper_ is a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
 
 ## Configuration
 
 For configuration information, click on your gripper's model:
 
+<!-- prettier-ignore -->
 Model | Description
 ----- | -----------
-[`softrobotics`](./softrobotics/) | The [*m*Grip soft gripper by Soft Robotics](https://www.softroboticsinc.com/products/mgrip-modular-gripping-solution-for-food-automation/) |
+[`softrobotics`](./softrobotics/) | The _m_Grip soft gripper by [Soft Robotics](https://www.softroboticsinc.com/) |
 [`fake`](fake/) | A model used for testing, with no physical hardware. |
 
 If you have another gripper model, you can [define a custom component](../../extend/).
@@ -323,5 +324,5 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

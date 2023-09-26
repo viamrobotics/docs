@@ -10,12 +10,12 @@ tags: ["data management", "cloud", "sync"]
 
 ## Add the data management service
 
-To capture data from one or more robots, you must first add the [data management service](../):
+To capture data from one or more smart machines, you must first add the [data management service](../):
 
-1. On your robot's **Config** page, navigate to the **Services** tab.
-2. At the bottom of the page you can create a service.
+1. From your robot's **Config** tab, navigate to the **Services** subtab.
+2. Click **Create service** in the lower-left corner of the page.
    Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
-3. Then click `Create Service`.
+3. Click **Create**.
 4. On the panel that appears, you can manage the capturing and syncing functions individually and specify the interval and directory.
    If the capture frequency or the directory is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
@@ -23,6 +23,7 @@ To capture data from one or more robots, you must first add the [data management
    If you change the directory for data capture only new data is stored in the new directory.
    Existing data remains in the directory where it was stored.
    {{< /alert >}}
+
 5. Click **Save Config**.
 
 ![data capture configuration](/tutorials/data-management/data-manager.png)
@@ -31,7 +32,7 @@ To capture data from one or more robots, you must first add the [data management
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "components": [ ],
+  "components": [],
   "services": [
     {
       "name": "data_manager",
@@ -75,7 +76,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click **Save Config** at the bottom of the window.
 
-Now your data will be saved locally on your robot to the directory specified in the data management service.
+Now your data will be saved locally on your smart machine to the directory specified in the data management service.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
@@ -159,9 +160,10 @@ For example, if you use a component that does not have a Linux operating system 
 Currently, you can only configure data capture from remote components by adding them to your JSON configuration.
 To add them to your JSON configuration you must explicitly add the part's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
+<!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
-| `type` | The type tells your robot what the part is. For example, a board. |
+| `type` | The type tells your smart machine what the part is. For example, a board. |
 | `model` | The model is a __colon-delimited-triplet_ that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
@@ -171,19 +173,19 @@ To add them to your JSON configuration you must explicitly add the part's `type`
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "type": {
-      "Type": {
-          "type": "component",
-          "namespace": "rdk"
-      },
-      "subtype": "board"
+    "Type": {
+      "type": "component",
+      "namespace": "rdk"
+    },
+    "subtype": "board"
   },
   "model": {
-      "name": "rdk:esp32:board"
+    "name": "rdk:esp32:board"
   },
   "name": "rdk:component:board/board",
   "additional_params": {
-      "A2": "",
-      "A1": ""
+    "A2": "",
+    "A1": ""
   }
 }
 ```
@@ -226,7 +228,7 @@ The following example captures data from two analog readers that provide a volta
                   "A2": "",
                   "A1": ""
                 },
-                "disabled": false,
+                "disabled": false
               },
               // Captures data from pin 27 of the board's GPIO
               {
@@ -272,24 +274,24 @@ The following example captures data from the `ReadImage` method of a camera:
     {
       "name": "pi-test-main",
       "address": "pi-test-main.vw3iu72d8n.viam.cloud",
-        "service_configs": [
-          {
-            "type": "data_manager",
-            "attributes": {
-              "capture_methods": [
-                {
-                  "capture_frequency_hz": 1,
-                  "name": "rdk:component:camera/cam",
-                  "disabled": false,
-                  "method": "ReadImage",
-                  "additional_params": {
-                    "mime_type": "image/jpeg"
-                  }
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "capture_frequency_hz": 1,
+                "name": "rdk:component:camera/cam",
+                "disabled": false,
+                "method": "ReadImage",
+                "additional_params": {
+                  "mime_type": "image/jpeg"
                 }
-              ]
-            }
+              }
+            ]
           }
-        ],
+        }
+      ],
       "secret": "REDACTED"
     }
   ]

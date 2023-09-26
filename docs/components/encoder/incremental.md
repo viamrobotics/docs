@@ -30,16 +30,16 @@ Fill in and edit the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-encoder-name>",
-    "type": "encoder",
-    "model" : "incremental",
-    "attributes": {
-      "board": "<your-board-name>",
-      "pins": {
-        "a": "<your-first-pin-number>",
-        "b": "<your-second-pin-number>"
-      }
+  "name": "<your-encoder-name>",
+  "type": "encoder",
+  "model": "incremental",
+  "attributes": {
+    "board": "<your-board-name>",
+    "pins": {
+      "a": "<your-first-pin-number>",
+      "b": "<your-second-pin-number>"
     }
+  }
 }
 ```
 
@@ -76,6 +76,7 @@ Fill in and edit the attributes as applicable.
 
 The following attributes are available for `incremental` encoders:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |

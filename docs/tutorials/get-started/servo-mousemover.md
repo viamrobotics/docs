@@ -8,9 +8,9 @@ mp4Src: "/tutorials/single-component-tutorials-servo-mousemover/pi-hole.mp4"
 videoAlt: "A mouse mover controlled with a servo and Raspberry Pi."
 images: ["/tutorials/single-component-tutorials-servo-mousemover/pi-hole.gif"]
 tags: ["servo", "single component tutorial", "raspberry pi", "sdk", "python"]
-authors: [ "Kacey Meier-Smith" ]
-languages: [ "python" ]
-viamresources: [ "board", "servo" ]
+authors: ["Kacey Meier-Smith"]
+languages: ["python"]
+viamresources: ["board", "servo"]
 level: "Beginner"
 date: "2023-03-30"
 # updated: ""
@@ -63,7 +63,8 @@ This project is a good place to begin if you're new to robotics and would like t
 
 First, install `viam-server` according to our [installation guide](/installation/)
 
-Next, run this command in your Raspberry Pi terminal to install the pip package manager. Select "yes" when it asks if you want to continue.
+Next, run this command in your Raspberry Pi terminal to install the pip package manager.
+Select "yes" when asked if you want to continue.
 
 ```sh {class="command-line" data-prompt="$"}
 sudo apt-get install pip
@@ -151,38 +152,36 @@ The servo is now physically connected to the Raspberry Pi, but the Viam app hasn
 
 Go to the [Viam app](https://app.viam.com), and navigate to the **Config** tab.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box for a Name to be typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam. To the far right it says Model, but it's greyed out because none of the previous two fields have been filled in. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-component.png)
-
 ### Board component
 
-In the **Config** tab, create a new component with the following attributes:
+Create a [board component](/components/board/):
 
-- **Name**: `local` - you can name this whatever you want, you will reference it later.
-- **Type**: `board`
-- **Model**: `pi`
+Navigate to the **Components** subtab of your robot's **Config** tab.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name local typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with board selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-board.png)
+Click **Create component** in the lower-left corner.
 
-Click **Create Component** to create the pi [board component](/components/board/) component.
+Select `board` for type and `pi` for model.
+
+Enter `local` as the name for your board, then click **Create**.
+
+You can name the board whatever you want.
+You will reference it later.
 
 ### Servo component
 
-After the board component, create a new [servo component](/components/servo/) with the following attributes:
+Create a [servo component](/components/servo/):
 
-- **Name**: `FS90R` - we named the servo using the model number, but you can use whatever you want, you will reference it later.
-- **Type**: `servo`
-- **Model**: `pi`
+Click **Create component** in the lower-left corner.
 
-![This is a screenshot of the Viam app on the CONFIG page. It shows that Builder is chosen as the mode. Below that in the components tab it shows Create Component and to the far left It says Name with a box and the name FS90R typed in. The next box to the right says Type and it shows a drop down list of different types of components in Viam with servo selected. To the far right it says Model with a drop down list and pi is selected. Directly to the right of Model is a Create Component button that will create the component.](/tutorials/single-component-tutorials-servo-mousemover/new-servo.png)
+Select `servo` for type and `pi` for model.
 
-Click **Create Component** to create the [servo component](/components/servo/).
+Enter `fsr90r` as the name for your servo, then click **Create**.
 
-You will then see where you can put in Attributes for the servo.
+After clicking **Create** you will see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
 
-- For "pin": use "12" - this is the pin you attached the PWM (Pulse Width Modulation) jumper wire to.
-- For "board": use "local"
-- For **Depends On** click **local.** This ensures that the board is initialized before the servo.
+- For `"pin"` use `12` - this is the pin you attached the PWM (Pulse Width Modulation) jumper wire to.
+- For `"board"` use `"local"`.
 
 The attribute section will look like this:
 
@@ -259,10 +258,10 @@ Gently push on the box to get a mark on the inside of the box, then create a cut
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/cut-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/cut-box.mp4" alt="This is sped up gif showing using a marker and marking the screw of the servo, then shutting the box quick and getting the marker on the lid, then opening it back up. Then using that mark to make a cut with a box cutter, and on the other side of the lid which is the outside, marking that cut hole and putting a large roll of tape down to draw a circle. Finally, cutting the circle out with box cutters.">}}
 </div>
 
-### Tape the box shut, add "babygates", and plug in the Raspberry Pi
+### Tape the box shut, add "baby gates", and plug in the Raspberry Pi
 
 When taping the box shut be sure the servo with the circle cut out sits fairly flush to the top of the box.
-Add "babygates" or rails to keep the mouse from wandering off if it catches some friction.
+Add "baby gates" or rails to keep the mouse from wandering off if it catches some friction.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/finish-box.mp4" alt="This is sped up gif showing a person plugging in the power cable to the raspberry pi through the power hole made earlier, then pushing the rocker switch to turn it on. When the Raspberry Pi is turned on, the circle turns for a millisecond. Then they draw a swirl design on the circle. Then they make the circle spin and put a mouse on it and it falls off immediately. The next thing they do is they put cardboard on two sides of the box and at the end, they place the mouse on top.">}}
@@ -270,10 +269,10 @@ Add "babygates" or rails to keep the mouse from wandering off if it catches some
 
 ### Control your robot with code
 
-Copy the code from the [mousemover Github repository](https://github.com/viam-labs/tutorial-mousemover) into your nano file, save it, and run it.
+Copy the code from the [mousemover GitHub repository](https://github.com/viam-labs/tutorial-mousemover) into your nano file, save it, and run it.
 
 The code uses the Python SDK to securely connect to your robot through Viam app.
-Then, it enters a for loop in which **position** tells us the servo **myServo** to move to positions (angle, or speed/direction) between 80 and 93 degrees as specified in the **sequence** list.
+Then, it enters a for loop in which **position** tells us the servo to move to positions (angles) between 80 and 93 degrees as specified in the **sequence** list.
 The code uses **pause_time** to wait for a random amount of time between 5 and 20 seconds to stay at that position.
 
 You can adjust the range (or speed/direction) by changing the two numbers in the position statement. (Currently set at 80 and 93).

@@ -18,8 +18,8 @@ In this way, you can add basic movement sensing to your camera-equipped robot wi
 
 The `viam-visual-odometry` module implements the following two methods of the [movement sensor API](/components/movement-sensor/#api):
 
-* [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
-* [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
+- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
+- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
 
 Note that `GetLinearVelocity()` returns an estimation of the instantaneous linear velocity **without scale factor**.
 Therefore, you should not consider returned unit measurements trustworthy: instead, `GetLinearVelocity()` should serve as a direction estimation only.
@@ -122,12 +122,12 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
     },
     {
       "name": "<your_movement_sensor_name>",
-      "type": "movement_sensor",    
+      "type": "movement_sensor",
       "namespace": "rdk",
       "model": "viam:visual_odometry:opencv_orb",
       "attributes": {
-        "camera_name": "<your-camera-name>", 
-        "time_between_frames_s": <time_seconds>, 
+        "camera_name": "<your-camera-name>",
+        "time_between_frames_s": <time_seconds>,
         "lowe_ratio_threshold": <lowe_ratio_threshold>
       },
       "depends_on": []
@@ -179,8 +179,8 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
       "namespace": "rdk",
       "model": "viam:visual_odometry:opencv_orb",
       "attributes": {
-        "camera_name": "my-camera", 
-        "time_between_frames_s": 0.2, 
+        "camera_name": "my-camera",
+        "time_between_frames_s": 0.2,
         "lowe_ratio_threshold": 0.75
       },
       "depends_on": []
@@ -233,6 +233,7 @@ Specifically, note that the `height_px` and `width_px` attributes are not contai
 
 The following attributes are available to configure the `viam-visual-odometry` module:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Default | Description |
 | ---- | ---- | --------- | --------| ------------ |
 | `camera_name` | string | **Required** | | Camera name to be used for inferring the motion. |
@@ -251,3 +252,5 @@ The following attributes are available to configure the `viam-visual-odometry` m
 | `ransac_threshold_px` | float | Optional | `0.5` | Maximum error to be classified as an inlier.|
 
 See the [ORB openCV documentation](https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html) for more details.
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}

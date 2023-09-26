@@ -91,7 +91,7 @@ Edit and fill in the attributes as applicable.
         "ntrip_url": "http://ntrip/url",
         "ntrip_username": "usr"
       },
-      "depends_on": [],
+      "depends_on": []
     }
   ]
 }
@@ -102,17 +102,18 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor:
 
-Name | Type | Inclusion | Description |
----- | ---- | --------- | ----------- |
-`board` | string | **Required** | The `name` of the [board](/components/board/) connected to the sensor with [I<sup>2</sup>C](/components/board/#i2cs).
-`i2c_addr` | int | **Required** | The device's I<sup>2</sup>C address.
-`i2c_bus` | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor.
-`i2c_baud_rate` | int | Optional | The rate at which data is sent from the sensor. Optional. <br> Default: `38400`
-`ntrip_url` | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections.
-`ntrip_username` | string | Optional | Username for the NTRIP server.
-`ntrip_password` | string | Optional | Password for the NTRIP server.
-`ntrip_connect_attempts` | int | Optional | How many times to attempt connection before timing out. <br> Default: `10`
-`ntrip_mountpoint` | string | Optional | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections.
+<!-- prettier-ignore -->
+| Name                     | Type   | Inclusion    | Description |
+| ------------------------ | ------ | ------------ | ------------------------- |
+| `board`                  | string | **Required** | The `name` of the [board](/components/board/) connected to the sensor with [I<sup>2</sup>C](/components/board/#i2cs).                                                                                                   |
+| `i2c_addr`               | int    | **Required** | The device's I<sup>2</sup>C address.                                                                                                                                                                                    |
+| `i2c_bus`                | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor.                                                                                                                                      |
+| `i2c_baud_rate`          | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400`                                                                                                                                         |
+| `ntrip_url`              | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections.                                                                           |
+| `ntrip_username`         | string | Optional     | Username for the NTRIP server.                                                                                                                                                                                          |
+| `ntrip_password`         | string | Optional     | Password for the NTRIP server.                                                                                                                                                                                          |
+| `ntrip_connect_attempts` | int    | Optional     | How many times to attempt connection before timing out. <br> Default: `10`                                                                                                                                              |
+| `ntrip_mountpoint`       | string | Optional     | If you know of an RTK mountpoint near you, write its identifier here. It will be appended to NTRIP address string (for example, "nysnet.gov/rtcm/**NJMTPT1**") and that mountpoint's data will be used for corrections. |
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -121,3 +122,5 @@ You will need to research the options available to you.
 If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from SparkFun](https://learn.sparkfun.com/tutorials/gps-rtk2-hookup-guide/connecting-the-zed-f9p-to-a-correction-source).
 
 {{% /alert %}}
+
+{{< readfile "/static/include/components/movement-sensor-control.md" >}}

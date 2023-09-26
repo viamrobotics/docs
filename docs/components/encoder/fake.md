@@ -26,10 +26,10 @@ Enter a name for your encoder and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-encoder-name>",
-    "type": "encoder",
-    "model" : "fake",
-    "attributes": {}
+  "name": "<your-encoder-name>",
+  "type": "encoder",
+  "model": "fake",
+  "attributes": {}
 }
 ```
 
@@ -38,10 +38,10 @@ Enter a name for your encoder and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "myEncoder",
-    "type": "encoder",
-    "model" : "fake",
-    "attributes": {}
+  "name": "myEncoder",
+  "type": "encoder",
+  "model": "fake",
+  "attributes": {}
 }
 ```
 

@@ -28,15 +28,15 @@ Fill in and edit the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-encoder-name>",
-    "type": "encoder",
-    "model" : "single",
-    "attributes": {
-      "board": "<your-board-name>",
-      "pins": {
-        "i": "<your-pin-number-on-board>"
-      }
+  "name": "<your-encoder-name>",
+  "type": "encoder",
+  "model": "single",
+  "attributes": {
+    "board": "<your-board-name>",
+    "pins": {
+      "i": "<your-pin-number-on-board>"
     }
+  }
 }
 ```
 
@@ -45,6 +45,7 @@ Fill in and edit the attributes as applicable.
 
 The following attributes are available for `single` encoders:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |

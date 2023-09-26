@@ -12,8 +12,8 @@ aliases:
   - "/tutorials/motion/accessing-and-moving-robot-arm"
   - "/tutorials/motion/"
 authors: []
-languages: [ "python", "go" ]
-viamresources: [ "arm" ]
+languages: ["python", "go"]
+viamresources: ["arm"]
 level: "Intermediate"
 date: "2023-03-07"
 # updated: ""
@@ -53,27 +53,28 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 2. Create a new robot.
 3. Follow the instructions on the **Setup** tab.
 4. Select the **Config** tab.
-5. Under the **Components** section, create a component with the following attributes:
+5. Under the **Components** subtab, click **Create component** in the lower-left corner and create a component with the following attributes:
 
-    * Choose `Arm` as the **Type** selection
-    * Choose your desired model in the **Model** selection
-      * If you're using an xArm 6, choose the `xArm6` model from the drop-down list
-    * Enter `myArm` as the **Name** for this component
+   - Choose `Arm` as the type.
+   - Choose your desired model.
+     - If you're using an xArm 6, choose the `xArm6` model from the drop-down list.
+   - Enter `myArm` as the **Name** for this component, then click **Create**.
 
-5. In the newly created `myArm` component panel, fill in some additional details:
+6. In the newly created `myArm` component panel, fill in some additional details:
 
-    * Enter the IP address for your robot controller in the **Host** field
-    * Enter a desired velocity *(in degrees per second)* for the robot arm's motions in the **Speed** field
-      * For an `xArm6`, a safe value is `15` degrees per second.
+   - Enter the IP address for your robot controller in the **Host** field
+   - Enter a desired velocity _(in degrees per second)_ for the robot arm's motions in the **Speed** field
+     - For an `xArm6`, a safe value is `15` degrees per second.
 
-6. Add a **Frame** to this component.
-   * You do not need to change the default values that populate the new frame card
+7. Add a **Frame** to this component.
+
+   - You do not need to change the default values that populate the new frame card
 
    {{<imgproc src="/tutorials/motion/access_02_arm_config.png" resize="700x" declaredimensions=true alt="Sample robot arm configuration with several fields filled out." class="alignright" style="max-width: 400px" >}}
 
-7. Save this robot configuration.
+8. Save this robot configuration.
 
-8. Go to the **Code sample** tab and select the programming language you are working in.
+9. Go to the **Code sample** tab and select the programming language you are working in.
 
    {{% snippet "show-secret.md" %}}
 
@@ -216,7 +217,7 @@ First, you can initiate motion with a joint position command.
 A final note:
 
 {{< alert title="Caution" color="caution" >}}
-Executing code presented after this point *will* induce motion in a connected robotic arm!
+Executing code presented after this point _will_ induce motion in a connected robotic arm!
 {{< /alert >}}
 
 {{< tabs >}}
@@ -315,8 +316,8 @@ Regularly check your client script's feedback and the `viam-server` logs for any
 If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
-  {{% card link="/tutorials/projects/claw-game/" %}}
+{{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
@@ -347,6 +348,7 @@ async def connect():
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
 
+
 async def main():
     robot = await connect()
 
@@ -366,7 +368,8 @@ async def main():
 
     # Command a joint position move: small adjustment to the last joint
     cmd_joint_positions = JointPositions(values=[0, 0, 0, 0, 0, 15.0])
-    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+    await my_arm_component.move_to_joint_positions(
+        positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()

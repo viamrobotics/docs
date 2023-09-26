@@ -8,12 +8,12 @@ mp4Src: "/tutorials/videos/foam-dart.mp4"
 videoAlt: "Robot launching a dart."
 images: ["/tutorials/videos/foam-dart.gif"]
 aliases:
-    - /tutorials/foam-dart-launcher
+  - /tutorials/foam-dart-launcher
 tags: ["base", "motor", "camera", "raspberry pi"]
 # SME: Kurt S. and Hazal M.
-authors: [ "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "base", "camera", "motor", "board" ]
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources: ["base", "camera", "motor", "board"]
 level: "Intermediate"
 date: "2022-11-29"
 # updated: ""
@@ -38,30 +38,30 @@ You will need the following hardware, software, tools, and consumables to comple
 {{% alert title="Important" color="note"%}}
 If you use a different rover and/or motor controller, ensure that the motor driver is compatible with the motors on your rover.
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor.
-Also, the configuration files shown in this tutorial *must* be modified if you use a different setup.
+Also, the configuration files shown in this tutorial _must_ be modified if you use a different setup.
 
 You can find more information on configuring different motors in the [Motor Component](/components/motor/) topic.
 {{% /alert %}}
 
 ### Hardware and software requirements
 
-* [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/installation/).
-* [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)
-* [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)
-* [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/) (optional, to see where you are going and aiming)
-* [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)
-* [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)
-* [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)
-If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/components/motor/) to learn how to configure the pins.
-* Jumper wires (breadboard wires)
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/installation/).
+- [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)
+- [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)
+- [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/) (optional, to see where you are going and aiming)
+- [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)
+- [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)
+- [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)
+  If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/components/motor/) to learn how to configure the pins.
+- Jumper wires (breadboard wires)
 
 ### Tools and Consumables
 
-* Solder (optional)
-* Small flathead screwdriver
-* Cutting pliers (flush-cutting pliers preferred)
-* Electrical tape
-* Elastic/rubber bands
+- Solder (optional)
+- Small flathead screwdriver
+- Cutting pliers (flush-cutting pliers preferred)
+- Electrical tape
+- Elastic/rubber bands
 
 ## How to Assemble Your Hardware
 
@@ -154,17 +154,19 @@ For example, by using a common off-the-shelf 15A light switch to actuate a relay
    Using cutting pliers, we cut the trigger guard off of the front as seen in the picture above.
 2. Test that the solenoid has enough power to press the trigger when the foam dart launcher is loaded.
 3. If the solenoid is not strong enough we can:
-    * Wrap the trigger with rubber bands to make the trigger easier to activate[^rb].
-    * Increase the voltage to the solenoid.
-  Right now it receives 5 volts, but some solenoids can support up to 12 volts.
-  If necessary, you can connect the solenoid to another power supply such as a 9 volt battery.
-  Check the details of your solenoid[^solvolt].
+   - Wrap the trigger with rubber bands to make the trigger easier to activate[^rb].
+   - Increase the voltage to the solenoid.
+     Right now it receives 5 volts, but some solenoids can support up to 12 volts.
+     If necessary, you can connect the solenoid to another power supply such as a 9 volt battery.
+     Check the details of your solenoid[^solvolt].
 4. Tape the solenoid in such a manner that it makes good contact with the trigger when activated with the relay.
 5. Attach all of your components to the base.
 
-[^rb]: If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the foam dart launcher so it can reset and load properly.
-Try activating the solenoid manually to ensure that it hits the foam dart launcher trigger in the right spot.
-[^solvolt]:  If you choose to increase the voltage, you must connect **VCC** and ground (**DC+** and **DC-**) to the new voltage source rather than connecting them to the Raspberry Pi as described in Step 3 of [Assemble Solenoid/Foam Dart Launcher](#assemble-solenoidfoam-dart-launcher).
+[^rb]:
+    If you use the rubber band method, you may need to pull the rubber bands away from the trigger when reloading the foam dart launcher so it can reset and load properly.
+    Try activating the solenoid manually to ensure that it hits the foam dart launcher trigger in the right spot.
+
+[^solvolt]: If you choose to increase the voltage, you must connect **VCC** and ground (**DC+** and **DC-**) to the new voltage source rather than connecting them to the Raspberry Pi as described in Step 3 of [Assemble Solenoid/Foam Dart Launcher](#assemble-solenoidfoam-dart-launcher).
 
 {{< figure src="/tutorials/foam-dart-launcher/ng-taped-to-rover.jpg"  alt="Foam dart launcher taped to a rover base using electrical tape." title="Foam dart launcher Taped to the Rover" width="400">}}
 
@@ -310,12 +312,8 @@ The full raw JSON config file generated by the configuration steps you just comp
       "attributes": {
         "width_mm": 130,
         "wheel_circumference_mm": 200,
-        "left": [
-          "left"
-        ],
-        "right": [
-          "right"
-        ]
+        "left": ["left"],
+        "right": ["right"]
       },
       "depends_on": []
     },

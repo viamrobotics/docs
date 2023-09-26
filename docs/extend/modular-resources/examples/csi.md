@@ -4,7 +4,22 @@ linkTitle: "CSI Camera"
 weight: 40
 type: "docs"
 description: "Use the viam:camera:csi model to add a CSI Camera to your robot."
-tags: ["board", "csi", "jetson", "serial", "module", "modular resources", "Python", "python SDK", "nvidia", "jetson orin", "jetson orin nano", "nano", "camera"]
+tags:
+  [
+    "board",
+    "csi",
+    "jetson",
+    "serial",
+    "module",
+    "modular resources",
+    "Python",
+    "python SDK",
+    "nvidia",
+    "jetson orin",
+    "jetson orin nano",
+    "nano",
+    "camera",
+  ]
 # SMEs: Sean
 ---
 
@@ -23,7 +38,7 @@ To use the CSI camera module, follow the [installation](#installation) and [conf
 
 On your robot's computer, download [the `viam:camera:csi` appimage](https://github.com/seanavery/viam-csi) and make it executable:
 
-``` {class="command-line" data-prompt="$"}
+```{class="command-line" data-prompt="$"}
 sudo wget https://github.com/seanavery/viam-csi/releases/download/v0.0.2/viam-csi-0.0.2-aarch64.AppImage -O /usr/local/bin/viam-csi
 sudo chmod 755 /usr/local/bin/viam-csi
 ```
@@ -66,9 +81,9 @@ Copy and paste the JSON object for the module into the modules array to add Viam
 
 ```json
 {
-    "executable_path": "</usr/local/bin/viam-csi>",
-    "name": "<your-csi-cam-module-name>",
-    "type": "local"
+  "executable_path": "</usr/local/bin/viam-csi>",
+  "name": "<your-csi-cam-module-name>",
+  "type": "local"
 }
 ```
 
@@ -95,38 +110,41 @@ Next, add the following JSON object to your components array to configure a `csi
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "modules": [
-      {
-        "executable_path": "/usr/bin/csi-mr",
-        "name": "csi_cam_module",
-        "type": "local"
-      }
-    ],
-    "components": [
-      {
-        "model": "viam:camera:csi",
-        "attributes": {
-          "width_px": 1920,
-          "height_px": 1080,
-          "frame_rate": 30,
-          "debug": true
-        },
-        "depends_on": [],
-        "name": "my_test_csi_cam",
-        "namespace": "rdk",
-        "type": "camera"
-      }
-    ]
+  "modules": [
+    {
+      "executable_path": "/usr/bin/csi-mr",
+      "name": "csi_cam_module",
+      "type": "local"
+    }
+  ],
+  "components": [
+    {
+      "model": "viam:camera:csi",
+      "attributes": {
+        "width_px": 1920,
+        "height_px": 1080,
+        "frame_rate": 30,
+        "debug": true
+      },
+      "depends_on": [],
+      "name": "my_test_csi_cam",
+      "namespace": "rdk",
+      "type": "camera"
+    }
+  ]
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
+For more information, see [installing local modules](/extend/modular-resources/configure/#local-modules).
+
 Edit and fill in the attributes to configure your component.
 
 The following attributes are available for the `viam:camera:csi` model:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `width_px` | int | Optional | Width of the image this camera captures in pixels. <br> Default: `1920` |
@@ -138,3 +156,5 @@ The following attributes are available for the `viam:camera:csi` model:
 Then, save the config.
 
 Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
+
+For more information, see [installing local modules](/extend/modular-resources/configure/#local-modules).

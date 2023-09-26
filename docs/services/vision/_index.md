@@ -3,23 +3,22 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "The vision service enables your robot to use its on-board cameras to intelligently see and interpret the world around it."
+description: "The vision service enables your smart machine to use its on-board cameras to intelligently see and interpret the world around it."
 icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 # SMEs: Bijan, Khari
 ---
 
-The vision service enables your robot to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
-While the camera component lets you access what your robot's camera sees, the vision service allows you to interpret your image data.
-The vision service is a default service on the robot, and can be initialized without attributes.
+The vision service enables your smart machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+While the camera component lets you access what your smart machine's camera sees, the vision service allows you to interpret your image data.
 
-Currently, the vision service supports the following models:
+Currently, the vision service supports the following kinds of operations:
 
 {{< cards >}}
-  {{% card link="/services/vision/detection/" %}}
-  {{% card link="/services/vision/classification/" %}}
-  {{% card link="services/vision/segmentation" %}}
+{{% card link="/services/vision/detection/" %}}
+{{% card link="/services/vision/classification/" %}}
+{{% card link="services/vision/segmentation" %}}
 {{< /cards >}}
 
 ## API
@@ -45,7 +44,7 @@ Get a list of detections from a given image using a configured [detector](./dete
 **Parameters:**
 
 - `image` [(RawImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage): The image in which to look for detections.
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -127,7 +126,7 @@ Get a list of detections from the next image from a specified camera using a con
 **Parameters:**
 
 - `camera_name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the camera from which to get an image to run detections on.
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -136,14 +135,13 @@ Get a list of detections from the next image from a specified camera using a con
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_detections_from_camera).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+camera_name = "cam1"
 
 # Grab the detector you configured on your robot
 my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get detections from the next image from the camera
-detections = await my_detector.get_detections_from_camera(cam1)
+detections = await my_detector.get_detections_from_camera(camera_name)
 ```
 
 {{% /tab %}}
@@ -200,8 +198,8 @@ Get a list of classifications from a given image using a configured [classifier]
 
 - `image` [(RawImage)](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage): The image in which to look for classifications.
 - `count` [(int)](https://docs.python.org/3/library/functions.html#int): The number of classifications to return.
-For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+  For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -231,7 +229,7 @@ classifications = await my_classifier.get_classifications(img, 2)
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `img` [(Image)](https://pkg.go.dev/image#Image): The image in which to look for classifications.
 - `n` [(int)](https://pkg.go.dev/builtin#int): The number of classifications to return.
-For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+  For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -286,8 +284,8 @@ Get a list of classifications from the next image from a specified camera using 
 
 - `camera_name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the camera from which to get an image to run the classifier on.
 - `count` [(int)](https://docs.python.org/3/library/functions.html#int): The number of classifications to return.
-For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+  For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -296,14 +294,15 @@ For example, if you specify `3` you will get the top three classifications with 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_classifications_from_camera).
 
 ```python {class="line-numbers linkable-line-numbers" data-line="8"}
-# Grab the camera from the robot
-cam1 = Camera.from_robot(robot, "cam1")
+camera_name = "cam1"
 
 # Grab the classifier you configured on your robot
 my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
-# Get the 2 classifications with the highest confidence scores from the next image from the camera
-classifications = await my_classifier.get_classifications_from_camera(cam1, 2)
+# Get the 2 classifications with the highest confidence scores from the next
+# image from the camera
+classifications = await my_classifier.get_classifications_from_camera(
+    camera_name, 2)
 ```
 
 {{% /tab %}}
@@ -314,7 +313,7 @@ classifications = await my_classifier.get_classifications_from_camera(cam1, 2)
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `cameraName` [(string)](https://pkg.go.dev/builtin#string): The name of the camera from which to get an image to run the classifier on.
 - `n` [(int)](https://pkg.go.dev/builtin#int): The number of classifications to return.
-For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
+  For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -361,7 +360,7 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 **Parameters:**
 
 - `camera_name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the 3D camera from which to get point cloud data.
-- `extra` (Mapping[str, Any]) (*optional*): A generic struct, containing extra options to pass to the underlying RPC call.
+- `extra` (Mapping[str, Any]) (_optional_): A generic struct, containing extra options to pass to the underlying RPC call.
 
 **Returns:**
 

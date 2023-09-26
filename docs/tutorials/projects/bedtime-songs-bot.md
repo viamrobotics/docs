@@ -2,15 +2,25 @@
 title: "Build a bedtime songs bot with a custom ML model"
 linkTitle: "Bedtime Songs Bot"
 type: "docs"
-tags: ["mac", "app", "board", "webcam", "camera", "ml", "machine learning", "babysitter"]
+tags:
+  [
+    "mac",
+    "app",
+    "board",
+    "webcam",
+    "camera",
+    "ml",
+    "machine learning",
+    "babysitter",
+  ]
 description: "Create a robot babysitter with a webcam and machine learning."
-images: [ "/tutorials/img/bedtime-songs-bot/robot_babysitter.gif" ]
+images: ["/tutorials/img/bedtime-songs-bot/robot_babysitter.gif"]
 webmSrc: "/tutorials/img/bedtime-songs-bot/robot_babysitter.webm"
 mp4Src: "/tutorials/img/bedtime-songs-bot/robot_babysitter.mp4"
 videoAlt: "A demonstration of the bedtime songs bot is taking place in an office. Tess holds up brightly colored puzzle pieces in front of the camera of a Macbook laptop. As the webcam on the laptop recognizes the puzzle pieces, different songs start to play on the speakers of the computer."
-authors: [ "Tess Avitabile", "Sierra Guequierre" ]
-languages: [ "python" ]
-viamresources: [ "camera", "sensor", "mlmodel", "vision" ]
+authors: ["Tess Avitabile", "Sierra Guequierre"]
+languages: ["python"]
+viamresources: ["camera", "sensor", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-08-18"
 # updated: ""
@@ -63,10 +73,10 @@ First, add your personal computer's webcam to your robot as a [camera](/componen
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click the **Components** subtab, then click **Create component** in the lower-left corner of the page.
 
-Add your [camera](https://docs.viam.com/components/board/) with the name `cam`, type `camera`, and model `webcam`.
-Click **Create Component**.
+Select `camera` for the type, then select `webcam` for the model.
+Enter `cam` for the name of your [camera component](/components/camera/), then click **Create**.
 
 ![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
 
@@ -78,7 +88,7 @@ Optionally, select a fixed filepath for the camera from the automated options in
 
 On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {
@@ -101,7 +111,7 @@ To view your webcam's image stream, navigate to the **Control** tab of your robo
 Click on the drop-down menu labeled **camera** and toggle the feed on.
 If you want to test your webcam's image capture, you can click on **Export Screenshot** to capture an image, as shown below:
 
-  {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
+{{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
 
 Now, configure the [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
@@ -110,15 +120,15 @@ Now, configure the [Data Management Service](/services/data/configure-data-captu
 
 1. On the **Config** tab, select **Services**, and navigate to **Create service**.
 2. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the drop-down, and name your service `Data-Management-Service`.
-If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
-1. Make sure both **Data Capture** and **Cloud Sync** are enabled as shown:
+   If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
+3. Make sure both **Data Capture** and **Cloud Sync** are enabled as shown:
 
-    {{<imgproc src="../../tutorials/bedtime-songs-bot/enable-data-capture-cloud-sync.png" resize="400x" declaredimensions=true alt="Data capture and cloud sync enabled for a singular component" >}}
+   {{<imgproc src="../../tutorials/bedtime-songs-bot/enable-data-capture-cloud-sync.png" resize="400x" declaredimensions=true alt="Data capture and cloud sync enabled for a singular component" >}}
 
-    Enabling data capture and cloud sync lets you capture images from your webcam, sync them to the cloud and, in the Viam app, easily tag them and train your own machine learning model.
+   Enabling data capture and cloud sync lets you capture images from your webcam, sync them to the cloud and, in the Viam app, easily tag them and train your own machine learning model.
 
-    You can leave the default directory as is.
-    By default, captured data is saved to the <file>~/.viam/capture</file> directory on-robot.
+   You can leave the default directory as is.
+   By default, captured data is saved to the <file>~/.viam/capture</file> directory on-robot.
 
 Next, [configure Data Capture for your webcam](/services/data/configure-data-capture/#configure-data-capture-for-individual-components):
 
@@ -130,51 +140,51 @@ Next, [configure Data Capture for your webcam](/services/data/configure-data-cap
    You want to capture data quickly so your classifier model can be very accurate.
 4. Select the **Mime Type** as `image/jpeg`:
 
-  {{<imgproc src="../../tutorials/bedtime-songs-bot/app-camera-configuration.png" resize="400x" declaredimensions=true alt="The configuration page for a camera component." >}}
+{{<imgproc src="../../tutorials/bedtime-songs-bot/app-camera-configuration.png" resize="400x" declaredimensions=true alt="The configuration page for a camera component." >}}
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
 At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
- "components": [
-   {
-     "model": "webcam",
-     "attributes": {},
-     "depends_on": [],
-     "service_config": [
-       {
-         "attributes": {
-           "capture_methods": [
-             {
-               "additional_params": {
-                 "mime_type": "image/jpeg"
-               },
-               "capture_frequency_hz": .333,
-               "method": "ReadImage"
-             }
-           ]
-         },
-         "type": "data_manager"
-       }
-     ],
-     "name": "cam",
-     "type": "camera"
-   }
- ],
- "services": [
-   {
-     "attributes": {
-       "sync_interval_mins": 0.1,
-       "capture_dir": "",
-       "tags": []
-     },
-     "name": "Data-Management-Service",
-     "type": "data_manager"
-   }
- ]
+  "components": [
+    {
+      "model": "webcam",
+      "attributes": {},
+      "depends_on": [],
+      "service_config": [
+        {
+          "attributes": {
+            "capture_methods": [
+              {
+                "additional_params": {
+                  "mime_type": "image/jpeg"
+                },
+                "capture_frequency_hz": 0.333,
+                "method": "ReadImage"
+              }
+            ]
+          },
+          "type": "data_manager"
+        }
+      ],
+      "name": "cam",
+      "type": "camera"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "tags": []
+      },
+      "name": "Data-Management-Service",
+      "type": "data_manager"
+    }
+  ]
 }
 ```
 
@@ -252,44 +262,44 @@ If you use a different name, adapt the code in the later steps of this tutorial 
 
 At this point, the full **Raw JSON** configuration of your robot should look like the following:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
- "packages": [
-   {
-     "name": "shapes",
-     "version": "latest",
-     "package": "20055b44-c8a7-4bc5-ad93-86900ee9735a/shapes"
-   }
- ],
- "services": [
-   {
-     "name": "shape-classifier-model",
-     "type": "mlmodel",
-     "model": "tflite_cpu",
-     "attributes": {
-       "model_path": "${packages.shapes}/shapes.tflite",
-       "label_path": "${packages.shapes}/labels.txt",
-       "num_threads": 1
-     }
-   },
-   {
-     "name": "shape-classifier",
-     "type": "vision",
-     "model": "mlmodel",
-     "attributes": {
-       "mlmodel_name": "shape-classifier-model"
-     }
-   }
- ],
- "components": [
-   {
-     "name": "cam",
-     "type": "camera",
-     "model": "webcam",
-     "attributes": {},
-     "depends_on": []
-   }
- ]
+  "packages": [
+    {
+      "name": "shapes",
+      "version": "latest",
+      "package": "20055b44-c8a7-4bc5-ad93-86900ee9735a/shapes"
+    }
+  ],
+  "services": [
+    {
+      "name": "shape-classifier-model",
+      "type": "mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {
+        "model_path": "${packages.shapes}/shapes.tflite",
+        "label_path": "${packages.shapes}/labels.txt",
+        "num_threads": 1
+      }
+    },
+    {
+      "name": "shape-classifier",
+      "type": "vision",
+      "model": "mlmodel",
+      "attributes": {
+        "mlmodel_name": "shape-classifier-model"
+      }
+    }
+  ],
+  "components": [
+    {
+      "name": "cam",
+      "type": "camera",
+      "model": "webcam",
+      "attributes": {},
+      "depends_on": []
+    }
+  ]
 }
 ```
 
@@ -303,7 +313,7 @@ Now, capture the audio of the songs you want your bot to play.
 - Record or download the audio files you want to use to your computer in <file>.mp3</file> format.
 - Make the names of the files match the classifier tags you used: for example, <file>square.mp3</file>.
 - Navigate to a directory where you want to store your SDK code.
-Save your audio files inside of this directory.
+  Save your audio files inside of this directory.
 
 The audio files Tess used are available to download on [GitHub](https://github.com/viam-labs/bedtime-songs-bot).
 
@@ -320,8 +330,8 @@ Follow these instructions to start working on your Go control code:
    {{% snippet "show-secret.md" %}}
 
 4. Open your terminal.
-Navigate to the directory where you want to store your code.
-Paste this code sample into a new file named <file>play-songs.go</file>, and save it.
+   Navigate to the directory where you want to store your code.
+   Paste this code sample into a new file named <file>play-songs.go</file>, and save it.
 
 For example, run the following commands on your Macbook to create and open the file:
 
@@ -336,7 +346,7 @@ Now, you can add code into <file>play-songs.go</file> to write the logic that de
 To start, add in the code that initializes your speaker and plays the songs.
 Tess used the platform-flexible [Go `os` package](https://pkg.go.dev/os) and an audio processing package from [GitHub](https://github.com/faiface/beep/) to do this.
 
-``` go {class="line-numbers linkable-line-numbers"}
+```go {class="line-numbers linkable-line-numbers"}
 func initSpeaker(logger golog.Logger) {
    f, err := os.Open("square.mp3")
    if err != nil {
@@ -398,7 +408,7 @@ Use the vision service's [classification](/services/vision/classification/) API 
 
 You can get your components from the robot like this:
 
-``` go
+```go
 visService, err := vision.FromRobot(robot, "shape-classifier")
 ```
 
@@ -412,7 +422,7 @@ Change the `name` in [FromRobot()](/program/apis/#fromrobot) if you used a diffe
 
 This is what Tess used for the logic for the classifiers:
 
-``` go
+```go
 // Classifications logic
 for {
   for i := 0; i < 3; i++ {
@@ -435,7 +445,7 @@ for {
 
 After completing these instructions, your program <file>play-songs.go</file> should look like the following:
 
-``` go {class="line-numbers linkable-line-numbers"}
+```go {class="line-numbers linkable-line-numbers"}
 package main
 
 

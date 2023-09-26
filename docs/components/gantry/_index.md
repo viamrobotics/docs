@@ -12,7 +12,7 @@ images: ["/icons/components/gantry.svg"]
 # SME: Rand
 ---
 
-A robotic *gantry* is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
+A robotic _gantry_ is a mechanical system of linear actuators used to hold and position an [end effector](https://en.wikipedia.org/wiki/Robot_end_effector).
 A 3D printer is an example of a three-axis gantry where each linear actuator can move the print head along one axis.
 The linear rail design makes gantries a common and reliable system for simple positioning and placement tasks.
 
@@ -31,13 +31,14 @@ Most robots with a gantry need at least the following hardware:
 - A [motor](/components/motor/) that can move linear rails
   - Encoded motor: See [DC motor with encoder](/components/motor/gpio/encoded-motor/) and [encoder component](/components/encoder/).
   - Stepper motor: See [Stepper motor](/components/motor/gpiostepper/).
-  Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
+    Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
 ## Configuration
 
-Supported gantry models include:
+For configuration information, click on one of the supported gantry models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
@@ -156,13 +157,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Create a list of positions for the axes of the gantry to move to. Assume in this example that the gantry is multi-axis, with 3 axes.
+# Create a list of positions for the axes of the gantry to move to. Assume in
+# this example that the gantry is multi-axis, with 3 axes.
 examplePositions = [1, 2, 3]
 
 exampleSpeeds = [3, 9, 12]
 
 # Move the axes of the gantry to the positions specified.
-await my_gantry.move_to_position(positions=examplePositions, speeds=exampleSpeeds)
+await my_gantry.move_to_position(
+    positions=examplePositions, speeds=exampleSpeeds)
 ```
 
 {{% /tab %}}
@@ -315,7 +318,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+# Stop all motion of the gantry. It is assumed that the gantry stops
+# immediately.
 await my_gantry.stop()
 ```
 
@@ -363,7 +367,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/_modules
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
 
-# Stop all motion of the gantry. It is assumed that the gantry stops immediately.
+# Stop all motion of the gantry. It is assumed that the
+# gantry stops immediately.
 await my_gantry.stop()
 
 # Print if the gantry is currently moving.

@@ -40,8 +40,9 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-Supported servo models include:
+For configuration information, click on one of the supported servo models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
@@ -94,7 +95,7 @@ The servo component supports the following methods:
 Move the servo to the desired angle in degrees.
 
 {{% alert title="Stability Notice" color="note" %}}
-Support for continuous servos  with the GPIO servo model is experimental.
+Support for continuous servos with the GPIO servo model is experimental.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 
@@ -342,7 +343,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/guardian" %}}
-  {{% card link="/tutorials/control/yahboom-rover" %}}
-  {{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
+{{% card link="/tutorials/projects/guardian" %}}
+{{% card link="/tutorials/control/yahboom-rover" %}}
+{{% card link="/tutorials/projects/integrating-viam-with-openai" %}}
 {{< /cards >}}

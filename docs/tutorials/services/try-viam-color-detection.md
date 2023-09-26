@@ -8,11 +8,11 @@ imageAlt: "detectionCam stream displaying a color detection"
 images: ["/tutorials/try-viam-color-detection/detectioncam-comp-stream.png"]
 tags: ["vision", "detector", "camera", "viam rover", "try viam", "services"]
 aliases:
-    - /tutorials/viam-rover/try-viam-color-detection
-    - /tutorials/try-viam-color-detection
-authors: [ "Hazal Mestci" ]
+  - /tutorials/viam-rover/try-viam-color-detection
+  - /tutorials/try-viam-color-detection
+authors: ["Hazal Mestci"]
 languages: []
-viamresources: [ "vision", "camera" ]
+viamresources: ["vision", "camera"]
 level: "Beginner"
 date: "2022-12-16"
 # updated: ""
@@ -22,8 +22,8 @@ weight: 3
 # SMEs: Hazal
 ---
 
-The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
-The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
+The [vision service](/services/vision/) enables a smart machine to use its cameras to see and interpret the world around it.
+The service also allows you to create different types of detectors with which the smart machine can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 In this tutorial you will learn how to configure a color detector with the vision service and how to leverage that detector with a transform camera to detect the color red.
 
@@ -39,14 +39,14 @@ Be aware that if you are running out of time during your rental, you can [extend
 
 Before configuring color detection, enable the rover's camera to get a better sense of what it perceives.
 
-* If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
+- If you are running this tutorial with a [rented Viam Rover](https://app.viam.com/try), enable both provided cameras: the front-facing camera and the overhead cam.
   In the `viam_base` component panel under the **Control** tab, enable both the `cam` for the front-facing camera and the `overhead-cam:overheadcam` for an overhead view of your rover.
 
   ![The viam_base component panel showing both the 'cam' and 'overheadcam' camera feeds enabled.](try-viam/try-viam/enable-both-cameras.png)
 
   You can also view and control the camera streams from the [individual camera component panels](/try-viam/try-viam-tutorial/#camera-control).
 
-* If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
+- If you are running this tutorial on [your own Viam Rover](/try-viam/rover-resources/), enable the front facing camera.
   If you are using the `ViamRover` [fragment](/try-viam/rover-resources/rover-tutorial-fragments/) with your rover, the front facing camera is named `cam` and can be enabled in the `viam_base` component panel under the **Control** tab.
 
 ## Add the vision service to detect a color
@@ -55,20 +55,17 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/services/vision/detection/):
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-Click on the robot you wish to add the vision service to.
-Select the **Config** tab, and click on **Services**.
+1. Click the **Services** subtab and click **Create service** in the lower-left corner.
 
-Scroll to the **Create Service** section.
-To create a [vision service](/services/vision/):
+1. Select the `Vision` type, then select the `Color Detector` model.
 
-1. Select `Vision` as the **Type**.
-1. Enter `my_color_detector` as the **Name**.
-1. Select **Color Detector** as the **Model**.
-1. Click **Create Service**.
+1. Enter `my_color_detector` as the name for your detector and click **Create**.
+
 1. In the resulting vision service panel, click the color picker box to set the color to be detected.
    For this tutorial, set the color to `rgb(122, 79, 92)` or use hex code `#7a4f5c`.
 
@@ -83,7 +80,7 @@ Your configuration should look like the following:
 
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "my_color_detector",
@@ -126,15 +123,12 @@ Note that the detector does not detect black, perfect greys (greys where the red
 Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
 A virtual camera transforms the output from a physical camera.
 
-To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform/).
+To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform/):
 
-Navigate to the **Components** tab in the Viam app and scroll to the **Create Component** section.
-To create a [transform camera](/components/camera/transform/):
-
-1. Enter a name for **Name**, for example `detectionCam`.
-2. Select `camera` as the **Type**.
-3. Select `transform` as the **Model**.
-4. Click **Create Component**.
+1. Click **Create component** in the lower-left corner of the **Components** subtab.
+2. Select `camera` as the type.
+3. Select `transform` as the model.
+4. Name your transform camera (for example, `detectionCam`) and click **Create**.
 
 ![The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.](/tutorials/try-viam-color-detection/create-component-pane.png)
 
@@ -151,19 +145,20 @@ Copy the following JSON configuration into the Attributes section:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
- "source": "cam",
- "pipeline": [
-   {
-     "attributes": {
-       "detector_name": "my_color_detector",
-       "confidence_threshold": 0.3
-     },
-     "type": "detections"
-   }
- ]
+  "source": "cam",
+  "pipeline": [
+    {
+      "attributes": {
+        "detector_name": "my_color_detector",
+        "confidence_threshold": 0.3
+      },
+      "type": "detections"
+    }
+  ]
 }
 ```
 
+<!-- prettier-ignore -->
 | Field | Default value | Description |
 | ----- | ------------- | ----------- |
 | `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |

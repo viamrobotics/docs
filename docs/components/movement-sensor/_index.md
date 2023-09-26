@@ -10,7 +10,7 @@ icon: "/icons/components/imu.svg"
 images: ["/icons/components/imu.svg"]
 no_list: true
 aliases:
-    - /components/movement-sensor/
+  - /components/movement-sensor/
 # SME: Rand
 ---
 
@@ -28,6 +28,7 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 Viam supports several different models of GPS, IMU and accelerometer.
 Click the model names below for configuration information:
 
+<!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>
 ----- | -----------
 [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
@@ -106,7 +107,9 @@ Supported by GPS models.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_position).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot,
+    name="my_movement_sensor")
 
 # Get the current position of the movement sensor.
 position = await my_movement_sensor.get_position()
@@ -129,7 +132,8 @@ position = await my_movement_sensor.get_position()
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
 
 ```go
-myMovementSensor, err := movementsensor.FromRobot(robot, "my_movement_sensor")
+myMovementSensor, err := movementsensor.FromRobot(
+    robot, "my_movement_sensor")
 
 // Get the current position of the movement sensor.
 position, err := myMovementSensor.Position(context.Background(), nil)
@@ -158,7 +162,8 @@ Supported by GPS models.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_velocity).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the current linear velocity of the movement sensor.
 lin_vel = await my_movement_sensor.get_linear_velocity()
@@ -209,7 +214,8 @@ Supported by IMU models and by `gyro-mpu6050`.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_angular_velocity).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+  robot=robot, name="my_movement_sensor")
 
 # Get the current angular velocity of the movement sensor.
 ang_vel = await my_movement_sensor.get_angular_velocity()
@@ -266,7 +272,8 @@ Supported by IMU models, `accel-adxl345`, and `gyro-mpu6050`.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_linear_acceleration).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the current linear acceleration of the movement sensor.
 lin_accel = await my_movement_sensor.get_linear_acceleration()
@@ -305,7 +312,7 @@ xAngVel := linAccel.X
 
 ### GetCompassHeading
 
-Report the current [compass heading](https://en.wikipedia.org/wiki/Heading_(navigation)) in degrees.
+Report the current [compass heading](<https://en.wikipedia.org/wiki/Heading_(navigation)>) in degrees.
 
 Supported by GPS models and `imu-vectornav`.
 
@@ -323,7 +330,8 @@ Supported by GPS models and `imu-vectornav`.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_compass_heading).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the current compass heading of the movement sensor.
 heading = await my_movement_sensor.get_compass_heading()
@@ -374,7 +382,8 @@ Supported by IMU models.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_orientation).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the current orientation vector of the movement sensor.
 orientation = await my_movement_sensor.get_orientation()
@@ -432,7 +441,8 @@ Get the supported properties of this sensor.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_properties).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the supported properties of the movement sensor.
 properties = await my_movement_sensor.get_properties()
@@ -448,7 +458,7 @@ properties = await my_movement_sensor.get_properties()
 
 **Returns:**
 
-- [(*movementsensor.Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
+- [(\*movementsensor.Properties)](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#Properties): The supported properties of the movement sensor.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs](https://pkg.go.dev/go.viam.com/rdk/components/movementsensor#MovementSensor).
@@ -484,7 +494,8 @@ Supported by GPS models.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_accuracy).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the accuracy of the movement sensor.
 accuracy = await my_movement_sensor.get_accuracy()
@@ -532,12 +543,13 @@ If a sensor is not configured to take a certain measurement or fails to read a p
 **Returns:**
 
 - [(Mapping [str, Any])](https://docs.python.org/3/glossary.html#term-mapping): An object containing the measurements from the sensor.
-Contents depend on sensor model and can be of any type.
+  Contents depend on sensor model and can be of any type.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.MovementSensor.get_readings).
 
 ```python
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 # Get the latest readings from the movement sensor.
 readings = await my_movement_sensor.get_readings()
@@ -554,7 +566,7 @@ readings = await my_movement_sensor.get_readings()
 **Returns:**
 
 - [(map[string]interface{})](https://go.dev/blog/maps): A map containing the measurements from the sensor.
-    Contents depend on sensor model and can be of any type.
+  Contents depend on sensor model and can be of any type.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK docs for Sensor](https://pkg.go.dev/go.viam.com/rdk/components/sensor#Sensor) (because `Readings` is part of the general sensor API that movement sensor wraps).
@@ -586,7 +598,8 @@ If you are implementing your own movement sensor and add features that have no b
 - [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+    robot=robot, name="my_movement_sensor")
 
 reset_dict = {
   "command": "reset",

@@ -8,8 +8,8 @@ mp4Src: "/tutorials/videos/motion_armmoving.mp4"
 videoAlt: "An arm moving with the motion service"
 tags: ["arm", "gripper", "motion", "services"]
 authors: []
-languages: [ "python", "go" ]
-viamresources: [ "arm", "gripper", "motion" ]
+languages: ["python", "go"]
+viamresources: ["arm", "gripper", "motion"]
 level: "Intermediate"
 date: "2023-03-07"
 # updated: ""
@@ -93,7 +93,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the *pose* of a component relative to a [*reference frame*](/services/frame-system/).
+The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
@@ -130,7 +130,8 @@ Any components that have frame information (and, as a result, are added to the f
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the pose of myArm from the motion service
-my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
+my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name,
+                                                   "world")
 print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 ```
 
@@ -173,9 +174,11 @@ You must add additional imports to access `Pose`, `PoseInFrame`, `Vector3`, `Geo
 # Add a table obstacle to a WorldState
 table_origin = Pose(x=0.0, y=0.0, z=-19.0)
 table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
-table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
+table_object = Geometry(center=table_origin,
+                        box=RectangularPrism(dims_mm=table_dims))
 
-obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[table_object])
+obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                       geometries=[table_object])
 
 # Create a WorldState that has the GeometriesInFrame included
 world_state = WorldState(obstacles=[obstacles_in_frame])
@@ -212,7 +215,7 @@ This example adds a "table" with the assumption that you mounted your robot arm 
 The 2000 millimeter by 2000 millimeter dimensions ensure that a sufficiently large box is constructed, regardless of the real physical footprint of your mounting surface.
 Setting the Z component of the origin to -19 mm (half the table's thickness) conveniently positions the top surface of the table at 0.
 Feel free to change these dimensions, including thickness (the Z coordinate in the above code samples), to match your environment more closely.
-Additional obstacles can also be *appended* as desired.
+Additional obstacles can also be _appended_ as desired.
 
 {{< alert title="Tip" color="note" >}}
 Within the app, the **Frame System** subtab of your robot's **Config** tab gives you the ability to experiment with various geometry representations with better visual feedback.
@@ -236,7 +239,7 @@ Remember that X, Y, and Z coordinates are specified in millimeters.
 Again, a note:
 
 {{< alert title="Caution" color="caution" >}}
-Executing code presented after this point *will* induce motion in a connected robotic arm!
+Executing code presented after this point _will_ induce motion in a connected robotic arm!
 Keep the space around the arm clear!
 {{< /alert >}}
 <br><br>
@@ -245,10 +248,19 @@ Keep the space around the arm clear!
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Generate a sample "start" pose to demonstrate motion
-test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
-test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
+test_start_pose = Pose(x=510.0,
+                       y=0.0,
+                       z=526.0,
+                       o_x=0.7071,
+                       o_y=0.0,
+                       o_z=-0.7071,
+                       theta=0.0)
+test_start_pose_in_frame = PoseInFrame(reference_frame="world",
+                                       pose=test_start_pose)
 
-await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_arm_resource_name,
+                          destination=test_start_pose_in_frame,
+                          world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -277,7 +289,7 @@ if err != nil {
 ## Command other components to move with the motion service
 
 In this section you will add a new component to your robot.
-One device that is very commonly attached to the end of a robot arm is a [*gripper*](/components/gripper/).
+One device that is very commonly attached to the end of a robot arm is a [_gripper_](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
 This is possible because the motion service considers other components of the robot (through the [frame system](/services/frame-system/)) when calculating how to achieve the desired motion.
@@ -286,20 +298,20 @@ This is possible because the motion service considers other components of the ro
 
 We need to do several things to prepare a new gripper component for motion.
 
-1. Go back to your robot configuration in the Viam app.
-2. Under the **Components** section, add a new `gripper` component to your robot with the following attributes:
-    * Set `myGripper` as the **Name** of this new component.
-    * Set the **Type** to `gripper`.
-    * Set the **Model** to `fake`.
-3. Add a **Frame** to this component.
-    * Set the parent as `myArm`.
-    * Set the translation as something small in the +Z direction, such as `90` millimeters.
-    * Leave the orientation as the default.
-    * For **Geometry Type** choose **Box**.
-    * Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
+1. Go back to your robot configuration in the [Viam app](https://app.viam.com).
+2. Navigate to the **Components** tab and click **Create component** in the lower-left corner to add a new gripper component to your robot:
+   - Select `gripper` for the type and `fake` for the model.
+   - Enter `myGripper` for the name of your gripper component.
+   - Click **Create**.
+3. Add a **Frame** to the gripper component:
+   - Set the parent as `myArm`.
+   - Set the translation as something small in the +Z direction, such as `90` millimeters.
+   - Leave the orientation as the default.
+   - For **Geometry Type** choose **Box**.
+   - Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
 4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`.
 5. Save this new robot configuration.
-    * Your `viam-server` instance should update automatically.
+   - Your `viam-server` instance should update automatically.
 
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/motion/plan_03_gripper_config.png" resize="700x" declaredimensions=true alt="Sample gripper configuration with several fields filled out.">}}
@@ -324,10 +336,21 @@ Then add this code to your `main()`:
 my_gripper_resource = Gripper.get_resource_name("myGripper")
 
 # Move the gripper in the -Z direction with respect to its own reference frame
-gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
-gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
+gripper_pose_rev = Pose(x=0.0,
+                        y=0.0,
+                        z=-100.0,
+                        o_x=0.0,
+                        o_y=0.0,
+                        o_z=1.0,
+                        theta=0.0)
+# Note the change in frame name
+gripper_pose_rev_in_frame = PoseInFrame(
+    reference_frame=my_gripper_resource.name,
+    pose=gripper_pose_rev)
 
-await motion_service.move(component_name=my_gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
+await motion_service.move(component_name=my_gripper_resource,
+                          destination=gripper_pose_rev_in_frame,
+                          world_state=world_state)
 ```
 
 {{% /tab %}}
@@ -372,8 +395,8 @@ This has implications for how motion is calculated, and what final configuration
 If you would like to continue onto working with Viam's motion service, check out one of these tutorials:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" %}}
-  {{% card link="/tutorials/services/constrain-motion/" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
+{{% card link="/tutorials/services/constrain-motion/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}
@@ -388,7 +411,8 @@ import asyncio
 
 from viam.components.arm import Arm
 from viam.components.gripper import Gripper
-from viam.proto.common import Geometry, GeometriesInFrame, Pose, PoseInFrame, RectangularPrism, Vector3, WorldState
+from viam.proto.common import Geometry, GeometriesInFrame, Pose, PoseInFrame, \
+    RectangularPrism, Vector3, WorldState
 from viam.proto.component.arm import JointPositions
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
@@ -404,6 +428,7 @@ async def connect():
         dial_options=DialOptions(credentials=creds)
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
+
 
 async def main():
     robot = await connect()
@@ -425,7 +450,8 @@ async def main():
 
     # Command a joint position move: move the forearm of the arm slightly up
     cmd_joint_positions = JointPositions(values=[0, 0, -30.0, 0, 0, 0])
-    await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
+    await my_arm_component.move_to_joint_positions(
+        positions=cmd_joint_positions)
 
     # Generate a simple pose move +100mm in the +Z direction of the arm
     cmd_arm_pose = await my_arm_component.get_end_position()
@@ -436,32 +462,56 @@ async def main():
     motion_service = MotionClient.from_robot(robot, "builtin")
 
     # Get the pose of myArm from the motion service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name, "world")
+    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name,
+                                                       "world")
     print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 
     # Add a table obstacle to a WorldState
     table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
     table_dims = Vector3(x=635.0, y=1271.0, z=38.0)
-    table_object = Geometry(center=table_origin, box=RectangularPrism(dims_mm=table_dims))
+    table_object = Geometry(center=table_origin,
+                            box=RectangularPrism(dims_mm=table_dims))
 
-    obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=[table_object])
+    obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                           geometries=[table_object])
 
     # Create a WorldState that has the GeometriesInFrame included
     world_state = WorldState(obstacles=[obstacles_in_frame])
 
     # Generate a sample "start" pose to demonstrate motion
-    test_start_pose = Pose(x=510.0, y=0.0, z=526.0, o_x=0.7071, o_y=0.0, o_z=-0.7071, theta=0.0)
-    test_start_pose_in_frame = PoseInFrame(reference_frame="world", pose=test_start_pose)
+    test_start_pose = Pose(x=510.0,
+                           y=0.0,
+                           z=526.0,
+                           o_x=0.7071,
+                           o_y=0.0,
+                           o_z=-0.7071,
+                           theta=0.0)
+    test_start_pose_in_frame = PoseInFrame(reference_frame="world",
+                                           pose=test_start_pose)
 
-    await motion_service.move(component_name=my_arm_resource_name, destination=test_start_pose_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_arm_resource_name,
+                              destination=test_start_pose_in_frame,
+                              world_state=world_state)
 
     my_gripper_resource = Gripper.get_resource_name("myGripper")
 
-    # This will move the gripper in the -Z direction with respect to its own reference frame
-    gripper_pose_rev = Pose(x=0.0, y=0.0, z=-100.0, o_x=0.0, o_y=0.0, o_z=1.0, theta=0.0)
-    gripper_pose_rev_in_frame = PoseInFrame(reference_frame=my_gripper_resource.name, pose=gripper_pose_rev) # Note the change in frame name
+    # This will move the gripper in the -Z direction with respect to its own
+    # reference frame
+    gripper_pose_rev = Pose(x=0.0,
+                            y=0.0,
+                            z=-100.0,
+                            o_x=0.0,
+                            o_y=0.0,
+                            o_z=1.0,
+                            theta=0.0)
+    # Note the change in frame name
+    gripper_pose_rev_in_frame = PoseInFrame(
+        reference_frame=my_gripper_resource.name,
+        pose=gripper_pose_rev)
 
-    await motion_service.move(component_name=my_gripper_resource, destination=gripper_pose_rev_in_frame, world_state=world_state)
+    await motion_service.move(component_name=my_gripper_resource,
+                              destination=gripper_pose_rev_in_frame,
+                              world_state=world_state)
 
     # Don't forget to close the robot when you're done!
     await robot.close()

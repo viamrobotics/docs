@@ -3,7 +3,15 @@ title: "Upload your own modules to the Viam registry"
 linkTitle: "Upload"
 weight: 20
 type: "docs"
-tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+tags:
+  [
+    "server",
+    "rdk",
+    "extending viam",
+    "modular resources",
+    "components",
+    "services",
+  ]
 description: "Use the Viam CLI to upload a custom module to the Viam registry."
 no_list: true
 ---
@@ -27,7 +35,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
    1. To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
       viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
       ```
 
@@ -55,7 +63,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
        <td><code>visibility</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>Whether the module is visible to all Viam users (<code>public</code>), or accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+       <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
      </tr>
      <tr>
        <td><code>url</code></td>
@@ -102,7 +110,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
    ```
 
    {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`visibility: "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+   If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
    In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
    If the two namespaces do not match, the command will return an error.
    {{% /alert %}}
@@ -112,9 +120,9 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
 
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module update
-      ```
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module update
+   ```
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
@@ -124,7 +132,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
    - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
      go build -o bin/module ./module/main.go
      tar -cxf module.tar.gz bin/module
      ```
@@ -133,7 +141,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
@@ -141,32 +149,32 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
 1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> module.tar.gz
    ```
 
    Where:
 
    - `version` - provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
-      You can later increment this value with subsequent `viam module upload` commands.
-      See [Using the `--version` argument](/manage/cli/#using-the---version-argument) for more information.
-   - `platform` - provide *one* of the following, depending on the platform you have built your custom module for (You can use the `uname -m` command to determine your system architecture):
-      - `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
-      - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
-      - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
-      - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
+     You can later increment this value with subsequent `viam module upload` commands.
+     See [Using the `--version` argument](/manage/cli/#using-the---version-argument) for more information.
+   - `platform` - provide _one_ of the following, depending on the platform you have built your custom module for (You can use the `uname -m` command to determine your system architecture):
+     - `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
+     - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
+     - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
+     - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
    - `path` - provide the path to the compressed archive, in `tar.gz` or `tar.xz` format, that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
    The `viam module upload` command only supports one `platform` argument at a time.
    If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
-   Use the *same version number* when running multiple `upload` commands of the same module code if only the `platform` support differs.
+   Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
    The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
    {{% /alert %}}
 
    For example, the following command uploads the compressed `module.tar.gz` archive to the Viam registry when run in the same directory as the corresponding `meta.json` file:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.0 --platform darwin/arm64 module.tar.gz
    ```
 
@@ -196,9 +204,9 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 1. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
 
-      ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-      viam module update
-      ```
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module update
+   ```
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
@@ -208,7 +216,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
      go build -o bin/module ./module/main.go
      tar -cxf module.tar.gz bin/module
      ```
@@ -217,7 +225,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
-     ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
@@ -225,13 +233,13 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
 1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <path-to-tar.gz>
    ```
 
    For example, the following command uploads the compressed `my-module.tar.gz` archive to the Viam registry when run in the same directory, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
-   ``` sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
@@ -262,18 +270,18 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
      publish:
        runs-on: ubuntu-latest
        steps:
-       - uses: actions/checkout@v3
-       - name: build
-         run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
-       - uses: viamrobotics/upload-module@main
-         # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
-         with:
-           module-path: module.tar.gz
-           org-id: your-org-id-uuid # <-- replace with your org ID. not required for public modules
-           platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
-           version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
-           key-id: ${{ secrets.viam_key_id }}
-           key-value: ${{ secrets.viam_key_value }}
+         - uses: actions/checkout@v3
+         - name: build
+           run: echo "your build command goes here" && false # <-- replace this with the command that builds your module's tar.gz
+         - uses: viamrobotics/upload-module@v1
+           # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
+           with:
+             module-path: module.tar.gz
+             org-id: your-org-id-uuid # <-- replace with your org ID. not required for public modules
+             platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
+             version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
+             key-id: ${{ secrets.viam_key_id }}
+             key-value: ${{ secrets.viam_key_value }}
    ```
 
 1. Edit the copied code to include the configuration specific to your module.
@@ -283,13 +291,24 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    When ready to test the action, uncomment `if: github.event_name == 'release'` to enable the action to trigger a run when you [issue a release](https://docs.github.com/en/repositories/releasing-projects-on-github).
 
    For guidance on configuring the other parameters, see the documentation for each:
+
    - [`org-id`](/manage/cli/#using-the---org-id-and---public-namespace-arguments) - Not required if your module is public.
    - [`platform`](/manage/cli/#using-the---platform-argument) - You can only upload one platform at a time.
    - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning) - Also see [Using the --version argument](/manage/cli/#using-the---version-argument) for more details on the types of versioning supported.
-   - [`key-id` and `key-value`](/manage/cli/#create-an-organization-api-key) - You will set these values in the next step.
 
-1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key), which the action will use to authenticate its run.
-   Provide the `key-id` and `key-value` generated in the YAML configuration above.
+1. Create an organization API key and configure your GitHub repository to use it to authenticate during GitHub action runs, following the steps below:
+
+   1. Follow the instructions to [Create an organization API key](/manage/cli/#create-an-organization-api-key).
+      These steps will return a `key id` and a `key value` which together comprise your organization API key.
+      If you have already created an organization API key, you can skip this step.
+
+   1. In the GitHub repository for your project, select **Settings**, then **Secrets and variables**, then **Actions**.
+
+   1. Click the green **New repository secret** button, enter `viam_key_id` as the **NAME**, paste the value for `key id` from above into the **Secret** text field, then click **Add secret**.
+
+   1. Then, click the green **New repository secret** button, enter `viam_key_value` as the **NAME**, paste the value for `key value` from above into the **Secret** text field, then click **Add secret**.
+
+   For more information on GitHub secrets, see the GitHub documentation for [Creating secrets for a repository](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository).
 
 1. Push a commit to your module or [create a new release](https://docs.github.com/en/repositories/releasing-projects-on-github).
    The specific step to take to release your software depends on your CI workflow, your GitHub configuration, and the `run` step you defined earlier.

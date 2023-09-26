@@ -7,11 +7,12 @@ description: "Configure a single-axis gantry."
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
-    - "/components/gantry/oneaxis/"
+  - "/components/gantry/oneaxis/"
 # SME: Rand, Martha
 ---
 
-Configure a `single-axis` gantry to integrate a single-axis gantry into your robot:
+Configure a `single-axis` gantry to integrate a single-axis gantry into your robot.
+Before configuring the gantry, configure any [motor components](/components/motor/) that are part of the gantry.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -52,6 +53,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `single-axis` gantries:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------  |
 | `length_mm` | int | **Required** | Length of the axis of the gantry in millimeters. |

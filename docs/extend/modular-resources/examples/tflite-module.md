@@ -35,13 +35,13 @@ While your specific build steps may differ slightly, your installation should ge
 
 1. Install all listed dependencies to support the Viam C++ SDK:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    brew install abseil cmake boost grpc protobuf xtensor pkg-config ninja buf
    ```
 
 1. Create a new <file>example_workspace</file> directory for this tutorial, and create an <file>opt</file> directory within it to house the build artifacts:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    mkdir -p ~/example_workspace
    cd ~/example_workspace
    mkdir -p opt
@@ -49,13 +49,13 @@ While your specific build steps may differ slightly, your installation should ge
 
 1. Within the <file>~/example_workspace</file> directory, clone the Viam C++ SDK:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    git clone git@github.com:viamrobotics/viam-cpp-sdk.git
    ```
 
 1. Change directory into the SDK, and create a <file>build</file> directory to house the build:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cd viam-cpp-sdk/
    mkdir build
    cd build
@@ -63,13 +63,13 @@ While your specific build steps may differ slightly, your installation should ge
 
 1. Create an environment variable `PKG_CONFIG_PATH` which points to the version of `openssl` installed on your system:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    export PKG_CONFIG_PATH="`brew --prefix`/opt/openssl/lib/pkgconfig"
    ```
 
 1. Build the C++ SDK by running the following commands:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
    ninja all
    ninja install
@@ -89,13 +89,13 @@ While your specific build steps may differ slightly, your installation should ge
 
 1. Clone the Viam C++ SDK to your Linux system:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    git clone git@github.com:viamrobotics/viam-cpp-sdk.git
    ```
 
 1. Build and run the `bullseye` development Docker container included with the SDK. If you haven't already, first [install Docker Engine](https://docs.docker.com/engine/install/).
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cd viam-cpp-sdk/
    docker build -t cpp . -f etc/docker/Dockerfile.debian.bullseye
    docker run --rm -it -v "$PWD":/usr/src/viam-cpp-sdk -w /usr/src/viam-cpp-sdk cpp /bin/bash
@@ -105,14 +105,14 @@ While your specific build steps may differ slightly, your installation should ge
 
 1. Install all listed dependencies to support the Viam C++ SDK:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    sudo apt-get install git cmake build-essential libabsl-dev libboost-all-dev libgrpc++-dev libprotobuf-dev pkg-config ninja-build protobuf-compiler-grpc
    ```
 
 1. If you are not using the `bullseye` container included with the SDK, you may need to install a newer version of `cmake` to build the SDK.
    Run the following to determine the version of `cmake` installed on your system:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cmake --version
    ```
 
@@ -120,7 +120,7 @@ While your specific build steps may differ slightly, your installation should ge
    Otherwise, download and install `cmake 3.25` or later from your system's package manager.
    For example, if using Debian, you can run the following commands to add the `bullseye-backports` repository and install the version of `cmake` provided there:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    sudo apt-get install software-properties-common
    sudo apt-add-repository 'deb http://deb.debian.org/debian bullseye-backports main'
    sudo apt-get update
@@ -129,20 +129,20 @@ While your specific build steps may differ slightly, your installation should ge
 
 1. Create an <file>opt</file> directory to install the build artifacts to:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    mkdir -p ~/example_workspace/opt
    ```
 
 1. Within the <file>viam-cpp-sdk</file> directory, create a <file>build</file> directory to house the build:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    mkdir build
    cd build
    ```
 
 1. Build the C++ SDK by running the following commands:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cmake .. -DVIAMCPPSDK_BUILD_TFLITE_EXAMPLE_MODULE=ON -DCMAKE_INSTALL_PREFIX=~/example_workspace/opt -G Ninja
    ninja all
    ninja install
@@ -162,7 +162,7 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 
 1. Download the `yamnet/classification` TensorFlow Lite model file and place it in your <file>example_workspace</file> directory:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    curl -Lo ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite https://tfhub.dev/google/lite-model/yamnet/classification/tflite/1?lite-format=tflite
    ```
 
@@ -171,7 +171,7 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 
 1. Extract the labels file <file>yamnet_label_list.txt</file> from the downloaded model file:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    unzip ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite -d ~/example_workspace/
    ```
 
@@ -190,9 +190,9 @@ Next, install `viam-server` on your robot, if you have not done so already:
 1. Follow the steps listed under the **Setup** tab to install `viam-server` on your system.
 
    {{< alert title="Important" color="note" >}}
-   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command *instead* of the command listed in step 2 **Download and install viam-server** in the Viam app:
+   If you are installing `viam-server` within the `bullseye` Docker container provided with the C++ SDK, you will need to run the following command _instead_ of the command listed in step 2 **Download and install viam-server** in the Viam app:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --appimage-extract-and-run -config /etc/viam.json
    ```
 
@@ -216,14 +216,14 @@ To generate your robot's configuration using `example_audio_classification_clien
 
 1. Run the `example_audio_classification_client` binary, providing both paths to the `--generate` function in the following fashion:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
    ./example_audio_classification_client --generate --model-path ~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite --tflite-module-path ~/example_workspace/opt/bin/example_mlmodelservice_tflite > ~/example_workspace/viam-example-mlmodel-config.json
    ```
 
 1. Verify that the resulting configuration file was created successfully:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cat ~/example_workspace/viam-example-mlmodel-config.json
    ```
 
@@ -251,14 +251,14 @@ With everything configured and running, you can now run the inference client tha
 
 1. Next, start `viam-server` once more on your robot, this time as a background process:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    viam-server -config /etc/viam.json
    ```
 
    {{< alert title="Important" color="note" >}}
-   If you are working within the `bullseye` Docker container on Linux, run the following command *instead* of the above, from within the directory you installed `viam-server` to:
+   If you are working within the `bullseye` Docker container on Linux, run the following command _instead_ of the above, from within the directory you installed `viam-server` to:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    ./viam-server --appimage-extract-and-run -config /etc/viam.json &
    ```
 
@@ -266,14 +266,14 @@ With everything configured and running, you can now run the inference client tha
 
 1. Then, run the following to start the inference client, providing the necessary access credentials and the path to the labels file extracted earlier:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   ```sh { class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
    ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-secret abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234
    ```
 
    The command should return output similar to:
 
-   ```sh {id="terminal-prompt"}
+   ```sh {}
    0: Static                               0.5
    1: Noise                                0.332031
    2: White noise                          0.261719

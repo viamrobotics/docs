@@ -3,11 +3,11 @@ title: "Manage Robots with Viam's Robot API"
 linkTitle: "Robot Management"
 weight: 20
 type: "docs"
-description: "How to use the Robot API to monitor and manage your robots."
+description: "How to use the Robot API to monitor and manage your smart machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 ---
 
-The *robot API* is the application programming interface that manages each of your robots running `viam-server`.
+The _robot API_ is the application programming interface that manages each of your robots running `viam-server`.
 It is the API for high level operations of each robot {{< glossary_tooltip term_id="part" text="part" >}}.
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
@@ -30,7 +30,7 @@ Get a list of discovered component configurations.
 
 - [(List[viam.proto.robot.Discovery])](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Discovery): The list of discovered component configurations corresponding to `queries`.
 
-``` python
+```python
 # Define a new discovery query.
 q = robot.DiscoveryQuery(subtype=acme.API, model="some model")
 
@@ -54,7 +54,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [([]resource.Discovery)](https://pkg.go.dev/go.viam.com/rdk/resource#Discovery): The search query `qs` and the corresponding list of discovered component configurations as an interface called `Results`.
-`Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
+  `Results` may be comprised of primitives, a list of primitives, maps with string keys (or at least can be decomposed into one), or lists of the forementioned type of maps.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go
@@ -155,7 +155,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ```typescript {class="line-numbers linkable-line-numbers"}
 // Get the frame system configuration.
-console.log('FrameSytemConfig:', await robot.frameSystemConfig());
+console.log("FrameSytemConfig:", await robot.frameSystemConfig());
 ```
 
 {{% /tab %}}
@@ -173,7 +173,7 @@ If no names are passed in, the status of every resource configured on the robot 
 **Parameters:**
 
 - `resourceNames` [(Optional[List[viam.proto.common.ResourceName]])](https://docs.python.org/library/typing.html#typing.Optional): An optional list of ResourceNames for components you want the status of.
-If no names are passed in, all resource statuses are returned.
+  If no names are passed in, all resource statuses are returned.
 
 **Returns:**
 
@@ -193,7 +193,7 @@ statuses = await robot.get_status()
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `resourceNames` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): An optional list of ResourceNames for components you want the status of.
-If no names are passed in, all resource statuses are returned.
+  If no names are passed in, all resource statuses are returned.
 
 **Returns:**
 
@@ -213,7 +213,7 @@ status, err = robot.Status(ctx.Background())
 **Parameters:**
 
 - `resourceNames` [(commonApi.ResourceName[])](https://ts.viam.dev/classes/commonApi.ResourceName.html): An optional array of ResourceNames for components you want the status of.
-If no names are passed in, all resource statuses are returned.
+  If no names are passed in, all resource statuses are returned.
 
 **Returns:**
 
@@ -307,7 +307,8 @@ Cancel all current and outstanding operations for the robot and stop all actuato
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.stop_all).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Cancel all current and outstanding operations for the robot and stop all actuators and movement.
+# Cancel all current and outstanding operations for the robot and stop all
+# actuators and movement.
 await robot.stop_all()
 ```
 
@@ -366,7 +367,7 @@ Get a list of all known resource names connected to this robot.
 
 - [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
 
-``` python
+```python
 resource_names = robot.resource_names
 ```
 

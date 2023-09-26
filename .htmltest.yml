@@ -20,11 +20,11 @@ IgnoreURLs:
 - "numato.com"
 - "nvidia.com"
 - "slamtec.com"
-- "softroboticsinc.com"
 - "universal-robots.com"
 - "digikey.com"
 - "ufactory.cc"
 - "medium.com"
+- "radxa.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"

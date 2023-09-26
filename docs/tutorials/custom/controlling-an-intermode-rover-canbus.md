@@ -2,14 +2,23 @@
 title: "Control an Intermode Rover with CAN Bus and Viam"
 linkTitle: "Control an Intermode Rover with Viam"
 type: "docs"
-tags: ["modular resources", "extending viam", "components", "rover", "base", "CAN bus", "Intermode"]
+tags:
+  [
+    "modular resources",
+    "extending viam",
+    "components",
+    "rover",
+    "base",
+    "CAN bus",
+    "Intermode",
+  ]
 description: "Integrate an Intermode rover as a modular-resource-based component with CAN bus."
 image: "/tutorials/intermode/rover_outside.png"
 imageAlt: "Intermode rover pictured outdoors."
 images: ["/tutorials/intermode/rover_outside.png"]
-authors: [ "Matt Vella" ]
-languages: [ "go" ]
-viamresources: [ "base", "custom" ]
+authors: ["Matt Vella"]
+languages: ["go"]
+viamresources: ["base", "custom"]
 level: "Intermediate"
 date: "2023-01-22"
 # updated: ""
@@ -45,11 +54,11 @@ While this tutorial can be followed verbatim for the Intermode rover, much of it
 
 The tutorial uses the following hardware:
 
-* <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
-* [An Intermode rover](https://www.intermode.io/)
-* [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
-* [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
-* [USB-C Male Plug to Pigtail Cable](https://www.amazon.com/Type-C-Cable-10inch-22AWG-Pigtail/dp/B09C7SLHFP)
+- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
+- [An Intermode rover](https://www.intermode.io/)
+- [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
+- [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
+- [USB-C Male Plug to Pigtail Cable](https://www.amazon.com/Type-C-Cable-10inch-22AWG-Pigtail/dp/B09C7SLHFP)
 
 ## Initial Setup
 
@@ -77,10 +86,10 @@ Power your Raspberry Pi off and attach the PiCAN 2 by aligning the 40 way connec
 
 Next, with the Intermode rover powered down, connect the 6-wire amphenol connector that comes with the rover to the 4 screw terminal on PiCAN bus:
 
-* Connect one of the 12V wires (red) to the +12V terminal
-* Connect one of the ground wires (black) to the GND terminal
-* Connect the CAN low wire (blue) to the CAN_L terminal
-* Connect the CAN high wire (white) to the CAN_H terminal.
+- Connect one of the 12V wires (red) to the +12V terminal
+- Connect one of the ground wires (black) to the GND terminal
+- Connect the CAN low wire (blue) to the CAN_L terminal
+- Connect the CAN high wire (white) to the CAN_H terminal.
 
 You will have two remaining wires (12V and ground).
 
@@ -117,7 +126,7 @@ The complete triplet is:
 **viamlabs:tutorial:intermode**
 
 The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates this model and registers the component instance.
-The *Subtype* of a resource contains its API triplet, so using `base.Subtype` (see line 30 below) registers our new model with the *API* from the RDK's built-in base component (rdk:component:base).
+The _Subtype_ of a resource contains its API triplet, so using `base.Subtype` (see line 30 below) registers our new model with the _API_ from the RDK's built-in base component (rdk:component:base).
 
 ```go {class="line-numbers linkable-line-numbers"}
 // namespace, model family, model
@@ -165,17 +174,17 @@ func registerBase() {
 ### Implement base methods
 
 Now that the modular resource code has registered the API it is using and its custom model, you can implement any number of methods provided by the base API.
-Since the Intermode rover's commands are in the CAN bus format, you need the modular resource code to translate any commands sent from the base API, like *SetPower*, *SetVelocity*, or *Stop* to [CAN bus frames](https://en.wikipedia.org/wiki/CAN_bus#Frames).
+Since the Intermode rover's commands are in the CAN bus format, you need the modular resource code to translate any commands sent from the base API, like _SetPower_, _SetVelocity_, or _Stop_ to [CAN bus frames](https://en.wikipedia.org/wiki/CAN_bus#Frames).
 Intermode provides documentation on how its [CAN frames](https://github.com/viam-labs/tutorial-intermode/blob/main/can_interface.pdf) are formatted.
 
 At a high level, the [tutorial code](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/module.go) does the following:
 
-1. The SetPower command implements the SetPower interface from the *rdk:component:base* API
-2. The parameters sent to SetPower are formatted as a *driveCommand*
-3. The *driveCommand* is converted to a CAN frame, and set as the next command
-4. *publishThread* runs a loop continuously, sending the current command every 10ms (the Intermode base will otherwise time out)
+1. The SetPower command implements the SetPower interface from the _rdk:component:base_ API
+2. The parameters sent to SetPower are formatted as a _driveCommand_
+3. The _driveCommand_ is converted to a CAN frame, and set as the next command
+4. _publishThread_ runs a loop continuously, sending the current command every 10ms (the Intermode base will otherwise time out)
 
-``` go
+```go
 // this struct describes intermode base drive commands
 type driveCommand struct {
     Accelerator   float64
@@ -228,7 +237,7 @@ func (base *interModeBase) SetPower(ctx context.Context, linear, angular r3.Vect
 }
 ```
 
-Now the intermode base can receive and execute *SetPower* commands using the same interface you'd use to send *SetPower* commands to any rover that is Viam-controlled.
+Now the intermode base can receive and execute _SetPower_ commands using the same interface you'd use to send _SetPower_ commands to any rover that is Viam-controlled.
 
 ### Leaving some methods unimplemented
 
@@ -236,7 +245,7 @@ In some cases, you may not want to implement specific methods provided by the re
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
-In this tutorial, you will leave the *IsMoving* method unimplemented (for illustrative purposes).
+In this tutorial, you will leave the _IsMoving_ method unimplemented (for illustrative purposes).
 
 ```go {class="line-numbers linkable-line-numbers"}
 func (base *interModeBase) IsMoving(ctx context.Context) (bool, error) {
@@ -275,7 +284,7 @@ You will specify where `viam-server` can find the module, and then configure a m
 In this example, we've cloned the git tutorial repo to `/home/me/tutorial-intermode/`.
 Change this to the correct location in `executable_path` when adding the module to your robot configuration.
 
-``` json
+```json
 {
   "modules": [
     {
@@ -283,16 +292,16 @@ Change this to the correct location in `executable_path` when adding the module 
       "executable_path": "/home/me/tutorial-intermode/intermode-base/intermode-model"
     }
   ],
-    "components": [
-        {
-        "type": "base",
-        "name": "base",
-        "model": "viamlabs:tutorial:intermode",
-        "namespace": "rdk",
-        "attributes": {},
-        "depends_on": []
-        }
-    ]
+  "components": [
+    {
+      "type": "base",
+      "name": "base",
+      "model": "viamlabs:tutorial:intermode",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": []
+    }
+  ]
 }
 ```
 
@@ -300,7 +309,7 @@ More details about modules and how they work can be found in the [modular resour
 
 ### Control the rover
 
-Once you save this configuration, you see a *base* card in the robot's **Control** tab and can drive the rover from there.
+Once you save this configuration, you see a _base_ card in the robot's **Control** tab and can drive the rover from there.
 Be careful, the Intermode is a large and powerful rover - make sure you have the shutoff key in hand for emergencies and make sure you have enough space for the rover to move.
 
 If you do not see the base card in the **Control** tab, check the **Logs** tab for possible setup or configuration errors.

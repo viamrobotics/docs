@@ -4,7 +4,7 @@ linkTitle: "Camera"
 childTitleEndOverwrite: "Camera Component"
 weight: 40
 type: "docs"
-description: "A camera captures 2D or 3D images and sends them to the computer controlling the robot."
+description: "A camera captures 2D or 3D images and sends them to the computer controlling the smart machine."
 no_list: true
 tags: ["camera", "components"]
 icon: "/icons/components/camera.svg"
@@ -33,8 +33,9 @@ You can use different models to:
 
 ## Configuration
 
-For configuration information, click on one of the following models:
+For configuration information, click on one of the supported camera models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`ffmpeg`](ffmpeg/) | Uses a camera, a video file, or a stream as a camera. |
@@ -53,6 +54,7 @@ For configuration information, click on one of the following models:
 
 Viam also provides the following camera models as [modular resources](/extend/modular-resources/):
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`viam:lidar:rplidar`](/extend/modular-resources/examples/rplidar/) | A LIDAR scanning device like the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1). |
@@ -118,7 +120,7 @@ If the server does not know how to return the specified MIME type, the server re
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-frame = await my_camera.get_image()
+frame = await my_camera.get_image(mime_type="image/jpeg")
 ```
 
 <br>
@@ -129,11 +131,11 @@ For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Assume "frame" has a mime_type of "image/vnd.viam.dep"
-frame = await my_cam.get_image()
+frame = await my_camera.get_image()
 
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
-standard_frame frame.bytes_to_depth_array()
+standard_frame = frame.bytes_to_depth_array()
 ```
 
 {{% alert title="Tip" color="tip" %}}
@@ -253,7 +255,7 @@ To deserialize the returned information into a numpy array, use the Open3D libra
 import numpy as np
 import open3d as o3d
 
-my_camera= Camera.from_robot(robot=robot, name="my_camera")
+my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
 data, _ = await my_camera.get_point_cloud()
 
@@ -306,7 +308,7 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 - [(Properties)](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties): The properties of the camera.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera= Camera.from_robot(robot=robot, name="my_camera")
+my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
 properties = await my_camera.get_properties()
 ```
@@ -356,7 +358,7 @@ If you are implementing your own camera and adding features that have no native 
 - [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_camera= Camera.from_robot(robot, "my_camera")
+my_camera = Camera.from_robot(robot, "my_camera")
 
 command = {"cmd": "test", "data1": 500}
 result = my_camera.do(command)
@@ -398,7 +400,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/vision" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle" %}}
+{{% card link="/services/vision" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

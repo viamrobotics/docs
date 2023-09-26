@@ -9,9 +9,9 @@ videoAlt: "A circular wooden board slowly spinning clockwise with 3 bowls on top
 images: ["/tutorials/lazy-susan/preview.gif"]
 tags: ["motor", "python"]
 no_list: true
-authors: [ "Arielle Mella" ]
-languages: [ "python" ]
-viamresources: [ "board", "motor" ]
+authors: ["Arielle Mella"]
+languages: ["python"]
+viamresources: ["board", "motor"]
 level: "Beginner"
 date: "2023-05-29"
 # updated: ""
@@ -34,26 +34,26 @@ You will also learn to take your creation a step further and fine-tune the contr
 
 This project requires the following hardware:
 
-* [Raspberry Pi](https://a.co/d/bxEdcAT)
-* [microSD card](https://a.co/d/j4fp6aA)
-* microSD card reader
-* DC motor (for example [this motor](https://www.digikey.com/en/products/detail/seeed-technology-co.-ltd/114090046/10385097))
-* Motor driver (for example [this driver](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6))
-* Appropriate flange coupler for your motor (for example [6mm flange coupler](https://a.co/d/fRFsu90))
-* M3 Screws to fit the flange coupler to the board
-* [Jumper wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_1_sspa)
-* Stranded wire for the motors (for example [16 gauge stranded wire](https://a.co/d/aDKOGkR))
-* A circular board or plate (for example [14 inch wood round board](https://a.co/d/3RzQsrr))
-* A power supply for the motor driver
-* A power supply for the Raspberry Pi
+- [Raspberry Pi](https://a.co/d/bxEdcAT)
+- [microSD card](https://a.co/d/j4fp6aA)
+- microSD card reader
+- DC motor (for example [this motor](https://www.digikey.com/en/products/detail/seeed-technology-co.-ltd/114090046/10385097))
+- Motor driver (for example [this driver](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6))
+- Appropriate flange coupler for your motor (for example [6mm flange coupler](https://a.co/d/fRFsu90))
+- M3 Screws to fit the flange coupler to the board
+- [Jumper wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_1_sspa)
+- Stranded wire for the motors (for example [16 gauge stranded wire](https://a.co/d/aDKOGkR))
+- A circular board or plate (for example [14 inch wood round board](https://a.co/d/3RzQsrr))
+- A power supply for the motor driver
+- A power supply for the Raspberry Pi
 
 ### Tools
 
 You will also need the following tools:
 
-* Philips head screwdriver
-* Double-sided tape (optional, but recommended)
-* Wire cutters/scissors
+- Philips head screwdriver
+- Double-sided tape (optional, but recommended)
+- Wire cutters/scissors
 
 ## Hardware Setup
 
@@ -102,65 +102,60 @@ Wait a moment until your robot connects to the Viam app.
 
 1. **Configure the board**
 
-    First, configure your {{< glossary_tooltip term_id="board" text="board" >}} component.
-    Navigate to the **Config** tab of your robot’s page in the [Viam app](https://app.viam.com).
-    Add a new component with the following attributes:
+   First, configure your {{< glossary_tooltip term_id="board" text="board" >}} component:
 
-    * **Name**: `local`  - you can name this whatever you want: remember that you will reference it later in your code.
-    * **Type**: `board`
-    * **Model**: `pi`
+   Navigate to the **Config** tab of your robot’s page in the [Viam app](https://app.viam.com).
+   Click the **Components** subtab, then click **Create component** in the lower-left corner.
 
-    <br>
+   Select `board` for type and `pi` for model.
 
-    ![The board component being created with the name local, type board, and  model pi.](/tutorials/lazy-susan/config-board.png)
+   Enter `local` as the name for your board, then click **Create**.
 
 2. **Configure the motor**
 
-   Next, add a new motor component:
+   Next, add a [motor component](/components/motor/):
 
-   * **Name**:  `dcmotor`
-   * **Type**:  `motor`
-   * **Model**:  `gpio`
+   Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
-    <br>
+   Select `motor` for type and `gpio` for model.
 
-   ![The motor component being built with the name dcmotor, type motor, and model gpio.](/tutorials/lazy-susan/config-motor.png)
+   Enter `dcmotor` as the name for your motor, then click **Create**.
 
    After creating your motor component, fill in the [required attributes for a gpio motor](/components/motor/gpio/):
 
-   * For **board**, click the dropdown box and select local (or whatever you named your board!).
+   - For **board**, click the dropdown box and select local (or whatever you named your board!).
 
-       ![The motor component attribute panel with local selected for the board.](/tutorials/lazy-susan/config-motor-attribute.png)
+     ![The motor component attribute panel with local selected for the board.](/tutorials/lazy-susan/config-motor-attribute.png)
 
-   * For **Max RPM**, enter `100`.
+   - For **Max RPM**, enter `100`.
      RPM stands for revolutions per minute: it's roughly a measure of how fast any machine is operating at a given time.
      Enter `100` so the motor moves at a moderate speed.
      You can fine tune this later in our custom code.
-   * Toggle the slider to **In1/In2** motor type.
+   - Toggle the slider to **In1/In2** motor type.
      The specific driver you are using expects this pin configuration.
 
      ![The motor component attribute panel with the Component pin assignment area. Type has two options: direction and In1/In2 and In1/In2 is toggled on.](/tutorials/lazy-susan/config-motor-pin1.png)
 
-   * During wiring, you connected pins on the Pi to two ports called IN1 and IN2, and a third pin to ENA.
-    When you toggle the **In1/In2** motor type, the UI opens three dropdown fields below it.
-    Use these to specify the board pins that each motor driver pin is wired to:
+   - During wiring, you connected pins on the Pi to two ports called IN1 and IN2, and a third pin to ENA.
+     When you toggle the **In1/In2** motor type, the UI opens three dropdown fields below it.
+     Use these to specify the board pins that each motor driver pin is wired to:
 
-     * **A/In1**: use 16 GPIO 23
-     * **B/In2**: use 18 GPIO 24
-     * **PWM**: use 22 GPIO 25 - this is the pin you attached the PWM (pulse-width modulation) jumper wire to.
-     On the motor driver we used, it is labeled as **ENA**.
+     - **A/In1**: use 16 GPIO 23
+     - **B/In2**: use 18 GPIO 24
+     - **PWM**: use 22 GPIO 25 - this is the pin you attached the PWM (pulse-width modulation) jumper wire to.
+       On the motor driver we used, it is labeled as **ENA**.
 
-     <br>
+      <br>
 
      ![The motor component attribute panel under the Component pin assignment area and 16 GPIO 23 has been selected for A/In1, 18 GPIO 24 has been selected for B/In2, and 22 GPIO 25 has been selected for PWM.](/tutorials/lazy-susan/config-motor-pin2.png)
 
-   * For **Depends On** select **local**. This ensures that the board is initialized before the motor.
+   - For **Depends On** select **local**. This ensures that the board is initialized before the motor.
 
      ![The motor component attribute panel. At the bottom of the page for “Depends on”, local is selected.](/tutorials/lazy-susan/config-motor-depends.png)
 
-  Click the **Save Config** button.
+Click the **Save Config** button.
 
-  {{<gif webm_src="/tutorials/lazy-susan/config-save.webm" mp4_src="/tutorials/lazy-susan/config-save.mp4" alt="Click the save button" max-width="150px">}}
+{{<gif webm_src="/tutorials/lazy-susan/config-save.webm" mp4_src="/tutorials/lazy-susan/config-save.mp4" alt="Click the save button" max-width="150px">}}
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -190,9 +185,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "board": "local",
         "max_rpm": 100
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     }
   ]
 }
@@ -308,8 +301,8 @@ nano turnsusan.py
 You can start by adding this call to `set_power` to your `main function` above the line that closes the robot connection with `robot.close()`:
 
 ```python
-    #Use the set power method before you close the code loop
-    await dc_motor.set_power(power = 0.2)
+# Use the set power method before you close the code loop
+await dc_motor.set_power(power=0.2)
 ```
 
 Enter CTRL+X to save and exit: press y when prompted to accept changes, and the return key to accept the original filename.
@@ -369,9 +362,9 @@ Connect the wood to your motor and decorate it as you wish to make your Lazy Sus
 
 This is not where your Lazy Susan project has to end - here are some ideas for adding more components to this project:
 
-* An [input controller component](/components/input-controller/) so you can turn and stop the Lazy Susan with a gamepad.
-* A [camera component](/components/camera/) and a [ML model](/services/ml/) that recognizes your friends' faces and stops the Lazy Susan precisely where they can reach their favorite food, or takes their photo as it rotates, so you all can have candid memories.
-* A [sensor component](/components/sensor/), so your Lazy Susan only spins when it detects movement around it.
+- An [input controller component](/components/input-controller/) so you can turn and stop the Lazy Susan with a gamepad.
+- A [camera component](/components/camera/) and an [ML model](/services/ml/) that recognizes your friends' faces and stops the Lazy Susan precisely where they can reach their favorite food, or takes their photo as it rotates, so you all can have candid memories.
+- A [sensor component](/components/sensor/), so your Lazy Susan only spins when it detects movement around it.
 
 Or you can head over to our [Tutorials](/tutorials/) page and try one of our other tutorials to continue building robots.
 

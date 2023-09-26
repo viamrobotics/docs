@@ -3,13 +3,22 @@ title: "Configure a module on your robot"
 linkTitle: "Configure"
 weight: 30
 type: "docs"
-tags: ["server", "rdk", "extending viam", "modular resources", "components", "services"]
+tags:
+  [
+    "server",
+    "rdk",
+    "extending viam",
+    "modular resources",
+    "components",
+    "services",
+  ]
 description: "Add and configure a module from the Viam registry on your robot."
 no_list: true
 ---
 
 You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
-You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [code your own module and add it to your robot locally](#add-a-local-module-to-your-robot).
+
+You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [add a local module](#local-modules).
 
 See [Key Concepts of Modular Resource APIs](/extend/modular-resources/key-concepts/) for more information.
 
@@ -42,13 +51,16 @@ To add a modular [component](/components/) from the Viam registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
+   Be sure the modular component you select supports the [platform](/manage/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
+   You can see which platforms the module supports at bottom of the module information screen before you add it.
+
 When you add a module from the Viam registry, the custom modular component it provides appears under the **Components** subtab like any other component.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Components** tab.
-Deleting a module *does not* delete any configured modular resources it provides.
+To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the robot's **Config** tab.
+Deleting a module _does not_ delete any configured modular resources it provides.
 
 ### Add a modular service from the Viam registry
 
@@ -68,13 +80,16 @@ To add a modular [service](/services/) from the Viam registry to your robot:
 
    {{<imgproc src="extend/modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
+   Be sure the modular service you select supports the [platform](/manage/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
+   You can see which platforms the module supports at bottom of the module information screen before you add it.
+
 When you add a module from the Viam registry, the custom modular service it provides appears under the **Services** subtab like any other service.
 You can also find [the module itself](#configure-a-module-from-the-viam-registry) listed as **Deployed** under the **Modules** subtab.
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#configure-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
 To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Services** tab.
-Deleting a module *does not* delete any configured modular resources it provides.
+Deleting a module _does not_ delete any configured modular resources it provides.
 
 ## Configure a module from the Viam registry
 
@@ -88,10 +103,10 @@ This pane lists the models provided by the module, any [components](/components/
 
 {{<imgproc src="extend/modular-resources/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
-### Configure version update management for a Registry module
+### Configure version update management for a registry module
 
 When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
-By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will *never automatically update itself*.
+By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will _never automatically update itself_.
 
 If you wish to allow automatic module updates when a new version of the module becomes available in the Viam registry, you can set the **Version type** for your module in the **Modules** subtab.
 Updating to a newer version of a module brings new functionality and bug fixes, but requires restarting the module to apply the update.
@@ -99,10 +114,10 @@ The following update options are available:
 
 - **Patch (X.Y.Z)**: Do not update to any other version.
   This is the default.
-- **Minor (X.Y.*)**: Only update to newer patch releases of the same minor release branch.
+- **Minor (X.Y.\*)**: Only update to newer patch releases of the same minor release branch.
   The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0` or `2.0.0`.
-- **Major (X.*)**: Only update to newer minor releases of the same major release branch.
+- **Major (X.\*)**: Only update to newer minor releases of the same major release branch.
   The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
 - **Latest**: Always update to the latest version of this module available from the Viam registry as soon as a new version becomes available.
@@ -116,12 +131,13 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-### Create a new modular resource from a Registry module
+### Create a new modular resource from a registry module
 
 Once you have [added a module](#add-a-module-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) |
@@ -193,39 +209,85 @@ The custom model is configured as a component with the name "my-realsense".
 {{% /tab %}}
 {{% /tabs %}}
 
-## Add a local module to your robot
+## Local modules
 
-If you are developing your own modular resource, and intend to deploy it to your robot locally, first follow [these steps](/extend/modular-resources/create/) to code your own module and generate an executable.
-If you are using a pre-built modular resource, make sure you install the module and determine the filename of [the module's executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+If you wish to add a module to your robot without uploading it to the Viam registry, you can add your module as a _local module_.
 
-Follow these steps to configure a module and its modular resources locally:
+You can add your own custom modules as local modules, or you can add pre-built modules written by other Viam users.
 
-1. [Save the executable](#make-sure-viam-server-can-access-your-executable) in a location your `viam-server` instance can access.
-2. [Add a **module**](#configure-your-module) referencing this executable to the configuration of your robot.
-3. [Add a new component or service](#configure-your-modular-resource) referencing the modular resource provided by the configured **module** to the configuration of your robot.
+### Prepare a local module
 
-### Make sure `viam-server` can access your executable
+First determine the module you wish to add as a local module:
 
-Ensure that your module executable is saved where the instance of `viam-server` behind your robot can read and execute it.
+- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/extend/modular-resources/create/) to code and compile your module and generate an executable.
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
 
-For example, if you are running `viam-server` on an Raspberry Pi, you'll need to save the module on the Pi's filesystem.
+Then, ensure that `viam-server` is able to find and run the executable:
 
-Obtain the real (absolute) path to the executable file on your computer's filesystem by running the following command in your terminal:
+- Ensure that the module executable is saved to a location on the filesystem of your robot that `viam-server` can access.
+  For example, if you are running `viam-server` on an Raspberry Pi, you must save the module executable on the Pi's filesystem.
+- Ensure that this file is executable (runnable) with the following command:
 
-``` shell
-realpath <path-to-your-module-directory>/<your-module>
-```
+  ```shell
+  sudo chmod a+rx <path-to-your-module-executable>
+  ```
 
-### Configure your module
+See the instructions to [compile your module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable) for more information.
 
-To configure your new *module* on your robot, navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com) and click on the **Modules** subtab.
+### Add a local module
+
+To add a local module on your robot:
+
+1. Navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com).
+
+   - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
+   - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
+
+1. Then, select the `local modular resource` type from the list.
+
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+
+1. On the next screen:
+
+   - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
+   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models).
+     If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
+   - Enter a name for this instance of your modular resource.
+     This name must be different from the module name.
+
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
+
+1. Click **Create** to create the modular resource provided by the local module.
+
+You can also add the module directly, without first adding its modular component or service:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab.
+1. Scroll to the **Add local module** section.
+1. Enter a **Name** for this instance of your modular resource.
+1. Enter the [module's executable path](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+   This path must be the absolute path to the executable on your robot's filesystem.
+1. Then, click the **Add module** button, and click **Save config**.
+
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+
+   This example shows the configuration for adding a [CSI camera](/extend/modular-resources/examples/csi/) as a local module.
+
+## Configure a local module
+
+Once you have added a modular resource to your robot, you can view and configure the module itself from the **Modules** subtab:
+
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Modules** subtab.
+   Local modules you have added to your robot appear under the **Local** section.
 
 The following properties are available for modules:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 `name` | string | **Required**| Name of the module you are registering. |
-`executable_path` | string | **Required**| The robot's computer's filesystem path to the module executable. |
+`executable_path` | string | **Required**| The absolute path to the executable on your robot's filesystem. |
 `type` | string | **Required**| Either `registry` or `local`. |
 
 Add these properties to your module's configuration:
@@ -233,7 +295,7 @@ Add these properties to your module's configuration:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-{{< imgproc src="/program/modular-resources/module-ui-config.png" alt="Creation of a new module in the Viam app config builder." resize="1000x" >}}
+{{<imgproc src="extend/modular-resources/configure/add-local-module-config-builder.png" resize="600x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -253,12 +315,13 @@ Add these properties to your module's configuration:
 {{% /tab %}}
 {{% /tabs %}}
 
-### Configure your modular resource
+### Configure a modular resource
 
-Once you have configured a module as part of your robot configuration, you can add any number of the resources that the module makes available to your robot by adding new components or services configured with your modular resources' [model](/extend/modular-resources/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resources' [model](/extend/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |
@@ -311,7 +374,7 @@ You can send commands to the base according to the Viam [base API](/components/b
       "model": "acme:demo:mybase",
       "namespace": "rdk",
       "attributes": {},
-      "depends_on": [ "main-board" ]
+      "depends_on": ["main-board"]
     }
   ],
   "modules": [

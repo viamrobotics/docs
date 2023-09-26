@@ -7,6 +7,7 @@ draft: true
 description: "Adding an External Intel Realsense Camera to Viam."
 tags: ["camera", "realsense camera", "components"]
 ---
+
 There are two ways to add your intel RealSense camera to Viam.
 You can either use a {{< glossary_tooltip term_id="grpc" text="gRPC" >}} server or an HTTP server.
 
@@ -30,13 +31,13 @@ sudo chmod a+rx /usr/local/bin/intelgrpcserver
 
 On the [Viam app](https://app.viam.com), click **Config** and then access the **Processes** tab. Add the following configuration:
 
-``` json
+```json
 [
-   {
-        "id": "intel",
-        "log": true,
-        "name": "/usr/local/bin/intelgrpcserver"
-    }
+  {
+    "id": "intel",
+    "log": true,
+    "name": "/usr/local/bin/intelgrpcserver"
+  }
 ]
 ```
 
@@ -44,13 +45,13 @@ This configures the gRPC server to run on port 8085 of your Pi.
 
 On the **Config** tab, click **Remotes**, and then add the following configuration:
 
-``` json
+```json
 [
-    {
-        "name": "intel",
-        "address": "ip-address-of-your-pi:8085",
-        "insecure": true
-    }
+  {
+    "name": "intel",
+    "address": "ip-address-of-your-pi:8085",
+    "insecure": true
+  }
 ]
 ```
 
@@ -66,7 +67,7 @@ The **Attributes Guide** lists the available attributes for the chosen component
 
 Enter the necessary JSON configuration for your camera:
 
-``` json
+```json
 {
     "homography": {
         "transform": [ // the color and depth image are already aligned
@@ -119,13 +120,13 @@ sudo chmod a+rx /usr/local/bin/intelrealserver
 On the [Viam app](https://app.viam.com), click **Config** and then click **Processes**.
 Enter the following configuration:
 
-``` json
+```json
 [
-   {
-        "id": "intel",
-        "log": true,
-        "name": "/usr/local/bin/intelrealserver"
-   }
+  {
+    "id": "intel",
+    "log": true,
+    "name": "/usr/local/bin/intelrealserver"
+  }
 ]
 ```
 
@@ -133,24 +134,24 @@ This configures the HTTP server to run on port 8181 of your Pi. You can access t
 
 The endpoints that it creates are:
 
-* [http://your-raspi-address:8181/pic.jpg](http://your-raspi-address:8181/pic.jpg) - a jpeg image from the color camera
-* [http://your-raspi-address:8181/pic.png](http://your-raspi-address:8181/pic.png) - a png image from the color camera
-* [http://your-raspi-address:8181/depth.png](http://your-raspi-address:8181/depth.png) - a png image from the depth camera
+- [http://your-raspi-address:8181/pic.jpg](http://your-raspi-address:8181/pic.jpg) - a jpeg image from the color camera
+- [http://your-raspi-address:8181/pic.png](http://your-raspi-address:8181/pic.png) - a png image from the color camera
+- [http://your-raspi-address:8181/depth.png](http://your-raspi-address:8181/depth.png) - a png image from the depth camera
 
 ## Create a Camera to Display Point Clouds
 
 Click **Config** and then click **Components**.
-Enter the following camera model:  "dual_stream"
+Enter the following camera model: "dual_stream"
 
-``` json
+```json
 {
-   "intrinsic_parameters": {
-        "fx": 900.538,
-        "fy": 900.818,
-        "height_px": 720,
-        "ppx": 648.934,
-        "ppy": 367.736,
-        "width_px": 1280
+  "intrinsic_parameters": {
+    "fx": 900.538,
+    "fy": 900.818,
+    "height_px": 720,
+    "ppx": 648.934,
+    "ppy": 367.736,
+    "width_px": 1280
   },
   "color_url": "http://127.0.0.1:8181/pic.png",
   "depth_url": "http://127.0.0.1:8181/depth.png",

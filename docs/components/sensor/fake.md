@@ -29,10 +29,10 @@ Enter a name for your sensor and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-sensor-name>",
-    "type": "sensor",
-    "model": "fake",
-    "attributes": {}
+  "name": "<your-sensor-name>",
+  "type": "sensor",
+  "model": "fake",
+  "attributes": {}
 }
 ```
 
@@ -46,3 +46,5 @@ No attributes are available for `fake` sensors.
 A call to [`Readings()`](../#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 
 {{% /alert %}}
+
+{{< readfile "/static/include/components/sensor-control.md" >}}

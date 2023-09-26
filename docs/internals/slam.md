@@ -54,7 +54,7 @@ Note: a new binary with a different name can be stored anywhere as long as it is
 
 ## **RDK Config**
 
-``` json
+```json
 "services": [
   {
     "attributes": {
@@ -246,7 +246,7 @@ cd \~/slam/slam-libraries/viam-orb-slam
 ./build_orbslam.sh
 ```
 
-Should the code fail the initial setup (your Pi freezes and requires a restart), change the *make -j\`nproc\`* flags into *make -j2*
+Should the code fail the initial setup (your Pi freezes and requires a restart), change the _make -j\`nproc\`_ flags into _make -j2_
 
 After building, use the following command to move the binary to `/usr/local/bin`:
 

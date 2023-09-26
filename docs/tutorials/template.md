@@ -30,7 +30,7 @@ cost: 0 # Aproximate cost in USD - Only specify number
 ---
 
 Outline the why.
-Tell the story of the robot.
+Tell the story of the smart machine.
 
 ## Requirements
 
@@ -54,5 +54,5 @@ Code and directions.
 Link to other tutorials with cards or text.
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/blink-an-led" %}}
+{{% card link="/tutorials/get-started/blink-an-led" %}}
 {{< /cards >}}

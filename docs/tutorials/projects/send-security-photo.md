@@ -7,9 +7,9 @@ image: "/tutorials/send-security-photo/text-message.png"
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
 images: ["/tutorials/send-security-photo/text-message.png"]
 tags: ["camera", "vision", "detector", "python"]
-authors: [ "Hazal Mestci" ]
-languages: [ "python" ]
-viamresources: [ "camera", "mlmodel", "vision" ]
+authors: ["Hazal Mestci"]
+languages: ["python"]
+viamresources: ["camera", "mlmodel", "vision"]
 level: "Intermediate"
 date: "2023-03-30"
 # updated: ""
@@ -51,7 +51,7 @@ You will use the following software in this tutorial:
 - [`viam-server`](/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
-  Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
+    Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
 - [yagmail](https://github.com/kootenpv/yagmail)
 - A Gmail account to send emails.
   You can use an existing account, or create a new one.
@@ -70,23 +70,19 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 
 ### Configure the camera component
 
-On your new robot's page, go to the **Config** tab.
+On your new robot's page, go to the **Config** tab and create a [camera component](/components/camera/):
 
-![The CONFIG tab in Builder mode on the Viam app.](/tutorials/light-up/config-tab.png)
+Click **Create component** in the lower-left corner of the screen.
 
-On the **Config** tab, create a new component:
+Select type `camera` and model `webcam`.
 
-- **Name**: `my-camera`
-- **Type**: `camera`
-- **Model**: `webcam`
-
-Click **Create Component** to add the camera.
+Enter `my-camera` as the name, then click **Create** to add the camera.
 
 Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
-Click **Save Config** in the bottom left corner of the screen.
+Click **Save config** in the lower-left corner of the screen.
 
 Navigate to the **Control** tab where you can see your camera working.
 
@@ -99,36 +95,36 @@ If you want to train your own, you can [train a model](/manage/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
 
-Click on the **Services** subtab and navigate to the **Create service** menu.
+Click the **Services** subtab.
 
 1. **Configure the ML model service**
 
-    Add an [mlmodel](/services/ml/) service with the name `people`, type `mlmodel`, and model `tflite_cpu`.
-    Click **Create service**.
+   Add an [mlmodel](/services/ml/) service:
 
-    ![Create service panel, with the type attribute filled as mlmodel, name attribute filled as people, and model attribute filled as tflite_cpu.](/tutorials/tipsy/app-service-ml-create.png)
+   Click **Create service** in the lower-left corner of the **Services** subtab.
+   Select type `mlmodel`, then select model `tflite_cpu`.
 
-    In the new ML Model service panel, configure your service.
+   Enter `people` as the name, then click **Create**.
 
-    ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
+   In the new ML Model service panel, configure your service.
 
-    Select the **Path to Existing Model On Robot** for the **Deployment** field.
-    Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
+   ![mlmodel service panel with empty sections for Model Path, and Optional Settings such as Label Path and Number of threads.](/tutorials/tipsy/app-service-ml-before.png)
 
-   1. **Configure an mlmodel detector**
+   Select the **Path to Existing Model On Robot** for the **Deployment** field.
+   Then specify the absolute **Model Path** as where your tflite file lives and any **Optional Settings** such as the absolute **Label Path** as where your labels.txt file lives and the **Number of threads** as 1.
 
-    Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
-    Click **Create service**.
+1. **Configure an mlmodel detector**
 
-    ![Create service panel, with the type  attribute filled as mlmodel, name attribute filled as people, and model attributed filled as tflite_cpu.](/tutorials/tipsy/app-service-vision-create.png)
+   Add a [vision service](/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
+   Click **Create service**.
 
-    In the new vision service panel, configure your service.
+   In the new vision service panel, configure your service.
 
-    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
+   ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 
-    Name the ml model name `people`.
+   Name the ml model name `people`.
 
-    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
+   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
 
 ### Configure the detection camera
 
@@ -143,19 +139,19 @@ Name it `detectionCam` and click **Create**.
 In the new transform camera panel, replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will use, and defines a pipeline that adds the defined `myPeopleDetector`:
 
 ```json
+{
+  "source": "my-camera",
+  "pipeline": [
     {
-    "source": "my-camera",
-    "pipeline": [
-        {
-        "type": "detections",
-        "attributes": {
-            "detector_name": "myPeopleDetector",
-            "confidence_threshold": 0.5
-        }
-        }
-    ]
+      "type": "detections",
+      "attributes": {
+        "detector_name": "myPeopleDetector",
+        "confidence_threshold": 0.5
+      }
     }
- ```
+  ]
+}
+```
 
 Click **Save config** in the lower-left corner of the screen.
 
@@ -199,7 +195,6 @@ As an example, if you have T-Mobile your code will look like this:
 
 ```python
 yag.send('xxxxxxxxxx@tmomail.net', 'subject', contents)
-
 ```
 
 This allows you to route the email to your phone as a text message.
@@ -237,13 +232,14 @@ import os
 
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
-from viam.services.vision import VisionClient, Detection
+from viam.services.vision import VisionClient
+from viam.components.camera import Camera
 import yagmail
-
 
 # These must be set. You can get them from your robot's 'Code sample' tab
 robot_secret = os.getenv('ROBOT_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
+
 
 async def connect():
     creds = Credentials(
@@ -255,49 +251,52 @@ async def connect():
     )
     return await RobotClient.at_address(robot_address, opts)
 
+
 async def main():
     robot = await connect()
-
-    detector = VisionClient.from_robot(robot, "myPeopleDetector")
+    # make sure that your detector name in the app matches "myPeopleDetector"
+    myPeopleDetector = VisionClient.from_robot(robot, "myPeopleDetector")
+    # make sure that your camera name in the app matches "my-camera"
+    my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
     N = 100
     for i in range(N):
-        #make sure that your camera name in the app matches "my-camera"
-        detections = await detector.get_detections_from_camera("my-camera")
+        img = await my_camera.get_image()
+        detections = await myPeopleDetector.get_detections(img)
+
         found = False
         for d in detections:
-            if d.confidence > 0.8:
-                print(d.class_name)
-                if d.class_name.lower() == "person":
-                    print("This is a person!")
-                    found = True
+            if d.confidence > 0.8 and d.class_name.lower == "person":
+                print("This is a person!")
+                found = True
+        if found:
+            print("sending a message")
+            # Change this path to your own
+            img.save('/yourpath/foundyou.png')
+            # Yagmail section
+            # Create a yagmail.SMTP instance
+            # to initialize the server connection.
+            # Replace username and password with actual credentials.
+            yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
+            # Specify the message contents
+            contents = ['There is someone at your desk - beware',
+                        '/yourpath/foundyou.png']
+            # Add phone number and gateway address
+            # found in the SMS gateway step
+            yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
-            if found:
-                print("sending a message")
-                # Change this path to your own
-                image.save('/yourpath/foundyou.png')
-                # yagmail section
-                # Create a yagmail.SMTP instance to initialize the server connection
-                # Replace username and password with your actual credentials
-                yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
-                # Specify the message contents
-                contents = ['There is someone at your desk - beware','/yourpath/foundyou.png']
-                # Add phone number and gateway address found in the SMS gateway step
-                yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
-
-                # If the robot detects a person and sends a text, we don't need it to keep sending us more texts
-                # so we sleep it for 60 seconds before looking for a person again
-                await asyncio.sleep(60)
-            else:
-                print("There's nobody here, don't send a message")
-                await asyncio.sleep(10)
-
+            # If the robot detects a person and sends a text, we don't need
+            # it to keep sending us more texts so we sleep it for 60
+            # seconds before looking for a person again
+            await asyncio.sleep(60)
+        else:
+            print("There's nobody here, don't send a message")
+            await asyncio.sleep(10)
     await asyncio.sleep(5)
     await robot.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
-
 ```
 
 {{% /expand %}}
@@ -323,26 +322,23 @@ Your terminal should look like this as your project runs if you are in front of 
 ```sh {class="command-line" data-prompt="$" data-output="2-25"}
 python3 chocolate_security.py
 This is a person!
-sending message
+sending a message
 x_min: 7
 y_min: 0
 x_max: 543
 y_max: 480
 confidence: 0.94140625
-class_name: "Person"
-
 
 This is a person!
-sending message
+sending a message
 x_min: 51
 y_min: 0
 x_max: 588
 y_max: 480
 confidence: 0.9375
-class_name: "Person"
 
 This is a person!
-sending message
+sending a message
 There's nobody here, don't send a message
 There's nobody here, don't send a message
 ```

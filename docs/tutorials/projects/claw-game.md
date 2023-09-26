@@ -8,9 +8,9 @@ webmSrc: "/tutorials/claw-game/preview.webm"
 mp4Src: "/tutorials/claw-game/preview.mp4"
 videoAlt: "GIF of the claw game in action at a party."
 images: ["/tutorials/claw-game/preview.gif"]
-authors: [ "Arielle Mella", "Hazal Mestci", "Matt Vella" ]
-languages: [ "python", "typescript" ]
-viamresources: [ "board", "arm", "gripper", "motion" ]
+authors: ["Arielle Mella", "Hazal Mestci", "Matt Vella"]
+languages: ["python", "typescript"]
+viamresources: ["board", "arm", "gripper", "motion"]
 level: "Advanced"
 date: "2023-05-29"
 # updated: ""
@@ -43,7 +43,7 @@ To build your own claw game machine, you need the following hardware:
 - A [24V power supply](https://www.amazon.com/gp/product/B08F7DVY8G) for the claw
 - An iPad or other tablet
 - 1 x 4’x4’ fiberboard
-- 10 x  2”x4”x8’ lumber
+- 10 x 2”x4”x8’ lumber
 - 4 x [5/16 2 inch lag screws](https://www.homedepot.com/p/Everbilt-5-16-in-x-2-in-Zinc-Plated-Hex-Drive-Hex-Head-Lag-Screw-801446/204645617)
 - A box of 3” deck screws
 - 8 x [⅜” 4 inch hex bolts](https://www.homedepot.com/p/Everbilt-3-8-in-24-TPI-x-4-in-Zinc-Plated-Grade-5-Fine-Thread-Hex-Bolt-851928/205029373) with nuts and washers
@@ -51,7 +51,7 @@ To build your own claw game machine, you need the following hardware:
 - 3 x 4’x2.5’ sheets of plexiglass
 - A box of small wood screws for mounting the plexiglass
 - Items for the claw to grab.
-We used about 600 foam balls for our claw game.
+  We used about 600 foam balls for our claw game.
 
 ### Software
 
@@ -107,8 +107,8 @@ For the xArm6, a table that is 4'x4' works.
 1. Attach these lengths with deck screws.
 
 1. Use the fiberboard as a tabletop and cut a prize exit hole into it.
-Center the exit, make it 10 inches wide, 8 inches long and cut the opening with a jigsaw.
-We used two 2 foot by 4 foot fiberboards, but ideally you can use one 4 foot by 4 foot fiberboard.
+   Center the exit, make it 10 inches wide, 8 inches long and cut the opening with a jigsaw.
+   We used two 2 foot by 4 foot fiberboards, but ideally you can use one 4 foot by 4 foot fiberboard.
 1. Glue and clamp the tabletop and let it dry overnight.
 
    {{<imgproc src="/tutorials/claw-game/build-table.jpg" resize="400x" declaredimensions=true alt="Wooden table top glued and secured with clamps" class="aligncenter">}}
@@ -122,7 +122,7 @@ To finish the table construction, attach the supporting legs and mount the arm t
 1. For each leg, line the 30 inch mark up with the top surface of the table, and drill two holes ⅜ inch holes through the leg and table surface.
 1. Push two hex bolts through the drilled holes, add washers and nuts, and tighten.
 1. For extra stability, cut two more 2x4s to 48 inch lengths, and mount these with deck screws on all four sides of the bottom of the cabinet, bridging the legs.
-You can also cut an additional 2x4 and mount it as a fifth leg, going from the center arm supports to the floor.
+   You can also cut an additional 2x4 and mount it as a fifth leg, going from the center arm supports to the floor.
 1. Finally, mount the xArm6 to the top of the table using the lag screws.
    Be sure that the lag screws sink into the 2x4 posts below, and that you are mounting the arm so that it is straight, with the X axis facing the player.
    You’ll need at least two people to ensure a smooth installation of the arm.
@@ -217,7 +217,7 @@ Click the **Create component** button in the lower-left corner.
 Add your [arm](/components/arm/) with type `arm`, and model `xArm6`.
 Name it `myArm` and click **Create**.
 
-   ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
+![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
 
 Configure the arm component with the arm's IP address in the `host` field under **Attributes**.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
@@ -387,8 +387,8 @@ Click **Save config** in the bottom left corner of the screen.
 
 1. Using two M20 screws, attach the printed mount to the end of the arm and tighten.
 
-    {{<imgproc src="/tutorials/claw-game/mount-screw-holes.jpg" resize="x300" declaredimensions=true alt="Screw holes on the xarm6 head without the attachment" class="center-if-small" style="height:250px">}}
-    {{<imgproc src="/tutorials/claw-game/mount-gripper.jpg" resize="x300" declaredimensions=true alt="3d printed mount attached to the gripper and mounted to the arm" class="center-if-small" style="height:250px">}}
+   {{<imgproc src="/tutorials/claw-game/mount-screw-holes.jpg" resize="x300" declaredimensions=true alt="Screw holes on the xarm6 head without the attachment" class="center-if-small" style="height:250px">}}
+   {{<imgproc src="/tutorials/claw-game/mount-gripper.jpg" resize="x300" declaredimensions=true alt="3d printed mount attached to the gripper and mounted to the arm" class="center-if-small" style="height:250px">}}
 
 1. Using hook-and-loop cable ties, run the claw’s cable along each segment of the arm to the arm base, making sure the cord is secure but with some slack to allow for movement.
 
@@ -402,14 +402,14 @@ For this project, we use a relay, which allows us to programmatically control wh
 1. Using a barrel jack adapter, connect the positive (red) wire from the claw to the positive terminal of the adapter.
 1. Then, connect the negative (black) wire from the claw to the `COM` terminal on the relay.
 1. Cut a length of wire and connect it between the `NO` terminal on the relay and the negative terminal on the barrel jack adapter.
-This creates a _normally open_ circuit, which means the circuit is normally not complete and the claw is therefore normally not powered.
+   This creates a _normally open_ circuit, which means the circuit is normally not complete and the claw is therefore normally not powered.
 
 In order to control the claw through Viam, you will now wire the relay to the Raspberry Pi.
 
 ![Wiring guide for the claw game showing all assembled components with the wiring plan for each component.](/tutorials/claw-game/wiring-guide.png)
 
 1. First, power down the Pi.
-Then take three female jumper wires, cut off one end of each, and strip the ends.
+   Then take three female jumper wires, cut off one end of each, and strip the ends.
 1. Use one wire to connect the `DC+` terminal on the relay to pin 2 (`5v`) on the Pi.
 1. Use the second wire to connect the `DC-` terminal on the relay to pin 6 (`ground`) on the Pi.
 1. Use the third wire to connect the `IN` terminal on the relay to pin 8 (`GPIO`) on the Pi.
@@ -505,8 +505,10 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.components.board import Board
 from viam.components.arm import Arm
 from viam.services.motion import MotionClient
-from viam.proto.common import Pose, PoseInFrame, Vector3, Geometry, GeometriesInFrame, RectangularPrism, WorldState
-from viam.proto.service.motion import Constraints, LinearConstraint, OrientationConstraint
+from viam.proto.common import Pose, PoseInFrame, Vector3, Geometry, \
+    GeometriesInFrame, RectangularPrism, WorldState
+from viam.proto.service.motion import Constraints, LinearConstraint, \
+    OrientationConstraint
 ```
 
 Then it creates an argument parser, defining required and optional arguments to create a user-friendly command line interface:
@@ -540,7 +542,7 @@ Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/serv
 The orientation constraint places a restriction on the orientation change during a motion, as the arm in a claw game should always face down so the gripper is always in a position where is can descend and grab a prize:
 
 ```python
-constraints = Constraints(orientation_constraint = [OrientationConstraint()])
+constraints = Constraints(orientation_constraint=[OrientationConstraint()])
 ```
 
 Next the code imports the <file>obstacles.json</file> file and defines the `world_state` representing the robot's physical environment:
@@ -564,10 +566,15 @@ def get_world_state():
             theta=orientation['th'],
         )
         dims = Vector3(x=geometry['x'], y=geometry['y'], z=geometry['z'])
-        world_state_obstacles.append(Geometry(center=center, box=RectangularPrism(dims_mm=dims), label=geometry['label']))
+        world_state_obstacles.append(
+            Geometry(center=center,
+                     box=RectangularPrism(dims_mm=dims),
+                     label=geometry['label']))
 
-    obstacles_in_frame = GeometriesInFrame(reference_frame="world", geometries=world_state_obstacles)
+    obstacles_in_frame = GeometriesInFrame(reference_frame="world",
+                                           geometries=world_state_obstacles)
     return WorldState(obstacles=[obstacles_in_frame])
+
 
 world_state = get_world_state()
 ```
@@ -576,14 +583,15 @@ Next, the code defines a grab function to use GPIO to open and close the gripper
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def grab(board, doGrab):
-    # Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
+    # Note that the pin supplied is a placeholder. Please change this to a
+    # valid pin you are using.
     pin = await board.gpio_pin_by_name('8')
-    if doGrab == True:
+    if doGrab:
         # opens the gripper/release
         await pin.set(True)
     else:
-       # closes the gripper/grab
-       await pin.set(False)
+        # closes the gripper/grab
+        await pin.set(False)
 ```
 
 Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/services/motion/).
@@ -591,7 +599,11 @@ Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_off
 ```python {class="line-numbers linkable-line-numbers"}
 async def move_absolute(arm, motion_service, pose):
     destination = PoseInFrame(reference_frame="world", pose=pose)
-    await motion_service.move(component_name=arm, destination=destination, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=destination,
+                              world_state=world_state,
+                              constraints=constraints)
+
 
 async def home(arm, motion_service):
     # Makes sure to first move the arm up in z axis
@@ -600,11 +612,18 @@ async def home(arm, motion_service):
     # Generate a sample "home" pose around the drop hole and demonstrate motion
     home_pose_in_frame = PoseInFrame(reference_frame="world", pose=home_pose)
 
-    await motion_service.move(component_name=arm, destination=home_pose_in_frame, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=home_pose_in_frame,
+                              world_state=world_state,
+                              constraints=constraints)
+
 
 async def move_to_offset(arm, motion_service, offset):
     # Get current position of the arm
-    current_position = await motion_service.get_pose(component_name=arm, destination_frame = "", supplemental_transforms = None)
+    current_position = await motion_service.get_pose(
+        component_name=arm,
+        destination_frame="",
+        supplemental_transforms=None)
     print('current position: ', current_position)
 
     # Calculate new pose to move the arm to
@@ -614,36 +633,45 @@ async def move_to_offset(arm, motion_service, offset):
         z=current_position.pose.z + offset.z,
         o_x=0,
         o_y=0,
-        o_z=-1, # negative z means claw will point down
+        o_z=-1,  # negative z means claw will point down
         theta=0
     )
     print('moving to position: ', pose)
 
     # Move arm
     destination = PoseInFrame(reference_frame="world", pose=pose)
-    await motion_service.move(component_name=arm, destination=destination, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=destination,
+                              world_state=world_state,
+                              constraints=constraints)
 
 
 async def move_z(arm, motion_service, z):
     # Get current position of the arm
-    current_position = await motion_service.get_pose(component_name=arm, destination_frame = "", supplemental_transforms = None)
+    current_position = await motion_service.get_pose(
+        component_name=arm,
+        destination_frame="",
+        supplemental_transforms=None)
     print('current_position: ', current_position)
 
     # Construct new pose to get to desired z position
     pose = Pose(
         x=current_position.pose.x,
         y=current_position.pose.y,
-        z = z,
-        o_x= 0,
+        z=z,
+        o_x=0,
         o_y=0,
-        o_z=-1, # negative z means claw will point down
+        o_z=-1,  # negative z means claw will point down
         theta=0
     )
     print('moving to position: ', pose)
 
     # Move arm
     destination = PoseInFrame(reference_frame="world", pose=pose)
-    await motion_service.move(component_name=arm, destination=destination, world_state=world_state, constraints=constraints)
+    await motion_service.move(component_name=arm,
+                              destination=destination,
+                              world_state=world_state,
+                              constraints=constraints)
 ```
 
 The `main()` function initializes different resources and then handles command line arguments to move the arm in a sequence for testing and debugging:
@@ -660,8 +688,8 @@ async def main():
     # myBoard
     my_board = Board.from_robot(robot, "myBoard")
     # my Subpart name, arm
-    my_arm_resource= Arm.get_resource_name("planning:myArm")
-    my_arm_resource.name= "myArm"
+    my_arm_resource = Arm.get_resource_name("planning:myArm")
+    my_arm_resource.name = "myArm"
     print("arm resource", my_arm_resource)
 
     commands = [args.command]
@@ -684,19 +712,27 @@ async def main():
         if command == "left":
             print("will move left")
             # Moves the arm's y position to left
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=0, y=-move_increment, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=0, y=-move_increment, z=0))
         if command == "right":
             print("will move right")
             # Moves the arm's y position to right
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=0, y=move_increment, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=0, y=move_increment, z=0))
         if command == "forward":
             print("will move forward")
             # Moves the arm's x position to forward
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=move_increment, y=0, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=move_increment, y=0, z=0))
         if command == "backward":
             print("will move backward")
             # Moves the arm's x position to backwards
-            await move_to_offset(my_arm_resource, motion_service, Vector3(x=-move_increment, y=0, z=0))
+            await move_to_offset(my_arm_resource,
+                                 motion_service,
+                                 Vector3(x=-move_increment, y=0, z=0))
         if command == "grab":
             print("will grab")
             # Closes the gripper
@@ -709,8 +745,13 @@ async def main():
             print("will sleep one second")
             await asyncio.sleep(1)
         if command == "test":
-            print("will move to the test position, drop, grab, return home and release")
-            await move_absolute(my_arm_resource, motion_service, Pose(x=0.0, y=380, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0))
+            print("""will move to the test position, drop, grab, return home
+                  and release""")
+            await move_absolute(
+                my_arm_resource,
+                motion_service,
+                Pose(x=0.0, y=380, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0)
+            )
             await move_z(my_arm_resource, motion_service, grab_plane)
             await grab(my_board, True)
             await home(my_arm_resource, motion_service)
@@ -732,7 +773,8 @@ python3 CLI-test.py --password mypass --location mylocation --command grab
 Or, you can run sequences of these commands together, for example:
 
 ```sh {class="command-line" data-prompt="$"}
-python3 CLI-test.py --password mypass --location mylocation --command sequence --sequence grab,sleep,release,sleep,grab,sleep,release
+python3 CLI-test.py --password mypass --location mylocation --command sequence \
+    --sequence grab,sleep,release,sleep,grab,sleep,release
 ```
 
 Now that the arm is set up and you have a CLI script you can use for testing - try testing the motion and claw grab with different items.
@@ -748,9 +790,9 @@ In order to house the prizes, you’ll need to enclose three of the sides (front
 1. Have someone hold the plexiglas in place while you carefully pre-drill holes for the wood screws.
 1. Carefully screw the wood screws in place, being sure not to tighten excessively, as this can crack the plexiglass.
 1. Add a short barrier in the back to stop the prizes from falling out.
-We used the remaining 2x4 section for this.
+   We used the remaining 2x4 section for this.
 1. Then, do the same for the prize exit hole.
-We used some extra fiberboard and glue, but you could use cardboard, wood, or any other rigid material available.
+   We used some extra fiberboard and glue, but you could use cardboard, wood, or any other rigid material available.
 
 Now you can fill the enclosure with prizes!
 Fill the enclosure generously, but make sure that the prizes don’t overflow from the prize exit hole or the backstop.
@@ -792,7 +834,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
    {{< /alert >}}
 
 1. Visit `localhost:8000` in a browser.
-Press the buttons to execute the control commands defined in **main.ts** and watch your robot arm move around using the simple user interface.
+   Press the buttons to execute the control commands defined in **main.ts** and watch your robot arm move around using the simple user interface.
 
 The TypeScript app reads in the obstacles defined in the same `obstacles.json` JSON file that you used with the Python testing script, and creates a world state.
 
@@ -896,7 +938,7 @@ For some next steps, you could:
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 
   {{< alert title="Tip" color="tip" >}}
-Viam already allows you to securely control robots from anywhere.
+  Viam already allows you to securely control robots from anywhere.
   {{< /alert >}}
 
 Or you can head over to our [Tutorials](/tutorials/) page and try one of our other tutorials to continue building other robots.

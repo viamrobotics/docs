@@ -43,9 +43,59 @@ python3 -m http.server 9000 --directory public
 
 ## Test the docs locally
 
+### Python snippets
+
+To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following like to `.git/hooks/pre-commit`:
+
+```sh
+if [ "git diff --diff-filter=d --name-only HEAD | grep '\.md$' | wc -l" ];
+then
+list= $(git diff --diff-filter=d --name-only HEAD | grep '\.md$')
+for item in $list
+do
+flake8-markdown $item
+done
+fi
+```
+
 To ensure your markdown is properly formatted, run `make markdowntest`.
 
 To check for broken links run `make htmltest`.
+
+### Remove EXIF data automatically
+
+To ensure that you do not accidentally add `EXIF` data on images, please install [exiftool](https://exiftool.org/install.html) and add the following lines to the `.git/hooks/pre-commit` file in your local files.
+If you do not have a file of that name in that location, create one, or rename the existing `pre-commit.sample` file in that directory as `pre-commit`, and add the code below:
+
+```sh
+if [ "git diff --name-only | grep -EI '.*(png|jpg|jpeg)$' | wc -l" ];
+then
+list= $(git diff --diff-filter=d --name-only | grep -EI ".*(png|jpg|jpeg)$")
+for item in $list
+do
+exiftool -all= $item
+done
+fi
+```
+
+### Lint JS and Markdown files with Prettier on save
+
+1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+2. Run `npm install` in the docs folder you have the docs checked out in.
+3. Inside VS code, open `settings.json` by pressing `CMD+SHIFT+P` and typing in settings and ensure the following settings are in the file:
+
+```json
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.configPath": ".prettierrc",
+  "prettier.documentSelectors": ["**/*.md"],
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
+  "prettier.withNodeModules": true,
+  "prettier.resolveGlobalModules": true,
+  "prettier.requirePragma": true
+```
 
 ## Publishing
 

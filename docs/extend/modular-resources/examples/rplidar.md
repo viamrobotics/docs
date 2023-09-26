@@ -60,8 +60,8 @@ Then, go to your robot's page on the [Viam app](https://app.viam.com/).
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 
-  {{< tabs name="Add the RPlidar component - configs" >}}
-  {{% tab name="Linux" %}}
+{{< tabs name="Add the RPlidar component - configs" >}}
+{{% tab name="Linux" %}}
 
 Click on the **Modules** subtab and navigate to the **Local** section.
 Enter a name, for example `my_rplidar_module_name`, and the executable path `/usr/bin/csi-mr`.
@@ -72,8 +72,8 @@ Select the `local modular resources` type.
 Then select the `camera` as the type, enter the triplet `viam:lidar:rplidar` and give your resource a name, for example `rplidar`.
 Click **Create**.
 
-  {{% /tab %}}
-  {{% tab name="macOS x86_64" %}}
+{{% /tab %}}
+{{% tab name="macOS x86_64" %}}
 
 Click on the **Modules** subtab and navigate to the **Local** section.
 Enter a name, for example `my_rplidar_module_name`, and the executable path `/usr/bin/csi-mr`.
@@ -88,12 +88,12 @@ On the new component panel, copy and paste the following JSON object into the at
 
 ```json
 {
-    "device_path": "/dev/tty.SLAB_USBtoUART"
+  "device_path": "/dev/tty.SLAB_USBtoUART"
 }
 ```
 
-  {{% /tab %}}
-  {{% tab name="macOS ARM64 (M1 & M2)" %}}
+{{% /tab %}}
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
 
 Click on the **Modules** subtab and navigate to the **Local** section.
 Enter a name, for example `my_rplidar_module_name`, and the executable path `/opt/homebrew/bin/rplidar-module`.
@@ -108,7 +108,7 @@ On the new component panel, copy and paste the following JSON object into the at
 
 ```json
 {
-    "device_path": "/dev/tty.usbserial-XXX"
+  "device_path": "/dev/tty.usbserial-XXX"
 }
 ```
 
@@ -121,8 +121,8 @@ ls /dev/ | grep tty.usbserial
 For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`.
 Replace the `XXX` at the end of the `device_path` value in the attributes configuration with the number at the end of your device path.
 
-  {{% /tab %}}
-  {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -131,95 +131,95 @@ Navigate to the **Config** tab.
 
 Select the **Raw JSON** mode.
 
-  {{< tabs name="Add the RPlidar component - configs" >}}
-  {{% tab name="Linux" %}}
+{{< tabs name="Add the RPlidar component - configs" >}}
+{{% tab name="Linux" %}}
 
-  Copy and paste the JSON object for the module into the modules array to add the module:
+Copy and paste the JSON object for the module into the modules array to add the module:
 
-  ```json
-  {
-      "executable_path": "/usr/local/bin/rplidar-module",
-      "name": "my_rplidar_module_name"
-  }
-  ```
+```json
+{
+  "executable_path": "/usr/local/bin/rplidar-module",
+  "name": "my_rplidar_module_name"
+}
+```
 
-  Next, add the following JSON object to your components array to configure a `rplidar` [camera](/components/camera/) component with the name `rplidar`:
+Next, add the following JSON object to your components array to configure a `rplidar` [camera](/components/camera/) component with the name `rplidar`:
 
-  ```json
-  {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "name": "rplidar"
-  }
-  ```
+```json
+{
+  "namespace": "rdk",
+  "type": "camera",
+  "depends_on": [],
+  "model": "viam:lidar:rplidar",
+  "name": "rplidar"
+}
+```
 
-  {{% /tab %}}
-  {{% tab name="macOS x86_64" %}}
+{{% /tab %}}
+{{% tab name="macOS x86_64" %}}
 
-  Copy and paste the JSON object for the module into the modules array to add the module:
+Copy and paste the JSON object for the module into the modules array to add the module:
 
-  ```json
-  {
-      "executable_path": "/usr/local/bin/rplidar-module",
-      "name": "my_rplidar_module_name"
-  }
-  ```
+```json
+{
+  "executable_path": "/usr/local/bin/rplidar-module",
+  "name": "my_rplidar_module_name"
+}
+```
 
-  Next, add the following JSON object to your components array to configure a `rplidar` [camera](/components/camera/) component with the name `rplidar`:
+Next, add the following JSON object to your components array to configure a `rplidar` [camera](/components/camera/) component with the name `rplidar`:
 
-  ```json
-  {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "attributes": {
-        "device_path": "/dev/tty.SLAB_USBtoUART"
-      },
-      "name": "rplidar"
-  }
-  ```
+```json
+{
+  "namespace": "rdk",
+  "type": "camera",
+  "depends_on": [],
+  "model": "viam:lidar:rplidar",
+  "attributes": {
+    "device_path": "/dev/tty.SLAB_USBtoUART"
+  },
+  "name": "rplidar"
+}
+```
 
-  {{% /tab %}}
-  {{% tab name="macOS ARM64 (M1 & M2)" %}}
+{{% /tab %}}
+{{% tab name="macOS ARM64 (M1 & M2)" %}}
 
-  Copy and paste the JSON object for the module into the modules array to add the module:
+Copy and paste the JSON object for the module into the modules array to add the module:
 
-  ```json
-  {
-      "executable_path": "/usr/local/bin/rplidar-module",
-      "name": "my_rplidar_module_name"
-  }
-  ```
+```json
+{
+  "executable_path": "/usr/local/bin/rplidar-module",
+  "name": "my_rplidar_module_name"
+}
+```
 
-  Next, add the following JSON object to your components array to configure a `rplidar` [camera](/components/camera/) component with the name `rplidar`:
+Next, add the following JSON object to your components array to configure a `rplidar` [camera](/components/camera/) component with the name `rplidar`:
 
-  ```json
-  {
-      "namespace": "rdk",
-      "type": "camera",
-      "depends_on": [],
-      "model": "viam:lidar:rplidar",
-      "attributes": {
-        "device_path": "/dev/tty.usbserial-XXX"
-      },
-      "name": "rplidar"
-  }
-  ```
+```json
+{
+  "namespace": "rdk",
+  "type": "camera",
+  "depends_on": [],
+  "model": "viam:lidar:rplidar",
+  "attributes": {
+    "device_path": "/dev/tty.usbserial-XXX"
+  },
+  "name": "rplidar"
+}
+```
 
-  If you are on an M1 or M2 Macbook, determine the device path by running the following command:
+If you are on an M1 or M2 Macbook, determine the device path by running the following command:
 
-  ```sh {class="command-line" data-prompt="$"}
-  ls /dev/ | grep tty.usbserial
-  ```
+```sh {class="command-line" data-prompt="$"}
+ls /dev/ | grep tty.usbserial
+```
 
-  For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`.
-  Replace the `XXX` at the end of the `device_path` value in the attributes configuration with the number at the end of your device path.
+For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`.
+Replace the `XXX` at the end of the `device_path` value in the attributes configuration with the number at the end of your device path.
 
-  {{% /tab %}}
-  {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -237,6 +237,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/slam/cartographer" %}}
-  {{% card link="/services/slam" %}}
+{{% card link="/services/slam/cartographer" %}}
+{{% card link="/services/slam" %}}
 {{< /cards >}}
