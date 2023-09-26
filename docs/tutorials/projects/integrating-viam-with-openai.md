@@ -346,7 +346,6 @@ Copy and paste the following into your `modules` array to add [`speech`](https:/
     "version": "latest"
   }
 ]
-
 ```
 
 Then, copy and paste the following into your `services` array to add [elevenlabs.io](https://elevenlabs.io/) as your `speech` modular service provider:
