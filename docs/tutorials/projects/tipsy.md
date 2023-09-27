@@ -399,7 +399,7 @@ Click on the **Services** subtab.
 
    ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
 
-   Name the ml model name `people`.
+   Name the ML model `people`.
 
    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
 
