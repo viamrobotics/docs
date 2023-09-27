@@ -10,7 +10,7 @@ videoAlt: "An arm moving a cup from one side of a tissue box to the other, acros
 tags: ["arm", "gripper", "motion", "services"]
 authors: ["Jessamy Taylor"]
 languages: ["python"]
-viamresources: ["data_manager", "camera"]
+viamresources: ["arm", "gripper", "motion"]
 level: "Intermediate"
 date: "2023-07-03"
 # updated: ""
