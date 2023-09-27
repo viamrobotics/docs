@@ -364,33 +364,7 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 
 {{% /expand%}}
 
-## Configure the services you need
-
-### (Recommended) Configure a Motion service with logging
-
-The motion service is enabled by default on your robot for motion planning.
-The navigation service is the stateful version of it, so the two services work closely together.
-If you want to be able to access this service in your code with your own name and configure logging, complete the following:
-
-1. On your robot's **Config** page, navigate to the **Services** tab.
-2. At the bottom of the page, create a service.
-   Choose `Motion` as the type.
-3. Then click **Create Service**.
-4. Add a path to a file where logs will be saved on your robot's computer like the following:
-
-    ```json
-    {
-    "log_file_path": "/home/viam/your_log_filename.log"
-    }
-    ```
-
-5. Click **Save Config** at the bottom of the window.
-
-For more detailed information see [the motion service configuration instructions](/services/motion/#configuration).
-
-If you choose not to configure logging, you can access the default motion service in your code with the name `builtin`.
-
-### Configure a Navigation service
+## Configure a Navigation service
 
 Now, add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
 To add the navigation service to your robot, do the following:
@@ -405,7 +379,6 @@ To add the navigation service to your robot, do the following:
     {
         "base": "base",
         "movement_sensor": "merged",
-        "log_file_path": "/home/viam/your_log_filename.log",
         "obstacles": [],
         "store": {
           "type": "memory"
@@ -436,19 +409,11 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
-    "name": "builtin",
-    "attributes": {
-    "log_file_path": "/home/viam/your_log_filename.log"
-    },
-    "type": "motion"
-  },
-  {
     "name": "nav",
     "type": "navigation",
     "attributes": {
     "base": "base",
     "movement_sensor": "merged",
-    "log_file_path": "/home/viam/your_log_filename.log",
     "obstacles": [],
     "store": {
         "type": "memory"
@@ -584,7 +549,7 @@ Follow [this guide](/services/vision/segmentation/#configure-an-obstacles_depth-
 
 Then, you could automate obstacle avoidance with the navigation service like in the following client SDK program:
 
-{{%expand "Click to view full example automated obstacle avoidance with the Python SDK" %}}
+{{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
