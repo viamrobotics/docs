@@ -150,10 +150,10 @@ If you choose to wire your components differently, adjust your pin assignment fr
 1.  Configure a GPS movement sensor so the robot knows where it is while navigating.
     We configured ours as a `gps-nmea-rtk-serial` movement sensor:
 
-        ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
+    ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
 
-        We named ours `gps`.
-        Refer to [the `gps-nmea-rtk-serial` movement sensor configuration instructions](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
+    We named ours `gps`.
+    Refer to [the `gps-nmea-rtk-serial` movement sensor configuration instructions](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
 
 2.  Configure a `wheeled-odometry` movement sensor, which uses the encoders from our position reporting motors to get an odometry estimate of a wheeled base as it moves:
 
