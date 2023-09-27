@@ -583,12 +583,12 @@ SECONDS_TO_RUN = 60 * 15
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<INSERT YOUR ROBOT LOCATION SECRET, FOUND IN THE CODE SAMPLE TAB OF THE VIAM APP>')
+        payload='<INSERT LOCATION SECRET, FOUND IN CODE SAMPLE TAB>')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('INSERT YOUR ROBOT REMOTE ADDRESS, FOUND IN THE CONTROL TAB OF THE VIAM APP', opts)
+    return await RobotClient.at_address('INSERT REMOTE ADDRESS, FOUND IN CONTROL TAB', opts)
 
 async def nav_avoid_obstacles(base: Base, nav_service:NavigationClient, obstacle_detection_service: VisionClient):
     while True:
