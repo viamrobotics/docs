@@ -6,7 +6,20 @@ description: "Introduction to using a rover base with the navigation service."
 image: "/tutorials/navigate-with-rover-base/leo-in-office.png"
 imageAlt: "The leo rover navigating in the Viam Lab."
 images: ["/tutorials/navigate-with-rover-base/leo-in-office.png"]
-tags: ["try viam", "navigation", "movement sensor", "vision", "motion", "movement sensor", "base", "rover", "motion planning", "obstacles", "waypoints"]
+tags:
+  [
+    "try viam",
+    "navigation",
+    "movement sensor",
+    "vision",
+    "motion",
+    "movement sensor",
+    "base",
+    "rover",
+    "motion planning",
+    "obstacles",
+    "waypoints",
+  ]
 authors: ["Sierra Guequierre"]
 languages: ["python", "go"]
 viamresources: ["navigation", "base", "movement sensor"]
@@ -34,15 +47,15 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
 1. **A wheeled base with encoded motors**
 
-    We used [a LEO rover](https://www.leorover.tech/shop?gclid=CjwKCAjw38SoBhB6EiwA8EQVLiDwUFEYgLxaRd1-TiTyLfifIAHs9iD6YnvdW6M-3rXruHOrzfTL2RoCD1AQAvD_BwE), configured as a [`wheeled` base](/components/base/wheeled/), but you can use whatever model of rover base you have on hand.
+   We used [a LEO rover](https://www.leorover.tech/shop?gclid=CjwKCAjw38SoBhB6EiwA8EQVLiDwUFEYgLxaRd1-TiTyLfifIAHs9iD6YnvdW6M-3rXruHOrzfTL2RoCD1AQAvD_BwE), configured as a [`wheeled` base](/components/base/wheeled/), but you can use whatever model of rover base you have on hand.
 
 2. **A movement sensor with GPS position and angular and linear velocity readings**
 
-    We used three movement sensors to satisfy these requirements:
+   We used three movement sensors to satisfy these requirements:
 
-    1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position measurements.
-    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
-    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position measurements.
+   2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
+   3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -55,7 +68,7 @@ Before you start, make sure to create a robot in [the Viam app](https://app.viam
 ## Configure the components you need
 
 First, configure the components of your robot.
-If you are using different *models* of hardware, adjust your configuration accordingly.
+If you are using different _models_ of hardware, adjust your configuration accordingly.
 
 ### Configure a board with `"digital_interrupts"`
 
@@ -120,10 +133,10 @@ Now, configure whatever rover you have as a `wheeled` model of base, bringing th
 ![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
 
 - Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and set the wheel circumference and width of each of the wheels the motors are attached to.
-Refer to [the `wheeled` base configuration instructions](/components/base/) for more attribute information.
+  Refer to [the `wheeled` base configuration instructions](/components/base/) for more attribute information.
 - [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
-Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
-Select the `world` as the parent frame.
+  Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
+  Select the `world` as the parent frame.
 
 {{< alert title="Tip" color="tip" >}}
 
@@ -134,22 +147,22 @@ If you choose to wire your components differently, adjust your pin assignment fr
 
 ### Configure movement sensors
 
-1. Configure a GPS movement sensor so the robot knows where it is while navigating.
-We configured ours as a `gps-nmea-rtk-serial` movement sensor:
+1.  Configure a GPS movement sensor so the robot knows where it is while navigating.
+    We configured ours as a `gps-nmea-rtk-serial` movement sensor:
 
-    ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
+        ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
 
-    We named ours `gps`.
-    Refer to [the `gps-nmea-rtk-serial` movement sensor configuration instructions](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
+        We named ours `gps`.
+        Refer to [the `gps-nmea-rtk-serial` movement sensor configuration instructions](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
 
-2. Configure a `wheeled-odometry` movement sensor, which uses the encoders from our position reporting motors to get an odometry estimate of a wheeled base as it moves:
+2.  Configure a `wheeled-odometry` movement sensor, which uses the encoders from our position reporting motors to get an odometry estimate of a wheeled base as it moves:
 
     ![An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png)
 
     We named ours `enc-linear`.
     Refer to [the `wheeled-odometry` movement sensor configuration instructions](/components/movement-sensor/wheeled-odometry/) for attribute information.
 
-3. Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
+3.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
 
     ![An example configuration for a merged movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png)
 
@@ -158,8 +171,8 @@ We configured ours as a `gps-nmea-rtk-serial` movement sensor:
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
     - [Configure the frame system](/services/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
-    Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1`.
-    Select the `base` as the parent frame.
+      Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1`.
+      Select the `base` as the parent frame.
 
 ### Full JSON Configuration
 
@@ -375,23 +388,24 @@ To add the navigation service to your robot, do the following:
 3. Then click **Create Service**.
 4. Select **Raw JSON** mode. Copy and paste the following into your new service's `"attributes"`:
 
-    ```json
-    {
-        "base": "base",
-        "movement_sensor": "merged",
-        "obstacles": [],
-        "store": {
-          "type": "memory"
-        },
-        "position_polling_frequency": 2,
-        "meters_per_sec": 1.2,
-        "degs_per_sec": 90,
-        "plan_deviation_m": 0.25
-      }
-    ```
+   ```json
+   {
+     "base": "base",
+     "movement_sensor": "merged",
+     "obstacles": [],
+     "store": {
+       "type": "memory"
+     },
+     "position_polling_frequency": 2,
+     "meters_per_sec": 1.2,
+     "degs_per_sec": 90,
+     "plan_deviation_m": 0.25
+   }
+   ```
 
-    Edit the attributes as applicable.
-    Attribute information is available in [the navigation service documentation](/services/navigation/#configuration).
+   Edit the attributes as applicable.
+   Attribute information is available in [the navigation service documentation](/services/navigation/#configuration).
+
 5. Click **Save Config** at the bottom of the window.
 
 Your navigation service should now appear in your robot's **Config** tab as a card with a map like the following:
@@ -591,21 +605,21 @@ async def nav_avoid_obstacles(base: Base, nav_service:NavigationClient, obstacle
 
 async def main():
     robot = await connect()
-    
+
     # Get base component and services from the robot
     base = Base.from_robot(robot, "base")
     obstacle_detection_service = VisionClient.from_robot(robot, "myObsDepth")
     nav_service = NavigationClient.from_robot(robot, "nav")
-    
+
     # Get waypoints and add a new waypoint
     waypoints = await nav_service.get_waypoints()
     assert(len(waypoints) == 0)
     await nav_service.add_waypoint(GeoPoint(latitude=0.00006, longitude=0))
-    
+
     # Get waypoints again, check to see that one has been added
     waypoints = await nav_service.get_waypoints()
     assert(len(waypoints) == 1)
-    
+
     # Avoid obstacles
     await nav_avoid_obstacles(base, nav_service, obstacle_detection_service)
 
