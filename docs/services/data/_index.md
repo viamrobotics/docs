@@ -90,7 +90,7 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
   Currently, the data management service can use the entire available disk space to store data.
   If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
   Currently, Viam does not safeguard against this.
-  
+
   {{< /alert >}}
 
 ## API

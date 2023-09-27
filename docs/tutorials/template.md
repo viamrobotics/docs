@@ -17,8 +17,7 @@ authors: [] # Your Name
 weight: # A positive integer that determines the position of the tutorial on the tutorials page. New content is automatically featured. Only use this to highlight content that should permanently be near the top.
 languages: [] # Viam SDK programming languages used, if any
 viamresources: [
-  "arm", "base", "board", "camera", "encoder", "gantry", "gripper", "input_controller", "motor", "movement_sensor", "sensor", "servo",
-  "data", "motion", "frame_system", "mlmodel", "navigation", "base_rc", "sensors", "slam", "vision"
+  "arm", "base", "board", "camera", "encoder", "gantry", "gripper", "input_controller", "motor", "movement_sensor", "sensor", "servo",  "data_manager", "motion", "frame_system", "mlmodel", "navigation", "base_rc", "sensors", "slam", "vision"
 ] # Specific components or services used in this tutorial
 level: "" # Beginner, Intermediate, Advanced
 # Beginner means: high level of explanation and guidance
