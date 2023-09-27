@@ -583,12 +583,12 @@ SECONDS_TO_RUN = 60 * 15
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
-        payload='<INSERT LOCATION SECRET, FOUND IN CODE SAMPLE TAB>')
+        payload='<INSERT LOCATION SECRET>')
     opts = RobotClient.Options(
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('INSERT REMOTE ADDRESS, FOUND IN CONTROL TAB', opts)
+    return await RobotClient.at_address('<INSERT REMOTE ADDRESS>', opts)
 
 
 async def nav_avoid_obstacles(
