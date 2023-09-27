@@ -20,4 +20,4 @@ jobs:
         with:
           dry: True
           # This part is also where you can pass other options, for example:
-          prettier_options: docs/**/*.md
+          prettier_options: --check docs/**/*.md
