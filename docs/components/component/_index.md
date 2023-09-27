@@ -23,15 +23,14 @@ Use cases:
 - A brief description of one sample use case.
 - ...
 
-Most robots with a COMPONENT need at least the following hardware:
+Most robots with a COMPONENT need at least the following hardware (optional):
 
 - Board
 - ...
 
 ## Configuration
 
-The COMPONENT component supports the following models.
-Click on the component model name for detailed configuration information.
+For configuration information, click on one of the supported COMPONTENT models:
 
 <!-- prettier-ignore -->
 | Model               | Description                                                         |
