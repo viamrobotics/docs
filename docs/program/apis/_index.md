@@ -232,6 +232,12 @@ The [gantry component](/components/gantry/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/gantry.md" >}}
 
+### Generic
+
+The [generic component](/components/generic/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/generic.md" >}}
+
 ### Gripper
 
 The [gripper component](/components/gripper/) supports the following methods:
