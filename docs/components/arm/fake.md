@@ -22,7 +22,7 @@ Enter a name for your arm and click **Create**.
 ![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 
 Edit and fill in the attributes as applicable.
-You can copy-paste from [the attribute examples](#attributes-examples) to help with formatting.
+You can copy-paste from the [attribute examples](#attributes-examples) to help with formatting.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
