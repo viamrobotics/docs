@@ -13,7 +13,11 @@ jobs:
     continue-on-error: true
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: Check for prettified code
         uses: creyD/prettier_action@v4.3
@@ -21,3 +25,4 @@ jobs:
           dry: True
           # This part is also where you can pass other options, for example:
           prettier_options: --check docs/**/*.md
+          only_changed: True
