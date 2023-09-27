@@ -599,7 +599,7 @@ Get an asynchronous iterator that receives live robot part logs.
 
 **Returns:**
 
-- (_LogsStream[[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
+- (\_LogsStream[[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live robot part logs.
 
 ```python {class="line-numbers linkable-line-numbers"}
 logs_stream = await cloud.tail_robot_part_logs(
