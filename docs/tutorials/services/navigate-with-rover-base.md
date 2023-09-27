@@ -28,7 +28,7 @@ Viam's motion planner will plan routes that avoid those obstacles and attempt to
 To try it out yourself, you need a mobile base and a movement sensor that can track the robot's GPS coordinates and angular and linear velocity.
 Follow this tutorial to get started using Viam's Navigation service to help your wheeled base navigate across space with our recommended stack.
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that navigating using navigation service in a robotics lab">}}
+{{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that is navigating using the navigation service in a robotics lab.">}}
 
 ## Requirements
 
@@ -119,7 +119,7 @@ Now, configure whatever rover you have as a `wheeled` model of base, bringing th
 
 ![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
 
-- Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and enter in the wheel circumference and width of each of the wheels the motors are attached to.
+- Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and set the wheel circumference and width of each of the wheels the motors are attached to.
 Refer to [the `wheeled` base configuration instructions](/components/base/) for more attribute information.
 - [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
@@ -468,12 +468,12 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 
 Next, add waypoints to your navigation service.
 
-### Control Tab Method
+### Control tab method
 
 Then, go to the **Control** tab of your robot in the [Viam app](https://app.viam.com), and open the **navigation** card.
 From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
 
-#### Add Waypoints
+#### Add waypoints
 
 Select **Waypoints** on the upper-left corner menu of the navigation card.
 Zoom in on your current location and click on the map to add a waypoint.
@@ -485,7 +485,7 @@ Hover over a waypoint in the left-hand menu and click the trash icon to delete a
 
 ![Waypoint 1 being added in the Viam app config builder, further down the street](/tutorials/navigate-with-rover-base/add-second-waypoint.png)
 
-#### (Optional) Add Obstacles
+#### (Optional) Add obstacles
 
 If you want your robot to avoid certain obstacles in its path while navigating, you can also add obstacles.
 Select **Obstacles** on the upper-left corner menu of the navigation card.
@@ -493,16 +493,16 @@ Zoom in on your current location and click on the map to add an obstacle.
 Add as many obstacles as you desire.
 Hover over an obstacle in the left-hand menu and click the trash icon to delete an obstacle.
 
-#### Begin Navigation
+#### Begin navigation
 
 Toggle **Navigation mode** to **Waypoint**.
 Your robot will begin navigating between waypoints, avoiding any obstacles configured on the way.
 
-### Programmatic Method
+### Programmatic method
 
 If you want to do this programmatically, use the service's [API method `AddWaypoint()`](/services/navigation/#addwaypoint) like the following:
 
-#### Add Waypoints
+#### Add waypoints
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -533,7 +533,7 @@ await my_nav.add_waypoint(point=location)
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Begin Navigation
+#### Begin navigation
 
 To start navigating, set your service to `MODE_WAYPOINT` with the service's [API method `SetMode()`](/services/navigation/#setmode):
 
@@ -561,7 +561,7 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next steps
+## Next steps: automate obstacle detection
 
 In this tutorial, you have learned how to use Navigation to navigate across waypoints.
 Now, you can make navigation even better with automated obstacle detection.
@@ -579,10 +579,12 @@ Attribute information for an `ultrasonic` [camera](/components/camera) is the sa
 
 {{< /alert >}}
 
-Now, if you want the robot to be able to automatically detect obstacles in front of it, you can configure a Vision service segmenter of model [`obstacles_depth`](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter), which identifies well separated objects above a flat plane.
+Now, if you want the robot to be able to automatically detect obstacles in front of it, you can [configure a Vision service](/services/vision/#configuration) segmenter of model [`obstacles_depth`](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter), which identifies well separated objects above a flat plane.
 Follow [this guide](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter) to configure an `obstacles_depth` segmenter vision service.
 
 Then, you could automate obstacle avoidance with the navigation service like in the following client SDK program:
+
+{{%expand "Click to view full example automated obstacle avoidance with the Python SDK" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -645,5 +647,7 @@ async def main():
 if __name__ == '__main__':
     asyncio.run(main())
 ```
+
+{{% /expand%}}
 
 {{< snippet "social.md" >}}
