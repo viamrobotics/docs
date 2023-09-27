@@ -89,8 +89,6 @@ Click on the **Components** subtab.
 
    You can name your board whatever you want as long as you refer to it by the same name in your code.
 
-   ![Board component configured in the Viam app, the component tab is named local, with a type attribute board and model attribute Pi.](/tutorials/tipsy/app-board-attribute.png)
-
 2. **Configure the motors**
 
    Add your right [motor](/components/motor/):
@@ -397,9 +395,7 @@ Click on the **Services** subtab.
 
    In the new vision service panel, configure your service.
 
-   ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
-
-   Name the ML model `people`.
+   Select `people` from the **ML Model** drop-down.
 
    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
 
