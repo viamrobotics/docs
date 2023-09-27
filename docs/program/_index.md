@@ -43,6 +43,10 @@ Next, to install your preferred Viam SDK on your Linux or macOS development mach
 
 If you are using the Python SDK, [set up a virtual environment](/program/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
+```sh {class="command-line" data-prompt="$"}
+pip install viam-sdk
+```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
