@@ -69,7 +69,7 @@ Configure a board named `local` as shown below:
 
 Copy and paste the following into your board's **Attributes** to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 {
   "digital_interrupts": [
     {
@@ -120,7 +120,7 @@ Now, configure whatever rover you have as a `wheeled` model of base, bringing th
 ![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
 
 - Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and enter in the wheel circumference and width of each of the wheels the motors are attached to.
-Refer to [the `wheeled` base configuration instructions](/components/base/base/) for more attribute information.
+Refer to [the `wheeled` base configuration instructions](/components/base/) for more attribute information.
 - [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
 Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
 Select the `world` as the parent frame.
@@ -167,7 +167,7 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 
 {{%expand "Click to view full example JSON" %}}
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "components": [
     {
       "depends_on": [],
@@ -378,7 +378,7 @@ If you want to be able to access this service in your code with your own name an
 3. Then click **Create Service**.
 4. Add a path to a file where logs will be saved on your robot's computer like the following:
 
-    ``` json
+    ```json
     {
     "log_file_path": "/home/viam/your_log_filename.log"
     }
@@ -386,7 +386,7 @@ If you want to be able to access this service in your code with your own name an
 
 5. Click **Save Config** at the bottom of the window.
 
-For more detailed information see [the motion service configuration instructions](/services/motion/#configuration/).
+For more detailed information see [the motion service configuration instructions](/services/motion/#configuration).
 
 If you choose not to configure logging, you can access the default motion service in your code with the name `builtin`.
 
@@ -401,7 +401,7 @@ To add the navigation service to your robot, do the following:
 3. Then click **Create Service**.
 4. Select **Raw JSON** mode. Copy and paste the following into your new service's `"attributes"`:
 
-    ``` json
+    ```json
     {
         "base": "base",
         "movement_sensor": "merged",
@@ -418,14 +418,14 @@ To add the navigation service to your robot, do the following:
     ```
 
     Edit the attributes as applicable.
-    Attribute information is available in [the navigation service documentation](/services/navigation/#configuration/).
+    Attribute information is available in [the navigation service documentation](/services/navigation/#configuration).
 5. Click **Save Config** at the bottom of the window.
 
 Your navigation service should now appear in your robot's **Config** tab as a card with a map like the following:
 
 ![Navigation Card](/tutorials/navigate-with-rover-base/navigation-config-builder.png)
 
-For more detailed information see [the navigation service](/services/navigation/#configuration/).
+For more detailed information see [the navigation service](/services/navigation/#configuration).
 
 ### Full JSON Configuration
 
@@ -433,7 +433,7 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 
 {{%expand "Click to view full example JSON" %}}
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "builtin",
@@ -584,7 +584,7 @@ Follow [this guide](/services/vision/segmentation/#configure-an-obstacles_depth-
 
 Then, you could automate obstacle avoidance with the navigation service like in the following client SDK program:
 
-``` python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers"}
 import asyncio
 import time
 from viam.robot.client import RobotClient
