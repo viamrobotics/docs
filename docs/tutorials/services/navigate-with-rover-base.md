@@ -622,7 +622,7 @@ async def main():
 
     # Get waypoints and add a new waypoint
     waypoints = await nav_service.get_waypoints()
-    assert(len(waypoints) == 0)
+    assert (len(waypoints) == 0)
     await nav_service.add_waypoint(GeoPoint(latitude=0.00006, longitude=0))
 
     # Get waypoints again, check to see that one has been added
