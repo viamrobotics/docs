@@ -602,7 +602,7 @@ async def nav_avoid_obstacles(
         )
         print("obstacle: ", obstacle)
         z = obstacle[0].geometries.geometries[0].center.z
-        print (z)
+        print(z)
         r = await nav_service.get_mode()
         if z < 1000:
             if r != MANUAL_MODE:
