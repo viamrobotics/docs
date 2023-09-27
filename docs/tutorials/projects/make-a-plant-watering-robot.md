@@ -360,7 +360,7 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
 1. Go to your robot and from the create component section, search mcp300x.
 2. Add this module to your robot.
 3. Add the necessary attributes.
-   For example, if you have a moisture sensor on channel 0, and your sensor_pin is 8, your configuration should look like this:
+   For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
 
    ```json
    {
