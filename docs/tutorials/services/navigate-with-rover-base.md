@@ -579,6 +579,7 @@ MANUAL_MODE = 1
 DRIVE_MODE = 2
 SECONDS_TO_RUN = 60 * 15
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
