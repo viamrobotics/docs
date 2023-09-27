@@ -3,12 +3,24 @@ title: "Integrate Viam with ChatGPT to create a companion robot"
 linkTitle: "AI Companion Robot"
 weight: 5
 type: "docs"
-tags: ["base", "AI", "OpenAI", "ChatGPT", "ElevenLabs", "servo", "vision", "computer vision", "camera", "viam rover", "python"]
+tags:
+  [
+    "base",
+    "AI",
+    "OpenAI",
+    "ChatGPT",
+    "ElevenLabs",
+    "servo",
+    "vision",
+    "computer vision",
+    "camera",
+    "viam rover",
+    "python",
+  ]
 description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
 image: "/tutorials/ai-integration/rosey_robot.jpg"
 images: ["/tutorials/ai-integration/rosey_robot.jpg"]
-aliases:
-  /tutorials/integrating-viam-with-openai/
+aliases: /tutorials/integrating-viam-with-openai/
 imageAlt: "An AI powered companion robot called Rosey."
 authors: ["Matt Vella"]
 languages: ["python"]
@@ -41,6 +53,7 @@ By combining ChatGPT with the Viam platform’s built-in [computer vision servic
 - Converts GPT response text to speech and "speaks" the response through a speaker.
 - Follows commands like "move forward" and "spin".
 - Makes observations about its environment when asked questions like "What do you see?".
+
 This tutorial will show you how to use the Viam platform to create an AI-integrated robot with less than 200 lines of code.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/vR2oE4iKY6A">}}
@@ -116,7 +129,7 @@ The [git repository](https://github.com/viam-labs/tutorial-openai-integration) f
 
 It also contains an open source machine learning [detector model](https://github.com/viam-labs/tutorial-openai-integration/tree/main/detector).
 
-Power on  and choose a location on your Raspberry Pi, and clone the tutorial code repository.
+Power your Raspberry Pi on, choose a location on your Pi, and clone the tutorial code repository.
 
 If you don't have git installed on your Pi, you will need to first run:
 
@@ -161,7 +174,7 @@ To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and
 
 Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
 
-``` bash
+```sh {class="command-line" data-prompt="$"}
 #!/usr/bin/sh
 export OPENAPI_KEY=abc
 export OPENAPI_ORG=xyz
@@ -195,7 +208,7 @@ Click **Create Component**.
 
 Now, in the panel for `servo1`, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
 
-``` json
+```json
 {
   "pin": "8",
   "board": "local"
@@ -227,13 +240,13 @@ Make sure `Path to Existing Model on Robot` is selected.
 Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
 For example, the model path would would be similar to:
 
-``` bash
+```sh {class="command-line" data-prompt="$"}
 /home/<username>/tutorial-openai-integration/detector/effdet0.tflite
 ```
 
 and the label path similar to:
 
-``` bash
+```sh {class="command-line" data-prompt="$"}
 /home/<username>/tutorial-openai-integration/detector/labels.txt
 ```
 
@@ -250,30 +263,31 @@ Click **Save config** to finish adding the detector.
 With the rover and tutorial code set up and it is time to bring your companion robot to life!
 Let's call her "Rosey", and bring her to life by running:
 
-``` bash
+```sh {class="command-line" data-prompt="$"}
 ./run.sh
 ```
 
 Now, you can start talking to Rosey.
 {{<imgproc src="/tutorials/ai-integration/rosey_robot.jpg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignright" style="max-width: 350px">}}
 Any time she hears the keyword "Rosey", she will pay attention to anything you say immediately afterwards.
-For example, if you say *"Hello Rosey, what do you think will happen today?"*, the phrase *"what do you think will happen today"* will be sent to OpenAI's chat completion API, and you'll get a response back similar to *"It is impossible to predict what will happen today.
-Every day is different and unpredictable!"*
+For example, if you say _"Hello Rosey, what do you think will happen today?"_, the phrase _"what do you think will happen today"_ will be sent to OpenAI's chat completion API, and you'll get a response back similar to _"It is impossible to predict what will happen today.
+Every day is different and unpredictable!"_
 
 If you [explore the tutorial code](https://github.com/viam-labs/tutorial-openai-integration/blob/main/rosey.py#L192), you will notice that some words or phrases are keywords when heard after "Rosey", and will trigger specific behavior.
-For example, there are a number of commands that will cause the rover to move - like *"move forward"*, *"turn left"*, *"spin"*.
+For example, there are a number of commands that will cause the rover to move - like _"move forward"_, _"turn left"_, _"spin"_.
 
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/ai-integration/yoda.jpeg" resize="400x" declaredimensions=true alt="Viam Rover Rosey." class="alignleft" style="max-width: 300px">}}
 
-If you ask *"what do you see"*, it will use the rover's camera and a machine learning model to view the world, detect what it sees, and then read a ChatGPT-generated response about what it sees.
+If you ask _"what do you see"_, it will use the rover's camera and a machine learning model to view the world, detect what it sees, and then read a ChatGPT-generated response about what it sees.
 Also, a "mood" will be selected at random, and the response will be generated with that mood.
 
-The GPT-3 model is quite good at responding in the style of known personas, so you can also say *"Hey Rosey, act like Yoda"*, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say *"Rosey, act random"*.
-You can even guess who Rosey is acting like by saying *"Rosey, I think you are Scooby Doo!"*
+The GPT-3 model is quite good at responding in the style of known personas, so you can also say _"Hey Rosey, act like Yoda"_, and from that point on, responses will be generated in the style of Yoda! The tutorial code has a number of characters you can try, and to pick one randomly, you can say _"Rosey, act random"_.
+You can even guess who Rosey is acting like by saying _"Rosey, I think you are Scooby Doo!"_
 
 Much of Rosey's behavior can be modified by changing the values of parameters in the tutorial code's [params.py](https://github.com/viam-labs/tutorial-openai-integration/blob/main/params.py) file.
 You can change Rosey's name to something else, add characters, adjust the detector confidence threshold, and more.
+
 </div>
 
 ## Use realistic custom AI voices
@@ -289,7 +303,7 @@ export ELEVENLABS_KEY=mykey
 You can then assign voices to Rosey or any characters by adding the ElevenLabs voice name (including names of voices you have created with the [ElevenLabs VoiceLab](https://beta.elevenlabs.io/voice-lab)) in <file>params.py</file>.
 For example:
 
-``` json
+```json
 { "linda belcher": { "voice": "domi" } }
 ```
 
