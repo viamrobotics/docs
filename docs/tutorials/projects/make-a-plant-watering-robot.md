@@ -362,12 +362,14 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
 3. Add the necessary attributes.
    For example, if you have a moisture sensor on channel 0, and your sensor_pin is 8, your configuration should look like this:
 
-{
-"channel_map": {
-"moisture": 0
-},
-"sensor_pin": 8
-}
+   ```json
+   {
+     "channel_map": {
+       "moisture": 0
+     },
+     "sensor_pin": 8
+   }
+   ```
 
 This module allows you to get multiple readings at the same time from different channels of the ADC sensor.
 If you wire and configure another sensor, such as a temperature sensor on channel 1, you can add the sensor to the `"channel_map"` and get a reading from it.
