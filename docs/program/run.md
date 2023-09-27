@@ -84,29 +84,29 @@ To be able to run your code from your board, you need to install the relevant SD
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-[`ssh` into your board](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
+1. [`ssh` into your board](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
-```sh {class="command-line" data-prompt="$"}
-sudo apt install python3-pip
-```
+   ```sh {class="command-line" data-prompt="$"}
+   sudo apt install python3-pip
+   ```
 
-Create a folder `robot` inside your home directory:
+2. Create a folder `robot` inside your home directory:
 
-```sh {class="command-line" data-prompt="$"}
-mkdir robot
-```
+   ```sh {class="command-line" data-prompt="$"}
+   mkdir robot
+   ```
 
-Then install the Viam Python SDK and the VLC module **into that folder**:
+3. Then install the Viam Python SDK and the VLC module **into that folder**:
 
-```sh {class="command-line" data-prompt="$"}
-pip3 install --target=robot viam-sdk <other-required-dependencies>
-```
+   ```sh {class="command-line" data-prompt="$"}
+   pip3 install --target=robot viam-sdk <other-required-dependencies>
+   ```
 
-Add your code to your new folder:
+4. Add your code to your new folder:
 
-```sh {class="command-line" data-prompt="$"}
-scp main.py user@host.local:/home/myboard/robot/main.py
-```
+   ```sh {class="command-line" data-prompt="$"}
+   scp main.py user@host.local:/home/myboard/robot/main.py
+   ```
 
 {{% /tab %}}
 {{< /tabs >}}
