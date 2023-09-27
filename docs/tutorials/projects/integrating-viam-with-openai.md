@@ -352,14 +352,12 @@ Select **Raw JSON** mode.
 Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
 
 ``` json  {class="line-numbers linkable-line-numbers"}
-"modules": [
-  {
-    "type": "registry",
-    "name": "viam-labs_speech",
-    "module_id": "viam-labs:speech",
-    "version": "latest"
-  }
-]
+{
+  "type": "registry",
+  "name": "viam-labs_speech",
+  "module_id": "viam-labs:speech",
+  "version": "latest"
+}
 ```
 
 Then, copy and paste the following into your `services` array to add [elevenlabs.io](https://elevenlabs.io/) as your `speechio` modular service provider:
