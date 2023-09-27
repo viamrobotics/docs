@@ -590,6 +590,7 @@ async def connect():
     )
     return await RobotClient.at_address('INSERT REMOTE ADDRESS, FOUND IN CONTROL TAB', opts)
 
+
 async def nav_avoid_obstacles(base: Base, nav_service:NavigationClient, obstacle_detection_service: VisionClient):
     while True:
         obstacle = await obstacle_detection_service.get_object_point_clouds("myRealSense")
@@ -603,6 +604,7 @@ async def nav_avoid_obstacles(base: Base, nav_service:NavigationClient, obstacle
         else:
             if r != DRIVE_MODE:
                 await nav_service.set_mode(DRIVE_MODE)
+
 
 async def main():
     robot = await connect()
