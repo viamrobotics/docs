@@ -35,6 +35,7 @@ You can use different models to:
 
 For configuration information, click on one of the supported camera models:
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`ffmpeg`](ffmpeg/) | Uses a camera, a video file, or a stream as a camera. |
@@ -53,6 +54,7 @@ For configuration information, click on one of the supported camera models:
 
 Viam also provides the following camera models as [modular resources](/extend/modular-resources/):
 
+<!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`viam:lidar:rplidar`](/extend/modular-resources/examples/rplidar/) | A LIDAR scanning device like the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1). |
@@ -118,7 +120,7 @@ If the server does not know how to return the specified MIME type, the server re
 ```python {class="line-numbers linkable-line-numbers"}
 my_camera = Camera.from_robot(robot=robot, name="my_camera")
 
-frame = await my_camera.get_image()
+frame = await my_camera.get_image(mime_type="image/jpeg")
 ```
 
 <br>
@@ -129,7 +131,7 @@ For example:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Assume "frame" has a mime_type of "image/vnd.viam.dep"
-frame = await my_cam.get_image()
+frame = await my_camera.get_image()
 
 # Convert "frame" to a standard 2D image representation.
 # Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
@@ -398,7 +400,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 ## Next Steps
 
 {{< cards >}}
-  {{% card link="/services/vision" %}}
-  {{% card link="/tutorials/services/try-viam-color-detection" %}}
-  {{% card link="/tutorials/services/color-detection-scuttle" %}}
+{{% card link="/services/vision" %}}
+{{% card link="/tutorials/services/try-viam-color-detection" %}}
+{{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

@@ -51,7 +51,7 @@ Then select the **Models** and any **Optional Settings** such as the **Number of
 
 Add the `tflite_cpu` ML model object to the services array in your raw JSON configuration:
 
-``` json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
 "services": [
   {
     "name": "<mlmodel_name>",
@@ -90,24 +90,29 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
 
 The following parameters are available for a `"tflite_cpu"` model:
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `model_path` | _Required_ | The absolute path to the `.tflite model` file, as a `string`. |
-| `label_path` | _Optional_ | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
-| `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
+| `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
+| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
 
 {{< alert title="Info" color="info" >}}
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the  `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
 {{< /alert >}}
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
 
 ```json
-{"package":"<model_id>/allblack","version":"YYYYMMDDHHMMSS","name":"<model_name>"}
+{
+  "package": "<model_id>/allblack",
+  "version": "YYYYMMDDHHMMSS",
+  "name": "<model_name>"
+}
 ```
 
 ### `tflite_cpu` Limitations

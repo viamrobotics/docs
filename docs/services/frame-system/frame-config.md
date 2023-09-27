@@ -24,7 +24,7 @@ To complete the frame configuration for your robot following this example, navig
 
 ![frame card example for this configuration](/services/frame-system/frame_card_static.png)
 
-Select the `parent` frame as `world` and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*) according to the position and orientation of the arm in relation to the `world` frame's origin.
+Select the `parent` frame as `world` and fill in the coordinates for `translation` (_mm_) and `orientation` (_deg_) according to the position and orientation of the arm in relation to the `world` frame's origin.
 
 {{< /tab >}}
 {{% tab name="JSON Example" %}}
@@ -65,10 +65,11 @@ Select the `parent` frame as `world` and fill in the coordinates for `translatio
 {{% /tab %}}
 {{< /tabs >}}
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
+| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
 | `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 

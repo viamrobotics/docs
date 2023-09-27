@@ -13,4 +13,4 @@ The specification for communication with resources.
 
 Currently, the Viam Robot API is defined in a collection of Protocol Buffer files.
 
-All SDKs written by Viam use {{< glossary_tooltip term_id="grpc" text="gRPC" >}}  but the Viam Robot API itself does not mandate gRPC as the transport mechanism.
+All SDKs written by Viam use {{< glossary_tooltip term_id="grpc" text="gRPC" >}} but the Viam Robot API itself does not mandate gRPC as the transport mechanism.

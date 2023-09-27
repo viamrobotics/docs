@@ -7,4 +7,4 @@ aka:
 type: "page"
 ---
 
- A configuration parameter of a resource.
+A configuration parameter of a resource.

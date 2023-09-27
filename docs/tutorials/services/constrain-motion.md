@@ -8,9 +8,9 @@ mp4Src: "/tutorials/videos/motion_constraints.mp4"
 images: ["/tutorials/videos/motion_constraints.gif"]
 videoAlt: "An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright."
 tags: ["arm", "gripper", "motion", "services"]
-authors: [ "Jessamy Taylor" ]
-languages: [ "python" ]
-viamresources: [ "data_manager", "camera" ]
+authors: ["Jessamy Taylor"]
+languages: ["python"]
+viamresources: ["arm", "gripper", "motion"]
 level: "Intermediate"
 date: "2023-07-03"
 # updated: ""
@@ -95,9 +95,7 @@ If instead you are creating a new robot for this tutorial, copy the following co
       "type": "gripper",
       "model": "fake",
       "attributes": {},
-      "depends_on": [
-        "myArm"
-      ],
+      "depends_on": ["myArm"],
       "frame": {
         "parent": "myArm",
         "translation": {
@@ -494,5 +492,5 @@ if __name__ == "__main__":
 If you would like to continue onto working with Viam's motion service, check out this tutorial:
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/claw-game/" %}}
+{{% card link="/tutorials/projects/claw-game/" %}}
 {{< /cards >}}

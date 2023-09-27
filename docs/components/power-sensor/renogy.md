@@ -16,7 +16,7 @@ Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](h
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab and click **Create component** in the lower-left corner.
 Select the type `power_sensor`, then select the `renogy` model.
 Name your sensor, and click **Create**.
 
@@ -70,6 +70,7 @@ Edit and fill in the attributes as applicable.
 {{% /tabs %}}
 The following attributes are available for `renogy` sensors:
 
+<!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
 | `serial_path` | string | Optional | The full filesystem path to the serial device, starting with /dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. On a Raspberry Pi, you can also run `ls /dev/serial/by-path` to list USB serial devices. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Example: `"/dev/serial/by-path/usb-0:1.1:1.0"` <br>Default: `/dev/serial0` |

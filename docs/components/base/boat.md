@@ -47,6 +47,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `boat` bases:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `length_mm` | int | **Required** | Length of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
@@ -56,6 +57,7 @@ The following attributes are available for `boat` bases:
 
 Each [motor](/components/motor/) inside of `Motors` has the following attributes available:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `Name` | string | **Required** | Name of the motor. |

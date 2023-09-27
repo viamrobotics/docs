@@ -31,7 +31,7 @@ Navigate to the **Config** tab on your robot's page in [the Viam app](https://ap
 
 ![add reference frame pane](/services/frame-system/frame_card.png)
 
-Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and `orientation` (*deg*, *rad*, or *q*), according to the position and orientation of your component in relation to the `parent` frame.
+Select a `parent` frame and fill in the coordinates for `translation` (_mm_) and `orientation` (_deg_, _rad_, or _q_), according to the position and orientation of your component in relation to the `parent` frame.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -72,10 +72,11 @@ Select a `parent` frame and fill in the coordinates for `translation` (*mm*) and
 
 Configure the reference frame as follows:
 
+<!-- prettier-ignore -->
 | Parameter | Inclusion | Required |
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
-| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: *mm*. |
+| `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
 | `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
@@ -204,15 +205,16 @@ The resulting tree of reference frames looks like:
 
 ![reference frame tree](/services/frame-system/frame_tree.png)
 
-`viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining *two* reference frames for each component:
+`viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining _two_ reference frames for each component:
 
 1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
-2. Another representing the origin of the component, defined with the component's name and the suffix *"_origin"*.
+2. Another representing the origin of the component, defined with the component's name and the suffix _"\_origin"_.
 
 ## Access the Frame System
 
 The [Robot API](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) supplies the following method to interact with the frame system:
 
+<!-- prettier-ignore -->
 | Method Name | Description |
 | ----- | ----------- |
 | [`TransformPose`](#transformpose) | Transform a pose measured in one reference frame to the same pose as it would have been measured in another. |
@@ -336,21 +338,21 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 
 ## Additional Transforms
 
-*Additional Transforms* exist to help the frame system determine the location of and relationships between objects not initially known to the robot.
+_Additional Transforms_ exist to help the frame system determine the location of and relationships between objects not initially known to the robot.
 
 For example:
 
 - In our [example of nested dynamic attachment](/services/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
-    However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
+  However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
-    With the [vision service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
+  With the [vision service](/services/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-    If a [camera](/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
+  If a [camera](/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 
-    The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
+  The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 
-    With this information, the frame system could perform the right calculations to express the pose of the object in the `world` reference frame.
+  With this information, the frame system could perform the right calculations to express the pose of the object in the `world` reference frame.
 
 Usage:
 

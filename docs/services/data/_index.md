@@ -5,10 +5,10 @@ weight: 40
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
-description: "Capture data from a smart machine's components and sync it to the cloud."
+description: "Capture data from a robot's components and sync it to the cloud."
 aliases:
-    - "/data-management/"
-    - "/services/data-management/"
+  - "/data-management/"
+  - "/services/data-management/"
 icon: "/services/icons/data-capture.svg"
 # SME: Aaron Casas
 ---
@@ -21,17 +21,17 @@ The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud
 
 ## Data Capture
 
-The data management service captures data from one or more components locally on the smart machine's storage.
+The data management service captures data from one or more components locally on the robot's storage.
 The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
 
-If a smart machine restarts for any reason, capture automatically resumes.
+If a robot restarts for any reason, capture automatically resumes.
 
 The service can capture data from multiple components at the same or different frequencies.
 Viam does not impose a lower or upper limit on the frequency of data collection.
 However, in practice, your hardware may impose limits on the frequency of data collection.
 
 You can change the frequency of data capture at any time for individual components.
-If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all smart machines in a fleet at the component or smart machine level.
+If you use {{< glossary_tooltip term_id="fragment" text="fragments" >}}, you can change the frequency of data capture in real time for some or all robots in a fleet at the component or robot level.
 
 For example, consider a tomato picking robot with a 3D camera and an arm.
 When you configure the robot, you may set the camera to capture point cloud data at a frequency of 30Hz.
@@ -49,11 +49,11 @@ The data management service securely syncs the specified data to the cloud at th
 Viam does not impose a minimum or maximum on the frequency of data syncing.
 However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
 
-If the internet becomes unavailable or the smart machine needs to restart during the sync process, the service will try to resume sync indefinitely.
+If the internet becomes unavailable or the robot needs to restart during the sync process, the service will try to resume sync indefinitely.
 When the connection is restored, the service resumes the syncing process where it left off without duplicating data.
 For more detailed information, see [Considerations](#considerations).
 
-Once the service syncs a file to Viam's cloud, the service deletes the file locally from the smart machine's configured capture location.
+Once the service syncs a file to Viam's cloud, the service deletes the file locally from the robot's configured capture location.
 
 As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
@@ -68,26 +68,30 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
 
 - **Data Integrity**: Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
 
-    If the internet becomes unavailable or the smart machine needs to restart during the sync process, the sync is interrupted.
-    If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
-    When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
+  If the internet becomes unavailable or the robot needs to restart during the sync process, the sync is interrupted.
+  If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
+  When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
 
-    For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
-    Once the service retries and successfully connects, data synchronization resumes at 33%.
+  For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
+  Once the service retries and successfully connects, data synchronization resumes at 33%.
 
-    {{< alert title="Caution" color="caution" >}}
-If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
-    {{< /alert >}}
+  {{< alert title="Caution" color="caution" >}}
 
-- **Storage** When a smart machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+  If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
 
-    To ensure that the smart machine can store all data captured while it has no connection, you need to provide enough local data storage.
+  {{< /alert >}}
 
-    {{< alert title="Warning" color="warning" >}}
-Currently, the data management service can use the entire available disk space to store data.
-If the smart machine loses connectivity and remains disconnected, data capture can eventually use all disk space.
-Currently, Viam does not safeguard against this.
-    {{< /alert >}}
+- **Storage** When a robot loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+
+  To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
+
+  {{< alert title="Warning" color="warning" >}}
+
+  Currently, the data management service can use the entire available disk space to store data.
+  If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
+  Currently, Viam does not safeguard against this.
+
+  {{< /alert >}}
 
 ## API
 
@@ -97,7 +101,7 @@ The data management service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a smart machine configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your smart machine and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}
@@ -110,7 +114,7 @@ This method is not yet available in the Viam Python SDK.
 
 {{% /alert %}}
 
-Sync data stored on the smart machine to the cloud.
+Sync data stored on the robot to the cloud.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -129,7 +133,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers"}
 data, err := datamanager.FromRobot(robot, "my_data_service")
 
-// Sync data stored on the smart machine to the cloud.
+// Sync data stored on the robot to the cloud.
 err := data.Sync(context.Background(), nil)
 ```
 
@@ -138,7 +142,7 @@ err := data.Sync(context.Background(), nil)
 
 ## Next Steps
 
-To use the data management service, [add the data management service](configure-data-capture/#add-the-data-management-service) to your smart machine.
+To use the data management service, [add the data management service](configure-data-capture/#add-the-data-management-service) to your robot.
 Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
@@ -149,5 +153,5 @@ Once you have configured data capture and cloud sync, you can [view](../../manag
 
 ### Train and Deploy Machine Learning
 
-You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your smart machines](../../services/ml/) from the Viam app.
+You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
 You can also [upload and use existing models](../../manage/ml/upload-model/).

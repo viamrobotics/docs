@@ -18,25 +18,25 @@ no_list: true
 
 Brief description of the component and what you can do with it.
 
-Use cases:
+Use cases (optional):
 
 - A brief description of one sample use case.
 - ...
 
-Most robots with a COMPONENT need at least the following hardware:
+Most robots with a COMPONENT need at least the following hardware (optional):
 
 - Board
 - ...
 
 ## Configuration
 
-The COMPONENT component supports the following models.
-Click on the component model name for detailed configuration information.
+For configuration information, click on one of the supported COMPONTENT models:
 
-Model | Description
------ | -----------
-[`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)
-[`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE)
+<!-- prettier-ignore -->
+| Model               | Description                                                         |
+| ------------------- | ------------------------------------------------------------------- |
+| [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
+| [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
 
 If you want to use another COMPONENT model with Viam, you can [define a custom component](../../extend/).
 
@@ -77,8 +77,8 @@ import (
 
 The COMPONENT component supports the following methods:
 
-*Writing Instructions: Use the method names in the protobuf, not the Python or Go-specific method names.*
-*Use an included snippet so you can add it to <file>/program/apis/</file>.*
+_Writing Instructions: Use the method names in the protobuf, not the Python or Go-specific method names._
+_Use an included snippet so you can add it to <file>/program/apis/</file>._
 
 {{< readfile "/static/include/components/apis/component.md" >}}
 

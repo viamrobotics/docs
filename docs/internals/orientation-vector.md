@@ -5,7 +5,7 @@ weight: 10
 type: "docs"
 description: "A description of Viam's orientation vector object."
 aliases:
-    - "/appendix/orientation-vector"
+  - "/appendix/orientation-vector"
 ---
 
 An _orientation vector_ specifies the orientation of an object in 3D space.
@@ -38,7 +38,7 @@ If you are familiar with the pitch-roll-yaw system, you can think of theta as _r
 If your camera is perpendicular to one of the axes of your Frame system,
 you can determine Theta by looking at the picture and changing the value to 0, 90, 180, or 270 until the orientation of the picture is correct.
 
- OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
+OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
 
 ## Why Viam uses orientation vectors
 

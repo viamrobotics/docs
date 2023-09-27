@@ -47,6 +47,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `fake` boards:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `fail_new` | bool | **Required** | If the fake board should raise an error at robot start-up. |
