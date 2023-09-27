@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a UFACTORY xArm 7 for your robot."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
-# SMEs: William Spies
+# SMEs: Bucket, Motion
 ---
 
 Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot:

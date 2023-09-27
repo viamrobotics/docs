@@ -5,7 +5,7 @@ weight: 34
 type: "docs"
 description: "Configure a UFACTORY Lite 6 arm for your robot."
 tags: ["arm", "components"]
-# SMEs: William Spies
+# SMEs: Bucket, Motion
 ---
 
 Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your robot:

@@ -7,7 +7,7 @@ draft: "true"
 description: "Configure an eva arm."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
-# SMEs: William Spies
+# SMEs: Bucket, Motion
 ---
 
 Configure an `eva` arm to integrate a [Automata Eva](https://automata.tech/products/hardware/about-eva/) robotic arm into your robot.
