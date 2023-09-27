@@ -18,7 +18,7 @@ no_list: true
 
 Brief description of the component and what you can do with it.
 
-Use cases:
+Use cases (optional):
 
 - A brief description of one sample use case.
 - ...
