@@ -27,7 +27,7 @@ For example, you can:
 
 - **Implement a custom service:** If your robot makes use of a specialty algorithm or data model when working with services such as [SLAM](/services/slam/), [Vision](/services/vision/), or [Motion planning](/services/motion/), you can implement your own algorithm or model against the corresponding service API.
 
-- **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the generic API.
+- **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the [generic API](/components/generic/).
 
 These custom implementations are called _modular resources_, and are made available for use on a robot through {{< glossary_tooltip term_id="module" text="modules" >}}.
 A module can provide one or more modular resources, and can be added to your robot from the Viam registry.
