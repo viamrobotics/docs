@@ -53,7 +53,7 @@ Edit and fill in the attributes as applicable.
       "type": "arm",
       "model": "ur5e",
       "attributes": {
-        "speed_degs_per_sec": 0.8,
+        "speed_degs_per_sec": 30,
         "host": "10.1.10.82"
       },
       "depends_on": []
