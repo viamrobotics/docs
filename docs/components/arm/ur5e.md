@@ -29,12 +29,12 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "model": "ur5e",
       "name": "<your-arm-name>",
       "type": "arm",
+      "model": "ur5e",
       "attributes": {
         "speed_degs_per_sec": <float>,
-        "host": "<your-host-address>",
+        "host": "<your-host-address>"
       },
       "depends_on": []
     }
@@ -49,18 +49,11 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "depends_on": [],
-      "model": "pi",
-      "name": "local",
-      "type": "board",
-      "attributes": {}
-    },
-    {
       "name": "my-arm",
       "type": "arm",
       "model": "ur5e",
       "attributes": {
-        "speed_degs_per_sec": 1,
+        "speed_degs_per_sec": 0.8,
         "host": "10.1.10.82"
       },
       "depends_on": []
@@ -77,5 +70,5 @@ The following attributes are available for `ur5e` arms:
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
-| `speed_degs_per_sec`  | float | **Required** | Desired maximum speed of joint movement in degrees/sec. <br> Range: `[.1, 1]` |
-| `host`  | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |
+| `speed_degs_per_sec` | float | **Required** | Desired maximum speed of joint movement in degrees per second. Must be between `18` and `180`. |
+| `host` | string | **Required** | The IP address of the arm's system on your network. Find this when setting up your UR5e. |

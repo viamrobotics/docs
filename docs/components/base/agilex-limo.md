@@ -33,8 +33,8 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-base-name>",
-      "type": "base",
       "model": "agilex-limo",
+      "type": "base",
       "attributes": {
         "drive_mode": "<your-drive-mode>",
         "serial_path": "<your-serial-path>"

@@ -68,47 +68,53 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "attributes": {},
+      "name": "my-pi",
       "model": "pi",
-      "name": "follow-pi",
-      "type": "board"
+      "type": "board",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": []
     },
     {
+      "name": "rightm",
+      "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
-        "board": "follow-pi",
-        "max_rpm": 300,
         "pins": {
           "dir": "16",
           "pwm": "15"
-        }
+        },
+        "board": "my-pi"
       },
-      "model": "gpio",
-      "name": "rightm",
-      "type": "motor"
+      "depends_on": []
     },
     {
+      "name": "leftm",
+      "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
-        "board": "follow-pi",
-        "max_rpm": 300,
         "pins": {
           "dir": "13",
           "pwm": "11"
-        }
+        },
+        "board": "my-pi"
       },
-      "model": "gpio",
-      "name": "leftm",
-      "type": "motor"
+      "depends_on": []
     },
     {
-      "attributes": {
-        "left": ["leftm"],
-        "right": ["rightm"],
-        "wheel_circumference_mm": 183,
-        "width_mm": 195
-      },
+      "name": "my-wheeled-base",
       "model": "wheeled",
-      "name": "tread-base",
-      "type": "base"
+      "type": "base",
+      "namespace": "rdk",
+      "attributes": {
+        "width_mm": 195,
+        "wheel_circumference_mm": 183,
+        "left": ["leftm"],
+        "right": ["rightm"]
+      },
+      "depends_on": []
     }
   ]
 }

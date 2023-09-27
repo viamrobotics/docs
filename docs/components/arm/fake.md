@@ -22,7 +22,7 @@ Enter a name for your arm and click **Create**.
 ![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 
 Edit and fill in the attributes as applicable.
-This example sets the `fake` arm to act as a `ur5e` arm.
+You can copy-paste from [the attribute examples](#attributes-examples) to help with formatting.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -30,11 +30,28 @@ This example sets the `fake` arm to act as a `ur5e` arm.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<arm_name>",
-  "type": "arm",
   "model": "fake",
+  "type": "arm",
   "attributes": {
-    "arm-model": "<your_arm_model>"
+    "arm-model": "<your_arm_model>",
+    "model-path": "<path_to_arm_model>"
   }
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "my-fake-arm",
+  "model": "fake",
+  "type": "arm",
+  "namespace": "rdk",
+  "attributes": {
+    "arm-model": "ur5e"
+  },
+  "depends_on": []
 }
 ```
 
@@ -46,7 +63,7 @@ The following attributes are available for `fake` arms:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `arm-model` | string | Optional | `name` of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#configuration) for supported model names. |
+| `arm-model` | string | Optional | Model name of the robotic arm model you want your fake arm to act as. See [built-in arm models](../#configuration) for supported model names. |
 | `model-path` | string | Optional | The path to the [kinematic configuration file](/internals/kinematic-chain-config/) of the arm driver you want your fake arm to act as. This path should point to the exact location where the file is located on your computer running `viam-server`. |
 
 {{% alert title="Important" color="note" %}}
@@ -57,35 +74,32 @@ If both attributes are specified, an error is thrown stating "can only populate 
 
 {{% /alert %}}
 
-Refer to the following JSON examples for differences in configuration between the two attributes available:
+### Attributes examples
 
-{{< tabs name="Configuration with arm-model or model-path" >}}
-{{% tab name="arm-model JSON Example" %}}
+Paste one of the following examples into the **Attributes** section of your config:
+
+{{< tabs >}}
+{{% tab name="arm-model example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "<arm-name>",
-  "type": "arm",
-  "model": "fake",
-  "attributes": {
-    "arm-model": "ur5e"
-  }
+  "arm-model": "ur5e"
 }
 ```
+
+Replace `ur5e` with the name of the arm model you want to use.
+Examples include `xArm6`, `xArm7`, and `xArmLite`.
 
 {{% /tab %}}
-{{% tab name="model-path JSON Example" %}}
+{{% tab name="model-path example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "<arm-name>",
-  "type": "arm",
-  "model": "fake",
-  "attributes": {
-    "model-path": "</Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json>"
-  }
+  "model-path": "</Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json>"
 }
 ```
+
+Replace the string with the path to your arm model.
 
 {{% /tab %}}
 {{< /tabs >}}
