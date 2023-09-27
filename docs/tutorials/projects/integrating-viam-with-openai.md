@@ -329,7 +329,7 @@ Click on the **Services** subtab and click the **Create service** button.
 Search `speech`.
 Select the `speech/speechio` option:
 
-{{<imgproc src="/tutorials/ai-integration/add-speech-module.png" resize="400x" declaredimensions=true alt="Add the speech module in the Viam config builder UI for services." style="max-width: 350px">}}
+![Add the speech module in the Viam config builder UI for services.](/tutorials/ai-integration/add-speech-module.png)
 
 Give your new speech module a name of your choice.
 Copy and paste the following JSON into the attributes box:
