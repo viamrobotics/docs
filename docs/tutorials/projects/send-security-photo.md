@@ -120,11 +120,9 @@ Click the **Services** subtab.
 
    In the new vision service panel, configure your service.
 
-   ![vision service panel called myPeopleDetector with empty Attributes section](/tutorials/tipsy/app-service-vision-before.png)
+   Select `people` from the **ML Model** drop-down.
 
-   Name the ml model name `people`.
-
-   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision-after.png)
+   ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision.png)
 
 ### Configure the detection camera
 
