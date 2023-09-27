@@ -627,7 +627,7 @@ async def main():
 
     # Get waypoints again, check to see that one has been added
     waypoints = await nav_service.get_waypoints()
-    assert(len(waypoints) == 1)
+    assert (len(waypoints) == 1)
 
     # Avoid obstacles
     await nav_avoid_obstacles(base, nav_service, obstacle_detection_service)
