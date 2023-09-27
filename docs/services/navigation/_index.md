@@ -121,7 +121,7 @@ The following attributes are available for `Navigation` services:
 | `vision_services` | array | Optional | The `name` of each [vision service](/services/motion/) you have configured for the base you are operating with this service. |
 | `position_polling_frequency` | float | Optional | The frequency to poll for the position of the robot. <br> Default: `2` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in hz to poll each vision service for new obstacles. <br> Default: `2` |
-| `plan_deviation_m` | float | Optional | The distance in meters that a robot is allowed to deviate from the motion plan. <br> Default: `1e9`|
+| `plan_deviation_m` | float | Optional | The distance in meters that a robot is allowed to deviate from the motion plan. <br> Default: `3`|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `60` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.3` |
 | `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [motion service](/services/motion/) for more information. |
