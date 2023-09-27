@@ -18,7 +18,7 @@ Configure a `fake` power sensor to integrate into your robot:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and navigate to the **Create component** menu.
+Click on the **Components** subtab and click **Create component** in the lower-left corner.
 Select the type `power_sensor`, then select the `fake` model.
 Name your sensor, and click **Create**.
 
@@ -29,10 +29,10 @@ Name your sensor, and click **Create**.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-sensor-name>",
-    "type": "power_sensor",
-    "model": "fake",
-    "attributes": {}
+  "name": "<your-sensor-name>",
+  "type": "power_sensor",
+  "model": "fake",
+  "attributes": {}
 }
 ```
 

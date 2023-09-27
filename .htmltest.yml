@@ -24,6 +24,7 @@ IgnoreURLs:
 - "digikey.com"
 - "ufactory.cc"
 - "medium.com"
+- "radxa.com"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"

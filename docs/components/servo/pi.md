@@ -55,18 +55,18 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-        "name": "local",
-        "type": "board",
-        "model": "pi"
+      "name": "local",
+      "type": "board",
+      "model": "pi"
     },
     {
-        "name": "my_servo",
-        "type": "servo",
-        "model": "pi",
-        "attributes": {
-            "pin": "16",
-            "board": "local"
-        }
+      "name": "my_servo",
+      "type": "servo",
+      "model": "pi",
+      "attributes": {
+        "pin": "16",
+        "board": "local"
+      }
     }
   ]
 }
@@ -82,6 +82,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `pi` servos:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin the servo's control wire is wired to on the [board](/components/board/). |

@@ -44,6 +44,7 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `velodyne` cameras:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `port` | int | **Required** | The port the Velodyne camera is running on. |

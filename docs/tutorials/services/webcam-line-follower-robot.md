@@ -8,10 +8,10 @@ webmSrc: "/tutorials/webcam-line-follower/lf-tape-follow3.webm"
 mp4Src: "/tutorials/webcam-line-follower/lf-tape-follow3.mp4"
 videoAlt: "The green line the camera sees as the rover moves along it."
 aliases:
-    - "/tutorials/webcam-line-follower-robot/"
-authors: [ "Jessamy Taylor" ]
-languages: [ "python" ]
-viamresources: [ "vision", "camera" ]
+  - "/tutorials/webcam-line-follower-robot/"
+authors: ["Jessamy Taylor"]
+languages: ["python"]
+viamresources: ["vision", "camera", "base"]
 level: "Intermediate"
 date: "2022-08-26"
 updated: "2023-08-04"
@@ -45,6 +45,7 @@ If you'd like to directly see the code, check out the [**Line Follower Code on G
 
 To build your own line follower robot, you need the following hardware:
 
+<!-- prettier-ignore -->
 | Hardware | Avg. price |
 | -------- | ----------------- |
 | **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/installation/#prepare-your-board). | $60 |
@@ -70,29 +71,29 @@ Click on the **Components** subtab.
 
 1. **Add the board.**
 
-    Click **Create component**.
-    Select the type `board`, and select the `pi` model.
-    Enter `local` as the name of your [board component](/components/board/), then click **Create**.
+   Click **Create component**.
+   Select the type `board`, and select the `pi` model.
+   Enter `local` as the name of your [board component](/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
-    Click **Create component**.
-    Select the type `motor`, and select the `gpio` model.
-    Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
-    Repeat the same for the right motor and call it `rightm`.
+   Click **Create component**.
+   Select the type `motor`, and select the `gpio` model.
+   Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
+   Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
-    Click **Create component**.
-    Select the type `base`, and select the `wheeled` model.
-    Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
+   Click **Create component**.
+   Select the type `base`, and select the `wheeled` model.
+   Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
-    Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
-    Click **Create component** to add the camera.
-    If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a drop-down populated with camera paths that have been identified on your machine.
-    Select the path to the camera you want to use.
+   Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
+   Click **Create component** to add the camera.
+   If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a drop-down populated with camera paths that have been identified on your machine.
+   Select the path to the camera you want to use.
 
 5. Click **Save config** in the bottom left corner of the screen.
 
@@ -128,9 +129,7 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
         "board": "local",
         "max_rpm": 200
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "name": "rightm",
@@ -146,9 +145,7 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
         "board": "local",
         "max_rpm": 200
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "name": "scuttlebase",
@@ -157,17 +154,10 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
       "attributes": {
         "width_mm": 400,
         "wheel_circumference_mm": 258,
-        "left": [
-          "leftm"
-        ],
-        "right": [
-          "rightm"
-        ]
+        "left": ["leftm"],
+        "right": ["rightm"]
       },
-      "depends_on": [
-        "leftm",
-        "rightm"
-      ]
+      "depends_on": ["leftm", "rightm"]
     },
     {
       "name": "my_camera",
@@ -228,43 +218,43 @@ Click on the **Services** subtab.
 
 1. **Add a vision service.**
 
-  Next, add a vision service [detector](/services/vision/detection/):
+Next, add a vision service [detector](/services/vision/detection/):
 
-  Click the **Create service** button in the lower-left corner of the **Services** subtab.
-  Select type `Vision` and model `Color Detector`.
-  Enter `green_detector` for the name, then click **Create**.
+Click the **Create service** button in the lower-left corner of the **Services** subtab.
+Select type `Vision` and model `Color Detector`.
+Enter `green_detector` for the name, then click **Create**.
 
-  In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
-  Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
-  We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
+In your vision service’s panel, select the color your vision service will be detecting, as well as a hue tolerance and a segment size (in pixels).
+Use a color picker like [colorpicker.me](https://colorpicker.me/) to approximate the color of your line and get the corresponding rgb or hex value.
+We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrical tape, and specified a segment size of 100 pixels with a tolerance of 0.06, but you can tweak these later to fine tune your line follower.
 
 2. Click **Save config** in the bottom left corner of the screen.
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-  If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
-  This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
+If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
+This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
-  Click on the **Components** subtab and click **Create component**.
-  Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
-  Name it `transform_cam` and click **Create**.
+Click on the **Components** subtab and click **Create component**.
+Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Name it `transform_cam` and click **Create**.
 
-  Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
+Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
-  ```json
-  {
-    "source": "my_camera",
-    "pipeline": [
-      {
-        "type": "detections",
-        "attributes": {
-            "detector_name": "green_detector",
-            "confidence_threshold": 0.6
-        }
+```json
+{
+  "source": "my_camera",
+  "pipeline": [
+    {
+      "type": "detections",
+      "attributes": {
+        "detector_name": "green_detector",
+        "confidence_threshold": 0.6
       }
-    ]
-  }
-  ```
+    }
+  ]
+}
+```
 
 4. Click **Save config** in the bottom left corner of the screen.
 
@@ -295,9 +285,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "board": "local",
         "max_rpm": 200
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "name": "rightm",
@@ -313,9 +301,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "board": "local",
         "max_rpm": 200
       },
-      "depends_on": [
-        "local"
-      ]
+      "depends_on": ["local"]
     },
     {
       "name": "scuttlebase",
@@ -324,17 +310,10 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "attributes": {
         "width_mm": 400,
         "wheel_circumference_mm": 258,
-        "left": [
-          "leftm"
-        ],
-        "right": [
-          "rightm"
-        ]
+        "left": ["leftm"],
+        "right": ["rightm"]
       },
-      "depends_on": [
-        "leftm",
-        "rightm"
-      ]
+      "depends_on": ["leftm", "rightm"]
     },
     {
       "name": "my_camera",
@@ -591,7 +570,7 @@ To run the program:
 
    The robot should continue moving along the line until it no longer sees the color of your detector except at the back of the frame, at which point it should stop moving and the code will terminate.
 
-    {{<gif webm_src="/tutorials/webcam-line-follower/lf-tape-follow3.webm" mp4_src="/tutorials/webcam-line-follower/lf-tape-follow3.mp4" alt="The green line the camera sees as the rover moves along it." class="aligncenter" max-width="300px">}}
+   {{<gif webm_src="/tutorials/webcam-line-follower/lf-tape-follow3.webm" mp4_src="/tutorials/webcam-line-follower/lf-tape-follow3.mp4" alt="The green line the camera sees as the rover moves along it." class="aligncenter" max-width="300px">}}
 
 ## Next steps
 
@@ -613,7 +592,7 @@ If your rover keeps driving off the line so fast that the color detector can’t
 - Slow down the forward movement and turning speeds of the rover by decreasing the values of `linear_power` and `angular_power` respectively.
   - Conversely, if your rover is moving too slowly or stalling, increase the numbers (closer to `1.0` which represents full power).
 - Position the camera differently, perhaps so that it is higher above the floor but still pointing downward.
-This will give it a wider field of view so it takes longer for the line to go out of view.
+  This will give it a wider field of view so it takes longer for the line to go out of view.
 
 ### Issue: The robot is not detecting the color accurately
 
@@ -622,7 +601,7 @@ Things to try:
 - Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/services/vision/detection/#configure-a-color_detector) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
-Be sure to update your `detect_color` parameter accordingly.
+  Be sure to update your `detect_color` parameter accordingly.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 

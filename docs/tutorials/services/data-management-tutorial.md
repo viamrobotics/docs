@@ -7,13 +7,13 @@ image: "/tutorials/data-management/image1.png"
 imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
 images: ["/tutorials/data-management/image1.png"]
 aliases:
-    - "/tutorials/data-management-tutorial/"
-    - "/tutorials/data-management/"
-    - "/manage/data-management/data-management-tutorial/"
-tags: ["data management", "data", "services", "try viam"]
+  - "/tutorials/data-management-tutorial/"
+  - "/tutorials/data-management/"
+  - "/manage/data-management/data-management-tutorial/"
+tags: ["data management", "data_manager", "services", "try viam"]
 authors: []
 languages: []
-viamresources: [ "data_manager", "camera" ]
+viamresources: ["data_manager", "camera"]
 level: "Intermediate"
 date: "2023-02-08"
 # updated: ""
@@ -51,7 +51,7 @@ However, if you want to manage your robot's captured data yourself, it's possibl
 
    To learn more about the Try Viam experience, see [Try Viam](/try-viam/).
 
-    {{% alert title="Tip" color="tip" %}}
+   {{% alert title="Tip" color="tip" %}}
 
 If you are using your own robot, be sure that you have [`viam-server` installed](/installation/) on your robot.
 The data management setup process will be mostly the same, but you will need to substitute your robot's components.
@@ -60,8 +60,8 @@ The data management setup process will be mostly the same, but you will need to 
 
 1. **Go**
 
-    To use the [data export feature](#export-captured-data), you need to have the <a href="https://go.dev/dl/" target="_blank">Go binary</a> installed on your local development computer.
-    We suggest that you install this before your reservation starts to maximize your time with your rover.
+   To use the [data export feature](#export-captured-data), you need to have the <a href="https://go.dev/dl/" target="_blank">Go binary</a> installed on your local development computer.
+   We suggest that you install this before your reservation starts to maximize your time with your rover.
 
 ## Add the data management service
 
@@ -97,24 +97,26 @@ This allows you to capture not just image data, but sensor data, robot state dat
 
 To enable image data capture for a camera component, follow these steps:
 
-1. Navigate to the **Components** subtab of your robot's **Config** tab.
-2. Scroll down to the camera component.
-   If you are using a Viam Rover, the camera is named `cam`.
-   The camera component has a section labeled **Data Capture Configuration**.
-3. Click `Add Method` to enable data capture for this camera.
+1.  Navigate to the **Components** tab on your robot's **Config** page.
+2.  Scroll down to the camera component.
+    If you are using a Viam Rover, the camera is named `cam`.
+    The camera component has a section labeled **Data Capture Configuration**.
+3.  Click `Add Method` to enable data capture for this camera.
 
-   - Set the **Type** to "ReadImage" and the **Frequency** to `0.333`.
-     This will capture an image from the camera roughly once every 3 seconds.
-     Feel free to adjust the frequency if you want the camera to capture more or less image data.
+    - Set the **Type** to "ReadImage" and the **Frequency** to `0.333`.
+      This will capture an image from the camera roughly once every 3 seconds.
+      Feel free to adjust the frequency if you want the camera to capture more or less image data.
 
-     {{< alert title="Caution" color="caution" >}}
+      {{< alert title="Caution" color="caution" >}}
+
 Avoid configuring data capture to higher rates than your hardware can handle, as this leads to performance degradation.
-     {{< /alert >}}
 
-   - Select the MIME type you want to capture.
-     Select `image/jpeg` data for this tutorial.
+      {{< /alert >}}
 
-4. Click **Save Config** at the bottom of the window.
+    - Select the MIME type you want to capture.
+      Select `image/jpeg` data for this tutorial.
+
+4.  Click **Save Config** at the bottom of the window.
 
 Now your image data will be saved locally on your robot in <file>~/.viam/capture</file>, or whatever directory you configured the captured data from your data management service to be saved to.
 

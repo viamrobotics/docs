@@ -9,8 +9,8 @@ imageAlt: "BeagleBone A I-64"
 images: ["/installation/thumbnails/beaglebone.png"]
 no_list: true
 aliases:
-    - "/installation/beaglebone-install/"
-    - "/installation/prepare/beaglebone-install/"
+  - "/installation/beaglebone-install/"
+  - "/installation/prepare/beaglebone-install/"
 # SMEs: Shawn, Matt Dannenberg, and Rand
 ---
 
@@ -29,7 +29,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 2. A 5V barrel jack (recommended) and/or USB-C power supply, to power the BeagleBone
 3. Ethernet cable and/or WiFi dongle, to establish network connection on the BeagleBone
 4. (Optional) A microSD card and a way to connect the microSD card to the computer (like a microSD slot or microSD reader)
-    - This is required if you need to set up your BeagleBone for the first time or update your BeagleBone to the latest software image.
+   - This is required if you need to set up your BeagleBone for the first time or update your BeagleBone to the latest software image.
 
 The following instructions mirror the instructions given in the BeagleBoard documentation at [Connecting up your BeagleBone](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) and [Getting Started with your BeagleBone](https://beagleboard.org/getting-started).
 
@@ -40,7 +40,7 @@ If you want additional help setting up your BeagleBone, you can follow the guide
 Power your board by plugging a 5VDC power source into the BeagleBone's barrel jack.
 You can also power the BeagleBone with a USB-C cable, but a 5VDC power source is recommended for more reliable performance.
 
-If the board has power, the LED on the board labeled *PWR* or *ON* is lit steadily.
+If the board has power, the LED on the board labeled _PWR_ or _ON_ is lit steadily.
 
 ### Step 2: Enable a network connection
 
@@ -49,7 +49,7 @@ You can do this in multiple ways:
 
 - Connect an ethernet cable to your BeagleBone's ethernet port.
 - If you are working on a macOS machine, use [internet sharing over USB](https://support.apple.com/guide/mac-help/share-internet-connection-mac-network-users-mchlp1540/mac) to share your connection.
-   After enabling the option on your machine, SSH into your BeagleBone and run `sudo dhclient usb1`.
+  After enabling the option on your machine, SSH into your BeagleBone and run `sudo dhclient usb1`.
 - If you are working on a Linux machine, read [these tips on enabling a network connection](https://elinux.org/Beagleboard:Terminal_Shells).
 - If your personal computer supports mDNS (Multicast DNS), you can check to see if your BeagleBone board has established a network connection by visiting [beaglebone.local](https://beaglebone.local).
 

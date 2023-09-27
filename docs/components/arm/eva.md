@@ -19,11 +19,10 @@ Configure an `eva` arm as follows:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<arm_name>",
-    "type": "arm",
-    "model": "eva",
-    "attributes": {
-    }
+  "name": "<arm_name>",
+  "type": "arm",
+  "model": "eva",
+  "attributes": {}
 }
 ```
 
@@ -32,6 +31,7 @@ Configure an `eva` arm as follows:
 
 The following attributes are available for fake arms:
 
+<!-- prettier-ignore -->
 | Name | Inclusion | Description |
 | ---- | --------- | ----------- |
 | | |  |

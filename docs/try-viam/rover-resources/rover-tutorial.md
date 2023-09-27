@@ -20,7 +20,7 @@ You must purchase the following hardware separately:
 - A Raspberry Pi 4
 - Four 18650 batteries (with charger)
 - A MicroSD card and an adapter/reader
-{{< /alert >}}
+  {{< /alert >}}
 
 {{<imgproc src="try-viam/rover-resources/viam-rover/rover-front.jpg" resize="400x" declaredimensions=true alt="The front of the assembled Viam Rover">}}
 
@@ -34,7 +34,7 @@ This guide covers what's inside the kit, describes each component, provides inst
 
 1. Four M2.5 screws for mounting your Raspberry Pi.
 
-    {{<imgproc src="try-viam/rover-resources/viam-rover/screws.jpg" resize="200x" declaredimensions=true alt="Four screws" >}}
+   {{<imgproc src="try-viam/rover-resources/viam-rover/screws.jpg" resize="200x" declaredimensions=true alt="Four screws" >}}
 
 1. Two spare stiffer suspension springs.
    You can swap them out with the springs that come with the rover if you need stiffer suspension for higher payload applications.
@@ -43,13 +43,13 @@ This guide covers what's inside the kit, describes each component, provides inst
 
 1. Three different Allen wrenches (1.5 mm, 2 mm, and 2.5 mm) to unscrew the top and mount the Raspberry Pi.
 
-    {{<imgproc src="try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
+   {{<imgproc src="try-viam/rover-resources/viam-rover/allen-wrenches.png" resize="180x" alt="Three allen wrenches" >}}
 
 1. Ten female-to-female jumper wires.
    All of the wires' colors correspond to the included wiring diagram.
    Six are for the motor controller and four are for the accelerometer.
 
-    {{<imgproc src="try-viam/rover-resources/viam-rover/jumper-wires.jpg" resize="400x" declaredimensions=true alt="Ten colorful jumper wires" >}}
+   {{<imgproc src="try-viam/rover-resources/viam-rover/jumper-wires.jpg" resize="400x" declaredimensions=true alt="Ten colorful jumper wires" >}}
 
 All together, your kit looks like this:
 
@@ -190,6 +190,7 @@ Wire your Pi to the buck converter, the acceleration tilt module, and the DC mot
 
 The following pinout corresponds to the diagram:
 
+<!-- prettier-ignore -->
 | Component | Component Pin | Raspberry Pi Pin | Wire Color |
 | --------- | --- | ---------------- | ---------- |
 | Buck Converter | GND | 39 | black |

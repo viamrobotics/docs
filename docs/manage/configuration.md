@@ -12,7 +12,7 @@ tags: ["manage", "components"]
 
 Before you can program a robot, you must configure it.
 
-A robot's configuration tells the code running the robot what *resources* (hardware *components* and software *services*) it has access to, as well as any relevant parameters for those resources.
+A robot's configuration tells the code running the robot what _resources_ (hardware _components_ and software _services_) it has access to, as well as any relevant parameters for those resources.
 
 To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
@@ -20,8 +20,13 @@ The setup steps copy your robots credentials to your robot and store them at <fi
 The credentials look like this:
 
 ```json
-{"cloud":{"app_address":"https://app.viam.com:123","id":"123456ab-a1b2-12a3-a123-1a2b345cdefg6",
-"secret":"LOCATION SECRET FROM THE VIAM APP"}}
+{
+  "cloud": {
+    "app_address": "https://app.viam.com:123",
+    "id": "123456ab-a1b2-12a3-a123-1a2b345cdefg6",
+    "secret": "LOCATION SECRET FROM THE VIAM APP"
+  }
+}
 ```
 
 {{% snippet "show-secret.md" %}}
@@ -89,7 +94,7 @@ If you add components in **Builder** mode and click **Save Config** at the botto
         "board": "local",
         "max_rpm": 120
       },
-      "depends_on": [],
+      "depends_on": []
     },
     {
       "name": "my_camera",
@@ -155,20 +160,20 @@ You must configure each component with a type, a model, a name, attributes, and 
   Components of a given type have a common API.
 
 - `model`: Indicates the more specific category of hardware.
-Components of the same model are supported using the same low-level code.
+  Components of the same model are supported using the same low-level code.
 
 - `name`: Serves as an identifier when accessing the resource from your code, as well as when configuring other resources that are dependent on that resource.
-You can choose any unique name for a component.
+  You can choose any unique name for a component.
 
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
   See the [component documentation](/components/) for a given component type and model for more details.
 
-   {{% alert title="Tip" color="tip" %}}
+  {{% alert title="Tip" color="tip" %}}
 
-   Some optional attributes have default values.
-   If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
+  Some optional attributes have default values.
+  If you omit these attributes from your config, or if you include them but leave their values empty, `viam-server` will apply these default values at runtime, even though they are not reflected in the configuration file.
 
-   {{% /alert %}}
+  {{% /alert %}}
 
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
@@ -215,7 +220,7 @@ Find more information in our [remotes documentation](../parts-and-remotes/).
 
 ## Processes
 
-To automatically run a specified script when the robot boots, configure a *process*.
+To automatically run a specified script when the robot boots, configure a _process_.
 
 Start by giving the process a **Name** (`id` in raw JSON) (an identifier of your choice) and clicking **Create Process**.
 
@@ -290,10 +295,8 @@ In the `Raw JSON` configuration, you will see the fragment ID in the `fragments`
 
 ```json
 {
-  "components": [ ],
-  "fragments": [
-    "3e8e0e1c-f515-4eac-8307-b6c9de7cfb84"
-  ]
+  "components": [],
+  "fragments": ["3e8e0e1c-f515-4eac-8307-b6c9de7cfb84"]
 }
 ```
 
@@ -307,10 +310,10 @@ If you need to modify the config of just one robot that uses a fragment you can 
 1. Go to the **Fragments** subtab of the **Config** tab.
 2. Click **Remove** next to the fragment.
 3. Select and copy the contents of the fragment in the box on the right side of the **Fragments** subtab.
-5. Toggle to **Raw JSON** mode.
-6. Paste the raw fragment contents into the **Raw JSON** config field.
-7. Click **Save config**.
-8. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
+4. Toggle to **Raw JSON** mode.
+5. Paste the raw fragment contents into the **Raw JSON** config field.
+6. Click **Save config**.
+7. Now, you can edit the config either in **Raw JSON** mode or in **Builder** mode.
 
 ## Auth/network
 
@@ -331,11 +334,11 @@ Find more information in the [frame system documentation](/services/frame-system
 If you run into issues, here are some things to try:
 
 - Check the [**Logs** tab](/manage/fleet/robots/#logs) to view log messages and errors from `viam-server`.
-   You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your robot if needed.
+  You can also [access the local log file](/installation/manage/#view-viam-server-logs) on your robot if needed.
 - Make sure all configured components are actually saved to your config.
-   If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
+  If they aren't, you will see an **Unsaved Changes** note next to the **Save Config** button at the bottom of the config screen.
 - Try restarting `viam-server` by clicking **Restart** in the upper right corner of the app.
-   It takes a few minutes for the server to shut down and restart.
+  It takes a few minutes for the server to shut down and restart.
 - Make sure the issue is not hardware related.
   Some things to check are that the robot has adequate power, all wires are properly connected, and no chips or other hardware components are shorted or overheated.
 - See [Troubleshooting](/appendix/troubleshooting/) for additional troubleshooting steps.

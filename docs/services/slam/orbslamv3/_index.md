@@ -78,7 +78,7 @@ Paste the following into the **Attributes** field of your new service:
   "data_dir": "/home/<YOUR_USERNAME>/<ORBSLAM3_DIR>",
   "use_live_data": true,
   "delete_processed_data": true,
-  "sensors": [ "<your-webcam-name>" ],
+  "sensors": ["<your-webcam-name>"],
   "config_params": {
     "mode": "rgbd"
   }
@@ -145,6 +145,7 @@ Whether mapping data is present in <file>data_dir/map</file> at runtime and the 
 
 ### Mapping Modes
 
+<!-- prettier-ignore -->
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map in file>/map</file>. | No map is found in <file>/map</file>. |
@@ -249,17 +250,17 @@ If you do not already have a dataset from running SLAM live or another dataset y
 2. Copy the zipped file to the machine running `viam-server` and unzip it.
    For example:
 
-    ```sh {class="command-line" data-prompt="$"}
-    scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.
-    unzip viam-office-hallway-1-rgbd.zip
-    ```
+   ```sh {class="command-line" data-prompt="$"}
+   scp ~/Downloads/viam-office-hallway-1-rgbd.zip <YOUR_USERNAME>@<YOUR_MACHINE>.local:~/.
+   unzip viam-office-hallway-1-rgbd.zip
+   ```
 
 3. Rename the unzipped folder to <file>data</file> and place inside of the folder at <file>data_dir</file>. For example:
 
-    ```sh {class="command-line" data-prompt="$"}
-    cd /home/<YOUR_USERNAME>/<ORBSLAM3_DIR>
-    mv ~/Downloads/viam-office-hallway-1-rgbd data/
-    ```
+   ```sh {class="command-line" data-prompt="$"}
+   cd /home/<YOUR_USERNAME>/<ORBSLAM3_DIR>
+   mv ~/Downloads/viam-office-hallway-1-rgbd data/
+   ```
 
 {{% /tab %}}
 {{% tab name="/map" %}}
@@ -268,6 +269,7 @@ Whether mapping data is present in <file>data_dir/map</file> at runtime and the 
 
 ### Mapping Modes
 
+<!-- prettier-ignore -->
 | Mode | Description | Runtime Dictation |
 | ---- | ----------- | ------- |
 | PURE MAPPING | Generate a new map. | No map is found in <file>/map</file>. |
@@ -291,6 +293,7 @@ These are generated at runtime, so there is no need to adjust this folder.
 {{% tabs name="Attributes"%}}
 {{% tab name="Attributes" %}}
 
+<!-- prettier-ignore -->
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to the directory used for saving input <file>/data</file> and output <file>/map</file> visualizations. |
@@ -315,6 +318,7 @@ Setting `delete_processed_data: true` and `use_live_data: false` is invalid and 
 
 Adjust these parameters to fine-tune the algorithm `orbslamv3` utilizes:
 
+<!-- prettier-ignore -->
 | Parameter Mode | Description | Inclusion | Default Value |
 | -------------- | ----------- | --------- | ------------- |
 | `mode` | `rgbd` or `mono` | **Required** | No default |
