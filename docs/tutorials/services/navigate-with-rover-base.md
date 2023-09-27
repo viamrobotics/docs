@@ -591,7 +591,11 @@ async def connect():
     return await RobotClient.at_address('INSERT REMOTE ADDRESS, FOUND IN CONTROL TAB', opts)
 
 
-async def nav_avoid_obstacles(base: Base, nav_service:NavigationClient, obstacle_detection_service: VisionClient):
+async def nav_avoid_obstacles(
+    base: Base,
+    nav_service: NavigationClient,
+    obstacle_detection_service: VisionClient
+):
     while True:
         obstacle = await obstacle_detection_service.get_object_point_clouds("myRealSense")
         print("obstacle: ", obstacle)
