@@ -597,7 +597,9 @@ async def nav_avoid_obstacles(
     obstacle_detection_service: VisionClient
 ):
     while True:
-        obstacle = await obstacle_detection_service.get_object_point_clouds("myRealSense")
+        obstacle = await obstacle_detection_service.get_object_point_clouds(
+          "myRealSense"
+        )
         print("obstacle: ", obstacle)
         z = obstacle[0].geometries.geometries[0].center.z
         print (z)
