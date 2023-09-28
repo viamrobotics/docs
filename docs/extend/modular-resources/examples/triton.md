@@ -43,9 +43,9 @@ Give your resource a name of your choice and click **Create**.
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Add the following to your `"modules` array:
+Add the following to your `"modules"` array:
 
-```json
+```json {class="line-numbers linkable-line-numbers"}
 {
   "type": "registry",
   "name": "viam_mlmodelservice-triton-jetpack",
@@ -56,11 +56,12 @@ Add the following to your `"modules` array:
 
 Add the following to your `"services"` array:
 
-```json
+```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "my-triton-model",
+  "name": "my-triton-module",
   "type": "mlmodel",
-  "model": "tflite_cpu"
+  "namespace": "rdk",
+  "model": "viam:mlmodelservice:triton"
 }
 ```
 
@@ -70,6 +71,9 @@ Add the following to your `"services"` array:
 The model will now be configured with a card like the following:
 
 ![The triton service card in the Viam app config builder, showing deployment options.](/extend/modular-resources/triton/triton-config-builder.png)
+
+You control a `viam:mlmodelservice:triton` modular resource like you would a built-in resource, so the parameters shown, `"model_path"`, `"label_path"`, and `"num_threads"` are the same as a built-in MLModel service.
+Find more information on these parameters in the [MLModel service documentation](/services/ml/).
 
 ### Create a repository to store the ML model to deploy
 
@@ -101,7 +105,7 @@ Newer versions will be preferred by default.
 
 ### Attributes
 
-The following attributes are available for the MLModel service `viam:mlmodelservice:triton`:
+In addition to the attributes available for any `MLModel` service built into the Viam RDK, the following attributes are available for the MLModel service `viam:mlmodelservice:triton`:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -109,7 +113,68 @@ The following attributes are available for the MLModel service `viam:mlmodelserv
 | `model_name` | string | **Required** | The model to be loaded from the model repository. |
 | `model_repository_path` | string | **Required** | The container-side path to a model repository. Note that this must be a subdirectory of the `$HOME/.viam` directory of the user running `viam-server`. |
 | `backend_directory` | string | Optional | A container side path to the TritonServer "backend" directory. You normally do not need to override this; the build will set it to the backend directory of the Triton Server installation in the container. You may set it if you wish to use a different set of backends. |
-| `model_version` | string | Optional | The version of the model to be loaded. If not specified, the module will use the newest version of the model named by model_name. <br> Default: `-1` (newest) |
+| `model_version` | int | Optional | The version of the model to be loaded. If not specified, the module will use the newest version of the model named by model_name. <br> Default: `-1` (newest) |
 | `preferred_input_memory_type` | string | Optional | One of `cpu`, `cpu-pinned`, or `gpu`. This controlls the type of memory that will be allocated by the module for input tensors. If not specified, this will default to `cpu` if no CUDA-capable devices are detected at runtime, or to `gpu` if CUDA-capable devices are found.|
-| `preferred_input_memory_type_id` | string | Optional | CUDA identifier on which to allocate gpu or cpu-pinned input tensors. You probably don't need to change this unless you have multiple GPUs. <br> Default: `0` (first device) |
+| `preferred_input_memory_type_id` | int | Optional | CUDA identifier on which to allocate gpu or cpu-pinned input tensors. You probably don't need to change this unless you have multiple GPUs. <br> Default: `0` (first device) |
 | `tensor_name_remappings` | string | Optional | Provides two dictionaries under the `input` and `output` keys that rename the models' tensors. Other Viam services, like the [vision service](/services/vision/) may expect to work with tensors with particular names. Use this map to rename the tensors from the loaded model as needed to meet those requirements. <br> Default: `{}` |
+
+An example minimal configuration would look like this, within your robot's `"services"` array:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "mlmodel",
+  "attributes": {
+    "model_name": "efficientdet-lite4-detection",
+    "model_repository_path": "/path/to/.viam/triton/repository"
+  },
+  "model": "viam:mlmodelservice:triton",
+  "name": "mlmodel-effdet-triton"
+}
+```
+
+An example detailed configuration with optional parameters specified would look like this:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "mlmodel",
+  "attributes": {
+    "backend_directory": "/opt/tritonserver/backends",
+    "model_name": "efficientdet-lite4-detection",
+    "model_version": 1,
+    "model_repository_path": "/path/to/.viam/triton/repository",
+    "preferred_input_memory_type_id": 0,
+    "preferred_input_memory_type": "gpu",
+    "tensor_name_remappings": {
+      "outputs": {
+        "output_3": "n_detections",
+        "output_0": "location",
+        "output_1": "score",
+        "output_2": "category"
+      },
+      "inputs": {
+        "images": "image"
+      }
+    }
+  },
+  "model": "viam:mlmodelservice:triton",
+  "name": "mlmodel-effdet-triton"
+}
+```
+
+## Next steps: configure a vision service
+
+Now, use the `triton` service to deploy MLModels to your robot.
+You can now create a [vision service](/services/vision/) with a configuration in your `"services"` array like the following:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "attributes": {
+    "mlmodel_name": "mlmodel-effdet-triton"
+  },
+  "model": "mlmodel",
+  "name": "vision-effdet-triton",
+  "type": "vision"
+}
+```
+
+You can now connect this vision service to a [transform camera](/components/camera/transform), or get detections programmatically through one of Viam's [client SDKs](/program/).
