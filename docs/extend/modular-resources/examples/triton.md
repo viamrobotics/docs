@@ -163,7 +163,7 @@ An example detailed configuration with optional parameters specified would look 
 
 ## Next steps: configure a vision service
 
-Now, use the `triton` service to deploy MLModels to your robot.
+Now, use the `viam:mlmodelservice:triton` modular service to deploy MLModels to your robot.
 You can now create a [vision service](/services/vision/) with a configuration in your `"services"` array like the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
