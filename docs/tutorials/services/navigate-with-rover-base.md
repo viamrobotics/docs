@@ -479,6 +479,8 @@ Hover over an obstacle in the left-hand menu and click the trash icon to delete 
 Toggle **Navigation mode** to **Waypoint**.
 Your robot will begin navigating between waypoints, avoiding any obstacles configured on the way.
 
+{{<video webm_src="/tutorials/navigate-with-rover-base/leo_navigation.webm" mp4_src="/tutorials/navigate-with-rover-base/leo_navigation.mp4" alt="The leo rover navigating outside" poster="/tutorials/navigate-with-rover-base/leo-outside.png">}}
+
 ### Programmatic method
 
 If you want to do this programmatically, use the service's [API method `AddWaypoint()`](/services/navigation/#addwaypoint) like the following:
