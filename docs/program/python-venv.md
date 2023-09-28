@@ -29,6 +29,7 @@ cd viam-python
 In the project directory, create and activate a virtual environment for Python to run in.
 
 ```bash
+sudo apt-get install -qqy python3-venv
 python3 -m venv viam-env
 source viam-env/bin/activate
 ```
