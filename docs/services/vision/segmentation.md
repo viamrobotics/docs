@@ -23,9 +23,8 @@ The types of segmenters supported are:
 
 ## Configure an `obstacles_pointcloud` segmenter
 
-Radius clustering is a segmenter that identifies well separated objects above a flat plane.
-It first identifies the biggest plane in the scene, eliminates all points below that plane, and begins clustering points above that plane based on how near they are to each other.
-It is slower than other segmenters and can take up to 30 seconds to segment a scene.
+Obstacles Pointcloud is a segmenter that identifies well separated objects above a flat plane.
+It first identifies the biggest plane in the scene, eliminates that plane, and begins clustering the remaining points into objects.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
