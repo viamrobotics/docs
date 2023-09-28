@@ -74,12 +74,13 @@ If you are using different _models_ of hardware, adjust your configuration accor
 
 First, configure the [board](/components/board/) local to your rover.
 Follow [these instructions](/components/board/#configuration) to configure your board model.
-We used a [`jetson` board](/components/board/jetson/), but you can use whatever model of board you have on hand, as the [board API](/components/board/#api) is hardware agnostic.
+We used a [`jetson` board](/components/board/jetson/), but you can use whatever model of board you have on hand, as the [resource's API](/components/board/#api) is hardware agnostic.
 
 Configure a board named `local` as shown below:
 
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
+Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
 Copy and paste the following into your board's **Attributes** to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -112,36 +113,39 @@ Save your config.
 Now, configure your rover base to act as the moving platform of the navigating robot.
 Start by configuring the [encoders](/components/encoder/) and [motors](/components/motor/) of your encoded motor.
 
-Follow [these instructions](/components/) to configure the left and right encoders of the wheeled base.
-We configured ours as `incremental` encoders, as shown below:
+1. Follow [these instructions](/components/) to configure the left and right encoders of the wheeled base.
+   We configured ours as [`incremental` encoders](/components/encoder/incremental/), as shown below:
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="400x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:350px; max-height:400px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="400x" declaredimensions=true alt="Configuration of a right incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="400x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:350px; max-height:400px">}}
+   {{<imgproc src="/tutorials/navigate-with-rover-base/left-encoder-config-builder.png" resize="400x" declaredimensions=true alt="Configuration of a left incremental encoder in the Viam app config builder." class="aligncenter" style="min-height:550px; max-height:600px">}}
 
-Assign the pins as the [digital interrupts](/components/board/#digital_interrupts) you configured for the board.
+   Assign the pins as the [digital interrupts](/components/board/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
+   Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
 
-Next, follow [these instructions](/components/motor/#configuration) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
-We [configured ours as `gpio` motors](/components/motor/gpio/), as shown below:
+2. Next, follow [these instructions](/components/motor/#configuration) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
+   We [configured ours as `gpio` motors](/components/motor/gpio/), as shown below:
 
-![Configuration of a right gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/right-motor-config-builder.png)
+   ![Configuration of a right gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/right-motor-config-builder.png)
 
-![Configuration of a left gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/left-motor-config-builder.png)
+   ![Configuration of a left gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/left-motor-config-builder.png)
+   Wire the motors accordingly to the GPIO pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `35`, `35`, `15`, `38`, `40`, and `33` on your `local` board.
+   Refer to the [ `gpio` motor](/components/motor/gpio/) documentation for attribute information.
 
-Now, configure whatever rover you have as a `wheeled` model of base, bringing the motion produced by these motors together on one platform:
+3. Finally, configure whatever rover you have as a [`wheeled`](/components/base/wheeled/) model of base, bringing the motion produced by these motors together on one platform:
+   ![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
 
-![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
+   - Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and set the wheel circumference and width of each of the wheels the motors are attached to.
+   - [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
+     - Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
+     - Select the `world` as the parent frame.
 
-- Make sure to select each of your right and left motors as **Right Motors** and **Left Motors** and set the wheel circumference and width of each of the wheels the motors are attached to.
-  Refer to [the `wheeled` base configuration instructions](/components/base/) for more attribute information.
-- [Configure the frame system](/services/frame-system/#configuration) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
-  Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1` and **Th** to 90.
-  Select the `world` as the parent frame.
+   Refer to the [`wheeled` base configuration instructions](/components/base/wheeled/) for attribute information.
 
 {{< alert title="Tip" color="tip" >}}
 
-Be sure to wire the board to the camera, encoders, and motors on your base matching this configuration.
-If you choose to wire your components differently, adjust your pin assignment from these instructions according to your wiring.
+Be sure to wire the board to the encoders and motors on your base matching this configuration.
+If you choose to wire your components differently, adjust your pin assignment configuration from these instructions according to your wiring.
 
 {{< /alert >}}
 
@@ -153,21 +157,19 @@ If you choose to wire your components differently, adjust your pin assignment fr
     ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
 
     We named ours `gps`.
-    Refer to [the `gps-nmea-rtk-serial` movement sensor configuration instructions](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
-
-2.  Configure a `wheeled-odometry` movement sensor, which uses the encoders from our position reporting motors to get an odometry estimate of a wheeled base as it moves:
+    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
 
     ![An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png)
 
     We named ours `enc-linear`.
-    Refer to [the `wheeled-odometry` movement sensor configuration instructions](/components/movement-sensor/wheeled-odometry/) for attribute information.
+    Refer to [the `wheeled-odometry` movement sensor documentation](/components/movement-sensor/wheeled-odometry/) for attribute information.
 
-3.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
+2.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
 
     ![An example configuration for a merged movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png)
 
     We named ours `merged`.
-    Refer to [the `merged` movement sensor configuration instructions](/components/movement-sensor/merged/) for attribute information.
+    Refer to [the `merged` movement sensor documentation](/components/movement-sensor/merged/) for attribute information.
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
     - [Configure the frame system](/services/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
@@ -558,10 +560,9 @@ Attribute information for an `ultrasonic` [camera](/components/camera) is the sa
 
 {{< /alert >}}
 
-Now, if you want the robot to be able to automatically detect obstacles in front of it, you can [configure a Vision service](/services/vision/#configuration) segmenter of model [`obstacles_depth`](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter), which identifies well separated objects above a flat plane.
-Follow [this guide](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter) to configure an `obstacles_depth` segmenter vision service.
-
-Then, you could automate obstacle avoidance with the navigation service like in the following client SDK program:
+Now, if you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service](/services/vision/#configuration) segmenter.
+For example, [configure](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter) the Vision service model [`obstacles_depth`](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter) to detect obstacles in front of the robot.
+Then, use one of [Viam's client SDKs](/program/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
 {{%expand "Click to view full example of automated obstacle avoidance with the Python SDK" %}}
 
