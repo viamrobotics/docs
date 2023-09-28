@@ -21,8 +21,30 @@ Enter a name for your arm and click **Create**.
 
 ![An example configuration for a fake ur5e arm in the Viam app Config Builder.](/components/arm/fake-arm-ui-config.png)
 
-Edit and fill in the attributes as applicable.
-You can copy-paste from the [attribute examples](#attributes-examples) to help with formatting.
+Copy and paste the following attribute template into your arm's **Attributes** box.
+Then remove and fill in the attributes as applicable to your arm, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "arm-model": "<string>",
+  "model-path": "<string>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "arm-model": "ur5e"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -32,6 +54,7 @@ You can copy-paste from the [attribute examples](#attributes-examples) to help w
   "name": "<arm_name>",
   "model": "fake",
   "type": "arm",
+  "namespace": "rdk",
   "attributes": {
     "arm-model": "<your_arm_model>",
     "model-path": "<path_to_arm_model>"
@@ -73,33 +96,3 @@ If neither are specified, an error is thrown asking for specification.
 If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
 
 {{% /alert %}}
-
-### Attributes examples
-
-Paste one of the following examples into the **Attributes** section of your config:
-
-{{< tabs >}}
-{{% tab name="arm-model example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "arm-model": "ur5e"
-}
-```
-
-Replace `ur5e` with the name of the arm model you want to use.
-Examples include `xArm6`, `xArm7`, and `xArmLite`.
-
-{{% /tab %}}
-{{% tab name="model-path example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "model-path": "</Users/<YOUR-USERNAME>/downloads/universalrobots/ur5e.json>"
-}
-```
-
-Replace the string with the path to your arm model.
-
-{{% /tab %}}
-{{< /tabs >}}
