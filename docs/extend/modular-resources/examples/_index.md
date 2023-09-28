@@ -34,6 +34,7 @@ Once you have created a modular resource, you can test your modular resource usi
 {{% card link="/components/movement-sensor/viam-visual-odometry/" customTitle="Add a Visual Odometry sensor as a Modular Resource" %}}
 {{% card link="/extend/modular-resources/examples/custom-arm/" %}}
 {{% card link="/extend/modular-resources/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
+{{% card link="/extend/modular-resources/examples/triton/" customTitle="Add a Triton MLModel Modular Service"  %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
 {{< /cards >}}

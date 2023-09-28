@@ -1,0 +1,115 @@
+---
+title: "Add a Triton MLModel Modular Service"
+linkTitle: "Triton MLModel Modular Service"
+weight: 70
+type: "docs"
+description: "Add an ML model modular service backed by NVIDIA's Triton Server."
+tags: ["ml", "model training", "services"]
+# SMEs: Abe Winter, Andrew Morrow
+---
+
+Viam provides a MLModel service resource backed by NVIDIA's [Triton Inference Server](https://developer.nvidia.com/triton-inference-server), open-source software that makes AI model deployment and execution seamless and standardized.
+Configure this MLModel service as a [modular resource](/extend/modular-resources/) on your robot with a [`jetson` board](/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
+
+Usage information is also available on [GitHub](https://github.com/viamrobotics/viam-mlmodelservice-triton).
+
+## Requirements
+
+A NVIDIA Jetson Orin board with the following installed:
+
+1. [Jetpack 5](https://developer.nvidia.com/embedded/jetpack-sdk-502)
+2. NVIDIA Container Runtime
+
+Run the following to install `nvidia-jetpack` and `nvidia-container` on your robot's computer:
+
+```sh { class="command-line" data-prompt="$"}
+sudo apt install nvidia-jetpack
+sudo apt-get install nvidia-container
+```
+
+Then, if you haven't done so already, create a new robot in [the Viam app](https://app.viam.com).
+[Install `viam-server` on the board](/installation/prepare/jetson-agx-orin-setup/) and connect to the robot.
+
+## Configuration
+
+{{< tabs name="Add the Triton modular service">}}
+{{% tab name="Config Builder" %}}
+
+Navigate to the **Config** tab of your robot’s page in the [Viam app](https://app.viam.com).
+Click on the **Services** subtab and click the **Create service** button.
+Search for `triton`, then select the version from the [Registry](https://app.viam.com/registry).
+Give your resource a name of your choice and click **Create**.
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the following to your `"modules` array:
+
+```json
+{
+  "type": "registry",
+  "name": "viam_mlmodelservice-triton-jetpack",
+  "module_id": "viam:mlmodelservice-triton-jetpack",
+  "version": "latest"
+}
+```
+
+Add the following to your `"services"` array:
+
+```json
+{
+  "name": "my-triton-model",
+  "type": "mlmodel",
+  "model": "tflite_cpu"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The model will now be configured with a card like the following:
+
+![The triton service card in the Viam app config builder, showing deployment options.](/extend/modular-resources/triton/triton-config-builder.png)
+
+### Create a repository to store the ML model to deploy
+
+Currently, you must manually create a Triton [model repository](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html).
+On your robot's Jetson computer, create a [structured repository](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html) under the `~/.viam` directory.
+The exact subpath under `~/.viam` does not matter.
+
+For example, after unpacking the module, to add the [EfficientDet-Lite4 Object Detection](https://tfhub.dev/tensorflow/efficientdet/lite4/detection/2) model, place the model repository under `~/.viam/triton/repository`:
+
+```sh { class="command-line" data-prompt="$"}
+$ tree ~/.viam
+~/.viam
+├── cached_cloud_config_05536cf6-f8a6-464f-b05c-bf1e57e9d1d9.json
+└── triton
+    └── repository
+        └── efficientdet-lite4-detection
+            ├── 1
+            │   └── model.savedmodel
+            │       ├── saved_model.pb
+            │       └── variables
+            │           ├── variables.data-00000-of-00001
+            │           └── variables.index
+            └── config.pbext
+```
+
+The <file>config.pbext</file> file must exist, but at least for TensorFlow models it can be empty.
+The version here is `1` but it can be any positive integer.
+Newer versions will be preferred by default.
+
+### Attributes
+
+The following attributes are available for the MLModel service `viam:mlmodelservice:triton`:
+
+<!-- prettier-ignore -->
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `model_name` | string | **Required** | The model to be loaded from the model repository. |
+| `model_repository_path` | string | **Required** | The container-side path to a model repository. Note that this must be a subdirectory of the `$HOME/.viam` directory of the user running `viam-server`. |
+| `backend_directory` | string | Optional | A container side path to the TritonServer "backend" directory. You normally do not need to override this; the build will set it to the backend directory of the Triton Server installation in the container. You may set it if you wish to use a different set of backends. |
+| `model_version` | string | Optional | The version of the model to be loaded. If not specified, the module will use the newest version of the model named by model_name. <br> Default: `-1` (newest) |
+| `preferred_input_memory_type` | string | Optional | One of `cpu`, `cpu-pinned`, or `gpu`. This controlls the type of memory that will be allocated by the module for input tensors. If not specified, this will default to `cpu` if no CUDA-capable devices are detected at runtime, or to `gpu` if CUDA-capable devices are found.|
+| `preferred_input_memory_type_id` | string | Optional | CUDA identifier on which to allocate gpu or cpu-pinned input tensors. You probably don't need to change this unless you have multiple GPUs. <br> Default: `0` (first device) |
+| `tensor_name_remappings` | string | Optional | Provides two dictionaries under the `input` and `output` keys that rename the models' tensors. Other Viam services, like the [vision service](/services/vision/) may expect to work with tensors with particular names. Use this map to rename the tensors from the loaded model as needed to meet those requirements. <br> Default: `{}` |
