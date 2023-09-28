@@ -23,8 +23,7 @@ A NVIDIA Jetson Orin board with the following installed:
 Run the following to install `nvidia-jetpack` and `nvidia-container` on your robot's computer:
 
 ```sh { class="command-line" data-prompt="$"}
-sudo apt install nvidia-jetpack
-sudo apt-get install nvidia-container
+sudo apt-get install nvidia-jetpack nvidia-container
 ```
 
 Then, if you haven't done so already, create a new robot in [the Viam app](https://app.viam.com).
