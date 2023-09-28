@@ -24,7 +24,7 @@ The types of segmenters supported are:
 ## Configure an `obstacles_pointcloud` segmenter
 
 Obstacles Pointcloud is a segmenter that identifies well separated objects above a flat plane.
-It first identifies the biggest plane in the scene, eliminates that plane, and begins clustering the remaining points into objects.
+It first identifies the biggest plane in the scene, eliminates that plane, and clusters the remaining points into objects.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
