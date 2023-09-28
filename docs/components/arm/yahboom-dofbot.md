@@ -29,8 +29,8 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "<your-arm-name>",
       "model": "yahboom-dofbot",
+      "name": "<your-arm-name>",
       "type": "arm",
       "attributes": {
         "board": "<your-board-name>",
@@ -49,8 +49,9 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "local",
+      "depends_on": [],
       "model": "pi",
+      "name": "local",
       "type": "board",
       "attributes": {
         "i2cs": [
@@ -59,13 +60,12 @@ Edit and fill in the attributes as applicable.
             "bus": "1"
           }
         ]
-      },
-      "depends_on": []
+      }
     },
     {
       "name": "myarm",
-      "model": "yahboom-dofbot",
       "type": "arm",
+      "model": "yahboom-dofbot",
       "attributes": {
         "board": "local",
         "i2c": "bus1"
@@ -84,4 +84,4 @@ The following attributes are available for `yahboom-dofbot` arms:
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | ----------| ----------- |
-| `i2c`  | string | **Required** | The `name` of the Inter-Integrated Circuit (I<sup>2</sup>C) bus on your [board](/components/board/) where the `yahboom-dofbot` is connected. See [configuration info](/components/board/#i2cs). |
+| `i2c`  | string | **Required** | The `name` of the Inter-Integrated Circuit (I<sup>2</sup>C) bus on your GPIO [board](/components/board/) where the connection to the `yahboom-dofbot` is made. See [configuration info](/components/board/#i2cs). |
