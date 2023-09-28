@@ -130,7 +130,7 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
 
    ![Configuration of a left gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/left-motor-config-builder.png)
    Wire the motors accordingly to the GPIO pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `35`, `35`, `15`, `38`, `40`, and `33` on your `local` board.
-   Refer to the [ `gpio` motor](/components/motor/gpio/) documentation for attribute information.
+   Refer to the [`gpio` motor](/components/motor/gpio/) documentation for attribute information.
 
 3. Finally, configure whatever rover you have as a [`wheeled`](/components/base/wheeled/) model of base, bringing the motion produced by these motors together on one platform:
    ![An example configuration for a wheeled base in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png)
