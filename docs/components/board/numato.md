@@ -65,8 +65,9 @@ Then remove and fill in the attributes as applicable to your board, according to
   "components": [
     {
       "name": "<your-numato-board>",
-      "type": "board",
       "model": "numato",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
         "pins": <number>,
         "analogs": [

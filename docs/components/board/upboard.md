@@ -83,8 +83,9 @@ Then remove and fill in the attributes as applicable to your board, according to
   "components": [
     {
       "name": "<your-upboard-board>",
-      "type": "board",
       "model": "upboard",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
         "digital_interrupts": [
           {
@@ -114,8 +115,9 @@ Then remove and fill in the attributes as applicable to your board, according to
   "components": [
     {
       "name": "<your-upboard-board>",
-      "type": "board",
       "model": "upboard",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
         "i2cs": [
           {

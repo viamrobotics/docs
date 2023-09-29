@@ -37,8 +37,9 @@ Enter a name for your board and click **Create**.
   "components": [
     {
       "name": "<your-beaglebone-board>",
-      "type": "board",
       "model": "beaglebone",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }
