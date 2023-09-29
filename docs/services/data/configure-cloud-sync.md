@@ -17,6 +17,10 @@ Now the data that you capture will sync automatically with the Viam app in the c
 
 ![data capture configuration](/tutorials/data-management/data-manager.png)
 
+{{< alert title="Important" color="note" >}}
+When uploading data that has a directory structure that structure is not preserved.
+{{< /alert >}}
+
 By default, the data management service syncs data to Viam's cloud every 0.1 minutes, that is every 6 seconds.
 To change the sync interval, specify an interval in minutes in the interval field.
 
@@ -63,10 +67,8 @@ To avoid syncing files that are still being written to, the data management serv
 If a smart machine does not write to a file for 10 seconds, the data management service syncs the file and deletes it.
 {{< /alert >}}
 
-{{< alert title="Info" color="tip" >}}
 Currently, if the internet becomes unavailable and the sync is interrupted mid-file, the service resumes sync from the beginning of the file.
 This is only applicable for files in a directory added as an additional sync path.
-{{< /alert >}}
 
 In the example pictured here, the data management service syncs the configured component data from `/tmp/capture` as well as all files in `/logs` every 5 minutes.
 
