@@ -27,7 +27,7 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a beaglebone board in the Viam app Config Builder.](/components/board/beaglebone-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+{{< readfile "/static/include/components/board-attr-config.md" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

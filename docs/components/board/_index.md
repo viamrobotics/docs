@@ -323,7 +323,7 @@ The following properties are available for `i2cs`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
-|`bus_select`| int | **Required** | The index of the I<sup>2</sup>C bus. |
+|`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. |
 
 {{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
 
