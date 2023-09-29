@@ -105,6 +105,7 @@ $ tree ~/.viam
 ```
 
 The <file>config.pbext</file> file must exist, but at least for TensorFlow models it can be empty.
+For other types of models, please consult the [Triton Server model repository documentation](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/user_guide/model_repository.html) for details on the correct contents of the <file>config.pbext</file> file.
 The version here is `1` but it can be any positive integer.
 Newer versions will be preferred by default.
 
