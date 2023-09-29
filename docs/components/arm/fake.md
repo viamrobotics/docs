@@ -91,7 +91,7 @@ The following attributes are available for `fake` arms:
 
 {{% alert title="Important" color="note" %}}
 
-At least one of these attributes must be supplied for your `fake` arm to work.
+Exactly one of these attributes must be supplied for your `fake` arm to work.
 If neither are specified, an error is thrown asking for specification.
 If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
 
