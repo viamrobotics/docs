@@ -49,7 +49,7 @@ Add the following to your `"modules"` array:
   "type": "registry",
   "name": "viam_mlmodelservice-triton-jetpack",
   "module_id": "viam:mlmodelservice-triton-jetpack",
-  "version": "latest"
+  "version": "0.4.0"
 }
 ```
 
