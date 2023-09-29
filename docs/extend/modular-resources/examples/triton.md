@@ -71,8 +71,8 @@ The model will now be configured with a card like the following:
 
 ![The triton service card in the Viam app config builder, showing deployment options.](/extend/modular-resources/triton/triton-config-builder.png)
 
-You control a `viam:mlmodelservice:triton` modular resource like you would a built-in resource, so the parameters shown, `"model_path"`, `"label_path"`, and `"num_threads"` are the same as a built-in MLModel service.
-Find more information on these parameters in the [MLModel service documentation](/services/ml/).
+Note that the parameters shown, `"model_path"`, `"label_path"`, and `"num_threads"` are not applicable to deploying a model on your robot.
+Ignore this card's interface and move to [creating a model repository](#create-a-repository-to-store-the-ml-model-to-deploy).
 
 ### Create a repository to store the ML model to deploy
 
@@ -104,7 +104,7 @@ Newer versions will be preferred by default.
 
 ### Attributes
 
-In addition to the attributes available for any `MLModel` service built into the Viam RDK, the following attributes are available for the MLModel service `viam:mlmodelservice:triton`:
+The following attributes are available for the MLModel service `viam:mlmodelservice:triton`:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
