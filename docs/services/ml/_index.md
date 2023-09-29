@@ -58,8 +58,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
+      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
+      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
       "num_threads": <number>
     }
   },
@@ -77,8 +77,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
+      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
+      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
       "num_threads": 1
     }
   }
@@ -111,7 +111,8 @@ The model package config looks like this:
 {
   "package": "<model_id>/allblack",
   "version": "YYYYMMDDHHMMSS",
-  "name": "<model_name>"
+  "name": "<model_name>",
+  "type": "ml_model"
 }
 ```
 
