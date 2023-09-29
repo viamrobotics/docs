@@ -33,6 +33,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "model": "xArm6",
       "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "<your-arms-ip-address-on-your-network>",
         "port": <int>,
@@ -55,6 +56,7 @@ Edit and fill in the attributes as applicable.
       "name": "my_xArm6",
       "model": "xArm6",
       "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "10.0.0.97"
       },

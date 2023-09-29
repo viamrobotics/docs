@@ -32,6 +32,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-arm-name>",
       "model": "xArmLite",
       "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "<your-arms-ip-address-on-your-network>",
         "port": <int>,
@@ -54,6 +55,7 @@ Edit and fill in the attributes as applicable.
       "name": "my_arm",
       "model": "xArmLite",
       "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "10.0.0.97"
       },

@@ -46,6 +46,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-base-name>",
       "model": "wheeled",
       "type": "base",
+      "namespace": "rdk",
       "attributes": {
         "left": [
           "<your-left-motor-name>" // <INSERT ANY ADDITIONAL LEFT MOTOR NAMES>
@@ -55,7 +56,8 @@ Edit and fill in the attributes as applicable.
         ],
         "wheel_circumference_mm": <#>,
         "width_mm": <#>
-      }
+      },
+      "depends_on": []
     }
   ]
 }

@@ -35,6 +35,7 @@ Edit and fill in the attributes as applicable.
       "name": "<your-base-name>",
       "model": "agilex-limo",
       "type": "base",
+      "namespace": "rdk",
       "attributes": {
         "drive_mode": "<your-drive-mode>",
         "serial_path": "<your-serial-path>"

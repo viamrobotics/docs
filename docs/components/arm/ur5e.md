@@ -30,8 +30,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-arm-name>",
-      "type": "arm",
       "model": "ur5e",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "speed_degs_per_sec": <float>,
         "host": "<your-host-address>"
@@ -50,8 +51,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "my-arm",
-      "type": "arm",
       "model": "ur5e",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "speed_degs_per_sec": 30,
         "host": "10.1.10.82"
