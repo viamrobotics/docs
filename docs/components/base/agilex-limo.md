@@ -23,7 +23,31 @@ Enter a name for your base and click **Create**.
 
 ![An example configuration for a agilex-limo base in the Viam app Config Builder.](/components/base/agilex-limo-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your base's **Attributes** box.
+Then remove and fill in the attributes as applicable to your base, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "drive_mode": "< ackermann | differential | omni >",
+  "serial_path": "<your-serial-path>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "drive_mode": "omni",
+  "serial_path": "/dev/ttyTHS1"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
