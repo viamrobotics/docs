@@ -184,8 +184,7 @@ Next, install `viam-server` on your robot, if you have not done so already:
 
 1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
 
-1. Switch to the **Setup** tab, and select your platform from the **Mode** selection at the top.
-   If you are installing on a Linux system, additionally select your system's **Architecture**.
+1. Switch to the **Setup** tab, and select your platform from the **Architecture** selection at the top.
 
 1. Follow the steps listed under the **Setup** tab to install `viam-server` on your system.
 
