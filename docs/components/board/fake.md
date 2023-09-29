@@ -21,8 +21,8 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a fake board in the Viam app Config Builder.](/components/board/fake-ui-config.png)
 
-Copy and paste the following attribute template into your base's **Attributes** box.
-Then remove and fill in the attributes as applicable to your base, according to the table below.
+Copy and paste the following attribute template into your board's **Attributes** box.
+Then remove and fill in the attributes as applicable to your board, according to the table below.
 
 {{< tabs >}}
 {{% tab name="Attributes template" %}}
