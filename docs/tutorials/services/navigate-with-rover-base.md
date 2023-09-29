@@ -41,13 +41,15 @@ Viam's motion planner will plan routes that avoid those obstacles and attempt to
 To try it out yourself, you need a mobile base and a movement sensor that can track the robot's GPS coordinates and angular and linear velocity.
 Follow this tutorial to get started using Viam's Navigation service to help your wheeled base navigate across space with our recommended stack.
 
-{{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that is navigating using the navigation service in a robotics lab.">}}
+{{<video webm_src="/tutorials/navigate-with-rover-base/agilex-limo-roving.webm" mp4_src="/tutorials/navigate-with-rover-base/agilex-limo-roving.mp4" alt="The agilex rover navigating outside" poster="/tutorials/navigate-with-rover-base/agilex-roving.png">}}
 
 ## Requirements
 
 1. **A wheeled base with encoded motors**
 
-   We used [a LEO rover](https://www.leorover.tech/shop?gclid=CjwKCAjw38SoBhB6EiwA8EQVLiDwUFEYgLxaRd1-TiTyLfifIAHs9iD6YnvdW6M-3rXruHOrzfTL2RoCD1AQAvD_BwE), configured as a [`wheeled` base](/components/base/wheeled/), but you can use whatever model of rover base you have on hand.
+   We used [a LEO rover](https://www.leorover.tech/shop?gclid=CjwKCAjw38SoBhB6EiwA8EQVLiDwUFEYgLxaRd1-TiTyLfifIAHs9iD6YnvdW6M-3rXruHOrzfTL2RoCD1AQAvD_BwE), configured as a [`wheeled` base](/components/base/wheeled/), but you can use whatever model of rover base you have on hand:
+
+   {{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that is navigating using the navigation service in a robotics lab.">}}
 
 2. **A movement sensor with GPS position and angular and linear velocity readings**
 
@@ -477,9 +479,9 @@ Hover over an obstacle in the left-hand menu and click the trash icon to delete 
 #### Begin navigation
 
 Toggle **Navigation mode** to **Waypoint**.
-Your robot will begin navigating between waypoints, avoiding any obstacles configured on the way.
+Your rover will begin navigating between waypoints.
 
-{{<video webm_src="/tutorials/navigate-with-rover-base/leo_navigation.webm" mp4_src="/tutorials/navigate-with-rover-base/leo_navigation.mp4" alt="The leo rover navigating outside" poster="/tutorials/navigate-with-rover-base/leo-outside.png">}}
+{{<video webm_src="/tutorials/navigate-with-rover-base/agilex-navigation.webm" mp4_src="/tutorials/navigate-with-rover-base/agilex-navigation.mp4" alt="The agilex rover navigating outside" poster="/tutorials/navigate-with-rover-base/agilex-outside.png">}}
 
 ### Programmatic method
 
