@@ -78,7 +78,7 @@ By default, `viam-server` will start automatically when your system boots, but y
 ## Install on a macOS or Linux computer
 
 You can also install `viam-server` on a macOS or Linux computer.
-This is useful if you don't have a board available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than is otherwise available on an SBC.
+This is useful if you don't have a board available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than are otherwise available on an SBC.
 Select the tab below for your operating system:
 
 {{< tabs name="Install on computer" >}}
