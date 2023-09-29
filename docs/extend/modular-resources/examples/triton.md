@@ -26,6 +26,12 @@ Run the following to install `nvidia-jetpack` and `nvidia-container` on your rob
 sudo apt-get install nvidia-jetpack nvidia-container
 ```
 
+Pull the triton module docker container:
+
+```sh { class="command-line" data-prompt="$"}
+docker pull ghcr.io/viamrobotics/viam-mlmodelservice-triton:latest
+```
+
 Then, if you haven't done so already, create a new robot in [the Viam app](https://app.viam.com).
 [Install `viam-server` on the board](/installation/prepare/jetson-agx-orin-setup/) and connect to the robot.
 
