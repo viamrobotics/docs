@@ -35,7 +35,7 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a jetson board in the Viam app Config Builder.](/components/board/jetson-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+{{< readfile "/static/include/components/board-attr-config.md" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -44,10 +44,24 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "<your-jetson-board>",
-      "type": "board",
+      "name": "<your-jetson-board-name>",
       "model": "jetson",
-      "attributes": {},
+      "type": "board",
+      "namespace": "rdk",
+      "attributes": {
+        "analogs": [
+          <...See table below...>
+        ],
+        "digital_interrupts": [
+          <...See table below...>
+        ],
+        "spis": [
+          <...See table below...>
+        ],
+        "i2cs": [
+          <...See table below...>
+        ]
+      },
       "depends_on": []
     }
   ]

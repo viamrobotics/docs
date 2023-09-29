@@ -76,7 +76,9 @@ Then, integrate `analogs` into the `attributes` of your board by adding the foll
     "chip_select": "<chip-select-pin-number-on-board>",
     "name": "<your-analog-reader-name>",
     "pin": "<pin-number-on-adc>",
-    "spi_bus": "<your-spi-bus-name>"
+    "spi_bus": "<your-spi-bus-name>",
+    "average_over_ms": <int>,
+    "samples_per_sec": <int>
   }
 ]
 ```
@@ -151,7 +153,8 @@ Integrate `digital_interrupts` into your robot in the `attributes` of your board
 "digital_interrupts": [
   {
     "name": "<your-digital-interrupt-name>",
-    "pin": "<pin-number>"
+    "pin": "<pin-number>",
+    "type": "< basic | servo >"
   }
 ]
 ```
