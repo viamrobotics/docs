@@ -58,7 +58,8 @@ Then remove and fill in the attributes as applicable to your arm, according to t
   "attributes": {
     "arm-model": "<your_arm_model>",
     "model-path": "<path_to_arm_model>"
-  }
+  },
+  "depends_on": []
 }
 ```
 
