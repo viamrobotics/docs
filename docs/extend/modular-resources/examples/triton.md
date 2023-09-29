@@ -17,7 +17,7 @@ Usage information is also available on [GitHub](https://github.com/viamrobotics/
 
 A NVIDIA Jetson Orin board with the following installed:
 
-1. [Jetpack 5](https://developer.nvidia.com/embedded/jetpack-sdk-502)
+1. [Jetpack 5](https://developer.nvidia.com/embedded/jetpack)
 2. NVIDIA Container Runtime
 
 Run the following to install `nvidia-jetpack` and `nvidia-container` on your robot's computer:
@@ -162,7 +162,7 @@ An example detailed configuration with optional parameters specified would look 
 
 ## Next steps: configure a vision service
 
-Now, use the `viam:mlmodelservice:triton` modular service to deploy MLModels to your robot.
+Now, use the `viam:mlmodelservice:triton` modular service to make use of MLModels on your robot.
 You can now create a [vision service](/services/vision/) with a configuration in your `"services"` array like the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
