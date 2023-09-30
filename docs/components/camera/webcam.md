@@ -30,32 +30,33 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "webcam",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "distortion_parameters": {
-            "rk1": <float>,
-            "rk2": <float>,
-            "rk3": <float>,
-            "tp1": <float>,
-            "tp2": <float>
-        },
-        "debug": <boolean>,
-        "format": <string>,
-        "video_path": "<your-video-path>",
-        "width_px": <int>,
-        "height_px": <int>,
-        "frame_rate": <float>
-    }
+  "name": "<your-camera-name>",
+  "model": "webcam",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "debug": <boolean>,
+    "format": <string>,
+    "video_path": "<your-video-path>",
+    "width_px": <int>,
+    "height_px": <int>,
+    "frame_rate": <float>
+  }
 }
 ```
 
@@ -65,8 +66,9 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "my_cam",
-  "type": "camera",
   "model": "webcam",
+  "type": "camera",
+  "namespace": "rdk",
   "attributes": {
     "video_path": "video0"
   }

@@ -30,7 +30,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-camera-name>",
     "type": "camera",
-    "model" : "join_pointclouds",
+    "model": "join_pointclouds",
     "attributes": {
         "target_frame": "<target-frame-name>",
         "source_cameras": ["<cam-name-1>", "<cam-name-2>", ... ],

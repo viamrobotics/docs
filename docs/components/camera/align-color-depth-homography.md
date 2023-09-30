@@ -30,7 +30,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-camera-name>",
     "type": "camera",
-    "model" : "align_color_depth_homography",
+    "model": "align_color_depth_homography",
     "attributes": {
         "intrinsic_parameters": {
             "width_px": <int>,

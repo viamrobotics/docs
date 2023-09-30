@@ -31,7 +31,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-camera-name>",
     "type": "camera",
-    "model" : "dual_stream",
+    "model": "dual_stream",
     "attributes": {
         "intrinsic_parameters": {
             "width_px": <int>,

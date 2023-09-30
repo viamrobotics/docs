@@ -57,7 +57,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-camera-name>",
-  "model" : "fake",
+  "model": "fake",
   "type": "camera",
   "namespace": "rdk",
   "attributes": {

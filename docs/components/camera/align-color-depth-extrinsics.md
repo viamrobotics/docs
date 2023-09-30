@@ -30,7 +30,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-camera-name>",
     "type": "camera",
-    "model" : "align_color_depth_extrinsics",
+    "model": "align_color_depth_extrinsics",
     "attributes": {
         "camera_system": {
             "color_intrinsic_parameters": {

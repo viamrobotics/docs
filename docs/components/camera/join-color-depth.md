@@ -33,7 +33,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-camera-name>",
     "type": "camera",
-    "model" : "join_color_depth",
+    "model": "join_color_depth",
     "attributes": {
         "output_image_type": "<color|depth>",
         "color_camera_name": "<your-camera-name>",

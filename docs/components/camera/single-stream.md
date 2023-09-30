@@ -40,7 +40,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-camera-name>",
     "type": "camera",
-    "model" : "single_stream",
+    "model": "single_stream",
     "attributes": {
         "intrinsic_parameters": {
             "width_px": <int>,
