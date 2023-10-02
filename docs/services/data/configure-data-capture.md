@@ -158,13 +158,13 @@ Viam supports data capture from remote parts.
 For example, if you use a component that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from the component by adding it as a remote part.
 
 Currently, you can only configure data capture from remote components by adding them to your JSON configuration.
-To add them to your JSON configuration you must explicitly add the part's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+To add them to your JSON configuration you must explicitly add the remote component's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
-| `type` | The type tells your smart machine what the part is. For example, a board. |
-| `model` | The model is a __colon-delimited-triplet_ that specifies the namespace, the type of the part, and the part itself. |
+| `type` | The type tells your smart machine what the component is. For example, a board. |
+| `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 

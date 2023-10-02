@@ -40,7 +40,7 @@ Go to this robot's **Setup** tab.
 ### Install and start `viam-server` on your computer
 
 Before you proceed with configuring and controlling your robot, install `viam-server`.
-Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/installation/manage/) on your computer as a system service.
+Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/installation/) on your computer as a system service.
 
 ### Configure your mock robot
 
@@ -52,22 +52,22 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
 2. Configure a [fake board component](/components/board/fake/):
 
-    - Click on the **Components** subtab and click **Create component**.
-    - Select the `board` type, then select the `fake` model.
-    - Enter the name `myBoard` for your board and click **Create**.
+   - Click on the **Components** subtab and click **Create component**.
+   - Select the `board` type, then select the `fake` model.
+   - Enter the name `myBoard` for your board and click **Create**.
 
 3. Configure a [fake arm component](/components/arm/fake/):
 
-    - Click **Create component**.
-    - Select the `arm` type, then select the `fake` model.
-    - Enter the name `myArm` for your board and click **Create**.
-    - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
+   - Click **Create component**.
+   - Select the `arm` type, then select the `fake` model.
+   - Enter the name `myArm` for your board and click **Create**.
+   - Make your fake arm act like a [UR5e](https://www.universal-robots.com/products/ur5-robot/) by adding the following attribute:
 
-     ```json
-     {
-       "arm-model": "ur5e"
-     }
-     ```
+   ```json
+   {
+     "arm-model": "ur5e"
+   }
+   ```
 
    The config panel should look like this:
 

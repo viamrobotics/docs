@@ -163,9 +163,8 @@ Both [motors](/components/motor/) on this rover use the model `gpio` which is th
 
 The attributes section lists the board the motor is wired to, and since the rover's motors are encoded the user interface also shows the encoded motor attributes: the encoder name, motor ramp rate limit, encoder ticks per rotation, and max RPM limit.
 
-You can click **Go to Advanced** to view the attributes field in raw JSON format.
+You can click **Go to advanced** to view the attributes field in raw JSON format.
 The **Attributes** pane contains the current JSON configuration for this component.
-The **Attribute Guide** contains a complete list of available attributes for this component type.
 Click **Go to Fancy** to return to the default graphical user interface.
 
 ### Base configuration

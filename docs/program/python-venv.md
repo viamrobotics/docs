@@ -1,6 +1,6 @@
 ---
 title: "Prepare your Python Virtual Environment"
-linkTitle: "Prepare Virtualenv"
+linkTitle: "Virtualenv for Python SDK"
 weight: 10
 type: "docs"
 description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
@@ -13,6 +13,23 @@ To manage Python packages for your Viam application, it is recommended that you 
 By using a `venv`, you can install Python packages like Viam's client SDK within a virtual environment, avoiding conflicts with other projects or your system.
 
 Follow this guide to set up a fresh virtual environment on your working computer and install the Python SDK as a requirement for your Viam client application.
+
+## Install virtualenv
+
+1. Install [`pip`](https://pip.pypa.io/en/stable/installation/#).
+   To check if you have `pip` installed, run the following command:
+
+   ```sh {class="command-line" data-prompt="$"}
+   pip3 --version
+   ```
+
+   The expected output is the pip version number.
+
+2. [Install `virtualenv` using `pip`](https://virtualenv.pypa.io/en/latest/installation.html#via-pip):
+
+   ```sh {class="command-line" data-prompt="$"}
+   python3 -m pip install --user virtualenv
+   ```
 
 ## Setup your project
 
@@ -28,7 +45,7 @@ cd viam-python
 
 In the project directory, create and activate a virtual environment for Python to run in.
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 python3 -m venv viam-env
 source viam-env/bin/activate
 ```
@@ -40,7 +57,7 @@ You can exit this environment by running `deactivate`.
 
 Inside the activated `viam-env` python environment, you can now install the Viam SDK:
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk
 ```
 

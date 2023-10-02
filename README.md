@@ -45,7 +45,7 @@ python3 -m http.server 9000 --directory public
 
 ### Python snippets
 
-To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following like to `.git/hooks/pre-commit`:
+To ensure all python snippets are properly formatted before creating a commit, install [flake8-markdown](https://github.com/johnfraney/flake8-markdown) and add the following lines to the `.git/hooks/pre-commit` file in your local repository:
 
 ```sh
 if [ "git diff --diff-filter=d --name-only HEAD | grep '\.md$' | wc -l" ];
@@ -58,14 +58,16 @@ done
 fi
 ```
 
+If you don't already have a `.git/hooks/pre-commit` file in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
+If you create a new file, you must also make it executable with: `chmod 755 /path/to/my/.git/hooks/pre-commit`.
+
 To ensure your markdown is properly formatted, run `make markdowntest`.
 
 To check for broken links run `make htmltest`.
 
 ### Remove EXIF data automatically
 
-To ensure that you do not accidentally add `EXIF` data on images, please install [exiftool](https://exiftool.org/install.html) and add the following lines to the `.git/hooks/pre-commit` file in your local files.
-If you do not have a file of that name in that location, create one, or rename the existing `pre-commit.sample` file in that directory as `pre-commit`, and add the code below:
+To ensure that you do not accidentally add `EXIF` data on images, please install [exiftool](https://exiftool.org/install.html) and add the following lines to the `.git/hooks/pre-commit` file in your local repository.
 
 ```sh
 if [ "git diff --name-only | grep -EI '.*(png|jpg|jpeg)$' | wc -l" ];
@@ -77,6 +79,11 @@ exiftool -all= $item
 done
 fi
 ```
+
+If you don't already have a `.git/hooks/pre-commit` file in your `docs` git repo directory, you can copy the existing `pre-commit.sample` file in that directory as `pre-commit` to use the sample template, or create a new `pre-commit` file in that directory with the above content.
+If you create a new file, you must also make it executable with: `chmod 755 /path/to/my/.git/hooks/pre-commit`.
+
+With this configuration in place, each commit you make will remove EXIF data from any image files (with extension `.png`, `.jpg`, or `.jpeg`) that are part of your commit.
 
 ### Lint JS and Markdown files with Prettier on save
 

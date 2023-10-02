@@ -31,6 +31,7 @@ Enter a name for your base and click **Create**.
   "name": "<your-base-name>",
   "type": "base",
   "model": "fake",
+  "namespace": "rdk",
   "attributes": {}
 }
 ```
