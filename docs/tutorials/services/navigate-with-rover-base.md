@@ -3,9 +3,9 @@ title: "Navigate with a Rover Base"
 linkTitle: "Navigate with a Rover"
 type: "docs"
 description: "Introduction to using a rover base with the navigation service."
-image: "/tutorials/navigate-with-rover-base/leo-in-office.png"
-imageAlt: "The leo rover navigating in the Viam Lab."
-images: ["/tutorials/navigate-with-rover-base/leo-in-office.png"]
+image: "/tutorials/navigate-with-rover-base/agilex-roving.png"
+imageAlt: "The agilex LIMO rover navigating in the grass outside."
+images: ["/tutorials/navigate-with-rover-base/agilex-roving.png"]
 tags:
   [
     "try viam",
