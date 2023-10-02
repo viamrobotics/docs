@@ -163,11 +163,11 @@ Click on the **Components** subtab.
    ![Ultrasonic component panel with Attributes trigger_pin as 40, echo_interrupt_pin as 38, and board as local.](/tutorials/tipsy/app-ultrasonic-attribute.png)
 
    You have to configure the other ultrasonic sensors.
-   Tipsy uses 5 in total: two up top underneath the beer box, two on the sides of the robot, and one at the bottom.
-   You can change the amount based on your preference.
-
-   For each of the additional ultrasonic sensors, create a new component with the name `ultrasonic2`, type `sensor`, and model `ultrasonic`.
+   For each of the additional ultrasonic sensors, create a new component with a unique name like `ultrasonic2` (where "2" indicates it's the second sensor), type `sensor`, and model `ultrasonic`.
    In the attributes textbox, fill in the `trigger_pin` and `echo_interrupt_pin` corresponding to the pins your ultrasonic sensors are connected to.
+
+   While this tutorial and associated code demonstrates using 2 ultrasonic sensors, the production Tipsy **uses 5 in total**: two up top underneath the drink box, two on the sides of the robot, and one at the bottom. This provided adequate coverage for use around our office.
+   You can change the amount based on your preference.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -255,55 +255,12 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "depends_on": ["local"]
     },
     {
-      "attributes": {
-        "board": "local",
-        "trigger_pin": "13",
-        "echo_interrupt_pin": "7"
-      },
-      "depends_on": ["local"],
       "name": "ultrasonic2",
       "type": "sensor",
-      "model": "ultrasonic"
-    },
-    {
       "model": "ultrasonic",
       "attributes": {
-        "board": "local",
-        "trigger_pin": "35",
-        "echo_interrupt_pin": "37"
-      },
-      "depends_on": ["local"],
-      "name": "ultrasonic3",
-      "type": "sensor"
-    },
-    {
-      "attributes": {
-        "board": "local",
-        "trigger_pin": "28",
-        "echo_interrupt_pin": "32"
-      },
-      "depends_on": ["local"],
-      "name": "ultrasonic4",
-      "type": "sensor",
-      "model": "ultrasonic"
-    },
-    {
-      "model": "ultrasonic",
-      "attributes": {
-        "trigger_pin": "24",
-        "echo_interrupt_pin": "26",
-        "board": "local"
-      },
-      "depends_on": ["local"],
-      "name": "ultrasonic5",
-      "type": "sensor"
-    },
-    {
-      "name": "imu",
-      "type": "movement_sensor",
-      "model": "gyro-mpu6050",
-      "attributes": {
-        "i2c_bus": "default_i2c",
+        "echo_interrupt_pin": "7",
+        "trigger_pin": "13",
         "board": "local"
       },
       "depends_on": ["local"]
@@ -556,56 +513,13 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
       "depends_on": ["local"]
     },
     {
-      "attributes": {
-        "board": "local",
-        "trigger_pin": "13",
-        "echo_interrupt_pin": "7"
-      },
-      "depends_on": ["local"],
       "name": "ultrasonic2",
       "type": "sensor",
-      "model": "ultrasonic"
-    },
-    {
       "model": "ultrasonic",
       "attributes": {
+        "echo_interrupt_pin": "7",
         "board": "local",
-        "trigger_pin": "35",
-        "echo_interrupt_pin": "37"
-      },
-      "depends_on": ["local"],
-      "name": "ultrasonic3",
-      "type": "sensor"
-    },
-    {
-      "attributes": {
-        "board": "local",
-        "trigger_pin": "28",
-        "echo_interrupt_pin": "32"
-      },
-      "depends_on": ["local"],
-      "name": "ultrasonic4",
-      "type": "sensor",
-      "model": "ultrasonic"
-    },
-    {
-      "model": "ultrasonic",
-      "attributes": {
-        "trigger_pin": "24",
-        "echo_interrupt_pin": "26",
-        "board": "local"
-      },
-      "depends_on": ["local"],
-      "name": "ultrasonic5",
-      "type": "sensor"
-    },
-    {
-      "name": "imu",
-      "type": "movement_sensor",
-      "model": "gyro-mpu6050",
-      "attributes": {
-        "i2c_bus": "default_i2c",
-        "board": "local"
+        "trigger_pin": "13"
       },
       "depends_on": ["local"]
     }
@@ -714,13 +628,18 @@ robot_address = os.getenv('ROBOT_ADDRESS') or ''
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
 # change this if you named your camera differently in your robot configuration
 camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
+# change this if you named your camera differently in your robot configuration
+camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
+# change this if you named your sensors differently in your robor configuration
+sensor_names = (os.getenv("ROBOT_SENSORS") or
+                "ultrasonic,ultrasonic2").split(",")
 pause_interval = os.getenv('PAUSE_INTERVAL') or 3
 ```
 
 {{% snippet "show-secret.md" %}}
 
 Next, the code defines functions for obstacle detection.
-The first method, `obstacle_detect()`, gets readings from a sensor, and the second method, `obstacle_detect_loop()`, asynchronously loops through the readings to stop the base if it’s closer than a certain distance from an obstacle:
+The first method, `obstacle_detect()`, gets readings from a sensor, which is used by the second method, `gather_obstacle_readings()`, to gather all the distance readings from a list of sensors. Lastly, the third method, `obstacle_detect_loop()`, uses an infinite loop to periodically check the readings to stop the base if it’s closer than a certain distance from an obstacle:
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def obstacle_detect(sensor):
@@ -728,11 +647,16 @@ async def obstacle_detect(sensor):
     return reading
 
 
-async def obstacle_detect_loop(sensor, sensor2, base):
+async def gather_obstacle_readings(sensors):
+    return await asyncio.gather(
+        *[obstacle_detect(sensor) for sensor in sensors]
+    )
+
+
+async def obstacle_detect_loop(sensors, base):
     while (True):
-        reading = await obstacle_detect(sensor)
-        reading2 = await obstacle_detect(sensor2)
-        if reading < 0.4 or reading2 < 0.4:
+        distances = await gather_obstacle_readings(sensors)
+        if any(distance < 0.4 for distance in distances):
             # stop the base if moving straight
             if base_state == "straight":
                 await base.stop()
@@ -746,7 +670,7 @@ If it doesn’t find a person, it will continue looking by rotating the robot ba
 Lines 12 and 13 are where it checks specifically for detections with the label `Person` and not every object in the `labels.txt` file:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="12-13"}
-async def person_detect(detector, sensor, sensor2, base):
+async def person_detect(detector, sensors, base):
     while (True):
         # look for a person
         found = False
@@ -761,11 +685,10 @@ async def person_detect(detector, sensor, sensor2, base):
                     found = True
         if (found):
             print("I see a person")
-            # first manually call obstacle_detect - don't even start moving if
-            # someone in the way
-            distance = await obstacle_detect(sensor)
-            distance2 = await obstacle_detect(sensor2)
-            if (distance > .4 or distance2 > .4):
+            # first manually call gather_obstacle_readings -
+            # don't even start moving if someone in the way
+            distances = await gather_obstacle_readings(sensors)
+            if all(distance > 0.4 for distance in distances):
                 print("will move straight")
                 base_state = "straight"
                 await base.move_straight(distance=800, velocity=250)
@@ -786,18 +709,18 @@ It also creates two background tasks running asynchronously, one looking for obs
 async def main():
     robot = await connect()
     base = Base.from_robot(robot, base_name)
-    sensor = Sensor.from_robot(robot, "ultrasonic")
-    sensor2 = Sensor.from_robot(robot, "ultrasonic2")
+    sensors = [Sensor.from_robot(robot, sensor_name)
+               for sensor_name in sensor_names]
     detector = VisionServiceClient.from_robot(robot, "myPeopleDetector")
 
     # create a background task that looks for obstacles and stops the base if
     # it's moving
     obstacle_task = asyncio.create_task(
-        obstacle_detect_loop(sensor, sensor2, base))
+        obstacle_detect_loop(sensors, base))
     # create a background task that looks for a person and moves towards them,
     # or turns and keeps looking
     person_task = asyncio.create_task(
-        person_detect(detector, sensor, sensor2, base))
+        person_detect(detector, sensors, base))
     results = await asyncio.gather(obstacle_task,
                                    person_task,
                                    return_exceptions=True)
@@ -839,10 +762,10 @@ To make Tipsy even more advanced, you can try to:
 
 - Add more ultrasonic sensors so it doesn’t hit objects at different heights, you can also attach them to a moving gantry along the side rails
 - Add a depth camera to detect obstacles and how close they are to Tipsy
-- Add an imu to see if Tipsy is tipping backward
+- Add an IMU to see if Tipsy is tipping backward
 - Add a lidar
 
-You can also design another robot for collecting the empty beer cans, or a bartender robot with pumps that can mix some drinks.
-Till then, sit back, relax, and let Tipsy handle the beer-carrying duties for you!
+You can also design another robot for collecting the empty drink cans, or a bartender robot with pumps that can mix some drinks.
+Until then, sit back, relax, and let Tipsy handle the drink-carrying duties for you!
 
 For more robotics projects, check out our [other tutorials](/tutorials/).
