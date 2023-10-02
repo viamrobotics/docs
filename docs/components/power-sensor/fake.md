@@ -40,3 +40,5 @@ Name your sensor, and click **Create**.
 {{< /tabs >}}
 
 No attributes are available for `fake` power sensors.
+
+{{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}

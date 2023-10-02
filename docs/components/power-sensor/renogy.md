@@ -76,3 +76,5 @@ The following attributes are available for `renogy` sensors:
 | `serial_path` | string | Optional | The full filesystem path to the serial device, starting with /dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. On a Raspberry Pi, you can also run `ls /dev/serial/by-path` to list USB serial devices. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Example: `"/dev/serial/by-path/usb-0:1.1:1.0"` <br>Default: `/dev/serial0` |
 | `serial_baud_rate` | integer | Optional | The baud rate to use for serial communications. <br> Default: `9600` |
 | `modbus_id`  | integer | Optional | Controller MODBUS address. <br> Default: `1` |
+
+{{< readfile "/static/include/components/test-control/power-sensor-control.md" >}}
