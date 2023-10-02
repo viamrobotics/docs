@@ -6,16 +6,6 @@ Then remove and fill in the attributes as applicable to your board, according to
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "analogs": [
-    {
-      "chip_select": "<chip-select-pin-number-on-board>",
-      "name": "<your-analog-reader-name>",
-      "pin": "<pin-number-on-adc>",
-      "spi_bus": "<your-spi-bus-name>",
-      "average_over_ms": <int>,
-      "samples_per_sec": <int>
-    }
-  ],
   "digital_interrupts": [
     {
       "name": "<your-digital-interrupt-name>",
