@@ -4,13 +4,18 @@ linkTitle: "ultrasonic"
 weight: 60
 type: "docs"
 description: "Configure an ultrasonic model sensor."
-tags: ["sensor", "components"]
+tags: ["sensor", "components", "ultrasonic"]
 icon: "/icons/components/sensor.svg"
 images: ["/icons/components/sensor.svg"]
 # SME: #team-bucket
 ---
 
-Configure an `ultrasonic` sensor to integrate an [HC-S204 ultrasonic distance sensor](https://www.sparkfun.com/products/15569) into your robot:
+{{< alert title="Tip" color="tip" >}}
+An ultrasonic distance sensor can also be configured as a [camera](/components/camera/) resource.
+[Configure it as such](/components/camera/ultrasonic/) to utilize the [camera API](/components/camera/#api) with your ultrasonic sensor hardware, enabling you to use it as an input to a [vision service](/services/vision/) model that returns obstacles.
+{{< /alert >}}
+
+Configure an `ultrasonic` sensor to integrate an ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -73,12 +78,6 @@ Edit and fill in the attributes as applicable.
 
 The following attributes are available for `ultrasonic` sensors:
 
-<!-- prettier-ignore -->
-| Attribute | Type | Inclusion | Description |
-| --------- | ---- | --------- | ----------- |
-| `board`  | string | **Required** | The `name` of the [board](/components/board/) the sensor is wired to. |
-| `trigger_pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} on the [board](/components/board/) that you have wired [the sensor's trigger pin](https://www.sparkfun.com/products/15569). |
-| `echo_interrupt_pin` | string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin [the sensor's echo pin](https://www.sparkfun.com/products/15569) is wired to on the board. If you have already created a [digital interrupt](/components/board/#digital_interrupts) for this pin in the [board's configuration](/components/board/), use that digital interrupt's `name` instead. |
-| `timeout_ms`  | int | Optional | Time to wait in milliseconds before timing out of requesting to get readings from the sensor. <br> Default: `1000`. |
+{{< readfile "/static/include/components/ultrasonic-attributes.md" >}}
 
 {{< readfile "/static/include/components/sensor-control.md" >}}
