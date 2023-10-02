@@ -60,4 +60,4 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< readfile "/static/include/components/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}

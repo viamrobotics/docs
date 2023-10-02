@@ -99,4 +99,4 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 
 {{% /alert %}}
 
-{{< readfile "/static/include/components/servo-control.md" >}}
+{{< readfile "/static/include/components/test-control/servo-control.md" >}}

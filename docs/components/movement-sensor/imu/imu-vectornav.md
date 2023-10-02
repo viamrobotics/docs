@@ -84,4 +84,4 @@ Edit and fill in the attributes as applicable.
 | `spi_baud_rate`        | int    | **Required** | The rate at which data is sent from the IMU. <br> Default: `115200`                                                                                                                                                                                 |
 | `polling_frequency_hz` | int    | **Required** | How many times per second the sensor is polled.                                                                                                                                                                                                     |
 
-{{< readfile "/static/include/components/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}

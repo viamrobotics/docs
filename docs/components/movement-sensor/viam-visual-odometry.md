@@ -253,4 +253,4 @@ The following attributes are available to configure the `viam-visual-odometry` m
 
 See the [ORB openCV documentation](https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html) for more details.
 
-{{< readfile "/static/include/components/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}

@@ -43,4 +43,4 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/base/fake/
 
 ## Test the base
 
-{{< readfile "/static/include/components/base-control.md" >}}
+{{< readfile "/static/include/components/test-control/base-control.md" >}}

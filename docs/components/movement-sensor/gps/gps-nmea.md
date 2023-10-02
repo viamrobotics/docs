@@ -160,4 +160,4 @@ For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attr
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< readfile "/static/include/components/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
