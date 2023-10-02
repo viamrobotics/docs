@@ -58,8 +58,8 @@ Models allow you to control different instances of a resource with a consistent 
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`.
-See [Naming your model](/modular-resources/key-concepts/#naming-your-model) for more information.
+Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:repo-name:name` for modular resources and `rdk:builtin:name` for builtin models.
+See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model) for more information.
 
 Models are either:
 
@@ -68,7 +68,7 @@ Models are either:
 
 ### Built-in models
 
-Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
+Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `type`.
 These models run within `viam-server`.
 
 For example:
@@ -95,7 +95,7 @@ When implementing a custom [model](#models) of an existing [service](/services/)
 - `type`: `service`
 - `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
 
-#### Naming your model
+#### Naming your model: namespace:repo-name:name
 
 If you are [creating a custom module](/modular-resources/create/) and [uploading that module](/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
 
@@ -104,9 +104,11 @@ If you are [creating a custom module](/modular-resources/create/) and [uploading
 - Your model triplet must be all-lowercase.
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
-In addition, you should chose a name for the `family` of your model based on the whether your module implements a single model, or multiple models:
+In addition, you should use the name of the git repository for your modular resource as the `repo-name`.
+The `repo-name` should identify a single model or multiple models.
+You can use a name that identifies the _family_ of the model or models:
 
-- If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
+- If your module provides a single model, the `repo-name` should match the `subtype` of whichever API your model implements.
   For example, the Intel Realsense module `realsense`, available from the [Viam registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}
@@ -116,7 +118,7 @@ In addition, you should chose a name for the `family` of your model based on the
   }
   ```
 
-- If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
+- If your module provides multiple models, the `repo-name` should describe the common functionality provided across all the models of that module.
   For example, the ODrive module `odrive`, available from the [Viam registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
 
   ```json {class="line-numbers linkable-line-numbers"}

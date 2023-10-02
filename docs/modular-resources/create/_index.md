@@ -65,7 +65,7 @@ A custom module can implement one or more [models](/modular-resources/key-concep
 
 ### Code a new resource model
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model `acme:demo:mybase`.
 For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
@@ -280,7 +280,7 @@ import (
 )
 
 // Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
-// acme = namespace, demo = family, mybase = model name.
+// acme = namespace, demo = repo-name, mybase = model name.
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")
