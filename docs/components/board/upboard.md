@@ -45,8 +45,7 @@ Then remove and fill in the attributes as applicable to your board, according to
   "digital_interrupts": [
     {
       "name": "<your-digital-interrupt-name>",
-      "pin": "<pin-number>",
-      "type": "< basic | servo >"
+      "pin": "<pin-number>"
     }
   ],
   "i2cs": [
@@ -90,8 +89,7 @@ Then remove and fill in the attributes as applicable to your board, according to
         "digital_interrupts": [
           {
             "name": "<your-digital-interrupt-name>",
-            "pin": "<pin-number>",
-            "type": "< basic | servo >"
+            "pin": "<pin-number>"
           }
         ],
         "i2cs": [

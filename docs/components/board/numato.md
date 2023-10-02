@@ -31,17 +31,7 @@ Then remove and fill in the attributes as applicable to your board, according to
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "pins": <int>,
-  "analogs": [
-    {
-      "chip_select": "<chip-select-pin-number-on-board>",
-      "name": "<your-analog-reader-name>",
-      "pin": "<pin-number-on-adc>",
-      "spi_bus": "<your-spi-bus-name>",
-      "average_over_ms": <int>,
-      "samples_per_sec": <int>
-    }
-  ]
+  "pins": <int>
 }
 ```
 
@@ -69,15 +59,7 @@ Then remove and fill in the attributes as applicable to your board, according to
       "type": "board",
       "namespace": "rdk",
       "attributes": {
-        "pins": <number>,
-        "analogs": [
-          {
-            "name": "<your-analog>",
-            "pin": "<number>",
-            "spi_bus": "<your-spi-bus-name>",
-            "chip_select": "<number>"
-          }
-        ]
+        "pins": <number>
       },
       "depends_on": []
     }
@@ -94,7 +76,6 @@ The following attributes are available for `numato` boards:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |
-| `analogs` | object | Optional | Attributes of any pins that can be used as inputs for the module's internal analog-to-digital converter (ADC). See [configuration info](/components/board/#analogs). |
 
 <!-- I think these are available but I need to confirm
 | `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See [configuration info](/components/board/#digital-interrupts). |
