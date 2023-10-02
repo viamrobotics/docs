@@ -19,9 +19,9 @@ Flash your Intel-based board with:
 
 1. The Ubuntu `"Server install image"` version of the operating system.
    For example, `ubuntu-22.04.2-live-server-amd64.iso`.
-   Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to do so.
+   Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to install Ubuntu Server.
 1. The [pin control driver](https://github.com/up-division/pinctrl-upboard).
-   Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
+   Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to install the pin control driver.
    This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to that of a [Raspberry Pi](/components/board/pi/).
 
 {{< tabs name="Configure an upboard Board" >}}
