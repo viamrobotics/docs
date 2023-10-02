@@ -83,7 +83,7 @@ We used a [`jetson` board](/components/board/jetson/), but you can use any model
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
 2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
-Copy and paste the following into your board's **Attributes** to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
+   Copy and paste the following into your board's **Attributes** to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -450,7 +450,7 @@ At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab
 ## Start navigating with the Navigation service
 
 Now that you have configured your navigation service, add waypoints to your navigation service.
-You can add waypoints from the [Control tab](tutorials/services/navigate-with-rover-base/#control-tab-method) or [programmatically](/tutorials/services/navigate-with-rover-base/#programmatic-method).
+You can add waypoints from the [Control tab](#control-tab-method) or [programmatically](#programmatic-method).
 
 ### Control tab method
 
@@ -552,7 +552,7 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 In this tutorial, you have learned how to use Navigation to navigate across waypoints.
 Now, you can make navigation even better with automated obstacle detection.
 
-First, configure a depth [camera](/components/camera) that your robot can sense how far away it is from obstacles.
+First, configure a depth [camera](/components/camera/) that your robot can sense how far away it is from obstacles.
 
 We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com/depth-camera-d435/), which is available as a [modular resource](/extend/modular-resources/) [in the Viam registry](https://app.viam.com/module/viam/realsense):
 
@@ -560,8 +560,8 @@ We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com
 
 {{< alert title="Tip" color="tip" >}}
 
-You can alternatively use an [`ultrasonic` sensor](/components/sensor/ultrasonic) configured as a camera.
-Attribute information for an `ultrasonic` [camera](/components/camera) is the same as [for a sensor](/components/sensor/ultrasonic).
+You can alternatively use an [`ultrasonic` sensor](/components/sensor/ultrasonic/) configured as a camera.
+Attribute information for an `ultrasonic` [camera](/components/camera/) is the same as [for a sensor](/components/sensor/ultrasonic/).
 
 {{< /alert >}}
 
