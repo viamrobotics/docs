@@ -86,7 +86,7 @@ Select the tab below for your operating system:
 
 ### Install on a macOS computer
 
-`viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation), and supports both Intel and Apple Silicon macOS computers.
+`viam-server` is available for macOS users through [Homebrew](https://brew.sh/), and supports both Intel and Apple Silicon macOS computers.
 To install `viam-server` on a macOS computer:
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
