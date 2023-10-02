@@ -24,37 +24,63 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of a join color depth view in the Viam app config builder.](/components/camera/configure-join-color-depth.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "output_image_type": "<color|depth>",
+  "color_camera_name": "<your-camera-name>",
+  "depth_camera_name": "<your-camera-name>",
+  "intrinsic_parameters": {
+    "width_px": <int>, # the expected width of the aligned pic
+    "height_px": <int>, # the expected height of the aligned pic
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "distortion_parameters": {
+    "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  },
+  "debug": <boolean>
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model": "join_color_depth",
-    "attributes": {
-        "output_image_type": "<color|depth>",
-        "color_camera_name": "<your-camera-name>",
-        "depth_camera_name": "<your-camera-name>",
-        "intrinsic_parameters": {
-          "width_px": <int>, # the expected width of the aligned pic
-          "height_px": <int>, # the expected height of the aligned pic
-          "fx": <float>,
-          "fy": <float>,
-          "ppx": <float>,
-          "ppy": <float>
-        },
-        "distortion_parameters": {
-          "rk1": <float>,
-          "rk2": <float>,
-          "rk3": <float>,
-          "tp1": <float>,
-          "tp2": <float>
-        },
-        "debug": <boolean>
-    }
+  "name": "<your-camera-name>",
+  "model": "join_color_depth",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "output_image_type": "<color|depth>",
+    "color_camera_name": "<your-camera-name>",
+    "depth_camera_name": "<your-camera-name>",
+    "intrinsic_parameters": {
+      "width_px": <int>, # the expected width of the aligned pic
+      "height_px": <int>, # the expected height of the aligned pic
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "debug": <boolean>
+  }
 }
 ```
 

@@ -22,39 +22,84 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of an transform view in the Viam app config builder.](/components/camera/configure-transform.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "source" : "<your-camera-name>",
+  "pipeline": [
+    { "type": "<transformation-type>", "attributes": { ... } },
+  ],
+  "intrinsic_parameters": {
+    "width_px": <int>,
+    "height_px": <int>,
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "distortion_parameters": {
+  "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  },
+  "debug": <boolean>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "source": "my-webcam",
+  "pipeline": [
+    { "type": "rotate", "attributes": {} },
+    { "type": "resize", "attributes": { "width_px": 200, "height_px": 100 } }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model": "transform",
-    "attributes" : {
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "distortion_parameters": {
-            "rk1": <float>,
-            "rk2": <float>,
-            "rk3": <float>,
-            "tp1": <float>,
-            "tp2": <float>
-        },
-        "debug": <boolean>,
-        "source" : "<your-camera-name>",
-        "pipeline": [
-            { "type": "<transformation-type>", "attributes": { ... } },
-            ...
-        ]
-    }
+  "name": "<your-camera-name>",
+  "model": "transform",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes" : {
+    "source" : "<your-camera-name>",
+    "pipeline": [
+      { "type": "<transformation-type>", "attributes": { ... } },
+    ],
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "debug": <boolean>
+  }
 }
 ```
 
@@ -81,11 +126,11 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "classifications",
-    "attributes": {
-        "classifier_name": string,
-        "confidence_threshold": float
-    }
+  "type": "classifications",
+  "attributes": {
+    "classifier_name": string,
+    "confidence_threshold": float
+  }
 }
 ```
 
@@ -102,13 +147,13 @@ The Crop transform crops takes an image and crops it to a rectangular area speci
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "crop",
-    "attributes": {
-        "x_min_px": int,
-        "y_min_px": int,
-        "x_max_px": int,
-        "y_max_px": int
-    }
+  "type": "crop",
+  "attributes": {
+    "x_min_px": int,
+    "y_min_px": int,
+    "x_max_px": int,
+    "y_max_px": int
+  }
 }
 
 ```
@@ -128,12 +173,12 @@ The Depth Edges transform creates a canny edge detector to detect edges on an in
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "depth_edges",
-    "attributes": {
-        "high_threshold_pct": float,
-        "low_threshold_pct": float,
-        "blur_radius_px": float
-    }
+  "type": "depth_edges",
+  "attributes": {
+    "high_threshold_pct": float,
+    "low_threshold_pct": float,
+    "blur_radius_px": float
+  }
 }
 ```
 
@@ -185,11 +230,11 @@ The Detections transform takes the input image and overlays the detections from 
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "detections",
-    "attributes": {
-        "detector_name": string,
-        "confidence_threshold": float
-    }
+  "type": "detections",
+  "attributes": {
+    "detector_name": string,
+    "confidence_threshold": float
+  }
 }
 ```
 
@@ -224,17 +269,17 @@ Useful to debug the alignment of the two images.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "overlay",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": int,
-            "height_px": int,
-            "ppx": float,
-            "ppy": float,
-            "fx": float,
-            "fy": float,
-        }
+  "type": "overlay",
+  "attributes": {
+    "intrinsic_parameters": {
+      "width_px": int,
+      "height_px": int,
+      "ppx": float,
+      "ppy": float,
+      "fx": float,
+      "fy": float,
     }
+  }
 }
 ```
 
@@ -256,11 +301,11 @@ The Resize transform resizes the image to the specified height and width.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "resize",
-    "attributes": {
-        "width_px": int,
-        "height_px": int
-    }
+  "type": "resize",
+  "attributes": {
+    "width_px": int,
+    "height_px": int
+  }
 }
 ```
 
@@ -297,24 +342,24 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "type": "undistort",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": int,
-            "height_px": int,
-            "ppx": float,
-            "ppy": float,
-            "fx": float,
-            "fy": float
-        },
-        "distortion_parameters": {
-            "rk1": float,
-            "rk2": float,
-            "rk3": float,
-            "tp1": float,
-            "tp2": float
-        }
+  "type": "undistort",
+  "attributes": {
+    "intrinsic_parameters": {
+     "width_px": int,
+      "height_px": int,
+      "ppx": float,
+      "ppy": float,
+      "fx": float,
+      "fy": float
+    },
+    "distortion_parameters": {
+      "rk1": float,
+      "rk2": float,
+      "rk3": float,
+      "tp1": float,
+      "tp2": float
     }
+  }
 }
 ```
 

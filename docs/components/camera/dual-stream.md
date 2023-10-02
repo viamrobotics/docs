@@ -22,37 +22,80 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of a dual stream camera in the Viam app config builder.](/components/camera/configure-dual-stream.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "stream": "<color|depth>",
+  "color_url": <string>,
+  "depth_url": <string>,
+  "intrinsic_parameters": {
+    "width_px": <int>,
+    "height_px": <int>,
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "distortion_parameters": {
+    "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  },
+  "debug": <boolean>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "stream": "color",
+  "color_url": "http://urltogetstreamingcolordatafrom",
+  "depth_url": "http://urltogetstreamingdepthdatafrom"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model": "dual_stream",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "distortion_parameters": {
-            "rk1": <float>,
-            "rk2": <float>,
-            "rk3": <float>,
-            "tp1": <float>,
-            "tp2": <float>
-        },
-        "stream": "<color|depth>",
-        "debug": <boolean>,
-        "color_url": <string>,
-        "depth_url": <string>
-    }
+  "name": "<your-camera-name>",
+  "model": "dual_stream",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "stream": "<color|depth>",
+    "debug": <boolean>,
+    "color_url": <string>,
+    "depth_url": <string>
+  }
 }
 ```
 
