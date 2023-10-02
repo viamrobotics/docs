@@ -32,9 +32,9 @@ weight: 4
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-One key feature of Viam is [Navigation](/manage/data/), the stateful definition of Viam's [motion service](/services/motion/).
+One key feature of Viam is [the navigation service](/services/navigation/), the stateful definition of Viam's [motion service](/services/motion/).
 
-Using Navigation, you can queue up user-defined waypoints and expect your robot to move to them in the order that you specify.
+Using Navigation, you can queue up user-defined waypoints and your robot will move to them in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
 Viam's motion planner will plan routes that avoid those obstacles and attempt to keep the robot at your specified velocity.
 
@@ -61,7 +61,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are using different hardware than us, the navigation setup process will be mostly the same, but you will need to substitute your robot's components.
+If you are using different hardware, the navigation setup process will be mostly the same, but you will need to substitute your robot's components.
 
 {{% /alert %}}
 
@@ -76,13 +76,13 @@ If you are using different _models_ of hardware, adjust your configuration accor
 
 First, configure the [board](/components/board/) local to your rover.
 Follow [these instructions](/components/board/#configuration) to configure your board model.
-We used a [`jetson` board](/components/board/jetson/), but you can use whatever model of board you have on hand, as the [resource's API](/components/board/#api) is hardware agnostic.
+We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/components/board/#api) is hardware agnostic.
 
-Configure a board named `local` as shown below:
+1. Configure a board named `local` as shown below:
 
 ![Configuration of a jetson board with digital interrupts in the Viam app config builder.](/tutorials/navigate-with-rover-base/board-config-builder.png)
 
-Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
+2. Configure [digital interrupts](/components/board/#digital_interrupts) on your board to signal precise GPIO state changes to the [encoders](/components/encoder/) on your rover base.
 Copy and paste the following into your board's **Attributes** to add [digital interrupts](/components/board/#digital_interrupts) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -108,11 +108,11 @@ Copy and paste the following into your board's **Attributes** to add [digital in
 }
 ```
 
-Save your config.
+3. Save your config.
 
 ### Configure a rover base with encoded motors
 
-Now, configure your rover base to act as the moving platform of the navigating robot.
+Configure your rover base to act as the moving platform of the navigating robot.
 Start by configuring the [encoders](/components/encoder/) and [motors](/components/motor/) of your encoded motor.
 
 1. Follow [these instructions](/components/) to configure the left and right encoders of the wheeled base.
@@ -180,7 +180,7 @@ If you choose to wire your components differently, adjust your pin assignment co
 
 ### Full JSON Configuration
 
-Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config** tab, the full `"components"` array should look similar to the following:
+At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab, the full `"components"` array should look similar to the following:
 
 {{%expand "Click to view full example JSON" %}}
 
@@ -383,7 +383,7 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 
 ## Configure a Navigation service
 
-Now, add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
+Add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
 To add the navigation service to your robot, do the following:
 
 1. On your robot's **Config** page, navigate to the **Services** tab.
@@ -420,7 +420,7 @@ For more detailed information see [the navigation service](/services/navigation/
 
 ### Full JSON Configuration
 
-Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config** tab, the full `"services"` array should look similar to the following:
+At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab, the full `"services"` array should look similar to the following:
 
 {{%expand "Click to view full example JSON" %}}
 
@@ -449,11 +449,12 @@ Now, at this point, if you switch to **Raw JSON** mode in your robot's **Config*
 
 ## Start navigating with the Navigation service
 
-Next, add waypoints to your navigation service.
+Now that you have configured your navigation service, add waypoints to your navigation service.
+You can add waypoints from the [Control tab](tutorials/services/navigate-with-rover-base/#control-tab-method) or [programmatically](/tutorials/services/navigate-with-rover-base/#programmatic-method).
 
 ### Control tab method
 
-Then, go to the **Control** tab of your robot in the [Viam app](https://app.viam.com), and open the **navigation** card.
+Go to the **Control** tab of your robot in the [Viam app](https://app.viam.com), and open the **navigation** card.
 From there, ensure that **Navigation mode** is selected as **Manual**, so your robot will not begin navigation while you add waypoints.
 
 #### Add waypoints
@@ -485,7 +486,7 @@ Your rover will begin navigating between waypoints.
 
 ### Programmatic method
 
-If you want to do this programmatically, use the service's [API method `AddWaypoint()`](/services/navigation/#addwaypoint) like the following:
+If you want to do add waypoints programmatically, use the service's [API method `AddWaypoint()`](/services/navigation/#addwaypoint):
 
 #### Add waypoints
 
@@ -564,7 +565,7 @@ Attribute information for an `ultrasonic` [camera](/components/camera) is the sa
 
 {{< /alert >}}
 
-Now, if you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/services/vision/segmentation/).
+If you want the robot to be able to automatically detect obstacles in front of it, [configure a Vision service segmenter](/services/vision/segmentation/).
 For example, [configure](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter) the Vision service model [`obstacles_depth`](/services/vision/segmentation/#configure-an-obstacles_depth-segmenter) to detect obstacles in front of the robot.
 Then, use one of [Viam's client SDKs](/program/) to automate obstacle avoidance with the navigation service like in the following Python program:
 
