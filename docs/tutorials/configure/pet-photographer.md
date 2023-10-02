@@ -25,8 +25,8 @@ However, as the amount of data collected by these devices continues to grow, it 
 This tutorial will guide you through using the color filter module to selectively capture and synchronize image data with [Viam's cloud](/services/data/#cloud-sync).
 
 While the color filter selects image data from a camera, these same principles can be applied to various components, including [sensors](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
-The filter modular component allows you to increase the precision of your model's data capture and determine which readings to store.
-This helps you to avoid sifting through unwanted data captures and ensures that only the data you're interested in is in Viam's cloud.
+The filter modular component allows you to increase the precision of your model's [data capture](/services/data/#data-capture) and determine which readings to store.
+This can help you to avoid sifting through unwanted data captures and ensures that only the data you're interested in is in Viam's cloud.
 
 ## Hardware Requirements
 
@@ -51,7 +51,7 @@ If you don't already have `viam-server` installed, follow [these directions](/in
    git clone https://github.com/viam-labs/modular-filter-examples.git
    ```
 
-### Compile source code
+### Configure the source code
 
 This tutorial makes use of [Viam's color filter example](https://github.com/viam-labs/modular-filter-examples/tree/main/colorfilter). However, you can modify the filter's source code or write your own filter for different components using [this guide](/extend/modular-resources/create/).
 
@@ -61,13 +61,27 @@ Navigate to the `modular-filter-examples/colorfilter/module` directory in your t
 go build
 ```
 
-This command will compile the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'. Read [this guide](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
+This command will compile the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
+
+{{< alert title="Tip" color="tip" >}}
+Go to the `colorfilter/module` directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
+
+```{class="command-line" data-prompt="$"}
+realpath colorfilter 
+```
+
+{{< /alert >}}
+
+Read [this guide](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
 
 ### Set up camera
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
 Add your robot's camera as a component by clicking **Create component** in lower-left corner of the page and typing in 'webcam' or specific the model you're using.
+
+![A photo of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
+
 For more information about the Camera component, you can refer to [this page](/components/camera/).
 
 ## Add services
@@ -126,7 +140,7 @@ Add the vision service object to the services array in your rover’s raw JSON c
 {{% /tab %}}
 {{< /tabs >}}
 
-Click **Save Config** and head back to the Builder mode.
+Click **Save Config** and head back to the **Builder** mode.
 
 ### Data management service to collect images
 
@@ -169,25 +183,82 @@ Add the vision service object to the services array in your rover’s raw JSON c
 ]
 ```
 
+Click **Save Config** and head back to the Builder mode.
+
 {{% /tab %}}
 {{< /tabs >}}
 
-## Configure your camera
+## Configure the color filter camera
 
-Before you can interact with the vision and data management services, you must configure your camera to detect color and store photos to Viam's cloud.
+Before you can interact with the vision and data management services, you must configure your camera to filter color and store photos to Viam's cloud.
 
-## Program your X
+### Add local module
+
+Select the **Modules** subtab in the **Config** panel to upload the local color filter module to your robot's system in the Viam app.
+
+In the **Add local module** section, enter the name of your module (`colorfilter`) along with the absolute path to the filter's executable and click **Add module**.
+Then, click **Save config**.
+
+![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
+
+### Add colorfilter component
+
+1. Click the **Components** subtab and click **Create component**.
+
+1. Then, select the `local modular resource` type from the list.
+
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+
+1. On the next screen:
+
+   - Select the select [camera](/components/camera/), from the drop down menu.
+   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
+   - Enter a name for this instance of your modular resource.
+     This name must be different from the module name.
+
+   {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
+
+1. Click **Create** to create the modular resource component.
+
+1. Copy the following JSON configuration into the Attributes section:
+
+```json {class="line-numbers linkable-line-numbers"}
+ {
+   "vision_service": "my_color_detector",
+   "actual_cam": "actualcam"
+ }
+```
+
+![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam](/tutorials/pet-photographer/colorfiltercam-component-attributes.png)
+
+### Configure data capture
+
+To add data capture for the colorfilter camera, click **Add Method** in the **Data Capture configuration** section of your color filter camera component.
+Toggle the **Type** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`.
+Then, click **Save config**.
+
+![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam as well as the data capture configuration capture set capture ReadImage at 0.1 frequency](/tutorials/pet-photographer/colorfiltercam-component.png)
+
+### Test your color filter camera
+
+To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your robot's page.
+
+On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your camera's live feed.
+Test the filter by getting a blue colored item and moving it in frame.
+
+![Kimbo in camera live feed]()
+
+Then, go to the **Data** tab to view pictures that contain the blue colored item.
+
+![Data tab contents from colorfiltercam]()
 
 ## Photograph your pet
 
-Code and directions.
-
-## Test your X
-
-Verify that your...
+To photograph your own pet, put them in a blue or green collar and set up your camera to point at an area they go to frequently.
+When you check the **Data** tab, you'll only see pictures of your adorable pet.
 
 ## Next steps
 
 {{< cards >}}
-  {{% card link="/tutorials/get-started/blink-an-led" %}}
+  {{% card link="/tutorials/try-viam-color-detection.md" %}}
 {{< /cards >}}
