@@ -145,19 +145,20 @@ Copy the following JSON configuration into the **Attributes** section:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-   "source": "cam",
-   "pipeline": [
-     {
-       "attributes": {
-         "detector_name": "my_color_detector",
-         "confidence_threshold": 0.3
-       },
-       "type": "detections"
-     }
-   ]
+  "source": "cam",
+  "pipeline": [
+    {
+      "attributes": {
+        "detector_name": "my_color_detector",
+        "confidence_threshold": 0.3
+      },
+      "type": "detections"
+    }
+  ]
 }
 ```
 
+<!-- prettier-ignore -->
 | Field | Default value | Description |
 | ----- | ------------- | ----------- |
 | `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
