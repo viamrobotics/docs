@@ -260,5 +260,5 @@ When you check the **Data** tab, you'll only see pictures of your adorable pet.
 ## Next steps
 
 {{< cards >}}
-  {{% card link="/tutorials/try-viam-color-detection.md" %}}
+  {{% card link="/tutorials/services/try-viam-color-detection.md" %}}
 {{< /cards >}}
