@@ -246,11 +246,13 @@ To test that your color filter camera is capturing and filtering images properly
 On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your camera's live feed.
 Test the filter by getting a blue colored item and moving it in frame.
 
-![Kimbo in camera live feed]()
+Placeholder image
+![Kimbo in camera live feed](/tutorials/pet-photographer/colorfiltercam-component.png)
 
 Then, go to the **Data** tab to view pictures that contain the blue colored item.
 
-![Data tab contents from colorfiltercam]()
+Placeholder image
+![Data tab contents from colorfiltercam](/tutorials/pet-photographer/colorfiltercam-component.png)
 
 ## Photograph your pet
 
