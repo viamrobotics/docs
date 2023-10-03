@@ -375,11 +375,7 @@ If you wire and configure another sensor, such as a temperature sensor on channe
 If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor).
 {{< /alert >}}
 
-{{% alert title="Tip" color="tip" %}}
-
 Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
-
-{{% /alert %}}
 
 ### Add Python control code
 
