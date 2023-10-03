@@ -12,10 +12,7 @@ images: ["/icons/components/camera.svg"]
 
 {{< alert title="Usage" color="tip" >}}
 An ultrasonic distance sensor can also be configured as a [sensor](/components/sensor/) resource.
-[Configure it as such](/components/sensor/ultrasonic/) to utilize the [sensor API](/components/sensor/#api) with your ultrasonic sensor hardware.
-
-Configure your ultrasonic sensor as a camera if you want to use it as an input to a [vision service](/services/vision/) model that returns obstacles.
-As a camera model, the ultrasonic model implements the camera method [`GetPointCloud()`](/components/camera/#getpointcloud), rather than the sensor method [`GetReadings()`](/components/sensor/#getreadings).
+When configured as a sensor, you can use the sensor method [`GetReadings()`](/components/sensor/#getreadings), rather than the camera method [`GetPointCloud()`](/components/camera/#getpointcloud).
 {{< /alert >}}
 
 Configure an `ultrasonic` camera to integrate an ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) into your robot:
