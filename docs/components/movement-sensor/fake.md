@@ -33,8 +33,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": <sensor_name>,
-      "type": "movement_sensor",
       "model": "fake",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }
@@ -50,8 +51,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "myFakeSensor",
+      "model": "fake",
       "type": "movement_sensor",
-      "model": "fake"
+      "namespace": "rdk"
     }
   ]
 }
