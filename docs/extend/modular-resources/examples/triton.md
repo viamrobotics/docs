@@ -32,6 +32,8 @@ Pull the triton module docker container:
 docker pull ghcr.io/viamrobotics/viam-mlmodelservice-triton:latest
 ```
 
+Examine the output to find the exact tag associated with latest.
+Use this as `"version"` in [configuration](#configuration).
 Then, if you haven't done so already, create a new robot in [the Viam app](https://app.viam.com).
 [Install `viam-server` on the board](/installation/prepare/jetson-agx-orin-setup/) and connect to the robot.
 
@@ -59,6 +61,7 @@ Add the following to your `"modules"` array:
 }
 ```
 
+Replace the value of the version field with the value you determined above with the `docker pull` command.
 Add the following to your `"services"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -111,6 +114,7 @@ Newer versions will be preferred by default.
 
 ### Attributes
 
+After creating your model repository, configure the required attributes to deploy your model on your robot.
 The following attributes are available for the MLModel service `viam:mlmodelservice:triton`:
 
 <!-- prettier-ignore -->
