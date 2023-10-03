@@ -77,8 +77,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
-      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
+      "model_path": "${packages.ml_model.my_fruit_model}/my_fruit_model.tflite",
+      "label_path": "${packages.ml_model.my_fruit_model}/labels.txt",
       "num_threads": 1
     }
   }
