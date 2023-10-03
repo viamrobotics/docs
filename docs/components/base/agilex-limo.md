@@ -31,7 +31,7 @@ Then remove and fill in the attributes as applicable to your base, according to 
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "drive_mode": "< ackermann | differential | omni >",
+  "drive_mode": "<ackermann|differential|omni>",
   "serial_path": "<your-serial-path>"
 }
 ```
