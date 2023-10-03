@@ -357,7 +357,7 @@ You can add a module from the Viam registry directly from your robot’s Configu
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
-1. Go to your robot's **Config** tab. Select **create component**.
+1. Go to your robot's **Config** tab. Select **Create component**.
 2. Search mcp300x. Click **Add module**.
 3. Give your module a name of your choice, and click **Create** to add this module to your robot.
 4. Find your module's card on the **Config** page. In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
