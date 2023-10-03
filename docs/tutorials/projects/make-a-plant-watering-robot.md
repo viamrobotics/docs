@@ -335,13 +335,7 @@ Now, if you navigate to your robot's **Control** tab, you should be able to cont
 
 ![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png)
 
-{{% alert title="Tip" color="tip" %}}
-
-Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
-
-{{% /alert %}}
-
-### Configure the ADC as a module from the registry
+#### Configure the ADC as a module from the registry
 
 _Resources_ refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
@@ -357,9 +351,10 @@ You can add a module from the Viam registry directly from your robot’s Configu
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
-1. Go to your robot and from the create component section, search mcp300x.
-2. Add this module to your robot.
-3. Add the necessary attributes.
+1. Go to your robot's **Config** tab. Select **Create component**.
+2. Search mcp300x. Click **Add module**.
+3. Give your module a name of your choice, and click **Create** to add this module to your robot.
+4. Find your module's card on the **Config** page. In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
    For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
 
    ```json
@@ -371,9 +366,16 @@ Add the mcp300x-adc-sensor module to your robot in 3 steps:
    }
    ```
 
+Save your config.
+
 This module allows you to get multiple readings at the same time from different channels of the ADC sensor.
 If you wire and configure another sensor, such as a temperature sensor on channel 1, you can add the sensor to the `"channel_map"` and get a reading from it.
-{{< alert title="Info" color="info" >}} If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor). {{< /alert >}}
+
+{{< alert title="Info" color="info" >}}
+If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor).
+{{< /alert >}}
+
+Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
 
 ### Add Python control code
 
