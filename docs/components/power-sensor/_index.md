@@ -290,6 +290,64 @@ readings, err := myPowerSensor.Readings(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetReadings
+
+Get the measurements or readings that this power sensor provides.
+If a sensor is not configured to have a measurement or fails to read a piece of data, it will not appear in the readings dictionary.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this power sensor provides.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_readings).
+
+```python
+my_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+
+# Get the readings provided by the sensor.
+readings = await my_sensor.get_readings()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(map\[string\]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
+- [(error)](https://pkg.go.dev/builtin#error): Report any errors that might occur during operation.
+  For a successful operation, `error` returns `nil`.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#Readings).
+
+```go
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+
+// Get the readings provided by the sensor.
+readings, err := myPowerSensor.Readings(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Related Services
+
+{{< cards >}}
+{{% card link="/services/data/" class="small" %}}
+{{</ cards >}}
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

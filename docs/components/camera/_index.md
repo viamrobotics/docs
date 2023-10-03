@@ -395,10 +395,24 @@ For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
+## Troubleshooting
+
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+{{< snippet "social.md" >}}
+
+## Related Services
+
+{{< cards >}}
+{{% card link="/services/data/" class="small" %}}
+{{% card link="/services/frame-system/" class="small" %}}
+{{% card link="/services/slam" class="small"%}}
+{{% card link="/services/vision" class="small"%}}
+{{</ cards >}}
+
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/services/vision" %}}
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

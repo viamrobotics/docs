@@ -655,6 +655,15 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
+## Related Services
+
+{{< cards >}}
+{{% card link="/services/data/" class="small" %}}
+{{% card link="/services/frame-system/" class="small" %}}
+{{% card link="/services/motion/" class="small" %}}
+{{% card link="/services/navigation/" class="small" %}}
+{{</ cards >}}
+
 ## Next Steps
 
 Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/apis/) to implement closed-loop movement control for your robot.
