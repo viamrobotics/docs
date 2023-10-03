@@ -5,11 +5,11 @@ type: "docs"
 description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
 tags: ["vision", "filter", "camera", "detector", "services"]
 aliases:
-    - /tutorials/pet-photographer
-    - /tutorials/filter-modular-component
-authors: [ "Sky Leilani" ]
+  - /tutorials/pet-photographer
+  - /tutorials/filter-modular-component
+authors: ["Sky Leilani"]
 languages: []
-viamresources: [ "vision", "camera" ]
+viamresources: ["vision", "camera"]
 level: "Beginner"
 date: "2023-09-17"
 # updated: ""
@@ -23,7 +23,7 @@ From our phones to traffic lights, these machines rely on their ability to proce
 However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
 This tutorial will guide you through using the color filter module to selectively capture and synchronize image data for pet photography with [Viam's cloud](/services/data/#cloud-sync).
-You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera]()component.
+You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/)component.
 
 While the color filter module you use in this tutorial selects image data from a camera, these same principles can be applied to various components, including for filtering [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) data.
 The filter modular component allows you to [store data](/services/data/#data-capture) only when that data meets certain conditions you set.
@@ -44,13 +44,13 @@ After you [create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-
 - Install the [Go binary](https://go.dev/dl/) on your local development computer.
 
 - Update [`viam-server`](/installation/manage/#update-viam-server).
-If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
+  If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
 
 - Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
 
-   ```{class="command-line" data-prompt="$"}
-   git clone https://github.com/viam-labs/modular-filter-examples.git
-   ```
+  ```{class="command-line" data-prompt="$"}
+  git clone https://github.com/viam-labs/modular-filter-examples.git
+  ```
 
 ### Set up camera
 
@@ -99,19 +99,19 @@ For more detailed information see [Configure a color detector](/services/vision/
 
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
-  ```json {class="line-numbers linkable-line-numbers"}
-    {
-      "name": "my_color_detector",
-      "type": "vision",
-      "model": "color_detector",
-      "attributes": {
-        "segment_size_px": 100,
-        "detect_color": "#43a1d0",
-        "hue_tolerance_pct": 0.06
-      }
-    },
-    ... // Other services
-  ```
+```json {class="line-numbers linkable-line-numbers"}
+  {
+    "name": "my_color_detector",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 100,
+      "detect_color": "#43a1d0",
+      "hue_tolerance_pct": 0.06
+    }
+  },
+  ... // Other services
+```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -127,7 +127,7 @@ To enable data capture on your robot, add and configure the [data management ser
 
 1. At the bottom-left of the page, click **Create service**.
 1. Choose `Data Management` as the type and name your instance of the data manager `dm`.
-  This service syncs data from your robot to the Viam app in the cloud.
+   This service syncs data from your robot to the Viam app in the cloud.
 1. Select **Create**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory.
@@ -138,9 +138,9 @@ To enable data capture on your robot, add and configure the [data management ser
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
    For more detailed information see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
-{{% /tab %}}
-{{% tab name="JSON Template" %}}
-Add the vision service object to the services array in your rover’s raw JSON configuration:
+   {{% /tab %}}
+   {{% tab name="JSON Template" %}}
+   Add the vision service object to the services array in your rover’s raw JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -182,7 +182,7 @@ This command will compile the source code in the colorfilter/module directory an
 Go to the `colorfilter/module` directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
 
 ```{class="command-line" data-prompt="$"}
-realpath colorfilter 
+realpath colorfilter
 ```
 
 {{< /alert >}}
@@ -220,10 +220,10 @@ Then, click **Save config**.
 1. Copy the following JSON configuration into the Attributes section:
 
 ```json {class="line-numbers linkable-line-numbers"}
- {
-   "vision_service": "my_color_detector",
-   "actual_cam": "actualcam"
- }
+{
+  "vision_service": "my_color_detector",
+  "actual_cam": "actualcam"
+}
 ```
 
 ![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam](/tutorials/pet-photographer/colorfiltercam-component-attributes.png)
@@ -259,5 +259,5 @@ When you check the **Data** tab, you'll only see pictures of your adorable pet.
 ## Next steps
 
 {{< cards >}}
-  {{% card link="/tutorials/services/try-viam-color-detection.md" %}}
+{{% card link="/tutorials/services/try-viam-color-detection.md" %}}
 {{< /cards >}}
