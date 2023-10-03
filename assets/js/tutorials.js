@@ -148,7 +148,7 @@ search.addWidgets([
     operator: "and",
     sortBy: ["name:asc"],
     items: [
-      { label: "data" },
+      { label: "data_manager" },
       { label: "motion" },
       { label: "frame_system" },
       { label: "mlmodel" },

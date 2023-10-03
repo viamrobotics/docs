@@ -35,7 +35,7 @@ For each robot in your fleet, you start by setting up the robot on the **Setup**
 
 The **Setup** tab contains information for starting an instance of `viam-server` on your robot's computer.
 
-Once you select the correct **Mode** and **Architecture** for your system in the upper left of the tab, follow the instructions on the page to connect and set up your robot.
+Once you select the correct **Architecture** for your system in the upper left of the tab, follow the instructions on the page to connect and set up your robot.
 
 {{% alert title="Tip" color="tip" %}}
 More in-depth information on installing `viam-server` can be found in our [Install Guide](/installation/#install-viam-server).

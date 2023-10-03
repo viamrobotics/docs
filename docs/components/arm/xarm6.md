@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a UFACTORY xArm 6 into your robot."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
-# SMEs: William Spies
+# SMEs: Bucket, Motion
 ---
 
 Configure an `xArm6` arm to integrate a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6) into your robot:
@@ -30,11 +30,15 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "model": "xArm6",
       "name": "<your-arm-name>",
+      "model": "xArm6",
       "type": "arm",
+      "namespace": "rdk",
       "attributes": {
-        "host": "<your-arms-ip-address-on-your-network>"
+        "host": "<your-arms-ip-address-on-your-network>",
+        "port": <int>,
+        "speed_degs_per_sec": <float>,
+        "acceleration_degs_per_sec_per_sec": <float>
       },
       "depends_on": []
     }
@@ -49,6 +53,10 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
+      "name": "my_xArm6",
+      "model": "xArm6",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "10.0.0.97"
       },
@@ -69,10 +77,7 @@ Edit and fill in the attributes as applicable.
           "y": 0,
           "z": 0
         }
-      },
-      "model": "xArm6",
-      "name": "xArm6",
-      "type": "arm"
+      }
     }
   ]
 }

@@ -7,8 +7,8 @@ no_list: true
 type: "docs"
 description: "A device that provides information about a robot's power systems, including voltage, current, and power consumption."
 tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
-icon: "/icons/components/sensor.svg"
-images: ["/icons/components/sensor.svg"]
+icon: "/icons/components/power-sensor.svg"
+images: ["/icons/components/power-sensor.svg"]
 # SME: #team-bucket
 ---
 

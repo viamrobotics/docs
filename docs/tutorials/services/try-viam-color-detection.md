@@ -22,10 +22,10 @@ weight: 3
 # SMEs: Hazal
 ---
 
-The [vision service](/services/vision/) enables a smart machine to use its cameras to see and interpret the world around it.
-The service also allows you to create different types of detectors with which the smart machine can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
+In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/components/camera/transform/) to detect the color red.
 
-In this tutorial you will learn how to configure a color detector with the vision service and how to leverage that detector with a transform camera to detect the color red.
+The [vision service](/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
+The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/try-viam/rover-resources/).
 
@@ -73,7 +73,7 @@ Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/r
 
 Your configuration should look like the following:
 
-{{<imgproc src="/try-viam/try-viam/vision-service-config.png" resize="x600" alt="The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.">}}
+![The vision service configuration panel showing the color set to a reddish color, the hue tolerance set to 0.06, and the segment size set to 100.](/try-viam/try-viam/vision-service-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -99,7 +99,6 @@ Add the vision service object to the services array in your rover’s raw JSON c
 {{% /tab %}}
 {{< /tabs >}}
 
-The configuration adds a `model` of `type` `color_detector` with the color as a parameter.
 The `color_detector` is a heuristic-based detector that draws boxes around objects according to their hue.
 
 Click **Save config** and head to the **Components** tab.
@@ -113,24 +112,25 @@ Object colors can vary dramatically based on the light source.
 We recommend you verify the desired color detection value under actual lighting conditions.
 To determine the color value from the actual cam component image, you can use a pixel color tool, like [Color Picker for Chrome](https://chrome.google.com/webstore/detail/color-picker-for-chrome/clldacgmdnnanihiibdgemajcfkmfhia).
 
-If the color is not reliably detected, increase the `hue_tolerance_pct`.
+If the color is not reliably detected, drag the **Hue Tolerance** slider to the right or navigate to the **Raw JSON** tab to increase the `hue_tolerance_pct`.
 
 Note that the detector does not detect black, perfect greys (greys where the red, green, and blue color component values are equal), or white.
 {{< /alert >}}
 
 ## Configure a transform camera to use the color detector
 
-Viam [camera](/components/camera/) components can be [physical](/components/camera/webcam/) like the one already configured on the rover, or virtual.
-A virtual camera transforms the output from a physical camera.
+Viam [camera](/components/camera/) components can be physical like the one already configured on the rover, or virtual.
+A virtual [_transform camera_](/components/camera/transform/) transforms the output from a physical camera.
 
-To view output from the color detector overlaid on images from a physical camera, you need to configure a [transform camera](/components/camera/transform/):
+To view output from the color detector overlaid on images from a physical camera, configure a transform camera:
 
-1. Click **Create component** in the lower-left corner of the **Components** subtab.
-2. Select `camera` as the type.
-3. Select `transform` as the model.
-4. Name your transform camera (for example, `detectionCam`) and click **Create**.
+1. Navigate to the **Config** tab in the Viam app and click the **Components** subtab.
+2. Click **Create component** in the lower-left corner of the page.
+3. Select `camera` as the type.
+4. Select `transform` as the model.
+5. Enter a name, for example `detectionCam`, and click **Create**.
 
-![The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.](/tutorials/try-viam-color-detection/create-component-pane.png)
+{{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="500x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
 
 Viam generates an empty **Attributes** section for the detection camera's component panel.
 The panel's **Attribute Guide** section displays the available attributes for the selected component.
@@ -139,9 +139,9 @@ The panel's **Attribute Guide** section displays the available attributes for th
 Attribute Guides always prefix required attributes with an asterisk.
 {{% /alert %}}
 
-![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/empty-detectioncam-component-panel.png)
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-config.png)
 
-Copy the following JSON configuration into the Attributes section:
+Copy the following JSON configuration into the **Attributes** section:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -164,23 +164,24 @@ Copy the following JSON configuration into the Attributes section:
 | `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
 | `attributes` | | The attributes of this detectionCam. |
 | `attributes.detector_name` | `my_color_detector` | The name of this detectionCam. |
-| `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence in the color being present the detection service needs to detect a color. |
+| `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence needed by the detection service to identify a color. |
 | `type` | `detections` | The type of the component. |
 
-![The Viam app showing the detectionCam component section. It contains the Attributes section with a skeleton configuration, including source, pipeline, type, and attributes. The panel has an Attributes section populated with transform camera component attributes. The are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/detectioncam-component-panel.png)
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
 
 After adding the component and its attributes, click **Save config**.
 
-## Test your transform camera in the CONTROL tab
+## Test your transform camera in the Control tab
 
-In the **Control** tab, click on your base component and add the detection camera from the **Select Cameras** drop down.
+In the **Control** tab, click on your base component and enable the detection camera in the **Live Feeds** section.
 
-Next, enable the keyboard and move your rover around until your camera detects the configured color.
+Next, enable the keyboard and move your rover around until your camera detects the specified color.
+
 Each time the camera detects the color, you will see a red rectangle around the color labeled with the detection confidence level.
 
 ![Base component panel displaying an example color detection.](/tutorials/try-viam-color-detection/detected-example.png)
 
-If you scroll down in the **Control** tab, you can also click on the detectionCam's own section to view its stream there.
+Scroll down in the **Control** tab and select the dedicated section for detectionCam to access its live stream.
 
 ## Next Steps
 

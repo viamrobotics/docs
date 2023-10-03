@@ -51,6 +51,8 @@ If you are using a microcontroller, prepare your board using the following guide
 {{% card link="/installation/prepare/microcontrollers" class="small" %}}
 {{< /cards >}}
 
+<br>
+
 Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi Zero 2](https://orangepi.com/index.php?route=product/product&path=237&product_id=849) can run Viam with an experimental [periph.io](https://periph.io/) based [modular component](https://github.com/viam-labs/periph_board).
 
 ### Install `viam-server`
@@ -64,7 +66,7 @@ Once you have a compatible operating system on your board, follow along with the
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
 
-1. On the **Setup** tab, select `Linux` for **Mode** and select the appropriate **Architecture** for your board.
+1. On the **Setup** tab, select `Linux (Aarch64)` or `Linux (x86_64)`for the appropriate **Architecture** for your board.
    On most Linux operating systems, you can run `uname -m` to confirm your board's architecture.
 
 1. Follow the steps shown on the **Setup** tab to install `viam-server` on your board.
@@ -76,7 +78,7 @@ By default, `viam-server` will start automatically when your system boots, but y
 ## Install on a macOS or Linux computer
 
 You can also install `viam-server` on a macOS or Linux computer.
-This is useful if you don't have a board available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than is otherwise available on an SBC.
+This is useful if you don't have a board available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than are otherwise available on an SBC.
 Select the tab below for your operating system:
 
 {{< tabs name="Install on computer" >}}
@@ -84,13 +86,13 @@ Select the tab below for your operating system:
 
 ### Install on a macOS computer
 
-`viam-server` is available for macOS users through [Homebrew](https://docs.brew.sh/Installation), and supports both Intel and Apple Silicon macOS computers.
+`viam-server` is available for macOS users through [Homebrew](https://brew.sh/), and supports both Intel and Apple Silicon macOS computers.
 To install `viam-server` on a macOS computer:
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
 
-1. On the **Setup** tab, select `Mac` for **Mode**.
+1. On the **Setup** tab, select `Mac` as the **Architecture**.
 
 1. Follow the steps shown on the **Setup** tab to install `viam-server` on your macOS computer.
 
@@ -108,7 +110,7 @@ To install `viam-server` on a Linux computer:
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
 
-1. On the **Setup** tab, select `Linux` for **Mode** and select the appropriate **Architecture** for your computer.
+1. On the **Setup** tab, select `Linux (Aarch64)` or `Linux (x86_64)` for the appropriate **Architecture** for your computer.
    On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
 
 1. Follow the steps shown on the **Setup** tab to install `viam-server` on your Linux computer.

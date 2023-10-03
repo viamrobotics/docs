@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a UFACTORY xArm 7 for your robot."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
-# SMEs: William Spies
+# SMEs: Bucket, Motion
 ---
 
 Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot:
@@ -30,11 +30,15 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "model": "xArm7",
       "name": "<your-arm-name>",
+      "model": "xArm7",
       "type": "arm",
+      "namespace": "rdk",
       "attributes": {
-        "host": "<ip-address-to-connect-to-your-arm>"
+        "host": "<ip-address-to-connect-to-your-arm>",
+        "port": <int>,
+        "speed_degs_per_sec": <float>,
+        "acceleration_degs_per_sec_per_sec": <float>
       },
       "depends_on": []
     }
@@ -49,6 +53,10 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
+      "name": "my_xArm7",
+      "model": "xArm7",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "10.0.0.97"
       },
@@ -69,10 +77,7 @@ Edit and fill in the attributes as applicable.
           "y": 0,
           "z": 0
         }
-      },
-      "model": "xArm7",
-      "name": "xArm7",
-      "type": "arm"
+      }
     }
   ]
 }
@@ -86,9 +91,9 @@ The following attributes are available for `xArm7` arms:
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | ----------| ---- | ----------| ----------- |
-| `host`  | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
-| `port`  | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |
+| `host` | string | **Required** | IP address of the arm's system on your network. Find this when setting up your xArm. |
+| `port` | int | Optional | Port number of the arm's system. Find this when setting up your xArm. <br> Default: `502` |
 | `speed_degs_per_sec` | float | Optional | Desired maximum speed of joint movement in degrees/sec. <br> Default: `20.0` |
-| `acceleration_degs_per_sec_per_sec`  | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
+| `acceleration_degs_per_sec_per_sec` | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
 
 See [the frame system service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.

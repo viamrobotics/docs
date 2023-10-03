@@ -58,8 +58,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
+      "model_path": "${packages.ml_model.<model_name>}/<model-name>.tflite",
+      "label_path": "${packages.ml_model.<model_name>}/labels.txt",
       "num_threads": <number>
     }
   },
@@ -77,8 +77,8 @@ Add the `tflite_cpu` ML model object to the services array in your raw JSON conf
     "type": "mlmodel",
     "model": "tflite_cpu",
     "attributes": {
-      "model_path": "${packages.<model-name>}/<model-name>.tflite",
-      "label_path": "${packages.<model-name>}/labels.txt",
+      "model_path": "${packages.ml_model.my_fruit_model}/my_fruit_model.tflite",
+      "label_path": "${packages.ml_model.my_fruit_model}/labels.txt",
       "num_threads": 1
     }
   }
@@ -93,9 +93,9 @@ The following parameters are available for a `"tflite_cpu"` model:
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `model_path` | _Required_ | The absolute path to the `.tflite model` file, as a `string`. |
-| `label_path` | _Optional_ | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
-| `num_threads` | _Optional_ | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
+| `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
+| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
 
@@ -111,7 +111,8 @@ The model package config looks like this:
 {
   "package": "<model_id>/allblack",
   "version": "YYYYMMDDHHMMSS",
-  "name": "<model_name>"
+  "name": "<model_name>",
+  "type": "ml_model"
 }
 ```
 

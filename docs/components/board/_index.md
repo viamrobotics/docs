@@ -506,7 +506,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 ```
 
 {{% /tab %}}
@@ -870,7 +870,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Set the pin to high.
 await pin.set(high="true")
@@ -928,7 +928,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Get if it is true or false that the state of the pin is high.
 high = await pin.get()
@@ -993,7 +993,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Get if it is true or false that the state of the pin is high.
 duty_cycle = await pin.get_pwm()
@@ -1051,7 +1051,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Set the duty cycle to .6, meaning that this pin will be in the high state for
 # 60% of the duration of the PWM interval period.
@@ -1110,7 +1110,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Get the PWM frequency of this pin.
 freq = await pin.get_pwm_frequency()
@@ -1168,7 +1168,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Set the PWM frequency of this pin to 1600 Hz.
 high = await pin.set_pwm_frequency(frequency=1600)
@@ -1226,7 +1226,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 # Get if it is true or false that the pin is set to high.
 duty_cycle = await pin.get_pwm()
@@ -1535,7 +1535,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 my_board = Board.from_robot(robot=robot, name="my_board")
 
 # Get the GPIOPin with pin number 15.
-pin = await my_board.GPIO_pin_by_name(name="15")
+pin = await my_board.gpio_pin_by_name(name="15")
 
 callback_queue = Queue(maxsize=10)
 

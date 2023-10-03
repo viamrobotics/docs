@@ -24,7 +24,7 @@ aliases: /tutorials/integrating-viam-with-openai/
 imageAlt: "An AI powered companion robot called Rosey."
 authors: ["Matt Vella"]
 languages: ["python"]
-viamresources: ["custom", "servo", "board", "ml model", "vision"]
+viamresources: ["custom", "servo", "board", "ml model", "vision", "speech"]
 level: "Intermediate"
 date: "2023-02-15"
 # updated: ""
@@ -129,17 +129,18 @@ The [git repository](https://github.com/viam-labs/tutorial-openai-integration) f
 
 It also contains an open source machine learning [detector model](https://github.com/viam-labs/tutorial-openai-integration/tree/main/detector).
 
-Power on and choose a location on your Raspberry Pi, and clone the tutorial code repository.
-If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
-
-```sh {class="command-line" data-prompt="$"}
-git clone https://github.com/viam-labs/tutorial-openai-integration
-```
+Power your Raspberry Pi on, choose a location on your Pi, and clone the tutorial code repository.
 
 If you don't have git installed on your Pi, you will need to first run:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo apt install git
+```
+
+If you have git installed on your Pi, run the following command in the preferred directory from your terminal:
+
+```sh {class="command-line" data-prompt="$"}
+git clone https://github.com/viam-labs/tutorial-openai-integration
 ```
 
 Now that you have cloned the repository, you will need to install dependencies.
@@ -173,7 +174,7 @@ To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and
 
 Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 #!/usr/bin/sh
 export OPENAPI_KEY=abc
 export OPENAPI_ORG=xyz
@@ -190,7 +191,7 @@ chmod +x run.sh
 
 ## Configuration
 
-Now that we've set up the rover by attaching the servo and making the tutorial software available on the Pi, we can configure the rover to:
+Now, configure your rover to:
 
 - Recognize and operate the servo
 - Make the ML detector model available for use by the Viam vision service
@@ -209,7 +210,7 @@ Click **Create**.
 
 {{<imgproc src="/tutorials/ai-integration/servo_component_add.png" resize="900x" declaredimensions=true alt="Adding the servo component." style="border:1px solid #000" >}}
 
-Now, in the panel for _servo1_, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
+Now, in the panel for `servo1`, add the following configuration in attributes to tell `viam-server` that the servo is attached to GPIO pin 8, then press the **Save Config** button.
 
 ```json
 {
@@ -243,13 +244,13 @@ Make sure `Path to Existing Model on Robot` is selected.
 Update the **Model Path** and **Label Path** to match where you [copied the tutorial software](#5-set-up-tutorial-software).
 For example, the model path would would be similar to:
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 /home/<username>/tutorial-openai-integration/detector/effdet0.tflite
 ```
 
 and the label path similar to:
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 /home/<username>/tutorial-openai-integration/detector/labels.txt
 ```
 
@@ -266,7 +267,7 @@ Click **Save config** to finish adding the detector.
 With the rover and tutorial code set up and it is time to bring your companion robot to life!
 Let's call her "Rosey", and bring her to life by running:
 
-```bash
+```sh {class="command-line" data-prompt="$"}
 ./run.sh
 ```
 
@@ -311,6 +312,93 @@ For example:
 ```
 
 This opens up some really interesting possibilities, like having your robot talk to you in a voice that sounds like your favorite celebrity, or having your robot tell your cat to "Get off of the table!" in an AI version of your own voice.
+
+## Alternative Option: Configure Viam Labs speech module
+
+As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/services/) providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
+Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
+
+### Configuration
+
+Navigate to the **Config** page of your rover robot in [the Viam app](https://app.viam.com).
+
+{{< tabs name="Configure the speech module" >}}
+{{% tab name="Config Builder" %}}
+
+Click on the **Services** subtab and click the **Create service** button.
+Search `speech`.
+Select the `speech/speechio` option:
+
+![Add the speech module in the Viam config builder UI for services.](/tutorials/ai-integration/add-speech-module.png)
+
+Give your new speech module a name of your choice.
+Copy and paste the following JSON into the attributes box:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "completion_provider_org": "org-abc123",
+  "completion_provider_key": "sk-mykey",
+  "completion_persona": "Gollum",
+  "listen": true,
+  "speech_provider": "elevenlabs",
+  "speech_provider_key": "keygoeshere",
+  "speech_voice": "Antoni",
+  "mic_device_name": "myMic"
+}
+```
+
+Save the config.
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Select **Raw JSON** mode.
+Copy and paste the following into your `modules` array to add [`speech`](https://app.viam.com/module/viam-labs/speech) from [the Viam app's Modular Registry](https://app.viam.com/registry):
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "registry",
+  "name": "viam-labs_speech",
+  "module_id": "viam-labs:speech",
+  "version": "latest"
+}
+```
+
+Then, copy and paste the following into your `services` array to add [elevenlabs.io](https://elevenlabs.io/) as your `speechio` modular service provider:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "namespace": "viam-labs",
+  "model": "viam-labs:speech:speechio",
+  "attributes": {
+    "completion_provider_org": "org-abc123",
+    "completion_provider_key": "sk-mykey",
+    "completion_persona": "Gollum",
+    "listen": true,
+    "speech_provider": "elevenlabs",
+    "speech_provider_key": "keygoeshere",
+    "speech_voice": "Antoni",
+    "mic_device_name": "myMic"
+  },
+  "name": "speechio",
+  "type": "speech"
+}
+```
+
+Save the config.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Use the above configuration to set up listening mode, use an ElevenLabs voice `"Antoni"`, make AI completions available, and use a 'Gollum' persona for AI completion from OpenAI.
+
+Edit the attributes as applicable:
+
+- Edit `"completion_provider_org"` and `"completion_provider_key"` to match your AI API organization and API credentials, for example your [OpenAI organization header and API key credentials](https://platform.openai.com/account/api-keys).
+- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-reference/quick-start/authentication) or another speech provider.
+- Edit `"mic_device_name"` to match the name your microphone is assigned on your robot's computer.
+  Available microphone device names will logged on module startup.
+  If left blank, the module will attempt to auto-detect the microphone.
 
 ## Next steps
 

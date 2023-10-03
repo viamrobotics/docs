@@ -10,7 +10,7 @@ aliases:
   - "/tutorials/data-management-tutorial/"
   - "/tutorials/data-management/"
   - "/manage/data-management/data-management-tutorial/"
-tags: ["data management", "data", "services", "try viam"]
+tags: ["data management", "data_manager", "services", "try viam"]
 authors: []
 languages: []
 viamresources: ["data_manager", "camera"]

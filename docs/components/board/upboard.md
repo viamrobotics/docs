@@ -15,14 +15,14 @@ Complete the following setup requirements, then move on to configuring your boar
 
 ## Setup requirements
 
-Flash your Intel-based board with:
+You must flash your Intel-based board with:
 
 1. The Ubuntu `"Server install image"` version of the operating system.
    For example, `ubuntu-22.04.2-live-server-amd64.iso`.
-   Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to do so.
-1. The [pin control driver](https://github.com/up-division/pinctrl-upboard).
-   Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to do so.
-   This driver stabilizes the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board to make it identical to that of a [Raspberry Pi](/components/board/pi/).
+   Follow [these instructions](https://ubuntu.com/tutorials/install-ubuntu-server) to install Ubuntu Server.
+2. The [pin control driver](https://github.com/up-division/pinctrl-upboard).
+   This driver is necessary to stabilize the [GPIO pin mapping definition](https://github.com/up-board/up-community/wiki/Pinout) on the board, making the pin mapping identical to that of a [Raspberry Pi](/components/board/pi/).
+   Follow [these instructions](https://github.com/up-division/pinctrl-upboard) to install the pin control driver.
 
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}

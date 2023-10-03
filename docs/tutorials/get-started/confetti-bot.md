@@ -4,10 +4,10 @@ linkTitle: "Confetti Bot"
 type: "docs"
 description: "Use a red button to activate a GPIO pin on the board and make a confetti popper go off."
 tags: ["raspberry pi", "python", "app", "board", "motor"]
-webmSrc: "/tutorials/confetti-bot/preview.webm"
-mp4Src: "/tutorials/confetti-bot/preview.mp4"
+webmSrc: "/tutorials/confetti-bot/confetti-bot-explodes.webm"
+mp4Src: "/tutorials/confetti-bot/confetti-bot-explodes.mp4"
 videoAlt: "A GIF of a red button being pressed and the cannon spraying confetti"
-images: ["/tutorials/confetti-bot/preview.gif"]
+images: ["/tutorials/confetti-bot/confetti-bot-explodes.gif"]
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources: ["board", "motor"]
@@ -17,7 +17,7 @@ date: "2023-05-29"
 cost: 145
 ---
 
-{{<gif webm_src="/tutorials/confetti-bot/confetti-bot.webm" mp4_src="/tutorials/confetti-bot/confetti-bot.mp4" alt="GIF of a red button being pressed and the cannon spraying confetti" class="alignright" max-width="250px">}}
+{{<gif webm_src="/tutorials/confetti-bot/confetti-bot-explodes.webm" mp4_src="/tutorials/confetti-bot/confetti-bot-explodes.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="275px">}}
 
 Are you tired of boring celebrations with the same old confetti popping techniques?
 You can now design your very own confetti-popping robot with a big red button that will make your parties a colorful blast, literally!
