@@ -64,7 +64,7 @@ For more information about the Camera component, you can refer to [this page](/c
 
 ## Add services
 
-After you've finished setting up, add a [vision service](/services/vision/detection) for color detection and a [data management service](/services/data/) for storing your filtered images.
+After you've finished setting up, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images.
 
 ### Vision service to detect color
 
