@@ -10,12 +10,10 @@ images: ["/icons/components/camera.svg"]
 # SME: #team-bucket
 ---
 
-{{< alert title="Tip" color="tip" >}}
+{{< alert title="Usage" color="tip" >}}
 An ultrasonic distance sensor can also be configured as a [sensor](/components/sensor/) resource.
 [Configure it as such](/components/sensor/ultrasonic/) to utilize the [sensor API](/components/sensor/#api) with your ultrasonic sensor hardware.
-{{< /alert >}}
 
-{{< alert title="Usage" color="tip" >}}
 Configure your ultrasonic sensor as a camera if you want to use it as an input to a [vision service](/services/vision/) model that returns obstacles.
 As a camera model, the ultrasonic model implements the camera method [`GetPointCloud()`](/components/camera/#getpointcloud), rather than the sensor method [`GetReadings()`](/components/sensor/#getreadings).
 {{< /alert >}}
