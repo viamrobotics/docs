@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a camera that uses velodyne lidar."
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
-# SMEs: Bijan, vision team
+# SMEs: SLAM team
 ---
 
 A `velodyne` camera uses [Velodyne lidar](https://velodynelidar.com/).
