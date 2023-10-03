@@ -27,7 +27,7 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a beaglebone board in the Viam app Config Builder.](/components/board/beaglebone-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+{{< readfile "/static/include/components/board-attr-config.md" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -37,8 +37,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-beaglebone-board>",
-      "type": "board",
       "model": "beaglebone",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }
@@ -54,7 +55,6 @@ The following attributes are available for `beaglebone` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
 | `spis` | object | Optional | Any serial peripheral interface (SPI) chip select bus pins' index and name. See [configuration info](/components/board/#spis). |
 | `i2cs` | object | Optional | Any inter-integrated circuit (I<sup>2</sup>C) bus pins' index and name. See [configuration info](/components/board/#i2cs). |

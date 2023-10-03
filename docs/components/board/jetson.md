@@ -35,7 +35,7 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a jetson board in the Viam app Config Builder.](/components/board/jetson-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+{{< readfile "/static/include/components/board-attr-config.md" >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -44,10 +44,21 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "<your-jetson-board>",
-      "type": "board",
+      "name": "<your-jetson-board-name>",
       "model": "jetson",
-      "attributes": {},
+      "type": "board",
+      "namespace": "rdk",
+      "attributes": {
+        "digital_interrupts": [
+          <...See table below...>
+        ],
+        "spis": [
+          <...See table below...>
+        ],
+        "i2cs": [
+          <...See table below...>
+        ]
+      },
       "depends_on": []
     }
   ]
@@ -62,7 +73,6 @@ The following attributes are available for `jetson` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
 | `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See [configuration info](/components/board/#spis). |
 | `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](/components/board/#i2cs). |

@@ -23,7 +23,29 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a numato board in the Viam app Config Builder.](/components/board/numato-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your board's **Attributes** box.
+Then remove and fill in the attributes as applicable to your board, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "pins": <int>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "pins": 32
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -33,18 +55,11 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-numato-board>",
-      "type": "board",
       "model": "numato",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
-        "pins": <number>,
-        "analogs": [
-          {
-            "name": "<your-analog>",
-            "pin": "<number>",
-            "spi_bus": "<your-spi-bus-name>",
-            "chip_select": "<number>"
-          }
-        ]
+        "pins": <number>
       },
       "depends_on": []
     }
@@ -61,7 +76,6 @@ The following attributes are available for `numato` boards:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |
-| `analogs` | object | **Required** | Attributes of any pins that can be used as inputs for the module's internal analog-to-digital converter (ADC). See [configuration info](/components/board/#analogs). |
 
 <!-- I think these are available but I need to confirm
 | `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See [configuration info](/components/board/#digital-interrupts). |
