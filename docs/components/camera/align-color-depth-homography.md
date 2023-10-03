@@ -21,44 +21,77 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of an align color depth homography view in the Viam app config builder.](/components/camera/configure-align-color-depth-homography.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "intrinsic_parameters": {
+    "width_px": <int>,
+    "height_px": <int>,
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "homography": {
+    "transform": [ <float>, <float>, <float>,
+                   <float>, <float>, <float>,
+                   <float>, <float>, <float> ],
+    "depth_to_color": <boolean>,
+    "rotate_depth_degs": <int>
+  },
+  "color_camera_name": "<your-camera-name>",
+  "depth_camera_name": "<your-camera-name>",
+  "output_image_type": "<color|depth>",
+  "distortion_parameters": {
+    "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  },
+  "debug": <boolean>
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "align_color_depth_homography",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "homography": {
-            "transform": [ <float>, <float>, <float>,
-                           <float>, <float>, <float>,
-                           <float>, <float>, <float> ],
-            "depth_to_color": <boolean>,
-            "rotate_depth_degs": <int>
-        },
-        "color_camera_name": "<your-camera-name>",
-        "depth_camera_name": "<your-camera-name>",
-        "output_image_type": "<color|depth>",
-        "distortion_parameters": {
-            "rk1": <float>,
-            "rk2": <float>,
-            "rk3": <float>,
-            "tp1": <float>,
-            "tp2": <float>
-        },
-        "debug": <boolean>
-    }
+  "name": "<your-camera-name>",
+  "model": "align_color_depth_homography",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "homography": {
+      "transform": [ <float>, <float>, <float>,
+                     <float>, <float>, <float>,
+                     <float>, <float>, <float> ],
+      "depth_to_color": <boolean>,
+      "rotate_depth_degs": <int>
+    },
+    "color_camera_name": "<your-camera-name>",
+    "depth_camera_name": "<your-camera-name>",
+    "output_image_type": "<color|depth>",
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "debug": <boolean>
+  }
 }
 ```
 

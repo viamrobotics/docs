@@ -25,20 +25,45 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of a fake camera in the Viam app config builder.](/components/camera/configure-fake.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "width": <int>,
+  "height": <int>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "width": 640,
+  "height": 360
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "fake",
-    "attributes": {
-        "width": <int>,
-        "height": <int>
-    }
+  "name": "<your-camera-name>",
+  "model": "fake",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "width": <int>,
+    "height": <int>
+  }
 }
 ```
 

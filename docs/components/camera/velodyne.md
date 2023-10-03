@@ -6,10 +6,10 @@ type: "docs"
 description: "Configure a camera that uses velodyne lidar."
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
-# SMEs: Bijan, vision team
+# SMEs: SLAM team
 ---
 
-A `velodyne` camera uses velodyne lidar.
+A `velodyne` camera uses [Velodyne lidar](https://velodynelidar.com/).
 The velodyne must be running locally at address `127.0.0.1`.
 
 {{< tabs name="Configure a Velodyne Camera" >}}
@@ -29,13 +29,14 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "velodyne",
-    "attributes": {
-        "port": <int>,
-        "ttl_ms": <int>,
-    }
+  "name": "<your-camera-name>",
+  "model": "velodyne",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "port": <int>,
+    "ttl_ms": <int>,
+  }
 }
 ```
 

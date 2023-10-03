@@ -21,38 +21,65 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of a Join Point Clouds view in the Viam App config builder.](/components/camera/configure-join-pointclouds.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "target_frame": "<target-frame-name>",
+  "source_cameras": ["<cam-name-1>", "<cam-name-2>", ... ],
+  "proximity_threshold_mm": <int>,
+  "merge_method": "<naive|icp>",
+  "intrinsic_parameters": {
+    "width_px": <int>,
+    "height_px": <int>,
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "distortion_parameters": {
+    "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  },
+  "debug": <boolean>
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "join_pointclouds",
-    "attributes": {
-        "target_frame": "<target-frame-name>",
-        "source_cameras": ["<cam-name-1>", "<cam-name-2>", ... ],
-        "proximity_threshold_mm": <int>,
-        "merge_method": "<naive|icp>",
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "distortion_parameters": {
-            "rk1": <float>,
-            "rk2": <float>,
-            "rk3": <float>,
-            "tp1": <float>,
-            "tp2": <float>
-        },
-        "debug": <boolean>
-    }
+  "name": "<your-camera-name>",
+  "model": "join_pointclouds",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "target_frame": "<target-frame-name>",
+    "source_cameras": ["<cam-name-1>", "<cam-name-2>", ... ],
+    "proximity_threshold_mm": <int>,
+    "merge_method": "<naive|icp>",
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "debug": <boolean>
+  }
 }
 ```
 

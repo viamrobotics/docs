@@ -36,7 +36,7 @@ Edit and fill in the attributes as applicable.
 {
     "name": "<your-encoder-name>",
     "type": "encoder",
-    "model" : "AMS-AS5048",
+    "model": "AMS-AS5048",
     "attributes": {
       "board": "<your-board-name>",
       "connection_type": "i2c",

@@ -50,7 +50,7 @@ Copy and paste the following:
 ```json {class="line-numbers linkable-line-numbers"}
 "name" : "<your-wheeledodometry-movement-sensor-name>",
 "type" : "movement_sensor",
-"model" : "wheeled-odometry",
+"model": "wheeled-odometry",
 "attributes" : {
     "base" : "<your-base-name>",
     "left_motors" : ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],

@@ -113,7 +113,7 @@ Add the following JSON objects to the `components` array:
 {
     "name": "lenc",
     "type": "encoder",
-    "model" : "AMS-AS5048",
+    "model": "AMS-AS5048",
     "attributes": {
       "board": "local",
       "connection_type": "i2c",
@@ -126,7 +126,7 @@ Add the following JSON objects to the `components` array:
 {
     "name": "renc",
     "type": "encoder",
-    "model" : "AMS-AS5048",
+    "model": "AMS-AS5048",
     "attributes": {
       "board": "local",
       "connection_type": "i2c",

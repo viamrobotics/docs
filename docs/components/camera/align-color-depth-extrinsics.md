@@ -21,53 +21,111 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of an align color depth extrinsics view in the Viam app config builder.](/components/camera/configure-align-color-depth-extrinsics.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+ "camera_system": {
+    "color_intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "depth_intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "depth_to_color_extrinsic_parameters": {
+    "translation_mm": [ <float>, <float>, <float>],
+    "rotation_rads": [ <float>, <float>, <float>,
+                       <float>, <float>, <float>,
+                       <float>, <float>, <float> ],
+    }
+  },
+  "intrinsic_parameters": {
+    "width_px": <int>,
+    "height_px": <int>,
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "output_image_type": "<color|depth>",
+  "color_camera_name": "<your-color-camera-name>",
+  "depth_camera_name": "<your-depth-camera-name>",
+  "distortion_parameters": {
+    "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  },
+  "debug": <boolean>
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "align_color_depth_extrinsics",
-    "attributes": {
-        "camera_system": {
-            "color_intrinsic_parameters": {
-                "width_px": <int>,
-                "height_px": <int>,
-                "fx": <float>,
-                "fy": <float>,
-                "ppx": <float>,
-                "ppy": <float>
-            },
-            "depth_intrinsic_parameters": {
-                "width_px": <int>,
-                "height_px": <int>,
-                "fx": <float>,
-                "fy": <float>,
-                "ppx": <float>,
-                "ppy": <float>
-            },
-                "depth_to_color_extrinsic_parameters": {
-                "translation_mm": [ <float>, <float>, <float>],
-                "rotation_rads": [ <float>, <float>, <float>,
-                                   <float>, <float>, <float>,
-                                   <float>, <float>, <float> ],
-            }
-        },
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "output_image_type": "<color|depth>",
-        "color_camera_name": "<your-color-camera-name>",
-        "depth_camera_name": "<your-depth-camera-name>"
-    }
+  "name": "<your-camera-name>",
+  "model": "align_color_depth_extrinsics",
+  "type": "camera",
+  "namespace": "rdk",
+  "attributes": {
+    "camera_system": {
+      "color_intrinsic_parameters": {
+        "width_px": <int>,
+        "height_px": <int>,
+        "fx": <float>,
+        "fy": <float>,
+        "ppx": <float>,
+        "ppy": <float>
+      },
+      "depth_intrinsic_parameters": {
+        "width_px": <int>,
+        "height_px": <int>,
+        "fx": <float>,
+        "fy": <float>,
+        "ppx": <float>,
+        "ppy": <float>
+      },
+      "depth_to_color_extrinsic_parameters": {
+      "translation_mm": [ <float>, <float>, <float>],
+      "rotation_rads": [ <float>, <float>, <float>,
+                         <float>, <float>, <float>,
+                         <float>, <float>, <float> ],
+      }
+    },
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "output_image_type": "<color|depth>",
+    "color_camera_name": "<your-color-camera-name>",
+    "depth_camera_name": "<your-depth-camera-name>",
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
+    },
+    "debug": <boolean>
+  }
 }
 ```
 

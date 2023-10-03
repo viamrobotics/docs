@@ -22,34 +22,72 @@ Enter a name for your camera and click **Create**.
 
 ![Configuration of a rtsp camera in the Viam app config builder.](/components/camera/configure-rtsp.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your camera's **Attributes** box.
+Then remove and fill in the attributes as applicable to your camera, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "rtsp_address": "<your-video-path>",
+  "intrinsic_parameters": {
+    "width_px": <int>,
+    "height_px": <int>,
+    "fx": <float>,
+    "fy": <float>,
+    "ppx": <float>,
+    "ppy": <float>
+  },
+  "distortion_parameters": {
+    "rk1": <float>,
+    "rk2": <float>,
+    "rk3": <float>,
+    "tp1": <float>,
+    "tp2": <float>
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "rtsp_address": "rtsp://admin:456789@111.123.1.180:540/media/video1"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-camera-name>",
-    "type": "camera",
-    "model" : "rtsp",
-    "rtsp_address": "<your-rtsp-address>",
-    "attributes": {
-        "intrinsic_parameters": {
-            "width_px": <int>,
-            "height_px": <int>,
-            "fx": <float>,
-            "fy": <float>,
-            "ppx": <float>,
-            "ppy": <float>
-        },
-        "distortion_parameters": {
-            "rk1": <float>,
-            "rk2": <float>,
-            "rk3": <float>,
-            "tp1": <float>,
-            "tp2": <float>
-        }
+  "name": "<your-camera-name>",
+  "model": "rtsp",
+  "type": "camera",
+  "namespace": "rdk",
+  "rtsp_address": "<your-rtsp-address>",
+  "attributes": {
+    "intrinsic_parameters": {
+      "width_px": <int>,
+      "height_px": <int>,
+      "fx": <float>,
+      "fy": <float>,
+      "ppx": <float>,
+      "ppy": <float>
+    },
+    "distortion_parameters": {
+      "rk1": <float>,
+      "rk2": <float>,
+      "rk3": <float>,
+      "tp1": <float>,
+      "tp2": <float>
     }
+  }
 }
 ```
 
