@@ -335,13 +335,7 @@ Now, if you navigate to your robot's **Control** tab, you should be able to cont
 
 ![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png)
 
-{{% alert title="Tip" color="tip" %}}
-
-Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
-
-{{% /alert %}}
-
-### Configure the ADC as a module from the registry
+#### Configure the ADC as a module from the registry
 
 _Resources_ refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
@@ -380,6 +374,12 @@ If you wire and configure another sensor, such as a temperature sensor on channe
 {{< alert title="Info" color="info" >}}
 If you would like to see how the module works, you can find its code on [GitHub](https://github.com/viam-labs/mcp300x-adc-sensor).
 {{< /alert >}}
+
+{{% alert title="Tip" color="tip" %}}
+
+Now that you have set up your robot and are able to control your motor, you can put the suction tube of your pump into the water cup, and the output tube into the plant!
+
+{{% /alert %}}
 
 ### Add Python control code
 
