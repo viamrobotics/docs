@@ -3,7 +3,7 @@ name: docs-publish
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -15,12 +15,12 @@ jobs:
     if: github.repository_owner == 'viamrobotics'
     runs-on: [self-hosted, x64, linux]
     container:
-       image: ghcr.io/viamrobotics/canon:amd64
+      image: ghcr.io/viamrobotics/canon:amd64
     steps:
       - name: Checkout Push/Workflow Dispatch
         uses: actions/checkout@v3
         with:
-          submodules: true  # fetch hugo themes
+          submodules: true # fetch hugo themes
           fetch-depth: 0
 
       - name: Setup Pages
@@ -30,7 +30,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: "latest"
           extended: true
 
       - name: Build
@@ -59,7 +59,7 @@ jobs:
         uses: actions/deploy-pages@v1
 
   upload-tutorials-page-entries:
-    needs: build
+    needs: deploy
     runs-on: ubuntu-latest
     if: github.repository_owner == 'viamrobotics'
     steps:
@@ -76,7 +76,7 @@ jobs:
           "https://cgnvrk0xwyj9576lp-1.a1.typesense.net/collections/tutorials/documents/import?action=upsert"
 
   generate-index:
-    needs: build
+    needs: deploy
     if: github.repository_owner == 'viamrobotics'
     runs-on: [self-hosted, x64]
     container:
@@ -87,8 +87,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Unsure why this is needed - testing smaller sleep time
       - name: Wait before index
-        run: sleep 300s
+        run: sleep 60s
 
       - name: Write env
         run: |
@@ -98,4 +99,4 @@ jobs:
           echo TYPESENSE_PROTOCOL=https >> typesense.env
 
       - name: Index
-        run:  docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
+        run: docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
