@@ -151,4 +151,4 @@ Note that your base's wiring will vary depending on your choice of board, motors
 
 ## Test the base
 
-{{< readfile "/static/include/components/base-control.md" >}}
+{{< readfile "/static/include/components/test-control/base-control.md" >}}

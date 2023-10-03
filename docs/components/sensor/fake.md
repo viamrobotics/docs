@@ -47,4 +47,4 @@ A call to [`Readings()`](../#getreadings) on a `fake` sensor always returns read
 
 {{% /alert %}}
 
-{{< readfile "/static/include/components/sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/sensor-control.md" >}}
