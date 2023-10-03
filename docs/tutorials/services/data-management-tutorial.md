@@ -1,6 +1,6 @@
 ---
-title: "Introduction to the Data Management Service"
-linkTitle: "Intro to Data Management"
+title: "Manage your Data with Viam"
+linkTitle: "Manage your Data"
 type: "docs"
 description: "Configure data capture and cloud sync, filter and view captured data, and export your data."
 image: "/tutorials/data-management/image1.png"
