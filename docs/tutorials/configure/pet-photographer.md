@@ -20,13 +20,14 @@ weight: 3
 
 Smart machines are an integral part of our daily lives.
 From our phones to traffic lights, these machines rely on their ability to process and respond to data.
-However, as the amount of data collected by these devices continues to grow, it becomes important to not only to process it, but also to organize and manage it effectively.
+However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
-This tutorial will guide you through using the color filter module to selectively capture and synchronize image data with [Viam's cloud](/services/data/#cloud-sync).
+This tutorial will guide you through using the color filter module to selectively capture and synchronize image data for pet photography with [Viam's cloud](/services/data/#cloud-sync).
+You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera]()component.
 
-While the color filter selects image data from a camera, these same principles can be applied to various components, including [sensors](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
-The filter modular component allows you to increase the precision of your model's [data capture](/services/data/#data-capture) and determine which readings to store.
-This can help you to avoid sifting through unwanted data captures and ensures that only the data you're interested in is in Viam's cloud.
+While the color filter module you use in this tutorial selects image data from a camera, these same principles can be applied to various components, including for filtering [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) data.
+The filter modular component allows you to [store data](/services/data/#data-capture) only when that data meets certain conditions you set.
+This can help you to avoid sifting through unwanted data captures and ensures that only the data you're interested in gets stored in Viam's cloud.
 
 ## Hardware Requirements
 
@@ -50,29 +51,6 @@ If you don't already have `viam-server` installed, follow [these directions](/in
    ```{class="command-line" data-prompt="$"}
    git clone https://github.com/viam-labs/modular-filter-examples.git
    ```
-
-### Configure the source code
-
-This tutorial makes use of [Viam's color filter example](https://github.com/viam-labs/modular-filter-examples/tree/main/colorfilter). However, you can modify the filter's source code or write your own filter for different components using [this guide](/extend/modular-resources/create/).
-
-Navigate to the `modular-filter-examples/colorfilter/module` directory in your terminal, and run the following command:
-
-```{class="command-line" data-prompt="$"}
-go build
-```
-
-This command will compile the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
-
-{{< alert title="Tip" color="tip" >}}
-Go to the `colorfilter/module` directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
-
-```{class="command-line" data-prompt="$"}
-realpath colorfilter 
-```
-
-{{< /alert >}}
-
-Read [this guide](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
 
 ### Set up camera
 
@@ -121,21 +99,19 @@ For more detailed information see [Configure a color detector](/services/vision/
 
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
-```json {class="line-numbers linkable-line-numbers"}
-"services": [
-  {
-    "name": "my_color_detector",
-    "type": "vision",
-    "model": "color_detector",
-    "attributes": {
-      "segment_size_px": 100,
-      "detect_color": "#43a1d0",
-      "hue_tolerance_pct": 0.06
-    }
-  },
-  ... // Other services
-]
-```
+  ```json {class="line-numbers linkable-line-numbers"}
+    {
+      "name": "my_color_detector",
+      "type": "vision",
+      "model": "color_detector",
+      "attributes": {
+        "segment_size_px": 100,
+        "detect_color": "#43a1d0",
+        "hue_tolerance_pct": 0.06
+      }
+    },
+    ... // Other services
+  ```
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -167,7 +143,6 @@ To enable data capture on your robot, add and configure the [data management ser
 Add the vision service object to the services array in your rover’s raw JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
-    "services": [
     {
       "name": "dm",
       "type": "data_manager",
@@ -180,7 +155,6 @@ Add the vision service object to the services array in your rover’s raw JSON c
       }
     },
   ... // Vision and other services
-]
 ```
 
 Click **Save Config** and head back to the Builder mode.
@@ -191,6 +165,29 @@ Click **Save Config** and head back to the Builder mode.
 ## Configure the color filter camera
 
 Before you can interact with the vision and data management services, you must configure your camera to filter color and store photos to Viam's cloud.
+
+### Configure the module's executable
+
+This tutorial makes use of [Viam's color filter example](https://github.com/viam-labs/modular-filter-examples/tree/main/colorfilter). However, you can modify the filter's source code or write your own filter for different components using [this guide](/extend/modular-resources/create/).
+
+Navigate to the `modular-filter-examples/colorfilter/module` directory on your robot's terminal and run the following command:
+
+```{class="command-line" data-prompt="$"}
+go build
+```
+
+This command will compile the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
+
+{{< alert title="Tip" color="tip" >}}
+Go to the `colorfilter/module` directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
+
+```{class="command-line" data-prompt="$"}
+realpath colorfilter 
+```
+
+{{< /alert >}}
+
+Read [this guide](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
 
 ### Add local module
 
@@ -211,7 +208,7 @@ Then, click **Save config**.
 
 1. On the next screen:
 
-   - Select the select [camera](/components/camera/), from the drop down menu.
+   - Select the select camera from the drop down menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
