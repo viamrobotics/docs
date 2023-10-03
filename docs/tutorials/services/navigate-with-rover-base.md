@@ -3,9 +3,10 @@ title: "Navigate with a Rover Base"
 linkTitle: "Navigate with a Rover"
 type: "docs"
 description: "Introduction to using a rover base with the navigation service."
-image: "/tutorials/navigate-with-rover-base/agilex-roving.png"
-imageAlt: "The agilex LIMO rover navigating in the grass outside."
-images: ["/tutorials/navigate-with-rover-base/agilex-roving.png"]
+webmSrc: "/tutorials/navigate-with-rover-base/agilex-roving.webm"
+mp4Src: "/tutorials/navigate-with-rover-base/agilex-roving.mp4"
+videoAlt: "The agilex LIMO rover navigating in the grass outside."
+images: ["/tutorials/navigate-with-rover-base/preview.gif"]
 tags:
   [
     "try viam",
@@ -390,7 +391,8 @@ To add the navigation service to your robot, do the following:
 2. At the bottom of the page, create a service.
    Choose `Navigation` as the type.
 3. Then click **Create Service**.
-4. Select **Raw JSON** mode. Copy and paste the following into your new service's `"attributes"`:
+4. Select **Raw JSON** mode.
+   Copy and paste the following into your new service's `"attributes"`:
 
    ```json
    {
