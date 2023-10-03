@@ -189,4 +189,4 @@ You can now create a [vision service](/services/vision/) with a configuration in
 }
 ```
 
-You can now connect this vision service to a [transform camera](/components/camera/transform), or get detections programmatically through one of Viam's [client SDKs](/program/).
+You can now connect this vision service to a [transform camera](/components/camera/transform/), or get detections programmatically through one of Viam's [client SDKs](/program/).
