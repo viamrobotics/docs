@@ -11,7 +11,7 @@ aliases:
 tags: ["base", "gamepad", "yahboom", "app", "rover"]
 authors: ["Hazal Mestci"]
 languages: []
-viamresources: ["base", "input_controller", "motor"]
+viamresources: ["base", "input_controller", "motor", "base_remote_control"]
 level: "Intermediate"
 date: "2022-08-10"
 # updated: ""
