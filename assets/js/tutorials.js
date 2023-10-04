@@ -153,7 +153,7 @@ search.addWidgets([
       { label: "frame_system" },
       { label: "mlmodel" },
       { label: "navigation" },
-      { label: "base_rc" },
+      { label: "base_remote_control" },
       { label: "sensors" },
       { label: "slam" },
       { label: "vision" },
