@@ -21,7 +21,29 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a fake board in the Viam app Config Builder.](/components/board/fake-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your board's **Attributes** box.
+Then remove and fill in the attributes as applicable to your board, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "fail_new": <boolean>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "fail_new": false
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -30,11 +52,12 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "your-fake-board",
-      "type": "board",
+      "name": "<your-fake-board-name>",
       "model": "fake",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
-        "fail_new": false
+        "fail_new": <boolean>
       },
       "depends_on": []
     }

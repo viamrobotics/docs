@@ -34,7 +34,45 @@ Enter a name for your board and click **Create**.
 
 ![An example configuration for a upboard board in the Viam app Config Builder.](/components/board/upboard-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your board's **Attributes** box.
+Then remove and fill in the attributes as applicable to your board, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "digital_interrupts": [
+    {
+      "name": "<your-digital-interrupt-name>",
+      "pin": "<pin-number>"
+    }
+  ],
+  "i2cs": [
+    {
+      "name": "<your-bus-name>",
+      "bus": "<your-bus-index>"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "i2cs": [
+    {
+      "name": "my-i2c-bus1",
+      "bus": "1"
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -44,11 +82,22 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-upboard-board>",
-      "type": "board",
       "model": "upboard",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
-        "i2cs": [],
-        "digital_interrupts": []
+        "digital_interrupts": [
+          {
+            "name": "<your-digital-interrupt-name>",
+            "pin": "<pin-number>"
+          }
+        ],
+        "i2cs": [
+          {
+            "name": "<your-bus-name>",
+            "bus": "<your-bus-index>"
+          }
+        ]
       },
       "depends_on": []
     }
@@ -64,13 +113,15 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-upboard-board>",
-      "type": "board",
       "model": "upboard",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
-        "i2cs": ["<your-i2cs-name-1>", "<your-i2cs-name-2>"],
-        "digital_interrupts": [
-          "<your-digital_interrupts-name-1>",
-          "<your-digital_interrupts-name-2>"
+        "i2cs": [
+          {
+            "name": "my-i2c-bus1",
+            "bus": "1"
+          }
         ]
       },
       "depends_on": []
