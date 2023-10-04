@@ -30,7 +30,39 @@ Enter a name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/merged-config-builder.png" alt="Creation of an `merged` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
+  "orientation": ["<your-imu-sensor-name-1>"],
+  "compass_heading": ["<your-gps-sensor-name-1>"],
+  "angular_velocity": ["<your-imu-sensor-name-1>"],
+  "linear_velocity": ["<your-gps-sensor-name-1>"],
+  "linear_acceleration": ["<your-accelerometer-sensor-name-1>"]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "position": ["gps1"],
+  "orientation": ["vectornav"],
+  "compass_heading": ["gps1"],
+  "angular_velocity": ["vectornav", "mpu6050"],
+  "linear_velocity": ["gps1"],
+  "linear_acceleration": ["adxl345"]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -40,8 +72,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensor-name>",
-      "type": "movement_sensor",
       "model": "merged",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "position": ["<your-gps-sensor-name-1>", "<your-gps-sensor-name-2>"],
         "orientation": ["<your-imu-sensor-name-1>"],
@@ -63,8 +96,9 @@ Edit and fill in the attributes as applicable.
 // { "components": [ { ... },
 {
   "name": "<your-sensor-name>",
-  "type": "movement_sensor",
   "model": "merged",
+  "type": "movement_sensor",
+  "namespace": "rdk",
   "attributes": {
     "position": ["gps1"],
     "orientation": ["vectornav"],
@@ -89,8 +123,9 @@ Configure an array of the `name` of each movement sensor you want to add to your
 - Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
   You can use the same sensor for multiple attributes if it supports multiple properties.
 
-| Name                  | Type  | Inclusion                                | Description                                                                                |
-| --------------------- | ----- | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
+<!-- prettier-ignore -->
+| Name                  | Type  | Inclusion                                | Description |
+| --------------------- | ----- | ---------------------------------------- | ----------- |
 | `position`            | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads position.                 |
 | `orientation`         | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads orientation.              |
 | `compass_heading`     | array | **Dependent on Readings Type Supported** | The `name` of the movement sensor you want to merge, if it reads compass heading position. |

@@ -43,7 +43,41 @@ Enter a name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/gps-nmea-rtk-serial-builder.png" alt="Creation of a `gps-nmea-rtk-serial` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_path": "<path_to_serial_port>",
+  "serial_baud_rate": <int>,
+  "ntrip_connect_attempts": <int>,
+  "ntrip_mountpoint": "<identifier>",
+  "ntrip_password": "<password for NTRIP server>",
+  "ntrip_url": "<URL of NTRIP server>",
+  "ntrip_username": "<username for NTRIP server>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_path": "/dev/serial/by-path/ttyS0",
+  "serial_baud_rate": 115200,
+  "ntrip_connect_attempts": 12,
+  "ntrip_mountpoint": "MNTPT",
+  "ntrip_password": "pass",
+  "ntrip_url": "http://ntrip/url",
+  "ntrip_username": "usr"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -53,8 +87,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensor-name>",
-      "type": "movement_sensor",
       "model": "gps-nmea-rtk-serial",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "serial_path": "<path_to_serial_port>",
         "serial_baud_rate": <int>,
@@ -78,10 +113,10 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "my_GPS",
-      "type": "movement_sensor",
       "model": "gps-nmea-rtk-serial",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
-        "board": "local",
         "serial_path": "/dev/serial/by-path/ttyS0",
         "serial_baud_rate": 115200,
         "ntrip_connect_attempts": 12,

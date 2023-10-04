@@ -23,7 +23,37 @@ Enter a name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/imu-vectornav-builder.png" alt="Creation of an `imu-vectornav` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board": "<your-board-name>",
+  "spi": "<your-spi-bus-name-on-board>",
+  "spi_baud_rate": <int>,
+  "polling_freq_hz": <int>,
+  "chip_select_pin": "<pin-number-on-board>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board": "local",
+  "spi": "1",
+  "spi_baud_rate": 3800,
+  "polling_freq_hz": 80,
+  "chip_select_pin": "36"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -33,8 +63,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensor-name>",
-      "type": "movement_sensor",
       "model": "imu-vectornav",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
         "spi": "<your-spi-bus-name-on-board>",
@@ -56,8 +87,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "myIMU",
-      "type": "movement_sensor",
       "model": "imu-vectornav",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "spi": "1",
