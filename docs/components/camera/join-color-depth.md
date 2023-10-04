@@ -93,8 +93,8 @@ The following attributes are available for `join_color_depth` views:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `output_image_type` | string | **Required** | Specify `color` or `depth` for the output stream. |
-| `color_camera_name` | string | **Required** | `name` of the color camera to pull images from. |
-| `depth_camera_name` | string | **Required** | `name` of the depth camera to pull images from. If your camera provides both color and depth image streams, you can set this to be the same as `color_camera_name`. |
+| `color_camera_name` | string | **Required** | `name` of the color camera to pull images from. If your camera provides both color and depth image streams, you must set this to be the same as `depth_camera_name`. |
+| `depth_camera_name` | string | **Required** | `name` of the depth camera to pull images from. If your camera provides both color and depth image streams, you must set this to be the same as `color_camera_name`. |
 | `intrinsic_parameters` | object | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false`. |
