@@ -10,13 +10,6 @@ tags:
 
 When connecting to a robot using the connection code from the [code sample tab](/program/#hello-world-the-code-sample-tab), a [client session](/program/apis/sessions/) automatically uses the most efficient route to connect to your robot either through local LAN or WAN or the internet.
 
-When a robot loses its connection to the internet but is still connected to a LAN or WAN:
-
-- Client sessions connected through the same LAN or WAN will function normally.
-- Client sessions connected through the internet will timeout and end.
-  If the client is on the same LAN or WAN but the route it chose to connect is through the internet, the client will automatically disconnect and then reconnect over LAN.
-- [Cloud Sync](/services/data/#cloud-sync) for Data Management will pause until the internet connection is re-established since the robot will be unable to connect to the [Viam app](https://app.viam.com).
-
 When a robot loses its connection to LAN or WAN, all client sessions will timeout and end by default.
 
 ## Client session timeout and end
