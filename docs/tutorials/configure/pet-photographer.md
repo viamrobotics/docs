@@ -27,6 +27,8 @@ Once you've positioned your configured camera in a location where your cat or do
 Then, before the images are stored in Viam's cloud, the color filter module will sift images and only store them if the color blue selected is present.
 You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/) component.
 
+{{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="700x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
+
 While the color filter module you use in this tutorial selects image data from a camera, these same principles can be applied to various components, including for filtering [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) data.
 The filter modular component allows you to selectively [store data](/services/data/#data-capture) when that data meets certain conditions you set.
 This can help you to avoid sifting through unwanted data captures and ensures that only the data you're interested in gets stored in Viam's cloud.
@@ -249,8 +251,6 @@ To test that your color filter camera is capturing and filtering images properly
 
 On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your camera's live feed.
 Test the filter by getting a blue colored item and moving it in frame.
-
-![Dog in blue collar in the camera feed](/tutorials/pet-photographer/data-example.png)
 
 Then, go to the **Data** tab to view pictures that contain the blue colored item.
 
