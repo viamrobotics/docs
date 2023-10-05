@@ -175,7 +175,7 @@ Click **Create component** in the lower-left corner.
 
 Select `servo` for type and `pi` for model.
 
-Enter `fsr90r` as the name for your servo, then click **Create**.
+Enter `fs90r` as the name for your servo, then click **Create**.
 
 After clicking **Create** you will see where you can put in attributes for the servo.
 This is where you tell Viam which hardware pin to use to control the servo.
@@ -185,7 +185,7 @@ This is where you tell Viam which hardware pin to use to control the servo.
 
 The attribute section will look like this:
 
-![This is a screenshot of the Viam app on the CONFIG page. This shows the options that populate when you create a servo with the pi Model. It shows attributes to fill out, with a JSON coding area next to it. "Pin" is filled in with "12" and "Board" is filled in with "local". Pin and board are required fields. To the right of this area is an "Attribute Guide" with optional attributes and required. Required attributes are denoted with a star before the word. To the left below the Attributes is Data Capture Configuration and to the right of this is a button that says Add Method. Below that and to the left it says Frame and to the right of Frame it has a button that says Add Frame. Below this and to the left it says Depends On and to the right of that it has a dropdown box. Below the dropdown box you can see I've chosen local, which has an x next to the word to delete it.](/tutorials/single-component-tutorials-servo-mousemover/servo-config.png)
+![This is a screenshot of the Viam app on the Config page. This shows the options that populate when you create a servo with the pi Model. It shows attributes to fill out, with a JSON coding area next to it. "Pin" is filled in with "12" and "Board" is filled in with "local". Pin and board are required fields.](/tutorials/single-component-tutorials-servo-mousemover/servo-config.png)
 
 Click the **Save Config** button.
 
