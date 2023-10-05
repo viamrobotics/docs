@@ -26,7 +26,7 @@ This tutorial will guide you through using the color filter module to selectivel
 You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/)component.
 
 While the color filter module you use in this tutorial selects image data from a camera, these same principles can be applied to various components, including for filtering [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) data.
-The filter modular component allows you to [store data](/services/data/#data-capture) only when that data meets certain conditions you set.
+The filter modular component allows you to selectively [store data](/services/data/#data-capture) when that data meets certain conditions you set.
 This can help you to avoid sifting through unwanted data captures and ensures that only the data you're interested in gets stored in Viam's cloud.
 
 ## Hardware Requirements
@@ -39,32 +39,32 @@ For this tutorial you'll need the following hardware components:
 
 ## Set up
 
-After you [create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot, here's how to get started:
+Here's how to get started:
 
-- Install the [Go binary](https://go.dev/dl/) on your local development computer.
+1. Install the [Go binary](https://go.dev/dl/) on your local development computer.
 
-- Update [`viam-server`](/installation/manage/#update-viam-server).
-  If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
+1. Update [`viam-server`](/installation/manage/#update-viam-server).
+   If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
 
-- Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
+1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
 
-  ```{class="command-line" data-prompt="$"}
-  git clone https://github.com/viam-labs/modular-filter-examples.git
-  ```
+1. Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
 
-### Set up camera
+```{class="command-line" data-prompt="$"}
+git clone https://github.com/viam-labs/modular-filter-examples.git
+```
+
+### Set up your camera
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
-Add your robot's camera as a component by clicking **Create component** in lower-left corner of the page and typing in 'webcam' or specific the model you're using.
+Add your robot's [camera](/components/camera) as a component by clicking **Create component** in lower-left corner of the page and typing in 'webcam'.
 
-![A photo of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
-
-For more information about the Camera component, you can refer to [this page](/components/camera/).
+![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
 ## Add services
 
-After you've finished setting up, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images.
+After you've finished setting up your robot's components, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images:
 
 ### Vision service to detect color
 
@@ -176,12 +176,12 @@ Navigate to the `modular-filter-examples/colorfilter/module` directory on your r
 go build
 ```
 
-This command will compile the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
+This command compiles the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
 
 {{< alert title="Tip" color="tip" >}}
-Go to the `colorfilter/module` directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
+Go to the <file>colorfilter/module</file> directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
 
-```{class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 realpath colorfilter
 ```
 
