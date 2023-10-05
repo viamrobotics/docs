@@ -705,3 +705,11 @@ You can use linear acceleration readings to determine the rate of change of the 
 
 To get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#configuration) on your robot.
 Then use the movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
+
+## Next steps
+
+If you would like to see the navigation service in action, check out this tutorial:
+
+{{< cards >}}
+{{% card link="/tutorials/serivces/navigate-with-rover-base/" %}}
+{{< /cards >}}
