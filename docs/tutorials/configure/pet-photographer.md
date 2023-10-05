@@ -18,7 +18,7 @@ no_list: true
 weight: 3
 ---
 
-Smart machines are an integral part of our daily lives.
+Smart machines are an integral part of our daily lives. TEST
 From our phones to traffic lights, these machines rely on their ability to process and respond to data.
 However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
