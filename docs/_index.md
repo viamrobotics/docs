@@ -154,7 +154,7 @@ sitemap:
         <div>
           <div>Program your smart machine</div>
           <p style="text-align: left;">
-            Program and control your machines in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, <a href="https://ts.viam.dev/">TypeScript</a>, <a href="https://cpp.viam.dev/" target="_blank">C++</a>, or <a href="https://flutter.viam.dev/" target="_blank">Flutter</a>.
+            Program and control your smart machines in <a href="program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, <a href="https://ts.viam.dev/">TypeScript</a>, <a href="https://cpp.viam.dev/" target="_blank">C++</a>, or <a href="https://flutter.viam.dev/" target="_blank">Flutter</a>.
           </p>
         </div>
         <div class="hover-card-img">
