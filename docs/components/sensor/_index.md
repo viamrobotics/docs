@@ -204,7 +204,6 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< cards >}}
 {{% card link="/services/data/" class="small" %}}
-{{% card link="/services/frame-system/" class="small" %}}
 {{% card link="/services/sensors/" class="small" %}}
 {{</ cards >}}
 

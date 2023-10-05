@@ -634,7 +634,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 ## Related Services
 
 {{< cards >}}
-{{% card link="/services/data/" class="small" %}}
 {{% card link="/services/frame-system/" class="small" %}}
 {{</ cards >}}
 

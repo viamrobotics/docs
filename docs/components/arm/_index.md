@@ -568,7 +568,6 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 ## Related Services
 
 {{< cards >}}
-{{% card link="/services/data" class="small" %}}
 {{% card link="/services/frame-system/" class="small" %}}
 {{% card link="/services/motion" class="small" %}}
 {{</ cards >}}

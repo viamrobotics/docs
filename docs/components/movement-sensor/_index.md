@@ -659,7 +659,6 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 {{< cards >}}
 {{% card link="/services/data/" class="small" %}}
-{{% card link="/services/frame-system/" class="small" %}}
 {{% card link="/services/motion/" class="small" %}}
 {{% card link="/services/navigation/" class="small" %}}
 {{</ cards >}}
