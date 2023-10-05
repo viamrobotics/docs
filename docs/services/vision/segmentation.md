@@ -41,11 +41,11 @@ In your vision service's panel, fill in the **Attributes** field.
     "min_points_in_plane": <integer>,
     "min_points_in_segment": <integer>,
     "max_dist_from_plane_mm": <number>,
-        "ground_plane_normal_vec": {
-            "x": <integer>,
-            "y": <integer>,
-            "z": <integer>
-        },
+    "ground_plane_normal_vec": {
+        "x": <integer>,
+        "y": <integer>,
+        "z": <integer>
+    },
     "ground_angle_tolerance_degs": <integer>,
     "clustering_radius": <integer>,
     "clustering_strictness": <integer>
@@ -112,7 +112,7 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
-| `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. |
+| `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |
 | `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. This parameter determines how big the candidate clusters should be, or, how many points should be put on a flat surface. A small clustering radius is likely to split different parts of a large cluster into distinct objects. A large clustering radius is likely to aggregate closely spaced clusters into one object. <br> Default: `1` </br> |
 | `clustering_strictness` | Optional | An integer that determines the probability threshold for sorting neighboring points into the same cluster, or how "easy" `viam-server` should determine it is to sort the points the robot's camera sees into this pointcloud. When the `clustering_radius` determines the size of the candidate clusters, then the clustering_strictness determines whether the candidates will count as a cluster. If `clustering_strictness` is set to a large value, many small clusters are likely to be made, rather than a few big clusters. The lower the number, the bigger your clusters will be. <br> Default: `5` </br> |
 | `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. <br> Default: `100` </br> |
@@ -210,25 +210,67 @@ Use the segmenter to identify well separated objects above a flat plane.
 Configure an `obstacles_depth` segmenter:
 
 {{< tabs >}}
+{{% tab name="Builder" %}}
+
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `Obstacles Depth` model.
+Enter a name for your service and click **Create**.
+
+In your vision service's panel, fill in the **Attributes** field.
+
+{{< tabs >}}
+{{% tab name="Attribute Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "min_points_in_plane": <integer>,
+  "min_points_in_segment": <integer>,
+  "max_dist_from_plane_mm": <number>,
+  "ground_angle_tolerance_degs": <integer>,
+  "clustering_radius": <integer>,
+  "clustering_strictness": <integer>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attribute Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "min_points_in_plane": 1500,
+  "min_points_in_segment": 250,
+  "max_dist_from_plane_mm": 10.0,
+  "ground_angle_tolerance_degs": 20,
+  "clustering_radius": 5,
+  "clustering_strictness": 3
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Add the following vision service object to the services array in your raw JSON configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
-    {
+  {
     "name": "<segmenter_name>",
     "type": "vision",
     "model": "obstacles_depth"
     "attributes": {
-        "h_min_m": <number>,
-        "h_max_m": <number>,
-        "theta_max_deg": <number>,
-        "return_pcds": <boolean>,
-        "with_geometries": <boolean>,
+      "min_points_in_plane": <integer>,
+      "min_points_in_segment": <integer>,
+      "max_dist_from_plane_mm": <number>,
+      "ground_angle_tolerance_degs": <integer>,
+      "clustering_radius": <integer>,
+      "clustering_strictness": <integer>
     }
-    },
-    ... // Other services
+  },
+  ... // Other services
 ]
 ```
 
@@ -238,16 +280,17 @@ Add the following vision service object to the services array in your raw JSON c
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
 {
-    "name": "rc_segmenter",
-    "type": "vision",
-    "model": "obstacles_depth",
-    "attributes": {
-        "h_min_m": 0.0,
-        "h_max_m": 1.0,
-        "theta_max_deg": 45,
-        "return_pcds": "true",
-        "with_geometries": "true"
-    }
+  "name": "rc_segmenter",
+  "type": "vision",
+  "model": "obstacles_depth",
+  "attributes": {
+    "min_points_in_plane": 1500,
+    "min_points_in_segment": 250,
+    "max_dist_from_plane_mm": 10.0,
+    "ground_angle_tolerance_degs": 20,
+    "clustering_radius": 5,
+    "clustering_strictness": 3
+  }
 }
 ]
 ```
@@ -260,11 +303,12 @@ The following parameters are available for an `"obstacles_depth"` segmenter:
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `with_geometries` | **Required** | Whether you would like multiple boxes, if `true`, or a single point, if `false`, returned within the `GeometryInFrame` object captured by this segmenter.  <br> Example: `"false"` </br> |
-| `h_min_m` | Optional | The minimum vertical height in meters for an object to be considered an obstacle. <br> Default: `0.0` </br> |
-| `h_max_m` | Optional | The maximum vertical height in meters at which an object is considered an obstacle. <br> Default: `1.0` </br> |
-| `theta_max_deg` | Optional | The maximum slope at which an object is still not an obstacle. <br> Default: `45` </br> |
-| `return_pcds` | Optional | Whether you would like pointclouds to be included within the GeometryInFrame object captured by this segmenter.  <br> Example: `"false"` </br> |
+| `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
+| `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |
+| `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. <br> Default: `100.0` </br> |
+| `ground_angle_tolerance_degs` | Optional | An integer that determines how strictly the found ground plane should match the `ground_plane_normal_vec`. For example, even if the ideal ground plane is purely flat, a rover may encounter slopes and hills. The algorithm should find a ground plane even if the found plane is at a slant, up to a certain point. <br> Default: `30` </br> |
+| `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. This parameter determines how big the candidate clusters should be, or, how many points should be put on a flat surface. A small clustering radius is likely to split different parts of a large cluster into distinct objects. A large clustering radius is likely to aggregate closely spaced clusters into one object. <br> Default: `1` </br> |
+| `clustering_strictness` | Optional | An integer that determines the probability threshold for sorting neighboring points into the same cluster, or how "easy" `viam-server` should determine it is to sort the points the robot's camera sees into this pointcloud. When the `clustering_radius` determines the size of the candidate clusters, then the clustering_strictness determines whether the candidates will count as a cluster. If `clustering_strictness` is set to a large value, many small clusters are likely to be made, rather than a few big clusters. The lower the number, the bigger your clusters will be. <br> Default: `5` </br> |
 
 If you want to identify multiple boxes over the flat plane with your segmenter:
 
