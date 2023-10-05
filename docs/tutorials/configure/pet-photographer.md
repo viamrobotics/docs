@@ -18,12 +18,14 @@ no_list: true
 weight: 3
 ---
 
-Smart machines are an integral part of our daily lives. TEST
+Smart machines are an integral part of our daily lives.
 From our phones to traffic lights, these machines rely on their ability to process and respond to data.
 However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
-This tutorial will guide you through using the color filter module to selectively capture and synchronize image data for pet photography with [Viam's cloud](/services/data/#cloud-sync).
-You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/)component.
+This tutorial will guide you through setting your camera up with the color filter module to capture and store images of your pet wearing a blue collar in [Viam's cloud](/services/data/#cloud-sync).
+Once you've positioned your configured camera in a location where your cat or dog will come into the frame, the camera will use the data management service to periodically take pictures.
+Then, before the images are stored in Viam's cloud, the color filter module will sift images and only store them if the color blue selected is present.
+You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/) component.
 
 While the color filter module you use in this tutorial selects image data from a camera, these same principles can be applied to various components, including for filtering [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) data.
 The filter modular component allows you to selectively [store data](/services/data/#data-capture) when that data meets certain conditions you set.
@@ -35,7 +37,12 @@ For this tutorial you'll need the following hardware components:
 
 - A computer
 - A webcam or external camera
-- A blue/green collar for increased precision _(optional)_
+- A blue collar for increased precision _(optional)_
+
+{{< alert title="Tip" color="tip" >}}
+You can also configure your camera to detect the unique color of your pet if it happens to be less common in the environment where you set your camera up.
+In this tutorial, the camera is configured to identify and filter images with the color blue, as it is less common in many environments, including mine.
+{{< /alert >}}
 
 ## Set up
 
@@ -84,7 +91,7 @@ Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/r
 1. Enter `my_color_detector` as the name for your detector and click **Create**.
 
 1. In the vision service panel, click the color selection box to set the color to be detected.
-   For this tutorial, set the color to the color of your pet, or use a blue/green collar or ribbon to increase the precision of your filter.
+   For this tutorial, set the color to the color of your pet, or use a blue collar or ribbon to increase the precision of your filter.
 
 1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 
@@ -243,17 +250,15 @@ To test that your color filter camera is capturing and filtering images properly
 On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your camera's live feed.
 Test the filter by getting a blue colored item and moving it in frame.
 
-Placeholder image
-![Kimbo in camera live feed](/tutorials/pet-photographer/colorfiltercam-component.png)
+![Dog in blue collar in the camera feed](/tutorials/pet-photographer/data-example.png)
 
 Then, go to the **Data** tab to view pictures that contain the blue colored item.
 
-Placeholder image
-![Data tab contents from colorfiltercam](/tutorials/pet-photographer/colorfiltercam-component.png)
+![Filtered data tab contents from colorfiltercam showing only photos of dog with blue collar](/tutorials/pet-photographer/data-capture.png)
 
 ## Photograph your pet
 
-To photograph your own pet, put them in a blue or green collar and set up your camera to point at an area they go to frequently.
+To photograph your own pet, put them in a blue collar and set up your camera to point at an area they go to frequently.
 When you check the **Data** tab, you'll only see pictures of your adorable pet.
 
 ## Next steps
