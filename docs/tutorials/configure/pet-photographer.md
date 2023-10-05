@@ -231,7 +231,7 @@ Then, click **Save config**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "vision_service": "my_color_detector",
-  "actual_cam": "actualcam"
+  "actual_cam": "cam"
 }
 ```
 
