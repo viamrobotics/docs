@@ -33,7 +33,31 @@ Enter a name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/imu-wit-builder.png" alt="Creation of an `imu-wit` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_path": "<your-port>",
+  "serial_baud_rate": <int>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_path": "/dev/serial/by-path/<device_ID>",
+  "serial_baud_rate": 9600
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -43,8 +67,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensor-name>",
-      "type": "movement_sensor",
       "model": "imu-wit",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "serial_path": "<your-port>",
         "serial_baud_rate": <int>
@@ -63,8 +88,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "myIMU",
-      "type": "movement_sensor",
       "model": "imu-wit",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "serial_path": "/dev/serial/by-path/<device_ID>",
         "serial_baud_rate": 115200

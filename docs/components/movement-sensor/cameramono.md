@@ -28,8 +28,6 @@ Click on the **Components** subtab and click **Create component**.
 Select the `movement-sensor` type, then select the `camera_mono` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/components/movement-sensor/camera-mono-builder.png" alt="Creation of an `camera_mono` movement sensor in the Viam app config builder." resize="600x" >}}
-
 Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
@@ -92,9 +90,10 @@ Edit and fill in the attributes as applicable.
 
 ## Attributes
 
-| Name                       | Type   | Inclusion    | Description                                                                                                                                              |
-| -------------------------- | ------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `camera`                   | string | **Required** | The `name` of the [camera](/components/camera/) you want to use for visual odometry.                                                                     |
+<!-- prettier-ignore -->
+| Name                       | Type   | Inclusion    | Description |
+| -------------------------- | ------ | ------------ | ----------- |
+| `camera`                   | string | **Required** | The `name` of the [camera](/components/camera/) you want to use for visual odometry. |
 | `motion_estimation_config` | object | **Required** | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go). |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}

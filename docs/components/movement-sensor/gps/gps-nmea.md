@@ -27,7 +27,59 @@ Enter a name for your movement sensor and click **Create**.
 
 {{< imgproc src="/components/movement-sensor/gps-nmea-builder.png" alt="Creation of a `gps-nmea` movement sensor in the Viam app config builder." resize="600x" >}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "connection_type": "<serial|I2C>",
+  "serial_attributes": {
+    "serial_path": "<your-device-path>",
+    "serial_baud_rate": <int>
+  },
+  "i2c_attributes": {
+    "board": "<your-board-name>",
+    "i2c_bus": "<name-of-bus-on-board>",
+    "i2c_addr": <int>,
+    "i2c_baud_rate": <int>
+  },
+  "disable_nmea": <boolean>
+}
+```
+
+{{% /tab %}}
+{{% tab name="USB/serial attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "connection_type": "serial",
+  "serial_attributes": {
+    "serial_path": "/dev/serial/by-path/<device_ID>",
+    "serial_baud_rate": 38400
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="I2c attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "connection_type": "I2C",
+  "i2c_attributes": {
+    "board": "local",
+    "i2c_bus": "1",
+    "i2c_addr": 111,
+    "i2c_baud_rate": 38400
+  }
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -37,19 +89,20 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensor-name>",
-      "type": "movement_sensor",
       "model": "gps-nmea",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "connection_type": "<serial|I2C>",
         "serial_attributes": {
-            "serial_baud_rate": <int>,
-            "serial_path": "<your-device-path>"
+          "serial_path": "<your-device-path>",
+          "serial_baud_rate": <int>
         },
         "i2c_attributes": {
             "board": "<your-board-name>",
-            "i2c_baud_rate": <int>,
+            "i2c_bus": "<name-of-bus-on-board>",
             "i2c_addr": <int>,
-            "i2c_bus": "<name-of-bus-on-board>"
+            "i2c_baud_rate": <int>
         },
         "disable_nmea": <boolean>
       },
@@ -67,13 +120,14 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "my-gps-nmea",
-      "type": "movement_sensor",
       "model": "gps-nmea",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "connection_type": "serial",
         "serial_attributes": {
-          "serial_baud_rate": 38400,
-          "serial_path": "/dev/serial/by-path/<device_ID>"
+          "serial_path": "/dev/serial/by-path/<device_ID>",
+          "serial_baud_rate": 38400
         }
       },
       "depends_on": []
@@ -92,15 +146,16 @@ Note that the example `"serial_path"` filepath is specific to serial devices con
   "components": [
     {
       "name": "my-gps-nmea",
-      "type": "movement_sensor",
       "model": "gps-nmea",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "connection_type": "I2C",
         "i2c_attributes": {
           "board": "local",
-          "i2c_baud_rate": 38400,
+          "i2c_bus": "1",
           "i2c_addr": 111,
-          "i2c_bus": "1"
+          "i2c_baud_rate": 38400
         }
       },
       "depends_on": []

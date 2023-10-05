@@ -43,23 +43,90 @@ To prepare your robot, attach [encoders](/components/encoder/) to each of the po
 
 ## Configuration
 
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Select **Raw JSON** mode.
-Copy and paste the following:
+Click on the **Components** subtab and click **Create component**.
+Select the `movement-sensor` type, then select the `wheeled-odometry` model.
+Enter a name for your movement sensor and click **Create**.
+
+{{< imgproc src="/components/movement-sensor/wheeled-odometry-builder.png" alt="Creation of an `wheeled-odometry` movement sensor in the Viam app config builder." resize="600x" >}}
+
+Copy and paste the following attribute template into your movement sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-"name" : "<your-wheeledodometry-movement-sensor-name>",
-"type" : "movement_sensor",
-"model": "wheeled-odometry",
-"attributes" : {
-    "base" : "<your-base-name>",
-    "left_motors" : ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],
-    "right_motors" : ["<your-base-right-motor-name-1", "your-base-right-motor-name-2>"],
-    "time-interval-msec": <number>
+{
+  "base": "<your-base-name>",
+  "left_motors": ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],
+  "right_motors": ["<your-base-right-motor-name-1", "your-base-right-motor-name-2>"],
+  "time-interval-msec": <number>
 }
 ```
 
-Fill in and edit the attributes as applicable.
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "base": "my_wheeled_base",
+  "left_motors": ["leftm1", "leftm2"],
+  "right_motors": ["rightm1", "rightm2"]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "<your-wheeledodometry-movement-sensor-name>",
+      "model": "wheeled-odometry",
+      "type": "movement_sensor",
+      "namespace": "rdk",
+      "attributes": {
+        "base": "<your-base-name>",
+        "left_motors": ["<your-base-left-motor-name-1>", "<your-base-left-motor-name-2>"],
+        "right_motors": ["<your-base-right-motor-name-1", "your-base-right-motor-name-2>"],
+        "time-interval-msec": <number>
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "my-wheeled-odometer",
+      "model": "wheeled-odometry",
+      "type": "movement_sensor",
+      "namespace": "rdk",
+      "attributes": {
+        "base": "my_wheeled_base",
+        "left_motors": ["leftm1", "leftm2"],
+        "right_motors": ["rightm1", "rightm2"]
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Attributes
 
