@@ -23,7 +23,7 @@ From our phones to traffic lights, these machines rely on their ability to proce
 However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
 This tutorial will guide you through setting your camera up with the color filter module to capture and store images of your pet wearing a blue collar in [Viam's cloud](/services/data/#cloud-sync).
-Once you've positioned your configured camera in a location where your cat or dog will come into the frame, the camera will use the data management service to periodically take pictures.
+Once you've positioned your configured camera in a location where your cat or dog is likely to appear in frame, the camera will use the data management service to periodically take pictures.
 Then, before the images are stored in Viam's cloud, the color filter module will sift images and only store them if the color blue selected is present.
 You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/) component.
 
@@ -39,10 +39,10 @@ For this tutorial you'll need the following hardware components:
 
 - A computer
 - A webcam or external camera
-- A blue collar for increased precision _(optional)_
+- A blue collar for enhanced accuracy _(optional)_
 
 {{< alert title="Tip" color="tip" >}}
-You can also configure your camera to detect the unique color of your pet if it happens to be less common in the environment where you set your camera up.
+Additionally, you have the option to configure your camera to detect the distinctive color of your pet if it happens to be less common in the environment where you set your camera up.
 In this tutorial, the camera is configured to identify and filter images with the color blue, as it is less common in many environments, including mine.
 {{< /alert >}}
 
@@ -188,7 +188,7 @@ go build
 This command compiles the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
 
 {{< alert title="Tip" color="tip" >}}
-Go to the <file>colorfilter/module</file> directory of the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
+Go to the <file>colorfilter/module</file> directory within the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
 
 ```sh {class="command-line" data-prompt="$"}
 realpath colorfilter
@@ -250,15 +250,14 @@ Then, click **Save config**.
 To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your robot's page.
 
 On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your camera's live feed.
-Test the filter by getting a blue colored item and moving it in frame.
-
+Test the filter by moving a blue colored item within the camera's field of view.
 Then, go to the **Data** tab to view pictures that contain the blue colored item.
 
 ![Filtered data tab contents from colorfiltercam showing only photos of dog with blue collar](/tutorials/pet-photographer/data-capture.png)
 
 ## Photograph your pet
 
-To photograph your own pet, put them in a blue collar and set up your camera to point at an area they go to frequently.
+To photograph your own pet, put them in a blue collar and position your camera to point at an area they frequently visit.
 When you check the **Data** tab, you'll only see pictures of your adorable pet.
 
 ## Next steps
