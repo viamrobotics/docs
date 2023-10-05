@@ -67,7 +67,7 @@ git clone https://github.com/viam-labs/modular-filter-examples.git
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
-Add your robot's [camera](/components/camera) as a component by clicking **Create component** in lower-left corner of the page and typing in 'webcam'.
+Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in lower-left corner of the page and typing in 'webcam'.
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
