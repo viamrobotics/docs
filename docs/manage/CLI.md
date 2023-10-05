@@ -281,6 +281,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 | `api-key`      | authenticate to Viam using an organization API key      | - |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
+| `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
 
 ##### Named arguments
 
