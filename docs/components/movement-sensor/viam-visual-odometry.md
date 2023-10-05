@@ -79,7 +79,7 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
    }
    ```
 
-Provide the same camera name as you used in step 4.
+Provide the camera name you used in step 4.
 See the [Attributes](#attributes) section for more information on the other attributes.
 
 1. Click **Save config** at the bottom of the page.

@@ -148,8 +148,8 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 | `board`               | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
 | `i2c_bus`             | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this device. |
 | `use_alt_i2c_address` | bool   | Optional     | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
-| `tap`                 | object | Optional     | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [table below](#tap-attributes). |
-| `free_fall`           | object | Optional     | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [table below](#freefall-attributes). |
+| `tap`                 | object | Optional     | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [Tap attributes](#tap-attributes). |
+| `free_fall`           | object | Optional     | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [Freefall attributes](#freefall-attributes). |
 
 ### Tap attributes
 
@@ -163,7 +163,7 @@ Inside the `tap` object, you can include the following attributes:
 | `exclude_x`         | bool   | Optional     | Tap detection defaults to all three axes. Exclude the x axis by setting this to true. <br> Default: `false` |
 | `exclude_y`         | bool   | Optional     | Tap detection defaults to all three axes. Exclude the y axis by setting this to true. <br> Default: `false` |
 | `exclude_z`         | bool   | Optional     | Tap detection defaults to all three axes. Exclude the z axis by setting this to true. <br> Default: `false` |
-| `threshold`         | float  | Optional     | The magnitude of the threshold value for tap interrupt (in milligrams, between 0 and 15,937). <br> Default: `3000` |
+| `threshold`         | float  | Optional     | The magnitude of the threshold value for tap interrupt (in milligrams, between `0` and `15,937`). <br> Default: `3000` |
 | `dur_us`            | float  | Optional     | Unsigned time value representing maximum time that an event must be above the `threshold` to qualify as a tap event (in microseconds, between 0 and 159,375). <br> Default: `10000` |
 
 ### Freefall attributes
@@ -175,7 +175,7 @@ Inside the `freefall` object, you can include the following attributes:
 | ------------------- | ------ | ------------ | ------------- | ----------- |
 | `accelerometer_pin` | int    | **Required** | On the accelerometer you can choose to send the interrupts to int1 or int2. Specify this by setting this config value to `1` or `2`. |
 | `interrupt_pin`     | string | **Required** | The `name` of the [digital interrupt](/components/board/#digital_interrupts) you configured for the pin on the [board](/components/board/) wired to the `accelerometer_pin`. |
-| `threshold`         | float  | Optional     | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between 0 and 15,937). <br> Default: `437.5` |
+| `threshold`         | float  | Optional     | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between `0` and `15,937`). <br> Default: `437.5` |
 | `time_ms`           | float  | Optional     | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275). <br> Default: `160` |
 
 {{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
