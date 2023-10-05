@@ -132,14 +132,9 @@ To view output from the color detector overlaid on images from a physical camera
 
 {{<imgproc src="/tutorials/try-viam-color-detection/create-transform-camera.png" resize="500x" declaredimensions=true alt="The Viam app showing the Create Component panel populated with a camera component. The name is detectionCam, the type is camera, and the model is transform.">}}
 
-Viam generates an empty **Attributes** section for the detection camera's component panel.
-The panel's **Attribute Guide** section displays the available attributes for the selected component.
+Viam generates an **Attributes** section for the detection camera's component panel:
 
-{{% alert title="Tip" color="tip" %}}
-Attribute Guides always prefix required attributes with an asterisk.
-{{% /alert %}}
-
-![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-config.png)
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-config.png)
 
 Copy the following JSON configuration into the **Attributes** section:
 
@@ -158,16 +153,19 @@ Copy the following JSON configuration into the **Attributes** section:
 }
 ```
 
-<!-- prettier-ignore -->
-| Field | Default value | Description |
-| ----- | ------------- | ----------- |
-| `source` | `cam` | The name of the physical camera on the rover, which provides the visual feed to get detections from. |
-| `attributes` | | The attributes of this detectionCam. |
-| `attributes.detector_name` | `my_color_detector` | The name of this detectionCam. |
-| `attributes.confidence_threshold` | `0.3` (30%) | The percentage of confidence needed by the detection service to identify a color. |
-| `type` | `detections` | The type of the component. |
+Explanations of each attribute are as follows:
 
-![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. The Attributes Guide section lists the available camera component attributes. There are buttons labeled Data Capture Configuration, and Frame, and a drop-down labeled, Depends On. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
+- `source`: The name of the physical camera on the rover, which provides the visual feed to get detections from.
+- `pipeline`: Contains the transformation objects to apply to the camera.
+- `attributes`: The attributes of this transform camera.
+  - `detector_name`: The name of the detector.
+  - `confidence_threshold`: The percentage of confidence needed by the detection service to identify a color.
+    Since we set it to `0.3`, this means that detections with less than 30% confidence won't be recognized.
+  - `type`: The type of transform camera.
+
+The filled-in transform camera configuration panel will look like this:
+
+![The Viam app showing the detectionCam component section. The Attributes section contains a skeleton configuration, including source, pipeline, type, and attributes. On the upper right there is a trash bin icon.](/tutorials/try-viam-color-detection/transform-camera-attributes.png)
 
 After adding the component and its attributes, click **Save config**.
 
