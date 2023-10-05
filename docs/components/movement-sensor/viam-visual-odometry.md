@@ -59,15 +59,16 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
 {{% tab name="Config Builder" %}}
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-1. Click on the **Components** subtab and find the **Create component** pane.
-1. Enter a name for your camera, select the `camera` type, and select the `webcam` model.
-1. Click **Create Component**.
-1. In the resulting `camera` component configuration pane, select a **Video path** for your camera.
+1. Click on the **Components** subtab and click **Create component** in the lower-left corner.
+1. Select the `camera` type, then select the `webcam` model.
+1. Enter a name for your camera, then click **Create**.
+1. In the resulting camera component configuration pane, select a **Video path** for your camera.
    If your robot is live, the drop-down menu auto-populates any identified camera stream paths.
 1. Switch to the **Modules** subtab and find the **Add module** pane.
 1. Enter a name for your visual odometry module, and provide the full path to the `run.sh` file in the **Executable path** field, then click **Add module**.
-1. Switch back to the **Components** subtab and find the **Create component** pane.
-1. Enter a name for your odometry movement sensor, select the `movement_sensor` type, and enter `viam:visual_odometry:opencv_orb` for `model`, then click **Create component**.
+1. Switch back to the **Components** subtab and click the **Create component** button.
+1. Select the `movement_sensor` type, and select `viam:visual_odometry:opencv_orb` for model.
+1. Enter a name for your odometry movement sensor, then click **Create**.
 1. In the resulting `movement_sensor` component configuration pane, paste the following configuration into the **Attributes** text window:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -78,7 +79,7 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
    }
    ```
 
-   Provide the same camera name as you used in step 3.
+   Provide the same camera name as you used in step 4.
    See the [Attributes](#attributes) section for more information on the other attributes.
 
 1. Click **Save config** at the bottom of the page.
