@@ -9,13 +9,7 @@ tags: ["input controller", "components"]
 # SMEs: James
 ---
 
-Configuring a `gpio` input controller allows you to use a GPIO or ADC based device to communicate with your robot.
-
-## Configuration
-
-Refer to the following example configuration for an input controller of model `gpio` with a GPIO based device serving as the board component.
-
-Be aware that complete configuration is not visible in the "Config Builder" tab:
+Configure a `gpio` input controller to use a GPIO- or ADC-based device to communicate with your robot.
 
 {{< tabs name="Configure a `gpio` input controller" >}}
 {{% tab name="Config Builder" %}}
@@ -27,44 +21,121 @@ Enter a name for your input controller and click **Create**.
 
 ![An example configuration for a GPIO input controller component in the Viam App config builder](/components/input-controller/gpio-input-controller-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your input controller's **Attributes** box.
+Then remove and fill in the attributes as applicable to your input controller, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board": "<your-board-name>",
+  "buttons": {
+    "<your-button-name>": {
+      "control": "<button-control-name>",
+      "invert": <boolean>,
+      "debounce_msec": <int>
+    }
+  },
+  "axes": {
+    "<your-axis-name>": {
+      "control": "<axis-control-name>",
+      "min": <int>,
+      "max": <int>,
+      "poll_hz": <int>,
+      "deadzone": <int>,
+      "min_change": <int>,
+      "bidirectional": <boolean>,
+      "invert": <boolean>
+    }
+  },
+  "depends_on": ["<your-board-name>"]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board": "piboard",
+  "buttons": {
+    "interrupt1": {
+      "control": "ButtonNorth",
+      "invert": false,
+      "debounce_msec": 5
+    },
+    "interrupt2": {
+      "control": "ButtonSouth",
+      "invert": true,
+      "debounce_msec": 5
+    }
+  },
+  "axes": {
+    "analogReader1": {
+      "control": "AbsoluteX",
+      "min": 0,
+      "max": 1023,
+      "poll_hz": 50,
+      "deadzone": 30,
+      "min_change": 5,
+      "bidirectional": false,
+      "invert": false
+    },
+    "analogReader2": {
+      "control": "AbsoluteY",
+      "min": 0,
+      "max": 1023,
+      "poll_hz": 50,
+      "deadzone": 30,
+      "min_change": 5,
+      "bidirectional": true,
+      "invert": true
+    }
+  },
+  "depends_on": ["piboard"]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "components": [
+  "components": [
     {
       "name": "<your-gpio-input-controller-name>",
-      "type": "input_controller",
       "model": "gpio",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
         "buttons": {
           "<your-button-name>": {
             "control": "<button-control-name>",
             "invert": <boolean>,
-            "debounce_msec": <#>
+            "debounce_msec": <int>
           }
         },
         "axes": {
-          "<nyour-axis-name>": {
+          "<your-axis-name>": {
             "control": "<axis-control-name>",
-            "min": <#>,
-            "max": <#>,
-            "poll_hz": <#>,
-            "deadzone": <#>,
-            "min_change": <#>,
+            "min": <int>,
+            "max": <int>,
+            "poll_hz": <int>,
+            "deadzone": <int>,
+            "min_change": <int>,
             "bidirectional": <boolean>,
             "invert": <boolean>
           }
         }
       },
-      "depends_on": [
-        "<your-board-name>"
-      ]
-    }, ... // <INSERT ANY ADDITIONAL COMPONENT CONFIGURATION>
+      "depends_on": ["<your-board-name>"]
+    }
+  ]
 }
 ```
 
@@ -73,11 +144,12 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "components": [
+  "components": [
     {
       "name": "my_gpio_ic",
-      "type": "input_controller",
       "model": "gpio",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {
         "board": "piboard",
         "buttons": {
@@ -115,10 +187,9 @@ Edit and fill in the attributes as applicable.
           }
         }
       },
-      "depends_on": [
-        "piboard"
-      ]
-    }, ...
+      "depends_on": ["piboard"]
+    }
+  ]
 }
 ```
 
