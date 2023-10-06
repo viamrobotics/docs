@@ -94,7 +94,7 @@ You can test your classifier with [existing images in the Viam app](#existing-im
 
 {{< alert title="Note" color="note" >}}
 
-Your classifier must have been trained or uploaded after the September 19, 2023.
+The feature is only available for classifiers that were uploaded after September 19, 2023.
 
 {{< /alert >}}
 
