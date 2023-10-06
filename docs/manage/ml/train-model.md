@@ -75,4 +75,27 @@ The model package config looks like this:
 
 ## Next Steps
 
-To deploy your model to your robot, see [deploy model](../../../services/ml/).
+{{< cards >}}
+{{% manualcard link="/services/ml" %}}
+
+<h4>Deploy your model</h4>
+
+Create an ML model service to deploy your machine learning model to your smart machine.
+
+{{% /manualcard %}}
+{{% manualcard link="/services/vision/detection/#configure-an-mlmodel-detector"%}}
+
+<h4>Create a detector with your model</h4>
+
+Configure an `mlmodel detector`.
+
+{{% /manualcard %}}
+{{% manualcard link="/services/vision/classification/#configure-an-mlmodel-classifier"%}}
+
+<h4>Create a classifier with your model</h4>
+
+Configure your `mlmodel classifier`.
+
+{{% /manualcard %}}
+
+{{< /cards >}}

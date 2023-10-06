@@ -11,7 +11,7 @@ icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-The ML Model service allows you to deploy machine learning models to your smart machine.
+Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/) your model, the ML Model service allows you to deploy machine learning models to your smart machine.
 
 ## Create an ML model service
 
@@ -132,7 +132,25 @@ You can use one of these architectures or build your own.
 
 ## Next Steps
 
-To make use of your new model, follow the instructions to create:
+To make use of your model with your smart machine, add a [vision service](/services/vision/) or a [modular resource](/extend/):
 
-- a [`mlmodel` detector](../vision/detection/#configure-an-mlmodel-detector) or
-- a [`mlmodel` classifier](../vision/classification/#configure-an-mlmodel-classifier)
+{{< cards >}}
+
+{{% manualcard link="/services/vision/detection/#configure-an-mlmodel-detector"%}}
+
+<h4>Create a detector with your model</h4>
+
+Configure an `mlmodel detector`.
+
+{{% /manualcard %}}
+{{% manualcard link="/services/vision/classification/#configure-an-mlmodel-classifier"%}}
+
+<h4>Create a classifier with your model</h4>
+
+Configure your `mlmodel classifier`.
+
+{{% /manualcard %}}
+
+{{% card link="/extend/modular-resources/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
+
+{{< /cards >}}
