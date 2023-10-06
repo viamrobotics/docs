@@ -11,7 +11,7 @@ aliases:
 # SME: Rand, Martha
 ---
 
-Configure a `multi-axis` gantry to integrate a multi-axis gantry into your robot:
+Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/components/gantry/single-axis/) gantries into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -23,8 +23,30 @@ Enter a name for your gantry and click **Create**.
 
 ![Creation of a multi-axis gantry component in the Viam app config builder.](/components/gantry/multi-axis-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your gantry's **Attributes** box.
+Then remove and fill in the attributes as applicable to your gantry, according to the table below.
 
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "subaxes_list": ["<xaxis-name>", "<yaxis-name>", "<zaxis-name>"],
+  "move_simultaneously": <boolean>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "subaxes_list": ["single-axis1x", "single-axis2y", "single-axis3z"]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
@@ -33,16 +55,17 @@ Edit and fill in the attributes as applicable.
   "components": [
     ... // < INSERT YOUR MOTOR AND SINGLE-AXIS GANTRY CONFIGURATIONS >
     {
-        "name": "<your-fake-gantry-name>",
-        "type": "gantry",
-        "model": "multi-axis",
-        "attributes": {
-            "subaxes_list": [
-                "<xaxis-name>",
-                "<yaxis-name>",
-                "<zaxis-name>"
-            ]
-        },
+      "name": "<your-fake-gantry-name>",
+      "model": "multi-axis",
+      "type": "gantry",
+      "namespace": "rdk",
+      "attributes": {
+          "subaxes_list": [
+              "<xaxis-name>",
+              "<yaxis-name>",
+              "<zaxis-name>"
+          ]
+      },
       "depends_on": []
     }
   ]
@@ -57,13 +80,15 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "local",
+      "model": "pi",
       "type": "board",
-      "model": "pi"
+      "namespace": "rdk"
     },
     {
       "name": "xmotor",
-      "type": "motor",
       "model": "gpiostepper",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "pins": {
@@ -77,8 +102,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "ymotor",
-      "type": "motor",
       "model": "gpiostepper",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "pins": {
@@ -92,8 +118,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "zmotor",
-      "type": "motor",
       "model": "gpiostepper",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "pins": {
@@ -107,8 +134,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "xaxis",
-      "type": "gantry",
       "model": "single-axis",
+      "type": "gantry",
+      "namespace": "rdk",
       "attributes": {
         "length_mm": 1000,
         "board": "local",
@@ -143,8 +171,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "zaxis",
-      "type": "gantry",
       "model": "single-axis",
+      "type": "gantry",
+      "namespace": "rdk",
       "attributes": {
         "length_mm": 1000,
         "board": "local",
@@ -177,8 +206,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "my_multi-axis_gantry",
-      "type": "gantry",
       "model": "multi-axis",
+      "type": "gantry",
+      "namespace": "rdk",
       "attributes": {
         "subaxes_list": ["xaxis", "yaxis", "zaxis"],
         "move_simultaneously": "false"

@@ -9,7 +9,7 @@ videoAlt: "An arm moving with the motion service"
 tags: ["arm", "gripper", "motion", "services"]
 authors: []
 languages: ["python", "go"]
-viamresources: ["arm", "gripper", "motion"]
+viamresources: ["arm", "gripper", "motion", "frame_system"]
 level: "Intermediate"
 date: "2023-03-07"
 # updated: ""

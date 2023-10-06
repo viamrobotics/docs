@@ -34,17 +34,18 @@ Edit and fill in the attributes as applicable.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "name": "<your-encoder-name>",
-    "type": "encoder",
-    "model": "AMS-AS5048",
-    "attributes": {
-      "board": "<your-board-name>",
-      "connection_type": "i2c",
-      "i2c_attributes": {
-        "i2c_bus": "<your-i2c-bus-name-on-board>",
-        "i2c_addr": <int>
-      }
+  "name": "<your-encoder-name>",
+  "model": "AMS-AS5048",
+  "type": "encoder",
+  "namespace": "rdk",
+  "attributes": {
+    "board": "<your-board-name>",
+    "connection_type": "i2c",
+    "i2c_attributes": {
+      "i2c_bus": "<your-i2c-bus-name-on-board>",
+      "i2c_addr": <int>
     }
+  }
 }
 ```
 

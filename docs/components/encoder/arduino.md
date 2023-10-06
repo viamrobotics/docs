@@ -27,8 +27,9 @@ Edit and fill in the attributes as applicable.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-encoder-name>",
-  "type": "encoder",
   "model": "arduino",
+  "type": "encoder",
+  "namespace": "rdk",
   "attributes": {
     "board": "<your-board-name>",
     "motor_name": "your-motor-name>",
