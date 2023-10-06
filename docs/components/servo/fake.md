@@ -29,8 +29,9 @@ Enter a name for your servo and click **Create**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-fake-servo-name>",
-  "type": "servo",
   "model": "fake",
+  "type": "servo",
+  "namespace": "rdk",
   "attributes": {}
 }
 ```

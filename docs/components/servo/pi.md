@@ -27,25 +27,59 @@ Enter a name for your servo and click **Create**.
 
 {{< imgproc src="/components/servo/pi-servo-ui-config.png" alt="An example configuration for a pi servo in the Viam app Config Builder." resize="600x" >}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your servo's **Attributes** box.
+Then remove and fill in the attributes as applicable to your servo, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "pin": "<your-pin-number>",
+  "board": "<your-board-name>",
+  "min": <float>,
+  "max": <float>,
+  "starting_position_deg": <float>,
+  "hold_position": <int>,
+  "max_rotation_deg": <int>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "pin": "16",
+  "board": "local"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "components": [
-        {
-            "name": "<your-servo-name>",
-            "type": "servo",
-            "model": "pi",
-            "attributes": {
-                "pin": "<your-pin-number>",
-                "board": "<your-board-name>"
-            }
-        },
-        ... // insert your board component config
+  "components": [
+    {
+      "name": "<your-servo-name>",
+      "model": "pi",
+      "type": "servo",
+      "namespace": "rdk",
+      "attributes": {
+        "pin": "<your-pin-number>",
+        "board": "<your-board-name>",
+        "min": <float>,
+        "max": <float>,
+        "starting_position_deg": <float>,
+        "hold_position": <int>,
+        "max_rotation_deg": <int>
+      }
     }
+  }
 ```
 
 {{% /tab %}}
@@ -56,13 +90,15 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "local",
+      "model": "pi",
       "type": "board",
-      "model": "pi"
+      "namespace": "rdk"
     },
     {
       "name": "my_servo",
-      "type": "servo",
       "model": "pi",
+      "type": "servo",
+      "namespace": "rdk",
       "attributes": {
         "pin": "16",
         "board": "local"
