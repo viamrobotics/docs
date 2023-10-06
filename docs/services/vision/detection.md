@@ -149,7 +149,7 @@ To create an `mlmodel` detector, you need to first:
 
 <h4>Train or upload an ML model</h4>
 
-You can [add an existing model](/manage/ml/upload-model/) or [train your own models](/manage/ml/train-model/) for object detection and classification using data from the [data management service](../../services/data/).
+You can [add an existing model](/manage/ml/upload-model/) or [train your own models](/manage/ml/train-model/) for object detection and classification using data from the [data management service](/services/data/).
 
 {{% /manualcard %}}
 {{% manualcard %}}

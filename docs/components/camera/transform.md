@@ -122,7 +122,7 @@ The following are the transformation objects available for the `pipeline`:
 {{< tabs >}}
 {{% tab name="Classifications" %}}
 
-Classifications overlay text from the `GetClassifications` method of the [Vision Service](../../../services/vision/) onto the image.
+Classifications overlay text from the `GetClassifications` method of the [Vision Service](/services/vision/) onto the image.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -136,7 +136,7 @@ Classifications overlay text from the `GetClassifications` method of the [Vision
 
 **Attributes:**
 
-- `classifier_name`: The name of the classifier in the [Vision Service](../../../services/vision/).
+- `classifier_name`: The name of the classifier in the [Vision Service](/services/vision/).
 - `confidence_threshold`: The threshold above which to display classifications.
 
 {{% /tab %}}
