@@ -22,7 +22,7 @@ Click on the **Components** subtab and click **Create component** in the lower-l
 Select the type `power_sensor`, then select the `fake` model.
 Name your sensor, and click **Create**.
 
-{{<imgproc src="/components/power-sensor/fake-config-builder.png" resize="750x" declaredimensions=true alt="Fake power sensor configuration builder">}}
+![Fake power sensor configuration builder](/components/power-sensor/fake-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -30,8 +30,9 @@ Name your sensor, and click **Create**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-sensor-name>",
-  "type": "power_sensor",
   "model": "fake",
+  "type": "power_sensor",
+  "namespace": "rdk",
   "attributes": {}
 }
 ```
