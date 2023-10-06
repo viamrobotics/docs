@@ -29,7 +29,19 @@ Most robots with a sensor need at least the following hardware:
 - A [board](/components/board/)
 - Depending on your sensor's output type (analog or digital), an analog-to-digital converter (ADC) may be necessary to allow the sensor to communicate with the board
 
+<<<<<<< HEAD
 ## Supported Models
+=======
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/sensors/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
+
+## Configuration
+>>>>>>> 36007f58 (test sectionlist on arm page)
 
 To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
 
@@ -199,13 +211,6 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
-
-## Related Services
-
-{{< cards >}}
-{{% card link="/services/data/" class="small" %}}
-{{% card link="/services/sensors/" class="small" %}}
-{{</ cards >}}
 
 ## Next Steps
 

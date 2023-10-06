@@ -31,6 +31,15 @@ Most robots with an encoder need at least the following hardware:
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement.
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
@@ -316,13 +325,6 @@ For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
-
-## Related Services
-
-{{< cards >}}
-{{% card link="/services/data/" class="small" %}}
-{{% card link="/services/frame-system/" class="small" %}}
-{{</ cards >}}
 
 ## Next Steps
 

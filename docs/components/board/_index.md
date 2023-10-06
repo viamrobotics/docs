@@ -12,7 +12,32 @@ images: ["/icons/components/board.svg"]
 # SMEs: Gautham, Rand
 ---
 
+<<<<<<< HEAD
 A _board_ component on your robot communicates with the other [components](/components/) of the robot.
+=======
+A _board_ is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
+
+You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+
+This control is simplified with [`viam-server`](/installation/).
+When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
+
+{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+
+The [RDK](/internals/rdk/) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
+
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/ml/" >}}
+{{< /cards >}}
+
+## Configuration
+
+Configure a _board_ component on your robot to communicate with the other [components](/components/) of the robot.
+Signaling is overseen by a computer running `viam-server`.
+>>>>>>> 36007f58 (test sectionlist on arm page)
 
 A board can be:
 
@@ -1444,12 +1469,6 @@ interrupt = await my_board.digital_interrupt_by_name(
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
-
-## Related Services
-
-{{< cards >}}
-{{% card link="/services/frame-system/" class="small" %}}
-{{</ cards >}}
 
 ## Next Steps
 

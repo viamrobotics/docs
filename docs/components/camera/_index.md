@@ -31,7 +31,21 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
+<<<<<<< HEAD
 ## Supported Models
+=======
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/vision/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< relatedcard link="/services/ml/" >}}
+{{< /cards >}}
+
+## Configuration
+>>>>>>> 36007f58 (test sectionlist on arm page)
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
 
@@ -401,18 +415,10 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 
 {{< snippet "social.md" >}}
 
-## Related Services
-
-{{< cards >}}
-{{% card link="/services/data/" class="small" %}}
-{{% card link="/services/frame-system/" class="small" %}}
-{{% card link="/services/slam" class="small"%}}
-{{% card link="/services/vision" class="small"%}}
-{{</ cards >}}
-
 ## Next Steps
 
 {{< cards >}}
+{{% card link="/services/vision" %}}
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

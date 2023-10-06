@@ -999,6 +999,32 @@ td > ul, td > ol {
   }
 }
 
+// relatedcard styling
+
+.relatedcard {
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedcard a {
+  width: 8rem;
+  text-decoration: none;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.relatedcard a:hover {
+  background-color: whitesmoke;
+}
+
+.relatedcard div {
+  margin: auto;
+}
+
+.relatedcard p {
+  vertical-align: middle;
+}
+
 // sectionlist styling
 
 ul.sectionlist {

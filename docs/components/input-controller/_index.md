@@ -26,6 +26,14 @@ Most robots with an input controller need at least the following hardware:
 - A power supply cable or batteries for the input device and the robot.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
@@ -1000,14 +1008,6 @@ for _, control := range []input.Control{input.AbsoluteY, input.AbsoluteRY, input
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
-
-## Related Services
-
-{{< cards >}}
-{{% card link="/services/base-rc/" class="small" %}}
-{{% card link="/services/data/" class="small" %}}
-{{% card link="/services/frame-system/" class="small" %}}
-{{</ cards >}}
 
 ## Next Steps
 

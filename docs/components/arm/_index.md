@@ -26,6 +26,13 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
+
 ## Motion planning with your arm's built-in software
 
 Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
@@ -564,13 +571,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
-
-## Related Services
-
-{{< cards >}}
-{{% card link="/services/frame-system/" class="small" %}}
-{{% card link="/services/motion" class="small" %}}
-{{</ cards >}}
 
 ## Next Steps
 
