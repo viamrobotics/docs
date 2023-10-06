@@ -22,7 +22,31 @@ Name your sensor, and click **Create**.
 
 {{<imgproc src="/components/power-sensor/renogy-config-builder.png" resize="800x" declaredimensions=true alt="Renogy power sensor configuration tab ">}}
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your power sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your power sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_path": "<string>",
+  "serial_baud_rate": <int>,
+  "modbus_id": <int>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -32,12 +56,13 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "ren1",
-      "type": "power_sensor",
       "model": "renogy",
+      "type": "power_sensor",
+      "namespace": "rdk",
       "attributes": {
-        "serial_path": "string",
-        "serial_baud_rate": "integer",
-        "modbus_id": "integer"
+        "serial_path": "<string>",
+        "serial_baud_rate": <int>,
+        "modbus_id": <int>
       },
       "depends_on": []
     }
@@ -53,10 +78,11 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "your-renogy-sensor",
-      "type": "power_sensor",
       "model": "renogy",
+      "type": "power_sensor",
+      "namespace": "rdk",
       "attributes": {
-        "serial_path": "/dev/serial0",
+        "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
         "serial_baud_rate": 9600,
         "modbus_id": 1
       },
