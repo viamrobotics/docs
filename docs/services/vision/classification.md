@@ -88,7 +88,26 @@ Proceed to [test your classifier](#test-your-classifier).
 
 ## Test your classifier
 
-You can test your classifier with [live camera footage](#live-camera-footage) or [existing images](#existing-images).
+You can test your classifier with [existing images in the Viam app](#existing-images-in-the-cloud), [live camera footage](#live-camera-footage), or [existing images on a computer](#existing-images-on-your-machine).
+
+### Existing images in the cloud
+
+{{< alert title="Note" color="note" >}}
+
+Your classifier must have been trained or uploaded after the September 19, 2023.
+
+{{< /alert >}}
+
+{{<gif webm_src="/services/vision/mug-classifier.webm" mp4_src="/services/vision/mug-classifier.mp4" alt="A classification model run against an image containing a mug." max-width="250px" class="alignright">}}
+
+If you have images stored in the [Viam cloud](/manage/data), you can run your classifier against your images in the app.
+
+1. Navigate to the [Data tab](/manage/data/view/) and click on the **Images** subtab.
+2. Click on an image to open the side menu,select the **Actions** tab in the data tab.
+3. In the **Run model** section, select your model and specify a confidence threshold.
+4. Click **Run model**
+
+If the classifier's results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
 
 ### Live camera footage
 
@@ -212,7 +231,7 @@ To learn more about how to use classification, see the [Go SDK docs](https://pkg
     {{% /tab %}}
     {{< /tabs >}}
 
-### Existing images
+### Existing images on your machine
 
 If you would like to test your classifier with existing images, load the images and pass them to the classifier:
 
