@@ -31,8 +31,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-motor-name>",
-      "type": "motor",
       "model": "fake",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         <...>
       },
@@ -50,8 +51,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "fake-motor",
-      "type": "motor",
       "model": "fake",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "dir": "",
