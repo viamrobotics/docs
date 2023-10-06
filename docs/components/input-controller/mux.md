@@ -19,8 +19,6 @@ For example, you could use a joystick alongside a numpad.
 
 To combine multiple controlers into a `mux` controller, you must first configure each controller individually.
 
-The following example configuration combines a `gamepad` and a `webgamepad` controller:
-
 {{< tabs name="Configure a `mux` input controller" >}}
 {{% tab name="Config Builder" %}}
 
@@ -31,7 +29,34 @@ Enter a name for your input controller and click **Create**.
 
 ![An example configuration for a multiplexed input controller component in the Viam App config builder](/components/input-controller/mux-input-controller-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your input controller's **Attributes** box.
+Then remove and fill in the attributes as applicable to your input controller, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "sources": [
+    "<your-gamepad-input-controller-name",
+    "<your-other-gamepad-input-controller-name>"
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "sources": ["myGamepad", "WebGamepad"]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+From the **Depends On** drop-down menu, select all of the source input controllers for your `mux` controller to combine.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -41,33 +66,58 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-mux-input-controller-name>",
-      "type": "input_controller",
       "model": "mux",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {
         "sources": [
           "<your-gamepad-input-controller-name",
-          "WebGamepad"
+          "<your-other-gamepad-input-controller-name>"
         ]
       },
       "depends_on": [
         "<your-gamepad-input-controller-name>",
-        "WebGamepad"
+        "<your-other-gamepad-input-controller-name>"
       ]
+    }
+    <...CONFIGS FOR THE INDIVIDUAL INPUT CONTROLLERS...>
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+The following example configuration combines a `gamepad` and a `webgamepad` controller:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "components": [
+    {
+      "name": "my-combined-controller",
+      "model": "mux",
+      "type": "input_controller",
+      "namespace": "rdk",
+      "attributes": {
+        "sources": ["myGamepad", "WebGamepad"]
+      },
+      "depends_on": ["myGamepad", "WebGamepad"]
     },
     {
-      "name": "<your-gamepad-input-controller-name>",
-      "type": "input_controller",
+      "name": "myGamepad",
       "model": "gamepad",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {
-        "dev_file": "<your-filepath>",
-        "auto_reconnect": <boolean>
+        "auto_reconnect": true
       },
       "depends_on": []
     },
     {
       "name": "WebGamepad",
-      "type": "input_controller",
       "model": "webgamepad",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }
