@@ -103,7 +103,7 @@ The feature is only available for classifiers that were uploaded after September
 If you have images stored in the [Viam cloud](/manage/data), you can run your classifier against your images in the [Viam app](https://app.viam.com/).
 
 1. Navigate to the [Data tab](/manage/data/view/) and click on the **Images** subtab.
-2. Click on an image to open the side menu,select the **Actions** tab in the data tab.
+2. Click on an image to open the side menu, and select the **Actions** tab under the **Data** tab.
 3. In the **Run model** section, select your model and specify a confidence threshold.
 4. Click **Run model**
 
