@@ -43,8 +43,9 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
   "components": [
     {
       "name": "myGantry",
-      "type": "gantry",
       "model": "single-axis",
+      "type": "gantry",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": [],
       "frame": {
@@ -68,8 +69,9 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
     {
       "depends_on": [],
       "name": "myArm",
-      "type": "arm",
       "model": "ur5e",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "127.0.0.1"
       },

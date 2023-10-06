@@ -78,8 +78,9 @@ This file contains some basic example [component](/components/) and [service](/s
   "components": [
     {
       "name": "arm1",
-      "type": "arm",
       "model": "fake",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "arm-model": "xArm6"
       }
@@ -96,8 +97,9 @@ This file contains some basic example [component](/components/) and [service](/s
     },
     {
       "name": "board1",
-      "type": "board",
       "model": "fake",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {
         "analogs": [
           {
@@ -120,8 +122,9 @@ This file contains some basic example [component](/components/) and [service](/s
     },
     {
       "name": "encoder1",
-      "type": "encoder",
       "model": "fake",
+      "type": "encoder",
+      "namespace": "rdk",
       "attributes": {
         "update_rate_msec": 200
       }
@@ -148,8 +151,9 @@ This file contains some basic example [component](/components/) and [service](/s
     },
     {
       "name": "motor1",
-      "type": "motor",
       "model": "fake",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "encoder": "encoder1",
         "pins": {

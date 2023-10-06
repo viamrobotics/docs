@@ -31,8 +31,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "base",
-      "type": "base",
       "model": "boat",
+      "type": "base",
+      "namespace": "rdk",
       "attributes": {
         "drive_mode": "<a_drive_mode_option>",
         "serial_path": "</dev/ttyXXXX>"

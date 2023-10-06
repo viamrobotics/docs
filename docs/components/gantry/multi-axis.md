@@ -153,8 +153,9 @@ Then remove and fill in the attributes as applicable to your gantry, according t
     },
     {
       "name": "yaxis",
-      "type": "gantry",
       "model": "single-axis",
+      "type": "gantry",
+      "namespace": "rdk",
       "attributes": {
         "length_mm": 1000,
         "board": "local",

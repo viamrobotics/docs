@@ -117,8 +117,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
   "components": [
     {
       "name": "my_GPS",
-      "type": "movement_sensor",
       "model": "gps-nmea-rtk-pmtk",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "i2c_addr": 66,

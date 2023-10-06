@@ -41,8 +41,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-roboclaw-motor-name>",
-      "type": "motor",
       "model": "roboclaw",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "serial_path": "<your-serial-path>",
         "motor_channel": <int>,
@@ -64,8 +65,9 @@ Example configuration for a `roboclaw` DC brushed motor:
   "components": [
     {
       "name": "your-roboclaw-motor",
-      "type": "motor",
       "model": "roboclaw",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "serial_path": "/dev/ttyUSB0",
         "motor_channel": 1,

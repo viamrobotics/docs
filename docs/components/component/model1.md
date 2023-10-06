@@ -33,8 +33,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": <arm_name>,
-      "type": "arm",
       "model": "model1",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "board": <string>,
         "i2c_bus": <string>
@@ -53,8 +54,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "myArm",
-      "type": "arm",
       "model": "model1",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "i2c_bus": "1"

@@ -112,15 +112,17 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "leftm",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "a": "15",
@@ -133,8 +135,9 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
     },
     {
       "name": "rightm",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "b": "11",
@@ -149,8 +152,9 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
     },
     {
       "name": "scuttlebase",
-      "type": "base",
       "model": "wheeled",
+      "type": "base",
+      "namespace": "rdk",
       "attributes": {
         "width_mm": 400,
         "wheel_circumference_mm": 258,
@@ -161,8 +165,9 @@ To find yours, follow [these instructions](/components/camera/webcam/#find-the-v
     },
     {
       "name": "my_camera",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video0"
       },
@@ -268,15 +273,17 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "leftm",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "a": "15",
@@ -289,8 +296,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "rightm",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "b": "11",
@@ -305,8 +313,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "scuttlebase",
-      "type": "base",
       "model": "wheeled",
+      "type": "base",
+      "namespace": "rdk",
       "attributes": {
         "width_mm": 400,
         "wheel_circumference_mm": 258,
@@ -317,8 +326,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "my_camera",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video0"
       },
@@ -326,8 +336,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "show_detections",
-      "type": "camera",
       "model": "transform",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "source": "my_camera",
         "pipeline": [

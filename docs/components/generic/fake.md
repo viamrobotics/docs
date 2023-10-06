@@ -27,8 +27,9 @@ Enter a name for your generic component and click **Create**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-fake-generic-component-name>",
-  "type": "generic",
   "model": "fake",
+  "type": "generic",
+  "namespace": "rdk",
   "attributes": {}
 }
 ```

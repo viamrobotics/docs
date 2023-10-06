@@ -44,8 +44,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "<your-motor-name>",
-      "type": "motor",
       "model": "gpiostepper",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
         "pins": {
@@ -76,8 +77,9 @@ Here’s an example of a basic stepper driver config:
     },
     {
       "name": "example-motor",
-      "type": "motor",
       "model": "gpiostepper",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "example-board",
         "pins": {

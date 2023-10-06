@@ -50,8 +50,9 @@ Here’s an example configuration:
     },
     {
       "name": "<your-motor-name>",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
         "pins": {
@@ -76,15 +77,17 @@ Here’s an example configuration:
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "myEncoder",
-      "type": "encoder",
       "model": "incremental",
+      "type": "encoder",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "pins": {
@@ -96,8 +99,9 @@ Here’s an example configuration:
     },
     {
       "name": "myMotor1",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "pins": {

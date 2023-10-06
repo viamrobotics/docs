@@ -77,15 +77,17 @@ If you add components in **Builder** mode and click **Save Config** at the botto
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "my-motor",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "a": "13",
@@ -98,8 +100,9 @@ If you add components in **Builder** mode and click **Save Config** at the botto
     },
     {
       "name": "my_camera",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video0"
       }

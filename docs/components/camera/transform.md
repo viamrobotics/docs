@@ -388,8 +388,9 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "camera_name",
-  "type": "camera",
   "model": "transform",
+  "type": "camera",
+  "namespace": "rdk",
   "attributes": {
     "source": "physical_cam",
     "pipeline": [

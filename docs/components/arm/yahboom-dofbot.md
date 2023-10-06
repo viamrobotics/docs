@@ -51,8 +51,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "myarm",
-      "type": "arm",
       "model": "yahboom-dofbot",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }

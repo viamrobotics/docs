@@ -282,8 +282,9 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     } // Motor JSON ...
@@ -310,8 +311,9 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (th
 // Board JSON ... },
 {
   "name": "water-pump",
-  "type": "motor",
   "model": "gpio",
+  "type": "motor",
+  "namespace": "rdk",
   "attributes": {
     "pins": {
       "a": "",
