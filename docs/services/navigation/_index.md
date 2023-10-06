@@ -711,5 +711,5 @@ Then use the movement sensor API's [`GetLinearAcceleration()`](/components/movem
 If you would like to see the navigation service in action, check out this tutorial:
 
 {{< cards >}}
-{{% card link="/tutorials/serivces/navigate-with-rover-base/" %}}
+{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
