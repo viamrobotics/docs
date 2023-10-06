@@ -22,7 +22,7 @@ Click on the **Components** subtab and click **Create component** in the lower-l
 Select the type `power_sensor`, then select the `fake` model.
 Name your sensor, and click **Create**.
 
-![Fake power sensor configuration builder](/components/power-sensor/fake-config-builder.png)
+![Fake power sensor configuration panel in the Viam app. No attributes are configured.](/components/power-sensor/fake-config-builder.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
