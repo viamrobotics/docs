@@ -14,11 +14,7 @@ Configuring a `fake` input controller allows you to test an input controller com
 This controller can have [Controls](../#control-field) defined in `attributes`, as seen in the "JSON Template" tab below.
 However, these Controls only ever return a single `PositionChangeAbs` event on the X axis, with the [Event.value](../#event-object) stuck at 0.7.
 
-## Configuration
-
-Refer to the following example configuration for an input controller of model `fake`:
-
-{{< tabs name="Configure a `fake` input controller" >}}
+{{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
@@ -38,14 +34,17 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-fake-input-controller>",
-      "type": "input_controller",
       "model": "fake",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {
-        controls: [
+        "controls": [
           "AbsoluteX",
           "AbsoluteY",
           "AbsoluteZ"
-        ]
+        ],
+        "event_value": <float>,
+        "callback_delay_sec": <float>
       }
     }
 }
@@ -53,6 +52,15 @@ Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+<!-- Can add after SME approval if deemed useful/necessary
+The following attributes are available for `fake` input controllers:
+
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+| `event_value` | float64 | Optional | Sets the value of events returned. Random between -1 and 1 if not specified. |
+| `callback_delay_sec` | float64 | **Required** | The number of seconds between callbacks getting triggered. Random between 1 and 2 if not specified. `0` is not valid and will be overwritten by a random delay.
+-->
 
 ## Troubleshooting
 

@@ -1,5 +1,5 @@
 ---
-title: "Configure a linux-supported gamepad"
+title: "Configure a Linux-supported gamepad"
 linkTitle: "gamepad"
 weight: 30
 type: "docs"
@@ -12,10 +12,6 @@ tags: ["input controller", "components"]
 Configuring a `gamepad` input controller allows you to use a Linux-supported gamepad as a device to communicate with your robot.
 Linux supports most standard gamepads, such as PlayStation or Xbox type game controllers, as well as many joysticks, racing wheels, and more.
 
-## Configuration
-
-Refer to the following example configuration for an input controller of model `gamepad`:
-
 {{< tabs name="Configure a `gamepad` input controller" >}}
 {{% tab name="Config Builder" %}}
 
@@ -26,7 +22,15 @@ Enter a name for your input controller and click **Create**.
 
 ![An example configuration for a linux-based gamepad input controller component in the Viam App config builder](/components/input-controller/gamepad-input-controller-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your input controller's **Attributes** box.
+Then remove and fill in the attributes as applicable to your input controller, according to the table below.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "dev_file": "<string>",
+  "auto_reconnect": <boolean>
+}
+```
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -36,13 +40,15 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name":  "<your-gamepad-input-controller>",
-      "type": "input_controller",
       "model": "gamepad",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {
         "dev_file": "<string>",
         "auto_reconnect": <boolean>
       }
     }
+  ]
 }
 ```
 
