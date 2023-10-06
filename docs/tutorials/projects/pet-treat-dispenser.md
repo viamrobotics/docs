@@ -161,8 +161,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     {
       "depends_on": [],
       "name": "stepper",
-      "type": "motor",
       "model": "gpiostepper",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "en_low": "18",

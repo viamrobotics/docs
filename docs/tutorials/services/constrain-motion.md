@@ -63,8 +63,9 @@ If instead you are creating a new robot for this tutorial, copy the following co
   "components": [
     {
       "name": "myArm",
-      "type": "arm",
       "model": "xArm6",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "<ip-address>",
         "port": 0,
@@ -92,8 +93,9 @@ If instead you are creating a new robot for this tutorial, copy the following co
     },
     {
       "name": "myGripper",
-      "type": "gripper",
       "model": "fake",
+      "type": "gripper",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": ["myArm"],
       "frame": {

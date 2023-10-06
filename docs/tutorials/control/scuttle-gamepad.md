@@ -73,8 +73,9 @@ Inside the `components` array of your config, add the following configuration fo
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "my-gamepad",
-  "type": "input_controller",
   "model": "gamepad",
+  "type": "input_controller",
+  "namespace": "rdk",
   "attributes": {},
   "depends_on": []
 }

@@ -341,8 +341,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },

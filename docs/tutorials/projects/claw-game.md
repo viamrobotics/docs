@@ -235,8 +235,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 {
   "components": [
     {
-      "type": "arm",
       "model": "xArm6",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "acceleration_degs_per_sec_per_sec": 0,
         "host": "10.1.1.26",
@@ -299,8 +300,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 {
   "components": [
     {
-      "type": "arm",
       "model": "xArm6",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "acceleration_degs_per_sec_per_sec": 0,
         "host": "10.1.1.26",
@@ -353,8 +355,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
         "parent": "myArm"
       },
       "name": "gripper",
-      "type": "gripper",
       "model": "fake",
+      "type": "gripper",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }

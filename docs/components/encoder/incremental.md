@@ -59,8 +59,9 @@ Fill in and edit the attributes as applicable.
     },
     {
       "name": "myEncoder",
-      "type": "encoder",
       "model": "incremental",
+      "type": "encoder",
+      "namespace": "rdk",
       "attributes": {
         "board": "local",
         "pins": {

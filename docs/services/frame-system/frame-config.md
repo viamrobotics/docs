@@ -35,8 +35,9 @@ Select the `parent` frame as `world` and fill in the coordinates for `translatio
     {
       "depends_on": [],
       "name": "myArm",
-      "type": "arm",
       "model": "ur5e",
+      "type": "arm",
+      "namespace": "rdk",
       "attributes": {
         "host": "127.0.0.1"
       },
