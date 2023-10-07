@@ -26,7 +26,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
 
 <h4>Train or upload an ML model</h4>
 
-You can [add an existing model](/manage/ml/upload-model/) or [train your own models](/manage/ml/train-model/) for object detection and classification using data from the [data management service](../../services/data/).
+You can [train your own models](/manage/ml/train-model/) for object detection and classification using data from the [data management service](../../services/data/) or [add an existing model](/manage/ml/upload-model/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
