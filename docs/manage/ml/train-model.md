@@ -10,7 +10,7 @@ description: "Train an image classification model on labeled image data."
 # SME: Aaron Casas
 ---
 
-You can label or add bounding boxes to [images collected](../../../services/data/configure-data-capture/) by robots and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
+You can label or add bounding boxes to [images collected](/services/data/configure-data-capture/) by robots and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
 
@@ -52,7 +52,7 @@ Once the model has finished training, it becomes visible in the **Models** secti
 
 ### Train a new version of a model
 
-If you [deploy a model](../../../services/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you [deploy a model](/services/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
 If you train a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
 
 {{< alert title="Important" color="note" >}}
@@ -60,7 +60,7 @@ The previous model remains unchanged when you are training a new version of a mo
 If you are training a new model, you need to again select the images to train on because the model will be built from scratch.
 {{< /alert >}}
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](../../configuration/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](/manage/configuration/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
 The model package config looks like this:
@@ -75,4 +75,27 @@ The model package config looks like this:
 
 ## Next Steps
 
-To deploy your model to your robot, see [deploy model](../../../services/ml/).
+{{< cards >}}
+{{% manualcard link="/services/ml/" %}}
+
+<h4>Deploy your model</h4>
+
+Create an ML model service to deploy your machine learning model to your smart machine.
+
+{{% /manualcard %}}
+{{% manualcard link="/services/vision/detection/#configure-an-mlmodel-detector"%}}
+
+<h4>Create a detector with your model</h4>
+
+Configure an `mlmodel detector`.
+
+{{% /manualcard %}}
+{{% manualcard link="/services/vision/classification/#configure-an-mlmodel-classifier"%}}
+
+<h4>Create a classifier with your model</h4>
+
+Configure your `mlmodel classifier`.
+
+{{% /manualcard %}}
+
+{{< /cards >}}

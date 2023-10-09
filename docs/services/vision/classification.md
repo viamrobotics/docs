@@ -27,7 +27,29 @@ The types of classifiers supported are:
 
 ## Configure an `mlmodel` classifier
 
-To create an `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
+To create an `mlmodel` classifier, you need to first:
+
+{{< cards >}}
+{{% manualcard %}}
+
+<h4>Train or upload an ML model</h4>
+
+You can [add an existing model](/manage/ml/upload-model/) or [train your own models](/manage/ml/train-model/) for object detection and classification using data from the [data management service](/services/data/).
+
+{{% /manualcard %}}
+{{% manualcard %}}
+
+<h4>Deploy your model</h4>
+
+To make use of ML models with your smart machine, use the built-in [ML model service](/services/ml/) to deploy and run the model.
+
+{{% /manualcard %}}
+
+{{< /cards >}}
+
+<br>
+
+Once you have deployed your ML model, configure your `mlmodel` classifier:
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
