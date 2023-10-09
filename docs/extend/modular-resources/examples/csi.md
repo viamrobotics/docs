@@ -102,6 +102,8 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
 }
 ```
 
+To save your changes, click **Save config** at the bottom of the page.
+
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
@@ -135,6 +137,8 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
   ]
 }
 ```
+
+To save your changes, click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{< /tabs >}}
