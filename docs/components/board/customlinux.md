@@ -16,7 +16,7 @@ Complete the following setup requirements, then move on to configuring your boar
 ## Setup requirements
 
 - Create a new robot in the [Viam app](https://app.viam.com) and follow the steps on the [setup tab](/installation/#installation-steps) to [install `viam-server`](/installation/) on your `customlinux` board and connect your board to the Viam app.
-- On your `customlinux` board, create a file in your home folder (<file>/home/root</file>) <file>called board.json</file> with your board's pin mappings:
+- On your `customlinux` board, create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -216,7 +216,7 @@ Complete the following setup requirements, then move on to configuring your boar
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for pin mappings:
+The following parameters are available for pin mappings:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -239,7 +239,7 @@ Enter a name for your `customlinux` board and click **Create**.
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
 Copy and paste the following attribute template into your board's **Attributes** box.
-Then fill in the attribute as applicable to your board, according to the table below.
+Then edit the attribute as applicable to your board, according to the table below.
 
 {{< tabs >}}
 {{% tab name="Attributes template" %}}
