@@ -79,6 +79,7 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
 }
 ```
 
+{{% /tab %}}
 {{% tab name="JSON Example" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
