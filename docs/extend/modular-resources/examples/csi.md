@@ -25,51 +25,48 @@ tags:
 
 Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924).
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
-Not all CSI cameras are supported by the [webcam camera model](/components/camera/webcam/).
-Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera: `viam:camera:csi`.
+Not all CSI cameras are supported by the built-in [webcam camera model](/components/camera/webcam/).
+Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera, `viam:camera:csi`, which you can use to add support for your CSI camera to your robot.
 
-This module includes a simple wrapper around `GStreamer` and a control interface for the **control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
+This {{< glossary_tooltip term_id="module" text="module" >}} includes a simple wrapper around `GStreamer` and a control interface for the **Control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
 
-The module is open-sourced and available on [GitHub](https://github.com/seanavery/viam-csi).
+The `csi-cam` module is available [from the Viam registry](https://app.viam.com/module/viam/csi-cam).
+See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
-To use the CSI camera module, follow the [installation](#installation) and [configuration](#configuration) steps.
+The source code for this module is available on the [`viam-csi` GitHub repository](https://github.com/seanavery/viam-csi).
 
-## Installation
+## Requirements
 
-On your robot's computer, download [the `viam:camera:csi` appimage](https://github.com/seanavery/viam-csi) and make it executable:
+If you haven't already, [install `viam-server`](/installation/) on your robot.
 
-```{class="command-line" data-prompt="$"}
-sudo wget https://github.com/seanavery/viam-csi/releases/download/v0.0.2/viam-csi-0.0.2-aarch64.AppImage -O /usr/local/bin/viam-csi
-sudo chmod 755 /usr/local/bin/viam-csi
-```
+Currently, the `csi-cam` module supports the Linux platform only.
 
 ## Configuration
 
-{{< tabs name="Connect your CSI Module and Modular Resource">}}
+{{< tabs name="Configure your CSI camera">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Follow the instructions below to set up the `csi-cam` module on your robot:
 
-Click on the **Modules** subtab and navigate to the **Local** section.
-Enter a name, for example `my_csi_cam_module_name`, then enter the executable path.
-If you used the above install command, the executable path should be: `/usr/local/bin/viam-csi`.
-Then click **Add module**.
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Components** subtab and click **Create component** in the lower-left corner.
+1. Select **Camera**, then select `csi`.
+   You can also search for "csi".
+1. Click **Add module**, give your component a name of your choice, then click **Create**.
+1. In the resulting `camera` component configuration pane, paste the following configuration into the **Attributes** text window:
 
-Click on the **Components** subtab and click **Create component**.
-Select the `local modular resource` type.
-Then select `camera` as the type, enter the triplet `viam:camera:csi`, and give your resource a name, for example `my_test_csi_cam`.
-Click **Create**.
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "width_px": <int>,
+     "height_px": <int>,
+     "frame_rate": <int>,
+     "debug": <boolean>
+   }
+   ```
 
-On the new component panel, copy and paste the following JSON object into the attributes field:
+   See the [Attributes](#attributes) section for more information on the other attributes.
 
-```json
-{
-    "width_px": <int>,
-    "height_px": <int>,
-    "frame_rate": <int>,
-    "debug": "<boolean>"
-}
-```
+1. Click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -77,59 +74,63 @@ On the new component panel, copy and paste the following JSON object into the at
 Go to your robot's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
 
-Copy and paste the JSON object for the module into the modules array to add Viam's `csi-mr` module:
-
 ```json
 {
-  "executable_path": "</usr/local/bin/viam-csi>",
-  "name": "<your-csi-cam-module-name>",
-  "type": "local"
-}
-```
-
-Next, add the following JSON object to your components array to configure a `csi` [camera](/components/camera/) component with the name `my_test_csi_cam`:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-    "model": "viam:camera:csi",
-    "attributes": {
-      "width_px": <int>,
-      "height_px": <int>,
-      "frame_rate": <int>,
-      "debug": "<boolean>"
-    },
-    "depends_on": [],
-    "name": "<your-csi-cam-name>",
-    "namespace": "rdk",
-    "type": "camera"
+  "components": [
+    {
+      "name": "<your-csi-cam-name>",
+      "model": "viam:camera:csi",
+      "type": "camera",
+      "namespace": "rdk",
+      "attributes": {
+        "width_px": <int>,
+        "height_px": <int>,
+        "frame_rate": <int>,
+        "debug": <boolean>
+      },
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_csi-cam",
+      "module_id": "viam:csi-cam",
+      "version": "0.2.0"
+    }
+  ]
 }
 ```
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
+Go to your robot's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "modules": [
-    {
-      "executable_path": "/usr/bin/csi-mr",
-      "name": "csi_cam_module",
-      "type": "local"
-    }
-  ],
   "components": [
     {
+      "name": "my-csi-camera",
       "model": "viam:camera:csi",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "width_px": 1920,
         "height_px": 1080,
-        "frame_rate": 30,
-        "debug": true
+        "frame_rate": 60,
+        "debug": false
       },
-      "depends_on": [],
-      "name": "my_test_csi_cam",
-      "namespace": "rdk",
-      "type": "camera"
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_csi-cam",
+      "module_id": "viam:csi-cam",
+      "version": "0.2.0"
     }
   ]
 }
@@ -138,9 +139,7 @@ Next, add the following JSON object to your components array to configure a `csi
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information, see [installing local modules](/extend/modular-resources/configure/#local-modules).
-
-Edit and fill in the attributes to configure your component.
+## Attributes
 
 The following attributes are available for the `viam:camera:csi` model:
 
@@ -153,8 +152,4 @@ The following attributes are available for the `viam:camera:csi` model:
 | `video_path` | string | Optional | The filepath to the input sensor of this camera on your board. If none is given, your robot will attempt to detect the video path automatically. <br> Default: `"0"` </br>  |
 | `debug` | boolean | Optional | Whether or not you want debug input from this camera in your robot's logs. <br> Default: `false` |
 
-Then, save the config.
-
 Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
-
-For more information, see [installing local modules](/extend/modular-resources/configure/#local-modules).

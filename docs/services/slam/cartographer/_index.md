@@ -48,7 +48,7 @@ brew tap viamrobotics/brews && brew install cartographer-module
 
 ## Configuration
 
-{{% alert title="REQUIREMENTS" color="tip" %}}
+{{% alert title="Requirements" color="tip" %}}
 
 Running `cartographer-module` requires a [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPlidar A3. See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
 
