@@ -11,6 +11,6 @@ To install `viam-server` on a Linux computer:
 
 1. Follow the steps shown on the **Setup** tab to install `viam-server` on your Linux computer.
 
-1. Once `viam-server` is installed and running, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your computer has successfully connected.
+2. Once `viam-server` is installed and running, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your computer has successfully connected.
 
 By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
