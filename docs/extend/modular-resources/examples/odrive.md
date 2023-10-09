@@ -41,17 +41,17 @@ Your robot must have an ODrive S1 or ODrive Pro motor controller installed to be
 
    {{% alert title="Tip" color="tip" %}}
 
-This configuration remains on the same ODrive motor controller across reboots, and only changes when you go through the configuration of the ODrive again.
+   This configuration remains on the same ODrive motor controller across reboots, and only changes when you go through the configuration of the ODrive again.
 
-If you wish to set the native configuration dynamically, use `odrivetool` to find and copy the path to the motor's `config.json` file.
-Provide this in configuration as the optional attribute `odrive_config_file`.
-See [add an `odrive_config_file`](#add-an-odrive_config_file) for more information.
+   If you wish to set the native configuration dynamically, use `odrivetool` to find and copy the path to the motor's `config.json` file.
+   Provide this in configuration as the optional attribute `odrive_config_file`.
+   See [add an `odrive_config_file`](#add-an-odrive_config_file) for more information.
 
-This option is not recommend for the `canbus` model.
+   This option is not recommend for the `canbus` model.
 
-    {{% /alert %}}
+   {{% /alert %}}
 
-    Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you must set this to around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
+   Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you must set this to around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
 
 1. Follow [this guide](https://docs.odriverobotics.com/v/latest/control.html#control-doc) to tune your ODrive motor.
 
@@ -59,18 +59,18 @@ This option is not recommend for the `canbus` model.
 
    {{% alert title="Tip" color="tip" %}}
 
-If you are using a Raspberry Pi as your [board](/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
-See "[Troubleshooting](#troubleshooting): [CAN Link Issues](https://github.com/viamrobotics/odrive#can-link-issues)" for more information.
+   If you are using a Raspberry Pi as your [board](/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
+   See [Troubleshooting: CAN Link Issues](https://github.com/viamrobotics/odrive#can-link-issues) for more information.
 
-Additionally, make sure you have [enabled SPI communication on your Pi](/installation/prepare/rpi-setup/) to use several common CANHats.
+   Additionally, make sure you have [enabled SPI communication on your Pi](/installation/prepare/rpi-setup/) to use several common CANHats.
 
-    {{% /alert %}}
+   {{% /alert %}}
 
 1. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on whether you are using a `serial` or `canbus` connection:
 
    {{< tabs name="Connect your ODrive">}}
 
-   {{% tab name="`serial`" %}}
+   {{% tab name="Serial" %}}
 
    Plug the [USB Isolator for Odrive](https://odriverobotics.com/shop/usb-c-to-usb-a-cable-and-usb-isolator) into a USB port on your board.
    Plug a USB-C to USB-A cable from the isolator to the ODrive.
@@ -78,7 +78,7 @@ Additionally, make sure you have [enabled SPI communication on your Pi](/install
    In the next section, you will add the version of the `odrive` module that supports ODrives using a `serial` connection.
 
    {{% /tab %}}
-   {{% tab name="`canbus`" %}}
+   {{% tab name="Canbus" %}}
 
    Wire the CANH and CANL pins from your board to your ODrive.
    Refer to your board and the [ODrive's pinout](https://docs.odriverobotics.com/v/latest/pinout.html) diagrams for the location of these pins.
@@ -111,35 +111,33 @@ Follow the instructions below to set up the `odrive` module on your robot:
 1. Click **Add module**, give your component a name of your choice, then click **Create**.
 1. In the resulting `motor` component configuration pane, paste the following configuration into the **Attributes** text window, depending on whether you are using a `serial` or `canbus` connection:
 
-   {{< tabs name="Add attributes">}}
-   {{% tab name="`serial`" %}}
+{{< tabs name="Add attributes">}}
+{{% tab name="Serial" %}}
 
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "serial_number": "<your-odrive-serial-number>",
+  "odrive_config_file": "<local/path/to/motor/config.json>"
+}
+```
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "serial_number": "<your-odrive-serial-number>",
-     "odrive_config_file": "<local/path/to/motor/config.json>"
-   }
-   ```
+See the [Attributes](#attributes) section for more information on available attributes.
 
-   See the [Attributes](#attributes) section for more information.
+{{% /tab %}}
+{{% tab name="Canbus" %}}
 
-   {{% /tab %}}
-   {{% tab name="`canbus`" %}}
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "canbus_node_id": <int>
+}
+```
 
+See the [Attributes](#attributes) section for more information on available attributes.
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "canbus_node_id": <int>
-   }
-   ```
+{{% /tab %}}
+{{< /tabs >}}
 
-   See the [Attributes](#attributes) section for more information.
-
-   {{% /tab %}}
-   {{< /tabs >}}
-
-1. Click **Save config** at the bottom of the page.
+To save your changes, click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -150,7 +148,7 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
 Paste in the following configuration, depending on whether you are using a `serial` or `canbus` connection:
 
    {{< tabs name="JSON Template by connection">}}
-   {{% tab name="`serial`" %}}
+   {{% tab name="Serial" %}}
 
    ```json
    {
@@ -179,7 +177,7 @@ Paste in the following configuration, depending on whether you are using a `seri
    ```
 
    {{% /tab %}}
-   {{% tab name="`canbus`" %}}
+   {{% tab name="Canbus" %}}
 
    ```json
    {
@@ -209,6 +207,8 @@ Paste in the following configuration, depending on whether you are using a `seri
    {{% /tab %}}
    {{< /tabs >}}
 
+To save your changes, click **Save config** at the bottom of the page.
+
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
@@ -218,7 +218,7 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
 Paste in the following configuration, depending on whether you are using a `serial` or `canbus` connection:
 
    {{< tabs name="JSON Example by connection">}}
-   {{% tab name="`serial`" %}}
+   {{% tab name="Serial" %}}
 
    ```json
    {
@@ -230,7 +230,7 @@ Paste in the following configuration, depending on whether you are using a `seri
          "namespace": "rdk",
          "attributes": {
            "serial_number": "NUM000",
-           "odrive_config_file": "<local/path/to/motor/config.json>"
+           "odrive_config_file": "/etc/odrive/config.json"
          },
          "depends_on": []
        }
@@ -247,7 +247,7 @@ Paste in the following configuration, depending on whether you are using a `seri
    ```
 
    {{% /tab %}}
-   {{% tab name="`canbus`" %}}
+   {{% tab name="Canbus" %}}
 
    ```json
    {
@@ -276,6 +276,8 @@ Paste in the following configuration, depending on whether you are using a `seri
 
    {{% /tab %}}
    {{< /tabs >}}
+
+To save your changes, click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{< /tabs >}}
