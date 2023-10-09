@@ -72,8 +72,9 @@ The following is a full example config:
   "components": [
     {
       "name": "color",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "intrinsic_parameters": {
           "fy": 940.2928257873841,

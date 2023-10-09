@@ -1,33 +1,31 @@
 ---
-title: "Configure an ultrasonic Sensor"
+title: "Configure an ultrasonic Camera"
 linkTitle: "ultrasonic"
 weight: 60
 type: "docs"
-description: "Configure an ultrasonic model sensor."
-tags: ["sensor", "components", "ultrasonic"]
-icon: "/icons/components/sensor.svg"
-images: ["/icons/components/sensor.svg"]
+description: "Configure an ultrasonic model camera."
+tags: ["camera", "components", "ultrasonic"]
+icon: "/icons/components/camera.svg"
+images: ["/icons/components/camera.svg"]
 # SME: #team-bucket
 ---
 
-{{< alert title="Tip" color="tip" >}}
-An ultrasonic distance sensor can also be configured as a [camera](/components/camera/) resource.
-
-When configured as a camera, you can use the camera method [`GetPointCloud()`](/components/camera/#getpointcloud), rather than the sensor method [`GetReadings()`](/components/sensor/#getreadings).
-Additionally, you can use the camera component as an input to a [vision service](/services/vision/) model that returns obstacles.
+{{< alert title="Usage" color="tip" >}}
+An ultrasonic distance sensor can also be configured as a [sensor](/components/sensor/) resource.
+When configured as a sensor, you can use the sensor method [`GetReadings()`](/components/sensor/#getreadings), rather than the camera method [`GetPointCloud()`](/components/camera/#getpointcloud).
 {{< /alert >}}
 
-Configure an `ultrasonic` sensor to integrate an ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) into your robot:
+Configure an `ultrasonic` camera to integrate an ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
-Select the `sensor` type, then select the `ultrasonic` model.
-Enter a name for your sensor and click **Create**.
+Select the `camera` type, then select the `ultrasonic` model.
+Enter a name for your camera and click **Create**.
 
-![Creation of a ultrasonic sensor in the Viam app config builder.](/components/sensor/ultrasonic-sensor-ui-config.png)
+![Creation of a ultrasonic camera in the Viam app config builder.](/components/camera/configure-ultrasonic.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -39,7 +37,7 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-ultrasonic-sensor-name>",
-      "type": "sensor",
+      "type": "camera",
       "model": "ultrasonic",
       "attributes": {
         "trigger_pin": "<pin-number>",
@@ -61,7 +59,7 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "your-ultrasonic-sensor",
-      "type": "sensor",
+      "type": "camera",
       "model": "ultrasonic",
       "attributes": {
         "trigger_pin": "5",
@@ -78,8 +76,10 @@ Edit and fill in the attributes as applicable.
 {{% /tab %}}
 {{% /tabs %}}
 
-The following attributes are available for `ultrasonic` sensors:
+The following attributes are available for `ultrasonic` cameras:
 
 {{< readfile "/static/include/components/ultrasonic-attributes.md" >}}
 
-{{< readfile "/static/include/components/test-control/sensor-control.md" >}}
+## Next Steps
+
+{{< readfile "/static/include/components/camera-model-next-steps.md" >}}

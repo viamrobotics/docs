@@ -294,8 +294,9 @@ At this point, the full **Raw JSON** configuration of your robot should look lik
   "components": [
     {
       "name": "cam",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }

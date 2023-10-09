@@ -112,8 +112,9 @@ Add the following JSON objects to the `components` array:
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "lenc",
-    "type": "encoder",
     "model": "AMS-AS5048",
+    "type": "encoder",
+    "namespace": "rdk",
     "attributes": {
       "board": "local",
       "connection_type": "i2c",
@@ -125,8 +126,9 @@ Add the following JSON objects to the `components` array:
 },
 {
     "name": "renc",
-    "type": "encoder",
     "model": "AMS-AS5048",
+    "type": "encoder",
+    "namespace": "rdk",
     "attributes": {
       "board": "local",
       "connection_type": "i2c",
@@ -192,8 +194,9 @@ Add the following JSON objects to the `components` array:
 ```json
 {
   "name": "right",
-  "type": "motor",
   "model": "gpio",
+  "type": "motor",
+  "namespace": "rdk",
   "attributes": {
     "pins": {
       "a": "16",
@@ -209,8 +212,9 @@ Add the following JSON objects to the `components` array:
 },
 {
   "name": "left",
-  "type": "motor",
   "model": "gpio",
+  "type": "motor",
+  "namespace": "rdk",
   "attributes": {
     "pins": {
       "a": "12",
@@ -375,8 +379,9 @@ If you click on the **Video Path** field while your robot is live, a drop down a
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "Webcam",
-  "type": "camera",
   "model": "webcam",
+  "type": "camera",
+  "namespace": "rdk",
   "attributes": {
     "video_path": "video0"
   }

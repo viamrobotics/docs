@@ -11,7 +11,7 @@ icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/) your model, the ML Model service allows you to deploy machine learning models to your smart machine.
+Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/) your model, the Machine Learning (ML) model service allows you to deploy machine learning models to your smart machine.
 
 ## Create an ML model service
 

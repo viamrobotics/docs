@@ -22,7 +22,32 @@ Enter a name for your sensor and click **Create**.
 
 ![Creation of a sensirion-sht3xd sensor in the Viam app config builder.](/components/sensor/sensirion-sht3xd-sensor-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board": "<your-board-name>",
+  "i2c_bus": "<your-i2c-bus-name-on-board>",
+  "i2c_address": "<your-i2c-address>"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board": "local",
+  "i2c_bus": "i2c_bus1"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -32,11 +57,13 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensirion-sht3xd-sensor-name>",
-      "type": "sensor",
       "model": "sensirion-sht3xd",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
-        "i2c_bus": "<your-i2c-bus-name-on-board>"
+        "i2c_bus": "<your-i2c-bus-name-on-board>",
+        "i2c_address": "<your-i2c-address>"
       },
       "depends_on": []
     }

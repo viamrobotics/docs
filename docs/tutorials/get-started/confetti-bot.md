@@ -166,15 +166,17 @@ On the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the co
   "components": [
     {
       "name": "party",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "start",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "a": "13",

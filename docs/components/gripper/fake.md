@@ -30,8 +30,9 @@ Enter a name for your gripper and click **Create**.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-fake-gripper-name>",
-  "type": "gripper",
   "model": "fake",
+  "type": "gripper",
+  "namespace": "rdk",
   "attributes": {}
 }
 ```

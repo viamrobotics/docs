@@ -38,8 +38,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-sensor-name>",
-      "type": "movement_sensor",
       "model": "camera_mono",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "camera": "<your-camera-name>",
         "motion_estimation_config": {
@@ -60,8 +61,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "myCamera",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video0"
       },
@@ -69,8 +71,9 @@ Edit and fill in the attributes as applicable.
     },
     {
       "name": "movementCamera",
-      "type": "movement_sensor",
       "model": "camera_mono",
+      "type": "movement_sensor",
+      "namespace": "rdk",
       "attributes": {
         "camera": "myCamera",
         "motion_estimation_config": {

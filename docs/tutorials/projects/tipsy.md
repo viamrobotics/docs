@@ -237,16 +237,18 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     {
       "depends_on": ["local"],
       "name": "cam",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video4"
       }
     },
     {
       "name": "ultrasonic",
-      "type": "sensor",
       "model": "ultrasonic",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "echo_interrupt_pin": "38",
         "board": "local",
@@ -256,8 +258,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "ultrasonic2",
-      "type": "sensor",
       "model": "ultrasonic",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "echo_interrupt_pin": "7",
         "trigger_pin": "13",
@@ -477,8 +480,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     {
       "depends_on": ["local"],
       "name": "cam",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video4"
       }
@@ -503,8 +507,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "ultrasonic",
-      "type": "sensor",
       "model": "ultrasonic",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "echo_interrupt_pin": "38",
         "board": "local",
@@ -514,8 +519,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "ultrasonic2",
-      "type": "sensor",
       "model": "ultrasonic",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "echo_interrupt_pin": "7",
         "board": "local",

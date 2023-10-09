@@ -36,15 +36,17 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-board-name>",
-      "type": "board",
       "model": "<your-board-model>",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": [],
     },
     {
       "name": "<your-motor-name>",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           <...>
@@ -73,15 +75,17 @@ An example configuration for a `gpio` motor:
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "example-gpio",
-      "type": "motor",
       "model": "gpio",
+      "type": "motor",
+      "namespace": "rdk",
       "attributes": {
         "pins": {
           "dir": "36",

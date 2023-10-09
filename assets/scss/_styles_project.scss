@@ -956,7 +956,7 @@ td > ul, td > ol {
   .center-if-small { display: block; margin-left: auto; margin-right: auto; }
 }
 
-// Fix page width on full screen to be 80%
+// Fix page width on full screen to be 90%
 
 .td-content > .code-toolbar,
 .td-content > .table,
@@ -965,7 +965,25 @@ td > ul, td > ol {
 .td-content > picture,
 .td-content > picture > img {
   @include media-breakpoint-up(lg) {
-      max-width: 80%;
+      max-width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  .td-max-width-on-larger-screens,
+  .td-content>pre,
+  .td-content>.highlight,
+  .td-content>.lead,
+  .td-content>h1,
+  .td-content>h2,
+  .td-content>ul,
+  .td-content>ol,
+  .td-content>p,
+  .td-content>blockquote,
+  .td-content>dl dd,
+  .td-content .footnotes,
+  .td-content>.alert {
+    max-width: 90%;
   }
 }
 
