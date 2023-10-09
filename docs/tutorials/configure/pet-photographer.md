@@ -166,7 +166,7 @@ To enable data capture on your robot, add and configure the [data management ser
   ... // Vision and other services
 ```
 
-Click **Save Config** and head back to the Builder mode.
+Click **Save Config** and head back to the **Builder** mode.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -196,7 +196,7 @@ realpath colorfilter
 
 {{< /alert >}}
 
-Read [this guide](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
+Read [Configure a local module](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
 
 ### Add local module
 
