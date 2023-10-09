@@ -43,6 +43,9 @@ These instructions assume that you are using a [webcam](/components/camera/webca
 
 Follow the instructions below to set up the `monocular-visual-odometry` module on your robot:
 
+{{< tabs name="Configure visual odometry">}}
+{{% tab name="Config Builder" %}}
+
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click **Create component** in the lower-left corner.
 1. Select the `camera` type, then select the `webcam` model.
