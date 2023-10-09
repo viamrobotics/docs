@@ -30,7 +30,7 @@ If you haven't already, [install `viam-server`](/installation/) on your robot.
 
 Currently, the `rplidar` module supports the Linux platform only.
 
-Your robot must have an RPlidar installed to be able to use the `rplidar-module` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).
+Your robot must have an RPlidar installed to be able to use the `rplidar` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).
 
 Physically connect the RPlidar to your robot.
 Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
