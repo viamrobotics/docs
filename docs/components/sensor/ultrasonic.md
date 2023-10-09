@@ -29,7 +29,35 @@ Enter a name for your sensor and click **Create**.
 
 ![Creation of a ultrasonic sensor in the Viam app config builder.](/components/sensor/ultrasonic-sensor-ui-config.png)
 
-Edit and fill in the attributes as applicable.
+Copy and paste the following attribute template into your sensor's **Attributes** box.
+Then remove and fill in the attributes as applicable to your sensor, according to the table below.
+
+{{< tabs >}}
+{{% tab name="Attributes template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "trigger_pin": "<pin-number>",
+  "echo_interrupt_pin": "<pin-number>",
+  "board": "<your-board-name>",
+  "timeout_ms": <int>
+}
+```
+
+{{% /tab %}}
+{{% tab name="Attributes example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "trigger_pin": "5",
+  "echo_interrupt_pin": "15",
+  "board": "local",
+  "timeout_ms": "1200"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -39,8 +67,9 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-ultrasonic-sensor-name>",
-      "type": "sensor",
       "model": "ultrasonic",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "trigger_pin": "<pin-number>",
         "echo_interrupt_pin": "<pin-number>",
@@ -60,14 +89,15 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "your-ultrasonic-sensor",
-      "type": "sensor",
+      "name": "my-ultrasonic-sensor",
       "model": "ultrasonic",
+      "type": "sensor",
+      "namespace": "rdk",
       "attributes": {
         "trigger_pin": "5",
         "echo_interrupt_pin": "15",
-        "board": "your-board-name",
-        "timeout_ms": "1000"
+        "board": "local",
+        "timeout_ms": "1200"
       },
       "depends_on": []
     }
