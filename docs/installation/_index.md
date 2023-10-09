@@ -63,7 +63,7 @@ Other SBCs such as the [RockPi S](https://wiki.radxa.com/RockpiS) and [Orange Pi
 
 ## Install `viam-server`
 
-Once you have a compatible operating system, follow along with the steps outlined below or with the video beneath it to install `viam-server`:
+If you have a [compatible operating system](/installation/), follow along with the steps outlined below or with the video beneath it to install `viam-server`:
 
 {{< tabs name="Install on computer" >}}
 {{% tab name="Linux computer" %}}
