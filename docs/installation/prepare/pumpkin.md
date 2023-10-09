@@ -202,7 +202,7 @@ Create a file in your <file>/home/root</file> directory called <file>board.json<
 
 ## Configure a `customlinux` board
 
-Configure your board as a [`customlinux`](/components/boards/customlinux/) board to use your pin mappings file:
+Configure your board as a [`customlinux`](/components/board/customlinux/) board to use your pin mappings file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
