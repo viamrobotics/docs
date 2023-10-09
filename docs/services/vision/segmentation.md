@@ -351,7 +351,7 @@ Click the **Services** subtab and click **Create service** in the lower-left cor
 Select the `Vision` type, then select the `Obstacles Distance` model.
 Enter a name for your service and click **Create**.
 
-In your vision service's panel, fill in the **Attributes** field.
+In your vision service's configuration panel, fill in the **Attributes** field with the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -388,7 +388,7 @@ Add the vision service object to the services array in your raw JSON configurati
         "name": "my_segmenter",
         "type": "vision",
         "namespace": "rdk",
-        "model": "obstacles_distance"
+        "model": "obstacles_distance",
         "attributes": {
             "num_queries": 10
         }
@@ -404,7 +404,7 @@ The following parameters are available for a `obstacles_distance` segmenter:
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. An integer between `1` and `20`. <br> Default: `10`  |
+| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
 
 ## Test your segmenter
 
