@@ -1,5 +1,6 @@
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
 The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
+
 To install `viam-server` :
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
