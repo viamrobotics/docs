@@ -11,12 +11,9 @@ tags: ["board", "components"]
 
 Configure a `customlinux` board to integrate linux boards like the [Pumpkin i500](https://ologicinc.com/portfolio/mediateki500/) into your robot.
 
-Complete the following setup requirements, then move on to configuring your board in the [Viam app](https://app.viam.com):
+## Create a pin mappings file
 
-## Setup requirements
-
-- Create a new robot in the [Viam app](https://app.viam.com) and follow the steps on the [setup tab](/installation/#installation-steps) to [install `viam-server`](/installation/) on your `customlinux` board and connect your board to the Viam app.
-- On your `customlinux` board, create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
+On your `customlinux` board, create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -239,7 +236,7 @@ Enter a name for your `customlinux` board and click **Create**.
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
 Copy and paste the following attribute template into your board's **Attributes** box.
-Then edit the attribute as applicable to your board, according to the table below.
+Then edit the file path to use your [pin mappings file](#create-a-pin-mappings-file).
 
 {{< tabs >}}
 {{% tab name="Attributes template" %}}
@@ -310,4 +307,4 @@ The following attributes are available for `board/customlinux` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Setup requirements](#setup-requirements). |
+| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a pin mappings file](#create-a-pin-mappings-file). |

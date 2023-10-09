@@ -13,189 +13,199 @@ no_list: true
 
 To use a [Pumpkin i500 single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
 
-1. Create a new robot in the [Viam app](https://app.viam.com) and follow the steps on the [setup tab](/installation/#installation-steps) to [install `viam-server`](/installation/) on your Pumpkin board and connect your board to the Viam app.
+1. [Install `viam-server`](#install-viam-server)
+2. [Create pin mappings file](#create-pin-mappings-file)
+3. [Configure a customlinux board](#configure-a-customlinux-board)
 
-2. Create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
+## Install `viam-server`
 
-   ```json
-   {
-     "pins": [
-       {
-         "name": "3",
-         "device_name": "gpiochip0",
-         "line_number": 81,
-         "pwm_id": -1
-       },
-       {
-         "name": "5",
-         "device_name": "gpiochip0",
-         "line_number": 84,
-         "pwm_id": -1
-       },
-       {
-         "name": "7",
-         "device_name": "gpiochip0",
-         "line_number": 150,
-         "pwm_id": -1
-       },
-       {
-         "name": "11",
-         "device_name": "gpiochip0",
-         "line_number": 173,
-         "pwm_id": -1
-       },
-       {
-         "name": "13",
-         "device_name": "gpiochip0",
-         "line_number": 152,
-         "pwm_id": -1
-       },
-       {
-         "name": "15",
-         "device_name": "gpiochip0",
-         "line_number": 94,
-         "pwm_id": -1
-       },
-       {
-         "name": "19",
-         "device_name": "gpiochip0",
-         "line_number": 163,
-         "pwm_id": -1
-       },
-       {
-         "name": "21",
-         "device_name": "gpiochip0",
-         "line_number": 161,
-         "pwm_id": -1
-       },
-       {
-         "name": "23",
-         "device_name": "gpiochip0",
-         "line_number": 164,
-         "pwm_id": -1
-       },
-       {
-         "name": "27",
-         "device_name": "gpiochip0",
-         "line_number": 82,
-         "pwm_id": -1
-       },
-       {
-         "name": "29",
-         "device_name": "gpiochip0",
-         "line_number": 98,
-         "pwm_id": -1
-       },
-       {
-         "name": "31",
-         "device_name": "gpiochip0",
-         "line_number": 12,
-         "pwm_id": -1
-       },
-       {
-         "name": "33",
-         "device_name": "gpiochip0",
-         "line_number": 101,
-         "pwm_id": -1
-       },
-       {
-         "name": "35",
-         "device_name": "gpiochip0",
-         "line_number": 171,
-         "pwm_id": -1
-       },
-       {
-         "name": "37",
-         "device_name": "gpiochip0",
-         "line_number": 169,
-         "pwm_id": -1
-       },
-       {
-         "name": "8",
-         "device_name": "gpiochip0",
-         "line_number": 115,
-         "pwm_id": -1
-       },
-       {
-         "name": "10",
-         "device_name": "gpiochip0",
-         "line_number": 121,
-         "pwm_id": -1
-       },
-       {
-         "name": "12",
-         "device_name": "gpiochip0",
-         "line_number": 170,
-         "pwm_id": -1
-       },
-       {
-         "name": "16",
-         "device_name": "gpiochip0",
-         "line_number": 165,
-         "pwm_id": -1
-       },
-       {
-         "name": "18",
-         "device_name": "gpiochip0",
-         "line_number": 1,
-         "pwm_id": -1
-       },
-       {
-         "name": "22",
-         "device_name": "gpiochip0",
-         "line_number": 2,
-         "pwm_id": -1
-       },
-       {
-         "name": "24",
-         "device_name": "gpiochip0",
-         "line_number": 162,
-         "pwm_id": -1
-       },
-       {
-         "name": "26",
-         "device_name": "gpiochip0",
-         "line_number": 0,
-         "pwm_id": -1
-       },
-       {
-         "name": "28",
-         "device_name": "gpiochip0",
-         "line_number": 83,
-         "pwm_id": -1
-       },
-       {
-         "name": "32",
-         "device_name": "gpiochip0",
-         "line_number": 97,
-         "pwm_id": -1
-       },
-       {
-         "name": "36",
-         "device_name": "gpiochip0",
-         "line_number": 151,
-         "pwm_id": -1
-       },
-       {
-         "name": "38",
-         "device_name": "gpiochip0",
-         "line_number": 174,
-         "pwm_id": -1
-       },
-       {
-         "name": "40",
-         "device_name": "gpiochip0",
-         "line_number": 172,
-         "pwm_id": -1
-       }
-     ]
-   }
-   ```
+{{< readfile "/static/include/install/install-linux.md" >}}
 
-3. Configure your board as a [`customlinux`](/components/boards/customlinux/) board:
+## Create pin mappings file
 
-   {{< tabs name="Configure a customlinux board" >}}
-   {{% tab name="Config Builder" %}}
+Create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
+
+```json
+{
+  "pins": [
+    {
+      "name": "3",
+      "device_name": "gpiochip0",
+      "line_number": 81,
+      "pwm_id": -1
+    },
+    {
+      "name": "5",
+      "device_name": "gpiochip0",
+      "line_number": 84,
+      "pwm_id": -1
+    },
+    {
+      "name": "7",
+      "device_name": "gpiochip0",
+      "line_number": 150,
+      "pwm_id": -1
+    },
+    {
+      "name": "11",
+      "device_name": "gpiochip0",
+      "line_number": 173,
+      "pwm_id": -1
+    },
+    {
+      "name": "13",
+      "device_name": "gpiochip0",
+      "line_number": 152,
+      "pwm_id": -1
+    },
+    {
+      "name": "15",
+      "device_name": "gpiochip0",
+      "line_number": 94,
+      "pwm_id": -1
+    },
+    {
+      "name": "19",
+      "device_name": "gpiochip0",
+      "line_number": 163,
+      "pwm_id": -1
+    },
+    {
+      "name": "21",
+      "device_name": "gpiochip0",
+      "line_number": 161,
+      "pwm_id": -1
+    },
+    {
+      "name": "23",
+      "device_name": "gpiochip0",
+      "line_number": 164,
+      "pwm_id": -1
+    },
+    {
+      "name": "27",
+      "device_name": "gpiochip0",
+      "line_number": 82,
+      "pwm_id": -1
+    },
+    {
+      "name": "29",
+      "device_name": "gpiochip0",
+      "line_number": 98,
+      "pwm_id": -1
+    },
+    {
+      "name": "31",
+      "device_name": "gpiochip0",
+      "line_number": 12,
+      "pwm_id": -1
+    },
+    {
+      "name": "33",
+      "device_name": "gpiochip0",
+      "line_number": 101,
+      "pwm_id": -1
+    },
+    {
+      "name": "35",
+      "device_name": "gpiochip0",
+      "line_number": 171,
+      "pwm_id": -1
+    },
+    {
+      "name": "37",
+      "device_name": "gpiochip0",
+      "line_number": 169,
+      "pwm_id": -1
+    },
+    {
+      "name": "8",
+      "device_name": "gpiochip0",
+      "line_number": 115,
+      "pwm_id": -1
+    },
+    {
+      "name": "10",
+      "device_name": "gpiochip0",
+      "line_number": 121,
+      "pwm_id": -1
+    },
+    {
+      "name": "12",
+      "device_name": "gpiochip0",
+      "line_number": 170,
+      "pwm_id": -1
+    },
+    {
+      "name": "16",
+      "device_name": "gpiochip0",
+      "line_number": 165,
+      "pwm_id": -1
+    },
+    {
+      "name": "18",
+      "device_name": "gpiochip0",
+      "line_number": 1,
+      "pwm_id": -1
+    },
+    {
+      "name": "22",
+      "device_name": "gpiochip0",
+      "line_number": 2,
+      "pwm_id": -1
+    },
+    {
+      "name": "24",
+      "device_name": "gpiochip0",
+      "line_number": 162,
+      "pwm_id": -1
+    },
+    {
+      "name": "26",
+      "device_name": "gpiochip0",
+      "line_number": 0,
+      "pwm_id": -1
+    },
+    {
+      "name": "28",
+      "device_name": "gpiochip0",
+      "line_number": 83,
+      "pwm_id": -1
+    },
+    {
+      "name": "32",
+      "device_name": "gpiochip0",
+      "line_number": 97,
+      "pwm_id": -1
+    },
+    {
+      "name": "36",
+      "device_name": "gpiochip0",
+      "line_number": 151,
+      "pwm_id": -1
+    },
+    {
+      "name": "38",
+      "device_name": "gpiochip0",
+      "line_number": 174,
+      "pwm_id": -1
+    },
+    {
+      "name": "40",
+      "device_name": "gpiochip0",
+      "line_number": 172,
+      "pwm_id": -1
+    }
+  ]
+}
+```
+
+## Configure a `customlinux` board
+
+Configure your board as a [`customlinux`](/components/boards/customlinux/) board to use your pin mappings file:
+
+{{< tabs name="Configure a customlinux board" >}}
+{{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
@@ -234,10 +244,6 @@ Copy and paste the following json object into your board's **Attributes** box.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Install `viam-server`
-
-{{< readfile "/static/include/install/install-linux.md" >}}
 
 ## Need assistance?
 
