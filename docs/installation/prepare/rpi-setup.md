@@ -193,9 +193,9 @@ For these changes to take effect, you need to restart your Raspberry Pi if it ha
 sudo reboot
 ```
 
-## Next Steps
+## Install `viam-server`
 
-Now that your Pi has a Viam-compatible operating system installed, you're ready to [install `viam-server`](/installation/#install-viam-server).
+{{< readfile "/static/include/install/install-linux.md" >}}
 
 ## Troubleshooting
 
@@ -257,3 +257,11 @@ priority=20
 ### Additional troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}

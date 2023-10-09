@@ -35,14 +35,14 @@ The following instructions mirror the instructions given in the BeagleBoard docu
 
 If you want additional help setting up your BeagleBone, you can follow the guides there and return to the Viam docs after SSH'ing into your BeagleBone.
 
-### Step 1: Power your BeagleBone
+## Power your BeagleBone
 
 Power your board by plugging a 5VDC power source into the BeagleBone's barrel jack.
 You can also power the BeagleBone with a USB-C cable, but a 5VDC power source is recommended for more reliable performance.
 
 If the board has power, the LED on the board labeled _PWR_ or _ON_ is lit steadily.
 
-### Step 2: Enable a network connection
+## Enable a network connection
 
 You need to enable a network connection on your BeagleBone to install `viam-server` on it.
 You can do this in multiple ways:
@@ -53,7 +53,7 @@ You can do this in multiple ways:
 - If you are working on a Linux machine, read [these tips on enabling a network connection](https://elinux.org/Beagleboard:Terminal_Shells).
 - If your personal computer supports mDNS (Multicast DNS), you can check to see if your BeagleBone board has established a network connection by visiting [beaglebone.local](https://beaglebone.local).
 
-### Step 3: SSH into your BeagleBone from your PC
+## SSH into your BeagleBone from your PC
 
 You can SSH into your BeagleBone by running the following command in your terminal:
 
@@ -69,15 +69,15 @@ Therefore, if you are using the default settings on your BeagleBone, the command
 
 `ssh debian@beaglebone.local`
 
-### Step 4: Update your BeagleBone
+## Update your BeagleBone
 
 After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 `sudo apt update && sudo apt dist-upgrade && sudo reboot`
 
-### Step 5: Install `viam-server`
+## Install `viam-server`
 
-Now that your BeagleBone has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/#install-viam-server) to install `viam-server` on the board.
+{{< readfile "/static/include/install/install-linux.md" >}}
 
 ## Troubleshooting
 
@@ -85,3 +85,11 @@ If you experience any issues getting Viam working on your BeagleBone, consult th
 {{< snippet "social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}
