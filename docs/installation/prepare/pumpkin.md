@@ -14,7 +14,7 @@ no_list: true
 To use a [Pumpkin i500 single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
 
 1. [Install `viam-server`](#install-viam-server)
-2. [Create pin mappings file](#create-pin-mappings-file)
+2. [Create a pin mappings file](#create-pin-mappings-file)
 3. [Configure a customlinux board](#configure-a-customlinux-board)
 
 ## Install `viam-server`
