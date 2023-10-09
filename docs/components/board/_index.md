@@ -47,6 +47,7 @@ For model-specific configuration information, click on one of the following mode
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
 | [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
+| [`customlinux`](customlinux/) | A model for other linux boards. |
 | other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
 
 ## Attribute Configuration
