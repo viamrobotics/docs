@@ -1,5 +1,5 @@
 ---
-title: "Pet Photographer: Filter Data Captures"
+title: "Pet Photographer: Capture and Filter Images for Viam Cloud"
 linkTitle: "Pet Photographer"
 type: "docs"
 description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
