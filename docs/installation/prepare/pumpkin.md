@@ -1,39 +1,29 @@
 ---
-title: "Configure a customlinux board"
-linkTitle: "customlinux"
-weight: 75
+title: "Pumpkin Board Setup Guide"
+linkTitle: "Pumpkin Board Setup"
+weight: 25
 type: "docs"
-description: "Configure a customlinux board."
-images: ["/icons/components/board.svg"]
-tags: ["board", "components"]
-# SMEs: Susmita
+image: "/installation/thumbnails/pumpkin.png"
+imageAlt: "Pumpkin board"
+images: ["/installation/thumbnails/pumpkin.png"]
+description: "Configure the pin mappings to use a pumpkin board."
+no_list: true
+#SMEs: Matt Dannenberg
 ---
 
-Configure a `customlinux` board to integrate linux boards like the [Pumpkin i500](https://ologicinc.com/portfolio/mediateki500/) into your robot.
+To use a [Pumpkin i500 single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
 
-## Create a pin mappings file
+1. [Install `viam-server`](#install-viam-server)
+2. [Create a pin mappings file](#create-pin-mappings-file)
+3. [Configure a customlinux board](#configure-a-customlinux-board)
 
-On your `customlinux` board, create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
+## Install `viam-server`
 
-{{< tabs >}}
-{{% tab name="Template" %}}
+{{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
-```json
-{
-  "pins": [
-    {
-      "name": "<pin-name>",
-      "device_name": "<device-name>",
-      "line_number": <integer>,
-      "pwm_id": <integer>
-    },
-    ...
-  ]
-}
-```
+## Create pin mappings file
 
-{{% /tab %}}
-{{% tab name="Pumpkin Board Example" %}}
+Create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
 
 ```json
 {
@@ -210,20 +200,9 @@ On your `customlinux` board, create a file in your <file>/home/root</file> direc
 }
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
+## Configure a `customlinux` board
 
-The following parameters are available for pin mappings:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-| `name` | string | **Required** | The name of the pin. <br> Example: `"3"`. |
-| `device_name` | string | **Required** | The device name. <br> Example: `"gpiochip0"`. |
-| `line_number` | integer | **Required** | The line number of the pin. <br> Example: `81`. |
-| `pwm_id` | integer | **Required** | The power management id of the pin. Example: `-1`. |
-
-## Configure your board
+Configure your board as a [`customlinux`](/components/board/customlinux/) board to use your pin mappings file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}
@@ -235,20 +214,7 @@ Enter a name for your `customlinux` board and click **Create**.
 
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/components/board/customlinux-ui-config.png)
 
-Copy and paste the following attribute template into your board's **Attributes** box.
-Then edit the file path to use your [pin mappings file](#create-a-pin-mappings-file).
-
-{{< tabs >}}
-{{% tab name="Attributes template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "board_defs_file_path": "<file_path>"
-}
-```
-
-{{% /tab %}}
-{{% tab name="Attributes example" %}}
+Copy and paste the following json object into your board's **Attributes** box.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -257,30 +223,7 @@ Then edit the file path to use your [pin mappings file](#create-a-pin-mappings-f
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
-
-{{% /tab %}}
 {{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "<your-customlinux-board>",
-      "model": "customlinux",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {
-        "board_defs_file_path": "<file_path>"
-      },
-      "depends_on": []
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -302,9 +245,14 @@ Then edit the file path to use your [pin mappings file](#create-a-pin-mappings-f
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `board/customlinux` boards:
+## Need assistance?
 
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a pin mappings file](#create-a-pin-mappings-file). |
+{{< snippet "social.md" >}}
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}

@@ -53,16 +53,12 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 ## Jetson Orin Setup Guide
 
-1. Follow the instructions in [Getting Started with Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to boot up your Orin for the first time.
+Follow the instructions in [Getting Started with Jetson AGX Orin Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-agx-orin-devkit) to boot up your Orin for the first time.
 
-   If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have installed the latest NVIDIA JetPack components.
+If you have already booted up your Orin, start with "Step 2 - Install JetPack Components" to make sure you have installed the latest NVIDIA JetPack components.
 
-   Look at the Troubleshooting section below for help navigating these instructions.
-   Once you have reached _Next Steps_, return to the Viam docs.
-
-2. Your Jetson AGX Orin now has a Viam-compatible operating system installed.
-   Continue to our [viam-server installation guide](/installation/#install-viam-server).
-   Note that the Jetson AGX Orin has aarch64 CPU architecture.
+Look at the Troubleshooting section below for help navigating these instructions.
+Once you have reached _Next Steps_, return to the Viam docs.
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
 
@@ -72,7 +68,11 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{% /alert %}}
 
-### Camera Setup
+## Install `viam-server`
+
+{{< readfile "/static/include/install/install-linux-aarch.md" >}}
+
+## Camera Setup
 
 1. Install E-Con Systems [e-CAM20_CUOAGX](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/full-hd-ar0234-color-global-shutter-camera.asp) AR0234 driver.
    Consult the instructions you received when purchasing your device for more information.
@@ -112,3 +112,11 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}

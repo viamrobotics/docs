@@ -99,10 +99,18 @@ From the SSH session on the TDA4VM board:
 
    Once this process completes, the board will reboot.
 
-## Next steps
+## Install `viam-server`
 
-Now that your board has a Viam-compatible operating system installed, continue to our [viam-server installation guide](/installation/#install-viam-server).
+{{< readfile "/static/include/install/install-linux.md" >}}
 
 ## Need assistance?
 
 {{< snippet "social.md" >}}
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}

@@ -99,7 +99,7 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide14">
-      <a href="components/board/customlinux/">
+      <a href="installation/prepare/pumpkin/">
         {{<imgproc src="installation/thumbnails/pumpkin.png" resize="148x120" declaredimensions=true alt="pumpkin board">}}
         <p>Pumpkin i500</p>
       </a>
