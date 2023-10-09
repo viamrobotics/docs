@@ -22,7 +22,7 @@ aliases:
 ---
 
 To use Viam software with your smart machine, install and run the `viam-server` binary on the single board computer (SBC)or other computer that is connected to your hardware.
-Installing on a computer is useful if you don't have a {{< glossary_tooltip term_id="board" text="board" >}} available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than are otherwise available on an SBC.
+Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than are otherwise available on an SBC.
 
 {{< alert title="Compatibility" color="note" >}}
 
