@@ -11,7 +11,7 @@ icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-The ML Model service allows you to deploy machine learning models to your smart machine.
+The Machine Learning (ML) model service allows you to deploy machine learning models to your smart machine.
 
 ## Create an ML model service
 
