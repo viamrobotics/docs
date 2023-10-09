@@ -19,7 +19,7 @@ To use a [Pumpkin i500 single-board computer](https://ologicinc.com/portfolio/me
 
 ## Install `viam-server`
 
-{{< readfile "/static/include/install/install-linux.md" >}}
+{{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
 ## Create pin mappings file
 
