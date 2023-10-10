@@ -82,13 +82,14 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 ## Serial Communication Protocol Tips
 
-To change what pins are in use for serial communication, launch <file>jetson-io.py</file> with the following command:
+To change what pins are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following command:
 
 ``` sh { class="command-line" data-prompt="$"}
 sudo /opt/nvidia/jetson-io/jetson-io.py
 ```
 
 In the interactive menu that opens, select **Configure Jetson 40 Pin Header** and **Configure header pins manually** to select and deselect pins to enable use.
+For a Jetson AGX Orin, reference the following:
 
 <!-- prettier-ignore -->
 | Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` Path ID | Notes |

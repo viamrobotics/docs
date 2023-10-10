@@ -68,29 +68,24 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 ## Serial Communication Protocol Tips
 
-To change what pins are in use for serial communication, launch <file>jetson-io.py</file> with the following command:
+To change what pins are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following command:
 
 ``` sh { class="command-line" data-prompt="$"}
 sudo /opt/nvidia/jetson-io/jetson-io.py
 ```
 
 In the interactive menu that opens, select **Configure Jetson 40 Pin Header** and **Configure header pins manually** to select and deselect pins to enable use.
-
 For a Jetson Orin Nano, reference the following:
 
 <!-- prettier-ignore -->
 GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID
- ---------------| ----------- | -----------------
- 3, 5 | `7` | `i2c2`
- 27, 28 | `1` | `i2c8`
- 19, 21, 23, 24, 26 | `0` | `spi1`
-
-<!-- prettier-ignore -->
-GPIO Header Pin | `jetson-io.py` ID
---------------- | -----------------
-15 | `pwm1`
-33 | `pwm5`
-32 | `pwm7`
+---------------| ----------- | -----------------
+3, 5 | `7` | `i2c2`
+27, 28 | `1` | `i2c8`
+19, 21, 23, 24, 26 | `0` | `spi1`
+15 | | `pwm1`
+33 | | `pwm5`
+32 | | `pwm7`
 
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
