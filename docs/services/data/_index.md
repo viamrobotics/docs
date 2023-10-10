@@ -75,12 +75,6 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
   For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
   Once the service retries and successfully connects, data synchronization resumes at 33%.
 
-  {{< alert title="Caution" color="caution" >}}
-
-  If you disable cloud sync for a component that was interrupted mid-sync, data capture will not resume.
-
-  {{< /alert >}}
-
 - **Storage** When a robot loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
 
   To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
