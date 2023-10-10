@@ -19,7 +19,7 @@ tags:
     "services",
   ]
 aliases:
-  - "/program/extend/modular-resources/examples/"
+  - "/program/modular-resources/examples/"
 ---
 
 To familiarize yourself with creating and using modular resources, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
@@ -28,13 +28,13 @@ Once you have created a modular resource, you can test your modular resource usi
 ## Tutorials
 
 {{< cards >}}
-{{% card link="/extend/modular-resources/examples/rplidar/" customTitle="Add an RPlidar camera as a Modular Resource" %}}
-{{% card link="/extend/modular-resources/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
-{{% card link="/extend/modular-resources/examples/csi/" customTitle="Add a CSI Camera as a Modular Resource" %}}
+{{% card link="/modular-resources/examples/rplidar/" customTitle="Add an RPlidar camera as a Modular Resource" %}}
+{{% card link="/modular-resources/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
+{{% card link="/modular-resources/examples/csi/" customTitle="Add a CSI Camera as a Modular Resource" %}}
 {{% card link="/components/movement-sensor/viam-visual-odometry/" customTitle="Add a Visual Odometry sensor as a Modular Resource" %}}
-{{% card link="/extend/modular-resources/examples/custom-arm/" %}}
-{{% card link="/extend/modular-resources/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
-{{% card link="/extend/modular-resources/examples/triton/" customTitle="Add a Triton MLModel Modular Service"  %}}
+{{% card link="/modular-resources/examples/custom-arm/" %}}
+{{% card link="/modular-resources/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
+{{% card link="/modular-resources/examples/triton/" customTitle="Add a Triton MLModel Modular Service"  %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
 {{< /cards >}}

@@ -26,7 +26,7 @@ tags:
 Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924).
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
 Not all CSI cameras are supported by the built-in [webcam camera model](/components/camera/webcam/).
-Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera, `viam:camera:csi`, which you can use to add support for your CSI camera to your robot.
+Instead, Viam supports CSI cameras by providing a [modular resource](/modular-resources/) for your CSI camera, `viam:camera:csi`, which you can use to add support for your CSI camera to your robot.
 
 This {{< glossary_tooltip term_id="module" text="module" >}} includes a simple wrapper around `GStreamer` and a control interface for the **Control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
 
@@ -157,3 +157,5 @@ The following attributes are available for the `viam:camera:csi` model:
 | `debug` | boolean | Optional | Whether or not you want debug input from this camera in your robot's logs. <br> Default: `false` |
 
 Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
+
+For more information, see [installing local modules](/modular-resources/configure/#local-modules).

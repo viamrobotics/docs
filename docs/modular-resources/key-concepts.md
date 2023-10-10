@@ -16,8 +16,15 @@ description: "The key concepts behind how Viam's resource APIs and models are un
 no_list: true
 ---
 
-You can extend the features of an existing {{< glossary_tooltip term_id="resource" text="resource" >}} API by [creating a custom module](/extend/modular-resources/create/) to define a new [model](#models) that implements that API.
-A custom module can provide one or more modular resource models.
+Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
+
+- Various types of hardware [components](/components/).
+- High-level functionality exposed as [services](/services/).
+
+However, if you want to work with a new hardware component that is not already supported by Viam, or want to introduce a new software service or service model to support additional functionality on your smart machine, you can extend Viam by adding a _modular resource_ to your smart machine.
+
+Modular resources are defined in _modules_, which are easy to create and add to your robot.
+A module can provide one or more modular resource models.
 
 ## Modules
 
@@ -27,9 +34,9 @@ A module provides definitions for one or more pairs of [APIs](#valid-apis-to-imp
 
 When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
-You can [upload your own modules to the Viam registry](/extend/modular-resources/upload/) or can [add existing modules from the Registry](/extend/modular-resources/configure/).
+You can [upload your own modules to the Viam registry](/modular-resources/upload/) or can [add existing modules from the Registry](/modular-resources/configure/).
 
-See [Creating a custom module](/extend/modular-resources/create/) for more information.
+See [Creating a custom module](/modular-resources/create/) for more information.
 
 ## Resources
 
@@ -50,7 +57,7 @@ For example, some DC motors communicate using [GPIO](/components/board/), while 
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
 Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`.
-See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model) for more information.
+See [Naming your model](/modular-resources/key-concepts/#naming-your-model) for more information.
 
 Models are either:
 
@@ -88,7 +95,7 @@ When implementing a custom [model](#models) of an existing [service](/services/)
 
 #### Naming your model
 
-If you are [creating a custom module](/extend/modular-resources/create/) and [uploading that module](/extend/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
+If you are [creating a custom module](/modular-resources/create/) and [uploading that module](/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
 
 - The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
   For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.

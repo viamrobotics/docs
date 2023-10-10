@@ -6,6 +6,8 @@ type: "docs"
 tags: ["rdk", "extending viam", "modular resources", "API"]
 description: "Define an API for a new type of resource."
 no_list: true
+aliases:
+  - "/extend/modular-resources/create/create-subtype/"
 ---
 
 You need to define a new resource _subtype_ (and an API for that subtype) if:
@@ -66,4 +68,4 @@ If you are writing your module using Python, you can use this [module generator 
 
 ## Next steps
 
-Now that your resource API is defined, [create a new model](/extend/modular-resources/create/#code-a-new-resource-model) that implements your new API.
+Now that your resource API is defined, [create a new model](/modular-resources/create/#code-a-new-resource-model) that implements your new API.

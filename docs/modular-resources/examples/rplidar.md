@@ -10,9 +10,9 @@ images: ["/program/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services", "modular resources", "lidar", "rplidar"]
 no_list: true
 aliases:
-  - "/program/extend/modular-resources/add-rplidar-module/"
-  - "/program/extend/modular-resources/examples/add-rplidar-module/"
-  - "/extend/modular-resources/examples/add-rplidar-module/"
+  - "/program/modular-resources/add-rplidar-module/"
+  - "/program/modular-resources/examples/add-rplidar-module/"
+  - "/modular-resources/examples/add-rplidar-module/"
 # SMEs: Kat, Jeremy
 ---
 

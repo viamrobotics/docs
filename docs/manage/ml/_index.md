@@ -42,7 +42,7 @@ To make use of ML models with your smart machine, use the built-in [ML model ser
 
 For object detection and classification, you can use the [vision service](/services/vision/), which provides an [ml model detector](/services/vision/detection/#configure-an-mlmodel-detector) and an [ml model classifier](/services/vision/classification/#configure-an-mlmodel-classifier) model.
 
-For other usage, you can use a [modular resource](/extend/modular-resources/) to integrate it with your robot.
+For other usage, you can use a [modular resource](/modular-resources/) to integrate it with your robot.
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -59,5 +59,5 @@ Test your [`mlmodel detector`](/services/vision/detection/#test-your-detector) o
 
 {{< cards >}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
-{{% card link="/extend/modular-resources/examples/tflite-module/" %}}
+{{% card link="/modular-resources/examples/tflite-module/" %}}
 {{< /cards >}}

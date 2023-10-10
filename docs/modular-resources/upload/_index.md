@@ -16,7 +16,7 @@ description: "Use the Viam CLI to upload a custom module to the Viam registry."
 no_list: true
 ---
 
-Once you have [created a custom module](/extend/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam registry.
+Once you have [created a custom module](/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam registry.
 
 With the CLI, you can register your module with the [Viam registry](https://app.viam.com/registry) to share it with other Viam users, or upload it as a private module that is shared only within your [organization](/manage/fleet/organizations/).
 
@@ -81,7 +81,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
        <td><code>models</code></td>
        <td>object</td>
        <td><strong>Required</strong></td>
-       <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+       <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
      </tr>
      <tr>
        <td><code>entrypoint</code></td>
@@ -110,7 +110,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
    ```
 
    {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+   If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
    In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
    If the two namespaces do not match, the command will return an error.
    {{% /alert %}}
@@ -137,7 +137,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
      tar -czf module.tar.gz bin/module
      ```
 
-     For more information, see [Compile a module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+     For more information, see [Compile a module into an executable](/modular-resources/create/#compile-the-module-into-an-executable).
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
@@ -145,7 +145,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
@@ -221,7 +221,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
      tar -cxf module.tar.gz bin/module
      ```
 
-     For more information, see [Compile a module into an executable](/extend/modular-resources/create/#compile-the-module-into-an-executable).
+     For more information, see [Compile a module into an executable](/modular-resources/create/#compile-the-module-into-an-executable).
 
    - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
@@ -229,7 +229,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
      tar -czf module.tar.gz run.sh requirements.txt src
      ```
 
-     Where `run.sh` is your [entrypoint file](/extend/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/extend/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+     Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
 
 1. Run `viam module upload` to upload the updated custom module to the Viam registry:
 
