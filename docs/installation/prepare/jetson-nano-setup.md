@@ -68,7 +68,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 ## Serial Communication Protocol Tips
 
-To change what pins are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following command:
+To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following command:
 
 ```sh { class="command-line" data-prompt="$"}
 sudo /opt/nvidia/jetson-io/jetson-io.py
