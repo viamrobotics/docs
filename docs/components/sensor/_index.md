@@ -47,15 +47,6 @@ This allows you to have the same access and control of the sensor through Viam a
 
 For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/).
 
-Viam also provides the following sensor model as a [modular resource](/extend/modular-resources/):
-
-<!-- prettier-ignore -->
- Model | Description
- ----- | -----------
- [`viam:visual_odometry:opencv_orb`](/extend/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
-
-This module can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
-
 ## Control your sensor with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
