@@ -92,7 +92,7 @@ GPIO Header Pin | `jetson-io.py` ID
 33 | `pwm5`
 32 | `pwm7`
 
-See NVIDIA's documentation on [configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
+See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
 ## Troubleshooting
 
