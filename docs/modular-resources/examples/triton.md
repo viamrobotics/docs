@@ -5,6 +5,8 @@ weight: 70
 type: "docs"
 description: "Add an ML model modular service backed by NVIDIA's Triton Server."
 tags: ["ml", "model training", "services"]
+aliases:
+  - "/extend/modular-resources/examples/triton//"
 # SMEs: Abe Winter, Andrew Morrow
 ---
 

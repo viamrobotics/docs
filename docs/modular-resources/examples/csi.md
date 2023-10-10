@@ -20,6 +20,8 @@ tags:
     "nano",
     "camera",
   ]
+aliases:
+  - "/extend/modular-resources/examples/csi/"
 # SMEs: Sean
 ---
 

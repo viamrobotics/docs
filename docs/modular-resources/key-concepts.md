@@ -14,6 +14,8 @@ tags:
   ]
 description: "The key concepts behind how Viam's resource APIs and models are uniquely namespaced and modular resource management with the RDK."
 no_list: true
+aliases:
+  - "/program/extend/modular-resources/key-concepts/"
 ---
 
 Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:

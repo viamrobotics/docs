@@ -14,6 +14,8 @@ tags:
   ]
 description: "Use the Viam CLI to upload a custom module to the Viam registry."
 no_list: true
+aliases:
+  - "/extend/modular-resources/upload/"
 ---
 
 Once you have [created a custom module](/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam registry.

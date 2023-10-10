@@ -16,6 +16,8 @@ tags:
     "python SDK",
     "CAN",
   ]
+aliases:
+  - "/extend/modular-resources/examples/odrive/"
 # SMEs: Kim, Martha, Rand
 ---
 

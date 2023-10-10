@@ -13,6 +13,7 @@ aliases:
   - "/program/extend/modular-resources/add-rplidar-module/"
   - "/program/extend/modular-resources/examples/add-rplidar-module/"
   - "/extend/modular-resources/examples/add-rplidar-module/"
+  - "/extend/modular-resources/examples/rplidar/"
 # SMEs: Kat, Jeremy
 ---
 

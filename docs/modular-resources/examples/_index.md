@@ -19,7 +19,8 @@ tags:
     "services",
   ]
 aliases:
-  - "/program/modular-resources/examples/"
+  - "/program/extend/modular-resources/examples/"
+  - "/extend/modular-resources/examples/"
 ---
 
 To familiarize yourself with creating and using modular resources, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).

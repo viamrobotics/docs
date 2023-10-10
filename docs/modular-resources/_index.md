@@ -15,15 +15,22 @@ tags:
 description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered robot."
 no_list: true
 aliases:
-  - "/program/modular-resources/"
-  - "/modular-resources/"
+  - "/program/extend/modular-resources/"
+  - "/extend/modular-resources/"
   - "/extend/"
 ---
 
-At Viam, a robot is configured with one or more {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) or [services](/services/)) which are each defined by a [public API](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
-While Viam offers a number of built-in implementations against these APIs, such as the [wheeled base](/components/base/wheeled/), you may also write your own implementations in order to extend the capabilities of your robot.
+Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-For example, you can:
+- Various types of hardware [components](/components/).
+- High-level functionality exposed as [services](/services/).
+
+However, if you want to work with a new hardware component that is not already supported by Viam, or want to introduce a new software service or service model to support additional functionality on your smart machine, you can extend Viam by adding a _modular resource_ to your smart machine.
+
+Modular resources are defined in _modules_, which are easy to create and add to your robot.
+A module can provide one or more modular resources.
+
+With modular resources, you can:
 
 - **Implement a custom component:** If your robot has specialty hardware, such as an unsupported [motor](/components/motor/), and you want to control it using Viam, you can write a driver to support your hardware by implementing the corresponding component API.
 
@@ -31,8 +38,7 @@ For example, you can:
 
 - **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the [generic API](/components/generic/).
 
-These custom implementations are called _modular resources_, and are made available for use on a robot through {{< glossary_tooltip term_id="module" text="modules" >}}.
-A module can provide one or more modular resources, and can be added to your robot from the Viam registry.
+You can add support for modular resources to your robot by adding a module from the Viam registry.
 
 ## The Viam Registry
 

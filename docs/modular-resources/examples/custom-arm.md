@@ -16,6 +16,8 @@ tags:
     "python SDK",
     "CAN",
   ]
+aliases:
+  - "/extend/modular-resources/examples/custom-arm/"
 # SMEs: Nicole Jung
 ---
 

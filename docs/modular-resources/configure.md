@@ -14,6 +14,8 @@ tags:
   ]
 description: "Add and configure a module from the Viam registry on your robot."
 no_list: true
+aliases:
+  - "/program/extend/modular-resources/configure/"
 ---
 
 You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
