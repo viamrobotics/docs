@@ -78,14 +78,14 @@ In the interactive menu that opens, select **Configure Jetson 40 Pin Header** an
 For a Jetson Orin Nano, reference the following:
 
 <!-- prettier-ignore -->
-GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID
----------------| ----------- | -----------------
-3, 5 | `7` | `i2c2`
-27, 28 | `1` | `i2c8`
-19, 21, 23, 24, 26 | `0` | `spi1`
-15 | | `pwm1`
-33 | | `pwm5`
-32 | | `pwm7`
+| GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID |
+| ---------------| ----------- | ----------------- |
+| 3, 5 | `7` | `i2c2` |
+| 27, 28 | `1` | `i2c8` |
+| 19, 21, 23, 24, 26 | `0` | `spi1` |
+| 15 | | `pwm1` |
+| 33 | | `pwm5` |
+| 32 | | `pwm7` |
 
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
