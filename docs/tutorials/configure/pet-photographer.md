@@ -39,23 +39,22 @@ For this tutorial you'll need the following hardware components:
 
 - A computer
 - A webcam or external camera
-- A blue collar for enhanced accuracy _(optional)_
+- A colored object, like a blue collar for enhanced accuracy _(optional)_
 
 {{< alert title="Tip" color="tip" >}}
-Additionally, you have the option to configure your camera to detect the distinctive color of your pet if it happens to be less common in the environment where you set your camera up.
 In this tutorial, the camera is configured to identify and filter images with the color blue, as it is less common in many environments, including mine.
+If your pet already has a distinct color that is different from their environment, you can also configure your camera to use that color to identify pictures of your pet.
 {{< /alert >}}
 
 ## Set up
 
 Here's how to get started:
 
-1. Install the [Go binary](https://go.dev/dl/) on your local development computer.
-
-1. Update [`viam-server`](/installation/manage/#update-viam-server).
-   If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
+1. Install the [Go](https://go.dev/dl/) on your local development computer.
 
 1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
+
+1. Follow the steps on the Setup tab of your robot to install [`viam-server`](/installation/) and connect to your robot.
 
 1. Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
 
@@ -67,7 +66,14 @@ git clone https://github.com/viam-labs/modular-filter-examples.git
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
-Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in lower-left corner of the page and typing in 'webcam'.
+Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in the lower-left corner of the page and typing in 'webcam'.
+Select the `webcam` model and type in 'cam' as the name for your camera.
+Then click create.
+
+Your robot's config page now has a panel for your camera.
+To select the camera the robot should use, click on the **video path** field.
+If your robot is connected, you will see a selection of available cameras.
+Select the camear you want to use, then click **Save config**
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
@@ -77,7 +83,7 @@ After you've finished setting up your robot's components, add a [vision service]
 
 ### Vision service to detect color
 
-This tutorial uses the color of my dogs collar, `#43A1D0` or `rgb(67, 161, 208)` (blue).
+This tutorial uses the color of my dogs collar, `#43A1D0` or `rgb(67, 161, 208)` (blue), but you can use a different color that matches your pet or a distinctly colored item on your pet.
 
 **Hex color #43A1D0**: {{<imgproc src="/tutorials/pet-photographer/43a1d0.png" resize="90x" declaredimensions=true alt="A color swatch for the color of example subject's collar">}}
 
@@ -222,7 +228,7 @@ Then, click **Save config**.
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
 
-   {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
+     {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
 1. Click **Create** to create the modular resource component.
 
@@ -255,12 +261,10 @@ Then, go to the **Data** tab to view pictures that contain the blue colored item
 
 ![Filtered data tab contents from colorfiltercam showing only photos of dog with blue collar](/tutorials/pet-photographer/data-capture.png)
 
-## Photograph your pet
-
-To photograph your own pet, put them in a blue collar and position your camera to point at an area they frequently visit.
-When you check the **Data** tab, you'll only see pictures of your adorable pet.
-
 ## Next steps
+
+Your pet photographer is now set up, place it in an area your pet frequently visits and don't forget to attach the colored object to your pet.
+Then, check the [**Data** tab](/manage/data/view/)
 
 {{< cards >}}
 {{% card link="/tutorials/services/try-viam-color-detection.md" %}}
