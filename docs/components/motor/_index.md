@@ -42,15 +42,9 @@ Model | Description <a name="model-table"></a>
 [`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
 [`fake`](./fake/) | Used to test code without hardware
 
-Viam also provides the following motor models as [modular resources](/modular-resources/):
+### Modular Resources
 
-<!-- prettier-ignore -->
- Model | Description
- ----- | -----------
- [`viam:odrive:canbus`](/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with CANbus communication
- [`viam:odrive:serial`](/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with serial communication
-
-These modules can be [added to your robot from the Viam registry](/modular-resources/configure/#add-a-module-from-the-viam-registry).
+{{<modular-resources api="rdk:component:motor" type="motor">}}
 
 ## Control your motor with Viam's client SDK libraries
 

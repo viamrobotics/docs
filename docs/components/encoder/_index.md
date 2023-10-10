@@ -43,6 +43,13 @@ For configuration information, click on one of the supported encoder models:
 | [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
 | [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction. |
 
+<!-- No encoders yet -->
+<!-- ### Modular Resources
+
+{{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
+
+If none of these models fit your use case, you can create a [modular resource](/modular-resources/) to add support for it.
+
 ## Control your encoder with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.

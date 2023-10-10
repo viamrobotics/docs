@@ -38,7 +38,9 @@ For configuration information, click on one of the supported COMPONENT models:
 | [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
 | [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
 
-If you want to use another COMPONENT model with Viam, you can create a [modular resource](/modular-resources/) to add support for it.
+### Modular Resources
+
+{{<modular-resources api="rdk:component:component" type="component">}}
 
 ## Control your board with Viam's client SDK libraries
 
