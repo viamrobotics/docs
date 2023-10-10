@@ -1378,3 +1378,43 @@ a.ais-Pagination-link:hover {
 .search-helper {
   display: none;
 }
+
+// styling for model list from modular resources
+
+.modellist * .ais-Hits-list, .modellistheader {
+  display: flex;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
+  margin: 1rem;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item > div:nth-child(even) {
+}
+.modellist * .ais-Hits-list > .ais-Hits-item:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modellistheader > .name, .modellist * .name {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.modellistheader {
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modellistheader > div {
+  font-weight: 600;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item > .description {
+}

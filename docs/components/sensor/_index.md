@@ -56,6 +56,18 @@ Viam also provides the following sensor model as a [modular resource](/extend/mo
 
 This module can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
 
+Additionally, the following sensor models are available from the modular resource registry:
+
+<div class="modellistheader">
+  <div class="name">Model</div>
+  <div>Description</div>
+</div>
+<div id="hits" class="modellist">
+</div>
+<div id="pagination"></div>
+
+If none of these models fit your use case, you can [create your own model](/extend/).
+
 ## Control your sensor with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
