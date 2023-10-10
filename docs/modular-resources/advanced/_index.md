@@ -1,7 +1,7 @@
 ---
-title: "Extend Viam with modular resources"
-linkTitle: "Extend Viam"
-weight: 63
+title: "Advanced Modular Resources"
+linkTitle: "Advanced"
+weight: 80
 simple_list: true
 no_list: true
 type: docs

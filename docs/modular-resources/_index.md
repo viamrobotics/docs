@@ -1,7 +1,7 @@
 ---
 title: "Extend Viam with Modular Resources"
 linkTitle: "Modular Resources"
-weight: 10
+weight: 50
 type: "docs"
 tags:
   [

@@ -4,11 +4,19 @@ linkTitle: "New API Subtype"
 weight: 30
 type: "docs"
 tags: ["rdk", "extending viam", "modular resources", "API"]
-description: "Define an API for a new type of resource."
+description: "Define a new resource subtype using an existing resource API."
 no_list: true
 aliases:
   - "/extend/modular-resources/create/create-subtype/"
 ---
+
+{{% alert title="Tip" color="tip" %}}
+
+[Modular resources](/modular-resources/) provided by custom {{< glossary_tooltip term_id="module" text="modules" >}} are the preferred method of creating custom resource implementations.
+
+This option is provided for advanced users who are unable to use the modular resource system with the robot deployments.
+
+{{% /alert %}}
 
 You need to define a new resource _subtype_ (and an API for that subtype) if:
 
