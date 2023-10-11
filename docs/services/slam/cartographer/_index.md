@@ -13,206 +13,172 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
 
-To add Cartographer to your robot, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which wraps Cartographer as a [modular resource](/extend/modular-resources/).
-`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` {{< glossary_tooltip term_id="model-namespace-triplet" text="namespaced">}} custom [model](/extend/modular-resources/key-concepts/#models) of SLAM service.
+Viam provides the `cartographer` [modular resource](/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/).
+
+The `cartographer` {{< glossary_tooltip term_id="module" text="module" >}} is available [from the Viam registry](https://app.viam.com/module/viam/cartographer).
+See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+
+The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 ## Requirements
 
-To use Cartographer with Viam, install the `cartographer-module` module on your machine and make it executable by running the following commands according to your machine's architecture:
+If you haven't already, [install `viam-server`](/installation/) on your robot.
 
-{{< tabs >}}
-{{% tab name="Linux aarch64" %}}
+Your robot must have an RPlidar installed to be able to use the `cartographer` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).
+The default ['config_params'](#config_params) for the cartographer library as well as the example robot config shown below (which uses the default 'config_params') show nominal parameters one can use for an RPlidar A3.
+See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
 
-```sh {class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-aarch64.AppImage
-sudo chmod a+rx /usr/local/bin/cartographer-module
-```
+In addition, you must [add the `rplidar` module to your robot](/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
 
-{{% /tab %}}
-{{% tab name="Linux x86_64" %}}
+Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
 
-```sh {class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/cartographer-module https://storage.googleapis.com/packages.viam.com/apps/slam-servers/cartographer-module-stable-x86_64.AppImage
-sudo chmod a+rx /usr/local/bin/cartographer-module
-```
-
-{{% /tab %}}
-{{% tab name="macOS" %}}
-
-```sh {class="command-line" data-prompt="$"}
-brew tap viamrobotics/brews && brew install cartographer-module
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+Physically connect the RPlidar to your robot.
+Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
+For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
 
 ## Configuration
 
-{{% alert title="REQUIREMENTS" color="tip" %}}
+After installing your physical RPlidar and adding the `rplidar` module per the above instructions, follow the steps below to add the `cartographer` module to your robot:
 
-Running `cartographer-module` requires a [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3) LIDAR scanning device. The default ['config_params'](#config_params) for the cartographer library, and the example robot config shown below (which uses the default 'config_params'), show nominal parameters one can use for an RPlidar A3. See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
-
-Before adding a SLAM service, you must follow [these instructions](/extend/modular-resources/examples/rplidar/) to add your RPlidar device as a modular component of your robot.
-
-{{% /alert %}}
-
-### Add a SLAM service
-
-{{< tabs name="Add the Cartographer Service">}}
+{{< tabs name="Add the cartographer service">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Modules** subtab.
+Follow the instructions below to set up the `csi-cam` module on your robot:
 
-Add the cartographer module with a name of your choice and an executable path that points to the location of your installed `cartographer-module` binary:
+1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
+1. Select **SLAM**, then select `cartographer`.
+   You can also search for "cartographer".
+1. Click **Add module**, give your service a name of your choice, then click **Create**.
+1. In the resulting `SLAM` service configuration pane, configure the `"data_dir"` and `"sensors"` **Attributes** as follows:
 
-{{< tabs name="Add Cartographer Service Module">}}
-{{% tab name="Linux/macOS x86_64" %}}
+   - `"data-dir"`: Provide the path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>.
+     Example: `"data-dir": "/home/my-username/cartographer-directory"`
+   - `"sensors"`: Provide the `name` of the configured movement sensor that you created when you [added the `rplidar` module to your robot](/modular-resources/examples/rplidar/).
+     Example: `"sensors": ["my-rplidar"]`
 
-![adding cartographer module linux](/services/slam/add-cartographer-module-ui-linux.png)
+   See the [Attributes](#attributes) section for more information on the other attributes.
 
-{{% /tab %}}
-
-{{% tab name="macOS ARM64 (M1 & M2)" %}}
-
-![adding cartographer module M1 M2](/services/slam/add-cartographer-module-ui-M1-M2.png)
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Click on the **Services** subtab.
-
-Add a service with type `slam`, model `viam:slam:cartographer`, and a name of your choice:
-
-![adding cartographer slam service](/services/slam/add-cartographer-service-ui.png)
-
-Paste the following into the **Attributes** field of your new service:
-
-{{< tabs name="Add Cartographer Service Configs">}}
-{{% tab name="Linux" %}}
-
-```json
-{
-  "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-  "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
-  "config_params": {
-    "mode": "2d"
-  }
-}
-```
-
-{{% /tab %}}
-
-{{% tab name="macOS" %}}
-
-```json
-{
-  "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-  "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
-  "config_params": {
-    "mode": "2d"
-  }
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+1. Click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab.
-Select the **Raw JSON** mode, then copy/paste the following `"services"` and `"modules"` JSON to add to your existing RPlidar configuration:
+Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
 
-{{< tabs name="Add the Cartographer Service Config JSON OSs">}}
-{{% tab name="Linux" %}}
+Note: This template includes configuration for both the `rplidar` and `cartographer` modules, since both are required here.
 
 ```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/usr/local/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-"services": [
-  {
-    "model": "viam:slam:cartographer",
-    "name": "<your-service-name>",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "/home/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
-      "config_params": {
-        "mode": "2d"
+{
+  "components": [
+    {
+      "name": "<your-rplidar-name>",
+      "model": "viam:lidar:rplidar",
+      "type": "camera",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": []
+    }
+  ],
+  "services": [
+    {
+      "name": "<your-cartographer-name>",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer",
+      "attributes": {
+        "config_params": {
+          "mode": "2d"
+        },
+        "data_dir": "</path/to/cartographer-directory>",
+        "data_rate_msec": <int>,
+        "map_rate_sec": <int>,
+        "sensors": [
+          "<your-rplidar-name>"
+        ]
       }
     }
-  }
-]
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    },
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    }
+  ]
+}
 ```
+
+To save your changes, click **Save config** at the bottom of the page.
 
 {{% /tab %}}
-{{% tab name="macOS x86_64" %}}
+{{% tab name="JSON Example" %}}
+
+Go to your robot's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
+
+Note: This example includes configuration for both the `rplidar` and `cartographer` modules, since both are required here.
 
 ```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/usr/local/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-"services": [
-  {
-    "model": "viam:slam:cartographer",
-    "name": "<your-service-name>",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
-      "config_params": {
-        "mode": "2d"
+{
+  "components": [
+    {
+      "name": "my-rplidar",
+      "model": "viam:lidar:rplidar",
+      "type": "camera",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": []
+    }
+  ],
+  "services": [
+    {
+      "name": "my-cartographer",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer",
+      "attributes": {
+        "config_params": {
+          "mode": "2d"
+        },
+        "data_dir": "/Users/my-username/cartographer-directory",
+        "data_rate_msec": 200,
+        "map_rate_sec": 60,
+        "sensors": ["my-rplidar"]
       }
     }
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="macOS ARM64 (M1 & M2)" %}}
-
-```json
-"modules": [
-  // { ...}, YOUR RPLIDAR MODULE,
-  {
-    "executable_path": "/opt/homebrew/bin/cartographer-module",
-    "name": "cartographer-module"
-  }
-],
-// "components": [ ...], YOUR RPLIDAR MODULAR COMPONENT,
-"services": [
-  {
-    "model": "viam:slam:cartographer",
-    "name": "<your-service-name>",
-    "type": "slam",
-    "attributes": {
-      "data_dir": "/Users/<YOUR_USERNAME>/<CARTOGRAPHER_DIR>",
-      "sensors": ["<YOUR_RPLIDAR_COMPONENT_NAME>"],
-      "config_params": {
-        "mode": "2d"
-      }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    },
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
     }
-  }
-]
+  ]
+}
 ```
+
+To save your changes, click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{< /tabs >}}
-{{% /tab %}}
-{{< /tabs >}}
+
+Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
 ### Adjust `data_dir`
 
@@ -260,7 +226,7 @@ Watch a map start to appear.
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
-| `sensors` | string[] | **Required** | Names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
+| `sensors` | string[] | **Required** | Array of one or more names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
 | `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |

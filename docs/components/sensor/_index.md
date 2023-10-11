@@ -42,19 +42,10 @@ For configuration information, click on one of the supported sensor models:
 | [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
-You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/extend/modular-resources/).
+You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/modular-resources/).
 This allows you to have the same access and control of the sensor through Viam as you would if it was a built-in model.
 
 For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/).
-
-Viam also provides the following sensor model as a [modular resource](/extend/modular-resources/):
-
-<!-- prettier-ignore -->
- Model | Description
- ----- | -----------
- [`viam:visual_odometry:opencv_orb`](/extend/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
-
-This module can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
 
 ## Control your sensor with Viam's client SDK libraries
 

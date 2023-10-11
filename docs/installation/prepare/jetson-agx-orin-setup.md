@@ -82,12 +82,25 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 ## Serial Communication Protocol Tips
 
+To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
+
+```sh { class="command-line" data-prompt="$"}
+cd ~
+sudo /opt/nvidia/jetson-io/jetson-io.py
+```
+
+In the interactive menu that opens, select **Configure Jetson 40 Pin Header** and **Configure header pins manually** to select and deselect pins to enable use.
+For a Jetson AGX Orin, reference the following:
+
 <!-- prettier-ignore -->
 | Data Sheet ID | GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID | `/dev` Path ID | Notes |
 | ------------- | --------------- | ----------- | ----------------- | ----------- | ----- |
 | I2C_GP2_DAT, I2C_GP2_CLK | 3, 5 | `7` | `i2c2` | `/dev/i2c-2` | |
 | I2C_GP5_DAT, I2C_GP5_CLK | 27, 28 | `1` | `i2c8` | `/dev/i2c-8` | |
-| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | `0` | `spi1` | `/dev/spidev0.0`, `/dev/spidev0.1` | Must be enabled, must add `spidev` to `/etc/modules` |
+| SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | `0` | `spi1` | `/dev/spidev0.0`, `/dev/spidev0.1` | Must be enabled to use SPI bus, must add `spidev` to `/etc/modules` |
+
+Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
+See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
 ## Troubleshooting
 
@@ -108,6 +121,7 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
   - Do not run `sudo apt install nvidia-jetpack` in your terminal until after `sudo reboot` has completed.
   - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable.
   - It is normal for JetPack installation to take a very long time, up to an hour or more.
+- If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 

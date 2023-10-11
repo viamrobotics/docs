@@ -11,7 +11,7 @@ tags: ["board", "components"]
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow this [setup guide](/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
+Follow the [setup guide](/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
 
 {{% /alert %}}
 

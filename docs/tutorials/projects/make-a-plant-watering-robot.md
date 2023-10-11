@@ -348,7 +348,7 @@ However, there are many different types of sensors used for sensing different th
 A _module_ provides one or more modular resources, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
 A module can be added to your robot from the Viam registry.
 
-The [Viam registry](/extend/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
+The [Viam registry](/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your robot’s Configuration tab in the Viam app, using the + Create component button.
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:

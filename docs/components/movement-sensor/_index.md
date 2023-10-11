@@ -37,11 +37,20 @@ Model | Description <a name="model-table"></a>
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
 [`imu-vectornav`](./imu/imu-wit/) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
-[`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/extend/modular-resources/) that derives movement data from a [camera](/components/camera/) stream
+[`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/modular-resources/) that derives movement data from a [camera](/components/camera/) stream
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources
 [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
 [`fake`](./fake/) | Used to test code without hardware
+
+Viam also provides the following sensor model as a [modular resource](/modular-resources/):
+
+<!-- prettier-ignore -->
+ Model | Description
+ ----- | -----------
+ [`viam:visual_odometry:opencv_orb`](/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
+
+This module can be [added to your robot from the Viam registry](/modular-resources/configure/#add-a-module-from-the-viam-registry).
 
 ## Control your movement sensor with Viam's client SDK libraries
 

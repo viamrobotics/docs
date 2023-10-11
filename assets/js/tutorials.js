@@ -102,7 +102,7 @@ search.addWidgets([
     {{/image}}
     <div class="small-hover-card-div">
         <div>
-            <span>{{title}}</span>
+            <div class="title">{{title}}</div>
             <div class="pills">
                 {{#languages}}<div class="pill pill-lang">{{.}}</div>{{/languages}}
                 {{#viamcomponents}}<div class="pill pill-component">{{.}}</div>{{/viamcomponents}}
