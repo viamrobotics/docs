@@ -3,7 +3,7 @@ title: "Upload and Retrieve Data with Viam's Data Client API"
 linkTitle: "Data Client"
 weight: 10
 type: "docs"
-description: "Use the data client API to upload data directly to the Viam app."
+description: "Use the data client API to upload and retrieve data directly to the Viam app."
 tags:
   [
     "cloud",
@@ -18,7 +18,8 @@ tags:
   ]
 ---
 
-The data client API allows you to upload and retrieve data to and from the [Viam app](https://app.viam.com) directly.
+The data client API allows you to upload and retrieve data to and from the [Viam app](https://app.viam.com).
+
 {{% alert title="Support Notice" color="note" %}}
 
 Data client API methods are only available in the Python SDK.
@@ -77,7 +78,7 @@ The data client API supports the following methods (among [others](https://pytho
 ### BinaryDataCaptureUpload
 
 Upload binary data collected on your machine through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).
-Binary data can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
+Uploaded binary data can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -173,8 +174,8 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
-- `file_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the file. The empty string `“”` will be assigned as the filename if one isn’t provided.
-- `file_extension` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional file extension. The empty string `“”` will be assigned as the file extension if one isn’t provided.
+- `file_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the file. The empty string `""` will be assigned as the filename if one isn’t provided.
+- `file_extension` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional file extension. The empty string `""` will be assigned as the file extension if one isn’t provided.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
 - `data` [(Optional[bytes])](https://docs.python.org/3/library/stdtypes.html#bytes-objects): Optional bytes representing file data to upload.
 
