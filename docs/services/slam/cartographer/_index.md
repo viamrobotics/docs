@@ -15,9 +15,9 @@ aliases:
 
 To use Cartographer with Viam, use `cartographer-module` from [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer), which wraps the Cartographer library as a Viam [modular resource](/extend/modular-resources/).
 
-Since Cartographer's algorithm is CPU-intensive, Viam mainly supports running `cartographer-module` in the cloud (billed according to [Viam's Pricing policy](https://www.viam.com/product/pricing)). When run in "online" mode, you configure `cartographer-module` on your robot, but if you use "Create new map" or "Update existing map", the `cartographer-module` on your robot acts as a stub and the algorithm is actually executed in the cloud. (If you use "Localize only", the `cartographer-module` on your robot actually executes the algorithm itself.) When run in "offline" mode, you specify a range of data to run through the algorithm, and the algorithm executes in the cloud.
+Since Cartographer's algorithm is CPU-intensive, Viam mainly supports running `cartographer-module` in the cloud (billed according to [Viam's Pricing policy](https://www.viam.com/product/pricing)). When run in "online" mode, you configure `cartographer-module` on your robot, but if you use "Create new map" or "Update existing map", the `cartographer-module` on your robot acts as a stub and the algorithm is actually executed in the cloud. (If you use "Localize only", the `cartographer-module` on your robot actually executes the algorithm itself.) When run in "offline" mode, only "Create new map" or "Update existing map" are supported ("Localize only" is not supported), and the algorithm always executes in the cloud.
 
-![cartographer module supported modes](/services/slam/add-cartographer-module-ui-linux.png)
+![cartographer module supported modes](/services/slam/cartographer-module-supported-modes.png)
 
 # Online
 
