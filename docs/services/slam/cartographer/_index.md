@@ -61,7 +61,13 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 {{< tabs name="Mapping mode">}}
 {{% tab name="Create new map" %}}
 
-Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub. On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm. Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
+Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
+
+On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm.
+
+Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map.
+
+Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
 
 {{% alert title="Info" color="info" %}}
 
@@ -85,7 +91,13 @@ To save your changes, click **Save config** at the bottom of the page.
 {{% /tab %}}
 {{% tab name="Update existing map" %}}
 
-Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub. On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm. Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to update the map. Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
+Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
+
+On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm.
+
+Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to update the map.
+
+Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
 
 {{% alert title="Info" color="info" %}}
 
@@ -256,11 +268,19 @@ Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar h
 
 ### View the Map
 
-After saving your config and connecting to your robot, navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
-Change the **Refresh frequency** to your desired frequency.
-Move your RPlidar around slowly.
-Watch a map start to appear.
+If your "Mapping mode" is "Create", enter a name for your new map and click "Start session", or if your "Mapping mode" is "Update", simply click "Start session", and wait for the slam session to finish starting up in the cloud.
+
+If your "Mapping mode" is "Localize", the existing map will appear immediately and Cartographer will try to find your robot's position on it.
+
+{{% alert title="Info" color="info" %}}
+
+Cartographer will take some time to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+
+{{% /alert %}}
+
+You can change the **Refresh frequency** to the desired rate at which you'd like to see the map update.
 
 ### Attributes
 
@@ -329,21 +349,3 @@ This can result in errors or failed requests for a map, however, this will not a
 Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-When run in "offline" mode (i.e., with data that was previously captured from a LiDAR and optional IMU), only "Create new map" or "Update existing map" are supported ("Localize only" is not supported), and the algorithm always executes in the cloud.
