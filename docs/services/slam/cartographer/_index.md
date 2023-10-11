@@ -13,11 +13,11 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) is a C++ library that takes as input 2D or 3D LiDAR data, and optionally inertial measurement unit (IMU) data and/or odometry data, from a robot and produces as output a dense SLAM map and the robot's trajectory within the map.
 
-Viam's `cartographer-module` wraps the Cartographer library as a Viam [modular resource](/extend/modular-resources/). `cartographer-module` currently supports taking 2D LiDAR data and IMU data as inputs; support for taking 3D LiDAR data and odometry data as input may be added in the future.
+Viam's `cartographer-module` wraps the Cartographer library as a Viam [modular resource](/extend/modular-resources/). `cartographer-module` is hosted in the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) GitHub repond includes the `viam:slam:cartographer` {{< glossary_tooltip term_id="model-namespace-triplet" text="namespaced">}} custom [model](/extend/modular-resources/key-concepts/#models) of SLAM service. `cartographer-module` currently supports taking 2D LiDAR data and IMU data as inputs; support for taking 3D LiDAR data and odometry data as input may be added in the future. 
 
 Since Cartographer's algorithm is CPU-intensive, Viam mainly supports running `cartographer-module` in the cloud (billed according to [Viam's Pricing policy](https://www.viam.com/product/pricing)). In particular:
 
-`cartographer-module` supports being run two ways, "online" and "offline", and in three modes, "Create new map", "Update existing map", and "Localize only."
+`cartographer-module` supports being run either "online" or "offline", and in three modes, "Create new map", "Update existing map", and "Localize only."
 
 For "online", all three modes are supported. You configure `cartographer-module` on your robot along with a LiDAR and optionally an IMU. For "Create new map" or "Update existing map" mode, the `cartographer-module` on your robot acts as a stub and the algorithm is actually executed in the cloud. For "Localize only" mode, the `cartographer-module` on your robot  executes the algorithm itself (and you are not billed).
 
@@ -25,10 +25,9 @@ For "offline" mode, only "Create new map" and "Update existing map" modes are su
 
 In summary:
 
-![todo image](/services/slam/add-cartographer-module-ui-linux.png)
+![cartographer module supported modes](/services/slam/add-cartographer-module-ui-linux.png)
 
-To add Cartographer to your robot, use the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) library, which .
-`viam-cartographer` provides the `cartographer-module` module, which includes the `viam:slam:cartographer` {{< glossary_tooltip term_id="model-namespace-triplet" text="namespaced">}} custom [model](/extend/modular-resources/key-concepts/#models) of SLAM service.
+# Online
 
 ## Requirements
 
