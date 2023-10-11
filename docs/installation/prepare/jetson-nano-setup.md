@@ -66,10 +66,37 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
+## Serial Communication Protocol Tips
+
+To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
+
+```sh { class="command-line" data-prompt="$"}
+cd ~
+sudo /opt/nvidia/jetson-io/jetson-io.py
+```
+
+In the interactive menu that opens, select **Configure Jetson 40 Pin Header** and **Configure header pins manually** to select and deselect pins to enable use.
+For a Jetson Orin Nano, reference the following:
+
+<!-- prettier-ignore -->
+| GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID |
+| ---------------| ----------- | ----------------- |
+| 3, 5 | `7` | `i2c2` |
+| 27, 28 | `1` | `i2c8` |
+| 19, 21, 23, 24, 26 | `0` | `spi1` |
+| 13, 16, 18, 22, 37 | `2` | `spi3` |
+| 15 | | `pwm1` |
+| 33 | | `pwm5` |
+
+Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
+See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
+
 ## Troubleshooting
 
 Make sure the polarity on your barrel jack power supply is matched when powering your robot.
 See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.
+
+If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
