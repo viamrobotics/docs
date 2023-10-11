@@ -9,7 +9,9 @@ tags: ["board", "components"]
 # SMEs: Susmita
 ---
 
-Configure a `customlinux` board to integrate linux boards like the [Pumpkin i500](https://ologicinc.com/portfolio/mediateki500/) into your robot.
+The `customlinux` board model supports boards that run Linux operating systems and are not supported by other built-in Viam models.
+
+Configure a `customlinux` board to integrate a Linux board like the [Pumpkin i500](https://ologicinc.com/portfolio/mediateki500/) into your robot.
 
 ## Create a pin mappings file
 
@@ -219,7 +221,7 @@ The following parameters are available for pin mappings:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the pin. <br> Example: `"3"`. |
-| `device_name` | string | **Required** | The device name. <br> Example: `"gpiochip0"`. |
+| `device_name` | string | **Required** | The device name in <file>/dev</file>. <br> Example: `"gpiochip0"`.
 | `line_number` | integer | **Required** | The line number of the pin. <br> Example: `81`. |
 | `pwm_id` | integer | **Required** | The power management id of the pin. Example: `-1`. |
 
