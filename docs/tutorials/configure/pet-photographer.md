@@ -220,7 +220,7 @@ This ensures that the Viam app knows where to find the module for remote access.
 To do this, follow these steps:
 
 1. Select the **Modules** subtab in the **Config** panel to configure the local color filter module for your robot's system in the Viam app.
-1. You identified your `colorfilter` module's path with `realpath` when you [configured your modules executable](#configure-the-modules-executable)
+1. You identified your `colorfilter` module's path with `realpath` when you [configured your modules executable](#configure-the-modules-executable).
    In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable and click **Add module**.
 1. Then, click **Save config**.
 
