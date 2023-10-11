@@ -90,8 +90,9 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
   "components": [
     {
       "name": "<your-camera-name>",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "<path-to-video-stream>",
         "height_px": <height>,
@@ -149,8 +150,9 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
   "components": [
     {
       "name": "my-camera",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "FDF90FEB-59E5-4FCF-AABD-DA03C4E19BFB",
         "height_px": 720,

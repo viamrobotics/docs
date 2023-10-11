@@ -94,7 +94,7 @@ Move the base in a straight line across the given distance (mm) at the given vel
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
@@ -157,7 +157,7 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
@@ -217,7 +217,7 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
@@ -311,7 +311,7 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
@@ -363,7 +363,7 @@ Stop the base from moving immediately.
 
 **Parameters:**
 
-- None
+- None.
 
 **Returns:**
 
@@ -417,7 +417,7 @@ Returns whether the base is actively moving (or attempting to move) under its ow
 
 **Parameters:**
 
-- None
+- None.
 
 **Returns:**
 
@@ -516,6 +516,63 @@ myBaseWidth := properties.WidthMeters
 
 // Get the turning radius
 myBaseTurningRadius := properties.TurningRadiusMeters
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetGeometries
+
+Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services generally use geometries and may require them for obstacle avoidance.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- List[(Geometry)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the base, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot=robot, name="my_base")
+
+geometries = await my_base.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's center point: {geometries[0].center}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/spatialmath#Geometry): The geometries associated with the base, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+
+```go {class="line-numbers linkable-line-numbers"}
+myBase, err := base.FromRobot(robot, "my_base")
+
+geometries, err := myBase.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
 ```
 
 {{% /tab %}}

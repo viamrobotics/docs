@@ -98,6 +98,12 @@ sitemap:
         <p>Texas Instruments TDA4VM</p>
       </a>
     </li>
+    <li id="c1_slide14">
+      <a href="installation/prepare/pumpkin/">
+        {{<imgproc src="installation/thumbnails/pumpkin.png" resize="148x120" declaredimensions=true alt="pumpkin board">}}
+        <p>Pumpkin i500</p>
+      </a>
+    </li>
   </ul>
   <ol style="visibility: hidden" aria-hidden="true">
     <li><a href="#c1_slide1">NVIDIA Jetson Nano</a></li>
@@ -113,6 +119,7 @@ sitemap:
     <li><a href="#c1_slide11">Numato GPIO Modules</a></li>
     <li><a href="#c1_slide12">PCA9686 I<sup>2</sup>C Interface</a></li>
     <li><a href="#c1_slide13">Texas Instruments TDA4VM</a></li>
+    <li><a href="#c1_slide14">Pumpkin i500</a></li>
   </ol>
   <div class="prev" style="display: block">‹</div>
   <div class="next" style="display: block">›</div>

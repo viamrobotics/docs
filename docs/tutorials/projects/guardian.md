@@ -169,15 +169,17 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "cam",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video0"
       },
@@ -185,8 +187,9 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
     },
     {
       "name": "servo",
-      "type": "servo",
       "model": "pi",
+      "type": "servo",
+      "namespace": "rdk",
       "attributes": {
         "pin": "12",
         "board": "local"
@@ -325,15 +328,17 @@ Next, on the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace 
   "components": [
     {
       "name": "local",
-      "type": "board",
       "model": "pi",
+      "type": "board",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     },
     {
       "name": "cam",
-      "type": "camera",
       "model": "webcam",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "video_path": "video0"
       },
@@ -341,8 +346,9 @@ Next, on the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace 
     },
     {
       "name": "servo",
-      "type": "servo",
       "model": "pi",
+      "type": "servo",
+      "namespace": "rdk",
       "attributes": {
         "pin": "12",
         "board": "local"
@@ -351,8 +357,9 @@ Next, on the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace 
     },
     {
       "name": "transform_cam",
-      "type": "camera",
       "model": "transform",
+      "type": "camera",
+      "namespace": "rdk",
       "attributes": {
         "source": "cam",
         "pipeline": [

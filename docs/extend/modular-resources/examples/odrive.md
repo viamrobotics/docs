@@ -69,7 +69,6 @@ Your robot must have an ODrive S1 or ODrive Pro motor controller installed to be
 1. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on whether you are using a `serial` or `canbus` connection:
 
    {{< tabs name="Connect your ODrive">}}
-
    {{% tab name="Serial" %}}
 
    Plug the [USB Isolator for Odrive](https://odriverobotics.com/shop/usb-c-to-usb-a-cable-and-usb-isolator) into a USB port on your board.

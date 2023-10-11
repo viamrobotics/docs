@@ -671,7 +671,7 @@ Currently, only `Absolute` axes are supported.
 `Relative` axes, reporting a relative change in distance, used by devices like mice and trackpads, will be supported in the future.
 {{% /alert %}}
 
-Analog devices like joysticks and thumbsticks which "return to center/neutral" on their own use `Absolute` axis control types.
+Analog devices like joysticks and thumbsticks which return to center/neutral on their own use `Absolute` axis control types.
 
 These controls report a `PositionChangeAbs` [EventType](#eventtype-field).
 

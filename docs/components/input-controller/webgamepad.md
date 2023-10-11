@@ -38,8 +38,9 @@ Enter the name `WebGamepad` and click **Create**.
   "components": [
     {
       "name": "WebGamepad",
-      "type": "input_controller",
       "model": "webgamepad",
+      "type": "input_controller",
+      "namespace": "rdk",
       "attributes": {},
       "depends_on": []
     }
