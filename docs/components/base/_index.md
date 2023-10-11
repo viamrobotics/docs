@@ -524,6 +524,7 @@ myBaseTurningRadius := properties.TurningRadiusMeters
 ### GetGeometries
 
 Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
+The [motion](/services/motion/) and [navigation](/services/navigation) services generally use geometries and may require them for obstacle avoidance.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
