@@ -12,7 +12,6 @@ tags:
     "networking",
     "apis",
     "robot api",
-    "cloud management",
     "data management",
     "data",
   ]
