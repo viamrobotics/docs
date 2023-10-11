@@ -36,7 +36,7 @@ With modular resources, you can:
 
 - **Implement a custom service:** If your robot makes use of a specialty algorithm or data model when working with services such as [SLAM](/services/slam/), [Vision](/services/vision/), or [Motion planning](/services/motion/), you can implement your own algorithm or model against the corresponding service API.
 
-- **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecyle, you can implement your own custom logic by wrapping the [generic API](/components/generic/).
+- **Implement fully custom logic:** If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecycle, you can implement your own custom logic by wrapping the [generic API](/components/generic/).
 
 You can add support for modular resources to your robot by adding a module from the Viam registry.
 
@@ -48,7 +48,7 @@ You can add a module from the Viam registry directly from your robot's **Configu
 The code behind any modular resource can be packaged as a {{< glossary_tooltip term_id="module" text="module" >}} and uploaded to the Viam registry.
 Once the module has been uploaded to the Registry, you can [deploy the module](/modular-resources/configure/) to any robot in your organization from [the Viam app](https://app.viam.com/).
 
-### Uploading to Viam Registry
+### Uploading to the Viam Registry
 
 After you finish programming your module, you can [upload your module to the Viam registry](/modular-resources/upload/) to make it available for deployment to robots.
 As part of the upload process, you decide whether your module is _private_ (visible only to other members of your [organization](/manage/fleet/organizations/)), or _public_ (visible to all Viam users).
