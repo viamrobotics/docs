@@ -26,7 +26,10 @@ See [Modular resources](/extend/modular-resources/#the-viam-registry) for instru
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
-## Requirements
+
+## Online mode
+
+### Requirements
 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
 
@@ -40,7 +43,7 @@ Physically connect the RPlidar to your robot.
 Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
 
-## Configuration for Online Mode
+### Configuration
 
 After installing your physical RPlidar and adding the `rplidar` module per the above instructions, follow the steps below to add the `cartographer` module to your robot:
 
@@ -104,12 +107,22 @@ Configure the remaining attributes as follows:
 {{% /tab %}}
 {{% tab name="Localize only" %}}
 
-In this mode, the cartographer-module on your robot actually executes the Cartographer algorithm itself. The `cartographer-module` on your robot polls
+In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
+
+Configure the remaining attributes as follows:
+
+   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from your Location page under "SLAM Library".
+   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
+     Examples: "my-rplidar", "5"
+   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. 
+     Examples: "my-imu", "20"
+   - `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+   - `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+
+   If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-1. Click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -229,38 +242,6 @@ To save your changes, click **Save config** at the bottom of the page.
 {{< /tabs >}}
 
 Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
-
-### Adjust `data_dir`
-
-Change the `data_dir` attribute to point to a directory on your machine where you want to save the internal state your SLAM service produces.
-
-This directory must be structured as follows:
-
-<pre>
-.
-└──\(<file>CARTOGRAPHER_DIR</file>)
-    ├── <file>internal_state</file>
-</pre>
-
-The SLAM Mapping Mode is determined by 2 conditions:
-
-1. If the internal state data is present in <file>internal_state</file> at runtime
-2. The attribute `map_rate_sec`
-
-### SLAM Mapping Modes
-
-<!-- prettier-ignore -->
-| Mode | Description | Runtime Dictation |
-| ---- | ----------- | ------- |
-| PURE MAPPING | Generate a new internal state in <file>/internal_state</file>. | No internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes). |
-| UPDATING | Update an existing internal state with new sensor readings. | An existing internal state is found in <file>/internal_state</file> + [`map_rate_sec > 0`](#attributes).|
-| LOCALIZING | Localize the robot on an existing internal state without changing the internal state itself. | An internal state is found in <file>/internal_state</file> + [`map_rate_sec = 0`](#attributes). |
-
-{{% alert title="Info" color="info" %}}
-
-If this directory structure is not present at runtime, the SLAM service creates it.
-
-{{% /alert %}}
 
 ### View the Map
 
