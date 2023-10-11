@@ -15,7 +15,7 @@ tags:
 description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered smart machine."
 no_list: true
 aliases:
-  - "/extend/modular-resources/create/create-subtype/"
+  - "/extend/modular-resources/create/"
 ---
 
 You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any smart machine running on Viam.
