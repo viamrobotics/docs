@@ -11,9 +11,15 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) performs dense SLAM using LIDAR data.
+[The Cartographer Project](https://github.com/cartographer-project) is a C++ library that performs dense SLAM using 2D or 3D LiDAR data and optionally inertial measurement unit (IMU) and/or odometry data.
 
 Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/).
+
+{{% alert title="Info" color="info" %}}
+
+Currently, `cartographer-module` only supports taking 2D LiDAR data and optionally IMU data as input. Support for taking 3D LiDAR data and odometry data as input may be added in the future.
+
+{{% /alert %}}
 
 The `cartographer` {{< glossary_tooltip term_id="module" text="module" >}} is available [from the Viam registry](https://app.viam.com/module/viam/cartographer).
 See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
@@ -25,8 +31,6 @@ The source code for this module is available on the [`viam-cartographer` GitHub 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
 
 Your robot must have an RPlidar installed to be able to use the `cartographer` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).
-The default ['config_params'](#config_params) for the cartographer library as well as the example robot config shown below (which uses the default 'config_params') show nominal parameters one can use for an RPlidar A3.
-See the notes next to the 'config_params' for recommended settings for an RPlidar A1.
 
 In addition, you must [add the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
 
@@ -36,28 +40,50 @@ Physically connect the RPlidar to your robot.
 Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
 
-## Configuration
+## Configuration for Online Mode
 
 After installing your physical RPlidar and adding the `rplidar` module per the above instructions, follow the steps below to add the `cartographer` module to your robot:
 
 {{< tabs name="Add the cartographer service">}}
 {{% tab name="Config Builder" %}}
 
-Follow the instructions below to set up the `csi-cam` module on your robot:
+Follow the instructions below to set up the `cartographer` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
 1. Select **SLAM**, then select `cartographer`.
    You can also search for "cartographer".
 1. Click **Add module**, give your service a name of your choice, then click **Create**.
-1. In the resulting `SLAM` service configuration pane, configure the `"data_dir"` and `"sensors"` **Attributes** as follows:
+1. In the resulting `SLAM` service configuration pane, configure the **Attributes** as follows:
 
-   - `"data-dir"`: Provide the path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>.
-     Example: `"data-dir": "/home/my-username/cartographer-directory"`
-   - `"sensors"`: Provide the `name` of the configured movement sensor that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/).
-     Example: `"sensors": ["my-rplidar"]`
+   - `"Mapping mode"`: Choose between "Create new map", "Update existing map", and "Localize only". Since Cartographer's algorithm is CPU-intensive, for "Create new map" or "Update existing map", the cartographer-module on your robot acts as a stub and the algorithm is actually executed in the cloud. For "Localize only", the cartographer-module on your robot executes the algorithm itself.
 
-   See the [Attributes](#attributes) section for more information on the other attributes.
+{{< tabs name="Mapping mode">}}
+{{% tab name="Create new map" %}}
+
+In this mode, the cartographer-module on your robot acts as a stub and another copy of cartographer-module runs in the cloud. Your robot's sensor data is sent to the cloud using Viam's Data Capture[TODO LINK].
+
+   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
+     Examples: "my-rplidar", "5"
+   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. 
+     Examples: "my-imu", "20"
+   - `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+   - `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+
+   If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
+
+{{% /tab %}}
+{{% tab name="Update existing map" %}}
+
+In this mode, the cartographer-module on your robot acts as a stub and another copy of cartographer-module runs in the cloud. Your robot's sensor data is sent to the cloud using Viam's Data Capture[TODO LINK].
+
+
+{{% /tab %}}
+{{% tab name="Localize only" %}}
+
+In this mode, the cartographer-module on your robot actually executes the Cartographer algorithm itself. The `cartographer-module` on your robot polls
+
+{{< /tabs >}}
 
 1. Click **Save config** at the bottom of the page.
 
@@ -287,3 +313,21 @@ This can result in errors or failed requests for a map, however, this will not a
 Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+When run in "offline" mode (i.e., with data that was previously captured from a LiDAR and optional IMU), only "Create new map" or "Update existing map" are supported ("Localize only" is not supported), and the algorithm always executes in the cloud.
