@@ -279,6 +279,10 @@ Then, go to the **Data** tab to view pictures that contain the blue colored item
 Your pet photographer is now set up, place it in an area your pet frequently visits and don't forget to attach the colored object to your pet.
 Then, check the [**Data** tab](/manage/data/view/)
 
+If you want to checkout more, tutorials, you may enjoy:
 {{< cards >}}
 {{% card link="/tutorials/services/try-viam-color-detection.md" %}}
+{{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
+{{% card link="/tutorials/projects/guardian/" %}}
+{{% card link="/tutorials/projects/send-security-photo/" %}}
 {{< /cards >}}
