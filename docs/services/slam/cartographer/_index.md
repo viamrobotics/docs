@@ -83,6 +83,7 @@ In this mode, the cartographer-module on your robot acts as a stub and another c
 
 In this mode, the cartographer-module on your robot actually executes the Cartographer algorithm itself. The `cartographer-module` on your robot polls
 
+{{% /tab %}}
 {{< /tabs >}}
 
 1. Click **Save config** at the bottom of the page.
