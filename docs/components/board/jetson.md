@@ -13,7 +13,7 @@ tags: ["board", "components"]
 
 Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
-If you have a CSI camera, follow [these instructions](/extend/modular-resources/examples/csi/) to configure it using the `viam:camera:csi` model.
+If you have a CSI camera, follow [these instructions](/modular-resources/examples/csi/) to configure it using the `viam:camera:csi` model.
 
 {{% /alert %}}
 

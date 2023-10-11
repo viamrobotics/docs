@@ -5,11 +5,13 @@ weight: 70
 type: "docs"
 description: "Add an ML model modular service backed by NVIDIA's Triton Server."
 tags: ["ml", "model training", "services"]
+aliases:
+  - "/extend/modular-resources/examples/triton//"
 # SMEs: Abe Winter, Andrew Morrow
 ---
 
 Viam provides a MLModel service resource backed by NVIDIA's [Triton Inference Server](https://developer.nvidia.com/triton-inference-server), open-source software that makes AI model deployment and execution seamless and standardized.
-Configure this MLModel service as a [modular resource](/extend/modular-resources/) on your robot with a [`jetson` board](/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
+Configure this MLModel service as a [modular resource](/modular-resources/) on your robot with a [`jetson` board](/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
 
 Usage information is also available on [GitHub](https://github.com/viamrobotics/viam-mlmodelservice-triton).
 
@@ -80,7 +82,7 @@ Add the following to your `"services"` array:
 
 The model will now be configured with a card like the following:
 
-![The triton service card in the Viam app config builder, showing deployment options.](/extend/modular-resources/triton/triton-config-builder.png)
+![The triton service card in the Viam app config builder, showing deployment options.](/modular-resources/triton/triton-config-builder.png)
 
 Note that the parameters shown, `"model_path"`, `"label_path"`, and `"num_threads"` are not applicable for this module, and should be left blank.
 Ignore this card's interface and move to [creating a model repository](#create-a-repository-to-store-the-ml-model-to-deploy).
