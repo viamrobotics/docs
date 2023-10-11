@@ -101,7 +101,7 @@ To be able to run your code from your board, you need to install the relevant SD
    mkdir robot
    ```
 
-3. Then install the Viam Python SDK and the VLC module **into that folder**:
+3. Then install the Viam Python SDK and other required dependencies **into that folder**:
 
    ```sh {class="command-line" data-prompt="$"}
    pip3 install --target=robot viam-sdk <other-required-dependencies>
