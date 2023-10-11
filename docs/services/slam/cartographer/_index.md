@@ -53,9 +53,9 @@ Follow the instructions below to set up the `csi-cam` module on your robot:
 1. In the resulting `SLAM` service configuration pane, configure the `"data_dir"` and `"sensors"` **Attributes** as follows:
 
    - `"data-dir"`: Provide the path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>.
-      Example: `"data-dir": "/home/my-username/cartographer-directory"`
+     Example: `"data-dir": "/home/my-username/cartographer-directory"`
    - `"sensors"`: Provide the `name` of the configured movement sensor that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/).
-      Example: `"sensors": ["my-rplidar"]`
+     Example: `"sensors": ["my-rplidar"]`
 
    See the [Attributes](#attributes) section for more information on the other attributes.
 
@@ -152,9 +152,7 @@ Note: This example includes configuration for both the `rplidar` and `cartograph
         "data_dir": "/Users/my-username/cartographer-directory",
         "data_rate_msec": 200,
         "map_rate_sec": 60,
-        "sensors": [
-          "my-rplidar"
-        ]
+        "sensors": ["my-rplidar"]
       }
     }
   ],
@@ -228,7 +226,7 @@ Watch a map start to appear.
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
 | `data_dir` | string | **Required** | Path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
-| `sensors` | string | **Required** | Names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
+| `sensors` | string[] | **Required** | Array of one or more names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
 | `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
 | `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
 | `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
