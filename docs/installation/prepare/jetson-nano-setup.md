@@ -84,6 +84,7 @@ For a Jetson Orin Nano, reference the following:
 | 3, 5 | `7` | `i2c2` |
 | 27, 28 | `1` | `i2c8` |
 | 19, 21, 23, 24, 26 | `0` | `spi1` |
+| 13, 16, 18, 22, 37 | `2` | `spi3` |
 | 15 | | `pwm1` |
 | 33 | | `pwm5` |
 

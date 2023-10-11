@@ -121,7 +121,6 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
   - Do not run `sudo apt install nvidia-jetpack` in your terminal until after `sudo reboot` has completed.
   - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable.
   - It is normal for JetPack installation to take a very long time, up to an hour or more.
- 
 - If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
