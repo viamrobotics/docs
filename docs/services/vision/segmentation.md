@@ -15,7 +15,7 @@ The "objects" are usually a list of point clouds with associated metadata, like 
 They can also be single points, like with the `obstacles_distance` model.
 
 3D object segmentation is useful for obstacle detection.
-See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rover-base/) for an example of automating obstacle avoidance with 3D object segmentation.
+See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rover-base/#next-steps-automate-obstacle-detection) for an example of automating obstacle avoidance with 3D object segmentation.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
