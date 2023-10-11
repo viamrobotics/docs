@@ -523,7 +523,7 @@ myBaseTurningRadius := properties.TurningRadiusMeters
 
 ### GetGeometries
 
-Get all the geometries associated with the base in its current configuration, in the frame of the base.
+Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
