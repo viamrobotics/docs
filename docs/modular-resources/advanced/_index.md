@@ -23,7 +23,7 @@ aliases:
 
 [Modular resources](/modular-resources/) provided by custom {{< glossary_tooltip term_id="module" text="modules" >}} are the preferred method of creating custom resource implementations.
 
-These options are provided for advanced users who are unable to use the modular resource system with the robot deployments.
+These options are provided for advanced users who are unable to use the modular resource system with their robot deployments.
 
 {{% /alert %}}
 
