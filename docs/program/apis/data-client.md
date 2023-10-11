@@ -14,7 +14,7 @@ tags:
     "robot api",
     "cloud management",
     "data management",
-    "data"
+    "data",
   ]
 ---
 
@@ -108,7 +108,7 @@ file_id = await data_client.binary_data_capture_upload(
     method_parameters=None,
     tags=["tag_1", "tag_2"],
     data_request_times=[time_requested, time_received],
-    binary_data= b"Some data"
+    binary_data=b"Some data"
 )
 ```
 
@@ -169,7 +169,7 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 
 **Parameters:**
 
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data.  See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
