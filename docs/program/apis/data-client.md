@@ -57,7 +57,7 @@ async def main():
 
     # Make a ViamClient
     viam_client = await connect()
-    # Instantiate a DataClient called "data_client" to run data client API methods on
+    # Instantiate a DataClient to run data client API methods on
     data_client = viam_client.data_client
 
     viam_client.close()
