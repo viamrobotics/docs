@@ -99,7 +99,7 @@ For a Jetson AGX Orin, reference the following:
 | I2C_GP5_DAT, I2C_GP5_CLK | 27, 28 | `1` | `i2c8` | `/dev/i2c-8` | |
 | SPI1_DOUT, SPI1_DIN, SPI1_SCK, SPI1_CS0, SPI1_CS1 | 19, 21, 23, 24, 26 | `0` | `spi1` | `/dev/spidev0.0`, `/dev/spidev0.1` | Must be enabled to use SPI bus, must add `spidev` to `/etc/modules` |
 
-Note that I2C buses are not configurable through <file>jetson-io.py</file>.
+Note that I2C buses do not need to be configured.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
 ## Troubleshooting
