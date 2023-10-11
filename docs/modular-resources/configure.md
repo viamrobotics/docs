@@ -181,7 +181,7 @@ If the module requires you to configure specific **Attributes**, click the **URL
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-The following is an example configuration for for the [Intel Realsense module](https://app.viam.com/module/viam/realsense).
+The following is an example configuration for the [Intel Realsense module](https://app.viam.com/module/viam/realsense).
 The configuration adds `viam:camera:realsense` as a modular resource from the module `viam:realsense`.
 The custom model is configured as a component with the name "my-realsense".
 
