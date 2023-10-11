@@ -88,7 +88,7 @@ For a Jetson Orin Nano, reference the following:
 | 15 | | `pwm1` |
 | 33 | | `pwm5` |
 
-Note that I2C buses do not need to be configured.
+Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
 ## Troubleshooting
