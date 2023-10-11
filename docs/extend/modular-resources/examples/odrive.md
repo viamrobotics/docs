@@ -147,65 +147,65 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
 
 Paste in the following configuration, depending on whether you are using a `serial` or `canbus` connection:
 
-   {{< tabs name="JSON Template by connection">}}
-   {{% tab name="Serial" %}}
+{{< tabs name="JSON Template by connection">}}
+{{% tab name="Serial" %}}
 
-   ```json
-   {
-     "components": [
-       {
-         "name": "<your-odrive-name>",
-         "model": "viam:odrive:serial",
-         "type": "motor",
-         "namespace": "rdk",
-         "attributes": {
-           "serial_number": "<your-odrive-serial-number>",
-           "odrive_config_file": "<local/path/to/motor/config.json>"
-         },
-         "depends_on": []
-       }
-     ],
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_odrive",
-         "module_id": "viam:odrive",
-         "version": "0.0.13"
-       }
-     ]
-   }
-   ```
+```json
+{
+  "components": [
+    {
+      "name": "<your-odrive-name>",
+      "model": "viam:odrive:serial",
+      "type": "motor",
+      "namespace": "rdk",
+      "attributes": {
+        "serial_number": "<your-odrive-serial-number>",
+        "odrive_config_file": "<local/path/to/motor/config.json>"
+      },
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_odrive",
+      "module_id": "viam:odrive",
+      "version": "0.0.13"
+    }
+  ]
+}
+```
 
-   {{% /tab %}}
-   {{% tab name="Canbus" %}}
+{{% /tab %}}
+{{% tab name="Canbus" %}}
 
-   ```json
-   {
-     "components": [
-       {
-         "name": "<your-odrive-name>",
-         "model": "viam:odrive:canbus",
-         "type": "motor",
-         "namespace": "rdk",
-         "attributes": {
-           "canbus_node_id": <int>
-         },
-         "depends_on": []
-       }
-     ],
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_odrive",
-         "module_id": "viam:odrive",
-         "version": "0.0.13"
-       }
-     ]
-   }
-   ```
+```json
+{
+  "components": [
+    {
+      "name": "<your-odrive-name>",
+      "model": "viam:odrive:canbus",
+      "type": "motor",
+      "namespace": "rdk",
+      "attributes": {
+        "canbus_node_id": <int>
+      },
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_odrive",
+      "module_id": "viam:odrive",
+      "version": "0.0.13"
+    }
+  ]
+}
+```
 
-   {{% /tab %}}
-   {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 To save your changes, click **Save config** at the bottom of the page.
 
@@ -217,65 +217,65 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
 
 Paste in the following configuration, depending on whether you are using a `serial` or `canbus` connection:
 
-   {{< tabs name="JSON Example by connection">}}
-   {{% tab name="Serial" %}}
+{{< tabs name="JSON Example by connection">}}
+{{% tab name="Serial" %}}
 
-   ```json
-   {
-     "components": [
-       {
-         "name": "my-odrive",
-         "model": "viam:odrive:serial",
-         "type": "motor",
-         "namespace": "rdk",
-         "attributes": {
-           "serial_number": "NUM000",
-           "odrive_config_file": "/etc/odrive/config.json"
-         },
-         "depends_on": []
-       }
-     ],
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_odrive",
-         "module_id": "viam:odrive",
-         "version": "0.0.13"
-       }
-     ]
-   }
-   ```
+```json
+{
+  "components": [
+    {
+      "name": "my-odrive",
+      "model": "viam:odrive:serial",
+      "type": "motor",
+      "namespace": "rdk",
+      "attributes": {
+        "serial_number": "NUM000",
+        "odrive_config_file": "/etc/odrive/config.json"
+      },
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_odrive",
+      "module_id": "viam:odrive",
+      "version": "0.0.13"
+    }
+  ]
+}
+```
 
-   {{% /tab %}}
-   {{% tab name="Canbus" %}}
+{{% /tab %}}
+{{% tab name="Canbus" %}}
 
-   ```json
-   {
-     "components": [
-       {
-         "name": "my-odrive",
-         "model": "viam:odrive:canbus",
-         "type": "motor",
-         "namespace": "rdk",
-         "attributes": {
-           "canbus_node_id": 0
-         },
-         "depends_on": []
-       }
-     ],
-     "modules": [
-       {
-         "type": "registry",
-         "name": "viam_odrive",
-         "module_id": "viam:odrive",
-         "version": "0.0.13"
-       }
-     ]
-   }
-   ```
+```json
+{
+  "components": [
+    {
+      "name": "my-odrive",
+      "model": "viam:odrive:canbus",
+      "type": "motor",
+      "namespace": "rdk",
+      "attributes": {
+        "canbus_node_id": 0
+      },
+      "depends_on": []
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_odrive",
+      "module_id": "viam:odrive",
+      "version": "0.0.13"
+    }
+  ]
+}
+```
 
-   {{% /tab %}}
-   {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 To save your changes, click **Save config** at the bottom of the page.
 
