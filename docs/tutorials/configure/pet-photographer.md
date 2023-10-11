@@ -22,10 +22,14 @@ Smart machines are an integral part of our daily lives.
 From our phones to traffic lights, these machines rely on their ability to process and respond to data.
 However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
-This tutorial will guide you through setting your camera up with the color filter module to capture and store images of your pet wearing a blue collar in [Viam's cloud](/services/data/#cloud-sync).
-Once you've positioned your configured camera in a location where your cat or dog is likely to appear in frame, the camera will use the data management service to periodically take pictures.
-Then, before the images are stored in Viam's cloud, the color filter module will sift images and only store them if the color blue selected is present.
-You can follow these steps to enhance your data management whether you're configuring a camera to take pictures of your pet, or working with any robot equipped with a [camera](/components/camera/) component.
+The filter {{< glossary_tooltip term_id="module" text="module" >}} allows you to filter image data from a robot based on whether a certain condition is met.
+For example, if a specified color is present.
+This is useful for smart machines like bird feeders, which you could program to take a picture every five seconds and then store only pictures containing the distinctive red color that robins have.
+Another use case is to make a pet photographer:
+
+1. Set up a webcam in your home in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
+2. Attach a colored object, like a blue collar, to your pet.
+3. Set up the color filter module, which will sift images and only store them if your pet and their easily identifiable colored object is present.
 
 {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="700x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
@@ -50,19 +54,20 @@ If your pet already has a distinct color that is different from their environmen
 
 Here's how to get started:
 
-1. Install the [Go](https://go.dev/dl/) on your local development computer.
+1. Install [Go](https://go.dev/dl/) on your robot's computer.
 
 1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
 
 1. Follow the steps on the Setup tab of your robot to install [`viam-server`](/installation/) and connect to your robot.
 
-1. Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
+1. For this tutorial we are using a filter module, which you need to get from GitHub.
+   Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
 
 ```{class="command-line" data-prompt="$"}
 git clone https://github.com/viam-labs/modular-filter-examples.git
 ```
 
-### Set up your camera
+### Configure your camera
 
 Navigate to your robot's page on the app and click on the **Config** tab.
 
@@ -79,7 +84,7 @@ Select the camear you want to use, then click **Save config**
 
 ## Add services
 
-After you've finished setting up your robot's components, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images:
+After you've finished setting up your robot's camera, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images:
 
 ### Vision service to detect color
 
@@ -179,11 +184,17 @@ Click **Save Config** and head back to the **Builder** mode.
 
 ## Configure the color filter camera
 
-Before you can interact with the vision and data management services, you must configure your camera to filter color and store photos to Viam's cloud.
+With the vision and data management services configured, you can now configure your camera to filter by color and store photos to Viam's cloud.
 
 ### Configure the module's executable
 
-This tutorial makes use of [Viam's color filter example](https://github.com/viam-labs/modular-filter-examples/tree/main/colorfilter). However, you can modify the filter's source code or write your own filter for different components using [this guide](/extend/modular-resources/create/).
+You cloned the example code for the [modular filter examples](https://github.com/viam-labs/modular-filter-examples/) when [setting up](#set-up).
+This tutorial makes use of [Viam's color filter example](https://github.com/viam-labs/modular-filter-examples/tree/main/colorfilter).
+
+{{< alert title="Tip" color="tip" >}}
+To filter image data based on another constraint, modify the filter's source code.
+You can also write your own filter for different components using [this guide](/extend/modular-resources/create/).
+{{< /alert >}}
 
 Navigate to the `modular-filter-examples/colorfilter/module` directory on your robot's terminal and run the following command:
 
@@ -191,22 +202,19 @@ Navigate to the `modular-filter-examples/colorfilter/module` directory on your r
 go build
 ```
 
-This command compiles the source code in the colorfilter/module directory and generate an executable with the same name as the module, which is 'colorfilter'.
+This command compiles the source code in the colorfilter/module directory and generates an executable with the same name as the module, which is 'colorfilter'.
 
-{{< alert title="Tip" color="tip" >}}
-Go to the <file>colorfilter/module</file> directory within the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
+Next, go to the <file>colorfilter/module</file> directory within the color filter module you cloned and get the absolute path to your `colorfilter` module for later use by running:
 
 ```sh {class="command-line" data-prompt="$"}
 realpath colorfilter
 ```
 
-{{< /alert >}}
-
 Read [Configure a local module](https://docs.viam.com/extend/modular-resources/configure/#configure-a-local-module) for more information on configuring a local module.
 
 ### Add local module
 
-Select the **Modules** subtab in the **Config** panel to upload the local color filter module to your robot's system in the Viam app.
+Select the **Modules** subtab in the **Config** panel to configure the local color filter module for your robot's system in the Viam app.
 
 In the **Add local module** section, enter the name of your module (`colorfilter`) along with the absolute path to the filter's executable and click **Add module**.
 Then, click **Save config**.
@@ -223,12 +231,12 @@ Then, click **Save config**.
 
 1. On the next screen:
 
-   - Select the select camera from the drop down menu.
-   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
-   - Enter a name for this instance of your modular resource.
-     This name must be different from the module name.
+   1. Select the camera from the drop down menu.
+   1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
+   1. Enter a name for this instance of your modular resource.
+      This name must be different from the module name.
 
-     {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
+   {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
 1. Click **Create** to create the modular resource component.
 
