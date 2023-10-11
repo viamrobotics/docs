@@ -214,10 +214,15 @@ Read [Configure a local module](https://docs.viam.com/extend/modular-resources/c
 
 ### Add local module
 
-Select the **Modules** subtab in the **Config** panel to configure the local color filter module for your robot's system in the Viam app.
+When configuring the color filter module for your robot in the Viam app, you must provide the absolute path to the color filter module on the robot's computer.
+This ensures that the Viam app knows where to find the module for remote access.
 
-In the **Add local module** section, enter the name of your module (`colorfilter`) along with the absolute path to the filter's executable and click **Add module**.
-Then, click **Save config**.
+To do this, follow these steps:
+
+1. Select the **Modules** subtab in the **Config** panel to configure the local color filter module for your robot's system in the Viam app.
+1. You identified your `colorfilter` module's path with `realpath` when you [configured your modules executable](#configure-the-modules-executable)
+   In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable and click **Add module**.
+1. Then, click **Save config**.
 
 ![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
 
