@@ -63,7 +63,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
        <td><code>visibility</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can make a private module public using the <code>viam module update</code> command, but you can't go private if you start out public.<br><br>Default: <code>private</code></td>
+       <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command, but once you make a module public, you cannot change it back to private.<br><br>Default: <code>private</code></td>
      </tr>
      <tr>
        <td><code>url</code></td>
