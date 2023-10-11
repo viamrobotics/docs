@@ -5,10 +5,12 @@ weight: 70
 type: "docs"
 description: "Add an ML model modular-resource-based service which uses TensorFlow Lite to classify audio samples."
 tags: ["ml", "model training", "services"]
+aliases:
+  - "/extend/modular-resources/examples/tflite-module/"
 # SMEs: Andrew Morrow
 ---
 
-Viam provides an example [modular resource](/extend/modular-resources/) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
+Viam provides an example [modular resource](/modular-resources/) written in C++ that extends the [ML model](/services/ml/) service to run any TensorFlow Lite model.
 The example includes an inference client program as well, which generates audio samples and uses the modular resource to classify the audio samples based on a pre-trained model.
 
 This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.

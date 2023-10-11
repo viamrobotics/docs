@@ -30,7 +30,7 @@ Most robots with a COMPONENT need at least the following hardware (optional):
 
 ## Configuration
 
-For configuration information, click on one of the supported COMPONTENT models:
+For configuration information, click on one of the supported COMPONENT models:
 
 <!-- prettier-ignore -->
 | Model               | Description                                                         |
@@ -38,7 +38,7 @@ For configuration information, click on one of the supported COMPONTENT models:
 | [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
 | [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
 
-If you want to use another COMPONENT model with Viam, you can [define a custom component](../../extend/).
+If you want to use another COMPONENT model with Viam, you can create a [modular resource](/modular-resources/) to add support for it.
 
 ## Control your board with Viam's client SDK libraries
 
