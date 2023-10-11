@@ -11,19 +11,11 @@ aliases:
 # SMEs: Kat, Jeremy, John, Kim, Esha, Tess
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) is a C++ library that takes as input 2D or 3D LiDAR data, and optionally inertial measurement unit (IMU) data and/or odometry data, from a robot and produces as output a dense SLAM map and the robot's trajectory within the map.
+[The Cartographer Project](https://github.com/cartographer-project) is a C++ library that performs dense SLAM using 2D or 3D LiDAR data and optionally inertial measurement unit (IMU) and/or odometry data.
 
-Viam's `cartographer-module` wraps the Cartographer library as a Viam [modular resource](/extend/modular-resources/). `cartographer-module` is hosted in the [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer) GitHub repond includes the `viam:slam:cartographer` {{< glossary_tooltip term_id="model-namespace-triplet" text="namespaced">}} custom [model](/extend/modular-resources/key-concepts/#models) of SLAM service. `cartographer-module` currently supports taking 2D LiDAR data and IMU data as inputs; support for taking 3D LiDAR data and odometry data as input may be added in the future. 
+To use Cartographer with Viam, use `cartographer-module` from [`viam-cartographer`](https://github.com/viamrobotics/viam-cartographer), which wraps the Cartographer library as a Viam [modular resource](/extend/modular-resources/).
 
-Since Cartographer's algorithm is CPU-intensive, Viam mainly supports running `cartographer-module` in the cloud (billed according to [Viam's Pricing policy](https://www.viam.com/product/pricing)). In particular:
-
-`cartographer-module` supports being run either "online" or "offline", and in three modes, "Create new map", "Update existing map", and "Localize only."
-
-For "online", all three modes are supported. You configure `cartographer-module` on your robot along with a LiDAR and optionally an IMU. For "Create new map" or "Update existing map" mode, the `cartographer-module` on your robot acts as a stub and the algorithm is actually executed in the cloud. For "Localize only" mode, the `cartographer-module` on your robot  executes the algorithm itself (and you are not billed).
-
-For "offline" mode, only "Create new map" and "Update existing map" modes are supported. You specify a range of LiDAR and optionally IMU data that has been previously captured from a robot using Viam's [`Data Capture`](/services/data/#data-capture) to run through the algorithm, and the algorithm is always executed in the cloud.
-
-In summary:
+Since Cartographer's algorithm is CPU-intensive, Viam mainly supports running `cartographer-module` in the cloud (billed according to [Viam's Pricing policy](https://www.viam.com/product/pricing)). When run in "online" mode, you configure `cartographer-module` on your robot, but if you use "Create new map" or "Update existing map", the `cartographer-module` on your robot acts as a stub and the algorithm is actually executed in the cloud. (If you use "Localize only", the `cartographer-module` on your robot actually executes the algorithm itself.) When run in "offline" mode, you specify a range of data to run through the algorithm, and the algorithm executes in the cloud.
 
 ![cartographer module supported modes](/services/slam/add-cartographer-module-ui-linux.png)
 
