@@ -68,9 +68,10 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 ## Serial Communication Protocol Tips
 
-To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following command:
+To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
 
 ```sh { class="command-line" data-prompt="$"}
+cd ~
 sudo /opt/nvidia/jetson-io/jetson-io.py
 ```
 
@@ -93,6 +94,8 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 
 Make sure the polarity on your barrel jack power supply is matched when powering your robot.
 See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.
+
+If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
