@@ -63,7 +63,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
        <td><code>visibility</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can change this setting later using the <code>viam module update</code> command.<br><br>Default: <code>private</code></td>
+       <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can make a private module public using the <code>viam module update</code> command, but you can't go private if you start out public.<br><br>Default: <code>private</code></td>
      </tr>
      <tr>
        <td><code>url</code></td>
@@ -91,7 +91,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
      </tr>
    </table>
 
-   For example, the following represents the configuration of an example `my-module` module in the `acme` namespace:
+   For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
