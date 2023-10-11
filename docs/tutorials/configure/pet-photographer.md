@@ -240,7 +240,7 @@ Then, click **Save config**.
 
 1. Click **Create** to create the modular resource component.
 
-1. Copy the following JSON configuration into the Attributes section:
+1. Copy the following JSON configuration into the **Attributes** section:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
