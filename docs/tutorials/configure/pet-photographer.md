@@ -27,7 +27,7 @@ For example, if a specified color is present.
 This is useful for smart machines like bird feeders, which you could program to take a picture every five seconds and then store only pictures containing the distinctive red color that robins have.
 Another use case is to make a pet photographer:
 
-1. Set up a webcam in your home in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
+1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
 2. Attach a colored object, like a blue collar, to your pet.
 3. Set up the color filter module, which will sift images and only store them if your pet and their easily identifiable colored object is present.
 
@@ -264,7 +264,7 @@ Then, click **Save config**.
 
 ![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam as well as the data capture configuration capture set capture ReadImage at 0.1 frequency](/tutorials/pet-photographer/colorfiltercam-component.png)
 
-### Test your color filter camera
+## Test your color filter camera
 
 To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your robot's page.
 
