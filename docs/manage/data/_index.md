@@ -11,7 +11,7 @@ aliases:
 # SME: Aaron Casas
 ---
 
-Data Management is built into Viam allowing you to capture, sync, [view](view/), [label](label/), and [export](export/) data from your robots, as well as use [Machine Learning](/manage/ml) features to enhance your robot's capabilities.
+Data Management is built into Viam allowing you to capture, sync, [view](view/), [label](label/), and [export](export/) data from your robots, as well as use [Machine Learning](/manage/ml/) features to enhance your robot's capabilities.
 
 ![Data is captured on the robot, uploaded to the cloud, and then deleted off local storage.](/manage/data/data_management.png)
 
