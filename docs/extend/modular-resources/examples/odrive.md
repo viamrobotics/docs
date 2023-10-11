@@ -92,7 +92,7 @@ Additionally, make sure you have [enabled SPI communication on your Pi](/install
 
 4.  Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on your preferred connection method:
 
-        {{< tabs name="Connect your ODrive">}}
+    {{< tabs name="Connect your ODrive">}}
 
     {{% tab name="serial" %}}
 
