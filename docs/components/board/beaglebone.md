@@ -11,7 +11,7 @@ tags: ["board", "components"]
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow this [setup guide](/installation/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
+Follow the [setup guide](/installation/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
 
 {{% /alert %}}
 
