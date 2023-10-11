@@ -57,7 +57,7 @@ async def main():
 
     # Make a ViamClient
     viam_client = await connect()
-    # Instantiate an DataClient called "data" to run data client API methods on
+    # Instantiate a DataClient called "data" to run data client API methods on
     data_client = viam_client.data_client
 
     viam_client.close()
@@ -76,7 +76,7 @@ The data client API supports the following methods (among [others](https://pytho
 
 ### BinaryDataCaptureUpload
 
-Upload binary data collected on a robot through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).
+Upload binary data collected on your machine through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).
 Binary data can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -85,8 +85,8 @@ Binary data can be found under the **Files** subtab of the app's [**Data** tab](
 **Parameters:**
 
 - `binary_data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): The data to be uploaded, represented in bytes.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data.
-- `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data. For example, `“movement_sensor”`.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
@@ -101,14 +101,14 @@ time_requested = datetime(2023, 6, 5, 11)
 time_received = datetime(2023, 6, 5, 11, 0, 3)
 
 file_id = await data_client.binary_data_capture_upload(
-    part_id="10101", # Unique ID of the relevant robot part.
-    component_type='rdk:component:motor',
+    part_id="INSERT YOUR PART ID",
+    component_type='motor',
     component_name='left_motor',
     method_name='IsPowered',
     method_parameters=None,
     tags=["tag_1", "tag_2"],
-    data_request_times=[(time_requested, time_received)],
-    binary_data=[TODO]
+    data_request_times=[time_requested, time_received],
+    binary_data= b"Some data"
 )
 ```
 
@@ -119,7 +119,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### TabularDataCaptureUpload
 
-Upload tabular data collected on your robot from a specific [component](/components/) to the [Viam app](https://app.viam.com)..
+Upload tabular data collected on your machine through a specific [component](/components/) to the [Viam app](https://app.viam.com).
 Uploaded tabular data can be found under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -127,9 +127,9 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 
 **Parameters:**
 
-- `tabular_data` [(List[Mapping[str, Any]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list) – List of the data to be uploaded, represented tabularly as a collection of dictionaries.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data.
-- `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data. For example, `“movement_sensor”`.
+- `tabular_data` [(List[Mapping[str, Any]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): List of the data to be uploaded, represented tabularly as a collection of dictionaries.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
@@ -144,11 +144,10 @@ time_requested = datetime(2023, 6, 5, 11)
 time_received = datetime(2023, 6, 5, 11, 0, 3)
 
 file_id = await data_client.tabular_data_capture_upload(
-    part_id="10101", # Unique ID of the relevant robot part.
-    component_type='rdk:component:motor',
+    part_id="INSERT YOUR PART ID",
+    component_type='motor',
     component_name='left_motor',
     method_name='IsPowered',
-    method_parameters=None,
     tags=["tag_1", "tag_2"],
     data_request_times=[(time_requested, time_received)],
     tabular_data=[{'PowerPCT': 0, 'IsPowered': False}]
@@ -162,7 +161,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### FileUpload
 
-Upload arbitrary files stored on your robot to the [Viam app](https://app.viam.com) by file name.
+Upload arbitrary files stored on your machine to the [Viam app](https://app.viam.com) by file name.
 Uploaded files can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -170,12 +169,11 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 
 **Parameters:**
 
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data.
-- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data. For example, `“movement_sensor”`.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data.  See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
 - `file_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the file. The empty string `“”` will be assigned as the filename if one isn’t provided.
-- `method_parameters` [(Optional[Mapping[str, Any]])](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict): Optional dictionary of method parameters. No longer in active use.
 - `file_extension` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional file extension. The empty string `“”` will be assigned as the file extension if one isn’t provided.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
 - `data` [(Optional[bytes])](https://docs.python.org/3/library/stdtypes.html#bytes-objects): Optional bytes representing file data to upload.
@@ -186,14 +184,13 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 
 ```python {class="line-numbers linkable-line-numbers"}
 file_id = await data_client.file_upload(
-    part_id="10101", # Unique ID of the relevant robot part.
-    component_type='rdk:component:motor',
+    part_id="INSERT YOUR PART ID",
+    component_type='motor',
     component_name='left_motor',
     method_name='IsPowered',
-    method_parameters=None,
     tags=["tag_1", "tag_2"],
-    file_name="test"
-    file_extension="txt"
+    file_name="your-file",
+    file_extension=".txt"
 )
 ```
 
@@ -204,7 +201,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### FileUploadFromPath
 
-Upload files stored on your robot to the [Viam app](https://app.viam.com) by filepath.
+Upload files stored on your machine to the [Viam app](https://app.viam.com) by filepath.
 Uploaded files can be found under the **Files** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
@@ -212,12 +209,11 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 
 **Parameters:**
 
-- `filepath` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Absolute filepath of file to be uploaded.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data.
-- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data. For example, `“movement_sensor”`.
+- `filepath` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The absolute filepath of the file to be uploaded.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
-- `method_parameters` [(Optional[Mapping[str, Any]])](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict): Optional dictionary of method parameters. No longer in active use.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
 
 **Returns**:
@@ -226,13 +222,12 @@ Uploaded files can be found under the **Files** subtab of the app's [**Data** ta
 
 ```python {class="line-numbers linkable-line-numbers"}
 file_id = await data_client.file_upload_from_path(
-    part_id="10101", # Unique ID of the relevant robot part.
-    component_type='rdk:component:motor',
+    part_id="INSERT YOUR PART ID",
+    component_type='motor',
     component_name='left_motor',
     method_name='IsPowered',
-    method_parameters=None,
     tags=["tag_1", "tag_2"],
-    filepath="/Users/your-username/pysdk-test/test.txt"
+    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
 )
 ```
 
@@ -240,3 +235,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Find Part ID
+
+To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
+Keep architecture selection at default.
+In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
+For example:
+
+![Part ID displayed in the Viam app.](/program/data-client/grab-part-id.png)
