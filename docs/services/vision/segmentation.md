@@ -367,7 +367,7 @@ Add the vision service object to the services array in your raw JSON configurati
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
     {
-      "name": "my-obstacles-distance",
+      "name": "<segmenter_name>",
       "type": "vision",
       "namespace": "rdk",
       "model": "obstacles_distance",
