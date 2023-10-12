@@ -65,7 +65,7 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 3. Regardless of your operating system, select **Mac** and press the button that appears in Step 2 to download the Viam app config for your robot.
    Copy the path where this <file>viam.json</file> file was downloaded.
 
-   In your terminal, cd to the directory when you downloaded your pre-built binary and run the following command to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable:
+   In your terminal, `cd` to the directory where you downloaded your pre-built binary and run the following command to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable:
 
    {{< tabs name="Download pre-built binaries" >}}
    {{% tab name="Linux (x86_64)"%}}
