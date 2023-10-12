@@ -100,7 +100,9 @@ from viam.resource.base import ResourceBase
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.resource.types import Model, ModelFamily
 from viam.utils import ValueTypes
+from viam.logging import getLogger
 
+LOGGER = getLogger(__name__)
 
 class MyBase(Base, Reconfigurable):
     """
@@ -274,6 +276,7 @@ import (
     "go.viam.com/rdk/components/motor"
     "go.viam.com/rdk/resource"
     "go.viam.com/rdk/spatialmath"
+    "go.viam.com/utils"
 )
 
 // Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
@@ -624,6 +627,50 @@ Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main
 
 You need to ensure any dependencies for your module (including the Python or Go [Viam SDK](/program/)) are installed as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
+
+### Logging
+
+To enable your module to write logs to the [Viam app](https://app.viam.com/), you must add the following configuration to your respective module code.
+Once configured in this way, log messages are sent to the Viam app and appear under the **Logs** tab for your smart machine.
+
+{{< tabs name="Configure logging">}}
+{{% tab name="Python"%}}
+
+To enable your Python module to write log messages to the Viam app, add the following lines to your code:
+
+```python {class="line-numbers linkable-line-numbers"}
+# In your import block, import viam.logging getLogger:
+from viam.logging import getLogger
+
+# Before your first class or function, define the LOGGER variable:
+LOGGER = getLogger(__name__)
+```
+
+{{% /tab %}}
+{{% tab name="Go"%}}
+
+To enable your Go module to write log messages to the Viam app, add the following lines to your code:
+
+```go {class="line-numbers linkable-line-numbers"}
+# In your import() block, import the utils package from Viam:
+import(
+       ...
+       "go.viam.com/utils"
+)
+
+# Then, use the following in your functions to generate log messages:
+# Log with severity warning:
+b.logger.Warnf("error message", b.Name(), err.Error())
+# Log with severity info:
+b.logger.Infof("error message", b.Name(), err.Error())
+# Log with severity debug:
+b.logger.Debugf("error message", b.Name(), err.Error())
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The examples under [Code a new resource model](#code-a-new-resource-model) include this logging configuration.
 
 ## Next steps
 
