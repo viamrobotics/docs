@@ -9,7 +9,7 @@ tags: ["board", "components"]
 # SMEs: Susmita
 ---
 
-The `customlinux` board model supports boards like the [Pumpkin i500](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems and are not supported by other built-in Viam models.
+The `customlinux` board model supports boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems and are not supported by other built-in Viam models.
 
 To integrate a custom Linux board into your robot:
 

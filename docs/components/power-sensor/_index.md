@@ -26,6 +26,12 @@ For configuration information, click on your sensor’s model:
 | [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
 | [`renogy`](./renogy/) | solar charge controller                        |
 
+<!-- ### Modular Resources
+
+{{<modular-resources api="rdk:component:power-sensor" type="power-sensor">}} -->
+
+If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
+
 ## Control your power sensor with Viam’s client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.

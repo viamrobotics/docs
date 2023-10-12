@@ -21,6 +21,11 @@ Currently, the vision service supports the following kinds of operations:
 {{% card link="services/vision/segmentation" %}}
 {{< /cards >}}
 
+<!-- TODO: Change this page to use model names as subpages -->
+<!-- ### Modular Resources
+
+{{<modular-resources api="rdk:service:vision" type="vision">}} -->
+
 ## API
 
 Different vision service models support different methods:

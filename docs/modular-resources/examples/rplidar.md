@@ -42,7 +42,7 @@ For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/
 {{< tabs name="Add the RPlidar component">}}
 {{% tab name="Config Builder" %}}
 
-Follow the instructions below to set up the `csi-cam` module on your robot:
+Follow the instructions below to set up the `rplidar` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click **Create component** in the lower-left corner.

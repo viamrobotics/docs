@@ -41,6 +41,13 @@ For configuration information, click on one of the following models:
 | [`webgamepad`](webgamepad/) | A remote, web based gamepad. |
 | [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
+<!-- No modular resources yet -->
+<!-- ### Modular Resources
+
+{{<modular-resources api="rdk:component:input-controller" type="input-controller">}} -->
+
+If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
+
 Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
 ## Control your robot with an input controller with Viam's client SDK libraries

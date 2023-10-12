@@ -36,7 +36,9 @@ Model | Description
 ----- | -----------
 [`fake`](fake/) | A model used for testing, with no physical hardware.
 
-If you want to use another generic model with Viam, you can create a [modular resource](/modular-resources/) to add support for it.
+### Modular Resources
+
+{{<modular-resources api="rdk:component:generic" type="generic">}}
 
 ## Control your board with Viam's client SDK libraries
 
