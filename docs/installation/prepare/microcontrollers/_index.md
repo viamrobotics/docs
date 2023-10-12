@@ -63,12 +63,12 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 1. Click on the name of the robot to go to the robot's page.
 2. Click on the **Setup** tab.
 3. Regardless of your operating system, select **Mac** and press the button that appears in Step 2 to download the Viam app config for your robot.
-  Copy the path where this <file>viam.json</file> file was downloaded.
+   Copy the path where this <file>viam.json</file> file was downloaded.
 
-    In your terminal, cd to the directory when you downloaded your pre-built binary and run the following command to flash the micro-RDK directly to an ESP32 connected to your computer via data cable:
+   In your terminal, cd to the directory when you downloaded your pre-built binary and run the following command to flash the micro-RDK directly to an ESP32 connected to your computer via data cable:
 
-    {{< tabs name="Download pre-built binaries" >}}
-    {{% tab name="Linux (x86_64)"%}}
+   {{< tabs name="Download pre-built binaries" >}}
+   {{% tab name="Linux (x86_64)"%}}
 
 ```sh { class="command-line" data-prompt="$"}
 ./micro-rdk-installer-amd64-linux write-flash --app-config=<your-file-path-to/viam.json>
@@ -196,9 +196,9 @@ However, if the correct port has been selected, try the following:
 
 1. Run the installer as explained above.
 2. When prompted to select a serial port:
-    1. Hold down the "EN" or enable button on your ESP32.
-    2. With the above button held down, select the correct serial port.
-    3. Press and hold down the "EN" and "Boot" buttons at the same time. Then release both.
+   1. Hold down the "EN" or enable button on your ESP32.
+   2. With the above button held down, select the correct serial port.
+   3. Press and hold down the "EN" and "Boot" buttons at the same time. Then release both.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
