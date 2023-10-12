@@ -13,11 +13,19 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) is a C++ library that performs dense SLAM using 2D or 3D LiDAR data and optionally inertial measurement unit (IMU) and/or odometry data.
 
-Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/).
+Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
 
 {{% alert title="Info" color="info" %}}
 
-Currently, `cartographer-module` only supports taking 2D LiDAR data and optionally IMU data as input. Support for taking 3D LiDAR data and odometry data as input may be added in the future.
+Currently, the `cartographer` modular resource only supports taking 2D LiDAR data and optionally IMU data as input. Support for taking 3D LiDAR data and odometry data as input may be added in the future.
+
+{{% /alert %}}
+
+Since creating maps with Cartographer is CPU-intensive, for creating or updating a map, the `cartographer` modular resource is run in the cloud. For doing pure localization on an existing map, the `cartographer` modular resource runs on your robot. 
+
+{{% alert title="Info" color="info" %}}
+
+See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
 
 {{% /alert %}}
 
@@ -69,12 +77,6 @@ Your robot's sensor data will be captured continuously using Viam's Data Capture
 
 Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
 
-{{% alert title="Info" color="info" %}}
-
-See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
-
-{{% /alert %}}
-
 Configure the remaining attributes as follows:
 
    - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
@@ -98,12 +100,6 @@ On the Control page, you will be able to start a mapping session, which will spi
 Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to update the map.
 
 Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
-
-{{% alert title="Info" color="info" %}}
-
-See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
-
-{{% /alert %}}
 
 Configure the remaining attributes as follows:
 
