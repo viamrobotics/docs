@@ -45,6 +45,10 @@ For configuration information, click on one of the supported gantry models:
 | [`single-axis`](single-axis/) | A gantry with a singular linear rail. |
 | [`multi-axis`](multi-axis/) | A gantry with multiple linear rails. Composed of multiple `single-axis` gantries. |
 
+### Modular Resources
+
+{{<modular-resources api="rdk:component:gantry" type="gantry">}}
+
 ## Control your gantry with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.

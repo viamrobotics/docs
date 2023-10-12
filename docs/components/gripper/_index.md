@@ -24,7 +24,9 @@ Model | Description
 [`softrobotics`](./softrobotics/) | The _m_Grip soft gripper by [Soft Robotics](https://www.softroboticsinc.com/) |
 [`fake`](fake/) | A model used for testing, with no physical hardware. |
 
-If you have another gripper model, you can create a [modular resource](/modular-resources/) to add support for it.
+### Modular Resources
+
+{{<modular-resources api="rdk:component:gripper" type="gripper">}}
 
 ## Control your gripper with Viam's client SDK libraries
 

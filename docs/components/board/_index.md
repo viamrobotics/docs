@@ -50,6 +50,10 @@ For model-specific configuration information, click on one of the following mode
 | [`customlinux`](customlinux/) | A model for other linux boards. |
 | other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
 
+### Modular Resources
+
+{{<modular-resources api="rdk:component:board" type="board">}}
+
 ## Attribute Configuration
 
 The following configuration attributes are available for every board model besides the `numato` and `pca9685` peripherals and `fake`.

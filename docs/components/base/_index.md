@@ -37,6 +37,10 @@ For configuration information, click on one of the supported base models:
 | [`agilex-limo`](agilex-limo/) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
+### Modular Resources
+
+{{<modular-resources api="rdk:component:base" type="base">}}
+
 ## Control your base with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
