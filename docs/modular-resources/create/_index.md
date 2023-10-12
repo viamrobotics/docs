@@ -517,6 +517,7 @@ import (
     "go.viam.com/rdk/examples/customresources/models/mybase"
 )
 
+
 func main() {
     // NewLoggerFromArgs will create a golog.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
