@@ -477,7 +477,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with three fields, `width_meters`, `turning_radius_meters`, and `wheel_circumference_meters` representing the width, turning radius, and wheel circumference of the physical base in meters *(m)*.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with three fields, `width_meters`, `turning_radius_meters`, and `wheel_circumference_meters` representing the width, turning radius, and wheel circumference of the physical base in meters _(m)_.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
 
