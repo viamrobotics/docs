@@ -477,7 +477,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with two fields, `width` and `turning_radius_meters`, representing the width and turning radius of the physical base in meters _(m)_.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with three fields, `width_meters`, `turning_radius_meters`, and `wheel_circumference_meters` representing the width, turning radius, and wheel circumference of the physical base in meters _(m)_.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
 
@@ -488,10 +488,13 @@ my_base = Base.from_robot(robot=robot, name="my_base")
 properties = await my_base.get_properties()
 
 # Get the width
-print(f"Width of base in meters: {properties.width}")
+print(f"Width of base: {properties.width_meters}")
 
 # Get the turning radius
-print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
+print(f"Turning radius of base: {properties.turning_radius_meters}")
+
+# Get the wheel circumference
+print(f"Wheel circumference of base: {properties.wheel_circumference_meters}")
 ```
 
 {{% /tab %}}
@@ -504,7 +507,7 @@ print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with two fields, `WidthMeters` and `TurningRadiusMeters`, representing the width and turning radius of the physical base in meters _(m)_.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with three fields, `WidthMeters`, `TurningRadiusMeters`, and `WheelCircumferenceMeters` representing the width, turning radius, and wheel circumference of the physical base in meters _(m)_.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
@@ -520,6 +523,9 @@ myBaseWidth := properties.WidthMeters
 
 // Get the turning radius
 myBaseTurningRadius := properties.TurningRadiusMeters
+
+// Get the wheel circumference
+myBaseWheelCircumference := properties.WheelCircumferenceMeters
 ```
 
 {{% /tab %}}
