@@ -654,18 +654,18 @@ LOGGER = getLogger(__name__)
 To enable your Go module to write log messages to the Viam app, add the following lines to your code:
 
 ```go {class="line-numbers linkable-line-numbers"}
-# In your import() block, import the utils package from Viam:
+// In your import() block, import the utils package from Viam:
 import(
        ...
        "go.viam.com/utils"
 )
 
-# Then, use the following in your functions to generate log messages:
-# Log with severity warning:
+// Then, use the following in your functions to generate log messages:
+// Log with severity warning:
 b.logger.Warnf("error message", b.Name(), err.Error())
-# Log with severity info:
+// Log with severity info:
 b.logger.Infof("error message", b.Name(), err.Error())
-# Log with severity debug:
+// Log with severity debug:
 b.logger.Debugf("error message", b.Name(), err.Error())
 ```
 
