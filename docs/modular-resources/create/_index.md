@@ -102,8 +102,8 @@ from viam.resource.types import Model, ModelFamily
 from viam.utils import ValueTypes
 from viam.logging import getLogger
 
-
 LOGGER = getLogger(__name__)
+
 
 class MyBase(Base, Reconfigurable):
     """
