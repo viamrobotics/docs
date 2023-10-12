@@ -159,5 +159,3 @@ The following attributes are available for the `viam:camera:csi` model:
 | `debug` | boolean | Optional | Whether or not you want debug input from this camera in your robot's logs. <br> Default: `false` |
 
 Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
-
-For more information, see [installing local modules](/modular-resources/configure/#local-modules).
