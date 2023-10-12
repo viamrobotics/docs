@@ -67,6 +67,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 **Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
 FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with `viam-server`.
 For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well to support `viam-server`.
+
 In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
 FUSE is not required for macOS installations of `viam-server`.
 
