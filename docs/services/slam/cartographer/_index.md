@@ -36,6 +36,8 @@ The source code for this module is available on the [`viam-cartographer` GitHub 
 
 ## Online mode
 
+In this mode, you configure the `cartographer` module on your robot along with a LiDAR and optional IMU.
+
 ### Requirements
 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
