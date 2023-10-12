@@ -65,15 +65,28 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 **Related Error:** `dlopen(): error loading libfuse.so.2`
 
 **Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
-FUSE is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box.
-For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) does not include FUSE with its default installation.
+FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with `viam-server`.
+For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well to support `viam-server`.
 In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
+FUSE is not required for macOS installations of `viam-server`.
+
+{{% alert title="Important" color="note" %}}
+`viam-server` requires FUSE version 2 (`libfuse2`), _not_ FUSE version 3 (`fuse3` or `libfuse3`) or versions of FUSE previous to FUSE version 2 (`fuse`).
+To support a `viam-server` installation, only install `libfuse2`.
+{{% /alert %}}
 
 **Solution:** If you receive this error, install FUSE on your Linux system according to one of the following steps:
 
-- If installing `viam-server` on a Raspberry Pi running Raspberry Pi OS (Debian GNU/Linux 12 bookworm) or later, install FUSE version 2 with the following command:
+- If installing `viam-server` on a Raspberry Pi running Raspberry Pi OS (Debian GNU/Linux 12 bookworm or later), install FUSE version 2 with the following command:
 
   ```sh {class="command-line" data-prompt="$"}
+  sudo apt install libfuse2
+  ```
+
+- If installing `viam-server` on Ubuntu 22.04 or later, install FUSE version 2 with the following command:
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo add-apt-repository universe
   sudo apt install libfuse2
   ```
 
