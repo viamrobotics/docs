@@ -140,7 +140,7 @@ The Robot Development Kit (RDK) `viam-server` provides automatically manages mod
 
 You can configure your module to write log messages to the Viam app.
 Log messages written to the app appear under the **Logs** tab for the smart machine running the module.
-See [Configuring logging](/modular-resources/create/#configuring-logging) for more information.
+See [Configure logging](/modular-resources/create/#configure-logging) for more information.
 
 ### Dependency Management
 

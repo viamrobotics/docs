@@ -630,7 +630,7 @@ Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main
 You need to ensure any dependencies for your module (including the Python or Go [Viam SDK](/program/)) are installed as well.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
-### Logging
+### Configure logging
 
 To enable your module to write logs to the [Viam app](https://app.viam.com/), you must add the following configuration to your respective module code.
 Once configured in this way, log messages are sent to the Viam app and appear under the **Logs** tab for your smart machine.
