@@ -217,7 +217,7 @@ viam board list --organization=my-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `upload`      | upload a new board definition file to the Viam app | **board definitions file** : provide the board definition file to upload, in JSON form. |
+| `upload`      | upload a new board definition file to the Viam app | **board definition file** : provide the board definition file to upload, in JSON form. |
 | `download`      | download an existing board definition file | - |
 | `list`      | list available board definition files | - |
 | `--help`      | return help      | - |
