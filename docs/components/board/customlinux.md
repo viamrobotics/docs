@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure a customlinux board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
-# SMEs: Susmita
+# SMEs: Alan, Olivia, Susmita
 ---
 
 The `customlinux` board model supports boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems and are not supported by other built-in Viam models.
@@ -28,8 +28,8 @@ Randomly entering numbers may result in hardware damage.
 
 The pin mappings file describes the location of each GPIO pin on the board so that `viam-server` can access the pins correctly.
 
-On your `customlinux` board, create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings.
-Use the template and example below to create a JSON file with a single key, `"pins"`, whose value is a list of objects that each represent a pin on the board.
+On your `customlinux` board, create a JSON file in the directory of your choice with your board's pin mappings.
+Use the template and example below to populate the JSON file with a single key, `"pins"`, whose value is a list of objects that each represent a pin on the board.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -239,7 +239,7 @@ The following parameters are available for each pin object:
 | `device_name` | string | **Required** | The name of the device in <file>/dev</file> that this pin is attached to. Multiple pins may be attached to the same GPIO chip.  See [GPIO info tips](#tips-for-finding-gpio-information) below. <br> Example: `"gpiochip0"`.
 | `line_number` | integer | **Required** | The line on the chip that is attached to this pin. See [GPIO info tips](#tips-for-finding-gpio-information) below. <br> Example: `81`. |
 | `pwm_chip_sysfs_dir` | string | Optional | Uniquely specifies which PWM device within [sysfs](https://en.wikipedia.org/wiki/Sysfs) this pin is connected to. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `3290000.pwm`. |
-| `pwm_id` | integer | Optional | The power management ID of the pin. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `-1`. |
+| `pwm_id` | integer | Optional | The line number on the PWM chip. See [PWM info tips](#tips-for-finding-pwm-information) below. <br> Example: `-1`. |
 
 {{% alert title="Tip" color="tip" %}}
 
