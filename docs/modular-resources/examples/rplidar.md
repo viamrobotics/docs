@@ -49,23 +49,6 @@ Follow the instructions below to set up the `rplidar` module on your robot:
 1. Select **Camera**, then select `rplidar`.
    You can also search for "rplidar".
 1. Click **Add module**, give your component a name of your choice, then click **Create**.
-1. On the new component panel, copy and paste the following JSON object into the attributes field:
-
-   ```json
-   {
-     "device_path": "/dev/tty.usbserial-XXX"
-   }
-   ```
-
-   Replace the `XXX` at the end of the `device_path` value in the attributes configuration with the number at the end of your device path.
-   If you are on an M1 or M2 Macbook, determine the device path by running the following command:
-
-   ```sh {class="command-line" data-prompt="$"}
-   ls /dev/ | grep tty.usbserial
-   ```
-
-   For example, you may see `tty.usbserial-130`, in which case your device path would be `/dev/tty.usbserial-130`.
-
 1. Click **Save config** at the bottom of the page.
 
 {{% /tab %}}
@@ -82,9 +65,7 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
       "model": "viam:lidar:rplidar",
       "type": "camera",
       "namespace": "rdk",
-      "attributes": {
-        "device_path": "</path/to/serial_device>"
-      },
+      "attributes": {},
       "depends_on": []
     }
   ],
@@ -115,9 +96,7 @@ Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode
       "model": "viam:lidar:rplidar",
       "type": "camera",
       "namespace": "rdk",
-      "attributes": {
-        "device_path": "/dev/tty.usbserial-130"
-      },
+      "attributes": {},
       "depends_on": []
     }
   ],
