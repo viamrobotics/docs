@@ -47,8 +47,15 @@ In addition, you must [add the `rplidar` module to your robot](/extend/modular-r
 Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
 
 Physically connect the RPlidar to your robot.
-Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
-For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
+
+If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
+For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
+This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
+
+If you need a mount plate for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
+
+- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
+- [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
 ### Configuration
 
@@ -322,26 +329,5 @@ While in a mapping session, you should:
 - stay relatively (but not extremely) close to walls
 - use a robot that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
-
-## Troubleshooting
-
-### Mount an RPlidar to the rover
-
-If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
-For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
-This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
-
-If you need a mount plate for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
-
-- [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
-- [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
-
-### Known Issues
-
-#### Maps not appearing in UI
-
-When generating a larger map, it will take longer for Cartographer to return the desired map.
-This can result in errors or failed requests for a map, however, this will not affect the `viam-server` or `cartographer-module` process.
-Re-requesting the map can and should be successful, although there is currently a fundamental limit for the size of map that can be transmitted to the UI and this issue will become more common as you approach it.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
