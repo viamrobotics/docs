@@ -76,7 +76,7 @@ FUSE is not required for macOS installations of `viam-server`.
 To support a `viam-server` installation, you must install `libfuse2`.
 {{% /alert %}}
 
-**Solution:** If you receive this error, install FUSE on your Linux system according to one of the following steps:
+**Solution:** If you receive this error, install FUSE version 2 on your Linux system according to one of the following steps:
 
 - If installing `viam-server` on a Raspberry Pi running Raspberry Pi OS (Debian GNU/Linux 12 bookworm or later), install FUSE version 2 with the following command:
 
