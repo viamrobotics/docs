@@ -31,12 +31,13 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
 2. Next, run the `viam module create` command to select a new custom module name and generate module metadata.
+   By default, a module is created as private.
    Run this command according to your desired visibility for your module:
 
 {{< tabs >}}
 {{% tab name="Private" %}}
 
-Get the org id for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in [the Viam App](https://app.viam.com/) and run the following command from the same directory as your custom module to generate metadata for your module:
+Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="organization" >}} from your organization's **Settings** page in [the Viam App](https://app.viam.com/) and run the following command from the same directory as your custom module to generate metadata for your module:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module create --name <your-module-name> --org-id <your-org-id>
