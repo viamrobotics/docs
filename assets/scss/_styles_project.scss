@@ -1456,6 +1456,10 @@ a.ais-Pagination-link:hover {
   width: 100%;
 }
 
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
 .ais-Highlight-highlighted {
   background-color: #f0b93f;
 }
