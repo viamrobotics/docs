@@ -291,11 +291,12 @@ You can change the **Refresh frequency** to the desired rate at which you'd like
 <!-- prettier-ignore -->
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `data_dir` | string | **Required** | Path to [the directory](#slam-mapping-modes) used for saving output internal state in <file>/internal_state</file>. |
-| `sensors` | string[] | **Required** | Array of one or more names of configured RPlidar devices providing data to the SLAM service. May not be empty. |
-| `map_rate_sec` | int | Optional | Rate of <file>/internal_state</file> generation *(seconds)*. <ul> Default: `60`. </ul> |
-| `data_rate_msec` | int | Deprecated | Rate of sensor reading collection from `sensors` *(milliseconds)*. <ul>Default: `200`.</ul> |
-| `config_params` |  map[string] string | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
+| `use_cloud_slam` | boolean | **Required** | Whether to run the Cartographer algorithm locally on the robot or in the cloud. |
+| `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
+| `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
+| `enable_mapping` | boolean | Optional | Whether to build a map or do pure localization. <ul> Default: `true` </ul> |
+| `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
+| `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 ### `config_params`
 
