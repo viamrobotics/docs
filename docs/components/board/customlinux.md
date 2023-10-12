@@ -301,7 +301,7 @@ Run the following command and look for unique strings within each [symlink](http
 ls -l /sys/class/pwm
 ```
 
-Here is example output from the `sudo gpioinfo` command on a Jetson Orin AGX:
+Here is example output from this command on a Jetson Orin AGX:
 
 ```sh {id="terminal-prompt" class="command-line" data-output="1-10"}
 total 0
