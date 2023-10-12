@@ -210,7 +210,7 @@ viam board upload --name=my-board --organization=my-org --version=1.0.0 my-board
 # download an existing board definition file named 'my-board' at version '1.0.0' for org 'my-org'
 viam board download --name=my-board --organization=my-org --version=1.0.0
 
-# list all avaialble board definition files for org 'my-org'
+# list all available board definition files for org 'my-org'
 viam board list --organization=my-org
 ```
 
