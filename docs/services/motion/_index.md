@@ -248,7 +248,7 @@ robot = await connect()
 
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("my_gripper")
-gripperPoseInWorld = await robot.get_pose(component_name=gripperName,
+gripperPoseInWorld = await motion.get_pose(component_name=gripperName,
                                           destination_frame="world")
 ```
 
