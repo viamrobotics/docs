@@ -26,9 +26,7 @@ See [Modular resources](/modular-resources/#the-viam-registry) for instructions 
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
-## Online mode
-
-### Requirements
+## Requirements
 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
 
@@ -42,7 +40,7 @@ Physically connect the RPlidar to your robot.
 Be sure to position the RPlidar so that it faces forward in the direction your robot travels.
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to your robot so that the pointed end of the RPlidar mount housing points in the direction of the front of the robot.
 
-### Configuration
+## Configuration
 
 After installing your physical RPlidar and adding the `rplidar` module per the above instructions, follow the steps below to add the `cartographer` module to your robot:
 
@@ -57,89 +55,6 @@ Follow the instructions below to set up the `cartographer` module on your robot:
    You can also search for "cartographer".
 1. Click **Add module**, give your service a name of your choice, then click **Create**.
 1. In the resulting `SLAM` service configuration pane, first choose a `"Mapping mode"`, then configure the rest of the **Attributes** for that mapping mode.
-
-{{< tabs name="Mapping mode">}}
-{{% tab name="Create new map" %}}
-
-Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
-
-On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm.
-
-Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map.
-
-Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
-
-{{% alert title="Info" color="info" %}}
-
-See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
-
-{{% /alert %}}
-
-Configure the remaining attributes as follows:
-
-- `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
-  Examples: "my-rplidar", "5"
-- `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it.
-  Examples: "my-imu", "20"
-- `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-- `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-
-If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
-
-To save your changes, click **Save config** at the bottom of the page.
-
-{{% /tab %}}
-{{% tab name="Update existing map" %}}
-
-Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
-
-On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm.
-
-Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to update the map.
-
-Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
-
-{{% alert title="Info" color="info" %}}
-
-See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
-
-{{% /alert %}}
-
-Configure the remaining attributes as follows:
-
-- `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from your Location page under "SLAM Library".
-- `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
-  Examples: "my-rplidar", "5"
-- `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it.
-  Examples: "my-imu", "20"
-- `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-- `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-
-If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
-
-To save your changes, click **Save config** at the bottom of the page.
-
-{{% /tab %}}
-{{% tab name="Localize only" %}}
-
-In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
-
-Configure the remaining attributes as follows:
-
-- `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to do pure localization on. You can see more details about the available maps from your Location page under "SLAM Library".
-- `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data polling frequency (Hz)"` for it.
-  Examples: "my-rplidar", "5"
-- `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data polling frequency (Hz)"` for it.
-  Examples: "my-imu", "20"
-- `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-- `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
-
-If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
-
-To save your changes, click **Save config** at the bottom of the page.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -264,24 +179,6 @@ To save your changes, click **Save config** at the bottom of the page.
 {{% /tab %}}
 {{< /tabs >}}
 
-Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
-
-### View the Map
-
-Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
-
-If your "Mapping mode" is "Create", enter a name for your new map and click "Start session", or if your "Mapping mode" is "Update", simply click "Start session", and wait for the slam session to finish starting up in the cloud.
-
-If your "Mapping mode" is "Localize", the existing map will appear immediately and Cartographer will try to find your robot's position on it.
-
-{{% alert title="Info" color="info" %}}
-
-Cartographer will take some time to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
-
-{{% /alert %}}
-
-You can change the **Refresh frequency** to the desired rate at which you'd like to see the map update.
-
 ### Attributes
 
 <!-- prettier-ignore -->
@@ -315,6 +212,76 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Higher values make it harder for scan matching to rotate prior scans. Relative to `occupied space weight` and `translation weight`. |
 
 For more information, see the Cartographer [algorithm walkthrough](https://google-cartographer-ros.readthedocs.io/en/latest/algo_walkthrough.html), [tuning overview](https://google-cartographer-ros.readthedocs.io/en/latest/tuning.html), and [config parameter list](https://google-cartographer.readthedocs.io/en/latest/configuration.html).
+
+## Create or update a map
+
+### Online
+
+On the **Control** tab, you can start a mapping session.
+
+When you start a mapping session:
+
+- Viam spins up a copy of cartographer-module in the cloud to execute the Cartographer algorithm.
+  Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
+- Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+- Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
+
+Once you click **End session**, the map is uploaded to the cloud(?) and visible on your Location page under **SLAM Library**.
+
+{{% alert title="Info" color="info" %}}
+
+See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
+
+{{% /alert %}}
+
+Configure these attributes as follows:
+
+- `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
+  Examples: "my-rplidar", "5"
+- `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it.
+  Examples: "my-imu", "20"
+- `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+- `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+
+If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
+
+To save your changes, click **Save config** at the bottom of the page.
+
+### Local
+
+In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
+
+Configure these attributes as follows:
+
+- `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to do pure localization on. You can see more details about the available maps from your Location page under "SLAM Library".
+- `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data polling frequency (Hz)"` for it.
+  Examples: "my-rplidar", "5"
+- `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data polling frequency (Hz)"` for it.
+  Examples: "my-imu", "20"
+- `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+- `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
+
+If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
+
+To save your changes, click **Save config** at the bottom of the page.
+
+Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+
+## View the Map
+
+Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+
+If your "Mapping mode" is "Create", enter a name for your new map and click "Start session", or if your "Mapping mode" is "Update", simply click "Start session", and wait for the slam session to finish starting up in the cloud.
+
+If your "Mapping mode" is "Localize", the existing map will appear immediately and Cartographer will try to find your robot's position on it.
+
+{{% alert title="Info" color="info" %}}
+
+Cartographer will take some time to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+
+{{% /alert %}}
+
+You can change the **Refresh frequency** to the desired rate at which you'd like to see the map update.
 
 ## SLAM Mapping Best Practices
 
