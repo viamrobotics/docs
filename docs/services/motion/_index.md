@@ -249,7 +249,7 @@ robot = await connect()
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInWorld = await motion.get_pose(component_name=gripperName,
-                                          destination_frame="world")
+                                           destination_frame="world")
 ```
 
 For a more complicated example, take the same scenario and get the pose of the same gripper with respect to an object situated at a location (100, 200, 0) relative to the "world" frame:
