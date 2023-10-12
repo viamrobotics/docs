@@ -43,7 +43,7 @@ After installing your physical RPlidar and adding the `rplidar` module per the a
 {{< tabs name="Add the cartographer service">}}
 {{% tab name="Config Builder" %}}
 
-Follow the instructions below to set up the `csi-cam` module on your robot:
+Follow the instructions below to set up the `cartographer` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
