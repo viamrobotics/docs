@@ -660,7 +660,7 @@ import(
        "go.viam.com/utils"
 )
 
-// Then, use the following in your functions to generate log messages:
+// Then, use the following in your functions to generate log messages as needed:
 // Log with severity warning:
 b.logger.Warnf("error message", b.Name(), err.Error())
 // Log with severity info:
