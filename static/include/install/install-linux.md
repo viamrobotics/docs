@@ -17,7 +17,7 @@ To install `viam-server` on a Linux computer:
      sudo apt install libfuse2
      ```
 
-   - If installing `viam-server` on Ubuntu 22.04 or later, install FUSE version 2 with the following command:
+   - If installing `viam-server` on Ubuntu, install FUSE version 2 with the following command:
 
      ```sh {class="command-line" data-prompt="$"}
      sudo add-apt-repository universe
