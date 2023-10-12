@@ -43,14 +43,9 @@ Model | Description <a name="model-table"></a>
 [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
 [`fake`](./fake/) | Used to test code without hardware
 
-Viam also provides the following sensor model as a [modular resource](/modular-resources/):
+### Modular Resources
 
-<!-- prettier-ignore -->
- Model | Description
- ----- | -----------
- [`viam:visual_odometry:opencv_orb`](/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
-
-This module can be [added to your robot from the Viam registry](/modular-resources/configure/#add-a-module-from-the-viam-registry).
+{{<modular-resources api="rdk:component:movement-sensor" type="movement-sensor">}}
 
 ## Control your movement sensor with Viam's client SDK libraries
 
