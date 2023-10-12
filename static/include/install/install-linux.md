@@ -17,7 +17,7 @@ To install `viam-server` on a Linux computer:
      sudo apt install libfuse2
      ```
 
-   - If installing `viam-server` on Ubuntu, install FUSE version 2 with the following command:
+   - If installing `viam-server` on Ubuntu, install FUSE version 2 with the following commands:
 
      ```sh {class="command-line" data-prompt="$"}
      sudo add-apt-repository universe
@@ -27,7 +27,7 @@ To install `viam-server` on a Linux computer:
    - If installing `viam-server` on other Linux distributions, or for more information, see [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run).
 
    **Do not** install the `fuse` package (that is, without a version number).
-   Only install the `libfuse2` package.
+   `viam-server` requires FUSE version 2 specifically (`libfuse2`).
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
