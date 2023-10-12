@@ -9,7 +9,7 @@ tags: ["board", "components"]
 # SMEs: Susmita
 ---
 
-Configure a `customlinux` board to integrate linux boards like the [Pumpkin i500](https://ologicinc.com/portfolio/mediateki500/) into your robot.
+Configure a `customlinux` board to integrate linux boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) into your robot.
 
 ## Create a pin mappings file
 
