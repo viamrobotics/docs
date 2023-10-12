@@ -249,6 +249,13 @@ This process depends on your specific board.
 
 {{% /alert %}}
 
+{{% alert title="Info" color="info" %}}
+
+The current version of `viam-server` creates PWM functionality with software.
+The implementation of hardware-based PWM for custom Linux boards is planned for release in the future, so we recommend that you add PWM information to your board now so that you do not need to update your config later.
+
+{{% /alert %}}
+
 ### Tips for finding GPIO information
 
 To see which chips exist and how many lines each chip has, run this command on your board:
