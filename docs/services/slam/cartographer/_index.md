@@ -83,7 +83,7 @@ On the Control page, you will be able to start a mapping session, which will spi
 
 Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map.
 
-Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
+Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM library."
 
 Configure the remaining attributes as follows:
 
@@ -107,11 +107,11 @@ On the Control page, you will be able to start a mapping session, which will spi
 
 Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to update the map.
 
-Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM Library."
+Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM library."
 
 Configure the remaining attributes as follows:
 
-   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from your Location page under "SLAM Library".
+   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from your Location page under "SLAM library".
    - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
      Examples: "my-rplidar", "5"
    - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. 
@@ -130,7 +130,7 @@ In this mode, the cartographer-module on your robot executes the Cartographer al
 
 Configure the remaining attributes as follows:
 
-   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to do pure localization on. You can see more details about the available maps from your Location page under "SLAM Library".
+   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to do pure localization on. You can see more details about the available maps from your Location page under "SLAM library".
    - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data polling frequency (Hz)"` for it.
      Examples: "my-rplidar", "5"
    - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data polling frequency (Hz)"` for it. 
@@ -298,7 +298,16 @@ You can change the **Refresh frequency** to the desired rate at which you'd like
 | `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
 | `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
-### `config_params`
+## Offline mode
+
+In this mode, you specify a range of previously captured LiDAR and optionally IMU data to run through the Cartographer algorithm in the cloud.
+
+Navigate to the **SLAM library** tab on your Location page. Here you can see:
+
+* a table of your currently running slam sessions (both online and offline)
+* a list of maps that have been created (in online mode) from robots in this location or (in offline mode) from data captured from robots in this location
+
+## `config_params`
 
 Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in aspects like submap size, mapping update rate, and feature matching details:
 
