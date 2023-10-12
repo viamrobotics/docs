@@ -30,6 +30,10 @@ See the notes next to the 'config_params' for recommended settings for an RPlida
 
 In addition, you must [add the `rplidar` module to your robot](/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
 
+Both the `cartographer` and `rplidar` modules are distributed as an AppImage.
+AppImages require FUSE version 2 to run.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+
 Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
 
 Physically connect the RPlidar to your robot.

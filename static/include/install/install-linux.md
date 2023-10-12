@@ -1,7 +1,20 @@
 `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/).
-The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies.
+The AppImage is a single, self-contained binary that runs on 64-bit Linux systems running the `aarch64` or `x86_64` architectures, with no need to install any dependencies (except for FUSE, which is required by the AppImage format).
 
 To install `viam-server` on a Linux computer:
+
+1. Install FUSE version 2 if it is not already installed on your Linux system.
+   For example, on Ubuntu (including Raspberry Pi OS), run the following commands:
+
+   ```sh {class="command-line" data-prompt="$"}
+   sudo add-apt-repository universe
+   sudo apt install libfuse2
+   ```
+
+   **Do not** install the `fuse` package (that is, without a version number).
+   Only install the `libfuse2` package.
+
+   For other linux distributions, or for more information, see [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run).
 
 1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
    If this is your first time using the Viam app, you must create an account first.
