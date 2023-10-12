@@ -102,13 +102,13 @@ time_received = datetime(2023, 6, 5, 11, 0, 3)
 
 file_id = await data_client.binary_data_capture_upload(
     part_id="INSERT YOUR PART ID",
-    component_type='motor',
-    component_name='left_motor',
-    method_name='IsPowered',
+    component_type='camera',
+    component_name='my_camera',
+    method_name='GetImages',
     method_parameters=None,
     tags=["tag_1", "tag_2"],
     data_request_times=[time_requested, time_received],
-    binary_data=b"Some data"
+    binary_data=b"Encoded image bytes"
 )
 ```
 
