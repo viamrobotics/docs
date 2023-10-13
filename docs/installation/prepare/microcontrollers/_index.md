@@ -25,7 +25,8 @@ Viam recommends purchasing the ESP32 with a [development board](https://www.espr
 
 ## Install the Micro-RDK
 
-Viam provides the [Micro-RDK Installer](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer), a CLI that allows a user to flash a build of Micro-RDK, along with their robot's credentials and their wifi information, directly to their ESP32.
+The [Micro-RDK Installer](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer) is a CLI that allows you to flash a build of Micro-RDK, along with your robot's credentials and your wifi information, directly to your ESP32.
+
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
 If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/prepare/microcontrollers/development-setup/) instead.
 
@@ -63,7 +64,6 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 1. Click on the name of the robot to go to the robot's page.
 2. Click on the **Setup** tab.
 3. Regardless of your operating system, select **Mac** and press the button that appears in Step 2 to download the Viam app config for your robot.
-   Copy the path where this <file>viam.json</file> file was downloaded.
 
    In your terminal, `cd` to the directory where you downloaded your pre-built binary and run the following command to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable:
 
@@ -102,7 +102,7 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
     If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
 
 Go back to your new robot's page on [the Viam app](https://app.viam.com).
-If successful, **Live** should be displayed underneath **Last online**.
+If successful, your robot will show that it's **Live**.
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
