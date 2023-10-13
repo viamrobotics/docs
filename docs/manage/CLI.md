@@ -229,7 +229,7 @@ viam board list --organization=my-org
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--name`      | output directory for downloaded data       |`upload`, `download`|true |
+| `--name`      | output directory for downloaded data       | `upload`, `download` | true |
 | `--organization`      | organization name to upload, download, or list board definition files from      |`upload`, `download`, `list`|true |
 | `--version`      | version of the board definition file to tag the upload with, or to specifically download. Defaults to latest if not set.    |`upload`, `download`|true |
 
