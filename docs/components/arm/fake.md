@@ -97,3 +97,5 @@ If neither are specified, an error is thrown asking for specification.
 If both attributes are specified, an error is thrown stating "can only populate either ArmModel or ModelPath - not both".
 
 {{% /alert %}}
+
+{{< readfile "/static/include/components/test-control/arm-control.md" >}}
