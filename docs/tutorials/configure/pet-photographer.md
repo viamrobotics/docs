@@ -86,17 +86,17 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 import color_filter
 
 async def main():
-"""This function creates and starts a new module, after adding all desired resource models.
-Resource creators must be registered to the resource registry before the module adds the resource model.
-"""
-Registry.register_resource_creator(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL, ResourceCreatorRegistration(color_filter.ColorFilterCam.new_cam, color_filter.ColorFilterCam.validate_config))
-module = Module.from_args()
+  """This function creates and starts a new module, after adding all desired resource models.
+  Resource creators must be registered to the resource registry before the module adds the resource model.
+  """
+  Registry.register_resource_creator(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL, ResourceCreatorRegistration(color_filter.ColorFilterCam.new_cam, color_filter.ColorFilterCam.validate_config))
+  module = Module.from_args()
 
-    module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
-    await module.start()
+      module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
+      await module.start()
 
-if **name** == "**main**":
-asyncio.run(main())
+  if **name** == "**main**":
+  asyncio.run(main())
 
 ```
 
@@ -104,8 +104,8 @@ asyncio.run(main())
 {{% tab name="Go"%}}
 <file>main.go</file> initializes and starts the colorfilter model of the camera component.
 
-<details>
-  <summary>Click to view sample code from <file>main.go</file></summary>
+  <details>
+    <summary>Click to view sample code from <file>main.go</file></summary>
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package main is a module which serves the colorfilter custom module.
@@ -189,16 +189,15 @@ The following is the color filter function:
 {{% tab name="Python"%}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-
 async def get_image(self, mime_type: str = "", \*, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, \*\*kwargs) -> Image.Image:
-"""Filters the output of the underlying camera"""
-img = await self.actual_cam.get_image()
-if from_dm_from_extra(extra):
-detections = await self.vision_service.get_detections(img)
-if len(detections) == 0:
-raise NoCaptureToStoreError()
+  """Filters the output of the underlying camera"""
+  img = await self.actual_cam.get_image()
+  if from_dm_from_extra(extra):
+    detections = await self.vision_service.get_detections(img)
+      if len(detections) == 0:
+        raise NoCaptureToStoreError()
 
-          return img
+  return img
 ```
 
 {{% /tab %}}
@@ -250,7 +249,8 @@ Once you have implemented your resource subtype's required methods and written y
   <summary>Click to view sample code from <file>color_filter.py</file></summary>
 
 ```python {class="line-numbers linkable-line-numbers"}
-from typing import ClassVar, Mapping, Sequence, Optional, cast, Tuple, List, Any, Dict
+from typing import ClassVar, Mapping, Sequence,
+ Optional, cast, Tuple, List, Any, Dict
 
 from typing_extensions import Self
 
@@ -656,7 +656,7 @@ Select the camera you want to use, then click **Save config**
 
 1. Then, select the `local modular resource` type from the list.
 
-   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="/extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 
 1. On the next screen:
 
