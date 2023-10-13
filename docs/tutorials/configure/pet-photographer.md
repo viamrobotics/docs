@@ -22,24 +22,31 @@ Smart machines are an integral part of our daily lives.
 From our phones to traffic lights, these machines rely on their ability to process and respond to data.
 However, as the amount of data collected by these devices continues to grow, it becomes important to not only process it, but also to organize and manage it effectively.
 
-The filter {{< glossary_tooltip term_id="module" text="module" >}} allows you to filter image data from a robot based on whether a certain condition is met.
-For example, if a specified color is present.
-This is useful for smart machines like bird feeders, which you could program to take a picture every five seconds and then store only pictures containing the distinctive red color that robins have.
-Another use case is to make a pet photographer:
+This tutorial will walk you through creating a filter module.
+Specifically it will focus on writing and configuring a color filter module, and can serve as a reference when writing your own filter module for various components.
+
+Creating a filter {{< glossary_tooltip term_id="module" text="module" >}} will enable you to selectively store data from your robot based on whether specified conditions have been met.
+Once you've configure your robot for data capture and established the connection to [Viam's cloud](/services/data/#cloud-sync), the robot will use the [data management service](/services/data/) to regularly send data to the cloud.
+However, before this data is stored in Viam's cloud, the filter module will process it, saving only the data that meets the specified criteria.
+
+This functionality is versatile and applicable in various scenarios.
+For example, you could program a bird feeder to periodically take pictures and store only pictures containing the distinctive red color that robins have.
+You can also create a filter module to filter out blurry images, or configure a sensor to store data related to energy usage only when it exceeds predefined thresholds.
+
+Let's take a practical example to illustrate how you can use a filter module effectively.
+If you want to store images only when a specific color is detected:
 
 1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
 2. Attach a colored object, like a blue collar, to your pet.
-3. Set up the color filter module, which will sift images and only store them if your pet and their easily identifiable colored object is present.
+3. Set up the color filter module, which will process images and only store them if your pet and their easily identifiable colored object is present.
 
 {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="700x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
 While the color filter module you use in this tutorial selects image data from a camera, these same principles can be applied to various components, including for filtering [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) data.
-The filter modular component allows you to selectively [store data](/services/data/#data-capture) when that data meets certain conditions you set.
-This can help you to avoid sifting through unwanted data captures and ensures that only the data you're interested in gets stored in Viam's cloud.
 
 ## Hardware Requirements
 
-For this tutorial you'll need the following hardware components:
+To recreate and test this color filter example, you'll need the following hardware components:
 
 - A computer
 - A webcam or external camera
@@ -58,81 +65,52 @@ Here's how to get started:
 
 1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
 
-1. Follow the steps on the Setup tab of your robot to install [`viam-server`](/installation/) and connect to your robot.
+1. Update [`viam-server`](/installation/manage/#update-viam-server).
+   If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
+   Your viam-server must be version 0.8.0 or higher to access the filtering functionality.
 
-1. For this tutorial we are using a filter module, which you need to get from GitHub.
-   Clone the [Viam modular filter](https://github.com/viam-labs/modular-filter-examples) examples onto your robot's computer:
+### Create your filter module
 
-```{class="command-line" data-prompt="$"}
-git clone https://github.com/viam-labs/modular-filter-examples.git
-```
+A filter module can be written for use with various components and situations, but in this example it is being authored to filter image data from the camera component by color.
 
-### Configure your camera
+## Prepare to code your filter module
 
-Navigate to your robot's page on the app and click on the **Config** tab.
+In order to code a new resource model, you must first locate your resource subtype's **client** interface APIs in the Viam RDK.
+These APIs are organized by colon-delimited-triplet identifiers, in the form of `namespace:type:subtype`.
 
-Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in the lower-left corner of the page and typing in 'webcam'.
-Select the `webcam` model and type in 'cam' as the name for your camera.
-Then click create.
+In this example, the resource subtype being used is the camera.
+To adhere to the Viam RDK's client interface API for the specific subtype, you need to implement the required methods outlined in the <file>[client.go](https://github.com/viamrobotics/rdk/components/camera/client.go)</file> file in the `rdk/components/camera` directory.
+Provide this as a file inside of your `colorfilter` module directory to serve as your module's client interface, <file>color_filter.go</file> or <file>color_filter.py</file>.
 
-Your robot's config page now has a panel for your camera.
-To select the camera the robot should use, click on the **video path** field.
-If your robot is connected, you will see a selection of available cameras.
-Select the camear you want to use, then click **Save config**
+## Prepare to import subtype's API into your main program
 
-![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
+To ensure that your custom API is properly integrated into the Viam app, you must import the camera's API into your main program and register them with your chosen SDK, follow these steps:
 
-## Add services
+In this example, the camera's API is defined in the <file>[camera.go](https://github.com/viamrobotics/rdk/blob/585384d853267308243e69367da1d0649a0a91f5/components/camera/camera.go)</file> file in the RDK on Viam's Github.
 
-After you've finished setting up your robot's camera, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images:
+When developing your `module` directory's <file>main.go</file> or <file>main.py</file> file, reference this file.
 
-### Vision service to detect color
+## Code a new resource model
 
-This tutorial uses the color of my dogs collar, `#43A1D0` or `rgb(67, 161, 208)` (blue), but you can use a different color that matches your pet or a distinctly colored item on your pet.
+### Code a new resource model
 
-**Hex color #43A1D0**: {{<imgproc src="/tutorials/pet-photographer/43a1d0.png" resize="90x" declaredimensions=true alt="A color swatch for the color of example subject's collar">}}
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/services/vision/detection/):
+For more information see [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model).
 
-{{< tabs >}}
-{{% tab name="Builder" %}}
+The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
-1. Click the **Services** subtab and click **Create service** in the lower-left corner.
+{{% alert title="Naming module models" color="tip" %}}
 
-1. Select the `Vision` type, then select the `Color Detector` model.
+Name your model with all lowercase letters for optimal performance with Viam's SDKs.
+For example, `mycolorfilter` or `my-color-filter`.
 
-1. Enter `my_color_detector` as the name for your detector and click **Create**.
+{{% /alert %}}
 
-1. In the vision service panel, click the color selection box to set the color to be detected.
-   For this tutorial, set the color to the color of your pet, or use a blue collar or ribbon to increase the precision of your filter.
-
-1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
-
-Your configuration should look like the following:
-
-![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
-
-For more detailed information see [Configure a color detector](/services/vision/detection/#configure-a-color_detector).
-
+{{< tabs name="Sample SDK Code">}}
+{{% tab name="Python"%}}
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
-
-Add the vision service object to the services array in your rover’s raw JSON configuration:
-
-```json {class="line-numbers linkable-line-numbers"}
-  {
-    "name": "my_color_detector",
-    "type": "vision",
-    "model": "color_detector",
-    "attributes": {
-      "segment_size_px": 100,
-      "detect_color": "#43a1d0",
-      "hue_tolerance_pct": 0.06
-    }
-  },
-  ... // Other services
-```
-
+{{% tab name="Go"%}}
 {{% /tab %}}
 {{< /tabs >}}
 
