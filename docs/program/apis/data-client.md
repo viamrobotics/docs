@@ -185,6 +185,7 @@ All other types of uploaded files can be found under the **Files** subtab of the
 
 ```python {class="line-numbers linkable-line-numbers"}
 file_id = await data_client.file_upload(
+    data=b"Encoded image bytes",
     part_id="INSERT YOUR PART ID",
     tags=["tag_1", "tag_2"],
     file_name="your-file",
