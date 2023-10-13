@@ -292,7 +292,7 @@ If your `"Mapping mode"` is `"Localize"`, the pointcloud for the existing map wi
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+Cartographer may take several minutes to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)). If you  move your robot, it will appear to be moving in a trajectory from the map's origin.
 
 {{% /alert %}}
 
