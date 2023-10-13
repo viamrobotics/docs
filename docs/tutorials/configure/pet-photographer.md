@@ -69,19 +69,6 @@ Here's how to get started:
    If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
    Your viam-server must be version 0.8.0 or higher to access the filtering functionality.
 
-### Create your filter module
-
-A filter module can be written for use with various components and situations, but in this example it is being authored to filter image data from the camera component by color.
-
-## Prepare to code your filter module
-
-In order to code a new resource model, you must first locate your resource subtype's **client** interface APIs in the Viam RDK.
-These APIs are organized by colon-delimited-triplet identifiers, in the form of `namespace:type:subtype`.
-
-In this example, the resource subtype being used is the camera.
-To adhere to the Viam RDK's client interface API for the specific subtype, you need to implement the required methods outlined in the <file>[client.go](https://github.com/viamrobotics/rdk/components/camera/client.go)</file> file in the `rdk/components/camera` directory.
-Provide this as a file inside of your `colorfilter` module directory to serve as your module's client interface, <file>color_filter.go</file> or <file>color_filter.py</file>.
-
 ## Prepare to import subtype's API into your main program
 
 To ensure that your custom API is properly integrated into the Viam app, you must import the camera's API into your main program and register them with your chosen SDK, follow these steps:
@@ -90,29 +77,199 @@ In this example, the camera's API is defined in the <file>[camera.go](https://gi
 
 When developing your `module` directory's <file>main.go</file> or <file>main.py</file> file, reference this file.
 
-## Code a new resource model
+## Create your filter module
 
-### Code a new resource model
+A filter module can be written for use with various components and situations, but in this example it is being authored to filter image data from the camera component by color.
+The code for this colorfilter camera model (<file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file>)/(<file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.py)</file>) and module entry point file (<file>[main.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/module/main.go)</file>) is sourced from the full modular filter examples available on the [Viam GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+### Include required methods
 
-For more information see [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model).
+In order to code a new filter resource model, you must implement the required methods outlined in the <file>[client.go](https://github.com/viamrobotics/rdk/components/camera/client.go)</file> file in the corresponding resource's directory.
+In this case, the `rdk/components/camera` directory.
 
-The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
+Provide this as a file inside of your `colorfilter` module directory to serve as your module's client interface, <file>color_filter.go</file> or <file>color_filter.py</file>.
 
-{{% alert title="Naming module models" color="tip" %}}
+- Name your model with all lowercase letters for optimal performance with Viam's SDKs.
 
-Name your model with all lowercase letters for optimal performance with Viam's SDKs.
-For example, `mycolorfilter` or `my-color-filter`.
+For more information on adding the required methods to your module's file, see [Code a new resource model](/modular-resources/create/#code-a-new-resource-model).
 
-{{% /alert %}}
+### Include required filter data management check
 
-{{< tabs name="Sample SDK Code">}}
+When creating your own filter module, it's required to check whether the data management service is the caller of the filtering to prevent unwanted effects on the filter state.
+You can achieve this by examining the `extra` data passed to your filter function.
+
+The approach for checking this varies depending on the programming language used to configure your camera:
+
+- The Go configured camera looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.`**`FromDM`**`ContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
+- For the Python configured camera, the SDK simplifies this process by exposing the utility function `from_dm_from_extra`, which handles the check for you.
+- For other programming languages, similar utility functions will be exposed to help you check the caller of your filter function.
+  Not all collector functions receive the `extra` data parameter, so the method for checking may vary based on the specific function and language.
+
+- If the boolean is true, the function will call the vision service to get detections and return the image if the color is detected, otherwise, they raise `data.ErrNoCaptureToStore` or `NoCaptureToStoreError()`.
+
+{{< alert title="Tip" color="tip" >}}
+
+It's important to include these operations and the `data.ErrNoCaptureToStore` or `NoCaptureToStoreError()` error types to avoid unintentional impacts to the filter state.
+
+{{< /alert >}}
+
+{{< tabs name="Color Filter Code">}}
 {{% tab name="Python"%}}
+
+```python {class="line-numbers linkable-line-numbers"}
+async def get_image(self, mime_type: str = "", \*, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, \*\*kwargs) -> Image.Image:
+"""Filters the output of the underlying camera"""
+img = await self.actual_cam.get_image()
+if from_dm_from_extra(extra):
+detections = await self.vision_service.get_detections(img)
+if len(detections) == 0:
+raise NoCaptureToStoreError()
+
+          return img
+```
+
 {{% /tab %}}
 {{% tab name="Go"%}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Next contains the filtering logic and returns select data from the underlying camera.
+func (fs filterStream) Next(ctx context.Context) (image.Image, func(), error) {
+if ctx.Value(data.FromDMContextKey{}) != true {
+// If not data management collector, return underlying stream contents without filtering.
+return fs.cameraStream.Next(ctx)
+}
+
+    // Only return captured image if it contains a certain color set by the vision service.
+    img, release, err := fs.cameraStream.Next(ctx)
+    if err != nil {
+      return nil, nil, errors.New("could not get next source image")
+    }
+    detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
+    if err != nil {
+      return nil, nil, errors.New("could not get detections")
+    }
+
+    if len(detections) == 0 {
+      return nil, nil, data.ErrNoCaptureToStore
+    }
+
+    return img, release, err
+
+}
+```
+
 {{% /tab %}}
 {{< /tabs >}}
+
+### Configure your camera
+
+Navigate to your robot's page on the app and click on the **Config** tab.
+
+Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in the lower-left corner of the page and typing in 'webcam'.
+Select the `webcam` model and type in 'cam' as the name for your camera.
+Then click create.
+
+Your robot's config page now has a panel for your camera.
+To select the camera the robot should use, click on the **video path** field.
+If your robot is connected, you will see a selection of available cameras.
+Select the camear you want to use, then click **Save config**
+
+![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
+
+## Add services
+
+After you've finished setting up your robot's camera, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images:
+
+### Vision service to detect color
+
+This tutorial uses the color of my dogs collar, `#43A1D0` or `rgb(67, 161, 208)` (blue), but you can use a different color that matches your pet or a distinctly colored item on your pet.
+
+**Hex color #43A1D0**: {{<imgproc src="/tutorials/pet-photographer/43a1d0.png" resize="90x" declaredimensions=true alt="A color swatch for the color of example subject's collar">}}
+
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/services/vision/detection/):
+
+{{< tabs >}}
+{{% tab name="Builder" %}}
+
+1. Click the **Services** subtab and click **Create service** in the lower-left corner.
+
+1. Select the `Vision` type, then select the `Color Detector` model.
+
+1. Enter `my_color_detector` as the name for your detector and click **Create**.
+
+1. In the vision service panel, click the color selection box to set the color to be detected.
+   For this tutorial, set the color to the color of your pet, or use a blue collar or ribbon to increase the precision of your filter.
+
+1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
+
+Your configuration should look like the following:
+
+![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
+
+For more detailed information see [Configure a color detector](/services/vision/detection/#configure-a-color_detector).
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the vision service object to the services array in your rover’s raw JSON configuration:
+
+```json {class="line-numbers linkable-line-numbers"}
+  {
+    "name": "my_color_detector",
+    "type": "vision",
+    "model": "color_detector",
+    "attributes": {
+      "segment_size_px": 100,
+      "detect_color": "#43a1d0",
+      "hue_tolerance_pct": 0.06
+    }
+  },
+  ... // Other services
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Click **Save Config** and head back to the **Builder** mode.
+
+### Data management service to collect images
+
+To enable data capture on your robot, add and configure the [data management service](/services/data/) to capture and store data on your robot's computer.
+
+{{< tabs >}}
+{{% tab name="Builder" %}}
+
+1. At the bottom-left of the page, click **Create service**.
+1. Choose `Data Management` as the type and name your instance of the data manager `dm`.
+   This service syncs data from your robot to the Viam app in the cloud.
+1. Select **Create**.
+1. On the panel that appears, you can manage the capturing and syncing functions individually.
+   By default, the data management service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory.
+
+   You can leave the default settings as they are.
+   Click **Save Config** at the bottom of the window.
+
+   ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
+
+   For more detailed information see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
+   {{% /tab %}}
+   {{% tab name="JSON Template" %}}
+   Add the vision service object to the services array in your rover’s raw JSON configuration:
+
+```json {class="line-numbers linkable-line-numbers"}
+    {
+      "name": "dm",
+      "type": "data_manager",
+      "namespace": "rdk",
+      "attributes": {
+        "sync_interval_mins": 0.1,
+        "capture_dir": "",
+        "tags": [],
+        "additional_sync_paths": []
+      }
+    },
+  ... // Vision and other services
+```
 
 Click **Save Config** and head back to the **Builder** mode.
 
