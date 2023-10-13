@@ -21,13 +21,7 @@ Follow these steps to install and build the micro-rdk on your ESP32 for developm
 2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility _(recommended)_
 3. [Install the Micro-RDK](#install-the-micro-rdk)
 
-### Hardware Requirements
-
-You need an Espressif ESP32 microcontroller to use the micro-RDK.
-Viam recommends purchasing the ESP32 with a [development board](https://www.espressif.com/en/products/devkits).
-
-- **Minimal configuration:** 384kB Ram 4MB flash
-- **Recommended configuration:** 384kB Ram + 8MB SPIRAM + 4MB Flash
+{{% readfile "/static/include/micro-rdk-hardware.md" %}}
 
 ### Software Requirements
 
