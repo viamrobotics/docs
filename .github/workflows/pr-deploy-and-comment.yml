@@ -1,7 +1,7 @@
 name: pr-deploy-and-comment
 
 concurrency:
-  group: pullrequest-untrusted-${{ github.event.number }}
+  group: pullrequest-untrusted-deploy-${{ github.event.number }}
   cancel-in-progress: true
 
 on:
