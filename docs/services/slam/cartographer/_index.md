@@ -21,7 +21,9 @@ Currently, the `cartographer` modular resource only supports taking 2D LiDAR dat
 
 {{% /alert %}}
 
-Since creating maps with Cartographer is CPU-intensive, for creating or updating a map, the `cartographer` modular resource is run in the cloud. For doing pure localization on an existing map, the `cartographer` modular resource runs on your robot. 
+Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource is **run in the cloud**.
+
+For doing **pure localization** on an existing map, the `cartographer` modular resource **runs on your robot**.
 
 {{% alert title="Info" color="info" %}}
 
@@ -36,7 +38,7 @@ The source code for this module is available on the [`viam-cartographer` GitHub 
 
 ## Online mode
 
-In this mode, you configure the `cartographer` module on your robot along with a LiDAR and optional IMU.
+In this mode, you use **live** LiDAR and optional IMU data to create a map, update an existing map, or do pure localization on an existing map.
 
 ### Requirements
 
@@ -77,13 +79,9 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 {{< tabs name="Mapping mode">}}
 {{% tab name="Create new map" %}}
 
-Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
+Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the **`cartographer-module` on your robot acts as a stub**, and the algorithm actually executes in the cloud.
 
-On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm.
-
-Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map.
-
-Once you click "End session", the map will be uploaded to the cloud and visible on your Location page under "SLAM library."
+Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the Map](#view-the-map) for details.
 
 Configure the remaining attributes as follows:
 
@@ -103,11 +101,7 @@ To save your changes, click **Save config** at the bottom of the page.
 
 Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
 
-On the Control page, you will be able to start a mapping session, which will spin up another copy of cartographer-module in the cloud which will actually execute Cartographer's algorithm.
-
-Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to update the map.
-
-Once you click "End session", the new version of the map will be uploaded to the cloud and visible on your Location page under "SLAM library."
+Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the Map](#view-the-map) for details.
 
 Configure the remaining attributes as follows:
 
@@ -270,40 +264,6 @@ To save your changes, click **Save config** at the bottom of the page.
 
 Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
-### View the Map
-
-Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
-
-If your `"Mapping mode"` is `"Create"`, enter a name for your new map and click `"Start session"`, or if your `"Mapping mode"` is `"Update"`, simply click `"Start session"`.
-
-![slam RC card start session](/services/slam/slam-RC-card-start-session.png)
-
-Then wait for the slam session to finish starting up in the cloud.
-
-![slam RC card wait for session to finish starting](/services/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
-
-Once the slam session has finished starting, your first pointcloud will appear. Make sure to either manually refresh, or change the refresh frequency to something other than `Manual`.
-
-![slam RC card first pointcloud](/services/slam/slam-RC-card-first-pointcloud.png)
-
-You will be able to see that your cloud mapping session is in progress from your **Location** page's **SLAM library** tab.
-
-TODO image
-
-When you would like to end the slam session, back on the robot's **Control** tab, click `"End session"`. The map will be saved to your **Location** page's **SLAM library** tab.
-
-TODO image
-
-If your `"Mapping mode"` is `"Localize"`, the pointcloud for the existing map will appear immediately and Cartographer will try to find your robot's position on it.
-
-![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
-
-{{% alert title="Info" color="info" %}}
-
-Cartographer may take several minutes to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)). If you  move your robot, it will appear to be moving in a trajectory from the map's origin.
-
-{{% /alert %}}
-
 ### Attributes
 
 <!-- prettier-ignore -->
@@ -316,14 +276,95 @@ Cartographer may take several minutes to find your robot's position. In the mean
 | `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
 | `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
+### View the Map
+
+Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+
+The view will depend on whether you are creating or updating a map, or localizing only.
+
+{{< tabs name="SLAM RC card">}}
+{{% tab name="Create or Update" %}}
+
+If your `"Mapping mode"` is `"Create"`, enter a name for your new map and click `"Start session"`.
+
+If your `"Mapping mode"` is `"Update"`, simply click `"Start session"`.
+
+![slam RC card start session](/services/slam/slam-RC-card-start-session.png)
+
+Then wait for the slam session to finish starting up in the cloud.
+
+![slam RC card wait for session to finish starting](/services/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
+
+Once the slam session has finished starting, your first pointcloud will appear. Make sure to either manually refresh, or change the refresh frequency to something other than `Manual`.
+
+![slam RC card first pointcloud](/services/slam/slam-RC-card-first-pointcloud.png)
+
+You will be able to see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
+
+![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
+
+When you would like to end the slam session, back on the robot's **Control** tab, click `"End session"`. If you do not click `"End session"`, the slam session will automatically be ended after 45 minutes.
+
+Once the session has ended, the map will be saved to your **Location** page's **SLAM library** tab.
+
+![offline mapping available maps](/services/slam/offline-mapping-available-maps.png)
+
+You can click `View map` to view the map in a dynamic pointcloud viewer.
+
+![slam library view map](/services/slam/slam-library-view-map.png)
+
+{{% /tab %}}
+{{% tab name="Localize" %}}
+
+If your `"Mapping mode"` is `"Localize"`, the pointcloud for the existing map will appear immediately and Cartographer will try to find your robot's position on it.
+
+![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% alert title="Info" color="info" %}}
+
+In `"Update"` or `"Localize"` modes, Cartographer may take several minutes to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+
+If you  move your robot, it will appear to be moving in a trajectory from the map's origin.
+
+{{% /alert %}}
+
 ## Offline mode
 
-In this mode, you specify a range of previously captured LiDAR and optionally IMU data to run through the Cartographer algorithm in the cloud.
+In this mode, you specify a range of **previously captured** LiDAR and optional IMU data to create a map or update an existing map in the cloud.
 
-Navigate to the **SLAM library** tab on your Location page. Here you can see:
+### Requirements
 
-* a table of your currently running slam sessions (both online and offline)
-* a list of maps that have been created (in online mode) from robots in this location or (in offline mode) from data captured from robots in this location
+You can browse your previously captured data from the **Data** page. You must have at least previously captured LiDAR data in the location in which you would like to create the map.
+
+Example of previously captured LiDAR data (note, you can click on a row to see the `Robot ID` of the robot the component belonged to):
+
+![offline mapping pointcloud data](/services/slam/offline-mapping-pointcloud-data.png)
+
+Example of previously captured IMU data:
+
+![offline mapping imu data](/services/slam/offline-mapping-imu-data.png)
+
+### Configuration
+
+Navigate to the **SLAM library** tab on your Location page, and click either `"Make new map"` on the top right, or `"Update map"` next to any map.
+
+1. If you clicked `"Make new map`", specify a map name.
+1. Enter the `"Robot name"`, `"Camera name"`, and optionally the `"Movement Sensor name"` of the components whose previously captured data should be used to create or update the map. If your robot has been deleted, you can alternatively specify the `"robot ID`".
+1. Adjust the config parameters as needed. See [config_params](#config_params) for details.
+1. Select the timeframe of the data you'd like to use.
+1. At the bottom, you will be able to see the total number of PCD files and movement sensor data points that will be processed.
+1. Click `"Generate map"`.
+
+![offline mapping generate map](/services/slam/offline-mapping-generate-map.png)
+
+### View the Map
+
+Similar to when creating or updating a map in `Online` mode, you will be able to see that your cloud slam session is in progressp from your **Location** page's **SLAM library** tab.
+
+When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
 
 ## `config_params`
 
@@ -351,7 +392,7 @@ For more information, see the Cartographer [algorithm walkthrough](https://googl
 ## SLAM Mapping Best Practices
 
 The best way to improve map quality is by taking extra care when creating the initial map.
-While in a mapping session, you should:
+While in a slam session, you should:
 
 - turn gently and gradually, completely avoiding sudden quick turns
 - make frequent loop closures, arriving back at a previously mapped area so the robot can correct for errors in the map layout
