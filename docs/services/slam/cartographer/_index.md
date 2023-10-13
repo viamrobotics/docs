@@ -276,11 +276,11 @@ Navigate to the **Control** tab on your robot's page and click on the drop-down 
 
 If your `"Mapping mode"` is `"Create"`, enter a name for your new map and click `"Start session"`, or if your `"Mapping mode"` is `"Update"`, simply click `"Start session"`.
 
-![slam RC card start session](/services/slam/cartographer/slam-RC-card-start-session.png)
+![slam RC card start session](/services/slam/slam-RC-card-start-session.png)
 
 Then wait for the slam session to finish starting up in the cloud.
 
-![slam RC card start session](/services/slam/cartographer/slam-RC-card-wait-for-session-to-finish-starting.png)
+![slam RC card start session](/services/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
 
 If your `"Mapping mode"` is `"Localize"`, the existing map will appear immediately and Cartographer will try to find your robot's position on it.
 
