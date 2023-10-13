@@ -92,8 +92,8 @@ async def main():
   Registry.register_resource_creator(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL, ResourceCreatorRegistration(color_filter.ColorFilterCam.new_cam, color_filter.ColorFilterCam.validate_config))
   module = Module.from_args()
 
-      module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
-      await module.start()
+    module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
+    await module.start()
 
   if **name** == "**main**":
   asyncio.run(main())
@@ -250,7 +250,7 @@ Once you have implemented your resource subtype's required methods and written y
 
 ```python {class="line-numbers linkable-line-numbers"}
 from typing import ClassVar, Mapping, Sequence,
- Optional, cast, Tuple, List, Any, Dict
+Optional, cast, Tuple, List, Any, Dict
 
 from typing_extensions import Self
 
@@ -655,7 +655,6 @@ Select the camera you want to use, then click **Save config**
 1. Click the **Components** subtab and click **Create component**.
 
 1. Then, select the `local modular resource` type from the list.
-
    {{<imgproc src="/extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 
 1. On the next screen:
