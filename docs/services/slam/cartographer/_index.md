@@ -78,8 +78,7 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 1. Click **Add module**, give your service a name of your choice, then click **Create**.
 1. In the resulting `SLAM` service configuration pane, first choose a `"Mapping mode"`, then configure the rest of the **Attributes** for that mapping mode.
 
-{{< tabs name="Mapping mode">}}
-{{% tab name="Create new map" %}}
+#### Maping mode "Create new map"
 
 Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the **`cartographer-module` on your robot acts as a stub**, and the algorithm actually executes in the cloud.
 
@@ -98,8 +97,7 @@ If you would like to tune additional Cartographer parameters, you can expand `"S
 
 To save your changes, click **Save config** at the bottom of the page.
 
-{{% /tab %}}
-{{% tab name="Update existing map" %}}
+#### Mapping mode "Update existing map"
 
 Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
 
@@ -119,8 +117,7 @@ If you would like to tune additional Cartographer parameters, you can expand `"S
 
 To save your changes, click **Save config** at the bottom of the page.
 
-{{% /tab %}}
-{{% tab name="Localize only" %}}
+#### Mapping mode "Localize only"
 
 In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
 
@@ -137,9 +134,6 @@ Configure the remaining attributes as follows:
 If you would like to tune additional Cartographer parameters, you can expand `"Show additional parameters"`. See the [config_params](#config_params) section for more information on the other parameters.
 
 To save your changes, click **Save config** at the bottom of the page.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
