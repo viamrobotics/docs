@@ -34,28 +34,10 @@ If you want to program the chip directly, follow the setup instructions in [the 
 
 Select the appropriate pre-built binary for the architecture of your development machine:
 
-{{< tabs name="Download pre-built binaries" >}}
-{{% tab name="Linux (x86_64)"%}}
-
-[Download](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-amd64-linux)
-
-{{% /tab %}}
-{{% tab name="Linux (Aarch64)" %}}
-
-[Download](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-arm64-linux)
-
-{{% /tab %}}
-{{% tab name="MacOS" %}}
-
-[Download](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-macos)
-
-{{% /tab %}}
-{{% tab name="Windows" %}}
-
-[Download](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-windows.exe)
-
-{{% /tab %}}
-{{< /tabs >}}
+- [Linux (x86_64)](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-amd64-linux)
+- [Linux (Aarch64)](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-arm64-linux)
+- [MacOS](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-macos)
+- [Windows](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-windows.exe)
 
 ### Flash your ESP32 with the Micro RDK Installer
 
