@@ -10,7 +10,7 @@ images: ["/installation/thumbnails/esp32-espressif.png"]
 description: "Set up the Espressif ESP32 with the micro-RDK."
 aliases:
   - /installation/microcontrollers
-# SMEs: Nicolas M., Gautham V.
+# SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}
@@ -68,7 +68,7 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
     {{% tab name="Windows" %}}
 
 ```sh { class="command-line" data-prompt="$"}
-./micro-rdk-installer-windows write-flash --app-config=<your-file-path-to/viam.json>
+./micro-rdk-installer-windows.exe write-flash --app-config=<your-file-path-to/viam.json>
 ```
 
     {{% /tab %}}
@@ -157,7 +157,7 @@ The following attributes are available for `esp32` boards:
 #### Linux Port Permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
-If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, then try again.
+If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
 #### MacOS Executable Permissions
 

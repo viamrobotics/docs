@@ -8,7 +8,7 @@ image: "installation/thumbnails/esp32-espressif.png"
 imageAlt: "E S P 32 - espressif"
 images: ["/installation/thumbnails/esp32-espressif.png"]
 description: "Set up the Espressif ESP32 for development with the micro-RDK."
-# SMEs: Nicolas Menard
+# SMEs: Nicolas M., Gautham V., Andrew M.
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}
