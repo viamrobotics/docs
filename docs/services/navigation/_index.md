@@ -134,7 +134,7 @@ The following attributes are available for `Navigation` services:
 | `base` | string | **Required** | The `name` you have configured for the [base](/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
-| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/components/camera) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/services/motion/) you are using to detect obstacles. |
+| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/services/motion/) you are using to detect obstacles. |
 | `position_polling_frequency_hz` | float | Optional | The frequency to poll for the position of the robot. <br> Default: `2` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in hz to poll each vision service for new obstacles. <br> Default: `2` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a robot is allowed to deviate from the motion plan. <br> Default: `3`|
@@ -582,7 +582,7 @@ obstacles = await my_nav.get_obstacles()
 
 ## Control Tab Usage
 
-After configuring the navigation service for your robot, navigate to the **Control** tab of the robot's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to utilize an interactive portal for rover navigation.
+After configuring the navigation service for your robot, navigate to the **Control** tab of the robot's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
 
 Here, you can toggle the mode of the service between **Manual** and **Waypoint** to start and stop navigation, add waypoints and obstacles, and view the position of your rover base on a map:
 
