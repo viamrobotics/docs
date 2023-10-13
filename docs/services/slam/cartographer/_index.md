@@ -274,9 +274,15 @@ Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar h
 
 Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
-If your "Mapping mode" is "Create", enter a name for your new map and click "Start session", or if your "Mapping mode" is "Update", simply click "Start session", and wait for the slam session to finish starting up in the cloud.
+If your `"Mapping mode"` is `"Create"`, enter a name for your new map and click `"Start session"`, or if your `"Mapping mode"` is `"Update"`, simply click `"Start session"`.
 
-If your "Mapping mode" is "Localize", the existing map will appear immediately and Cartographer will try to find your robot's position on it.
+![slam RC card start session](/services/slam/cartographer/slam-RC-card-start-session.png)
+
+Then wait for the slam session to finish starting up in the cloud.
+
+![slam RC card start session](/services/slam/cartographer/slam-RC-card-wait-for-session-to-finish-starting.png)
+
+If your `"Mapping mode"` is `"Localize"`, the existing map will appear immediately and Cartographer will try to find your robot's position on it.
 
 {{% alert title="Info" color="info" %}}
 
@@ -291,10 +297,10 @@ You can change the **Refresh frequency** to the desired rate at which you'd like
 <!-- prettier-ignore -->
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `use_cloud_slam` | boolean | **Required** | Whether to run the Cartographer algorithm locally on the robot or in the cloud. |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your robot. |
 | `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
 | `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
-| `enable_mapping` | boolean | Optional | Whether to build a map or do pure localization. <ul> Default: `true` </ul> |
+| `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
 | `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
 | `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
