@@ -1,7 +1,7 @@
 name: pr-deploy-and-comment
 
 concurrency:
-  group: pullrequest-untrusted-${{ github.event.pull_request.head.sha }}
+  group: pullrequest-untrusted-deploy-${{ github.event.number }}
   cancel-in-progress: true
 
 on:
@@ -31,8 +31,8 @@ jobs:
 
       - name: Temp config
         run: |
-          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public\" > config_pr.toml
-          echo baseURL = \"https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public\" >> config_pr.toml
+          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.number }}/public\" > config_pr.toml
+          echo baseURL = \"https://docs-test.viam.dev/${{ github.event.number }}/public\" >> config_pr.toml
 
       - name: Build
         run: make build-pr
@@ -42,15 +42,15 @@ jobs:
         with:
           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-      - name: Copy generated site to GCS bucket
-        uses: 'google-github-actions/upload-cloud-storage@v0'
-        with:
-          path: 'public'
-          destination: 'docs-test.viam.dev/${{ github.event.pull_request.head.sha }}'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: 'Use gcloud CLI'
+        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}/public'
 
       - name: Comment on PR with link to rendered site
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           recreate: true
-          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public'
+          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.event.number }}/public'
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}

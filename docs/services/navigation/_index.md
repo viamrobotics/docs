@@ -119,7 +119,7 @@ The following attributes are available for `Navigation` services:
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
 | `vision_services` | array | Optional | The `name` of each [vision service](/services/motion/) you have configured for the base you are operating with this service. |
-| `position_polling_frequency` | float | Optional | The frequency to poll for the position of the robot. <br> Default: `2` |
+| `position_polling_frequency_hz` | float | Optional | The frequency to poll for the position of the robot. <br> Default: `2` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in hz to poll each vision service for new obstacles. <br> Default: `2` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a robot is allowed to deviate from the motion plan. <br> Default: `3`|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `60` |

@@ -63,3 +63,5 @@ Edit and fill in the attributes as applicable.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{< readfile "/static/include/components/test-control/arm-control.md" >}}

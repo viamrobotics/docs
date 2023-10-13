@@ -30,6 +30,10 @@ See the notes next to the 'config_params' for recommended settings for an RPlida
 
 In addition, you must [add the `rplidar` module to your robot](/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
 
+Both the `cartographer` and `rplidar` modules are distributed as an AppImage.
+AppImages require FUSE version 2 to run.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+
 Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
 
 Physically connect the RPlidar to your robot.
@@ -43,7 +47,7 @@ After installing your physical RPlidar and adding the `rplidar` module per the a
 {{< tabs name="Add the cartographer service">}}
 {{% tab name="Config Builder" %}}
 
-Follow the instructions below to set up the `csi-cam` module on your robot:
+Follow the instructions below to set up the `cartographer` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
