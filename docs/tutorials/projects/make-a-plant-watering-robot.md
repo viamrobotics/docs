@@ -19,7 +19,7 @@ no_list: true
 # SMES: Olivia Miller, Sierra Guequierre, Hazal Mestci
 ---
 
-{{<youtube embed_url=“https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877”>}} 
+{{<youtube embed_url=“https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877”>}}
 
 In this video, learn how to configure and code your own simple plant-watering robot in less than an hour with Viam! This is the simplified version of the following tutorial: it eliminates the need for the ADC, the breadboard, and the motor speed controller, and uses the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off. You can start with this simple version and then add the ADC to make your machine more accurate!
 
