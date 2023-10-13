@@ -1,5 +1,5 @@
 ---
-title: "Pet Photographer: Capture and Filter Images for Viam Cloud"
+title: "Pet Photographer: Create A Data Filtering Module"
 linkTitle: "Pet Photographer"
 type: "docs"
 description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
@@ -18,16 +18,14 @@ no_list: true
 weight: 3
 ---
 
-This tutorial will walk you through creating a filter {{< glossary_tooltip term_id="module" text="module" >}}.
-Specifically it will guide you through on coding and configuring a [color filter module](https://github.com/viam-labs/modular-filter-examples), and can serve as a reference when writing your own filter module for various components, like a [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
+In this tutorial, you will create a [color filter](https://github.com/viam-labs/modular-filter-examples) {{< glossary_tooltip term_id="module" text="module" >}} and use it to selectively store data from your robot.
+This guide can serve as a reference when writing your own filter module for various components, like a [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
 
 Creating a filter module will enable you to selectively store data from your robot based on whether specified conditions have been met.
 Once you've configured your robot for data capture and established the connection to [Viam's cloud](/services/data/#cloud-sync), the robot will use the [data management service](/services/data/) to regularly send data to the cloud.
 However, before this data is stored in Viam's cloud, the filter module will process it, saving only the data that meets your specified criteria.
 
-Filter functionality is versatile.
-For example, you can program a bird feeder to capture and store pictures that contain a specific color, filter out blurry images, or configure a sensor to store data related to energy usage only when it exceeds predefined thresholds.
-
+Filter modules can be written to capture images based on specific criteria, such as color, image quality, or sensor thresholds.
 The example in this guide will show you how to create and use a filter module to store images of your pet when a specified color is in frame:
 
 1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
@@ -53,7 +51,7 @@ If your pet already has a distinct color that is different from their environmen
 
 Here's how to get started:
 
-1. Install [Go](https://go.dev/dl/) on your local development computer and on your robot's computer.
+1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's computer.
 
 1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
 
@@ -156,7 +154,6 @@ For more information on creating your own module, read [Code your own modules to
 
 ## Code your filter resource model
 
-A filter module can be written for use with various components and situations, but in this example it is being authored to filter image data from the camera component by color.
 The code for this colorfilter camera model (<file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file>) or (<file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py)</file>) is sourced from the full modular filter examples available on the [Viam GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
 
 ### Include subtype's required methods
@@ -175,7 +172,7 @@ You can achieve this by examining the `extra` data passed to your filtering func
 
 The approach for checking this varies depending on the programming language used to configure your camera:
 
-- The Go configured camera looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.`**`FromDM`**`ContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
+- The Go configured camera looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
 - For the Python configured camera, the SDK simplifies this process by exposing the utility function `from_dm_from_extra`, which handles the check for you.
 - For other programming languages, similar utility functions will be exposed to help you check the caller of your filter function.
   Not all collector functions receive the `extra` data parameter, so the method for checking may vary based on the specific function and language.
@@ -555,7 +552,7 @@ To enable data capture on your robot, add and configure the [data management ser
    By default, the data management service captures data every 0.1 minutes in the <file>~/.viam/capture</file> directory.
 
    You can leave the default settings as they are.
-   Click **Save Config** at the bottom of the window.
+   Click **Save config** at the bottom of the window.
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
@@ -583,8 +580,6 @@ Click **Save Config** and head back to the **Builder** mode.
 
 {{% /tab %}}
 {{< /tabs >}}
-
-Next, add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images.
 
 ### Vision service to detect color
 
