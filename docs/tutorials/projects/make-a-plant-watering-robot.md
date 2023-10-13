@@ -32,6 +32,10 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 4. [Configure the ADC as a module from the registry](#configure-the-adc-as-a-module-from-the-registry).
 5. [Write code utilizing the Viam Python SDK to control the plant watering robot](#add-python-control-code).
 
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877">}}
+
+You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC, the breadboard, and the motor speed controller, and uses the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off. You can start with this simple version and then add the ADC to make your machine more accurate!
+
 The tutorial uses the following hardware, but you can adjust it as needed:
 
 - A Raspberry Pi 3B or 4B with SD card and [5V USB power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)
