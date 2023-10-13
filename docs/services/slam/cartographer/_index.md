@@ -11,7 +11,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) is a C++ library that performs dense SLAM.
+[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
 
 Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
 
@@ -40,7 +40,7 @@ However, currently, the `cartographer` modular resource only supports taking **2
 
 ## Online mode
 
-In this mode, you use **live** LiDAR and optional IMU data to create a map, update an existing map, or do pure localization on an existing map.
+In this mode, you use **live** LiDAR and optional IMU data to **create a map**, **update an existing map**, or **do pure localization** on an existing map.
 
 ### Requirements
 
@@ -55,9 +55,9 @@ Currently, the `rplidar` and `cartographer` modules support the Linux platform o
 Physically connect the RPlidar to your robot.
 
 If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
-For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
+For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing points in the direction of the front of the Rover.
 
-If you need a mount plate for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
+If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
 
 - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
 - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
@@ -83,7 +83,7 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 
 Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the **`cartographer-module` on your robot acts as a stub**, and the algorithm actually executes in the cloud.
 
-Your robot's sensor data will be **captured continuously** using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the Map](#view-the-map) for details.
+Your robot's sensor data will be **captured continuously** using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the Map](#view-the-map) for details about starting and stopping a cloud slam session.
 
 Configure the remaining attributes as follows:
 
