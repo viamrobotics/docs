@@ -48,15 +48,15 @@ jobs:
           path: 'public'
           destination: 'docs-test.viam.dev/${{ github.event.pull_request.head.sha }}'
 
-      - name: Copy generated site to ANOTHER GCS bucket for testing
-        uses: 'google-github-actions/upload-cloud-storage@v0'
-        with:
-          path: 'public'
-          destination: 'docs-test.viam.dev/${{ github.event.number }}'
-
       - name: Comment on PR with link to rendered site
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           recreate: true
           message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.event.pull_request.head.sha }}/public'
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+
+      - name: 'Use gcloud CLI'
+        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}'
