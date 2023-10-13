@@ -171,13 +171,13 @@ All other types of uploaded files can be found under the **Files** subtab of the
 
 **Parameters:**
 
+- `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): Bytes representing the file data to upload.
 - `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
 - `file_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the file. The empty string `""` will be assigned as the filename if one isn’t provided.
 - `file_extension` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional file extension. The empty string `""` will be assigned as the file extension if one isn’t provided.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
-- `data` [(Optional[bytes])](https://docs.python.org/3/library/stdtypes.html#bytes-objects): Optional bytes representing file data to upload.
 
 **Returns**:
 
