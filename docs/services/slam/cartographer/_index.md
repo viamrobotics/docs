@@ -286,6 +286,14 @@ Once the slam session has finished starting, your first pointcloud will appear. 
 
 ![slam RC card first pointcloud](/services/slam/slam-RC-card-first-pointcloud.png)
 
+You will be able to see that your cloud mapping session is in progress from your **Location** page's **SLAM library** tab.
+
+TODO image
+
+When you would like to end the slam session, back on the robot's **Control** tab, click `"End session"`. The map will be saved to your **Location** page's **SLAM library** tab.
+
+TODO image
+
 If your `"Mapping mode"` is `"Localize"`, the pointcloud for the existing map will appear immediately and Cartographer will try to find your robot's position on it.
 
 ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
