@@ -185,7 +185,7 @@ If connected and the error persists, run `sudo usermod -a -G dialout $USER` to a
 
 #### MacOS Executable Permissions
 
-When using a machine running a version of MacOS, the user will be blocked from running the executable.
+When using a machine running a version of MacOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.
 Close whatever terminal window this opens to be able to run the installer.
 
