@@ -11,15 +11,9 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) is a C++ library that performs dense SLAM using 2D or 3D LiDAR data and optionally inertial measurement unit (IMU) and/or odometry data.
+[The Cartographer Project](https://github.com/cartographer-project) is a C++ library that performs dense SLAM.
 
 Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
-
-{{% alert title="Info" color="info" %}}
-
-Currently, the `cartographer` modular resource only supports taking 2D LiDAR data and optionally IMU data as input. Support for taking 3D LiDAR data and odometry data as input may be added in the future.
-
-{{% /alert %}}
 
 Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource is **run in the cloud**.
 
@@ -35,6 +29,14 @@ The `cartographer` {{< glossary_tooltip term_id="module" text="module" >}} is av
 See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
+
+{{% alert title="Info" color="info" %}}
+
+Cartographer supports taking **2D LiDAR** or **3D LiDAR** data and optionally **inertial measurement unit (IMU)** and/or **odometry** data as input.
+
+However, currently, the `cartographer` modular resource only supports taking **2D LiDAR** and optionally **IMU** data as input. Support for taking **3D LiDAR** and **odometry** data as input may be added in the future.
+
+{{% /alert %}}
 
 ## Online mode
 
@@ -81,14 +83,14 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 
 Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the **`cartographer-module` on your robot acts as a stub**, and the algorithm actually executes in the cloud.
 
-Your robot's sensor data will be captured continuously using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the Map](#view-the-map) for details.
+Your robot's sensor data will be **captured continuously** using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the Map](#view-the-map) for details.
 
 Configure the remaining attributes as follows:
 
-   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
-     Examples: "my-rplidar", "5"
-   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. 
-     Examples: "my-imu", "20"
+   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Example: "my-rplidar"
+       - Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it. Example: "5"
+   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Example: "my-imu"
+       - Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. Example: "20"
    - `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
    - `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
@@ -106,10 +108,10 @@ Your robot's sensor data will be captured continuously using Viam's Data Capture
 Configure the remaining attributes as follows:
 
    - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from your Location page under "SLAM library".
-   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it.
-     Examples: "my-rplidar", "5"
-   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. 
-     Examples: "my-imu", "20"
+   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Example: "my-rplidar"
+       - Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it. Example: "5"
+   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Example: "my-imu"
+       - Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. Example: "20"
    - `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
    - `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
@@ -125,10 +127,10 @@ In this mode, the cartographer-module on your robot executes the Cartographer al
 Configure the remaining attributes as follows:
 
    - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to do pure localization on. You can see more details about the available maps from your Location page under "SLAM library".
-   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Once you select the camera, you will need to set a `"Data polling frequency (Hz)"` for it.
-     Examples: "my-rplidar", "5"
-   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Once you select a movement sensor, you will need to set a `"Data polling frequency (Hz)"` for it. 
-     Examples: "my-imu", "20"
+   - `"Camera"`: Provide the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Example: "my-rplidar"
+       - Once you select the camera, you will need to set a `"Data capture rate (Hz)"` for it. Example: "5"
+   - `"Movement Sensor (Optional)"`: Provide the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Example: "my-imu"
+       - Once you select a movement sensor, you will need to set a `"Data capture rate (Hz)"` for it. Example: "20"
    - `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
    - `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
@@ -362,7 +364,7 @@ Navigate to the **SLAM library** tab on your Location page, and click either `"M
 
 ### View the Map
 
-Similar to when creating or updating a map in `Online` mode, you will be able to see that your cloud slam session is in progressp from your **Location** page's **SLAM library** tab.
+Similar to when creating or updating a map in `Online` mode, you will be able to see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 
 When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
 
