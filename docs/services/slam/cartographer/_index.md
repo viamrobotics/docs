@@ -280,17 +280,21 @@ If your `"Mapping mode"` is `"Create"`, enter a name for your new map and click 
 
 Then wait for the slam session to finish starting up in the cloud.
 
-![slam RC card start session](/services/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
+![slam RC card wait for session to finish starting](/services/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
 
-If your `"Mapping mode"` is `"Localize"`, the existing map will appear immediately and Cartographer will try to find your robot's position on it.
+Once the slam session has finished starting, your first pointcloud will appear. Make sure to either manually refresh, or change the refresh frequency to something other than `Manual`.
+
+![slam RC card first pointcloud](/services/slam/slam-RC-card-first-pointcloud.png)
+
+If your `"Mapping mode"` is `"Localize"`, the pointcloud for the existing map will appear immediately and Cartographer will try to find your robot's position on it.
+
+![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer will take some time to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+Cartographer may take several minutes to find your robot's position. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
 
 {{% /alert %}}
-
-You can change the **Refresh frequency** to the desired rate at which you'd like to see the map update.
 
 ### Attributes
 
