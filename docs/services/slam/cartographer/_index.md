@@ -68,7 +68,7 @@ If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print 
 
 Because Cartographer's algorithm is CPU-intensive, especially for creating or updating a map, the **`cartographer-module` on your robot acts as a stub** in this mode and the algorithm executes in the cloud.
 
-Your robot's sensor data will be **captured continuously** using Viam's Data Capture while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the map being created](#view-the-map-being-created) for details about starting and stopping a cloud slam session.
+Your robot's sensor data will be **captured continuously** using Viam's [Data Capture](/services/data/configure-data-capture/) while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the map being created](#view-the-map-being-created) for details about starting and stopping a cloud slam session.
 
 Follow the instructions below to set up the `cartographer` module on your robot:
 
