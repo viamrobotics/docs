@@ -194,7 +194,7 @@ Example of previously captured IMU data:
 
 ### Configuration
 
-Navigate to the **SLAM library** tab on your Location page, and click either `"Make new map"` on the top right, or `"Update map"` next to any map.
+Navigate to the **SLAM library** tab on your location page, and click `"Make new map"` on the top right and specify a map name or click `"Update map"` next to an existing map.
 
 1. If you clicked `"Make new map`", specify a map name.
 1. Enter the `"Robot name"`, `"Camera name"`, and optionally the `"Movement Sensor name"` of the components whose previously captured data you want to use to create or update a map. If your robot has been deleted, you can alternatively specify the `"robot ID`".
