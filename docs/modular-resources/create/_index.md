@@ -653,7 +653,7 @@ LOGGER = getLogger(__name__)
 To enable your Go module to write log messages to the Viam app, add the following lines to your code:
 
 ```go {class="line-numbers linkable-line-numbers"}
-// In your import() block, import the utils package from Viam:
+// In your import() block, import the golog package:
 import(
        ...
        "github.com/edaniels/golog"
