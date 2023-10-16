@@ -188,7 +188,7 @@ This config is just like that of a non-remote part; the remote connection is est
         "analogs": [
           {
             "pin": "34",
-            "name": "sensor"
+            "name": "A1"
           }
         ]
       },
