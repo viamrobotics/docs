@@ -203,7 +203,7 @@ Navigate to the **SLAM library** tab on your Location page, and click either `"M
 1. At the bottom, you can see the total number of PCD files and movement sensor data points that will be processed.
 1. Click `"Generate map"`.
 
-{{<imgproc src="/services/slam/offline-mapping-generate-map.png" resize="1200px" declaredimensions=true alt="UI for creating a new map from captured data">}}
+{{<imgproc src="/services/slam/offline-mapping-generate-map.png" resize="1200x" declaredimensions=true alt="UI for creating a new map from captured data">}}
 
 ### View the Map
 
