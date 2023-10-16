@@ -136,6 +136,12 @@ A model with the `viam` namespace is always Viam-provided.
 
 The Robot Development Kit (RDK) `viam-server` provides automatically manages modular resources to function like built-in resources:
 
+### Logging
+
+You can configure your module to write log messages to the Viam app.
+Log messages written to the app appear under the **Logs** tab for the smart machine running the module.
+See [Configure logging](/modular-resources/create/#configure-logging) for more information.
+
 ### Dependency Management
 
 Modular resources may depend on other built-in resources or other modular resources, and vice versa.
