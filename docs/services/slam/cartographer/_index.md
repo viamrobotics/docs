@@ -15,7 +15,7 @@ aliases:
 
 Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
 
-Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource is **run in the cloud**.
+Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource **runs in the cloud**.
 
 For doing **pure localization** on an existing map, the `cartographer` modular resource **runs on your robot**.
 
