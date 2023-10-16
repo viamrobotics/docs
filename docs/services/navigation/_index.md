@@ -24,7 +24,7 @@ Configure a stack of movement sensors that satisfy the following requirements in
 - [`GetPosition()`](/components/movement-sensor/#getposition)
 - [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
 - [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
-- At least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation). If your movement sensor stack provides multiple methods, your robot will default to using the values returned by `GetCompassHeading()`.
+- [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
 
 See [navigation concepts](#navigation-concepts) for more info on how to implement and use movement sensors taking these measurements.
 

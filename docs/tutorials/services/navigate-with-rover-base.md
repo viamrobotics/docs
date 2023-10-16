@@ -52,7 +52,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that is navigating using the navigation service in a robotics lab.">}}
 
-2. **A movement sensor with GPS position, compass heading or orientation, and angular and linear velocity readings**
+2. **A movement sensor with GPS position, compass heading, and angular and linear velocity readings**
 
    We used three movement sensors to satisfy these requirements:
 
