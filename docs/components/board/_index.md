@@ -36,19 +36,36 @@ A board can be:
 
 For model-specific configuration information, click on one of the following models:
 
+
+    <li><a href="#c1_slide1">Raspberry Pi 4</a></li>
+    <li><a href="#c1_slide2">NVIDIA Jetson Orin Nano</a></li>
+    <li><a href="#c1_slide3">Intel UP4000</a></li>
+    <li><a href="#c1_slide4">Mediatek Genio 500 Pumpkin</a></li>
+    <li><a href="#c1_slide5">Espressif ESP32</a></li>
+    <li><a href="#c1_slide6">Texas Instruments TDA4VM</a></li>
+    <li><a href="#c1_slide7">NVIDIA Jetson Nano</a></li>
+    <li><a href="#c1_slide8">NVIDIA Jetson AGX Orin</a></li>
+    <li><a href="#c1_slide9">NVIDIA Jetson Xavier NX</a></li>
+    <li><a href="#c1_slide10">Raspberry Pi 3</a></li>
+    <li><a href="#c1_slide11">Raspberry Pi Zero 2W</a></li>
+    <li><a href="#c1_slide12">BeagleBone AI-64</a></li>
+    <li><a href="#c1_slide13">Numato GPIO Modules</a></li>
+    <li><a href="#c1_slide14">PCA9686 I<sup>2</sup>C Interface</a></li>
+
+
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
+| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
-| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
-| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
-| [`fake`](fake/) | A model used for testing, with no physical hardware |
 | [`customlinux`](customlinux/) | A model for other Linux boards. |
 | other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
+| [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ### Modular Resources
 
