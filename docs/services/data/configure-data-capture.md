@@ -213,7 +213,7 @@ The following example captures data from two analog readers that provide a volta
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
-        "sync_interval_mins": 5
+        "sync_interval_mins": 5,
         "tags": ["tag1", "tag2"]
       },
       "name": "data_manager",
