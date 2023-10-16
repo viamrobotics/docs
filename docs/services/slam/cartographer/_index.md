@@ -189,7 +189,7 @@ Example of previously captured LiDAR data (note, you can click on a row to see t
 
 Example of previously captured IMU data:
 
-![offline mapping imu data](/services/slam/offline-mapping-imu-data.png)
+{{<imgproc src="/services/slam/offline-mapping-imu-data.png" resize="1200x" declaredimensions=true alt="UI showing captured sensor data">}}
 
 ### Configuration
 
