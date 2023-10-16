@@ -47,7 +47,7 @@ viam module create --name <your-module-name> --org-id <your-org-id>
 {{% tab name="Public" %}}
 
 1. If you haven't already, [create a new namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
-   If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/).
+   If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/manage/cli/#organizations) command.
 
 2. To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 

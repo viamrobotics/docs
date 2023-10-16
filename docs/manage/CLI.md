@@ -546,7 +546,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
+| `list`      | list all organizations (name, id, and [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
 | `api-key`      | create a new organization API key    | - |
 | `--help`      | return help      | - |
 
