@@ -60,7 +60,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
-   You can use whatever combo of movement sensors you want as long as you are getting all the types of measurements required.
+   You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
    See [the navigation service](/services/navigation/#requirements) for more info on movement sensor requirements.
 
 {{% alert title="Tip" color="tip" %}}

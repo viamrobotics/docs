@@ -19,7 +19,7 @@ Configure your base with a navigation service, add waypoints, and set the mode o
 
 You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a Navigation service.
 
-Configure a stack of movement sensors that satisfy the following requirements in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/components/movement-sensor/#api):
+To use the navigation service, configure a stack of movement sensors that satisfy the following requirements in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/components/movement-sensor/#api):
 
 - [`GetPosition()`](/components/movement-sensor/#getposition)
 - [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
