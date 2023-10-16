@@ -29,6 +29,10 @@ The source code for this module is available on the [`rplidar` GitHub repository
 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
 
+The `rplidar` module is distributed as an AppImage.
+AppImages require FUSE version 2 to run.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+
 Currently, the `rplidar` module supports the Linux platform only.
 
 Your robot must have an RPlidar installed to be able to use the `rplidar` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).

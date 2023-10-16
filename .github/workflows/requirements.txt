@@ -1,0 +1,3 @@
+viam-sdk
+asyncio
+typesense

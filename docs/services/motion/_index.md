@@ -456,7 +456,7 @@ Translation in obstacles is not supported by the [navigation service](/services/
   - `vision_services` [([ResourceName])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The name you configured for each vision service you want to use while moving this resource.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the robot.
   - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
-  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in meters that the machine can deviate from the motion plan.
+  - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in millimeters that the machine can deviate from the motion plan.
   - `linear_m_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Linear velocity this machine should target when moving.
   - `angular_degs_per_sec` [(float)](https://docs.python.org/3/library/functions.html#float): Angular velocity this machine should target when turning.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
@@ -501,7 +501,7 @@ success = await motion.move_on_globe(
   - `VisionSvc` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The name you configured for each vision service you want to use while moving this resource.
   - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the robot.
   - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
-  - `PlanDeviationM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in meters that the machine can deviate from the motion plan.
+  - `PlanDeviationMM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in millimeters that the machine can deviate from the motion plan.
   - `LinearMPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Linear velocity this machine should target when moving.
   - `AngularDegsPerSec` [(float64)](https://pkg.go.dev/builtin#float64): Angular velocity this machine should target when turning.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
