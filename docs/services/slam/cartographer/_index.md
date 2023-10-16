@@ -93,6 +93,86 @@ To save your changes, click **Save config** at the bottom of the page.
 
 Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
+{{%expand "Click to view an example JSON configuration for creating a new map" %}}
+
+See [Attributes](#attributes) for details.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "config_params": {
+          "max_range_meters": "25",
+          "mode": "2d",
+          "min_range_meters": "0.2"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": true,
+        "use_cloud_slam": true
+      },
+      "name": "slam",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer"
+    },
+    {
+      "name": "Data-Management-Service",
+      "type": "data_manager",
+      "attributes": {
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 0.1,
+        "capture_dir": ""
+      }
+    }
+  ],
+  "components": [
+    {
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "service_configs": [
+        {
+          "attributes": {
+            "capture_methods": [
+              {
+                "disabled": false,
+                "method": "NextPointCloud",
+                "capture_frequency_hz": 5
+              }
+            ]
+          },
+          "type": "data_manager"
+        }
+      ],
+      "name": "rplidar",
+      "model": "viam:lidar:rplidar",
+      "type": "camera"
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
 #### Update existing map
 
 This mode is similar to [Create new map](#create-new-map), except it creates a new version of an existing map in the robot's location. (It does not overwrite the old version of the map.)
@@ -101,11 +181,177 @@ The configuration is similar to the configuration for [creating a new map](#crea
 
    - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from this robot's **Location** page under the **SLAM library** tab.
 
+{{%expand "Click to view an example JSON configuration for updating an existing map" %}}
+
+See [Attributes](#attributes) for details.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    }
+  ],
+  "services": [
+    {
+      "attributes": {
+        "config_params": {
+          "max_range_meters": "25",
+          "mode": "2d",
+          "min_range_meters": "0.2"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": true,
+        "use_cloud_slam": true,
+        "existing_map": "${packages.slam_map.test-map-1}/internalState.pbstream"
+      },
+      "name": "slam",
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer"
+    },
+    {
+      "name": "Data-Management-Service",
+      "type": "data_manager",
+      "attributes": {
+        "tags": [],
+        "additional_sync_paths": [],
+        "sync_interval_mins": 0.1,
+        "capture_dir": ""
+      }
+    }
+  ],
+  "components": [
+    {
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "service_configs": [
+        {
+          "attributes": {
+            "capture_methods": [
+              {
+                "disabled": false,
+                "method": "NextPointCloud",
+                "capture_frequency_hz": 5
+              }
+            ]
+          },
+          "type": "data_manager"
+        }
+      ],
+      "name": "rplidar",
+      "model": "viam:lidar:rplidar",
+      "type": "camera"
+    }
+  ],
+  "packages": [
+    {
+      "name": "test-map-1",
+      "version": "1697208847",
+      "package": "d1c224e8-483e-4cc7-980f-76b89d8fb507/test-map-1",
+      "type": "slam_map"
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
 #### Localize only
 
 In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
 
 The configuration is similar to the configuration for [updating an existing map](#update-existing-map), except instead of setting a `Data capture rate (Hz)` on the camera and movement sensor, you set a `Data polling rate (Hz)` on them, since the `cartographer-module` on your robot will poll the live LiDAR and IMU directly at these rates instead of the data being sent to the cloud.
+
+{{%expand "Click to view an example JSON configuration for localizing only" %}}
+
+See [Attributes](#attributes) for details.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
+    }
+  ],
+  "services": [
+    {
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer",
+      "attributes": {
+        "config_params": {
+          "min_range_meters": "0.2",
+          "max_range_meters": "25",
+          "mode": "2d"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": false,
+        "use_cloud_slam": false,
+        "existing_map": "${packages.slam_map.test-map-1}/internalState.pbstream"
+      },
+      "name": "slam"
+    }
+  ],
+  "components": [
+    {
+      "model": "viam:lidar:rplidar",
+      "type": "camera",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "name": "rplidar"
+    }
+  ],
+  "packages": [
+    {
+      "type": "slam_map",
+      "name": "test-map-1",
+      "version": "1697208847",
+      "package": "d1c224e8-483e-4cc7-980f-76b89d8fb507/test-map-1"
+    }
+  ]
+}
+```
+
+{{% /expand%}}
+
+#### Attributes
+
+<!-- prettier-ignore -->
+| Name | Data Type | Inclusion | Description |
+| ---- | --------- | --------- | ----------- |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your robot. |
+| `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
+| `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
+| `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
+| `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
+| `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
 
 ### View the Map
 
