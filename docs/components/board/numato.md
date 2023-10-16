@@ -76,8 +76,12 @@ The following attributes are available for `numato` boards:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `pins` | int | **Required** | Number of GPIO pins available on the module. |
+| `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs). |
 
-<!-- I think these are available but I need to confirm
-| `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See [configuration info](/components/board/#digital-interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See [configuration info](/components/board/#spi-buses). |
-| `i2cs` | object | Optional | Any Inter Integrated Circuit (I2C) bus pins' index and name. See [configuration info](/components/board/#i2cs). | -->
+## Attribute Configuration
+
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) into your robot.
+
+### `analogs`
+
+{{< readfile "/static/include/components/board/board-analogs.md" >}}
