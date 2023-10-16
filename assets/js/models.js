@@ -4,7 +4,7 @@ const api = document.getElementsByClassName("mr-component")[0].id;
 console.log(api)
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: "doFRbKhVNu5cRp776sdnAhsv30A3l7n6", // Be sure to use an API key that only allows search operations
+    apiKey: "EzBPJyIM1x2jv1C8oplyUjeONokTcJcZ", // Be sure to use an API key that only allows search operations
     nodes: [
       {
         host: "cgnvrk0xwyj9576lp-1.a1.typesense.net",
@@ -25,7 +25,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
 const searchClient = typesenseInstantsearchAdapter.searchClient;
 
 const search = instantsearch({
-  indexName: "modular_models",
+  indexName: "modular_resources",
   searchClient,
 });
 
