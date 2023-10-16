@@ -727,6 +727,107 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### MarkPartAsMain
+
+Mark a robot part as the [_main_ part](/manage/parts-and-remotes/#robot-parts) of a robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to mark as main.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.mark_part_as_main(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### MarkPartForRestart
+
+Mark a specified robot part for restart.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to mark for restart.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.mark_part_for_restart(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_for_restart).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateRobotPartSecret
+
+Create a robot {{< glossary_tooltip term_id="part" text="part" >}} secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to create a secret for.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The robot part the new secret was generated for.
+
+```python {class="line-numbers linkable-line-numbers"}
+part_with_new_secret = await cloud.create_robot_part_secret(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRobotPartSecret
+
+Delete a robot part secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to delete the secret from.
+- `secret_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the secret to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID or secret ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_robot_part_secret(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobot
 
 Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
