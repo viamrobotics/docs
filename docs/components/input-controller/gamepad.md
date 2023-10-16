@@ -65,11 +65,6 @@ The following attributes are available for `gamepad` input controllers:
 
 {{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 
-{{% alert title="Important" color="note" %}}
-You have to press a button or move a stick on your gamepad for the browser to report the gamepad.
-For your security, the browser won't report a gamepad until an input has been sent.
-{{% /alert %}}
-
 ### Work in Progress Models
 
 Mappings are currently available for a wired XBox 360 controller, and wireless XBox Series X|S, along with the 8bitdo Pro 2 bluetooth gamepad (which works great with the Raspberry Pi).
