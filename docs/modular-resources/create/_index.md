@@ -668,10 +668,10 @@ func init() {
  registration := resource.Registration[resource.Resource, *Config]{
   Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (resource.Resource, error) {
      ...
-     &component {
+     return &component {
          ...
          logger: logger
-     }
+     }, nil
   },
  }
  resource.RegisterComponent(...)
