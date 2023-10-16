@@ -62,9 +62,9 @@ If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print 
 - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
 - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
-### Create new map
+### Configuration
 
-#### Configuration for creating a new map
+#### Create new map
 
 Because Cartographer's algorithm is CPU-intensive, especially for creating or updating a map, the **`cartographer-module` on your robot acts as a stub** in this mode and the algorithm executes in the cloud.
 
@@ -93,7 +93,23 @@ To save your changes, click **Save config** at the bottom of the page.
 
 Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
-#### View the map being created
+#### Update existing map
+
+This mode is similar to [Create new map](#create-new-map), except it creates a new version of an existing map in the robot's location. (It does not overwrite the old version of the map.)
+
+The configuration is similar to the configuration for [creating a new map](#create-new-map), except you additionally configure the following **Attribute**:
+
+   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from this robot's **Location** page under the **SLAM library** tab.
+
+#### Localize only
+
+In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
+
+The configuration is similar to the configuration for [updating an existing map](#update-existing-map), except instead of setting a `Data capture rate (Hz)` on the camera and movement sensor, you set a `Data polling rate (Hz)` on them, since the `cartographer-module` on your robot will poll the live LiDAR and IMU directly at these rates instead of the data being sent to the cloud.
+
+### View the Map
+
+#### "Create new map" mode
 
 Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
@@ -125,19 +141,9 @@ You can click `View map` to view the map in a dynamic pointcloud viewer.
 
 ![slam library view map](/services/slam/slam-library-view-map.png)
 
-### Update existing map
+#### "Update existing map" mode
 
-This mode is similar to [Create new map](#create-new-map), except it creates a new version of an existing map in the robot's location. (It does not overwrite the old version of the map.)
-
-#### Configuration for updating an existing map
-
-This is similar to the [Configuration for creating a new map](#configuration-for-creating-a-new-map), except you additionally configure the following **Attribute**:
-
-   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from this robot's **Location** page under the **SLAM library** tab.
-
-#### View the map being updated
-
-This is similar to [View the map being created](#view-the-map-being-created), except it builds on top of an existing map.
+This is similar to [viewing the map in "create new map" mode](#create-new-map-mode), except it builds on top of an existing map.
 
 {{% alert title="Info" color="info" %}}
 
@@ -147,21 +153,11 @@ You may not want to move your robot until it has localized correctly.
 
 {{% /alert %}}
 
-### Localize only
-
-In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
-
-#### Configuration for localizing only
-
-This is similar to the [Configuration for updating an existing map](#configuration-for-updating-an-existing-map), except instead of setting a `Data capture rate (Hz)` on the camera and movement sensor, you set a `Data polling rate (Hz)` on them, since the `cartographer-module` on your robot will poll the live LiDAR and IMU directly at these rates instead of the data being sent to the cloud.
-
-#### View your robot localizing on the map
+#### "Localize only" mode
 
 Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
 
-Unlike when creating or updating a map, you do not need to start and end a slam session.
-
-The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your robot's position on it.
+Unlike when creating or updating a map, you do not need to start and end a slam session. The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your robot's position on it.
 
 Since the map will not change, nothing new will be added to this robot's location's **SLAM library**.
 
