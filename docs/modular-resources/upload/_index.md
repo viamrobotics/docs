@@ -146,7 +146,7 @@ Edit and then upload the `meta.json` file to set important configuration informa
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
 1. Run `viam module upload` to upload your custom module to the Viam registry.
-   Specify the path to the file, directory, or compressed archive in `tar.gz` or `tar.xz` format that contains your custom module code:
+   Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tar.xz` extension) that contains your custom module code:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <module-path>
@@ -162,7 +162,7 @@ Edit and then upload the `meta.json` file to set important configuration informa
      - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
      - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
      - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
-   - `module-path` - provide the path to the file, directory, or compressed archive in `tar.gz` or `tar.xz` format that contains your custom module code.
+   - `module-path` - provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tar.xz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
    The `viam module upload` command only supports one `platform` argument at a time.
