@@ -640,7 +640,7 @@ Once configured in this way, log messages are sent to the Viam app and appear un
 
 To enable your Python module to write log messages to the Viam app, add the following lines to your code:
 
-```python {class="line-numbers linkable-line-numbers"}
+```python {class="line-numbers linkable-line-numbers" data-line="2,5"}
 # In your import block, import viam.logging getLogger:
 from viam.logging import getLogger
 
@@ -659,14 +659,33 @@ import(
        ...
        "go.viam.com/utils"
 )
-
-// Then, use the following in your functions to generate log messages as needed:
-// Log with severity warning:
-b.logger.Warnf("error message", b.Name(), err.Error())
-// Log with severity info:
-b.logger.Infof("error message", b.Name(), err.Error())
-// Log with severity debug:
-b.logger.Debugf("error message", b.Name(), err.Error())
+// Alter your component to hold a logger
+type component struct {
+    ...
+ logger golog.Logger
+}
+// Then, alter your component's constructor to save the logger:
+func init() {
+ registration := resource.Registration[resource.Resource, *Config]{
+  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (resource.Resource, error) {
+     ...
+     &component {
+         ...
+         logger: logger
+     }
+  },
+ }
+ resource.RegisterComponent(...)
+}
+// Finally, when you need to log, use the functions on your component's logger:
+fn (c *component) someFunction(a int) {
+  // Log with severity info:
+  c.logger.Infof("performing some function with a=%v",a)
+  // Log with severity debug (using value wrapping):
+  c.logger.Debugw("performing some function","a",a)
+  // Log with severity error without a parameter:
+  c.logger.Errorln("performing some function")
+}
 ```
 
 {{% /tab %}}
