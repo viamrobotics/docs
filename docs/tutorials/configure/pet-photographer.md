@@ -52,19 +52,33 @@ If your pet already has a distinct color that is different from their environmen
 Here's how to get started:
 
 1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's computer.
-
 1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
-
 1. Update [`viam-server`](/installation/manage/#update-viam-server).
    If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
    Your viam-server must be version 0.8.0 or higher to access the filtering functionality.
-
 1. Prepare to import your custom model.
    - Find the subtype API as defined in the relevant <resource-name>/<resource-name>.go file in the RDK on Viam’s GitHub.
      - In this example, the camera's API is defined in the <file>[camera.go](https://github.com/viamrobotics/rdk/blob/main/components/camera/camera.go)</file> file in the RDK on Viam's Github.
        When developing your <file>main.go</file> or <file>main.py</file> file, reference this file.
 
-### Code your entry point file
+## Clone the module for use
+
+This tutorial will guide you through the process of coding your filter module.
+However, if you prefer to use the pre-written or final code for the module, you can follow these steps:
+
+1. Clone the [color filter module](https://github.com/viam-labs/modular-filter-examples) from GitHub onto your robot's computer:
+
+```{class="command-line" data-prompt="$"}
+git clone https://github.com/viam-labs/modular-filter-examples.git
+```
+
+1. [Compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module in the `module` directory.
+1. Save the path to your module's executable for later use.
+1. [Add the local module](#add-local-module) and continue the tutorial from there.
+
+If you would rather manually code your color filter module, follow the sections below to get started.
+
+## Code your entry point file
 
 Next, code your <file>main.go</file> or <file>main.py</file> (the module entry point file) to initialize and start the filter module.
 To filter data based on another constraint, modify the filter's source code.
