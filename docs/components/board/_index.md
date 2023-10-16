@@ -36,23 +36,6 @@ A board can be:
 
 For model-specific configuration information, click on one of the following models:
 
-
-    <li><a href="#c1_slide1">Raspberry Pi 4</a></li>
-    <li><a href="#c1_slide2">NVIDIA Jetson Orin Nano</a></li>
-    <li><a href="#c1_slide3">Intel UP4000</a></li>
-    <li><a href="#c1_slide4">Mediatek Genio 500 Pumpkin</a></li>
-    <li><a href="#c1_slide5">Espressif ESP32</a></li>
-    <li><a href="#c1_slide6">Texas Instruments TDA4VM</a></li>
-    <li><a href="#c1_slide7">NVIDIA Jetson Nano</a></li>
-    <li><a href="#c1_slide8">NVIDIA Jetson AGX Orin</a></li>
-    <li><a href="#c1_slide9">NVIDIA Jetson Xavier NX</a></li>
-    <li><a href="#c1_slide10">Raspberry Pi 3</a></li>
-    <li><a href="#c1_slide11">Raspberry Pi Zero 2W</a></li>
-    <li><a href="#c1_slide12">BeagleBone AI-64</a></li>
-    <li><a href="#c1_slide13">Numato GPIO Modules</a></li>
-    <li><a href="#c1_slide14">PCA9686 I<sup>2</sup>C Interface</a></li>
-
-
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
