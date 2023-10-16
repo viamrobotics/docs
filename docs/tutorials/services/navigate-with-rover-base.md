@@ -56,7 +56,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
    We used three movement sensors to satisfy these requirements:
 
-   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position measurements.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
