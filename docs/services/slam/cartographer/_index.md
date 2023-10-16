@@ -196,7 +196,7 @@ Example of previously captured IMU data:
 Navigate to the **SLAM library** tab on your Location page, and click either `"Make new map"` on the top right, or `"Update map"` next to any map.
 
 1. If you clicked `"Make new map`", specify a map name.
-1. Enter the `"Robot name"`, `"Camera name"`, and optionally the `"Movement Sensor name"` of the components whose previously captured data should be used to create or update the map. If your robot has been deleted, you can alternatively specify the `"robot ID`".
+1. Enter the `"Robot name"`, `"Camera name"`, and optionally the `"Movement Sensor name"` of the components whose previously captured data you want to use to create or update a map. If your robot has been deleted, you can alternatively specify the `"robot ID`".
 1. Adjust the config parameters as needed. See [config_params](#config_params) for details.
 1. Select the timeframe of the data you'd like to use.
 1. At the bottom, you will be able to see the total number of PCD files and movement sensor data points that will be processed.
