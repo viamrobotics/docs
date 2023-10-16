@@ -185,7 +185,7 @@ You can browse your previously captured data from the **Data** page. You must ha
 
 Example of previously captured LiDAR data (note, you can click on a row to see the `Robot ID` of the robot the component belonged to):
 
-![offline mapping pointcloud data](/services/slam/offline-mapping-pointcloud-data.png)
+{{<imgproc src="/services/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
 
 Example of previously captured IMU data:
 
