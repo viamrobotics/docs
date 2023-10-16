@@ -92,26 +92,30 @@ To filter data based on another constraint, modify the filter's source code.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
-
 from viam.components.camera import Camera
 from viam.module.module import Module
 from viam.resource.registry import Registry, ResourceCreatorRegistration
-
 import color_filter
 
 async def main():
-  """This function creates and starts a new module, after adding all desired resource models.
-  Resource creators must be registered to the resource registry before the module adds the resource model.
-  """
-  Registry.register_resource_creator(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL, ResourceCreatorRegistration(color_filter.ColorFilterCam.new_cam, color_filter.ColorFilterCam.validate_config))
-  module = Module.from_args()
-
+    """
+    This function creates and starts a new module, after adding all desired resource models.
+    Resource creators must be registered to the resource registry before the module adds the resource model.
+    """
+    Registry.register_resource_creator(
+        Camera.SUBTYPE,
+        color_filter.ColorFilterCam.MODEL,
+        ResourceCreatorRegistration(
+            color_filter.ColorFilterCam.new_cam,
+            color_filter.ColorFilterCam.validate_config
+        )
+    )
+    module = Module.from_args()
     module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
     await module.start()
 
-  if **name** == "**main**":
-  asyncio.run(main())
-
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
 
 {{% /tab %}}
@@ -203,15 +207,15 @@ The following is the color filter function:
 {{% tab name="Python"%}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def get_image(self, mime_type: str = "", \*, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, \*\*kwargs) -> Image.Image:
-  """Filters the output of the underlying camera"""
-  img = await self.actual_cam.get_image()
-  if from_dm_from_extra(extra):
-    detections = await self.vision_service.get_detections(img)
-      if len(detections) == 0:
-        raise NoCaptureToStoreError()
+async def get_image(self, mime_type: str = "", *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> Image.Image:
+    """Filters the output of the underlying camera"""
+    img = await self.actual_cam.get_image()
+    if from_dm_from_extra(extra):
+        detections = await self.vision_service.get_detections(img)
+        if len(detections) == 0:
+            raise NoCaptureToStoreError()
 
-  return img
+    return img
 ```
 
 {{% /tab %}}
@@ -263,11 +267,10 @@ Once you have implemented your resource subtype's required methods and written y
   <summary>Click to view sample code from <file>color_filter.py</file></summary>
 
 ```python {class="line-numbers linkable-line-numbers"}
-from typing import ClassVar, Mapping, Sequence,
-Optional, cast, Tuple, List, Any, Dict
-
+from typing import (
+    ClassVar, Mapping, Sequence, Optional, cast, Tuple, List, Any, Dict
+)
 from typing_extensions import Self
-
 from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName, ResponseMetadata, Geometry
