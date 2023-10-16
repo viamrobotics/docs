@@ -54,7 +54,7 @@ Currently, the `rplidar` and `cartographer` modules support the Linux platform o
 
 Physically connect the RPlidar to your robot.
 
-If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
+If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it **faces forward in the direction of travel**, facing in the same direction as the included webcam.
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing points in the direction of the front of the Rover.
 
 If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
@@ -99,7 +99,7 @@ Navigate to the **Control** tab on your robot's page and click on the drop-down 
 
 Enter a name for your new map and click `"Start session"`, then wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
 
-**Make sure to either manually refresh, or change the refresh frequency to something other than `Manual`.**
+Make sure to either **manually refresh**, or **change the refresh frequency** to something other than `Manual`.
 
 ![slam RC card start session](/services/slam/slam-RC-card-start-session.png)
 
@@ -207,9 +207,7 @@ Navigate to the **SLAM library** tab on your Location page, and click either `"M
 
 ### View the Map
 
-Similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
-
-When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
+Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab, and when all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
 
 ## `config_params`
 
