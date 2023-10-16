@@ -189,6 +189,10 @@ This config is just like that of a non-remote part; the remote connection is est
           {
             "pin": "34",
             "name": "A1"
+          },
+          {
+            "pin": "35",
+            "name": "A2"
           }
         ]
       },
