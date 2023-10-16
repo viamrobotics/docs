@@ -139,4 +139,16 @@ The following attributes are available for `upboard` boards:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](/components/board/#i2cs). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
+
+## Attribute Configuration
+
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts), and components that must communicate through [I<sup>2</sup>C](#i2cs) protocol into your robot.
+
+### `digital_interrupts`
+
+{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+### `i2cs`
+
+{{< readfile "/static/include/components/board/board-i2cs.md" >}}
