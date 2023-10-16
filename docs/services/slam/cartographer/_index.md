@@ -181,7 +181,8 @@ In this mode, you specify a range of **previously captured** LiDAR and optional 
 
 ### Requirements
 
-You can browse your previously captured data from the **Data** page. You must have at least previously captured LiDAR data in the location in which you would like to create the map.
+You can browse your previously captured data from the **Data** page.
+To create a map, you must have already captured LiDAR data in the location in which you would like to create the map.
 
 Example of previously captured LiDAR data (note, you can click on a row to see the `Robot ID` of the robot the component belonged to):
 
