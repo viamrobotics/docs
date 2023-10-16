@@ -277,7 +277,6 @@ import (
     "go.viam.com/rdk/components/motor"
     "go.viam.com/rdk/resource"
     "go.viam.com/rdk/spatialmath"
-    "go.viam.com/utils"
 )
 
 // Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
@@ -657,7 +656,7 @@ To enable your Go module to write log messages to the Viam app, add the followin
 // In your import() block, import the utils package from Viam:
 import(
        ...
-       "go.viam.com/utils"
+       "github.com/edaniels/golog"
 )
 // Alter your component to hold a logger
 type component struct {
