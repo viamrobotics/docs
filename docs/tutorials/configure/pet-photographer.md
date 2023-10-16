@@ -76,7 +76,7 @@ git clone https://github.com/viam-labs/modular-filter-examples.git
 1. Save the path to your module's executable for later use.
 1. [Add the local module](#add-local-module) and continue the tutorial from there.
 
-If you would rather manually code your color filter module, follow the sections below to get started.
+If you would rather manually code your color filter module, read the section below to get started.
 
 ## Code your entry point file
 
@@ -97,7 +97,7 @@ from viam.module.module import Module
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 import color_filter
 
-  async def main():
+async def main():
     """
     This function creates and starts a new module, after adding all desired resource models.
     Resource creators must be registered to the resource registry before the module adds the resource model.
