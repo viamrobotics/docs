@@ -206,7 +206,7 @@ Navigate to the **SLAM library** tab on your Location page, and click either `"M
 
 ### View the Map
 
-Similar to when creating or updating a map in `Online` mode, you will be able to see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
+Similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 
 When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
 
