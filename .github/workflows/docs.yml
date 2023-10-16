@@ -116,5 +116,5 @@ jobs:
       - name: "Update modular resources"
         run: python3 .github/workflows/get_modular_resources.py
         env:
-          API_KEY: ${{ secrets.TYPESENSE_API_KEY_MR }}
+          TYPESENSE_API_KEY_MR: ${{ secrets.TYPESENSE_API_KEY_MR }}
           VIAM_LOCAITON_SECRET: ${{ secrets.VIAM_LOCAITON_SECRET }}
