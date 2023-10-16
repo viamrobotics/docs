@@ -315,7 +315,7 @@ In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON 
     We named ours `enc-linear`.
     Refer to [the `wheeled-odometry` movement sensor documentation](/components/movement-sensor/wheeled-odometry/) for attribute information.
 
-2.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
+3.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
 
     ![An example configuration for a merged movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png)
 
