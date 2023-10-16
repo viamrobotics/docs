@@ -356,7 +356,7 @@ This includes:
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
 viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
-viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <packaged-module.tar.gz>
+viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module>
 ```
 
 Examples:
@@ -387,7 +387,7 @@ If you update and release your module as part of a continuous integration (CI) w
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
-| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **path** : specify the path to the file, directory, or compressed archive in `tar.gz` or `tar.xz` format that contains your custom module code |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -440,13 +440,13 @@ Therefore, you are able to change the `entrypoint` file from version to version,
 
 ##### Upload validation
 
-When you `upload` a module, the command validates your local packaged module to ensure that it meets the requirements to successfully upload to the Viam registry.
+When you `upload` a module, the command validates your local module to ensure that it meets the requirements to successfully upload to the Viam registry.
 The following criteria are checked for every `upload`:
 
-- The packaged module must exist on the filesystem at the path provided to the `upload` command.
-- The packaged module must use the `.tar.gz` or `.tgz` extension.
+- The module must exist on the filesystem at the path provided to the `upload` command.
 - The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
+- If the module is provided to the `upload` command as a compressed archive, the archive must be in `.tar.gz` or `.tgz` format.
 
 ##### The `meta.json` file
 
@@ -498,7 +498,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program.</td>
+    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing a directory containing your module to the <code>upload</code> command, the entry point file must be contained within that directory.</td>
   </tr>
 </table>
 
