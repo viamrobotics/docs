@@ -309,7 +309,8 @@ In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON 
     We named ours `gps`.
     Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
 
-2. Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
+2.  Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
+
     ![An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png)
 
     We named ours `enc-linear`.
