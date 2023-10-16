@@ -73,10 +73,10 @@ Before you start, make sure to create a robot in [the Viam app](https://app.viam
 First, configure the components of your robot.
 
 {{< alert title="Info" color="info" >}}
-If you are using different _models_ of hardware, adjust your configuration accordingly.
+If you are using different hardware, configure them according to the instructions for each [component](/components/).
 {{< /alert >}}
 
-{{expand "Click to see how we configured our LEO rover" %}}
+{{% expand "Click to see how we configured our LEO rover" %}}
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -159,8 +159,6 @@ Be sure to wire the board to the encoders and motors on your base matching this 
 If you choose to wire your components differently, adjust your pin assignment configuration from these instructions according to your wiring.
 
 {{< /alert >}}
-
-{{% /expand %}}
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -290,27 +288,13 @@ In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON 
       },
       "depends_on": [],
       "name": "r-encoder"
-    },
-    {
-      "model": "wheeled-odometry",
-      "type": "movement_sensor",
-      "namespace": "rdk",
-      "attributes": {
-        "base": "base",
-        "left_motors": [
-          "left-motor"
-        ],
-        "right_motors": [
-          "right-motor"
-        ]
-      },
-      "depends_on": [],
-      "name": "enc-linear"
     }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
+
+{{% /expand %}}
 
 ### Configure movement sensors
 
@@ -420,8 +404,6 @@ In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON 
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{% /expand%}}
 
 ## Configure a Navigation service
 
