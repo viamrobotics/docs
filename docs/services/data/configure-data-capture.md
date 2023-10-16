@@ -16,8 +16,9 @@ To capture data from one or more smart machines, you must first add the [data ma
 2. Click **Create service** in the lower-left corner of the page.
    Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
 3. Click **Create**.
-4. On the panel that appears, you can manage the capturing and syncing functions individually and specify the interval and directory.
-   If the capture frequency or the directory is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
+4. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply captured data.
+
+   If the sync **interval** or the **directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
    {{< alert title="Info" color="info" >}}
    If you change the directory for data capture only new data is stored in the new directory.
@@ -39,7 +40,8 @@ To capture data from one or more smart machines, you must first add the [data ma
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 1,
-        "capture_dir": ""
+        "capture_dir": "",
+        "tags": []
       }
     }
   ]
@@ -96,7 +98,8 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
       "attributes": {
         "sync_interval_mins": 5,
         "capture_dir": "",
-        "sync_disabled": false
+        "sync_disabled": false,
+        "tags": []
       }
     }
   ],
@@ -203,7 +206,8 @@ The following example captures data from two analog readers that provide a volta
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
-        "sync_interval_mins": 5
+        "sync_interval_mins": 5,
+        "tags": []
       },
       "name": "data_manager",
       "type": "data_manager"
@@ -263,7 +267,8 @@ The following example captures data from the `ReadImage` method of a camera:
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
-        "sync_interval_mins": 5
+        "sync_interval_mins": 5,
+        "tags": []
       },
       "name": "data_manager",
       "type": "data_manager"
