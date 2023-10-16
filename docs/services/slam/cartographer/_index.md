@@ -199,7 +199,7 @@ Navigate to the **SLAM library** tab on your Location page, and click either `"M
 1. Enter the `"Robot name"`, `"Camera name"`, and optionally the `"Movement Sensor name"` of the components whose previously captured data you want to use to create or update a map. If your robot has been deleted, you can alternatively specify the `"robot ID`".
 1. Adjust the config parameters as needed. See [config_params](#config_params) for details.
 1. Select the timeframe of the data you'd like to use.
-1. At the bottom, you will be able to see the total number of PCD files and movement sensor data points that will be processed.
+1. At the bottom, you can see the total number of PCD files and movement sensor data points that will be processed.
 1. Click `"Generate map"`.
 
 ![offline mapping generate map](/services/slam/offline-mapping-generate-map.png)
