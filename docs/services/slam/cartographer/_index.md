@@ -190,7 +190,7 @@ This example JSON coonfiguration:
 
    When you start a mapping session:
 
-   - Viam spins up a copy of cartographer-module in the cloud to execute the Cartographer algorithm.
+   - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
      Because Cartographer's algorithm is CPU-intensive especially for creating or updating a map, in this mode the cartographer-module on your robot acts as a stub.
    - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
    - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
