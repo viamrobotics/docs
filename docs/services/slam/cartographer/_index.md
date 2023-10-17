@@ -243,7 +243,7 @@ It does not overwrite the old version of the map.
 The configuration is similar to the configuration for [creating a new map](#create-new-map), except you additionally configure the following **Attribute**:
 
 - **Select map**, **Map version**: Provide the name and version of the map you would like to update.
-  You can see more details about the available maps from this robot's **Location** page under the **SLAM library** tab.
+  You can see more details about the available maps from your robot's **Location** page under the **SLAM library** tab.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
