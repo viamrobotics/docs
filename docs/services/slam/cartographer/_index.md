@@ -216,7 +216,7 @@ This example JSON coonfiguration:
 
    ![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
 
-   When you would like to end the slam session, click **End session** back on the robot's **Control** tab.
+   When you are ready to end the slam session, return to your robot's **Control** tab and click **End session**.
    If you do not click **End session**, the slam session will automatically end after 45 minutes.
 
    Once the session has ended, the map is saved to your **Location** page's **SLAM library** tab.
