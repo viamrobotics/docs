@@ -18,7 +18,7 @@ description: "Set up the Espressif ESP32 for development with the micro-RDK."
 Follow these steps to install and build the micro-rdk on your ESP32 for development:
 
 1. Install the [required software](#software-requirements)
-2. [Set up your development enviroment](#set-up-your-development-enviroment) manually or with Viam's Canon CLI utility _(recommended)_
+2. [Set up your development environment](#set-up-your-development-environment) manually or with Viam's Canon CLI utility _(recommended)_
 3. [Install the Micro-RDK](#install-the-micro-rdk)
 
 {{% readfile "/static/include/micro-rdk-hardware.md" %}}
@@ -81,7 +81,7 @@ Run the following command to install `espflash`
 cargo install espflash
 ```
 
-### Set up your development enviroment
+### Set up your development environment
 
 {{< tabs >}}
 {{% tab name="Canon CLI (recommended)" %}}
