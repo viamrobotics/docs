@@ -83,7 +83,8 @@ The Raspberry Pi and the 12V power supply share the same GND on the L298N motor 
 The Raspberry Pi is powered by its own 5V power cable.
 {{% /alert %}}
 
-Turn on the board when you’re done wiring.
+Connect the flange coupler to your motor, and use the M3 screws and screwdriver to fix the flange coupler to your circular board or plate.
+Turn on the Raspberry Pi and move on to setting up your software.
 
 ### Software Setup
 
