@@ -77,7 +77,7 @@ The data client API supports the following methods (among [others](https://pytho
 ### TabularDataByFilter
 
 Retrieve optionally filtered tabular data from the [Viam app](https://app.viam.com).
-Tabular data can be found under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
+Find your tabular data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -92,7 +92,7 @@ Tabular data can be found under the **Sensors** subtab of the app's [**Data** ta
 - [(List[TabularData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.TabularData): The tabular data retrieved from the [Viam app](https://app.viam.com).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# from viam.proto.app.data import Filter
+from viam.proto.app.data import Filter
 
 my_filter = Filter(component_name="left_motor")
 tabular_data = await data_client.tabular_data_by_filter(my_filter)
@@ -106,7 +106,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### BinaryDataByFilter
 
 Retrieve optionally filtered binary data from the [Viam app](https://app.viam.com).
-Binary data can be found under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
+ Find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -123,7 +123,7 @@ Binary data can be found under the **Images**, **Point clouds**, or **Files** su
 - [(List[BinaryData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.BinaryData): The binary data retrieved from the [Viam app](https://app.viam.com).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# from viam.proto.app.data import Filter
+from viam.proto.app.data import Filter
 
 my_filter = Filter(component_type="camera")
 binary_data = await data_client.binary_data_by_filter(my_filter)
