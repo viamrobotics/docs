@@ -349,7 +349,7 @@ You may not want to move your robot until it has localized correctly.
 
 ### Localize only
 
-In this mode, the cartographer-module on your robot executes the Cartographer algorithm itself locally.
+In this mode, the `cartographer` module on your robot executes the Cartographer algorithm itself locally.
 
 1. Configure your `cartographer` SLAM service
 
