@@ -32,7 +32,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
 2. Next, run the `viam module create` command to select a new custom module name and generate the required metadata for your module.
    By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/manage/fleet/organizations/), but you can choose to set your module as _public_ to make it accessible to all Viam users.
-   Run the `create` command according to the desired visibility for your module:
+   Follow the instructions below according to whether you want to upload a public or private module:
 
 {{< tabs >}}
 {{% tab name="Private" %}}
@@ -51,7 +51,7 @@ If you later wish to make your module public, you can use the `viam module updat
 {{% tab name="Public" %}}
 
 {{% alert title="Important" color="note" %}}
-Once you upload a module as public, you cannot change it back to private.
+Once you update your module to mark it as public, you cannot change it back to private.
 {{% /alert %}}
 
 1. If you haven't already, [create a new namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
@@ -152,8 +152,20 @@ This command creates a new `meta.json` metadata file in your current working dir
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
-5. Run `viam module upload` to upload your custom module to the Viam registry.
-   Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tar.xz` extension) that contains your custom module code:
+5. (Python only) For modules written in Python, you likely want to package your module files as an archive first, before uploading.
+   Other languages can proceed to the next step to upload their module directly.
+   To package a module written in Python, run the following command from the same directory as your `meta.json` file:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz run.sh requirements.txt src
+   ```
+
+   Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+
+   Supply the path to the resulting archive file in the next step.
+
+6. Run `viam module upload` to upload your custom module to the Viam registry.
+   Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version <version> --platform <platform> <module-path>
@@ -169,7 +181,7 @@ This command creates a new `meta.json` metadata file in your current working dir
      - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
      - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
      - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
-   - `module-path` - provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tar.xz` extension) that contains your custom module code.
+   - `module-path` - provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
    The `viam module upload` command only supports one `platform` argument at a time.
@@ -198,7 +210,7 @@ This command creates a new `meta.json` metadata file in your current working dir
      viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
      ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to ensure it is compatible with the Viam registry.
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to check for common errors.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
@@ -230,6 +242,18 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
+1. (Python only) For modules written in Python, you likely want to package your module files as an archive first, before uploading.
+   Other languages can proceed to the next step to upload their module directly.
+   To package a module written in Python, run the following command from the same directory as your `meta.json` file:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz run.sh requirements.txt src
+   ```
+
+   Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+
+   Supply the path to the resulting archive file in the next step.
+
 1. Run `viam module upload` to upload your custom module to the Viam registry:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
@@ -242,7 +266,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam registry.
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to check for common errors.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 

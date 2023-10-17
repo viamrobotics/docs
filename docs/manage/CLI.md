@@ -387,7 +387,7 @@ If you update and release your module as part of a continuous integration (CI) w
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
-| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tar.xz` extension) that contains your custom module code |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -440,13 +440,13 @@ Therefore, you are able to change the `entrypoint` file from version to version,
 
 ##### Upload validation
 
-When you `upload` a module, the command validates your local module to ensure that it meets the requirements to successfully upload to the Viam registry.
+When you `upload` a module, the command performs basic validation of your module to check for common errors.
 The following criteria are checked for every `upload`:
 
 - The module must exist on the filesystem at the path provided to the `upload` command.
 - The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
-- If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tar.xz` extension.
+- If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
 ##### The `meta.json` file
 
