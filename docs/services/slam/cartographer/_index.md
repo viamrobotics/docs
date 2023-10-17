@@ -462,7 +462,8 @@ You can browse your previously captured data from the **Data** page under the **
 
 To create a map, you must have already captured LiDAR data in the location in which you would like to create the map.
 
-Example of previously captured LiDAR data (note, you can click on a row to see the `Robot ID` of the robot the component belonged to):
+The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a robot named `test`.
+Selecting a row opens a pane to the right that contains more information, such as the `Robot ID` of the robot the component belongs to:
 
 {{<imgproc src="/services/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
 
