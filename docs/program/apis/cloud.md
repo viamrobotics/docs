@@ -557,7 +557,7 @@ Get the logs associated with a specific robot {{< glossary_tooltip term_id="part
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
 - `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the log entries to.
-- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to limit returned log messages to error logs only.
+- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): (Optional) Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `num_log_entries` [(int)](https://docs.python.org/3/library/functions.html#int): Number of log entries to return.
   Passing `0` returns all logs.
@@ -592,7 +592,7 @@ Get an asynchronous iterator that receives live robot part logs.
 **Parameters:**
 
 - `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to retrieve logs from.
-- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to limit returned log messages to error logs only.
+- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): (Optional) Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
@@ -936,6 +936,147 @@ await cloud.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListFragments
+
+Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `show_public` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): (Optional) Specify whether to only show public fragments. If `True`, only public fragments will be returned.
+  If `False`, only private fragments will be returned.
+  Default: `True`.
+
+**Returns:**
+
+- (List[[viam.app.app_client.Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
+
+```python {class="line-numbers linkable-line-numbers"}
+fragments_list = await cloud.list_fragments(show_public=False)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_fragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetFragment
+
+Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `fragment_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the fragment to get.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid fragment ID is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The fragment.
+
+```python {class="line-numbers linkable-line-numbers"}
+the_fragment = await cloud.get_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateFragment
+
+Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new fragment.
+- `config` (Optional[Mapping[str, Any]]): Dictionary representation of the new config to assign to the fragment.
+  Can be assigned by updating the fragment.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid name is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly created fragment.
+
+```python {class="line-numbers linkable-line-numbers"}
+new_fragment = await cloud.create_fragment(name="cool_smart_machine_to_configure_several_of")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateFragment
+
+Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and its config and/or visibility.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `fragment_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the fragment to update.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name to associate with the fragment.
+- `config` (Optional[Mapping[str, Any]]): Dictionary representation of the new config to assign to the fragment.
+  Not passing this parameter will leave the fragment's config unchanged.
+- `public` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Specify whether the fragment is public.
+  Default: `False` (private).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid fragment ID, name, or config is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly updated fragment.
+
+```python {class="line-numbers linkable-line-numbers"}
+updated_fragment = await cloud.update_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567", name="better_name")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteFragment
+
+Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `fragment_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the fragment to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid fragment ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
 
 {{% /tab %}}
 {{< /tabs >}}

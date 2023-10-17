@@ -30,3 +30,8 @@ Method Name | Description
 [`NewRobot`](/program/apis/cloud/#newrobot ) | Create a new robot.
 [`UpdateRobot`](/program/apis/cloud/#updaterobot ) | Change the name of an existing robot.
 [`DeleteRobot`](/program/apis/cloud/#deleterobot ) | Delete a robot.
+[`ListFragments`](/program/apis/cloud/#listfragments ) | Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}}.
+[`GetFragment`](/program/apis/cloud/#getfragment ) | Get a fragment by its ID.
+[`CreateFragment`](/program/apis/cloud/#createfragment ) | Create a new private fragment.
+[`UpdateFragment`](/program/apis/cloud/#updatefragment ) | Update a fragment name, config or visibility.
+[`DeleteFragment`](/program/apis/cloud/#deletefragment ) | Delete a fragment.
