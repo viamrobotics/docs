@@ -103,7 +103,7 @@ Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar h
 This example JSON coonfiguration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
-- configured the `viam:slam:cartographer` service and the [data management service](/services/data/)
+- configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
 - adds an `viam:lidar:rplidar` camera with data management configured
 
 ```json {class="line-numbers linkable-line-numbers"}
