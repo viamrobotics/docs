@@ -35,3 +35,6 @@ Method Name | Description
 [`CreateFragment`](/program/apis/cloud/#createfragment ) | Create a new private fragment.
 [`UpdateFragment`](/program/apis/cloud/#updatefragment ) | Update a fragment name, config or visibility.
 [`DeleteFragment`](/program/apis/cloud/#deletefragment ) | Delete a fragment.
+[`AddRole`](/program/apis/cloud/#addrole ) | Add a role (owner or operator).
+[`RemoveRole`](/program/apis/cloud/#removerole ) | Remove a role (owner or operator).
+[`ListAuthorizations`](/program/apis/cloud/#listauthorizations ) | List authorizations (owners and operators).

@@ -986,7 +986,9 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 - [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The fragment.
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Get a fragment and print its name and when it was created.
 the_fragment = await cloud.get_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+print("Name: ", the_fragment.name, "\nCreated on: ", the_fragment.created_on)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_fragment).
@@ -1077,6 +1079,91 @@ await cloud.delete_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddRole
+
+Add a role under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `identity_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the entity the role belongs to (for example, a user ID).
+- `role` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The role to add (either `"owner"` or `"operator"`).
+- `resource_type` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`).
+  Must match the type of the `resource_id`'s resource.
+- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.)
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.add_role(identity_id="abc01234-0123-4567-ab12-a11a00a2aa22", role="owner", resource_type="location", resource_id="111ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_role).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveRole
+
+Remove a role under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `identity_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the entity the role belongs to (for example, a user ID).
+- `role` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The role to remove (either `"owner"` or `"operator"`).
+- `resource_type` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The type of the resource to remove the role from (either `"organization"`, `"location"`, or `"robot"`).
+  Must match the type of the `resource_id`'s resource.
+- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.)
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.remove_role(identity_id="abc01234-0123-4567-ab12-a11a00a2aa22", role="owner", resource_type="location", resource_id="111ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_role).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListAuthorizations
+
+List all authorizations under a specific resource (or resources) within the organization you are currently authenticated to.
+If no resource IDs are provided, all resource authorizations within the organizations are returned.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `resource_ids` (Optional[List[(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): IDs of the resources to retrieve authorizations from. Defaults to none.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid resource ID is passed.
+
+**Returns:**
+
+- (List[[Authorization](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.Authorization)]): The list of authorizations.
+
+```python {class="line-numbers linkable-line-numbers"}
+list_of_auths = await cloud.list_authorizations(resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
