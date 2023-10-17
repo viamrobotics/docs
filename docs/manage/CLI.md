@@ -498,7 +498,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide that path to the entry point file contained within that directory.</td>
+    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
   </tr>
 </table>
 
