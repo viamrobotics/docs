@@ -113,7 +113,7 @@ This command creates a new `meta.json` metadata file in your current working dir
        <td><code>entrypoint</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing a directory containing your module to the <code>upload</code> command, the entry point file must be contained within that directory.</td>
+       <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide that path to the entry point file contained within that directory.</td>
      </tr>
    </table>
 
@@ -183,19 +183,19 @@ This command creates a new `meta.json` metadata file in your current working dir
    - To upload a custom module that is defined in a single file named `my-module-file`, written to a local `bin` directory:
 
      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     viam module upload --version 1.0.0 --platform darwin/arm64 ./bin/my-module-file
+     viam module upload --version 1.0.0 --platform linux/amd64 ./bin/my-module-file
      ```
 
    - To upload a custom module that includes multiple files, as well as a separate entry point file, all contained with a local `bin` directory:
 
      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     viam module upload --version 1.0.0 --platform darwin/arm64 ./bin
+     viam module upload --version 1.0.0 --platform linux/amd64 ./bin
      ```
 
    - To upload a custom module that has been compressed as an archive named `packaged-module.tar.gz`:
 
      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     viam module upload --version 1.0.0 --platform darwin/arm64 packaged-module.tar.gz
+     viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
      ```
 
    When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to ensure it is compatible with the Viam registry.
