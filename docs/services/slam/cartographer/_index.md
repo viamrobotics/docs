@@ -31,7 +31,7 @@ The source code for this module is available on the [`viam-cartographer` GitHub 
 
 - Your robot must have an RPlidar installed to be able to use the `cartographer` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).
 
-- In addition, you must [add the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
+- In addition, you must [add the `rplidar` module to your robot](/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
 
   {{< alert title="SUPPORT" color="note" >}}
 
