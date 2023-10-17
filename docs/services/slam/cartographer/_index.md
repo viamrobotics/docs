@@ -84,7 +84,7 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 1. In the resulting `SLAM` service configuration pane, from the `"Mapping mode"` dropdown, choose `"Create new map"`
 1. Configure the rest of the **Attributes** as follows:
 
-   - `"Camera"`: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Example: "my-rplidar"
+   - `"Camera"`: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/modular-resources/examples/rplidar/). Example: "my-rplidar"
      - Then set a `"Data capture rate (Hz)"` for it. Example: "5"
    - `"Movement Sensor (Optional)"`: Select the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Example: "my-imu"
      - Then set a `"Data capture rate (Hz)"` for it. Example: "20"
