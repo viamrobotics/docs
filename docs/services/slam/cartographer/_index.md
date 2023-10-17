@@ -212,7 +212,7 @@ This example JSON coonfiguration:
 
    ![slam RC card first pointcloud](/services/slam/slam-RC-card-first-pointcloud.png)
 
-   You will be able to see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
+   You can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 
    ![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
 
