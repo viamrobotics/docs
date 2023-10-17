@@ -39,7 +39,7 @@ The source code for this module is available on the [`viam-cartographer` GitHub 
 
   {{< /alert >}}
 
-- You must connect your RPlidar pysically to your robot.
+- You must physically connect your RPlidar to your robot before configuring the `rplidar` and `cartographer` modules.
 
   If you have a Viam Rover and are mounting an RPlidar to your rover, be sure to position the RPlidar so that it **faces forward in the direction of travel**, facing in the same direction as the included webcam.
   For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing points in the direction of the front of the Rover.
