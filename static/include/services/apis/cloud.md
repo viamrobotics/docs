@@ -23,7 +23,10 @@ Method Name | Description
 [`NewRobotPart`](/program/apis/cloud/#newrobotpart ) | Create a new robot part.
 [`DeleteRobotPart`](/program/apis/cloud/#deleterobotpart ) | Delete a robot part.
 [`MarkPartAsMain`](/program/apis/cloud/#markpartasmain ) | Mark a robot part as the [_main_ part](/manage/parts-and-remotes/#robot-parts) of a robot.
-[`MarkPartForRestart`](/program/apis/cloud/#markpartforrestart ) | Mark a specified robot part for restart.
+[`MarkPartForRestart`](/program/apis/cloud/#markpartforrestart ) | Mark a robot part for restart.
 [`CreateRobotPartSecret`](/program/apis/cloud/#createrobotpartsecret ) | Create a robot part secret.
 [`DeleteRobotPartSecret`](/program/apis/cloud/#deleterobotpartsecret ) | Delete a robot part secret.
+[`ListRobots`](/program/apis/cloud/#listrobots ) | Get a list of all robots under a location.
 [`NewRobot`](/program/apis/cloud/#newrobot ) | Create a new robot.
+[`UpdateRobot`](/program/apis/cloud/#updaterobot ) | Change the name of an existing robot.
+[`DeleteRobot`](/program/apis/cloud/#deleterobot ) | Delete a robot.

@@ -660,7 +660,7 @@ Change the name of and assign an optional new configuration to a robot {{< gloss
 
 **Returns:**
 
-- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly-updated robot part.
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly updated robot part.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_robot_part = await cloud.update_robot_part(
@@ -792,7 +792,7 @@ Create a robot {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Returns:**
 
-- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The robot part the new secret was generated for.
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot part the new secret was generated for.
 
 ```python {class="line-numbers linkable-line-numbers"}
 part_with_new_secret = await cloud.create_robot_part_secret(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
@@ -828,6 +828,34 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### ListRobots
+
+Get a list of all robots under a specified location.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to retrieve the robots from.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed.
+
+**Returns:**
+
+- (List[[viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)]): The list of robots.
+
+```python {class="line-numbers linkable-line-numbers"}
+list_of_robots = await cloud.list_robots(location_id="123ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobot
 
 Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
@@ -854,6 +882,60 @@ new_robot_id = await cloud.new_robot(name="beepboop")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateRobot
+
+Change the name of an existing robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to update.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name for the robot.
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location under which the robot exists.
+  Defaults to the location ID provided at `AppClient` instantiation.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot ID, name, or location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+  **Returns:**
+
+- [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The newly updated robot.
+
+```python {class="line-numbers linkable-line-numbers"}
+updated_robot = await cloud.update_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc", name="Orange-Robot")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRobot
+
+Delete a specified robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot).
 
 {{% /tab %}}
 {{< /tabs >}}
