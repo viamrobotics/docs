@@ -77,7 +77,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
 1. Click **Add module**, give your service a name of your choice, then click **Create**.
 1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
-   - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/).
+   - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/modular-resources/examples/rplidar/).
      Example: "my-rplidar"
      - Then set a **Data capture rate (Hz)** for it.
        Example: "5"
