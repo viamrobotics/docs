@@ -38,3 +38,8 @@ Method Name | Description
 [`AddRole`](/program/apis/cloud/#addrole ) | Add a role (owner or operator).
 [`RemoveRole`](/program/apis/cloud/#removerole ) | Remove a role (owner or operator).
 [`ListAuthorizations`](/program/apis/cloud/#listauthorizations ) | List authorizations (owners and operators).
+[`CreateModule`](/program/apis/cloud/#createmodule ) | Create a {{< glossary_tooltip term_id="module" text="module" >}}.
+[`UpdateModule`](/program/apis/cloud/#updatemodule ) | Update module metadata.
+[`UploadModuleFile`](/program/apis/cloud/#uploadmodulefile ) | Upload a module file.
+[`GetModule`](/program/apis/cloud/#getmodule ) | Get a module by its ID.
+[`ListModules`](/program/apis/cloud/#listmodules ) | List available modules.

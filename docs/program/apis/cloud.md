@@ -1167,3 +1167,143 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### CreateModule
+
+Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the module. Must be unique within your organization.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid name (for example, `""`) is passed.
+
+**Returns:**
+
+- (Tuple[[string, string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID [0] of the new module and its URL [1].
+
+```python {class="line-numbers linkable-line-numbers"}
+new_module = await cloud.create_module(name="cool_new_hoverboard_module")
+print("Module ID:", new_module[0])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateModule
+
+Update the documentation URL, description, models, entrypoint, and/or the visibility of a {{< glossary_tooltip term_id="module" text="module" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the module being updated, containing module name (for example, `"my-module"`) or namespace and module name (for example, `"my-org:my-module"`).
+- `url` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The URL to reference for documentation and code (_not_ the URL of the module itself).
+- `description` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A short description of the module that explains its purpose.
+- `models` (Optional[List[[viam.proto.app.Model](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)]]): List of models that are available in the module.
+- `entrypoint` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The executable to run to start the module program.
+- `public` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Set the visibility of the module.
+  Defaults to `False` (private).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid module ID, URL, list of models, or organization ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The URL of the newly updated module.
+
+```python {class="line-numbers linkable-line-numbers"}
+url_of_my_module = await cloud.update_module(module_id="my-group:cool_new_hoverboard_module", url="https://docsformymodule.viam.com", description="A base to support hoverboards.", entrypoint="exec")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UploadModuleFile
+
+Upload a {{< glossary_tooltip term_id="module" text="module" >}} file.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_file_info` (Optional[[viam.proto.app.ModuleFileInfo](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ModuleFileInfo)]): Relevant metadata.
+- `file` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes): Bytes of file to upload.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the uploaded file.
+
+```python {class="line-numbers linkable-line-numbers"}
+file_id = await cloud.upload_module_file(file=b"<file>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.upload_module_file).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetModule
+
+Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the module being retrieved, containing module name (for example, `"my-module"`) or namespace and module name (for example, `"my-org:my-module"`).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid module ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The module.
+
+```python {class="line-numbers linkable-line-numbers"}
+the_module = await cloud.get_module(module_id="my-cool-modular-base")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListModules
+
+List the {{< glossary_tooltip term_id="module" text="modules" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The list of modules.
+
+```python {class="line-numbers linkable-line-numbers"}
+modules_list = await cloud.list_modules()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
+
+{{% /tab %}}
+{{< /tabs >}}
