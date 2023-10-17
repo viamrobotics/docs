@@ -12,22 +12,23 @@ tags: ["navigation", "services", "base", "rover"]
 ---
 
 The Navigation service is the stateful definition of Viam's [motion service](/services/motion/).
-It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called `Waypoints`.
-Once these waypoints are added and the mode of the service is [set to `MODE_WAYPOINT`](#setmode), the service begins to define the robot's path.
+It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called waypoints.
+Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](#setmode) to move your rover along a defined path at your desired motion configuration.
+
+## Requirements
+
+You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a Navigation service.
+
+To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/components/movement-sensor/#api):
+
+- [`GetPosition()`](/components/movement-sensor/#getposition)
+- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
+- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
+- [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
+
+See [navigation concepts](#navigation-concepts) for more info on how to implement and use movement sensors taking these measurements.
 
 ## Configuration
-
-You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to configure a Navigation service.
-
-{{% alert title="Important" color="note" %}}
-
-Make sure the [movement sensor](/components/movement-sensor/) you use supports [`GetPosition()`](/components/movement-sensor/#getposition) and at least one of [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) or [`GetOrientation()`](/components/movement-sensor/#getorientation) in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [Movement Sensor API](/components/movement-sensor/#api).
-
-- It must support `GetPosition()` to report the robot's current GPS location.
-- It must also support either `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
-- If your movement sensor provides multiple methods, your robot will default to using the values returned by `GetCompassHeading()`.
-
-{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -52,7 +53,13 @@ Enter a name for your service, then click **Create**.
             "type": "<your-store-type>"
         },
         "movement_sensor": "<your-movement-sensor>",
-        "base": "<your-base>"
+        "base": "<your-base>",
+        "obstacle_detectors": [
+          {
+          "vision_service": "<your-vision-service>",
+          "camera": "<your-camera>"
+          }
+        ]
     }
 }
     ... // Other services
@@ -76,6 +83,16 @@ Enter a name for your service, then click **Create**.
     }
   },
   "movement_sensor": "your-movement-sensor",
+  "obstacle_detectors": [
+    {
+      "vision_service": "your-vision-service",
+      "camera": "your-camera"
+    },
+    {
+      "vision_service": "your-vision-service-2",
+      "camera": "your-camera-2"
+    }
+  ]
   "base": "your-base",
   "obstacles": [
     {
@@ -118,8 +135,8 @@ The following attributes are available for `Navigation` services:
 | `base` | string | **Required** | The `name` you have configured for the [base](/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
-| `vision_services` | array | Optional | The `name` of each [vision service](/services/motion/) you have configured for the base you are operating with this service. |
-| `position_polling_frequency` | float | Optional | The frequency to poll for the position of the robot. <br> Default: `2` |
+| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/services/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
+| `position_polling_frequency_hz` | float | Optional | The frequency to poll for the position of the robot. <br> Default: `2` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in hz to poll each vision service for new obstacles. <br> Default: `2` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a robot is allowed to deviate from the motion plan. <br> Default: `3`|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `60` |
@@ -564,7 +581,15 @@ obstacles = await my_nav.get_obstacles()
 {{% /tab %}}
 {{< /tabs >}}
 
-## Concepts
+## Control Tab Usage
+
+After configuring the navigation service for your robot, navigate to the **Control** tab of the robot's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
+
+Here, you can toggle the mode of the service between **Manual** and **Waypoint** to start and stop navigation, add waypoints and obstacles, and view the position of your rover base on a map:
+
+![An example control interface for a Navigation service in the Viam app Control Tab.](/services/navigation/navigation-control-card.png)
+
+## Navigation Concepts
 
 The following concepts are important to understand when utilizing the navigation service.
 Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your robot to navigate across space.

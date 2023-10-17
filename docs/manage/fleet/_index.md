@@ -90,7 +90,7 @@ For some configuration aspects you may require physical access to the robot so y
 
 _Coming soon._
 
-You and your collaborators can deploy control logic, [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy control logic, [modular resources](/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ### Remote control
 
@@ -116,4 +116,4 @@ If you are collaborating on a robot and controlling it using the [**Control** ta
 
 ### Deployment
 
-You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.

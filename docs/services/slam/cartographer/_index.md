@@ -13,7 +13,7 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
 
-Viam provides the `cartographer` [modular resource](/extend/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
+Viam provides the `cartographer` [modular resource](/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
 
 Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource **runs in the cloud**.
 
@@ -26,7 +26,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
 {{% /alert %}}
 
 The `cartographer` {{< glossary_tooltip term_id="module" text="module" >}} is available [from the Viam registry](https://app.viam.com/module/viam/cartographer).
-See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
@@ -48,7 +48,11 @@ If you haven't already, [install `viam-server`](/installation/) on your robot.
 
 Your robot must have an RPlidar installed to be able to use the `cartographer` module, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3).
 
-In addition, you must [add the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
+In addition, you must [add the `rplidar` module to your robot](/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
+
+Both the `cartographer` and `rplidar` modules are distributed as an AppImage.
+AppImages require FUSE version 2 to run.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `rplidar` and `cartographer` modules support the Linux platform only.
 

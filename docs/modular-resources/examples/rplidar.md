@@ -13,20 +13,25 @@ aliases:
   - "/program/extend/modular-resources/add-rplidar-module/"
   - "/program/extend/modular-resources/examples/add-rplidar-module/"
   - "/extend/modular-resources/examples/add-rplidar-module/"
+  - "/extend/modular-resources/examples/rplidar/"
 # SMEs: Kat, Jeremy
 ---
 
-Viam provides an `rplidar` [modular resource](/extend/modular-resources/) which adds support for SLAMTECH's RPlidar family of movement sensors, extending the Viam [movement sensor API](/components/movement-sensor/#api).
+Viam provides an `rplidar` [modular resource](/modular-resources/) which adds support for SLAMTECH's RPlidar family of movement sensors, extending the Viam [movement sensor API](/components/movement-sensor/#api).
 Currently, the `rplidar` {{< glossary_tooltip term_id="module" text="module" >}} has been tested with the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1), [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), and [RPlidar S1](http://bucket.download.slamtec.com/f19ea8efcc2bb55dbfd5839f1d307e34aa4a6ca0/LD601_SLAMTEC_rplidar_datasheet_S1_v1.4_en.pdf).
 
 The `rplidar` module is available [from the Viam registry](https://app.viam.com/module/viam/rplidar).
-See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`rplidar` GitHub repository](https://github.com/viamrobotics/rplidar).
 
 ## Requirements
 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
+
+The `rplidar` module is distributed as an AppImage.
+AppImages require FUSE version 2 to run.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `rplidar` module supports the Linux platform only.
 
@@ -41,7 +46,7 @@ For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/
 {{< tabs name="Add the RPlidar component">}}
 {{% tab name="Config Builder" %}}
 
-Follow the instructions below to set up the `csi-cam` module on your robot:
+Follow the instructions below to set up the `rplidar` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click **Create component** in the lower-left corner.

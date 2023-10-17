@@ -11,7 +11,7 @@ no_list: true
 #SMEs: Matt Dannenberg
 ---
 
-To use a [Pumpkin i500 single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
+To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
 
 1. [Install `viam-server`](#install-viam-server)
 2. [Create a pin mappings file](#create-pin-mappings-file)

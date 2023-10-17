@@ -15,7 +15,7 @@ no_list: true
 The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
 
 There are no built-in generic component models (other than `fake`).
-Use generic for a [modular resource](/extend/modular-resources/) model that represents a unique type of hardware.
+Use generic for a [modular resource](/modular-resources/) model that represents a unique type of hardware.
 
 {{% alert title="Important" color="note" %}}
 
@@ -36,7 +36,9 @@ Model | Description
 ----- | -----------
 [`fake`](fake/) | A model used for testing, with no physical hardware.
 
-If you want to use another generic model with Viam, you can [define a custom component](../../extend/).
+### Modular Resources
+
+{{<modular-resources api="rdk:component:generic" type="generic">}}
 
 ## Control your board with Viam's client SDK libraries
 

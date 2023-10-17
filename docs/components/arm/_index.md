@@ -60,7 +60,11 @@ For configuration information, click on one of the supported arm models:
 | [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
 | [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
-Follow [this guide](/extend/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/extend/modular-resources/).
+### Modular Resources
+
+{{<modular-resources api="rdk:component:arm" type="arm">}}
+
+You can follow [this guide](/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/modular-resources/).
 
 ## Control your arm with Viam's client SDK libraries
 

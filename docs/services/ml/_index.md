@@ -13,6 +13,17 @@ icon: "/services/icons/ml.svg"
 
 Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/) your model, the Machine Learning (ML) model service allows you to deploy machine learning models to your smart machine.
 
+You can use the following built-in model:
+
+<!-- prettier-ignore -->
+| Model | Description |
+| ----- | ----------- |
+| [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/). |
+
+### Modular Resources
+
+{{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
+
 ## Create an ML model service
 
 {{< tabs >}}
@@ -132,7 +143,7 @@ You can use one of these architectures or build your own.
 
 ## Next Steps
 
-To make use of your model with your smart machine, add a [vision service](/services/vision/) or a [modular resource](/extend/):
+To make use of your model with your smart machine, add a [vision service](/services/vision/) or a [modular resource](/modular-resources/):
 
 {{< cards >}}
 
@@ -151,6 +162,6 @@ Configure your `mlmodel classifier`.
 
 {{% /manualcard %}}
 
-{{% card link="/extend/modular-resources/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
+{{% card link="/modular-resources/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
 
 {{< /cards >}}

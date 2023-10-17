@@ -40,298 +40,39 @@ For model-specific configuration information, click on one of the following mode
 | Model | Description |
 | ----- | ----------- |
 | [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
+| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
-| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
-| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
-| [`fake`](fake/) | A model used for testing, with no physical hardware |
-| [`customlinux`](customlinux/) | A model for other linux boards. |
+| [`customlinux`](customlinux/) | A model for other Linux boards. |
 | other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
+| [`fake`](fake/) | A model used for testing, with no physical hardware |
+
+### Modular Resources
+
+{{<modular-resources api="rdk:component:board" type="board">}}
 
 ## Attribute Configuration
-
-The following configuration attributes are available for every board model besides the `numato` and `pca9685` peripherals and `fake`.
 
 Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
 
 ### `analogs`
 
-An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a continuous voltage input (analog signal) and converts it to an discrete integer output (digital signal).
-
-ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
-
-To integrate an ADC into your robot, you must first physically connect the pins on your ADC to your board.
-If your ADC communicates with your board using [SPI](#spis), you need to wire and configure the SPI bus in addition to the `analogs`.
-
-Then, integrate `analogs` into the `attributes` of your board by adding the following to your board's JSON configuration:
-
-{{< tabs name="Configure an Analog Reader" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-"analogs": [
-  {
-    "chip_select": "<chip-select-pin-number-on-board>",
-    "name": "<your-analog-reader-name>",
-    "pin": "<pin-number-on-adc>",
-    "spi_bus": "<your-spi-bus-name>",
-    "average_over_ms": <int>,
-    "samples_per_sec": <int>
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "model": "pi",
-      "name": "your-board",
-      "type": "board",
-      "attributes": {
-        "analogs": [
-          {
-            "chip_select": "24",
-            "name": "current",
-            "pin": "1",
-            "spi_bus": "main"
-          },
-          {
-            "chip_select": "24",
-            "name": "pressure",
-            "pin": "0",
-            "spi_bus": "main"
-          }
-        ],
-        "spis": [
-          {
-            "bus_select": "0",
-            "name": "main"
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `analogs`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.
-|`chip_select`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's connection pin, wired to the ADC. |
-|`spi_bus` | string | Optional | The `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
-| `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
-|`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
+{{< readfile "/static/include/components/board/board-analogs.md" >}}
 
 ### `digital_interrupts`
 
-[Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
-Configuring digital interrupts to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
-
-- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it calls [`Tick()`](#tick) to record the state change and notify any interested [callbacks](#addcallback) to "interrupt" the program.
-- Calling [`Get()`](#get) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
-
-Integrate `digital_interrupts` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
-
-{{< tabs name="Configure a Digital Interrupt" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-"digital_interrupts": [
-  {
-    "name": "<your-digital-interrupt-name>",
-    "pin": "<pin-number>",
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "model": "pi",
-      "name": "your-board",
-      "type": "board",
-      "attributes": {
-        "digital_interrupts": [
-          {
-            "name": "your-interrupt-1",
-            "pin": "15"
-          },
-          {
-            "name": "your-interrupt-2",
-            "pin": "16"
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `digital_interrupts`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the digital interrupt. |
-|`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
-|`type`| string | Optional | _Only applies to `pi` model boards._ <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo/). Tracks pulse width value. </li></ul> |
+{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
 
 ### `spis`
 
-[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) is a serial communication protocol that uses four [signal wires](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) to exchange information between a controller and peripheral devices:
-
-- Main Out/Secondary In: MOSI
-- Main In/Secondary Out: MISO
-- Clock, an oscillating signal line: SCLK
-- Chip Select, with 1 line for each peripheral connected to controller: CS\*
-
-To connect your board (controller) and a [component](/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
-
-{{% alert title="Important" color="note" %}}
-
-You must also enable SPI on your board if it is not enabled by default.
-See your [board model's configuration instructions](#configuration) if applicable.
-
-{{% /alert %}}
-
-As supported boards have CS pins internally configured to correspond with SPI bus indices, you can enable this connection in your board's configuration by specifying the index of the bus at your CS pin's location and giving it a name.
-
-Integrate `spis` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
-
-{{< tabs name="Configure a SPI Bus" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-"spis": [
-  {
-    "name": "<your-bus-name>",
-    "bus_select": "<your-bus-index>"
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"spis": [
-  {
-    "name": "main",
-    "bus_select": "0"
-  }
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `spis`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name`| string | **Required** | The `name` of the SPI bus. |
-|`bus_select`| string | **Required** | The index of the SPI bus. |
-
-{{% alert title="WIRING WITH SPI" color="tip" %}}
-
-Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
-
-Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
-
-{{% /alert %}}
+{{< readfile "/static/include/components/board/board-spis.md" >}}
 
 ### `i2cs`
 
-The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutorials/i2c/all) serial communication protocol is similar to SPI, but requires two signal wires to exchange information between a controller and a peripheral device:
-
-- Serial Data: SDA
-- Serial Clock: SCL
-
-To connect your board (controller) and a [component](/components/) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
-
-{{% alert title="Important" color="note" %}}
-
-You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
-See your [board model's configuration instructions](#configuration) if applicable.
-
-{{% /alert %}}
-
-As supported boards have SDA and SCL pins internally configured to correspond with I<sup>2</sup>C bus indices, you can enable this connection in your board's configuration by specifying the index of the bus and giving it a name.
-
-Integrate `i2cs` into your robot in the `attributes` of your board as follows:
-
-{{< tabs name="Configure i2cs" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-{
-  "i2cs": [
-    {
-      "name": "<your-bus-name>",
-      "bus": "<your-bus-index>"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-{
-  "i2cs": [
-    {
-      "name": "bus1",
-      "bus": "1"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `i2cs`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
-|`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. |
-
-{{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
-
-Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
-
-Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
-
-{{% /alert %}}
+{{< readfile "/static/include/components/board/board-i2cs.md" >}}
 
 ## Control your board with Viam's client SDK libraries
 

@@ -140,6 +140,8 @@ You must put each controller's `name` that you add in `sources` in `depends_on`.
 This tells the program loading the config to fully load the source components first.
 {{% /alert %}}
 
+{{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

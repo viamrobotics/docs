@@ -20,24 +20,30 @@ tags:
     "nano",
     "camera",
   ]
+aliases:
+  - "/extend/modular-resources/examples/csi/"
 # SMEs: Sean
 ---
 
 Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924).
 These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
 Not all CSI cameras are supported by the built-in [webcam camera model](/components/camera/webcam/).
-Instead, Viam supports CSI cameras by providing a [modular resource](/extend/modular-resources/) for your CSI camera, `viam:camera:csi`, which you can use to add support for your CSI camera to your robot.
+Instead, Viam supports CSI cameras by providing a [modular resource](/modular-resources/) for your CSI camera, `viam:camera:csi`, which you can use to add support for your CSI camera to your robot.
 
 This {{< glossary_tooltip term_id="module" text="module" >}} includes a simple wrapper around `GStreamer` and a control interface for the **Control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
 
 The `csi-cam` module is available [from the Viam registry](https://app.viam.com/module/viam/csi-cam).
-See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-csi` GitHub repository](https://github.com/seanavery/viam-csi).
 
 ## Requirements
 
 If you haven't already, [install `viam-server`](/installation/) on your robot.
+
+The `csi-cam` module is distributed as an AppImage.
+AppImages require FUSE version 2 to run.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `csi-cam` module supports the Linux platform only.
 

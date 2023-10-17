@@ -15,7 +15,7 @@ The CLI lets you:
 - Retrieve [organization](/manage/fleet/organizations/) and location information
 - Manage [robot fleet](/manage/fleet/) data and logs
 - Control robots by issuing component and service commands
-- Upload and manage [modular resources](/extend/modular-resources/) in the Viam registry
+- Upload and manage [modular resources](/modular-resources/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -188,6 +188,51 @@ viam organizations --help
 
 ## Commands
 
+### board
+
+The `board` command allows you to manage your board definition files.
+With it, you can upload new board definition files to the Viam app, download your existing board definition files, and list the files already uploaded.
+
+You can use board definition files to configure pin mappings for [`customlinux` boards](/components/board/customlinux/).
+
+```sh {class="command-line" data-prompt="$"}
+viam board upload --name=<board name> --organization=<org name> --version=<definition file version> file.json
+viam board download --name=<board name> --organization=<org name> --version=<definition file version>
+viam board list --organization=<org name>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# upload a new board definition file named 'my-board' with version '1.0.0' for org 'my-org'
+viam board upload --name=my-board --organization=my-org --version=1.0.0 my-board.json
+
+# download an existing board definition file named 'my-board' at version '1.0.0' for org 'my-org'
+viam board download --name=my-board --organization=my-org --version=1.0.0
+
+# list all available board definition files for org 'my-org'
+viam board list --organization=my-org
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `upload`      | upload a new board definition file to the Viam app | **board definition file** : provide the board definition file to upload, in JSON form. |
+| `download`      | download an existing board definition file | - |
+| `list`      | list available board definition files | - |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--name`      | output directory for downloaded data       | `upload`, `download` | true |
+| `--organization`      | organization name to upload, download, or list board definition files from      | `upload`, `download`, `list` | true |
+| `--version`      | version of the board definition file to tag the upload with, or to specifically download. Defaults to latest if not set.    | `upload`, `download` | true |
+
 ### data
 
 The `data` command allows you to manage robot data.
@@ -330,10 +375,10 @@ viam module update
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
-See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
+[automatically upload new versions of your module on release](/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 #### Command options
 
@@ -447,7 +492,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>models</code></td>
     <td>object</td>
     <td><strong>Required</strong></td>
-    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+    <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
   </tr>
   <tr>
     <td><code>entrypoint</code></td>
@@ -476,14 +521,14 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
-See [Modular resources](/extend/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
+See [Modular resources](/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
 
 ### organizations
 
@@ -501,7 +546,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
+| `list`      | list all organizations (name, id, and [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
 | `api-key`      | create a new organization API key    | - |
 | `--help`      | return help      | - |
 
