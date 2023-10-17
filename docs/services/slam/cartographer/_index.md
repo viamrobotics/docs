@@ -13,7 +13,7 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
 
-Viam provides the `cartographer` [modular resource](/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/). 
+Viam provides the `cartographer` [modular resource](/modular-resources/) which adds support for using Cartographer with the Viam [SLAM service](/services/slam/).
 
 Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource **runs in the cloud**.
 
@@ -85,9 +85,9 @@ Follow the instructions below to set up the `cartographer` module on your robot:
 1. Configure the rest of the **Attributes** as follows:
 
    - `"Camera"`: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/extend/modular-resources/examples/rplidar/). Example: "my-rplidar"
-       - Then set a `"Data capture rate (Hz)"` for it. Example: "5"
+     - Then set a `"Data capture rate (Hz)"` for it. Example: "5"
    - `"Movement Sensor (Optional)"`: Select the `name` of a movement sensor component that implements the `GetAngularVelocity` and `GetLinearAcceleration` methods of the movement sensor API. Example: "my-imu"
-       - Then set a `"Data capture rate (Hz)"` for it. Example: "20"
+     - Then set a `"Data capture rate (Hz)"` for it. Example: "20"
    - `"Minimum range (meters)"`: Set the minimum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
    - `"Maximum range (meters)"`: Set the maximum range of your `rplidar`. See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
@@ -183,7 +183,7 @@ This mode is similar to [Create new map](#create-new-map), except it creates a n
 
 The configuration is similar to the configuration for [creating a new map](#create-new-map), except you additionally configure the following **Attribute**:
 
-   - `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from this robot's **Location** page under the **SLAM library** tab.
+- `"Select map"`, `"Map version"`: Provide the name and version of the map you would like to update. You can see more details about the available maps from this robot's **Location** page under the **SLAM library** tab.
 
 {{%expand "Click to view an example JSON configuration for updating an existing map" %}}
 
@@ -397,7 +397,7 @@ This is similar to [viewing the map in "create new map" mode](#create-new-map-mo
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position on the existing map. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+Cartographer may take several minutes to find your robot's position on the existing map. In the meantime, your robot will show up at the map's origin (`(x,y)` coordinates `(0,0)`).
 
 You may not want to move your robot until it has localized correctly.
 
@@ -415,7 +415,7 @@ Since the map will not change, nothing new will be added to this robot's locatio
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position on the existing map. In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+Cartographer may take several minutes to find your robot's position on the existing map. In the meantime, your robot will show up at the map's origin (`(x,y)` coordinates `(0,0)`).
 
 If you move your robot, it will appear to be moving in a trajectory from the map's origin.
 
