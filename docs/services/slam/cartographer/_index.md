@@ -456,7 +456,7 @@ The configuration is similar to the configuration for [updating an existing map]
 ## Create a new map from cloud data
 
 You can specify a range of **previously captured** LiDAR and optional IMU data to create a map or update an existing map in the cloud.
-You can browse your previously captured data from the **Data** page.
+You can browse your previously captured data from the **Data** page under the **Point clouds** tab (for LiDAR data) and **Sensors** tab (for IMU data).
 
 ### Requirements
 
