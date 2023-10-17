@@ -184,7 +184,7 @@ This config is just like that of a non-remote part; the remote connection is est
       "model": "esp32",
       "type": "board",
       "attributes": {
-        "pins": [15],
+        "pins": [27],
         "analogs": [
           {
             "pin": "34",
