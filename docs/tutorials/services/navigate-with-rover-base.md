@@ -52,13 +52,16 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that is navigating using the navigation service in a robotics lab.">}}
 
-2. **A movement sensor with GPS position and angular and linear velocity readings**
+2. **A movement sensor with GPS position, compass heading, and angular and linear velocity readings**
 
    We used three movement sensors to satisfy these requirements:
 
-   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position measurements.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
+
+   You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
+   See [the navigation service](/services/navigation/#requirements) for more info on movement sensor requirements.
 
 {{% alert title="Tip" color="tip" %}}
 
