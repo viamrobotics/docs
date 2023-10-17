@@ -91,7 +91,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
      See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
    If you would like to tune additional Cartographer parameters, you can expand **Show additional parameters**.
-   See the [config_params](#config_params) section for more information on the other parameters.
+   See the [`config_params`](#config_params) section for more information on the other parameters.
 
 To save your changes, click **Save config** at the bottom of the page.
 
