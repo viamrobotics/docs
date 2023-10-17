@@ -64,7 +64,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
 
 1. Configure your `cartographer` SLAM service
 
-   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements), follow the steps below to add the `cartographer` module to your robot:
+   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to add the `cartographer` module to your robot:
 
    {{< tabs name="Create new map">}}
    {{% tab name="Config Builder" %}}
