@@ -72,7 +72,7 @@ If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print 
 
 Because Cartographer's algorithm is CPU-intensive, especially for creating or updating a map, the **`cartographer-module` on your robot acts as a stub** in this mode and the algorithm executes in the cloud.
 
-Your robot's sensor data will be **captured continuously** using Viam's [Data Capture](/services/data/configure-data-capture/) while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the map being created](#view-the-map-being-created) for details about starting and stopping a cloud slam session.
+Your robot's sensor data will be **captured continuously** using Viam's [Data Capture](/services/data/configure-data-capture/) while the robot is running, and the data from when you click "Start session" until you click "End session" will be used to create the map. See [View the map being created](#view-the-map) for details about starting and stopping a cloud slam session.
 
 Follow the instructions below to set up the `cartographer` module on your robot:
 
@@ -467,10 +467,10 @@ Adjust these parameters to fine-tune the algorithm `cartographer` utilizes in as
 | `missing_data_ray_length_meters` | Replaces the length of ranges that are further than `max_range` with this value. | Optional | `25` | Typically the same as `max_range`. |
 | `max_range_meters` | Maximum range of valid measurements. | Optional | `25` | For an RPlidar A3, set this value to `25`. For an RPlidar A1, use `12`. |
 | `min_range_meters` | Minimum range of valid measurements. | Optional | `0.2` | For an RPlidar A3, set this value to `0.2`. For RPlidar A1, use `0.15`. |
-| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for [LOCALIZING mode](#slam-mapping-modes). |
-| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for [UPDATING mode](#slam-mapping-modes). |
-| `min_covered_area_meters_squared` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for [UPDATING mode](#slam-mapping-modes). |
-| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for [UPDATING mode](#slam-mapping-modes). |
+| `max_submaps_to_keep` | Number of submaps to use and track for localization. | Optional | `3` | Only for LOCALIZING mode. |
+| `fresh_submaps_count` | Length of submap history considered when running SLAM in updating mode. | Optional | `3` | Only for UPDATING mode. |
+| `min_covered_area_meters_squared` | The minimum overlapping area, in square meters, for an old submap to be considered for deletion. | Optional | `1.0` | Only for UPDATING mode. |
+| `min_added_submaps_count` | The minimum number of added submaps before deletion of the old submap is considered. | Optional | `1` | Only for UPDATING mode. |
 | `occupied_space_weight` | Emphasis to put on scanned data points between measurements. | Optional | `20.0` | Higher values make it harder to overwrite prior scanned points. Relative to `translation weight` and `rotation weight`. |
 | `translation_weight` | Emphasis to put on expected translational change from pose extrapolator data between measurements. | Optional | `10.0` | Higher values make it harder for scan matching to translate prior scans. Relative to `occupied space weight` and `rotation weight`. |
 | `rotation_weight` | Emphasis to put on expected rotational change from pose extrapolator data between measurements. | Optional | `1.0` | Higher values make it harder for scan matching to rotate prior scans. Relative to `occupied space weight` and `translation weight`. |
