@@ -204,7 +204,7 @@ This example JSON coonfiguration:
    - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
    - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
-   Once you click **End session**, the map is uploaded to the cloud(?) and visible on your Location page under **SLAM Library**.
+   Once you click **End session**, the map is uploaded to the cloud(?) and visible on your **Location** page under **SLAM library**.
 
    Enter a name for your new map and click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
