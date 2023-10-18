@@ -107,8 +107,9 @@ If the server does not know how to return the specified MIME type, the server re
 
 **Parameters:**
 
-- `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The MIME type of the image.
-  The returned MIME type is not guaranteed to match the image output type.
+- `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The requested MIME type of the image.
+  The returned MIME type is not guaranteed to match the image output type:
+  If the requested MIME type has `+lazy` appended to it or the requested MIME type is not supported for decoding/encoding, `GetImage` returns a [`RawImage`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage) instead.
 
 **Returns:**
 
