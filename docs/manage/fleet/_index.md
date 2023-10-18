@@ -122,7 +122,11 @@ You and your collaborators can deploy [control logic](/program/apis/), [modular 
 
 ## The Viam mobile app
 
-In addition to [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
+{{<gif webm_src="/manage/mobile-app-octagon.webm" mp4_src="/manage/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
+
+<br>
+
+In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
 The mobile app is a convenient way to see if your robot is online, access the [control interface](/manage/fleet/robots/#control), and check robot [logs](/manage/fleet/robots/#logs).
 
 You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
