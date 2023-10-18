@@ -586,7 +586,7 @@ viam-sdk
 
 See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
 
-The following template sets up a new virtual enviroment (`venv`), installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
+The following template sets up a new virtual environment (`venv`), installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
 
 ```sh { class="command-line" data-prompt="$"}
 #!/bin/sh

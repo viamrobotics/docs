@@ -45,7 +45,7 @@ Model | Description <a name="model-table"></a>
 
 ### Modular Resources
 
-{{<modular-resources api="rdk:component:movement-sensor" type="movement-sensor">}}
+{{<modular-resources api="rdk:component:movement_sensor" type="movement_sensor">}}
 
 ## Control your movement sensor with Viam's client SDK libraries
 
