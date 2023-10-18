@@ -77,7 +77,7 @@ The data client API supports the following methods (among [others](https://pytho
 ### TabularDataByFilter
 
 Retrieve optionally filtered tabular data from the [Viam app](https://app.viam.com).
-Find your tabular data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
+You can also find your tabular data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -106,7 +106,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ### BinaryDataByFilter
 
 Retrieve optionally filtered binary data from the [Viam app](https://app.viam.com).
- Find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
+You can also find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
