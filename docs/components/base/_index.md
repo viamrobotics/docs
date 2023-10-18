@@ -34,7 +34,6 @@ For configuration information, click on one of the supported base models:
 | Model | Description |
 | ----- | ----------- |
 | [`wheeled`](wheeled/) | Mobile wheeled robot |
-| [`agilex-limo`](agilex-limo/) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ### Modular Resources
