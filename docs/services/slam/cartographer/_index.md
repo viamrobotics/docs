@@ -362,7 +362,6 @@ You must have first [created a new map](#create-a-new-map) to be able to update 
 Cartographer may take several minutes to find your robot's position on the existing map.
 In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
-
 {{% /alert %}}
 
 ### Localize only
