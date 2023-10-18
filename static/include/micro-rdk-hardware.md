@@ -9,4 +9,4 @@ The following ESP32 microcontrollers are supported:
 
 Your microcontroller should have the following resources available to work with the micro-RDK:
 
-- 2 cores, 384kB SRAM + 4MB flash
+- 2 Cores + 384kB SRAM + 4MB Flash
