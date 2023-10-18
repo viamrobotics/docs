@@ -26,11 +26,9 @@ For configuration information, click on your sensor’s model:
 | [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
 | [`renogy`](./renogy/) | solar charge controller                        |
 
-<!-- ### Modular Resources
+### Modular Resources
 
-{{<modular-resources api="rdk:component:power-sensor" type="power-sensor">}} -->
-
-If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
+{{<modular-resources api="rdk:component:power_sensor" type="power_sensor">}}
 
 ## Control your power sensor with Viam’s client SDK libraries
 
