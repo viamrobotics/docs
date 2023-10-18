@@ -1161,7 +1161,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListAuthorizations
 
-List all authorizations under a specific resource (or resources) within the organization you are currently authenticated to.
+List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to.
 If no resource IDs are provided, all resource authorizations within the organizations are returned.
 
 {{< tabs >}}
