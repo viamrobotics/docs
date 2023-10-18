@@ -374,7 +374,7 @@ In this mode, the `cartographer` module on your robot executes the Cartographer 
    {{% tab name="Config Builder" %}}
 
 The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of configuring a `Data capture rate (Hz)` on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
-The `cartographer` module on your robot polls the live LiDAR and IMU directly at these rates, wheras the capture rate is only used when data is being sent to the cloud.
+The `cartographer` module on your robot polls the live LiDAR and IMU directly at these rates, whereas the capture rate is only used when data is being sent to the cloud.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
