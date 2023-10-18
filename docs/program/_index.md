@@ -15,22 +15,17 @@ aliases:
   - "program/sdks"
 ---
 
-Viam offers software development kits (SDKs) in popular languages which
-
-- Broker connection, authentication, and encryption for communication with {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
-- Enable you to interface with robot [gRPC APIs](https://github.com/viamrobotics/api) in a way that is idiomatic to that programming language
-
-![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/program/sdks/robot-client.png)
-
-Use the SDK of your preferred language to write code to control your smart machine.
-
-Viam currently offers SDKs for the following languages:
+You can write code to control your smart machines using the following software development kits (SDKs):
 
 - [Python SDK](https://python.viam.dev/)
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
 - [C++ SDK (alpha)](https://cpp.viam.dev/)
 - [Flutter SDK (beta)](https://flutter.viam.dev/)
+
+The SDKs provide idiomatic wrappers around Viam's robot [gRPC APIs](https://github.com/viamrobotics/api).
+
+![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/program/sdks/robot-client.png)
 
 ## Requirements
 
