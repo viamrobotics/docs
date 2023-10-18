@@ -743,7 +743,8 @@ Mark a robot part as the [_main_ part](/manage/parts-and-remotes/#robot-parts) o
 - `GRPCError`: This error is raised if an invalid robot part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.mark_part_as_main(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+await cloud.mark_part_as_main(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
@@ -767,7 +768,8 @@ Mark a specified robot part for restart.
 - `GRPCError`: This error is raised if an invalid robot part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.mark_part_for_restart(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+await cloud.mark_part_for_restart(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_for_restart).
@@ -795,7 +797,8 @@ Create a robot {{< glossary_tooltip term_id="part" text="part" >}} secret.
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot part the new secret was generated for.
 
 ```python {class="line-numbers linkable-line-numbers"}
-part_with_new_secret = await cloud.create_robot_part_secret(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+part_with_new_secret = await cloud.create_robot_part_secret(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
@@ -820,7 +823,9 @@ Delete a robot part secret.
 - `GRPCError`: This error is raised if an invalid robot part ID or secret ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_robot_part_secret(robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22", secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
+await cloud.delete_robot_part_secret(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22",
+  secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part_secret).
@@ -908,7 +913,9 @@ Change the name of an existing robot.
 - [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The newly updated robot.
 
 ```python {class="line-numbers linkable-line-numbers"}
-updated_robot = await cloud.update_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc", name="Orange-Robot")
+updated_robot = await cloud.update_robot(
+  robot_id="1a123456-x1yz-0ab0-a12xyzabc",
+  name="Orange-Robot")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot).
@@ -987,7 +994,8 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get a fragment and print its name and when it was created.
-the_fragment = await cloud.get_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+the_fragment = await cloud.get_fragment(
+  fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
 print("Name: ", the_fragment.name, "\nCreated on: ", the_fragment.created_on)
 ```
 
@@ -1018,7 +1026,8 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 - [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly created fragment.
 
 ```python {class="line-numbers linkable-line-numbers"}
-new_fragment = await cloud.create_fragment(name="cool_smart_machine_to_configure_several_of")
+new_fragment = await cloud.create_fragment(
+  name="cool_smart_machine_to_configure_several_of")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_fragment).
@@ -1051,7 +1060,9 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 - [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly updated fragment.
 
 ```python {class="line-numbers linkable-line-numbers"}
-updated_fragment = await cloud.update_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567", name="better_name")
+updated_fragment = await cloud.update_fragment(
+  fragment_id="12a12ab1-1234-5678-abcd-abcd01234567",
+  name="better_name")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_fragment).
@@ -1075,7 +1086,8 @@ Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
 - `GRPCError`: This error is raised if an invalid fragment ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.delete_fragment(fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+await cloud.delete_fragment(
+  fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
@@ -1103,7 +1115,11 @@ Add a role under the organization you are currently authenticated to.
 - `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.add_role(identity_id="abc01234-0123-4567-ab12-a11a00a2aa22", role="owner", resource_type="location", resource_id="111ab12345")
+await cloud.add_role(
+  identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
+  role="owner",
+  resource_type="location",
+  resource_id="111ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_role).
@@ -1131,7 +1147,11 @@ Remove a role under the organization you are currently authenticated to.
 - `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.remove_role(identity_id="abc01234-0123-4567-ab12-a11a00a2aa22", role="owner", resource_type="location", resource_id="111ab12345")
+await cloud.remove_role(
+  identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
+  role="owner",
+  resource_type="location",
+  resource_id="111ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_role).
@@ -1160,7 +1180,8 @@ If no resource IDs are provided, all resource authorizations within the organiza
 - (List[[Authorization](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.Authorization)]): The list of authorizations.
 
 ```python {class="line-numbers linkable-line-numbers"}
-list_of_auths = await cloud.list_authorizations(resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
+list_of_auths = await cloud.list_authorizations(
+  resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
@@ -1223,7 +1244,11 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 - [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The URL of the newly updated module.
 
 ```python {class="line-numbers linkable-line-numbers"}
-url_of_my_module = await cloud.update_module(module_id="my-group:cool_new_hoverboard_module", url="https://docsformymodule.viam.com", description="A base to support hoverboards.", entrypoint="exec")
+url_of_my_module = await cloud.update_module(
+  module_id="my-group:cool_new_hoverboard_module",
+  url="https://docsformymodule.viam.com",
+  description="A base to support hoverboards.",
+  entrypoint="exec")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
