@@ -835,7 +835,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListRobots
 
-Get a list of all robots under a specified location.
+Get a list of all robots in a specified location.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -902,7 +902,7 @@ Change the name of an existing robot.
 
 - `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to update.
 - `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name for the robot.
-- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location under which the robot exists.
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location in which the robot exists.
   Defaults to the location ID provided at `AppClient` instantiation.
 
 **Raises:**
@@ -949,7 +949,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListFragments
 
-Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} under the organization you are currently authenticated to.
+Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in the organization you are currently authenticated to.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
