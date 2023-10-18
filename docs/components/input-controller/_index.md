@@ -44,7 +44,7 @@ For configuration information, click on one of the following models:
 <!-- No modular resources yet -->
 <!-- ### Modular Resources
 
-{{<modular-resources api="rdk:component:input-controller" type="input-controller">}} -->
+{{<modular-resources api="rdk:component:input_controller" type="input_controller">}} -->
 
 If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
 
