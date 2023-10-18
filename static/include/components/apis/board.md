@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
 [`AnalogReaderByName`](/components/board/#analogreaderbyname) | Get an [`AnalogReader`](/components/board/#analogs) by `name`.
@@ -8,4 +9,5 @@ Method Name | Description
 [`Status`](/components/board/#status) | Get the current status of this board.
 [`ModelAttributes`](/components/board/#modelattributes) | Get the attributes related to the model of this board.
 [`SetPowerMode`](/components/board/#setpowermode) | Set the board to the indicated power mode.
+[`WriteAnalog`](/components/board/#writeanalog) | Write an analog value to a pin on the board.
 [`DoCommand`](/components/board/#docommand) | Send or receive model-specific commands.
