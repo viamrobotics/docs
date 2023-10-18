@@ -526,10 +526,6 @@ Get a specific robot {{< glossary_tooltip term_id="part" text="part" >}}.
 - `indent` [(int)](https://docs.python.org/3/library/functions.html#int): Size (in number of spaces) of indent when writing the JSON config to `dest`.
   Defaults to `4`.
 
-**Raises:**
-
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
-
 **Returns:**
 
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot {{< glossary_tooltip term_id="part" text="part" >}}.
