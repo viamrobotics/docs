@@ -16,14 +16,14 @@ aliases:
 To use Cartographer with the Viam [SLAM service](/services/slam/), you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) [modular resource](/modular-resources/).
 See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
+The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
+
 {{% alert title="Info" color="info" %}}
 
 Cartographer supports taking **2D LiDAR** or **3D LiDAR** data and optionally **inertial measurement unit (IMU)** and/or **odometry** data as input.
 
 However, currently, the `cartographer` modular resource only supports taking **2D LiDAR** and optionally **IMU** data as input.
 Support for taking **3D LiDAR** and **odometry** data as input may be added in the future.
-
-The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
 {{% /alert %}}
 
@@ -51,8 +51,14 @@ The source code for this module is available on the [`viam-cartographer` GitHub 
 
 ## Mapping Modes
 
-Since creating maps with Cartographer is CPU-intensive, for **creating** or **updating** a map, the `cartographer` modular resource **runs in the cloud**.
-For doing **pure localization** on an existing map, the `cartographer` modular resource **runs on your robot**.
+The `cartographer` module supports three modes of operation:
+
+- [Create a new map](#create-a-new-map)
+- [Update an existing map](#update-an-existing-map)
+- [Pure localization](#localize-only)
+
+Creating and updating SLAM maps with Cartographer is especially CPU-intensive, so the `cartographer` modular resource runs in the cloud for these two tasks.
+For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your robot.
 
 {{% alert title="Info" color="info" %}}
 
@@ -60,7 +66,10 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
 
 {{% /alert %}}
 
-### Create new map
+### Create a new map
+
+To create a new map and populate it with pointcloud data from your slam session, follow the instructions below.
+Creating a new map uses an instance of the cartographer module running in the cloud.
 
 1. Configure your `cartographer` SLAM service
 
@@ -227,22 +236,20 @@ This example JSON coonfiguration:
 
    ![slam library view map](/services/slam/slam-library-view-map.png)
 
-### Update existing map
+### Update an existing map
 
-This mode is similar to [Create new map](#create-new-map), except it creates a new version of an existing map in the robot's location.
-
-{{< alert title="Info" color="info" >}}
-It does not overwrite the old version of the map.
-{{< /alert >}}
+To update an existing map with new pointcloud data from a new SLAM session, follow the instructions below.
+Updating an existing map uses an instance of the `cartographer` module running in the cloud, and _does not_ overwrite the existing map.
+You must have first [created a new map](#create-a-new-map) to be able to update an existing map.
 
 1. Configure your `cartographer` SLAM service
 
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
 
-The configuration is similar to the configuration for [creating a new map](#create-new-map), except you additionally configure the following **Attribute**:
+- First, follow the configuration steps in [Create a new map](#create-a-new-map).
 
-- **Select map**, **Map version**: Provide the name and version of the map you would like to update.
+- Then, configure **Select map** and **Map version** with the name and version of the map you would like to update.
   You can see more details about the available maps from your robot's **Location** page under the **SLAM library** tab.
 
 {{% /tab %}}
@@ -336,14 +343,26 @@ The configuration is similar to the configuration for [creating a new map](#crea
 
 2. Start a mapping session
 
-   This is similar to [viewing the map in "create new map" mode](#create-new-map), except it builds on top of an existing map.
+   Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+   On the cartographer panel, you can start a mapping session.
 
-   {{% alert title="Info" color="info" %}}
+   When you start a mapping session:
+
+   - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
+     Because Cartographer's algorithm is CPU-intensive when creating or updating a map, in this mode the `cartographer` module on your robot acts as a stub.
+   - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the new map based on the existing map.
+     Once you click **End session**, the map is uploaded to the cloud and visible on your **Location** page under **SLAM library**.
+
+   Enter a name for your new map and click **Start session**.
+   Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
+
+{{% alert title="Info" color="info" %}}
 
 Cartographer may take several minutes to find your robot's position on the existing map.
-In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
-You may not want to move your robot until it has localized correctly.
+You may not (?) want to move your robot until it has finished localizing correctly.
 
 {{% /alert %}}
 
@@ -356,7 +375,8 @@ In this mode, the `cartographer` module on your robot executes the Cartographer 
    {{< tabs name="Localize only">}}
    {{% tab name="Config Builder" %}}
 
-The configuration is similar to the configuration for [updating an existing map](#update-existing-map), except instead of setting a `Data capture rate (Hz)` on the camera and movement sensor, you set a `Data polling rate (Hz)` on them, since the `cartographer-module` on your robot will poll the live LiDAR and IMU directly at these rates instead of the data being sent to the cloud.
+The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of configuring a `Data capture rate (Hz)` on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
+The `cartographer` module on your robot polls the live LiDAR and IMU directly at these rates, wheras the capture rate is only used when data is being sent to the cloud.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -447,7 +467,7 @@ The configuration is similar to the configuration for [updating an existing map]
    {{% alert title="Info" color="info" %}}
 
    Cartographer may take several minutes to find your robot's position on the existing map.
-   In the meantime, your robot will show up at the map's origin (i.e., (x,y) coordinates (0,0)).
+   In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
    If you move your robot, it will appear to be moving in a trajectory from the map's origin.
 
