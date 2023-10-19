@@ -173,7 +173,7 @@ To add them to your JSON configuration you must explicitly add the remote compon
 
 {{%expand "Click to view example JSON configuration for an ESP32 board" %}}
 
-The following example shows the configuration of the remote part, in this case an [ESP32 board](/installation/prepare/microcontrollers/#configure-an-esp32-board).
+The following example shows the configuration of the remote part, in this case an [ESP32 board](/micro-rdk/board/esp32/).
 This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}
