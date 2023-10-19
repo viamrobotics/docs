@@ -193,10 +193,6 @@ a > code {
   color: #333333 !important;
 }
 
-footer a {
-  color: #fff !important;
-}
-
 p, li {
   color: #515151;
   a {
@@ -213,9 +209,17 @@ p, li {
 
 // START FOOTER STYLING
 
+footer a {
+  color: #fff !important;
+}
+
 /* sets the footer to black. */
 .bg-dark {
   background-color: black !important;
+}
+
+footer * small {
+  color: white;
 }
 
 /* START no whitespace beneath footer */
