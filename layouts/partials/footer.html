@@ -20,11 +20,12 @@
         {{ with .Site.Params.copyright }}<small class="text-white">&copy; {{ now.Year}} {{ .}} {{ T "footer_all_rights_reserved" }}</small><BR>{{ end }}
           {{ with .Site.Params.privacy_policy }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "PRIVACY POLICY" }}</a></small>{{ end }}
           {{ with .Site.Params.tos_statement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "TERMS" }}</a></small> {{ end }}
+          {{ if not .Site.Params.ui.footer_about_disable }}
+          <small class="ml-2"> | </small>
+          <small class="ml-2"> <a href="https://www.viam.com/about" target="_blank" rel="noopener">ABOUT US</a></small>
+          {{ end }}
 
         {{ with .Site.Params.user_agreement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "USER AGREEMENT" }}</a></small>{{ end }}
-	{{ if not .Site.Params.ui.footer_about_disable }}
-		{{ with .Site.GetPage "about" }}<p class="mt-2"><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
-	{{ end }}
       </div>
     </div>
   </div>
