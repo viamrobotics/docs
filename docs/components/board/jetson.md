@@ -17,9 +17,9 @@ If you have a CSI camera, follow [these instructions](/modular-resources/example
 
 {{% /alert %}}
 
-{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="warning" %}}
+{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="caution" %}}
 
-The jetson's GPIO pins are rated for inputs and outputs at 3.3V. Signals from encoders and sensors at even 5V can cause damage to a pin. We recommend connecting hardware that can operate and send signals at 3.3V or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note)
+The GPIO pins on Jetson boards are rated 3.3V signals, 5V signals from  encoders and sensors can cause damage to a pin. We recommend selecting hardware that can operate 3.3V signals or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note)
 
 {{% /alert %}}
 
