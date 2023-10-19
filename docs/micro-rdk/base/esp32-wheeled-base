@@ -6,13 +6,13 @@ type: "docs"
 description: "Configure and wire an esp32_wheeled_base."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
-# SMEs: Steve B
+# SMEs: Gautham V.
 ---
 
 A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
-To configure a `wheeled` base as a component of your robot, first configure the [board](/micro-rdk/board/) controlling the base and any [motors](/micro-rdk/motor/) attached to the base.
+Only two-wheeled bases are supported by this micro-RDK exclusive model.
 
-Configure a `wheeled` base as follows:
+Configure a `esp32_wheeled_base` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
@@ -34,28 +34,13 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      ... <INSERT YOUR BOARD COMPONENT CONFIGURATION>
-    },
-    {
-      ... <INSERT YOUR LEFT MOTOR COMPONENT CONFIGURATION>
-    },
-    {
-      ... <INSERT YOUR RIGHT MOTOR COMPONENT CONFIGURATION>
-    },
-    {
       "name": "<your-base-name>",
       "model": "wheeled",
       "type": "base",
       "namespace": "rdk",
       "attributes": {
-        "left": [
-          "<your-left-motor-name>" // <INSERT ANY ADDITIONAL LEFT MOTOR NAMES>
-        ],
-        "right": [
-          "<your-right-motor-name>" // <INSERT ANY ADDITIONAL RIGHT MOTOR NAMES>
-        ],
-        "wheel_circumference_mm": <#>,
-        "width_mm": <#>
+        "left": "<your-left-motor-name>",
+        "right": "<your-right-motor-name>"
       },
       "depends_on": []
     }
@@ -69,14 +54,6 @@ Edit and fill in the attributes as applicable.
 ```json
 {
   "components": [
-    {
-      "name": "my-pi",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {},
-      "depends_on": []
-    },
     {
       "name": "rightm",
       "model": "gpio",
@@ -111,21 +88,14 @@ Edit and fill in the attributes as applicable.
       "type": "base",
       "namespace": "rdk",
       "attributes": {
-        "width_mm": 195,
-        "wheel_circumference_mm": 183,
-        "left": ["leftm"],
-        "right": ["rightm"]
+        "left": "leftm",
+        "right": "rightm"
       },
       "depends_on": []
     }
   ]
 }
 ```
-
-{{% /tab %}}
-{{% tab name="Annotated JSON" %}}
-
-{{< imgproc src="/components/base/base-json.png" alt="JSON configuration file for a wheeled base with annotations explaining some of the attributes." resize="600x" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -135,19 +105,8 @@ The following attributes are available for `wheeled` bases:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `left` | array | **Required** | Array with the `name` of any drive motors on the left side of the base. |
-| `right` | array | **Required** | Array with the `name` of any drive motors on the right side of the base. |
-| `wheel_circumference_mm` | int | **Required** | The outermost circumference of the drive wheels in millimeters. Used for odometry. Can be an approximation. |
-| `width_mm` | int | **Required** | Width of the base in millimeters. In other words, the distance between the approximate centers of the right and left wheels. Can be an approximation. |
-| `spin_slip_factor` | float | Optional | Can be used in steering calculations to correct for slippage between the wheels and the floor. If utilized, calibrated by the user. |
-
-## Wire a Wheeled Base
-
-An example wiring diagram for a base with one motor on each side:
-
-![Wiring diagram showing a Raspberry Pi, motor drivers, motors, power supply, and voltage regulator for the rover](/components/base/base-wiring-diagram.png)
-
-Note that your base's wiring will vary depending on your choice of board, motors, motor drivers, and power supply.
+| `left` | string | **Required** | The `name` of a drive motors on the left side of the base. |
+| `right` | string | **Required** | The `name` of a drive motor on the right side of the base. |
 
 ## Test the base
 

@@ -13,10 +13,14 @@ The micro-RDK currently supports the following models of Movement Sensor:
 
 | Model | Description |
 | ----- | ----------- |
-| [`single`](single/) | |
-| [`incremental`](incremental/) | |
+| [`accel-adxl345`](accel-adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer |
+| [`gyro-mpu6050`](gyro-mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense |
 
-The [Movement Sensor API](/components/Movement Sensor/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The [Movement Sensor API](/components/movement-sensor/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
 
-- [`Stop()`](/components/Movement Sensor/#stop)
-- [`SetPower()`](/components/Movement Sensor/#setpower)
+- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
+- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
+- [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
+- [`GetPosition()`](/components/movement-sensor/#getposition)
+- [`GetProperties()`](/components/movement-sensor/#getproperties)
+- [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration)

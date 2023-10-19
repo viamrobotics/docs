@@ -5,6 +5,9 @@ weight: 60
 type: "docs"
 description: "The micro-RDK is a lightweight version of the Robot Development Kit which can run on resource-limited embedded systems."
 tags: ["server", "rdk"]
+no_list: true
+aliases:
+    - /internals/micro-rdk
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}

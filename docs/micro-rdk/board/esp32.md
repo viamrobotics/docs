@@ -74,8 +74,13 @@ The following attributes are available for `esp32` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
+| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
+| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
 | `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
+
+Any pin not specified in either   `"pins"` or `"digital_interrupts"` cannot be interacted with through the [Board API](/components/board/#api).
+Interaction with digital interrupts is only supported with the [Board API](/components/board/#api), these digital interrupts cannot be used as software interrupts in driver implementations.
 
 {{< alert title="Info" color="info" >}}
 
@@ -85,12 +90,29 @@ The`esp32` [board](/components/board/) model is not currently provided for you a
 
 ### `analogs`
 
-{{< readfile "/static/include/components/board/board-analogs.md" >}}
+The following properties are available for `analogs`:
 
-### `digital_interrupts`
-
-{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+<!-- prettier-ignore -->
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`name` | string | **Required** | Your name for the analog reader. |
+|`pin`| integer | **Required** | The GPIO number of the ADC's connection pin, wired to the board.
 
 ### `i2cs`
 
-{{< readfile "/static/include/components/board/board-i2cs.md" >}}
+<!-- prettier-ignore -->
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
+|`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. Must be either `i2c0` or `i2c1`. |
+|`data_pin`| integer | **Required** | The GPIO number of the data pin. |
+|`clock_pin`| integer | **Required** | The GPIO number of the clock pin. |
+|`baudrate_hz`| integer | Optional | The baudrate in HZ of this I<sup>2</sup>C bus. <br> Default: `1000000` |
+|`timeout_ns`| integer | Optional | Timeout period for this I<sup>2</sup>C bus in nanoseconds. <br> Default: `0` |
+
+### `digital_interrupts`
+
+<!-- prettier-ignore -->
+| Name | Type | Inclusion | Description |
+| ---- | ---- | --------- | ----------- |
+|`pin`| string | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |

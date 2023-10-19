@@ -9,14 +9,19 @@ tags: ["encoder", "components", "micro-rdk"]
 # SMEs: Nick M., Gautham V.
 ---
 
+## Configuration
+
 The micro-RDK currently supports the following models of Encoder:
 
 | Model | Description |
 | ----- | ----------- |
-| [`single`](single/) | |
-| [`incremental`](incremental/) | |
+| [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
+| [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction. |
+
+## API
 
 The [Encoder API](/components/Encoder/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
 
-- [`Stop()`](/components/Encoder/#stop)
-- [`SetPower()`](/components/Encoder/#setpower)
+- [`ResetPosition()`](/components/encoder/#resetposition)
+- [`GetPosition()`](/components/encoder/#getposition)
+- [`GetProperties()`](/components/encoder/#getproperties)

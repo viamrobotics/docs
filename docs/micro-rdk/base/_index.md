@@ -13,7 +13,7 @@ The micro-RDK currently supports the following models of base:
 
 | Model | Description |
 | ----- | ----------- |
-| [`esp32_wheeled_base`](esp32_wheeled_base/) | Mobile wheeled robot |
+| [`esp32_wheeled_base`](esp32-wheeled-base/) | Mobile robot with two wheels |
 
 The [Base API](/components/base/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
 
