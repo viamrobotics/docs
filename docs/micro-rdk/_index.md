@@ -7,7 +7,8 @@ description: "The micro-RDK is a lightweight version of the Robot Development Ki
 tags: ["server", "rdk"]
 no_list: true
 aliases:
-    - /internals/micro-rdk
+  - "/internals/micro-rdk"
+# SMEs: Nick M., Gautham V.
 ---
 
 {{% readfile "/static/include/micro-rdk.md" %}}

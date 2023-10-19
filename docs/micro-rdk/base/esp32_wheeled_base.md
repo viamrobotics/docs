@@ -3,7 +3,7 @@ title: "Configure a Wheeled Base"
 linkTitle: "esp32_wheeled_base"
 weight: 30
 type: "docs"
-description: "Configure and wire an esp32_wheeled_base."
+description: "Configure and wire an esp32 wheeled base."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 # SMEs: Gautham V.
@@ -15,19 +15,6 @@ Only two-wheeled bases are supported by this micro-RDK exclusive model.
 Configure a `esp32_wheeled_base` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
-{{% tab name="Config Builder" %}}
-
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
-Click on the **Components** subtab and click **Create component**.
-Select the `base` type, then select the `wheeled` model.
-Enter a name for your arm and click **Create**.
-
-{{< imgproc src="/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base in the Viam app config builder, with Attributes & Depends On drop-downs and the option to add a frame." resize="600x" >}}
-
-Select the motors attached to the base as your **Right Motors** and **Left Motors**.
-Edit and fill in the attributes as applicable.
-
-{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -35,14 +22,13 @@ Edit and fill in the attributes as applicable.
   "components": [
     {
       "name": "<your-base-name>",
-      "model": "wheeled",
+      "model": "esp32_wheeled_base",
       "type": "base",
       "namespace": "rdk",
       "attributes": {
         "left": "<your-left-motor-name>",
         "right": "<your-right-motor-name>"
-      },
-      "depends_on": []
+      }
     }
   ]
 }
@@ -55,36 +41,8 @@ Edit and fill in the attributes as applicable.
 {
   "components": [
     {
-      "name": "rightm",
-      "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
-      "attributes": {
-        "pins": {
-          "dir": "16",
-          "pwm": "15"
-        },
-        "board": "my-pi"
-      },
-      "depends_on": []
-    },
-    {
-      "name": "leftm",
-      "model": "gpio",
-      "type": "motor",
-      "namespace": "rdk",
-      "attributes": {
-        "pins": {
-          "dir": "13",
-          "pwm": "11"
-        },
-        "board": "my-pi"
-      },
-      "depends_on": []
-    },
-    {
       "name": "my-wheeled-base",
-      "model": "wheeled",
+      "model": "esp32_wheeled_base",
       "type": "base",
       "namespace": "rdk",
       "attributes": {
@@ -92,7 +50,7 @@ Edit and fill in the attributes as applicable.
         "right": "rightm"
       },
       "depends_on": []
-    }
+    }, ... <INSERT LEFT AND RIGHT MOTOR CONFIGS>
   ]
 }
 ```

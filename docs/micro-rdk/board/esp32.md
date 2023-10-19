@@ -76,10 +76,10 @@ The following attributes are available for `esp32` boards:
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
-| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
-| `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
+| `digital_interrupts` | object | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
+| `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
 
-Any pin not specified in either   `"pins"` or `"digital_interrupts"` cannot be interacted with through the [Board API](/components/board/#api).
+Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [Board API](/components/board/#api).
 Interaction with digital interrupts is only supported with the [Board API](/components/board/#api), these digital interrupts cannot be used as software interrupts in driver implementations.
 
 {{< alert title="Info" color="info" >}}
@@ -100,6 +100,8 @@ The following properties are available for `analogs`:
 
 ### `i2cs`
 
+The following properties are available for `i2cs`:
+
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
@@ -111,6 +113,8 @@ The following properties are available for `analogs`:
 |`timeout_ns`| integer | Optional | Timeout period for this I<sup>2</sup>C bus in nanoseconds. <br> Default: `0` |
 
 ### `digital_interrupts`
+
+The following properties are available for `digital_interrupts`:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |

@@ -13,20 +13,21 @@ tags: ["board", "components", "micro-rdk"]
 
 The micro-RDK currently supports the following models of board:
 
-| Model | Description |
-| ----- | ----------- |
+<!-- prettier-ignore -->
+| Model             | Description              |
+| ----------------- | ------------------------ |
 | [`esp32`](esp32/) | An ESP32 microcontroller |
 
 ## API
 
 The [Board API](/components/board/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
 
-- [`SetGPIO()`](/components/board/#setgpio)
-- [`GetGPIO()`](/components/board/#getgpio)
-- [`PWM()`](/components/board/#pwm)
-- [`SetPWM()`](/components/board/#setpwm)
-- [`PWMFrequency()`](/components/board/#pwmfrequency)
-- [`SetPWMFrequency()`](/components/board/#setpwmfrequency)
-- [`ReadAnalogReader()`](/components/board/#readanalogreader)
-- [`GetDigitalInterruptValue()`](/components/board/#getdigitalinterruptvalue)
 - [`SetPowerMode()`](/components/board/#setpowermode)
+- [`GPIOPin` `Set()`](/components/board/#set)
+- [`GPIOPin` `Get()`](/components/board/#get)
+- [`GPIOPin` `GetPWM()`](/components/board/#getpwm)
+- [`GPIOPin` `SetPWM()`](/components/board/#setpwm)
+- [`GPIOPin` `PWMFreq()`](/components/board/#pwmfreq)
+- [`GPIOPin` `SetPWMFreq()`](/components/board/#setpwmfreq)
+- [`AnalogReader` `Read()`](/components/board/#read)
+- [`DigitalInterrupt` `Value()`](/components/board/#value)
