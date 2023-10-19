@@ -79,14 +79,17 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
   "components": [
     {
       "name": "local",
-      "model": "pi",
+      "model": "esp32",
       "type": "board",
       "namespace": "rdk",
       "attributes": {
+        "pins": [15, 21, 22],
         "i2cs": [
           {
             "name": "default_i2c_bus",
-            "bus": "1"
+            "bus": "i2c0",
+            "data_pin": 21,
+            "clock_pin": 22
           }
         ]
       }

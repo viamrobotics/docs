@@ -37,7 +37,7 @@ Configure a `esp32_wheeled_base` base as follows:
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-```json
+```json {class="line-numbers linkable-line-numbers"}
 {
   "components": [
     {

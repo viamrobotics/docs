@@ -14,10 +14,10 @@ tags: ["encoder", "components", "micro-rdk"]
 The micro-RDK currently supports the following models of Encoder:
 
 <!-- prettier-ignore -->
-| Model                         | Description                                                                                                        |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
-| [`single`](single/)           | A single pin "pulse output" encoder which returns its relative position but no direction.                          |
+| Model | Description |
+| ----- | ----------- |
+| [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point |
+| [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction |
 
 ## API
 
