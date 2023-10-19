@@ -71,9 +71,10 @@ This command creates a new `meta.json` metadata file in your current working dir
 3. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
    The `name` field is pre-populated using the `--name` you provided in the `viam module create` command, and `visibility` is set to `private` by default.
 
-{{< alert title="Caution" color="caution" >}}
-The `module_id` uniquely identifies your module. Do not change the `module_id`.
-{{< /alert >}}
+   {{< alert title="Caution" color="caution" >}}
+   The `module_id` uniquely identifies your module.
+   Do not change the `module_id`.
+   {{< /alert >}}
 
    <table class="table table-striped">
      <tr>
@@ -119,33 +120,34 @@ The `module_id` uniquely identifies your module. Do not change the `module_id`.
        <td><strong>Required</strong></td>
        <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
      </tr>
+
    </table>
 
-   For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
+For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "module_id": "acme:my-module",
-     "visibility": "public",
-     "url": "https://github.com/acme-co-example/my-module",
-     "description": "An example custom module.",
-     "models": [
-       {
-         "api": "rdk:component:generic",
-         "model": "acme:demo:my-model"
-       }
-     ],
-     "entrypoint": "my-module.sh"
-   }
-   ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/acme-co-example/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "entrypoint": "my-module.sh"
+}
+```
 
-   {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
-   In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
-   If the two namespaces do not match, the command will return an error.
-   {{% /alert %}}
+{{% alert title="Important" color="note" %}}
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+If the two namespaces do not match, the command will return an error.
+{{% /alert %}}
 
-   See [The `meta.json` file](/manage/cli/#the-metajson-file) for more information.
+See [The `meta.json` file](/manage/cli/#the-metajson-file) for more information.
 
 4. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
