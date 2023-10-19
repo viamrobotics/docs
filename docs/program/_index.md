@@ -20,7 +20,7 @@ You can write code to control your smart machines using the following software d
 - [Python SDK](https://python.viam.dev/)
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
-- [C++ SDK (alpha)](https://cpp.viam.dev/)
+- [C++ SDK (beta)](https://cpp.viam.dev/)
 - [Flutter SDK (beta)](https://flutter.viam.dev/)
 
 The SDKs provide idiomatic wrappers around Viam's robot [gRPC APIs](https://github.com/viamrobotics/api).
