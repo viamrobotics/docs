@@ -32,7 +32,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "board": "<your-board-name>",
-  "i2c_bus": "<your-spi-bus-name-on-board>",
+  "i2c_bus": "<your-i2c-bus-name-on-board>",
   "use_alternate_i2c_address": <boolean>,
   "tap": {
     "accelerometer_pin": <int>,
