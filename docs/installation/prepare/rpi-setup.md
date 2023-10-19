@@ -184,7 +184,7 @@ Use your keyboard to select "Interface Options" and enable the relevant protocol
 {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
 
 {{< alert title="Important" color="note" >}}
-When using a CSI camera, you need to enable legacy camera support.
+When using a CSI v1.3 or v2.0 camera, you need to enable legacy camera support.
 {{< /alert >}}
 
 For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.

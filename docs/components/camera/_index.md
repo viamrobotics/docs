@@ -388,12 +388,6 @@ For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
-## Troubleshooting
-
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-{{< snippet "social.md" >}}
-
 ## Next Steps
 
 {{< cards >}}
@@ -401,3 +395,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}
+
+<br>
+
+{{< snippet "social.md" >}}
