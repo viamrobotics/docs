@@ -134,6 +134,42 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### BinaryDataByIDs
+
+Retrieve binary data from the [Viam app](https://app.viam.com) by [`BinaryID`](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID).
+You can also find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data. Must be non-empty.
+- `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes): Filepath to write retrieved data to.
+
+**Returns**:
+
+- [(List[BinaryData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.BinaryData): The binary data retrieved from the [Viam app](https://app.viam.com).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter, BinaryID
+
+my_filter = Filter(component_type="camera")
+binary_metadata = await data_client.binary_data_by_filter(my_filter, include_file_data=False)
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(BinaryID(file_id=obj.metadata.id))
+
+binary_data = await data_client.binary_data_by_ids(my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### BinaryDataCaptureUpload
 
 Upload binary data collected on your machine through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).
