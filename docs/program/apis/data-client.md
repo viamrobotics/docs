@@ -152,10 +152,9 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 - [(List[BinaryData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.BinaryData): The binary data retrieved from the [Viam app](https://app.viam.com).
 
 ```python {class="line-numbers linkable-line-numbers"}
-from viam.proto.app.data import Filter, BinaryID
+from viam.proto.app.data import BinaryID
 
-my_filter = Filter(component_type="camera")
-binary_metadata = await data_client.binary_data_by_filter(my_filter, include_file_data=False)
+binary_metadata = await data_client.binary_data_by_filter(include_file_data=False)
 
 my_ids = []
 
