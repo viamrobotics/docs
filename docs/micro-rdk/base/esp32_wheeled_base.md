@@ -1,5 +1,5 @@
 ---
-title: "Configure a Wheeled Base"
+title: "Configure a esp32 Wheeled Base"
 linkTitle: "esp32_wheeled_base"
 weight: 30
 type: "docs"
@@ -9,7 +9,7 @@ tags: ["base", "components"]
 # SMEs: Gautham V.
 ---
 
-A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
+An `esp32_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
 Only two-wheeled bases are supported by this micro-RDK exclusive model.
 
 Configure a `esp32_wheeled_base` base as follows:
