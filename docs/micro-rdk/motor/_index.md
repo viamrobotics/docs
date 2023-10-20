@@ -3,7 +3,7 @@ title: "Micro-RDK Motor Models"
 linkTitle: "Motor"
 weight: 30
 type: "docs"
-description: "Motor support in the micro-rdk."
+description: "Support in the micro-RDK for motors, machines that convert electricity into rotary motion."
 images: ["/icons/components/motor.svg"]
 tags: ["motor", "components", "micro-rdk"]
 no_list: true
