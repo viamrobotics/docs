@@ -192,6 +192,16 @@ This example JSON coonfiguration:
 {{% /tab %}}
 {{< /tabs >}}
 
+<!-- prettier-ignore -->
+| Name | Data Type | Inclusion | Description |
+| ---- | --------- | --------- | ----------- |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your robot. |
+| `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
+| `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
+| `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
+| `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
+| `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
+
 1. Start a mapping session
 
    Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
@@ -200,7 +210,6 @@ This example JSON coonfiguration:
    When you start a mapping session:
 
    - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
-     Because Cartographer's algorithm is CPU-intensive when creating or updating a map, in this mode the `cartographer` module on your robot acts as a stub.
    - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
    - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
@@ -349,7 +358,6 @@ You must have first [created a new map](#create-a-new-map) to be able to update 
    When you start a mapping session:
 
    - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
-     Because Cartographer's algorithm is CPU-intensive when creating or updating a map, in this mode the `cartographer` module on your robot acts as a stub.
    - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
    - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the new map based on the existing map.
      Once you click **End session**, the map is uploaded to the cloud and visible on your **Location** page under **SLAM library**.
@@ -441,16 +449,6 @@ The `cartographer` module on your robot polls the live LiDAR and IMU directly at
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- prettier-ignore -->
-| Name | Data Type | Inclusion | Description |
-| ---- | --------- | --------- | ----------- |
-| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your robot. |
-| `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
-| `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
-| `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |
-| `existing_map` | string | Optional | The alias of the package containing the existing map to build on (in "Update existing map" mode) or localize on (in "Localize only" mode). |
-| `config_params` |  obj | Optional | Parameters available to fine-tune the `cartographer` algorithm: [read more below](#config_params). |
-
 2. Start a mapping session
 
    Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
@@ -471,7 +469,7 @@ The `cartographer` module on your robot polls the live LiDAR and IMU directly at
 
    {{% /alert %}}
 
-## Create a new map from cloud data
+## Create or update a map from previously captured data
 
 You can specify a range of **previously captured** LiDAR and optional IMU data to create a map or update an existing map in the cloud.
 You can browse your previously captured data from the **Data** page under the **Point clouds** tab (for LiDAR data) and **Sensors** tab (for IMU data).
