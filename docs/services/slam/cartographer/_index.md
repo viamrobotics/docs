@@ -245,7 +245,6 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 To update an existing map with new pointcloud data from a new SLAM session, follow the instructions below.
 Updating an existing map uses an instance of the `cartographer` module running in the cloud, and _does not_ overwrite the existing map.
-You must have first [created a new map](#create-a-new-map) to be able to update an existing map.
 
 1. Configure your `cartographer` SLAM service
 
