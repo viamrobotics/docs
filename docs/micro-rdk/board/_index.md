@@ -3,7 +3,7 @@ title: "Micro-RDK Board Models"
 linkTitle: "Board"
 weight: 30
 type: "docs"
-description: "Board support in the micro-rdk."
+description: "The micro-RDK support for the signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "micro-rdk"]
 no_list: true
@@ -12,7 +12,7 @@ no_list: true
 
 ## Supported Models
 
-The micro-RDK currently supports the following models of board:
+For configuration information, click on the supported board model name:
 
 <!-- prettier-ignore -->
 | Model             | Description              |
@@ -21,7 +21,7 @@ The micro-RDK currently supports the following models of board:
 
 ## API
 
-The [Board API](/components/board/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [board API](/components/board/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
 - [`SetPowerMode()`](/components/board/#setpowermode)
 
