@@ -11,11 +11,11 @@ images: ["/icons/components/imu.svg"]
 An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the `AngularVelocity`, `Orientation`, `CompassHeading`, and `LinearAcceleration` methods.
 Acceleration and magnetometer data are available by using the [sensor](../../../sensor/) `GetReadings` method, which IMUs wrap.
 
-The `imu-wit` movement sensor model supports the following IMUs manufactured by [WitMotion](https://witmotion-sensor.com/):
+The `imu-wit` movement sensor model supports the following IMUs manufactured by [WitMotion](https://www.wit-motion.com/):
 
-- [BWT61CL](https://witmotion-sensor.com/products/bluetooth-accelerometer-inclinometer-bwt61cl-mpu6050-high-precision-6-axis-gyroscope-anglexy-0-05-accuracy-acceleration-with-kalman-filter-100hz-high-stability-6dof-data-logger-for-arduino?_pos=2&_sid=34ad342de&_ss=r&variant=40749736689861)
-- [BWT901CL](https://witmotion-sensor.com/products/bluetooth-accelerometer-inclinometer-bwt901cl-mpu9250-high-precision-9-axis-gyroscope-anglexy-0-05-accuracy-magnetometer-with-kalman-filter-200hz-high-stability-3-axis-imu-sensor-for-arduino?_pos=1&_sid=68bf26406&_ss=r&variant=40580102226117)
-- [HWT901B TTL](https://witmotion-sensor.com/products/military-grade-accelerometer-inclinometer-hwt901b-mpu9250-9-axis-gyroscope-anglexy-0-05-accuracy-digital-compass-air-pressure-altitude-rm3100-magnetometer-compensation-and-kalman-filtering?_pos=1&_sid=dfbf7e412&_ss=r)
+- [BWT61CL](https://www.wit-motion.com/6-axis/witmotion-bluetooth-2-0.html)
+- [BWT901CL](https://www.wit-motion.com/9-axis/witmotion-bluetooth-2-0-mult.html)
+- [HWT901B TTL](https://www.wit-motion.com/10-axis/witmotion-hwt901b-ttl-10.html)
 
 {{% alert title="Info" color="info" %}}
 
