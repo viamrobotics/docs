@@ -361,14 +361,12 @@ You must have first [created a new map](#create-a-new-map) to be able to update 
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
-   When you start a mapping session:
+   Once you click **End session**, the map is uploaded to the cloud and visible on your **Location** page under **SLAM library**.
 
-   - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
-   - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the new map based on the existing map.
-     Once you click **End session**, the map is uploaded to the cloud and visible on your **Location** page under **SLAM library**.
-
-   Enter a name for your new map and click **Start session**.
+   Click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
+
+   Once the slam session has started, you can follow the same steps as in [Create a new map](#create-a-new-map) to view your map.
 
 {{% alert title="Info" color="info" %}}
 
