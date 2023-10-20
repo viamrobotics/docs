@@ -34,7 +34,7 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea`](./gps/gps-nmea/) | [NMEA-based](https://en.wikipedia.org/wiki/NMEA_0183) GPS models
 [`gps-nmea-rtk-pmtk`](./gps/gps-nmea-rtk-pmtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using I<sup>2</sup>C (**experimental**)
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
-[`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://witmotion-sensor.com/)
+[`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
 [`imu-vectornav`](./imu/imu-wit/) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/modular-resources/) that derives movement data from a [camera](/components/camera/) stream

@@ -25,7 +25,6 @@ IgnoreURLs:
 - "ufactory.cc"
 - "medium.com"
 - "radxa.com"
-- "witmotion-sensor.com" # TEMPORARY
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
