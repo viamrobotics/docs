@@ -27,6 +27,11 @@ Support for taking **3D LiDAR** and **odometry** data as input may be added in t
 
 {{% /alert %}}
 
+Cartographer can operate:
+
+- _online_ [using a live robot](#use-a-live-robot) for creating and updating maps or for localization
+- _offline_ [using previously captured data](#use-previously-captured-data) for creating and updating maps
+
 ## Use a live robot
 
 The `cartographer` module supports three modes of operation:
