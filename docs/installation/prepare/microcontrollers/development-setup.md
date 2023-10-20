@@ -224,9 +224,15 @@ Then, navigate to the **Config** tab.
 
 ### Configure your robot with an esp32
 
-The micro-RDK provides different component models than the fully featured RDK.
-See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
+[Client API](/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
+- [Base](/micro-rdk/base/)
+- [Board](/micro-rdk/board/)
+- [Encoder](/micro-rdk/encoder/)
+- [Movement Sensor](/micro-rdk/movement-sensor/)
+- [Motor](/micro-rdk/motor/)
+
+See [micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 Follow [this guide](/micro-rdk/board/esp32/) to configure an `esp32` board on your robot.
 
 ### Generate a New Project from the Micro-RDK Template
