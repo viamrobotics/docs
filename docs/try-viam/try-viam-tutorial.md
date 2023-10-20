@@ -165,7 +165,7 @@ The attributes section lists the board the motor is wired to, and since the rove
 
 You can click **Go to advanced** to view the attributes field in raw JSON format.
 The **Attributes** pane contains the current JSON configuration for this component.
-Click **Go to Fancy** to return to the default graphical user interface.
+Click **Go to fancy** to return to the default graphical user interface.
 
 ### Base configuration
 

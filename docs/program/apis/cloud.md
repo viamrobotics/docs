@@ -526,10 +526,6 @@ Get a specific robot {{< glossary_tooltip term_id="part" text="part" >}}.
 - `indent` [(int)](https://docs.python.org/3/library/functions.html#int): Size (in number of spaces) of indent when writing the JSON config to `dest`.
   Defaults to `4`.
 
-**Raises:**
-
-- `GRPCError`: This error is raised if an invalid robot ID is passed.
-
 **Returns:**
 
 - [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot {{< glossary_tooltip term_id="part" text="part" >}}.
@@ -557,7 +553,7 @@ Get the logs associated with a specific robot {{< glossary_tooltip term_id="part
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
 - `dest` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional filepath to write the log entries to.
-- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to limit returned log messages to error logs only.
+- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): (Optional) Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `num_log_entries` [(int)](https://docs.python.org/3/library/functions.html#int): Number of log entries to return.
   Passing `0` returns all logs.
@@ -592,7 +588,7 @@ Get an asynchronous iterator that receives live robot part logs.
 **Parameters:**
 
 - `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to retrieve logs from.
-- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): Specifies whether to limit returned log messages to error logs only.
+- `errors_only` [(bool)](https://docs.python.org/3/library/functions.html#bool): (Optional) Specifies whether to limit returned log messages to error logs only.
   Defaults to `True`, including only error-level messages by default.
 - `filter` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Only include logs with messages that contain the string `filter`.
   Defaults to empty string `""`, meaning no filter.
@@ -660,7 +656,7 @@ Change the name of and assign an optional new configuration to a robot {{< gloss
 
 **Returns:**
 
-- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly-updated robot part.
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The newly updated robot part.
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_robot_part = await cloud.update_robot_part(
@@ -727,6 +723,140 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### MarkPartAsMain
+
+Mark a robot part as the [_main_ part](/manage/parts-and-remotes/#robot-parts) of a robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to mark as main.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.mark_part_as_main(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### MarkPartForRestart
+
+Mark a specified robot part for restart.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to mark for restart.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.mark_part_for_restart(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_for_restart).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateRobotPartSecret
+
+Create a robot {{< glossary_tooltip term_id="part" text="part" >}} secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to create a secret for.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.RobotPart)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart): The robot part the new secret was generated for.
+
+```python {class="line-numbers linkable-line-numbers"}
+part_with_new_secret = await cloud.create_robot_part_secret(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRobotPartSecret
+
+Delete a robot part secret.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_part_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot part to delete the secret from.
+- `secret_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the secret to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot part ID or secret ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_robot_part_secret(
+  robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22",
+  secret_id="123xyz12-abcd-4321-12ab-12xy1xyz12xy")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part_secret).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListRobots
+
+Get a list of all robots in a specified location.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location to retrieve the robots from.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid location ID is passed.
+
+**Returns:**
+
+- (List[[viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)]): The list of robots.
+
+```python {class="line-numbers linkable-line-numbers"}
+list_of_robots = await cloud.list_robots(location_id="123ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobot
 
 Create a new {{< glossary_tooltip term_id="robot" text="robot" >}}.
@@ -753,6 +883,448 @@ new_robot_id = await cloud.new_robot(name="beepboop")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateRobot
+
+Change the name of an existing robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to update.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name for the robot.
+- `location_id` [(Optional[string])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the location in which the robot exists.
+  Defaults to the location ID provided at `AppClient` instantiation.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot ID, name, or location ID is passed, or if one isn't passed and no location ID was provided at `AppClient` instantiation.
+  **Returns:**
+
+- [(viam.proto.app.Robot)](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot): The newly updated robot.
+
+```python {class="line-numbers linkable-line-numbers"}
+updated_robot = await cloud.update_robot(
+  robot_id="1a123456-x1yz-0ab0-a12xyzabc",
+  name="Orange-Robot")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteRobot
+
+Delete a specified robot.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `robot_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the robot to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListFragments
+
+Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `show_public` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): (Optional) Specify whether to only show public fragments. If `True`, only public fragments will be returned.
+  If `False`, only private fragments will be returned.
+  Default: `True`.
+
+**Returns:**
+
+- (List[[viam.app.app_client.Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
+
+```python {class="line-numbers linkable-line-numbers"}
+fragments_list = await cloud.list_fragments(show_public=False)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_fragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetFragment
+
+Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `fragment_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the fragment to get.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid fragment ID is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The fragment.
+
+```python {class="line-numbers linkable-line-numbers"}
+# Get a fragment and print its name and when it was created.
+the_fragment = await cloud.get_fragment(
+  fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+print("Name: ", the_fragment.name, "\nCreated on: ", the_fragment.created_on)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateFragment
+
+Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the new fragment.
+- `config` (Optional[Mapping[str, Any]]): Dictionary representation of the new config to assign to the fragment.
+  Can be assigned by updating the fragment.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid name is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly created fragment.
+
+```python {class="line-numbers linkable-line-numbers"}
+new_fragment = await cloud.create_fragment(
+  name="cool_smart_machine_to_configure_several_of")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateFragment
+
+Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and its config and/or visibility.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `fragment_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the fragment to update.
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): New name to associate with the fragment.
+- `config` (Optional[Mapping[str, Any]]): Dictionary representation of the new config to assign to the fragment.
+  Not passing this parameter will leave the fragment's config unchanged.
+- `public` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Specify whether the fragment is public.
+  Default: `False` (private).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid fragment ID, name, or config is passed.
+
+**Returns:**
+
+- [(viam.app.app_client.Fragment)](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment): The newly updated fragment.
+
+```python {class="line-numbers linkable-line-numbers"}
+updated_fragment = await cloud.update_fragment(
+  fragment_id="12a12ab1-1234-5678-abcd-abcd01234567",
+  name="better_name")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteFragment
+
+Delete a {{< glossary_tooltip term_id="fragment" text="fragment" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `fragment_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the fragment to delete.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid fragment ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_fragment(
+  fragment_id="12a12ab1-1234-5678-abcd-abcd01234567")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddRole
+
+Add a role under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `identity_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the entity the role belongs to (for example, a user ID).
+- `role` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The role to add (either `"owner"` or `"operator"`).
+- `resource_type` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`).
+  Must match the type of the `resource_id`'s resource.
+- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.)
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.add_role(
+  identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
+  role="owner",
+  resource_type="location",
+  resource_id="111ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_role).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveRole
+
+Remove a role under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `identity_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the entity the role belongs to (for example, a user ID).
+- `role` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The role to remove (either `"owner"` or `"operator"`).
+- `resource_type` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The type of the resource to remove the role from (either `"organization"`, `"location"`, or `"robot"`).
+  Must match the type of the `resource_id`'s resource.
+- `resource_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.)
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid identity ID, role, resource type, or resource ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.remove_role(
+  identity_id="abc01234-0123-4567-ab12-a11a00a2aa22",
+  role="owner",
+  resource_type="location",
+  resource_id="111ab12345")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_role).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListAuthorizations
+
+List all authorizations (owners and operators) of a specific resource (or resources) within the organization you are currently authenticated to.
+If no resource IDs are provided, all resource authorizations within the organizations are returned.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `resource_ids` (Optional[List[(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): IDs of the resources to retrieve authorizations from. Defaults to none.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid resource ID is passed.
+
+**Returns:**
+
+- (List[[Authorization](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.Authorization)]): The list of authorizations.
+
+```python {class="line-numbers linkable-line-numbers"}
+list_of_auths = await cloud.list_authorizations(
+  resource_ids=["1a123456-x1yz-0ab0-a12xyzabc"])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateModule
+
+Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The name of the module. Must be unique within your organization.
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid name (for example, `""`) is passed.
+
+**Returns:**
+
+- (Tuple[[string, string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID [0] of the new module and its URL [1].
+
+```python {class="line-numbers linkable-line-numbers"}
+new_module = await cloud.create_module(name="cool_new_hoverboard_module")
+print("Module ID:", new_module[0])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UpdateModule
+
+Update the documentation URL, description, models, entrypoint, and/or the visibility of a {{< glossary_tooltip term_id="module" text="module" >}}.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the module being updated, containing module name (for example, `"my-module"`) or namespace and module name (for example, `"my-org:my-module"`).
+- `url` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The URL to reference for documentation and code (_not_ the URL of the module itself).
+- `description` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A short description of the module that explains its purpose.
+- `models` (Optional[List[[viam.proto.app.Model](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)]]): List of models that are available in the module.
+- `entrypoint` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The executable to run to start the module program.
+- `public` [(bool)](https://docs.python.org/3/library/stdtypes.html#bltin-boolean-values): Set the visibility of the module.
+  Defaults to `False` (private).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid module ID, URL, list of models, or organization ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The URL of the newly updated module.
+
+```python {class="line-numbers linkable-line-numbers"}
+url_of_my_module = await cloud.update_module(
+  module_id="my-group:cool_new_hoverboard_module",
+  url="https://docsformymodule.viam.com",
+  description="A base to support hoverboards.",
+  entrypoint="exec")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UploadModuleFile
+
+Upload a {{< glossary_tooltip term_id="module" text="module" >}} file.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_file_info` (Optional[[viam.proto.app.ModuleFileInfo](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ModuleFileInfo)]): Relevant metadata.
+- `file` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes): Bytes of file to upload.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the uploaded file.
+
+```python {class="line-numbers linkable-line-numbers"}
+file_id = await cloud.upload_module_file(file=b"<file>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.upload_module_file).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetModule
+
+Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `module_id` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the module being retrieved, containing module name (for example, `"my-module"`) or namespace and module name (for example, `"my-org:my-module"`).
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid module ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The module.
+
+```python {class="line-numbers linkable-line-numbers"}
+the_module = await cloud.get_module(module_id="my-cool-modular-base")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_module).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListModules
+
+List the {{< glossary_tooltip term_id="module" text="modules" >}} under the organization you are currently authenticated to.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Raises:**
+
+- `GRPCError`: This error is raised if an invalid robot ID is passed.
+
+**Returns:**
+
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The list of modules.
+
+```python {class="line-numbers linkable-line-numbers"}
+modules_list = await cloud.list_modules()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
 
 {{% /tab %}}
 {{< /tabs >}}

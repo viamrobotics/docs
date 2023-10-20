@@ -316,6 +316,12 @@ The following example captures data from the `ReadImage` method of a camera:
 
 {{% /expand%}}
 
+## Troubleshooting
+
+### Images are dim on start up
+
+If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
+
 ## Next Steps
 
 To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).

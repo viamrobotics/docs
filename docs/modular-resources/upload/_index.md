@@ -30,9 +30,9 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 
 1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
-2. Next, run the `viam module create` command to select a new custom module name and generate module metadata.
-   By default, a module is created as private.
-   Run this command according to your desired visibility for your module:
+2. Next, run the `viam module create` command to select a new custom module name and generate the required metadata for your module.
+   By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/manage/fleet/organizations/), but you can choose to set your module as _public_ to make it accessible to all Viam users.
+   Follow the instructions below according to whether you want to upload a public or private module:
 
 {{< tabs >}}
 {{% tab name="Private" %}}
@@ -43,8 +43,16 @@ Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="orga
 viam module create --name <your-module-name> --org-id <your-org-id>
 ```
 
+This command creates a new `meta.json` metadata file in your current working directory, which serves as a template.
+
+If you later wish to make your module public, you can use the `viam module update` command to do so.
+
 {{% /tab %}}
 {{% tab name="Public" %}}
+
+{{% alert title="Important" color="note" %}}
+Once you update your module to mark it as public, you cannot change it back to private.
+{{% /alert %}}
 
 1. If you haven't already, [create a new namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
    If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/manage/cli/#organizations) command.
@@ -55,14 +63,18 @@ viam module create --name <your-module-name> --org-id <your-org-id>
 viam module create --name <your-module-name> --public-namespace <your-unique-namespace>
 ```
 
+This command creates a new `meta.json` metadata file in your current working directory, which serves as a template.
+
 {{% /tab %}}
 {{< /tabs >}}
 
-This command creates a new `meta.json` metadata file in your current working directory, which serves as a template.
-Edit and then upload the `meta.json` file to set important configuration information about your module, such as whether it will be publicly available to all Viam users or only available within your organization.
-
 3. Edit the newly-created `meta.json` file, and provide the required configuration information for your custom module by filling in the following fields.
    The `name` field is pre-populated using the `--name` you provided in the `viam module create` command, and `visibility` is set to `private` by default.
+
+   {{< alert title="Caution" color="caution" >}}
+   The `module_id` uniquely identifies your module.
+   Do not change the `module_id`.
+   {{< /alert >}}
 
    <table class="table table-striped">
      <tr>
@@ -106,35 +118,36 @@ Edit and then upload the `meta.json` file to set important configuration informa
        <td><code>entrypoint</code></td>
        <td>string</td>
        <td><strong>Required</strong></td>
-       <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program.</td>
+       <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
      </tr>
+
    </table>
 
-   For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
+For example, the following represents the configuration of an example `my-module` public module in the `acme` namespace:
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "module_id": "acme:my-module",
-     "visibility": "public",
-     "url": "https://github.com/acme-co-example/my-module",
-     "description": "An example custom module.",
-     "models": [
-       {
-         "api": "rdk:component:generic",
-         "model": "acme:demo:my-model"
-       }
-     ],
-     "entrypoint": "my-module.sh"
-   }
-   ```
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "module_id": "acme:my-module",
+  "visibility": "public",
+  "url": "https://github.com/acme-co-example/my-module",
+  "description": "An example custom module.",
+  "models": [
+    {
+      "api": "rdk:component:generic",
+      "model": "acme:demo:my-model"
+    }
+  ],
+  "entrypoint": "my-module.sh"
+}
+```
 
-   {{% alert title="Important" color="note" %}}
-   If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
-   In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
-   If the two namespaces do not match, the command will return an error.
-   {{% /alert %}}
+{{% alert title="Important" color="note" %}}
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
+If the two namespaces do not match, the command will return an error.
+{{% /alert %}}
 
-   See [The `meta.json` file](/manage/cli/#the-metajson-file) for more information.
+See [The `meta.json` file](/manage/cli/#the-metajson-file) for more information.
 
 4. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
@@ -145,31 +158,23 @@ Edit and then upload the `meta.json` file to set important configuration informa
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
-5. Package your custom module to get it ready to upload to the Viam registry.
-   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
-   Use the command below specific for the language of your module:
-
-   - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
-
-     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     go build -o bin/module ./module/main.go
-     tar -czf module.tar.gz bin/module
-     ```
-
-     For more information, see [Compile a module into an executable](/modular-resources/create/#compile-the-module-into-an-executable).
-
-   - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
-
-     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     tar -czf module.tar.gz run.sh requirements.txt src
-     ```
-
-     Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
-
-6. Run `viam module upload` to upload the updated custom module to the Viam registry:
+5. (Python only) For modules written in Python, you likely want to package your module files as an archive first, before uploading.
+   Other languages can proceed to the next step to upload their module directly.
+   To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module upload --version <version> --platform <platform> module.tar.gz
+   tar -czf module.tar.gz run.sh requirements.txt src
+   ```
+
+   Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+
+   Supply the path to the resulting archive file in the next step.
+
+6. Run `viam module upload` to upload your custom module to the Viam registry.
+   Specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module upload --version <version> --platform <platform> <module-path>
    ```
 
    Where:
@@ -182,7 +187,7 @@ Edit and then upload the `meta.json` file to set important configuration informa
      - `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
      - `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
      - `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
-   - `path` - provide the path to the compressed archive, in `tar.gz` or `tar.xz` format, that contains your custom module code.
+   - `module-path` - provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
    The `viam module upload` command only supports one `platform` argument at a time.
@@ -191,13 +196,27 @@ Edit and then upload the `meta.json` file to set important configuration informa
    The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
    {{% /alert %}}
 
-   For example, the following command uploads the compressed `module.tar.gz` archive to the Viam registry when run in the same directory as the corresponding `meta.json` file:
+   For example:
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module upload --version 1.0.0 --platform darwin/arm64 module.tar.gz
-   ```
+   - To upload a custom module that is defined in a single file named `my-module-file`, written to a local `bin` directory:
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam registry.
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     viam module upload --version 1.0.0 --platform linux/amd64 ./bin/my-module-file
+     ```
+
+   - To upload a custom module that includes multiple files, as well as a separate entry point file, all contained with a local `bin` directory:
+
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     viam module upload --version 1.0.0 --platform linux/amd64 ./bin
+     ```
+
+   - To upload a custom module that has been compressed as an archive named `packaged-module.tar.gz`:
+
+     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+     viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
+     ```
+
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to check for common errors.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
@@ -229,40 +248,31 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    On a successful update, the command will return a link to the updated module in the Viam registry.
 
-1. Package your custom module to get it ready to upload to the Viam registry.
-   Currently, the Registry only supports `tar.gz` or `tar.xz` format.
-   Use the command below specific for the language of your module:
-
-   - To package a module written in Go, run the following commands from the same directory as your `meta.json` file:
-
-     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     go build -o bin/module ./module/main.go
-     tar -cxf module.tar.gz bin/module
-     ```
-
-     For more information, see [Compile a module into an executable](/modular-resources/create/#compile-the-module-into-an-executable).
-
-   - To package a module written in Python, run the following command from the same directory as your `meta.json` file:
-
-     ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-     tar -czf module.tar.gz run.sh requirements.txt src
-     ```
-
-     Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
-
-1. Run `viam module upload` to upload the updated custom module to the Viam registry:
+1. (Python only) For modules written in Python, you likely want to package your module files as an archive first, before uploading.
+   Other languages can proceed to the next step to upload their module directly.
+   To package a module written in Python, run the following command from the same directory as your `meta.json` file:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module upload --version <version> --platform <platform> <path-to-tar.gz>
+   tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   For example, the following command uploads the compressed `my-module.tar.gz` archive to the Viam registry when run in the same directory, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
+   Where `run.sh` is your [entrypoint file](/modular-resources/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/modular-resources/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+
+   Supply the path to the resulting archive file in the next step.
+
+1. Run `viam module upload` to upload your custom module to the Viam registry:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam module upload --version <version> --platform <platform> <module-path>
+   ```
+
+   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam registry, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your packaged module to ensure it is compatible with the Viam registry.
+   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to check for common errors.
 
 For more information, see the [`viam module` command](/manage/cli/#module)
 
