@@ -72,7 +72,7 @@ For configuration information, click on the model name:
 | [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
 | [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
-### Modular resources
+### Modular Resources
 
 {{<modular-resources api="rdk:component:arm" type="arm">}}
 
