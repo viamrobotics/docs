@@ -53,7 +53,7 @@ To use your arm with Viam, check whether one of the following [built-in models](
 
 {{< alert title="Add support for other models" color="tip" >}}
 
-If none of the existing models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
+If none of the existing models fit your use case, you can [create a modular resource](/modular-resources/) to add support for it.
 
 You can follow [this guide](/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/modular-resources/).
 
