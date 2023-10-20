@@ -12,21 +12,7 @@ images: ["/icons/components/board.svg"]
 # SMEs: Gautham, Rand
 ---
 
-A _board_ is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
-
-You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
-
-This control is simplified with [`viam-server`](/installation/).
-When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
-
-{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
-
-The [RDK](/internals/rdk/) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
-
-## Configuration
-
-Configure a _board_ component on your robot to communicate with the other [components](/components/) of the robot.
-Signaling is overseen by a computer running `viam-server`.
+A _board_ component on your robot communicates with the other [components](/components/) of the robot.
 
 A board can be:
 
@@ -34,7 +20,21 @@ A board can be:
 - A GPIO peripheral device that must connect to an external computer.
 - A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
-For model-specific configuration information, click on one of the following models:
+The board of a robot is also its signal wire hub that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
+
+Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+
+{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+
+## Supported Models
+
+To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your base.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -238,7 +238,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 **Parameters:**
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-  Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+  Refer to the pinout diagram and data sheet of your [board model](#supported-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -259,7 +259,7 @@ pin = await my_board.gpio_pin_by_name(name="15")
 **Parameters:**
 
 - `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-  Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+  Refer to the pinout diagram and data sheet of your [board model](#supported-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -291,7 +291,7 @@ Get the name of every [`AnalogReader`](#analogs) configured and residing on the 
 
 **Returns:**
 
-- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every analog reader [configured](#supported-models) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
 
@@ -311,7 +311,7 @@ names = await my_board.analog_reader_names()
 
 **Returns:**
 
-- [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every analog reader [configured](#supported-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -338,7 +338,7 @@ Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on th
 
 **Returns:**
 
-- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#supported-models) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
 
@@ -358,7 +358,7 @@ names = await my_board.digital_interrupt_names()
 
 **Returns:**
 
-- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#supported-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 

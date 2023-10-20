@@ -47,9 +47,21 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
 
-## Configuration
+## Supported Models
 
-For configuration information, click on one of the supported arm models:
+To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
+
+{{< alert title="Add support for other models" color="tip" >}}
+
+If none of the existing models fit your use case, you can [create a modular resource](/modular-resources/) to add support for it.
+
+You can follow [this guide](/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/modular-resources/).
+
+{{< /alert >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -63,8 +75,6 @@ For configuration information, click on one of the supported arm models:
 ### Modular Resources
 
 {{<modular-resources api="rdk:component:arm" type="arm">}}
-
-You can follow [this guide](/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/modular-resources/).
 
 ## Control your arm with Viam's client SDK libraries
 
