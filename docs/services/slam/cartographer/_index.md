@@ -70,7 +70,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
 
 ### Create a new map
 
-To create a new map and populate it with pointcloud data from your slam session, follow the instructions below.
+To create a new map, follow the instructions below.
 Creating a new map uses an instance of the cartographer module running in the cloud.
 
 1. Configure your `cartographer` SLAM service
