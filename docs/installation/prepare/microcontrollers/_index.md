@@ -87,7 +87,17 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 The micro-RDK provides different component models than the fully featured RDK.
 See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 
-Follow [this guide](/micro-rdk/board/esp32/) to configure an `esp32` board on your robot.
+## Next Steps
+
+{{< cards >}}
+{{% manualcard link="/micro-rdk/board/esp32/" %}}
+
+<h4>Configure your board </h4>
+
+Configure your `esp32` board for your robot.
+
+{{% /manualcard %}}
+{{< /cards >}}
 
 ### Troubleshooting
 

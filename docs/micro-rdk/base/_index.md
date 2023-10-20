@@ -3,7 +3,7 @@ title: "Micro-RDK Base Models"
 linkTitle: "Base"
 weight: 30
 type: "docs"
-description: "Base support in the micro-rdk."
+description: "The micro-RDK support for moving platforms that the other parts of a mobile robot attach to."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components", "micro-rdk"]
 no_list: true
@@ -23,7 +23,7 @@ Click on the model names above for configuration information.
 
 ## API
 
-The [Base API](/components/base/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [base API](/components/base/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
 
 - [`Stop()`](/components/base/#stop)
 - [`SetPower()`](/components/base/#setpower)

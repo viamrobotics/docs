@@ -10,7 +10,7 @@ tags: ["base", "components"]
 ---
 
 An `esp32_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
-Only two-wheeled bases are supported by this micro-RDK exclusive model.
+Only two-wheeled bases are supported by this micro-RDK model.
 
 Configure a `esp32_wheeled_base` base as follows:
 
