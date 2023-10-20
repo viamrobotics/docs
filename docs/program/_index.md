@@ -210,7 +210,7 @@ main();
 {{% tab name="C++" %}}
 
 {{< alert title="Stability Notice" color="note" >}}
-The C++ SDK is currently in alpha.
+The C++ SDK is currently in beta.
 {{< /alert >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}
