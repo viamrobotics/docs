@@ -31,7 +31,7 @@ To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check w
 
 ### Built-in models
 
-For configuration information, click on the model name:
+Viam supports several different models of movement sensor.
 Viam supports several different models of movement sensor.
 Click the model names below for configuration information:
 
