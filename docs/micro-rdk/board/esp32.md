@@ -11,7 +11,7 @@ tags: ["board", "components"]
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow the [setup guide](/installation/prepare/microcontrollers/) to prepare your ESP32 for running micro-RDK before configuring a `esp32` board.
+Follow the [setup guide](/installation/prepare/microcontrollers/) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
 
 {{% /alert %}}
 
@@ -30,7 +30,7 @@ Copy the following JSON template and paste it into your configuration inside the
     ],
     "analogs": [
       {
-        "pin": "<number>",
+        "pin": <int>,
         "name": "<your-analog-name>"
       }
     ]
@@ -79,12 +79,12 @@ The following attributes are available for `esp32` boards:
 | `digital_interrupts` | object | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
 | `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
 
-Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [Board API](/components/board/#api).
-Interaction with digital interrupts is only supported with the [Board API](/components/board/#api), these digital interrupts cannot be used as software interrupts in driver implementations.
+Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
+Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32` [board](/components/board/) model is not currently provided for you as a built-in option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+The`esp32` [board](/components/board/) model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
 
 {{< /alert >}}
 

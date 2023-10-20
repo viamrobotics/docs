@@ -12,7 +12,7 @@ no_list: true
 
 ## Supported Models
 
-The micro-RDK currently supports the following models of base:
+For configuration information, click on the supported base model name:
 
 <!-- prettier-ignore -->
 | Model | Description |

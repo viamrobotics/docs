@@ -58,12 +58,12 @@ Configure a `esp32_wheeled_base` base as follows:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `wheeled` bases:
+The following attributes are available for `esp32_wheeled_base` bases:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `left` | string | **Required** | The `name` of a drive motors on the left side of the base. |
+| `left` | string | **Required** | The `name` of a drive motor on the left side of the base. |
 | `right` | string | **Required** | The `name` of a drive motor on the right side of the base. |
 
 ## Test the base
