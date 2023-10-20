@@ -12,6 +12,12 @@ tags: ["base", "components"]
 An `esp32_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
 Only two-wheeled bases are supported by this micro-RDK model.
 
+{{< alert title="Info" color="info" >}}
+
+The`esp32_wheeled_base` base model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+
+{{< /alert >}}
+
 Configure a `esp32_wheeled_base` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}

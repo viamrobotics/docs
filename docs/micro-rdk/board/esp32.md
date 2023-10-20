@@ -17,6 +17,12 @@ Follow the [setup guide](/installation/prepare/microcontrollers/) to prepare you
 
 To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
 
+{{< alert title="Info" color="info" >}}
+
+The`esp32` [board](/components/board/) model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+
+{{< /alert >}}
+
 Copy the following JSON template and paste it into your configuration inside the `"components"` array:
 
 {{< tabs name="Configure an esp32 Board" >}}
@@ -24,6 +30,10 @@ Copy the following JSON template and paste it into your configuration inside the
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
+  "name": "<your-board-name>",
+  "model": "esp32",
+  "type": "board",
+  "namespace": "rdk",
   "attributes": {
     "pins": [
       <int>
@@ -35,10 +45,7 @@ Copy the following JSON template and paste it into your configuration inside the
       }
     ]
   },
-  "depends_on": [],
-  "model": "esp32",
-  "name": "<your-board-name>",
-  "type": "board"
+  "depends_on": []
 }
 ```
 
@@ -47,8 +54,12 @@ Copy the following JSON template and paste it into your configuration inside the
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
+  "name": "board",
+  "model": "esp32",
+  "type": "board",
+  "namespace": "rdk",
   "attributes": {
-    "pins": [15],
+    "pins": [15, 34],
     "analogs": [
       {
         "pin": "34",
@@ -56,10 +67,7 @@ Copy the following JSON template and paste it into your configuration inside the
       }
     ]
   },
-  "depends_on": [],
-  "model": "esp32",
-  "name": "board",
-  "type": "board"
+  "depends_on": []
 }
 ```
 
@@ -81,12 +89,6 @@ The following attributes are available for `esp32` boards:
 
 Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
 Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
-
-{{< alert title="Info" color="info" >}}
-
-The`esp32` [board](/components/board/) model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
-
-{{< /alert >}}
 
 ### `analogs`
 
