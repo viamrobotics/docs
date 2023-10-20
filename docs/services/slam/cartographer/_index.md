@@ -393,71 +393,73 @@ The `cartographer` module on your robot polls the live LiDAR and IMU directly at
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
 
-    ```json {class="line-numbers linkable-line-numbers"}
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
     {
-      "modules": [
-        {
-          "type": "registry",
-          "name": "viam_rplidar",
-          "module_id": "viam:rplidar",
-          "version": "0.1.14"
-        },
-        {
-          "type": "registry",
-          "name": "viam_cartographer",
-          "module_id": "viam:cartographer",
-          "version": "0.3.36"
-        }
-      ],
-      "services": [
-        {
-          "type": "slam",
-          "namespace": "rdk",
-          "model": "viam:slam:cartographer",
-          "attributes": {
-            "config_params": {
-              "min_range_meters": "0.2",
-              "max_range_meters": "25",
-              "mode": "2d"
-            },
-            "camera": {
-              "name": "rplidar",
-              "data_frequency_hz": "5"
-            },
-            "enable_mapping": false,
-            "use_cloud_slam": false,
-            "existing_map": "${packages.slam_map.test-map-1}/internalState.pbstream"
-          },
-          "name": "slam"
-        }
-      ],
-      "components": [
-        {
-          "model": "viam:lidar:rplidar",
-          "type": "camera",
-          "namespace": "rdk",
-          "attributes": {},
-          "depends_on": [],
-          "name": "rplidar"
-        }
-      ],
-      "packages": [
-        {
-          "type": "slam_map",
-          "name": "test-map-1",
-          "version": "1697208847",
-          "package": "d1c224e8-483e-4cc7-980f-76b89d8fb507/test-map-1"
-        }
-      ]
+      "type": "registry",
+      "name": "viam_rplidar",
+      "module_id": "viam:rplidar",
+      "version": "0.1.14"
+    },
+    {
+      "type": "registry",
+      "name": "viam_cartographer",
+      "module_id": "viam:cartographer",
+      "version": "0.3.36"
     }
-    ```
+  ],
+  "services": [
+    {
+      "type": "slam",
+      "namespace": "rdk",
+      "model": "viam:slam:cartographer",
+      "attributes": {
+        "config_params": {
+          "min_range_meters": "0.2",
+          "max_range_meters": "25",
+          "mode": "2d"
+        },
+        "camera": {
+          "name": "rplidar",
+          "data_frequency_hz": "5"
+        },
+        "enable_mapping": false,
+        "use_cloud_slam": false,
+        "existing_map": "${packages.slam_map.test-map-1}/internalState.pbstream"
+      },
+      "name": "slam"
+    }
+  ],
+  "components": [
+    {
+      "model": "viam:lidar:rplidar",
+      "type": "camera",
+      "namespace": "rdk",
+      "attributes": {},
+      "depends_on": [],
+      "name": "rplidar"
+    }
+  ],
+  "packages": [
+    {
+      "type": "slam_map",
+      "name": "test-map-1",
+      "version": "1697208847",
+      "package": "d1c224e8-483e-4cc7-980f-76b89d8fb507/test-map-1"
+    }
+  ]
+}
+```
 
     {{% /tab %}}
     {{< /tabs >}}
 
     {{< alert title="Tip" color="tip" >}}
-    Be aware that data is not only captured when a slam session is running.
-    Data capture and the resulting charges continue, unless you [turn off data capture for your sensors](/services/data/configure-data-capture/).
+
+Be aware that data is not only captured when a slam session is running.
+Data capture and the resulting charges continue, unless you [turn off data capture for your sensors](/services/data/configure-data-capture/).
+
     {{< /alert >}}
 
     For more information about the configuration attributes, see [Attributes](#attributes).
