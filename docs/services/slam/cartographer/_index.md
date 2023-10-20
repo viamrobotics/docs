@@ -251,9 +251,8 @@ Updating an existing map uses an instance of the `cartographer` module running i
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
 
-   - First, follow the configuration steps in [Create a new map](#create-a-new-map).
-
-   - Then, configure **Select map** and **Map version** with the name and version of the map you would like to update.
+   Configure **Select map** and **Map version** with the name and version of the map you would like to update.
+   For the other attributes, review the information in [Create a new map](#create-a-new-map).
      You can see more details about the available maps from your robot's **Location** page under the **SLAM library** tab.
 
    {{% /tab %}}
