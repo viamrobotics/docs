@@ -117,79 +117,81 @@ Creating a new map uses an instance of the cartographer module running in the cl
    - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
    - adds an `viam:lidar:rplidar` camera with data management configured
 
-     ```json {class="line-numbers linkable-line-numbers"}
-     {
-       "modules": [
-         {
-           "type": "registry",
-           "name": "viam_rplidar",
-           "module_id": "viam:rplidar",
-           "version": "0.1.14"
-         },
-         {
-           "type": "registry",
-           "name": "viam_cartographer",
-           "module_id": "viam:cartographer",
-           "version": "0.3.36"
-         }
-       ],
-       "services": [
-         {
-           "attributes": {
-             "config_params": {
-               "max_range_meters": "25",
-               "mode": "2d",
-               "min_range_meters": "0.2"
-             },
-             "camera": {
-               "name": "rplidar",
-               "data_frequency_hz": "5"
-             },
-             "enable_mapping": true,
-             "use_cloud_slam": true
+   <br>
+
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "modules": [
+       {
+         "type": "registry",
+         "name": "viam_rplidar",
+         "module_id": "viam:rplidar",
+         "version": "0.1.14"
+       },
+       {
+         "type": "registry",
+         "name": "viam_cartographer",
+         "module_id": "viam:cartographer",
+         "version": "0.3.36"
+       }
+     ],
+     "services": [
+       {
+         "attributes": {
+           "config_params": {
+             "max_range_meters": "25",
+             "mode": "2d",
+             "min_range_meters": "0.2"
            },
-           "name": "slam",
-           "type": "slam",
-           "namespace": "rdk",
-           "model": "viam:slam:cartographer"
+           "camera": {
+             "name": "rplidar",
+             "data_frequency_hz": "5"
+           },
+           "enable_mapping": true,
+           "use_cloud_slam": true
          },
-         {
-           "name": "Data-Management-Service",
-           "type": "data_manager",
-           "attributes": {
-             "tags": [],
-             "additional_sync_paths": [],
-             "sync_interval_mins": 0.1,
-             "capture_dir": ""
+         "name": "slam",
+         "type": "slam",
+         "namespace": "rdk",
+         "model": "viam:slam:cartographer"
+       },
+       {
+         "name": "Data-Management-Service",
+         "type": "data_manager",
+         "attributes": {
+           "tags": [],
+           "additional_sync_paths": [],
+           "sync_interval_mins": 0.1,
+           "capture_dir": ""
+         }
+       }
+     ],
+     "components": [
+       {
+         "namespace": "rdk",
+         "attributes": {},
+         "depends_on": [],
+         "service_configs": [
+           {
+             "attributes": {
+               "capture_methods": [
+                 {
+                   "disabled": false,
+                   "method": "NextPointCloud",
+                   "capture_frequency_hz": 5
+                 }
+               ]
+             },
+             "type": "data_manager"
            }
-         }
-       ],
-       "components": [
-         {
-           "namespace": "rdk",
-           "attributes": {},
-           "depends_on": [],
-           "service_configs": [
-             {
-               "attributes": {
-                 "capture_methods": [
-                   {
-                     "disabled": false,
-                     "method": "NextPointCloud",
-                     "capture_frequency_hz": 5
-                   }
-                 ]
-               },
-               "type": "data_manager"
-             }
-           ],
-           "name": "rplidar",
-           "model": "viam:lidar:rplidar",
-           "type": "camera"
-         }
-       ]
-     }
-     ```
+         ],
+         "name": "rplidar",
+         "model": "viam:lidar:rplidar",
+         "type": "camera"
+       }
+     ]
+   }
+   ```
 
    {{% /tab %}}
    {{< /tabs >}}
@@ -208,8 +210,6 @@ Creating a new map uses an instance of the cartographer module running in the cl
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
-
-   Once you click **End session**, the map is saved to cloud storage and visible on your **Location** page under **SLAM library**.
 
    Enter a name for your new map and click **Start session**.
    Wait for the slam session to finish starting up in the cloud, which **takes about 2 minutes**.
@@ -259,6 +259,15 @@ You must have first [created a new map](#create-a-new-map) to be able to update 
 
    {{% /tab %}}
    {{% tab name="JSON Example" %}}
+
+   This example JSON coonfiguration:
+
+   - adds the `viam:rplidar` and the `viam:cartographer` modules
+   - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
+   - adds an `viam:lidar:rplidar` camera with data management configured
+   - specifies the `slam_map` to be updated in the `packages`
+
+   <br>
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
@@ -389,6 +398,15 @@ The `cartographer` module on your robot polls the live LiDAR and IMU directly at
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
+
+This example JSON coonfiguration:
+
+- adds the `viam:rplidar` and the `viam:cartographer` modules
+- configures the `viam:slam:cartographer` service
+- adds an `viam:lidar:rplidar` camera
+- specifies the `slam_map` for localization in the `packages`
+
+<br>
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
