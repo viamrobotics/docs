@@ -12,7 +12,7 @@ no_list: true
 
 ## Configuration
 
-The micro-RDK currently supports the following models of Movement Sensor:
+For configuration information, click on one of the supported movement sensor model name:
 
 <!-- prettier-ignore -->
 | Model |Description |
@@ -22,7 +22,7 @@ The micro-RDK currently supports the following models of Movement Sensor:
 
 ## API
 
-The [Movement Sensor API](/components/movement-sensor/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
 - [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
 - [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)

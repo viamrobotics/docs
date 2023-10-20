@@ -10,7 +10,7 @@ images: ["/icons/components/motor.svg"]
 
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
-[Encoders](/components/encoder/) can be configured to work with `gpio` motors.
+You can configure [encoders](/micro-rdk/encoder/) to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
 To configure a DC motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
@@ -150,4 +150,3 @@ If your motor drivers uses only In1 and In2, and not a third PWM pin, **do not c
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
 
-## Next steps

@@ -12,7 +12,7 @@ no_list: true
 
 ## Supported Models
 
-The micro-RDK currently supports the following models of Motor:
+For configuration information, click on the supported motor model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -23,7 +23,7 @@ Click on the model names above for configuration information.
 
 ## API
 
-The [Motor API](/components/motor/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [motor API](/components/motor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
 - [`SetPower()`](/components/motor/#setpower)
 - [`GetPosition()`](/components/motor/#getposition)

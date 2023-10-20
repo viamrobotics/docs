@@ -3,7 +3,7 @@ title: "Micro-RDK Encoder Models"
 linkTitle: "Encoder"
 weight: 30
 type: "docs"
-description: "Encoder support in the micro-rdk."
+description: "Support in the micro-rdk for encoders: A special type of sensor that measures rotation of a motor or joint."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components", "micro-rdk"]
 no_list: true
@@ -12,7 +12,7 @@ no_list: true
 
 ## Supported Models
 
-The micro-RDK currently supports the following models of Encoder:
+For configuration information, click on one of the supported encoder model names:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -24,7 +24,7 @@ Click on the model names above for configuration information.
 
 ## API
 
-The [Encoder API](/components/encoder/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [encoder API](/components/encoder/#api) supports only the following supported client SDK API methods, which operate the same ways as those in the full-featured RDK:
 
 - [`ResetPosition()`](/components/encoder/#resetposition)
 - [`GetPosition()`](/components/encoder/#getposition)
