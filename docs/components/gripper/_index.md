@@ -14,9 +14,15 @@ no_list: true
 
 A _gripper_ is a robotic grasping device that can open and close, often attached to the end of an [arm](../arm/) or to a [gantry](../gantry/).
 
-## Configuration
+## Supported Models
 
-For configuration information, click on your gripper's model:
+To use your gripper with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gripper.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 Model | Description

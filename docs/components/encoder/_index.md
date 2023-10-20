@@ -31,9 +31,15 @@ Most robots with an encoder need at least the following hardware:
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement.
 
-## Configuration
+## Supported Models
 
-For configuration information, click on one of the supported encoder models:
+To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -47,8 +53,6 @@ For configuration information, click on one of the supported encoder models:
 <!-- ### Modular Resources
 
 {{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
-
-If none of these models fit your use case, you can create a [modular resource](/modular-resources/) to add support for it.
 
 ## Control your encoder with Viam's client SDK libraries
 

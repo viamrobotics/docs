@@ -15,6 +15,10 @@ Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload
 
 You can use the following built-in model:
 
+{{< alert title="Note" color="note" >}}
+For some models, like the [Triton MLModel](/modular-resources/examples/triton/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+{{< /alert >}}
+
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
@@ -23,6 +27,8 @@ You can use the following built-in model:
 ### Modular Resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
 
 ## Create an ML model service
 
