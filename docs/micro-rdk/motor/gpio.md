@@ -149,4 +149,3 @@ If your motor drivers uses only In1 and In2, and not a third PWM pin, **do not c
 {{% /alert %}}
 
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
-
