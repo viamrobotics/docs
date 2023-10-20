@@ -196,7 +196,8 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   Data capture and the resulting charges continue, unless you [turn off data capture for your sensors](/services/data/configure-data-capture/).
+   [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/configure-data-capture/).
    {{< /alert >}}
 
    For more information about the configuration attributes, see [Attributes](#attributes).
@@ -206,11 +207,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
-   When you start a mapping session:
-
-   - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
-   - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-   - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
+   When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
 
    Once you click **End session**, the map is saved to cloud storage and visible on your **Location** page under **SLAM library**.
 
@@ -351,7 +348,8 @@ You must have first [created a new map](#create-a-new-map) to be able to update 
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   Data capture and the resulting charges continue, unless you [turn off data capture for your sensors](/services/data/configure-data-capture/).
+   [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/configure-data-capture/).
    {{< /alert >}}
 
    For more information about the configuration attributes, see [Attributes](#attributes).
@@ -361,10 +359,11 @@ You must have first [created a new map](#create-a-new-map) to be able to update 
    Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
+   When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
+
    When you start a mapping session:
 
    - Viam spins up an instance of the `cartographer` module in the cloud to execute the Cartographer algorithm.
-   - Viam's [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
    - Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the new map based on the existing map.
      Once you click **End session**, the map is uploaded to the cloud and visible on your **Location** page under **SLAM library**.
 
@@ -458,7 +457,8 @@ The `cartographer` module on your robot polls the live LiDAR and IMU directly at
     {{< alert title="Tip" color="tip" >}}
 
 Be aware that data is not only captured when a slam session is running.
-Data capture and the resulting charges continue, unless you [turn off data capture for your sensors](/services/data/configure-data-capture/).
+[Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/configure-data-capture/).
 
     {{< /alert >}}
 
