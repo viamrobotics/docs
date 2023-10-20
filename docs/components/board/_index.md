@@ -311,7 +311,7 @@ names = await my_board.analog_reader_names()
 
 **Returns:**
 
-- [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#supported-models) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every analog reader [configured](#supported-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
