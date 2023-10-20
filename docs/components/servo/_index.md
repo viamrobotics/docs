@@ -29,8 +29,6 @@ Most robots with a servo need at least the following hardware:
 - A power supply for the board
 - A power supply for the servo
 
-## Configuration
-
 {{% alert title="Tip" color="tip" %}}
 
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
@@ -40,18 +38,27 @@ Check your device's data sheet and configure that type of servo as an [encoded m
 
 {{% /alert %}}
 
-For configuration information, click on one of the supported servo models:
+## Supported Models
+
+To use your servo with Viam, check whether one of the following [built-in models](#built-in-models) supports your servo.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#configuration) besides `pi`. |
+| [`gpio`](gpio/) | A hobby servo wired to any model of [board](/components/board/#supported-models) besides `pi`. |
 | [`pi`](pi/) | A hobby servo wired to a [Raspberry Pi board](/components/board/pi/). |
 
 <!-- ### Modular Resources
 
-{{<modular-resources api="rdk:component:servo" type="servo">}} -->
+{{<modular-resources api="rdk:component:servo" type="servo">}}
+-->
 
 If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
 

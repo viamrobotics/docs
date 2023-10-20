@@ -34,7 +34,7 @@ search.addWidgets([
     container: "#hits",
     templates: {
       item: `
-<div class="name"><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></div>
+<div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
 <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
 `,
     },
@@ -55,9 +55,9 @@ search.addWidgets([
         let results = '';
 
         if (data.hasManyResults) {
-          results += `Showing ${data.nbHits} results:`;
+          results += `${data.nbHits} results:`;
         } else if (data.hasOneResult) {
-          results += `Showing 1 result:`;
+          results += `1 result:`;
         } else {
           results += ``;
         }

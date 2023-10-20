@@ -27,9 +27,15 @@ If you want to use most of an existing API but need just a few other functions, 
 
 {{% /alert %}}
 
-## Configuration
+## Supported Models
 
-For configuration information, click on one of the supported generic models:
+To use your generic component with Viam, check whether one of the following [modular resources](#modular-resources) supports your component.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 Model | Description

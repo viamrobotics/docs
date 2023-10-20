@@ -26,11 +26,15 @@ Most robots with an input controller need at least the following hardware:
 - A power supply cable or batteries for the input device and the robot.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
-## Configuration
+## Supported Models
 
-Configuration depends on the `model` of your device.
+To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
 
-For configuration information, click on one of the following models:
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -44,13 +48,13 @@ For configuration information, click on one of the following models:
 <!-- No modular resources yet -->
 <!-- ### Modular Resources
 
-{{<modular-resources api="rdk:component:input_controller" type="input_controller">}} -->
+{{<modular-resources api="rdk:component:input_controller" type="input_controller">}}
 
-If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
-
-Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
+{{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
 ## Control your robot with an input controller with Viam's client SDK libraries
+
+Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 

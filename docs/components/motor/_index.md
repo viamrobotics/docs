@@ -26,10 +26,15 @@ Most robots with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-## Configuration
+## Supported Models
 
-How you configure your motor with Viam depends more on the motor driver than on the motor itself.
-Click the model names below for configuration information:
+To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>

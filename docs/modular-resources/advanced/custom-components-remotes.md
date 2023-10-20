@@ -25,7 +25,7 @@ Once you have coded your custom component and configured the remote servers, you
 
 For example, you may have a robotic arm that is not one of the models supported by [Viam’s arm component](/components/arm/), and you want to integrate it with Viam.
 To use is with Viam, you can create a custom component and register the new arm model with a Viam SDK.
-Then you can control it as part of your robot with the same [API methods](/components/arm/#api) available for [arm models built-in to the RDK](/components/arm/#configuration).
+Then you can control it as part of your robot with the same [API methods](/components/arm/#api) available for [arm models built-in to the RDK](/components/arm/#supported-models).
 
 This example is available in the [Python SDK documentation](https://python.viam.dev/examples/example.html#subclass-a-component).
 

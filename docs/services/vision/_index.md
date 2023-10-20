@@ -24,7 +24,9 @@ Currently, the vision service supports the following kinds of operations:
 <!-- TODO: Change this page to use model names as subpages -->
 <!-- ### Modular Resources
 
-{{<modular-resources api="rdk:service:vision" type="vision">}} -->
+{{<modular-resources api="rdk:service:vision" type="vision">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
 ## API
 
