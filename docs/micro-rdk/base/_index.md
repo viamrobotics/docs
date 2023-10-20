@@ -6,10 +6,11 @@ type: "docs"
 description: "Base support in the micro-rdk."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components", "micro-rdk"]
+no_list: true
 # SMEs: Nick M., Gautham V.
 ---
 
-## Configuration
+## Supported Models
 
 The micro-RDK currently supports the following models of base:
 
@@ -17,6 +18,8 @@ The micro-RDK currently supports the following models of base:
 | Model | Description |
 | ----- | ----------- |
 | [`esp32_wheeled_base`](esp32_wheeled_base/) | Mobile robot with two wheels |
+
+Click on the model names above for configuration information.
 
 ## API
 

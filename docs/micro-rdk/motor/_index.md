@@ -6,17 +6,20 @@ type: "docs"
 description: "Motor support in the micro-rdk."
 images: ["/icons/components/motor.svg"]
 tags: ["motor", "components", "micro-rdk"]
+no_list: true
 # SMEs: Nick M., Gautham V.
 ---
 
-## Configuration
+## Supported Models
 
 The micro-RDK currently supports the following models of Motor:
 
 <!-- prettier-ignore -->
-| Model             | Description                                                                      |
-| ----------------- | -------------------------------------------------------------------------------- |
+| Model | Description |
+| ----- | ----------- |
 | [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor) |
+
+Click on the model names above for configuration information.
 
 ## API
 

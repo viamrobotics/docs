@@ -6,10 +6,11 @@ type: "docs"
 description: "Board support in the micro-rdk."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "micro-rdk"]
+no_list: true
 # SMEs: Nick M., Gautham V.
 ---
 
-## Configuration
+## Supported Models
 
 The micro-RDK currently supports the following models of board:
 
@@ -17,6 +18,8 @@ The micro-RDK currently supports the following models of board:
 | Model             | Description              |
 | ----------------- | ------------------------ |
 | [`esp32`](esp32/) | An ESP32 microcontroller |
+
+Click on the model names above for configuration information.
 
 ## API
 

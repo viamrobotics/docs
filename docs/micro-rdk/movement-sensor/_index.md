@@ -6,6 +6,7 @@ type: "docs"
 description: "Movement Sensor support in the micro-rdk."
 images: ["/icons/components/imu.svg"]
 tags: ["movement sensor", "components", "micro-rdk"]
+no_list: true
 # SMEs: Nick M., Gautham V.
 ---
 
@@ -14,10 +15,12 @@ tags: ["movement sensor", "components", "micro-rdk"]
 The micro-RDK currently supports the following models of Movement Sensor:
 
 <!-- prettier-ignore -->
-| Model                             | Description                                                                                         |
-| --------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Model |Description |
+| ----- | ---------- |
 | [`accel-adxl345`](accel-adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer |
-| [`gyro-mpu6050`](gyro-mpu6050/)   | A gyroscope/accelerometer manufactured by TDK InvenSense                                            |
+| [`gyro-mpu6050`](gyro-mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense |
+
+Click on the model names above for configuration information.
 
 ## API
 
