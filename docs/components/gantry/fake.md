@@ -42,3 +42,5 @@ Enter a name for your gantry and click **Create**.
 
 No attributes are available for fake gantries.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gantry/fake/gantry.go) for API call return specifications.
+
+{{< readfile "/static/include/components/test-control/gantry-control.md" >}}
