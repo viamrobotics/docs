@@ -12,7 +12,7 @@ no_list: true
 
 ## Configuration
 
-For configuration information, click on one of the supported movement sensor model name:
+For configuration information, click a supported movement sensor model name:
 
 <!-- prettier-ignore -->
 | Model |Description |

@@ -3,7 +3,7 @@ title: "Micro-RDK Encoder Models"
 linkTitle: "Encoder"
 weight: 30
 type: "docs"
-description: "Support in the micro-rdk for encoders: A special type of sensor that measures rotation of a motor or joint."
+description: "Support in the micro-RDK for encoders: A special type of sensor that measures rotation of a motor or joint."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components", "micro-rdk"]
 no_list: true
