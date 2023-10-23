@@ -145,7 +145,7 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 **Parameters:**
 
 - `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data. Must be non-empty.
-- `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes): Filepath to write retrieved data to. If not populated, writes to your current directory.
+- `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
 
 **Returns**:
 
