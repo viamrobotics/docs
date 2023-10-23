@@ -66,7 +66,9 @@ The following steps guide you through this process in more detail:
 
 ## Next steps
 
-Implement the proto methods you defined in a protobuf-supported language such as Python or Go in a file called `api.py` or `api.go`.
+Implement the proto methods you defined in a protobuf-supported language.
+If you use Python call your file <file>apy.py</file>.
+If you use Go,call your file `api.go`.
 
 - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/gizmo/api.py)
 - [Example service in Python](https://github.com/viam-labs/speech/blob/main/src/speech/api.py)

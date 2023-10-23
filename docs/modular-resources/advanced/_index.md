@@ -23,7 +23,7 @@ Some usage may require you to extend the standardized API definitions or deploy 
 
 ## Custom Components as Remotes
 
-[Modular resources](/modular-resources/) running on the board directly connected to your components are the preferred way of managing and controlling custom components.
+[Modular resources](/modular-resources/) running on the [board](/components/board/) directly connected to your components are the preferred way of managing and controlling custom components.
 However, if you are unable to use [modular resources](/modular-resources/) because you have to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/modular-resources/advanced/custom-components-remotes/) of your robot.
 
 ## New API Subtypes
