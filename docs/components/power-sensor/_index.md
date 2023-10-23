@@ -253,12 +253,12 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this sensor provides.
+- [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this power sensor provides.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_readings).
 
 ```python
-my_sensor = Sensor.from_robot(robot=robot, name='my_sensor')
+my_sensor = PowerSensor.from_robot(robot=robot, name='my_sensor')
 
 # Get the readings provided by the sensor.
 readings = await my_sensor.get_readings()
