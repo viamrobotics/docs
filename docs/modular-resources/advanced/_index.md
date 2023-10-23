@@ -19,7 +19,7 @@ aliases:
   - "/program/extend/"
 ---
 
-Some usage may require you to extend the standardized API definitions or deploy custom components using a server on a {{< glossary_tooltip term_id="remote" text="remote part" >}}.
+Some use cases may require you to define a new API, or deploy a custom component using a server on a {{< glossary_tooltip term_id="remote" text="remote part" >}}.
 
 ## Custom Components as Remotes
 
