@@ -26,7 +26,7 @@ Some use cases may require you to define a new API, or deploy a custom component
 Running [modular resources](/modular-resources/) on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
 However, if you are unable to use [modular resources](/modular-resources/) because you have to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/modular-resources/advanced/custom-components-remotes/) of your robot.
 
-## New API Subtypes
+## New API subtypes
 
 The [component APIs](/program/apis/#component-apis) and [service APIs](/program/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
 
