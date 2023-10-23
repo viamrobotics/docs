@@ -49,7 +49,7 @@ For more detailed instructions, see the full example in the [Python SDK document
 1. Register the custom component on a new gRPC server instance and start the server.
    You can do this with the [`viam.rpc` library](https://python.viam.dev/autoapi/viam/rpc/index.html) by creating a new `rpc.server.Server` instance.
 1. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.
-1. [Configure a process](/manage/configuration/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
+1. (Optional) [Configure a process](/manage/configuration/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
 
 Each remote server can host one or many custom components.
 
