@@ -47,7 +47,6 @@ For configuration information, click on the model name:
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
 | [`customlinux`](customlinux/) | A model for other Linux boards. |
-| other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
 ### Modular Resources
