@@ -133,7 +133,7 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 ### AnalogReaderByName
 
-Get an [`AnalogReader`](#analogs) by `name.`
+Get an [`AnalogReader`](#analogs) by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -181,7 +181,7 @@ reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
 
 ### DigitalInterruptByName
 
-Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
+Get an [`DigitalInterrupt`](#digital_interrupts) by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -490,7 +490,6 @@ This is expected: the board has been successfully powered down and can no longer
 **Parameters:**
 
 - `mode` [(PowerMode)](https://python.viam.dev/autoapi/viam/proto/component/board/index.html#viam.proto.component.board.PowerMode): Options to specify power usage of the board: `PowerMode.POWER_MODE_UNSPECIFIED`, `PowerMode.POWER_MODE_NORMAL`, and `PowerMode.POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `duration` [(Optional\[datetime.timedelta\])](https://docs.python.org/3/library/typing.html#typing.Optional): If provided, the board will exit the given power mode after the specified duration.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -514,7 +513,6 @@ status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - `duration` [(\*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
@@ -534,6 +532,59 @@ myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_
 {{% /tab %}}
 {{< /tabs >}}
 
+### WriteAnalog
+
+Write an analog value to a pin on the board.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `pin` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
+- `value` [(int)](https://docs.python.org/3/library/functions.html#int): Value to write to the pin.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Set pin 11 to value 48.
+await my_board.write_analog(pin="11", value=48)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.write_analog).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `pin` [(string)](https://pkg.go.dev/builtin#string): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
+- `value` [(int)](https://pkg.go.dev/builtin#int32): Value to write to the pin.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Set pin 11 to value 48.
+err := myBoard.WriteAnalog(context.Background(), "11", 48, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
@@ -545,7 +596,8 @@ If you are implementing your own board and add features that have no built-in AP
 
 **Parameters:**
 
-- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.\
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
