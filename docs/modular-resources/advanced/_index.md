@@ -14,7 +14,7 @@ tags:
     "components",
     "services",
   ]
-description: "Some usage may require you to extend the standardized API definitions or deploy custom components using a server on a remote part"
+description: "Some usage may require you to define new APIs or deploy custom components using a server on a remote part"
 aliases:
   - "/program/extend/"
 ---
