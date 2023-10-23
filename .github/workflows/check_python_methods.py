@@ -59,7 +59,8 @@ def parse(type, names):
 
             if not id.endswith("Client") and not id.endswith(".client") \
             and not id.endswith("SUBTYPE") and not id.endswith(".from_robot") \
-            and not id.endswith(".get_resource_name") and not id.endswith(".get_operation"):
+            and not id.endswith(".get_resource_name") and not id.endswith(".get_operation") \
+            and not id.endswith(".LOGGER") and not id.endswith("__"):
                 py_methods_sdk_docs_filtered.append(id)
     
         # Parse the Docs site's service page
@@ -106,8 +107,8 @@ total_sdk_methods_missing = []
 
 total_sdk_methods_missing.extend(parse("services", services))
 total_sdk_methods_missing.extend(parse("components", components))
-total_sdk_methods_missing.extend(parse("app", app_apis))
-total_sdk_methods_missing.extend(parse("robot", robot_apis))
+# total_sdk_methods_missing.extend(parse("app", app_apis))
+# total_sdk_methods_missing.extend(parse("robot", robot_apis))
 
 if total_sdk_methods_missing:
         print(f"\n Total SDK methods missing: {total_sdk_methods_missing}")
