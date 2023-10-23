@@ -31,7 +31,7 @@ To upload your custom module to the [Viam registry](https://app.viam.com/registr
 2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
    By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/manage/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
 
-   Select the private or public tab, for instructions to upload your module with the respective `visibility` setting:
+   Select the private or public tab for instructions to upload your module with the respective `visibility` setting:
 
    {{< tabs >}}
    {{% tab name="Private" %}}
