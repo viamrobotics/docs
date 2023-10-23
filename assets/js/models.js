@@ -29,14 +29,35 @@ const search = instantsearch({
   searchClient,
 });
 
+let filters;
+let itemtemplate;
+
+if (api == "") {
+  filters = {
+    hitsPerPage: 5,
+  };
+  itemtemplate = `
+  <div class="type"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+  `;
+} else {
+  filters = {
+    facetFilters: ["api: " + api],
+    hitsPerPage: 5,
+  };
+  itemtemplate = `
+  <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
+  `;
+}
+
+
 search.addWidgets([
   instantsearch.widgets.hits({
     container: "#hits",
     templates: {
-      item: `
-<div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
-<div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
-`,
+      item: itemtemplate,
     },
   }),
   instantsearch.widgets.searchBox({
@@ -66,10 +87,7 @@ search.addWidgets([
       },
     },
   }),
-  instantsearch.widgets.configure({
-    facetFilters: ["api: " + api],
-    hitsPerPage: 5,
-  }),
+  instantsearch.widgets.configure(filters),
   instantsearch.widgets.pagination({
     container: "#pagination",
     scrollTo: false
