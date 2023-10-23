@@ -8,7 +8,7 @@ To connect your board (controller) and a [component](/components/) that requires
 {{% alert title="Important" color="note" %}}
 
 You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
-See your [board model's configuration instructions](/components/board/#configuration) if applicable.
+See your [board model's configuration instructions](/components/board/#supported-models) if applicable.
 
 {{% /alert %}}
 

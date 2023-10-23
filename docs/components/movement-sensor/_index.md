@@ -23,9 +23,16 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 {{% /alert %}}
 
-## Configuration
+## Supported Models
 
-Viam supports several different models of GPS, IMU and accelerometer.
+To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your movement sensor.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+Viam supports several different models of movement sensor.
+For configuration information, click on the model name:
 Click the model names below for configuration information:
 
 <!-- prettier-ignore -->

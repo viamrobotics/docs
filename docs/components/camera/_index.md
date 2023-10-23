@@ -31,9 +31,15 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-## Configuration
+## Supported Models
 
-For configuration information, click on one of the supported camera models:
+To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |

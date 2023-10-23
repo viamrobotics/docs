@@ -26,6 +26,12 @@ If you want to use a different carrier board to incorporate your Nano into your 
 
 {{% /alert %}}
 
+{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="caution" %}}
+
+The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders and sensors can cause damage to a pin. We recommend selecting hardware that can operate 3.3V signals or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note).
+
+{{% /alert %}}
+
 ## Hardware Requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano or Jetson Orin Nano:

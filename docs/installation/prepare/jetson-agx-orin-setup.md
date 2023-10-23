@@ -27,6 +27,13 @@ If you want to use a different carrier board to incorporate your Orin into your 
 
 {{% /alert %}}
 
+{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="caution" %}}
+
+The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders and sensors can cause damage to a pin. We recommend selecting hardware that can operate 3.3V signals or lower.
+For details, see your boards specification.
+
+{{% /alert %}}
+
 ## Hardware Requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson AGX Orin with the Jetson AGX Orin Developer Kit:

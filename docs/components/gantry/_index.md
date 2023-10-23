@@ -34,9 +34,15 @@ Most robots with a gantry need at least the following hardware:
     Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
-## Configuration
+## Supported Models
 
-For configuration information, click on one of the supported gantry models:
+To use your gantry with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gantry.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
