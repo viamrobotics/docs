@@ -45,7 +45,7 @@ The following steps guide you through this process in more detail:
 
 1. Define your new API:
 
-   - [Create the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
+   - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<subtype name>.proto` file inside your <file>src/proto</file> directory.
      For reference:
      - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
      - [Example modular service proto file](https://github.com/viam-labs/speech/blob/main/src/speech/proto/speech.proto)
