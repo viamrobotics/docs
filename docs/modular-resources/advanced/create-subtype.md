@@ -32,7 +32,7 @@ The following steps guide you through this process in more detail:
    If it provides an interface to control hardware, it is a component.
    If it provides higher-level functionality, it is a service.
 1. Choose a name for your subtype.
-   For example, "gizmo".
+   For example, `gizmo`.
 1. Create a directory for your module.
    Within that, create a directory called <file>src</file>.
 
@@ -64,7 +64,8 @@ The following steps guide you through this process in more detail:
 1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<subtype name>.proto` file you wrote.
 
    - [Example generated files for a Python-based service](https://github.com/viam-labs/speech/tree/main/src/speech/proto).
-     All files except <file>speech.proto</file> were generated.
+     The `buf.` files were generated.
+     The <file>speech.proto</file> was manually written.
 
 ## Next steps
 
