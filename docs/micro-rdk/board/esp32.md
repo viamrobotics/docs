@@ -13,9 +13,16 @@ tags: ["board", "components"]
 
 Follow the [setup guide](/installation/prepare/microcontrollers/) to prepare your ESP32 for running the micro-RDK before configuring an `esp32` board.
 
-{{% /alert %}}
+Viam recommends purchasing the ESP32 with a development board. The following ESP32 microcontrollers are supported:
 
-{{% readfile "/static/include/micro-rdk-hardware.md" %}}
+- ESP32-WROOM Series
+- ESP-32-WROVER Series
+
+Your microcontroller should have the following resources available to work with the micro-RDK:
+
+- 2 Cores + 384kB SRAM + 4MB Flash
+
+{{% /alert %}}
 
 To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
 
