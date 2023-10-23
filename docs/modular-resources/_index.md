@@ -57,9 +57,9 @@ To use a modular resource from the registry, add it from your robot's **Configur
 
 If none of the existing modular resources in the Viam registry support your use case, you can also create your own modular resources:
 
-- **Implement a custom component**: You can write drivers for an unsupported {{< glossary_tooltip term_id="component" text="components" >}} by implementing the corresponding component API.
+- **Implement a custom component**: You can write a driver for an unsupported {{< glossary_tooltip term_id="component" text="component" >}} by implementing the corresponding component API.
 
-- **Implement a custom service**: You implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or you can use custom algorithm or data models when working with services such as [SLAM](/services/slam/), [Vision](/services/vision/), or [Motion planning](/services/motion/).
+- **Implement a custom service**: You can implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithm or data models when working with services such as [SLAM](/services/slam/), [vision](/services/vision/), or [motion planning](/services/motion/).
 
 - **Implement fully custom logic**: If your robot runs specialty or proprietary logic, and you want to use Viam to manage and control that logic, such as when managing a software development lifecycle, you can implement your own custom logic by wrapping the [generic API](/components/generic/).
 
@@ -72,7 +72,7 @@ To create a new modular resource:
    If the added resource is a component, you can then test it using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
 Some use cases may require you to extend the standardized API definitions or deploy custom components using a server on a remote part.
-For more information, see [Advances Modular Resources](/modular-resources/advanced/).
+For more information, see [Advanced Modular Resources](/modular-resources/advanced/).
 
 ## Related tutorials
 
