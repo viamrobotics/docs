@@ -15,6 +15,8 @@ Follow the [setup guide](/installation/prepare/microcontrollers/) to prepare you
 
 {{% /alert %}}
 
+{{% readfile "/static/include/micro-rdk-hardware.md" %}}
+
 To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
 
 {{< alert title="Info" color="info" >}}
