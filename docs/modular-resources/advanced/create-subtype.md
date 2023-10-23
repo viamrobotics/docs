@@ -4,7 +4,7 @@ linkTitle: "New API Subtype"
 weight: 30
 type: "docs"
 tags: ["rdk", "extending viam", "modular resources", "API"]
-description: "Define a new resource subtype and API for a resource that does not fit into existing component or service subtypes."
+description: "Define a new API for a resource that does not fit into existing component or service subtypes."
 no_list: true
 aliases:
   - "/extend/modular-resources/create/create-subtype/"
