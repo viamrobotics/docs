@@ -80,22 +80,24 @@ def parse(type, names):
             id_split = id.split("Client.")
             if len(id_split) > 1:
                 id_split = id_split[1]
+            # Hacky but was causing an issue
+            elif id == "viam.components.generic.client.do_command":
+                id_split = "do_command"
             else: 
                 id_split = id
 
-            print(f"SPLIT ID {id_split}")
             for link in all_links:
                 
                 href = link.get('href')
 
                 if href:
                     if id_split in href:
-                        print(f"Found a link containing '{id}' in href: {href}")
+                        # print(f"Found a link containing '{id}' in href: {href}")
                         sdk_methods_found.append(id)
                         found += 1
                         break
 
-            if not found and id != "viam.components.generic.client.do_command":
+            if not found:
                 sdk_methods_missing.append(id)
         
 
