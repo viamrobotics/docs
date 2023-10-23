@@ -2,9 +2,6 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import sys
 
-sdk_methods_missing = []
-sdk_methods_found = []
-
 services = ["motion", "navigation", "sensors", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper", 
               "input", "movement_sensor", "power_sensor", "sensor"]
@@ -19,6 +16,9 @@ def make_soup(url):
     
 
 def parse(type, names):
+
+    sdk_methods_missing = []
+    sdk_methods_found = []
 
     for service in names:
 
@@ -97,13 +97,18 @@ def parse(type, names):
                 sdk_methods_missing.append(id)
         
 
-    if sdk_methods_missing:
-        print(f"\n SDK methods missing for type {type}: {sdk_methods_missing}")
+    print(f"\n SDK methods missing for type {type}: {sdk_methods_missing}")
+    print(f"\n SDK methods found for type {type}: {sdk_methods_found}")
+
+    return sdk_methods_missing
+
+total_sdk_methods_missing = []      
+
+total_sdk_methods_missing.extend(parse("services", services))
+total_sdk_methods_missing.extend(parse("components", components))
+total_sdk_methods_missing.extend(parse("app", app_apis))
+total_sdk_methods_missing.extend(parse("robot", robot_apis))
+
+if total_sdk_methods_missing:
+        print(f"\n Total SDK methods missing: {total_sdk_methods_missing}")
         sys.exit(1)
-    
-    # print(f"\n SDK methods found for type {type}: {sdk_methods_found}")
-        
-parse("services", services)
-parse("components", components)
-parse("app", app_apis)
-parse("robot", robot_apis)
