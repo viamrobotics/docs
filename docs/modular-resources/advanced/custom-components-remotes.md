@@ -32,7 +32,7 @@ To add a custom resource as a [remote](/manage/parts-and-remotes/):
    The new model must implement any functions of the built-in resource type marked as required in its [RDK API definition](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
 2. Register the custom component on a new gRPC server instance and start the server.
 3. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.
-4. [Configure a process](/manage/configuration/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
+4. (Optional) [Configure a process](/manage/configuration/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
 
 Each remote server can host one or many custom components.
 
