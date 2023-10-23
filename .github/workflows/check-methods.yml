@@ -1,0 +1,24 @@
+name: Check Python methods covered
+
+# This action works with pull requests and pushes
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  python-methods:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout Push/Workflow Dispatch
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install beautifulsoup4
+      - name: "Check Python methods covered"
+        run: python3 .github/workflows/check_python_methods.py
