@@ -13,6 +13,8 @@ aliases:
 
 {{% readfile "/static/include/micro-rdk.md" %}}
 
+{{% readfile "/static/include/micro-rdk-hardware.md" %}}
+
 ## Next steps
 
 {{< cards >}}
