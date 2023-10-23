@@ -99,20 +99,20 @@ Configure your `esp32` board for your robot.
 {{% /manualcard %}}
 {{< /cards >}}
 
-### Troubleshooting
+## Troubleshooting
 
-#### Linux Port Permissions
+### Linux Port Permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
 If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
-#### MacOS Executable Permissions
+### MacOS Executable Permissions
 
 When using a machine running a version of MacOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.
 Close whatever terminal window this opens to be able to run the installer.
 
-#### Error: FlashConnect
+### Error: FlashConnect
 
 This may occur because the serial port chosen if/when prompted is incorrect.
 However, if the correct port has been selected, try the following:

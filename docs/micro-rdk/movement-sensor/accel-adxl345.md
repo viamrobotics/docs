@@ -33,7 +33,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 {
   "board": "<your-board-name>",
   "i2c_bus": "<your-i2c-bus-name-on-board>",
-  "use_alternate_i2c_address": <boolean>,
+  "use_alt_i2c_address": <boolean>,
 }
 ```
 
