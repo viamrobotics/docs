@@ -35,6 +35,22 @@ You configure and manage modular resources the same way as built-in resources an
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built-in to `viam-server`.
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its module details page.
 
+You can search the available modular resources from the Viam Registry here:
+
+<div id="searchbox"></div>
+<p>
+<div id="searchstats"></div></p>
+<div class="mr-component" id="">
+  <div class="modellistheader">
+    <div class="type">API</div>
+    <div class="name">Model</div>
+    <div>Description</div>
+  </div>
+<div id="hits" class="modellist">
+</div>
+<div id="pagination"></div>
+</div>
+
 To use a modular resource from the registry, add it from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **Create component** button.
 
 ## Modular resources
