@@ -36,8 +36,8 @@ For `GPIOPin`s:
 
 For `AnalogReader`s:
 
-- `Read()`](/components/board/#read)
+- [`Read()`](/components/board/#read)
 
 For `DigitalInterrupt`s:
 
-- `Value()`](/components/board/#value)
+- [`Value()`](/components/board/#value)
