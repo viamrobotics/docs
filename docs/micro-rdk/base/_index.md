@@ -10,6 +10,9 @@ no_list: true
 # SMEs: Nick M., Gautham V.
 ---
 
+A base is the moving platform that the other parts of a mobile robot attach to.
+For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/RDK/), see the [Base component](/components/base/).
+
 ## Supported Models
 
 For configuration information, click on the supported base model name:
@@ -18,8 +21,6 @@ For configuration information, click on the supported base model name:
 | Model | Description |
 | ----- | ----------- |
 | [`esp32_wheeled_base`](esp32_wheeled_base/) | Mobile robot with two wheels |
-
-Click on the model names above for configuration information.
 
 ## API
 

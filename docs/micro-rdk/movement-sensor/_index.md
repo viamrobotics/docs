@@ -3,12 +3,15 @@ title: "Micro-RDK Movement Sensor Models"
 linkTitle: "Movement Sensor"
 weight: 30
 type: "docs"
-description: "Movement Sensor support in the micro-rdk."
+description: "Support in the micro-RDK for movement sensors, sensors that measure location, kinematic data, or both."
 images: ["/icons/components/imu.svg"]
 tags: ["movement sensor", "components", "micro-rdk"]
 no_list: true
 # SMEs: Nick M., Gautham V.
 ---
+
+A movement sensor is a sensor that gives data on where a robot is and how fast it is moving.
+For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/RDK/), see the [Movement Sensor component](/components/movement-sensor/).
 
 ## Configuration
 

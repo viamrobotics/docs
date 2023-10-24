@@ -3,12 +3,15 @@ title: "Micro-RDK Encoder Models"
 linkTitle: "Encoder"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for encoders: A special type of sensor that measures rotation of a motor or joint."
+description: "Support in the micro-RDK for encoders, a special type of sensor that measures rotation of a motor or joint."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components", "micro-rdk"]
 no_list: true
 # SMEs: Nick M., Gautham V.
 ---
+
+An encoder is a special type of sensor that measures rotation of a motor or joint.
+For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/RDK/), see the [Encoder component](/components/encoder/).
 
 ## Supported Models
 

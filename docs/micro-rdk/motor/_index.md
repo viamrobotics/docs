@@ -3,12 +3,15 @@ title: "Micro-RDK Motor Models"
 linkTitle: "Motor"
 weight: 30
 type: "docs"
-description: "Support in the micro-RDK for motors, machines that convert electricity into rotary motion."
+description: "Support in the micro-RDK for motors, rotating machines that transform electrical energy into mechanical energy."
 images: ["/icons/components/motor.svg"]
 tags: ["motor", "components", "micro-rdk"]
 no_list: true
 # SMEs: Nick M., Gautham V.
 ---
+
+A motor is a rotating machine that transforms electrical energy into mechanical energy.
+For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/RDK/), see the [Motor component](/components/motor/).
 
 ## Supported Models
 

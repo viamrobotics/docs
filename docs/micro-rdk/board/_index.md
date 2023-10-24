@@ -10,6 +10,9 @@ no_list: true
 # SMEs: Nick M., Gautham V.
 ---
 
+A board is the signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components.
+For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/RDK/), see the [Board component](/components/board/).
+
 ## Supported Models
 
 For configuration information, click on the supported board model name:
