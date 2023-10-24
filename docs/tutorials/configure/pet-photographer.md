@@ -19,13 +19,13 @@ weight: 3
 ---
 
 You can write filter modules to selectively store data from your robot based on whether specified conditions have been met.
-For example, you can use a module to capture images based on specific criteria, such as presence of a color, image quality, or sensor thresholds.
+For example, you can use a module to capture images based on specific criteria, such as the presence of a color, image quality, or sensor thresholds.
 
 In this tutorial, you will create a [color filter](https://github.com/viam-labs/modular-filter-examples) {{< glossary_tooltip term_id="module" text="module" >}} and use it to selectively store images from your robot when a specified color is in frame.
 This allows you to get pictures of a pet in the following way:
 
-1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
-2. Attach a colored object, like a blue collar, to your pet.
+1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to [Viam's cloud](/services/data/#cloud-sync).
+2. Attach a colored object, such as a blue collar, to your pet.
 3. Set up the color filter module, which will process images and only store them if your pet and their easily identifiable colored object is present.
 
 {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="700x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
@@ -39,8 +39,8 @@ While this tutorial is about creating a color filter, you can also use it as a r
 To create your own filtering pet photographer robot, you'll need the following hardware:
 
 - A computer
-- A webcam or external camera
-- A colored object, like a blue collar for enhanced accuracy _(optional)_
+- A webcam or an external camera
+- A colored object, such as a blue collar for enhanced accuracy _(optional)_
 
 {{< alert title="Tip" color="tip" >}}
 In this tutorial, the camera is configured to identify and filter images with the color blue, as it is less common in many environments, including mine.
@@ -51,7 +51,7 @@ If your pet already has a distinct color that is different from their environmen
 
 Here's how to get started:
 
-1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's board, if that is not the same device.
+1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's board, if they are not the same device.
 1. [Create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) and connect to it.
 1. Update [`viam-server`](/installation/manage/#update-viam-server) or [update `viam-server`](/installation/#install-viam-server).
    Your `viam-server` must be version 0.8.0 or higher to access the filtering functionality.
@@ -71,7 +71,7 @@ However, if you prefer to use the pre-written or final code for the module, you 
 1. Save the path to your module's executable for later use.
 1. [Add the local module](#add-local-module) and continue the tutorial from there.
 
-If you would rather manually code your color filter module, continue onto the next section.
+If you would rather manually code your color filter module, continue on to the next section.
 
 ### Code your filter resource model
 
@@ -112,7 +112,7 @@ The other will ensure that if the data management service is not the caller, an 
 
 #### Check the caller of the collector function
 
-When creating your own filter module, it's required to check whether the data management service is the caller of the the function responsible for data capture to prevent unwanted effects on the filter state.
+When creating your own filter module, it's required to check whether the data management service is the caller of the function responsible for data capture to prevent unwanted effects on the filter state.
 
 You can achieve this by examining the `fromDataManagement` value within the `extra` argument passed to your filter function in your <file>color_filter.py</file> or <file>color_filter.go</file> file.
 
@@ -133,7 +133,7 @@ Then, include it in the conditional statement in your filter function:
          detections = await self.vision_service.get_detections(img)
 ```
 
-- If `from_dm_from_extra` is true and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
+- If `from_dm_from_extra` is `true` and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -152,7 +152,7 @@ if ctx.Value(data.FromDMContextKey{}) != true {
  detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
 ```
 
-- If `data.FromDMContextKey{}` is true and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
+- If `data.FromDMContextKey{}` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
 - Then, after capturing the image, the code continues to request detections.
 
 **PLACEHOLDER: `FromDMContextKey` vs `FromDMString`?**
@@ -188,13 +188,13 @@ Then, within your first conditional statement, create a conditional statement th
              raise NoCaptureToStoreError()
 ```
 
-- If the `detections` variable's length is 0, it indicates that there is no content in the variable.
+- If the length of the `detections` variable is 0, it indicates that there is no content in the variable.
 - `NoCaptureToStoreError()` is called to signify that the data management service was not the caller.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Inside of your filter function, write a conditional statement including the error message `data.ErrNoCaptureToStore`:
+Inside your filter function, write a conditional statement that includes the error message `data.ErrNoCaptureToStore`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 if len(detections) == 0 {
@@ -202,14 +202,14 @@ if len(detections) == 0 {
 }
 ```
 
-- If the `detections` variable's length is 0, it indicates that there is no content in the variable.
+- If the length of the `detections` variable is 0, it indicates that there is no content in the variable.
 - `data.ErrNoCaptureToStore` is called to signify that the data management service was not the caller.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 Once you've included the required safeguard and utility function, your complete color filter function should look like the following.
-In the Go color filter, less filter-specific errors have been added for when there are errors encountered while getting the next source image or obtaining detections.
+In the Go color filter, errors have been added for when there are errors encountered while getting the next source image or obtaining detections.
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -258,8 +258,8 @@ return fs.cameraStream.Next(ctx)
 {{% /tab %}}
 {{< /tabs >}}
 
-- The Python configured camera checks if the data management service is the caller of the filter function by using `from_dm_from_extra` to determine whether to store data.
-- The Go configured camera checks if the data management service is the caller of the filter function by using `data.FromDMContextKey{}` to determine whether to store data.
+- The Python-configured camera checks if the data management service is the caller of the filter function by using `from_dm_from_extra` to determine whether to store data.
+- The Go-configured camera checks if the data management service is the caller of the filter function by using `data.FromDMContextKey{}` to determine whether to store data.
 - If the data management service is the caller, the filter function requests detections from the vision service and returns the image if the specified color is detected.
   Otherwise, it raises `data.ErrNoCaptureToStore` or `NoCaptureToStoreError()`.
 
@@ -355,7 +355,7 @@ class ColorFilterCam(Camera, Reconfigurable):
   The method for this verification may vary depending on the specific function and programming language.
   For detailed information, please refer to the SDK documentation relevant to your specific language.
 
-- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected, otherwise, they raise `NoCaptureToStoreError()`.
+- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected, otherwise, it raises `NoCaptureToStoreError()`.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -536,14 +536,14 @@ return fs.cameraStream.Close(ctx)
 }
 ```
 
-- The Go configured camera looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
+- The Go-configured camera looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
 
-  - A modular camera coded in go is a slightly special case: the methods of the go camera client API are different in that they don’t exactly map to the other SDK methods / camera proto API
-    Instead of implementing GetImage (like it is in python, etc), in go users will implement Stream as shown in the example code
+  - A modular camera coded in Go is a slightly special case: the methods of the Go camera client API are different in that they don’t exactly map to the other SDK methods / camera proto API
+    Instead of implementing `GetImage` (like it is in Python, etc), in Go, you will implement `Stream` as shown in the example code.
 
 - For other programming languages, similar utility functions will be exposed to help you check the caller of your filter function.
   Not all collector functions receive the `extra` data parameter, so the method for checking may vary based on the specific function and language.
-- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected, otherwise, it will raise the `data.ErrNoCaptureToStore` error.
+- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected; otherwise, it will raise the `data.ErrNoCaptureToStore` error.
 
   {{% /tab %}}
   {{< /tabs >}}
@@ -560,7 +560,7 @@ To code your entry point file yourself, you must locate the subtype API as defin
   When developing your <file>main.go</file> or <file>main.py</file> file, reference this file.
 
 {{< alert title="Important" color="note" >}}
-If you want to filter data based on a constraint other than a color filter, you need to modify the following code.
+If you want to filter data based on a constraint other than color, you need to modify the code below.
 {{< /alert >}}
 
 {{< tabs >}}
@@ -598,8 +598,8 @@ if __name__ == "__main__":
 
 {{% /tab %}}
 {{% tab name="Go"%}}
-Inside your module's folder, create another folder with the name `module`.
-Inside of the `module` folder, create a file called <file>main.go</file> (the module entry point file).
+Inside your module's directory, create another folder with the name `module`.
+Inside the `module` folder, create a file called <file>main.go</file> (the entry point file for the module).
 Add the code below to initialize and start the filter module.
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -645,7 +645,7 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information on creating your own module, read [Code your own modules to create modular resources](https://docs.viam.com/modular-resources/create/).
+For more information on creating your own module, refer to [Code your own modules to create modular resources](https://docs.viam.com/modular-resources/create/).
 
 Once you've written your filter module, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module when executed.
 
@@ -655,10 +655,10 @@ Now that you've completed writing and compiling your filter module, it's time to
 
 1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Modules** subtab to configure the local color filter module for your robot's system in the Viam app.
-1. You identified your module's path when you [compiled your modules executable](/modular-resources/create/#compile-the-module-into-an-executable).
-1. In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable and click **Add module**.
+1. You identified your module's path when you [compiled your module's executable](/modular-resources/create/#compile-the-module-into-an-executable).
+1. In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable, and click **Add module**.
    - The name should be all lowercase.
-   - Enter the absolute path to your module's executable on the robot's computer as the **Executable path**. The executable path is the path you noted down when you [compiled your modules executable](/modular-resources/create/#compile-the-module-into-an-executable).
+   - Enter the absolute path to your module's executable on the robot's computer as the **Executable path**. The executable path is the path you noted down when you [compiled your module's executable](/modular-resources/create/#compile-the-module-into-an-executable).
 1. Then, click **Save config**.
 
 ![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
@@ -688,7 +688,7 @@ To enable data capture on your robot, add and configure the [data management ser
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
-   For more detailed information see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
+   For more detailed information, see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
    {{% /tab %}}
    {{% tab name="JSON Template" %}}
    Add the vision service object to the services array in your rover’s raw JSON configuration:
@@ -708,16 +708,16 @@ To enable data capture on your robot, add and configure the [data management ser
   ... // Vision and other services
 ```
 
-Click **Save Config** and head back to the **Builder** mode.
+Click **Save Config** and head back to **Builder** mode.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ### Vision service to detect color
 
-This tutorial uses the color of my dogs collar, `#43A1D0` or `rgb(67, 161, 208)` (blue), but you can use a different color that matches your pet or a distinctly colored item on your pet.
+This tutorial uses the color of my dog's collar, `#43A1D0` or `rgb(67, 161, 208)` (blue), but you can use a different color that matches your pet or a distinctly colored item on your pet.
 
-**Hex color #43A1D0**: {{<imgproc src="/tutorials/pet-photographer/43a1d0.png" resize="90x" declaredimensions=true alt="A color swatch for the color of example subject's collar">}}
+**Hex color #43A1D0**: {{<imgproc src="/tutorials/pet-photographer/43a1d0.png" resize="90x" declaredimensions=true alt="A color swatch for the color of the example subject's collar">}}
 
 To configure your [vision service color detector](/services/vision/detection/):
 
@@ -728,14 +728,14 @@ To configure your [vision service color detector](/services/vision/detection/):
 1. Select the `Vision` type, then select the `Color Detector` model.
 1. Enter `my_color_detector` as the name for your detector and click **Create**.
 1. In the vision service panel, click the color selection box to set the color to be detected.
-   For this tutorial, set the color to the color of your pet, or use a blue collar or ribbon to increase the precision of your filter.
+   For this tutorial, set the color to the color of your pet, or use a blue collar or ribbon to improve your filter's accuracy.
 1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 
 Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information see [Configure a color detector](/services/vision/detection/#configure-a-color_detector).
+For more detailed information, refer to [Configure a color detector](/services/vision/detection/#configure-a-color_detector).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -765,29 +765,30 @@ With the vision and data management services configured, you can now configure y
 
 ### Configure your camera
 
-Navigate to your robot's page on the app and click on the **Config** tab.
+Navigate to your robot's page in the app and click on the **Config** tab.
 
-Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in the lower-left corner of the page and typing in 'webcam'.
-Select the `webcam` model and type in 'cam' as the name for your camera.
-Then click create.
+1. Add your robot's [camera](/components/camera/) as a component by clicking **Create component** in the lower-left corner of the page and entering 'webcam'.
+1. Select the `webcam` model and enter 'cam' as the name for your camera.
+1. Then click **Create**.
 
-Your robot's config page now has a panel for your camera.
-To select the camera the robot should use, click on the **video path** field.
-If your robot is connected, you will see a selection of available cameras.
-Select the camera you want to use, then click **Save config**
+Your robot's configuration page now includes a panel for your camera.
+
+- To choose the camera the robot will use, click the **video path** field.
+  - If your robot is connected, you'll see a list of available cameras.
+  - Select the camera you want to use, then click **Save config**.
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
 ### Add colorfilter component
 
-1. Click the **Components** subtab and click **Create component**.
-1. Then, select the `local modular resource` type from the list.
+1. Click the **Components** subtab and then click **Create component**.
+1. Next, select the `local modular resource` type from the list.
    {{<imgproc src="/extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
-1. On the next screen:
+1. On the following screen:
 
    1. Select the camera from the drop down menu.
-   1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
-   1. Enter a name for this instance of your modular resource.
+   1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} for your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
+   1. Provide a name for this instance of your modular resource.
       This name must be different from the module name.
 
       {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
@@ -806,7 +807,7 @@ Select the camera you want to use, then click **Save config**
 
 ### Configure data capture
 
-To add data capture for the colorfilter camera, click **Add Method** in the **Data Capture configuration** section of your color filter camera component.
+To add data capture for the color filter camera, click **Add Method** in the **Data Capture configuration** section of your color filter camera component.
 Toggle the **Type** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`.
 Then, click **Save config**.
 
@@ -816,7 +817,7 @@ Then, click **Save config**.
 
 To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your robot's page.
 
-On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your camera's live feed.
+On the **colorfiltercam** panel, toggle **view colorfiltercam** to view your camera's live feed.
 Test the filter by moving a blue colored item within the camera's field of view.
 Then, go to the **Data** tab to view pictures that contain the blue colored item.
 
