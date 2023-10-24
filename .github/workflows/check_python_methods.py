@@ -125,7 +125,7 @@ def parse(type, names):
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method}, Method Parameters and Returns: {methods_dict.get(method)}")
+        print(f"Method: {method} | Method Parameters: {methods_dict.get(method)}")
 
 
 total_sdk_methods_missing = []      
@@ -137,7 +137,7 @@ total_sdk_methods_missing.extend(missing_services)
 total_sdk_methods_missing.extend(missing_components)
 
 if total_sdk_methods_missing:
-    print(f"\n Total SDK methods missing: {total_sdk_methods_missing} \n\n Method Information: \n")
+    print(f"\n Total SDK methods missing: {total_sdk_methods_missing} \n\n Missing Method Information: \n")
     print_method_information(missing_services, services_dict)
     print_method_information(missing_components, components_dict)
     sys.exit(1)
