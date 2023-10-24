@@ -37,7 +37,7 @@ if (api == "") {
     hitsPerPage: 5,
   };
   itemtemplate = `
-  <div class="type"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></a></p></div>
+  <div class="type"><p><code>{{#helpers.highlight}}{ "attribute": "api" }{{/helpers.highlight}}</code></p></div>
   <div class="name"><p><a href="{{url}}"><code>{{#helpers.highlight}}{ "attribute": "model" }{{/helpers.highlight}}</code></a></p></div>
   <div class="description">{{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}</div>
   `;
