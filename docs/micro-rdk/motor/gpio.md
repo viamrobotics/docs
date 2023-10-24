@@ -137,12 +137,4 @@ Inside the `pins` struct you need to configure **two or three** of the following
 | `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
 | `pwm` | string | **Required** | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
 
-{{% alert title="Important" color="note" %}}
-
-Only two or three of these `pins` attributes are required, depending on your motor driver.
-
-If your motor drivers uses only In1 and In2, and not a third PWM pin, **do not configure a `pwm` pin**.
-
-{{% /alert %}}
-
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
