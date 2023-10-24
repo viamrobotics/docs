@@ -71,7 +71,7 @@ def parse(type, names):
                 for element in param_element:
                     method_text.append(element.text + " ")
 
-            return_element = tag.find_all("span", class_="sig_return")
+            return_element = tag.find_all("span", class_="sig-return")
             if return_element:
                 for element in return_element:
                     method_text.append(element.text)
@@ -125,7 +125,7 @@ def parse(type, names):
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} | Method Parameters: {methods_dict.get(method)}")
+        print(f"Method: {method} | Method Parameters & Returned: {methods_dict.get(method)}")
 
 
 total_sdk_methods_missing = []      
