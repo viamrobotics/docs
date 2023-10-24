@@ -75,7 +75,7 @@ The following attributes are available for `incremental` encoders:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the encoder is wired. |
+| `board` | string | **Required** | The `name` of the [board](/micro-rdk/board/) to which the encoder is wired. |
 | `pins` | object | **Required** | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: GPIO number of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: GPIO number of the second board pin to which the encoder is wired. </li> </ul> |
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}

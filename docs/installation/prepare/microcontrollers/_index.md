@@ -82,7 +82,7 @@ If successful, your robot will show that it's **Live**.
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-### Configure your robot with an esp32
+### Configure your robot with an ESP32
 
 The micro-RDK provides different component models than the fully featured RDK.
 See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
@@ -101,12 +101,12 @@ Configure your `esp32` board for your robot.
 
 ## Troubleshooting
 
-### Linux Port Permissions
+### Linux port permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
 If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
-### MacOS Executable Permissions
+### MacOS executable permissions
 
 When using a machine running a version of MacOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.

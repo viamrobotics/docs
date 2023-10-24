@@ -222,7 +222,7 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 Click on the name of the robot to go to the robot's page.
 Then, navigate to the **Config** tab.
 
-### Configure your robot with an esp32
+### Configure your robot with an ESP32
 
 [Client API](/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 

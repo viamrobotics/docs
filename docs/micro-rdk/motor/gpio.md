@@ -106,7 +106,7 @@ The following attributes are available for `gpio` motors:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board` | string | **Required** | `name` of the [board](/components/board/) to which the motor driver is wired. |
+| `board` | string | **Required** | `name` of the [board](/micro-rdk/board/) to which the motor driver is wired. |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | number | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
@@ -135,7 +135,7 @@ Inside the `pins` struct you need to configure **two or three** of the following
 | `a` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN1" or "A" pin is wired to. |
 | `b` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN2" or "B" pin is wired to. |
 | `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
-| `pwm` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
+| `pwm` | string | **Required** | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
 
 {{% alert title="Important" color="note" %}}
 
