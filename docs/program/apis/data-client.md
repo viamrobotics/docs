@@ -162,8 +162,8 @@ my_ids = []
 
 for obj in binary_metadata:
     my_ids.append(BinaryID(file_id=obj.metadata.id,
-                            organization_id=obj.metadata.capture_metadata.organization_id,
-                            location_id=obj.metadata.capture_metadata.location_id))
+                           organization_id=obj.metadata.capture_metadata.organization_id,
+                           location_id=obj.metadata.capture_metadata.location_id))
 
 binary_data = await data_client.binary_data_by_ids(my_ids)
 ```
