@@ -19,6 +19,7 @@ def parse(type, names):
 
     sdk_methods_missing = []
     sdk_methods_found = []
+    methods_dict = {}
 
     for service in names:
 
@@ -51,7 +52,7 @@ def parse(type, names):
 
         # Find all python methods objects on Python docs site soup
         py_methods_sdk_docs = soup.find_all("dt", class_="sig sig-object py")
-        py_methods_sdk_docs_filtered = []
+        py_methods_sdk_docs_filtered_ids = []
 
         # Get ids and filter list
         for tag in py_methods_sdk_docs:
@@ -61,8 +62,24 @@ def parse(type, names):
             and not id.endswith("SUBTYPE") and not id.endswith(".from_robot") \
             and not id.endswith(".get_resource_name") and not id.endswith(".get_operation") \
             and not id.endswith(".LOGGER") and not id.endswith("__"):
-                py_methods_sdk_docs_filtered.append(id)
-    
+                py_methods_sdk_docs_filtered_ids.append(id)
+
+            # Get methods information
+            method_text = []
+            param_element = tag.find_all("em", class_="sig-param")
+            if param_element:
+                for element in param_element:
+                    method_text.append(element.text + " ")
+
+            return_element = tag.find_all("span", class_="sig_return")
+            if return_element:
+                for element in return_element:
+                    method_text.append(element.text)
+
+            method_text = ''.join(method_text)
+            methods_dict[id] = method_text
+
+            
         # Parse the Docs site's service page
         if type == "app" or type == "robot":
             soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
@@ -73,7 +90,7 @@ def parse(type, names):
         all_links = soup2.find_all('a')
 
         # Go through ids in filtered list and check if it matches text in href in a link on Docs site
-        for id in py_methods_sdk_docs_filtered:
+        for id in py_methods_sdk_docs_filtered_ids:
             found = 0
 
             # Separating out just the method name
@@ -104,15 +121,23 @@ def parse(type, names):
     print(f"\n SDK methods missing for type {type}: {sdk_methods_missing}")
     print(f"\n SDK methods found for type {type}: {sdk_methods_found}")
 
-    return sdk_methods_missing
+    return sdk_methods_missing, methods_dict
+
+def print_method_information(missing_methods, methods_dict):
+    for method in missing_methods:
+        print(f"Method: {method}, Method Parameters and Returns: {methods_dict.get(method)}")
+
 
 total_sdk_methods_missing = []      
 
-total_sdk_methods_missing.extend(parse("services", services))
-total_sdk_methods_missing.extend(parse("components", components))
-# total_sdk_methods_missing.extend(parse("app", app_apis))
-# total_sdk_methods_missing.extend(parse("robot", robot_apis))
+missing_services, services_dict = parse("services", services)
+missing_components, components_dict = parse("components", components)
+
+total_sdk_methods_missing.extend(missing_services)
+total_sdk_methods_missing.extend(missing_components)
 
 if total_sdk_methods_missing:
-        print(f"\n Total SDK methods missing: {total_sdk_methods_missing}")
-        sys.exit(1)
+    print(f"\n Total SDK methods missing: {total_sdk_methods_missing} \n\n Method Information: \n")
+    print_method_information(missing_services, services_dict)
+    print_method_information(missing_components, components_dict)
+    sys.exit(1)
