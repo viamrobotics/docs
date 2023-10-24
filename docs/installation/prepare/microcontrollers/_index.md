@@ -87,7 +87,7 @@ For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.co
 The micro-RDK provides different component models than the fully featured RDK.
 See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 
-## Next Steps
+## Next steps
 
 {{< cards >}}
 {{% manualcard link="/micro-rdk/board/esp32/" %}}
