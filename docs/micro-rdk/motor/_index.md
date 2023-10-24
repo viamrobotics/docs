@@ -11,7 +11,7 @@ no_list: true
 ---
 
 A motor is a rotating machine that transforms electrical energy into mechanical energy.
-For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/RDK/), see the [Motor component](/components/motor/).
+For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/rdk/), see the [Motor component](/components/motor/).
 
 ## Supported Models
 
