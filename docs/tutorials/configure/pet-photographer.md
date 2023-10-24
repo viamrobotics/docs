@@ -18,15 +18,11 @@ no_list: true
 weight: 3
 ---
 
-In this tutorial, you will create a [color filter](https://github.com/viam-labs/modular-filter-examples) {{< glossary_tooltip term_id="module" text="module" >}} and use it to selectively store data from your robot.
-This guide can serve as a reference when writing your own filter module for various components, like a [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
+You can write filter modules to selectively store data from your robot based on whether specified conditions have been met.
+For example, you can use a module to capture images based on specific criteria, such as presence of a color, image quality, or sensor thresholds.
 
-Creating a filter module will enable you to selectively store data from your robot based on whether specified conditions have been met.
-Once you've configured your robot for data capture and established the connection to [Viam's cloud](/services/data/#cloud-sync), the robot will use the [data management service](/services/data/) to regularly send data to the cloud.
-However, before this data is stored in Viam's cloud, the filter module will process it, saving only the data that meets your specified criteria.
-
-Filter modules can be written to capture images based on specific criteria, such as color, image quality, or sensor thresholds.
-The example in this guide will show you how to create and use a filter module to store images of your pet when a specified color is in frame:
+In this tutorial, you will create a [color filter](https://github.com/viam-labs/modular-filter-examples) {{< glossary_tooltip term_id="module" text="module" >}} and use it to selectively store images from your robot when a specified color is in frame.
+This allows you to get pictures of a pet in the following way:
 
 1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to the [Viam's cloud](/services/data/#cloud-sync).
 2. Attach a colored object, like a blue collar, to your pet.
@@ -34,9 +30,13 @@ The example in this guide will show you how to create and use a filter module to
 
 {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="700x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
+{{< alert title="Note" color="note" >}}
+While this tutorial is about creating a color filter, you can also use it as a reference when writing your own filter module for other components, like a [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
+{{< /alert >}}
+
 ## Hardware Requirements
 
-To recreate and test this color filter example, you'll need the following hardware:
+To create your own filtering pet photographer robot, you'll need the following hardware:
 
 - A computer
 - A webcam or external camera
@@ -51,250 +51,159 @@ If your pet already has a distinct color that is different from their environmen
 
 Here's how to get started:
 
-1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's computer.
-1. [Create and connect](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) to your robot.
-1. Update [`viam-server`](/installation/manage/#update-viam-server).
-   If you don't already have `viam-server` installed, follow [these directions](/installation/#install-viam-server) to install the most recent, stable version.
-   Your viam-server must be version 0.8.0 or higher to access the filtering functionality.
-1. Prepare to import your custom model.
-   - Find the subtype API as defined in the relevant <resource-name>/<resource-name>.go file in the RDK on Viam’s GitHub.
-     - In this example, the camera's API is defined in the <file>[camera.go](https://github.com/viamrobotics/rdk/blob/main/components/camera/camera.go)</file> file in the RDK on Viam's Github.
-       When developing your <file>main.go</file> or <file>main.py</file> file, reference this file.
+1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's board, if that is not the same device.
+1. [Create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) and connect to it.
+1. Update [`viam-server`](/installation/manage/#update-viam-server) or [update `viam-server`](/installation/#install-viam-server).
+   Your `viam-server` must be version 0.8.0 or higher to access the filtering functionality.
 
-## Clone the module for use
+## Create or download the filter module
 
-This tutorial will guide you through the process of coding your filter module.
+This tutorial will guide you through the process of [coding your filter module](#code-your-entry-point-file).
 However, if you prefer to use the pre-written or final code for the module, you can follow these steps:
 
 1. Clone the [color filter module](https://github.com/viam-labs/modular-filter-examples) from GitHub onto your robot's computer:
 
-```{class="command-line" data-prompt="$"}
-git clone https://github.com/viam-labs/modular-filter-examples.git
-```
+   ```{class="command-line" data-prompt="$"}
+   git clone https://github.com/viam-labs/modular-filter-examples.git
+   ```
 
 1. [Compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module in the `module` directory.
 1. Save the path to your module's executable for later use.
 1. [Add the local module](#add-local-module) and continue the tutorial from there.
 
-If you would rather manually code your color filter module, read the section below to get started.
+If you would rather manually code your color filter module, continue onto the next section.
 
-## Code your entry point file
+### Code your filter resource model
 
-Next, code your <file>main.go</file> or <file>main.py</file> (the module entry point file) to initialize and start the filter module.
-To filter data based on another constraint, modify the filter's source code.
+To get started writing your filter resource model:
 
-{{< tabs >}}
-{{% tab name="Python"%}}
-<file>main.py</file> initializes and starts the colorfilter model of the camera component.
+1. Create a folder for your module with the name of your model `colorfilter`.
+   - Your model name must use all lowercase letters.
+1. Inside that folder, create a file called <file>color_filter.py</file> or <file>color_filter.go</file>.
 
-<details>
-  <summary>Click to view sample code from <file>main.py</file></summary>
-
-```python {class="line-numbers linkable-line-numbers"}
-import asyncio
-from viam.components.camera import Camera
-from viam.module.module import Module
-from viam.resource.registry import Registry, ResourceCreatorRegistration
-import color_filter
-
-async def main():
-    """
-    This function creates and starts a new module, after adding all desired resource models.
-    Resource creators must be registered to the resource registry before the module adds the resource model.
-    """
-    Registry.register_resource_creator(
-        Camera.SUBTYPE,
-        color_filter.ColorFilterCam.MODEL,
-        ResourceCreatorRegistration(
-            color_filter.ColorFilterCam.new_cam,
-            color_filter.ColorFilterCam.validate_config
-        )
-    )
-    module = Module.from_args()
-    module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
-    await module.start()
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
-{{% /tab %}}
-{{% tab name="Go"%}}
-<file>main.go</file> initializes and starts the colorfilter model of the camera component.
-
-  <details>
-    <summary>Click to view sample code from <file>main.go</file></summary>
-
-```go {class="line-numbers linkable-line-numbers"}
-// Package main is a module which serves the colorfilter custom module.
-package main
-
-import (
-  "context"
-
-  "github.com/edaniels/golog"
-  "go.viam.com/utils"
-
-  "github.com/viam-labs/modular-filter-examples/colorfilter"
-  "go.viam.com/rdk/components/camera"
-  "go.viam.com/rdk/module"
-)
-
-func main() {
-  utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("colorfilter_module"))
-}
-
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
-  myMod, err := module.NewModuleFromArgs(ctx, logger)
-  if err != nil {
-    return err
-  }
-
-  err = myMod.AddModelFromRegistry(ctx, camera.API, colorfilter.Model)
-  if err != nil {
-    return err
-  }
-
-  err = myMod.Start(ctx)
-  defer myMod.Close(ctx)
-  if err != nil {
-    return err
-  }
-  <-ctx.Done()
-  return nil
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-For more information on creating your own module, read [Code your own modules to create modular resources](https://docs.viam.com/modular-resources/create/).
-
-## Code your filter resource model
-
-The code for this colorfilter camera model (<file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file>) or (<file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py)</file>) is sourced from the full [modular filter examples](https://github.com/viam-labs/modular-filter-examples/tree/main).
+The full code for this colorfilter camera model's (<file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file>) or (<file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py)</file>) file is from the full modular filter examples available on [GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
 
 {{< alert title="Important" color="note" >}}
 When coding filter functionality, ensure you include the correct utility functions.
 
 - If you are using the Python SDK, use the utility function [`from_dm_from_extra`](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.from_dm_from_extra).
-- If you are using the Go SDK, use [`data.FromDMString`](https://pkg.go.dev/go.viam.com/rdk/data#FromDMString).
+- If you are using the Go SDK, use [`data.FromDMContextKey`](https://pkg.go.dev/go.viam.com/rdk/data#FromDMContextKey).
 
 For other programming languages, similar utility functions will be exposed to help you check the caller of your filter function.
-The method for this verification may vary depending on the specific function and programming language.
 For detailed information, please refer to the SDK documentation relevant to your specific language.
 {{< /alert >}}
 
-### Include subtype's required methods
+#### Implement the subtype's required methods
 
-In order to code a new filter resource model, you must implement the required methods outlined in the <file>[client.go](https://github.com/viamrobotics/rdk/components/camera/client.go)</file> file in the corresponding resource's directory.
-In this case, the `rdk/components/camera` directory.
+Create a file called <file>color_filter.go</file> or <file>color_filter.py</file> within your `colorfilter` module directory and implement the required methods in it.
 
-Provide this as a file inside of your `colorfilter` module directory to serve as your module's client interface, <file>color_filter.go</file> or <file>color_filter.py</file>. Make sure you name your model with all lowercase letters for optimal performance with Viam's SDKs.
+To code a new filter resource model, you must implement a client interface defined by the required methods outlined in the <file>client.go</file> file in the corresponding [resource's directory](https://github.com/viamrobotics/rdk/components/).
+The camera file is at [`rdk/components/camera/client.go`](https://github.com/viamrobotics/rdk/components/camera/client.go).
 
-For more information, read [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
+You can create your own code or copy the code for your file [color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py) and [color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go).
 
-### Include filter module requirements
+For more information, refer to [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
+
+#### Include the filter module requirements
 
 Your custom filter module must contain two critical elements in your filter function.
 One will check if the caller of the filter function is the data management service.
 The other will ensure that if the data management service is not the caller, an error is returned.
 
-1. **Check the caller of the collector function**
+#### Check the caller of the collector function
 
-   When creating your own filter module, it's required to check whether the data management service is the caller of the the function responsible for data capture to prevent unwanted effects on the filter state.
+When creating your own filter module, it's required to check whether the data management service is the caller of the the function responsible for data capture to prevent unwanted effects on the filter state.
 
-   You can achieve this by examining the `fromDataManagement` value within the `extra` argument passed to your filter function in your <file>color_filter.py</file> or <file>color_filter.go</file> file.
+You can achieve this by examining the `fromDataManagement` value within the `extra` argument passed to your filter function in your <file>color_filter.py</file> or <file>color_filter.go</file> file.
 
-   The approach for checking this varies depending on the programming language used to configure your camera:
+The approach for checking this varies depending on the programming language used to configure your camera:
 
-   {{< tabs >}}
-   {{% tab name="Python"%}}
-   First, import `from_dm_from_extra`:
+{{< tabs >}}
+{{% tab name="Python"%}}
+First, import `from_dm_from_extra`:
 
-   ```python {class="line-numbers linkable-line-numbers"}
-   from viam.utils import from_dm_from_extra
-   ```
+```python {class="line-numbers linkable-line-numbers"}
+from viam.utils import from_dm_from_extra
+```
 
-   Then, include it in the conditional statement in your filter function:
+Then, include it in the conditional statement in your filter function:
 
-   ```python {class="line-numbers linkable-line-numbers"}
-        if from_dm_from_extra(extra):
-            detections = await self.vision_service.get_detections(img)
-   ```
+```python {class="line-numbers linkable-line-numbers"}
+     if from_dm_from_extra(extra):
+         detections = await self.vision_service.get_detections(img)
+```
 
-   - If `from_dm_from_extra` is true and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
+- If `from_dm_from_extra` is true and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
 
-   {{% /tab %}}
-   {{% tab name="Go"%}}
+{{% /tab %}}
+{{% tab name="Go"%}}
 
-   Write a conditional statement that checks `data.FromDMContextKey{}`:
+Write a conditional statement that checks `data.FromDMContextKey{}`:
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   if ctx.Value(data.FromDMContextKey{}) != true {
-      // If not data management collector, return underlying stream contents without filtering.
-      return fs.cameraStream.Next(ctx)
-   }
+```go {class="line-numbers linkable-line-numbers"}
+if ctx.Value(data.FromDMContextKey{}) != true {
+   // If not data management collector, return underlying stream contents without filtering.
+   return fs.cameraStream.Next(ctx)
+}
 
-   // Only return captured image if it contains a certain color set by the vision service.
-    img, release, err := fs.cameraStream.Next(ctx)
+// Only return captured image if it contains a certain color set by the vision service.
+ img, release, err := fs.cameraStream.Next(ctx)
 
-    detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
+ detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
+```
 
-   ```
+- If `data.FromDMContextKey{}` is true and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
+- Then, after capturing the image, the code continues to request detections.
 
-   - If `data.FromDMContextKey{}` is true and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
-   - Then, after capturing the image, the code continues to request detections.
+**PLACEHOLDER: `FromDMContextKey` vs `FromDMString`?**
 
-   **PLACEHOLDER: `FromDMContextKey` vs `FromDMString`?**
+**`FromDMString` has been referenced as important and essential, but it's only used in the sensor filter.**
+**Colorfilter uses `FromDMContextKey`.**
+**Updating all references once clarified.**
 
-   **`FromDMString` has been referenced as important and essential, but it's only used in the sensor filter.**
-   **Colorfilter uses `FromDMContextKey`.**
-   **Updating all references once clarified.**
+{{% /tab %}}
+{{< /tabs >}}
 
-   {{% /tab %}}
-   {{< /tabs >}}
+#### Return filter error to data management
 
-2. **Return filter error to data management**
+After implementing a check to identify the initiator of the filter function, you must include the safeguard that will return an error if the data management service is not the caller.
 
-   After implementing a check to identify the initiator of the filter function, you must include the safeguard that will return an error if the data management service is not the caller.
+To do this, include the following in your filter module's <file>color_filter.py</file> or <file>color_filter.go</file>:
 
-   To do this, include the following in your filter module's <file>color_filter.py</file> or <file>color_filter.go</file>:
+{{< tabs name="Example tabs">}}
+{{% tab name="Python"%}}
 
-   {{< tabs name="Example tabs">}}
-   {{% tab name="Python"%}}
+First, import the safeguard error `NoCaptureToStoreError` from Viam:
 
-   First, import the safeguard error `NoCaptureToStoreError` from Viam:
+```python {class="line-numbers linkable-line-numbers"}
+from viam.errors import NoCaptureToStoreError
+```
 
-   ```python {class="line-numbers linkable-line-numbers"}
-   from viam.errors import NoCaptureToStoreError
-   ```
+Then, within your first conditional statement, create a conditional statement that returns the error when the data management service is not the caller of the filter function:
 
-   Then, within your first conditional statement, create a conditional statement that returns the error when the data management service is not the caller of the filter function:
+```python {class="line-numbers linkable-line-numbers"}
+ if from_dm_from_extra(extra):
+     detections = await self.vision_service.get_detections(img)
+     if len(detections) == 0:
+             raise NoCaptureToStoreError()
+```
 
-   ```python {class="line-numbers linkable-line-numbers"}
-    if from_dm_from_extra(extra):
-        detections = await self.vision_service.get_detections(img)
-        if len(detections) == 0:
-                raise NoCaptureToStoreError()
-   ```
+- If the `detections` variable's length is 0, it indicates that there is no content in the variable.
+- `NoCaptureToStoreError()` is called to signify that the data management service was not the caller.
 
-   - If the `detections` variable's length is 0, it indicates that there is no content in the variable.
-   - `NoCaptureToStoreError()` is called to signify that the data management service was not the caller.
+{{% /tab %}}
+{{% tab name="Go"%}}
 
-   {{% /tab %}}
-   {{% tab name="Go"%}}
+Inside of your filter function, write a conditional statement including the error message `data.ErrNoCaptureToStore`:
 
-   Inside of your filter function, write a conditional statement including the error message `data.ErrNoCaptureToStore`:
+```go {class="line-numbers linkable-line-numbers"}
+if len(detections) == 0 {
+   return nil, nil, data.ErrNoCaptureToStore
+}
+```
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   if len(detections) == 0 {
-      return nil, nil, data.ErrNoCaptureToStore
-   }
-   ```
-
-   - If the `detections` variable's length is 0, it indicates that there is no content in the variable.
-   - `data.ErrNoCaptureToStore` is called to signify that the data management service was not the caller.
+- If the `detections` variable's length is 0, it indicates that there is no content in the variable.
+- `data.ErrNoCaptureToStore` is called to signify that the data management service was not the caller.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -321,7 +230,6 @@ async def get_image(self, mime_type: str = "", *, extra: Optional[Dict[str, Any]
 {{% tab name="Go"%}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-
 // Next contains the filtering logic and returns select data from the underlying camera.
 func (fs filterStream) Next(ctx context.Context) (image.Image, func(), error) {
 if ctx.Value(data.FromDMContextKey{}) != true {
@@ -458,7 +366,6 @@ class ColorFilterCam(Camera, Reconfigurable):
   <summary>Click to view sample code from <file>color_filter.go</file></summary>
 
 ```go {class="line-numbers linkable-line-numbers"}
-
 // Package colorfilter implements a modular camera that filters the output of an underlying camera and only keeps
 // captured data if the vision service detects a certain color in the captured image.
 package colorfilter
@@ -643,22 +550,115 @@ return fs.cameraStream.Close(ctx)
 
 For more information, read [Code a new resource model](/modular-resources/create/#code-a-new-resource-model).
 
+### Code your entry point file
+
+Next, code your module entry point file to initialize and start the filter module.
+
+To code your entry point file yourself, you must locate the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam’s GitHub.
+
+- In this example, the camera's API is defined in the <file>[camera.go](https://github.com/viamrobotics/rdk/blob/main/components/camera/camera.go)</file> file in the RDK on Viam's Github.
+  When developing your <file>main.go</file> or <file>main.py</file> file, reference this file.
+
+{{< alert title="Important" color="note" >}}
+If you want to filter data based on a constraint other than a color filter, you need to modify the following code.
+{{< /alert >}}
+
+{{< tabs >}}
+{{% tab name="Python"%}}
+Inside your module's folder, create a file called <file>main.py</file> (the module entry point file).
+Add the code below to initialize and start the filter module.
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+from viam.components.camera import Camera
+from viam.module.module import Module
+from viam.resource.registry import Registry, ResourceCreatorRegistration
+import color_filter
+
+async def main():
+    """
+    This function creates and starts a new module, after adding all desired resource models.
+    Resource creators must be registered to the resource registry before the module adds the resource model.
+    """
+    Registry.register_resource_creator(
+        Camera.SUBTYPE,
+        color_filter.ColorFilterCam.MODEL,
+        ResourceCreatorRegistration(
+            color_filter.ColorFilterCam.new_cam,
+            color_filter.ColorFilterCam.validate_config
+        )
+    )
+    module = Module.from_args()
+    module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
+    await module.start()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+{{% /tab %}}
+{{% tab name="Go"%}}
+Inside your module's folder, create another folder with the name `module`.
+Inside of the `module` folder, create a file called <file>main.go</file> (the module entry point file).
+Add the code below to initialize and start the filter module.
+
+```go {class="line-numbers linkable-line-numbers"}
+// Package main is a module which serves the colorfilter custom module.
+package main
+
+import (
+  "context"
+
+  "github.com/edaniels/golog"
+  "go.viam.com/utils"
+
+  "github.com/viam-labs/modular-filter-examples/colorfilter"
+  "go.viam.com/rdk/components/camera"
+  "go.viam.com/rdk/module"
+)
+
+func main() {
+  utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("colorfilter_module"))
+}
+
+func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+  myMod, err := module.NewModuleFromArgs(ctx, logger)
+  if err != nil {
+    return err
+  }
+
+  err = myMod.AddModelFromRegistry(ctx, camera.API, colorfilter.Model)
+  if err != nil {
+    return err
+  }
+
+  err = myMod.Start(ctx)
+  defer myMod.Close(ctx)
+  if err != nil {
+    return err
+  }
+  <-ctx.Done()
+  return nil
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For more information on creating your own module, read [Code your own modules to create modular resources](https://docs.viam.com/modular-resources/create/).
+
 Once you've written your filter module, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module when executed.
 
 ### Add local module
 
-Now that you've completed writing and compiling your filter module, it's time to put it to use.
-
-When configuring a filter module for your robot in the [Viam app](https://app.viam.com/robots), you must provide the absolute path to the module on the robot's computer.
-This ensures that the Viam app knows where to find the module for remote access.
-
-To do this, follow these steps:
+Now that you've completed writing and compiling your filter module, it's time to put it to use:
 
 1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Modules** subtab to configure the local color filter module for your robot's system in the Viam app.
 1. You identified your module's path when you [compiled your modules executable](/modular-resources/create/#compile-the-module-into-an-executable).
-   In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable and click **Add module**.
-   This name should be all lowercase.
+1. In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable and click **Add module**.
+   - The name should be all lowercase.
+   - Enter the absolute path to your module's executable on the robot's computer as the **Executable path**. The executable path is the path you noted down when you [compiled your modules executable](/modular-resources/create/#compile-the-module-into-an-executable).
 1. Then, click **Save config**.
 
 ![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
@@ -676,7 +676,7 @@ To enable data capture on your robot, add and configure the [data management ser
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-1. 1. On the **Config** page, click the **Services** subtab and click **Create service** in the lower-left corner.
+1. On the **Config** page, click the **Services** subtab and click **Create service** in the lower-left corner.
 1. Choose `Data Management` as the type and name your instance of the data manager `dm`.
    This service syncs data from your robot to the Viam app in the cloud.
 1. Select **Create**.
@@ -725,14 +725,10 @@ To configure your [vision service color detector](/services/vision/detection/):
 {{% tab name="Builder" %}}
 
 1. At the bottom-left of the page, click **Create service**.
-
 1. Select the `Vision` type, then select the `Color Detector` model.
-
 1. Enter `my_color_detector` as the name for your detector and click **Create**.
-
 1. In the vision service panel, click the color selection box to set the color to be detected.
    For this tutorial, set the color to the color of your pet, or use a blue collar or ribbon to increase the precision of your filter.
-
 1. Then, set **Hue Tolerance** to `0.06` and **Segment Size px** to `100`.
 
 Your configuration should look like the following:
@@ -785,10 +781,8 @@ Select the camera you want to use, then click **Save config**
 ### Add colorfilter component
 
 1. Click the **Components** subtab and click **Create component**.
-
 1. Then, select the `local modular resource` type from the list.
    {{<imgproc src="/extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
-
 1. On the next screen:
 
    1. Select the camera from the drop down menu.
@@ -796,20 +790,19 @@ Select the camera you want to use, then click **Save config**
    1. Enter a name for this instance of your modular resource.
       This name must be different from the module name.
 
-   {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
+      {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
 
 1. Click **Create** to create the modular resource component.
-
 1. Copy the following JSON configuration into the **Attributes** section:
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "vision_service": "my_color_detector",
-  "actual_cam": "cam"
-}
-```
+   ```json {class="line-numbers linkable-line-numbers"}
+   {
+     "vision_service": "my_color_detector",
+     "actual_cam": "cam"
+   }
+   ```
 
-![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam](/tutorials/pet-photographer/colorfiltercam-component-attributes.png)
+   ![A component panel for a color filter modular resource with the attributes filled out for vision service and actual_cam](/tutorials/pet-photographer/colorfiltercam-component-attributes.png)
 
 ### Configure data capture
 
@@ -827,13 +820,14 @@ On the **colorfiltercam**'s panel, toggle **view colorfiltercam** to view your c
 Test the filter by moving a blue colored item within the camera's field of view.
 Then, go to the **Data** tab to view pictures that contain the blue colored item.
 
+For example, your pet with the blue collar:
+
 ![Filtered data tab contents from colorfiltercam showing only photos of dog with blue collar](/tutorials/pet-photographer/data-capture.png)
 
 ## Next steps
 
 Your pet photographer is now set up.
 Place it in an area your pet frequently visits and don't forget to attach the colored object to your pet.
-Then, check the [**Data** tab](/manage/data/view/)
 
 If you want to learn more about data management or detection, you may enjoy one of these tutorials:
 
