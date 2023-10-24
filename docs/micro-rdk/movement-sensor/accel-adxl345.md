@@ -117,7 +117,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 <!-- prettier-ignore -->
 | Name | Type   | Inclusion    | Description |
 | ---- | ------ | ------------ | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
+| `board` | string | **Required** | The `name` of the [board](/micro-rdk/board/) to which the device is wired. |
 | `i2c_bus` | string | **Required** | The `name` of the I<sup>2</sup>C bus on the [board](/micro-rdk/board/) wired to this device. |
 | `use_alt_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
 
