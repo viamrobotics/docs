@@ -111,7 +111,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    {{%/tab %}}
    {{% tab name="JSON Example" %}}
 
-   This example JSON coonfiguration:
+   This example JSON configuration:
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
    - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
@@ -258,7 +258,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
    {{% /tab %}}
    {{% tab name="JSON Example" %}}
 
-   This example JSON coonfiguration:
+   This example JSON configuration:
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
    - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
@@ -397,7 +397,7 @@ The `cartographer` module on your robot polls the live LiDAR and IMU directly at
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
 
-This example JSON coonfiguration:
+This example JSON configuration:
 
 - adds the `viam:rplidar` and the `viam:cartographer` modules
 - configures the `viam:slam:cartographer` service
