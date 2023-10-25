@@ -790,7 +790,7 @@ Your robot's configuration page now includes a panel for your camera.
 1. On the following screen:
 
    1. Select the camera from the drop down menu.
-   1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} for your modular resource's [model](/extend/modular-resources/key-concepts/#models), `example:camera:colorfilter`.
+   1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} for your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}, `example:camera:colorfilter`.
    1. Provide a name for this instance of your modular resource.
       This name must be different from the module name.
 

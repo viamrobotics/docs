@@ -245,7 +245,7 @@ To add a local module on your robot:
 
 1. Then, select the `local modular resource` type from the list.
 
-   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-select.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 
 1. On the next screen:
 
