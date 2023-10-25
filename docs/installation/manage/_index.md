@@ -262,13 +262,39 @@ cat $(brew --prefix)/var/log/viam.log
 
 ## Uninstall `viam-server`
 
-{{< tabs name="View logs">}}
+{{< tabs name="Uninstall viam-server">}}
 {{% tab name="Linux"%}}
+
+Remove the system installed service with the following three commands:
+
+```sh {class="command-line" data-prompt="$"}
+sudo systemctl disable --now viam-server
+sudo rm /etc/systemd/system/viam-server.service
+sudo systemctl daemon-reload
+```
+
+To remove various Viam caches and logs for the root (service) user, run:
+
+```sh {class="command-line" data-prompt="$"}
+sudo rm -r ~/.viam/
+```
+
+If you ever run `viam-server` directly, to remove various Viam caches and logs for your own user run:
+
+```sh {class="command-line" data-prompt="$"}
+rm -r ~/.viam/
+```
+
+To remove the `viam-server` binary itself, run:
+
+```sh {class="command-line" data-prompt="$"}
+sudo rm /usr/local/bin/viam-server
+```
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
-You can uninstall `viam-server` using the following command:
+Uninstall `viam-server` with the following command:
 
 ```sh {class="command-line" data-prompt="$"}
 brew uninstall viam-server
