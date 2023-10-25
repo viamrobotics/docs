@@ -8,7 +8,7 @@ type: docs
 image: "/installation/thumbnails/install.png"
 imageAlt: "Install Viam"
 images: ["/installation/thumbnails/install.png"]
-description: "To use Viam software with your smart machine, install and run the viam-server binary on the computer that is connected to your hardware."
+description: "To use Viam software with your smart machine, install and run the viam-server binary on the computer that will run your smart machine and is connected to your hardware."
 aliases:
   - /installation/prepare/
   - /installation/macos-install/
@@ -21,7 +21,7 @@ aliases:
   - /getting-started/linux-install/
 ---
 
-To use Viam software with your smart machine, install and run the `viam-server` binary on the single board computer (SBC) or other computer that is connected to your hardware.
+To use Viam software with your smart machine, install and run the `viam-server` binary on the single board computer (SBC) or other computer that will run your smart machine and is connected to your hardware.
 Installing on a laptop or desktop computer is useful if you don't have an SBC available, or if you want to run a Viam [service](/services/) with your robot that requires more computing resources than are otherwise available on an SBC.
 
 {{< alert title="Compatibility" color="note" >}}
