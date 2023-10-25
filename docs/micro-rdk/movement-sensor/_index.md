@@ -11,7 +11,7 @@ no_list: true
 ---
 
 A movement sensor is a sensor that gives data on where a robot is and how fast it is moving.
-For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/rdk/), see the [Movement Sensor component](/components/movement-sensor/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Movement Sensor Component](/components/movement-sensor/).
 
 ## Configuration
 

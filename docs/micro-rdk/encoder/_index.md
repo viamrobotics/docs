@@ -11,7 +11,7 @@ no_list: true
 ---
 
 An encoder is a special type of sensor that measures rotation of a motor or joint.
-For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/rdk/), see the [Encoder component](/components/encoder/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Encoder Component](/components/encoder/).
 
 ## Supported Models
 

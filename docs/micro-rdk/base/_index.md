@@ -11,7 +11,7 @@ no_list: true
 ---
 
 A base is the moving platform that the other parts of a mobile robot attach to.
-For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/rdk/), see the [Base component](/components/base/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see the [Base Component](/components/base/).
 
 ## Supported Models
 

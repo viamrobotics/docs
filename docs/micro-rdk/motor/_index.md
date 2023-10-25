@@ -11,7 +11,7 @@ no_list: true
 ---
 
 A motor is a rotating machine that transforms electrical energy into mechanical energy.
-For more information and models supported by [the RDK (features provided by the full version of `viam-server`)](/internals/rdk/), see the [Motor component](/components/motor/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Motor Component](/components/motor/).
 
 ## Supported Models
 
@@ -21,8 +21,6 @@ For configuration information, click on the supported motor model name:
 | Model | Description |
 | ----- | ----------- |
 | [`gpio`](./gpio/) | [Standard brushed or brushless DC motor](https://en.wikipedia.org/wiki/DC_motor) |
-
-Click on the model names above for configuration information.
 
 ## API
 
