@@ -6,10 +6,9 @@ short_description: namespace:repo-name:name or rdk:builtin:name
 aka:
 ---
 
-{{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets in the form of `namespace:repo-name:name` for modular resources and `rdk:builtin:name` for builtin models.
+{{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets in the form of `namespace:repo-name:name` for modular resources and `rdk:builtin:name` for built-in models.
 
-The `repo-name` segment is generally used for the git repository of your modular resource, but you can also use it to identify a family of models.
-
+The `repo-name` segment generally matches the name of the git repository of your modular resource, but you can also use it to identify a family of models.
 For example:
 
 - The `viam:camera:csi` model implements the `rdk:component:camera` API to support CSI cameras.

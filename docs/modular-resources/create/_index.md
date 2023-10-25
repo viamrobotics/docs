@@ -119,7 +119,8 @@ class MyBase(Base, Reconfigurable):
     """
 
     # Here is where we define our new model's colon-delimited-triplet
-    # (acme:demo:mybase) acme = namespace, demo = family, mybase = model name.
+    # (acme:demo:mybase) acme = namespace, demo = repo-name,
+    # mybase = model name.
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
     def __init__(self, name: str, left: str, right: str):

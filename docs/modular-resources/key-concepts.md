@@ -68,7 +68,7 @@ Models are either:
 
 ### Built-in models
 
-Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `type`.
+Viam provides many built-in models that implement API capabilities, each using `rdk` as the `namespace`, and `builtin` as the `family`.
 These models run within `viam-server`.
 
 For example:
