@@ -273,7 +273,7 @@ Get the lengths of the axes of the gantry (mm).
 
 - [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of the lengths of the axes of the gantry in millimeters.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_lengths).
 
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")
