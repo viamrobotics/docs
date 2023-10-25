@@ -133,7 +133,8 @@ Then, include it in the conditional statement in your filter function:
          detections = await self.vision_service.get_detections(img)
 ```
 
-- If `from_dm_from_extra` is `true` and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
+- The Python-configured camera checks if the data management service is the caller of the filter function by using `from_dm_from_extra` to determine whether to store data.
+  - If `from_dm_from_extra` is `true` and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -152,7 +153,8 @@ if ctx.Value(data.FromDMContextKey{}) != true {
  detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
 ```
 
-- If `data.FromDMContextKey{}` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
+- The Go-configured camera checks if the data management service is the caller of the filter function by using `data.FromDMContextKey{}` to determine whether to store data.
+  - If `data.FromDMContextKey{}` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
 - Then, after capturing the image, the code continues to request detections.
 
 **PLACEHOLDER: `FromDMContextKey` vs `FromDMString`?**
@@ -209,7 +211,6 @@ if len(detections) == 0 {
 {{< /tabs >}}
 
 Once you've included the required safeguard and utility function, your complete color filter function should look like the following.
-In the Go color filter, errors have been added for when there are errors encountered while getting the next source image or obtaining detections.
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -228,6 +229,8 @@ async def get_image(self, mime_type: str = "", *, extra: Optional[Dict[str, Any]
 
 {{% /tab %}}
 {{% tab name="Go"%}}
+
+This code includes the safeguards you wrote earlier as well as error handling for getting the next source image and obtaining detections.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Next contains the filtering logic and returns select data from the underlying camera.
@@ -258,8 +261,6 @@ return fs.cameraStream.Next(ctx)
 {{% /tab %}}
 {{< /tabs >}}
 
-- The Python-configured camera checks if the data management service is the caller of the filter function by using `from_dm_from_extra` to determine whether to store data.
-- The Go-configured camera checks if the data management service is the caller of the filter function by using `data.FromDMContextKey{}` to determine whether to store data.
 - If the data management service is the caller, the filter function requests detections from the vision service and returns the image if the specified color is detected.
   Otherwise, it raises `data.ErrNoCaptureToStore` or `NoCaptureToStoreError()`.
 
@@ -648,6 +649,8 @@ func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err 
 For more information on creating your own module, refer to [Code your own modules to create modular resources](https://docs.viam.com/modular-resources/create/).
 
 Once you've written your filter module, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module when executed.
+
+Note the absolute path to your module’s executable for later use.
 
 ### Add local module
 
