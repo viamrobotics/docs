@@ -51,12 +51,13 @@ def parse(type, names):
             service = "cloud"
 
         # Find all python methods objects on Python docs site soup
-        py_methods_sdk_docs = soup.find_all("dt", class_="sig sig-object py")
+        py_methods_sdk_docs = soup.find_all("dl", class_="py method")
         py_methods_sdk_docs_filtered_ids = []
 
         # Get ids and filter list
         for tag in py_methods_sdk_docs:
-            id = tag.get('id')
+            tag_sigobject = tag.find("dt", class_="sig sig-object py")
+            id = tag_sigobject.get('id')
 
             if not id.endswith("Client") and not id.endswith(".client") \
             and not id.endswith("SUBTYPE") and not id.endswith(".from_robot") \
@@ -66,17 +67,27 @@ def parse(type, names):
 
             # Get methods information
             method_text = []
-            param_element = tag.find_all("em", class_="sig-param")
+
+            # Parameters
+            param_element = tag_sigobject.find_all("em", class_="sig-param")
             if param_element:
                 for element in param_element:
                     method_text.append(element.text + " ")
 
-            return_element = tag.find_all("span", class_="sig-return")
+            # Returns
+            return_element = tag_sigobject.find_all("span", class_="sig-return")
             if return_element:
                 for element in return_element:
                     method_text.append(element.text)
 
-            method_text = ''.join(method_text)
+            # Descriptions
+            description_elements = tag.find_all("p")
+            if description_elements:
+                for element in description_elements:
+                    method_text.append(element.text)
+
+            # Join all text together and add to methods list
+            method_text = ' '.join(method_text)
             methods_dict[id] = method_text
 
             
@@ -125,7 +136,7 @@ def parse(type, names):
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} | Method Parameters & Returned: {methods_dict.get(method)}")
+        print(f"Method: {method} | Method Parameters, Returned, Description: {methods_dict.get(method)}")
 
 
 total_sdk_methods_missing = []      
