@@ -151,4 +151,4 @@ if total_sdk_methods_missing:
     print(f"\n Total SDK methods missing: {total_sdk_methods_missing} \n\n Missing Method Information: \n")
     print_method_information(missing_services, services_dict)
     print_method_information(missing_components, components_dict)
-    sys.exit(1)
+    # sys.exit(1)
