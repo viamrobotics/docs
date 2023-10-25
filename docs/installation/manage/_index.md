@@ -273,6 +273,12 @@ sudo rm /etc/systemd/system/viam-server.service
 sudo systemctl daemon-reload
 ```
 
+To remove the configuration file, run:
+
+```sh {class="command-line" data-prompt="$"}
+sudo rm /etc/viam.json
+```
+
 To remove various Viam caches and logs for the root (service) user, run:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -298,6 +304,18 @@ Uninstall `viam-server` with the following command:
 
 ```sh {class="command-line" data-prompt="$"}
 brew uninstall viam-server
+```
+
+To remove various Viam caches and logs, run:
+
+```sh {class="command-line" data-prompt="$"}
+rm -r ~/.viam/
+```
+
+To remove the configuration file, run:
+
+```sh {class="command-line" data-prompt="$"}
+sudo rm /etc/viam.json
 ```
 
 {{% /tab %}}
