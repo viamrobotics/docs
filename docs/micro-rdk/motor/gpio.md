@@ -13,7 +13,7 @@ The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (b
 You can configure [encoders](/micro-rdk/encoder/) to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
-To configure a DC motor as a component of your robot, first configure the [board](/micro-RDK/board/) to which the motor driver is wired.
+To configure a DC motor as a component of your robot, first configure the [board](/micro-rdk/board/) to which the motor driver is wired.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}
