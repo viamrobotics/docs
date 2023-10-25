@@ -276,7 +276,7 @@ sudo systemctl daemon-reload
 To remove various Viam caches and logs for the root (service) user, run:
 
 ```sh {class="command-line" data-prompt="$"}
-sudo rm -r ~/.viam/
+sudo rm -r /root/.viam/
 ```
 
 If you ever run `viam-server` directly, to remove various Viam caches and logs for your own user run:
