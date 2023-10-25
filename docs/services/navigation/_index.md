@@ -354,7 +354,7 @@ location, err := myNav.Location(context.Background(), nil)
 
 - [(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude and longitude values.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Navigation.get_location).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_location).
 
 ```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
