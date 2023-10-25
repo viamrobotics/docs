@@ -260,6 +260,23 @@ cat $(brew --prefix)/var/log/viam.log
 {{% /tab %}}
 {{< /tabs >}}
 
+## Uninstall `viam-server`
+
+{{< tabs name="View logs">}}
+{{% tab name="Linux"%}}
+
+{{% /tab %}}
+{{% tab name="macOS" %}}
+
+You can uninstall `viam-server` using the following command:
+
+```sh {class="command-line" data-prompt="$"}
+brew uninstall viam-server
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
