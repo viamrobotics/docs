@@ -20,6 +20,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   additionalSearchParameters: {
     query_by: "api,model,description",
     sort_by: "total_organization_usage:desc,total_robot_usage:desc",
+    infix: "always"
   },
 });
 const searchClient = typesenseInstantsearchAdapter.searchClient;
