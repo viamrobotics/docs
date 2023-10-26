@@ -101,7 +101,7 @@ def parse(type, names):
                 for element in return_element:
                     method_text.append("- " + element.text + "\n")
 
-            method_text.append(f"For more information, see the [Python SDK Docs]({url})")
+            method_text.append(f"\n For more information, see the [Python SDK Docs]({url})")
 
             # Join all text together and add to methods list
             method_text = ' '.join(method_text)
@@ -142,7 +142,8 @@ def parse(type, names):
                         found += 1
                         break
 
-            if not found:
+            if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
+            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor":
                 sdk_methods_missing.append(id)
         
 
