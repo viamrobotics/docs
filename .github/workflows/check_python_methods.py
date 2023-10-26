@@ -83,12 +83,17 @@ def parse(type, names):
             # Descriptions
             description_elements = tag.find_all("p")
             if description_elements:
+                index = 0
                 for element in description_elements:
-                    method_text.append(element.text)
+                    if index >= 1:
+                        method_text.append("\n  -" + element.text)
+                    else:
+                        method_text.append("\n" + element.text)
+                    index += 1
 
             # Join all text together and add to methods list
             method_text = ' '.join(method_text)
-            methods_dict[id] = method_text
+            methods_dict[id] = method_text + "\n"
 
             
         # Parse the Docs site's service page
@@ -136,7 +141,7 @@ def parse(type, names):
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} | Method Parameters, Returned, Description: {methods_dict.get(method)}")
+        print(f"Method: {method} \n Method Parameters, Returned, Description: {methods_dict.get(method)}")
 
 
 total_sdk_methods_missing = []      
