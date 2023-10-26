@@ -74,6 +74,109 @@ The data client API supports the following methods (among [others](https://pytho
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
+### TabularDataByFilter
+
+Retrieve optionally filtered tabular data from the [Viam app](https://app.viam.com).
+You can also find your tabular data under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `filter` [(Optional[viam.proto.app.data.Filter])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter): Optional `Filter` specifying tabular data to retrieve. Specify no filter to download all tabular data.
+- `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
+
+**Returns**:
+
+- [(List[TabularData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.TabularData): The tabular data retrieved from the [Viam app](https://app.viam.com).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="left_motor")
+tabular_data = await data_client.tabular_data_by_filter(my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### BinaryDataByFilter
+
+Retrieve optionally filtered binary data from the [Viam app](https://app.viam.com).
+You can also find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `filter` [(Optional[viam.proto.app.data.Filter])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter): Optional `Filter` specifying binary data to retrieve. Specify no filter to download all binary data.
+- `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
+- `include_file_data` [(bool)](https://docs.python.org/3/c-api/bool.html#boolean-objects): Boolean specifying whether to include the binary file data with each retrieved file. Defaults to `true`, where both the files’ data and metadata are returned.
+- `num_files` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Number of binary data to return. Passing `0` returns all binary data matching the filter. Defaults to `100` if no binary data is requested, otherwise `10`.
+
+**Returns**:
+
+- [(List[BinaryData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.BinaryData): The binary data retrieved from the [Viam app](https://app.viam.com).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_type="camera")
+binary_data = await data_client.binary_data_by_filter(my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### BinaryDataByIDs
+
+Retrieve binary data from the [Viam app](https://app.viam.com) by [`BinaryID`](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID).
+You can also find your binary data under the **Images**, **Point clouds**, or **Files** subtab of the app's [**Data** tab](https://app.viam.com/data), depending on the type of data that you have uploaded.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data. Must be non-empty.
+- `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
+
+**Returns**:
+
+- [(List[BinaryData])](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.BinaryData): The binary data retrieved from the [Viam app](https://app.viam.com).
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.binary_data_by_ids(my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### BinaryDataCaptureUpload
 
 Upload binary data collected on your machine through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).

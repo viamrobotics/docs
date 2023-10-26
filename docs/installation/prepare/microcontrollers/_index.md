@@ -82,90 +82,37 @@ If successful, your robot will show that it's **Live**.
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-### Configure an esp32 board
+### Configure your robot with an ESP32
 
-{{< alert title="Info" color="info" >}}
+The micro-RDK provides different component models than the fully featured RDK.
+See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
 
-The`esp32` [board](/components/board/) model is not currently provided for you as a built-in option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+## Next steps
 
-{{< /alert >}}
+{{< cards >}}
+{{% manualcard link="/micro-rdk/board/esp32/" %}}
 
-To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
+<h4>Configure your board </h4>
 
-Copy the following JSON template and paste it into your configuration inside the `"components"` array:
+Configure your `esp32` board for your robot.
 
-{{< tabs name="Configure an esp32 Board" >}}
-{{% tab name="JSON Template"%}}
+{{% /manualcard %}}
+{{< /cards >}}
 
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "attributes": {
-    "pins": [
-      <int>
-    ],
-    "analogs": [
-      {
-        "pin": "<number>",
-        "name": "<your-analog-name>"
-      }
-    ]
-  },
-  "depends_on": [],
-  "model": "esp32",
-  "name": "<your-board-name>",
-  "type": "board"
-}
-```
+## Troubleshooting
 
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "attributes": {
-    "pins": [15],
-    "analogs": [
-      {
-        "pin": "34",
-        "name": "sensor"
-      }
-    ]
-  },
-  "depends_on": [],
-  "model": "esp32",
-  "name": "board",
-  "type": "board"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Edit and fill in the attributes as applicable.
-Click **Save config**.
-
-The following attributes are available for `esp32` boards:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-| `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
-
-### Troubleshooting
-
-#### Linux Port Permissions
+### Linux port permissions
 
 If a "Permission Denied" or similar port error occurs, first check the connection of the ESP32 to the machine's USB port.
 If connected and the error persists, run `sudo usermod -a -G dialout $USER` to add the current user to the `dialout` group, restart your terminal, and try again.
 
-#### MacOS Executable Permissions
+### MacOS executable permissions
 
 When using a machine running a version of MacOS, the user is blocked from running the executable by default.
 To fix this, **Control+Click** the binary in Finder and then, in the following two prompts select **Open**.
 Close whatever terminal window this opens to be able to run the installer.
 
-#### Error: FlashConnect
+### Error: FlashConnect
 
 This may occur because the serial port chosen if/when prompted is incorrect.
 However, if the correct port has been selected, try the following:

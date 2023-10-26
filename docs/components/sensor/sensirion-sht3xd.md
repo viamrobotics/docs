@@ -31,8 +31,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "board": "<your-board-name>",
-  "i2c_bus": "<your-i2c-bus-name-on-board>",
-  "i2c_address": "<your-i2c-address>"
+  "i2c_bus": "<your-i2c-bus-index-on-board>"
 }
 ```
 
@@ -42,7 +41,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "board": "local",
-  "i2c_bus": "i2c_bus1"
+  "i2c_bus": "2"
 }
 ```
 
@@ -62,7 +61,7 @@ Then remove and fill in the attributes as applicable to your sensor, according t
       "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
-        "i2c_bus": "<your-i2c-bus-name-on-board>",
+        "i2c_bus": "<your-i2c-bus-index-on-board>",
         "i2c_address": "<your-i2c-address>"
       },
       "depends_on": []
@@ -79,8 +78,7 @@ The following attributes are available for `sensirion-sht3xd` sensors:
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `board` | string | **Required** | The `name` of the [board](/components/board/) the sensor is wired to. |
-| `i2c_bus` | string | **Required** | The `name` of the [I2C bus](/components/board/#i2cs) on the board that the sensor is wired to. |
+| `i2c_bus` | string | **Required** | The index of the [I2C bus](/components/board/#i2cs) on the board that the sensor is wired to. |
 | `i2c_address` | string | Optional | The [I2C device address](https://learn.adafruit.com/i2c-addresses/overview) of the sensor. <br> Default: `0x44` |
 
 {{< readfile "/static/include/components/test-control/sensor-control.md" >}}
