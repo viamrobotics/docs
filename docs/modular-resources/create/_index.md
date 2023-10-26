@@ -18,7 +18,7 @@ aliases:
   - "/extend/modular-resources/create/"
 ---
 
-You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}}, and can be added to any smart machine running on Viam.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 A common use case for modular resources is to create a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
@@ -70,7 +70,7 @@ For more information see [Naming your model](/modular-resources/key-concepts/#na
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
-{{% alert title="Naming module models" color="tip" %}}
+{{% alert title="Tip" color="tip" %}}
 
 Name your model with all lowercase letters for optimal performance with Viam's SDKs.
 For example, `mybase` or `my-cool-sensor`.

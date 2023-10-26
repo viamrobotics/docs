@@ -27,13 +27,13 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the component or service you want to use for your project is not natively supported, you can [use _modular resources_ from the Viam Registry](#the-viam-registry) or [create your own modular resources](#modular-resources).
+If the component or service you want to use for your project is not natively supported, you can use _modular resources_ from the [Viam Registry](#the-viam-registry) or [create your own modular resources](#create-modular-resources).
 You configure and manage modular resources the same way as built-in resources and use the same [standardized APIs](/program/apis/).
 
 ## The Viam Registry
 
-The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built-in to `viam-server`.
-You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its module details page.
+The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built into `viam-server`.
+You can see details about each module in the Viam registry on its module details page.
 
 You can search the available modular resources from the Viam Registry here:
 
@@ -51,11 +51,11 @@ You can search the available modular resources from the Viam Registry here:
 <div id="pagination"></div>
 </div>
 
-To use a modular resource from the registry, add it from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **Create component** button.
+To use a modular resource from the registry, add it from your robot's **Config** tab in [the Viam app](https://app.viam.com/), using the **Create component** button.
 
-## Modular resources
+## Create modular resources
 
-If none of the existing modular resources in the Viam registry support your use case, you can also create your own modular resources:
+If none of the existing modular resources in the Viam registry support your use case, you can create your own modular resources:
 
 - **Implement a custom component**: You can write a driver for an unsupported {{< glossary_tooltip term_id="component" text="component" >}} by implementing the corresponding component API.
 
@@ -65,13 +65,13 @@ If none of the existing modular resources in the Viam registry support your use 
 
 To create a new modular resource:
 
-1. [Code a new resource model](/modular-resources/create/) by implementing all methods for the component's or services's [standardized APIs](/program/apis/).
+1. [Code a new resource model](/modular-resources/create/) by implementing all methods for the component's or service's [standardized APIs](/program/apis/).
 1. Package your modular resource or modular resources as a {{< glossary_tooltip term_id="module" text="module" >}} and [upload the module to the Viam registry](/modular-resources/upload/) to make it available for deployment to robots.
    You can upload _private_ modules for your [organization](/manage/fleet/organizations/) or _public_ modules.
 1. Once you have uploaded your module to the registry, you can [deploy and configure the module](/modular-resources/configure/) from [the Viam app](https://app.viam.com/).
-   If the added resource is a component, you can then test it using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
+   If the added resource is a component, you can then test it using the [**Control** tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
-Some use cases may require you to extend the standardized API definitions or deploy custom components using a server on a remote part.
+Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/modular-resources/advanced/).
 
 ## Related tutorials

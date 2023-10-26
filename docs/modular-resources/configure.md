@@ -12,17 +12,17 @@ tags:
     "components",
     "services",
   ]
-description: "Add and configure a module from the Viam registry on your robot."
+description: "Add a modular resource to your robot by configuring it."
 no_list: true
 aliases:
   - "/program/extend/modular-resources/configure/"
 ---
 
-You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
+To use a [modular resource](/modular-resources/) on your robot, you need to:
 
-You can [add a module from the Viam registry](#add-a-module-from-the-viam-registry), or you can [add a local module](#local-modules).
-
-See [Key Concepts of Modular Resource APIs](/modular-resources/key-concepts/) for more information.
+1. Configure a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-module-from-the-viam-registry) or a [local module](#local-modules).
+   This makes the modular resource available to the robot.
+1. Then configure the modular resource itself.
 
 ## Add a module from the Viam registry
 
@@ -133,7 +133,7 @@ For any version type other than **Patch (X.Y.Z)**, the module will upgrade as so
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
 
-### Create a new modular resource from a registry module
+### Configure a modular resource from a registry module
 
 Once you have [added a module](#add-a-module-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resources' [model](/modular-resources/key-concepts/#models).
 
@@ -317,9 +317,9 @@ Add these properties to your module's configuration:
 {{% /tab %}}
 {{% /tabs %}}
 
-### Configure a modular resource
+### Configure a local modular resource
 
-Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resources' [model](/modular-resources/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's [model](/modular-resources/key-concepts/#models).
 
 The following properties are available for modular resources:
 

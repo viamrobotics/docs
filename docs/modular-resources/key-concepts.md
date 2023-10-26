@@ -26,7 +26,7 @@ Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support 
 However, if you want to work with a new hardware component that is not already supported by Viam, or want to introduce a new software service or service model to support additional functionality on your smart machine, you can extend Viam by adding a _modular resource_ to your smart machine.
 
 Modular resources are defined in _modules_, which are easy to create and add to your robot.
-A module can provide one or more modular resource models.
+A module can provide one or more modular resource models, and can be added to any smart machine running on Viam.
 
 ## Modules
 
@@ -36,19 +36,16 @@ A module provides definitions for one or more pairs of [APIs](#valid-apis-to-imp
 
 When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
-You can [upload your own modules to the Viam registry](/modular-resources/upload/) or can [add existing modules from the Registry](/modular-resources/configure/).
-
-See [Creating a custom module](/modular-resources/create/) for more information.
-
 ## Resources
 
 A resource is a [component](/components/) or [service](/services/).
 Each component or service is typed by a proto API, such as the [component proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
 
-Any resource on your robot needs to implement either one of these [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a custom interface.
+Any resource on your robot needs to implement either one of the [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a [custom interface](/modular-resources/advanced/#new-api-subtypes).
 
-A _modular resource_ is a resource that is provided by a [module](#modules), and not built-in to the RDK.
-A modular resource runs in the module process. This differs from built-in resources, which run as part of `viam-server`.
+A _modular resource_ is a resource that is provided by a [module](#modules), and not built into the RDK.
+A modular resource runs in the module process.
+This differs from built-in resources, which run as part of `viam-server`.
 
 ## Models
 
