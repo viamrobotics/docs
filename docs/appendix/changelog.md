@@ -8,24 +8,412 @@ description: "Changelog"
 # SME:
 ---
 
-## Upcoming
-
 ## 25 April 2023
+
+### Changed: Vision service
+
+{{% alert title="Important: Breaking Change" color="note" %}}
+
+The [vision service](/services/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
+
+Find more information on each of the changes below.
+
+{{% /alert %}}
+
+#### Use individual vision service instances
+
+You need to create **an individual vision service instance** for each detector, classifier, and segmenter model.
+You can no longer be able to create one vision service and register all of your detectors, classifiers, and segmenters within it.
+
+{{%expand "Click for details on how to migrate your code." %}}
+
+#### API calls
+
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segmenter model directly from the `VisionClient`:
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+Change your existing API calls to get the new vision service instance for your detector, classifier, or segmenter model directly from the `VisionClient`:
+
+```python {class="line-numbers linkable-line-numbers"}
+my_object_detector = VisionClient.from_robot(robot, "find_objects")
+img = await cam.get_image()
+detections = await my_object_detector.get_detections(img)
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+vision = VisionServiceClient.from_robot(robot)
+img = await cam.get_image()
+detections = await vision.get_detections(img, "find_objects")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Color Detector configurations
+
+You can replace existing color detectors by [configuring new ones in the UI](/services/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+    {
+        "name": "blue_square",
+        "type": "vision",
+        "model": "color_detector",
+        "attributes": {
+            "segment_size_px": 100,
+            "detect_color": "#1C4599",
+            "hue_tolerance_pct": 0.07,
+            "value_cutoff_pct": 0.15
+        }
+    },
+    {
+        "name": "green_triangle",
+        "type": "vision",
+        "model": "color_detector",
+        "attributes": {
+            "segment_size_px": 200,
+            "detect_color": "#62963F",
+            "hue_tolerance_pct": 0.05,
+            "value_cutoff_pct": 0.20
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "segment_size_px": 100,
+                    "detect_color": "#1C4599",
+                    "hue_tolerance_pct": 0.07,
+                    "value_cutoff_pct": 0.15
+                },
+                "name": "blue_square",
+                "type": "color_detector"
+            },
+            {
+                "parameters": {
+                    "segment_size_px": 200,
+                    "detect_color": "#62963F",
+                    "hue_tolerance_pct": 0.05,
+                    "value_cutoff_pct": 0.20
+                },
+                "name": "green_triangle",
+                "type": "color_detector"
+            }
+            ]
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### TFLite Detector configurations
+
+You can replace existing TFLite detectors by [configuring new ones in the UI](/services/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+    {
+        "name": "person_detector",
+        "type": "mlmodel",
+        "model": "tflite_cpu",
+        "attributes": {
+            "model_path": "/path/to/file.tflite",
+            "label_path": "/path/to/labels.tflite",
+            "num_threads": 1
+        }
+    },
+    {
+        "name": "person_detector",
+        "type": "vision",
+        "model": "mlmodel",
+        "attributes": {
+            "mlmodel_name": "person_detector"
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "model_path": "/path/to/file.tflite",
+                    "label_path": "/path/to/labels.tflite",
+                    "num_threads": 1
+                },
+                "name": "person_detector",
+                "type": "tflite_detector"
+            }
+            ]
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### TFLite Classifier configurations
+
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/services/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+    {
+        "name": "fruit_classifier",
+        "type": "mlmodel",
+        "model": "tflite_cpu",
+        "attributes": {
+            "model_path": "/path/to/classifier_file.tflite",
+            "label_path": "/path/to/classifier_labels.txt",
+            "num_threads": 1
+        }
+    },
+    {
+        "name": "fruit_classifier",
+        "type": "vision",
+        "model": "mlmodel",
+        "attributes": {
+            "mlmodel_name": "fruit_classifier"
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "model_path": "/path/to/classifier_file.tflite",
+                    "label_path": "/path/to/classifier_labels.txt",
+                    "num_threads": 1
+                },
+                "name": "fruit_classifier",
+                "type": "tflite_classifier"
+            }
+            ]
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Radius Clustering 3D Segmenter configurations
+
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-an-obstacles_pointcloud-segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+    {
+        "name": "rc_segmenter",
+        "type": "vision",
+        "model": "obstacles_pointcloud"
+        "attributes": {
+            "min_points_in_plane": 1000,
+            "min_points_in_segment": 50,
+            "clustering_radius_mm": 3.2,
+            "mean_k_filtering": 10
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "min_points_in_plane": 1000,
+                    "min_points_in_segment": 50,
+                    "clustering_radius_mm": 3.2,
+                    "mean_k_filtering": 10
+                },
+                "name": "rc_segmenter",
+                "type": "radius_clustering_segmenter"
+            }
+            ]
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+#### Detector to 3D Segmenter configurations
+
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/services/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your robots](/manage/configuration/#the-config-tab):
+
+{{< tabs >}}
+{{% tab name="New Way" %}}
+
+```json
+"services": [
+    {
+        "name": "my_segmenter",
+        "type": "vision",
+        "model": "detector_3d_segmenter"
+        "attributes": {
+            "detector_name": "my_detector",
+            "confidence_threshold_pct": 0.5,
+            "mean_k": 50,
+            "sigma": 2.0
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="Old Way" %}}
+
+```json
+"services": [
+    {
+        "name": "vision",
+        "type": "vision",
+        "attributes": {
+            "register_models": [
+            {
+                "parameters": {
+                    "detector_name": "my_detector",
+                    "confidence_threshold_pct": 0.5,
+                    "mean_k": 50,
+                    "sigma": 2.0
+                },
+                "name": "my_segmenter",
+                "type": "detector_segmenter"
+            }
+            ]
+        }
+    },
+    ... // other services
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /expand%}}
+
+#### Add and remove models using the robot config
+
+You must add and remove models using the [robot config](../../manage/configuration/).
+You will no longer be able to add or remove models using the SDKs.
+
+#### Add machine learning vision models to a vision service
+
+The way to add machine learning vision models is changing.
+You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
 
 ## 28 February 2023
 
+### Added: Rover reuse in Try Viam
+
+You now have the option to reuse a robot config from a previous Try Viam session.
+
+### Added: Dynamic code samples
+
+The Viam app **Code sample** tab now dynamically updates as you add resources to your robot's config.
+The code samples instantiate each resource and include examples of how to call a `Get` method on it.
+
+### Added: TypeScript SDK
+
+Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
+
+### Added: Frame system visualizer
+
+When adding [frames](/services/frame-system/) to your robot's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
+
+### Added: Support for microcontrollers
+
+Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
+Find more information in the [micro-RDK documentation](/installation/prepare/microcontrollers/).
+
 ## 31 January 2023
 
+### Added: Remote control power input
+
+On your robot's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
+The base control UI previously always sent 100% power to the base's motors.
+
+### Added: New encoder model: AMS AS5048
+
+The [AMS AS5048](/components/encoder/ams-as5048/) is now supported.
+
+### Added: GetLinearAcceleration method
+
+The movement sensor API now includes a [GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) method.
+
+### Added: Support for capsule geometry
+
+The [motion service](/services/motion/) now supports capsule geometries.
+
+The UR5 arm model has been improved using this new geometry type.
+
 ## 28 December 2022
-
-Release versions:
-
-- rdk - v0.2.9
-- api - v0.1.63
-- slam - v0.1.13
-- viam-python-sdk - v0.2.6
-- goutils - v0.1.6
-- rust-utils - v0.0.6
 
 ### Added: Modular resources
 
@@ -76,22 +464,7 @@ The [motion service](/services/motion/) is now agnostic to the networking topolo
 Previously, data synchronization used bidirectional streaming.
 Now is uses a simpler unary approach that is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.
 
-### Fixed: `viam-server` shutdown failure
-
-Fixed a bug where `viam-server` shutdown requests sometimes failed when connected to serial components.
-
 ## 28 November 2022
-
-Release versions:
-
-- rdk - v0.2.3
-- api - v0.1.12
-- slam - v0.1.9
-
-### Fixed: Camera reconnection issue
-
-Previously, when users supplied a video path in their camera configuration, they encountered issues if the camera tried to reconnect because the supplied video path was already being used for the old connection.
-Now, when a camera loses connection, it automatically closes the connection to its video path.
 
 ### Changed: Camera configuration
 
@@ -109,15 +482,6 @@ For information on configuring any camera model, see [Camera Component](/compone
 Changed the name of the **Connect** tab to **Code sample** based on user feedback.
 
 ## 15 November 2022
-
-Release versions:
-
-- rdk - v0.2.0
-- api - v0.1.7
-- slam - v0.1.7
-- viam-python-sdk - v0.2.0
-- goutils - v0.1.4
-- rust-utils - v0.0.5
 
 ### Added: New servo model
 
