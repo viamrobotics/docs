@@ -154,7 +154,7 @@ Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (
 ```sh { class="command-line" data-prompt="$"}
 mkdir -p ~/esp
 cd ~/esp
-git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/npmenard/esp-idf
+git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/viamrobotics/esp-idf
 ```
 
 Then, install the required tools for ESP-IDF:
