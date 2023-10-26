@@ -43,7 +43,7 @@ For configuration information, click on the model name:
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`ultrasonic`](ultrasonic/) | An ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) |
+| [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor |
 | [`bme280`](bme280/) | [BME280 environmental sensor](https://www.adafruit.com/product/2652) |
 | [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
