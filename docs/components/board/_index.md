@@ -53,6 +53,10 @@ For configuration information, click on the model name:
 
 {{<modular-resources api="rdk:component:board" type="board">}}
 
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [micro-RDK Board](/micro-rdk/board/) for supported model information.
+
 ## Attribute Configuration
 
 Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.

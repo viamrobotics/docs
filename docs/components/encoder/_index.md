@@ -54,6 +54,10 @@ For configuration information, click on the model name:
 
 {{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
 
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [micro-RDK Encoder](/micro-rdk/encoder/) for supported model information.
+
 ## Control your encoder with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
