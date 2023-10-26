@@ -90,6 +90,10 @@ To install `viam-server` on a macOS computer:
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/gmIW9JoWStA">}}
 
+### Manage `viam-server`
+
+To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-server`](/installation/manage/).
+
 ## Next Steps
 
 {{< cards >}}
