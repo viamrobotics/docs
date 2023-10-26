@@ -833,7 +833,6 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
    {{< alert title="Info" color="info" >}}
    Providing these values in this fashion ensures that your security keys are not accessible to others when publishing your code.
-   See the [Node.js documentation](https://nodejs.dev/en/learn/how-to-read-environment-variables-from-nodejs/) for more information.
    {{< /alert >}}
 
 1. Visit `localhost:8000` in a browser.
