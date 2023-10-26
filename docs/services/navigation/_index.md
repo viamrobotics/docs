@@ -629,7 +629,6 @@ Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
-- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 
 An example of an `Orientation` reading:
 
@@ -652,7 +651,6 @@ Then use the movement sensor API's [`GetOrientation()`](/components/movement-sen
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take angular velocity measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
-- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
@@ -716,7 +714,6 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 - [accel-adxl345](/components/movement-sensor/adxl345/)
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
-- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
 An example of a `Linear Acceleration` reading:
