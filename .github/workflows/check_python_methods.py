@@ -25,11 +25,13 @@ def parse(type, names):
 
         # Parse the Python doc's sites service client page
         if type == "app":
-            soup = make_soup(f"https://python.viam.dev/autoapi/viam/{type}/{service}/index.html")
+            url = f"https://python.viam.dev/autoapi/viam/{type}/{service}/index.html"
         elif type == "robot":
-            soup = make_soup(f"https://python.viam.dev/autoapi/viam/{type}/client/index.html")
+            url = f"https://python.viam.dev/autoapi/viam/{type}/client/index.html"
         else:
-            soup = make_soup(f"https://python.viam.dev/autoapi/viam/{type}/{service}/client/index.html")
+            url = f"https://python.viam.dev/autoapi/viam/{type}/{service}/client/index.html"
+
+        soup = make_soup(url)
 
         # Hacky because they're not the same on SDK docs and Docs site
         if service == "mlmodel":
@@ -67,29 +69,39 @@ def parse(type, names):
 
             # Get methods information
             method_text = []
+            
+            # Descriptions
+            # UNCOMMENT IF YOU WANT TO CATCH ALL EXTRA RETURNS INFORMATION/RETURNS DESCRIPTION
+            # description_elements = tag.find_all("p")
+            # if description_elements:
+            #     index = 0
+            #     for element in description_elements:
+            #         if index >= 1:
+            #             method_text.append("-" + element.text + "\n")
+            #         else:
+            #             method_text.append(element.text + "\n")
+            #         index += 1
+            description_element = tag.find("p")
+            if description_element:
+                method_text.append(description_element.text + "\n\n")
+            
+            method_text.append("**Parameters:** \n")
 
             # Parameters
             param_element = tag_sigobject.find_all("em", class_="sig-param")
             if param_element:
                 for element in param_element:
-                    method_text.append(element.text + " ")
+                    method_text.append("- " + element.text + "\n")
+
+            method_text.append("\n **Returns:** \n")
 
             # Returns
             return_element = tag_sigobject.find_all("span", class_="sig-return")
             if return_element:
                 for element in return_element:
-                    method_text.append(element.text)
+                    method_text.append("- " + element.text + "\n")
 
-            # Descriptions
-            description_elements = tag.find_all("p")
-            if description_elements:
-                index = 0
-                for element in description_elements:
-                    if index >= 1:
-                        method_text.append("\n  -" + element.text)
-                    else:
-                        method_text.append("\n" + element.text)
-                    index += 1
+            method_text.append(f"For more information, see the [Python SDK Docs]({url})")
 
             # Join all text together and add to methods list
             method_text = ' '.join(method_text)
@@ -141,7 +153,7 @@ def parse(type, names):
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} \n Method Parameters, Returned, Description: {methods_dict.get(method)}")
+        print(f"Method: {method} \n {methods_dict.get(method)}")
 
 
 total_sdk_methods_missing = []      
