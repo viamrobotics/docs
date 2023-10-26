@@ -325,13 +325,7 @@ Add these properties to your module's configuration:
 {{% /tab %}}
 {{% /tabs %}}
 
-<<<<<<< HEAD
 ### Add a local modular resource
-||||||| parent of 81bc0f96 (DOCS-1291: Add env vars to module conf)
-### Configure a modular resource
-=======
-### Configure a modular resource from a local module
->>>>>>> 81bc0f96 (DOCS-1291: Add env vars to module conf)
 
 Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
