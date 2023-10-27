@@ -109,7 +109,7 @@ The `repo-name` should describe the common functionality provided across the mod
 
 For example:
 - The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
-  They implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the yahboom dofbot arm and gripper respectively.
+  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the yahboom dofbot arm and gripper respectively.
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
