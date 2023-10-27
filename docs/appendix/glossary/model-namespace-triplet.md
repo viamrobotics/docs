@@ -8,7 +8,7 @@ aka:
 
 {{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets in the form of `namespace:repo-name:name` for modular resources and `rdk:builtin:name` for built-in models.
 
-We recommend to use the name of the git repository of your modular resource as the middle segment.
+We recommend using the name of the git repository of your modular resource as the middle segment.
 The `repo-name` should describe the common functionality provided across the model or models of that module.
 
 For example:
