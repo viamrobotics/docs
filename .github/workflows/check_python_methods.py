@@ -24,6 +24,17 @@ def html_to_markdown(base_url, html):
 
     return markdownify.markdownify(str(html)).strip()
 
+def get_param_details(item):
+    param, desc = item.split(" – ")
+    if "** (" in param:
+        param_name, param_type = param.split("** (")
+        param_type = param_type[:-1].replace("*","")
+        param_name = param_name.replace("**","")
+        return f"- {param_name} ({param_type}): {desc}\n".format(param_name=param_name, param_type=param_type, desc=desc)
+    else:
+        param_name = param.replace("**","")
+        return "- {param_name}: {desc}\n".format(param_name=param_name, desc=desc)
+
 def parse(type, names):
 
     sdk_methods_missing = []
@@ -110,19 +121,11 @@ def parse(type, names):
                     if (extras_values.name == "ul"):
                         for li in extras_values.findChildren("li", recursive=False):
                             item = html_to_markdown(url, li)
-                            param, desc = item.split(" – ")
-                            param_name, param_type = param.split(" (")
-                            param_type = param_type[:-1].replace("*","")
-                            param_name = param_name.replace("**","`")
-                            method_text.append(f"- {param_name} ({param_type}): {desc}\n")
+                            method_text.append(get_param_details(item))
                     # if values are not a list
                     else:
                         item = html_to_markdown(url, extras_values)
-                        param, desc = item.split(" – ")
-                        param_name, param_type = param.split(" (")
-                        param_type = param_type[:-1].replace("*","")
-                        param_name = param_name.replace("**","`")
-                        method_text.append(f"- {param_name} ({param_type}): {desc}\n")
+                        method_text.append(get_param_details(item))
 
                 param_element = tag_sigobject.find_all("em", class_="sig-param")
                 if param_element:
