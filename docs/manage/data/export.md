@@ -37,4 +37,4 @@ You can see more information about exporting data in the [Viam CLI documentation
 
 ## Next Steps
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture data and train a model](/tutorials/services/data-mlmodel-tutorial/).

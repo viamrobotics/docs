@@ -27,7 +27,7 @@ To capture data from one or more machines, you must first add the [data manageme
 
 5. Click **Save Config**.
 
-![data capture configuration](/tutorials/data-management/data-manager.png)
+![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
 {{%expand "Click to view the JSON configuration for the data management service" %}}
 
@@ -326,4 +326,4 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture data and train a model](/tutorials/services/data-mlmodel-tutorial/).
