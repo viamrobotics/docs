@@ -71,19 +71,11 @@ def parse(type, names):
             method_text = []
             
             # Descriptions
-            # UNCOMMENT IF YOU WANT TO CATCH ALL EXTRA RETURNS INFORMATION/RETURNS DESCRIPTION
-            # description_elements = tag.find_all("p")
-            # if description_elements:
-            #     index = 0
-            #     for element in description_elements:
-            #         if index >= 1:
-            #             method_text.append("-" + element.text + "\n")
-            #         else:
-            #             method_text.append(element.text + "\n")
-            #         index += 1
-            description_element = tag.find("p")
-            if description_element:
-                method_text.append(description_element.text + "\n\n")
+            description = tag.find("dd")
+            if description:
+                for elem in description.find_all("p", recursive=False):
+                    method_text.append(elem.text + "\n")
+            method_text.append("\n")
             
             method_text.append("**Parameters:** \n")
 
@@ -101,7 +93,7 @@ def parse(type, names):
                 for element in return_element:
                     method_text.append("- " + element.text + "\n")
 
-            method_text.append(f"\n For more information, see the [Python SDK Docs]({url})")
+            method_text.append(f"\n For more information, see the [Python SDK Docs]({url}#{id})")
 
             # Join all text together and add to methods list
             method_text = ' '.join(method_text)
