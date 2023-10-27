@@ -104,31 +104,31 @@ If you are [creating a custom module](/modular-resources/create/) and [uploading
 - Your model triplet must be all-lowercase.
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
-In addition, you should use the name of the git repository for your modular resource as the `repo-name`.
-The `repo-name` should identify a single model or multiple models.
-You can use a name that identifies the _family_ of the model or models:
+For the middle segment of your model triplet `repo-name`, use the name of the git repository where you store your module's code.
+The `repo-name` should describe the common functionality provided across the modelor models of that module.
 
-- If your module provides a single model, the `repo-name` should match the `subtype` of whichever API your model implements.
-  For example, the Intel Realsense module `realsense`, available from the [Viam registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
+For example:
+- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
+  They implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the yahboom dofbot arm and gripper respectively.
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
-    "api": "rdk:component:camera",
-    "model": "viam:camera:realsense"
+    "api": "rdk:component:arm",
+    "model": "rand:yahboom:arm"
+  },
+  {
+    "api": "rdk:component:arm",
+    "model": "rand:yahboom:arm"
   }
   ```
 
-- If your module provides multiple models, the `repo-name` should describe the common functionality provided across all the models of that module.
-  For example, the ODrive module `odrive`, available from the [Viam registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
+- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
+  It implements the custom API `viam-labs:service:audioout`.
 
   ```json {class="line-numbers linkable-line-numbers"}
   {
-    "api": "rdk:component:motor",
-    "model": "viam:odrive:serial"
-  },
-  {
-    "api": "rdk:component:motor",
-    "model": "viam:odrive:canbus"
+    "api": "viam-labs:service:audioout",
+    "model": "viam-labs:audioout:pygame"
   }
   ```
 
