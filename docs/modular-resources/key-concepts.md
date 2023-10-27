@@ -58,7 +58,9 @@ Models allow you to control different instances of a resource with a consistent 
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:repo-name:name` for modular resources and `rdk:builtin:name` for builtin models.
+Models are uniquely namespaced as colon-delimited-triplets.
+Modular resource model names have the form `namespace:repo-name:name`.
+Built-in model names have the form `rdk:builtin:name`.
 See [Naming your model](#naming-your-model-namespacerepo-namename) for more information.
 
 Models are either:
