@@ -114,26 +114,8 @@ For example:
 - The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
   The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper respectively.
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "api": "rdk:component:arm",
-    "model": "rand:yahboom:arm"
-  },
-  {
-    "api": "rdk:component:gripper",
-    "model": "rand:yahboom:gripper"
-  }
-  ```
-
 - The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
   It implements the custom API `viam-labs:service:audioout`.
-
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "api": "viam-labs:service:audioout",
-    "model": "viam-labs:audioout:pygame"
-  }
-  ```
 
 A model with the `viam` namespace is always Viam-provided.
 
