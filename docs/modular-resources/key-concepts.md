@@ -108,6 +108,7 @@ For the middle segment of your model triplet `repo-name`, use the name of the gi
 The `repo-name` should describe the common functionality provided across the model or models of that module.
 
 For example:
+
 - The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
   The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the yahboom dofbot arm and gripper respectively.
 
