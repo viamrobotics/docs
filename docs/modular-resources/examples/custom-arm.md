@@ -21,7 +21,7 @@ aliases:
 # SMEs: Nicole Jung
 ---
 
-The {{< glossary_tooltip term_id="rdk" text="RDK" >}} provides a number of built-in arm {{< glossary_tooltip term_id="model" text="models" >}} that implement the API protocol of the [arm](/components/arm/) {{< glossary_tooltip term_id="subtype" text="subtype" >}} of component, such as the `ur5e`, `xArm6`, and `xArm7`.
+The {{< glossary_tooltip term_id="rdk" text="RDK" >}} provides a number of built-in arm {{< glossary_tooltip term_id="model" text="models" >}} that implement the API protocol of the [arm](/components/arm/) {{< glossary_tooltip term_id="subtype" text="subtype" >}} component, such as the `ur5e`, `xArm6`, and `xArm7`.
 
 {{% alert title="Info" color="info" %}}
 
