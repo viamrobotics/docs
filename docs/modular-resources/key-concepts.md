@@ -105,7 +105,7 @@ If you are [creating a custom module](/modular-resources/create/) and [uploading
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
 For the middle segment of your model triplet `repo-name`, use the name of the git repository where you store your module's code.
-The `repo-name` should describe the common functionality provided across the modelor models of that module.
+The `repo-name` should describe the common functionality provided across the model or models of that module.
 
 For example:
 - The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
