@@ -33,5 +33,5 @@ _viam-server_ is responsible for:
 {{< cards >}}
 {{% card link="/program/apis/" %}}
 {{% card link="/modular-resources/" %}}
-{{% card link="/internals/micro-rdk/" %}}
+{{% card link="/micro-rdk/" %}}
 {{< /cards >}}
