@@ -1,9 +1,12 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import sys
+import markdownify
+import urllib.parse
+
 
 services = ["motion", "navigation", "sensors", "slam", "vision", "mlmodel"]
-components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper", 
+components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
               "input", "movement_sensor", "power_sensor", "sensor"]
 app_apis = ["data_client", "app_client"]
 robot_apis = ["robot"]
@@ -13,7 +16,13 @@ def make_soup(url):
     page = urlopen(url)
     html = page.read().decode("utf-8")
     return BeautifulSoup(html, "html.parser")
-    
+
+
+def html_to_markdown(base_url, html):
+    for url in html.find_all('a'):
+        url["href"] = urllib.parse.urljoin(base_url,url.get('href'))
+
+    return markdownify.markdownify(str(html)).strip()
 
 def parse(type, names):
 
@@ -69,37 +78,109 @@ def parse(type, names):
 
             # Get methods information
             method_text = []
-            
+
             # Descriptions
             description = tag.find("dd")
             if description:
                 for elem in description.find_all("p", recursive=False):
-                    method_text.append(elem.text + "\n")
+                    method_text.append(html_to_markdown(url, elem) + "\n")
             method_text.append("\n")
-            
-            method_text.append("**Parameters:** \n")
 
-            # Parameters
-            param_element = tag_sigobject.find_all("em", class_="sig-param")
-            if param_element:
-                for element in param_element:
-                    method_text.append("- " + element.text + "\n")
+            # Description extras: Parameters, returns, raises
+            extras = description.find("dl")
+            if (extras):
+                extras_fields = extras.find_all("dt")
+                extras_values_wrapper = extras.find_all("dd")
 
-            method_text.append("\n **Returns:** \n")
+                description_extras = dict()
 
-            # Returns
-            return_element = tag_sigobject.find_all("span", class_="sig-return")
-            if return_element:
-                for element in return_element:
-                    method_text.append("- " + element.text + "\n")
+                for i in range(len(extras_fields)):
+                    extras_values = extras_values_wrapper[i].findChildren()[0]
+                    field = extras_fields[i].text
+                    description_extras[field] = extras_values
 
-            method_text.append(f"\n For more information, see the [Python SDK Docs]({url}#{id})")
+                # Parameters
+                method_text.append("**Parameters:** \n")
+                no_parameters = True
+                if "Parameters:" in description_extras:
+                    no_parameters = False
+                    extras_values = description_extras["Parameters:"]
+
+                    # if values are a list
+                    if (extras_values.name == "ul"):
+                        for li in extras_values.findChildren("li", recursive=False):
+                            item = html_to_markdown(url, li)
+                            param, desc = item.split(" – ")
+                            param_name, param_type = param.split(" (")
+                            param_type = param_type[:-1].replace("*","")
+                            param_name = param_name.replace("**","`")
+                            method_text.append(f"- {param_name} ({param_type}): {desc}\n")
+                    # if values are not a list
+                    else:
+                        item = html_to_markdown(url, extras_values)
+                        param, desc = item.split(" – ")
+                        param_name, param_type = param.split(" (")
+                        param_type = param_type[:-1].replace("*","")
+                        param_name = param_name.replace("**","`")
+                        method_text.append(f"- {param_name} ({param_type}): {desc}\n")
+
+                param_element = tag_sigobject.find_all("em", class_="sig-param")
+                if param_element:
+                    for element in param_element:
+                        if element.text == "extra: Optional[Dict[str, Any]] = None":
+                            no_parameters = False
+                            method_text.append("- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.\n")
+                        if element.text == "timeout: Optional[float] = None":
+                            no_parameters = False
+                            method_text.append("- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.\n")
+                if no_parameters:
+                    method_text.append("- None.\n")
+
+                method_text.append("\n")
+
+                # Returns
+                method_text.append("**Returns:** \n")
+                if "Returns:" in description_extras:
+                    # Return type
+                    if "Return type:" in description_extras:
+                        return_type = html_to_markdown(url, description_extras["Return type:"]).strip()
+                        return_info = html_to_markdown(url, description_extras["Returns:"])
+
+                        method_text.append("- (`{return_type}`): {return_info}\n".format(return_type=return_type, return_info=return_info))
+
+                else:
+                    method_text.append("- None.\n")
+
+                method_text.append("\n")
+
+                # Raises
+                if "Raises:" in description_extras:
+                    method_text.append("**Raises:** \n")
+
+                    extras_values = description_extras["Raises:"]
+
+                    # if values are a list
+                    if (extras_values.name == "ul"):
+                        for li in extras_values.findChildren("li", recursive=False):
+                            method_text.append("- {li_item}\n".format(li_item=li.text))
+                        method_text.append("\n")
+                    # if values are not a list
+                    else:
+                        method_text.append("- {extra_values}\n\n".format(extra_values=extras_values.text))
+            else:
+                method_text.append("**Parameters:** \n")
+                method_text.append("- None.\n\n")
+                method_text.append("**Returns:** \n")
+                method_text.append("- None.\n\n")
+
+
+            method_text.append(f"For more information, see the [Python SDK Docs]({url}#{id}).")
 
             # Join all text together and add to methods list
-            method_text = ' '.join(method_text)
+            method_text = ''.join(method_text)
             methods_dict[id] = method_text + "\n"
 
-            
+
         # Parse the Docs site's service page
         if type == "app" or type == "robot":
             soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
@@ -120,11 +201,11 @@ def parse(type, names):
             # Hacky but was causing an issue
             elif id == "viam.components.generic.client.do_command":
                 id_split = "do_command"
-            else: 
+            else:
                 id_split = id
 
             for link in all_links:
-                
+
                 href = link.get('href')
 
                 if href:
@@ -137,19 +218,20 @@ def parse(type, names):
             if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
             and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor":
                 sdk_methods_missing.append(id)
-        
 
-    print(f"\n SDK methods missing for type {type}: {sdk_methods_missing}")
-    print(f"\n SDK methods found for type {type}: {sdk_methods_found}")
+
+    print(f"SDK methods missing for type {type}: {sdk_methods_missing}")
+    print(f"SDK methods found for type {type}: {sdk_methods_found}")
 
     return sdk_methods_missing, methods_dict
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} \n {methods_dict.get(method)}")
+        print(f"Method: {method} \n\n{methods_dict.get(method)}")
+        print("---\n")
 
 
-total_sdk_methods_missing = []      
+total_sdk_methods_missing = []
 
 missing_services, services_dict = parse("services", services)
 missing_components, components_dict = parse("components", components)
@@ -158,7 +240,7 @@ total_sdk_methods_missing.extend(missing_services)
 total_sdk_methods_missing.extend(missing_components)
 
 if total_sdk_methods_missing:
-    print(f"\n Total SDK methods missing: {total_sdk_methods_missing} \n\n Missing Method Information: \n")
+    print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information: \n")
     print_method_information(missing_services, services_dict)
     print_method_information(missing_components, components_dict)
     # sys.exit(1)

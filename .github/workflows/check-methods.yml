@@ -1,4 +1,4 @@
-name: Check Python methods covered
+name: Check Python SDK method coverage
 
 # This action works with pull requests and pushes
 on:
@@ -19,6 +19,6 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
-      - run: pip install beautifulsoup4
-      - name: "Check Python methods covered"
+      - run: pip install beautifulsoup4 markdownify
+      - name: "Check Python SDK method coverage"
         run: python3 .github/workflows/check_python_methods.py
