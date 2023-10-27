@@ -53,9 +53,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "position": ["gps1"],
-  "orientation": ["vectornav"],
+  "orientation": ["imu-wit"],
   "compass_heading": ["gps1"],
-  "angular_velocity": ["vectornav", "mpu6050"],
+  "angular_velocity": ["imu-wit", "mpu6050"],
   "linear_velocity": ["gps1"],
   "linear_acceleration": ["adxl345"]
 }
@@ -101,9 +101,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
   "namespace": "rdk",
   "attributes": {
     "position": ["gps1"],
-    "orientation": ["vectornav"],
+    "orientation": ["imu-wit"],
     "compass_heading": ["gps1"],
-    "angular_velocity": ["vectornav", "mpu6050"],
+    "angular_velocity": ["imu-wit", "mpu6050"],
     "linear_velocity": ["gps1"],
     "linear_acceleration": ["adxl345"]
   },
@@ -135,6 +135,6 @@ Configure an array of the `name` of each movement sensor you want to add to your
 
 Note that only one sensor from each array can be used to retrieve each type of reading.
 Your robot uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
-For instance, in the **JSON Example** above, if both `"vectornav"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the robot if `"vectornav"` returns an error at runtime.
+For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the robot if `"imu-wit"` returns an error at runtime.
 
 {{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
