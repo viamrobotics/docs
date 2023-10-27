@@ -50,7 +50,7 @@ This differs from built-in resources, which run as part of `viam-server`.
 ## Models
 
 A _model_ describes a specific implementation of a [resource](#resources) that implements (speaks) its [API](/program/apis/).
-Models allow you to control hardware or software of a similar category (such as motors) with a consistent interface (set of methods), even if the underlying implementation differs.
+Models allow you to control hardware or software of a similar category, such as motors, with a consistent set of methods as an interface, even if the underlying implementation differs.
 
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
