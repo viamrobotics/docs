@@ -120,7 +120,7 @@ For example:
     "model": "rand:yahboom:arm"
   },
   {
-    "api": "rdk:component:arm",
+    "api": "rdk:component:gripper",
     "model": "rand:yahboom:gripper"
   }
   ```
