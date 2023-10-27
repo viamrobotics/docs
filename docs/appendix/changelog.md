@@ -5,10 +5,12 @@ weight: 110
 draft: false
 type: "docs"
 description: "Changelog"
+aliases:
+  - "/appendix/release-notes/"
 # SME:
 ---
 
-## 25 April 2023
+## April 2023
 
 ### Changed: Vision service
 
@@ -368,7 +370,7 @@ You will no longer be able to add or remove models using the SDKs.
 The way to add machine learning vision models is changing.
 You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
 
-## 28 February 2023
+## February 2023
 
 ### Added: Rover reuse in Try Viam
 
@@ -392,7 +394,7 @@ When adding [frames](/services/frame-system/) to your robot's config in the Viam
 Micro-RDK is a lightweight version of the RDK that can run on an ESP32.
 Find more information in the [micro-RDK documentation](/installation/prepare/microcontrollers/).
 
-## 31 January 2023
+## January 2023
 
 ### Added: Remote control power input
 
@@ -413,7 +415,7 @@ The [motion service](/services/motion/) now supports capsule geometries.
 
 The UR5 arm model has been improved using this new geometry type.
 
-## 28 December 2022
+## December 2022
 
 ### Added: Modular resources
 
@@ -464,7 +466,7 @@ The [motion service](/services/motion/) is now agnostic to the networking topolo
 Previously, data synchronization used bidirectional streaming.
 Now is uses a simpler unary approach that is more performant on batched unary calls, is easier to load balance, and maintains ordered captures.
 
-## 28 November 2022
+## November 2022
 
 ### Changed: Camera configuration
 
@@ -480,8 +482,6 @@ For information on configuring any camera model, see [Camera Component](/compone
 ### Changed: App code sample tab name update
 
 Changed the name of the **Connect** tab to **Code sample** based on user feedback.
-
-## 15 November 2022
 
 ### Added: New servo model
 
