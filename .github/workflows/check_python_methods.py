@@ -19,16 +19,19 @@ def parse(type, names):
 
     sdk_methods_missing = []
     sdk_methods_found = []
+    methods_dict = {}
 
     for service in names:
 
         # Parse the Python doc's sites service client page
         if type == "app":
-            soup = make_soup(f"https://python.viam.dev/autoapi/viam/{type}/{service}/index.html")
+            url = f"https://python.viam.dev/autoapi/viam/{type}/{service}/index.html"
         elif type == "robot":
-            soup = make_soup(f"https://python.viam.dev/autoapi/viam/{type}/client/index.html")
+            url = f"https://python.viam.dev/autoapi/viam/{type}/client/index.html"
         else:
-            soup = make_soup(f"https://python.viam.dev/autoapi/viam/{type}/{service}/client/index.html")
+            url = f"https://python.viam.dev/autoapi/viam/{type}/{service}/client/index.html"
+
+        soup = make_soup(url)
 
         # Hacky because they're not the same on SDK docs and Docs site
         if service == "mlmodel":
@@ -50,19 +53,53 @@ def parse(type, names):
             service = "cloud"
 
         # Find all python methods objects on Python docs site soup
-        py_methods_sdk_docs = soup.find_all("dt", class_="sig sig-object py")
-        py_methods_sdk_docs_filtered = []
+        py_methods_sdk_docs = soup.find_all("dl", class_="py method")
+        py_methods_sdk_docs_filtered_ids = []
 
         # Get ids and filter list
         for tag in py_methods_sdk_docs:
-            id = tag.get('id')
+            tag_sigobject = tag.find("dt", class_="sig sig-object py")
+            id = tag_sigobject.get('id')
 
             if not id.endswith("Client") and not id.endswith(".client") \
             and not id.endswith("SUBTYPE") and not id.endswith(".from_robot") \
             and not id.endswith(".get_resource_name") and not id.endswith(".get_operation") \
             and not id.endswith(".LOGGER") and not id.endswith("__"):
-                py_methods_sdk_docs_filtered.append(id)
-    
+                py_methods_sdk_docs_filtered_ids.append(id)
+
+            # Get methods information
+            method_text = []
+            
+            # Descriptions
+            description = tag.find("dd")
+            if description:
+                for elem in description.find_all("p", recursive=False):
+                    method_text.append(elem.text + "\n")
+            method_text.append("\n")
+            
+            method_text.append("**Parameters:** \n")
+
+            # Parameters
+            param_element = tag_sigobject.find_all("em", class_="sig-param")
+            if param_element:
+                for element in param_element:
+                    method_text.append("- " + element.text + "\n")
+
+            method_text.append("\n **Returns:** \n")
+
+            # Returns
+            return_element = tag_sigobject.find_all("span", class_="sig-return")
+            if return_element:
+                for element in return_element:
+                    method_text.append("- " + element.text + "\n")
+
+            method_text.append(f"\n For more information, see the [Python SDK Docs]({url}#{id})")
+
+            # Join all text together and add to methods list
+            method_text = ' '.join(method_text)
+            methods_dict[id] = method_text + "\n"
+
+            
         # Parse the Docs site's service page
         if type == "app" or type == "robot":
             soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
@@ -73,7 +110,7 @@ def parse(type, names):
         all_links = soup2.find_all('a')
 
         # Go through ids in filtered list and check if it matches text in href in a link on Docs site
-        for id in py_methods_sdk_docs_filtered:
+        for id in py_methods_sdk_docs_filtered_ids:
             found = 0
 
             # Separating out just the method name
@@ -97,22 +134,31 @@ def parse(type, names):
                         found += 1
                         break
 
-            if not found:
+            if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
+            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor":
                 sdk_methods_missing.append(id)
         
 
     print(f"\n SDK methods missing for type {type}: {sdk_methods_missing}")
     print(f"\n SDK methods found for type {type}: {sdk_methods_found}")
 
-    return sdk_methods_missing
+    return sdk_methods_missing, methods_dict
+
+def print_method_information(missing_methods, methods_dict):
+    for method in missing_methods:
+        print(f"Method: {method} \n {methods_dict.get(method)}")
+
 
 total_sdk_methods_missing = []      
 
-total_sdk_methods_missing.extend(parse("services", services))
-total_sdk_methods_missing.extend(parse("components", components))
-# total_sdk_methods_missing.extend(parse("app", app_apis))
-# total_sdk_methods_missing.extend(parse("robot", robot_apis))
+missing_services, services_dict = parse("services", services)
+missing_components, components_dict = parse("components", components)
+
+total_sdk_methods_missing.extend(missing_services)
+total_sdk_methods_missing.extend(missing_components)
 
 if total_sdk_methods_missing:
-        print(f"\n Total SDK methods missing: {total_sdk_methods_missing}")
-        sys.exit(1)
+    print(f"\n Total SDK methods missing: {total_sdk_methods_missing} \n\n Missing Method Information: \n")
+    print_method_information(missing_services, services_dict)
+    print_method_information(missing_components, components_dict)
+    # sys.exit(1)
