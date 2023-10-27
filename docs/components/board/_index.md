@@ -55,7 +55,7 @@ For configuration information, click on the model name:
 
 ### Micro-RDK
 
-If you are using the micro-RDK, navigate to [micro-RDK Board](/micro-rdk/board/) for supported model information.
+If you are using the micro-RDK, navigate to [Micro-RDK Board](/micro-rdk/board/) for supported model information.
 
 ## Attribute Configuration
 

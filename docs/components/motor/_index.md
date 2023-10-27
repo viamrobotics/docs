@@ -53,7 +53,7 @@ Model | Description <a name="model-table"></a>
 
 ### Micro-RDK
 
-If you are using the micro-RDK, navigate to [micro-RDK Motor](/micro-rdk/motor/) for supported model information.
+If you are using the micro-RDK, navigate to [Micro-RDK Motor](/micro-rdk/motor/) for supported model information.
 
 ## Control your motor with Viam's client SDK libraries
 

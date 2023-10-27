@@ -56,7 +56,7 @@ Model | Description <a name="model-table"></a>
 
 ### Micro-RDK
 
-If you are using the micro-RDK, navigate to [micro-RDK Movement Sensor](/micro-rdk/movement-sensor/) for supported model information.
+If you are using the micro-RDK, navigate to [Micro-RDK Movement Sensor](/micro-rdk/movement-sensor/) for supported model information.
 
 ## Control your movement sensor with Viam's client SDK libraries
 

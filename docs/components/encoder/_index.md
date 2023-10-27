@@ -56,7 +56,7 @@ For configuration information, click on the model name:
 
 ### Micro-RDK
 
-If you are using the micro-RDK, navigate to [micro-RDK Encoder](/micro-rdk/encoder/) for supported model information.
+If you are using the micro-RDK, navigate to [Micro-RDK Encoder](/micro-rdk/encoder/) for supported model information.
 
 ## Control your encoder with Viam's client SDK libraries
 
