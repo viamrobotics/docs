@@ -28,4 +28,5 @@ The micro-RDK [motor API](/components/motor/#api) supports only the following cl
 
 - [`SetPower()`](/components/motor/#setpower)
 - [`GetPosition()`](/components/motor/#getposition)
+- [`GetProperties()`](/components/motor/#getproperties)
 - [`Stop()`](/components/motor/#stop)
