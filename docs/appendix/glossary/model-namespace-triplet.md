@@ -1,7 +1,7 @@
 ---
 title: Model Namespace Triplet
 id: model-namespace-triplet
-full_link:
+full_link: /modular-resources/key-concepts/#naming-your-model-namespacerepo-namename
 short_description: namespace:repo-name:name or rdk:builtin:name
 aka:
 ---
