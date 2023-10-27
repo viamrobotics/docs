@@ -59,7 +59,7 @@ For example, some DC motors communicate using [GPIO](/components/board/), while 
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
 Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:repo-name:name` for modular resources and `rdk:builtin:name` for builtin models.
-See [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename) for more information.
+See [Naming your model](#naming-your-model-namespacerepo-namename) for more information.
 
 Models are either:
 

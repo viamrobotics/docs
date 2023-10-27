@@ -111,7 +111,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the <a href="/modular-resources/key-concepts/#naming-your-model">namespace of your model</a> must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</td>
+        <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the <a href="/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename">namespace of your model</a> must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>

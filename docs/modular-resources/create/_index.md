@@ -49,7 +49,7 @@ A custom module can implement one or more [models](/modular-resources/key-concep
     - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
     - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
     - Name your model according to the namespace of the built-in API you are implementing.
-      For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model).
+      For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
       <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
@@ -66,7 +66,7 @@ A custom module can implement one or more [models](/modular-resources/key-concep
 ### Code a new resource model
 
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model `acme:demo:mybase`.
-For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model).
+For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
