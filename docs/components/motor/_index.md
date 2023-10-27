@@ -51,6 +51,10 @@ Model | Description <a name="model-table"></a>
 
 {{<modular-resources api="rdk:component:motor" type="motor">}}
 
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Motor](/micro-rdk/motor/) for supported model information.
+
 ## Control your motor with Viam's client SDK libraries
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
