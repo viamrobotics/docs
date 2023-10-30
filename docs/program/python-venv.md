@@ -66,7 +66,7 @@ This installs the Viam Python SDK and all required general dependencies.
 If you intend to use the [ML (machine learning) model service](/services/ml/) with the Python SDK, you must also install the `mlmodel` extra:
 
 ```sh {class="command-line" data-prompt="$"}
-pip install 'viam-sdk[mlmodel]'
+pip3 install 'viam-sdk[mlmodel]'
 ```
 
 If you need to install your own requirements, also install them in this virtual environment.
