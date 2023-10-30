@@ -1,8 +1,9 @@
 {{ $link := (path.Clean (.Get "link")) }}
+{{ $linkWithSlash := printf "%s/" $link }}
 {{ if site.GetPage ($link | string) }}
 {{ with site.GetPage ($link | string) }}
 <div class="relatedcard">
-  <a href="{{ $link }}" target="_blank" title="{{ .LinkTitle }}">
+  <a href="{{ $linkWithSlash }}" target="_blank" title="{{ .LinkTitle }}">
     <div>
       <div>
         {{ if .Params.icon }}
