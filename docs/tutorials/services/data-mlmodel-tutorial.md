@@ -26,7 +26,7 @@ no_list: true
 In this tutorial, you will learn how to use two Viam services together:
 
 - The [data management](#the-data-management-service) service, which you will use to capture images from a camera on your smart machine and sync them to the cloud.
-- The [ML model](#the-ml-model-service) service, which you will use to tag and filter these images by shape, and to train a machine learning model based on these images.
+- The [ML model](#the-ml-model-service) service, which you will use to tag and filter these images by detected object, and to train a machine learning model based on these images.
 
 Working together, these two services enable to you train and continually refine an ML model that your smart machine can use to make intelligent decisions about the world around it.
 
@@ -139,27 +139,27 @@ The [ML model](/services/ml/) service uses machine learning to analyze a data se
 Training a model involves tagging each image you want your model to be aware of with specific keywords (called "tags"), and then deploying that model to your smart machine.
 Models can also be refined later by adding and tagging new images to improve their accuracy, and then deploying the updated model to your smart machine.
 
-With a trained model deployed, your smart machine will be able to identify matching shapes in newly-captured images on its own.
+With a trained model deployed, your smart machine will be able to identify matching objects in newly-captured images on its own.
 
 ### Tag images
 
 1. From the [**DATA** page](https://app.viam.com/data/view) in the Viam app, select an image captured from your smart machine that you would like to tag.
 1. In the **Tags** field on the right-hand side, enter a new tag describing the object in the image that you want your smart machine to be able to identify, then click **Add as new tag**.
    Tag names support alphanumeric characters, underscores, and hyphens.
-   For this tutorial, we are using the shapes shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a black triangle and a yellow circle.
+   For this tutorial, we are using the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a black triangle and a yellow circle.
    The image below shows adding the `black_triangle` tag to an eligible image (though the thumbnail on the left doesn't show the rest of the picture that contains the shape):
 
    ![The data page of the Viam app showing a gallery of images filtered to show images matching any configured tag](/tutorials/data-management/tag-image.png)
+
+1. Repeat this process for other images that contain objects you want your model to be able to identify.
+   Once you have added a tag to an image, you can select that tag from the **Tags** drop down menu for other images that also feature the tagged object.
+   To be able to train a model using a given tag, you must have tagged at least 10 images with that tag.
 
    {{< alert title="Tip" color="tip" >}}
    For best results, provide several images of the same object from different perspectives, and repeat this approach for each object you intend to tag.
    Feel free to return to your smart machine's **Control** tab to position your camera to capture additional images from a variety of different angles, or with different lighting or background compositions.
    Generally, the more different perspectives of a given object you tag, the more likely your model will be able to identify it, even under differing conditions.
    {{< /alert >}}
-
-1. Repeat this process for other images that contain objects you want your model to be able to identify.
-   Once you have added a tag to an image, you can select that tag from the **Tags** drop down menu for other images that also feature the tagged object.
-   To be able to train a model using a given tag, you must have tagged at least 10 images with that tag.
 
 You can skip any images that don't contain an object that you want your smart machine to be able to identify.
 If you want to remove a tag, click the **X** icon to the right of the tag name below the **Tags** field.
