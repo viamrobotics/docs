@@ -83,16 +83,6 @@ To get started writing your filter resource model:
 
 The full code for this colorfilter camera model's (<file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file>) or (<file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py)</file>) file is from the full modular filter examples available on [GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
 
-{{< alert title="Important" color="note" >}}
-When coding filter functionality, ensure you include the correct utility functions.
-
-- If you are using the Python SDK, use the utility function [`from_dm_from_extra`](https://python.viam.dev/autoapi/viam/utils/index.html#viam.utils.from_dm_from_extra).
-- If you are using the Go SDK, use [`data.FromDMContextKey`](https://pkg.go.dev/go.viam.com/rdk/data#FromDMContextKey).
-
-For other programming languages, similar utility functions will be exposed to help you check the caller of your filter function.
-For detailed information, please refer to the SDK documentation relevant to your specific language.
-{{< /alert >}}
-
 #### Implement the subtype's required methods
 
 Create a file called <file>color_filter.go</file> or <file>color_filter.py</file> within your `colorfilter` module directory and implement the required methods in it.
@@ -112,9 +102,16 @@ The other will ensure that if the data management service is not the caller, an 
 
 #### Check the caller of the collector function
 
-When creating your own filter module, it's required to check whether the data management service is the caller of the function responsible for data capture to prevent unwanted effects on the filter state.
+When creating your own filter module, it's required to check whether the data management service is the caller of the function responsible for data capture.
+If a service other than the data management service calls the function, it will return the stream contents without filtering.
+When writing a filter for other components, write your modular code to return the component's original data in case the data management service isn't the caller.
 
 You can achieve this by examining the `fromDataManagement` value within the `extra` argument passed to your filter function in your <file>color_filter.py</file> or <file>color_filter.go</file> file.
+
+{{< alert title="Important" color="note" >}}
+When coding a modular camera with the Go SDK, `FromDMContextKey` is used to check the caller of the data capture function.
+For all other components, you should use `FromDMString` instead.
+{{< /alert >}}
 
 The approach for checking this varies depending on the programming language used to configure your camera:
 
@@ -134,12 +131,11 @@ Then, include it in the conditional statement in your filter function:
 ```
 
 - The Python-configured camera checks if the data management service is the caller of the filter function by using `from_dm_from_extra` to determine whether to store data.
-  - If `from_dm_from_extra` is `true` and the data management service is the caller of your filter function, the vision service is called to obtain an image and store it within the `img` variable.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Write a conditional statement that checks `data.FromDMContextKey{}`:
+Write a conditional statement that checks `FromDMContextKey`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 if ctx.Value(data.FromDMContextKey{}) != true {
@@ -153,8 +149,8 @@ if ctx.Value(data.FromDMContextKey{}) != true {
  detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
 ```
 
-- The Go-configured camera checks if the data management service is the caller of the filter function by using `data.FromDMContextKey{}` to determine whether to store data.
-  - If `data.FromDMContextKey{}` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
+- The Go-configured camera checks if the data management service is the caller of the filter function by using `FromDMContextKey` to determine whether to store data.
+  - If `FromDMContextKey` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
 - Then, after capturing the image, the code continues to request detections.
 
 **PLACEHOLDER: `FromDMContextKey` vs `FromDMString`?**
@@ -537,14 +533,13 @@ return fs.cameraStream.Close(ctx)
 }
 ```
 
-- The Go-configured camera looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
+- A modular camera coded in Go looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if data management triggered the filter, rather than using `extra`.
 
-  - A modular camera coded in Go is a slightly special case: the methods of the Go camera client API are different in that they don’t exactly map to the other SDK methods / camera proto API
-    Instead of implementing `GetImage` (like it is in Python, etc), in Go, you will implement `Stream` as shown in the example code.
+  - Instead of implementing [`GetImage`](/components/camera/#getimage) (like it is in Python, etc), in Go, you will implement `Stream` as shown in the example code.
 
 - For other programming languages, similar utility functions will be exposed to help you check the caller of your filter function.
-  Not all collector functions receive the `extra` data parameter, so the method for checking may vary based on the specific function and language.
-- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected; otherwise, it will raise the `data.ErrNoCaptureToStore` error.
+  The approach to perform this check may differ depending on the particular function and programming language. For detailed information, please refer to your chosen language's SDK documentation.
+- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected; otherwise, it will raise the [`ErrNoCaptureToStore`](https://github.com/viamrobotics/rdk/blob/214879e147970a454f78035e938ea853fcd79f17/data/collector.go#L44) error.
 
   {{% /tab %}}
   {{< /tabs >}}
