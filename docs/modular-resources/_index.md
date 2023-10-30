@@ -27,7 +27,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the component or service you want to use for your project is not natively supported, you can [use _modular resources_ from the Viam Registry](#the-viam-registry) or [create your own modular resources](#modular-resources).
+If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can [use _modular resources_ from the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
 You configure and manage modular resources the same way as built-in resources and use the same [standardized APIs](/program/apis/).
 
 ## The Viam Registry
@@ -53,7 +53,7 @@ You can search the available modular resources from the Viam Registry here:
 
 To use a modular resource from the registry, add it from your robot's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **Create component** button.
 
-## Modular resources
+## Create Your Own Modular Resources
 
 If none of the existing modular resources in the Viam registry support your use case, you can also create your own modular resources:
 
@@ -69,7 +69,7 @@ To create a new modular resource:
 1. Package your modular resource or modular resources as a {{< glossary_tooltip term_id="module" text="module" >}} and [upload the module to the Viam registry](/modular-resources/upload/) to make it available for deployment to robots.
    You can upload _private_ modules for your [organization](/manage/fleet/organizations/) or _public_ modules.
 1. Once you have uploaded your module to the registry, you can [deploy and configure the module](/modular-resources/configure/) from [the Viam app](https://app.viam.com/).
-   If the added resource is a component, you can then test it using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
+   You can test your added resource using the [Control tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
 Some use cases may require you to extend the standardized API definitions or deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/modular-resources/advanced/).

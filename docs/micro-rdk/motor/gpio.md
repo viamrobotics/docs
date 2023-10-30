@@ -137,4 +137,12 @@ Inside the `pins` struct you need to configure **two or three** of the following
 | `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
 | `pwm` | string | **Required** | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
 
+### PWM frequency and `esp32` boards
+
+Each `gpio` motor uses a PWM pin at 10000 Hz PWM frequency.
+
+This leaves you with three remaining PWM frequencies for use on an `esp32`.
+If the frequency of another PWM signal is unimportant, it can also be set to 10000 Hz.
+See [PWM signals on `esp32` pins](/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information.
+
 {{< readfile "/static/include/components/test-control/motor-control.md" >}}
