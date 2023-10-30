@@ -149,12 +149,13 @@ You can use one of these architectures or build your own.
 
 ## Use the ML model service with the Viam Python SDK
 
-To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), you must install both the Python SDK itself and the `mlmodel` extra:
+To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), install the Python SDK using the `mlmodel` extra:
 
 ```sh {class="command-line" data-prompt="$"}
-pip install viam-sdk
 pip install 'viam-sdk[mlmodel]'
 ```
+
+You can also run this command on an existing Python SDK install to add support for the ML model service.
 
 See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python.
 
