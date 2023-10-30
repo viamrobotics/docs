@@ -1,37 +1,25 @@
 To authenticate yourself to your robot, you need
 
-1.  The robot's location secret or the org api key:
+1.  The robot's part api key:
 
     {{< tabs >}}
 
-{{% tab name="Location secret" %}}
-
-On your robot's **Code sample** tab, select **Include Secret** and copy the location secret.
-Then paste it into your environment variables or directly into your code.
-
-{{% snippet "secret-share.md" %}}
-
-{{% /tab %}}
-{{% tab name="Org api key" %}}
-
-To authenticate using an org api key, [create an api key using the CLI](/manage/cli/#create-an-organization-api-key).
-Replace the connection code from your code snippet with the following code and copy and paste the api key id and the api key into your environment variables or directly into the code:
+To authenticate, [create an api key [using the UI]() or [using the CLI](/manage/cli/#create-an-organization-api-key).
+Copy and paste the api key id and the api key into your environment variables or directly into the code:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-line="3,5,9,11"}
 async def connect():
-    creds = Credentials(
-        type='api-key',
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
-        payload='<API-KEY>')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-        dial_options=DialOptions(credentials=creds, auth_entity="<API-KEY-ID>")
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+
 ```
 
 {{% /tab %}}
@@ -43,14 +31,13 @@ robot, err := client.New(
     "ADDRESS FROM THE VIAM APP",
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    "<API-KEY-ID>",
+    rpc.Credentials{
+        Type:    rpc.CredentialsTypeAPIKey,
         // Replace "<API-KEY>" (including brackets) with your robot's api key
-        "<API-KEY-ID>",
-        rpc.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your robot's api key
-            Payload: "<API-KEY>",
-        }
-    )),
+        Payload: "<API-KEY>",
+    })),
 )
 ```
 
@@ -58,19 +45,20 @@ robot, err := client.New(
 {{% tab name="TypeScript" %}}
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="1,6,8,11"}
-const host = "ADDRESS FROM THE VIAM APP";
+  // Replace with the host of your actual robot running Viam.
+  const host = "ADDRESS FROM THE VIAM APP";
 
-const robot = await VIAM.createRobotClient({
-  host,
-  credential: {
-    type: "api-key",
-    // Replace "<API-KEY>" (including brackets) with your api key
-    payload: "<API-KEY>",
-  },
-  // Replace "<API-KEY-ID>" (including brackets) with your api key id
-  authEntity: "<API-KEY-ID>",
-  signalingAddress: "https://app.viam.com:443",
-});
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: 'api-key',
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: '<API-KEY>',
+    },
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: '<API-KEY-ID>',
+    signalingAddress: 'https://app.viam.com:443',
+  });
 ```
 
 {{% /tab %}}
@@ -80,9 +68,9 @@ const robot = await VIAM.createRobotClient({
 std::string host("ADDRESS FROM THE VIAM APP");
 DialOptions dial_opts;
 dial_opts.set_type("api-key");
-// Replace "<API-KEY-ID>"" with your api key ID
+// Replace "<API-KEY-ID>" with your robot's api key ID
 dial_opts.set_entity("<API-KEY-ID>");
-// Replace "<API-KEY>" with your api key
+// Replace "<API-KEY>" with your robot's api key
 Credentials credentials("<API-KEY>");
 dial_opts.set_credentials(credentials);
 boost::optional<DialOptions> opts(dial_opts);
@@ -114,13 +102,16 @@ Future<void> connectToViam() async {
 {{< /tabs >}}
 
 {{< alert title="Caution" color="caution" >}}
-Do not share your org api key id, org api key, or robot address publicly.
+Do not share your part api key id, org api key, or robot address publicly.
 Sharing this information could compromise your system security by allowing unauthorized access to your robot, or to the computer running your robot.
 {{< /alert >}}
 
-{{% /tab %}}
+{{< alert title="Location secret (deprecated)" color="note" >}}
 
-    {{< /tabs >}}
+Prior to API keys, Viam used Location secrets for authentication.
+To avoid future issues, start using API keys.
+
+{{< /alert >}}
 
 2. The robot's remote address: Include the address, which resembles `12345.somerobot-main.viam.cloud`. The robot address is as a public address to connect to your robot.
    You can find this address at the top of the robot's **Control** tab or in the **Code sample** tab..

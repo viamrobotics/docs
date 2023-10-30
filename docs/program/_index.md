@@ -100,9 +100,9 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-    # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
       api_key='<API-KEY>',
-    # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -173,7 +173,7 @@ import * as VIAM from '@viamrobotics/sdk';
 
 async function main() {
   // Replace with the host of your actual robot running Viam.
-  const host = "<HOST>";
+  const host = "ADDRESS FROM THE VIAM APP";
 
   const robot = await VIAM.createRobotClient({
     host,
@@ -278,7 +278,7 @@ Future<void> connectToViam() async {
 Save this file on your development machine with the file type of your preferred SDK.
 
 The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
-This section of the boilerplate code contains your robot's address and a placeholder for the location secret.
+This section of the boilerplate code contains your robot's address and a placeholder for the api key.
 
 ### Authenticate
 

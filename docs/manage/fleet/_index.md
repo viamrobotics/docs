@@ -105,12 +105,12 @@ You can also control a robot using the [Viam mobile app](#the-viam-mobile-app).
 
 ### Control with the SDKs
 
-Everyone who has access to the robot's location can obtain the robot's remote address and location secret from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/apis/).
-You can share the robot's remote address and location secret without granting location access in the app.
+Everyone who has access to the robot's location can obtain the robot's remote address and api key from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/apis/).
+You can share the robot's remote address and api key without granting location access in the app.
 
 As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub, and execute code to control the robot from anywhere in the world.
 
-Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's location secret.
+Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's api key.
 The robot's remote address is displayed on both the **Control** and **Code sample** tabs of your robot's page in the app, ending with `viam.cloud`.
 
 {{% snippet "secret-share.md" %}}

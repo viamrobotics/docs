@@ -844,13 +844,13 @@ modal = 0
 cmd = {}
 
 
-async def connect_robot(host, payload):
-    creds = Credentials(
-        type='robot-location-secret',
-        payload=payload),
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+async def connect_robot(host, api_key, api_key_id):
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      api_key_id='<API-KEY-ID>',
+      refresh_interval=0,
     )
     return await RobotClient.at_address(host, opts)
 
@@ -944,13 +944,13 @@ async def handleController(controller):
 
 
 async def main():
-    # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
+    # ADD YOUR ROBOT REMOTE ADDRESS and API key values.
     # These can be found in the Code sample tab of app.viam.com.
-    # Toggle 'Include secret' to show the location secret.
+    # Toggle 'Include secret' to show the api key values.
     g920_robot = await connect_robot(
-        "robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+        "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
     modal_robot = await connect_robot(
-        "robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+        "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
 
     g920 = Controller.from_robot(g920_robot, 'wheel')
     global modal

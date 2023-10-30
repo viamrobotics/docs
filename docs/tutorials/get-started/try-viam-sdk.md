@@ -296,11 +296,15 @@ func main() {
     logger := logger.NewDevelopmentLogger("client")
     robot, err := client.New(
         context.Background(),
-        "ADDRESS_FROM_VIAM_APP",
+        "ADDRESS FROM THE VIAM APP",
         logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type: utils.CredentialsTypeRobotLocationSecret,
-            Payload: "SECRET_FROM_VIAM_APP",
+        client.WithDialOptions(rpc.WithEntityCredentials(
+        // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+        "<API-KEY-ID>",
+        rpc.Credentials{
+            Type:    rpc.CredentialsTypeAPIKey,
+            // Replace "<API-KEY>" (including brackets) with your robot's api key
+            Payload: "<API-KEY>",
         })),
     )
     if err != nil {
@@ -363,11 +367,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: "robot-location-secret",
-      payload: "SECRET_FROM_VIAM_APP",
+      type: 'api-key',
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: '<API-KEY>',
     },
-    authEntity: host,
-    signalingAddress: "https://app.viam.com:443",
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: '<API-KEY-ID>',
+    signalingAddress: 'https://app.viam.com:443',
   });
 
   // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
@@ -451,11 +457,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: "robot-location-secret",
-      payload: "SECRET_FROM_VIAM_APP",
+      type: 'api-key',
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: '<API-KEY>',
     },
-    authEntity: host,
-    signalingAddress: "https://app.viam.com:443",
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: '<API-KEY-ID>',
+    signalingAddress: 'https://app.viam.com:443',
   });
 
   button().onclick = async () => {
@@ -494,14 +502,13 @@ from viam.rpc.dial import Credentials, DialOptions
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS_FROM_VIAM_APP', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def moveInSquare(base):
@@ -561,13 +568,17 @@ func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
 func main() {
     logger := logger.NewDevelopmentLogger("client")
     robot, err := client.New(
-        context.Background(),
-        "ADDRESS_FROM_VIAM_APP",
-        logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "SECRET_FROM_VIAM_APP",
-        })),
+      context.Background(),
+      "ADDRESS FROM THE VIAM APP",
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
+      })),
     )
     if err != nil {
         logger.Fatal(err)
@@ -641,11 +652,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: "robot-location-secret",
-      payload: "SECRET_FROM_VIAM_APP",
+      type: 'api-key',
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: '<API-KEY>',
     },
-    authEntity: host,
-    signalingAddress: "https://app.viam.com:443",
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: '<API-KEY-ID>',
+    signalingAddress: 'https://app.viam.com:443',
   });
 
   button().onclick = async () => {

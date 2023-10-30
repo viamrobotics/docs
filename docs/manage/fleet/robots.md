@@ -104,9 +104,9 @@ There is also a JSON stub you can copy if you wish to have your robot communicat
 
 Your robot and the Viam app communicate securely using [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection) with unique secrets.
 
-The **Security** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
+The **Security** tab allows you to access and change the **Robot part API keys** of your robot.
 
-![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](/manage/app-usage/robot-secrets.png)
+![The Security tab of a robot`s page noting the Robot part API keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](/manage/app-usage/robot-secrets.png)
 
 Copy the part secret key by clicking on the clipboard icon.
 Click on the **Generate Key** button to generate a new key.
@@ -117,4 +117,4 @@ Click on the **Generate Key** button to generate a new key.
 
 You can delete a robot by navigating to its page in [the Viam app](https://app.viam.com) and selecting **Sure?** and **Delete robot** in the lower left corner of the page.
 
-{{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}
+{{< imgproc alt="The delete robot button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}

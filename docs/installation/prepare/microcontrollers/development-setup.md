@@ -253,7 +253,7 @@ To obtain this:
 - Click on the **Setup** tab.
   Keep your `Mode` and `Architecture` selections at default.
 - Click the **Copy viam-server config** button on the right side of the **Setup** tab.
-  The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+  The micro-RDK needs this JSON file, which contains your robot part api key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 - Paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}

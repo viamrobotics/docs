@@ -71,9 +71,9 @@ The location's page lists newly added organization, along with the organization 
 
 You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
 
-#### Share a location using location secret keys
+#### Share a location using api keys
 
-Grant programmatic access to your location by sharing a location secret key.
+Grant programmatic access to your location by sharing an api key.
 
 You can see the secret keys for a location in the **Location Secret Keys** drop-down:
 

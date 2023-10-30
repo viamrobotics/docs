@@ -609,7 +609,7 @@ You can also use a laser cutter to cut them into the sizes you prefer if you wan
 
 ## Add the robot logic
 
-Download the [full code](https://raw.githubusercontent.com/viam-labs/devrel-demos/main/tipsy-bot/tipsy.py) onto your computer.
+Download the [full code](https://raw.githubusercontent.com/viam-labs/devrel-demos/main/tipsy-bot/tipsy.py) onto your computer. TODO
 
 Let’s take a look at what it does.
 First, the code imports the required libraries:
@@ -623,11 +623,12 @@ from viam.services.vision import VisionClient
 from viam.services.sensors import SensorsClient
 ```
 
-Then it connects to our robot using a robot location secret and address.
+Then it connects to our robot using a robot api key and address.
 Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab:
 
 ```python {class="line-numbers linkable-line-numbers"}
-robot_secret = os.getenv('ROBOT_SECRET') or ''
+robot_api_key = os.getenv('ROBOT_API_KEY') or ''
+robot_api_key_secret = os.getenv('ROBOT_API_KEY_SECRET') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 # change this if you named your base differently in your robot configuration
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
