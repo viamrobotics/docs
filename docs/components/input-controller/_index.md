@@ -310,7 +310,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 
 - [(List\[Control\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_controls).
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.

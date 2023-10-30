@@ -219,7 +219,9 @@ def parse(type, names):
                         break
 
             if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
-            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor":
+            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor" \
+            and id != "viam.components.input.client.ControllerClient.reset_channel" \
+            and id != "viam.components.input.client.ControllerClient.trigger_event":
                 sdk_methods_missing.append(id)
 
 
