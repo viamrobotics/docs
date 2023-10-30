@@ -31,9 +31,6 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-<<<<<<< HEAD
-## Supported Models
-=======
 ## Related Services
 
 {{< cards >}}
@@ -44,8 +41,7 @@ You can use different models to:
 {{< relatedcard link="/services/ml/" >}}
 {{< /cards >}}
 
-## Configuration
->>>>>>> 36007f58 (test sectionlist on arm page)
+## Supported Models
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
 
@@ -408,12 +404,6 @@ For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/c
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Troubleshooting
-
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-{{< snippet "social.md" >}}
 
 ## Next Steps
 

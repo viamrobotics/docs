@@ -26,18 +26,15 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-<<<<<<< HEAD
-## Supported Models
-=======
 ## Related Services
 
 {{< cards >}}
 {{< relatedcard link="/services/base-rc/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
 {{< /cards >}}
 
-## Configuration
->>>>>>> 36007f58 (test sectionlist on arm page)
+## Supported Models
 
 To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your base.
 

@@ -29,8 +29,9 @@ When controlling an arm with `viam-server`, the following features are implement
 ## Related Services
 
 {{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
 {{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
 ## Motion planning with your arm's built-in software

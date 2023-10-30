@@ -36,8 +36,6 @@ Most robots with a servo need at least the following hardware:
 {{< relatedcard link="/services/data/" >}}
 {{< /cards >}}
 
-## Configuration
-
 {{% alert title="Tip" color="tip" %}}
 
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
