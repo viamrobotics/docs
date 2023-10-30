@@ -18,7 +18,7 @@ aliases:
   - "/extend/modular-resources/create/"
 ---
 
-You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}} {{< glossary_tooltip term_id="model" text="models" >}} and can be added to any smart machine running on Viam.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="model" text="models" >}} and can be added to any smart machine running on Viam.
 
 A common use case for modular resources is to create a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
