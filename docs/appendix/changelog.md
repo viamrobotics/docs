@@ -498,7 +498,7 @@ The Python SDK now supports Python 3.8, in addition to 3.9 and 3.10.
 
 ### Added: New parameter: `extra`
 
-A new API method parameter, `extra`, allows you to extend {{< glossary_tooltip term_id="resource" text="resource" >}} functionality by implementing the new field according to whatever logic you choose.
+A new API method parameter, `extra`, allows you to extend {{< glossary_tooltip term_id="modular-resource" text="modular-resource" >}} functionality by implementing the new field according to whatever logic you choose.
 `extra` has been added to the following APIs: arm, data management, gripper, input controller, motion, movement sensor, navigation, pose tracker, sensor, SLAM, vision.
 
 {{% alert title="IMPORTANT: Breaking change" color="note" %}}

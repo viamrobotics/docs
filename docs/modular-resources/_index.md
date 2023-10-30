@@ -32,8 +32,13 @@ You configure and manage modular resources the same way as built-in resources an
 
 ## The Viam Registry
 
-The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built into `viam-server`.
-You can see details about each module in the Viam registry on its module details page.
+The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built-in to `viam-server`.
+To leverage this, you can develop modules in various programming languages, such as Go, Python, C++, Rust, and more, all while implementing the same [APIs](/program/apis/).
+
+After adding a module to your robot, you can choose to configure it for automatic version updates from the Viam registry, or update your module manually.
+By default, newly added modules will not update automatically and will remain at their initial version.
+
+You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its module details page.
 
 You can search the available modular resources from the Viam Registry here:
 
