@@ -27,7 +27,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the [component](/components/) or [service](/services/) you want to use for your project is not natively supported, you can [use _modular resources_ from the Viam Registry](#the-viam-registry) or [create your own modular resources](#modular-resources).
+If the [component](/components/) or [service](/services/) you want to use for your project is not natively supported, you can [use _modular resources_ from the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
 You configure and manage modular resources the same way as built-in resources and use the same [standardized APIs](/program/apis/).
 
 ## The Viam Registry
