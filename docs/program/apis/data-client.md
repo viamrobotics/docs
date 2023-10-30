@@ -38,6 +38,7 @@ import asyncio
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
+TODO
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(

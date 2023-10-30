@@ -77,10 +77,7 @@ Grant programmatic access to your location by sharing an api key.
 
 You can see the secret keys for a location in the **Location Secret Keys** drop-down:
 
-![Screenshot of the list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](/manage/app-usage/location-secret-keys-drop-down.png)
-
-Copy the location secret key by clicking on the clipboard icon.
-Use these keys in your SDK code and scripts to authenticate your access to the robots in your location in the cloud.
+![The list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](/manage/app-usage/location-secret-keys-drop-down.png)
 
 {{% snippet "secret-share.md" %}}
 

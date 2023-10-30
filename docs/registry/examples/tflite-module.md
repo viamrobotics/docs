@@ -268,6 +268,8 @@ With everything configured and running, you can now run the inference client tha
 
 1. Then, run the following to start the inference client, providing the necessary access credentials and the path to the labels file extracted earlier:
 
+   TODO
+
    ```sh { class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
    ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-api-key-secret abcdef1g23hi45jklm6nopqrstu7vwx8 --robot-api-key-id a1234b5c-678d-9012-3e45-67fabc8d9efa

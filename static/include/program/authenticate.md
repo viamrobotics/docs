@@ -2,12 +2,10 @@ To authenticate yourself to your robot, you need
 
 1.  The robot's part api key:
 
+    To authenticate, [create an api key [using the UI]() or [using the CLI](/manage/cli/#create-an-organization-api-key).
+    Copy and paste the api key id and the api key into your environment variables or directly into the code:
+
     {{< tabs >}}
-
-To authenticate, [create an api key [using the UI]() or [using the CLI](/manage/cli/#create-an-organization-api-key).
-Copy and paste the api key id and the api key into your environment variables or directly into the code:
-
-{{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-line="3,5,9,11"}

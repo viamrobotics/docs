@@ -36,6 +36,8 @@ See the following example for reference.
 To find the api key and secret, go to [Viam app](https://app.viam.com/), and navigate to the bottom of your location's page.
 For the URL, use the address of any of the robots in the location (found on the **Code sample** tab).
 
+TODO
+
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
 

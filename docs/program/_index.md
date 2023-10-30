@@ -95,7 +95,6 @@ Your boilerplate code sample should look similar to this:
 import asyncio
 
 from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
 
 
 async def connect():

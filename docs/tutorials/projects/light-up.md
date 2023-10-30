@@ -192,7 +192,7 @@ You need to tell the code how to access your specific robot (which in this case 
    {{% snippet "show-secret.md" %}}
 
 2. In the code sample, find the `payload`, a long string of numbers and letters.
-   Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`.
+   Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`. TODO
 3. Find the robot address, of the form `robot-name-main.abc1ab123a1.viam.cloud`, and paste it into line 14 of <file>lightupbot.py</file> in place of `ROBOT_ADDRESS`.
 
    You also need to tell the code how to access your smart plug.
