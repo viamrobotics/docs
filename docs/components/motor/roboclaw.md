@@ -69,7 +69,7 @@ Example configuration for a `roboclaw` DC brushed motor:
       "type": "motor",
       "namespace": "rdk",
       "attributes": {
-        "serial_path": "/dev/ttyUSB0",
+        "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
         "motor_channel": 1,
         "serial_baud_rate": 38400
       },
@@ -79,6 +79,9 @@ Example configuration for a `roboclaw` DC brushed motor:
 }
 ```
 
+The `"serial_path"` filepath used in this example is specific to serial devices connected to Linux systems.
+The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB0"</file> or <file>"/dev/ttyS0"</file>.
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -87,7 +90,7 @@ The following attributes are available for `roboclaw` motors:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyAMA0` , to its device file, such as <file>/dev/ttyAMA0</file>. On a Raspberry Pi, you can also run `ls /dev/serial/by-path` to list USB serial devices. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Example: `"/dev/serial/by-path/usb-0:1.1:1.0"` |
+| `serial_path` | string | Optional | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your smart machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
 | `serial_baud_rate` | int | Optional | [Rate to send data](https://learn.sparkfun.com/tutorials/serial-communication) over the serial line. This must match the baudrate you have set up using basicmicro's setup program. You cannot have multiple `roboclaw` motors with different baud rates. <br> Default: `38400` |
 | `motor_channel` | int | **Required** | Channel the motor is connected to on the controller. Must be `1` or `2`. |
 | `address` | int | Optional | Serial address of the controller. <br> Default: `128`  |
