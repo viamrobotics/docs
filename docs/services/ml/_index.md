@@ -202,6 +202,8 @@ output_tensors, err := myMLModel.Infer(ctx.Background(), input_tensors)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.infer).
 
 ```python {class="line-numbers linkable-line-numbers"}
+import numpy as np
+
 my_mlmodel = MLModelClient.from_robot(robot=robot, name="my_mlmodel_service")
 
 nd_array = np.array([1, 2, 3], dtype=np.float64)
