@@ -151,14 +151,14 @@ You can use one of these architectures or build your own.
 
 To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), you must install both the Python SDK itself and the `mlmodel` extra:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
 pip install 'viam-sdk[mlmodel]'
 ```
 
-See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python
+See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python.
 
-See [program your smart machine](/program/) for more information.
+See [Program a smart machine](/program/) for more information about using an SDK to control your smart machine.
 
 ## Next Steps
 
