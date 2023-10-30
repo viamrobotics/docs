@@ -215,7 +215,7 @@ output_tensors = await my_mlmodel.infer(input_tensors)
 
 ### Metadata
 
-Get the metadata: name, type, expected tensor/array shape, inputs, and outputs associated with the ML model.
+Get the metadata: name, data type, expected tensor/array shape, inputs, and outputs associated with the ML model.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
