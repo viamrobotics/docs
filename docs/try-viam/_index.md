@@ -12,6 +12,8 @@ images: ["/try-viam/rover.gif"]
 no_list: true
 aliases:
   - "/getting-started/try-viam/"
+  - "/tutorials/viam-rover/"
+  - "/try-viam/tutorials/"
 ---
 
 Viam is a general {{< glossary_tooltip term_id="smart-machine" text="smart machine">}} platform that can run on any hardware.
