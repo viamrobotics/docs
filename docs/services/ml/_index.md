@@ -147,6 +147,19 @@ In the absence of metadata, your `.tflite_cpu` model must satisfy the following 
 These requirements are satisfied by a few publicly available model architectures including EfficientDet, MobileNet, and SSD MobileNet V1.
 You can use one of these architectures or build your own.
 
+## Use the ML model service with the Viam Python SDK
+
+To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), you must install both the Python SDK itself and the `mlmodel` extra:
+
+```sh
+pip install viam-sdk
+pip install 'viam-sdk[mlmodel]'
+```
+
+See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python
+
+See [program your smart machine](/program/) for more information.
+
 ## Next Steps
 
 To make use of your model with your smart machine, add a [vision service](/services/vision/) or a [modular resource](/modular-resources/):

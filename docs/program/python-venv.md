@@ -61,7 +61,13 @@ Inside the activated `viam-env` python environment, you can now install the Viam
 pip3 install viam-sdk
 ```
 
-This installs Viam and all required dependencies.
+This installs the Viam Python SDK and all required general dependencies.
+
+If you intend to use the [ML (machine learning) model service](/services/ml/) with the Python SDK, you must also install the `mlmodel` extra:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
+```
 
 If you need to install your own requirements, also install them in this virtual environment.
 To make your required packages easier to install in the future, you can also [create a](https://openclassrooms.com/en/courses/6900846-set-up-a-python-environment/6990546-manage-virtual-environments-using-requirements-files) <file>requirements.txt</file> file with a list of all the packages you need and then install the requirements for your client application by running `pip3 install -r requirements.txt`.

@@ -426,11 +426,14 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-Now, install the Python Viam SDK and the VLC module:
+Now, install the Python Viam SDK, the `mlmodel` extra, and the VLC module:
 
 ```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk python-vlc
+pip3 install 'viam-sdk[mlmodel]'
 ```
+
+The `mlmodel` extra includes additional dependency support for the [ML (machine learning) model service](/services/ml/).
 
 ### Connect
 

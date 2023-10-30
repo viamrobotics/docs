@@ -42,6 +42,12 @@ If you are using the Python SDK, [set up a virtual environment](/program/python-
 pip install viam-sdk
 ```
 
+If you intend to use the [ML (machine learning) model service](/services/ml/) with the Python SDK, you must also install the `mlmodel` extra:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
+```
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
