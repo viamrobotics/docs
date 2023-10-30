@@ -9,4 +9,4 @@ aka:
 {{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets.
 Modular resource model names have the form `namespace:repo-name:name`.
 Built-in model names have the form `rdk:builtin:name`.
-See [Naming your model](#naming-your-model-namespacerepo-namename) for more information.
+See [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename) for more information.
