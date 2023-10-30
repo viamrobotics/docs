@@ -84,7 +84,7 @@ search.addWidgets([
           results += ``;
         }
 
-        return html`<span>${results}</span>`;
+        return `<span>${results}</span>`;
       },
     },
   }),
