@@ -18,7 +18,7 @@ aliases:
   - "/extend/modular-resources/upload/"
 ---
 
-Once you have [created a custom module](/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam registry as a public module that ias shared with other Viam users, or as a private module that is shared only within your [organization](/manage/fleet/organizations/).
+Once you have [created a custom module](/modular-resources/create/), use the [Viam CLI](/manage/cli/) to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/manage/fleet/organizations/).
 
 Once uploaded, you can also [update your modules](/modular-resources/upload/#update-an-existing-module).
 
