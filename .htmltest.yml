@@ -25,6 +25,7 @@ IgnoreURLs:
 - "ufactory.cc"
 - "medium.com"
 - "radxa.com"
+- "electronics-tutorials.ws"
 IgnoreDirs:
 - "lib"
 CacheExpires: "6h"
