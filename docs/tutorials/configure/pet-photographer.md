@@ -212,7 +212,13 @@ Once you've included the required safeguard and utility function, your complete 
 {{% tab name="Python"%}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def get_image(self, mime_type: str = "", *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None, **kwargs) -> Image.Image:
+async def get_image(
+  self,
+  mime_type: str = "",
+  *,
+  extra: Optional[Dict[str, Any]] = None,
+  timeout: Optional[float] = None,
+  **kwargs) -> Image.Image:
     """Filters the output of the underlying camera"""
     img = await self.actual_cam.get_image()
     if from_dm_from_extra(extra):
@@ -289,7 +295,9 @@ from viam.utils import from_dm_from_extra
 
 class ColorFilterCam(Camera, Reconfigurable):
     """A ColorFilterCam wraps the underlying camera
-     `actual_cam` and only keeps the data captured on the actual camera if `vision_service` detects a certain color in the captured image.
+    `actual_cam` and only keeps the data captured on the
+    actual camera if `vision_service` detects a certain
+    color in the captured image.
     """
     MODEL: ClassVar[Model] = Model(ModelFamily("example", "camera"), "colorfilter")
 
