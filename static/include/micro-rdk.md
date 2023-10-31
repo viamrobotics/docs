@@ -1,4 +1,4 @@
-{{% alert title="ALPHA" color="note" %}}
+{{% alert title="BETA" color="note" %}}
 The micro-RDK is in beta mode and many features supported by the RDK are still being added to the micro-RDK.
 Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
