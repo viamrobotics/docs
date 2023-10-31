@@ -113,5 +113,6 @@ To avoid connection issues, start using API keys.
 
    {{< /alert >}}
 
-2. The robot's remote address: Include the address, which resembles `12345.somerobot-main.viam.cloud`. The robot address is as a public address to connect to your robot.
+2. The robot's remote address: Include the address, which resembles `12345.somerobot-main.viam.cloud`. 
+The robot address is a public address to connect to your robot.
    You can find this address at the top of the robot's **Control** tab or in the **Code sample** tab.
