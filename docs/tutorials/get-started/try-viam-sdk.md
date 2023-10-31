@@ -167,7 +167,7 @@ Create a folder <file>static</file> and inside it another file named <file>index
 Add the following markup:
 
 ```html {class="line-numbers linkable-line-numbers"}
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Drive a Rover</title>
@@ -367,13 +367,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'api-key',
+      type: "api-key",
       // Replace "<API-KEY>" (including brackets) with your robot's api key
-      payload: '<API-KEY>',
+      payload: "<API-KEY>",
     },
     // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-    authEntity: '<API-KEY-ID>',
-    signalingAddress: 'https://app.viam.com:443',
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
   });
 
   // Note that the pin supplied is a placeholder. Please change this to a valid pin you are using.
@@ -457,13 +457,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'api-key',
+      type: "api-key",
       // Replace "<API-KEY>" (including brackets) with your robot's api key
-      payload: '<API-KEY>',
+      payload: "<API-KEY>",
     },
     // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-    authEntity: '<API-KEY-ID>',
-    signalingAddress: 'https://app.viam.com:443',
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
   });
 
   button().onclick = async () => {
@@ -625,7 +625,7 @@ func main() {
 <file>static/index.html</file>:
 
 ```html {class="line-numbers linkable-line-numbers"}
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Drive a Rover</title>
@@ -653,13 +653,13 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'api-key',
+      type: "api-key",
       // Replace "<API-KEY>" (including brackets) with your robot's api key
-      payload: '<API-KEY>',
+      payload: "<API-KEY>",
     },
     // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-    authEntity: '<API-KEY-ID>',
-    signalingAddress: 'https://app.viam.com:443',
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
   });
 
   button().onclick = async () => {

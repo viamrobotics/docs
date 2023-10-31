@@ -169,7 +169,7 @@ The TypeScript SDK currently only supports building web browser apps.
 ```ts {class="line-numbers linkable-line-numbers"}
 // This code must be run in a browser environment.
 
-import * as VIAM from '@viamrobotics/sdk';
+import * as VIAM from "@viamrobotics/sdk";
 
 async function main() {
   // Replace with the host of your actual robot running Viam.
@@ -178,21 +178,21 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: 'api-key',
+      type: "api-key",
       // Replace "<API-KEY>" (including brackets) with your robot's api key
-      payload: '<API-KEY>',
+      payload: "<API-KEY>",
     },
     // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-    authEntity: '<API-KEY-ID>',
-    signalingAddress: 'https://app.viam.com:443',
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
   });
 
-  console.log('Resources:');
+  console.log("Resources:");
   console.log(await robot.resourceNames());
 }
 
 main().catch((error) => {
-  console.error('encountered an error:', error)
+  console.error("encountered an error:", error);
 });
 ```
 
