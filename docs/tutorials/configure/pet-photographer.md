@@ -126,8 +126,8 @@ from viam.utils import from_dm_from_extra
 Then, include it in the conditional statement in your filter function:
 
 ```python {class="line-numbers linkable-line-numbers"}
-     if from_dm_from_extra(extra):
-         detections = await self.vision_service.get_detections(img)
+if from_dm_from_extra(extra):
+    detections = await self.vision_service.get_detections(img)
 ```
 
 - The Python-configured camera checks if the data management service is the caller of the filter function by using `from_dm_from_extra` to determine whether to store data.
@@ -180,10 +180,10 @@ from viam.errors import NoCaptureToStoreError
 Then, within your first conditional statement, create a conditional statement that returns the error when the data management service is not the caller of the filter function:
 
 ```python {class="line-numbers linkable-line-numbers"}
- if from_dm_from_extra(extra):
-     detections = await self.vision_service.get_detections(img)
-     if len(detections) == 0:
-             raise NoCaptureToStoreError()
+if from_dm_from_extra(extra):
+    detections = await self.vision_service.get_detections(img)
+    if len(detections) == 0:
+        raise NoCaptureToStoreError()
 ```
 
 - If the length of the `detections` variable is 0, it indicates that there is no content in the variable.
@@ -288,8 +288,8 @@ from viam.services.vision import Vision
 from viam.utils import from_dm_from_extra
 
 class ColorFilterCam(Camera, Reconfigurable):
-    """A ColorFilterCam wraps the underlying camera `actual_cam` and only keeps the data captured on the actual camera if `vision_service`
-    detects a certain color in the captured image.
+    """A ColorFilterCam wraps the underlying camera
+     `actual_cam` and only keeps the data captured on the actual camera if `vision_service` detects a certain color in the captured image.
     """
     MODEL: ClassVar[Model] = Model(ModelFamily("example", "camera"), "colorfilter")
 
@@ -573,8 +573,10 @@ import color_filter
 
 async def main():
     """
-    This function creates and starts a new module, after adding all desired resource models.
-    Resource creators must be registered to the resource registry before the module adds the resource model.
+    This function creates and starts a new module,
+    after adding all desired resource models.
+    Resource creators must be registered to the
+    resource registry before the module adds the resource model.
     """
     Registry.register_resource_creator(
         Camera.SUBTYPE,
@@ -781,7 +783,7 @@ Your robot's configuration page now includes a panel for your camera.
 
 1. Click the **Components** subtab and then click **Create component**.
 1. Next, select the `local modular resource` type from the list.
-   {{<imgproc src="extend/modular-resources/configure/add-local-module-select.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 1. On the following screen:
 
    1. Select the camera from the drop down menu.
