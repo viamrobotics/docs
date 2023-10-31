@@ -609,7 +609,7 @@ You can also use a laser cutter to cut them into the sizes you prefer if you wan
 
 ## Add the robot logic
 
-Download the [full code](https://raw.githubusercontent.com/viam-labs/devrel-demos/main/tipsy-bot/tipsy.py) onto your computer. TODO
+Download the [full code](https://raw.githubusercontent.com/viam-labs/devrel-demos/main/tipsy-bot/tipsy.py) onto your computer.
 
 Let’s take a look at what it does.
 First, the code imports the required libraries:
@@ -628,7 +628,7 @@ Replace these values with your robot’s own location secret and address, which 
 
 ```python {class="line-numbers linkable-line-numbers"}
 robot_api_key = os.getenv('ROBOT_API_KEY') or ''
-robot_api_key_secret = os.getenv('ROBOT_API_KEY_SECRET') or ''
+robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 # change this if you named your base differently in your robot configuration
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'

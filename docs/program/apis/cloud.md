@@ -33,10 +33,7 @@ Cloud app API methods are only available in the Python SDK.
 
 To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
-To find the api key and secret, go to [Viam app](https://app.viam.com/), and navigate to the bottom of your location's page.
-For the URL, use the address of any of the robots in the location (found on the **Code sample** tab).
-
-TODO
+To find your api key and secret, go to [Viam app](https://app.viam.com/), and navigate to one of your robots' **Security** tab the bottom of your location's page.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -47,13 +44,13 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of any robot in the location.
-        auth_entity='beepboop-main.YOUR LOCATION ID.viam.cloud',
-        credentials=Credentials(
-            type='robot-location-secret',
-            # The location secret
-            payload='YOUR LOCATION SECRET'
-        )
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
 

@@ -191,13 +191,11 @@ You need to tell the code how to access your specific robot (which in this case 
 
    {{% snippet "show-secret.md" %}}
 
-2. In the code sample, find the `payload`, a long string of numbers and letters.
-   Copy it and paste it into line 13 of <file>lightupbot.py</file> in place of `ROBOT_SECRET`. TODO
-3. Find the robot address, of the form `robot-name-main.abc1ab123a1.viam.cloud`, and paste it into line 14 of <file>lightupbot.py</file> in place of `ROBOT_ADDRESS`.
+1. Get the robot address and API key from the code sample and set them as environment variables or add them at the top of <file>lightupbot.py</file>.
 
    You also need to tell the code how to access your smart plug.
 
-4. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
+1. Add the host address (for example, `10.1.11.221`) of your smart plug that you found in the [`kasa discover` step](#kasa) to line 55 of <file>lightupbot.py</file>.
 
 ### Run the code
 

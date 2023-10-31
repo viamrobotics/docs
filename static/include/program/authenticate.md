@@ -1,11 +1,11 @@
 To authenticate yourself to your robot, you need
 
-1.  The robot's part api key:
+1. The robot's part api key:
 
-    To authenticate, [create an api key [using the UI]() or [using the CLI](/manage/cli/#create-an-organization-api-key).
-    Copy and paste the api key id and the api key into your environment variables or directly into the code:
+   To authenticate, [create a robot api key using the UI]() or [create an organization-wide api key using the CLI](/manage/cli/#create-an-organization-api-key).
+   Copy and paste the api key id and the api key into your environment variables or directly into the code:
 
-    {{< tabs >}}
+   {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-line="3,5,9,11"}
@@ -99,17 +99,18 @@ Future<void> connectToViam() async {
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< alert title="Caution" color="caution" >}}
-Do not share your part api key id, org api key, or robot address publicly.
+   {{< alert title="Caution" color="caution" >}}
+Do not share your part api key or robot address publicly.
 Sharing this information could compromise your system security by allowing unauthorized access to your robot, or to the computer running your robot.
-{{< /alert >}}
+   {{< /alert >}}
 
-{{< alert title="Location secret (deprecated)" color="note" >}}
+   {{< alert title="Location secret (deprecated)" color="note" >}}
 
 Prior to API keys, Viam used Location secrets for authentication.
-To avoid future issues, start using API keys.
+Location secrets are now deprecated.
+To avoid connection issues, start using API keys.
 
-{{< /alert >}}
+   {{< /alert >}}
 
 2. The robot's remote address: Include the address, which resembles `12345.somerobot-main.viam.cloud`. The robot address is as a public address to connect to your robot.
-   You can find this address at the top of the robot's **Control** tab or in the **Code sample** tab..
+   You can find this address at the top of the robot's **Control** tab or in the **Code sample** tab.

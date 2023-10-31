@@ -236,14 +236,14 @@ import yagmail
 
 # These must be set. You can get them from your robot's 'Code sample' tab
 robot_api_key = os.getenv('ROBOT_API_KEY') or ''
-robot_api_key_secret = os.getenv('ROBOT_API_KEY_SECRET') or ''
+robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      api_key=robot_api_key_secret,
-      api_key_id=robot_api_key
+      api_key=robot_api_key,
+      api_key_id=robot_api_key_id
     )
     return await RobotClient.at_address(robot_address, opts)
 

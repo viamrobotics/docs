@@ -191,8 +191,7 @@ async def connect():
         # Replace "<API-KEY>" (including brackets) with your robot's api key
         api_key='<API-KEY>',
         # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-        api_key_id='<API-KEY-ID>',
-        refresh_interval=0
+        api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
 
@@ -331,8 +330,7 @@ async def connect():
         # Replace "<API-KEY>" (including brackets) with your robot's api key
         api_key='<API-KEY>',
         # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-        api_key_id='<API-KEY-ID>',
-        refresh_interval=0,
+        api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
 

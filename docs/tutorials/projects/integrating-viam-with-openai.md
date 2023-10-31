@@ -174,13 +174,12 @@ To acquire OpenAI credentials, [sign up for OpenAI](https://openai.com/api/) and
 
 Once you have both of the credentials, create a file called `run.sh`, add the following, and update the credentials within:
 
-TODO
-
 ```sh {class="command-line" data-prompt="$"}
 #!/usr/bin/sh
 export OPENAPI_KEY=abc
 export OPENAPI_ORG=xyz
-export VIAM_SECRET=123
+export VIAM_API_KEY=123
+export VIAM_API_KEY_ID=123
 export VIAM_ADDRESS=789
 python rosey.py
 ```

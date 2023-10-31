@@ -38,23 +38,21 @@ import asyncio
 from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 
-TODO
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of any robot in the location.
-        auth_entity='beepboop-main.YOUR LOCATION ID.viam.cloud',
-        credentials=Credentials(
-            type='robot-location-secret',
-            # The location secret
-            payload='YOUR LOCATION SECRET'
-        )
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
 
 async def main():
-
     # Make a ViamClient
     viam_client = await connect()
     # Instantiate a DataClient to run data client API methods on

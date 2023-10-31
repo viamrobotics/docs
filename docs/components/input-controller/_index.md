@@ -846,11 +846,8 @@ cmd = {}
 
 async def connect_robot(host, api_key, api_key_id):
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
-      api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-      api_key_id='<API-KEY-ID>',
-      refresh_interval=0,
+      api_key=api_key,
+      api_key_id=api_key_id
     )
     return await RobotClient.at_address(host, opts)
 
