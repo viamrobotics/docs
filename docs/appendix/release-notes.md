@@ -659,7 +659,7 @@ All component drivers can now declare dependencies, which are used to infer the 
             We are now working to add support in each of our SDKs so that users can create custom resources in a variety of programming languages.
             Previously, the only way for users to implement custom resources was to use an SDK as a server.
             This meant that a user needed to run a <code>viam-server</code> for their custom component and add it to their main part as a remote.
-            With custom {{< glossary_tooltip term_id="resource" text="resources" >}}, users no longer need to run separate server instances for each custom resource which saves additional network requests.<br/>
+            With custom {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, users no longer need to run separate server instances for each custom resource which saves additional network requests.<br/>
 
 {{< alert title="Important" color="note" >}}
 This is a breaking change.

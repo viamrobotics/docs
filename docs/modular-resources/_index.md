@@ -27,13 +27,13 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the component or service you want to use for your project is not natively supported, you can use _modular resources_ from the [Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
+If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
 You configure and manage modular resources the same way as built-in resources and use the same [standardized APIs](/program/apis/).
 
 ## The Viam Registry
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built-in to `viam-server`.
-To leverage this, you can develop modules in various programming languages, such as Go, Python, C++, Rust, and more, all while implementing the same [APIs](/program/apis/).
+You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/program/apis/).
 
 After adding a module to your robot, you can choose to configure it for automatic version updates from the Viam registry, or update your module manually.
 By default, newly added modules will not update automatically and will remain at their initial version.

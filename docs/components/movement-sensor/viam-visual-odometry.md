@@ -9,7 +9,7 @@ katex: true
 # SMEs: Robin In
 ---
 
-Viam provides a `monocular-visual-odometry` [modular resource](/modular-resources/) which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated camera](/components/camera/calibrate/) to function as a movement sensor.
+Viam provides a `monocular-visual-odometry` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated camera](/components/camera/calibrate/) to function as a movement sensor.
 In this way, you can add basic movement sensing to your camera-equipped robot without needing a dedicated hardware [movement sensor](/components/movement-sensor/).
 
 <div class="aligncenter">

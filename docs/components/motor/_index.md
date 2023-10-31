@@ -37,7 +37,7 @@ Most robots with a motor need at least the following hardware:
 
 ## Supported Models
 
-To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
+To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your motor.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

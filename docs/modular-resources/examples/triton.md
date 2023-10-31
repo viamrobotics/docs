@@ -11,7 +11,7 @@ aliases:
 ---
 
 Viam provides a MLModel service resource backed by NVIDIA's [Triton Inference Server](https://developer.nvidia.com/triton-inference-server), open-source software that makes AI model deployment and execution seamless and standardized.
-Configure this MLModel service as a [modular resource](/modular-resources/) on your robot with a [`jetson` board](/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
+Configure this MLModel service as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} on your robot with a [`jetson` board](/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
 
 Usage information is also available on [GitHub](https://github.com/viamrobotics/viam-mlmodelservice-triton).
 

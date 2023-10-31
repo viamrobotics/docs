@@ -57,7 +57,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 ## Supported Models
 
-To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
+To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your arm.
 
 {{< alert title="Add support for other models" color="tip" >}}
 

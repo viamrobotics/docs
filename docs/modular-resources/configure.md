@@ -18,7 +18,7 @@ aliases:
   - "/program/extend/modular-resources/configure/"
 ---
 
-To use a [modular resource](/modular-resources/) on your robot, you need to:
+You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)).
 
 1. Add a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-modular-resource-from-the-viam-registry) or a [local module](#local-modules).
    This makes the modular resource available to the robot.

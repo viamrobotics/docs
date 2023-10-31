@@ -15,7 +15,7 @@ no_list: true
 The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
 
 There are no built-in generic component models (other than `fake`).
-Use generic for a [modular resource](/modular-resources/) model that represents a unique type of hardware.
+Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
 
 {{% alert title="Important" color="note" %}}
 
