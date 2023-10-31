@@ -691,8 +691,8 @@ async def person_detect(detector: VisionClient,
                     found = True
         if found:
             print("I see a person")
-            # first manually call get_obstacle_readings - don't even start moving if
-            # someone is in the way
+            # first manually call get_obstacle_readings - don't even start
+            # moving if someone is in the way
             distances = await get_obstacle_readings(sensors, sensors_svc)
             if all(distance > 0.4 for distance in distances):
                 print("will move straight")
