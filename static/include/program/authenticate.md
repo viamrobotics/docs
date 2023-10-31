@@ -101,13 +101,13 @@ Future<void> connectToViam() async {
 {{< /tabs >}}
 
    {{< alert title="Caution" color="caution" >}}
-Do not share your part api key or robot address publicly.
+Do not share your robot part API key or robot address publicly.
 Sharing this information could compromise your system security by allowing unauthorized access to your robot, or to the computer running your robot.
    {{< /alert >}}
 
    {{< alert title="Location secret (deprecated)" color="note" >}}
 
-Prior to API keys, Viam used Location secrets for authentication.
+Prior to API keys, Viam used location secrets for authentication.
 Location secrets are now deprecated.
 To avoid connection issues, start using API keys.
 
