@@ -142,3 +142,9 @@ readings, err := sensorsService.Readings(context.Background(), sensor_names, nil
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Next steps
+
+{{< cards >}}
+  {{% card link="/tutorials/projects/tipsy/" %}}
+{{< /cards >}}
