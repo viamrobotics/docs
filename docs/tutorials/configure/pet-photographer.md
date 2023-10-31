@@ -294,11 +294,11 @@ from viam.errors import NoCaptureToStoreError
 from viam.services.vision import Vision
 from viam.utils import from_dm_from_extra
 
+
 class ColorFilterCam(
         Camera,
         Reconfigurable
   ):
-
 
     """A ColorFilterCam wraps the underlying camera
     `actual_cam` and only keeps the data captured on the
