@@ -652,7 +652,6 @@ The first method, `get_obstacle_readings()`, gets all the distance readings from
 async def get_obstacle_readings(sensors: list[Sensor],
                                 sensors_svc: SensorsClient):
     sensor_values = (await sensors_svc.get_readings(sensors)).values()
-    print(sensor_values)
     return [r["distance"] for r in sensor_values]
 
 
