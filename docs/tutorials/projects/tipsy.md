@@ -692,7 +692,7 @@ async def person_detect(detector: VisionClient,
                     found = True
         if found:
             print("I see a person")
-            # first manually call obstacle_detect - don't even start moving if
+            # first manually call get_obstacle_readings - don't even start moving if
             # someone is in the way
             distances = await get_obstacle_readings(sensors, sensors_svc)
             if all(distance > 0.4 for distance in distances):
@@ -721,7 +721,7 @@ async def main():
     detector = VisionClient.from_robot(robot, name=detector_name)
 
     # create a background task that looks for obstacles and stops the base if
-    # its moving
+    # it is moving
     obstacle_task = asyncio.create_task(
         obstacle_detect_loop(sensors, sensors_svc, base))
     # create a background task that looks for a person and moves towards them,
