@@ -146,5 +146,5 @@ readings, err := sensorsService.Readings(context.Background(), sensor_names, nil
 ## Next steps
 
 {{< cards >}}
-  {{% card link="/tutorials/projects/tipsy/" %}}
+{{% card link="/tutorials/projects/tipsy/" %}}
 {{< /cards >}}
