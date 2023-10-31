@@ -218,7 +218,8 @@ async def get_image(
   *,
   extra: Optional[Dict[str, Any]] = None,
   timeout: Optional[float] = None,
-  **kwargs) -> Image.Image:
+  **kwargs
+  ) -> Image.Image:
     """Filters the output of the underlying camera"""
     img = await self.actual_cam.get_image()
     if from_dm_from_extra(extra):
@@ -293,7 +294,10 @@ from viam.errors import NoCaptureToStoreError
 from viam.services.vision import Vision
 from viam.utils import from_dm_from_extra
 
-class ColorFilterCam(Camera, Reconfigurable):
+class ColorFilterCam(
+  Camera,
+  Reconfigurable
+  ):
     """A ColorFilterCam wraps the underlying camera
     `actual_cam` and only keeps the data captured on the
     actual camera if `vision_service` detects a certain
