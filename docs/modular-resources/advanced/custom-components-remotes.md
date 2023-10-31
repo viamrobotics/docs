@@ -18,7 +18,7 @@ However, if you are unable to use [modular resources](/modular-resources/) becau
 Once you have coded your custom component and configured the remote servers, you can control and monitor your component with the Viam SDKs, like any other component.
 
 To show how to create a custom resource, the following example creates an arm as a custom component and registers the new arm model with a Viam SDK.
-Then you can control it as part of your robot with the same [API methods](/components/arm/#api) available for [arm models built-in to the RDK](/components/arm/#supported-models).
+Then you can control it as part of your robot with the same [API methods](/components/arm/#api) available for [arm models built into the RDK](/components/arm/#supported-models).
 
 ## Instructions
 
