@@ -29,6 +29,13 @@ Most robots with a servo need at least the following hardware:
 - A power supply for the board
 - A power supply for the servo
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
+
 {{% alert title="Tip" color="tip" %}}
 
 The Viam servo component supports [hobby servos](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).

@@ -26,6 +26,15 @@ Most robots with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
