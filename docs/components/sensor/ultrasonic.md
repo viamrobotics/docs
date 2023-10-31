@@ -17,7 +17,7 @@ When configured as a camera, you can use the camera method [`GetPointCloud()`](/
 Additionally, you can use the camera component as an input to a [vision service](/services/vision/) model that returns obstacles.
 {{< /alert >}}
 
-Configure an `ultrasonic` sensor to integrate an ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) into your robot:
+Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your robot:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

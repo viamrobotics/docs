@@ -354,7 +354,7 @@ location, err := myNav.Location(context.Background(), nil)
 
 - [(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude and longitude values.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_waypoints).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_location).
 
 ```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
@@ -581,6 +581,61 @@ obstacles = await my_nav.get_obstacles()
 {{% /tab %}}
 {{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the service API.
+For built-in service models, any model-specific commands available are covered with each model's documentation.
+If you are implementing your own navigation service and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map\[string\]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map\[string\]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+resp, err := myNav.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Mapping[str, ValueTypes])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(Mapping[str, ValueTypes])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+my_command = {
+  "command": "dosomething",
+  "someparameter": 52
+}
+
+await my_nav.do_command(my_command)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.do_command).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Control Tab Usage
 
 After configuring the navigation service for your robot, navigate to the **Control** tab of the robot's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
@@ -629,7 +684,6 @@ Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-
 The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
-- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 
 An example of an `Orientation` reading:
 
@@ -652,7 +706,6 @@ Then use the movement sensor API's [`GetOrientation()`](/components/movement-sen
 The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/components/movement-sensor/) component take angular velocity measurements:
 
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
-- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 - [wheeled-odometry](/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
@@ -716,7 +769,6 @@ The following {{< glossary_tooltip term_id="model" text="models" >}} of [movemen
 
 - [accel-adxl345](/components/movement-sensor/adxl345/)
 - [imu-wit](/components/movement-sensor/imu/imu-wit/)
-- [imu-vectornav](/components/movement-sensor/imu/imu-vectornav/)
 - [gyro-mpu6050](/components/movement-sensor/mpu6050/)
 
 An example of a `Linear Acceleration` reading:

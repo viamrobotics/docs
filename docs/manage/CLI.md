@@ -262,7 +262,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
-| `delete`      | delete data  | - |
+| `delete binary`      | delete binary data  | - |
+| `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -270,23 +271,24 @@ viam data export --destination=/home/robot/data --data-type=binary \
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--destination`      | output directory for downloaded data       |`export`|true |
-| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
+| `--destination`      | output directory for downloaded data       |`export`| true |
+| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`| true |
 | `--component-name`      | filter by specified component name  |`export`, `delete`| false |
-| `--component-type`     | filter by specified component type       |`export`, `delete`|false |
-| `--component-model`   | filter by specified component model       |`export`, `delete`|false |
-| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`|false |
-| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`|false |
-| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
-| `--method`       | filter by specified method       |`export`, `delete`|false |
+| `--component-type`     | filter by specified component type       |`export`, `delete`| false |
+| `--component-model`   | filter by specified component model       |`export`, `delete`| false |
+| `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`| false |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`| false |
+| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
+| `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
-| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
-| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part-id`      | filter by specified part id      |`export`, `delete`|false |
-| `--part-name`     | filter by specified part name       |`export`, `delete`|false |
-| `--robot-id`     | filter by specified robot id       |`export`, `delete`|false |
-| `--robot-name`      | filter by specified robot name       |`export`, `delete`|false |
-| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
+| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|f alse |
+| `--part-id`      | filter by specified part id      |`export`, `delete`| false |
+| `--part-name`     | filter by specified part name       |`export`, `delete`| false |
+| `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
+| `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
+| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`| false |
 
 ### locations
 
@@ -521,7 +523,7 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}

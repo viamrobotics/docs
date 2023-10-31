@@ -15,6 +15,13 @@ images: ["/icons/components/power-sensor.svg"]
 A power sensor is a device that reports measurements of the voltage, current and power consumption in your robot's system.
 Integrate this component to monitor your power levels.
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/sensors/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.

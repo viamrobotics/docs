@@ -28,6 +28,15 @@ Most robots with a COMPONENT need at least the following hardware (optional):
 - Board
 - ...
 
+## Related Services
+
+Add services commonly used with the component.
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your COMPONENT with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your COMPONENT.

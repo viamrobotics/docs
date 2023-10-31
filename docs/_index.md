@@ -45,7 +45,7 @@ sitemap:
       </a>
     </li>
     <li id="c1_slide5">
-      <a href="internals/micro-rdk/">
+      <a href="micro-rdk/">
         {{<imgproc src="installation/thumbnails/esp32-espressif.png" resize="148x120" declaredimensions=true alt="E S P 32 - espressif">}}
         <p>Espressif ESP32</p>
       </a>

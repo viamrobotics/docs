@@ -31,6 +31,16 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/vision/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< relatedcard link="/services/ml/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
@@ -57,7 +67,7 @@ For configuration information, click on the model name:
 | [`align_color_depth_homography`](align-color-depth-homography/) | Uses a homography matrix to align the color and depth images. |
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
-| [`ultrasonic`](ultrasonic/) | An ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569). |
+| [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor. |
 
 ### Modular Resources
 

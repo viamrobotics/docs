@@ -1,10 +1,11 @@
+<!-- prettier-ignore -->
 Method Name | Description | Models That Support This Method
 ----------- | ----------- | -------------------------------
 [`GetPosition`](/components/movement-sensor/#getposition) | Get the current latitude, longitude and altitude. | GPS models
 [`GetLinearVelocity`](/components/movement-sensor/#getlinearvelocity) | Get the current linear velocity as a 3D vector. | GPS models
 [`GetAngularVelocity`](/components/movement-sensor/#getangularvelocity) | Get the current angular velocity as a 3D vector. | IMU models and `gyro-mpu6050`
 [`GetLinearAcceleration`](/components/movement-sensor/#getlinearacceleration) | Get the current linear acceleration as a 3D vector. | IMU models,  `accel-adxl345`, and `gyro-mpu6050`
-[`GetCompassHeading`](/components/movement-sensor/#getcompassheading) | Get the current compass heading in degrees. | GPS models and `imu-vectornav`
+[`GetCompassHeading`](/components/movement-sensor/#getcompassheading) | Get the current compass heading in degrees. | GPS models
 [`GetOrientation`](/components/movement-sensor/#getorientation) | Get the current orientation. | IMU models
 [`GetProperties`](/components/movement-sensor/#getproperties) | Get the supported properties of this sensor. | all models
 [`GetAccuracy`](/components/movement-sensor/#getaccuracy) | Get the accuracy of the various sensors. | GPS models

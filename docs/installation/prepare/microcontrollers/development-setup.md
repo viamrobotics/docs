@@ -154,7 +154,7 @@ Clone Viam's fork of the ESP-IDF, the development framework for Espressif SoCs (
 ```sh { class="command-line" data-prompt="$"}
 mkdir -p ~/esp
 cd ~/esp
-git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/npmenard/esp-idf
+git clone --depth 1 -b v4.4.4 --single-branch --recurse-submodules --shallow-submodules https://github.com/viamrobotics/esp-idf
 ```
 
 Then, install the required tools for ESP-IDF:
@@ -222,75 +222,18 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 Click on the name of the robot to go to the robot's page.
 Then, navigate to the **Config** tab.
 
-### Configure an esp32 board
+### Configure your robot with an ESP32
 
-{{< alert title="Info" color="info" >}}
+[Client API](/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
-The`esp32` [board](/components/board/) model is not currently provided for you as a built-in option in [the Viam app](https://app.viam.com), so you cannot use the **Config Builder** to configure this board.
+- [Base](/micro-rdk/base/)
+- [Board](/micro-rdk/board/)
+- [Encoder](/micro-rdk/encoder/)
+- [Movement Sensor](/micro-rdk/movement-sensor/)
+- [Motor](/micro-rdk/motor/)
 
-{{< /alert >}}
-
-To add an `esp32` board, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com) and select **Raw JSON** mode.
-
-Copy the following JSON template and paste it into your configuration inside the `"components"` array:
-
-{{< tabs name="Configure an esp32 Board" >}}
-{{% tab name="JSON Template"%}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "attributes": {
-    "pins": [
-      <int>
-    ],
-    "analogs": [
-      {
-        "pin": "<number>",
-        "name": "<your-analog-name>"
-      }
-    ]
-  },
-  "depends_on": [],
-  "model": "esp32",
-  "name": "<your-board-name>",
-  "type": "board"
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "attributes": {
-    "pins": [15],
-    "analogs": [
-      {
-        "pin": "34",
-        "name": "sensor"
-      }
-    ]
-  },
-  "depends_on": [],
-  "model": "esp32",
-  "name": "board",
-  "type": "board"
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Edit and fill in the attributes as applicable.
-Click **Save config**.
-
-The following attributes are available for `esp32` boards:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-| `pins` | object | Required | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/program/apis/#gpio-pins). |
-| `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](/components/board/#analogs). |
+See [micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
+Follow [this guide](/micro-rdk/board/esp32/) to configure an `esp32` board on your robot.
 
 ### Generate a New Project from the Micro-RDK Template
 
