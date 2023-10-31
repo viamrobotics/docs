@@ -36,9 +36,9 @@ The [Viam registry](https://app.viam.com/registry) is the central place where yo
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/program/apis/).
 
 After adding a module to your robot, you can choose to configure it for automatic version updates from the Viam registry, or update your module manually.
-By default, newly added modules will not update automatically and will remain at their initial version.
+By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
 
-You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its module details page.
+You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its its dedicated module page.
 
 You can search the available modular resources from the Viam Registry here:
 
