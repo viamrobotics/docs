@@ -294,10 +294,10 @@ from viam.errors import NoCaptureToStoreError
 from viam.services.vision import Vision
 from viam.utils import from_dm_from_extra
 
-class ColorFilterCam(
-      Camera,
-      Reconfigurable
-    ):
+  class ColorFilterCam(
+        Camera,
+        Reconfigurable
+  ):
     """A ColorFilterCam wraps the underlying camera
     `actual_cam` and only keeps the data captured on the
     actual camera if `vision_service` detects a certain
@@ -496,18 +496,26 @@ return nil, err
 }
 
 // NextPointCloud does nothing.
-func (c \*colorFilterCam) NextPointCloud(ctx context.Context) (pointcloud.PointCloud, error) {
-return nil, errUnimplemented
+func (c \*colorFilterCam)
+NextPointCloud(ctx context.Context)
+(pointcloud.PointCloud, error)
+{
+  return nil, errUnimplemented
 }
 
 // Properties returns details about the camera.
-func (c \*colorFilterCam) Properties(ctx context.Context) (camera.Properties, error) {
-return c.actualCam.Properties(ctx)
+func (c \*colorFilterCam) Properties
+(ctx context.Context)
+(camera.Properties, error)
+{
+  return c.actualCam.Properties(ctx)
 }
 
 // Projector does nothing.
-func (c \*colorFilterCam) Projector(ctx context.Context) (transform.Projector, error) {
-return nil, errUnimplemented
+func (c \*colorFilterCam) Projector
+(ctx context.Context) (transform.
+Projector, error) {
+  return nil, errUnimplemented
 }
 
 type filterStream struct {
