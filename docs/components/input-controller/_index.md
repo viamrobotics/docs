@@ -354,7 +354,7 @@ logger.Info(controls)
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- ### TriggerEvent NOTE: This method should be documented when support is available for all input components.
+### TriggerEvent
 
 Directly send an [Event Object](#event-object) from external code.
 
@@ -417,7 +417,7 @@ if err != nil {
 ```
 
 {{% /tab %}}
-{{< /tabs >}} -->
+{{< /tabs >}}
 
 ### DoCommand
 
