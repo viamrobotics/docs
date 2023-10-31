@@ -2,7 +2,7 @@
 title: "Release Notes"
 linkTitle: "Release Notes"
 weight: 110
-draft: false
+draft: true
 type: "docs"
 description: "Release Notes for Viam."
 # SME: Naomi
