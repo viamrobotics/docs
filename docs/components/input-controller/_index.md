@@ -941,7 +941,7 @@ async def handleController(controller):
 
 
 async def main():
-    # ADD YOUR ROBOT REMOTE ADDRESS and API key values.
+    # ADD YOUR ROBOT REMOTE ADDRESS and API KEY VALUES.
     # These can be found in the Code sample tab of app.viam.com.
     # Toggle 'Include secret' to show the api key values.
     g920_robot = await connect_robot(

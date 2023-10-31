@@ -246,7 +246,7 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your robot address and api key and secret. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include secret**.
+1. First, determine your robot address and API key and API key id. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include secret**.
    The api key secret resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the api key id resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
