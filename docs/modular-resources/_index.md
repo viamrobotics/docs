@@ -33,7 +33,7 @@ You configure and manage modular resources the same way as built-in resources an
 ## The Viam Registry
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built-in to `viam-server`.
-You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its module details page.
+You can see details about each module in the Viam registry on its module details page.
 
 You can search the available modular resources from the Viam Registry here:
 
