@@ -36,6 +36,7 @@ Once you have created a modular resource, you can test your modular resource usi
 {{% card link="/modular-resources/examples/custom-arm/" %}}
 {{% card link="/modular-resources/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
 {{% card link="/modular-resources/examples/triton/" customTitle="Add a Triton MLModel Modular Service"  %}}
+{{% card link="/modular-resources/examples/aws-sagemaker/" customTitle="Add a AWS Sagemaker Vision Modular Service" %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
 {{% card link="/tutorials/custom/controlling-an-intermode-rover-canbus/" %}}
 {{< /cards >}}
