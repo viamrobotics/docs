@@ -22,13 +22,6 @@ Integrate this component to monitor your power levels.
 {{< relatedcard link="/services/sensors/" >}}
 {{< /cards >}}
 
-## Related Services
-
-{{< cards >}}
-{{< relatedcard link="/services/data/" >}}
-{{< relatedcard link="/services/sensors/" >}}
-{{< /cards >}}
-
 ## Supported Models
 
 To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.

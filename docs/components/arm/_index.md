@@ -26,14 +26,6 @@ When controlling an arm with `viam-server`, the following features are implement
 - Self-collision prevention
 - Obstacle avoidance
 
-## Related Services
-
-{{< cards >}}
-{{< relatedcard link="/services/motion/" >}}
-{{< relatedcard link="/services/frame-system/" >}}
-{{< relatedcard link="/services/data/" >}}
-{{< /cards >}}
-
 ## Motion planning with your arm's built-in software
 
 Each arm model is supported with a driver that is compatible with the software API that the model's manufacturer supports.
@@ -54,6 +46,14 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 - When an arm is moved with a `move_to_position` call, the movement will follow a straight line, and not deviate from the start or end orientations more than the start and orientations differ from one another
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
+
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
 
 ## Supported Models
 
