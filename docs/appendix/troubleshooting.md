@@ -166,56 +166,55 @@ It will resemble the following:
 
 **Solution:** On your Linux system, verify each of the following:
 
-1. Ensure that your Linux OS is able to access your camera:
+- Ensure that your Linux OS is able to access your camera:
 
    1. First, find your video device:
 
-   ```sh {class="command-line" data-prompt="$"}
-   ls -l /dev/v4l/*
-   ```
+      ```sh {class="command-line" data-prompt="$"}
+      ls -l /dev/v4l/*
+      ```
 
-   In the list of camera devices returned, find the entry that matches the `video_path` from your camera component's configuration in the Viam app.
-   For example, if your camera is configured with a `video_path` of `usb-GENERAL_GENERAL_WEBCAM-video-index0`, you would find it in the output of the above command like so:
+      In the list of camera devices returned, find the entry that matches the `video_path` from your camera component's configuration in the Viam app.
+      For example, if your camera is configured with a `video_path` of `usb-GENERAL_GENERAL_WEBCAM-video-index0`, you would find it in the output of the above command like so:
 
-   ```sh
-   usb-GENERAL_GENERAL_WEBCAM-video-index0 -> ../../video0
-   ```
+      ```sh
+      usb-GENERAL_GENERAL_WEBCAM-video-index0 -> ../../video0
+      ```
 
-   The video device number is the number after `video` appearing on the symlink target for that device, in this case `0`.
+      The video device number is the number after `video` appearing on the symlink target for that device, in this case `0`.
 
    1. Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
-   ```sh {class="command-line" data-prompt="$"}
-   v4l2-ctl -d0 --stream-mmap
-   ```
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl -d0 --stream-mmap
+      ```
 
-   Replace the `0` in the above command with the number you determined for your video device above.
-   You should receive output resembling like the following, which indicates that your Linux OS is successfully able to use your video device:
+      Replace the `0` in the above command with the number you determined for your video device above.
+      You should receive output resembling like the following, which indicates that your Linux OS is successfully able to use your video device:
 
-   ```sh
-   <<<<<<<<<<<<<<<<<<<<<<<< 22.81 fps
-   <<<<<<<<<<<<<<<<<<<<<<<< 23.50 fps
-   ```
+      ```sh
+      <<<<<<<<<<<<<<<<<<<<<<<< 22.81 fps
+      <<<<<<<<<<<<<<<<<<<<<<<< 23.50 fps
+      ```
 
-   If the command does not return FPS readings as shown above, consult the documentation for your camera and Linux distribution to troubleshoot.
+      If the command does not return FPS readings as shown above, consult the documentation for your camera and Linux distribution to troubleshoot.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
 
-   If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
+- Ensure that your camera uses a supported pixel format:
 
-1. Ensure that your camera uses a supported pixel format:
+   1. First, determine your video device number, like `0`, following the instructions above.
+   1. Then, run the following command:
 
-   1. Determine your video device number, like `0`, following the instructions above.
-   1. Then run the following command:
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --list-formats-ext --device /dev/video0
+      ```
 
-   ```sh {class="command-line" data-prompt="$"}
-   v4l2-ctl --list-formats-ext --device /dev/video0
-   ```
+      Replace the `0` in the above command with the number you determined for your video device above.
+      Or, if your video device uses a different path, supply that path to this command instead of `/dev/video0`.
 
-   Replace the `0` in the above command with the number you determined for your video device above.
-   Or, if your video device uses a different path, supply that path to this command instead of `/dev/video0`.
-
-   The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
-   In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
-   If your camera does not support any of these formats, it cannot be used with Viam.
+      The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
+      If your camera does not support any of these formats, it cannot be used with Viam.
 
 ### Error: failed to find the best driver that fits the constraints
 
