@@ -65,7 +65,7 @@ Add the following to your `"services"` array:
 
 ### Attributes
 
-After creating your model repository, configure the required attributes to connect your robot to an AWS Sagemaker model performing inferences in the cloud.
+After deploying your model to an endpoint, configure the required attributes to connect your robot to the AWS Sagemaker model performing inferences in the cloud.
 The following attributes are available for the vision service `viam:vision:aws-sagemaker`:
 
 <!-- prettier-ignore -->
