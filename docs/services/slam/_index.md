@@ -198,12 +198,6 @@ internal_state = await slam.get_internal_state()
 
 ### GetLatestMapInfo
 
-{{% alert title="Important" color="tip" %}}
-
-This method is not yet available in the Viam Python SDK.
-
-{{% /alert %}}
-
 Get the timestamp of the last update to the point cloud SLAM map.
 
 {{< tabs >}}
@@ -225,6 +219,80 @@ slam_svc, err := slam.FromRobot(robot, "my_slam_service")
 
 // Get the timestamp of the last update to the point cloud SLAM map.
 timestamp, err := slam_svc.GetLatestMapInfo(context.Background())
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(`datetime`)](https://docs.python.org/3/library/datetime.html): The timestamp of the last update.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_latest_map_info).
+
+```python {class="line-numbers linkable-line-numbers"}
+slam = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+
+timestamp = slam.get_latest_map_info()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## DoCommand
+
+Execute model-specific commands that are not otherwise defined by the service API.
+For built-in service models, any model-specific commands available are covered with each model's documentation.
+If you are implementing your own SLAM service and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map\[string\]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map\[string\]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+
+resp, err := slam_svc.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Mapping[str, ValueTypes])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(Mapping[str, ValueTypes])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.do_command).
+
+```python {class="line-numbers linkable-line-numbers"}
+slam = SLAMClient.from_robot(robot=robot, name="my_slam_service")
+
+my_command = {
+  "command": "dosomething",
+  "someparameter": 52
+}
+
+await slam.do_command(my_command)
 ```
 
 {{% /tab %}}
