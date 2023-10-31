@@ -168,7 +168,7 @@ It will resemble the following:
 
 - Ensure that your Linux OS is able to access your camera:
 
-   1. First, find your video device:
+  1.  First, find your video device:
 
       ```sh {class="command-line" data-prompt="$"}
       ls -l /dev/v4l/*
@@ -183,7 +183,7 @@ It will resemble the following:
 
       The video device number is the number after `video` appearing on the symlink target for that device, in this case `0`.
 
-   1. Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+  1.  Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
       ```sh {class="command-line" data-prompt="$"}
       v4l2-ctl -d0 --stream-mmap
@@ -202,8 +202,8 @@ It will resemble the following:
 
 - Ensure that your camera uses a supported pixel format:
 
-   1. First, determine your video device number, like `0`, following the instructions above.
-   1. Then, run the following command:
+  1.  First, determine your video device number, like `0`, following the instructions above.
+  1.  Then, run the following command:
 
       ```sh {class="command-line" data-prompt="$"}
       v4l2-ctl --list-formats-ext --device /dev/video0
