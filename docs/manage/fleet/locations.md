@@ -52,10 +52,7 @@ To move a sub-location to the top level of locations, select **Root** from the *
 A location always belongs to the organization it was created in.
 Members of the organization have access to all locations in the organization by default.
 
-There are two ways to share a location beyond its organization:
-
-- [Share a location with an additional organization](#share-a-location-with-an-additional-organization)
-- [Share a location using location secret keys](#share-a-location-using-location-secret-keys)
+You can share a location beyond its organization by [sharing a location with an additional organization](#share-a-location-with-an-additional-organization).
 
 #### Share a location with an additional organization
 
@@ -71,15 +68,20 @@ The location's page lists newly added organization, along with the organization 
 
 You can remove any organization except the primary owner from the shared list by clicking the **X** to the right of the location in the shared list.
 
-#### Share a location using api keys
+<!-- location keys are going away but no new solution yet
+#### Share a location using location secret keys
 
-Grant programmatic access to your location by sharing an api key.
+Grant programmatic access to your location by sharing a location secret key.
 
 You can see the secret keys for a location in the **Location Secret Keys** drop-down:
 
 ![The list of secret keys that can grant access to a location displays in the location secret keys drop down menu of the Viam app.](/manage/app-usage/location-secret-keys-drop-down.png)
 
-{{% snippet "secret-share.md" %}}
+{{< alert title="Caution" color="caution" >}}
+Do not share your location secret, part secret, or robot address publicly.
+Sharing this information could compromise your system security by allowing unauthorized access to your robot, or to the computer running your robot.
+{{< /alert >}}
+-->
 
 ##### Rotate a secret key
 

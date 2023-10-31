@@ -2,7 +2,7 @@ To authenticate yourself to your robot, you need
 
 1. The robot's part api key:
 
-   To authenticate, [create a robot api key using the UI]() or [create an organization-wide api key using the CLI](/manage/cli/#create-an-organization-api-key).
+   To authenticate, [use a robot api key](/manage/robots/#security) or [an organization-wide api key](/manage/cli/#create-an-organization-api-key).
    Copy and paste the api key id and the api key into your environment variables or directly into the code:
 
    {{< tabs >}}
@@ -11,10 +11,11 @@ To authenticate yourself to your robot, you need
 ```python {class="line-numbers linkable-line-numbers" data-line="3,5,9,11"}
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
-      api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
-      api_key_id='<API-KEY-ID>'
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
