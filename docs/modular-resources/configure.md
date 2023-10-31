@@ -24,7 +24,8 @@ To use a [modular resource](/modular-resources/) on your robot, you need to:
    This makes the modular resource available to the robot.
 1. Then add the modular resource itself.
 
-These two steps automatically happen at the same time when you add a modular resource from the registry.
+When you add a modular resource from the registry, the underlying module that provides it is automatically added at the same time.
+To add a modular resource from a local module, you must add the module first.
 
 ## Add a modular resource from the Viam registry
 
@@ -51,7 +52,7 @@ To add a modular [component](/components/) from the Viam registry to your robot:
 
    {{<imgproc src="modular-resources/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
-1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your robot's component config.
+1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your robot's component configuration.
 
    {{<imgproc src="modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
@@ -80,7 +81,7 @@ To add a modular [service](/services/) from the Viam registry to your robot:
 
    {{<imgproc src="modular-resources/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
-1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot's service config.
+1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot's service configuration.
 
    {{<imgproc src="modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
@@ -100,7 +101,7 @@ Deleting a module _does not_ delete any configured modular resources it provides
 Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resource's [model](/modular-resources/key-concepts/#models).
 
 Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
-You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the config.
+You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
 
 If you prefer to use raw JSON, the following properties are available for modular resources:
 
@@ -280,9 +281,9 @@ You can also add the module directly, without first adding its modular component
 
    This example shows the configuration for adding a [CSI camera](/modular-resources/examples/csi/) as a local module.
 
-### Edit local module configuration
+### Edit the configuration of a local module
 
-Once you have added a modular resource to your robot, you can view and configure the module itself from the **Modules** subtab:
+Once you have added a modular resource to your robot, you can view and edit the underlying module from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
