@@ -667,7 +667,7 @@ Now that you've completed writing and compiling your filter module, it's time to
 
 Add a [vision service](/services/vision/detection/) for color detection and a [data management service](/services/data/) for storing your filtered images.
 Consider the specific services your filter might require when working with other components.
-For example, the [Sensors service](/services/sensors/) provides a central interface to all of your robot’s sensors.
+For example, the [sensors service](/services/sensors/) provides a central interface to all of your robot’s sensors.
 
 ### Add data management service
 
