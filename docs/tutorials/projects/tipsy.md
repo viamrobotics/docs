@@ -649,12 +649,16 @@ Next, the code defines functions for obstacle detection.
 The first method, `get_obstacle_readings()`, gets all the distance readings from a list of sensors. The second method, `obstacle_detect_loop()`, uses an infinite loop to periodically check the readings to stop the base if it’s closer than a certain distance from an obstacle:
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def get_obstacle_readings(sensors: list[Sensor], sensors_svc: SensorsClient):
-    print(await sensors_svc.get_readings(sensors))
-    return [r["distance"] for r in (await sensors_svc.get_readings(sensors)).values()]
+async def get_obstacle_readings(sensors: list[Sensor],
+                                sensors_svc: SensorsClient):
+    sensor_values = (await sensors_svc.get_readings(sensors)).values()
+    print(sensor_values)
+    return [r["distance"] for r in sensor_values]
 
 
-async def obstacle_detect_loop(sensors: list[Sensor], sensors_svc: SensorsClient, base: Base):
+async def obstacle_detect_loop(sensors: list[Sensor],
+                               sensors_svc: SensorsClient,
+                               base: Base):
     while True:
         distances = await get_obstacle_readings(sensors, sensors_svc)
         if any(distance < 0.4 for distance in distances):
@@ -671,7 +675,10 @@ If it doesn’t find a person, it will continue looking by rotating the robot ba
 Lines 12 and 13 are where it checks specifically for detections with the label `Person` and not every object in the `labels.txt` file:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="12-13"}
-async def person_detect(detector: VisionClient, sensors: list[Sensor], sensors_svc: SensorsClient, base: Base):
+async def person_detect(detector: VisionClient,
+                        sensors: list[Sensor],
+                        sensors_svc: SensorsClient,
+                        base: Base):
     while True:
         # look for person
         found = False
@@ -685,7 +692,8 @@ async def person_detect(detector: VisionClient, sensors: list[Sensor], sensors_s
                     found = True
         if found:
             print("I see a person")
-            # first manually call obstacle_detect - don't even start moving if someone is in the way
+            # first manually call obstacle_detect - don't even start moving if
+            # someone is in the way
             distances = await get_obstacle_readings(sensors, sensors_svc)
             if all(distance > 0.4 for distance in distances):
                 print("will move straight")
@@ -712,15 +720,20 @@ async def main():
     sensors = await sensors_svc.get_sensors()
     detector = VisionClient.from_robot(robot, name=detector_name)
 
-    # create a background task that looks for obstacles and stops the base if its moving
-    obstacle_task = asyncio.create_task(obstacle_detect_loop(sensors, sensors_svc, base))
-    # create a background task that looks for a person and moves towards them, or turns and keeps looking
-    person_task = asyncio.create_task(person_detect(detector, sensors, sensors_svc, base))
-    results = await asyncio.gather(obstacle_task, person_task, return_exceptions=True)
+    # create a background task that looks for obstacles and stops the base if
+    # its moving
+    obstacle_task = asyncio.create_task(
+        obstacle_detect_loop(sensors, sensors_svc, base))
+    # create a background task that looks for a person and moves towards them,
+    # or turns and keeps looking
+    person_task = asyncio.create_task(
+        person_detect(detector, sensors, sensors_svc, base))
+    results = await asyncio.gather(obstacle_task,
+                                   person_task,
+                                   return_exceptions=True)
     print(results)
 
     await robot.close()
-
 ```
 
 When you run the code, you should see results like this:
