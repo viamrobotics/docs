@@ -294,10 +294,12 @@ from viam.errors import NoCaptureToStoreError
 from viam.services.vision import Vision
 from viam.utils import from_dm_from_extra
 
-  class ColorFilterCam(
+class ColorFilterCam(
         Camera,
         Reconfigurable
   ):
+
+
     """A ColorFilterCam wraps the underlying camera
     `actual_cam` and only keeps the data captured on the
     actual camera if `vision_service` detects a certain
@@ -586,6 +588,8 @@ from viam.resource.registry import Registry, ResourceCreatorRegistration
 import color_filter
 
 async def main():
+
+
     """
     This function creates and starts a new module,
     after adding all desired resource models.
