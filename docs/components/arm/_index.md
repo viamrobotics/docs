@@ -47,6 +47,14 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
@@ -570,5 +578,4 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 {{< cards >}}
 {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
 {{% card link="/tutorials/projects/claw-game/" %}}
-{{% card link="/services/motion" %}}
 {{< /cards >}}

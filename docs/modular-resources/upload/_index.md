@@ -18,7 +18,7 @@ aliases:
   - "/extend/modular-resources/upload/"
 ---
 
-Once you have [created a custom module](/modular-resources/create/), you can use the [Viam CLI](/manage/cli/) to upload it to the Viam registry as a public module that ias shared with other Viam users, or as a private module that is shared only within your [organization](/manage/fleet/organizations/).
+Once you have [created a custom module](/modular-resources/create/), use the [Viam CLI](/manage/cli/) to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/manage/fleet/organizations/).
 
 Once uploaded, you can also [update your modules](/modular-resources/upload/#update-an-existing-module).
 
@@ -111,7 +111,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the <a href="/modular-resources/key-concepts/#naming-your-model">namespace of your model</a> must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</td>
+        <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the <a href="/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename">namespace of your model</a> must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>

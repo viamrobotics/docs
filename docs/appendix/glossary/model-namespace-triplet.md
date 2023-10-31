@@ -1,14 +1,12 @@
 ---
 title: Model Namespace Triplet
 id: model-namespace-triplet
-full_link:
-short_description: namespace:family:name
+full_link: /modular-resources/key-concepts/#naming-your-model-namespacerepo-namename
+short_description: namespace:repo-name:name or rdk:builtin:name
 aka:
 ---
 
-{{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets in the form of `namespace:family:name`.
-
-For example:
-
-- The `rdk:builtin:gpio` model implements the `rdk:component:motor` API to support [GPIO-controlled DC motors](/components/motor/gpio/).
-- The `rdk:builtin:DMC4000` model implements the `rdk:component:motor` API to support [DMC4000](/components/motor/dmc4000/) motor controllers.
+{{< glossary_tooltip term_id="model" text="Models" >}} are uniquely namespaced as colon-delimited-triplets.
+Modular resource model names have the form `namespace:repo-name:name`.
+Built-in model names have the form `rdk:builtin:name`.
+See [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename) for more information.

@@ -18,11 +18,11 @@ aliases:
   - "/extend/modular-resources/create/"
 ---
 
-You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resources" >}}.
+You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="model" text="models" >}}.
 
 A common use case for modular resources is to create a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
-Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry), to share it with other Viam users or just to other users in your organization.
+Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry), to share it with other users in your organization or all other Viam users.
 You can also configure [automatic uploads of new versions of your module](/modular-resources/upload/#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
 
 You can also add your module to your robot as a [local module](/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
@@ -49,7 +49,7 @@ A custom module can implement one or more [models](/modular-resources/key-concep
     - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
     - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
     - Name your model according to the namespace of the built-in API you are implementing.
-      For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model).
+      For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
       <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
 
@@ -65,8 +65,8 @@ A custom module can implement one or more [models](/modular-resources/key-concep
 
 ### Code a new resource model
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
-For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model).
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model `acme:demo:mybase`.
+For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
@@ -119,7 +119,8 @@ class MyBase(Base, Reconfigurable):
     """
 
     # Here is where we define our new model's colon-delimited-triplet
-    # (acme:demo:mybase) acme = namespace, demo = family, mybase = model name.
+    # (acme:demo:mybase) acme = namespace, demo = repo-name,
+    # mybase = model name.
     MODEL: ClassVar[Model] = Model(ModelFamily("acme", "demo"), "mybase")
 
     def __init__(self, name: str, left: str, right: str):
@@ -280,7 +281,7 @@ import (
 )
 
 // Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
-// acme = namespace, demo = family, mybase = model name.
+// acme = namespace, demo = repo-name, mybase = model name.
 var (
     Model            = resource.NewModel("acme", "demo", "mybase")
     errUnimplemented = errors.New("unimplemented")

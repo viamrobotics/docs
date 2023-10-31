@@ -1,0 +1,18 @@
+{{ $link := (path.Clean (.Get "link")) }}
+{{ $linkWithSlash := printf "%s/" $link }}
+{{ if site.GetPage ($link | string) }}
+{{ with site.GetPage ($link | string) }}
+<div class="relatedcard">
+  <a href="{{ $linkWithSlash }}" target="_blank" title="{{ .LinkTitle }}">
+    <div>
+      <div>
+        {{ if .Params.icon }}
+            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
+        {{ end }}
+      </div>
+      <p>{{ .LinkTitle }}</p>
+    </div>
+  </a>
+</div>
+{{ end }}
+{{ end }}

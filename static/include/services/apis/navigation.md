@@ -7,3 +7,4 @@ Method Name | Description
 [`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
 [`GetObstacles`](/services/navigation/#getobstacles) | Get the obstacles currently in the service's data storage.
+[`DoCommand`](/services/navigation/#docommand) | Execute model-specific commands that are not otherwise defined by the service API.

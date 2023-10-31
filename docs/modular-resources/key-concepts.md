@@ -55,8 +55,10 @@ Models allow you to control hardware or software of a similar category, such as 
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-Models are uniquely namespaced as colon-delimited-triplets in the form `namespace:family:name`.
-See [Naming your model](/modular-resources/key-concepts/#naming-your-model) for more information.
+Models are uniquely namespaced as colon-delimited-triplets.
+Modular resource model names have the form `namespace:repo-name:name`.
+Built-in model names have the form `rdk:builtin:name`.
+See [Naming your model](#naming-your-model-namespacerepo-namename) for more information.
 
 Models are either:
 
@@ -94,7 +96,7 @@ When implementing a custom [model](#models) of an existing [service](/services/)
 - `type`: `service`
 - `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `navigation`
 
-#### Naming your model
+#### Naming your model: namespace:repo-name:name
 
 If you are [creating a custom module](/modular-resources/create/) and [uploading that module](/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
 
@@ -103,31 +105,15 @@ If you are [creating a custom module](/modular-resources/create/) and [uploading
 - Your model triplet must be all-lowercase.
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
-In addition, you should chose a name for the `family` of your model based on the whether your module implements a single model, or multiple models:
+For the middle segment of your model triplet `repo-name`, use the name of the git repository where you store your module's code.
+The `repo-name` should describe the common functionality provided across the model or models of that module.
 
-- If your module provides a single model, the `family` should match the `subtype` of whichever API your model implements.
-  For example, the Intel Realsense module `realsense`, available from the [Viam registry](https://app.viam.com/module/viam/realsense), implements the `camera` component API, so it is named as follows:
+For example:
 
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "api": "rdk:component:camera",
-    "model": "viam:camera:realsense"
-  }
-  ```
-
-- If your module provides multiple models, the `family` should describe the common functionality provided across all the models of that module.
-  For example, the ODrive module `odrive`, available from the [Viam registry](https://app.viam.com/module/viam/odrive), implements several `motor` component APIs, so it is named as follows:
-
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "api": "rdk:component:motor",
-    "model": "viam:odrive:serial"
-  },
-  {
-    "api": "rdk:component:motor",
-    "model": "viam:odrive:canbus"
-  }
-  ```
+- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
+  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively.
+- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
+  It implements the custom API `viam-labs:service:audioout`.
 
 The `viam` namespace is reserved for models provided by Viam.
 

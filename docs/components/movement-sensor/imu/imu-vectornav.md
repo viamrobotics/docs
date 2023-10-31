@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Configure a VectorNav IMU."
 images: ["/icons/components/imu.svg"]
+draft: true
 # SMEs: Rand
 ---
 

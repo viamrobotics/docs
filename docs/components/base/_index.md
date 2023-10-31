@@ -26,6 +26,14 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your base.
@@ -45,6 +53,10 @@ For configuration information, click on the model name:
 ### Modular Resources
 
 {{<modular-resources api="rdk:component:base" type="base">}}
+
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Base](/micro-rdk/base/) for supported model information.
 
 ## Control your base with Viam's client SDK libraries
 

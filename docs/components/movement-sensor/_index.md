@@ -23,6 +23,14 @@ Viam also supports generic [sensors](/components/sensor/) and [encoders](/compon
 
 {{% /alert %}}
 
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/sensors/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
+
 ## Supported Models
 
 To use your GPS, IMU, accelerometer, or other movement sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your movement sensor.
@@ -42,7 +50,6 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea-rtk-pmtk`](./gps/gps-nmea-rtk-pmtk/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using I<sup>2</sup>C (**experimental**)
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
-[`imu-vectornav`](./imu/imu-wit/) | IMUs manufactured by [VectorNav](https://www.vectornav.com/products)
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
 [`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/modular-resources/) that derives movement data from a [camera](/components/camera/) stream
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
@@ -53,6 +60,10 @@ Model | Description <a name="model-table"></a>
 ### Modular Resources
 
 {{<modular-resources api="rdk:component:movement_sensor" type="movement_sensor">}}
+
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Movement Sensor](/micro-rdk/movement-sensor/) for supported model information.
 
 ## Control your movement sensor with Viam's client SDK libraries
 
@@ -325,7 +336,7 @@ xAngVel := linAccel.X
 
 Report the current [compass heading](<https://en.wikipedia.org/wiki/Heading_(navigation)>) in degrees.
 
-Supported by GPS models and `imu-vectornav`.
+Supported by GPS models.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

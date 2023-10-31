@@ -131,3 +131,38 @@ The following properties are available for `digital_interrupts`:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 |`pin`| string | **Required** | The GPIO number of the board's GPIO pin that you wish to configure the digital interrupt for. |
+
+### PWM signals on `esp32` pins
+
+You can set PWM frequencies with Viam through the [`GPIOPin` API](/micro-rdk/board/#api).
+A configured `esp32` board can support a maximum of four different PWM frequencies simultaneously, as the boards only have four available timers.
+
+For example:
+
+| Pin | PWM Frequency (Hz) |
+| --- | ------------------ |
+| 12  | 2000               |
+| 25  | 3000               |
+| 26  | 5000               |
+| 32  | 6000               |
+
+At this point, if you want to add another PWM signal, you must do the following:
+
+1. Set the PWM frequency before the duty cycle.
+2. Set the PWM frequency to one of the above previously set frequencies.
+
+For example, you can set pin 33 to 2000 Hz:
+
+| Pin    | PWM Frequency (Hz) |
+| ------ | ------------------ |
+| 12, 33 | 2000               |
+| 25     | 3000               |
+| 26     | 5000               |
+| 32     | 6000               |
+
+Then, follow these requirements to change the PWM frequencies of a pin:
+
+1. If no other pins have a signal of the same frequency (for example, pins 25, 26, and 32), you can freely change their PWM frequency.
+2. If one or more pins are sharing the old frequency (for example, pins 12 and 33):
+   1. If there are less than 4 active frequencies, you can change the PWM frequency freely because there will be a timer available.
+   2. If there are already 4 active frequencies, changing the PWM frequency of the pin will raise an error because there are no timers available. Free a timer by setting the PWM frequencies of all of the pins to 0.

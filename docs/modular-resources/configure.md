@@ -125,7 +125,7 @@ If the module requires you to configure specific **Attributes**, click the **URL
   "components": [
     {
       "name": "<your-model-instance-name>",
-      "model": "<model-namespace>:<model-family>:<model-name>",
+      "model": "<namespace>:<repo-name>:<name>",
       "type": "<your-resource-subtype>",
       "namespace": "<your-module-namespace>",
       "attributes": {},
@@ -349,7 +349,7 @@ The `attributes` available vary depending on your implementation.
     {
       "namespace": "<your-module-namespace>",
       "type": "<your-resource-subtype>",
-      "model": "<model-namespace>:<model-family>:<model-name>",
+      "model": "<namespace>:<repo-name>:<name>",
       "name": "<your-model-instance-name>",
       "attributes": {},
       "depends_on": []
