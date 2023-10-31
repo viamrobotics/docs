@@ -60,7 +60,6 @@ Then remove and fill in the attributes as applicable to your sensor, according t
       "type": "sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "<your-board-name>",
         "i2c_bus": "<your-i2c-bus-index-on-board>",
         "i2c_address": "<your-i2c-address>"
       },
