@@ -121,7 +121,7 @@ Since you will conform to an existing Viam API for [base](/components/base/), th
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
-Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode".
+Therefore, use the namespace "viamlabs", an (arbitrary) repo-name called "tutorial" and lastly, a model name of "intermode".
 The complete triplet is:
 **viamlabs:tutorial:intermode**
 
@@ -129,7 +129,7 @@ The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates th
 The _Subtype_ of a resource contains its API triplet, so using `base.Subtype` (see line 30 below) registers our new model with the _API_ from the RDK's built-in base component (rdk:component:base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// namespace, model family, model
+// namespace, repo-name, model
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func main() {
