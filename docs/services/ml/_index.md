@@ -320,6 +320,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+## Use the ML model service with the Viam Python SDK
+
+To use the ML model service from the [Viam Python SDK](https://python.viam.dev/), install the Python SDK using the `mlmodel` extra:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
+```
+
+You can also run this command on an existing Python SDK install to add support for the ML model service.
+
+See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python.
+
+See [Program a smart machine](/program/) for more information about using an SDK to control your smart machine.
+
 ## Next Steps
 
 To make use of your model with your smart machine, add a [vision service](/services/vision/) or a [modular resource](/modular-resources/):
