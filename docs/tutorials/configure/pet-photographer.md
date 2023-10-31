@@ -496,25 +496,19 @@ return nil, err
 }
 
 // NextPointCloud does nothing.
-func (c \*colorFilterCam)
-NextPointCloud(ctx context.Context)
-(pointcloud.PointCloud, error)
+func (c \*colorFilterCam)NextPointCloud(ctx context.Context)(pointcloud.PointCloud, error)
 {
   return nil, errUnimplemented
 }
 
 // Properties returns details about the camera.
-func (c \*colorFilterCam) Properties
-(ctx context.Context)
-(camera.Properties, error)
+func (c \*colorFilterCam) Properties(ctx context.Context)(camera.Properties, error)
 {
   return c.actualCam.Properties(ctx)
 }
 
 // Projector does nothing.
-func (c \*colorFilterCam) Projector
-(ctx context.Context) (transform.
-Projector, error) {
+func (c \*colorFilterCam) Projector(ctx context.Context) (transform.Projector, error) {
   return nil, errUnimplemented
 }
 
@@ -595,8 +589,9 @@ async def main():
     """
     This function creates and starts a new module,
     after adding all desired resource models.
-    Resource creators must be registered to the
-    resource registry before the module adds the resource model.
+    Resource creators must be
+    registered to the resource
+    registry before the module adds the resource model.
     """
     Registry.register_resource_creator(
         Camera.SUBTYPE,
