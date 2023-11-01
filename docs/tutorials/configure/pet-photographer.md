@@ -87,8 +87,8 @@ The full code for this colorfilter camera model's (<file>[color_filter.go](https
 
 Create a file called <file>color_filter.go</file> or <file>color_filter.py</file> within your `colorfilter` module directory and implement the required methods in it.
 
-To code a new filter resource model, you must implement a client interface defined by the required methods outlined in the <file>client.go</file> file in the corresponding [resource's directory](https://github.com/viamrobotics/rdk/components/).
-The camera file is at [`rdk/components/camera/client.go`](https://github.com/viamrobotics/rdk/components/camera/client.go).
+To code a new filter resource model, you must implement a client interface defined by the required methods outlined in the <file>client.go</file> file in the corresponding [resource's directory](https://github.com/viamrobotics/rdk/tree/main/components/).
+The camera file is at [`rdk/components/camera/client.go`](https://github.com/viamrobotics/rdk/blob/main/components/camera/client.go).
 
 You can create your own code or copy the code for your file [color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py) and [color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go).
 
