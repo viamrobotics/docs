@@ -333,7 +333,8 @@ if geometries:
 ```
 
 {{% /tab %}}
-<!-- {{% tab name="Go" %}}
+
+<!-- Go tab
 
 **Parameters:**
 
@@ -358,7 +359,8 @@ if len(geometries) > 0 {
 }
 ```
 
-{{% /tab %}} -->
+ -->
+
 {{< /tabs >}}
 
 ## Troubleshooting

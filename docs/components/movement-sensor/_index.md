@@ -623,7 +623,10 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_geometries).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_movement_sensor = MovementSensor.from_robot(robot=robot, name="my_movement_sensor")
+my_movement_sensor = MovementSensor.from_robot(
+  robot=robot,
+  name="my_movement_sensor"
+  )
 
 geometries = await my_movement_sensor.get_geometries()
 
@@ -633,7 +636,8 @@ if geometries:
 ```
 
 {{% /tab %}}
-<!-- {{% tab name="Go" %}}
+
+<!-- Go tab
 
 **Parameters:**
 
@@ -658,7 +662,8 @@ if len(geometries) > 0 {
 }
 ```
 
-{{% /tab %}} -->
+ -->
+
 {{< /tabs >}}
 
 ### DoCommand
