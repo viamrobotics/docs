@@ -298,7 +298,7 @@ func init() {
     })
 }
 
-func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (base.Base, error) {
+func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (base.Base, error) {
     b := &myBase{
         Named:  conf.ResourceName().AsNamed(),
         logger: logger,
@@ -373,7 +373,7 @@ type myBase struct {
     resource.Named
     left       motor.Motor
     right      motor.Motor
-    logger     golog.Logger
+    logger     logger.Logger
     geometries []spatialmath.Geometry
 }
 
@@ -518,12 +518,12 @@ import (
 
 
 func main() {
-    // NewLoggerFromArgs will create a golog.Logger at "DebugLevel" if
+    // NewLoggerFromArgs will create a logger.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
     utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
     myMod, err := module.NewModuleFromArgs(ctx, logger)
     if err != nil {
         return err
@@ -653,7 +653,7 @@ LOGGER = getLogger(__name__)
 To enable your Go module to write log messages to the Viam app, add the following lines to your code:
 
 ```go {class="line-numbers linkable-line-numbers"}
-// In your import() block, import the golog package:
+// In your import() block, import the logger package:
 import(
        ...
        "go.viam.com/rdk/logging"
@@ -661,12 +661,12 @@ import(
 // Alter your component to hold a logger
 type component struct {
     ...
- logger golog.Logger
+ logger logger.Logger
 }
 // Then, alter your component's constructor to save the logger:
 func init() {
  registration := resource.Registration[resource.Resource, *Config]{
-  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (resource.Resource, error) {
+  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (resource.Resource, error) {
      ...
      return &component {
          ...

@@ -546,7 +546,7 @@ import (
 )
 
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
+  logger := logger.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
       "<ROBOT ADDRESS>",
