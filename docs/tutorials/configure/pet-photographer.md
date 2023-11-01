@@ -368,11 +368,10 @@ class ColorFilterCam(
             vision_service_name
           )
         ]
-       self.vision_service = cast(
+        self.vision_service = cast(
            Vision,
            vision_service
-       )
-
+        )
 
     async def get_properties(
               self,
