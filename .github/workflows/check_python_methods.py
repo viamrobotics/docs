@@ -171,9 +171,9 @@ def parse(type, names):
                     else:
                         method_text.append("- {extra_values}\n\n".format(extra_values=extras_values.text))
             else:
-                method_text.append("**Parameters:** \n")
+                method_text.append("**Parameters:**\n\n")
                 method_text.append("- None.\n\n")
-                method_text.append("**Returns:** \n")
+                method_text.append("**Returns:**\n\n")
                 method_text.append("- None.\n\n")
 
 
