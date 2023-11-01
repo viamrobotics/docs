@@ -115,7 +115,7 @@ def parse(type, names):
                 no_parameters = True
                 if "Parameters:" in description_extras:
                     no_parameters = False
-                    extras_values = description_extras["Parameters:"]
+                    extras_values = description_extras["**Parameters:**\n\n"]
 
                     # if values are a list
                     if (extras_values.name == "ul"):
@@ -147,7 +147,7 @@ def parse(type, names):
                     # Return type
                     if "Return type:" in description_extras:
                         return_type = html_to_markdown(url, description_extras["Return type:"]).strip()
-                        return_info = html_to_markdown(url, description_extras["Returns:"])
+                        return_info = html_to_markdown(url, description_extras["**Returns:**\n\n"])
 
                         method_text.append("- (`{return_type}`): {return_info}\n".format(return_type=return_type, return_info=return_info))
 
