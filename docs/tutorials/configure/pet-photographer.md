@@ -363,8 +363,16 @@ class ColorFilterCam(
         vision_service_name = config.attributes.fields[
           "vision_service"
           ].string_value
-        vision_service = dependencies[Vision.get_resource_name(vision_service_name)]
-        self.vision_service = cast(Vision, vision_service)
+        vision_service = dependencies[
+          Vision.get_resource_name(
+            vision_service_name
+          )
+        ]
+       self.vision_service = cast(
+           Vision,
+           vision_service
+       )
+
 
     async def get_properties(
               self,
