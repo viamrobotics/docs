@@ -297,6 +297,59 @@ readings, err := myPowerSensor.Readings(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+If you are implementing your own power sensor and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+
+**Returns:**
+
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
+
+reset_dict = {
+  "command": "reset",
+  "example_param": 30
+}
+
+do_response = await my_sensor.do_command(reset_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.do_command).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+mySensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+
+resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+```
+
+For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
