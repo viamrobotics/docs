@@ -186,11 +186,11 @@ These protocols are required to support certain hardware, such as analog-to-digi
 
 1. Enable the relevant protocols to support your specific hardware:
 
-    - If you are using an analog-to-digital converter (ADC), enable SPI.
-    - If you are using an accelerometer, enable I2C.
-    - If you are using a CSI v1.3 or v2.0 camera, enable legacy camera support.
-    - If you are using a movement sensor or power sensor, you will likely need to enable the serial port.
-      Check the documentation for your specific [movement sensor](/components/movement-sensor/) or [power sensor](/components/power-sensor/) to confirm.
+   - If you are using an analog-to-digital converter (ADC), enable SPI.
+   - If you are using an accelerometer, enable I2C.
+   - If you are using a CSI v1.3 or v2.0 camera, enable legacy camera support.
+   - If you are using a movement sensor or power sensor, you will likely need to enable the serial port.
+     Check the documentation for your specific [movement sensor](/components/movement-sensor/) or [power sensor](/components/power-sensor/) to confirm.
 
 1. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
 
