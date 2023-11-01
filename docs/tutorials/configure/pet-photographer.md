@@ -654,7 +654,6 @@ import color_filter
 
 async def main():
 
-
     """
     This function creates and starts a new module,
     after adding all desired resource models.
