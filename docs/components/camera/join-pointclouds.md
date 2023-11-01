@@ -37,7 +37,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
     "fy": <float>,
     "ppx": <float>,
     "ppy": <float>
-  }
+  },
   "debug": <boolean>
 }
 ```
