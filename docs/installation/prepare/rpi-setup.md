@@ -58,6 +58,7 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
     ![Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected.](/installation/rpi-setup/select-other-rpi.png)
 
     You should be brought back to the initial launch screen.
+
 3.  To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
     Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
 
