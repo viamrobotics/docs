@@ -1,0 +1,132 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "pageBundle": false,
+      "previewPath": null,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Publishing date",
+          "name": "date",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Content preview",
+          "name": "images",
+          "type": "image",
+          "isPreviewImage": true,
+          "multiple": true
+        },
+        {
+          "title": "Is in draft",
+          "name": "draft",
+          "type": "draft"
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Categories",
+          "name": "categories",
+          "type": "categories"
+        },
+        {
+          "title": "linkTitle",
+          "name": "linkTitle",
+          "type": "string"
+        },
+        {
+          "title": "weight",
+          "name": "weight",
+          "type": "number"
+        },
+        {
+          "title": "type",
+          "name": "type",
+          "type": "string"
+        },
+        {
+          "title": "webmSrc",
+          "name": "webmSrc",
+          "type": "string"
+        },
+        {
+          "title": "mp4Src",
+          "name": "mp4Src",
+          "type": "string"
+        },
+        {
+          "title": "videoAlt",
+          "name": "videoAlt",
+          "type": "string"
+        },
+        {
+          "title": "no_list",
+          "name": "no_list",
+          "type": "datetime"
+        },
+        {
+          "title": "authors",
+          "name": "authors",
+          "type": "choice",
+          "choices": [
+            "Naomi Pentrel", "Tess Avitabile", "Sierra Guequierre", "Jessamy Taylor", "Arielle Mella", "Hazal Mestci"
+          ]
+        },
+        {
+          "title": "languages",
+          "name": "languages",
+          "type": "choice",
+          "choices": [
+            "python", "go", "typescript", "c++", "flutter"
+          ]
+        },
+        {
+          "title": "viamresources",
+          "name": "viamresources",
+          "type": "choice",
+          "choices": [
+            "arm", "base", "board", "camera", "encoder", "gantry", "gripper", "input_controller", "motor", "movement_sensor", "sensor", "servo",  "data_manager", "motion", "frame_system", "mlmodel", "navigation", "base_remote_control", "sensors", "slam", "vision"
+          ]
+        },
+        {
+          "title": "level",
+          "name": "level",
+          "type": "choice",
+          "choices": [
+            "beginner", "intermediate", "advanced"
+          ]
+        },
+        {
+          "title": "cost",
+          "name": "cost",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "frontMatter.framework.id": "hugo",
+  "frontMatter.content.publicFolder": "static",
+  "frontMatter.preview.host": "http://localhost:1313",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "docs",
+      "path": "[[workspace]]"
+    }
+  ]
+}
