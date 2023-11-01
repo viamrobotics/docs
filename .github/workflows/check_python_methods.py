@@ -111,7 +111,7 @@ def parse(type, names):
                     description_extras[field] = extras_values
 
                 # Parameters
-                method_text.append("**Parameters:** \n")
+                method_text.append("**Parameters:**\n\n")
                 no_parameters = True
                 if "Parameters:" in description_extras:
                     no_parameters = False
@@ -142,7 +142,7 @@ def parse(type, names):
                 method_text.append("\n")
 
                 # Returns
-                method_text.append("**Returns:** \n")
+                method_text.append("**Returns:**\n\n")
                 if "Returns:" in description_extras:
                     # Return type
                     if "Return type:" in description_extras:
@@ -158,7 +158,7 @@ def parse(type, names):
 
                 # Raises
                 if "Raises:" in description_extras:
-                    method_text.append("**Raises:** \n")
+                    method_text.append("**Raises:**\n\n")
 
                     extras_values = description_extras["Raises:"]
 
@@ -171,9 +171,9 @@ def parse(type, names):
                     else:
                         method_text.append("- {extra_values}\n\n".format(extra_values=extras_values.text))
             else:
-                method_text.append("**Parameters:** \n")
+                method_text.append("**Parameters:**\n\n")
                 method_text.append("- None.\n\n")
-                method_text.append("**Returns:** \n")
+                method_text.append("**Returns:**\n\n")
                 method_text.append("- None.\n\n")
 
 

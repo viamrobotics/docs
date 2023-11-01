@@ -39,7 +39,7 @@ You can also follow a simplified version of this tutorial in this video: it elim
 The tutorial uses the following hardware, but you can adjust it as needed:
 
 - A Raspberry Pi 3B or 4B with SD card and [5V USB power supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)
-- A [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
+- A [resistive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ)
 - A [peristaltic pump](https://www.amazon.com/Gikfun-Peristaltic-Connector-Aquarium-Analytic/dp/B01IUVHB8E) motor and [tubing](https://www.amazon.com/dp/B08H1ZD5VZ?psc=1&)
 - An [Adafruit MCP3008 ADC](https://a.co/d/csRaIHE)
 - A [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS)
@@ -58,7 +58,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set up your plant watering robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
-You will set up the robot to receive signals from the capacitive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's container to the plant's container.
+You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water's container to the plant's container.
 
 ### Full wiring diagram
 
@@ -68,7 +68,7 @@ Refer back to this diagram as you complete the steps to wire your hardware.
 
 ### Wire your ADC
 
-The analog-to-digital converter (ADC) converts the capacitive soil moisture sensor's analog readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
+The analog-to-digital converter (ADC) converts the resistive soil moisture sensor's analog readings to digital signals that can be processed by your Pi, which expects digital signals to come to it through its GPIO pins.
 
 Start by wiring your ADC to your Raspberry Pi board.
 
@@ -97,13 +97,13 @@ Then, use the rows on the side of your MCP3008's pins and the GPIO pins on your 
 | DIN | MOSI |
 | CS/SHDN | GPIO8 |
 
-### Wire your capacitive soil moisture sensor
+### Wire your resistive soil moisture sensor
 
-Next, wire your [capacitive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ) to your Pi and ADC.
+Next, wire your [resistive soil moisture sensor](https://www.amazon.com/KeeYees-Sensitivity-Moisture-Watering-Manager/dp/B07QXZC8TQ) to your Pi and ADC.
 
 Reference this diagram of the blue module part of the sensor:
 
-![Pinout diagram for the capacitive soil moisture sensor.](/tutorials/plant-watering-pi/moisture-sensor-pinout.png)
+![Pinout diagram for the resistive soil moisture sensor.](/tutorials/plant-watering-pi/moisture-sensor-pinout.png)
 
 Start by connecting the female jumper wires at the end of the sensor prongs to the blue module where the diagram shown above is labeled "Connect with Probe."
 
@@ -215,7 +215,7 @@ touch adctesting.py
 nano adctesting.py
 ```
 
-Now, add the following Python code to <file>adctesting.py</file> to test reading values from your capacitive soil moisture sensor through your MCP3008 ADC:
+Now, add the following Python code to <file>adctesting.py</file> to test reading values from your resistive soil moisture sensor through your MCP3008 ADC:
 
 ```python
 import time
@@ -263,7 +263,7 @@ Now, you should see the moisture sensor values outputted by the MCP3008.
 
 Test your sensor by putting it in air, water, and different soils to see how the values change to determine your baseline for wet and dry values.
 
-![Terminal output of capacitive soil moisture sensor values.](/tutorials/plant-watering-pi/moisture-sensor-output.png)
+![Terminal output of resistive soil moisture sensor values.](/tutorials/plant-watering-pi/moisture-sensor-output.png)
 
 ### Configure the components of your robot in the Viam app
 
@@ -347,7 +347,7 @@ _Resources_ refer to the different [components](/components/) and [services](/se
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
 For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
-However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3). Although the capacitive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
+However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3). Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
 
 A _module_ provides one or more modular resources, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
 A module can be added to your robot from the Viam registry.
@@ -462,6 +462,6 @@ Also, consider how often you would like to check the moisture levels of the plan
 
 ## Next steps
 
-Now that you have created your automatic plant watering system with a capacitive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
+Now that you have created your automatic plant watering system with a resistive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
 For example, you can use a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US), and get readings from other channels of the MCP3008!
 If you build something based on this please share it in our [Community Discord](https://discord.gg/viam) - we'd love to see it.
