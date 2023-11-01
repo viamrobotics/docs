@@ -870,7 +870,7 @@ Your robot's configuration page now includes a panel for your camera.
 
 1. Click the **Components** subtab and then click **Create component**.
 1. Next, select the `local modular resource` type from the list.
-   {{<imgproc src="extend/modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="extend/modular-resource/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 1. On the following screen:
 
    1. Select the camera from the drop down menu.
