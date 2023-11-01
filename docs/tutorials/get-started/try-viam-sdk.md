@@ -540,8 +540,8 @@ package main
 import (
     "context"
 
-    "github.com/edaniels/golog"
     "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
     "go.viam.com/rdk/utils"
     "go.viam.com/utils/rpc"

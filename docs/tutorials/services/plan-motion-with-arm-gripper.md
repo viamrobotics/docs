@@ -532,11 +532,11 @@ import (
   "context"
   "fmt"
 
-  "github.com/edaniels/golog"
   "github.com/golang/geo/r3"
   armapi "go.viam.com/api/component/arm/v1"
   "go.viam.com/rdk/components/arm"
   "go.viam.com/rdk/components/gripper"
+  "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/services/motion"

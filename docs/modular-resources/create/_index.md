@@ -268,7 +268,6 @@ import (
     "fmt"
     "math"
 
-    "github.com/edaniels/golog"
     "github.com/golang/geo/r3"
     "github.com/pkg/errors"
     "go.uber.org/multierr"
@@ -276,6 +275,7 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/components/base/kinematicbase"
     "go.viam.com/rdk/components/motor"
+    "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
     "go.viam.com/rdk/spatialmath"
 )
@@ -507,9 +507,8 @@ package main
 import (
     "context"
 
-    "github.com/edaniels/golog"
-
     "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/logging"
     "go.viam.com/rdk/module"
     "go.viam.com/utils"
 
@@ -657,7 +656,7 @@ To enable your Go module to write log messages to the Viam app, add the followin
 // In your import() block, import the golog package:
 import(
        ...
-       "github.com/edaniels/golog"
+       "go.viam.com/rdk/logging"
 )
 // Alter your component to hold a logger
 type component struct {
