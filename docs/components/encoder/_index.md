@@ -271,7 +271,7 @@ properties, err := myEncoder.Properties(context.Background(), nil)
 ### GetGeometries
 
 Get all the geometries associated with the encoder in its current configuration, in the [frame](/services/frame-system/) of the encoder.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for obstacle detection and avoidance while motion planning.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -294,7 +294,7 @@ geometries = await my_encoder.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
-    print(f"Pose of the first geometry's center point: {geometries[0].center}")
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
 ```
 
 {{% /tab %}}
