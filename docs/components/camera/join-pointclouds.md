@@ -37,14 +37,7 @@ Then remove and fill in the attributes as applicable to your camera, according t
     "fy": <float>,
     "ppx": <float>,
     "ppy": <float>
-  },
-  "distortion_parameters": {
-    "rk1": <float>,
-    "rk2": <float>,
-    "rk3": <float>,
-    "tp1": <float>,
-    "tp2": <float>
-  },
+  }
   "debug": <boolean>
 }
 ```
@@ -71,13 +64,6 @@ Then remove and fill in the attributes as applicable to your camera, according t
       "ppx": <float>,
       "ppy": <float>
     },
-    "distortion_parameters": {
-      "rk1": <float>,
-      "rk2": <float>,
-      "rk3": <float>,
-      "tp1": <float>,
-      "tp2": <float>
-    },
     "debug": <boolean>
   }
 }
@@ -93,10 +79,9 @@ The following attributes are available for `join_pointclouds` views:
 | ---- | ---- | --------- | ----------- |
 | `target_frame` | string | **Required** | The frame of reference for the points in the merged point cloud. |
 | `source_cameras` | array | **Required** | The `name` of each of the camera sources to combine. |
-| `intrinsic_parameters` | object | **Required** | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `proximity_threshold_mm` | int | Optional | Defines the largest distance 2 points can have in millimeters to be considered the same point when merged. |
 | `merge_method` | string | Optional | `naive` or `icp`. <br> Default: `naive` |
-| `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> <code>rk1</code>: The radial distortion x. </li> <li> <code>rk2</code>: The radial distortion y. </li> <li> <code>rk3</code>: The radial distortion z. </li> <li> <code>tp1</code>: The tangential distortion x. </li> <li> <code>tp2</code>: The tangential distortion y. </li> </ul> |
+| `intrinsic_parameters` | object | Optional | The intrinsic parameters to project the joined point cloud to 2D: <ul> <li> <code>width_px</code>: The expected width of the aligned image in pixels. </li> <li> <code>height_px</code>: The expected height of the aligned image in pixels. </li> <li> <code>fx</code>: The image center x point. </li> <li> <code>fy</code>: The image center y point. </li> <li> <code>ppx</code>: The image focal x. </li> <li> <code>ppy</code>: The image focal y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
 ## View the camera stream
