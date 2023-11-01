@@ -407,7 +407,7 @@ class ColorFilterCam(
     ) -> Tuple[
          List[NamedImage],
          ResponseMetadata
-        ]:
+         ]:
         raise NotImplementedError
 
     async def get_point_cloud(
