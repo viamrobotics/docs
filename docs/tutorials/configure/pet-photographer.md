@@ -305,7 +305,9 @@ class ColorFilterCam(
     actual camera if `vision_service` detects a certain
     color in the captured image.
     """
-    MODEL: ClassVar[Model] = Model(ModelFamily("example", "camera"), "colorfilter")
+    MODEL: ClassVar[Model] = Model(
+        ModelFamily("example", "camera"),
+        "colorfilter")
 
     def __init__(self, name: str):
         super().__init__(name)
