@@ -327,7 +327,9 @@ class ColorFilterCam(
         """Validates JSON configuration"""
         actual_cam = config.attributes.fields["actual_cam"].string_value
         if actual_cam == "":
-            raise Exception("actual_cam attribute is required for a ColorFilterCam component")
+            raise Exception(
+              "actual_cam attribute is required for a ColorFilterCam component"
+              )
         vision_service = config.attributes.fields["vision_service"].string_value
         if vision_service == "":
             raise Exception("vision_service attribute is required for a ColorFilterCam component")
