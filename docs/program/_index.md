@@ -130,14 +130,14 @@ package main
 import (
   "context"
 
-  "github.com/edaniels/golog"
+  "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/utils"
   "go.viam.com/utils/rpc"
 )
 
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
+  logger := logger.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",

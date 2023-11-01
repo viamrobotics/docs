@@ -310,8 +310,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 import (
   "context"
 
-  "github.com/edaniels/golog"
   "go.viam.com/rdk/components/gripper"
+  "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/services/motion"
 )

@@ -268,7 +268,6 @@ import (
     "fmt"
     "math"
 
-    "github.com/edaniels/golog"
     "github.com/golang/geo/r3"
     "github.com/pkg/errors"
     "go.uber.org/multierr"
@@ -276,6 +275,7 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/components/base/kinematicbase"
     "go.viam.com/rdk/components/motor"
+    "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
     "go.viam.com/rdk/spatialmath"
 )
@@ -298,7 +298,7 @@ func init() {
     })
 }
 
-func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (base.Base, error) {
+func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (base.Base, error) {
     b := &myBase{
         Named:  conf.ResourceName().AsNamed(),
         logger: logger,
@@ -373,7 +373,7 @@ type myBase struct {
     resource.Named
     left       motor.Motor
     right      motor.Motor
-    logger     golog.Logger
+    logger     logger.Logger
     geometries []spatialmath.Geometry
 }
 
@@ -507,9 +507,8 @@ package main
 import (
     "context"
 
-    "github.com/edaniels/golog"
-
     "go.viam.com/rdk/components/base"
+    "go.viam.com/rdk/logging"
     "go.viam.com/rdk/module"
     "go.viam.com/utils"
 
@@ -519,12 +518,12 @@ import (
 
 
 func main() {
-    // NewLoggerFromArgs will create a golog.Logger at "DebugLevel" if
+    // NewLoggerFromArgs will create a logger.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
     utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
     myMod, err := module.NewModuleFromArgs(ctx, logger)
     if err != nil {
         return err
@@ -654,20 +653,20 @@ LOGGER = getLogger(__name__)
 To enable your Go module to write log messages to the Viam app, add the following lines to your code:
 
 ```go {class="line-numbers linkable-line-numbers"}
-// In your import() block, import the golog package:
+// In your import() block, import the logger package:
 import(
        ...
-       "github.com/edaniels/golog"
+       "go.viam.com/rdk/logging"
 )
 // Alter your component to hold a logger
 type component struct {
     ...
- logger golog.Logger
+ logger logger.Logger
 }
 // Then, alter your component's constructor to save the logger:
 func init() {
  registration := resource.Registration[resource.Resource, *Config]{
-  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (resource.Resource, error) {
+  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (resource.Resource, error) {
      ...
      return &component {
          ...
