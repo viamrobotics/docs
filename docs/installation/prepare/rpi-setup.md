@@ -50,9 +50,13 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
 2.  Select `CHOOSE OS`.
     Click on `Raspberry Pi OS (other)`.
-    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
+
+    ![Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected.](/installation/rpi-setup/select-other-custom-os.png)
+
     Select `Raspberry Pi OS Lite (64-bit)` from the menu.
-    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected." src="/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
+
+    ![Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected.](/installation/rpi-setup/select-other-rpi.png)
+
     You should be brought back to the initial launch screen.
 3.  To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
     Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
