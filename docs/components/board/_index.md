@@ -48,7 +48,7 @@ For configuration information, click on the model name:
 | ----- | ----------- |
 | [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
 | [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
-| [`upboard`](upboard/) | An Intel-boardd board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
+| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
