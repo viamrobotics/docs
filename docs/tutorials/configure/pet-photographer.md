@@ -313,7 +313,11 @@ class ColorFilterCam(
         super().__init__(name)
 
     @classmethod
-    def new_cam(cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new_cam(
+        cls,
+        config: ComponentConfig,
+        dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
         cam = cls(config.name)
         cam.reconfigure(config, dependencies)
         return cam
