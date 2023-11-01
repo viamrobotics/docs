@@ -14,3 +14,5 @@ dist
 tmp
 bin
 .vale.ini
+.frontmatter
+frontmatter.json
