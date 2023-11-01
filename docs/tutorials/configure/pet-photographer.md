@@ -406,7 +406,7 @@ class ColorFilterCam(
               **kwargs
     ) -> Tuple[
          List[NamedImage],
-        ResponseMetadata
+         ResponseMetadata
         ]:
         raise NotImplementedError
 
@@ -651,6 +651,7 @@ from viam.components.camera import Camera
 from viam.module.module import Module
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 import color_filter
+
 
 async def main():
 
