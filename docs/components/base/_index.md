@@ -551,18 +551,19 @@ myBaseWheelCircumference := properties.WheelCircumferenceMeters
 ### GetGeometries
 
 Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services generally use geometries and may require them for obstacle avoidance.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for obstacle detection and avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- None.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- List[(Geometry)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the base, in any order.
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the base, in any order.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_geometries).
 
@@ -585,10 +586,10 @@ if geometries:
 
 **Returns:**
 
-- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/spatialmath#Geometry): The geometries associated with the base, in any order.
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the base, in any order.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")

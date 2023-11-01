@@ -10,4 +10,5 @@ Method Name | Description
 [`ModelAttributes`](/components/board/#modelattributes) | Get the attributes related to the model of this board.
 [`SetPowerMode`](/components/board/#setpowermode) | Set the board to the indicated power mode.
 [`WriteAnalog`](/components/board/#writeanalog) | Write an analog value to a pin on the board.
+[`GetGeometries`](/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/services/frame-system) of the board.
 [`DoCommand`](/components/board/#docommand) | Send or receive model-specific commands.
