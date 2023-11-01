@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
 [`SetPower`](/components/motor/#setpower) | Set the power to send to the motor as a portion of max power.
@@ -9,5 +10,5 @@ Method Name | Description
 [`IsPowered`](/components/motor/#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
 [`IsMoving`](/components/motor/#ismoving) | Return whether the motor is moving or not.
 [`Stop`](/components/motor/#stop) | Cut power to the motor off immediately, without any gradual step down.
-[`GetGeometries`](/components/motor/#getgeometries) | Get all the geometries associated with the motor in its current configuration, in the [frame](/services/frame-system) of the motor.
+[`GetGeometries`](/components/motor/#getgeometries) | Get all the geometries associated with the motor in its current configuration, in the [frame](/services/frame-system/) of the motor.
 [`DoCommand`](/components/motor/#docommand) | Send or receive model-specific commands.
