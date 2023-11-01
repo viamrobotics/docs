@@ -671,7 +671,10 @@ async def main():
         )
     )
     module = Module.from_args()
-    module.add_model_from_registry(Camera.SUBTYPE, color_filter.ColorFilterCam.MODEL)
+    module.add_model_from_registry(
+        Camera.SUBTYPE,
+        color_filter.ColorFilterCam.MODEL
+    )
     await module.start()
 
 if __name__ == "__main__":
