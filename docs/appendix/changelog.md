@@ -10,11 +10,16 @@ aliases:
 # SME:
 ---
 
-## Novemeber 2023
+## November 2023
 
 ### Changed: Model training from datasets
 
 To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
+
+### Improved: Role-Based Access Control
+
+You can now manage users access to robots, locations, and organizations.
+For more information, see [Access Control](/fleet/rbac/)
 
 ## October 2023
 
