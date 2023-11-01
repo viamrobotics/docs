@@ -338,7 +338,11 @@ class ColorFilterCam(
         ].string_value
         if vision_service == "":
             raise Exception(
-              "vision_service attribute is required for a ColorFilterCam component"
+              """
+              vision_service attribute
+              is required for a
+              ColorFilterCam component
+              """
             )
         return [actual_cam, vision_service]
 
