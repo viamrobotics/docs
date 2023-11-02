@@ -633,9 +633,11 @@ robot_address = os.getenv('ROBOT_ADDRESS') or ''
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
 # change this if you named your camera differently in your robot configuration
 camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
-# change this if you named your detector differently in your robot configuration
+# change this if you named your detector differently in your robot
+# configuration
 detector_name = os.getenv("ROBOT_DETECTOR") or "myPeopleDetector"
-# change this if you named your sensor service differently in your robot configuration
+# change this if you named your sensor service differently in your robot
+# configuration
 sensor_service_name = (os.getenv("ROBOT_SENSORS") or "sensors")
 pause_interval = os.getenv('PAUSE_INTERVAL') or 3
 ```
