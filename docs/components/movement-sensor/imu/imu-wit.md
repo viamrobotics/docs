@@ -111,4 +111,4 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 | `serial_path`      | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. |
 | `serial_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor over the serial connection. Valid rates are `9600` and `115200`. The default rate will work for all models. _Only the HWT901B can have a different serial baud rate._ Refer to your model's data sheet. <br>Default: `115200`                                                                                                                             |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-imu-control.md" >}}
