@@ -81,7 +81,7 @@ First, add the data management service to your smart machine to be able capture 
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
 
-   ![Data Management configuration pane](/tutorials/data-management/data-management-conf.png)
+   {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
 
 For more information, see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
 
@@ -104,7 +104,7 @@ To enable image data capture for a camera component:
 
    - Set the **Mime type** to `image/jpeg` to configure image data capture for this tutorial.
 
-     ![Screenshot from the Viam app showing the data capture settings used for this tutorial.](/tutorials/data-management/camera-data-capture.png)
+     {{< imgproc src="/tutorials/data-management/camera-data-capture.png" alt="The camera component configuration pane with data capture configuration enabled using type ReadImage and a capture frequency of 0.333" resize="600x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
@@ -119,7 +119,7 @@ Now that you have configured data capture on your camera component, you can view
 
 1. Then, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
 
-   ![The data page of the Viam app showing a gallery of the images captured from the Viam Rover.](/tutorials/data-management/data-captured-images.png)
+   {{< imgproc src="/tutorials/data-management/data-captured-images.png" alt="The data page showing a variety of captured images with search options presented on the left" resize="1200x" >}}
 
    Here you can see the images captured so far from the camera on your smart machine.
    New images should appear roughly every six seconds as cloud sync uploads them from your smart machine.
@@ -148,7 +148,7 @@ To train a new model from your captured data, first tag your images with appropr
    For this tutorial, we are using the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a red star and an orange triangle.
    The image below shows adding the `red_star` tag to an image:
 
-   {{< imgproc src="/tutorials/data-management/add-tag-red-star.png" alt="Tags and labels pane of an image, with text red_star entered as the tag" resize="400x" >}}
+   {{< imgproc src="/tutorials/data-management/add-tag-red-star.png" alt="The tags and labels configuration pane of a selected image, with the text red_star entered as the tag" resize="350x" >}}
 
 1. Repeat this process for other images that contain objects you want your model to be able to identify.
    Once you have added a tag to an image, you can select that tag from the **Tags** drop down menu for other images that also feature the tagged object.
@@ -168,7 +168,7 @@ Feel free to return to your smart machine's **Control** tab to position your cam
 Generally, the more different perspectives of a given object you tag, the more likely your model will be able to identify it, even under differing conditions.
 The following is an example of a good selection of images containing the `blue_star` tag, taken from a variety of angles:
 
-{{< imgproc src="/tutorials/data-management/filter-by-blue-star.png" alt="The data tab showing images that contain blue stars from various angles" resize="1200x" >}}
+{{< imgproc src="/tutorials/data-management/filter-by-blue-star.png" alt="The data tab showing images that contain blue stars from various angles, with a search filter for blue_star applied to only show images tagged with that label" resize="1200x" >}}
 
 If you want to remove a tag, click the **X** icon to the right of the tag name below the **Tags** field.
 
@@ -182,7 +182,7 @@ To filter images by tag, use the **Tags** drop down filter on the left-hand side
 
 For example, the following shows an images data set filtered to only show images tagged with the `red_star` tag:
 
-![The data page of the Viam app showing a gallery of images filtered to show only images tagged with the black_triangle tag](/tutorials/data-management/filter-by-red-star.png)
+{{< imgproc src="/tutorials/data-management/filter-by-red-star.png" alt="The filtering pane on the left of the data page with the tag red_star checked and the search button shown" resize="250x" >}}
 
 You can search for multiple tags at once, which will display images that match any of the included tags.
 To reset a filter, and return to viewing all captured images, click the **Reset filters** button on the left, then click **Search** again.
@@ -196,7 +196,7 @@ To train a new model:
 
 1. First, ensure that you have filtered your images by adding each tag you would like to use in your model using the **Tags** drop down filter on the left-hand side, then click **Search**.
 1. When you are happy with the images shown, click the **Train model** button in the upper-right.
-1. Give your model a name, and select the **Model type**:
+1. Give your model a name, like `my-object-detector`, and select the **Model type**:
    - Use `Single label classification` if you only added one tag per image.
    - Use `Multi label classification` if you added more than one tag for some images.
 1. Select the tags you want to train your model on from the **Labels for training** drop down, then click **Train model**.
@@ -208,11 +208,11 @@ To train a new model:
 Your new model will begin training on the images you have tagged, and should be ready after a short time.
 You can view your model's training progress from the **Models** subtab under the [**DATA** page](https://app.viam.com/data/view).
 
-{{< imgproc src="/tutorials/data-management/model-training-progress.png" alt="The data tab showing the train a model pane with four tags filtered" resize="600x" >}}
+{{< imgproc src="/tutorials/data-management/model-training-progress.png" alt="The models tab on the data page showing a model named my-classifier-model being trained" resize="600x" >}}
 
 Models that are still being trained appear under **Training**, while models that have completed training and are ready for use appear under **Models**.
 
-{{< imgproc src="/tutorials/data-management/trained-model.png" alt="The data tab showing the train a model pane with four tags filtered" resize="800x" >}}
+{{< imgproc src="/tutorials/data-management/trained-model.png" alt="The models tab on the data page showing a completed model named my-classifier-model ready for deployment" resize="800x" >}}
 
 ### Deploy a model
 
@@ -226,7 +226,7 @@ To deploy a new model to your smart machine:
 1. In the resulting ML Model service configuration pane, select **Deploy model on robot**, then select the model you just trained from the **Models** dropdown menu.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-   {{< imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The data tab showing the train a model pane with four tags filtered" resize="600x" >}}
+   {{< imgproc src="/tutorials/data-management/mlmodel-service-conf.png" alt="The ML model service configuration pane showing the required settings to deploy the my-classifier-model." resize="600x" >}}
 
 ## The vision service
 
@@ -243,7 +243,7 @@ To enable your smart machine's camera to identify the objects you've tagged, fir
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-   {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The data tab showing the train a model pane with four tags filtered" resize="500x" >}}
+   {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}
 
 ### Add a transform camera
 
@@ -271,7 +271,7 @@ To enable your smart machine's camera to identify the objects you've tagged, fir
    The `confidence_threshold` controls how confident the model must be in order to present a matching object tag, on a scale of `0.0` - `1.0`, with `1.0` representing a 100% match requirement.
    The more and varied images you have captured and tagged, the more confidently your model can identify the objects you have tagged.
 
-   {{< imgproc src="/tutorials/data-management/transform-cam-conf.png" alt="The data tab showing the train a model pane with four tags filtered" resize="500x" >}}
+   {{< imgproc src="/tutorials/data-management/transform-cam-conf.png" alt="The transform camera component configuration pane showing the required attributes entered" resize="500x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
@@ -285,9 +285,9 @@ Your smart machine is now ready to detect the objects you've tagged.
    On the Viam Rover, and using the transform camera name from earlier in this tutorial, these are `cam` and `my-transform-cam`
 1. Move your smart machine to a position where your camera can see an object that you have tagged in your ML model, and watch your smart machine identify it!
 
-   {{< imgproc src="/tutorials/data-management/transform-blue-star.png" alt="The data tab showing the train a model pane with four tags filtered" resize="600x" >}}
+   {{< imgproc src="/tutorials/data-management/transform-blue-star.png" alt="The control tab for a rover showing a live camera feed with the transform camera overlay indicating an object match for the blue_star tag" resize="600x" >}}
 
-   {{< imgproc src="/tutorials/data-management/transform-red-star.png" alt="The data tab showing the train a model pane with four tags filtered" resize="600x" >}}
+   {{< imgproc src="/tutorials/data-management/transform-red-star.png" alt="The control tab for a rover showing a live camera feed with the transform camera overlay indicating an object match for the red_star tag" resize="600x" >}}
 
 That's it! Your smart machine is now smarter and better able to understand the world around it.
 
