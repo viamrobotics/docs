@@ -106,8 +106,6 @@ To get started writing your filter resource model:
    - Your model name must use all lowercase letters.
 1. Inside that folder, create a file called <file>color_filter.py</file>.
 
-The full code for this <file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py)</file> file is from the full modular filter examples available on [GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
-
 {{% /tab %}}
 {{% tab name="Go"%}}
 
@@ -117,23 +115,23 @@ The full code for this <file>[color_filter.py](https://github.com/viam-labs/modu
    - A file called <file>color_filter.go</file>.
    - A directory named `module`.
 
-The full code for this <file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file> file is from the full modular filter examples available on [GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
-
 {{% /tab %}}
 {{< /tabs >}}
 
 #### Implement the subtype's required methods
 
-Next, include all the methods the Viam RDK requires in the API definition of its built-in subtype.
+Next, include all the methods the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} .
 
 {{< tabs >}}
 {{% tab name="Python"%}}
 
-To code a new filter resource model, you must implement a client interface defined by the required methods outlined in the <file>client.go</file> file in the corresponding [resource's directory](https://github.com/viamrobotics/rdk/tree/main/components/).
-The camera file is at [`rdk/components/camera/client.go`](https://github.com/viamrobotics/rdk/blob/main/components/camera/client.go).
+To code a new filter resource model, implement a client interface defined by the required methods outlined in <file>client.py</file>'s in the corresponding [resource's directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/src/viam/components).
+The camera's <file>client.py</file> is located at [`/components/camera/client.py`](https://github.com/viamrobotics/viam-python-sdk/blob/bf69d55b7421a5985944fa410f2b44d70759aebf/src/viam/components/camera/client.py).
 
 1. Open the <file>color_filter.py</file> you just created and implement the required methods in it.
-   - You can create your own code or copy the code for your [color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py).
+   Ensure you exclude the `get_images` method, which you will customize to add filtering functionality in the upcoming section.
+   Otherwise, include the methods within the class corresponding to your resource type (in this case, the `CameraClient` class).
+   - You can create your own code or copy the code from the [viam-labs pycolorfilter repository's color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py).
 
 For more information, refer to [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
 
@@ -141,10 +139,11 @@ For more information, refer to [Create a custom module](https://docs.viam.com/mo
 {{% tab name="Go"%}}
 
 To code a new filter resource model, you must implement a client interface defined by the required methods outlined in the <file>client.go</file> file in the corresponding [resource's directory](https://github.com/viamrobotics/rdk/tree/main/components/).
-The camera file is at [`rdk/components/camera/client.go`](https://github.com/viamrobotics/rdk/blob/main/components/camera/client.go).
+The camera's <file>client.go</file> is located at [`rdk/components/camera/client.go`](https://github.com/viamrobotics/rdk/blob/main/components/camera/client.go).
 
 1. Open the <file>color_filter.go</file> you just created and implement the required methods in it.
-   - You can create your own code or copy the code for your [color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go).
+   Ensure you exclude the `Read` method, which you will replace with a method, `Next`, to add filtering functionality in the upcoming section.
+   - You can create your own code or copy the code from the [viam-labs colorfilter repository's color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go) file.
 
 For more information, refer to [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
 
@@ -153,9 +152,9 @@ For more information, refer to [Create a custom module](https://docs.viam.com/mo
 
 #### Include the filter module requirements
 
-Your custom filter module must contain two critical elements in your filter function.
+The filter function in your custom filter module must contain two critical elements.
 One will check if the caller of the filter function is the data management service.
-The other will ensure that if the data management service is not the caller, an error is returned.
+The other will ensure that if the data management service is not the caller, an error and the unfiltered data is returned.
 
 #### Check the caller of the collector function
 
@@ -210,12 +209,6 @@ if ctx.Value(data.FromDMContextKey{}) != true {
   - If `FromDMContextKey` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
 - Then, after capturing the image, the code continues to request detections.
 
-**PLACEHOLDER: `FromDMContextKey` vs `FromDMString`?**
-
-**`FromDMString` has been referenced as important and essential, but it's only used in the sensor filter.**
-**Colorfilter uses `FromDMContextKey`.**
-**Updating all references once clarified.**
-
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -223,12 +216,12 @@ if ctx.Value(data.FromDMContextKey{}) != true {
 
 After implementing a check to identify the initiator of the filter function, you must include the safeguard that will return an error if the data management service is not the caller.
 
-To do this, include the following in your filter module's <file>color_filter.py</file> or <file>color_filter.go</file>:
+To do this, include the following in your filter module's resource model:
 
 {{< tabs name="Example tabs">}}
 {{% tab name="Python"%}}
 
-First, import the safeguard error `NoCaptureToStoreError` from Viam:
+Open <file>color_filter.py</file> and import the safeguard error `NoCaptureToStoreError` from Viam:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.errors import NoCaptureToStoreError
@@ -249,7 +242,7 @@ if from_dm_from_extra(extra):
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Inside your filter function, write a conditional statement that includes the error message `data.ErrNoCaptureToStore`:
+Open <file>color_filter.go</file> and write a conditional statement inside your filter function that includes the error message `data.ErrNoCaptureToStore`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 if len(detections) == 0 {
