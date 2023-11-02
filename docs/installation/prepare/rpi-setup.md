@@ -171,10 +171,10 @@ sudo apt upgrade
 
 ## Enable Communication Protocols
 
-If you are using hardware that requires I2C, SPI, serial, or one-wire protocols to communicate with your Pi, you will need to enable them using `raspi-config`.
-These protocols are required to support certain hardware, such as analog-to-digital converters (ADCs), accelerometers, and sensors.
+Certain hardware, such as analog-to-digital converters (ADCs), accelerometers, and sensors, communicate with your Pi using specialized communications protocols: including I2C, SPI, serial, or one-wire protocols.
+If you are using hardware that requires these protocols, you must enable support for them on your Pi using `raspi-config`:
 
-1. Launch the config tool by running the following command:
+1. Launch the configuration tool by running the following command:
 
    ```sh {class="command-line" data-prompt="$"}
    sudo raspi-config
@@ -186,11 +186,12 @@ These protocols are required to support certain hardware, such as analog-to-digi
 
 1. Enable the relevant protocols to support your specific hardware:
 
-   - If you are using an analog-to-digital converter (ADC), enable **SPI**.
-   - If you are using an accelerometer, enable **I2C**.
+   - If you are using an analog-to-digital converter (ADC), motor, or other device that requires the SPI protocol, enable **SPI**.
+   - If you are using an accelerometer, sensor, or other device that requires the I<sup>2</sup>C protocol, enable **I2C**.
    - If you are using a CSI v1.3 or v2.0 camera, enable **Legacy Camera** support.
-   - If you are using a movement sensor or power sensor, you will likely need to enable the **Serial Port**.
-     Check the documentation for your specific [movement sensor](/components/movement-sensor/) or [power sensor](/components/power-sensor/) to confirm.
+   - If you are using a sensor, motor, or other device that communicates over the serial port, enable **Serial Port**.
+
+   Check the documentation for your specific component to verify the communication protocols it requires.
 
 1. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
 
