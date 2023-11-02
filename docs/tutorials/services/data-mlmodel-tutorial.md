@@ -23,13 +23,13 @@ no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
-In this tutorial, you will learn how to use three Viam services together:
+In this tutorial, you will use three Viam services together:
 
-- The [data management](#the-data-management-service) service, which you will use to capture images from a camera on your smart machine and sync them to the cloud.
-- The [ML model](#the-ml-model-service) service, which you will use to manage and deploy a machine learning (ML) model based on these images, once you added tags to the images matching the objects you want to detect.
-- THe [vision](/services/vision/) service, which you will use to enable your smart machine's camera to detect objects defined in the ML model on its own.
+- The [data management](#the-data-management-service) service, to capture images from a camera on your smart machine and sync them to the cloud.
+- The [ML model](#the-ml-model-service) service, to manage and deploy a machine learning (ML) model based on these images, once you added tags to the images matching the objects you want to detect.
+- THe [vision](/services/vision/) service, to enable your smart machine's camera to detect objects defined in the ML model on its own.
 
-Working together, these services enable to you train and continually refine an ML model that your smart machine can use to make intelligent decisions about the world around it.
+Working together, these services enable your smart machine to recognize the world around it and make intelligent decisions about the world it sees.
 
 {{< alert title="Tip" color="tip" >}}
 To get started easily, you can rent a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
@@ -88,7 +88,7 @@ For more information, see [Add the data management service](/services/data/confi
 ### Configure data capture for a component
 
 Once you have added the data management service, you can configure data capture for specific components on your smart machine.
-For this tutorial, you will capture image data from a [camera](/components/camera/), but you can use the data management service with other [components](/components/) to capture not just image data, but also sensor data, SLAM mapping data, and others.
+For this tutorial, you will configure data capture for images from a [camera](/components/camera/) component, but other data types such as sensor data or SLAM map data from other types of [components](/components/) can be captured as well.
 
 To enable image data capture for a camera component:
 
@@ -102,7 +102,7 @@ To enable image data capture for a camera component:
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-   - Set the **Mime type** to `image/jpeg` to configure image data capture for this tutorial.
+   - Set the **Mime type** to `image/jpeg` to configure image data capture.
 
      {{< imgproc src="/tutorials/data-management/camera-data-capture.png" alt="The camera component configuration pane with data capture configuration enabled using type ReadImage and a capture frequency of 0.333" resize="600x" >}}
 
@@ -145,7 +145,7 @@ To train a new model from your captured data, first tag your images with appropr
 1. In the **Tags** field on the right-hand side, enter a new tag describing the object in the image that you want your smart machine to be able to identify, then click **Add as new tag**.
    Tag names support alphanumeric characters, underscores, and hyphens.
 
-   For this tutorial, we are using the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a red star and an orange triangle.
+   For this tutorial, will use the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a red star and an orange triangle.
    The image below shows adding the `red_star` tag to an image:
 
    {{< imgproc src="/tutorials/data-management/add-tag-red-star.png" alt="The tags and labels configuration pane of a selected image, with the text red_star entered as the tag" resize="350x" >}}
@@ -282,7 +282,7 @@ Your smart machine is now ready to detect the objects you've tagged.
 1. On your robot's **Control** page in the [Viam app](https://app.viam.com), find your configured camera component.
    If you are using a Viam Rover, use the `viam_base` base instead, which presents both the camera and the transform camera together.
 1. Enable both the camera and the transform camera, to show both on the right-hand side.
-   On the Viam Rover, and using the transform camera name from earlier in this tutorial, these are `cam` and `my-transform-cam`
+   On the Viam Rover, and using the transform camera name from earlier in this tutorial, these are `cam` and `my-transform-cam`.
 1. Move your smart machine to a position where your camera can see an object that you have tagged in your ML model, and watch your smart machine identify it!
 
    {{< imgproc src="/tutorials/data-management/transform-blue-star.png" alt="The control tab for a rover showing a live camera feed with the transform camera overlay indicating an object match for the blue_star tag" resize="600x" >}}
