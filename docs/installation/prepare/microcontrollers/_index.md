@@ -33,8 +33,8 @@ Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/f
 3. Select your computer's architecture as **Architecture** and select **Micro-RDK** as **RDK type**.
 4. Follow the instructions to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable.
 
-    To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
-    If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
+   To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
+   If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
 
 Go back to your new robot's page on [the Viam app](https://app.viam.com).
 If successful, your robot will show that it's **Live**.
