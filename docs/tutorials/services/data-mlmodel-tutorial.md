@@ -8,14 +8,14 @@ image: "/tutorials/data-management/data-captured-images.png"
 imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
 images: ["/tutorials/data-management/data-captured-images.png"]
 aliases:
-    - "/tutorials/data-management-tutorial/"
-    - "/tutorials/data-management/"
-    - "/manage/data-management/data-management-tutorial/"
-    - "/tutorials/services/data-management-tutorial/"
+  - "/tutorials/data-management-tutorial/"
+  - "/tutorials/data-management/"
+  - "/manage/data-management/data-management-tutorial/"
+  - "/tutorials/services/data-management-tutorial/"
 tags: ["data management", "data", "mlmodel", "vision", "services", "try viam"]
 authors: []
 languages: []
-viamresources: [ "data_manager", "mlmodel", "vision", "camera" ]
+viamresources: ["data_manager", "mlmodel", "vision", "camera"]
 level: "Beginner"
 date: "8 February 2023"
 cost: "0"
@@ -58,12 +58,12 @@ You can manage how your smart machine works with data files and images by using 
 The [data management](/manage/data/) service has two parts: [data capture](/manage/data/#data-capture) and [cloud sync](/manage/data/#cloud-sync)
 
 - **Data capture** allows you to capture data from specific components on your smart machine running Viam.
-You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
+  You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
 
 - **Cloud sync** runs in the background and uploads your smart machine's captured data to the Viam app at a defined frequency.
-Cloud sync is designed to be resilient and to preserve your data even during a network outage or if your smart machine has low network bandwidth.
-With cloud sync enabled for a component, data captured locally to your smart machine is automatically deleted after a successful sync.
-Data synced between your smart machine and the Viam app is encrypted in transit (over the wire) and when stored in the cloud (at rest).
+  Cloud sync is designed to be resilient and to preserve your data even during a network outage or if your smart machine has low network bandwidth.
+  With cloud sync enabled for a component, data captured locally to your smart machine is automatically deleted after a successful sync.
+  Data synced between your smart machine and the Viam app is encrypted in transit (over the wire) and when stored in the cloud (at rest).
 
 Data capture and data sync are frequently used together, and are both enabled by default when you add the data management service to your smart machine.
 However, if you want to manage your smart machine's captured data yourself, you can enable data capture but disable data sync.
