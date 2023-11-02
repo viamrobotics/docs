@@ -145,7 +145,7 @@ To train a new model from your captured data, first tag your images with appropr
 1. In the **Tags** field on the right-hand side, enter a new tag describing the object in the image that you want your smart machine to be able to identify, then click **Add as new tag**.
    Tag names support alphanumeric characters, underscores, and hyphens.
 
-   For this tutorial, will use the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a red star and an orange triangle.
+   For this tutorial, you will use the objects shown in the [Try Viam](https://app.viam.com/try) test octagon, which include shapes like a red star and an orange triangle.
    The image below shows adding the `red_star` tag to an image:
 
    {{< imgproc src="/tutorials/data-management/add-tag-red-star.png" alt="The tags and labels configuration pane of a selected image, with the text red_star entered as the tag" resize="350x" >}}
