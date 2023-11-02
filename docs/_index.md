@@ -171,7 +171,7 @@ sitemap:
       <div class="col hover-card landing pink">
         <div>
           <div>Community</div>
-          <p style="text-align: left;">Have questions, or want to meet other people working on smart machines? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
+          <p style="text-align: left;">Have questions, or want to meet other people working on smart machines? <a href="https://discord.gg/viam">Join us in the Community Discord! You can also <a href="https://github.com/viamrobotics/docs">contribute to these docs</a>.</a></p>
         </div>
         {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
       </div>
