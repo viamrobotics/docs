@@ -23,7 +23,7 @@ no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
-In this tutorial, you will use three Viam services together:
+In this tutorial, you will use three Viam services together to enable a smart machine to recognize specific objects in the world around it:
 
 - The [data management](#the-data-management-service) service, to capture images from a camera on your smart machine and sync them to the cloud.
 - The [ML model](#the-ml-model-service) service, to manage and deploy a machine learning (ML) model based on these images, once you added tags to the images matching the objects you want to detect.
