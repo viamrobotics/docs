@@ -2,8 +2,7 @@ name: Check Python SDK method coverage
 
 on:
   workflow_run:
-    workflows:
-      - pr-deploy-and-comment
+    workflows: [pr-deploy-and-comment]
     types:
       - completed
 
