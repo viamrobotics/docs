@@ -194,11 +194,7 @@ This is especially useful when you may have captured a large number of images of
 
 To train a new model:
 
-1. First, ensure that you have filtered your images by adding each tag you would like to use in your model using the **Tags** drop down filter on the left-hand side, then clicking **Search**.
-   For this tutorial, we are filtering by all tags, to include every image we have tagged with a shape, since we want our ML model to be able to identify each of these shapes:
-
-   ![The data page of the Viam app showing a gallery of images filtered to show images matching any configured tag](/tutorials/data-management/filter-all-tags.png)
-
+1. First, ensure that you have filtered your images by adding each tag you would like to use in your model using the **Tags** drop down filter on the left-hand side, then click **Search**.
 1. When you are happy with the images shown, click the **Train model** button in the upper-right.
 1. Give your model a name, and select the **Model type**:
    - Use `Single label classification` if you only added one tag per image.
