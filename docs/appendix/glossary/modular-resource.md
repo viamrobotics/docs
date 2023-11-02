@@ -8,4 +8,4 @@ aka:
 
 A modular resource is a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} that implements the same [API methods](https://docs.viam.com/program/apis/).
 
-For more information see the [Modular Resource Documentation](/extend/modular-resources/).
+For more information see the [Modular Resource Documentation](/modular-resources/).

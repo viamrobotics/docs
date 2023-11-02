@@ -19,12 +19,12 @@ no_list: true
 You can extend the capabilities of Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that contains one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 You can integrate modules into any Viam-powered smart machine.
 
-One common scenario for using {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} is to create a new [model](/extend/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
+One common scenario for using {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} is to create a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
-Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/extend/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
-For added convenience, you can configure [automated uploads for new module versions](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
+Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
+For added convenience, you can configure [automated uploads for new module versions](/modular-resources/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
 
-You can also add your module to your robot as a [local module](/extend/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
+You can also add your module to your robot as a [local module](/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
 
 ## Prepare to code a new resource model
 
@@ -39,7 +39,7 @@ Before you start coding a new resource model, follow these steps to find the app
    To ensure the client interface you create returns the expected results, use the appropriate client interface defined as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
 
    - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
-     See [Valid APIs to implement in your model](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
+     See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
 
 1. **Prepare to Import Your Custom Model and Subtype's API:**
 
@@ -51,7 +51,7 @@ Before you start coding a new resource model, follow these steps to find the app
 
 ## Create a custom module
 
-A custom module can implement one or more [models](/extend/modular-resources/key-concepts/#models).
+A custom module can implement one or more [models](/modular-resources/key-concepts/#models).
 To create a custom module, follow the steps below:
 
 1. [Code a new resource model](#code-a-new-resource-model) server. It must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like ['rdk:component:base'](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/components/base#pkg-functions).
@@ -65,9 +65,9 @@ To create a custom module, follow the steps below:
 
 ### Code a new resource model
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/extend/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
 
-- For more information, see [Naming your model](/extend/modular-resources/key-concepts/#naming-your-model).
+- For more information, see [Naming your model](/modular-resources/key-concepts/#naming-your-model).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
@@ -561,7 +561,7 @@ Otherwise, the class won’t instantiate.
 
 ### Compile the module into an executable
 
-To [add a module](/extend/modular-resources/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+To [add a module](/modular-resources/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
@@ -697,6 +697,6 @@ The examples under [Code a new resource model](#code-a-new-resource-model) inclu
 
 ## Next steps
 
-Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/extend/modular-resources/upload/) to the Viam registry, to share it with other Viam users or just to other users in your organization.
+Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/modular-resources/upload/) to the Viam registry, to share it with other Viam users or just to other users in your organization.
 
-Alternatively, you can [add your module locally](/extend/modular-resources/configure/) to your robot without uploading to the Viam registry.
+Alternatively, you can [add your module locally](/modular-resources/configure/) to your robot without uploading to the Viam registry.
