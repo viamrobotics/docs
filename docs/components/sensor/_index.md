@@ -39,7 +39,7 @@ Most robots with a sensor need at least the following hardware:
 
 ## Supported Models
 
-To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your sensor.
+To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 

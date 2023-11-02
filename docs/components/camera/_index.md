@@ -43,7 +43,7 @@ You can use different models to:
 
 ## Supported Models
 
-To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your camera.
+To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
