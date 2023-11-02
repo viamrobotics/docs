@@ -265,10 +265,10 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_readings).
 
 ```python
-my_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
 
 # Get the readings provided by the sensor.
-readings = await my_sensor.get_readings()
+readings = await my_power_sensor.get_readings()
 ```
 
 {{% /tab %}}
