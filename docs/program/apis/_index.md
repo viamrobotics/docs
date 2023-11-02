@@ -105,7 +105,7 @@ The [motor component](/components/motor/) supports the following methods:
 
 ### Movement Sensor
 
-The [movement sensor component](/components/movement-sensor/) supports the following methods:
+The [movement sensor component](/components/movement-sensor/) supports the following methods.
 Some methods are only supported by certain models:
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
