@@ -314,14 +314,14 @@ If you are implementing your own power sensor and add features that have no buil
 - [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
+my_power_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
 
 reset_dict = {
   "command": "reset",
   "example_param": 30
 }
 
-do_response = await my_sensor.do_command(reset_dict)
+do_response = await my_power_sensor.do_command(reset_dict)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.do_command).
@@ -340,12 +340,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
 
-resp, err := mySensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
 ```
 
-For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}
