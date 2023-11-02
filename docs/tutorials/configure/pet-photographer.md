@@ -117,7 +117,7 @@ The full code for this <file>[color_filter.py](https://github.com/viam-labs/modu
    - A file called <file>color_filter.go</file>.
    - A directory named `module`.
 
-The full code for this <file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go</file>)</file> file is from the full modular filter examples available on [GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
+The full code for this <file>[color_filter.go](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go)</file> file is from the full modular filter examples available on [GitHub](https://github.com/viam-labs/modular-filter-examples/tree/main).
 
 {{% /tab %}}
 {{< /tabs >}}
