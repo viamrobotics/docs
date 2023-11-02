@@ -55,7 +55,7 @@ Before following this tutorial, ensure you have:
 
 You can manage how your smart machine works with data files and images by using the _data management service_.
 
-The [data management](/manage/data/) service has two parts: [data capture](/manage/data/#data-capture) and [cloud sync](/manage/data/#cloud-sync)
+The [data management](/manage/data/) service has two parts: [data capture](/services/data/#data-capture) and [cloud sync](/services/data/#cloud-sync)
 
 - **Data capture** allows you to capture data from specific components on your smart machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -88,7 +88,7 @@ For more information, see [Add the data management service](/services/data/confi
 ### Configure data capture for a component
 
 Once you have added the data management service, you can configure data capture for specific components on your smart machine.
-For this tutorial, you will capture image data from a [camera](/component/camera/), but you can use the data management service with other [components](/components/) to capture not just image data, but also sensor data, SLAM mapping data, and others.
+For this tutorial, you will capture image data from a [camera](/components/camera/), but you can use the data management service with other [components](/components/) to capture not just image data, but also sensor data, SLAM mapping data, and others.
 
 To enable image data capture for a camera component:
 
