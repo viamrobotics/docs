@@ -28,7 +28,7 @@ This allows you to get pictures of your pet in the following way:
 1. Attach a colored object, such as a blue collar, to your pet.
 1. Configure the color filter module, which will process images and only store them if your pet and their easily identifiable colored object is present.
 
-{{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="700x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
+   {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="550x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
 {{< alert title="Note" color="note" >}}
 While this tutorial is about creating a color filter, you can also use it as a reference when writing your own filter module for other components, like a [sensor](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter).
@@ -153,21 +153,15 @@ For more information, refer to [Create a custom module](https://docs.viam.com/mo
 #### Include the filter module requirements
 
 The filter function in your custom filter module must contain two critical elements.
-One will check if the caller of the filter function is the data management service.
-The other will ensure that if the data management service is not the caller, an error and the unfiltered data is returned.
+
+1. A utility function that will check if the caller of the filter function is the data management service.
+2. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 #### Check the caller of the collector function
 
-When creating your own filter module, it's required to check whether the data management service is the caller of the function responsible for data capture.
+When creating your own filter module, it's required to include a utility function to check whether the data management service is the caller of the function responsible for data capture.
 If a service other than the data management service calls the function, it will return the original, unfiltered stream contents.
 When writing a filter for other components, write your modular code to return the component's original data in case the data management service isn't the caller.
-
-You can achieve this by examining the `fromDataManagement` value within the `extra` argument passed to the filter function in your <file>color_filter.py</file> or <file>color_filter.go</file> file.
-
-{{< alert title="Important" color="note" >}}
-When coding a modular camera with the Go SDK, `FromDMContextKey` is used to check the caller of the data capture function.
-For all other components, you should use `FromDMString` instead.
-{{< /alert >}}
 
 The approach for checking this varies depending on the programming language used to configure your camera:
 
@@ -191,7 +185,12 @@ if from_dm_from_extra(extra):
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Write a conditional statement that checks `FromDMContextKey`:
+First, write a conditional statement that checks `FromDMContextKey`:
+
+{{< alert title="Important" color="note" >}}
+When coding a modular camera using the Go SDK, `FromDMContextKey` is used to check the caller of the data capture function.
+For all other components, you should use `FromDMString` instead, as shown in the [viam-labs sensor filter example](https://github.com/viam-labs/modular-filter-examples/blob/cd2f79c52b98c3deafbd1e9794869744803d4428/sensorfilter/sensor_filter.go#L99C1-L99C1).
+{{< /alert >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
 if ctx.Value(data.FromDMContextKey{}) != true {
@@ -206,7 +205,7 @@ if ctx.Value(data.FromDMContextKey{}) != true {
 ```
 
 - The Go-configured camera checks if the data management service is the caller of the filter function by using `FromDMContextKey` to determine whether to store data.
-  - If `FromDMContextKey` is `true` and the data management service is the caller, captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
+  - If `FromDMContextKey` is `true` and the data management service is the caller, the camera captures an image by declaring the (`img`) variable and filling it with the content from the camera stream.
 - Then, after capturing the image, the code continues to request detections.
 
 {{% /tab %}}
@@ -242,7 +241,7 @@ if from_dm_from_extra(extra):
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Open <file>color_filter.go</file> and write a conditional statement inside your filter function that includes the error message `data.ErrNoCaptureToStore`:
+Open <file>color_filter.go</file> and write a conditional statement inside of your filter function that includes the error message `data.ErrNoCaptureToStore`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 if len(detections) == 0 {
@@ -280,10 +279,13 @@ async def get_image(
     return img
 ```
 
+- If the data management service is the caller, the filter function requests detections from the vision service and returns the image if the specified color is detected.
+  Otherwise, it raises `NoCaptureToStoreError()`.
+
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-This code includes the safeguards you wrote earlier as well as error handling for getting the next source image and obtaining detections.
+This code includes the safeguard you implemented earlier, as well as error handling for getting the next source image and obtaining detections.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Next contains the filtering logic and returns select data from the underlying camera.
@@ -311,13 +313,13 @@ func (fs filterStream) Next(ctx context.Context) (image.Image, func(), error) {
 }
 ```
 
+- If the data management service is the caller, the filter function requests detections from the vision service and returns the image if the specified color is detected.
+  Otherwise, it raises `data.ErrNoCaptureToStore`.
+
 {{% /tab %}}
 {{< /tabs >}}
 
-- If the data management service is the caller, the filter function requests detections from the vision service and returns the image if the specified color is detected.
-  Otherwise, it raises `data.ErrNoCaptureToStore` or `NoCaptureToStoreError()`.
-
-Once you have implemented your resource subtype's required methods and written your filter function, your final code should look like this:
+After you have implemented your resource subtype's required methods and written your filter function, your final code should look like this:
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -692,8 +694,11 @@ If you want to filter data based on a constraint other than color, you need to m
 
 {{< tabs >}}
 {{% tab name="Python"%}}
-Inside your module's folder, create a file called <file>main.py</file> (the module entry point file).
-Add the code below to initialize and start the filter module.
+
+Follow these steps to code your entry point file:
+
+1. Inside of your filter module's directory, create a file called <file>main.py</file> (the module entry point file).
+1. Add the code below to initialize and start the filter module.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -733,9 +738,11 @@ if __name__ == "__main__":
 
 {{% /tab %}}
 {{% tab name="Go"%}}
-Inside your module's directory, create another folder with the name `module`.
-Inside the `module` folder, create a file called <file>main.go</file> (the entry point file for the module).
-Add the code below to initialize and start the filter module.
+
+Follow these steps to code your entry point file:
+
+1. Open the folder named `module` inside of your filter module's directory and create a file called <file>main.go</file> (the entry point file for the module).
+1. Add the code below to initialize and start the filter module.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Package main is a module which serves the colorfilter custom module.
@@ -784,7 +791,7 @@ For more information on creating your own module, refer to [Code your own module
 
 Once you've written your filter module, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module when executed.
 
-Note the absolute path to your module’s executable for later use.
+Note the absolute path to your module’s executable for use in the next section.
 
 ### Add local module
 
@@ -795,7 +802,8 @@ Now that you've completed writing and compiling your filter module, it's time to
 1. You identified your module's path when you [compiled your module's executable](/modular-resources/create/#compile-the-module-into-an-executable).
 1. In the **Add local module** section, enter the name of your module (`colorfilter`) along with the filter's executable, and click **Add module**.
    - The name should be all lowercase.
-   - Enter the absolute path to your module's executable on the robot's computer as the **Executable path**. The executable path is the path you noted down when you [compiled your module's executable](/modular-resources/create/#compile-the-module-into-an-executable).
+   - Enter the absolute path to your module's executable on the robot's computer as the **Executable path**.
+     The executable path is the path you noted down when you [compiled your module's executable](/modular-resources/create/#compile-the-module-into-an-executable).
 1. Then, click **Save config**.
 
 ![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
