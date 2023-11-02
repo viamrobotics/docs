@@ -2,8 +2,8 @@ To authenticate yourself to your robot, you need
 
 1. The robot part's api key:
 
-   To authenticate, [use a robot api key](/manage/robots/#security) or [an organization-wide api key](/manage/cli/#create-an-organization-api-key).
-   Copy and paste the api key id and the api key into your environment variables or directly into the code:
+   To authenticate, [use a robot part API key](/manage/robots/#security) or [an organization-wide API key](/manage/cli/#create-an-organization-api-key).
+   Copy and paste the API key id and the API key into your environment variables or directly into the code:
 
    {{< tabs >}}
 {{% tab name="Python" %}}
