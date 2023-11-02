@@ -14,6 +14,8 @@ no_list: true
 
 The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
 
+For example, if you have an LED display, it does not make sense to implement it as an arm, camera, or any other existing component subtype because an LED display does not have joints or capture images.
+
 There are no built-in generic component models (other than `fake`).
 Use generic for a [modular resource](/modular-resources/) model that represents a unique type of hardware.
 
@@ -23,13 +25,13 @@ The generic component API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
 Whenever possible, it is best to use an [existing component API](/components/) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing subtype.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/components/), instead of using generic.
 
 {{% /alert %}}
 
 ## Supported Models
 
-To use your generic component with Viam, check whether one of the following [modular resources](#modular-resources) supports your component.
+Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your component.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
