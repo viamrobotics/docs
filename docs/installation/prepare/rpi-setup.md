@@ -184,7 +184,7 @@ If you are using hardware that requires these protocols, you must enable support
 
    {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
 
-1. Enable the relevant protocols to support your specific hardware:
+1. Enable the relevant protocols to support your specific hardware. For example:
 
    - If you are using an analog-to-digital converter (ADC), motor, or other device that requires the SPI protocol, enable **SPI**.
    - If you are using an accelerometer, sensor, or other device that requires the I<sup>2</sup>C protocol, enable **I2C**.
