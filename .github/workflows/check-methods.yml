@@ -1,17 +1,11 @@
 name: Check Python SDK method coverage
 
-# This action works with pull requests and pushes
 on:
   workflow_run:
     workflows: ["pr-deploy-and-comment"]
     branches: [main]
     types:
       - completed
-on:
-  pull_request:
-  push:
-    branches:
-      - main
 
 jobs:
   python-methods:
