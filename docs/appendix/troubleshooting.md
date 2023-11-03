@@ -216,6 +216,10 @@ It will resemble the following:
       In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
+If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your smart machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
+If you are running `viam-server` as a different user, find the <file>.viam/debug/components/camera</file> directory in that user's home directory instead.
+This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
+
 ### Error: failed to find the best driver that fits the constraints
 
 **Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
