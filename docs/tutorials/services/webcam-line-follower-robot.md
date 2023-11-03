@@ -104,7 +104,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
-To find yours, follow [these instructions](/components/camera/webcam/#find-the-video_path).
+To find yours, follow [these instructions](/components/camera/webcam/#using-video_path).
 {{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
