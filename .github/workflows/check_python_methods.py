@@ -25,6 +25,11 @@ ignore_apis = [
     'viam.app.app_client.AppClient.get_rover_rental_parts',
 ]
 
+def is_unimplemented(obj):
+   if obj.find(class_="property"):
+       return "abstract" in obj.find(class_="property").text
+   else:
+       return False
 
 def make_soup(url):
     page = urlopen(url)
@@ -89,6 +94,7 @@ def parse(type, names):
         # Find all python methods objects on Python docs site soup
         py_methods_sdk_docs = soup.find_all("dl", class_="py method")
         py_methods_sdk_docs_filtered_ids = []
+        py_methods_sdk_docs_undocumented_ids = []
 
         # Get ids and filter list
         for tag in py_methods_sdk_docs:
@@ -100,7 +106,11 @@ def parse(type, names):
             and not id.endswith(".get_resource_name") and not id.endswith(".get_operation") \
             and not id.endswith(".LOGGER") and not id.endswith("__") \
             and not id in ignore_apis:
-                py_methods_sdk_docs_filtered_ids.append(id)
+                if is_unimplemented(tag_sigobject):
+                    py_methods_sdk_docs_undocumented_ids.append(id)
+                else:
+                    py_methods_sdk_docs_filtered_ids.append(id)
+
 
             # Get methods information
             method_text = []
@@ -248,13 +258,14 @@ def parse(type, names):
 
 
     print(f"SDK methods missing for type {type}: {sdk_methods_missing}\n\n")
+    print(f"SDK methods unimplemented for type {type}: {py_methods_sdk_docs_undocumented_ids}\n\n")
     print(f"SDK methods found for type {type}: {sdk_methods_found}\n\n")
 
     return sdk_methods_missing, methods_dict
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} \n\n{methods_dict.get(method)}")
+        print(f"Method: {method}\n\n{methods_dict.get(method)}")
         print("---\n")
 
 
@@ -271,7 +282,7 @@ total_sdk_methods_missing.extend(missing_app_apis)
 total_sdk_methods_missing.extend(missing_robot_apis)
 
 if total_sdk_methods_missing:
-    print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information: \n")
+    print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information:\n")
     print_method_information(missing_services, services_dict)
     print_method_information(missing_components, components_dict)
     print_method_information(missing_app_apis, app_apis_dict)
