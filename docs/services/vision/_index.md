@@ -26,14 +26,7 @@ Currently, the vision service supports the following kinds of operations:
 
 {{<modular-resources api="rdk:service:vision" type="vision">}}
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}-->
-
-## Required Components
-
-{{< cards >}}
-{{< relatedcard link="/components/board/" >}}
-{{< relatedcard link="/components/camera/" >}}
-{{< /cards >}}
+{{< readfile "/static/include/create-your-own-mr.md" >}}-->~
 
 ## API
 

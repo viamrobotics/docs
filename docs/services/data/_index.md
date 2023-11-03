@@ -19,12 +19,6 @@ The service is designed for flexibility and efficiency while preventing data los
 
 The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud-sync).
 
-## Required Components
-
-{{< cards >}}
-{{< relatedcard link="/components/board/" >}}
-{{< /cards >}}
-
 ## Data Capture
 
 The data management service captures data from one or more components locally on the robot's storage.

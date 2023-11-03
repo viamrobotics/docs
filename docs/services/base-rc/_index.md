@@ -29,9 +29,7 @@ You can monitor the input from these controls in the **Control** tab of the [Via
 
 {{< cards >}}
 {{< relatedcard link="/components/base/" >}}
-{{< relatedcard link="/components/movement-sensor/" >}}
-{{< relatedcard link="/components/board/" >}}
-
+{{< relatedcard link="/components/input-controller/" >}}
 {{< /cards >}}
 
 ## Configuration

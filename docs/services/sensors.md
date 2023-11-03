@@ -16,7 +16,6 @@ With it you can obtain readings from multiple sensors on your robot at once.
 ## Required Components
 
 {{< cards >}}
-{{< relatedcard link="/components/board/" >}}
 {{< relatedcard link="/components/sensor/" >}}
 {{< /cards >}}
 
