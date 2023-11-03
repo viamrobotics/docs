@@ -16,7 +16,6 @@ The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}
 
 For example, when using an [arm component](/components/arm), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
 But if you want to use an LED display, you need very different functionality that isn't currently exposed in any API.
-
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your smart machine.
 
 There are no built-in generic component models (other than `fake`).
