@@ -29,7 +29,7 @@ When using Viam, this is what you'll need to know to plan your smart machine:
   You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
   You can build simple smart machines or multi-part smart machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
-- **Extensibility**: If you need additional functionality, you can leverage [modular resources](/modular-resources/) from the Viam registry to extend support in Viam to new hardware components and software services.
+- **Extensibility**: If you need additional functionality, you can leverage {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} from the Viam registry to extend support in Viam to new hardware components and software services.
 
 Join the [**Viam community**](https://discord.gg/viam) to collaborate during planning and beyond.
 

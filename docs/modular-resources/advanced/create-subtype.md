@@ -10,7 +10,7 @@ aliases:
   - "/extend/modular-resources/create/create-subtype/"
 ---
 
-You can define a new resource _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
+You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
 
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} subtypes.
 - You have a resource that could fit into an existing subtype, but you want to define an API with different methods and messages than the ones in the existing [APIs](/program/apis/) for that subtype.

@@ -336,7 +336,7 @@ See [Program a smart machine](/program/) for more information about using an SDK
 
 ## Next Steps
 
-To make use of your model with your smart machine, add a [vision service](/services/vision/) or a [modular resource](/modular-resources/):
+To make use of your model with your smart machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 
 {{< cards >}}
 
