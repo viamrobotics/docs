@@ -194,6 +194,7 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 - `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
 - `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
+- `file_extension` [(Optional[str])](https://docs.python.org/3/library/typing.html#typing.Optional): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
 
 **Returns**:
 
@@ -211,6 +212,7 @@ file_id = await data_client.binary_data_capture_upload(
     method_parameters=None,
     tags=["tag_1", "tag_2"],
     data_request_times=[time_requested, time_received],
+    file_extension=".jpg"
     binary_data=b"Encoded image bytes"
 )
 ```
