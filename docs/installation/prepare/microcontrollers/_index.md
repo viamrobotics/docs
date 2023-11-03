@@ -24,65 +24,24 @@ The [Micro-RDK Installer](https://github.com/viamrobotics/micro-rdk/tree/main/mi
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
 If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/prepare/microcontrollers/development-setup/) instead.
 
-### Download the Micro-RDK Installer
-
-Select the appropriate pre-built binary for the architecture of your development machine:
-
-- [Linux (x86_64)](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-amd64-linux)
-- [Linux (Aarch64)](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-arm64-linux)
-- [MacOS](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-macos)
-- [Windows](https://github.com/viamrobotics/micro-rdk/releases/latest/download/micro-rdk-installer-windows.exe)
-
-### Flash your ESP32 with the Micro RDK Installer
+### Flash your ESP32 with the Micro-RDK Installer
 
 Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot) in your desired location.
 
 1. Click on the name of the robot to go to the robot's page.
 2. Click on the **Setup** tab.
-3. Regardless of your operating system, select **Mac** and press the button that appears in Step 2 to download the Viam app config for your robot.
+3. Select your computer's architecture as **Architecture** and select **Micro-RDK** as **RDK type**.
+4. Follow the instructions to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable.
 
-   In your terminal, `cd` to the directory where you downloaded your pre-built binary and run the following command to flash the micro-RDK directly to an ESP32 connected to your computer through a data cable:
-
-   {{< tabs name="Download pre-built binaries" >}}
-   {{% tab name="Linux (x86_64)"%}}
-
-```sh { class="command-line" data-prompt="$"}
-./micro-rdk-installer-amd64-linux write-flash --app-config=<your-file-path-to/viam.json>
-```
-
-    {{% /tab %}}
-    {{% tab name="Linux (Aarch64)" %}}
-
-```sh { class="command-line" data-prompt="$"}
-./micro-rdk-installer-arm64-linux write-flash --app-config=<your-file-path-to/viam.json>
-```
-
-    {{% /tab %}}
-    {{% tab name="MacOS" %}}
-
-```sh { class="command-line" data-prompt="$"}
-./micro-rdk-installer-macos write-flash --app-config=<your-file-path-to/viam.json>
-```
-
-    {{% /tab %}}
-    {{% tab name="Windows" %}}
-
-```sh { class="command-line" data-prompt="$"}
-./micro-rdk-installer-windows.exe write-flash --app-config=<your-file-path-to/viam.json>
-```
-
-    {{% /tab %}}
-    {{< /tabs >}}
-
-    To see the micro-RDK server logs through the serial connection, add `--monitor`.
-    If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
+   To see the micro-RDK server logs through the serial connection, add `--monitor` to the command in step 3.
+   If the program cannot auto-detect the serial port to which your ESP32 is connected, you may be prompted to select the correct one among a list.
 
 Go back to your new robot's page on [the Viam app](https://app.viam.com).
 If successful, your robot will show that it's **Live**.
 
 For more `micro-rdk-installer` CLI usage options, see [GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer).
 
-### Configure your robot with an ESP32
+### Configure your robot
 
 The micro-RDK provides different component models than the fully featured RDK.
 See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions on how to configure them.
