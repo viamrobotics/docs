@@ -104,6 +104,9 @@ from viam.resource.base import ResourceBase
 from viam.resource.registry import Registry, ResourceCreatorRegistration
 from viam.resource.types import Model, ModelFamily
 from viam.utils import ValueTypes
+from viam.logging import getLogger
+
+LOGGER = getLogger(__name__)
 
 
 class MyBase(Base, Reconfigurable):
@@ -556,7 +559,7 @@ func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err
 You must define all functions belonging to a built-in resource subtype's API if defining a new model.
 Otherwise, the class won’t instantiate.
 
-- If you are using the Python SDK, raise an `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
+- If you are using the Python SDK, raise an`NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
 - If you are using the Go SDK, raise `errUnimplemented`.
 - Additionally, return any values designated in the function's return signature, typed correctly.
 
