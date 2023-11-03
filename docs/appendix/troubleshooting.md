@@ -184,7 +184,7 @@ It will resemble the following:
               /dev/media4
       ```
 
-      The video path for your camera device is the first path listed, in this case `/dev/video0`.
+      The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
 
   1.  Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
@@ -194,7 +194,7 @@ It will resemble the following:
 
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
-      The command will return successfully (with no output) if Linux is able to successfully communicate with the camera, or will error with `Cannot open device`, if there was a problem communicating.
+      The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
       If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
       If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
 
