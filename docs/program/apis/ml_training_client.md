@@ -4,16 +4,7 @@ linkTitle: "ML Training Client"
 weight: 10
 type: "docs"
 description: "Use the ML training client API to manage ML training jobs taking place in Viam's cloud app."
-tags:
-  [
-    "cloud",
-    "sdk",
-    "viam-server",
-    "networking",
-    "apis",
-    "ml model",
-    "ml",
-  ]
+tags: ["cloud", "sdk", "viam-server", "networking", "apis", "ml model", "ml"]
 ---
 
 The ML training API allows you to get data from and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
@@ -89,7 +80,9 @@ Get training job data.
 - [(TrainingJobMetadata)](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata): Training job metadata, including status, last modified timestamp, id, and more.
 
 ```python {class="line-numbers linkable-line-numbers"}
-job_metadata = await ml_training_client.get_training_job(id="INSERT YOUR JOB ID")
+job_metadata = await ml_training_client.get_training_job(
+    id="INSERT YOUR JOB ID"
+    )
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.get_training_job).
@@ -114,7 +107,9 @@ Get training job data for all jobs within an organization.
 - [(List[TrainingJobMetadata])](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata): A list of training job metadata, including status, last modified timestamp, id, and more.
 
 ```python {class="line-numbers linkable-line-numbers"}
-jobs_metadata = await ml_training_client.list_training_jobs(org_id="INSERT YOUR ORG ID")
+jobs_metadata = await ml_training_client.list_training_jobs(
+    org_id="INSERT YOUR ORG ID"
+    )
 
 first_job_id = jobs_metadata[1].id
 ```
@@ -144,7 +139,9 @@ Cancel the specified training job.
 - `GRPCError`: If no training job exists with the given ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-await ml_training_client.cancel_training_job(id="INSERT YOUR JOB ID")
+await ml_training_client.cancel_training_job(
+    id="INSERT YOUR JOB ID"
+    )
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.cancel_training_job).
