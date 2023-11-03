@@ -31,9 +31,24 @@ Most robots with an encoder need at least the following hardware:
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 - Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement.
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported encoder models:
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your encoder with Viam, check whether one of the following [built-in models](#built-in-models) supports your encoder.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -42,6 +57,15 @@ For configuration information, click on one of the supported encoder models:
 | [`fake`](fake/) | An encoder model for testing. |
 | [`incremental`](incremental/) | A two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
 | [`single`](single/) | A single pin "pulse output" encoder which returns its relative position but no direction. |
+
+<!-- No encoders yet -->
+<!-- ### Modular Resources
+
+{{<modular-resources api="rdk:component:encoder" type="encoder">}} -->
+
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Encoder](/micro-rdk/encoder/) for supported model information.
 
 ## Control your encoder with Viam's client SDK libraries
 
@@ -247,7 +271,7 @@ properties, err := myEncoder.Properties(context.Background(), nil)
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
-If you are [implementing your own encoder](../../extend/) and add features that have no built-in API method, you can access them with `DoCommand`.
+If you are implementing your own encoder as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} and are adding features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

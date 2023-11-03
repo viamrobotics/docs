@@ -29,32 +29,36 @@ Most robots with a sensor need at least the following hardware:
 - A [board](/components/board/)
 - Depending on your sensor's output type (analog or digital), an analog-to-digital converter (ADC) may be necessary to allow the sensor to communicate with the board
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported sensor models:
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/sensors/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your sensor.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`ultrasonic`](ultrasonic/) | An ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569) |
+| [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor |
 | [`bme280`](bme280/) | [BME280 environmental sensor](https://www.adafruit.com/product/2652) |
 | [`ds18b20`](ds18b20/) | [DallasTemperature DS18B20 digital temperature sensor](https://www.adafruit.com/product/381) |
 | [`sensirion-sht3xd`](sensirion-sht3xd/) | [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) |
 
-You can implement a model of sensor that is not natively supported by Viam by [creating and registering your own model of a sensor](/extend/modular-resources/).
-This allows you to have the same access and control of the sensor through Viam as you would if it was a built-in model.
+### Modular Resources
 
-For an example of creating a custom component, see a [WiFi strength sensor built with the Viam Go SDK](https://github.com/viam-labs/wifi-sensor/blob/main/linuxwifi/linuxwifi.go) or [custom resource types implemented with the Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/).
-
-Viam also provides the following sensor model as a [modular resource](/extend/modular-resources/):
-
-<!-- prettier-ignore -->
- Model | Description
- ----- | -----------
- [`viam:visual_odometry:opencv_orb`](/extend/modular-resources/examples/odrive/) | A resource which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated cameras](/components/camera/calibrate/) to function as a movement sensor
-
-This module can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
+{{<modular-resources api="rdk:component:sensor" type="sensor">}}
 
 ## Control your sensor with Viam's client SDK libraries
 

@@ -26,16 +26,37 @@ Most mobile robots with a base need at least the following hardware:
 - A power supply for the actuators.
 - Some sort of chassis to hold everything together.
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported base models:
+{{< cards >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your base with Viam, check whether one of the following [built-in models](#built-in-models) or {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} supports your base.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`wheeled`](wheeled/) | Mobile wheeled robot |
-| [`agilex-limo`](agilex-limo/) | [Agilex LIMO Mobile Robot](https://global.agilex.ai/products/limo) |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
+
+### Modular Resources
+
+{{<modular-resources api="rdk:component:base" type="base">}}
+
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Base](/micro-rdk/base/) for supported model information.
 
 ## Control your base with Viam's client SDK libraries
 
@@ -94,7 +115,7 @@ Move the base in a straight line across the given distance (mm) at the given vel
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.move_straight).
 
@@ -157,7 +178,7 @@ Turn the base in place, rotating it to the given angle (degrees) at the given an
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.spin).
 
@@ -217,7 +238,7 @@ Set the linear and angular power of the base, represented as a percentage of max
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_power).
 
@@ -311,7 +332,7 @@ Set the linear velocity (mm/sec) and angular velocity (degrees/sec) of the base.
 
 **Returns:**
 
-- None
+- None.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.set_velocity).
 
@@ -363,7 +384,7 @@ Stop the base from moving immediately.
 
 **Parameters:**
 
-- None
+- None.
 
 **Returns:**
 
@@ -417,7 +438,7 @@ Returns whether the base is actively moving (or attempting to move) under its ow
 
 **Parameters:**
 
-- None
+- None.
 
 **Returns:**
 
@@ -473,7 +494,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with two fields, `width` and `turning_radius_meters`, representing the width and turning radius of the physical base in meters _(m)_.
+- [(Properties)](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties): A [dataclass](https://docs.python.org/3/library/dataclasses.html) with three fields, `width_meters`, `turning_radius_meters`, and `wheel_circumference_meters` representing the width, turning radius, and wheel circumference of the physical base in meters _(m)_.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_properties).
 
@@ -484,10 +505,13 @@ my_base = Base.from_robot(robot=robot, name="my_base")
 properties = await my_base.get_properties()
 
 # Get the width
-print(f"Width of base in meters: {properties.width}")
+print(f"Width of base: {properties.width_meters}")
 
 # Get the turning radius
-print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
+print(f"Turning radius of base: {properties.turning_radius_meters}")
+
+# Get the wheel circumference
+print(f"Wheel circumference of base: {properties.wheel_circumference_meters}")
 ```
 
 {{% /tab %}}
@@ -500,7 +524,7 @@ print(f"Turning radius of base in meters: {properties.turning_radius_meters}")
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with two fields, `WidthMeters` and `TurningRadiusMeters`, representing the width and turning radius of the physical base in meters _(m)_.
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/base#Properties): A structure with three fields, `WidthMeters`, `TurningRadiusMeters`, and `WheelCircumferenceMeters` representing the width, turning radius, and wheel circumference of the physical base in meters _(m)_.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
@@ -516,6 +540,66 @@ myBaseWidth := properties.WidthMeters
 
 // Get the turning radius
 myBaseTurningRadius := properties.TurningRadiusMeters
+
+// Get the wheel circumference
+myBaseWheelCircumference := properties.WheelCircumferenceMeters
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetGeometries
+
+Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services generally use geometries and may require them for obstacle avoidance.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- List[(Geometry)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the base, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot=robot, name="my_base")
+
+geometries = await my_base.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's center point: {geometries[0].center}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/spatialmath#Geometry): The geometries associated with the base, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+
+```go {class="line-numbers linkable-line-numbers"}
+myBase, err := base.FromRobot(robot, "my_base")
+
+geometries, err := myBase.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
 ```
 
 {{% /tab %}}

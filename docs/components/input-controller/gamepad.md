@@ -63,33 +63,7 @@ The following attributes are available for `gamepad` input controllers:
 | `dev_file` | string | Optional | If `dev_file` is left blank or not included, `viam-server` will search and use the first gamepad it finds that's connected to the computer controlling your robot. If you want to specify a device, give the absolute path to the input device event file. For example: `/dev/input/event42`. |
 | `auto_reconnect` | boolean | Optional | Applies to both remote (gRPC) and local (bluetooth or direct USB connected) devices. If set to `true`, `viam-server` tries to (re)connect the device automatically. It waits for a device to connect during a robot's start-up. If set to false (default) then start-up fails if a device is not already connected.
 
-## Usage
-
-Connect your controller to your computer.
-Follow the instructions included with your gamepad to make this connection.
-
-If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **Setup** tab to start `viam-server` on your computer and connect to the robot.
-
-Then, click on the robot's **Config** tab and configure an `input_controller` component of model `gamepad`, as shown above.
-Save the config.
-
-Next, navigate to the **Control** tab.
-You should see a drop-down menu with the name of your gamepad.
-Click on the drop-down menu to expand it.
-
-Now, you should see the [Controls](../#control-field) on your input controller appear:
-
-![The dropdown as a table of controls available and their inputs in the Control tab of the Viam app.](/components/input-controller/gamepad-enabled-app.png)
-
-You should now be able to see the row of [Controls](../#control-field) respond to your button presses and stick toggles.
-
-For example, this is what the row of inputs above looks like after pressing the circle (west) button on the button pad of a PS4 controller connected as a `webgamepad` :
-
-![The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app. This is for a WebGamepad model.](/components/input-controller/gamepad-enabled-app-with-input.png)
-
-{{% alert title="Info" color="info" %}}
-The **Enable** toggle shown in this example is only shown for the `webgamepad` and not shown when a Linux-supported `gamepad` model is directly connected.
-{{% /alert %}}
+{{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 
 ### Work in Progress Models
 

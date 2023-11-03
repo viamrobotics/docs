@@ -43,6 +43,6 @@
       </a>
       {{ end }}
   {{ else }}
-  {{ warnf "Card has a bad link: %s" $link }}
+  {{ errorf "Card has a bad link: %s" $link }}
   {{ end }}
 </div>

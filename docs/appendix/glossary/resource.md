@@ -12,7 +12,7 @@ Resources are individual, addressable elements of a robot.
 
 - physical {{< glossary_tooltip term_id="component" text="components" >}}
 - software {{< glossary_tooltip term_id="service" text="services" >}}
-- [modular resources](/extend/modular-resources/) provided by {{< glossary_tooltip term_id="module" text="modules" >}}
+- {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} provided by {{< glossary_tooltip term_id="module" text="modules" >}}
 - {{< glossary_tooltip term_id="process" text="processes" >}}
 
 Each part has local resources and can also have resources from another {{< glossary_tooltip term_id="remote" text="remote">}} robot part.

@@ -9,14 +9,14 @@ katex: true
 # SMEs: Robin In
 ---
 
-Viam provides a `viam-visual-odometry` [modular resource](/extend/modular-resources/) which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated camera](/components/camera/calibrate/) to function as a movement sensor.
+Viam provides a `monocular-visual-odometry` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which uses monocular [visual odometry](https://en.wikipedia.org/wiki/Visual_odometry) to enable any [calibrated camera](/components/camera/calibrate/) to function as a movement sensor.
 In this way, you can add basic movement sensing to your camera-equipped robot without needing a dedicated hardware [movement sensor](/components/movement-sensor/).
 
 <div class="aligncenter">
 {{<video webm_src="/components/movement-sensor/visual-odometry.webm" poster="/components/movement-sensor/visual-odometry-poster.jpg" alt="Using a camera as a motion sensor to navigate a large office space">}}
 </div>
 
-The `viam-visual-odometry` module implements the following two methods of the [movement sensor API](/components/movement-sensor/#api):
+The `monocular-visual-odometry` {{< glossary_tooltip term_id="module" text="module" >}} implements the following two methods of the [movement sensor API](/components/movement-sensor/#api):
 
 - [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
 - [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
@@ -24,38 +24,26 @@ The `viam-visual-odometry` module implements the following two methods of the [m
 Note that `GetLinearVelocity()` returns an estimation of the instantaneous linear velocity **without scale factor**.
 Therefore, you should not consider returned unit measurements trustworthy: instead, `GetLinearVelocity()` should serve as a direction estimation only.
 
-While `viam-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor/) will generally provide more accurate readings.
-If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor in addition to the `viam-visual-odometry` module.
+While `monocular-visual-odometry` enables you to add movement sensing abilities to your robot without needing specialized hardware, a dedicated [movement sensor](/components/movement-sensor/) will generally provide more accurate readings.
+If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor in addition to the `monocular-visual-odometry` module.
 
-The `viam-visual-odometry` module is available [from the Viam registry](https://app.viam.com/module/viam/monocular-visual-odometry).
-See [Modular resources](/extend/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+The `monocular-visual-odometry` module is available [from the Viam registry](https://app.viam.com/module/viam/monocular-visual-odometry).
+See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry).
 
 ## Requirements
 
-Follow the instructions below to download and set up the `viam-visual-odometry` module on your robot:
+If you haven't already, [install `viam-server`](/installation/) on your robot.
 
-1. Clone the [`viam-visual-odometry`](https://github.com/viamrobotics/viam-visual-odometry) to your system:
-
-   ```sh {class="command-line" data-prompt="$"}
-   git clone git@github.com:viamrobotics/viam-visual-odometry.git
-   cd viam-visual-odometry
-   ```
-
-1. Install the necessary Python dependencies:
-
-   ```sh {class="command-line" data-prompt="$"}
-   pip install -r requirements.txt
-   ```
-
-1. If you haven't already, [install `viam-server`](/installation/) on your robot.
+Your robot must have a [camera](/components/camera/) in order to use the `monocular-visual-odometry` module.
+These instructions assume that you are using a [webcam](/components/camera/webcam/)) type camera, but you can use any type of camera with visual odometry.
 
 ## Configuration
 
-To configure the `viam-visual-odometry` module on your robot, follow the instructions below:
+Follow the instructions below to set up the `monocular-visual-odometry` module on your robot:
 
-{{< tabs >}}
+{{< tabs name="Configure visual odometry">}}
 {{% tab name="Config Builder" %}}
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
@@ -64,11 +52,10 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
 1. Enter a name for your camera, then click **Create**.
 1. In the resulting camera component configuration pane, select a **Video path** for your camera.
    If your robot is live, the drop-down menu auto-populates any identified camera stream paths.
-1. Switch to the **Modules** subtab and find the **Add module** pane.
-1. Enter a name for your visual odometry module, and provide the full path to the `run.sh` file in the **Executable path** field, then click **Add module**.
-1. Switch back to the **Components** subtab and click the **Create component** button.
-1. Select the `movement_sensor` type, and select `viam:visual_odometry:opencv_orb` for model.
-1. Enter a name for your odometry movement sensor, then click **Create**.
+1. Then, click **Create component** in the lower-left corner again.
+1. Select **Movement Sensor**, then select `visual_odometry:opencv_orb`.
+   You can also search for "visual_odometry".
+1. Click **Add module**, give your component a name of your choice, then click **Create**.
 1. In the resulting `movement_sensor` component configuration pane, paste the following configuration into the **Attributes** text window:
 
    ```json {class="line-numbers linkable-line-numbers"}
@@ -79,21 +66,25 @@ To configure the `viam-visual-odometry` module on your robot, follow the instruc
    }
    ```
 
-Provide the camera name you used in step 4.
-See the [Attributes](#attributes) section for more information on the other attributes.
+   Provide the camera name you used in step 4.
+   See the [Attributes](#attributes) section for more information on the other attributes.
 
 1. Click **Save config** at the bottom of the page.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
+Go to your robot's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
+
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "modules": [
     {
-      "name": "<your-visual-odometer-name>",
-      "executable_path": "</path/to/run.sh>",
-      "type": "local"
+      "type": "registry",
+      "name": "viam_monocular-visual-odometry",
+      "module_id": "viam:monocular-visual-odometry",
+      "version": "0.0.8"
     }
   ],
   "components": [
@@ -138,16 +129,22 @@ See the [Attributes](#attributes) section for more information on the other attr
 }
 ```
 
+To save your changes, click **Save config** at the bottom of the page.
+
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
+
+Go to your robot's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your robot's page and select **Raw JSON** mode.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "modules": [
     {
-      "name": "my-odometry-module",
-      "executable_path": "/path/to/run.sh",
-      "type": "local"
+      "type": "registry",
+      "name": "viam_monocular-visual-odometry",
+      "module_id": "viam:monocular-visual-odometry",
+      "version": "0.0.8"
     }
   ],
   "components": [
@@ -192,13 +189,15 @@ See the [Attributes](#attributes) section for more information on the other attr
 }
 ```
 
+To save your changes, click **Save config** at the bottom of the page.
+
 {{% /tab %}}
 {{< /tabs >}}
 
 ## Camera calibration
 
 Once you have configured a `camera` component, you need to calibrate it.
-Because the `viam-visual-odometry` module performs visual odometry calculations, its visual data source (the camera) must be as well defined as possible.
+Because the `monocular-visual-odometry` module performs visual odometry calculations, its visual data source (the camera) must be as well defined as possible.
 These calibration steps ensure that the video stream data that reaches the module is as uniform as possible when calculating measurements.
 
 1. Follow the [Calibrate a camera](/components/camera/calibrate/) procedure to generate the required intrinsic parameters specific to your camera.
@@ -234,7 +233,7 @@ Specifically, note that the `height_px` and `width_px` attributes are not contai
 
 ## Attributes
 
-The following attributes are available to configure the `viam-visual-odometry` module:
+The following attributes are available to configure the `monocular-visual-odometry` module:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Default | Description |

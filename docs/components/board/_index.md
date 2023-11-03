@@ -12,21 +12,7 @@ images: ["/icons/components/board.svg"]
 # SMEs: Gautham, Rand
 ---
 
-A _board_ is the signal wire hub of a robot that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
-
-You can control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
-
-This control is simplified with [`viam-server`](/installation/).
-When Viam's software is running on a computer with GPIO pins accessible to external hardware [components](/components/), it manages GPIO signaling to abstract control to {{< glossary_tooltip term_id="resource" text="resource" >}} APIs.
-
-{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
-
-The [RDK](/internals/rdk/) also provides the [`GPIOPin` interface](#gpiopin-api) for direct control and monitoring of the state of GPIO pins.
-
-## Configuration
-
-Configure a _board_ component on your robot to communicate with the other [components](/components/) of the robot.
-Signaling is overseen by a computer running `viam-server`.
+A _board_ component on your robot communicates with the other [components](/components/) of the robot.
 
 A board can be:
 
@@ -34,304 +20,69 @@ A board can be:
 - A GPIO peripheral device that must connect to an external computer.
 - A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
-For model-specific configuration information, click on one of the following models:
+The board of a robot is also its signal wire hub that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
+
+Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
+
+{{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
+
+## Related Services
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/ml/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your board with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your board.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
 | [`pi`](pi/) | [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/) or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) |
+| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
+| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
-| [`jetson`](jetson/) | [NVIDIA Jetson AGX Orin](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson Xavier NX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-xavier-nx/), [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
 | [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
-| [`upboard`](upboard/) | An Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) |
+| [`customlinux`](customlinux/) | A model for other Linux boards. |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
-| [`customlinux`](customlinux/) | A model for other linux boards. |
-| other | You can use other boards with modular components such as [`periph_board`](https://github.com/viam-labs/periph_board) |
+
+### Modular Resources
+
+{{<modular-resources api="rdk:component:board" type="board">}}
+
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Board](/micro-rdk/board/) for supported model information.
 
 ## Attribute Configuration
-
-The following configuration attributes are available for every board model besides the `numato` and `pca9685` peripherals and `fake`.
 
 Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
 
 ### `analogs`
 
-An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a continuous voltage input (analog signal) and converts it to an discrete integer output (digital signal).
-
-ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
-
-To integrate an ADC into your robot, you must first physically connect the pins on your ADC to your board.
-If your ADC communicates with your board using [SPI](#spis), you need to wire and configure the SPI bus in addition to the `analogs`.
-
-Then, integrate `analogs` into the `attributes` of your board by adding the following to your board's JSON configuration:
-
-{{< tabs name="Configure an Analog Reader" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-"analogs": [
-  {
-    "chip_select": "<chip-select-pin-number-on-board>",
-    "name": "<your-analog-reader-name>",
-    "pin": "<pin-number-on-adc>",
-    "spi_bus": "<your-spi-bus-name>",
-    "average_over_ms": <int>,
-    "samples_per_sec": <int>
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "model": "pi",
-      "name": "your-board",
-      "type": "board",
-      "attributes": {
-        "analogs": [
-          {
-            "chip_select": "24",
-            "name": "current",
-            "pin": "1",
-            "spi_bus": "main"
-          },
-          {
-            "chip_select": "24",
-            "name": "pressure",
-            "pin": "0",
-            "spi_bus": "main"
-          }
-        ],
-        "spis": [
-          {
-            "bus_select": "0",
-            "name": "main"
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `analogs`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the analog reader. |
-|`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.
-|`chip_select`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's connection pin, wired to the ADC. |
-|`spi_bus` | string | Optional | The `name` of the [SPI bus](#spis) connecting the ADC and board. Required if your board must communicate with the ADC with the SPI protocol. |
-| `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
-|`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
+{{< readfile "/static/include/components/board/board-analogs.md" >}}
 
 ### `digital_interrupts`
 
-[Interrupts](https://en.wikipedia.org/wiki/Interrupt) are a method of signaling precise state changes.
-Configuring digital interrupts to monitor GPIO pins on your board is useful when your application needs to know precisely when there is a change in GPIO value between high and low.
-
-- When an interrupt configured on your board processes a change in the state of the GPIO pin it is configured to monitor, it calls [`Tick()`](#tick) to record the state change and notify any interested [callbacks](#addcallback) to "interrupt" the program.
-- Calling [`Get()`](#get) on a GPIO pin, which you can do without configuring interrupts, is useful when you want to know a pin's value at specific points in your program, but is less precise and convenient than using an interrupt.
-
-Integrate `digital_interrupts` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
-
-{{< tabs name="Configure a Digital Interrupt" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-"digital_interrupts": [
-  {
-    "name": "<your-digital-interrupt-name>",
-    "pin": "<pin-number>",
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "model": "pi",
-      "name": "your-board",
-      "type": "board",
-      "attributes": {
-        "digital_interrupts": [
-          {
-            "name": "your-interrupt-1",
-            "pin": "15"
-          },
-          {
-            "name": "your-interrupt-2",
-            "pin": "16"
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `digital_interrupts`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name` | string | **Required** | Your name for the digital interrupt. |
-|`pin`| string | **Required** | The {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the board's GPIO pin that you wish to configure the digital interrupt for. |
-|`type`| string | Optional | _Only applies to `pi` model boards._ <ul><li>`basic`: Recommended. Tracks interrupt count. </li> <li>`servo`: For interrupts configured for a pin controlling a [servo](/components/servo/). Tracks pulse width value. </li></ul> |
+{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
 
 ### `spis`
 
-[Serial Peripheral Interface (SPI)](https://en.wikipedia.org/wiki/Serial_Peripheral_Interface) is a serial communication protocol that uses four [signal wires](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) to exchange information between a controller and peripheral devices:
-
-- Main Out/Secondary In: MOSI
-- Main In/Secondary Out: MISO
-- Clock, an oscillating signal line: SCLK
-- Chip Select, with 1 line for each peripheral connected to controller: CS\*
-
-To connect your board (controller) and a [component](/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
-
-{{% alert title="Important" color="note" %}}
-
-You must also enable SPI on your board if it is not enabled by default.
-See your [board model's configuration instructions](#configuration) if applicable.
-
-{{% /alert %}}
-
-As supported boards have CS pins internally configured to correspond with SPI bus indices, you can enable this connection in your board's configuration by specifying the index of the bus at your CS pin's location and giving it a name.
-
-Integrate `spis` into your robot in the `attributes` of your board by adding the following to your board's JSON configuration:
-
-{{< tabs name="Configure a SPI Bus" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-"spis": [
-  {
-    "name": "<your-bus-name>",
-    "bus_select": "<your-bus-index>"
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-"spis": [
-  {
-    "name": "main",
-    "bus_select": "0"
-  }
-]
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `spis`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name`| string | **Required** | The `name` of the SPI bus. |
-|`bus_select`| string | **Required** | The index of the SPI bus. |
-
-{{% alert title="WIRING WITH SPI" color="tip" %}}
-
-Refer to your board's pinout diagram or data sheet for SPI bus indexes and corresponding CS/MOSI/MISO/SCLK {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
-
-Refer to your peripheral device's data sheet for CS/MOSI/MISO/SLCK pin layouts.
-
-{{% /alert %}}
+{{< readfile "/static/include/components/board/board-spis.md" >}}
 
 ### `i2cs`
 
-The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutorials/i2c/all) serial communication protocol is similar to SPI, but requires two signal wires to exchange information between a controller and a peripheral device:
-
-- Serial Data: SDA
-- Serial Clock: SCL
-
-To connect your board (controller) and a [component](/components/) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
-
-{{% alert title="Important" color="note" %}}
-
-You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
-See your [board model's configuration instructions](#configuration) if applicable.
-
-{{% /alert %}}
-
-As supported boards have SDA and SCL pins internally configured to correspond with I<sup>2</sup>C bus indices, you can enable this connection in your board's configuration by specifying the index of the bus and giving it a name.
-
-Integrate `i2cs` into your robot in the `attributes` of your board as follows:
-
-{{< tabs name="Configure i2cs" >}}
-{{% tab name="JSON Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-{
-  "i2cs": [
-    {
-      "name": "<your-bus-name>",
-      "bus": "<your-bus-index>"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{% tab name="JSON Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-// "attributes": { ... ,
-{
-  "i2cs": [
-    {
-      "name": "bus1",
-      "bus": "1"
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The following properties are available for `i2cs`:
-
-<!-- prettier-ignore -->
-| Name | Type | Inclusion | Description |
-| ---- | ---- | --------- | ----------- |
-|`name`| string| **Required** | `name` of the I<sup>2</sup>C bus. |
-|`bus`| string | **Required** | The index of the I<sup>2</sup>C bus. |
-
-{{% alert title="WIRING WITH I<sup>2</sup>C" color="tip" %}}
-
-Refer to your board's pinout diagram or data sheet for I<sup>2</sup>C bus indexes and corresponding SDA/SCL {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
-
-Refer to your peripheral device's data sheet for SDA/SCL pin layouts.
-
-{{% /alert %}}
+{{< readfile "/static/include/components/board/board-i2cs.md" >}}
 
 ## Control your board with Viam's client SDK libraries
 
@@ -392,7 +143,7 @@ Additionally, the nested `GPIOPin`, `AnalogReader`, and `DigitalInterrupt` inter
 
 ### AnalogReaderByName
 
-Get an [`AnalogReader`](#analogs) by `name.`
+Get an [`AnalogReader`](#analogs) by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -440,7 +191,7 @@ reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
 
 ### DigitalInterruptByName
 
-Get an [`DigitalInterrupt`](#digital_interrupts) by `name.`
+Get an [`DigitalInterrupt`](#digital_interrupts) by `name`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -497,7 +248,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 **Parameters:**
 
 - `name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-  Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+  Refer to the pinout diagram and data sheet of your [board model](#supported-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -518,7 +269,7 @@ pin = await my_board.gpio_pin_by_name(name="15")
 **Parameters:**
 
 - `name` [(string)](https://pkg.go.dev/builtin#string): {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the GPIO pin you want to retrieve as a `GPIOPin` interface.
-  Refer to the pinout diagram and data sheet of your [board model](#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+  Refer to the pinout diagram and data sheet of your [board model](#supported-models) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
@@ -550,7 +301,7 @@ Get the name of every [`AnalogReader`](#analogs) configured and residing on the 
 
 **Returns:**
 
-- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): An list containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every analog reader [configured](#supported-models) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.analog_reader_names).
 
@@ -570,7 +321,7 @@ names = await my_board.analog_reader_names()
 
 **Returns:**
 
-- [([]string)](https://go.dev/tour/moretypes/7): An slice containing the `"name"` of every analog reader [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every analog reader [configured](#supported-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -597,7 +348,7 @@ Get the name of every [`DigitalInterrupt`](#digital_interrupts) configured on th
 
 **Returns:**
 
-- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [(List\[str\])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): A list containing the `"name"` of every interrupt [configured](#supported-models) on the board.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.digital_interrupt_names).
 
@@ -617,7 +368,7 @@ names = await my_board.digital_interrupt_names()
 
 **Returns:**
 
-- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#configuration) on the board.
+- [([]string)](https://go.dev/tour/moretypes/7): A slice containing the `"name"` of every interrupt [configured](#supported-models) on the board.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
 
@@ -749,7 +500,6 @@ This is expected: the board has been successfully powered down and can no longer
 **Parameters:**
 
 - `mode` [(PowerMode)](https://python.viam.dev/autoapi/viam/proto/component/board/index.html#viam.proto.component.board.PowerMode): Options to specify power usage of the board: `PowerMode.POWER_MODE_UNSPECIFIED`, `PowerMode.POWER_MODE_NORMAL`, and `PowerMode.POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `duration` [(Optional\[datetime.timedelta\])](https://docs.python.org/3/library/typing.html#typing.Optional): If provided, the board will exit the given power mode after the specified duration.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -773,7 +523,6 @@ status = await my_board.set_power_mode(mode=PowerMode.POWER_MODE_OFFLINE_DEEP)
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 - `duration` [(\*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
 
 **Returns:**
@@ -793,6 +542,59 @@ myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_
 {{% /tab %}}
 {{< /tabs >}}
 
+### WriteAnalog
+
+Write an analog value to a pin on the board.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `pin` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
+- `value` [(int)](https://docs.python.org/3/library/functions.html#int): Value to write to the pin.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Set pin 11 to value 48.
+await my_board.write_analog(pin="11", value=48)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.write_analog).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `pin` [(string)](https://pkg.go.dev/builtin#string): Name of the pin ({{< glossary_tooltip term_id="pin-number" text="pin number" >}}).
+- `value` [(int)](https://pkg.go.dev/builtin#int32): Value to write to the pin.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#Board).
+
+```go
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Set pin 11 to value 48.
+err := myBoard.WriteAnalog(context.Background(), "11", 48, nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
@@ -804,7 +606,8 @@ If you are implementing your own board and add features that have no built-in AP
 
 **Parameters:**
 
-- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.\
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 

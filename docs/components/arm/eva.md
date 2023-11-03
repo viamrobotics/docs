@@ -30,9 +30,4 @@ Configure an `eva` arm as follows:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for fake arms:
-
-<!-- prettier-ignore -->
-| Name | Inclusion | Description |
-| ---- | --------- | ----------- |
-| | |  |
+{{< readfile "/static/include/components/test-control/arm-control.md" >}}

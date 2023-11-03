@@ -9,13 +9,13 @@ aliases:
   - "/program/cli"
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots and modular resources across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your robots and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
 - Retrieve [organization](/manage/fleet/organizations/) and location information
 - Manage [robot fleet](/manage/fleet/) data and logs
 - Control robots by issuing component and service commands
-- Upload and manage [modular resources](/extend/modular-resources/) in the Viam registry
+- Upload and manage [modular resources](/modular-resources/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -188,6 +188,51 @@ viam organizations --help
 
 ## Commands
 
+### board
+
+The `board` command allows you to manage your board definition files.
+With it, you can upload new board definition files to the Viam app, download your existing board definition files, and list the files already uploaded.
+
+You can use board definition files to configure pin mappings for [`customlinux` boards](/components/board/customlinux/).
+
+```sh {class="command-line" data-prompt="$"}
+viam board upload --name=<board name> --organization=<org name> --version=<definition file version> file.json
+viam board download --name=<board name> --organization=<org name> --version=<definition file version>
+viam board list --organization=<org name>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# upload a new board definition file named 'my-board' with version '1.0.0' for org 'my-org'
+viam board upload --name=my-board --organization=my-org --version=1.0.0 my-board.json
+
+# download an existing board definition file named 'my-board' at version '1.0.0' for org 'my-org'
+viam board download --name=my-board --organization=my-org --version=1.0.0
+
+# list all available board definition files for org 'my-org'
+viam board list --organization=my-org
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+|        command option     |       description      | positional arguments
+| ----------- | ----------- | ----------- |
+| `upload`      | upload a new board definition file to the Viam app | **board definition file** : provide the board definition file to upload, in JSON form. |
+| `download`      | download an existing board definition file | - |
+| `list`      | list available board definition files | - |
+| `--help`      | return help      | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--name`      | output directory for downloaded data       | `upload`, `download` | true |
+| `--organization`      | organization name to upload, download, or list board definition files from      | `upload`, `download`, `list` | true |
+| `--version`      | version of the board definition file to tag the upload with, or to specifically download. Defaults to latest if not set.    | `upload`, `download` | true |
+
 ### data
 
 The `data` command allows you to manage robot data.
@@ -217,7 +262,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
-| `delete`      | delete data  | - |
+| `delete binary`      | delete binary data  | - |
+| `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -225,23 +271,24 @@ viam data export --destination=/home/robot/data --data-type=binary \
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--destination`      | output directory for downloaded data       |`export`|true |
-| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`|true |
+| `--destination`      | output directory for downloaded data       |`export`| true |
+| `--data-type`     |  data type to be downloaded: either binary or tabular   |`export`| true |
 | `--component-name`      | filter by specified component name  |`export`, `delete`| false |
-| `--component-type`     | filter by specified component type       |`export`, `delete`|false |
-| `--component-model`   | filter by specified component model       |`export`, `delete`|false |
-| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`|false |
-| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`|false |
-| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`|false |
-| `--method`       | filter by specified method       |`export`, `delete`|false |
+| `--component-type`     | filter by specified component type       |`export`, `delete`| false |
+| `--component-model`   | filter by specified component model       |`export`, `delete`| false |
+| `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`| false |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`| false |
+| `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
+| `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
-| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`|false |
-| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
-| `--part-id`      | filter by specified part id      |`export`, `delete`|false |
-| `--part-name`     | filter by specified part name       |`export`, `delete`|false |
-| `--robot-id`     | filter by specified robot id       |`export`, `delete`|false |
-| `--robot-name`      | filter by specified robot name       |`export`, `delete`|false |
-| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
+| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|f alse |
+| `--part-id`      | filter by specified part id      |`export`, `delete`| false |
+| `--part-name`     | filter by specified part name       |`export`, `delete`| false |
+| `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
+| `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
+| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`| false |
 
 ### locations
 
@@ -311,7 +358,7 @@ This includes:
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
 viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
-viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <packaged-module.tar.gz>
+viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module-path>
 ```
 
 Examples:
@@ -330,10 +377,10 @@ viam module update
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
-See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/extend/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
+[automatically upload new versions of your module on release](/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 #### Command options
 
@@ -342,7 +389,7 @@ If you update and release your module as part of a continuous integration (CI) w
 | ----------- | ----------- | ----------- |
 | `create`    | generate new metadata for a custom module on your local filesystem  | - |
 | `update`    | update an existing custom module on your local filesystem with recent changes to the [`meta.json` file](#the-metajson-file) | - |
-| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information |
+| `upload`    | validate and upload a new or existing custom module on your local filesystem to the Viam registry. See [Upload validation](#upload-validation) for more information | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code |
 | `--help`      | return help      | - |
 
 ##### Named arguments
@@ -395,13 +442,13 @@ Therefore, you are able to change the `entrypoint` file from version to version,
 
 ##### Upload validation
 
-When you `upload` a module, the command validates your local packaged module to ensure that it meets the requirements to successfully upload to the Viam registry.
+When you `upload` a module, the command performs basic validation of your module to check for common errors.
 The following criteria are checked for every `upload`:
 
-- The packaged module must exist on the filesystem at the path provided to the `upload` command.
-- The packaged module must use the `.tar.gz` or `.tgz` extension.
+- The module must exist on the filesystem at the path provided to the `upload` command.
 - The entry point file specified in the [`meta.json` file](#the-metajson-file) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
+- If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
 ##### The `meta.json` file
 
@@ -447,13 +494,13 @@ The `meta.json` file includes the following configuration options:
     <td><code>models</code></td>
     <td>object</td>
     <td><strong>Required</strong></td>
-    <td>A list of one or more <a href="/extend/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+    <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
   </tr>
   <tr>
     <td><code>entrypoint</code></td>
     <td>string</td>
     <td><strong>Required</strong></td>
-    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program.</td>
+    <td>The name of the file that starts your module program. This can be a compiled executable, a script, or an invocation of another program. If you are providing your module as a single file to the <code>upload</code> command, provide the path to that single file. If you are providing a directory containing your module to the <code>upload</code> command, provide the path to the entry point file contained within that directory.</td>
   </tr>
 </table>
 
@@ -476,14 +523,14 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/extend/modular-resources/key-concepts/#naming-your-model) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/extend/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/extend/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
-See [Modular resources](/extend/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
+See [Modular resources](/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
 
 ### organizations
 
@@ -501,7 +548,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `list`      | list all organizations (name and id) that the authenticated session belongs to    | - |
+| `list`      | list all organizations (name, id, and [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
 | `api-key`      | create a new organization API key    | - |
 | `--help`      | return help      | - |
 

@@ -5,6 +5,18 @@
 <script type="text/javascript" src="{{$jsCarousel.RelPermalink}}" crossorigin="anonymous"></script>
 {{ end }}
 
+<!-- JS for listing models from modules -->
+{{ if or ( or (eq .Section "components") (eq .Section "services")) (eq .Page.Title "Extend Viam with Modular Resources") }}
+
+<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+{{ $jsModels := resources.Get "js/models.js" }}
+{{ $jsModels := $jsModels | minify }}
+<script type="text/javascript" src="{{ $jsModels.RelPermalink }}" crossorigin="anonymous"></script>
+{{ end }}
+
 <!-- START script for lazy loading -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 {{ $jsLozad := resources.Get "js/lozad.js" }}
@@ -66,13 +78,9 @@ window.markmap = {
     {{ printf "onload='renderMathInElement(%s, %s);'" (( .Site.Params.katex.html_dom_element | default "document.body" ) | safeJS ) ( printf "%s" ( $.Site.Params.katex.options | jsonify )) | safeHTMLAttr }}></script>
 {{ end }}
 <script src="https://cdn.jsdelivr.net/npm/typesense-docsearch.js@1/dist/cdn/docsearch.min.js"></script>
-{{ if .Site.Params.prism_syntax_highlighting }}
-<!-- scripts for prism -->
-<script src='{{ "js/prism.js" | relURL }}'></script>
-{{ end }}
 
 {{ $jsIndex := resources.Get "js/index.js" }}
-{{ $jsPrismViam := resources.Get "js/prism-viam.js" }}
+{{ $jsPrismViam := resources.Get "js/prism.js" }}
 {{ $jsBase := resources.Get "js/base.js" }}
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
 {{ $jsSearch := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" .Site.Home }}

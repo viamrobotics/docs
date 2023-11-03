@@ -62,11 +62,38 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 ### AppImages require FUSE to run
 
-**Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which relies on FUSE (Filesystem-in-Userspace).
-FUSE is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box.
-In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
+**Related Error:** `dlopen(): error loading libfuse.so.2`
 
-**Solution:** See [I get some errors related to something called "FUSE" - AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html) for assistance in resolving FUSE errors on Linux or in Docker.
+**Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
+FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with `viam-server`.
+For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well to support `viam-server`.
+
+In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
+FUSE is not required for macOS installations of `viam-server`.
+
+{{% alert title="Important" color="note" %}}
+`viam-server` requires FUSE version 2 (`libfuse2`), _not_ FUSE version 3 (`fuse3` or `libfuse3`) or versions of FUSE previous to FUSE version 2 (`fuse`).
+To support a `viam-server` installation, you must install `libfuse2`.
+{{% /alert %}}
+
+**Solution:** If you receive this error, install FUSE version 2 on your Linux system according to one of the following steps:
+
+- If installing `viam-server` on a Raspberry Pi running Raspberry Pi OS (Debian GNU/Linux 12 bookworm or later), install FUSE version 2 with the following command:
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo apt install libfuse2
+  ```
+
+- If installing `viam-server` on Ubuntu, install FUSE version 2 with the following command:
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo add-apt-repository universe
+  sudo apt install libfuse2
+  ```
+
+- If installing `viam-server` on a different Linux distribution, see the [AppImage FUSE troubleshooting article](https://github.com/AppImage/AppImageKit/wiki/FUSE) for more information.
+
+- If installing `viam-server` on a Docker image, see [I get some errors related to something called "FUSE" - AppImage documentation](https://docs.appimage.org/user-guide/troubleshooting/fuse.html) for Docker-specific troubleshooting steps.
 
 ### PulseAudio: Unable to connect: Connection refused
 
@@ -77,7 +104,7 @@ In addition, if you are installing `viam-server` within a Docker container, you 
 **Solution:** Consult the documentation for your Linux OS and chosen sound library for guidance on installing any missing software dependencies.
 For example, if you are using `jackd` and `PulseAudio` on a Raspberry Pi, you can run the following to install any missing dependencies:
 
-```sh
+```sh {class="command-line" data-prompt="$"}
 sudo apt install jackd qjackctl libpulse-dev pulseaudio
 ```
 

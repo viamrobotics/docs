@@ -24,6 +24,7 @@ _viam-server_ is responsible for:
 - Connecting robots to the cloud
 - Loading and managing connections to hardware [components](/components/)
 - Running built-in [services](/services/)
+- Loading and interfacing with {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} provided by {{< glossary_tooltip term_id="module" text="modules" >}}.
 - Managing configured processes
 - Connecting to other parts of your robot
 
@@ -31,6 +32,6 @@ _viam-server_ is responsible for:
 
 {{< cards >}}
 {{% card link="/program/apis/" %}}
-{{% card link="/extend/" %}}
-{{% card link="/internals/micro-rdk/" %}}
+{{% card link="/modular-resources/" %}}
+{{% card link="/micro-rdk/" %}}
 {{< /cards >}}

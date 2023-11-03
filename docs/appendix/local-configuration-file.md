@@ -51,7 +51,7 @@ If your robot will never connect to the internet, you can create a local configu
 A locally-configured robot will not be able to access Viam's cloud features.
 For most users, we recommend [using the Viam app to create the configuration file](#build-a-local-configuration-file-in-the-viam-app) as it is less error-prone.
 
-If you followed the instructions to [install `viam-server` on an SBC](/installation/#install-viam-server) or [install on a macOS or Linux computer](/installation/#install-on-a-macos-or-linux-computer), the installation process provides an example configuration file in the following location:
+If you followed the instructions to [install `viam-server`](/installation/), the installation process provides an example configuration file in the following location:
 
 - Linux: <file>/etc/viam.json</file>
 - macOS: <file>/opt/homebrew/etc/viam.json</file>

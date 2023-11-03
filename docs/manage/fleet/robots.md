@@ -86,6 +86,10 @@ For local communication between [parts](../../parts-and-remotes/#robot-parts) Vi
 
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab" max-width="800px">}}
 
+<br>
+
+You can also access the control interface using the [Viam mobile app](/manage/fleet/#the-viam-mobile-app), which you can find on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
+
 ### Code Sample
 
 To start programming your robot, go to the **Code sample** tab which contains boilerplate code snippets you can copy and paste into your SDK code to connect to your robot.

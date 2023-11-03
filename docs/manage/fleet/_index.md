@@ -14,7 +14,7 @@ aliases:
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of smart machines alone or in collaboration with others.
-You can manage your fleet from the Viam app or using the [cloud API](/program/apis/cloud/).
+You can manage your fleet of smart machines from the Viam app or using the [cloud API](/program/apis/cloud/).
 
 ## Work with groups of smart machines
 
@@ -90,12 +90,14 @@ For some configuration aspects you may require physical access to the robot so y
 
 _Coming soon._
 
-You and your collaborators can deploy control logic, [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy control logic, {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ### Remote control
 
 Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services.
+
+You can also control a robot using the [Viam mobile app](#the-viam-mobile-app).
 
 ### Control with the SDKs
 
@@ -116,4 +118,15 @@ If you are collaborating on a robot and controlling it using the [**Control** ta
 
 ### Deployment
 
-You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/extend/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+
+## The Viam mobile app
+
+{{<gif webm_src="/manage/mobile-app-octagon.webm" mp4_src="/manage/mobile-app-octagon.mp4" alt="GIF of red button being pressed and cannon of confetti bot spraying confetti" class="alignright" max-width="200px">}}
+
+<br>
+
+In addition to the [Viam app](https://app.viam.com), the fully featured web application where you can access all fleet management tools, there is a Viam mobile app.
+The mobile app is a convenient way to see if your robot is online, access the [control interface](/manage/fleet/robots/#control), and check robot [logs](/manage/fleet/robots/#logs).
+
+You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).

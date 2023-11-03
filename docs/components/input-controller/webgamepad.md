@@ -51,29 +51,7 @@ Enter the name `WebGamepad` and click **Create**.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Usage
-
-Connect your controller to your computer.
-Follow the instructions included with your gamepad to make this connection.
-
-If you haven't done so already, create a robot in [the Viam app](https://app.viam.com), and follow the instructions in the **Setup** tab to start `viam-server` on your computer and connect to the robot.
-
-Then, click on the robot's **Config** tab and configure an `input_controller` component of model `webgamepad` and name `WebGamepad`, as shown above.
-Save the config.
-
-Next, navigate to the **Control** tab.
-You should see a `WebGamepad` drop-down menu.
-Click on the drop-down menu to expand it.
-Click **Enable**, and press a button on your controller.
-Then, you should see the [Controls](../#control-field) on your input controller appear:
-
-![The dropdown as a table of controls available and their inputs in the Control tab of the Viam app. This is for a WebGamepad model.](/components/input-controller/gamepad-enabled-app.png)
-
-You should now be able to see the row of control inputs respond to your button presses and stick toggles.
-
-For example, this is how the row of [Controls](../#control-field) appears after pressing the circle (west) button on the button pad of the connected PS4 controller:
-
-![The dropdown as a table of controls available for a web-based gamepad and their inputs in the Control tab of the Viam app.](/components/input-controller/gamepad-enabled-app-with-input.png)
+{{< readfile "/static/include/components/test-control/input-controller-control.md" >}}
 
 {{% alert title="Important" color="note" %}}
 You have to press a button or move a stick on your gamepad for the browser to report the gamepad.

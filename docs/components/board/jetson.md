@@ -13,13 +13,13 @@ tags: ["board", "components"]
 
 Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
-If you have a CSI camera, follow [these instructions](/extend/modular-resources/examples/csi/) to configure it using the `viam:camera:csi` model.
+If you have a CSI camera, follow [these instructions](/modular-resources/examples/csi/) to configure it using the `viam:camera:csi` model.
 
 {{% /alert %}}
 
-{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="warning" %}}
+{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="caution" %}}
 
-The jetson's GPIO pins are rated for inputs and outputs at 3.3V. Signals from encoders and sensors at even 5V can cause damage to a pin. We recommend connecting hardware that can operate and send signals at 3.3V or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note)
+The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders and sensors can cause damage to a pin. We recommend selecting hardware that can operate 3.3V signals or lower. For details, see your boards specification. For the Jetson Nano, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note).
 
 {{% /alert %}}
 
@@ -73,6 +73,22 @@ The following attributes are available for `jetson` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See [configuration info](/components/board/#spis). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](/components/board/#i2cs). |
+| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
+| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See [configuration info](#spis). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
+
+## Attribute Configuration
+
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
+
+### `digital_interrupts`
+
+{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+### `spis`
+
+{{< readfile "/static/include/components/board/board-spis.md" >}}
+
+### `i2cs`
+
+{{< readfile "/static/include/components/board/board-i2cs.md" >}}

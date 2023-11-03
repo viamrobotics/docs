@@ -26,10 +26,24 @@ Most robots with a motor need at least the following hardware:
 
 [^dmcboard]: The `DMC4000` model does not require a board.
 
-## Configuration
+## Related Services
 
-How you configure your motor with Viam depends more on the motor driver than on the motor itself.
-Click the model names below for configuration information:
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your motor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your motor.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 Model | Description <a name="model-table"></a>
@@ -42,15 +56,13 @@ Model | Description <a name="model-table"></a>
 [`roboclaw`](./roboclaw/) | [Standard brushed DC motor](https://en.wikipedia.org/wiki/DC_motor) driven by [Basicmicro's](https://www.basicmicro.com/) [RoboClaw](https://www.basicmicro.com/RoboClaw-2x30A-Motor-Controller_p_9.html) motor controller
 [`fake`](./fake/) | Used to test code without hardware
 
-Viam also provides the following motor models as [modular resources](/extend/modular-resources/):
+### Modular Resources
 
-<!-- prettier-ignore -->
- Model | Description
- ----- | -----------
- [`viam:odrive:canbus`](/extend/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with CANbus communication
- [`viam:odrive:serial`](/extend/modular-resources/examples/odrive/) | An [ODrive S1](https://odriverobotics.com/shop/odrive-s1) motor driver with serial communication
+{{<modular-resources api="rdk:component:motor" type="motor">}}
 
-These modules can be [added to your robot from the Viam registry](/extend/modular-resources/configure/#add-a-module-from-the-viam-registry).
+### Micro-RDK
+
+If you are using the micro-RDK, navigate to [Micro-RDK Motor](/micro-rdk/motor/) for supported model information.
 
 ## Control your motor with Viam's client SDK libraries
 

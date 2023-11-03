@@ -34,9 +34,23 @@ Most robots with a gantry need at least the following hardware:
     Requires setting limit switches in the config of the gantry, or setting offsets in the config of the stepper motor.
 - Limit switches, to attach to the ends of the gantry's axis
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported gantry models:
+{{< cards >}}
+{{< relatedcard link="/services/navigation/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your gantry with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your gantry.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -44,6 +58,10 @@ For configuration information, click on one of the supported gantry models:
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
 | [`single-axis`](single-axis/) | A gantry with a singular linear rail. |
 | [`multi-axis`](multi-axis/) | A gantry with multiple linear rails. Composed of multiple `single-axis` gantries. |
+
+### Modular Resources
+
+{{<modular-resources api="rdk:component:gantry" type="gantry">}}
 
 ## Control your gantry with Viam's client SDK libraries
 
@@ -263,7 +281,7 @@ Get the lengths of the axes of the gantry (mm).
 
 - [(List\[float\])](https://docs.python.org/3/library/typing.html#typing.List): A list of the lengths of the axes of the gantry in millimeters.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.lengths).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/gantry/gantry.html#Gantry.get_lengths).
 
 ```python
 my_gantry = Gantry.from_robot(robot=robot, name="my_gantry")

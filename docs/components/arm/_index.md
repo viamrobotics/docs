@@ -47,9 +47,29 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - If there is no way for the arm to move to the desired location in a straight line, or if it would self-collide or collide with an obstacle that was passed in as something to avoid, then the `move_to_position` call will fail.
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported arm models:
+{{< cards >}}
+{{< relatedcard link="/services/motion/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your arm with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your arm.
+
+{{< alert title="Add support for other models" color="tip" >}}
+
+If none of the existing models fit your use case, you can [create a modular resource](/modular-resources/) to add support for it.
+
+You can follow [this guide](/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/modular-resources/).
+
+{{< /alert >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -60,7 +80,9 @@ For configuration information, click on one of the supported arm models:
 | [`xArmLite`](xarmlite/) | [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6) |
 | [`ur5e`](ur5e/) | [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) |
 
-Follow [this guide](/extend/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/extend/modular-resources/).
+### Modular Resources
+
+{{<modular-resources api="rdk:component:arm" type="arm">}}
 
 ## Control your arm with Viam's client SDK libraries
 
@@ -556,5 +578,4 @@ You can also ask questions on the [Community Discord](https://discord.gg/viam) a
 {{< cards >}}
 {{% card link="/tutorials/services/accessing-and-moving-robot-arm" %}}
 {{% card link="/tutorials/projects/claw-game/" %}}
-{{% card link="/services/motion" %}}
 {{< /cards >}}

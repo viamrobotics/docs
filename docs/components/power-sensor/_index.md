@@ -15,9 +15,22 @@ images: ["/icons/components/power-sensor.svg"]
 A power sensor is a device that reports measurements of the voltage, current and power consumption in your robot's system.
 Integrate this component to monitor your power levels.
 
-## Configuration
+## Related Services
 
-For configuration information, click on your sensor’s model:
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/sensors/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your power sensor with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your power sensor.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 | Model                 | Description <a name="model-table"></a>         |
 | --------------------- | ---------------------------------------------- |
@@ -25,6 +38,10 @@ For configuration information, click on your sensor’s model:
 | [`ina219`](./ina219/) | INA219 power sensor; current and power monitor |
 | [`ina226`](./ina226/) | INA226 power sensor; current and power monitor |
 | [`renogy`](./renogy/) | solar charge controller                        |
+
+### Modular Resources
+
+{{<modular-resources api="rdk:component:power_sensor" type="power_sensor">}}
 
 ## Control your power sensor with Viam’s client SDK libraries
 
@@ -224,6 +241,111 @@ if err != nil {
 // Get the power measurement from device in watts
 power, err := myPowerSensor.Power(context.Background(), nil)
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetReadings
+
+Get the measurements or readings that this power sensor provides.
+If a sensor is not configured to have a measurement or fails to read a piece of data, it will not appear in the readings dictionary.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(Mapping\[str, Any\])](https://docs.python.org/3/library/typing.html#typing.Mapping): The measurements or readings that this power sensor provides.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_readings).
+
+```python
+my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+
+# Get the readings provided by the sensor.
+readings = await my_power_sensor.get_readings()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(map\[string\]interface{})](https://go.dev/blog/maps): The measurements or readings that this sensor provides.
+- [(error)](https://pkg.go.dev/builtin#error): Report any errors that might occur during operation.
+  For a successful operation, `error` returns `nil`.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/powersensor#Readings).
+
+```go
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+
+// Get the readings provided by the sensor.
+readings, err := myPowerSensor.Readings(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+If you are implementing your own power sensor and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+
+**Returns:**
+
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_power_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
+
+reset_dict = {
+  "command": "reset",
+  "example_param": 30
+}
+
+do_response = await my_power_sensor.do_command(reset_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.do_command).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+
+resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+```
+
+For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

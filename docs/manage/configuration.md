@@ -139,7 +139,7 @@ The **Config** tab has subtabs for each section of your robot's config:
 
 - [Components](#components): Components are the hardware of your robot.
 - [Services](#services): Services are the software that runs on your robot.
-- [Modules](#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide [modular resources](/extend/modular-resources/), which are a way to add resource types or models that are not built into Viam.
+- [Modules](#modules): {{< glossary_tooltip term_id="module" text="Modules" >}} provide {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which are a way to add resource types or models that are not built into Viam.
 - [Remotes](#remotes): Remotes are a way to connect two separate robots so one can access the resources of the other.
 - [Processes](#processes): Processes automatically run specified scripts when the robot boots.
 - [Fragments](#fragments): Fragments are a way of sharing and managing identical configuration files (or parts of config files) across multiple robots.
@@ -212,9 +212,9 @@ See the [services documentation](/services/) for more information.
 
 ## Modules
 
-[Modular resources](/extend/modular-resources/) are a way to add resource types or models that are not built into Viam.
+[Modular resources](/modular-resources/) are a way to add resource types or models that are not built into Viam.
 
-To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/extend/modular-resources/).
+To add a modular resource as a component or service of your robot, configure a module per the [modular resource documentation](/modular-resources/).
 
 ## Remotes
 

@@ -28,9 +28,24 @@ Most robots with a COMPONENT need at least the following hardware (optional):
 - Board
 - ...
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported COMPONTENT models:
+Add services commonly used with the component.
+
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your COMPONENT with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your COMPONENT.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model               | Description                                                         |
@@ -38,7 +53,9 @@ For configuration information, click on one of the supported COMPONTENT models:
 | [`model1`](model1/) | An XYZ unit made by Some Company(INSERT LINK AS APPLICABLE)         |
 | [`model2`](model2/) | An ABCDE unit made by Some Other Company(INSERT LINK AS APPLICABLE) |
 
-If you want to use another COMPONENT model with Viam, you can [define a custom component](../../extend/).
+### Modular Resources
+
+{{<modular-resources api="rdk:component:component" type="component">}}
 
 ## Control your board with Viam's client SDK libraries
 

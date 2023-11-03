@@ -23,7 +23,7 @@ cost: 190
 
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
-Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can [create a custom component as a modular resource](/extend/modular-resources/).
+Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
@@ -207,7 +207,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-Now that the Freenove server is set up, you will follow the [process for creating modular resources](../../../extend/modular-resources/).
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](../../../modular-resources/).
 You will use [this module creation tool](https://github.com/viam-labs/generator-viam-module) to simplify the process and generate the necessary stub files.
 Then, you will edit them as necessary to define how each base API method interacts with your robot dog.
 
@@ -225,14 +225,14 @@ As you follow the prompts, it's a good idea to use the same names we used so tha
 
 - Model name: `robotdog`
 - Module namespace: `viamlabs`
-- Module family: `base`
+- Module repo-name: `base`
 - Language: `python`
 - API triplet: `rdk:components:base`
 - Existing API? `Yes`
 
 {{% alert title="Important" color="note" %}}
 
-You can use a different model name, module namespace, and family, but you need to use the existing API triplet `rdk:components:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+You can use a different model name, module namespace, and repo-name, but you need to use the existing API triplet `rdk:components:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
 
 {{% /alert %}}
 
@@ -334,7 +334,7 @@ Don't forget to save.
 ### Make your module executable
 
 Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
-You can find more information in [the relevant section of the modular resource documentation](/extend/modular-resources/).
+You can find more information in [the relevant section of the modular resource documentation](/modular-resources/).
 Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
 ```sh {class="command-line" data-prompt="$"}

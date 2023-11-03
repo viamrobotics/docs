@@ -26,6 +26,12 @@ If you want to use a different carrier board to incorporate your Nano into your 
 
 {{% /alert %}}
 
+{{% alert title="CAUTION: Use 3.3V inputs and outputs" color="caution" %}}
+
+The GPIO pins on Jetson boards are rated 3.3V signals. 5V signals from encoders and sensors can cause damage to a pin. We recommend selecting hardware that can operate 3.3V signals or lower. For details, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expansion Header GPIO Usage Considerations Applications Note](https://developer.nvidia.com/jetson-nano-developer-kit-40-pin-expansion-header-gpio-usage-considerations-applications-note).
+
+{{% /alert %}}
+
 ## Hardware Requirements
 
 You need the following hardware, tools, and software to install `viam-server` on a Jetson Nano or Jetson Orin Nano:
@@ -51,11 +57,10 @@ You need the following hardware, tools, and software to install `viam-server` on
 
 ## Nano Setup Guide
 
-1. Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) or [Getting Started with Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
-   Once you have reached _Next Steps_, return to the Viam docs.
-2. Your Jetson Nano or Jetson Orin Nano now has a Viam-compatible operating system installed.
-   Continue to [install viam-server](/installation/#install-viam-server).
-   Note that the Jetson Nano and Jetson Orin Nano have `aarch64` CPU architecture.
+Follow the instructions in [Getting Started with Jetson Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) or [Getting Started with Jetson Orin Nano Developer Kit](https://developer.nvidia.com/embedded/learn/get-started-jetson-orin-nano-devkit).
+Once you have reached _Next Steps_, return to the Viam docs.
+
+## Install `viam-server`
 
 {{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
 
@@ -65,11 +70,48 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{% /alert %}}
 
+{{< readfile "/static/include/install/install-linux-aarch.md" >}}
+
+## Serial Communication Protocol Tips
+
+To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
+
+```sh { class="command-line" data-prompt="$"}
+cd ~
+sudo /opt/nvidia/jetson-io/jetson-io.py
+```
+
+In the interactive menu that opens, select **Configure Jetson 40 Pin Header** and **Configure header pins manually** to select and deselect pins to enable use.
+For a Jetson Orin Nano, reference the following:
+
+<!-- prettier-ignore -->
+| GPIO Header Pin | Viam Bus ID | `jetson-io.py` ID |
+| ---------------| ----------- | ----------------- |
+| 3, 5 | `7` | `i2c2` |
+| 27, 28 | `1` | `i2c8` |
+| 19, 21, 23, 24, 26 | `0` | `spi1` |
+| 13, 16, 18, 22, 37 | `2` | `spi3` |
+| 15 | | `pwm1` |
+| 33 | | `pwm5` |
+
+Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
+See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
+
 ## Troubleshooting
 
 Make sure the polarity on your barrel jack power supply is matched when powering your robot.
 See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.
 
+If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.
+
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}

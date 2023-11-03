@@ -16,8 +16,9 @@ To capture data from one or more smart machines, you must first add the [data ma
 2. Click **Create service** in the lower-left corner of the page.
    Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
 3. Click **Create**.
-4. On the panel that appears, you can manage the capturing and syncing functions individually and specify the interval and directory.
-   If the capture frequency or the directory is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
+4. On the panel that appears, you can manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
+
+   If the sync **interval** or the **directory** is not specified, the data management service captures data at the default frequency every 0.1 minutes (after every 6 second interval) in the default `~/.viam/capture` directory.
 
    {{< alert title="Info" color="info" >}}
    If you change the directory for data capture only new data is stored in the new directory.
@@ -39,7 +40,8 @@ To capture data from one or more smart machines, you must first add the [data ma
       "type": "data_manager",
       "attributes": {
         "sync_interval_mins": 1,
-        "capture_dir": ""
+        "capture_dir": "",
+        "tags": []
       }
     }
   ]
@@ -96,7 +98,8 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
       "attributes": {
         "sync_interval_mins": 5,
         "capture_dir": "",
-        "sync_disabled": false
+        "sync_disabled": false,
+        "tags": []
       }
     }
   ],
@@ -154,10 +157,10 @@ If you want to remove a capture method from the configuration, click the `delete
 
 ## Configure Data Capture for Remote Parts
 
-Viam supports data capture from remote parts.
-For example, if you use a component that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from the component by adding it as a remote part.
+Viam supports data capture from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote" text="remote" >}} parts.
+For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or that does not have enough storage or processing power, you can still process and capture the data from that part's components by adding it as a remote part.
 
-Currently, you can only configure data capture from remote components by adding them to your JSON configuration.
+Currently, you can only configure data capture from remote components in your raw JSON configuration.
 To add them to your JSON configuration you must explicitly add the remote component's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->
@@ -168,25 +171,34 @@ To add them to your JSON configuration you must explicitly add the remote compon
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
 
-{{%expand "Click to view the JSON configuration for an ESP32 board" %}}
+{{%expand "Click to view example JSON configuration for an ESP32 board" %}}
+
+The following example shows the configuration of the remote part, in this case an [ESP32 board](/micro-rdk/board/esp32/).
+This config is just like that of a non-remote part; the remote connection is established by the main part (in the next expandable example).
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "type": {
-    "Type": {
-      "type": "component",
-      "namespace": "rdk"
-    },
-    "subtype": "board"
-  },
-  "model": {
-    "name": "rdk:esp32:board"
-  },
-  "name": "rdk:component:board/board",
-  "additional_params": {
-    "A2": "",
-    "A1": ""
-  }
+  "components": [
+    {
+      "name": "my-esp32",
+      "model": "esp32",
+      "type": "board",
+      "attributes": {
+        "pins": [27],
+        "analogs": [
+          {
+            "pin": "34",
+            "name": "A1"
+          },
+          {
+            "pin": "35",
+            "name": "A2"
+          }
+        ]
+      },
+      "depends_on": []
+    }
+  ]
 }
 ```
 
@@ -200,10 +212,13 @@ The following example captures data from two analog readers that provide a volta
 {
   "services": [
     {
+      "name": "data_manager",
+      "type": "data_manager",
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
-        "sync_interval_mins": 5
+        "sync_interval_mins": 5,
+        "tags": ["tag1", "tag2"]
       },
       "name": "data_manager",
       "type": "data_manager"
@@ -223,7 +238,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
-                "name": "rdk:component:board/board",
+                "name": "rdk:component:board/my-esp32",
                 "additional_params": {
                   "A2": "",
                   "A1": ""
@@ -234,7 +249,7 @@ The following example captures data from two analog readers that provide a volta
               {
                 "method": "Gpio",
                 "capture_frequency_hz": 1,
-                "name": "rdk:component:board/board",
+                "name": "rdk:component:board/my-esp32",
                 "additional_params": {
                   "27": ""
                 },
@@ -263,7 +278,8 @@ The following example captures data from the `ReadImage` method of a camera:
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
-        "sync_interval_mins": 5
+        "sync_interval_mins": 5,
+        "tags": []
       },
       "name": "data_manager",
       "type": "data_manager"
@@ -299,6 +315,12 @@ The following example captures data from the `ReadImage` method of a camera:
 ```
 
 {{% /expand%}}
+
+## Troubleshooting
+
+### Images are dim on start up
+
+If you are capturing camera data, it can happen that the camera captures and syncs miscolored or dark images upon start up.
 
 ## Next Steps
 

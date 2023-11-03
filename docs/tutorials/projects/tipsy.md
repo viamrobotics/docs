@@ -11,7 +11,7 @@ mp4Src: "/tutorials/tipsy/tipsy-preview.mp4"
 authors: ["Hazal Mestci"]
 languages: ["python"]
 viamresources:
-  ["board", "motor", "base", "camera", "sensor", "mlmodel", "vision"]
+  ["board", "motor", "base", "camera", "sensor", "mlmodel", "vision", "sensors"]
 level: "Intermediate"
 date: "2023-05-29"
 # updated: ""
@@ -583,13 +583,11 @@ Use hook-and-loop fasteners or something else to secure the USB camera to the bo
 For ultrasonic sensors to fit the framing, we recommend 3D printing enclosures.
 This step is optional but makes the project look more aesthetically pleasing and ensures that the sensors don’t fall out as your robot moves around.
 
-You can design your own enclosure, or you can use our design:
+You can design your own enclosure, or you can use the SCUTTLE design we used, a 3D-printed enclosure with a twist bracket that fits the rails:
 
 ![3D printed enclosure of the ultrasonic sensor.](/tutorials/tipsy/assembly-sensor-3dmodel.jpg)
 
 The STL files we used can be found in our [project repository](https://github.com/viam-labs/devrel-demos/tree/main/tipsy-bot/stl-files).
-
-SCUTTLE also has a design for a 3D-printed enclosure with a twist bracket that fits the rails.
 
 If you decide not to use a 3D printer, you can tape the ultrasonic sensors to the rails.
 We recommend that you do so within the enclosure, perhaps under the drink box and above the rover base, so they don’t touch people or obstacles as the robot moves around, as this could cause them to fall off or get damaged.
@@ -622,6 +620,7 @@ from viam.rpc.dial import Credentials, DialOptions
 from viam.components.sensor import Sensor
 from viam.components.base import Base
 from viam.services.vision import VisionClient
+from viam.services.sensors import SensorsClient
 ```
 
 Then it connects to our robot using a robot location secret and address.
@@ -634,40 +633,38 @@ robot_address = os.getenv('ROBOT_ADDRESS') or ''
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
 # change this if you named your camera differently in your robot configuration
 camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
-# change this if you named your camera differently in your robot configuration
-camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
-# change this if you named your sensors differently in your robor configuration
-sensor_names = (os.getenv("ROBOT_SENSORS") or
-                "ultrasonic,ultrasonic2").split(",")
+# change this if you named your detector differently in your robot
+# configuration
+detector_name = os.getenv("ROBOT_DETECTOR") or "myPeopleDetector"
+# change this if you named your sensor service differently in your robot
+# configuration
+sensor_service_name = (os.getenv("ROBOT_SENSORS") or "sensors")
 pause_interval = os.getenv('PAUSE_INTERVAL') or 3
 ```
 
 {{% snippet "show-secret.md" %}}
 
 Next, the code defines functions for obstacle detection.
-The first method, `obstacle_detect()`, gets readings from a sensor, which is used by the second method, `gather_obstacle_readings()`, to gather all the distance readings from a list of sensors. Lastly, the third method, `obstacle_detect_loop()`, uses an infinite loop to periodically check the readings to stop the base if it’s closer than a certain distance from an obstacle:
+The first method, `get_obstacle_readings()`, gets all the distance readings from a list of sensors. The second method, `obstacle_detect_loop()`, uses an infinite loop to periodically check the readings to stop the base if it’s closer than a certain distance from an obstacle:
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def obstacle_detect(sensor):
-    reading = (await sensor.get_readings())["distance"]
-    return reading
+async def get_obstacle_readings(sensors: list[Sensor],
+                                sensors_svc: SensorsClient):
+    sensor_values = (await sensors_svc.get_readings(sensors)).values()
+    return [r["distance"] for r in sensor_values]
 
 
-async def gather_obstacle_readings(sensors):
-    return await asyncio.gather(
-        *[obstacle_detect(sensor) for sensor in sensors]
-    )
-
-
-async def obstacle_detect_loop(sensors, base):
-    while (True):
-        distances = await gather_obstacle_readings(sensors)
+async def obstacle_detect_loop(sensors: list[Sensor],
+                               sensors_svc: SensorsClient,
+                               base: Base):
+    while True:
+        distances = await get_obstacle_readings(sensors, sensors_svc)
         if any(distance < 0.4 for distance in distances):
             # stop the base if moving straight
             if base_state == "straight":
                 await base.stop()
                 print("obstacle in front")
-        await asyncio.sleep(.01)
+        await asyncio.sleep(0.01)
 ```
 
 Then, we define a person detection loop, where the robot is constantly looking for a person, and if it finds the person, it goes toward them as long as there are no obstacles in front.
@@ -676,24 +673,26 @@ If it doesn’t find a person, it will continue looking by rotating the robot ba
 Lines 12 and 13 are where it checks specifically for detections with the label `Person` and not every object in the `labels.txt` file:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="12-13"}
-async def person_detect(detector, sensors, base):
-    while (True):
-        # look for a person
+async def person_detect(detector: VisionClient,
+                        sensors: list[Sensor],
+                        sensors_svc: SensorsClient,
+                        base: Base):
+    while True:
+        # look for person
         found = False
         global base_state
         print("will detect")
         detections = await detector.get_detections_from_camera(camera_name)
         for d in detections:
-            if d.confidence > .7:
+            if d.confidence > 0.7:
                 print(d.class_name)
-                # specify it is just the person we want to detect
-                if (d.class_name == "Person"):
+                if d.class_name == "Person":
                     found = True
-        if (found):
+        if found:
             print("I see a person")
-            # first manually call gather_obstacle_readings -
-            # don't even start moving if someone in the way
-            distances = await gather_obstacle_readings(sensors)
+            # first manually call get_obstacle_readings - don't even start
+            # moving if someone is in the way
+            distances = await get_obstacle_readings(sensors, sensors_svc)
             if all(distance > 0.4 for distance in distances):
                 print("will move straight")
                 base_state = "straight"
@@ -715,22 +714,24 @@ It also creates two background tasks running asynchronously, one looking for obs
 async def main():
     robot = await connect()
     base = Base.from_robot(robot, base_name)
-    sensors = [Sensor.from_robot(robot, sensor_name)
-               for sensor_name in sensor_names]
-    detector = VisionServiceClient.from_robot(robot, "myPeopleDetector")
+    sensors_svc = SensorsClient.from_robot(robot, name=sensor_service_name)
+    sensors = await sensors_svc.get_sensors()
+    detector = VisionClient.from_robot(robot, name=detector_name)
 
     # create a background task that looks for obstacles and stops the base if
-    # it's moving
+    # it is moving
     obstacle_task = asyncio.create_task(
-        obstacle_detect_loop(sensors, base))
+        obstacle_detect_loop(sensors, sensors_svc, base))
     # create a background task that looks for a person and moves towards them,
     # or turns and keeps looking
     person_task = asyncio.create_task(
-        person_detect(detector, sensors, base))
+        person_detect(detector, sensors, sensors_svc, base))
     results = await asyncio.gather(obstacle_task,
                                    person_task,
                                    return_exceptions=True)
     print(results)
+
+    await robot.close()
 ```
 
 When you run the code, you should see results like this:

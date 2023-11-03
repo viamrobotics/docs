@@ -97,3 +97,5 @@ The following attributes are available for `xArm6` arms:
 | `acceleration_degs_per_sec_per_sec`  | float | Optional | Desired maximum acceleration of joint movement in degrees/sec<sup>2</sup>. <br> Default: `50.0` |
 
 See [the frame system Service](/services/frame-system/) for more information on utilizing and modifying the `"frame"` configuration shown in the `JSON Example` above.
+
+{{< readfile "/static/include/components/test-control/arm-control.md" >}}

@@ -8,10 +8,13 @@ tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/release-notes/#25-april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
 
 _3D Object Segmentation_ is the process of separating and returning a list of the identified "objects" from a 3D scene.
-The "objects" are a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
+The "objects" are usually a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
+
+3D object segmentation is useful for obstacle detection.
+See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rover-base/#next-steps-automate-obstacle-detection) for an example of automating obstacle avoidance with 3D object segmentation for obstacle detection.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
@@ -20,6 +23,7 @@ The types of segmenters supported are:
 - [**Obstacles point cloud (`obstacles_pointcloud`)**](#configure-an-obstacles_pointcloud-segmenter): A segmenter that identifies well-separated objects above a flat plane.
 - [**Object detector (`detector_3d_segmenter`)**](#configure-a-detector_3d_segmenter): This model takes 2D bounding boxes from an object detector and projects the pixels in the bounding box to points in 3D space.
 - [**Obstacles depth (`obstacles_depth`)**](#configure-an-obstacles_depth-segmenter): A segmenter for depth cameras that returns the perceived obstacles as a set of 3-dimensional bounding boxes, each with a Pose as a vector.
+- [**Obstacles distance (`obstacles_distance`)**](#configure-an-obstacles_distance-segmenter): A segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 
 ## Configure an `obstacles_pointcloud` segmenter
 
@@ -62,6 +66,7 @@ Add the vision service object to the services array in your raw JSON configurati
     {
     "name": "<segmenter_name>",
     "type": "vision",
+    "namespace": "rdk",
     "model": "obstacles_pointcloud"
     "attributes": {
         "min_points_in_plane": <integer>,
@@ -89,6 +94,7 @@ Add the vision service object to the services array in your raw JSON configurati
 {
   "name": "rc_segmenter",
   "type": "vision",
+  "namespace": "rdk",
   "model": "obstacles_pointcloud",
   "attributes": {
     "min_points_in_plane": 1500,
@@ -156,6 +162,7 @@ Add the vision service object to the services array in your raw JSON configurati
     {
         "name": "<segmenter_name>",
         "type": "vision",
+        "namespace": "rdk",
         "model": "detector_3d_segmenter"
         "attributes": {
             "detector_name": "my_detector",
@@ -176,6 +183,7 @@ Add the vision service object to the services array in your raw JSON configurati
     {
         "name": "my_segmenter",
         "type": "vision",
+        "namespace": "rdk",
         "model": "detector_3d_segmenter"
         "attributes": {
             "detector_name": "my_detector",
@@ -260,6 +268,7 @@ Add the following vision service object to the services array in your raw JSON c
   {
     "name": "<segmenter_name>",
     "type": "vision",
+    "namespace": "rdk",
     "model": "obstacles_depth"
     "attributes": {
       "min_points_in_plane": <integer>,
@@ -282,6 +291,7 @@ Add the following vision service object to the services array in your raw JSON c
 {
   "name": "rc_segmenter",
   "type": "vision",
+  "namespace": "rdk",
   "model": "obstacles_depth",
   "attributes": {
     "min_points_in_plane": 1500,
@@ -324,6 +334,76 @@ If you choose not to configure the frame system, you can still identify single p
 - The segmenter now returns a single point within the `GeometryInFrame` object it captures.
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
+
+## Configure an `obstacles_distance` segmenter
+
+`obstacles_distance` is a vision service model that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
+It is best for transient obstacle avoidance.
+
+For example, if you have an ultrasonic distance sensor as an [`ultrasonic` camera](/components/camera/ultrasonic/), this model will query the sensor `"num_queries"` times, and then take the average point from those measurements and return that as an obstacle.
+
+{{< tabs >}}
+{{% tab name="Builder" %}}
+
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Click the **Services** subtab and click **Create service** in the lower-left corner.
+Select the `Vision` type, then select the `Obstacles Distance` model.
+Enter a name for your service and click **Create**.
+
+In your vision service's configuration panel, fill in the **Attributes** field with the following:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "num_queries": 10
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Template" %}}
+
+Add the vision service object to the services array in your raw JSON configuration:
+
+```json {class="line-numbers linkable-line-numbers"}
+"services": [
+    {
+      "name": "<segmenter_name>",
+      "type": "vision",
+      "namespace": "rdk",
+      "model": "obstacles_distance",
+      "attributes": {
+        "num_queries": 10
+      }
+    },
+    ... // Other services
+]
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+"services": [
+    {
+        "name": "my_segmenter",
+        "type": "vision",
+        "namespace": "rdk",
+        "model": "obstacles_distance",
+        "attributes": {
+            "num_queries": 10
+        }
+    }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The following parameters are available for a `obstacles_distance` segmenter:
+
+<!-- prettier-ignore -->
+| Parameter | Inclusion | Description |
+| --------- | --------- | ----------- |
+| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
 
 ## Test your segmenter
 

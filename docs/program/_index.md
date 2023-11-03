@@ -15,26 +15,21 @@ aliases:
   - "program/sdks"
 ---
 
-Viam offers software development kits (SDKs) in popular languages which
-
-- Broker connection, authentication, and encryption for communication with {{< glossary_tooltip term_id="smart-machine" text="smart machines">}} running `viam-server` using {{< glossary_tooltip term_id="webrtc" >}}
-- Enable you to interface with robot [gRPC APIs](https://github.com/viamrobotics/api) in a way that is idiomatic to that programming language
-
-![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/program/sdks/robot-client.png)
-
-Use the SDK of your preferred language to write code to control your smart machine.
-
-Viam currently offers SDKs for the following languages:
+You can write code to control your smart machines using the following software development kits (SDKs):
 
 - [Python SDK](https://python.viam.dev/)
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
 - [TypeScript SDK](https://ts.viam.dev/)
-- [C++ SDK (alpha)](https://cpp.viam.dev/)
+- [C++ SDK (beta)](https://cpp.viam.dev/)
 - [Flutter SDK (beta)](https://flutter.viam.dev/)
+
+The SDKs provide idiomatic wrappers around Viam's robot [gRPC APIs](https://github.com/viamrobotics/api).
+
+![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/program/sdks/robot-client.png)
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control your robot (likely a [single-board computer](/components/board/#configuration)), and [configured your robot](/manage/configuration/).
+Before you get started with your program, ensure that you have [installed `viam-server`](/installation/) on the computer you want to use to control your robot (likely a [single-board computer](/components/board/#supported-models)), and [configured your robot](/manage/configuration/).
 
 Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 
@@ -45,6 +40,12 @@ If you are using the Python SDK, [set up a virtual environment](/program/python-
 
 ```sh {class="command-line" data-prompt="$"}
 pip install viam-sdk
+```
+
+If you intend to use the [ML (machine learning) model service](/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[mlmodel]'
 ```
 
 {{% /tab %}}
@@ -129,14 +130,14 @@ package main
 import (
   "context"
 
-  "github.com/edaniels/golog"
+  "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/utils"
   "go.viam.com/utils/rpc"
 )
 
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
+  logger := logger.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
@@ -215,7 +216,7 @@ main();
 {{% tab name="C++" %}}
 
 {{< alert title="Stability Notice" color="note" >}}
-The C++ SDK is currently in alpha.
+The C++ SDK is currently in beta.
 {{< /alert >}}
 
 ```cpp {class="line-numbers linkable-line-numbers"}

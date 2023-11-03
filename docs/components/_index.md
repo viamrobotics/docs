@@ -10,5 +10,5 @@ images: ["/icons/components.png"]
 
 A _component_ represents a physical piece of electrical or electromechanical hardware in a smart machine.
 
-The following component types are natively supported.
-If you would like to use additional component types, you can [extend Viam with custom components and services](/extend/).
+Viam provides built-in support for the following component types.
+You can also add support for additional component types using {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.

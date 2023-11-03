@@ -11,7 +11,7 @@ tags: ["board", "components"]
 
 {{% alert title="REQUIREMENTS" color="caution" %}}
 
-Follow this [setup guide](/installation/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
+Follow the [setup guide](/installation/prepare/sk-tda4vm/) to prepare your TDA4VM for running `viam-server` before configuring a `ti` board.
 
 {{% /alert %}}
 
@@ -65,6 +65,22 @@ The following attributes are available for `ti` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See [configuration info](/components/board/#spis). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) bus pins' index and name. See [configuration info](/components/board/#i2cs). |
+| `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
+| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select bus pins' index and name. See [configuration info](#spis). |
+| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) bus pins' index and name. See [configuration info](#i2cs). |
+
+## Attribute Configuration
+
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
+
+### `digital_interrupts`
+
+{{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
+
+### `spis`
+
+{{< readfile "/static/include/components/board/board-spis.md" >}}
+
+### `i2cs`
+
+{{< readfile "/static/include/components/board/board-i2cs.md" >}}

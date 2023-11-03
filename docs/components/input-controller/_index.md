@@ -26,11 +26,23 @@ Most robots with an input controller need at least the following hardware:
 - A power supply cable or batteries for the input device and the robot.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
-## Configuration
+## Related Services
 
-Configuration depends on the `model` of your device.
+{{< cards >}}
+{{< relatedcard link="/services/base-rc/" >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< /cards >}}
 
-For configuration information, click on one of the following models:
+## Supported Models
+
+To use your input controller with Viam, check whether one of the following [built-in models](#built-in-models) supports your input controller.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -41,9 +53,16 @@ For configuration information, click on one of the following models:
 | [`webgamepad`](webgamepad/) | A remote, web based gamepad. |
 | [`fake`](fake/) | A model for testing, with [no physical hardware - see GitHub.](https://github.com/viamrobotics/rdk/tree/main/components/input/fake) |
 
-Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
+<!-- No modular resources yet -->
+<!-- ### Modular Resources
+
+{{<modular-resources api="rdk:component:input_controller" type="input_controller">}}
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
 ## Control your robot with an input controller with Viam's client SDK libraries
+
+Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
 
 To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
@@ -195,11 +214,11 @@ func handleController(controller input.Controller) {
 }
 
 func main() {
-    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
+    utils.ContextualMain(mainWithArgs, logger.NewDevelopmentLogger("client"))
 }
 
 
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
     // ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
 
     // Get the controller from the robot.
@@ -299,7 +318,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 
 - [(List\[Control\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_controls).
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
@@ -343,7 +362,7 @@ logger.Info(controls)
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- ### TriggerEvent NOTE: This method should be documented when support is available for all input components.
+### TriggerEvent
 
 Directly send an [Event Object](#event-object) from external code.
 
@@ -406,7 +425,7 @@ if err != nil {
 ```
 
 {{% /tab %}}
-{{< /tabs >}} -->
+{{< /tabs >}}
 
 ### DoCommand
 

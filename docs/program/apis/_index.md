@@ -17,6 +17,191 @@ Different models of resources implement the same API, which [Viam SDKs expose](/
 
 The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/manage/configuration/) on your robot.
 
+## Robot Management APIs
+
+### Robot API
+
+All robots support the following methods through the [robot API](/program/apis/robot/):
+
+{{< readfile "/static/include/services/apis/robot.md" >}}
+
+### Cloud API
+
+The [cloud API](/program/apis/cloud/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/cloud.md" >}}
+
+### Data Client API
+
+The data client API supports the following methods to upload and retrieve data directly to the [Viam app](https://app.viam.com) (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
+
+{{< readfile "/static/include/services/apis/data-client.md" >}}
+
+## Component APIs
+
+These APIs provide interfaces for controlling and getting information from various components of a robot.
+Built-in API methods are defined for every model of each component type.
+Documentation on using these methods in your SDK code is found on each [component page](/components/) as follows:
+
+### Arm
+
+The [arm component](/components/arm/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/arm.md" >}}
+
+### Base
+
+The [base component](/components/base/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/base.md" >}}
+
+### Board
+
+The [board component](/components/board/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/board.md" >}}
+
+### Camera
+
+The [camera component](/components/camera/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/camera.md" >}}
+
+### Encoder
+
+The [encoder component](/components/encoder/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/encoder.md" >}}
+
+### Gantry
+
+The [gantry component](/components/gantry/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/gantry.md" >}}
+
+### Generic
+
+The [generic component](/components/generic/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/generic.md" >}}
+
+### Gripper
+
+The [gripper component](/components/gripper/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/gripper.md" >}}
+
+### Input Controller
+
+The [input controller component](/components/input-controller/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/input-controller.md" >}}
+
+### Motor
+
+The [motor component](/components/motor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/motor.md" >}}
+
+### Movement Sensor
+
+The [movement sensor component](/components/movement-sensor/) supports the following methods.
+Some methods are only supported by certain models:
+
+{{< readfile "/static/include/components/apis/movement-sensor.md" >}}
+
+### Power Sensor
+
+The [power sensor component](/components/power-sensor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/power-sensor.md" >}}
+
+### Sensor
+
+The [sensor component](/components/sensor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/sensor.md" >}}
+
+### Servo
+
+The [servo component](/components/servo/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/servo.md" >}}
+
+## Service APIs
+
+These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
+Built-in API methods are defined for each service implementation.
+Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
+
+### Base Remote Control
+
+The [base remote control service](/services/base-rc/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/base-rc.md" >}}
+
+### Data Management
+
+The [data management service](/services/data/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/data.md" >}}
+
+### MLModel
+
+The [ML model service](/services/ml/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/ml.md" >}}
+
+### Motion
+
+The [motion service](/services/motion/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/motion.md" >}}
+
+### Navigation
+
+The [navigation service](/services/navigation/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/navigation.md" >}}
+
+### Sensors
+
+The [sensors service](/services/sensors/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/sensors.md" >}}
+
+### SLAM
+
+The [SLAM service](/services/slam/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/slam.md" >}}
+
+### Vision
+
+Different [vision service](/services/vision/) models support different methods:
+
+{{< readfile "/static/include/services/apis/vision.md" >}}
+
+## Signaling APIs
+
+### GPIO Pins
+
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
+
+{{< readfile "/static/include/components/apis/gpiopin.md" >}}
+
+### Analog-to-Digital Converters (ADCs)
+
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
+
+{{< readfile "/static/include/components/apis/analogreader.md" >}}
+
+### Digital Interrupts
+
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
+
+{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
+
 ## ResourceBase Methods
 
 In the Python SDK, the [`ResourceBase`](https://python.viam.dev/autoapi/viam/resource/base/index.html) class defines a basic set of API methods that all child resources should provide for users.
@@ -189,176 +374,3 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/interfac
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Component APIs
-
-These APIs provide interfaces for controlling and getting information from various components of a robot.
-Built-in API methods are defined for every model of each component type.
-Documentation on using these methods in your SDK code is found on each [component page](/components/) as follows:
-
-### Arm
-
-The [arm component](/components/arm/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/arm.md" >}}
-
-### Base
-
-The [base component](/components/base/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/base.md" >}}
-
-### Board
-
-The [board component](/components/board/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/board.md" >}}
-
-### Camera
-
-The [camera component](/components/camera/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/camera.md" >}}
-
-### Encoder
-
-The [encoder component](/components/encoder/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/encoder.md" >}}
-
-### Gantry
-
-The [gantry component](/components/gantry/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/gantry.md" >}}
-
-### Generic
-
-The [generic component](/components/generic/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/generic.md" >}}
-
-### Gripper
-
-The [gripper component](/components/gripper/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/gripper.md" >}}
-
-### Input Controller
-
-The [input controller component](/components/input-controller/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/input-controller.md" >}}
-
-### Motor
-
-The [motor component](/components/motor/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/motor.md" >}}
-
-### Movement Sensor
-
-The [movement sensor component](/components/movement-sensor/) supports the following methods.
-Some methods are only supported by certain models:
-
-{{< readfile "/static/include/components/apis/movement-sensor.md" >}}
-
-### Sensor
-
-The [sensor component](/components/sensor/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/sensor.md" >}}
-
-### Servo
-
-The [servo component](/components/servo/) supports the following methods:
-
-{{< readfile "/static/include/components/apis/servo.md" >}}
-
-## Service APIs
-
-These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
-Built-in API methods are defined for each service implementation.
-Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
-
-### Base Remote Control
-
-The [base remote control service](/services/base-rc/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/base-rc.md" >}}
-
-### Data Management
-
-The [data management service](/services/data/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/data.md" >}}
-
-### MLModel
-
-The [ML model service](/services/ml/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/ml.md" >}}
-
-### Motion
-
-The [motion service](/services/motion/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/motion.md" >}}
-
-### Navigation
-
-The [navigation service](/services/navigation/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/navigation.md" >}}
-
-### Sensors
-
-The [sensors service](/services/sensors/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/sensors.md" >}}
-
-### SLAM
-
-The [SLAM service](/services/slam/) supports the following methods:
-
-{{< readfile "/static/include/services/apis/slam.md" >}}
-
-### Vision
-
-Different [vision service](/services/vision/) models support different methods:
-
-{{< readfile "/static/include/services/apis/vision.md" >}}
-
-## Signaling APIs
-
-### GPIO Pins
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
-
-{{< readfile "/static/include/components/apis/gpiopin.md" >}}
-
-### Analog-to-Digital Converters (ADCs)
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
-
-{{< readfile "/static/include/components/apis/analogreader.md" >}}
-
-### Digital Interrupts
-
-In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
-
-{{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
-
-## Robot Management APIs
-
-### Robot API
-
-All robots support the following methods through the [robot API](/program/apis/robot/):
-
-{{< readfile "/static/include/services/apis/robot.md" >}}
-
-### Cloud API
-
-The [cloud API](/program/apis/cloud/) supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient)):
-
-{{< readfile "/static/include/services/apis/cloud.md" >}}

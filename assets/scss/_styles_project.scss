@@ -193,10 +193,6 @@ a > code {
   color: #333333 !important;
 }
 
-footer a {
-  color: #fff !important;
-}
-
 p, li {
   color: #515151;
   a {
@@ -213,9 +209,17 @@ p, li {
 
 // START FOOTER STYLING
 
+footer a {
+  color: #fff !important;
+}
+
 /* sets the footer to black. */
 .bg-dark {
   background-color: black !important;
+}
+
+footer * small {
+  color: white;
 }
 
 /* START no whitespace beneath footer */
@@ -509,6 +513,8 @@ END MARKETING CSS
   .hover-card.small {
     min-width: 125px;
     max-width: 28%;
+    min-width: 150px;
+    max-width: 150px;
   }
   .hover-card.small > a div.small-hover-card-div > div {
     font-size: 0.833rem !important;
@@ -518,6 +524,8 @@ END MARKETING CSS
 .hover-card.small {
   padding: 0.5rem;
   margin: 0.5rem;
+  min-width: 150px;
+  max-width: 150px;
 }
 
 .hover-card.small > a {
@@ -636,6 +644,10 @@ END MARKETING CSS
 }
 
 // label styling in tutorials START
+
+.hover-card.tutorial * .title {
+  margin-bottom: 0.5rem !important;
+}
 
 .hover-card.tutorial * .pills {
   display: flex;
@@ -985,6 +997,32 @@ td > ul, td > ol {
   .td-content>.alert {
     max-width: 90%;
   }
+}
+
+// relatedcard styling
+
+.relatedcard {
+  display: flex;
+  flex-direction: column;
+}
+
+.relatedcard a {
+  width: 8rem;
+  text-decoration: none;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.relatedcard a:hover {
+  background-color: whitesmoke;
+}
+
+.relatedcard div {
+  margin: auto;
+}
+
+.relatedcard p {
+  vertical-align: middle;
 }
 
 // sectionlist styling
@@ -1374,3 +1412,86 @@ a.ais-Pagination-link:hover {
 .search-helper {
   display: none;
 }
+
+// styling for model list from modular resources
+
+.mr-component {
+  margin-bottom: 1rem;
+}
+
+.modellist > div {
+  display: flex;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modellist * .ais-Hits.ais-Hits--empty {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.modellist * .ais-Hits-list, .modellistheader {
+  margin-bottom: 0rem;
+  display: flex;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #dee2e6;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item > div, .modellistheader > div {
+  margin: 1rem;
+}
+
+.modellist * .ais-Hits {
+  width: 100%;
+}
+
+.modellist * .ais-Hits-itm {
+  display: flex;
+}
+
+.modellist * .ais-Hits-list > .ais-Hits-item:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modellistheader > .name, .modellist * .name, .modellistheader > .type, .modellist * .type {
+  min-width: 25%;
+  max-width: 25%;
+}
+
+.modellistheader {
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modellistheader > div {
+  font-weight: 600;
+}
+
+.modellistheader > .description, .modellist * .description {
+}
+
+#searchbox {
+  margin: 1rem 0rem 2rem 0rem;
+}
+
+.ais-SearchBox-input {
+  border: 1px solid black;
+  border-radius: 0;
+  background-color: white;
+  outline-offset: 0px;
+  padding: 0.25rem 0.75rem;
+  width: 100%;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.ais-Highlight-highlighted {
+  background-color: #f0b93f;
+}
+
+// styling for model list from modular resources END

@@ -31,9 +31,25 @@ You can use different models to:
 - Combine streams from multiple cameras into one.
 - Transform and process images.
 
-## Configuration
+## Related Services
 
-For configuration information, click on one of the supported camera models:
+{{< cards >}}
+{{< relatedcard link="/services/data/" >}}
+{{< relatedcard link="/services/vision/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/services/slam/" >}}
+{{< relatedcard link="/services/ml/" >}}
+{{< /cards >}}
+
+## Supported Models
+
+To use your camera with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your camera.
+
+{{< readfile "/static/include/create-your-own-mr.md" >}}
+
+### Built-in models
+
+For configuration information, click on the model name:
 
 <!-- prettier-ignore -->
 | Model | Description |
@@ -51,15 +67,11 @@ For configuration information, click on one of the supported camera models:
 | [`align_color_depth_homography`](align-color-depth-homography/) | Uses a homography matrix to align the color and depth images. |
 | [`join_pointclouds`](join-pointclouds/) | Combines the point clouds from multiple camera sources and projects them to be from the point of view of target_frame. |
 | [`transform`](transform/) | A pipeline for applying transformations to an input image source. |
-| [`ultrasonic`](ultrasonic/) | An ultrasonic distance sensor like the [HC-S204](https://www.sparkfun.com/products/15569). |
+| [`ultrasonic`](ultrasonic/) | The [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor. |
 
-Viam also provides the following camera models as [modular resources](/extend/modular-resources/):
+### Modular Resources
 
-<!-- prettier-ignore -->
-| Model | Description |
-| ----- | ----------- |
-| [`viam:lidar:rplidar`](/extend/modular-resources/examples/rplidar/) | A LIDAR scanning device like the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1). |
-| [`viam:camera:csi`](/extend/modular-resources/examples/csi/) | Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924). |
+{{<modular-resources api="rdk:component:camera" type="camera">}}
 
 ## Control your camera with Viam's client SDK libraries
 
@@ -111,8 +123,9 @@ If the server does not know how to return the specified MIME type, the server re
 
 **Parameters:**
 
-- `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The MIME type of the image.
-  The returned MIME type is not guaranteed to match the image output type.
+- `mime_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The requested MIME type of the image.
+  The returned MIME type is not guaranteed to match the image output type:
+  If the requested MIME type has `+lazy` appended to it or the requested MIME type is not supported for decoding/encoding, `GetImage` returns a [`RawImage`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.RawImage) instead.
 
 **Returns:**
 
@@ -392,12 +405,6 @@ For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
-## Troubleshooting
-
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-{{< snippet "social.md" >}}
-
 ## Next Steps
 
 {{< cards >}}
@@ -405,3 +412,7 @@ You can find additional assistance in the [Troubleshooting section](/appendix/tr
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}
+
+<br>
+
+{{< snippet "social.md" >}}

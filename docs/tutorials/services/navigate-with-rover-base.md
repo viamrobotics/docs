@@ -46,19 +46,22 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
 ## Requirements
 
-1. **A wheeled base with encoded motors**
+1. **A base**
 
    We used [a LEO rover](https://www.leorover.tech/shop?gclid=CjwKCAjw38SoBhB6EiwA8EQVLiDwUFEYgLxaRd1-TiTyLfifIAHs9iD6YnvdW6M-3rXruHOrzfTL2RoCD1AQAvD_BwE), configured as a [`wheeled` base](/components/base/wheeled/), but you can use whatever model of rover base you have on hand:
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/leo-in-office.png" resize="500x" declaredimensions=true alt="Leo rover that is navigating using the navigation service in a robotics lab.">}}
 
-2. **A movement sensor with GPS position and angular and linear velocity readings**
+2. **A movement sensor with GPS position, compass heading, and angular and linear velocity readings**
 
    We used three movement sensors to satisfy these requirements:
 
-   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position measurements.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](/components/movement-sensor/gps/gps-nmea-rtk-serial/) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/components/encoder/) wired to our base's [motors](/components/motor/).
    3. A [`merged`](/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
+
+   You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
+   See [the navigation service](/services/navigation/#requirements) for more info on movement sensor requirements.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -71,12 +74,20 @@ Before you start, make sure to create a robot in [the Viam app](https://app.viam
 ## Configure the components you need
 
 First, configure the components of your robot.
-If you are using different _models_ of hardware, adjust your configuration accordingly.
+
+{{< alert title="Info" color="info" >}}
+If you are using different hardware, configure them according to the instructions for each [component](/components/).
+{{< /alert >}}
+
+{{% expand "Click to see how we configured our LEO rover" %}}
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
 
 ### Configure a board with `"digital_interrupts"`
 
 First, configure the [board](/components/board/) local to your rover.
-Follow [these instructions](/components/board/#configuration) to configure your board model.
+Follow [these instructions](/components/board/#supported-models) to configure your board model.
 We used a [`jetson` board](/components/board/jetson/), but you can use any model of board you have on hand, as the [resource's API](/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
@@ -126,7 +137,7 @@ Start by configuring the [encoders](/components/encoder/) and [motors](/componen
    Assign the pins as the [digital interrupts](/components/board/#digital_interrupts) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/components/encoder/incremental/) for attribute information.
 
-2. Next, follow [these instructions](/components/motor/#configuration) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
+2. Next, follow [these instructions](/components/motor/#supported-models) to configure the left and right [motors](/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/components/motor/gpio/), as shown below:
 
    ![Configuration of a right gpio motor in the Viam app config builder.](/tutorials/navigate-with-rover-base/right-motor-config-builder.png)
@@ -152,41 +163,12 @@ If you choose to wire your components differently, adjust your pin assignment co
 
 {{< /alert >}}
 
-### Configure movement sensors
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
 
-1.  Configure a GPS movement sensor so the robot knows where it is while navigating.
-    We configured ours as a `gps-nmea-rtk-serial` movement sensor:
-
-    ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
-
-    We named ours `gps`.
-    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
-
-    ![An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png)
-
-    We named ours `enc-linear`.
-    Refer to [the `wheeled-odometry` movement sensor documentation](/components/movement-sensor/wheeled-odometry/) for attribute information.
-
-2.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
-
-    ![An example configuration for a merged movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png)
-
-    We named ours `merged`.
-    Refer to [the `merged` movement sensor documentation](/components/movement-sensor/merged/) for attribute information.
-
-    - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
-    - [Configure the frame system](/services/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
-      Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1`.
-      Select the `base` as the parent frame.
-
-### Full JSON Configuration
-
-At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab, the full `"components"` array should look similar to the following:
-
-{{%expand "Click to view full example JSON" %}}
+In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON objects to the `"components"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
-"components": [
     {
       "depends_on": [],
       "model": "jetson",
@@ -250,21 +232,6 @@ At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab
       "type": "base"
     },
     {
-      "name": "gps",
-      "type": "movement_sensor",
-      "attributes": {
-        "ntrip_password": "yourpassword",
-        "ntrip_url": "http://your.url:8082",
-        "ntrip_username": "yourusername",
-        "serial_baud_rate": 115200,
-        "serial_path": "/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_GNSS_receiver-if00",
-        "ntrip_connect_attempts": 10,
-        "ntrip_mountpoint": "NJI2"
-      },
-      "depends_on": [],
-      "model": "gps-nmea-rtk-serial"
-    },
-    {
       "model": "gpio",
       "name": "left-motor",
       "type": "motor",
@@ -297,6 +264,93 @@ At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab
         "board": "local"
       },
       "depends_on": []
+    },
+    {
+      "attributes": {
+        "board": "local",
+        "pins": {
+          "b": "lb",
+          "a": "la"
+        }
+      },
+      "depends_on": [],
+      "name": "l-encoder",
+      "type": "encoder",
+      "model": "incremental"
+    },
+    {
+      "model": "incremental",
+      "type": "encoder",
+      "namespace": "rdk",
+      "attributes": {
+        "board": "local",
+        "pins": {
+          "b": "rb",
+          "a": "ra"
+        }
+      },
+      "depends_on": [],
+      "name": "r-encoder"
+    }
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /expand %}}
+
+### Configure movement sensors
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
+
+1.  Configure a GPS movement sensor so the robot knows where it is while navigating.
+    We configured ours as a `gps-nmea-rtk-serial` movement sensor:
+
+    ![An example configuration for a GPS movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/gps-movement-sensor-config-builder.png)
+
+    We named ours `gps`.
+    Refer to [the `gps-nmea-rtk-serial` movement sensor documentation](/components/movement-sensor/gps/gps-nmea-rtk-serial/) for attribute information.
+
+2.  Configure a wheeled odometry movement sensor to provide angular and linear velocity measurements from the encoded motors on our base.
+
+    ![An example configuration for a wheeled-odometry movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/wheeled-odometry-movement-sensor-config-builder.png)
+
+    We named ours `enc-linear`.
+    Refer to [the `wheeled-odometry` movement sensor documentation](/components/movement-sensor/wheeled-odometry/) for attribute information.
+
+3.  Now that you've got movement sensors which can give you GPS position and linear and angular velocity readings, configure a `merged` movement sensor to aggregate the readings from our other movement sensors into a singular sensor:
+
+    ![An example configuration for a merged movement sensor in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/merged-movement-sensor-config-builder.png)
+
+    We named ours `merged`.
+    Refer to [the `merged` movement sensor documentation](/components/movement-sensor/merged/) for attribute information.
+
+    - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
+    - [Configure the frame system](/services/frame-system/#configuration) for this movement sensor so that the navigation service knows where it is in relation to the base.
+      Click on **Add frame** on the **Config** tab, and, if your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s **Z** to `1`.
+      Select the `base` as the parent frame.
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON objects to the `"components"` array:
+
+```json {class="line-numbers linkable-line-numbers"}
+    {
+      "name": "gps",
+      "type": "movement_sensor",
+      "attributes": {
+        "ntrip_password": "yourpassword",
+        "ntrip_url": "http://your.url:8082",
+        "ntrip_username": "yourusername",
+        "serial_baud_rate": 115200,
+        "serial_path": "/dev/serial/by-id/usb-u-blox_AG_-_www.u-blox.com_u-blox_GNSS_receiver-if00",
+        "ntrip_connect_attempts": 10,
+        "ntrip_mountpoint": "NJI2"
+      },
+      "depends_on": [],
+      "model": "gps-nmea-rtk-serial"
     },
     {
       "name": "merged",
@@ -336,33 +390,6 @@ At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab
       "model": "merged"
     },
     {
-      "attributes": {
-        "board": "local",
-        "pins": {
-          "b": "lb",
-          "a": "la"
-        }
-      },
-      "depends_on": [],
-      "name": "l-encoder",
-      "type": "encoder",
-      "model": "incremental"
-    },
-    {
-      "model": "incremental",
-      "type": "encoder",
-      "namespace": "rdk",
-      "attributes": {
-        "board": "local",
-        "pins": {
-          "b": "rb",
-          "a": "ra"
-        }
-      },
-      "depends_on": [],
-      "name": "r-encoder"
-    },
-    {
       "model": "wheeled-odometry",
       "type": "movement_sensor",
       "namespace": "rdk",
@@ -378,12 +405,15 @@ At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab
       "depends_on": [],
       "name": "enc-linear"
     }
-]
 ```
 
-{{% /expand%}}
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Configure a Navigation service
+
+{{< tabs >}}
+{{% tab name="Config Builder" %}}
 
 Add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
 To add the navigation service to your robot, do the following:
@@ -421,11 +451,10 @@ Your navigation service should now appear in your robot's **Config** tab as a ca
 
 For more detailed information see [the navigation service](/services/navigation/#configuration).
 
-### Full JSON Configuration
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
 
-At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab, the full `"services"` array should look similar to the following:
-
-{{%expand "Click to view full example JSON" %}}
+In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON object to the `"services"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -448,7 +477,10 @@ At this point, if you switch to **Raw JSON** mode in your robot's **Config** tab
 ]
 ```
 
-{{% /expand%}}
+Click **Save Config** at the bottom of the window.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Start navigating with the Navigation service
 
@@ -557,7 +589,7 @@ Now, you can make navigation even better with automated obstacle detection.
 
 First, configure a depth [camera](/components/camera/) that your robot can sense how far away it is from obstacles.
 
-We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com/depth-camera-d435/), which is available as a [modular resource](/extend/modular-resources/) [in the Viam registry](https://app.viam.com/module/viam/realsense):
+We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com/depth-camera-d435/), which is available as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} [in the Viam registry](https://app.viam.com/module/viam/realsense):
 
 ![An example configuration for an Intel RealSense camera in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/realsense-camera-config-builder.png)
 

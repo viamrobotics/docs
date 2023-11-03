@@ -42,3 +42,5 @@ Enter a name for your gripper and click **Create**.
 
 No attributes are available for fake grippers.
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gripper/fake/gripper.go) for API call return specifications.
+
+{{< readfile "/static/include/components/test-control/gripper-control.md" >}}

@@ -32,7 +32,7 @@ Instead of controlling individual motors, the base component allows you to [issu
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 But what if you want to control a rover or other mobile robot that does not expose direct motor control?
-This tutorial shows you how to create a [modular resource](/extend/modular-resources/) (custom component).
+This tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} (custom component).
 Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
@@ -49,7 +49,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 {{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
-While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/extend/modular-resources/)-based projects.
+While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/modular-resources/)-based projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
@@ -114,14 +114,14 @@ If you want to directly configure this modular resource code with your robot, sk
 ### Create a custom model using the Viam RDK base API
 
 The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
-To use it for the Intermode rover, you must create a new [model](/extend/modular-resources/key-concepts/#models) with its own implementation of each method.
+To use it for the Intermode rover, you must create a new [model](/modular-resources/key-concepts/#models) with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/components/base/), the [API](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
-Therefore, use the namespace "viamlabs", an (arbitrary) model family called "tutorial" and lastly, a model name of "intermode".
+Therefore, use the namespace "viamlabs", an (arbitrary) repo-name called "tutorial" and lastly, a model name of "intermode".
 The complete triplet is:
 **viamlabs:tutorial:intermode**
 
@@ -129,14 +129,14 @@ The [module.go code](https://github.com/viam-labs/tutorial-intermode) creates th
 The _Subtype_ of a resource contains its API triplet, so using `base.Subtype` (see line 30 below) registers our new model with the _API_ from the RDK's built-in base component (rdk:component:base).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// namespace, model family, model
+// namespace, repo-name, model
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func main() {
-    goutils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("intermodeBaseModule"))
+    goutils.ContextualMain(mainWithArgs, logger.NewDevelopmentLogger("intermodeBaseModule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
     registerBase()
     modalModule, err := module.NewModuleFromArgs(ctx, logger)
 
@@ -164,7 +164,7 @@ func registerBase() {
             ctx context.Context,
             deps registry.Dependencies,
             config config.Component,
-            logger golog.Logger,
+            logger logger.Logger,
         ) (interface{}, error) {
             return newBase(config.Name, logger) // note: newBase() is not shown in this tutorial
         }})
@@ -207,7 +207,7 @@ func (base *interModeBase) setNextCommand(ctx context.Context, cmd modalCommand)
 }
 
 // toFrame convert the drive command to a CANBUS data frame.
-func (cmd *driveCommand) toFrame(logger golog.Logger) canbus.Frame {
+func (cmd *driveCommand) toFrame(logger logger.Logger) canbus.Frame {
     frame := canbus.Frame{
         ID:   driveId,
         Data: make([]byte, 0, 8),
@@ -241,7 +241,7 @@ Now the intermode base can receive and execute _SetPower_ commands using the sam
 
 ### Leaving some methods unimplemented
 
-In some cases, you may not want to implement specific methods provided by the resource type's [API](/extend/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
@@ -305,7 +305,7 @@ Change this to the correct location in `executable_path` when adding the module 
 }
 ```
 
-More details about modules and how they work can be found in the [modular resources documentation](/extend/modular-resources/).
+More details about modules and how they work can be found in the [modular resources documentation](/modular-resources/).
 
 ### Control the rover
 

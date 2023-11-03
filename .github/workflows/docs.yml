@@ -100,3 +100,21 @@ jobs:
 
       - name: Index
         run: docker run --env-file=typesense.env -e "CONFIG=$(cat docsearch.json)" typesense/docsearch-scraper
+
+  upsert-modular-resources:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'viamrobotics'
+    steps:
+      - name: Checkout Push/Workflow Dispatch
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r .github/workflows/requirements.txt
+      - name: "Update modular resources"
+        run: python3 .github/workflows/get_modular_resources.py
+        env:
+          TYPESENSE_API_KEY_MR: ${{ secrets.TYPESENSE_API_KEY_MR }}
+          VIAM_LOCATION_SECRET: ${{ secrets.VIAM_LOCATION_SECRET }}

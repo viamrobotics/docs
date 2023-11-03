@@ -50,10 +50,15 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
 2.  Select `CHOOSE OS`.
     Click on `Raspberry Pi OS (other)`.
+
     {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
+
     Select `Raspberry Pi OS Lite (64-bit)` from the menu.
+
     {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected." src="/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
+
     You should be brought back to the initial launch screen.
+
 3.  To make your Raspberry Pi easier to access in the next step, configure your Raspberry Pi's hostname, ssh credentials, and wifi.
     Click the gear-shaped settings icon in the lower right to bring up the Advanced options menu.
 
@@ -171,31 +176,37 @@ sudo apt upgrade
 
 ## Enable Communication Protocols
 
-If you are using hardware that requires I2C, SPI, serial, or one-wire protocols to communicate with your Pi, you will need to enable them using `raspi-config`.
+Certain hardware, such as analog-to-digital converters (ADCs), accelerometers, and sensors, communicates with your Pi using specialized communications protocols, including I2C, SPI, serial, or one-wire protocols.
+If you are using hardware that requires these protocols, you must enable support for them on your Pi using `raspi-config`:
 
-Launch the config tool by running the following command:
+1. Launch the configuration tool by running the following command:
 
-```sh {class="command-line" data-prompt="$"}
-sudo raspi-config
-```
+   ```sh {class="command-line" data-prompt="$"}
+   sudo raspi-config
+   ```
 
-Use your keyboard to select "Interface Options" and enable the relevant protocols.
+1. Use your keyboard to select "Interface Options", and press return.
 
-{{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
 
-{{< alert title="Important" color="note" >}}
-When using a CSI camera, you need to enable legacy camera support.
-{{< /alert >}}
+1. Enable the relevant protocols to support your specific hardware. For example:
 
-For these changes to take effect, you need to restart your Raspberry Pi if it hasn't already prompted you to do so.
+   - If you are using an analog-to-digital converter (ADC), motor, or other device that requires the SPI protocol, enable **SPI**.
+   - If you are using an accelerometer, sensor, or other device that requires the I<sup>2</sup>C protocol, enable **I2C**.
+   - If you are using a CSI v1.3 or v2.0 camera, enable **Legacy Camera** support.
+   - If you are using a sensor, motor, or other device that communicates over the serial port, enable **Serial Port**.
 
-```sh {class="command-line" data-prompt="$"}
-sudo reboot
-```
+   Check the documentation for your specific component to verify the communication protocols it requires.
 
-## Next Steps
+1. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
 
-Now that your Pi has a Viam-compatible operating system installed, you're ready to [install `viam-server`](/installation/#install-viam-server).
+   ```sh {class="command-line" data-prompt="$"}
+   sudo reboot
+   ```
+
+## Install `viam-server`
+
+{{< readfile "/static/include/install/install-linux.md" >}}
 
 ## Troubleshooting
 
@@ -257,3 +268,11 @@ priority=20
 ### Additional troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}
