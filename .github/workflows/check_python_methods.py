@@ -7,7 +7,7 @@ import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--pr', type=str, required=False)
+parser.add_argument('--local', action='store_true', required=False)
 
 args = parser.parse_args()
 
@@ -191,11 +191,13 @@ def parse(type, names):
 
 
         # Parse the Docs site's service page
-        if args.pr:
+        if args.local:
             if type == "app" or type == "robot":
-                soup2 = make_soup(f"https://docs-test.viam.dev/{pr_num}/public/program/apis/{service}/")
+                with open(f"dist/program/apis/{service}/index.html") as fp:
+                    soup2 = BeautifulSoup(fp, 'html.parser')
             else:
-                soup2 = make_soup(f"https://docs-test.viam.dev/{pr_num}/public/{type}/{service}/")
+                with open(f"dist/{type}/{service}/index.html") as fp:
+                    soup2 = BeautifulSoup(fp, 'html.parser')
         else:
             if type == "app" or type == "robot":
                 soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
