@@ -1,5 +1,9 @@
 name: Lint Markdown files
 
+concurrency:
+  group: pullrequest-untrusted-markdownlint-${{ github.event.number }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   pull_request:
