@@ -28,6 +28,14 @@ Currently, the vision service supports the following kinds of operations:
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}-->~
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard1 link="/components/camera/" >}}
+{{< /cards >}}
+
+{{% snippet "required1-legend.md" %}}
+
 ## API
 
 Different vision service models support different methods:

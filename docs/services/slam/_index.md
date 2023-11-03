@@ -24,11 +24,13 @@ You can conduct SLAM with data collected live by a [RPlidar](/modular-resources/
 
 ![SLAM map built with Viam of a triangle shaped building.](/services/slam/slam-map-example.png)
 
-## Required Components
+## Used With
 
 {{< cards >}}
-{{< relatedcard link="/components/camera/" >}}
+{{< relatedcard1 link="/components/camera/" alt_title="RPLiDAR" required="yes" alt_link="/modular-resources/examples/rplidar/">}}
 {{< /cards >}}
+
+{{% snippet "required1-legend.md" %}}
 
 ## Configuration
 

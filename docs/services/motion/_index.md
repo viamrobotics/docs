@@ -21,15 +21,16 @@ The motion service can:
 - use motion [planning algorithms](algorithms/) locally on your robot to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
-## Required Components
+## Used With
 
 {{< cards >}}
-{{< relatedcard link="/components/board/" >}}
-{{< relatedcard link="/components/movement-sensor/" >}}
-{{< relatedcard link="/components/base/" >}}
-{{< relatedcard link="/components/arm/" >}}
-{{< relatedcard link="/components/gripper/" >}}
+{{< relatedcard1 link="/components/movement-sensor/" required="yes">}}
+{{< relatedcard1 link="/components/base/" >}}
+{{< relatedcard1 link="/components/arm/" >}}
+{{< relatedcard1 link="/components/gripper/" >}}
 {{< /cards >}}
+
+{{% snippet "required1-legend.md" %}}
 
 ## Configuration
 
