@@ -71,7 +71,7 @@ To create a new modular resource:
 
 ### Unique cases
 
-If your hardware won't work with any of the standard component APIs, you can use the [generic API](/components/generic/).
+If you are using unique hardware that does not already have an [appropriate API](/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your smart machine.
 
 Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/modular-resources/advanced/).

@@ -12,12 +12,12 @@ no_list: true
 # SMEs:
 ---
 
-The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
+The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/program/apis/#component-apis) defined for them.
 
-For example, if you have an LED display, it does not make sense to implement it as an arm, camera, or any other existing component subtype because an LED display does not have joints or capture images.
+For example, when using an [arm component](/components/arm), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
+But if you want to use an LED display, you need very different functionality that isn't currently exposed in any API.
 
-There are no built-in generic component models (other than `fake`).
-Use generic for a [modular resource](/modular-resources/) model that represents a unique type of hardware.
+Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your smart machine.
 
 {{% alert title="Important" color="note" %}}
 
