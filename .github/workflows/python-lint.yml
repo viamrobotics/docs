@@ -1,5 +1,9 @@
 name: Lint Python Code Snippets
 
+concurrency:
+  group: pullrequest-untrusted-pythonlint-${{ github.event.number }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   pull_request:
