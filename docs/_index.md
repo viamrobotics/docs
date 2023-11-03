@@ -171,7 +171,7 @@ sitemap:
       <div class="col hover-card landing pink">
         <div>
           <div>Community</div>
-          <p>Join the <a href="https://discord.gg/viam">Discord Server</a> to discuss everything about smart machines or ask questions! If you notice anything wrong about the docs, you can <a href="https://github.com/viamrobotics/docs/issues">file an issue</a> or <a target="_blank" title="Edit source file on GitHub" aria-label="Edit source file on GitHub" href="https://github.com/viamrobotics/docs/edit/main/docs/_index.md">edit this file</a>.</p>
+          <p style="text-align: left;">Have questions, or want to meet other people working on smart machines? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
         </div>
         {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
       </div>
