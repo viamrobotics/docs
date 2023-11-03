@@ -31,5 +31,5 @@ If your resource does not fit into any of the existing {{< glossary_tooltip term
 
 ## Custom components as remotes
 
-Running [modular resources](/modular-resources/) on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
+Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
 However, if you are unable to use [modular resources](/modular-resources/) because you have to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/modular-resources/advanced/custom-components-remotes/) of your robot.

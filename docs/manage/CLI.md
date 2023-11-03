@@ -9,7 +9,7 @@ aliases:
   - "/program/cli"
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots and modular resources across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your robots and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
 - Retrieve [organization](/manage/fleet/organizations/) and location information

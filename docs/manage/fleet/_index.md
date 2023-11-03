@@ -14,7 +14,7 @@ aliases:
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of smart machines alone or in collaboration with others.
-You can manage your fleet from the Viam app or using the [cloud API](/program/apis/cloud/).
+You can manage your fleet of smart machines from the Viam app or using the [cloud API](/program/apis/cloud/).
 
 ## Work with groups of smart machines
 
@@ -90,7 +90,7 @@ For some configuration aspects you may require physical access to the robot so y
 
 _Coming soon._
 
-You and your collaborators can deploy control logic, [modular resources](/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy control logic, {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, sidecar [processes](../configuration/#processes), or [machine learning models](../../services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ### Remote control
 

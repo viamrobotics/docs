@@ -3,7 +3,13 @@ from urllib.request import urlopen
 import sys
 import markdownify
 import urllib.parse
+import argparse
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--local', action='store_true', required=False)
+
+args = parser.parse_args()
 
 services = ["motion", "navigation", "sensors", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
@@ -185,10 +191,18 @@ def parse(type, names):
 
 
         # Parse the Docs site's service page
-        if type == "app" or type == "robot":
-            soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
+        if args.local:
+            if type == "app" or type == "robot":
+                with open(f"dist/program/apis/{service}/index.html") as fp:
+                    soup2 = BeautifulSoup(fp, 'html.parser')
+            else:
+                with open(f"dist/{type}/{service}/index.html") as fp:
+                    soup2 = BeautifulSoup(fp, 'html.parser')
         else:
-            soup2 = make_soup(f"https://docs.viam.com/{type}/{service}/")
+            if type == "app" or type == "robot":
+                soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
+            else:
+                soup2 = make_soup(f"https://docs.viam.com/{type}/{service}/")
 
         # Find all links on Docs site soup
         all_links = soup2.find_all('a')
@@ -219,7 +233,8 @@ def parse(type, names):
                         break
 
             if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
-            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor":
+            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor" \
+            and id != "viam.components.input.client.ControllerClient.reset_channel":
                 sdk_methods_missing.append(id)
 
 

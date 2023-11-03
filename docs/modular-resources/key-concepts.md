@@ -23,7 +23,7 @@ Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support 
 - Various types of hardware [components](/components/).
 - High-level functionality exposed as [services](/services/).
 
-However, if you want to work with a new hardware component that is not already supported by Viam, or want to introduce a new software service or service model to support additional functionality on your smart machine, you can extend Viam by adding a _modular resource_ to your smart machine.
+However, if you want to work with a new hardware component that is not already supported by Viam, or want to introduce a new software service or service model to support additional functionality on your smart machine, you can extend Viam by adding a _{{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}_ to your smart machine.
 
 Modular resources are defined in _modules_, which are easy to create and add to your robot.
 A module can provide one or more modular resource models, and can be added to any smart machine running on Viam.

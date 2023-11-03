@@ -349,10 +349,10 @@ For example, the [sensor component](/components/sensor/) has an `ultrasonic` mod
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3). Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
 
-A _module_ provides one or more modular resources, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
+A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
 A module can be added to your robot from the Viam registry.
 
-The [Viam registry](/modular-resources/) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
+The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your robot’s Configuration tab in the Viam app, using the + Create component button.
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:

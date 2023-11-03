@@ -589,7 +589,7 @@ Now, you can make navigation even better with automated obstacle detection.
 
 First, configure a depth [camera](/components/camera/) that your robot can sense how far away it is from obstacles.
 
-We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com/depth-camera-d435/), which is available as a [modular resource](/modular-resources/) [in the Viam registry](https://app.viam.com/module/viam/realsense):
+We configured ours as an [Intel RealSense Camera](https://www.intelrealsense.com/depth-camera-d435/), which is available as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} [in the Viam registry](https://app.viam.com/module/viam/realsense):
 
 ![An example configuration for an Intel RealSense camera in the Viam app Config Builder.](/tutorials/navigate-with-rover-base/realsense-camera-config-builder.png)
 

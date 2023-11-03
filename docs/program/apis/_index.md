@@ -110,6 +110,12 @@ Some methods are only supported by certain models:
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
+### Power Sensor
+
+The [power sensor component](/components/power-sensor/) supports the following methods:
+
+{{< readfile "/static/include/components/apis/power-sensor.md" >}}
+
 ### Sensor
 
 The [sensor component](/components/sensor/) supports the following methods:

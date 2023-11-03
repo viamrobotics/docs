@@ -23,7 +23,7 @@ cost: 190
 
 The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
-Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can [create a custom component as a modular resource](/modular-resources/).
+Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
