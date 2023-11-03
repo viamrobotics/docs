@@ -253,9 +253,11 @@ total_sdk_methods_missing = []
 
 missing_services, services_dict = parse("services", services)
 missing_components, components_dict = parse("components", components)
+missing_app_apis, app_apis_dict = parse("app", app_apis)
 
 total_sdk_methods_missing.extend(missing_services)
 total_sdk_methods_missing.extend(missing_components)
+total_sdk_methods_missing.extend(missing_app_apis)
 
 if total_sdk_methods_missing:
     print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information: \n")
