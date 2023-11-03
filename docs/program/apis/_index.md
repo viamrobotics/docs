@@ -37,6 +37,12 @@ The data client API supports the following methods to upload and retrieve data d
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
+### ML Training API
+
+The ML training API allows you to get data from and cancel ML training jobs taking place on the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/services/apis/ml-training-client.md" >}}
+
 ## Component APIs
 
 These APIs provide interfaces for controlling and getting information from various components of a robot.
