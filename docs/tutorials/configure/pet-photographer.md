@@ -21,12 +21,12 @@ weight: 3
 You can write filter {{< glossary_tooltip term_id="module" text="modules" >}} to selectively store data from your robot based on whether specified conditions have been met.
 For example, you can use a module to capture images based on specific criteria, such as the presence of a color, image quality, or sensor thresholds.
 
-In this tutorial, you will create a [color filter](https://github.com/viam-labs/modular-filter-examples) module and use it to selectively store images from your robot when a specified color is in frame.
-This allows you to get pictures of your pet in the following way:
+In this tutorial, you will create a [color filter module](https://github.com/viam-labs/modular-filter-examples) and use it to selectively store images from your robot when a specified color is in frame.
+This allows you to take pictures of your pet in the following way:
 
-1. Set up a webcam in a location where your pet is likely to appear in frame and use the data management service to periodically take pictures and sync them to [Viam's cloud](/services/data/#cloud-sync).
+1. Configure the color filter module to process images and save them only when your pet, along with their easily identifiable colored object, is present in the frame.
 1. Attach a colored object, such as a blue collar, to your pet.
-1. Configure the color filter module, which will process images and only store them if your pet and their easily identifiable colored object is present.
+1. Set up a webcam in an area where your pet is likely to appear in the frame, and set up the color filter-configured camera to periodically capture images and sync them to [Viam's cloud](/services/data/#cloud-sync).
 
    {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="550x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
@@ -51,9 +51,9 @@ If your pet already has a distinct color that is different from their environmen
 
 Here's how to get started:
 
-1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's board, if they are not the same device.
+1. Install [Go](https://go.dev/dl/) on both your local development computer and on your robot's board if they are not the same device.
 1. [Create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) and connect to it.
-1. [Install](/installation/manage/#update-viam-server) `viam-server` or [update](/installation/#install-viam-server) `viam-server`.
+1. [Install](/installation/manage/#update-viam-server) or [update](/installation/#install-viam-server) `viam-server`.
    Your `viam-server` must be version 0.8.0 or higher to access the filtering functionality.
 
 ## Create or download the filter module
@@ -120,18 +120,18 @@ To get started writing your filter resource model:
 
 #### Implement the subtype's required methods
 
-Next, include all the methods the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} .
+Next, include all the methods that the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} .
 
 {{< tabs >}}
 {{% tab name="Python"%}}
+You can write your own code or copy the code from the viam-labs color filter's <file>[color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py)</file>.
 
-To code a new filter resource model, implement a client interface defined by the required methods outlined in <file>client.py</file>'s in the corresponding [resource's directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/src/viam/components).
+To write your own code, implement a client interface defined by the required methods outlined in <file>client.py</file>'s in the corresponding [resource's directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/src/viam/components).
 The camera's <file>client.py</file> is located at [`/components/camera/client.py`](https://github.com/viamrobotics/viam-python-sdk/blob/bf69d55b7421a5985944fa410f2b44d70759aebf/src/viam/components/camera/client.py).
 
-1. Open the <file>color_filter.py</file> you just created and implement the required methods in it.
-   Ensure you exclude the `get_images` method, which you will customize to add filtering functionality in the upcoming section.
-   Otherwise, include the methods within the class corresponding to your resource type (in this case, the `CameraClient` class).
-   - You can create your own code or copy the code from the [viam-labs pycolorfilter repository's color_filter.py](https://github.com/viam-labs/modular-filter-examples/blob/main/pycolorfilter/color_filter.py).
+1. Open the <file>color_filter.py</file> you just created and implement the required methods from <file>client.py</file>.
+   - Ensure you exclude the `get_images` method, which you will customize to add filtering functionality in the upcoming section.
+   - Include the other methods within the class corresponding to your resource type (in this case, the `CameraClient` class).
 
 For more information, refer to [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
 
@@ -160,10 +160,9 @@ The filter function in your custom filter module must contain two critical eleme
 #### Check the caller of the collector function
 
 When creating your own filter module, it's required to include a utility function to check whether the data management service is the caller of the function responsible for data capture.
-If a service other than the data management service calls the function, it will return the original, unfiltered stream contents.
-When writing a filter for other components, write your modular code to return the component's original data in case the data management service isn't the caller.
+If a service other than the data management service calls the function, it will return the original, unfiltered data.
 
-The approach for checking this varies depending on the programming language used to configure your camera:
+The approach for checking the caller of the collector function varies depending on the programming language used to configure your camera:
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -226,7 +225,7 @@ Open <file>color_filter.py</file> and import the safeguard error `NoCaptureToSto
 from viam.errors import NoCaptureToStoreError
 ```
 
-Then, within your first conditional statement, create a conditional statement that returns the error when the data management service is not the caller of the filter function:
+Then, within your first conditional statement, create a second conditional statement that returns the error when the data management service is not the caller:
 
 ```python {class="line-numbers linkable-line-numbers"}
 if from_dm_from_extra(extra):
