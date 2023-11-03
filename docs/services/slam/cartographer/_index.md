@@ -13,7 +13,7 @@ aliases:
 
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
 
-To use Cartographer with the Viam [SLAM service](/services/slam/), you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) [modular resource](/modular-resources/).
+To use Cartographer with the Viam [SLAM service](/services/slam/), you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).

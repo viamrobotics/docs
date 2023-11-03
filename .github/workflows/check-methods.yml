@@ -1,11 +1,8 @@
 name: Check Python SDK method coverage
 
-# This action works with pull requests and pushes
 on:
+  workflow_dispatch:
   pull_request:
-  push:
-    branches:
-      - main
 
 jobs:
   python-methods:
@@ -13,12 +10,22 @@ jobs:
     continue-on-error: true
 
     steps:
-      - name: Checkout Push/Workflow Dispatch
+      - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          submodules: true # Fetch Hugo themes
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
-      - run: pip install beautifulsoup4 markdownify
-      - name: "Check Python SDK method coverage"
-        run: python3 .github/workflows/check_python_methods.py
+          python-version: "3.9"
+          cache: "pip" # caching pip dependencies
+      - run: pip install beautifulsoup4 markdownify argparse
+
+      - name: Build
+        run: make coveragetest

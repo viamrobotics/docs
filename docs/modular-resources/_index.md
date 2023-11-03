@@ -27,13 +27,12 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the component or service you want to use for your project is not natively supported, you can use _modular resources_ from the [Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
+If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
 You configure and manage modular resources the same way as built-in resources and use the same [standardized APIs](/program/apis/).
 
 ## The Viam Registry
 
-The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built into `viam-server`.
-You can see details about each module in the Viam registry on its module details page.
+The [Viam registry](https://app.viam.com/registry) is the central place where you can browse modular resources that add capabilities to your smart machine beyond what is built-in to `viam-server`.
 
 You can search the available modular resources from the Viam Registry here:
 
@@ -51,7 +50,12 @@ You can search the available modular resources from the Viam Registry here:
 <div id="pagination"></div>
 </div>
 
+You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
+
 To use a modular resource from the registry, add it from your robot's **Config** tab in [the Viam app](https://app.viam.com/), using the **Create component** button.
+
+After adding a module to your robot, you can choose to configure it for automatic version updates from the Viam registry, or update your module manually.
+By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
 
 ## Create your own modular resources
 
@@ -61,6 +65,7 @@ If none of the existing modular resources in the Viam registry support your use 
 
 - **Implement a custom service**: You can implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as [SLAM](/services/slam/), [vision](/services/vision/), or [motion planning](/services/motion/).
 
+You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/program/apis/).
 To create a new modular resource:
 
 1. [Code a new resource model](/modular-resources/create/) by implementing all methods for the component's or service's [standardized API](/program/apis/).

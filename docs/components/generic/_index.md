@@ -19,6 +19,9 @@ But if you want to use an LED display, you need very different functionality tha
 
 Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your smart machine.
 
+There are no built-in generic component models (other than `fake`).
+Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
+
 {{% alert title="Important" color="note" %}}
 
 The generic component API only supports the `DoCommand` method.

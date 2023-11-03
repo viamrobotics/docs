@@ -13,60 +13,64 @@ tags:
     "services",
   ]
 description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered smart machine."
-no_list: true
 aliases:
   - "/extend/modular-resources/create/"
+no_list: true
 ---
 
-You can extend Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that provides one or more modular {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="model" text="models" >}}.
+You can extend the capabilities of Viam by creating a custom {{< glossary_tooltip term_id="module" text="module" >}} that contains one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
+You can integrate modules into any Viam-powered smart machine.
 
-A common use case for modular resources is to create a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
+One common scenario for using {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} is to create a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 
-Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry), to share it with other users in your organization or all other Viam users.
-You can also configure [automatic uploads of new versions of your module](/modular-resources/upload/#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
+Once you have created your modular resource, you can use the [Viam CLI](/manage/cli/) to [upload your modular resource](/modular-resources/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
+For added convenience, you can configure [automated uploads for new module versions](/modular-resources/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
 
 You can also add your module to your robot as a [local module](/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
 
+## Prepare to code a new resource model
+
+Before you start coding a new resource model, follow these steps to find the appropriate source code as a reference for the methods you need to implement:
+
+1. **Understand your model's client interface:**
+
+   To create a new resource model, you need to implement your model's "**client** interface" in a file called `my_modular_resource.go` or `my_modular_resource.py`.
+
+   This interface defines how your model's server will respond to API requests.
+
+   To ensure the client interface you create returns the expected results, use the appropriate client interface defined as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
+
+   - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+     See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
+
+1. **Prepare to Import Your Custom Model and Subtype's API:**
+
+   To prepare to import your custom model and chosen resource subtype's API into your main program and register them with your preferred SDK:
+
+   - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
+     - For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
+   - Reference <file>main.go</file> or <file>main.py</file> when editing this second file.
+
 ## Create a custom module
 
-To create a custom module, follow the steps below.
 A custom module can implement one or more [models](/modular-resources/key-concepts/#models).
+To create a custom module, follow the steps below:
 
-1.  [Code a new resource model](#code-a-new-resource-model) server implementing all methods the Viam RDK requires in `viam-server`'s built-in API client of its subtype (ex. `rdk:component:base`).
-    Provide this as a file inside of your module, <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file>.
+1. [Code a new resource model](#code-a-new-resource-model) server. It must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like ['rdk:component:base'](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/components/base#pkg-functions).
+   Save this in a file within your module’s <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> file.
+   Name your model according to the namespace of the built-in API you are implementing.
+   For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
+2. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
+   Import your custom model and API into the main program and register them with your chosen SDK.
+   This main program is the "entry point" to your module.
 
-    Follow these instructions to find the appropriate source code before you start the process.
-
-    **To prepare to code a new resource model**:
-
-    The methods you will code in <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> are your model's "**client** interface", or how your model's server will respond when `viam-server` asks your resource for something through the API.
-
-    View the appropriate `viam-server` client interface to see what your resource's responses from `viam-server` will look like when your model is utilizing the subtype's API.
-    This way, you can make the client interface you code return the type of response `viam-server` expects to receive.
-
-    - Find the relevant `viam-server` client interface as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/).
-      See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
-    - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
-    - Base your edits to <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> on this first file.
-    - Name your model according to the namespace of the built-in API you are implementing.
-      For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
-
-      <br> **To prepare to import your custom model and your chosen resource subtype's API into your main program and register them with your chosen SDK:**
-
-    - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
-    - For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/fdff22e90b8976061c318b2d1ca3b1034edc19c9/components/base/base.go#L37).
-    - Base your edits to <file>main.go</file> or <file>main.py</file> on this second file.<br>
-
-2.  [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
-    Import your custom model and API into the main program and register them with your chosen SDK.
-    This main program is the "entry point" to your module.
-
-3.  [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
+3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
 ### Code a new resource model
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model `acme:demo:mybase`.
-For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+
+- For more information, see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
 The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
@@ -516,7 +520,6 @@ import (
     "go.viam.com/rdk/examples/customresources/models/mybase"
 )
 
-
 func main() {
     // NewLoggerFromArgs will create a logger.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
@@ -556,8 +559,8 @@ func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err
 You must define all functions belonging to a built-in resource subtype's API if defining a new model.
 Otherwise, the class won’t instantiate.
 
-- If you are using the Python SDK, raise a `NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
-- If you are using the Go SDK, return `errUnimplemented`.
+- If you are using the Python SDK, raise an`NotImplementedError()` in the body of functions you do not want to implement or put `pass`.
+- If you are using the Go SDK, raise `errUnimplemented`.
 - Additionally, return any values designated in the function's return signature, typed correctly.
 
 {{% /alert %}}
@@ -696,4 +699,4 @@ The examples under [Code a new resource model](#code-a-new-resource-model) inclu
 
 Once you have created your custom resource, you can use the [Viam CLI](/manage/cli/) to [upload your custom resource](/modular-resources/upload/) to the Viam registry, to share it with other Viam users or just to other users in your organization.
 
-You can also add your module to your robot as a [local module](/modular-resources/configure/#local-modules), without uploading it to the Viam registry.
+Alternatively, you can add your module to your robot as a [local module](/modular-resources/configure/#local-modules) without uploading it to the Viam registry.
