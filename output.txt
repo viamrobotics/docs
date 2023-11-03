@@ -1,0 +1,1104 @@
+hugo -e development --config config.toml,config_local.toml -d dist
+Start building sites … 
+hugo v0.109.0+extended darwin/arm64 BuildDate=unknown
+
+                   |  EN   
+-------------------+-------
+  Pages            |  450  
+  Paginator pages  |    0  
+  Non-page files   |    5  
+  Static files     |  346  
+  Processed images | 2355  
+  Aliases          |    0  
+  Sitemaps         |    1  
+  Cleaned          |    0  
+
+Total in 1963 ms
+python3 .github/workflows/check_python_methods.py --local
+SDK methods missing for type services: ['viam.services.motion.client.MotionClient.close', 'viam.services.navigation.client.NavigationClient.get_paths', 'viam.services.navigation.client.NavigationClient.close', 'viam.services.sensors.client.SensorsClient.close', 'viam.services.slam.client.SLAMClient.close', 'viam.services.vision.client.VisionClient.close', 'viam.services.mlmodel.client.MLModelClient.close']
+
+
+SDK methods unimplemented for type services: []
+
+
+SDK methods found for type services: ['viam.services.motion.client.MotionClient.move', 'viam.services.motion.client.MotionClient.move_on_globe', 'viam.services.motion.client.MotionClient.move_on_map', 'viam.services.motion.client.MotionClient.get_pose', 'viam.services.motion.client.MotionClient.do_command', 'viam.services.navigation.client.NavigationClient.get_location', 'viam.services.navigation.client.NavigationClient.get_obstacles', 'viam.services.navigation.client.NavigationClient.get_waypoints', 'viam.services.navigation.client.NavigationClient.add_waypoint', 'viam.services.navigation.client.NavigationClient.remove_waypoint', 'viam.services.navigation.client.NavigationClient.get_mode', 'viam.services.navigation.client.NavigationClient.set_mode', 'viam.services.navigation.client.NavigationClient.do_command', 'viam.services.sensors.client.SensorsClient.get_sensors', 'viam.services.sensors.client.SensorsClient.get_readings', 'viam.services.sensors.client.SensorsClient.do_command', 'viam.services.slam.client.SLAMClient.get_position', 'viam.services.slam.client.SLAMClient.get_point_cloud_map', 'viam.services.slam.client.SLAMClient.get_internal_state', 'viam.services.slam.client.SLAMClient.get_latest_map_info', 'viam.services.slam.client.SLAMClient.do_command', 'viam.services.vision.client.VisionClient.get_detections_from_camera', 'viam.services.vision.client.VisionClient.get_detections', 'viam.services.vision.client.VisionClient.get_classifications_from_camera', 'viam.services.vision.client.VisionClient.get_classifications', 'viam.services.vision.client.VisionClient.get_object_point_clouds', 'viam.services.vision.client.VisionClient.do_command', 'viam.services.mlmodel.client.MLModelClient.infer', 'viam.services.mlmodel.client.MLModelClient.metadata', 'viam.services.mlmodel.client.MLModelClient.do_command']
+
+
+SDK methods missing for type components: ['viam.components.arm.client.ArmClient.get_geometries', 'viam.components.arm.client.ArmClient.close', 'viam.components.base.client.BaseClient.close', 'viam.components.board.client.AnalogReaderClient.get_geometries', 'viam.components.board.client.AnalogReaderClient.close', 'viam.components.board.client.DigitalInterruptClient.get_geometries', 'viam.components.board.client.DigitalInterruptClient.close', 'viam.components.board.client.GPIOPinClient.get_geometries', 'viam.components.board.client.GPIOPinClient.close', 'viam.components.board.client.BoardClient.get_geometries', 'viam.components.board.client.BoardClient.close', 'viam.components.camera.client.CameraClient.get_geometries', 'viam.components.camera.client.CameraClient.close', 'viam.components.encoder.client.EncoderClient.get_geometries', 'viam.components.encoder.client.EncoderClient.close', 'viam.components.gantry.client.GantryClient.get_geometries', 'viam.components.gantry.client.GantryClient.close', 'viam.components.generic.client.GenericClient.get_geometries', 'viam.components.generic.client.GenericClient.close', 'viam.components.gripper.client.GripperClient.get_geometries', 'viam.components.gripper.client.GripperClient.close', 'viam.components.input.client.ControllerClient.get_geometries', 'viam.components.input.client.ControllerClient.close', 'viam.components.movement_sensor.client.MovementSensorClient.get_geometries', 'viam.components.movement_sensor.client.MovementSensorClient.close', 'viam.components.power_sensor.client.PowerSensorClient.get_geometries', 'viam.components.power_sensor.client.PowerSensorClient.close', 'viam.components.sensor.client.SensorClient.get_geometries', 'viam.components.sensor.client.SensorClient.close']
+
+
+SDK methods unimplemented for type components: []
+
+
+SDK methods found for type components: ['viam.components.arm.client.ArmClient.get_end_position', 'viam.components.arm.client.ArmClient.move_to_position', 'viam.components.arm.client.ArmClient.get_joint_positions', 'viam.components.arm.client.ArmClient.move_to_joint_positions', 'viam.components.arm.client.ArmClient.stop', 'viam.components.arm.client.ArmClient.is_moving', 'viam.components.arm.client.ArmClient.do_command', 'viam.components.arm.client.ArmClient.get_kinematics', 'viam.components.base.client.BaseClient.move_straight', 'viam.components.base.client.BaseClient.spin', 'viam.components.base.client.BaseClient.set_power', 'viam.components.base.client.BaseClient.set_velocity', 'viam.components.base.client.BaseClient.stop', 'viam.components.base.client.BaseClient.is_moving', 'viam.components.base.client.BaseClient.get_properties', 'viam.components.base.client.BaseClient.do_command', 'viam.components.base.client.BaseClient.get_geometries', 'viam.components.board.client.AnalogReaderClient.read', 'viam.components.board.client.DigitalInterruptClient.value', 'viam.components.board.client.GPIOPinClient.get', 'viam.components.board.client.GPIOPinClient.set', 'viam.components.board.client.GPIOPinClient.get_pwm', 'viam.components.board.client.GPIOPinClient.set_pwm', 'viam.components.board.client.GPIOPinClient.get_pwm_frequency', 'viam.components.board.client.GPIOPinClient.set_pwm_frequency', 'viam.components.board.client.BoardClient.analog_reader_by_name', 'viam.components.board.client.BoardClient.digital_interrupt_by_name', 'viam.components.board.client.BoardClient.gpio_pin_by_name', 'viam.components.board.client.BoardClient.analog_reader_names', 'viam.components.board.client.BoardClient.digital_interrupt_names', 'viam.components.board.client.BoardClient.status', 'viam.components.board.client.BoardClient.model_attributes', 'viam.components.board.client.BoardClient.do_command', 'viam.components.board.client.BoardClient.set_power_mode', 'viam.components.board.client.BoardClient.write_analog', 'viam.components.camera.client.CameraClient.get_image', 'viam.components.camera.client.CameraClient.get_images', 'viam.components.camera.client.CameraClient.get_point_cloud', 'viam.components.camera.client.CameraClient.get_properties', 'viam.components.camera.client.CameraClient.do_command', 'viam.components.encoder.client.EncoderClient.reset_position', 'viam.components.encoder.client.EncoderClient.get_position', 'viam.components.encoder.client.EncoderClient.get_properties', 'viam.components.encoder.client.EncoderClient.do_command', 'viam.components.gantry.client.GantryClient.get_position', 'viam.components.gantry.client.GantryClient.move_to_position', 'viam.components.gantry.client.GantryClient.home', 'viam.components.gantry.client.GantryClient.get_lengths', 'viam.components.gantry.client.GantryClient.stop', 'viam.components.gantry.client.GantryClient.is_moving', 'viam.components.gantry.client.GantryClient.do_command', 'viam.components.generic.client.GenericClient.do_command', 'viam.components.gripper.client.GripperClient.open', 'viam.components.gripper.client.GripperClient.grab', 'viam.components.gripper.client.GripperClient.stop', 'viam.components.gripper.client.GripperClient.is_moving', 'viam.components.gripper.client.GripperClient.do_command', 'viam.components.input.client.ControllerClient.get_controls', 'viam.components.input.client.ControllerClient.get_events', 'viam.components.input.client.ControllerClient.register_control_callback', 'viam.components.input.client.ControllerClient.trigger_event', 'viam.components.input.client.ControllerClient.do_command', 'viam.components.movement_sensor.client.MovementSensorClient.get_position', 'viam.components.movement_sensor.client.MovementSensorClient.get_linear_velocity', 'viam.components.movement_sensor.client.MovementSensorClient.get_angular_velocity', 'viam.components.movement_sensor.client.MovementSensorClient.get_linear_acceleration', 'viam.components.movement_sensor.client.MovementSensorClient.get_compass_heading', 'viam.components.movement_sensor.client.MovementSensorClient.get_orientation', 'viam.components.movement_sensor.client.MovementSensorClient.get_properties', 'viam.components.movement_sensor.client.MovementSensorClient.get_accuracy', 'viam.components.movement_sensor.client.MovementSensorClient.get_readings', 'viam.components.movement_sensor.client.MovementSensorClient.do_command', 'viam.components.power_sensor.client.PowerSensorClient.get_voltage', 'viam.components.power_sensor.client.PowerSensorClient.get_current', 'viam.components.power_sensor.client.PowerSensorClient.get_power', 'viam.components.power_sensor.client.PowerSensorClient.get_readings', 'viam.components.power_sensor.client.PowerSensorClient.do_command', 'viam.components.sensor.client.SensorClient.get_readings', 'viam.components.sensor.client.SensorClient.do_command']
+
+
+SDK methods missing for type app: ['viam.app.data_client.DataClient.delete_tabular_data', 'viam.app.data_client.DataClient.delete_binary_data_by_filter', 'viam.app.data_client.DataClient.delete_binary_data_by_ids', 'viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids', 'viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter', 'viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids', 'viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter', 'viam.app.data_client.DataClient.tags_by_filter', 'viam.app.data_client.DataClient.bounding_box_labels_by_filter', 'viam.app.data_client.DataClient.get_database_connection', 'viam.app.data_client.DataClient.create_filter']
+
+
+SDK methods unimplemented for type app: ['viam.app.app_client.AppClient.get_user_id_by_email', 'viam.app.app_client.AppClient.create_organization', 'viam.app.app_client.AppClient.list_organizations_by_user', 'viam.app.app_client.AppClient.get_organization', 'viam.app.app_client.AppClient.update_organization', 'viam.app.app_client.AppClient.delete_organization', 'viam.app.app_client.AppClient.create_organization_invite', 'viam.app.app_client.AppClient.delete_organization_member', 'viam.app.app_client.AppClient.delete_organization_invite', 'viam.app.app_client.AppClient.resend_organization_invite', 'viam.app.app_client.AppClient.share_location', 'viam.app.app_client.AppClient.unshare_location', 'viam.app.app_client.AppClient.check_permissions', 'viam.app.app_client.AppClient.create_key']
+
+
+SDK methods found for type app: ['viam.app.data_client.DataClient.tabular_data_by_filter', 'viam.app.data_client.DataClient.binary_data_by_filter', 'viam.app.data_client.DataClient.binary_data_by_ids', 'viam.app.data_client.DataClient.binary_data_capture_upload', 'viam.app.data_client.DataClient.tabular_data_capture_upload', 'viam.app.data_client.DataClient.file_upload', 'viam.app.data_client.DataClient.file_upload_from_path', 'viam.app.app_client.AppClient.list_organizations', 'viam.app.app_client.AppClient.get_organization_namespace_availability', 'viam.app.app_client.AppClient.list_organization_members', 'viam.app.app_client.AppClient.update_organization_invite_authorizations', 'viam.app.app_client.AppClient.create_location', 'viam.app.app_client.AppClient.get_location', 'viam.app.app_client.AppClient.update_location', 'viam.app.app_client.AppClient.delete_location', 'viam.app.app_client.AppClient.list_locations', 'viam.app.app_client.AppClient.location_auth', 'viam.app.app_client.AppClient.create_location_secret', 'viam.app.app_client.AppClient.delete_location_secret', 'viam.app.app_client.AppClient.get_robot', 'viam.app.app_client.AppClient.get_robot_parts', 'viam.app.app_client.AppClient.get_robot_part', 'viam.app.app_client.AppClient.get_robot_part_logs', 'viam.app.app_client.AppClient.tail_robot_part_logs', 'viam.app.app_client.AppClient.get_robot_part_history', 'viam.app.app_client.AppClient.update_robot_part', 'viam.app.app_client.AppClient.new_robot_part', 'viam.app.app_client.AppClient.delete_robot_part', 'viam.app.app_client.AppClient.mark_part_as_main', 'viam.app.app_client.AppClient.mark_part_for_restart', 'viam.app.app_client.AppClient.create_robot_part_secret', 'viam.app.app_client.AppClient.delete_robot_part_secret', 'viam.app.app_client.AppClient.list_robots', 'viam.app.app_client.AppClient.new_robot', 'viam.app.app_client.AppClient.update_robot', 'viam.app.app_client.AppClient.delete_robot', 'viam.app.app_client.AppClient.list_fragments', 'viam.app.app_client.AppClient.get_fragment', 'viam.app.app_client.AppClient.create_fragment', 'viam.app.app_client.AppClient.update_fragment', 'viam.app.app_client.AppClient.delete_fragment', 'viam.app.app_client.AppClient.add_role', 'viam.app.app_client.AppClient.remove_role', 'viam.app.app_client.AppClient.list_authorizations', 'viam.app.app_client.AppClient.create_module', 'viam.app.app_client.AppClient.update_module', 'viam.app.app_client.AppClient.upload_module_file', 'viam.app.app_client.AppClient.get_module', 'viam.app.app_client.AppClient.list_modules']
+
+
+SDK methods missing for type robot: ['viam.robot.client.RobotClient.Options.with_api_key', 'viam.robot.client.RobotClient.at_address', 'viam.robot.client.RobotClient.with_channel', 'viam.robot.client.RobotClient.refresh', 'viam.robot.client.RobotClient.get_component', 'viam.robot.client.RobotClient.get_service', 'viam.robot.client.RobotClient.get_operations', 'viam.robot.client.RobotClient.cancel_operation', 'viam.robot.client.RobotClient.block_for_operation', 'viam.robot.client.RobotClient.transform_pose']
+
+
+SDK methods unimplemented for type robot: ['viam.robot.client.RobotClient.transform_point_cloud']
+
+
+SDK methods found for type robot: ['viam.robot.client.RobotClient.close', 'viam.robot.client.RobotClient.get_status', 'viam.robot.client.RobotClient.get_frame_system_config', 'viam.robot.client.RobotClient.discover_components', 'viam.robot.client.RobotClient.stop_all']
+
+
+Total SDK methods missing: ['viam.services.motion.client.MotionClient.close', 'viam.services.navigation.client.NavigationClient.get_paths', 'viam.services.navigation.client.NavigationClient.close', 'viam.services.sensors.client.SensorsClient.close', 'viam.services.slam.client.SLAMClient.close', 'viam.services.vision.client.VisionClient.close', 'viam.services.mlmodel.client.MLModelClient.close', 'viam.components.arm.client.ArmClient.get_geometries', 'viam.components.arm.client.ArmClient.close', 'viam.components.base.client.BaseClient.close', 'viam.components.board.client.AnalogReaderClient.get_geometries', 'viam.components.board.client.AnalogReaderClient.close', 'viam.components.board.client.DigitalInterruptClient.get_geometries', 'viam.components.board.client.DigitalInterruptClient.close', 'viam.components.board.client.GPIOPinClient.get_geometries', 'viam.components.board.client.GPIOPinClient.close', 'viam.components.board.client.BoardClient.get_geometries', 'viam.components.board.client.BoardClient.close', 'viam.components.camera.client.CameraClient.get_geometries', 'viam.components.camera.client.CameraClient.close', 'viam.components.encoder.client.EncoderClient.get_geometries', 'viam.components.encoder.client.EncoderClient.close', 'viam.components.gantry.client.GantryClient.get_geometries', 'viam.components.gantry.client.GantryClient.close', 'viam.components.generic.client.GenericClient.get_geometries', 'viam.components.generic.client.GenericClient.close', 'viam.components.gripper.client.GripperClient.get_geometries', 'viam.components.gripper.client.GripperClient.close', 'viam.components.input.client.ControllerClient.get_geometries', 'viam.components.input.client.ControllerClient.close', 'viam.components.movement_sensor.client.MovementSensorClient.get_geometries', 'viam.components.movement_sensor.client.MovementSensorClient.close', 'viam.components.power_sensor.client.PowerSensorClient.get_geometries', 'viam.components.power_sensor.client.PowerSensorClient.close', 'viam.components.sensor.client.SensorClient.get_geometries', 'viam.components.sensor.client.SensorClient.close', 'viam.app.data_client.DataClient.delete_tabular_data', 'viam.app.data_client.DataClient.delete_binary_data_by_filter', 'viam.app.data_client.DataClient.delete_binary_data_by_ids', 'viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids', 'viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter', 'viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids', 'viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter', 'viam.app.data_client.DataClient.tags_by_filter', 'viam.app.data_client.DataClient.bounding_box_labels_by_filter', 'viam.app.data_client.DataClient.get_database_connection', 'viam.app.data_client.DataClient.create_filter', 'viam.robot.client.RobotClient.Options.with_api_key', 'viam.robot.client.RobotClient.at_address', 'viam.robot.client.RobotClient.with_channel', 'viam.robot.client.RobotClient.refresh', 'viam.robot.client.RobotClient.get_component', 'viam.robot.client.RobotClient.get_service', 'viam.robot.client.RobotClient.get_operations', 'viam.robot.client.RobotClient.cancel_operation', 'viam.robot.client.RobotClient.block_for_operation', 'viam.robot.client.RobotClient.transform_pose'] 
+
+Missing Method Information:
+
+Method: viam.services.motion.client.MotionClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.close).
+
+---
+
+Method: viam.services.navigation.client.NavigationClient.get_paths
+
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_paths).
+
+---
+
+Method: viam.services.navigation.client.NavigationClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.close).
+
+---
+
+Method: viam.services.sensors.client.SensorsClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/sensors/client/index.html#viam.services.sensors.client.SensorsClient.close).
+
+---
+
+Method: viam.services.slam.client.SLAMClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.close).
+
+---
+
+Method: viam.services.vision.client.VisionClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.close).
+
+---
+
+Method: viam.services.mlmodel.client.MLModelClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.close).
+
+---
+
+Method: viam.components.arm.client.ArmClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_geometries).
+
+---
+
+Method: viam.components.arm.client.ArmClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.close).
+
+---
+
+Method: viam.components.base.client.BaseClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.close).
+
+---
+
+Method: viam.components.board.client.AnalogReaderClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogReaderClient.get_geometries).
+
+---
+
+Method: viam.components.board.client.AnalogReaderClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogReaderClient.close).
+
+---
+
+Method: viam.components.board.client.DigitalInterruptClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.get_geometries).
+
+---
+
+Method: viam.components.board.client.DigitalInterruptClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.close).
+
+---
+
+Method: viam.components.board.client.GPIOPinClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.get_geometries).
+
+---
+
+Method: viam.components.board.client.GPIOPinClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.close).
+
+---
+
+Method: viam.components.board.client.BoardClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_geometries).
+
+---
+
+Method: viam.components.board.client.BoardClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.close).
+
+---
+
+Method: viam.components.camera.client.CameraClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_geometries).
+
+---
+
+Method: viam.components.camera.client.CameraClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.close).
+
+---
+
+Method: viam.components.encoder.client.EncoderClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_geometries).
+
+---
+
+Method: viam.components.encoder.client.EncoderClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.close).
+
+---
+
+Method: viam.components.gantry.client.GantryClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_geometries).
+
+---
+
+Method: viam.components.gantry.client.GantryClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.close).
+
+---
+
+Method: viam.components.generic.client.GenericClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
+
+---
+
+Method: viam.components.generic.client.GenericClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.close).
+
+---
+
+Method: viam.components.gripper.client.GripperClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_geometries).
+
+---
+
+Method: viam.components.gripper.client.GripperClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.close).
+
+---
+
+Method: viam.components.input.client.ControllerClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_geometries).
+
+---
+
+Method: viam.components.input.client.ControllerClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.close).
+
+---
+
+Method: viam.components.movement_sensor.client.MovementSensorClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_geometries).
+
+---
+
+Method: viam.components.movement_sensor.client.MovementSensorClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.close).
+
+---
+
+Method: viam.components.power_sensor.client.PowerSensorClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_geometries).
+
+---
+
+Method: viam.components.power_sensor.client.PowerSensorClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.close).
+
+---
+
+Method: viam.components.sensor.client.SensorClient.get_geometries
+
+Get all geometries associated with the Component, in their current configuration, in the frame of the Component.
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (`List[[Geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry "viam.gen.common.v1.common_pb2.Geometry")]`): The geometries associated with the Component.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.get_geometries).
+
+---
+
+Method: viam.components.sensor.client.SensorClient.close
+
+Safely shut down the resource and prevent further use.
+Close must be idempotent. Later configuration may allow a resource to be “open” again.
+If a resource does not want or need a close function, it is assumed that the resource does not need to retun errors when future
+non-Close methods are called.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.close).
+
+---
+
+Method: viam.app.data_client.DataClient.delete_tabular_data
+
+Delete tabular data older than a specified number of days.
+
+**Parameters:**
+
+- - organization\_id (str): ID of organization to delete data from.
+- - delete\_older\_than\_days (int): Delete data that was captured up to this many days ago. For example if delete\_older\_than\_days
+is 10, this deletes any data that was captured up to 10 days ago. If it is 0, all existing data is deleted.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
+
+---
+
+Method: viam.app.data_client.DataClient.delete_binary_data_by_filter
+
+Filter and delete binary data.
+
+**Parameters:**
+
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to
+all data being deleted. Exercise caution when using this option.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_filter).
+
+---
+
+Method: viam.app.data_client.DataClient.delete_binary_data_by_ids
+
+Filter and delete binary data.
+
+**Parameters:**
+
+- binary\_ids (List[[viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID "viam.proto.app.data.BinaryID")]): BinaryID objects specifying the data to be deleted. Must be non-empty.
+
+**Returns:**
+
+- (`int`): The number of items deleted.
+
+**Raises:**
+
+- GRPCError – If no BinaryID objects are provided.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_ids).
+
+---
+
+Method: viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids
+
+Add tags to binary data.
+
+**Parameters:**
+
+- - tags (List[str]): List of tags to add to specified binary data. Must be non-empty.
+- - binary\_ids (List[viam.app.proto.BinaryID]): List of BinaryID objects specifying binary data to tag. Must be non-empty.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- GRPCError – If no BinaryID objects or tags are provided.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
+
+---
+
+Method: viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter
+
+Add tags to binary data.
+
+**Parameters:**
+
+- - tags (List[str]): List of tags to add to specified binary data. Must be non-empty.
+- - filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to tag. If no Filter is provided, all data will be
+tagged.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- GRPCError – If no tags are provided.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).
+
+---
+
+Method: viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids
+
+Remove tags from binary.
+
+**Parameters:**
+
+- - tags (List[str]): List of tags to remove from specified binary data. Must be non-empty.
+- - file\_ids (List[str]): List of BinaryID objects specifying binary data to untag. Must be non-empty.
+
+**Returns:**
+
+- (`int`): The number of tags removed.
+
+**Raises:**
+
+- GRPCError – If no binary_ids or tags are provided.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids).
+
+---
+
+Method: viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter
+
+Remove tags from binary data.
+
+**Parameters:**
+
+- - tags (List[str]): List of tags to remove from specified binary data.
+- - filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to untag. If no Filter is provided, all data will be
+untagged.
+
+**Returns:**
+
+- (`int`): The number of tags removed.
+
+**Raises:**
+
+- GRPCError – If no tags are provided.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter).
+
+---
+
+Method: viam.app.data_client.DataClient.tags_by_filter
+
+Get a list of tags using a filter.
+
+**Parameters:**
+
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all data tags will
+return.
+
+**Returns:**
+
+- (`List[str]`): The list of tags.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tags_by_filter).
+
+---
+
+Method: viam.app.data_client.DataClient.bounding_box_labels_by_filter
+
+Get a list of bounding box labels using a Filter.
+
+**Parameters:**
+
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all labels will
+return.
+
+**Returns:**
+
+- (`List[str]`): The list of bounding box labels.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
+
+---
+
+Method: viam.app.data_client.DataClient.get_database_connection
+
+Get a connection to access a MongoDB Atlas Data federation instance.
+
+**Parameters:**
+
+- organization\_id (str): Organization to retrieve the connection for.
+
+**Returns:**
+
+- (`str`): The hostname of the federated database.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
+
+---
+
+Method: viam.app.data_client.DataClient.create_filter
+
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_filter).
+
+---
+
+Method: viam.robot.client.RobotClient.Options.with_api_key
+
+Create RobotClient.Options with an API key for credentials and default values for other arguments.
+
+**Parameters:**
+
+- - api\_key (str): your API key
+- - api\_key\_id (str): your API key ID. Must be a valid UUID
+
+**Returns:**
+
+- (`Self`): the RobotClient.Options
+
+**Raises:**
+
+- ValueError – Raised if the api_key_id is not a valid UUID
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.with_api_key).
+
+---
+
+Method: viam.robot.client.RobotClient.at_address
+
+Create a robot client that is connected to the robot at the provided address.
+
+**Parameters:**
+
+- - address (str): Address of the robot (IP address, URL, etc.)
+- - options ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options "viam.robot.client.RobotClient.Options")): Options for connecting and refreshing
+
+**Returns:**
+
+- (`Self`): the RobotClient
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.at_address).
+
+---
+
+Method: viam.robot.client.RobotClient.with_channel
+
+Create a robot that is connected to a robot over the given channel.
+Any robots created using this method will *NOT* automatically close the channel upon exit.
+
+**Parameters:**
+
+- - channel ([ViamChannel](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel "viam.rpc.dial.ViamChannel")): The channel that is connected to a robot, obtained by `viam.rpc.dial`
+- - options ([Options](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options "viam.robot.client.RobotClient.Options")): Options for refreshing. Any connection options will be ignored.
+
+**Returns:**
+
+- (`Self`): the RobotClient
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
+
+---
+
+Method: viam.robot.client.RobotClient.refresh
+
+Manually refresh the underlying parts of this robot
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.refresh).
+
+---
+
+Method: viam.robot.client.RobotClient.get_component
+
+Get a component using its ResourceName.
+This function should not be called directly except in specific cases. The method `Component.from\_robot(...)` is the preferred
+method for obtaining components.
+Because this function returns a generic `ComponentBase` rather than the specific
+component type, it will be necessary to cast the returned component to the desired component. This can be done using a few
+different methods:
+
+**Parameters:**
+
+- name ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName "viam.proto.common.ResourceName")): The component’s ResourceName
+
+**Returns:**
+
+- (`[ComponentBase](https://python.viam.dev/autoapi/viam/components/component_base/index.html#viam.components.component_base.ComponentBase "viam.components.component_base.ComponentBase")`): The component
+
+**Raises:**
+
+- ValueError – Raised if the requested resource is not a component
+- ComponentNotFoundError – Error if component with the given type and name does not exist in the registry
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_component).
+
+---
+
+Method: viam.robot.client.RobotClient.get_service
+
+Get a service using its ResourceName
+This function should not be called directly except in specific cases. The method `Service.from\_robot(...)` is the preferred
+method for obtaining services.
+Because this function returns a generic `ServiceBase` rather than a specific service type, it will be necessary to cast the
+returned service to the desired service. This can be done using a few methods:
+
+**Parameters:**
+
+- name ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName "viam.proto.common.ResourceName")): The service’s ResourceName
+
+**Returns:**
+
+- (`[ServiceBase](https://python.viam.dev/autoapi/viam/services/service_base/index.html#viam.services.service_base.ServiceBase "viam.services.service_base.ServiceBase")`): The service
+
+**Raises:**
+
+- ValueError – Raised if the requested resource is not a component
+- ComponentNotFoundError – Error if component with the given type and name does not exist in the registry
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_service).
+
+---
+
+Method: viam.robot.client.RobotClient.get_operations
+
+Get the list of operations currently running on the robot.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (`List[[viam.proto.robot.Operation](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation "viam.proto.robot.Operation")]`): The list of operations currently running on a given robot.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_operations).
+
+---
+
+Method: viam.robot.client.RobotClient.cancel_operation
+
+Cancels the specified operation on the robot.
+
+**Parameters:**
+
+- id (str): ID of operation to kill.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.cancel_operation).
+
+---
+
+Method: viam.robot.client.RobotClient.block_for_operation
+
+Blocks on the specified operation on the robot. This function will only return when the specific operation
+has finished or has been cancelled.
+
+**Parameters:**
+
+- id (str): ID of operation to block on.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.block_for_operation).
+
+---
+
+Method: viam.robot.client.RobotClient.transform_pose
+
+Transform a given source Pose from the reference frame to a new specified destination which is a reference frame.
+
+**Parameters:**
+
+- - query ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame "viam.proto.common.PoseInFrame")): The pose that should be transformed.
+- - destination (str): The name of the reference frame to transform the given pose to.
+
+**Returns:**
+
+- None.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
+
+---
+
