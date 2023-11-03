@@ -12,7 +12,11 @@ no_list: true
 # SMEs:
 ---
 
-The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
+The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/program/apis/#component-apis) defined for them.
+
+For example, when using an [arm component](/components/arm/), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
+But if you want to use an LED display, you need very different functionality that isn't currently exposed in any API.
+Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your smart machine.
 
 There are no built-in generic component models (other than `fake`).
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
@@ -23,13 +27,13 @@ The generic component API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
 Whenever possible, it is best to use an [existing component API](/components/) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing subtype.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/components/), instead of using generic.
 
 {{% /alert %}}
 
 ## Supported Models
 
-To use your generic component with Viam, check whether one of the following [modular resources](#modular-resources) supports your component.
+Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your component.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
