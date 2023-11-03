@@ -81,8 +81,7 @@ Get training job data.
 
 ```python {class="line-numbers linkable-line-numbers"}
 job_metadata = await ml_training_client.get_training_job(
-    id="INSERT YOUR JOB ID"
-    )
+    id="INSERT YOUR JOB ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.get_training_job).
@@ -108,8 +107,7 @@ Get training job data for all jobs within an organization.
 
 ```python {class="line-numbers linkable-line-numbers"}
 jobs_metadata = await ml_training_client.list_training_jobs(
-    org_id="INSERT YOUR ORG ID"
-    )
+    org_id="INSERT YOUR ORG ID")
 
 first_job_id = jobs_metadata[1].id
 ```
@@ -140,8 +138,7 @@ Cancel the specified training job.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await ml_training_client.cancel_training_job(
-    id="INSERT YOUR JOB ID"
-    )
+    id="INSERT YOUR JOB ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/ml_training_client/index.html#viam.app.ml_training_client.MLTrainingClient.cancel_training_job).
