@@ -34,45 +34,92 @@ Before you start coding a new resource model, follow these steps to find the app
 
 1. **Understand your model's client interface:**
 
-   To create a new resource model, you need to implement your model's "**client** interface" in a file called `my_modular_resource.go` or `my_modular_resource.py`.
+   {{< tabs >}}
+   {{% tab name="Python" %}}
 
-   This interface defines how your model's server will respond to API requests.
+To create a new resource model, you need to implement your model's "**client** interface" in a file called `my_modular_resource.py`.
 
-   To ensure the client interface you create returns the expected results, use the appropriate client interface defined as `<resource-name>/client.go` or `<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
+This interface defines how your model's server will respond to API requests.
 
-   - For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
-     See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
+To ensure the client interface you create returns the expected results, use the appropriate client interface defined in `components/<resource-name>/client.py` or `services/<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/) as a reference.
+
+- For example, the `base` component client is defined in [<file>viam-python-sdk/src/viam/components/base/client.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/client.py).
+  See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
+
+  {{% /tab %}}
+  {{% tab name="Go" %}}
+
+To create a new resource model, you need to implement your model's "**client** interface" in a file called `my_modular_resource.go`.
+
+This interface defines how your model's server will respond to API requests.
+
+To ensure the client interface you create returns the expected results, use the appropriate client interface defined in `components/<resource-name>/client.go` or `services/<resource-name>/client.go` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
+
+- For example, the `base` component client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+  See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
+
+  {{% /tab %}}
+  {{< /tabs >}}
 
 1. **Prepare to Import Your Custom Model and Subtype's API:**
 
    To prepare to import your custom model and chosen resource subtype's API into your main program and register them with your preferred SDK:
 
-   - Find the subtype API as defined in the relevant `<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
-     - For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
-   - Reference <file>main.go</file> or <file>main.py</file> when editing this second file.
+   {{< tabs >}}
+   {{% tab name="Python" %}}
+
+Find the subtype API as defined in the relevant `components/<resource-name>/<resource-name>.py` or `services/<resource-name>/<resource-name>.py` file in the SDK.
+
+- For example, the `base` component subtype is defined in [<file>viam-python-sdk/src/viam/components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Find the subtype API as defined in the relevant `components/<resource-name>/<resource-name>.go` or `services/<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
+
+- For example, the `base` component subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Create a custom module
 
 A custom module can implement one or more [models](/modular-resources/key-concepts/#models).
 To create a custom module, follow the steps below:
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 1. [Code a new resource model](#code-a-new-resource-model) server. It must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like ['rdk:component:base'](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/components/base#pkg-functions).
-   Save this in a file within your module’s <file>my_modular_resource.go</file> or <file>my_modular_resource.py</file> file.
+   Save this in a file within your module’s <file>my_modular_resource.py</file> file.
    Name your model according to the namespace of the built-in API you are implementing.
    For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
-2. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file> or <file>main.py</file>, that starts the module after adding your desired resources from the registry.
+2. [Code a main program](#code-a-main-entry-point-program), <file>main.py</file>, that starts the module after adding your desired resources from the registry.
    Import your custom model and API into the main program and register them with your chosen SDK.
    This main program is the "entry point" to your module.
 
 3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
 
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+1. [Code a new resource model](#code-a-new-resource-model) server. It must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like ['rdk:component:base'](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/components/base#pkg-functions).
+   Save this in a file within your module’s <file>my_modular_resource.go</file> file.
+   Name your model according to the namespace of the built-in API you are implementing.
+   For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
+2. [Code a main program](#code-a-main-entry-point-program), <file>main.go</file>, that starts the module after adding your desired resources from the registry.
+   Import your custom model and API into the main program and register them with your chosen SDK.
+   This main program is the "entry point" to your module.
+
+3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from Viam, open the socket, and start the module at the entry point.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Code a new resource model
 
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/modular-resources/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
-
-- For more information, see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
-
-The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
+For more information, see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -255,6 +302,8 @@ class MyBase(Base, Reconfigurable):
 
 {{% /tab %}}
 {{% tab name="Go"%}}
+
+The Go code for the custom model (<file>mybase.go</file>) and module entry point file (<file>main.go</file>) is adapted from the full demo modules available on the [Viam GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources).
 
 <file>mybase.go</file> implements "mybase", a custom model of the base component, and registers the new model and API helper functions with the Go SDK.
 
