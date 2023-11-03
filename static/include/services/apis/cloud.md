@@ -1,25 +1,15 @@
 <!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
-<!-- [`GetUserIdByEmail`](/program/apis/cloud/#getuseridbyemail) |  Not implemented. -->
-<!-- [`CreateOrganization`](/program/apis/cloud/#createorganization) |  Not implemented. -->
 [`ListOrganizations`](/program/apis/cloud/#listorganizations) | List the {{< glossary_tooltip term_id="organization" text="organizations" >}} the user owns.
-<!-- [`ListOrganizationsByUser`](/program/apis/cloud/#listorganizationsbyuser) |  Not implemented. -->
 [`GetOrganizationNamespaceAvailability`](/program/apis/cloud/#getorganizationnamespaceavailability) | Check the availability of an organization namespace.
-<!-- [`DeleteOrganization`](/program/apis/cloud/#deleteorganization) |  Not implemented. -->
 [`ListOrganizationMembers`](/program/apis/cloud/#listorganizationmembers) | List the members and invites of the current organization.
-<!-- [`CreateOrganizationInvite`](/program/apis/cloud/#getuseridbyemail) |  Not implemented. -->
 [`UpdateOrganizationInviteAuthorizations`](/program/apis/cloud/#updateorganizationinviteauthorizations) | Update the authorizations attached to an organization invite that has already been created.
-<!-- [`DeleteOrganizationInvite`](/program/apis/cloud/#getuseridbyemail) |  Not implemented. -->
-<!-- [`DeleteOrganizationMember`](/program/apis/cloud/#getuseridbyemail) |  Not implemented. -->
-<!-- [`ResendOrganinzationInvite`](/program/apis/cloud/#getuseridbyemail) |  Not implemented. -->
 [`CreateLocation`](/program/apis/cloud/#createlocation) | Create and name a {{< glossary_tooltip term_id="location" text="location" >}}.
 [`GetLocation`](/program/apis/cloud/#getlocation) | Get a location by its ID.
 [`UpdateLocation`](/program/apis/cloud/#updatelocation ) | Change the name of and/or assign a parent location to a location.
 [`DeleteLocation`](/program/apis/cloud/#deletelocation ) | Delete a location.
 [`ListLocations`](/program/apis/cloud/#listlocations ) | List locations.
-<!-- [`ShareLocation`](/program/apis/cloud/#sharelocation) | Not implemented. -->
-<!-- [`UnshareLocation`](/program/apis/cloud/#unsharelocation) | Not implemented. -->
 [`LocationAuth`](/program/apis/cloud/#locationauth ) | Get a location's authorization (location secrets).
 [`CreateLocationSecret`](/program/apis/cloud/#createlocationsecret ) | Create a new location secret.
 [`DeleteLocationSecret`](/program/apis/cloud/#deletelocationsecret ) | Delete a location secret.
@@ -48,10 +38,8 @@ Method Name | Description
 [`AddRole`](/program/apis/cloud/#addrole ) | Add a role (owner or operator).
 [`RemoveRole`](/program/apis/cloud/#removerole ) | Remove a role (owner or operator).
 [`ListAuthorizations`](/program/apis/cloud/#listauthorizations ) | List authorizations (owners and operators).
-<!-- [`CheckPermissions`](/program/apis/cloud/#checkpermissions) |  Not implemented. -->
 [`CreateModule`](/program/apis/cloud/#createmodule ) | Create a {{< glossary_tooltip term_id="module" text="module" >}}.
 [`UpdateModule`](/program/apis/cloud/#updatemodule ) | Update module metadata.
 [`UploadModuleFile`](/program/apis/cloud/#uploadmodulefile ) | Upload a module file.
 [`GetModule`](/program/apis/cloud/#getmodule ) | Get a module by its ID.
 [`ListModules`](/program/apis/cloud/#listmodules ) | List available modules.
-<!-- [`CreateKey`](/program/apis/cloud/#createkey) |  Not implemented. -->
