@@ -24,6 +24,13 @@ You can conduct SLAM with data collected live by a [RPlidar](/modular-resources/
 
 ![SLAM map built with Viam of a triangle shaped building.](/services/slam/slam-map-example.png)
 
+## Required Components
+
+{{< cards >}}
+{{< relatedcard link="/components/board/" >}}
+{{< relatedcard link="/components/camera/" >}}
+{{< /cards >}}
+
 ## Configuration
 
 Integrated SLAM libraries include the following.

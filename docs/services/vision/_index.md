@@ -28,6 +28,13 @@ Currently, the vision service supports the following kinds of operations:
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
+## Required Components
+
+{{< cards >}}
+{{< relatedcard link="/components/board/" >}}
+{{< relatedcard link="/components/camera/" >}}
+{{< /cards >}}
+
 ## API
 
 Different vision service models support different methods:
