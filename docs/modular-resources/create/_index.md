@@ -41,9 +41,9 @@ To create a new resource model, you need to implement your model's "**client** i
 
 This interface defines how your model's server will respond to API requests.
 
-To ensure the client interface you create returns the expected results, use the appropriate client interface defined as `components/<resource-name>/client.py` or `services/<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/) as a reference.
+To ensure the client interface you create returns the expected results, use the appropriate client interface defined in `components/<resource-name>/client.py` or `services/<resource-name>/client.py` on [Viam's GitHub](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/) as a reference.
 
-- For example, the base client is defined in [<file>viam-python-sdk/src/viam/components/base/client.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/client.py).
+- For example, the `base` component client is defined in [<file>viam-python-sdk/src/viam/components/base/client.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/client.py).
   See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
 
   {{% /tab %}}
@@ -53,9 +53,9 @@ To create a new resource model, you need to implement your model's "**client** i
 
 This interface defines how your model's server will respond to API requests.
 
-To ensure the client interface you create returns the expected results, use the appropriate client interface defined as `components/<resource-name>/client.go` or `services/<resource-name>/client.go` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
+To ensure the client interface you create returns the expected results, use the appropriate client interface defined in `components/<resource-name>/client.go` or `services/<resource-name>/client.go` on [Viam's GitHub](https://github.com/viamrobotics/rdk/blob/main/) as a reference.
 
-- For example, the base client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
+- For example, the `base` component client is defined in [<file>rdk/components/base/client.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/client.go).
   See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) for more information.
 
   {{% /tab %}}
@@ -70,14 +70,14 @@ To ensure the client interface you create returns the expected results, use the 
 
 Find the subtype API as defined in the relevant `components/<resource-name>/<resource-name>.py` or `services/<resource-name>/<resource-name>.py` file in the SDK.
 
-For example, the base subtype is defined in [<file>viam-python-sdk/src/viam/components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
+- For example, the `base` component subtype is defined in [<file>viam-python-sdk/src/viam/components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Find the subtype API as defined in the relevant `components/<resource-name>/<resource-name>.go` or `services/<resource-name>/<resource-name>.go` file in the RDK on Viam's GitHub.
 
-For example, the base subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
+- For example, the `base` component subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
 
 {{% /tab %}}
 {{< /tabs >}}
