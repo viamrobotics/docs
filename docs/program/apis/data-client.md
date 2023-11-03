@@ -212,7 +212,7 @@ file_id = await data_client.binary_data_capture_upload(
     method_parameters=None,
     tags=["tag_1", "tag_2"],
     data_request_times=[time_requested, time_received],
-    file_extension=".jpg"
+    file_extension=".jpg",
     binary_data=b"Encoded image bytes"
 )
 ```
