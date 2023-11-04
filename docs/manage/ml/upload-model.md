@@ -27,6 +27,27 @@ Once the model has finished training, it becomes visible in the **Models** secti
 
 ![The trained model](/manage/ml/stars-model.png)
 
+#### Naming your model: namespace:repo-name:name
+
+If you are [creating a custom module](/modular-resources/create/) and want to [upload that module](/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:
+
+- The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
+- Your model triplet must be all-lowercase.
+- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
+
+For the middle segment of your model triplet `repo-name`, use the name of the git repository where you store your module's code.
+The `repo-name` should describe the common functionality provided across the model or models of that module.
+
+For example:
+
+- The `rand:yahboom:arm` model and the `rand:yahboom:gripper` model uses the repository name [yahboom](https://github.com/viam-labs/yahboom).
+  The models implement the `rdk:component:arm` and the `rdk:component:gripper` API to support the Yahboom DOFBOT arm and gripper, respectively.
+- The `viam-labs:audioout:pygame` model uses the repository name [audioout](https://github.com/viam-labs/audioout)
+  It implements the custom API `viam-labs:service:audioout`.
+
+The `viam` namespace is reserved for models provided by Viam.
+
 ### Upload a new version of a model
 
 If you [deploy a model](/services/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.

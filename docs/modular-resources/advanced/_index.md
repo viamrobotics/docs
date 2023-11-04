@@ -27,7 +27,7 @@ The [component APIs](/program/apis/#component-apis) and [service APIs](/program/
 
 If you want to use most of an existing API but need just a few other functions, try using the [`DoCommand`](/program/apis/#docommand) endpoint and [extra parameters](/program/use-extra-params/) to add custom functionality to an existing subtype.
 
-If your resource does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} {{< glossary_tooltip term_id="subtype" text="subtypes" >}} or you want to define different methods for the API, you can [define a new resource subtype and an API for that subtype](/modular-resources/advanced/create-subtype/).
+If your resource does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} {{< glossary_tooltip term_id="subtype" text="subtypes" >}} or you want to define different methods for the API, you can use the [generic API](/components/generic/) with the [`DoCommand`](/program/apis/#docommand) or [define a new resource subtype and an API for that subtype](/modular-resources/advanced/create-subtype/).
 
 ## Custom components as remotes
 

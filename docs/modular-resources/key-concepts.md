@@ -82,20 +82,6 @@ The [Viam registry](https://app.viam.com/registry) makes available both Viam-pro
 You can also run modules [locally](/modular-resources/configure/#local-modules).
 These models run outside `viam-server` as a separate process.
 
-#### Valid APIs to implement in your model
-
-When implementing a custom [model](#models) of an existing [component](/components/), valid [APIs](/program/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `component`
-- `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
-
-When implementing a custom [model](#models) of an existing [service](/services/), valid [APIs](/program/apis/) always have the following parameters:
-
-- `namespace`: `rdk`
-- `type`: `service`
-- `subtype`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `navigation`
-
 #### Naming your model: namespace:repo-name:name
 
 If you are [creating a custom module](/modular-resources/create/) and [uploading that module](/modular-resources/upload/) to the Viam registry, ensure your model name meets the following requirements:

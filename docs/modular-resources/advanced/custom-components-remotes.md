@@ -29,7 +29,7 @@ To add a custom resource as a [remote](/manage/parts-and-remotes/):
 
 1. Code a new model of a built-in resource type.
    You can do this by creating a new interface that implements required methods.
-   The new model must implement any functions of the built-in resource type marked as required in its [RDK API definition](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
+   The new model must implement any functions of the built-in resource type marked as required in its [RDK API definition](/modular-resources/create/#valid-apis-to-implement-in-your-model).
 2. Register the custom component on a new gRPC server instance and start the server.
 3. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.
 4. (Optional) [Configure a process](/manage/configuration/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
@@ -45,7 +45,7 @@ For more detailed instructions, see the full example in the [Python SDK document
 
 1. Code a new model of a built-in resource type.
    You can do this by subclassing a built in resource type like `sensor` or `arm`.
-   The new model must implement any methods of the built-in resource type marked as required in its [RDK API definition](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
+   The new model must implement any methods of the built-in resource type marked as required in its [RDK API definition](/modular-resources/create/#valid-apis-to-implement-in-your-model).
 1. Register the custom component on a new gRPC server instance and start the server.
    You can do this with the [`viam.rpc` library](https://python.viam.dev/autoapi/viam/rpc/index.html) by creating a new `rpc.server.Server` instance.
 1. Add the server as a [remote](/manage/parts-and-remotes/) of your robot.

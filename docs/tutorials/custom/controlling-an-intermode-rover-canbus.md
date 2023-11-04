@@ -117,7 +117,7 @@ The [base](/components/base/) component exposes an API for controlling a mobile 
 To use it for the Intermode rover, you must create a new [model](/modular-resources/key-concepts/#models) with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/components/base/), the [API](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/modular-resources/create/#valid-apis-to-implement-in-your-model) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
@@ -241,7 +241,7 @@ Now the intermode base can receive and execute _SetPower_ commands using the sam
 
 ### Leaving some methods unimplemented
 
-In some cases, you may not want to implement specific methods provided by the resource type's [API](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model).
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/modular-resources/create/#valid-apis-to-implement-in-your-model).
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
