@@ -78,13 +78,15 @@ If you edit a config while someone else edits the same config, the person who sa
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
-You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
-You can also revert to an earlier configuration from the History tab.
-
 {{< alert title="Tip" color="tip" >}}
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
+
+#### Reconfiguration
+
+When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
+You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
+You can also revert to an earlier configuration from the History tab.
 
 ### Package deployment
 
