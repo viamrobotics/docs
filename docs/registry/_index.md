@@ -31,7 +31,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
 
 You configure modular resources same way as built-in resources and use the same [standardized APIs](/program/apis/).
-`viam-server` manages dependencies, start-up, [reconfiguration](/manage/fleet/#reconfiguration), and [data management](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) and shutdown.
+`viam-server` manages [dependencies](/internals/rdk/#dependencies), [start-up](/internals/rdk/#start-up), [reconfiguration](/manage/fleet/#reconfiguration), and [data management](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [shutdown](/internals/rdk/#shutdown).
 
 ## The Viam Registry
 

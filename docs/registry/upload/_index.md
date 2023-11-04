@@ -146,6 +146,8 @@ If you mark your module as public, you cannot change it back to private.
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
+For more information, see [naming your model](#naming-your-model-namespacerepo-namename).
+
     {{% /alert %}}
 
     See [`meta.json` file](/manage/cli/#the-metajson-file) for more information.

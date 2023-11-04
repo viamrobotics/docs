@@ -84,7 +84,9 @@ For some configuration aspects you may require physical access to the robot so y
 
 #### Reconfiguration
 
-When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
+When you or your collaborators change the configuration of a smart machine, `viam-server` automatically synchronizes configuration to your robot and updates the running resources within 15 seconds.
+This means you can add, modify, and remove a modular resource instance from a running robot.
+
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
