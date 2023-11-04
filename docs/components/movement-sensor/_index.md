@@ -51,7 +51,7 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
-[`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/modular-resources/) that derives movement data from a [camera](/components/camera/) stream
+[`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/registry/) that derives movement data from a [camera](/components/camera/) stream
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources
 [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base

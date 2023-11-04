@@ -17,7 +17,8 @@ tags:
     "CAN",
   ]
 aliases:
-  - "/extend/modular-resources/examples/custom-arm/"
+  - "/extend/registry/examples/custom-arm/"
+  - "/modular-resources/examples/custom-arm/"
 # SMEs: Nicole Jung
 ---
 
@@ -38,7 +39,7 @@ See [Arm Configuration](/components/arm/#supported-models) for the current list 
 
 If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/program/) and control it with the [arm API](/components/arm/#api), or use it with [services](/services/) like [Motion](/services/motion/), just as you would with a built-in model.
 
-See [Modular Resources](/modular-resources/) for more information.
+See [Modular Resources](/registry/) for more information.
 
 ## Get your arm's kinematics file
 
@@ -81,13 +82,13 @@ To create a custom arm model, code a module in Python with the module support li
 {{% alert title="Info" color="info" %}}
 
 This guide uses Viam's Python SDK to implement a custom arm module, but if you want to use the Go Client SDK, you can.
-Follow [this guide](/modular-resources/create/#code-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
+Follow [this guide](/registry/create/#code-a-new-resource-model) and select **Go** on the code samples to learn how to code a modular arm in Go.
 
 {{% /alert %}}
 
 Save the following two files, <file>my_modular_arm.py</file> and <file>\_\_init\_\_.py</file>, on your computer and edit the code as applicable.
 
-This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) [(rdk:service:arm)](/modular-resources/key-concepts/#models) as a new model, `"myarm"`:
+This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) [(rdk:service:arm)](/registry/key-concepts/#models) as a new model, `"myarm"`:
 
 - <file>my_modular_arm.py</file> implements a custom model of the arm component built-in resource, `"myarm"`.
 
@@ -232,7 +233,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 ### Compile the module into an executable
 
-To [add a module](/modular-resources/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
@@ -261,4 +262,4 @@ Your executable will be run by `viam-server` as root, so dependencies need to be
 
 ## Configure the module and modular resource on your robot
 
-Follow [these configuration instructions](/modular-resources/configure/) to add your custom resource to your robot.
+Follow [these configuration instructions](/registry/configure/) to add your custom resource to your robot.

@@ -61,6 +61,6 @@ During robot shutdown, the RDK handles modular resource instances similarly to b
 
 {{< cards >}}
 {{% card link="/program/apis/" %}}
-{{% card link="/modular-resources/" %}}
+{{% card link="/registry/" %}}
 {{% card link="/micro-rdk/" %}}
 {{< /cards >}}

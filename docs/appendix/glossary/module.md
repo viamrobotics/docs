@@ -10,6 +10,6 @@ A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" 
 Modules run alongside `viam-server` as separate processs, communicating with `viam-server` over UNIX sockets.
 When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
-You can [create your own module](/modular-resources/create/) or [add existing modules from the Viam registry](/modular-resources/configure/).
+You can [create your own module](/registry/create/) or [add existing modules from the Viam registry](/registry/configure/).
 
-For more information see the [modular resource documentation](/modular-resources/).
+For more information see the [modular resource documentation](/registry/).

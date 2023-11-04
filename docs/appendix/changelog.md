@@ -4,7 +4,7 @@ linkTitle: "Changelog"
 weight: 110
 draft: false
 type: "docs"
-description: "Changelog"
+description: "A lof of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
 # SME:
@@ -419,9 +419,9 @@ The UR5 arm model has been improved using this new geometry type.
 
 ### Added: Modular resources
 
-You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_](/modular-resources/).
+You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_](/registry/).
 
-The [old method](/modular-resources/advanced/custom-components-remotes/) of using a separate server to implement a custom resource is still supported, but implementation as a modular resource reduces network requests and is strongly recommended.
+The [old method](/registry/advanced/custom-components-remotes/) of using a separate server to implement a custom resource is still supported, but implementation as a modular resource reduces network requests and is strongly recommended.
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 

@@ -7,7 +7,8 @@ tags: ["rdk", "extending viam", "modular resources", "API"]
 description: "Define a new API for a resource that does not fit into existing component or service subtypes."
 no_list: true
 aliases:
-  - "/extend/modular-resources/create/create-subtype/"
+  - "/extend/registry/create/create-subtype/"
+  - "/modular-resources/advanced/create-subtype"
 ---
 
 You can define a new {{< glossary_tooltip term_id="resource" text="resource" >}} _{{< glossary_tooltip term_id="subtype" text="subtype" >}}_ API if:
@@ -71,7 +72,7 @@ The following steps guide you through this process in more detail:
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/modular-resources/create/#code-a-new-resource-model"%}}
+{{% manualcard link="/registry/create/#code-a-new-resource-model"%}}
 
 <h4>Implement your API</h4>
 

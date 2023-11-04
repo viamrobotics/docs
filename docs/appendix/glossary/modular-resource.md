@@ -1,7 +1,7 @@
 ---
 title: Modular Resource
 id: modular-resource
-full_link: https://docs.viam.com/modular-resources/
+full_link: https://docs.viam.com/registry/
 short_description: A modular resource is a custom model of a component or service that implements the standadized API methods for that resource.
 aka:
 ---
@@ -11,4 +11,4 @@ Modular resources are provided by {{< glossary_tooltip term_id="module" text="mo
 A modular resource runs in the module process.
 This differs from built-in resources, which run as part of `viam-server`.
 
-For more information see the [Modular Resource Documentation](/modular-resources/).
+For more information see the [Modular Resource Documentation](/registry/).

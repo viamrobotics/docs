@@ -1,6 +1,6 @@
 ---
-title: "Extend Viam with Modular Resources"
-linkTitle: "Modular Resources"
+title: "Extend Viam with Modules from the Viam Registry"
+linkTitle: "Viam Registry"
 weight: 50
 type: "docs"
 tags:
@@ -12,14 +12,15 @@ tags:
     "components",
     "services",
   ]
-description: "You can use hardware components or services that Viam does not natively support, by adding them through existing modular resources from the Viam Registry or by creating new modular resources."
+description: "Support additional hardware components or services by adding them from the Viam Registry or by creating new modular resources."
 no_list: true
 aliases:
-  - "/program/extend/modular-resources/"
-  - "/extend/modular-resources/"
+  - "/program/extend/registry/"
+  - "/extend/registry/"
   - "/extend/"
-  - "/program/extend/modular-resources/key-concepts/"
+  - "/program/extend/registry/key-concepts/"
   - "/modular-resources/key-concepts/"
+  - "/modular-resources/"
 ---
 
 Viam provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
@@ -71,10 +72,10 @@ If none of the existing modular resources in the Viam registry support your use 
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/program/apis/).
 To create a new modular resource:
 
-1. [Create a module](/modular-resources/create/) with one or more modular resources by implementing all methods for the component's or service's [standardized API](/program/apis/).
-1. [Upload the module to the Viam registry](/modular-resources/upload/) to make it available for deployment to robots or add it as a [local module](/modular-resources/configure/#local-modules).
+1. [Create a module](/registry/create/) with one or more modular resources by implementing all methods for the component's or service's [standardized API](/program/apis/).
+1. [Upload the module to the Viam registry](/registry/upload/) to make it available for deployment to robots or add it as a [local module](/registry/configure/#local-modules).
    You can upload _private_ modules for your [organization](/manage/fleet/organizations/) or _public_ modules.
-1. Once you have uploaded your module to the registry, [deploy and configure the module](/modular-resources/configure/) from [the Viam app](https://app.viam.com/).
+1. Once you have uploaded your module to the registry, [deploy and configure the module](/registry/configure/) from [the Viam app](https://app.viam.com/).
    You can test your added resource using the [**Control** tab](/manage/fleet/#remote-control) and [program](/program/) it with Viam's Go or Python SDKs.
 
 ## Related tutorials
@@ -82,5 +83,5 @@ To create a new modular resource:
 {{< cards >}}
 {{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
-{{% card link="/modular-resources/examples/custom-arm/" %}}
+{{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}

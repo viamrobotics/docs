@@ -49,7 +49,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 {{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
-While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/modular-resources/)-based projects.
+While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
@@ -114,10 +114,10 @@ If you want to directly configure this modular resource code with your robot, sk
 ### Create a custom model using the Viam RDK base API
 
 The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
-To use it for the Intermode rover, you must create a new [model](/modular-resources/key-concepts/#models) with its own implementation of each method.
+To use it for the Intermode rover, you must create a new [model](/registry/key-concepts/#models) with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/components/base/), the [API](/modular-resources/create/#valid-apis-to-implement-in-your-model) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
@@ -241,7 +241,7 @@ Now the intermode base can receive and execute _SetPower_ commands using the sam
 
 ### Leaving some methods unimplemented
 
-In some cases, you may not want to implement specific methods provided by the resource type's [API](/modular-resources/create/#valid-apis-to-implement-in-your-model).
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/registry/create/#valid-apis-to-implement-in-your-model).
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
@@ -305,7 +305,7 @@ Change this to the correct location in `executable_path` when adding the module 
 }
 ```
 
-More details about modules and how they work can be found in the [modular resources documentation](/modular-resources/).
+More details about modules and how they work can be found in the [modular resources documentation](/registry/).
 
 ### Control the rover
 
