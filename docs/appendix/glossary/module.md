@@ -6,8 +6,10 @@ short_description: A module provides one or more modular resources, which add re
 aka:
 ---
 
-A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/components/) and [services](/services/)) or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
+A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="type" text="types" >}} or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
+Modules run alongside `viam-server` as separate processs, communicating with `viam-server` over UNIX sockets.
+When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
-You can extend the capabilities of Viam on your robot by [creating your own module](/modular-resources/create/) or [adding an existing module from the Viam registry](/modular-resources/configure/).
+You can [create your own module](/modular-resources/create/) or [add existing modules from the Viam registry](/modular-resources/configure/).
 
 For more information see the [modular resource documentation](/modular-resources/).

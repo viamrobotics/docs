@@ -18,38 +18,9 @@ aliases:
   - "/program/extend/modular-resources/key-concepts/"
 ---
 
-Viam's [Robot Development Kit (RDK)](/internals/rdk/) provides built-in support for a variety of {{< glossary_tooltip term_id="resource" text="resources" >}}:
-
-- Various types of hardware [components](/components/).
-- High-level functionality exposed as [services](/services/).
-
-However, if you want to work with a new hardware component that is not already supported by Viam, or want to introduce a new software service or service model to support additional functionality on your smart machine, you can extend Viam by adding a _{{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}_ to your smart machine.
-
-Modular resources are defined in _modules_, which are easy to create and add to your robot.
-A module can provide one or more modular resource models, and can be added to any smart machine running on Viam.
-
-## Modules
-
-A _module_ provides one or more [_modular resources_](#resources), and is a flexible way to extend the functionality of your Viam robot.
-Modules run alongside `viam-server` as a separate process, communicating with `viam-server` over a UNIX socket.
-A module provides definitions for one or more pairs of [APIs](#valid-apis-to-implement-in-your-model) and [models](#models).
-
-When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
-
-## Resources
-
-A resource is a [component](/components/) or [service](/services/).
-Each component or service is typed by a proto API, such as the [component proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
-
-Any resource on your robot needs to implement either one of the [existing Viam APIs](#valid-apis-to-implement-in-your-model), or a [custom interface](/modular-resources/advanced/#new-api-subtypes).
-
-A _modular resource_ is a resource that is provided by a [module](#modules), and not built into the RDK.
-A modular resource runs in the module process.
-This differs from built-in resources, which run as part of `viam-server`.
-
 ## Models
 
-A _model_ describes a specific implementation of a [resource](#resources) that implements (speaks) its [API](/program/apis/).
+A _model_ describes a specific implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} that implements (speaks) its [API](/program/apis/).
 Models allow you to control hardware or software of a similar category, such as motors, with a consistent set of methods as an interface, even if the underlying implementation differs.
 
 For example, some DC motors communicate using [GPIO](/components/board/), while other DC motors use serial protocols like the [SPI bus](/components/board/#spis).
@@ -63,7 +34,7 @@ See [Naming your model](#naming-your-model-namespacerepo-namename) for more info
 Models are either:
 
 - Built into the RDK, and included when you [install `viam-server`](/installation/) or when you use one of the [Viam SDKs](/program/apis/).
-- Provided in [custom modules](#modules) available for download from the [Viam registry](https://app.viam.com/registry), and are written by either Viam or community users.
+- Provided in {{< glossary_tooltip term_id="module" text="custom modules" >}} available for download from the [Viam registry](https://app.viam.com/registry), and are written by either Viam or community users.
   Custom modules can also be [local](/modular-resources/configure/#local-modules).
 
 ### Built-in models

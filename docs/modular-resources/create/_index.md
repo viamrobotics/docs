@@ -18,8 +18,11 @@ aliases:
 no_list: true
 ---
 
-If you cannot find existing modular resources from the [Viam Registry](/modular-resources/#theviamregistry) that support your hardware or software, you can add new {{< glossary_tooltip term_id="module" text="modules" >}}.
-Each module contains one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} implementing.
+If you cannot find existing modular resources from the [Viam Registry](/modular-resources/#the-viam-registry) that support your hardware or software, you can add new {{< glossary_tooltip term_id="module" text="modules" >}}.
+
+A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="type" text="types" >}} or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
+Modules run alongside `viam-server` as separate processs, communicating with `viam-server` over UNIX sockets.
+When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
 In most cases, the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} you create should be a new [model](/modular-resources/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 For example, if you have a custom base, you can create a new base model that implements the `rdk:component:base` API.
@@ -510,7 +513,7 @@ Additional examples are available in the [in the RDK GitHub repository](https://
 Name your model according to the namespace of the built-in API you are implementing using all lowercase letters for optimal performance with Viam's SDKs.
 For example, `mybase` or `my-cool-sensor`.
 
-For more information see [Naming your model](/modular-resources/upload/#naming-your-model-namespacerepo-namename).
+For more information see [Naming your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename).
 
 {{% /alert %}}
 
