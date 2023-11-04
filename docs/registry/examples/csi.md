@@ -23,7 +23,6 @@ tags:
 aliases:
   - "/extend/registry/examples/csi/"
   - "/modular-resources/examples/csi/"
-
 # SMEs: Sean
 ---
 
