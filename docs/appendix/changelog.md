@@ -2,7 +2,7 @@
 title: "Changelog"
 linkTitle: "Changelog"
 weight: 110
-draft: false
+draft: true
 type: "docs"
 description: "Changelog"
 aliases:
