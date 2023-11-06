@@ -528,7 +528,7 @@ await my_nav.remove_waypoint(waypoint_id)
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetObstacles
+### Obstacles
 
 Get an array of obstacles currently in the service's data storage.
 These are locations designated for the robot to avoid when navigating.
@@ -554,7 +554,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
 // Get an array containing each obstacle stored by the navigation service
-obstacles, err := myNav.GetObstacles(context.Background(), nil)
+obstacles, err := myNav.Obstacles(context.Background(), nil)
 ```
 
 {{% /tab %}}
