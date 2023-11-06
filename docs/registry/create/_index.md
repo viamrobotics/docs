@@ -19,7 +19,7 @@ aliases:
 no_list: true
 ---
 
-If you cannot find existing modular resources from the [Viam Registry](/registry/#the-viam-registry) that support your hardware or software, you can add new {{< glossary_tooltip term_id="module" text="modules" >}}.
+Viam provides many built-in models. If you cannot find existing modular resources from the [Viam Registry](/registry/#the-viam-registry) that support your hardware or software, you can add new {{< glossary_tooltip term_id="module" text="modules" >}}.
 
 A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="type" text="types" >}} or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
 Modules run alongside `viam-server` as separate processs, communicating with `viam-server` over UNIX sockets.
@@ -115,6 +115,14 @@ To create a custom module, follow these steps:
 3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable.
 
 ### Code a new resource model
+
+{{% alert title="Naming your model" color="tip" %}}
+
+Use the naming schema: `namespace:repo-name:name`.
+
+For more information see [Naming your model](/registry/key-concepts/#naming-your-model-namespacerepo-namename).
+
+{{% /alert %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -508,15 +516,6 @@ Additional examples are available in the [in the RDK GitHub repository](https://
 
 {{% /tab %}}
 {{< /tabs >}}
-
-{{% alert title="Naming your model" color="tip" %}}
-
-Name your model according to the namespace of the built-in API you are implementing using all lowercase letters for optimal performance with Viam's SDKs.
-For example, `mybase` or `my-cool-sensor`.
-
-For more information see [Naming your model](/registry/key-concepts/#naming-your-model-namespacerepo-namename).
-
-{{% /alert %}}
 
 ### Code a main entry point program
 
