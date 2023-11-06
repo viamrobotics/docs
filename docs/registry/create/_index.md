@@ -120,7 +120,7 @@ To create a custom module, follow these steps:
 
 Use the naming schema: `namespace:repo-name:name`.
 
-For more information see [Naming your model](/registry/key-concepts/#naming-your-model-namespacerepo-namename).
+For more information see [Naming your model](/registry/upload/#naming-your-model-namespacerepo-namename).
 
 {{% /alert %}}
 
