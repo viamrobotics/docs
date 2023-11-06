@@ -528,9 +528,9 @@ await my_nav.remove_waypoint(waypoint_id)
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetObstacles
+### Obstacles
 
-Get an array of obstacles currently in the service's data storage.
+Get an array or list of obstacles currently in the service's data storage.
 These are locations designated for the robot to avoid when navigating.
 See the [motion service](/services/motion/) for more information.
 
@@ -554,7 +554,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
 // Get an array containing each obstacle stored by the navigation service
-obstacles, err := myNav.GetObstacles(context.Background(), nil)
+obstacles, err := myNav.Obstacles(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -566,7 +566,7 @@ obstacles, err := myNav.GetObstacles(context.Background(), nil)
 
 **Returns:**
 
-- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
+- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): A list comprised of each `GeoObstacle` in the service's data storage.
   These are locations designated for the robot to avoid when navigating.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
