@@ -566,7 +566,7 @@ obstacles, err := myNav.Obstacles(context.Background(), nil)
 
 **Returns:**
 
-- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
+- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): A list comprised of each `GeoObstacle` in the service's data storage.
   These are locations designated for the robot to avoid when navigating.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
