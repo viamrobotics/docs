@@ -583,7 +583,7 @@ obstacles = await my_nav.get_obstacles()
 
 ### Paths
 
-Get each path, a series of geo points the robot will travel through, in the robot's motion planning.
+Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -595,7 +595,7 @@ Get each path, a series of geo points the robot will travel through, in the robo
 
 **Returns:**
 
-- [([]\*Path](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array of paths, each path representing a series of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot will travel through.
+- [([]\*Path](https://pkg.go.dev/go.viam.com/rdk@v0.12.0/services/navigation#Path): An array of paths, each path being a user-provided destination, or, [`Waypoint`](#addwaypoint), and the set of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot plans to travel through to get there.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
@@ -603,8 +603,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go
 myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
-// Get an array containing each obstacle stored by the navigation service
-obstacles, err := myNav.GetObstacles(context.Background(), nil)
+// Get an array containing each path stored by the navigation service
+paths, err := myNav.Paths(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -616,16 +616,15 @@ obstacles, err := myNav.GetObstacles(context.Background(), nil)
 
 **Returns:**
 
-- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
-  These are locations designated for the robot to avoid when navigating.
+- [(List[navigation.Path])](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path): An array comprised of `Path`s, each path being a user-provided destination, or, [`Waypoint`](#addwaypoint) and the set of `geopoints` that the robot expects to travel through to get there.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_paths).
 
 ```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
-# Get a list containing each obstacle stored by the navigation service
-obstacles = await my_nav.get_obstacles()
+# Get a list containing each path stored by the navigation service
+paths = await my_nav.get_paths()
 ```
 
 {{% /tab %}}

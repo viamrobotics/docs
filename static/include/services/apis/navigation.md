@@ -7,4 +7,5 @@ Method Name | Description
 [`AddWaypoint`](/services/navigation/#addwaypoint) | Add a waypoint to the service's data storage.
 [`RemoveWaypoint`](/services/navigation/#removewaypoint) | Remove a waypoint from the service's data storage.
 [`GetObstacles`](/services/navigation/#getobstacles) | Get the obstacles currently in the service's data storage.
+[`Paths`](/services/navigation/#paths) | Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
 [`DoCommand`](/services/navigation/#docommand) | Execute model-specific commands that are not otherwise defined by the service API.
