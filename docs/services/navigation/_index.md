@@ -581,6 +581,56 @@ obstacles = await my_nav.get_obstacles()
 {{% /tab %}}
 {{< /tabs >}}
 
+### Paths
+
+Get each path, a series of geo points the robot will travel through, in the robot's motion planning.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]\*Path](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): An array of paths, each path representing a series of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot will travel through.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Get an array containing each obstacle stored by the navigation service
+obstacles, err := myNav.GetObstacles(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
+  These are locations designated for the robot to avoid when navigating.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get a list containing each obstacle stored by the navigation service
+obstacles = await my_nav.get_obstacles()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
