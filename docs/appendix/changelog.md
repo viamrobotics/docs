@@ -4,7 +4,7 @@ linkTitle: "Changelog"
 weight: 110
 draft: false
 type: "docs"
-description: "A lof of added features, improvements, and changes over time."
+description: "A lot of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
 # SME:
