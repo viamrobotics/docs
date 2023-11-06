@@ -9,7 +9,7 @@ tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---
 
-SLAM, which stands for Simultaneous Localization and Mapping, is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
+{{< glossary_tooltip term_id="slam" text="SLAM" >}} is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 At Viam, we want to offer our users an easy-to-use, intuitive method for interfacing with various SLAM algorithms that may be useful in their mission.
 
 As of June 01, 2022, we support the following SLAM libraries:

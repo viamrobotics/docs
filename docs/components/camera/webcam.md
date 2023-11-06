@@ -83,8 +83,8 @@ The following attributes are available for `webcam` cameras:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. |
-| `format` | string | Optional | The camera image format, used with `video_path` to find the camera. |
+| `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. See [Using `video_path`](#using-video_path). |
+| `format` | string | Optional | The camera image format, used with `video_path` to find the camera. See [Using `format`](#using-format). |
 | `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `480` |
 | `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. <br> Default: Closest possible value to `640` |
 | `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
@@ -92,13 +92,7 @@ The following attributes are available for `webcam` cameras:
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 | `debug` | boolean | Optional | Enables the debug outputs from the camera if `true`. <br> Default: `false` |
 
-## View the camera stream
-
-{{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
-
-## Troubleshooting
-
-## Find the `video_path`
+## Using `video_path`
 
 To list available `video_path`s use the following command:
 
@@ -117,6 +111,8 @@ v4l2-ctl --list-devices
 
 The `id` listed by `ls /dev/v4l/by-id/` is a more consistent way to refer to the webcam.
 
+See [Camera troubleshooting](/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
+
 {{% /tab %}}
 {{% tab name="Mac" %}}
 
@@ -128,6 +124,28 @@ The Unique ID displayed for each camera is the `video_path`.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Using `format`
+
+Viam supports the following pixel formats:
+
+- I420
+- I444
+- MJPEG
+- NV12
+- NV21
+- RGBA
+- UYVY
+- YUY2
+- Z16
+
+If your smart machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** drop down menu, which is visible when you click the **Show more** button.
+
+## View the camera stream
+
+{{< readfile "/static/include/components/camera-view-camera-stream.md" >}}
+
+## Troubleshooting
 
 ### No visible live video feed
 

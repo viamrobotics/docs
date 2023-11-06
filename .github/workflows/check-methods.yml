@@ -1,5 +1,9 @@
 name: Check Python SDK method coverage
 
+concurrency:
+  group: pullrequest-untrusted-coverage-${{ github.event.number }}
+  cancel-in-progress: true
+
 on:
   workflow_dispatch:
   pull_request:
@@ -27,5 +31,5 @@ jobs:
           cache: "pip" # caching pip dependencies
       - run: pip install beautifulsoup4 markdownify argparse
 
-      - name: Build
+      - name: Run Coverage test
         run: make coveragetest

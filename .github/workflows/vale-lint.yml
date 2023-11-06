@@ -1,5 +1,9 @@
 name: vale-lint
 
+concurrency:
+  group: pullrequest-untrusted-valelint-${{ github.event.number }}
+  cancel-in-progress: true
+
 on:
   pull_request:
     types: [opened, synchronize]

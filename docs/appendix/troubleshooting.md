@@ -158,6 +158,65 @@ It will resemble the following:
 }
 ```
 
+### Error: failed to find camera
+
+**Additional Errors:** `cannot open webcam`, and `found no webcams`.
+
+**Description:** When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+
+**Solution:** On your Linux system, verify each of the following:
+
+- Ensure that your Linux OS is able to access your camera:
+
+  1.  Run the following command to list compatible camera devices on your system:
+
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --list-devices
+      ```
+
+      In the list of camera devices returned, find the entry for your camera.
+      For example, the webcam on the [Viam Rover](https://docs.viam.com/try-viam/) appears as follows:
+
+      ```sh
+      GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
+              /dev/video0
+              /dev/video1
+              /dev/media4
+      ```
+
+      The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
+
+  1.  Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --stream-count 1 --device /dev/video0
+      ```
+
+      Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
+
+      The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
+      If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
+
+- Ensure that your camera uses a supported pixel format:
+
+  1.  First, determine your video path, like `/dev/video0`, following the instructions above.
+  1.  Then, run the following command:
+
+      ```sh {class="command-line" data-prompt="$"}
+      v4l2-ctl --list-formats-ext --device /dev/video0
+      ```
+
+      Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
+
+      The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
+      If your camera does not support any of these formats, it cannot be used with Viam.
+
+If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your smart machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
+If you are running `viam-server` as a different user, find the <file>.viam/debug/components/camera</file> directory in that user's home directory instead.
+This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
+
 ### Error: failed to find the best driver that fits the constraints
 
 **Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
