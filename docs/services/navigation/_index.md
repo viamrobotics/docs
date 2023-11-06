@@ -530,7 +530,7 @@ await my_nav.remove_waypoint(waypoint_id)
 
 ### Obstacles
 
-Get an array of obstacles currently in the service's data storage.
+Get an array or list of obstacles currently in the service's data storage.
 These are locations designated for the robot to avoid when navigating.
 See the [motion service](/services/motion/) for more information.
 
