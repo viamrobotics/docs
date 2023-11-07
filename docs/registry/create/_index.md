@@ -696,7 +696,7 @@ Make sure to set up a Python virtual environment in the directory your module is
    sudo chmod +x <your-file-path-to>/<run.sh>
    ```
 
-See the [Python virtual environment documentation](https://docs.python-guide.org/dev/virtualenvs/) for more information.
+See [Prepare your Python Virtual Environment](/program/python-venv/) for more information.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
