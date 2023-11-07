@@ -316,7 +316,6 @@ Create a folder for your module and save your code as a file named <file>my_modu
 
 The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) [(rdk:service:base)](/registry/key-concepts/#models) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
 
-<file>mybase.go</file> implements "mybase", a custom model of the base component, and registers the new model and API helper functions with the Go SDK.
 
 <details>
   <summary>Click to view sample code for <file>mybase.go</file></summary>
