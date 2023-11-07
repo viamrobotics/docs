@@ -299,7 +299,7 @@ To configure a modular resource with an environment variable, navigate to the **
       "module_id": "my-namespace:my-module",
       "version": "1.0.0",
       "env": {
-        "PATH": "${environment.PATH}:/home/username/scripts",
+        "PATH": "/home/username/bin:${environment.PATH}",
         "MY_USER": "username"
       }
     }
