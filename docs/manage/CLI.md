@@ -96,9 +96,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, an organization API key, or a locations API key.
+You can authenticate your CLI session using either a personal access token, an organization API key, or a location API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to create a locations API key, you must begin the process by [creating a location API key](#create-a-location-api-key).
+Similarly, to create a location API key, you must begin the process by [creating a location API key](#create-a-location-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
