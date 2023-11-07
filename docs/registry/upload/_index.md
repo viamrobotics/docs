@@ -112,7 +112,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the <a href="/registry/upload/#naming-your-model-namespacerepo-namename">namespace of your model</a> must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="/registry/upload/#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
@@ -146,7 +146,7 @@ If you mark your module as public, you cannot change it back to private.
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 
-For more information, see [naming your model](/registry/upload/#naming-your-model-namespacerepo-namename).
+For more information, see [naming your model](#naming-your-model-namespacerepo-namename).
 
     {{% /alert %}}
 

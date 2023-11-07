@@ -233,7 +233,10 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 ### Compile the module into an executable
 
-To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that runs your module when executed, can take a local socket as a command line argument, and cleanly exits when sent a termination signal.
+To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+- runs your module when executed,
+- takes a local socket as a command line argument, and
+- exits cleanly when sent a termination signal.
 
 Your options for completing this step are flexible, as this file does not need to be in a raw binary format.
 
