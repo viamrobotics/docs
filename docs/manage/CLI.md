@@ -159,7 +159,7 @@ To switch to using an organization API key for authentication right away, [logou
 
 An organization can have multiple API keys.
 
-## Create a location API key
+### Create a location API key
 
 To use an location API key to authenticate your CLI session, you must first create one:
 
@@ -179,6 +179,7 @@ To use an location API key to authenticate your CLI session, you must first crea
      You can find your location ID by running `viam locations list` or by visiting your [robot fleet's page](https://app.viam.com/robots) in the Viam app.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     If omitted, the key will attempt to attach itself to the organization of the location if there is only one organization associated with that location.
    - `key-name` is an optional name for your API key.
      If omitted, a name will be auto-generated based on your login info and the current time.
 
