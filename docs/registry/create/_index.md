@@ -25,7 +25,7 @@ A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" 
 You can browse existing modules in the [Viam Registry](/registry/#the-viam-registry) to find one that supports your custom hardware or software, or you can write your own module.
 
 Modules run alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
-When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and the associated [APIs](/program/apis) with `viam-server`, making the new model available for use.
 
 In most cases, the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} you create should be a new [model](/registry/key-concepts/#models) that implements an existing Viam [API](/program/apis/).
 For example, if you have a custom base, you can create a new base model that implements the `rdk:component:base` API.
