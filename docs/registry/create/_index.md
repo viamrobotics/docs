@@ -670,9 +670,14 @@ Make sure to set up a Python virtual environment in the directory your module is
    Add additional dependencies as needed.
    See the [pip `requirements.txt` file documentation](https://pip.pypa.io/en/stable/reference/requirements-file-format/) for more information.
 
-2. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
+From here, you have three options for how to bundle your module: using `venv`, `nuitka`, or `pyinstaller`
 
-   ```sh { class="command-line" data-prompt="$"}
+{{% tabs %}}
+{{% tab name="venv" %}}
+
+1. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
+
+```sh { class="command-line" data-prompt="$"}
     #!/bin/sh
     cd `dirname $0`
 
@@ -685,16 +690,29 @@ Make sure to set up a Python virtual environment in the directory your module is
 
     # Be sure to use `exec` so that termination signals reach the python process,
     # or handle forwarding termination signals manually
-    exec $PYTHON <your-src-dir-if-inside>/main.py $@
-   ```
+    exec $PYTHON -m <your-src-dir-if-inside>/main.py $@
+```
 
-   To make your shell script executable, run the following command in your terminal:
+To make your shell script executable, run the following command in your terminal:
 
-   ```sh { class="command-line" data-prompt="$"}
-   sudo chmod +x <your-file-path-to>/<run.sh>
-   ```
+```sh { class="command-line" data-prompt="$"}
+sudo chmod +x <your-file-path-to>/<run.sh>
+```
 
 See [Prepare your Python Virtual Environment](/program/python-venv/) for more information.
+
+{{% /tab %}}
+{{% tab name="nuitka" %}}
+
+Make sure you have installed [a `C compiler` on your machine](https://github.com/Nuitka/Nuitka#c-compiler).
+
+{{% /tab %}}
+{{% tab name="pyinstaller" %}}
+
+test
+
+{{% /tab %}}
+{{% /tabs %}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
