@@ -329,7 +329,7 @@ What a module from the Viam registry is instantiated, it has access to the follo
 | ---- | ----------- |
 | `VIAM_HOME` | The root of the `viam-server` configuration.<br>Is always: `$HOME/.viam` |
 | `VIAM_MODULE_ROOT` | The root of the module install directory. Useful for file navigation that is relative to the root of the module.<br>`$VIAM_HOME/packages/.data/modules/verxxxx-my-module/` |
-| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. Use this directory to store [python virtual environments](/program/python-venv.md) when writing and deploying multiple python modules that share the same dependencies, for example.<br>`$VIAM_HOME/module-data/my-namespace_my-module/` |
+| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. Use this directory to store [python virtual environments](/program/python-venv/) when writing and deploying multiple python modules that share the same dependencies, for example.<br>`$VIAM_HOME/module-data/my-namespace_my-module/` |
 | `VIAM_MODULE_ID` | The module ID of the module. <br>`viam:realsense` |
 
 ## Local modules
