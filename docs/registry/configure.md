@@ -187,7 +187,8 @@ Once you have added a modular resource to your robot, you can view and edit the 
 1. Click on the **Modules** subtab.
    All modules you have added to your robot appear under the **Deployed** section.
 
-This pane lists the models provided by the module, any [components](/components/) or [services](/services/) on your robot that are currently using the module, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry.
+This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your robot that are currently using the module.
+You can also configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry, or [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
 {{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
@@ -218,6 +219,118 @@ The current deployed version of your module and the latest version of that modul
 For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
 If, for example, the module provides a motor component, and the motor is running, it will stop while the module upgrades.
 {{% /alert %}}
+
+### Use environment variables with a registry module
+
+Some modules require that you set specific environment variables as part of configuration.
+You can click the **URL** link in the upper-right corner of the module configuration pane to view any specific requirements on the module's GitHub page.
+
+Module environment variables can be either:
+
+- Static string values, or
+- References to a system environment variable.
+  Any system environment variable available to the `viam-server` instance can be referenced in this way.
+
+For example, if your module requires a `MODULE_USER` environment variable, you can add it with the following configuration:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      ...
+      "env": {
+        "MODULE_USER": "my-username"
+      }
+    }
+  ]
+}
+```
+
+Or if you are using a module that requires access to an additional program or library on your machine, you can create a `PATH` environment variable for that module:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      ...
+      "env": {
+        "PATH": "/home/username/bin:${environment.PATH}"
+      }
+    }
+  ]
+}
+```
+
+This configures a module environment variable `PATH` that uses your system's `PATH` (which you can view by running `echo $PATH`) as a base, and adds one additional filesystem path: <file>/home/username/bin</file>.
+
+The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
+For example, you can use `${environment.HOME}"`
+
+To configure a modular resource with an environment variable, navigate to the **Config** tab on your robot's page in the Viam app, toggle **Raw JSON** mode, and add the following `env` configuration to the `modules` section:
+
+{{< tabs >}}
+{{% tab name="JSON Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "<module-name>",
+      "module_id": "<module-namespace>:<module-name>",
+      "version": "<module-version>",
+      "env": {
+        "MY_VAR": "<some-value>",
+        "PATH": "<example-folder>:${environment.PATH}"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+The following is an example configuration for the [Viam ROS2 Integration module](https://app.viam.com/module/viam-soleng/viam-ros2-integration).
+The configuration adds three environment variables required by the module: `PATH`, `ROS_SETUP`, and `MODULE_USER`:
+
+- `PATH` is sourced from the local system environment variable `PATH`, and is appended with the additional search path `/home/viam/scripts`.
+- `ROS_SETUP` and `MODULE_USER` are configured with static values.
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "my-ros2-integration",
+      "module_id": "viam:viam-ros2-integration",
+      "version": "1.0.0",
+      "env": {
+        "PATH": "${environment.PATH}:/home/viam/scripts",
+        "ROS_SETUP": "/opt/ros/kinetic/setup.bash",
+        "MODULE_USER": "my-ros-user"
+      }
+    }
+  ]
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+To delete an environment variable configuration, delete the `env` section from your smart machine's configuration.
+
+#### Default environment variables
+
+What a module from the Viam registry is instantiated, it has access to the following default environment variables:
+
+<!-- prettier-ignore -->
+| Name | Description |
+| ---- | ----------- |
+| `VIAM_HOME` | The root of the `viam-server` configuration.<br>Is always: `$HOME/.viam` |
+| `VIAM_MODULE_ROOT` | The root of the module install directory. Useful for file navigation that is relative to the root of the module.<br>`$VIAM_HOME/packages/.data/modules/verxxxx-my-module/` |
+| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. Use this directory to store [python virtual environments](/program/python-venv.md) when writing and deploying multiple python modules that share the same dependencies, for example.<br>`$VIAM_HOME/module-data/my-namespace_my-module/` |
+| `VIAM_MODULE_ID` | The module ID of the module. <br>`viam:realsense` |
 
 ## Local modules
 
