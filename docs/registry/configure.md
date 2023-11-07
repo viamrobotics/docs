@@ -100,7 +100,7 @@ Deleting a module _does not_ delete any configured modular resources it provides
 
 ### Add additional modular resources from a registry module
 
-Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resource's [model](/registry/key-concepts/#models).
+Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
 Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
 You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
@@ -113,8 +113,8 @@ If you prefer to use raw JSON, the following properties are available for modula
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model) |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's [model](/registry/key-concepts/#models). |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/registry/key-concepts/#dependency-management). |
+| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -260,7 +260,7 @@ To add a local module on your robot:
 1. On the next screen:
 
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
-   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/registry/key-concepts/#models).
+   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
      If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
@@ -327,7 +327,7 @@ Add these properties to your module's configuration:
 
 ### Add a local modular resource
 
-Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's [model](/registry/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
 The following properties are available for modular resources:
 
@@ -337,8 +337,8 @@ The following properties are available for modular resources:
 | `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | A custom name for this instance of your modular resource. |
-| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's [model](/registry/key-concepts/#models). |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/registry/key-concepts/#dependency-management). |
+| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.

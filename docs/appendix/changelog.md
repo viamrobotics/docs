@@ -421,7 +421,6 @@ The UR5 arm model has been improved using this new geometry type.
 
 You can now implement your own custom {{< glossary_tooltip term_id="resource" text="resources" >}} as [_modular resources_](/registry/).
 
-
 {{% alert title="Important: Breaking Change" color="note" %}}
 
 All users need to update to the latest version of the RDK (V3.0.0) to access robots using the Viam app.

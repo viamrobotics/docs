@@ -494,7 +494,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>models</code></td>
     <td>object</td>
     <td><strong>Required</strong></td>
-    <td>A list of one or more <a href="/registry/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+    <td>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
   </tr>
   <tr>
     <td><code>entrypoint</code></td>

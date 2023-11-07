@@ -114,7 +114,7 @@ If you want to directly configure this modular resource code with your robot, sk
 ### Create a custom model using the Viam RDK base API
 
 The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
-To use it for the Intermode rover, you must create a new [model](/registry/key-concepts/#models) with its own implementation of each method.
+To use it for the Intermode rover, you must create a new {{< glossary_tooltip term_id="model" text="model" >}} with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
 Since you will conform to an existing Viam API for [base](/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:

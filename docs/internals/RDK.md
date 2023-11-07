@@ -45,7 +45,7 @@ After start-up, `viam-server` manages:
 When you or your collaborators change the configuration of a smart machine in the Viam app, `viam-server` automatically synchronizes the configuration to your smart machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running robot.
 
-You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
+You can see configuration changes made by yourself or by your collaborators on the [History tab](/manage/fleet/robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
 ### Logging

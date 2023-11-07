@@ -88,7 +88,7 @@ Follow [this guide](/registry/create/#code-a-new-resource-model) and select **Go
 
 Save the following two files, <file>my_modular_arm.py</file> and <file>\_\_init\_\_.py</file>, on your computer and edit the code as applicable.
 
-This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) [(rdk:service:arm)](/registry/key-concepts/#models) as a new model, `"myarm"`:
+This module template registers a modular resource implementing Viam's built-in [Arm API](/components/arm/#api) (`rdk:service:arm`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"myarm"`:
 
 - <file>my_modular_arm.py</file> implements a custom model of the arm component built-in resource, `"myarm"`.
 
@@ -234,6 +234,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 ### Compile the module into an executable
 
 To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+
 - runs your module when executed,
 - takes a local socket as a command line argument, and
 - exits cleanly when sent a termination signal.
