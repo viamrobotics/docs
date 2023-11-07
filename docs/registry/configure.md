@@ -314,7 +314,7 @@ To delete an environment variable configuration, delete the `env` section from y
 
 #### Default environment variables
 
-What a module is instantiated, it has access to the following default environment variables:
+When a module is instantiated, it has access to the following default environment variables:
 
 <!-- prettier-ignore -->
 | Name | Description |
