@@ -229,7 +229,6 @@ Module environment variables can be either:
 
 - Static string values, or
 - References to a system environment variable.
-  Any system environment variable available to the `viam-server` instance can be referenced in this way.
 
 For example, if your module requires a `MODULE_USER` environment variable, you can add it with the following configuration:
 
@@ -291,24 +290,17 @@ To configure a modular resource with an environment variable, navigate to the **
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
-The following is an example configuration for the [Viam ROS2 Integration module](https://app.viam.com/module/viam-soleng/viam-ros2-integration).
-The configuration adds three environment variables required by the module: `PATH`, `ROS_SETUP`, and `MODULE_USER`:
-
-- `PATH` is sourced from the local system environment variable `PATH`, and is appended with the additional search path `/home/viam/scripts`.
-- `ROS_SETUP` and `MODULE_USER` are configured with static values.
-
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "modules": [
     {
       "type": "registry",
-      "name": "my-ros2-integration",
-      "module_id": "viam:viam-ros2-integration",
+      "name": "my-module",
+      "module_id": "my-namespace:my-module",
       "version": "1.0.0",
       "env": {
-        "PATH": "${environment.PATH}:/home/viam/scripts",
-        "ROS_SETUP": "/opt/ros/kinetic/setup.bash",
-        "MODULE_USER": "my-ros-user"
+        "PATH": "${environment.PATH}:/home/username/scripts",
+        "MY_USER": "username"
       }
     }
   ]
@@ -322,17 +314,15 @@ To delete an environment variable configuration, delete the `env` section from y
 
 #### Default environment variables
 
-What a module from the Viam registry is instantiated, it has access to the following default environment variables:
+What a module is instantiated, it has access to the following default environment variables:
 
 <!-- prettier-ignore -->
 | Name | Description |
 | ---- | ----------- |
-| `VIAM_HOME` | The root of the `viam-server` configuration.<br>Is always: `$HOME/.viam` |
-| `VIAM_MODULE_ROOT` | The root of the module install directory. Useful for file navigation that is relative to the root of the module.<br>`$VIAM_HOME/packages/.data/modules/verxxxx-my-module/` |
-| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. Use this directory to store [python virtual environments](/program/python-venv/) when writing and deploying multiple python modules that share the same dependencies, for example.<br>`$VIAM_HOME/module-data/my-namespace_my-module/` |
-| `VIAM_MODULE_ID` | The module ID of the module. <br>`viam:realsense` |
-
-If you are using a [local module](#local-modules), you would need to set these variables manually if your module requires them.
+| `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` |
+| `VIAM_MODULE_ROOT` | The root of the module install directory. Useful for file navigation that is relative to the root of the module. If you are using a [local module](#local-modules), you must set this value manually if your module requires it.<br>Example: `$VIAM_HOME/packages/.data/modules/verxxxx-my-module/` |
+| `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/program/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-robot-id/my-module-name/` |
+| `VIAM_MODULE_ID` | The module ID of the module. <br>Example: `viam:realsense` |
 
 ## Local modules
 
