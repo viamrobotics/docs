@@ -24,7 +24,6 @@ A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" 
 
 You can browse existing modules in the [Viam Registry](/registry/#the-viam-registry) to find one that supports your custom hardware or software, or you can write your own module.
 
-A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="type" text="types" >}} or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
 Modules run alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
 When the module initializes, it registers those pairs on your robot, making the functionality defined by that pair available for use.
 
