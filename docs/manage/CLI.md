@@ -349,7 +349,25 @@ viam locations list [<organization id>]
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| `api-key`   |  work with an api-key for your location | `create` |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+|        argument     |       description
+| ----------- | ----------- | -----------
+| `create`     | create an API key for a specific location
+| `--help`      | return help
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+|        argument     |       description | applicable commands | required
+| ----------- | ----------- | ----------- | ----------- |
+| `--location-id`      | the location to create an API key for    |`create` |true |
+| `--name`     |  the name of the API key    |`create` |false |
+| `--org-id`      |  the organization ID to attach the key to  |`create` |false |
 
 ### `login`
 
@@ -369,7 +387,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization API key      | - |
+| `api-key`      | authenticate to Viam using an organization API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
@@ -587,7 +605,7 @@ viam organizations api-key create --org-id <org-id> [--name <key-name>]
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
 
-#### Command options
+#### Command options s
 
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
