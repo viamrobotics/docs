@@ -332,7 +332,7 @@ What a module from the Viam registry is instantiated, it has access to the follo
 | `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. Use this directory to store [python virtual environments](/program/python-venv/) when writing and deploying multiple python modules that share the same dependencies, for example.<br>`$VIAM_HOME/module-data/my-namespace_my-module/` |
 | `VIAM_MODULE_ID` | The module ID of the module. <br>`viam:realsense` |
 
-If you are using a [local module](#local-modules), you must set these variables manually.
+If you are using a [local module](#local-modules), you would need to set these variables manually if your module requires them.
 
 ## Local modules
 
