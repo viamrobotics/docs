@@ -7,7 +7,7 @@ tags: ["rdk", "extending viam", "modular resources", "API"]
 description: "Define a new API for a resource that does not fit into existing component or service subtypes."
 no_list: true
 aliases:
-  - "/extend/registry/create/create-subtype/"
+  - "/extend/modular-resources/create/create-subtype/"
   - "/modular-resources/advanced/create-subtype"
 ---
 

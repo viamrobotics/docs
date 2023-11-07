@@ -17,7 +17,7 @@ tags:
     "CAN",
   ]
 aliases:
-  - "/extend/registry/examples/odrive/"
+  - "/extend/modular-resources/examples/odrive/"
   - "/modular-resources/examples/odrive/"
 # SMEs: Kim, Martha, Rand
 ---

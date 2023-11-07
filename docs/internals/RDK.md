@@ -18,11 +18,11 @@ Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/via
 
 ## `viam-server`
 
-_viam-server_ manages {{< glossary_tooltip term_id="resource" text="resources" >}}:
+_viam-server_ manages the following:
 
 ### Communication
 
-`viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting robots to the cloud or for connecting to other parts of your robot.
+`viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting robots to the cloud or for connecting to other parts of your smart machine.
 
 ### Dependency Management
 
@@ -42,7 +42,7 @@ After start-up, `viam-server` manages:
 
 ### Reconfiguration
 
-When you or your collaborators change the configuration of a smart machine, `viam-server` automatically synchronizes configuration to your robot and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a smart machine in the Viam app, `viam-server` automatically synchronizes the configuration to your smart machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running robot.
 
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).

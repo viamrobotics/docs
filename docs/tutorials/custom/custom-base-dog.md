@@ -207,7 +207,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-Now that the Freenove server is set up, you will follow the [process for creating modular resources](../../../registry/).
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](/registry/create/).
 You will use [this module creation tool](https://github.com/viam-labs/generator-viam-module) to simplify the process and generate the necessary stub files.
 Then, you will edit them as necessary to define how each base API method interacts with your robot dog.
 

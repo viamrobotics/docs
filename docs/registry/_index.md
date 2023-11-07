@@ -15,10 +15,10 @@ tags:
 description: "Support additional hardware components or services by adding them from the Viam Registry or by creating new modular resources."
 no_list: true
 aliases:
-  - "/program/extend/registry/"
-  - "/extend/registry/"
+  - "/program/extend/modular-resources/"
+  - "/extend/modular-resources/"
   - "/extend/"
-  - "/program/extend/registry/key-concepts/"
+  - "/program/extend/modular-resources/key-concepts/"
   - "/modular-resources/key-concepts/"
   - "/modular-resources/"
 ---
@@ -31,13 +31,14 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
 
 You configure modular resources same way as built-in resources and use the same [standardized APIs](/program/apis/).
-`viam-server` manages [dependencies](/internals/rdk/#dependencies), [start-up](/internals/rdk/#start-up), [reconfiguration](/manage/fleet/#reconfiguration), and [data management](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [shutdown](/internals/rdk/#shutdown).
+`viam-server` manages the [dependencies](/internals/rdk/#dependencies), [start-up](/internals/rdk/#start-up), [reconfiguration](/manage/fleet/#reconfiguration), [data management](/services/data/configure-data-capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
 
 ## The Viam Registry
 
 The [Viam registry](https://app.viam.com/registry) is the central place where you can browse {{< glossary_tooltip term_id="module" text="modules" >}} that add capabilities to your smart machine beyond what is built-in to `viam-server`.
 
-You can search the available {{< glossary_tooltip term_id="modular-resource" text="modular resoruces" >}} from the Viam Registry here:
+A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
+You can search the available modular resources from the Viam Registry here:
 
 <div id="searchbox"></div>
 <p>

@@ -21,7 +21,7 @@ tags:
     "camera",
   ]
 aliases:
-  - "/extend/registry/examples/csi/"
+  - "/extend/modular-resources/examples/csi/"
   - "/modular-resources/examples/csi/"
 # SMEs: Sean
 ---

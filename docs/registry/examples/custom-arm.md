@@ -17,7 +17,7 @@ tags:
     "CAN",
   ]
 aliases:
-  - "/extend/registry/examples/custom-arm/"
+  - "/extend/modular-resources/examples/custom-arm/"
   - "/modular-resources/examples/custom-arm/"
 # SMEs: Nicole Jung
 ---

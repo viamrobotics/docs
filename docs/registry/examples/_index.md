@@ -19,8 +19,8 @@ tags:
     "services",
   ]
 aliases:
-  - "/program/extend/registry/examples/"
-  - "/extend/registry/examples/"
+  - "/program/extend/modular-resources/examples/"
+  - "/extend/modular-resources/examples/"
   - "/modular-resources/examples/"
 ---
 

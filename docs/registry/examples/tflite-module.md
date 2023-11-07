@@ -6,7 +6,7 @@ type: "docs"
 description: "Add an ML model modular-resource-based service which uses TensorFlow Lite to classify audio samples."
 tags: ["ml", "model training", "services"]
 aliases:
-  - "/extend/registry/examples/tflite-module/"
+  - "/extend/modular-resources/examples/tflite-module/"
   - "/modular-resources/examples/tflite-module/"
 # SMEs: Andrew Morrow
 ---
