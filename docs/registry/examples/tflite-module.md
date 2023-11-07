@@ -7,6 +7,7 @@ description: "Add an ML model modular-resource-based service which uses TensorFl
 tags: ["ml", "model training", "services"]
 aliases:
   - "/extend/modular-resources/examples/tflite-module/"
+  - "/modular-resources/examples/tflite-module/"
 # SMEs: Andrew Morrow
 ---
 

@@ -78,13 +78,17 @@ If you edit a config while someone else edits the same config, the person who sa
 Before editing a config, we recommend you refresh the page to ensure you have all the latest changes.
 {{< /alert >}}
 
-When you or your collaborators change a robot's configuration, the robot will automatically reconfigure itself within 15 seconds.
-You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
-You can also revert to an earlier configuration from the History tab.
-
 {{< alert title="Tip" color="tip" >}}
 For some configuration aspects you may require physical access to the robot so you can see how components are connected.
 {{< /alert >}}
+
+#### Reconfiguration
+
+When you or your collaborators change the configuration of a smart machine in the Viam app, `viam-server` automatically synchronizes the configuration to your smart machine and updates the running resources within 15 seconds.
+This means you can add, modify, and remove a modular resource instance from a running robot.
+
+You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
+You can also revert to an earlier configuration from the History tab.
 
 ### Package deployment
 
@@ -118,7 +122,7 @@ If you are collaborating on a robot and controlling it using the [**Control** ta
 
 ### Deployment
 
-You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/modular-resources/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
+You and your collaborators can deploy [control logic](/program/apis/), [modular resources](/registry/), sidecar [processes](../configuration/#processes), or [machine learning models](/services/ml/) to your fleet of robots without manually copying files by uploading it to Viam's cloud and deploying it to your fleet.
 
 ## The Viam mobile app
 

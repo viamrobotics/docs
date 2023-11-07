@@ -138,9 +138,9 @@ You can also extend Viam to support additional hardware components or software s
 
 The Viam registry allows hardware and software engineers to collaborate on their smart machine projects by writing and sharing custom modules with each other.
 You can add a module from the Viam registry directly from your smart machine's **Configuration** tab in [the Viam app](https://app.viam.com/), using the **+ Create component** button.
-You can also [upload your own module to the Viam registry](/modular-resources/upload/).
+You can also [upload your own module to the Viam registry](/registry/upload/).
 
-See [Modular resources](/modular-resources/) for more information.
+See [Modular resources](/registry/) for more information.
 
 ## Next steps
 

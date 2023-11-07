@@ -6,7 +6,7 @@ type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/upload-model/
-description: "Upload an image classification model to Viam."
+description: "Upload a Machine Learning model to Viam to use it with the ML Model service."
 # SME: Aaron Casas
 ---
 

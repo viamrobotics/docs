@@ -14,7 +14,7 @@ aliases:
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
@@ -60,7 +60,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
   - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
-- In addition, you must [add the `rplidar` module to your robot](/modular-resources/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
+- In addition, you must [add the `rplidar` module to your robot](/registry/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
 
   {{< alert title="SUPPORT" color="note" >}}
 
@@ -88,7 +88,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    1. Click **Add module**, give your service a name of your choice, then click **Create**.
    1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
-      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/modular-resources/examples/rplidar/).
+      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/registry/examples/rplidar/).
         Example: "my-rplidar"
         - Then set a **Data capture rate (Hz)** for it.
           Example: "5"
