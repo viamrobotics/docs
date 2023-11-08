@@ -29,13 +29,14 @@ import asyncio
 from viam.rpc.dial import DialOptions, Credentials
 from viam.robot.client import RobotClient
 
+
 async def connect():
     creds = Credentials(
         type='robot-location-secret',
         payload='YOUR LOCATION SECRET')
     opts = RobotClient.Options(
         refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+        dial_options = DialOptions(credentials=creds)
     )
     return await RobotClient.at_address('smart-machine-main.YOUR LOCATION ID.viam.cloud', opts)
 
@@ -111,7 +112,7 @@ To configure a timeout when using the robot API:
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Add the timeout argument to DialOptions:
-dial_options=DialOptions(credentials=creds, timeout=10)
+dial_options = DialOptions(credentials=creds, timeout=10)
 ```
 
 By default, Python does not use a timeout, and will wait for a response as long as needed.
