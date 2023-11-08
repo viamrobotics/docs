@@ -113,7 +113,7 @@ o_z: -0.99980690150926033
 theta: -179.99979233107763
 ```
 
-The `x`, `y`, and `z` values correspond to the `position` element of the pose, while the `o_x`, `o_y`, `o_z`, and `theta` values are for the `orientation` element of the pose (presented as an [Orientation Vector](https://docs.viam.com/internals/orientation-vector/)).
+The `x`, `y`, and `z` values correspond to the `position` element of the pose, while the `o_x`, `o_y`, `o_z`, and `theta` values are for the `orientation` element of the pose (presented as an [Orientation Vector](/internals/orientation-vector/)).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -228,7 +228,7 @@ Add the following line to your import list to be able to assign values to a `Joi
 from viam.proto.component.arm import JointPositions
 ```
 
-See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
+See the [arm reference document](/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: move the forearm of the arm slightly up
@@ -241,7 +241,7 @@ await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
 
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able to assign values to an `armapi.JointPositions` data structure.
-See the [arm reference document](https://docs.viam.com/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
+See the [arm reference document](/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Command a joint position move: move the forearm of the arm slightly up

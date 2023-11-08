@@ -73,7 +73,7 @@ This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/try-viam/rover-resources/rover-tutorial/).
 
 If you are not using a Viam Rover, [install viam-server](/installation/) and configure your robot with the [appropriate components](/components/).
-If you are using a different rover, the [Viam Rover setup instructions](https://docs.viam.com/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
+If you are using a different rover, the [Viam Rover setup instructions](/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
 ### 1. Connect the servo
 

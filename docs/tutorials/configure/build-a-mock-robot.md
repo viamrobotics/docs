@@ -90,7 +90,7 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](https://docs.viam.com/manage/fleet/robots/#control):
+When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](/manage/fleet/robots/#control):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
 
