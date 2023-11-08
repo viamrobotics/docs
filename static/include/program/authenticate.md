@@ -3,7 +3,7 @@ To authenticate yourself to your robot, you need
 1. The robot part's api key:
 
    <!-- we will be releasing the ability to create API keys across all types of resources and combinations soon (i.e an api key can have an authorization on a org, location, robot or any combination of all three). this is correct for now though but it will be changing shortly. -->
-   To authenticate, [use a robot part API key](/manage/robots/#security) or [an organization-wide API key](/manage/cli/#create-an-organization-api-key).
+   To authenticate, [use a robot part API key](/manage/fleet/robots/#security) or [an organization-wide API key](/manage/cli/#create-an-organization-api-key).
    Copy and paste the API key id and the API key into your environment variables or directly into the code:
 
    {{< tabs >}}
@@ -114,6 +114,6 @@ To avoid connection issues, start using API keys.
 
    {{< /alert >}}
 
-2. The robot's remote address: Include the address, which resembles `12345.somerobot-main.viam.cloud`. 
+2. The robot's remote address: Include the address, which resembles `12345.somerobot-main.viam.cloud`.
 The robot address is a public address to connect to your robot.
    You can find this address at the top of the robot's **Control** tab or in the **Code sample** tab.
