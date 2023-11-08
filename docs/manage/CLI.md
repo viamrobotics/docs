@@ -144,7 +144,9 @@ To use an organization API key to authenticate your CLI session, you must first 
    Where:
 
    - `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
-   - `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
+   - `key-name` is an optional name for your API key.
+    If only one organization owns the location, you can omit the parameter.
+    If multiple organizations own the location, you must specify the `org-id` explicitly.
 
 The command will return a `key id` and a `key value`.
 You will need both to authenticate.
