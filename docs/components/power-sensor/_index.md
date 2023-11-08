@@ -100,6 +100,8 @@ Return the current of a specified device and whether it is AC or DC.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_current).
 
 ```python
+my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+
 # Get the current reading from the power sensor
 current, is_ac = await my_power_sensor.get_current()
 print("The current is ", current, " A, Is AC: ", is_ac)
@@ -155,9 +157,11 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_voltage).
 
 ```Python
+my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+
 # Get the voltage reading from the power sensor
-    voltage, is_ac = await my_power_sensor.get_voltage()
-    print("The voltage is", voltage, "V, Is AC:", is_ac)
+voltage, is_ac = await my_power_sensor.get_voltage()
+print("The voltage is", voltage, "V, Is AC:", is_ac)
 ```
 
 {{% /tab %}}
@@ -210,9 +214,11 @@ Return the power reading in watts.
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/power_sensor/index.html#viam.components.power_sensor.power_sensor.PowerSensor.get_power).
 
 ```Python
+my_power_sensor = PowerSensor.from_robot(robot=robot, name='my_power_sensor')
+
 # Get the power reading from the power sensor
-    power = await my_power_sensor.get_power()
-    print("The power is", power, "Watts")
+power = await my_power_sensor.get_power()
+print("The power is", power, "Watts")
 ```
 
 {{% /tab %}}
@@ -295,6 +301,66 @@ readings, err := myPowerSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
+{{< /tabs >}}
+
+### GetGeometries
+
+Get all the geometries associated with the power sensor in its current configuration, in the [frame](/services/frame-system/) of the power sensor.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the power sensor, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_power_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
+
+geometries = await my_power_sensor.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+
+<!-- Go tab
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the power sensor, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+
+geometries, err := myPowerSensor.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+ -->
+
 {{< /tabs >}}
 
 ### DoCommand
