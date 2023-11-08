@@ -825,7 +825,7 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
    {{% snippet "show-secret.md" %}}
 
-1. Then, run the following command to start the custom TypeScript interface, inserting your robot's api key as the argument for `VIAM_API_KEY`,your robot's api key id as the argument for `VIAM_API_KEY_ID`, and your main part host address for `VIAM_LOCATION`:
+1. Then, run the following command to start the custom TypeScript interface, inserting your robot's API key as the argument for `VIAM_API_KEY`,your robot's api key id as the argument for `VIAM_API_KEY_ID`, and your main part host address for `VIAM_LOCATION`:
 
    ```sh {class="command-line" data-prompt="$"}
    export VIAM_LOCATION=<mylocation>;VIAM_API_KEY=<myapikey>;VIAM_API_KEY_ID=<myapikeyid>;npm run start-simple

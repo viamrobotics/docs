@@ -110,7 +110,7 @@ You can share the robot's remote address and API key without granting location a
 
 As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub, and execute code to control the robot from anywhere in the world.
 
-Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's API key.
+Toggle **Include API Key** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's API key.
 The robot's remote address is displayed on both the **Control** and **Code sample** tabs of your robot's page in the app, ending with `viam.cloud`.
 
 {{% snippet "secret-share.md" %}}

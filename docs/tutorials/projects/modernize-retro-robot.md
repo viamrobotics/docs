@@ -611,7 +611,7 @@ Now MAIV is ready to interact with the world!
 
 Start by driving MAIV through the **Control** panel, then try writing some code.
 A simple first exercise would be to have MAIV [drive in a square](/tutorials/get-started/try-viam-sdk/).
-The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot api key and secret and any component names that differ in the code.
+The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot API key and key id and any component names that differ in the code.
 
 Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
 
