@@ -13,7 +13,7 @@ Models of Viam's [Machine Learning (ML) model service](/services/ml/) allow you 
 Vision services, like [an `"mlmodel"` detector](/services/vision/detection/#configure-an-mlmodel-detector) or [classifier](/services/vision/classification/#configure-an-mlmodel-classifier), enable you to identify and classify objects in images with the predictions those deployed models make.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
-If [designing your own ML Model service](/modular-resources/) to add to [the Registry](https://app.viam.com/registry), you must try to make your ML models' shapes match the input and output tensors the vision service expects to work with if you want the two services to be able to work together out of the box.
+If [designing your own ML Model service](/modular-resources/) to add to [the Registry](https://app.viam.com/registry), you must try to make your ML models' shapes match the input and output tensors the vision service expects to work with if you want the two services to coordinate in classification or detection.
 
 To know what to expect, the vision service looks for descriptions of these characteristics in the [metadata](/services/mlmodel/#metadata) of the ML model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
 For an example of this, see [Example Metadata](#example-metadata).
