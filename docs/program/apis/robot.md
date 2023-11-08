@@ -10,13 +10,13 @@ tags: ["robot state", "sdk", "apis", "robot api"]
 The _robot API_ is the application programming interface that manages each of your smart machines running `viam-server`.
 Use the robot API to connect to your smart machine from within a supported [Viam SDK](/program/apis/), and send commands remotely.
 
-The robot API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [RDK (the Viam go SDK)](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+The robot API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [RDK (the Viam Go SDK)](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
 
 ## Establish a connection
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the location secret and smart machine address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab.
+To find the location secret and robot address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab.
 Toggle **Include secret**, then copy the location secret and robot address into the code below where indicated:
 
 {{< tabs >}}
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-You can use this code to connect to your smart machine and instantiate a `RobotClient` that you can then use with the [Robot API](#api).
+You can use this code to connect to your smart machine and instantiate a `RobotClient` that you can then use with the [robot API](#api).
 As an example, this code uses the instantiated `RobotClient` to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
 Remember to always close the connection (using `close()`) when done.
 
@@ -74,7 +74,7 @@ func main() {
   logger := golog.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "smart-machine-main.YOUR LOCATION ID.viam.cloud",
+      "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
@@ -98,7 +98,7 @@ Remember to always close the connection (using `Close()`) when done.
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you have instantiated the robot client, you can run any of the [Robot API methods](#api) against the `robot` object to communicate with your smart machine.
+Once you have instantiated the robot client, you can run any of the [robot API methods](#api) against the `robot` object to communicate with your smart machine.
 
 ### Configure a timeout
 
@@ -150,7 +150,7 @@ The example above shows a timeout of 10 seconds configured.
 ## API
 
 The robot API support the following selected methods.
-For the full list of methods, see the [Viam Python SDK](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
+For the full list of methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
@@ -547,3 +547,5 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+For the full list of robot API methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
