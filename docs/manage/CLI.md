@@ -96,9 +96,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, an organization, location, or robot API key.
+You can authenticate your CLI session using either a personal access token,or an organization, location, or robot API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to create a location or robot API key, you must begin the process by creating a [location](#create-a-location-api-key) or [robot](#create-a-robot-api-key) API key.
+Similarly, to authenticate using a location or robot API key, you must first create a [location](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -143,7 +143,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token or an alternative API key.
+   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
 
 1. Then, run the following command to create a new organization API key:
 
@@ -175,7 +175,7 @@ An organization can have multiple API keys.
 To use an location API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a location API key created, authenticate using a personal access token or an alternative API key.
+   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [robot API key](#create-a-robot-api-key).
 
 1. Then, run the following command to create a new location API key:
 
@@ -213,13 +213,12 @@ A location can have multiple API keys.
 To use a robot API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a robot API key created, authenticate using a personal access token, or an alternative API key.
+   If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
 
 1. Then, run the following command to create a new robot API key:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam robots api-key create --robot-id <robot-id>
-    --org-id <org-id> --name <key-name>
+   viam robots api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
    ```
 
    Where:
@@ -386,8 +385,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 
 ### locations
 
-The `locations` command lists all locations that the authenticated session has access to, grouped by organization, and allows you to create a new location API key.
-Additionally, you can filter results by organization.
+The `locations` command allows you to manage the [locations](/manage/fleet/locations/) that you have access to.
+With it, you can list avaialble locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
@@ -678,15 +677,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | argument | description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
 | `--org-id`      | the organization to create an API key for |`create` | true |
-| `--name`     |  the name of the organization API key    |`create` | false |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
-| ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | your organization ID |`api-key`|true |
-| `--name` |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key`| false |
+| `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`create` | false |
 
 ### robots
 
