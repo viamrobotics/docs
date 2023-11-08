@@ -297,3 +297,48 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+slam = SLAMClient.from_robot(robot, "my_slam_service")
+
+await slam.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+
+err := slam_svc.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}

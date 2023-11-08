@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 Method Name | Description
 ----------- | -----------
 [`Mode`](/services/navigation/#mode) | Get the mode the service is operating in.
@@ -9,3 +10,4 @@ Method Name | Description
 [`Paths`](/services/navigation/#paths) | Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
 [`Obstacles`](/services/navigation/#obstacles) | Get the obstacles currently in the service's data storage.
 [`DoCommand`](/services/navigation/#docommand) | Execute model-specific commands that are not otherwise defined by the service API.
+[`Close`](/services/navigation/#close) | Safely shut down the resource and prevent further use.

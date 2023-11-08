@@ -685,6 +685,51 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_nav = NavigationClient.from_robot(robot, "my_nav_service")
+
+await my_nav.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+err := myNav.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Control Tab Usage
 
 After configuring the navigation service for your robot, navigate to the **Control** tab of the robot's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
