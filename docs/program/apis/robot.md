@@ -10,7 +10,7 @@ tags: ["robot state", "sdk", "apis", "robot api"]
 The _robot API_ is the application programming interface that manages each of your smart machines running `viam-server`.
 Use the robot API to connect to your smart machine from within a supported [Viam SDK](/program/apis/), and send commands remotely.
 
-The robot API is supported for use with the [Viam Python SDK]([`RobotClient`](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)), the [RDK (the Viam go SDK)](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+The robot API is supported for use with the [Viam Python SDK](<[`RobotClient`](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)>), the [RDK (the Viam go SDK)](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
 
 ## Establish a connection
 
@@ -55,7 +55,6 @@ You can use this code to connect to your smart machine and instantiate a `RobotC
 As an example, this code uses the instantiated `RobotClient` to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
 Remember to always close the connection (using `close()`) when done.
 
-
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -85,7 +84,7 @@ func main() {
   if err != nil {
       logger.Fatal(err)
   }
- 
+
   defer robot.Close(context.Background())
   logger.Info("Resources:")
   logger.Info(robot.ResourceNames())
@@ -150,7 +149,8 @@ The example above shows a timeout of 10 seconds configured.
 
 ## API
 
-These are some of the supported robot API methods. For the full list, see the [Viam Python SDK](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
+The robot API support the following selected methods.
+For the full list of methods, see the [Viam Python SDK](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
