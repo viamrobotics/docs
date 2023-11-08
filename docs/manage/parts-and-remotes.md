@@ -96,4 +96,4 @@ servo = Servo.from_robot(robot=robot, name='my-other-robot-main:my_servo')
 {{% /tab %}}
 {{< /tabs >}}
 
-For an example that controls a motor that is a component of a sub-part, see [the Mock Robot tutorial](/tutorials/configure/build-a-mock-robot/#how-to-control-a-sub-part-using-the-viam-sdk).
+For an example that controls a motor that is a component of a sub-part, see [the Mock Robot tutorial](/tutorials/configure/build-a-mock-robot/#control-a-sub-part-using-the-viam-sdk).

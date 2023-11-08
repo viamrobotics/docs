@@ -300,7 +300,7 @@ You can now have some real fun.
 Try driving your rover by keyboard.
 Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection/) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
-Or, expand what your outdoor rover can do by adding a [camera](/components/camera), [movement sensor](/components/movement-sensor/), or other [component](/components/).
+Or, expand what your outdoor rover can do by adding a [camera](/components/camera/), [movement sensor](/components/movement-sensor/), or other [component](/components/).
 
 <div class="td-max-width-on-larger-screens">
   {{<imgproc src="/tutorials/outdoor-rover-boxbot/matt-done.png" resize="300x" declaredimensions=true alt="Matt working on project." class="alignleft" style="max-width: 250px">}}
