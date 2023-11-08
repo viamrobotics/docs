@@ -414,9 +414,9 @@ viam locations list [<organization id>]
 <!-- prettier-ignore -->
 | argument | description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--location-id`      | the location to create an API key for |`create` | true |
-| `--name`     |  the name of the API key    |`create` | false |
-| `--org-id`      |  the organization ID to attach the key to  |`create` | false |
+| `--location-id`      | the location to create an API key for |`api-key` | true |
+| `--name`     |  the name of the API key    |`api-key` | false |
+| `--org-id`      |  the organization ID to attach the key to  |`api-key` | false |
 
 ### `login`
 
@@ -676,8 +676,8 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | argument | description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | the organization to create an API key for |`create` | true |
-| `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`create` | false |
+| `--org-id`      | the organization to create an API key for |`api-key` | true |
+| `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
 ### robots
 
@@ -746,9 +746,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 <!-- prettier-ignore -->
 | argument | description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--robot-id`      | the robot to create an API key for |`create` | true |
-| `--name`     |  the optional name of the API key    |`create` | false |
-| `--org-id`      |  the optional organization ID to attach the key to  |`create` | false |
+| `--robot-id`      | the robot to create an API key for |`api-key` | true |
+| `--name`     |  the optional name of the API key    |`api-key` | false |
+| `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Positional arguments: `part`
 
