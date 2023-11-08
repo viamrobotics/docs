@@ -96,8 +96,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token or an organization API key.
+You can authenticate your CLI session using either a personal access token, an organization API key, or a location API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
+Similarly, to create a location API key, you must begin the process by [creating a location API key](#create-a-location-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -112,10 +113,16 @@ To use an organization API key to authenticate, you must first [create an organi
 - To authenticate your CLI session using an organization API key:
 
   ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
+  viam login api-key --key-id <organization-api-key-uuid> --key <organization-api-key-secret-value>
   ```
 
   If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
+
+- To authenticate your CLI session using a location API key:
+
+  ```sh {class="command-line" data-prompt="$"}
+  viam login api-key --key-id <location-api-key-uuid> --key <location-api-key-secret-value>
+  ```
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
@@ -137,20 +144,58 @@ To use an organization API key to authenticate your CLI session, you must first 
    Where:
 
    - `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
-   - `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
+   - `key-name` is an optional name for your API key.
 
 The command will return a `key id` and a `key value`.
-You will need both to authenticate using `viam login api-key`.
+You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
-Secure these key values safely.
+Keep these key values safe.
 Authenticating using an organization API key gives the authenticated CLI session full read and write access to all robots within your organization.
 {{% /alert %}}
 
-Once created, you can then use the organization API key to authenticate future CLI sessions.
+Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to robots with the SDK](/program/#authenticate)..
 To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 An organization can have multiple API keys.
+
+### Create a location API key
+
+To use an location API key to authenticate your CLI session, you must first create one:
+
+1. First, [authenticate](#authenticate) your CLI session.
+   If you don't already have a location API key created, authenticate using a personal access token or an organization API key.
+
+1. Then, run the following command to create a new location API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam locations api-key create --location-id <location-id>
+    --org-id <org-id> --name <key-name>
+   ```
+
+   Where:
+
+   - `location-id` is your location ID.
+     You can find your location ID by running `viam locations list` or by visiting your [robot fleet's page](https://app.viam.com/robots) in the Viam app.
+   - `org-id` is an optional organization ID to attach the key to.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     If only one organization owns the location, you can omit the parameter.
+     If multiple organizations own the location, you must specify the `org-id` explicitly.
+   - `key-name` is an optional name for your API key.
+     If omitted, a name will be auto-generated based on your login info and the current time.
+
+The command will return a `key id` and a `key value`.
+You will need both to authenticate.
+
+{{% alert title="Important" color="note" %}}
+Keep these key values safe.
+Authenticating using a location API key gives the authenticated CLI session full read and write access to all robots in that location.
+{{% /alert %}}
+
+Once created, you can use the location API key to authenticate future CLI sessions or to c[connect to robots with the SDK](/program/#authenticate).
+To switch to using a location API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+
+A location can have multiple API keys.
 
 ## Manage your robots with the Viam CLI
 
@@ -305,7 +350,25 @@ viam locations list [<organization id>]
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| `api-key`   |  work with an api-key for your location | `create` |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for a specific location |
+| `--help`      | return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | applicable commands | required |
+| ----------- | ----------- | ----------- | ----------- |
+| `--location-id`      | the location to create an API key for |`create` | true |
+| `--name`     |  the name of the API key    |`create` | false |
+| `--org-id`      |  the organization ID to attach the key to  |`create` | false |
 
 ### `login`
 
@@ -325,7 +388,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization API key      | - |
+| `api-key`      | authenticate to Viam using an organization API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
