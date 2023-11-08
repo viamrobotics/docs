@@ -28,7 +28,12 @@ For some models, like the [Triton MLModel](/modular-resources/examples/triton/) 
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}
+{{< alert title="Add support for other models" color="tip" >}}
+If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
+
+ML Models must be designed in particular shapes to work with Viam's [vision services](/services/vision/).
+Follow [these instructions](/modular-resources/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
+{{< /alert >}}
 
 ## Create an ML model service
 
