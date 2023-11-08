@@ -447,7 +447,9 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_geometries).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
+my_controller = Controller.from_robot(
+    robot=myRobotWithController, 
+    name="my_controller")
 
 geometries = await my_controller.get_geometries()
 
