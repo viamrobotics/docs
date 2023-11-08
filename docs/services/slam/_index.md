@@ -27,7 +27,7 @@ You can conduct SLAM with data collected live by a [RPlidar](/modular-resources/
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/components/camera/" alt_title="RPlidar" required="yes" alt_link="/modular-resources/examples/rplidar/">}}
+{{< relatedcard link="/components/camera/" alt_title="RPlidar" required="yes" alt_link="/registry/examples/rplidar/">}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
