@@ -116,13 +116,12 @@ Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial
 dial_options = DialOptions(credentials=creds, timeout=10)
 ```
 
-The default timeout in Python is 20 seconds.
 The example above shows a timeout of 10 seconds configured.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Import the `time` package, add a timeout to your context, and check the timeout as needed:
+Import the `time` package, then add a timeout to your context using `WithTimeout`:
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Import the time package in addition to the other imports:
@@ -132,19 +131,24 @@ import (
   ...
 )
 
-// Add a timeout to the context ctx in your main() connection function:
-timeoutContext, cancel := context.WithTimeout(ctx, 10 * time.Second)
-
-// Add a check to see if the deadline has elapsed:
-deadline, ok := timeoutContext.Deadline()
-      if ok {
-          // deadline not yet elapsed
-      } else {
-          // deadline elapsed
-      }
+// Edit your main() to configure a timeoutContext, then pass this context to the dial invocation:
+func main() {
+  ctx := context.Background()
+  timeoutContext, cancel := context.WithTimeout(ctx, 10*time.Second)
+  defer cancel()
+  robot, err := client.New(
+      timeoutContext,
+      "ADDRESS FROM THE VIAM APP",
+      logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "YOUR LOCATION SECRET",
+      })),
+  )
+...
+}
 ```
 
-The default timeout in Go is 20 seconds.
 The example above shows a timeout of 10 seconds configured.
 
 {{% /tab %}}
