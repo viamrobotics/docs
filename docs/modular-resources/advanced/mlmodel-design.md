@@ -27,7 +27,7 @@ For both [classification](/services/vision/classification/) and [detection](/ser
 
 ## Output tensors: `output_info` in metadata
 
-There are many ways data can be returned by the ML Model, due to the variety of machine learning models for computer vision.
+Data can be returned by the ML model in many ways, due to the variety of machine learning models for computer vision.
 While the vision service tries to take into account many different forms of models by looking at the metadata of the model, if the model does not provide metadata, the vision service will make guesses.
 If you need to add structure and metadata, output that is organized in terms of the "ideal guess" will work out of the box.
 The ideal guesses of the vision service are as follows:
@@ -36,9 +36,9 @@ For labels:
 
 - To get labels that will be associated to classifications or detections, currently the vision service looks at the first element of the `output_info` list in the ML models' metadata and looks for a key called `"labels"` in its `"extra"` struct. The value of that key should be the full path to the label file on the robot.
 
-    ```sh {class="command-line" data-prompt="$"}
-    label_path = ml_model_metadata.output_info.extra["labels"]
-    ```
+  ```sh {class="command-line" data-prompt="$"}
+  label_path = ml_model_metadata.output_info.extra["labels"]
+  ```
 
 For [classifications](/services/vision/classification/):
 
