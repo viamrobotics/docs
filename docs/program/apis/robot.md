@@ -7,11 +7,150 @@ description: "How to use the Robot API to monitor and manage your smart machines
 tags: ["robot state", "sdk", "apis", "robot api"]
 ---
 
-The _robot API_ is the application programming interface that manages each of your robots running `viam-server`.
-It is the API for high level operations of each robot {{< glossary_tooltip term_id="part" text="part" >}}.
+The _robot API_ is the application programming interface that manages each of your smart machines running `viam-server`.
+Use the robot API to connect to your smart machine from within a supported [Viam SDK](/program/apis/), and send commands remotely.
+
+The robot API is supported for use with the [Viam Python SDK]([`RobotClient`](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)), the [RDK (the Viam go SDK)](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+
+## Establish a connection
+
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-These are some of the supported robot API methods. For a full list [see GitHub](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
+To find the location secret, go to [Viam app](https://app.viam.com/), and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
+Toggle **Include secret** on and copy the `payload`.
+For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+
+from viam.rpc.dial import DialOptions, Credentials
+from viam.robot.client import RobotClient
+
+async def connect():
+    creds = Credentials(
+        type='robot-location-secret',
+        payload='YOUR LOCATION SECRET')
+    opts = RobotClient.Options(
+        refresh_interval=0,
+        dial_options=DialOptions(credentials=creds)
+    )
+    return await RobotClient.at_address('smart-machine-name-main.YOUR LOCATION ID.viam.cloud', opts)
+
+async def main():
+
+    # Make a RobotClient
+    robot_client = await connect()
+    print('Resources:')
+    print(robot.resource_names)
+    await robot_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+You can use this code to connect to your smart machine and instantiate a `RobotClient` that you can then use with the [Robot API](#api).
+As an example, this code uses the instantiated `RobotClient` to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
+Remember to always close the connection (using `close()`) when done.
+
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+package main
+
+import (
+  "context"
+
+  "github.com/edaniels/golog"
+  "go.viam.com/rdk/robot/client"
+  "go.viam.com/rdk/utils"
+  "go.viam.com/utils/rpc"
+)
+
+func main() {
+  logger := golog.NewDevelopmentLogger("client")
+  robot, err := client.New(
+      context.Background(),
+      "smart-machine-name-main.YOUR LOCATION ID.viam.cloud",
+      logger,
+      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
+          Type:    utils.CredentialsTypeRobotLocationSecret,
+          Payload: "YOUR LOCATION SECRET",
+      })),
+  )
+  if err != nil {
+      logger.Fatal(err)
+  }
+ 
+  defer robot.Close(context.Background())
+  logger.Info("Resources:")
+  logger.Info(robot.ResourceNames())
+}
+```
+
+You can use this code to connect to your smart machine and instantiate a `robot` client that you can then use with the [Robot API](#api).
+As an example, this code uses the instantiated `robot` client to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
+Remember to always close the connection (using `Close()`) when done.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Once you have instantiated the robot client, you can run any of the [Robot API methods](#api) against the `robot` object to communicate with your smart machine.
+
+### Configure a timeout
+
+Because the robot API needs to be able to reliably connect to a deployed smart machine even over a weak or intermittent network, it supports a configurable timeout for connection and command execution.
+
+To configure a timeout when using the robot API:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# Add the timeout argument to DialOptions:
+dial_options=DialOptions(credentials=creds, timeout=10)
+```
+
+By default, Python does not use a timeout, and will wait for a response as long as needed.
+You can use set the `timeout` to a maximum of 20 seconds.
+The example above shows a timeout of 10 seconds configured.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Additionally import the time package:
+import (
+  ...
+  "time"
+  ...
+)
+
+// Add a timeout to the context ctx in your main() connection function:
+timeoutContext, cancel := context.WithTimeout(ctx, 10 * time.Second)
+
+// Add a check to see if the deadline has elapsed:
+deadline, ok := timeoutContext.Deadline()
+      if ok {
+          // deadline not yet elapsed
+      } else {
+          // deadline elapsed
+      }
+```
+
+The Go default timeout is 5 seconds, and the maximum configurable timeout is 20 seconds.
+The example above shows a timeout of 10 seconds configured.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## API
+
+These are some of the supported robot API methods. For the full list, see the [Viam Python SDK](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
