@@ -96,7 +96,7 @@ Follow the instructions below to download the colorfilter module in your preferr
 {{% /tab %}}
 {{< /tabs >}}
 
-### Code your own colorfilter module
+### Code your own module
 
 To get started writing your filter resource model:
 
@@ -119,7 +119,7 @@ To get started writing your filter resource model:
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Implement the subtype's required methods
+#### Code a filter resource model
 
 Next, include all the methods that the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} .
 
@@ -151,22 +151,22 @@ For more information, refer to [Create a custom module](https://docs.viam.com/mo
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Include the filter module requirements
-
 The filter function in your custom filter module must contain two critical elements:
 
 1. A utility function that will check if the caller of the filter function is the data management service.
 1. A safeguard that ensures if the [data management](/services/data/) service is not the caller, an error and the unfiltered data is returned.
 
+{{< alert title="Important" color="note" >}}
+You must include the **safeguard** and **utility function** in order to access data filtering functionality within your module.
+
 For programming languages other than Python and Go, similar utility functions will be exposed to help you check the caller of your filter function.
 The approach to perform this check may differ depending on the particular function and language. For detailed information, please refer to your chosen language's SDK documentation.
+{{< /alert >}}
 
-#### Check the caller of the collector function
-
-When creating your own filter module, you must include a utility function to check whether the data management service is the caller of the function responsible for data capture.
+Follow the steps below to include the utility function and check whether the data management service is the caller of the function responsible for data capture.
 If a service other than the data management service calls the function, it will return the original, unfiltered data.
 
-To check the caller of the collector function:
+To check the caller of the collector function using the utility function:
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -218,8 +218,6 @@ With this configuration:
 {{% /tab %}}
 {{< /tabs >}}
 
-#### Return filter error to data management
-
 After implementing a check to identify the initiator of the filter function, you must include the safeguard that will return an error if the data management service is not the caller.
 
 To do this, include the following in your filter module's resource model:
@@ -266,7 +264,7 @@ This code:
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you've included the required utility function and safeguard, your complete color filter function should look like the following.
+Now that you've included the required utility function and safeguard, your complete color filter function should look like the following:
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -680,16 +678,14 @@ In this code:
 
 - A modular camera coded in Go looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if data management triggered the filter.
 
-- Instead of implementing [`GetImage`](/components/camera/#getimage) (like it is in other languages, etc), in Go, you will implement `Stream` as shown in the example code.
-
 - If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is detected; otherwise, it will raise the [`ErrNoCaptureToStore`](https://github.com/viamrobotics/rdk/blob/214879e147970a454f78035e938ea853fcd79f17/data/collector.go#L44) error.
 
-  {{% /tab %}}
-  {{< /tabs >}}
+{{% /tab %}}
+{{< /tabs >}}
 
 For more information, read [Code a new resource model](/modular-resources/create/#code-a-new-resource-model).
 
-### Code your entry point file
+#### Code an entry point file
 
 Next, code your module entry point file which `viam-server` will use to initialize and start the filter module.
 
@@ -909,7 +905,7 @@ Add the vision service object to the services array in your rover’s raw JSON c
 {{% /tab %}}
 {{< /tabs >}}
 
-## Configure the color filter camera
+## Enable filtering by color
 
 With the vision and data management services configured, you can now configure your camera to filter by color and sync photos to Viam's cloud.
 
@@ -930,7 +926,7 @@ Your robot's configuration page now includes a panel for your camera.
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
-### Add colorfilter component
+### Add the color filter component
 
 1. Click the **Components** subtab and then click **Create component**.
 1. Next, select the `local modular resource` type from the list.
