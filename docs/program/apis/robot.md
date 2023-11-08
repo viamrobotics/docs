@@ -37,7 +37,7 @@ async def connect():
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('smart-machine-name-main.YOUR LOCATION ID.viam.cloud', opts)
+    return await RobotClient.at_address('smart-machine-main.YOUR LOCATION ID.viam.cloud', opts)
 
 async def main():
 
@@ -74,7 +74,7 @@ func main() {
   logger := golog.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "smart-machine-name-main.YOUR LOCATION ID.viam.cloud",
+      "smart-machine-main.YOUR LOCATION ID.viam.cloud",
       logger,
       client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
           Type:    utils.CredentialsTypeRobotLocationSecret,
