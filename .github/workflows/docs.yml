@@ -117,4 +117,4 @@ jobs:
         run: python3 .github/workflows/get_modular_resources.py
         env:
           TYPESENSE_API_KEY_MR: ${{ secrets.TYPESENSE_API_KEY_MR }}
-          VIAM_LOCATION_SECRET: ${{ secrets.VIAM_LOCATION_SECRET }}
+          VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
