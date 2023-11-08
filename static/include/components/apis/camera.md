@@ -7,3 +7,4 @@ Method Name | Description
 [`GetProperties`](/components/camera/#getproperties) | Return the camera intrinsic and camera distortion parameters, as well as whether the camera supports returning point clouds.
 [`GetGeometries`](/components/camera/#getgeometries) | Get all the geometries associated with the camera in its current configuration, in the [frame](/services/frame-system/) of the camera.
 [`DoCommand`](/components/camera/#docommand) | Send or receive model-specific commands.
+[`Close`](/components/camera/#close) | Safely shut down the resource and prevent further use.

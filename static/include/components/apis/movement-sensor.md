@@ -12,3 +12,4 @@ Method Name | Description | Models That Support This Method
 [`GetReadings`](/components/movement-sensor/#getreadings) | Obtain the measurements/data specific to this sensor. | all models
 [`GetGeometries`](/components/movement-sensor/#getgeometries) | Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/services/frame-system/) of the movement sensor. | all models
 [`DoCommand`](/components/movement-sensor/#docommand) | Send or receive model-specific commands. | all models
+[`Close`](/components/movement-sensor/#close) | Safely shut down the resource and prevent further use. | all models

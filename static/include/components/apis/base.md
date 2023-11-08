@@ -10,3 +10,4 @@ Method Name | Description
 [`GetProperties`](/components/base/#getproperties) | Get the width and turning radius of the base in meters.
 [`GetGeometries`](/components/base/#getgeometries) | Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
 [`DoCommand`](/components/base/#docommand) | Send or receive model-specific commands.
+[`Close`](/components/base/#close) | Safely shut down the resource and prevent further use.

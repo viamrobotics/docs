@@ -6,3 +6,4 @@ Method Name | Description
 [`GetProperties`](/components/encoder/#getproperties) | Get the supported properties of this encoder.
 [`GetGeometries`](/components/encoder/#getgeometries) | Get all the geometries associated with the encoder in its current configuration, in the [frame](/services/frame-system/) of the encoder.
 [`DoCommand`](/components/encoder/#docommand) | Send or receive model-specific commands.
+[`Close`](/components/encoder/#close) | Safely shut down the resource and prevent further use.
