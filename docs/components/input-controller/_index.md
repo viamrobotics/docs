@@ -448,7 +448,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_controller = Controller.from_robot(
-    robot=myRobotWithController, 
+    robot=myRobotWithController,
     name="my_controller")
 
 geometries = await my_controller.get_geometries()
