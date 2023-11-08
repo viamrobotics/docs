@@ -137,4 +137,7 @@ Note that only one sensor from each array can be used to retrieve each type of r
 Your robot uses the first sensor in the array that has implemented the relevant API method in its model and does not raise an error at runtime.
 For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"` support returning `angular_velocity`, `"mpu6050"` is only used to read angular velocity on the robot if `"imu-wit"` returns an error at runtime.
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.
