@@ -29,9 +29,10 @@ Data client API methods are only available in the Python SDK.
 
 To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
 See the following example for reference.
-To find the location secret, go to [Viam app](https://app.viam.com/), and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
-Toggle **Include secret** on and copy the `payload`.
-For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
+
+<!-- After sveltekit migration we should also be able to get a key from the UI-->
+
+Use the Viam CLI [to generate an api key for your organization](https://docs.viam.com/manage/cli/#create-an-organization-api-key).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -42,19 +43,19 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of any robot in the location.
-        auth_entity='beepboop-main.YOUR LOCATION ID.viam.cloud',
-        credentials=Credentials(
-            type='robot-location-secret',
-            # The location secret
-            payload='YOUR LOCATION SECRET'
-        )
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
 
 async def main():
-
     # Make a ViamClient
     viam_client = await connect()
     # Instantiate a DataClient to run data client API methods on
@@ -194,6 +195,7 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 - `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
 - `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
 - `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
+- `file_extension` [(Optional[str])](https://docs.python.org/3/library/typing.html#typing.Optional): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
 
 **Returns**:
 
@@ -211,6 +213,7 @@ file_id = await data_client.binary_data_capture_upload(
     method_parameters=None,
     tags=["tag_1", "tag_2"],
     data_request_times=[time_requested, time_received],
+    file_extension=".jpg",
     binary_data=b"Encoded image bytes"
 )
 ```

@@ -214,11 +214,11 @@ func handleController(controller input.Controller) {
 }
 
 func main() {
-    utils.ContextualMain(mainWithArgs, golog.NewDevelopmentLogger("client"))
+    utils.ContextualMain(mainWithArgs, logger.NewDevelopmentLogger("client"))
 }
 
 
-func mainWithArgs(ctx context.Context, args []string, logger golog.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
     // ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
 
     // Get the controller from the robot.
@@ -318,7 +318,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 
 - [(List\[Control\])](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control): List of Controls provided by the controller.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_position).
+For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_controls).
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Get the controller from the robot.
@@ -362,7 +362,7 @@ logger.Info(controls)
 {{% /tab %}}
 {{< /tabs >}}
 
-<!-- ### TriggerEvent NOTE: This method should be documented when support is available for all input components.
+### TriggerEvent
 
 Directly send an [Event Object](#event-object) from external code.
 
@@ -425,7 +425,7 @@ if err != nil {
 ```
 
 {{% /tab %}}
-{{< /tabs >}} -->
+{{< /tabs >}}
 
 ### GetGeometries
 
@@ -904,13 +904,10 @@ modal = 0
 cmd = {}
 
 
-async def connect_robot(host, payload):
-    creds = Credentials(
-        type='robot-location-secret',
-        payload=payload),
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+async def connect_robot(host, api_key, api_key_id):
+    opts = RobotClient.Options.with_api_key(
+      api_key=api_key,
+      api_key_id=api_key_id
     )
     return await RobotClient.at_address(host, opts)
 
@@ -1004,13 +1001,13 @@ async def handleController(controller):
 
 
 async def main():
-    # ADD YOUR ROBOT REMOTE ADDRESS and LOCATION SECRET VALUES.
+    # ADD YOUR ROBOT REMOTE ADDRESS and API KEY VALUES.
     # These can be found in the Code sample tab of app.viam.com.
-    # Toggle 'Include secret' to show the location secret.
+    # Toggle 'Include secret' to show the api key values.
     g920_robot = await connect_robot(
-        "robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+        "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
     modal_robot = await connect_robot(
-        "robot123example.locationxyzexample.viam.com", "xyzabclocationexample")
+        "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
 
     g920 = Controller.from_robot(g920_robot, 'wheel')
     global modal

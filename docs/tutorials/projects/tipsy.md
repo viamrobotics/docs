@@ -583,13 +583,11 @@ Use hook-and-loop fasteners or something else to secure the USB camera to the bo
 For ultrasonic sensors to fit the framing, we recommend 3D printing enclosures.
 This step is optional but makes the project look more aesthetically pleasing and ensures that the sensors don’t fall out as your robot moves around.
 
-You can design your own enclosure, or you can use our design:
+You can design your own enclosure, or you can use the SCUTTLE design we used, a 3D-printed enclosure with a twist bracket that fits the rails:
 
 ![3D printed enclosure of the ultrasonic sensor.](/tutorials/tipsy/assembly-sensor-3dmodel.jpg)
 
 The STL files we used can be found in our [project repository](https://github.com/viam-labs/devrel-demos/tree/main/tipsy-bot/stl-files).
-
-SCUTTLE also has a design for a 3D-printed enclosure with a twist bracket that fits the rails.
 
 If you decide not to use a 3D printer, you can tape the ultrasonic sensors to the rails.
 We recommend that you do so within the enclosure, perhaps under the drink box and above the rover base, so they don’t touch people or obstacles as the robot moves around, as this could cause them to fall off or get damaged.
@@ -625,21 +623,23 @@ from viam.services.vision import VisionClient
 from viam.services.sensors import SensorsClient
 ```
 
-Then it connects to our robot using a robot location secret and address.
+Then it connects to our robot using a robot api key and address.
 Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab:
 
 ```python {class="line-numbers linkable-line-numbers"}
-robot_secret = os.getenv('ROBOT_SECRET') or ''
+robot_api_key = os.getenv('ROBOT_API_KEY') or ''
+robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 # change this if you named your base differently in your robot configuration
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'
 # change this if you named your camera differently in your robot configuration
 camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
-# change this if you named your camera differently in your robot configuration
-camera_name = os.getenv('ROBOT_CAMERA') or 'cam'
-# change this if you named your sensors differently in your robor configuration
-sensor_names = (os.getenv("ROBOT_SENSORS") or
-                "ultrasonic,ultrasonic2").split(",")
+# change this if you named your detector differently in your robot
+# configuration
+detector_name = os.getenv("ROBOT_DETECTOR") or "myPeopleDetector"
+# change this if you named your sensor service differently in your robot
+# configuration
+sensor_service_name = (os.getenv("ROBOT_SENSORS") or "sensors")
 pause_interval = os.getenv('PAUSE_INTERVAL') or 3
 ```
 

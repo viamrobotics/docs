@@ -67,7 +67,7 @@ For configuration information, click on the model name:
 {{<modular-resources api="rdk:component:servo" type="servo">}}
 -->
 
-If none of these models fit your use case, you can [create a modular resources](/modular-resources/) to add support for it.
+If none of these models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
 ## Control your servo with Viam's client SDK libraries
 

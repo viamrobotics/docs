@@ -339,14 +339,14 @@ from viam.rpc.dial import Credentials, DialOptions
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='LOCATION SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def main():
@@ -395,9 +395,9 @@ import (
   "context"
   "fmt"
 
-  "github.com/edaniels/golog"
   armapi "go.viam.com/api/component/arm/v1"
   "go.viam.com/rdk/components/arm"
+  "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/spatialmath"
@@ -406,14 +406,18 @@ import (
 )
 
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
+  logger := logger.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "<ROBOT ADDRESS>",
+      "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "LOCATION SECRET FROM THE VIAM APP",
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
       })),
   )
   if err != nil {

@@ -18,14 +18,15 @@ tags:
   ]
 aliases:
   - "/extend/modular-resources/examples/odrive/"
+  - "/modular-resources/examples/odrive/"
 # SMEs: Kim, Martha, Rand
 ---
 
-Viam provides an `odrive` [modular resource](/modular-resources/) which adds support for ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) and [ODrive Pro](https://odriverobotics.com/shop/odrive-pro) motor drivers, extending the Viam [motor API](/components/motor/#api).
+Viam provides an `odrive` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) and [ODrive Pro](https://odriverobotics.com/shop/odrive-pro) motor drivers, extending the Viam [motor API](/components/motor/#api).
 The `odrive` {{< glossary_tooltip term_id="module" text="module" >}} supports an ODrive motor driver connected in either `serial` or `canbus` mode.
 
 The `odrive` module is available [from the Viam registry](https://app.viam.com/module/viam/odrive).
-See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`odrive` GitHub repository](https://github.com/viamrobotics/odrive).
 

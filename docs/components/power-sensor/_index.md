@@ -322,6 +322,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_geometries).
 
+
 ```python {class="line-numbers linkable-line-numbers"}
 my_power_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
 
@@ -360,7 +361,60 @@ if len(geometries) > 0 {
 ```
 
  -->
+  
+{{< /tabs >}}
 
+### DoCommand
+
+Execute model-specific commands that are not otherwise defined by the component API.
+If you are implementing your own power sensor and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+
+**Returns:**
+
+- [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+```python {class="line-numbers linkable-line-numbers"}
+my_power_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
+
+reset_dict = {
+  "command": "reset",
+  "example_param": 30
+}
+
+do_response = await my_power_sensor.do_command(reset_dict)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.do_command).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map[string]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map[string]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myPowerSensor, err := powersensor.FromRobot(robot, "my_power_sensor")
+
+resp, err := myPowerSensor.DoCommand(ctx, map[string]interface{}{"command": "reset", "example_param": 30})
+```
+
+For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ## Troubleshooting

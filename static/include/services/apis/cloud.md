@@ -11,8 +11,8 @@ Method Name | Description
 [`DeleteLocation`](/program/apis/cloud/#deletelocation ) | Delete a location.
 [`ListLocations`](/program/apis/cloud/#listlocations ) | List locations.
 [`LocationAuth`](/program/apis/cloud/#locationauth ) | Get a location's authorization (location secrets).
-[`CreateLocationSecret`](/program/apis/cloud/#createlocationsecret ) | Create a new location secret.
-[`DeleteLocationSecret`](/program/apis/cloud/#deletelocationsecret ) | Delete a location secret.
+[`CreateLocationSecret`](/program/apis/cloud/#createlocationsecret ) | Create a new location secret. *Deprecated*.
+[`DeleteLocationSecret`](/program/apis/cloud/#deletelocationsecret ) | Delete a location secret. *Deprecated*.
 [`GetRobot`](/program/apis/cloud/#getrobot ) | Get a {{< glossary_tooltip term_id="robot" text="robot" >}} by robot ID.
 [`GetRobotParts`](/program/apis/cloud/#getrobotparts ) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific robot.
 [`GetRobotPart`](/program/apis/cloud/#getrobotpart ) | Get a robot {{< glossary_tooltip term_id="part" text="part" >}}.
@@ -24,8 +24,8 @@ Method Name | Description
 [`DeleteRobotPart`](/program/apis/cloud/#deleterobotpart ) | Delete a robot part.
 [`MarkPartAsMain`](/program/apis/cloud/#markpartasmain ) | Mark a robot part as the [_main_ part](/manage/parts-and-remotes/#robot-parts) of a robot.
 [`MarkPartForRestart`](/program/apis/cloud/#markpartforrestart ) | Mark a robot part for restart.
-[`CreateRobotPartSecret`](/program/apis/cloud/#createrobotpartsecret ) | Create a robot part secret.
-[`DeleteRobotPartSecret`](/program/apis/cloud/#deleterobotpartsecret ) | Delete a robot part secret.
+[`CreateRobotPartSecret`](/program/apis/cloud/#createrobotpartsecret ) | Create a robot part secret. *Deprecated*.
+[`DeleteRobotPartSecret`](/program/apis/cloud/#deleterobotpartsecret ) | Delete a robot part secret. *Deprecated*.
 [`ListRobots`](/program/apis/cloud/#listrobots ) | Get a list of all robots in a location.
 [`NewRobot`](/program/apis/cloud/#newrobot ) | Create a new robot.
 [`UpdateRobot`](/program/apis/cloud/#updaterobot ) | Change the name of an existing robot.

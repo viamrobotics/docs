@@ -310,8 +310,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 import (
   "context"
 
-  "github.com/edaniels/golog"
   "go.viam.com/rdk/components/gripper"
+  "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/services/motion"
 )
@@ -525,6 +525,66 @@ myDestination := geo.NewPoint(0, 0)
 // Move the base component to the designated geographic location, as reported by the movement sensor
 success, err := motionService.MoveOnGlobe(context.Background(), myBaseResourceName, myDestination, myMvmntSensorResourceName, nil)
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## DoCommand
+
+Execute model-specific commands that are not otherwise defined by the service API.
+For built-in service models, any model-specific commands available are covered with each model's documentation.
+If you are implementing your own motion service and add features that have no built-in API method, you can access them with `DoCommand`.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `command` [(Mapping[str, ValueTypes])](https://docs.python.org/3/library/stdtypes.html#typesmapping): The command to execute.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(Mapping[str, ValueTypes])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.do_command).
+
+```python {class="line-numbers linkable-line-numbers"}
+# Access the motion service
+motion = MotionClient.from_robot(robot=robot, name="builtin")
+
+my_command = {
+  "command": "dosomething",
+  "someparameter": 52
+}
+
+await motion.do_command(my_command)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map\[string\]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map\[string\]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+// Access the motion service
+motionService, err := motion.FromRobot(robot, "builtin")
+if err != nil {
+  logger.Fatal(err)
+}
+
+resp, err := motionService.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

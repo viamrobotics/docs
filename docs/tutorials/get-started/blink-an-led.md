@@ -396,14 +396,18 @@ async def main():
 
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {
-  logger := golog.NewDevelopmentLogger("client")
+  logger := logger.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
-      "[ADD YOUR ROBOT ADDRESS HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "[ADD YOUR SECRET HERE. YOU CAN FIND THIS ON THE CONNECT TAB OF THE VIAM APP]",
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
       })),
   )
   if err != nil {

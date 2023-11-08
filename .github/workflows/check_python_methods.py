@@ -3,7 +3,13 @@ from urllib.request import urlopen
 import sys
 import markdownify
 import urllib.parse
+import argparse
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--local', action='store_true', required=False)
+
+args = parser.parse_args()
 
 services = ["motion", "navigation", "sensors", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
@@ -11,6 +17,19 @@ components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", 
 app_apis = ["data_client", "app_client"]
 robot_apis = ["robot"]
 
+ignore_apis = [
+    'viam.app.app_client.RobotPart.from_proto',
+    'viam.app.app_client.LogEntry.from_proto',
+    'viam.app.app_client.Fragment.from_proto',
+    'viam.app.app_client.RobotPartHistoryEntry.from_proto',
+    'viam.app.app_client.AppClient.get_rover_rental_parts',
+]
+
+def is_unimplemented(obj):
+   if obj.find(class_="property"):
+       return "abstract" in obj.find(class_="property").text
+   else:
+       return False
 
 def make_soup(url):
     page = urlopen(url)
@@ -75,6 +94,7 @@ def parse(type, names):
         # Find all python methods objects on Python docs site soup
         py_methods_sdk_docs = soup.find_all("dl", class_="py method")
         py_methods_sdk_docs_filtered_ids = []
+        py_methods_sdk_docs_undocumented_ids = []
 
         # Get ids and filter list
         for tag in py_methods_sdk_docs:
@@ -84,8 +104,13 @@ def parse(type, names):
             if not id.endswith("Client") and not id.endswith(".client") \
             and not id.endswith("SUBTYPE") and not id.endswith(".from_robot") \
             and not id.endswith(".get_resource_name") and not id.endswith(".get_operation") \
-            and not id.endswith(".LOGGER") and not id.endswith("__"):
-                py_methods_sdk_docs_filtered_ids.append(id)
+            and not id.endswith(".LOGGER") and not id.endswith("__") \
+            and not id in ignore_apis:
+                if is_unimplemented(tag_sigobject):
+                    py_methods_sdk_docs_undocumented_ids.append(id)
+                else:
+                    py_methods_sdk_docs_filtered_ids.append(id)
+
 
             # Get methods information
             method_text = []
@@ -111,7 +136,7 @@ def parse(type, names):
                     description_extras[field] = extras_values
 
                 # Parameters
-                method_text.append("**Parameters:** \n")
+                method_text.append("**Parameters:**\n\n")
                 no_parameters = True
                 if "Parameters:" in description_extras:
                     no_parameters = False
@@ -142,7 +167,7 @@ def parse(type, names):
                 method_text.append("\n")
 
                 # Returns
-                method_text.append("**Returns:** \n")
+                method_text.append("**Returns:**\n\n")
                 if "Returns:" in description_extras:
                     # Return type
                     if "Return type:" in description_extras:
@@ -158,7 +183,7 @@ def parse(type, names):
 
                 # Raises
                 if "Raises:" in description_extras:
-                    method_text.append("**Raises:** \n")
+                    method_text.append("**Raises:**\n\n")
 
                     extras_values = description_extras["Raises:"]
 
@@ -171,9 +196,9 @@ def parse(type, names):
                     else:
                         method_text.append("- {extra_values}\n\n".format(extra_values=extras_values.text))
             else:
-                method_text.append("**Parameters:** \n")
+                method_text.append("**Parameters:**\n\n")
                 method_text.append("- None.\n\n")
-                method_text.append("**Returns:** \n")
+                method_text.append("**Returns:**\n\n")
                 method_text.append("- None.\n\n")
 
 
@@ -185,10 +210,18 @@ def parse(type, names):
 
 
         # Parse the Docs site's service page
-        if type == "app" or type == "robot":
-            soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
+        if args.local:
+            if type == "app" or type == "robot":
+                with open(f"dist/program/apis/{service}/index.html") as fp:
+                    soup2 = BeautifulSoup(fp, 'html.parser')
+            else:
+                with open(f"dist/{type}/{service}/index.html") as fp:
+                    soup2 = BeautifulSoup(fp, 'html.parser')
         else:
-            soup2 = make_soup(f"https://docs.viam.com/{type}/{service}/")
+            if type == "app" or type == "robot":
+                soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
+            else:
+                soup2 = make_soup(f"https://docs.viam.com/{type}/{service}/")
 
         # Find all links on Docs site soup
         all_links = soup2.find_all('a')
@@ -219,18 +252,20 @@ def parse(type, names):
                         break
 
             if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
-            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor":
+            and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor" \
+            and id != "viam.components.input.client.ControllerClient.reset_channel":
                 sdk_methods_missing.append(id)
 
 
-    print(f"SDK methods missing for type {type}: {sdk_methods_missing}")
-    print(f"SDK methods found for type {type}: {sdk_methods_found}")
+    print(f"SDK methods missing for type {type}: {sdk_methods_missing}\n\n")
+    print(f"SDK methods unimplemented for type {type}: {py_methods_sdk_docs_undocumented_ids}\n\n")
+    print(f"SDK methods found for type {type}: {sdk_methods_found}\n\n")
 
     return sdk_methods_missing, methods_dict
 
 def print_method_information(missing_methods, methods_dict):
     for method in missing_methods:
-        print(f"Method: {method} \n\n{methods_dict.get(method)}")
+        print(f"Method: {method}\n\n{methods_dict.get(method)}")
         print("---\n")
 
 
@@ -238,12 +273,18 @@ total_sdk_methods_missing = []
 
 missing_services, services_dict = parse("services", services)
 missing_components, components_dict = parse("components", components)
+missing_app_apis, app_apis_dict = parse("app", app_apis)
+missing_robot_apis, robot_apis_dict = parse("robot", robot_apis)
 
 total_sdk_methods_missing.extend(missing_services)
 total_sdk_methods_missing.extend(missing_components)
+total_sdk_methods_missing.extend(missing_app_apis)
+total_sdk_methods_missing.extend(missing_robot_apis)
 
 if total_sdk_methods_missing:
-    print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information: \n")
+    print(f"Total SDK methods missing: {total_sdk_methods_missing} \n\nMissing Method Information:\n")
     print_method_information(missing_services, services_dict)
     print_method_information(missing_components, components_dict)
+    print_method_information(missing_app_apis, app_apis_dict)
+    print_method_information(missing_robot_apis, robot_apis_dict)
     # sys.exit(1)
