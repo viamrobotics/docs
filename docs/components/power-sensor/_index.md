@@ -322,7 +322,6 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_geometries).
 
-
 ```python {class="line-numbers linkable-line-numbers"}
 my_power_sensor = PowerSensor.from_robot(robot=robot, name="my_power_sensor")
 
@@ -361,7 +360,7 @@ if len(geometries) > 0 {
 ```
 
  -->
-  
+
 {{< /tabs >}}
 
 ### DoCommand
