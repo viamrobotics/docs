@@ -59,7 +59,7 @@ Here's how to get started:
 To begin adding your custom data filtering module to your robot, you have two options:
 
 1. Download our pre-written color filtering module, allowing you to download and then skip to adding the local module.
-1. Alternatively, you can [Code your own colorfilter module](#code-your-own-colorfilter-module) that performs camera image filtering by color.
+1. Alternatively, you can [Code your own colorfilter module](#code-your-own-module) that performs camera image filtering by color.
 
 ### Download the colorfilter module
 
