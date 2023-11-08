@@ -54,10 +54,16 @@ Here's how to get started:
 1. [Install](/installation/manage/#update-viam-server) or [update](/installation/#install-viam-server) `viam-server`.
    Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0m) or newer, as filtering capabilities were introduced in the RDK starting from that version.
 
-## Create or download the filter module
+## Add the custom module
 
-This tutorial will guide you through the process of coding your filter module.
-However, if you prefer to use the pre-written final code for the module, you can follow the steps corresponding to your chosen language:
+To begin adding your custom data filtering module to your robot, you have two options:
+
+1. Download our pre-written color filtering module, allowing you to download and then skip to adding the local module.
+1. Alternatively, you can [Code your own colorfilter module](#code-your-own-colorfilter-module) that performs camera image filtering by color.
+
+### Download the colorfilter module
+
+Follow the instructions below to download the colorfilter module in your preferred programming language:
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -71,7 +77,7 @@ However, if you prefer to use the pre-written final code for the module, you can
 
 1. Navigate to the Python color filter directory, `pycolorfilter`.
 1. Note the path to your module's executable, <file>run.sh</file> for later use.
-1. [Add the local module](#add-local-module) and continue the tutorial from there.
+1. [Add the local module](<(#add-as-a-local-module)>) and continue the tutorial from there.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -85,14 +91,12 @@ However, if you prefer to use the pre-written final code for the module, you can
 1. Navigate to the Go color filter directory, `colorfilter`.
 1. Inside of the `module` directory, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module.
 1. Save the path to your module's executable for later use.
-1. [Add the local module](#add-local-module) and continue the tutorial from there.
+1. [Add the local module](#add-as-a-local-module) and continue the tutorial from there.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-If you would rather manually code your color filter module, continue on to the next section.
-
-### Code your filter resource model
+### Code your own colorfilter module
 
 To get started writing your filter resource model:
 
@@ -155,7 +159,7 @@ The filter function in your custom filter module must contain two critical eleme
 1. A safeguard that ensures if the [data management](/services/data/) service is not the caller, an error and the unfiltered data is returned.
 
 For programming languages other than Python and Go, similar utility functions will be exposed to help you check the caller of your filter function.
-The approach to perform this check may differ depending on the particular function and programming language. For detailed information, please refer to your chosen language's SDK documentation.
+The approach to perform this check may differ depending on the particular function and language. For detailed information, please refer to your chosen language's SDK documentation.
 
 #### Check the caller of the collector function
 
@@ -795,7 +799,7 @@ Once you've written your filter module, [compile the executable](https://docs.vi
 
 Note the absolute path to your module’s executable for use in the next section.
 
-### Add local module
+### Add as a local module
 
 Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine:
 
