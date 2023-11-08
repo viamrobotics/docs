@@ -37,7 +37,7 @@ python3 ~/myCode/myViamFile.py
 {{% tab name="Go" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-go run ~/myCode/myViamFile.py
+go run ~/myCode/myViamFile.go
 ```
 
 {{% /tab %}}
