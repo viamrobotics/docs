@@ -514,16 +514,20 @@ func play(label string, logger logger.Logger) {
 func main() {
  logger := logger.NewDevelopmentLogger("client")
  robot, err := client.New(
-     context.Background(),
-     ".viam.cloud", // Insert your remote address here. Go to the Code Sample tab in the Viam app to find.
-     logger,
-     client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-         Type:    utils.CredentialsTypeRobotLocationSecret,
-         Payload: "", // Insert your robot location secret here. Go to the Code Sample tab in the Viam app to find.
-     })),
- )
+    context.Background(),
+    "ADDRESS FROM THE VIAM APP",
+    logger,
+    client.WithDialOptions(rpc.WithEntityCredentials(
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    "<API-KEY-ID>",
+    rpc.Credentials{
+        Type:    rpc.CredentialsTypeAPIKey,
+        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        Payload: "<API-KEY>",
+    })),
+)
  if err != nil {
-     logger.Fatal(err)
+    logger.Fatal(err)
  }
 
 

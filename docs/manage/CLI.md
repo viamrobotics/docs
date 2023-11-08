@@ -15,7 +15,7 @@ The CLI lets you:
 - Retrieve [organization](/manage/fleet/organizations/) and location information
 - Manage [robot fleet](/manage/fleet/) data and logs
 - Control robots by issuing component and service commands
-- Upload and manage [modular resources](/modular-resources/) in the Viam registry
+- Upload and manage [modular resources](/registry/) in the Viam registry
 
 For example, this CLI command moves a servo to the 75 degree position:
 
@@ -377,10 +377,10 @@ viam module update
 viam module upload --version "1.0.0" --platform "darwin/arm64" packaged-module.tar.gz
 ```
 
-See [Upload a custom module](/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/registry/upload/#upload-a-custom-module) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/modular-resources/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
+[automatically upload new versions of your module on release](/registry/upload/#update-an-existing-module-using-a-github-action) using a GitHub Action.
 
 #### Command options
 
@@ -494,7 +494,7 @@ The `meta.json` file includes the following configuration options:
     <td><code>models</code></td>
     <td>object</td>
     <td><strong>Required</strong></td>
-    <td>A list of one or more <a href="/modular-resources/key-concepts/#models">models</a> provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
+    <td>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair.</td>
   </tr>
   <tr>
     <td><code>entrypoint</code></td>
@@ -523,14 +523,14 @@ For example, the following represents the configuration of an example `my-module
 ```
 
 {{% alert title="Important" color="note" %}}
-If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/modular-resources/key-concepts/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+If you are publishing a public module (`"visibility": "public"`), the [namespace of your model](/registry/upload/#naming-your-model-namespacerepo-namename) must match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
 In the example above, the model namespace is set to `acme` to match the owning organization's namespace.
 If the two namespaces do not match, the command will return an error.
 {{% /alert %}}
 
-See [Upload a custom module](/modular-resources/upload/#upload-a-custom-module) and [Update an existing module](/modular-resources/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
+See [Upload a custom module](/registry/upload/#upload-a-custom-module) and [Update an existing module](/registry/upload/#update-an-existing-module) for a detailed walkthrough of the `viam module` commands.
 
-See [Modular resources](/modular-resources/) for a conceptual overview of modules and the modular resource system at Viam.
+See [Modular resources](/registry/) for a conceptual overview of modules and the modular resource system at Viam.
 
 ### organizations
 

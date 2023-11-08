@@ -12,7 +12,11 @@ no_list: true
 # SMEs:
 ---
 
-The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} is for custom components that are incompatible with any of the other component APIs.
+The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/program/apis/#component-apis) defined for them.
+
+For example, when using an [arm component](/components/arm/), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
+But if you want to use an LED display, you need very different functionality that isn't currently exposed in any API.
+Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your smart machine.
 
 There are no built-in generic component models (other than `fake`).
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
@@ -23,13 +27,13 @@ The generic component API only supports the `DoCommand` method.
 If you use the generic subtype, your module needs to define any and all component functionality and pass it through `DoCommand`.
 
 Whenever possible, it is best to use an [existing component API](/components/) instead of generic so that you do not have to replicate code.
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an existing subtype.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and extra parameters to add custom functionality to an [existing subtype](/components/), instead of using generic.
 
 {{% /alert %}}
 
 ## Supported Models
 
-To use your generic component with Viam, check whether one of the following [modular resources](#modular-resources) supports your component.
+Before creating a new generic component, check whether one of the following [modular resources](#modular-resources) supports your component.
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}
 
@@ -84,6 +88,66 @@ import (
 The generic component supports the following method:
 
 {{< readfile "/static/include/components/apis/generic.md" >}}
+
+### GetGeometries
+
+Get all the geometries associated with the generic component in its current configuration, in the [frame](/services/frame-system/) of the generic component.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the generic component, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_generic = Generic.from_robot(robot=robot, name="my_generic_component")
+
+geometries = await my_generic.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+
+<!-- Go tab
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the generic component, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myGeneric, err := generic.FromRobot(robot, "my_generic_component")
+
+geometries, err := myGeneric.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+ -->
+
+{{< /tabs >}}
 
 ### DoCommand
 

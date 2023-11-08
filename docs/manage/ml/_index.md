@@ -55,7 +55,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
     <td>{{<imgproc src="/manage/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure a service</b>
       <p>For object detection and classification, you can use the <a href="/services/vision/">vision service</a>, which provides an <a href="/services/vision/detection/#configure-an-mlmodel-detector">ml model detector</a> and an <a href="/services/vision/classification/#configure-an-mlmodel-classifier">ml model classifier</a> model.</p>
-      <p>For other usage, you can use a <a href="/modular-resources/">modular resource</a> to integrate it with your robot.</p>
+      <p>For other usage, you can use a <a href="/registry/">modular resource</a> to integrate it with your robot.</p>
 </td>
   </tr>
   <tr>
@@ -70,5 +70,5 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
 
 {{< cards >}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
-{{% card link="/modular-resources/examples/tflite-module/" %}}
+{{% card link="/registry/examples/tflite-module/" %}}
 {{< /cards >}}
