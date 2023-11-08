@@ -447,7 +447,7 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_geometries).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_controller = Controller.from_robot(robot=robot, name="my_controller")
+my_controller = Controller.from_robot(robot=myRobotWithController, name="my_controller")
 
 geometries = await my_controller.get_geometries()
 
@@ -472,7 +472,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(robot, "my_controller")
+myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 geometries, err := myController.Geometries(context.Background(), nil)
 
