@@ -126,7 +126,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](https://docs.viam.com/installation/#preparation), and then followed the instructions on the **Setup** tab on the Viam app.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/#preparation), and then followed the instructions on the **Setup** tab on the Viam app.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -175,7 +175,7 @@ It will resemble the following:
       ```
 
       In the list of camera devices returned, find the entry for your camera.
-      For example, the webcam on the [Viam Rover](https://docs.viam.com/try-viam/) appears as follows:
+      For example, the webcam on the [Viam Rover](/try-viam/) appears as follows:
 
       ```sh
       GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
