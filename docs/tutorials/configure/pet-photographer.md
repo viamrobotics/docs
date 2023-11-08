@@ -52,7 +52,7 @@ Here's how to get started:
 1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your robot's board if they are not the same device.
 1. [Create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot) and connect to it.
 1. [Install](/installation/manage/#update-viam-server) or [update](/installation/#install-viam-server) `viam-server`.
-   Your `viam-server` must be version 0.8.0 or higher to access the filtering functionality.
+   Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc1) or higher to access the filtering functionality.
 
 ## Create or download the filter module
 
