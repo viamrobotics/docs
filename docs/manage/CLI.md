@@ -96,9 +96,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token, an organization API key, or a location API key.
+You can authenticate your CLI session using either a personal access token, an organization, location, or robot API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
-Similarly, to create a location API key, you must begin the process by [creating a location API key](#create-a-location-api-key).
+Similarly, to create a location or robot API key, you must begin the process by creating a [location](#create-a-location-api-key) or [robot](#create-a-robot-api-key) API key.
 
 - To authenticate your CLI session using a personal access token:
 
@@ -124,6 +124,16 @@ Similarly, to create a location API key, you must begin the process by [creating
   viam login api-key --key-id <location-api-key-uuid> --key <location-api-key-secret-value>
   ```
 
+  If you haven't already, [create a location API key](#create-a-location-api-key) to use this authentication method.
+
+- To authenticate your CLI session using a robot API key:
+
+  ```sh {class="command-line" data-prompt="$"}
+  viam login api-key --key-id <robot-api-key-uuid> --key <robot-api-key-secret-value>
+  ```
+
+  If you haven't already, [create a robot API key](#create-a-robot-api-key) to use this authentication method.
+
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
 After the session expires or you log out, you must re-authenticate to use the CLI again.
@@ -133,7 +143,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token.
+   If your organization does not already have an organization API key created, authenticate using a personal access token or an alternative API key.
 
 1. Then, run the following command to create a new organization API key:
 
@@ -143,7 +153,8 @@ To use an organization API key to authenticate your CLI session, you must first 
 
    Where:
 
-   - `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+   - `org-id` is your organization ID.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
    - `key-name` is an optional name for your API key.
 
 The command will return a `key id` and a `key value`.
@@ -164,7 +175,7 @@ An organization can have multiple API keys.
 To use an location API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If you don't already have a location API key created, authenticate using a personal access token or an organization API key.
+   If you don't already have a location API key created, authenticate using a personal access token or an alternative API key.
 
 1. Then, run the following command to create a new location API key:
 
@@ -192,8 +203,46 @@ Keep these key values safe.
 Authenticating using a location API key gives the authenticated CLI session full read and write access to all robots in that location.
 {{% /alert %}}
 
-Once created, you can use the location API key to authenticate future CLI sessions or to c[connect to robots with the SDK](/program/#authenticate).
+Once created, you can use the location API key to authenticate future CLI sessions or to [connect to robots with the SDK](/program/#authenticate).
 To switch to using a location API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+
+A location can have multiple API keys.
+
+### Create a robot API key
+
+To use a robot API key to authenticate your CLI session, you must first create one:
+
+1. First, [authenticate](#authenticate) your CLI session.
+   If you don't already have a robot API key created, authenticate using a personal access token, or an alternative API key.
+
+1. Then, run the following command to create a new robot API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam robots api-key create --robot-id <robot-id>
+    --org-id <org-id> --name <key-name>
+   ```
+
+   Where:
+
+   - `robot-id` is your robot's ID.
+     You can find your robot ID by running `viam robots list`.
+   - `org-id` is an optional organization ID to attach the key to.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     If only one organization owns the robot, you can omit the parameter.
+     If multiple organizations own the robot, you must specify the `org-id` explicitly.
+   - `key-name` is an optional name for your API key.
+     If omitted, a name will be auto-generated based on your login info and the current time.
+
+The command will return a `key id` and a `key value`.
+You will need both to authenticate.
+
+{{% alert title="Important" color="note" %}}
+Keep these key values safe.
+Authenticating using a robot API key gives the authenticated CLI session full read and write access to your robot.
+{{% /alert %}}
+
+Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your robot with the SDK](/program/#authenticate).
+To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
@@ -337,8 +386,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 
 ### locations
 
-The `locations` command lists all locations that the authenticated session has access to, grouped by organization.
-You can filter results by organization.
+The `locations` command lists all locations that the authenticated session has access to, grouped by organization, and allows you to create a new location API key.
+Additionally, you can filter results by organization.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
@@ -388,7 +437,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization API key      | create |
+| `api-key`      | authenticate to Viam using an organization, location, or robot API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
@@ -398,8 +447,8 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--key-id`    | the `key id` (UUID) of the organization API key | `api-key` | true |
-| `--key`    | the `key value` of the organization API key | `api-key` | true |
+| `--key-id`    | the `key id` (UUID) of the API key | `api-key` | true |
+| `--key`    | the `key value` of the API key | `api-key` | true |
 
 ### logout
 
@@ -612,15 +661,31 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all organizations (name, id, and [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
-| `api-key`      | create a new organization API key    | - |
+| `api-key`      | create a new organization API key    |`create` |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for an organization |
+| `--help`      | return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | applicable commands | required |
+| ----------- | ----------- | ----------- | ----------- |
+| `--org-id`      | the organization to create an API key for |`create` | true |
+| `--name`     |  the name of the organization API key    |`create` | false |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | your organization ID      |`api-key`|true |
+| `--org-id`      | your organization ID |`api-key`|true |
 | `--name` |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key`| false |
 
 ### robots
@@ -629,6 +694,7 @@ The `robots` command allows you to manage your robot fleet.
 This includes:
 
 - Listing all robots that you have access to, filtered by organization and location.
+- Creating API keys to grant access to a specific robot
 - Retrieving robot and robot part status
 - Retrieving robot and robot part logs
 - Controlling a robot by issuing component and service commands
@@ -670,21 +736,39 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
+| `api-key`   |  work with an api-key for your robot | `create`(see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help`      | return help      | - |
 
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for a specific robot |
+| `--help`      | return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | applicable commands | required |
+| ----------- | ----------- | ----------- | ----------- |
+| `--robot-id`      | the robot to create an API key for |`create` | true |
+| `--name`     |  the optional name of the API key    |`create` | false |
+| `--org-id`      |  the optional organization ID to attach the key to  |`create` | false |
+
 ##### Positional arguments: `part`
 
 <!-- prettier-ignore -->
-|        argument     |       description
-| ----------- | ----------- | -----------
-| `status`     | retrieve robot status for a specified robot part
-| `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data.
-| `logs`     |  get logs for the specified robot part
-| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled.
-| `--help`      | return help
+|        argument     |       description |
+| ----------- | ----------- | ----------- |
+| `status`     | retrieve robot status for a specified robot part |
+| `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
+| `logs`     |  get logs for the specified robot part |
+| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled. |
+| `--help`      | return help |
 
 ##### Named arguments
 
