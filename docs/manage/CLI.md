@@ -147,14 +147,14 @@ To use an organization API key to authenticate your CLI session, you must first 
    - `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
 
 The command will return a `key id` and a `key value`.
-You will need both to authenticate using `viam login api-key`.
+You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
-Secure these key values safely.
+Keep these key values safe.
 Authenticating using an organization API key gives the authenticated CLI session full read and write access to all robots within your organization.
 {{% /alert %}}
 
-Once created, you can then use the organization API key to authenticate future CLI sessions.
+Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to robots with the SDK](/program/#authenticate)..
 To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 An organization can have multiple API keys.
@@ -180,18 +180,19 @@ To use an location API key to authenticate your CLI session, you must first crea
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
      If omitted, the key will attempt to attach itself to the organization of the location if there is only one organization associated with that location.
+     If there are multiple organizations associated with that location, the operation will fail and you will need to specify the `org-id` explicitly.
    - `key-name` is an optional name for your API key.
      If omitted, a name will be auto-generated based on your login info and the current time.
 
 The command will return a `key id` and a `key value`.
-You will need both to authenticate using `viam login api-key`.
+You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
-Secure these key values safely.
+Keep these key values safe.
 Authenticating using a location API key gives the authenticated CLI session full read and write access to all robots in that location.
 {{% /alert %}}
 
-Once created, you can then use the location API key to authenticate future CLI sessions.
+Once created, you can use the location API key to authenticate future CLI sessions or to c[connect to robots with the SDK](/program/#authenticate).
 To switch to using a location API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
@@ -355,19 +356,19 @@ viam locations list [<organization id>]
 ##### Positional arguments: `api-key`
 
 <!-- prettier-ignore -->
-|        argument     |       description
-| ----------- | ----------- | -----------
-| `create`     | create an API key for a specific location
-| `--help`      | return help
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for a specific location |
+| `--help`      | return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
+| argument | description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--location-id`      | the location to create an API key for    |`create` |true |
-| `--name`     |  the name of the API key    |`create` |false |
-| `--org-id`      |  the organization ID to attach the key to  |`create` |false |
+| `--location-id`      | the location to create an API key for |`create` | true |
+| `--name`     |  the name of the API key    |`create` | false |
+| `--org-id`      |  the organization ID to attach the key to  |`create` | false |
 
 ### `login`
 
@@ -605,7 +606,7 @@ viam organizations api-key create --org-id <org-id> [--name <key-name>]
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
 
-#### Command options s
+#### Command options
 
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
