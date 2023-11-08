@@ -36,7 +36,7 @@ async def connect():
         payload='YOUR LOCATION SECRET')
     opts = RobotClient.Options(
         refresh_interval=0,
-        dial_options = DialOptions(credentials=creds)
+        dial_options=DialOptions(credentials=creds)
     )
     return await RobotClient.at_address('smart-machine-main.YOUR LOCATION ID.viam.cloud', opts)
 
