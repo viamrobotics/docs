@@ -104,7 +104,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
-To find yours, follow [these instructions](/components/camera/webcam/#find-the-video_path).
+To find yours, follow [these instructions](/components/camera/webcam/#using-video_path).
 {{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -422,7 +422,7 @@ To make your rover follow your line, you need to install Python and the Viam Pyt
 
    {{% snippet "show-secret.md" %}}
 
-   Copy the robot's address and secret and paste them into the definition for the `connect()` function, replacing the two placeholders shown there.
+   Copy the robot's address and API key and paste them into the definition for the `connect()` function, replacing the placeholders shown there.
 
 1. You can run the program from your computer or from your Pi.
    If you would like to get your program onto your Pi, you have a few options.

@@ -472,12 +472,12 @@ from viam.services.vision import VisionClient
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='LOCATION SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
@@ -763,15 +763,14 @@ LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud',
-                                        opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def check_for_living_creatures(detections):

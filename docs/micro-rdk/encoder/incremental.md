@@ -36,10 +36,8 @@ Fill in and edit the attributes as applicable.
   "namespace": "rdk",
   "attributes": {
     "board": "<your-board-name>",
-    "pins": {
-      "a": "<your-first-pin-number>",
-      "b": "<your-second-pin-number>"
-    }
+    "a": "<your-first-pin-number>",
+    "b": "<your-second-pin-number>"
   }
 }
 ```
@@ -57,10 +55,8 @@ Fill in and edit the attributes as applicable.
       "namespace": "rdk",
       "attributes": {
         "board": "local",
-        "pins": {
-          "a": "13",
-          "b": "11"
-        }
+        "a": "13",
+        "b": "11"
       }
     }
   ]
@@ -76,6 +72,7 @@ The following attributes are available for `incremental` encoders:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | The `name` of the [board](/micro-rdk/board/) to which the encoder is wired. |
-| `pins` | object | **Required** | A struct holding the names of the pins wired to the encoder: <ul> <li> <code>a</code>: GPIO number of one of the pins to which the encoder is wired. </li> <li> <code>b</code>: GPIO number of the second board pin to which the encoder is wired. </li> </ul> |
+| `a` | string | **Required** | GPIO number of one of the pins to which the encoder is wired |
+| `b` | string | **Required** | GPIO number of the second board pin to which the encoder is wired |
 
 {{< readfile "/static/include/components/test-control/encoder-control.md" >}}

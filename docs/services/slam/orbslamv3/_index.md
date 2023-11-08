@@ -9,7 +9,7 @@ tags: ["slam", "services"]
 # SMEs: Kat, Jeremy
 ---
 
-[ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) performs sparse SLAM using monocular or RGB-D images.
+[ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) performs sparse {{< glossary_tooltip term_id="slam" text="SLAM" >}} using monocular or RGB-D images.
 
 {{% alert title="Tip" color="tip" %}}
 While ORB-SLAM3 does support the use of monocular cameras, for best results it is recommended that you use an RGB-D camera.

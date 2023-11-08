@@ -6,7 +6,8 @@ type: "docs"
 description: "Add an ML model modular service backed by NVIDIA's Triton Server."
 tags: ["ml", "model training", "services"]
 aliases:
-  - "/extend/modular-resources/examples/triton//"
+  - "/extend/modular-resources/examples/triton/"
+  - "/modular-resources/examples/triton/"
 # SMEs: Abe Winter, Andrew Morrow
 ---
 
@@ -82,7 +83,7 @@ Add the following to your `"services"` array:
 
 The model will now be configured with a card like the following:
 
-![The triton service card in the Viam app config builder, showing deployment options.](/modular-resources/triton/triton-config-builder.png)
+![The triton service card in the Viam app config builder, showing deployment options.](/registry/triton/triton-config-builder.png)
 
 Note that the parameters shown, `"model_path"`, `"label_path"`, and `"num_threads"` are not applicable for this module, and should be left blank.
 Ignore this card's interface and move to [creating a model repository](#create-a-repository-to-store-the-ml-model-to-deploy).

@@ -52,7 +52,7 @@ pip install 'viam-sdk[mlmodel]'
 {{% tab name="Go" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-go install go.viam.com/rdk/robot/client@latest
+go get go.viam.com/rdk/robot/client
 ```
 
 {{% /tab %}}
@@ -79,7 +79,7 @@ flutter pub add viam_sdk
 
 ## Hello World: The Code Sample Tab
 
-Create a program in the language of your choice that connects to your robot and uses methods built into the SDK's client API libraries to [interact with and control](/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
+Create a program in the language of your choice to connect to your robot and use methods built into the SDK's client API libraries to [interact with and control](/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
 
 Start by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
@@ -95,16 +95,15 @@ Your boilerplate code sample should look similar to this:
 import asyncio
 
 from viam.robot.client import RobotClient
-from viam.rpc.dial import Credentials, DialOptions
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
@@ -142,9 +141,13 @@ func main() {
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "SECRET FROM THE VIAM APP",
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
       })),
   )
   if err != nil {
@@ -164,52 +167,33 @@ The TypeScript SDK currently only supports building web browser apps.
 {{< /alert >}}
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Client, createRobotClient, RobotClient } from "@viamrobotics/sdk";
+// This code must be run in a browser environment.
 
-async function connect() {
-  // You can remove this block entirely if your robot is not authenticated.
-  // Otherwise, replace with an actual secret.
-  const secret = "<SECRET>";
-  const credential = {
-    payload: secret,
-    type: "robot-location-secret",
-  };
-
-  // Replace with the host of your actual robot running Viam.
-  const host = "<HOST>";
-
-  // Replace with the signaling address. If you are running your robot on Viam,
-  // it is most likely https://app.viam.com:443.
-  const signalingAddress = "https://app.viam.com:443";
-
-  const iceServers = [{ urls: "stun:global.stun.twilio.com:3478" }];
-
-  return createRobotClient({
-    host,
-    credential,
-    authEntity: host,
-    signalingAddress,
-    iceServers,
-  });
-}
+import * as VIAM from "@viamrobotics/sdk";
 
 async function main() {
-  // Connect to client
-  let client: Client;
-  try {
-    client = await connect();
-    console.log("connected!");
+  // Replace with the host of your actual robot running Viam.
+  const host = "ADDRESS FROM THE VIAM APP";
 
-    let resources = await client.resourceNames();
-    console.log("Resources:");
-    console.log(resources);
-  } catch (error) {
-    console.log(error);
-    return;
-  }
+  const robot = await VIAM.createRobotClient({
+    host,
+    credential: {
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: "<API-KEY>",
+    },
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: "<API-KEY-ID>",
+    signalingAddress: "https://app.viam.com:443",
+  });
+
+  console.log("Resources:");
+  console.log(await robot.resourceNames());
 }
 
-main();
+main().catch((error) => {
+  console.error("encountered an error:", error);
+});
 ```
 
 {{% /tab %}}
@@ -236,7 +220,11 @@ using namespace viam::sdk;
 int main() {
   std::string host("ADDRESS FROM THE VIAM APP");
   DialOptions dial_opts;
-  Credentials credentials("SECRET FROM THE VIAM APP");
+  dial_opts.set_type("api-key");
+  // Replace "<API-KEY-ID>" with your robot's api key ID
+  dial_opts.set_entity("<API-KEY-ID>");
+  // Replace "<API-KEY>" with your robot's api key
+  Credentials credentials("<API-KEY>");
   dial_opts.set_credentials(credentials);
   boost::optional<DialOptions> opts(dial_opts);
   Options options(0, opts);
@@ -269,16 +257,16 @@ import 'package:viam_sdk/viam_sdk.dart';
 
 // Step 2: Call this function from within your widget
 Future<void> connectToViam() async {
-  const host = 'billowing-brook-main.7kp7y4p393.viam.cloud';
-  // Replace '<SECRET>' (including brackets) with your robot's secret
-  const secret = '<SECRET>';
+  const host = 'ADDRESS FROM THE VIAM APP';
+  // Replace '<API-KEY-ID>' (including brackets) with your api key ID
+  const apiKeyID = '<API-KEY-ID>';
+  // Replace '<API-KEY>' (including brackets) with your api key
+  const apiKey = '<API-KEY>';
 
   final robot = await RobotClient.atAddress(
     host,
-    RobotClientOptions.withLocationSecret(secret),
+    RobotClientOptions.withApiKey(apiKeyId, apiKey),
   );
-
-  // Print the available resources
   print(robot.resourceNames);
 }
 ```
@@ -290,11 +278,11 @@ Future<void> connectToViam() async {
 Save this file on your development machine with the file type of your preferred SDK.
 
 The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
-This section of the boilerplate code contains your robot's address and location secret.
-You can think of these as keys or access tokens to your robot that are important to keep private.
-This connection must be established for your program to be executed properly on your robot.
+This section of the boilerplate code contains your robot's address and a placeholder for the API key.
 
-{{< readfile "/static/include/snippet/secret-share.md" >}}
+### Authenticate
+
+{{< readfile "/static/include/program/authenticate.md" >}}
 
 ### Run the sample code
 

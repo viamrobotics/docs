@@ -16,7 +16,7 @@ How to [utilize](#utilize) and [define](#define) the `extra` parameters that man
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
-For example, a new model of [sensor](/components/sensor/), or a new model of [SLAM service](/services/slam/).
+For example, a new model of [sensor](/components/sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
 
 The `extra` parameters in that built-in resource type's [API](/program/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
 This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
@@ -86,14 +86,14 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 
 ## Define
 
-If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/modular-resources/) wrapper.
+If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/registry/) wrapper.
 
 {{%expand "Click for instructions on defining a custom model to utilize extra params" %}}
 
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
-Follow the steps in the [Modular Resources documentation](/modular-resources/create/) to do so.
+Follow the steps in the [Modular Resources documentation](/registry/create/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#getreadings) method in the code of a [new sensor model](/modular-resources/):
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -159,6 +159,6 @@ func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (
 {{% /tab %}}
 {{% /tabs %}}
 
-See [Extend Viam with Modular Resources](/modular-resources/) for more information and [instructions](/modular-resources/) on modifying built-in API specifications.
+See [Extend Viam with Modular Resources](/registry/) for more information and [instructions](/registry/) on modifying built-in API specifications.
 
 {{% /expand%}}

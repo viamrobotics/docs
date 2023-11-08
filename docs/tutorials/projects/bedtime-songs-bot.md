@@ -252,9 +252,9 @@ Read through our guide to [training a new model](/manage/ml/train-model/) for mo
 
 ### Configure your webcam to act as a shape classifier
 
-[Deploy the model](/services/ml/) to the robot and configure a [vision service](/services/vision/) of model `mlmodel` to use this model.
+[Deploy the model](/services/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/services/vision/classification/#configure-an-mlmodel-classifier) to use the model you've trained to classify objects in your robot's field of vision.
 
-Name your vision service `"shape-classifier"`.
+Name your `mlmodel` vision service `"shape-classifier"`.
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
 
 {{< tabs >}}
@@ -514,16 +514,20 @@ func play(label string, logger logger.Logger) {
 func main() {
  logger := logger.NewDevelopmentLogger("client")
  robot, err := client.New(
-     context.Background(),
-     ".viam.cloud", // Insert your remote address here. Go to the Code Sample tab in the Viam app to find.
-     logger,
-     client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-         Type:    utils.CredentialsTypeRobotLocationSecret,
-         Payload: "", // Insert your robot location secret here. Go to the Code Sample tab in the Viam app to find.
-     })),
- )
+    context.Background(),
+    "ADDRESS FROM THE VIAM APP",
+    logger,
+    client.WithDialOptions(rpc.WithEntityCredentials(
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    "<API-KEY-ID>",
+    rpc.Credentials{
+        Type:    rpc.CredentialsTypeAPIKey,
+        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        Payload: "<API-KEY>",
+    })),
+)
  if err != nil {
-     logger.Fatal(err)
+    logger.Fatal(err)
  }
 
 

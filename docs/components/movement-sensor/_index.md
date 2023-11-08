@@ -51,7 +51,7 @@ Model | Description <a name="model-table"></a>
 [`gps-nmea-rtk-serial`](./gps/gps-nmea-rtk-serial/) | [NTRIP-based](https://en.wikipedia.org/wiki/Networked_Transport_of_RTCM_via_Internet_Protocol) [RTK](https://en.wikipedia.org/wiki/Real-time_kinematic_positioning) GPS models using serial communication (**experimental**)
 [`imu-wit`](./imu/imu-wit/) | IMUs manufactured by [WitMotion](https://www.wit-motion.com/)
 [`accel-adxl345`](./adxl345/) | The [Analog Devices ADXL345](https://www.analog.com/en/products/adxl345.html) digital accelerometer
-[`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/modular-resources/) that derives movement data from a [camera](/components/camera/) stream
+[`viam_visual_odometry`](./viam-visual-odometry/) | A [modular resource](/registry/) that derives movement data from a [camera](/components/camera/) stream
 [`gyro-mpu6050`](./mpu6050/) | A gyroscope/accelerometer manufactured by TDK InvenSense
 [`merged`](./merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources
 [`wheeled-odometry`](./wheeled-odometry/) | A model that uses [encoders](/components/encoder/) to get an odometry estimate from a wheeled base
@@ -601,6 +601,69 @@ readings, err := myMovementSensor.Readings(context.Background(), nil)
 ```
 
 {{% /tab %}}
+{{< /tabs >}}
+
+### GetGeometries
+
+Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/services/frame-system/) of the movement sensor.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the movement sensor, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_movement_sensor = MovementSensor.from_robot(
+  robot=robot,
+  name="my_movement_sensor"
+  )
+
+geometries = await my_movement_sensor.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+
+<!-- Go tab
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the movement sensor, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myBase, err := movementsensor.FromRobot(robot, "my_movement_sensor")
+
+geometries, err := myBase.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+ -->
+
 {{< /tabs >}}
 
 ### DoCommand

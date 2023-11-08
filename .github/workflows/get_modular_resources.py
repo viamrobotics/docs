@@ -9,12 +9,10 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of any robot in the location.
-        auth_entity='divine-voice-main.b5luvepsyg.viam.cloud',
+        auth_entity='744b0c18-f6fd-4c8d-a707-d3f261b353cc'
         credentials=Credentials(
-            type='robot-location-secret',
-            # The location secret
-            payload=os.environ['VIAM_LOCATION_SECRET']
+            type='api-key',
+            payload=os.environ['VIAM_API_KEY']
         )
     )
     return await ViamClient.create_from_dial_options(dial_options)
