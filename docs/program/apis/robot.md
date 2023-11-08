@@ -109,20 +109,23 @@ To configure a timeout when using the robot API:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
+Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.DialOptions):
+
 ```python {class="line-numbers linkable-line-numbers"}
 # Add the timeout argument to DialOptions:
 dial_options = DialOptions(credentials=creds, timeout=10)
 ```
 
-By default, Python does not use a timeout, and will wait for a response as long as needed.
-You can use set the `timeout` to a maximum of 20 seconds.
+The default timeout in Python is 20 seconds.
 The example above shows a timeout of 10 seconds configured.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+Import the `time` package, add a timeout to your context, and check the timeout as needed:
+
 ```go {class="line-numbers linkable-line-numbers"}
-// Additionally import the time package:
+// Import the time package in addition to the other imports:
 import (
   ...
   "time"
@@ -141,7 +144,7 @@ deadline, ok := timeoutContext.Deadline()
       }
 ```
 
-The Go default timeout is 5 seconds, and the maximum configurable timeout is 20 seconds.
+The default timeout in Go is 20 seconds.
 The example above shows a timeout of 10 seconds configured.
 
 {{% /tab %}}
