@@ -16,9 +16,8 @@ The robot API is supported for use with the [Viam Python SDK](<[`RobotClient`](h
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the location secret, go to [Viam app](https://app.viam.com/), and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
-Toggle **Include secret** on and copy the `payload`.
-For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
+To find the location secret and smart machine address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab.
+Toggle **Include secret**, then copy the location secret and robot address into the code below where indicated:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -38,10 +37,10 @@ async def connect():
         refresh_interval=0,
         dial_options=DialOptions(credentials=creds)
     )
-    return await RobotClient.at_address('smart-machine-main.YOUR LOCATION ID.viam.cloud', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+
 
 async def main():
-
     # Make a RobotClient
     robot_client = await connect()
     print('Resources:')
