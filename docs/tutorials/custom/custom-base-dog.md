@@ -207,7 +207,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-Now that the Freenove server is set up, you will follow the [process for creating modular resources](../../../modular-resources/).
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](/registry/create/).
 You will use [this module creation tool](https://github.com/viam-labs/generator-viam-module) to simplify the process and generate the necessary stub files.
 Then, you will edit them as necessary to define how each base API method interacts with your robot dog.
 
@@ -334,7 +334,7 @@ Don't forget to save.
 ### Make your module executable
 
 Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
-You can find more information in [the relevant section of the modular resource documentation](/modular-resources/).
+You can find more information in [the relevant section of the modular resource documentation](/registry/).
 Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
 ```sh {class="command-line" data-prompt="$"}

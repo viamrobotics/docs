@@ -581,6 +581,55 @@ obstacles = await my_nav.get_obstacles()
 {{% /tab %}}
 {{< /tabs >}}
 
+### Paths
+
+Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]\*Path](https://pkg.go.dev/go.viam.com/rdk@v0.12.0/services/navigation#Path): An array of paths, each path being a user-provided destination, or, [`Waypoint`](#addwaypoint), and the set of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot plans to travel through to get there.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Get an array containing each path stored by the navigation service
+paths, err := myNav.Paths(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[navigation.Path])](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path): An array comprised of `Path`s, each path being a user-provided destination, or, [`Waypoint`](#addwaypoint) and the set of `geopoints` that the robot expects to travel through to get there.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_paths).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get a list containing each path stored by the navigation service
+paths = await my_nav.get_paths()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.

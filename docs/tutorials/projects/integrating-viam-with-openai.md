@@ -178,7 +178,8 @@ Once you have both of the credentials, create a file called `run.sh`, add the fo
 #!/usr/bin/sh
 export OPENAPI_KEY=abc
 export OPENAPI_ORG=xyz
-export VIAM_SECRET=123
+export VIAM_API_KEY=123
+export VIAM_API_KEY_ID=123
 export VIAM_ADDRESS=789
 python rosey.py
 ```

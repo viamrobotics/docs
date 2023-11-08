@@ -16,7 +16,7 @@ Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload
 You can use the following built-in model:
 
 {{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](/modular-resources/examples/triton/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
 <!-- prettier-ignore -->
@@ -355,6 +355,6 @@ Configure your `mlmodel classifier`.
 
 {{% /manualcard %}}
 
-{{% card link="/modular-resources/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
+{{% card link="/registry/examples/tflite-module/" customTitle="Example: TensorFlow Lite Modular Service" %}}
 
 {{< /cards >}}
