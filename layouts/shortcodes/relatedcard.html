@@ -16,7 +16,7 @@
           </div>
           <p>
             {{ if eq $required "yes" }}
-              <strong>{{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}</strong>
+              {{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}*
             {{ else }}
               {{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}
             {{ end }}

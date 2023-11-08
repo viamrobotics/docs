@@ -26,15 +26,15 @@ Currently, the vision service supports the following kinds of operations:
 
 {{<modular-resources api="rdk:service:vision" type="vision">}}
 
-{{< readfile "/static/include/create-your-own-mr.md" >}}-->~
+{{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
 ## Used With
 
 {{< cards >}}
-{{< relatedcard1 link="/components/camera/" >}}
+{{< relatedcard link="/components/camera/" >}}
 {{< /cards >}}
 
-{{% snippet "required1-legend.md" %}}
+{{% snippet "required-legend.md" %}}
 
 ## API
 

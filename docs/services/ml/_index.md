@@ -24,6 +24,16 @@ For some models, like the [Triton MLModel](/modular-resources/examples/triton/) 
 | ----- | ----------- |
 | [`"tflite_cpu"` model](#create-an-ml-model-service) | Runs a tensorflow lite model that you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/). |
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/services/vision/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ### Modular Resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}

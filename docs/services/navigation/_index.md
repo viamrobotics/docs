@@ -18,12 +18,12 @@ Configure your base with a navigation service, add waypoints, and set the mode o
 ## Used With
 
 {{< cards >}}
-{{< relatedcard1 link="/components/base/" required="yes" >}}
-{{< relatedcard1 link="/components/movement-sensor/" required="yes" >}}
-{{< relatedcard1 link="/components/camera/" >}}
+{{< relatedcard link="/components/base/" required="yes" >}}
+{{< relatedcard link="/components/movement-sensor/" required="yes" >}}
+{{< relatedcard link="/components/camera/" >}}
 {{< /cards >}}
 
-{{% snippet "required1-legend.md" %}}
+{{% snippet "required-legend.md" %}}
 
 ## Requirements
 

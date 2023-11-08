@@ -16,10 +16,10 @@ With it you can obtain readings from multiple sensors on your robot at once.
 ## Used With
 
 {{< cards >}}
-{{< relatedcard1 link="/components/sensor/" required="yes" >}}
+{{< relatedcard link="/components/sensor/" required="yes" >}}
 {{< /cards >}}
 
-{{% snippet "required1-legend.md" %}}
+{{% snippet "required-legend.md" %}}
 
 ## API
 

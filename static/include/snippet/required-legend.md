@@ -1,1 +1,1 @@
-_Component required for use_
+\* Required for use

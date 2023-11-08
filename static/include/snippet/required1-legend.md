@@ -1,1 +1,0 @@
-\* Component required for use

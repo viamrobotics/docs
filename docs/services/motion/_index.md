@@ -24,13 +24,14 @@ The motion service can:
 ## Used With
 
 {{< cards >}}
-{{< relatedcard1 link="/components/movement-sensor/" required="yes">}}
-{{< relatedcard1 link="/components/base/" >}}
-{{< relatedcard1 link="/components/arm/" >}}
-{{< relatedcard1 link="/components/gripper/" >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/components/movement-sensor/" required="yes">}}
+{{< relatedcard link="/components/base/" >}}
+{{< relatedcard link="/components/arm/" >}}
+{{< relatedcard link="/components/gripper/" >}}
 {{< /cards >}}
 
-{{% snippet "required1-legend.md" %}}
+{{% snippet "required-legend.md" %}}
 
 ## Configuration
 
