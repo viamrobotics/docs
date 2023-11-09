@@ -96,7 +96,7 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token,or an organization, location, or robot API key.
+You can authenticate your CLI session using either a personal access token, or an organization, location, or robot API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
 Similarly, to authenticate using a location or robot API key, you must first create a [location](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
 
@@ -727,7 +727,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
-| `api-key`   |  work with an api-key for your robot | `create`(see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `api-key`   |  work with an api-key for your robot | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
@@ -740,15 +740,6 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | ----------- | ----------- | ----------- |
 | `create`     | create an API key for a specific robot |
 | `--help`      | return help |
-
-##### Named arguments
-
-<!-- prettier-ignore -->
-| argument | description | applicable commands | required |
-| ----------- | ----------- | ----------- | ----------- |
-| `--robot-id`      | the robot to create an API key for |`api-key` | true |
-| `--name`     |  the optional name of the API key    |`api-key` | false |
-| `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Positional arguments: `part`
 
@@ -774,6 +765,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
 | `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
+| `--robot-id`      | the robot to create an API key for |`api-key` | true |
+| `--name`     |  the optional name of the API key    |`api-key` | false |
+| `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Using the `--stream` and `--data` arguments
 
