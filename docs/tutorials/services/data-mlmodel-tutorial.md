@@ -27,9 +27,9 @@ In this tutorial, you will use three Viam services together to enable a smart ma
 
 - The [data management](#the-data-management-service) service, to capture images from a camera on your smart machine and sync them to the cloud.
 - The [ML model](#the-ml-model-service) service, to manage and deploy a machine learning (ML) model based on these images, once you added tags to the images matching the objects you want to detect.
-- THe [vision](/services/vision/) service, to enable your smart machine's camera to detect objects defined in the ML model on its own.
+- The [vision](/services/vision/) service, to enable your smart machine's camera to detect objects defined in the ML model on its own.
 
-Working together, these services enable your smart machine to recognize the world around it and make intelligent decisions about the world it sees.
+Working together, these services enable your smart machine to recognize its surroundings and make intelligent decisions about the world it sees.
 
 {{< alert title="Tip" color="tip" >}}
 To get started easily, you can rent a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
