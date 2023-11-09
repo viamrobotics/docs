@@ -697,7 +697,7 @@ Make sure to [prepare a Python virtual environment](/program/python-venv/) in th
 {{% /tab %}}
 {{% tab name="Python: nuitka" %}}
 
-Install [a C compiler on your machine](https://github.com/Nuitka/Nuitka#c-compiler).
+Install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
 Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
