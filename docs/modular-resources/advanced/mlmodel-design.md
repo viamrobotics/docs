@@ -13,14 +13,14 @@ Models of Viam's [Machine Learning (ML) model service](/services/ml/) allow you 
 Vision services, like [an `"mlmodel"` detector](/services/vision/detection/#configure-an-mlmodel-detector) or [classifier](/services/vision/classification/#configure-an-mlmodel-classifier), enable you to identify and classify objects in images with the predictions those deployed models make.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
-If [designing your own ML Model service](/modular-resources/) to add to [the Registry](https://app.viam.com/registry), you must try to make your ML models' shapes match the input and output tensors the vision service expects to work with if you want the two services to coordinate in classification or detection.
+If [designing your own ML Model service](/modular-resources/) to add to [the Registry](https://app.viam.com/registry), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
 
-To know what to expect, the vision service looks for descriptions of these characteristics in the [metadata](/services/ml/#metadata) of the ML model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
+To know what to expect, the `mlmodel` vision service looks for descriptions of these characteristics in the [metadata](/services/ml/#metadata) of the ML model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
 For an example of this, see [Example Metadata](#example-metadata).
 
 ## Input tensor: `input_info` in metadata
 
-For both [classification](/services/vision/classification/) and [detection](/services/vision/detection/) models, the vision service sends an input tensor to the ML Model with the following structure:
+For both [classification](/services/vision/classification/) and [detection](/services/vision/detection/) models, the vision service sends a single input tensor to the ML Model with the following structure:
 
 - One input tensor called `"image"` with type `uint8` or `float32` and shape `(1, height, width, 3)`, with the last channel, `3` being the RGB bytes of the pixel.
 - If image `height` and `width` are unknown or variable, then `height` and/or `width` `= -1`. During inference runtime the image will have a known height and width.
@@ -28,22 +28,15 @@ For both [classification](/services/vision/classification/) and [detection](/ser
 ## Output tensors: `output_info` in metadata
 
 Data can be returned by the ML model in many ways, due to the variety of machine learning models for computer vision.
-While the vision service tries to take into account many different forms of models by looking at the metadata of the model, if the model does not provide metadata, the vision service will make guesses.
-If you need to add structure and metadata, output that is organized in terms of the "ideal guess" will work out of the box.
+The vision service will try to take into account many different forms of models by looking at the metadata of the model.
+If the model does not provide metadata, the vision service will make guesses.
 The ideal guesses of the vision service are as follows:
-
-For labels:
-
-- To get labels that will be associated to classifications or detections, currently the vision service looks at the first element of the `output_info` list in the ML models' metadata and looks for a key called `"labels"` in its `"extra"` struct. The value of that key should be the full path to the label file on the robot.
-
-  ```sh {class="command-line" data-prompt="$"}
-  label_path = ml_model_metadata.output_info.extra["labels"]
-  ```
 
 For [classifications](/services/vision/classification/):
 
 - The model returns 1 tensor, called `"probability"` with shape `(1, n_classifications)`
 - The data is floating point numbers representing probability, between `0` and `1`.
+- If the data is not between `0` and `1`, the vision service will compute a softmax over the data, resulting in floating point numbers between `0` and `1` representing probability.
 
 For [detections](/services/vision/detection/):
 
@@ -58,6 +51,15 @@ For [detections](/services/vision/detection/):
   3. "Score": The confidence scores of the label
      - Shape: `(batch, n_detections)`
      - Floating point numbers representing probability, between `0` and `1`.
+
+For labels:
+
+- Many computer vision models have an associated 'labelfile.txt' that simply lists the class labels associated with the model.
+- To get those labels associated with the model, currently the vision service looks at the first element of the `output_info` list in the ML models' metadata and looks for a key called `"labels"` in its `"extra"` struct. The value of that key should be the full path to the label file on the robot. See [Example Metadata](#example-metadata) for an example of this.
+
+  ```sh {class="command-line" data-prompt="$"}
+  label_path = ml_model_metadata.output_info.extra["labels"]
+  ```
 
 ### Example Metadata
 
