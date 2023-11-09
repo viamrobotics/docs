@@ -32,7 +32,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "board": "<your-board-name>",
-  "i2c_bus": "<your-i2c-bus-name-on-board>",
+  "i2c_bus": "<your-i2c-bus-index>",
   "use_alternate_i2c_address": <boolean>,
   "tap": {
     "accelerometer_pin": <int>,
@@ -57,8 +57,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "local",
-  "i2c_bus": "default_i2c_bus"
+  "i2c_bus": "2"
 }
 ```
 
@@ -78,7 +77,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
-        "i2c_bus": "<your-i2c-bus-name-on-board>",
+        "i2c_bus": "<your-i2c-bus-index-on-board>",
         "use_alternate_i2c_address": <boolean>,
         "tap": {
           "accelerometer_pin": <int>,
@@ -129,7 +128,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "namespace": "rdk",
       "attributes": {
         "board": "local",
-        "i2c_bus": "default_i2c_bus",
+        "i2c_bus": "1",
         "use_alternate_i2c_address": false
       }
     }
@@ -143,13 +142,13 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name                  | Type   | Inclusion    | Description |
-| --------------------- | ------ | ------------ | ----------- |
-| `board`               | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
-| `i2c_bus`             | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this device. |
-| `use_alternate_i2c_address` | bool   | Optional     | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
-| `tap`                 | object | Optional     | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [Tap attributes](#tap-attributes). |
-| `free_fall`           | object | Optional     | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [Freefall attributes](#freefall-attributes). |
+| Name | Type   | Inclusion    | Description |
+| ---- | ------ | ------------ | ----------- |
+| `i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this device. |
+| `board` | string | Optional | The `name` of the [board](/components/board/) to which the device is wired. Only needed if you've configured any [interrupt](/components/board/#digital_interrupts) functionality. |
+| `use_alternate_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
+| `tap` | object | Optional | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [Tap attributes](#tap-attributes). |
+| `free_fall` | object | Optional | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [Freefall attributes](#freefall-attributes). |
 
 ### Tap attributes
 
