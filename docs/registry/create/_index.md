@@ -672,27 +672,27 @@ Make sure to [prepare a Python virtual environment](/program/python-venv/) in th
 
 2. Add a shell script that creates a new virtual environment, installs the dependencies listed in `requirements.txt`, and runs the module entry point file `main.py`:
 
-    ```sh { class="command-line" data-prompt="$"}
-        #!/bin/sh
-        cd `dirname $0`
+   ```sh { class="command-line" data-prompt="$"}
+       #!/bin/sh
+       cd `dirname $0`
 
-        # Create a virtual environment to run our code
-        VENV_NAME="venv"
-        PYTHON="$VENV_NAME/bin/python"
+       # Create a virtual environment to run our code
+       VENV_NAME="venv"
+       PYTHON="$VENV_NAME/bin/python"
 
-        python3 -m venv $VENV_NAME
-        $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
+       python3 -m venv $VENV_NAME
+       $PYTHON -m pip install -r requirements.txt -U # remove -U if viam-sdk should not be upgraded whenever possible
 
-        # Be sure to use `exec` so that termination signals reach the python process,
-        # or handle forwarding termination signals manually
-        exec $PYTHON -m src.main $@
-    ```
+       # Be sure to use `exec` so that termination signals reach the python process,
+       # or handle forwarding termination signals manually
+       exec $PYTHON -m src.main $@
+   ```
 
-    To make your shell script executable, run the following command in your terminal:
+   To make your shell script executable, run the following command in your terminal:
 
-    ```sh { class="command-line" data-prompt="$"}
-    sudo chmod +x <your-file-path-to>/<run.sh>
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   sudo chmod +x <your-file-path-to>/<run.sh>
+   ```
 
 {{% /tab %}}
 {{% tab name="Python: nuitka" %}}
@@ -712,19 +712,19 @@ Make sure to [prepare a Python virtual environment](/program/python-venv/) in th
 
 2. After installing dependencies in your virtual environment, compile your module with the following command:
 
-    ```sh { class="command-line" data-prompt="$"}
-    python -m nuitka --onefile src/main.py
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile src/main.py
+   ```
 
-    Any data files you want to include you must specify through a CLI option as follows:
+   Any data files you want to include you must specify through a CLI option as follows:
 
-    ```sh { class="command-line" data-prompt="$"}
-    python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json=src/arm/my_arm_kinematics.json src/main.py
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json=src/arm/my_arm_kinematics.json src/main.py
+   ```
 
-    No relative imports (imports starting with `.`) will work with this option.
-    In addition, no cross compiling is allowed.
-    You have to compile on your target platform/architecture.
+   No relative imports (imports starting with `.`) will work with this option.
+   In addition, no cross compiling is allowed.
+   You have to compile on your target platform/architecture.
 
 {{% /tab %}}
 {{% tab name="Python: pyinstaller" %}}
@@ -745,19 +745,19 @@ Make sure to [prepare a Python virtual environment](/program/python-venv/) in th
 2. Add the Google API python client as a hidden import when compiling your module.
    After installing the required dependencies in your virtual environment, compile your module as follows:
 
-    ```sh { class="command-line" data-prompt="$"}
-    python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+   ```
 
-    Any data files you want to include you must specify through a CLI option as follows:
+   Any data files you want to include you must specify through a CLI option as follows:
 
-    ```sh { class="command-line" data-prompt="$"}
-    python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
-    ```
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
+   ```
 
-    No relative imports (imports starting with `.`) will work with this option.
-    In addition, no cross compiling is allowed.
-    You have to compile on your target platform/architecture.
+   No relative imports (imports starting with `.`) will work with this option.
+   In addition, no cross compiling is allowed.
+   You have to compile on your target platform/architecture.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
