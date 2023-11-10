@@ -355,6 +355,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
+| `database configure`      | configure a database user for the Viam org's MongoDB Atlas Data Federation instance  | - |
+| `database hostname`      | get the hostname to access a MongoDB Atlas Data Federation Instance  | - |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
@@ -382,6 +384,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
 | `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
 | `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`| false |
+| `--org-id` | org ID for the database user | `database configure`, `database hostname` | true |
+| `--password` | password for the database user being configured | `database configure` | true |
 
 ### locations
 
