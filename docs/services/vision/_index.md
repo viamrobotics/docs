@@ -31,7 +31,7 @@ Currently, the vision service supports the following kinds of operations:
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/components/camera/" >}}
+{{< relatedcard link="/services/ml/" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}

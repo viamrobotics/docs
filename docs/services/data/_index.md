@@ -47,6 +47,7 @@ To configure data capture, see [data capture](../data/configure-data-capture/).
 
 {{< cards >}}
 {{< relatedcard link="/components/arm/">}}
+{{< relatedcard link="/components/board/">}}
 {{< relatedcard link="/components/camera/">}}
 {{< relatedcard link="/components/encoder/">}}
 {{< relatedcard link="/components/gantry/">}}
