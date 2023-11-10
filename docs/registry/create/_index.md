@@ -643,7 +643,7 @@ Additionally, return any values designated in the function's return signature, t
 {{% /tab %}}
 {{< /tabs >}}
 
-### Compile the module into an executable
+### Prepare the module for execution
 
 To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
