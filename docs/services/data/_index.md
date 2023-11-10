@@ -108,7 +108,7 @@ To configure cloud sync, see [configure cloud sync](/services/data/configure-clo
 Once you have synced data to the cloud, you can query certain types of data directly in the cloud using MQL, the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
 Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
-Both the captured data itself as well as its metadata (such as robot ID, organization ID, and [tags](/manage/data/label/#image-tags)) are available for queries.
+You can query both the captured data itself as well as its metadata (such as robot ID, organization ID, and [tags](/manage/data/label/#image-tags)).
 
 In order to query data using MQL, you must have first [captured data](/services/data/configure-data-capture/) and [synced data](/services/data/configure-cloud-sync/) to the cloud.
 You must also configure a new database connection to the Viam cloud data store using the Viam CLI.
