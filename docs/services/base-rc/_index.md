@@ -25,6 +25,16 @@ Control mode is determined by the configuration attribute `"mode"`, for which th
 
 You can monitor the input from these controls in the **Control** tab of the [Viam app](https://app.viam.com).
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/base/" required="yes" >}}
+{{< relatedcard link="/components/input-controller/" required="yes" >}}
+{{< relatedcard link="/components/movement-sensor/" >}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Configuration
 
 You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to be able to use a Base Remote Control service.
