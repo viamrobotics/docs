@@ -32,7 +32,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Use the Viam CLI [to generate an api key for your organization](/manage/cli/#create-an-organization-api-key).
+Use the Viam CLI [to generate an api key to authenticate](/manage/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

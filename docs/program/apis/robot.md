@@ -16,8 +16,8 @@ The robot API is supported for use with the [Viam Python SDK](https://python.via
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the location secret and robot address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab.
-Toggle **Include secret**, then copy the location secret and robot address into the code below where indicated:
+To find the api key, api key id, and robot address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab.
+Toggle **Include api key**, and then copy and paste the API key id and the API key into your environment variables or directly into the code:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -30,12 +30,12 @@ from viam.robot.client import RobotClient
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='YOUR LOCATION SECRET')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
@@ -76,10 +76,14 @@ func main() {
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "YOUR LOCATION SECRET",
-      })),
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        Payload: "<API-KEY>",
+    })),
   )
   if err != nil {
       logger.Fatal(err)
@@ -92,7 +96,7 @@ func main() {
 ```
 
 You can use this code to connect to your smart machine and instantiate a `robot` client that you can then use with the [Robot API](#api).
-As an example, this code uses the instantiated `robot` client to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
+As an example, this code uses the instantiated `robot` client to return the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
 Remember to always close the connection (using `Close()`) when done.
 
 {{% /tab %}}
@@ -140,12 +144,15 @@ func main() {
       timeoutContext,
       "ADDRESS FROM THE VIAM APP",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "YOUR LOCATION SECRET",
-      })),
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        Payload: "<API-KEY>",
+    })),
   )
-...
 }
 ```
 
