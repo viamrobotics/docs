@@ -19,7 +19,6 @@ async def connect():
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
-
 ```
 
 {{% /tab %}}
