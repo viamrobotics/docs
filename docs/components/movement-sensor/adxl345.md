@@ -31,9 +31,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "<your-board-name>",
   "i2c_bus": "<your-i2c-bus-index>",
   "use_alternate_i2c_address": <boolean>,
+  "board": "<your-board-name>",
   "tap": {
     "accelerometer_pin": <int>,
     "interrupt_pin": "<your-digital-interrupt-name-on-board>",
@@ -108,26 +108,11 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 {
   "components": [
     {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {
-        "i2cs": [
-          {
-            "name": "default_i2c_bus",
-            "bus": "1"
-          }
-        ]
-      }
-    },
-    {
       "name": "my-adxl",
       "model": "accel-adxl345",
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "local",
         "i2c_bus": "2",
         "use_alternate_i2c_address": false
       }
