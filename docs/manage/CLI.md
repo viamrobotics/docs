@@ -329,12 +329,12 @@ viam board list --organization=my-org
 ### data
 
 The `data` command allows you to manage robot data.
-With it, you can export data in the format of your choice or delete specified data.
-You can filter the data this command operates on.
+With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
+viam data database configure --org-id <org-id> --password <db-user-password>
 ```
 
 Examples:
@@ -347,6 +347,10 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
+
+# configure a new database use for use with data query
+viam data database hostname --org-id=abc
+viam data database configure --org-id=abc --password my_new_secure_password123
 ```
 
 #### Command options
@@ -378,7 +382,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
 | `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
-| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|f alse |
+| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
 | `--part-id`      | filter by specified part id      |`export`, `delete`| false |
 | `--part-name`     | filter by specified part name       |`export`, `delete`| false |
 | `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |

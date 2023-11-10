@@ -45,6 +45,8 @@ Once your smart machine has synced captured data to the Viam app, you can config
 
    This command creates a new database `user` for your organization's MongoDB Atlas instance.
 
+For more information, see the documentation for the [Viam CLI `database` command](/manage/CLI/#data).
+
 ## Query data using MQL
 
 Once you have [configured data query](#configure-data-query), you can directly query synced data using MQL.
