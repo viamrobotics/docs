@@ -103,7 +103,6 @@ To configure cloud sync, see [configure cloud sync](/services/data/configure-clo
 
   {{< /alert >}}
 
-
 ## Data query
 
 Once you have synced data to the cloud, you can query certain types of data directly in the cloud using MQL, the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
