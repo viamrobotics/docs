@@ -20,7 +20,7 @@ The encoder component supports:
 
 - [Incremental encoders](https://en.wikipedia.org/wiki/Incremental_encoder#Quadrature_outputs), which can measure the speed and direction of rotation in relation to a given reference point like a starting point.
   These encoders output two phases.
-  Encoderd on the sequence and timing of these phases, it is determined how far something has turned and in which direction.
+  Based on the sequence and timing of these phases, it is determined how far something has turned and in which direction.
   Each phase output goes to a different pin on the board.
 - Single phase or single pin "pulse output" encoders, which measure the position relative to the starting position but not the direction.
 - Absolute encoders, which provide the absolute position of a rotating shaft, without requiring a reference point.
