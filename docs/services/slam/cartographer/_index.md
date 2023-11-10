@@ -3,7 +3,7 @@ title: "Cartographer Modular Resource"
 linkTitle: "Cartographer"
 weight: 70
 type: "docs"
-description: "Configure a SLAM service with the Cartographer modular resource."
+description: "Configure a Simultaneous Localization And Mapping (SLAM) service with the Cartographer modular resource."
 tags: ["slam", "services"]
 icon: "/services/icons/slam.svg"
 aliases:
@@ -11,7 +11,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
+[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.

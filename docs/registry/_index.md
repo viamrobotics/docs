@@ -28,7 +28,7 @@ Viam provides built-in support for a variety of {{< glossary_tooltip term_id="re
 - Various types of hardware {{< glossary_tooltip term_id="component" text="components" >}}.
 - High-level functionality exposed as {{< glossary_tooltip term_id="service" text="services" >}}.
 
-If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources).
+<!-- If the {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} you want to use for your project is not natively supported, you can use _{{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}_ from [the Viam Registry](#the-viam-registry) or [create your own modular resources](#create-your-own-modular-resources). -->
 
 You configure modular resources same way as built-in resources and use the same [standardized APIs](/program/apis/).
 `viam-server` manages the [dependencies](/internals/rdk/#dependency-management), [start-up](/internals/rdk/#start-up), [reconfiguration](/manage/fleet/#reconfiguration), [data management](/services/data/configure-data-capture/#configure-data-capture-for-individual-components), and [shutdown](/internals/rdk/#shutdown) behavior of your modular resource.
@@ -68,7 +68,7 @@ If none of the existing modular resources in the Viam registry support your use 
 
 - **Implement a custom component**: Write a driver for an unsupported {{< glossary_tooltip term_id="component" text="component" >}} by implementing the corresponding component API.
 
-- **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as [SLAM](/services/slam/), [vision](/services/vision/), or [motion planning](/services/motion/).
+- **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as {{< glossary_tooltip term_id="slam" text="SLAM" >}}, [vision](/services/vision/), or [motion planning](/services/motion/).
 
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/program/apis/).
 To create a new modular resource:
