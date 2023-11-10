@@ -11,7 +11,7 @@ images: ["/icons/components/imu.svg"]
 The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).
 This three axis accelerometer supplies linear acceleration data, supporting the `LinearAcceleration` method.
 
-If you are using a [Viam Rover](https://docs.viam.com/try-viam/), this is the accelerometer on it.
+If you are using a [Viam Rover](/try-viam/), this is the accelerometer on it.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -178,4 +178,9 @@ Inside the `freefall` object, you can include the following attributes:
 | `threshold`         | float  | Optional     | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between `0` and `15,937`). <br> Default: `437.5` |
 | `time_ms`           | float  | Optional     | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275). <br> Default: `160` |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.
+
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

@@ -118,4 +118,10 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 | `i2c_bus`             | string  | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on your [board](/components/board/) wired to this device. |
 | `use_alt_i2c_address` | boolean | Optional     | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69). If high, set `true`. If low, set `false`. <br> Default: `false` |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.
+The sections in the panel include the angular velocity and linear acceleration.
+
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-mpu6050.png" resize="800x" declaredimensions=true alt="The movement sensor component in the control tab">}}
