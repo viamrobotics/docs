@@ -82,7 +82,8 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
    db.sensors.find( { sensor_type: "temp_sensor", current_temperature: { $gt: 32 } } )
    ```
 
-Consult the documentation for the specific MQL client you are using for more information.
+For more information on the MQL syntax used in this query, see the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
+For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your cluster tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 ## Next Steps
 
