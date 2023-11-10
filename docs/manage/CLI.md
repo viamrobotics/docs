@@ -348,9 +348,9 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
 
-# configure a new database use for use with data query
+# configure a new database user for use with data query
 viam data database hostname --org-id=abc
-viam data database configure --org-id=abc --password my_new_secure_password123
+viam data database configure --org-id=abc --password=my_new_secure_password123
 ```
 
 #### Command options
