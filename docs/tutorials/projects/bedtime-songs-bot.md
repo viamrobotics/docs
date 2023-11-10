@@ -160,6 +160,7 @@ At this point, the full **Raw JSON** configuration of your robot should look lik
             "capture_methods": [
               {
                 "additional_params": {
+                 "reader_name": "cam1",
                   "mime_type": "image/jpeg"
                 },
                 "capture_frequency_hz": 0.333,
