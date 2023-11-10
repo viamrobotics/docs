@@ -128,7 +128,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "namespace": "rdk",
       "attributes": {
         "board": "local",
-        "i2c_bus": "1",
+        "i2c_bus": "2",
         "use_alternate_i2c_address": false
       }
     }
@@ -144,9 +144,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 <!-- prettier-ignore -->
 | Name | Type   | Inclusion    | Description |
 | ---- | ------ | ------------ | ----------- |
-| `i2c_bus` | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this device. |
-| `board` | string | Optional | The `name` of the [board](/components/board/) to which the device is wired. Only needed if you've configured any [interrupt](/components/board/#digital_interrupts) functionality. |
+| `i2c_bus` | string | **Required** | The index of the I2C bus on the board your device is connected to. Often a number. <br> Example: "2"  |
 | `use_alternate_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
+| `board` | string | Optional | The `name` of the [board](/components/board/) to which the device is wired. Only needed if you've configured any [interrupt](/components/board/#digital_interrupts) functionality. |
 | `tap` | object | Optional | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [Tap attributes](#tap-attributes). |
 | `free_fall` | object | Optional | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [Freefall attributes](#freefall-attributes). |
 
