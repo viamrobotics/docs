@@ -2,7 +2,7 @@
 title: SLAM
 id: slam
 full_link: /services/slam/
-short_description: SLAM algorithms use data from a robot's sensors to generate a map of the environment and determine the robot's position within it.
+short_description: Simultaneous Localization And Mapping (SLAM) algorithms use data from a robot's sensors to generate a map of the environment and determine the robot's position within it.
 aka:
 ---
 

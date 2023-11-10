@@ -26,7 +26,7 @@ When using Viam, this is what you'll need to know to plan your smart machine:
   Many {{< glossary_tooltip term_id="component" text="components">}} are natively supported by the Viam platform.
   You will not need to write a single line of code to integrate them, and swapping out component models will not require code changes.
 - **Functionality**:
-  You can make use of computer vision, motion planning, SLAM, data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
+  You can make use of computer vision, motion planning, Simultaneous Localization And Mapping (SLAM), data management, machine learning, and more by configuring Viam's built-in {{< glossary_tooltip term_id="service" text="services">}}.
 - **Architecture**:
   You can build simple smart machines or multi-part smart machines that use secure communication channels across local networks and the cloud, all of which can be managed with a uniform API.
 - **Extensibility**: If you need additional functionality, you can leverage {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} from the Viam registry to extend support in Viam to new hardware components and software services.
@@ -102,7 +102,7 @@ There are four categories of APIs:
 
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
 - [Components](/components/) like motors, arms, GPS
-- [Services](/services/) like computer vision, motion planning, SLAM
+- [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
 - Cloud applications like [Fleet Management](/manage/fleet/), [Data Management](/manage/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).

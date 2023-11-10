@@ -68,7 +68,7 @@ If none of the existing modular resources in the Viam registry support your use 
 
 - **Implement a custom component**: Write a driver for an unsupported {{< glossary_tooltip term_id="component" text="component" >}} by implementing the corresponding component API.
 
-- **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as [SLAM](/services/slam/), [vision](/services/vision/), or [motion planning](/services/motion/).
+- **Implement a custom service**: Implement your own algorithm or {{< glossary_tooltip term_id="model" text="model" >}} against a corresponding service API or use custom algorithms or data models when working with services such as {{< glossary_tooltip term_id="slam" text="SLAM" >}}, [vision](/services/vision/), or [motion planning](/services/motion/).
 
 You can write modules in a variety of programming languages, such as, Go, Python, C++, Rust, while implementing the same [APIs](/program/apis/).
 To create a new modular resource:

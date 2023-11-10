@@ -172,7 +172,7 @@ The [sensors service](/services/sensors/) supports the following methods:
 
 ### SLAM
 
-The [SLAM service](/services/slam/) supports the following methods:
+The {{< glossary_tooltip term_id="slam" text="Simultaneous Localization And Mapping (SLAM) service" >}} supports the following methods:
 
 {{< readfile "/static/include/services/apis/slam.md" >}}
 

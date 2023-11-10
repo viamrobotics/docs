@@ -268,7 +268,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 
 If you are mounting an RPlidar to your rover, be sure to position the RPlidar so that it faces forward in the direction of travel, facing in the same direction as the included webcam.
 For example, if you are using the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the pointed end of the RPlidar mount housing points in the direction of the front of the Rover.
-This ensures that the generated [SLAM](/services/slam/) map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
+This ensures that the generated {{< glossary_tooltip term_id="slam" text="SLAM" >}} map is oriented in the expected direction relative to the Rover, with the top of the generated map corresponding to the direction the RPlidar is facing when you initiate mapping.
 
 If you need a mount plate for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
 
