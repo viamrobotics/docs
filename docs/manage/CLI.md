@@ -334,7 +334,7 @@ With it, you can export data in the format of your choice, delete specified data
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
-viam data database configure --org-id <org-id> --password <db-user-password>
+viam data database configure --org-id=<org-id> --password=<db-user-password>
 ```
 
 Examples:
