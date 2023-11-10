@@ -211,6 +211,51 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 {{% /tab %}}
 {{< /tabs >}}
 
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+sensors_svc = SensorsClient.from_robot(robot, "builtin")
+
+await sensors_svc.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/sensors/client/index.html#viam.services.sensors.client.SensorsClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+sensorsService, err := sensors.FromRobot(robot, "builtin")
+
+err := sensorsService.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Next steps
 
 {{< cards >}}

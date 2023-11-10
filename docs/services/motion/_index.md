@@ -541,7 +541,7 @@ success, err := motionService.MoveOnGlobe(context.Background(), myBaseResourceNa
 {{% /tab %}}
 {{< /tabs >}}
 
-## DoCommand
+### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
 For built-in service models, any model-specific commands available are covered with each model's documentation.
@@ -589,11 +589,53 @@ await motion.do_command(my_command)
 ```go {class="line-numbers linkable-line-numbers"}
 // Access the motion service
 motionService, err := motion.FromRobot(robot, "builtin")
-if err != nil {
-  logger.Fatal(err)
-}
 
 resp, err := motionService.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+motion = MotionClient.from_robot(robot, "builtin")
+
+await motion.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+motionService, err := motion.FromRobot(robot, "builtin")
+
+err := motionService.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
