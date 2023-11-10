@@ -564,7 +564,7 @@ Create a client to interact with your robot using an API key as credentials.
 
 **Parameters:**
 
-- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your [organization](/manage/cli/#create-an-organization-api-key), [location](/manage/cli/#create-a-location-api-key), or [robot](/manage/cli/#create-a-robot-api-key) API key.
+- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/manage/cli/#authenticate) with access to the robot.
 
 - `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
   Must be a valid UUID.
@@ -573,7 +573,7 @@ Create a client to interact with your robot using an API key as credentials.
 
 - [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): A gRPC client for interacting with your robot.
 
-[(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
+- [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
 
 ```python
 api_key = "your_api_key"
@@ -585,4 +585,3 @@ robot_client = RobotClient.with_api_key(api_key, api_key_id)
 {{< /tabs >}}
 
 For the full list of robot API methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
-
