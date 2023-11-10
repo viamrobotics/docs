@@ -14,12 +14,12 @@ icon: "/services/icons/data-capture.svg"
 ---
 
 The data management service captures data from Viam components and securely syncs data to Viam's cloud.
-You can configure capture frequency individually for each component.
+You can configure capture frequency individually for each component, and you can directly query select types of synced data in the cloud.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
-The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud-sync).
+The service has three parts: [data capture](#data-capture), [cloud sync](#cloud-sync), and [data query](#data-query).
 
-## Data Capture
+## Data capture
 
 The data management service captures data from one or more components locally on the robot's storage.
 The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
@@ -41,9 +41,9 @@ If your requirements change and you want to capture data from both components at
 Data capture is frequently used with [Cloud Sync](#cloud-sync).
 However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
 
-To configure data capture, see [data capture](../data/configure-data-capture/).
+To configure data capture, see [data capture](/services/data/configure-data-capture/).
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/components/arm/">}}
@@ -59,7 +59,7 @@ To configure data capture, see [data capture](../data/configure-data-capture/).
 
 {{% snippet "required-legend.md" %}}
 
-## Cloud Sync
+## Cloud sync
 
 The data management service securely syncs the specified data to the cloud at the user-defined frequency.
 Viam does not impose a minimum or maximum on the frequency of data syncing.
@@ -75,7 +75,7 @@ As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
 If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
 
-To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync/).
+To configure cloud sync, see [configure cloud sync](/services/data/configure-cloud-sync/).
 
 ### Considerations
 
@@ -102,6 +102,19 @@ To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync
   Currently, Viam does not safeguard against this.
 
   {{< /alert >}}
+
+
+## Data query
+
+Once you have synced data to the cloud, you can query certain types of data directly in the cloud using MQL, the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
+Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
+
+Both the captured data itself as well as its metadata (such as robot ID, organization ID, and [tags](docs/manage/data/label/#image-tags)) are available for queries.
+
+In order to query data using MQL, you must have first [captured data](/services/data/configure-data-capture/) and [synced data](/services/data/configure-cloud-sync/) to the cloud.
+You must also configure a new database connection to the Viam cloud data store using the Viam CLI.
+
+To configure data query, see [configure data query](/services/data/configure-data-query/).
 
 ## API
 
@@ -150,18 +163,18 @@ err := data.Sync(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Next steps
 
 To use the data management service, [add the data management service](configure-data-capture/#add-the-data-management-service) to your robot.
 Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
 
 For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
 
-### Access and Export Data
+### Access and export data
 
 Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
 
-### Train and Deploy Machine Learning
+### Train and deploy machine learning
 
 You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
 You can also [upload and use existing models](../../manage/ml/upload-model/).
