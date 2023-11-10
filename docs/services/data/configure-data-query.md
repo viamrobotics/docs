@@ -35,7 +35,6 @@ Once your smart machine has synced captured data to the Viam app, you can config
 
    This command returns the `hostname` of your Viam organization's assigned MongoDB Atlas instance.
 
-
 1. Then, configure a new database user for that database instance.
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
 
