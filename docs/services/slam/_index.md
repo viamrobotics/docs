@@ -24,6 +24,14 @@ You can conduct SLAM with data collected live by a [RPlidar](/registry/examples/
 
 ![Completed SLAM maps in the SLAM library tab](/services/slam/view-map-page.png)
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/camera/" alt_title="RPlidar" required="yes" alt_link="/registry/examples/rplidar/">}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Configuration
 
 Integrated SLAM libraries include the following.

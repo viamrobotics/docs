@@ -13,6 +13,14 @@ images: ["/services/icons/sensor.svg"]
 The sensors service is a built-in service that provides a central interface to all of your robot's [sensors](/components/sensor/), regardless of the sensor model.
 With it you can obtain readings from multiple sensors on your robot at once.
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/sensor/" required="yes" >}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## API
 
 The sensors service supports the following methods:

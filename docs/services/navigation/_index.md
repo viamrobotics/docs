@@ -15,6 +15,16 @@ The Navigation service is the stateful definition of Viam's [motion service](/se
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called waypoints.
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](#setmode) to move your rover along a defined path at your desired motion configuration.
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/base/" required="yes" >}}
+{{< relatedcard link="/components/movement-sensor/" required="yes" >}}
+{{< relatedcard link="/components/camera/" >}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Requirements
 
 You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a Navigation service.

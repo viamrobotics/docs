@@ -1004,6 +1004,7 @@ td > ul, td > ol {
 .relatedcard {
   display: flex;
   flex-direction: column;
+  min-height: 13rem;
 }
 
 .relatedcard a {
@@ -1015,6 +1016,7 @@ td > ul, td > ol {
 
 .relatedcard a:hover {
   background-color: whitesmoke;
+  min-height: 13rem;
 }
 
 .relatedcard div {

@@ -43,6 +43,22 @@ However, if you want to manage your robot's captured data yourself, you can enab
 
 To configure data capture, see [data capture](../data/configure-data-capture/).
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/arm/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< relatedcard link="/components/encoder/">}}
+{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/components/motor/">}}
+{{< relatedcard link="/components/movement-sensor/">}}
+{{< relatedcard link="/components/sensor/">}}
+{{< relatedcard link="/components/servo/">}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Cloud Sync
 
 The data management service securely syncs the specified data to the cloud at the user-defined frequency.
