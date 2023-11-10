@@ -555,4 +555,33 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### WithAPIKey
+
+Create a client to interact with your robot using an API key as credentials.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/manage/cli/#authenticate) with access to the robot.
+
+- `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
+  Must be a valid UUID.
+
+**Returns:**
+
+- [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): A gRPC client for interacting with your robot.
+
+- [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
+
+```python
+api_key = "your_api_key"
+api_key_id = "valid_uuid"
+robot_client = RobotClient.with_api_key(api_key, api_key_id)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 For the full list of robot API methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
