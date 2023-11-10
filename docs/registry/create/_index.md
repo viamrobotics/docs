@@ -658,8 +658,7 @@ Your options for completing this step are flexible, as this file does not need t
 
 Create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
-Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries.
-Compile your module as follows:
+Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
@@ -731,7 +730,7 @@ Compile your module as follows:
 {{% /tab %}}
 {{% tab name="Python: pyinstaller" %}}
 
-Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries.
+Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is so your module has access to any required libraries.
 Compile your module as follows:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
