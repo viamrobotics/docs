@@ -12,7 +12,7 @@ Configure data query to be able to directly query captured data in the Viam clou
 
 ## Requirements
 
-Before you can configure [data query](../#data-query), you must [add the data management service](../configure-data-capture/#add-the-data-management-service) and [configure cloud sync](/services/data/configure-cloud-sync/).
+Before you can configure [data query](../#data-query), you must [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) and [configure cloud sync](/services/data/configure-cloud-sync/).
 
 ## Configure data query
 
@@ -44,7 +44,7 @@ Once your smart machine has synced captured data to the Viam app, you can config
 
    This command creates a new database `user` for your organization's MongoDB Atlas instance.
 
-For more information, see the documentation for the [Viam CLI `database` command](/manage/CLI/#data).
+For more information, see the documentation for the [Viam CLI `database` command](/manage/cli/#data).
 
 ## Query data using MQL
 
@@ -86,7 +86,7 @@ Consult the documentation for the specific MQL client you are using for more inf
 
 ## Next Steps
 
-To view your captured data in the cloud, see [View Data](../../../manage/data/view/).
-To export your synced data, see [Export data](../../manage/data/export/).
+To view your captured data in the cloud, see [View Data](/manage/data/view/).
+To export your synced data, see [Export data](/manage/data/export/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-management-tutorial/).
