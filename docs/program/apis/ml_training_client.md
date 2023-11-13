@@ -7,7 +7,7 @@ description: "Use the ML training client API to manage ML training jobs taking p
 tags: ["cloud", "sdk", "viam-server", "networking", "apis", "ml model", "ml"]
 ---
 
-The ML training API allows you to get data from and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
+The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com).
 
 {{% alert title="Support Notice" color="note" %}}
 
@@ -68,7 +68,7 @@ The ML training client API supports the following methods:
 
 ### GetTrainingJob
 
-Get training job data.
+Get training job metadata.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -93,7 +93,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListTrainingJobs
 
-Get training job data for all jobs within an organization.
+Get training job metadata for all jobs within an organization.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -101,7 +101,7 @@ Get training job data for all jobs within an organization.
 **Parameters:**
 
 - `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job data from. Retrieve this value with the cloud management API's [`ListOrganizations()`](/program/apis/cloud/#listorganizations).
-- `training_status` [(Optional[TrainingStatus.ValueType])](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus): The status of training jobs you want to filter the list by.
+- `training_status` [(Optional[TrainingStatus.ValueType])](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus): The status of training jobs you want to filter the list by. If you leave this unspecified, all training jobs for your organization are returned.
 
 **Returns**:
 
@@ -136,7 +136,7 @@ Cancel the specified training job.
 
 **Raises**:
 
-- `GRPCError`: If no training job exists with the given ID.
+- `GRPCError`: If no training job exists with the given ID or cancellation was otherwise unsuccessful.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await ml_training_client.cancel_training_job(
