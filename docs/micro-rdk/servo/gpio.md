@@ -124,6 +124,12 @@ The following attributes are available for `gpio` servos:
 | `max_period_us` | int | Optional | Override the safe maximum [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output) pulse width in microseconds. <br> Default: `2500` |
 | `pwm_resolution` | int | Optional | The resolution of the [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output) driver (for example, the number of ticks for a full period). <br> Default: `0` |
 
+### PWM frequency and `esp32` boards
+
+A `gpio` servo using a PWM pin leaves you with three remaining PWM frequencies for use on an `esp32`.
+If the frequency of another PWM signal is unimportant, it can also be set to the same frequency as your servo.
+See [PWM signals on `esp32` pins](/micro-rdk/board/esp32/#pwm-signals-on-esp32-pins) for more information.
+
 {{% alert title="Tip" color="tip" %}}
 
 Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs.arduino.cc/learn/microcontrollers/analog-output), rotation, and wiring specifications.
