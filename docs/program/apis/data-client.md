@@ -263,7 +263,7 @@ Filter and delete binary data by ids.
 
 **Raises:**
 
-- GRPCError – If no BinaryID objects are provided.
+- `GRPCError` – This error is raised if no BinaryID objects are provided.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
@@ -300,7 +300,7 @@ Add tags to binary data by ids.
 
 **Parameters:**
 
-- tags (List[str]): List of tags to add to specified binary data. Must be non-empty.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data. Must be non-empty.
 - binary_ids (List[viam.app.proto.BinaryID]): List of BinaryID objects specifying binary data to tag. Must be non-empty.
 
 **Returns:**
@@ -309,7 +309,7 @@ Add tags to binary data by ids.
 
 **Raises:**
 
-- GRPCError – If no BinaryID objects or tags are provided.
+- `GRPCError` – This error is raised if no BinaryID objects or tags are provided.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
@@ -348,7 +348,7 @@ Add tags to binary data by filter.
 
 **Parameters:**
 
-- tags (List[str]): List of tags to add to specified binary data. Must be non-empty.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data. Must be non-empty.
 - filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to tag. If no Filter is provided, all data will be
   tagged.
 
@@ -358,7 +358,7 @@ Add tags to binary data by filter.
 
 **Raises:**
 
-- GRPCError – If no tags are provided.
+- `GRPCError` – This error is raised if no Btags are provided.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import Filter
@@ -382,8 +382,8 @@ Remove tags from binary by ids.
 
 **Parameters:**
 
-- tags (List[str]): List of tags to remove from specified binary data. Must be non-empty.
-- file_ids (List[str]): List of BinaryID objects specifying binary data to untag. Must be non-empty.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data. Must be non-empty.
+- file_ids ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of BinaryID objects specifying binary data to untag. Must be non-empty.
 
 **Returns:**
 
@@ -391,7 +391,7 @@ Remove tags from binary by ids.
 
 **Raises:**
 
-- GRPCError – If no binary_ids or tags are provided.
+- `GRPCError` – This error is raised if no BinaryID objects or tags are provided.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import BinaryID
@@ -431,7 +431,7 @@ Remove tags from binary data by filter.
 
 **Parameters:**
 
-- tags (List[str]): List of tags to remove from specified binary data.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data.
 - filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to untag. If no Filter is provided, all data will be
   untagged.
 
@@ -441,7 +441,7 @@ Remove tags from binary data by filter.
 
 **Raises:**
 
-- GRPCError – If no tags are provided.
+- `GRPCError` – This error is raised if no tags are provided.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import Filter
@@ -470,7 +470,7 @@ Get a list of tags using a filter.
 
 **Returns:**
 
-- (`List[str]`): The list of tags.
+- ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The list of tags.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import Filter
@@ -498,7 +498,7 @@ Get a list of bounding box labels using a Filter.
 
 **Returns:**
 
-- (`List[str]`): The list of bounding box labels.
+- ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The list of bounding box labels.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app.data import Filter
@@ -522,11 +522,11 @@ Get a connection to access a MongoDB Atlas Data federation instance.
 
 **Parameters:**
 
-- organization_id (str): Organization to retrieve the connection for.
+- organization_id ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Organization to retrieve the connection for.
 
 **Returns:**
 
-- (`str`): The hostname of the federated database.
+- ([`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The hostname of the federated database.
 
 ```python {class="line-numbers linkable-line-numbers"}
 data_client.get_database_connection("a12b3c4e-1234-1abc-ab1c-ab1c2d345abc")
@@ -548,17 +548,17 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 **Parameters:**
 
 - `binary_data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): The data to be uploaded, represented in bytes.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
-- `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
-- `component_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
-- `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
-- `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
-- `file_extension` [(Optional[str])](https://docs.python.org/3/library/typing.html#typing.Optional): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
+- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `component_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Type of the component used to capture the data.
+- `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the component used to capture the data.
+- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the method used to capture the data.
+- `tags` ([Optional[List[str]]](https://docs.python.org/3/library/stdtypes.html#typesseq-list)): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `data_request_times` ([Optional[Tuple[datetime.datetime, datetime.datetime]]](https://docs.python.org/3/library/stdtypes.html#tuples)): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
+- `file_extension` ([Optional[str]](https://docs.python.org/3/library/typing.html#typing.Optional)): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
 
 **Returns**:
 
-- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the new file.
+- ([`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of the new file.
 
 ```python {class="line-numbers linkable-line-numbers"}
 time_requested = datetime(2023, 6, 5, 11)
@@ -602,7 +602,7 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 
 **Returns**:
 
-- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the new file.
+- ([`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of the new file.
 
 ```python {class="line-numbers linkable-line-numbers"}
 time_requested = datetime(2023, 6, 5, 11)
