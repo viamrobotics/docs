@@ -196,8 +196,8 @@ Delete tabular data older than a specified number of days.
 
 **Parameters:**
 
-- organization_id (str): ID of organization to delete data from.
-- delete_older_than_days (int): Delete data that was captured up to this many days ago. For example if delete_older_than_days
+- organization_id ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of organization to delete data from.
+- delete_older_than_days ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Delete data that was captured up to this many days ago. For example if delete_older_than_days
   is 10, this deletes any data that was captured up to 10 days ago. If it is 0, all existing data is deleted.
 
 **Returns:**
@@ -259,7 +259,7 @@ Filter and delete binary data by ids.
 
 **Returns:**
 
-- (`int`): The number of items deleted.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of items deleted.
 
 **Raises:**
 
@@ -387,7 +387,7 @@ Remove tags from binary by ids.
 
 **Returns:**
 
-- (`int`): The number of tags removed.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of tags removed.
 
 **Raises:**
 
@@ -437,7 +437,7 @@ Remove tags from binary data by filter.
 
 **Returns:**
 
-- (`int`): The number of tags removed.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of tags removed.
 
 **Raises:**
 
