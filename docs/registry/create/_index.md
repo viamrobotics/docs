@@ -791,3 +791,12 @@ Add a module to your robot as a local module.
 
 {{% /manualcard %}}
 {{< /cards >}}
+
+<br>
+
+You can also check out these tutorials that create modules:
+
+{{< cards >}}
+{{% card link="/tutorials/custom/custom-base-dog/" %}}
+{{% card link="/registry/examples/custom-arm/" %}}
+{{< /cards >}}
