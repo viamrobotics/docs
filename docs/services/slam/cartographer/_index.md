@@ -551,6 +551,11 @@ Navigate to the **SLAM library** tab on your location page, and click **Make new
 Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
 
+### Delete the Map
+
+To clear a SLAM map, go to your **Location** page's **SLAM library** tab.
+Click on the trash can icon in the upper right-hand corner of a map's card to delete the map.
+
 ## SLAM Mapping Best Practices
 
 The best way to improve map quality is by taking extra care when creating the initial map.
