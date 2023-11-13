@@ -198,7 +198,7 @@ Delete tabular data older than a specified number of days.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of organization to delete data from.
-You can obtain your organization id from the [organization settings page](/manage/fleet/organizations/).
+  You can obtain your organization id from the [organization settings page](/manage/fleet/organizations/).
 - `delete_older_than_days` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Delete data that was captured up to this many days ago.
   For example if delete_older_than_days is `10`, this deletes any data that was captured up to 10 days ago.
   If it is `0`, all existing data is deleted.
