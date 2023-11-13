@@ -3,7 +3,7 @@ title: "Configure a WitMotion IMU"
 linkTitle: "imu-wit"
 weight: 10
 type: "docs"
-description: "Configure a WitMotion IMU."
+description: "Configure a WitMotion IMU on your machine. Once configured use the API to obtain the AngularVelocity, Orientation, CompassHeading and LinearAcceleration."
 images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---

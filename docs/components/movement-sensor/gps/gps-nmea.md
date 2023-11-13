@@ -3,7 +3,7 @@ title: "Configure an NMEA-based GPS"
 linkTitle: "gps-nmea"
 weight: 10
 type: "docs"
-description: "Configure an NMEA-based GPS."
+description: "Configure an NMEA-based GPS on your machine. Once configured use the API to obtain the Position, CompassHeading and LinearVelocity."
 images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---

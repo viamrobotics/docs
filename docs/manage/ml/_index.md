@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true
-description: "Use Viam's built-in machine learning capabilities to train image classification models and deploy these models to your robots."
+description: "Use Viam's built-in machine learning capabilities to train image classification models and deploy these models to your machines."
 image: "/manage/ml/training.png"
 imageAlt: "Machine Learning"
 images: ["/manage/ml/training.png"]
