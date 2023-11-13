@@ -5,13 +5,12 @@ Method Name | Description
 [`BinaryDataByFilter`](/program/apis/data-client/#binarydatabyfilter) | Filter and download binary data.
 [`BinaryDataByIDs`](/program/apis/data-client/#binarydatabyids) | Download binary data by IDs.
 [`DeleteTabularData`](/program/apis/data-client/#deletetabulardata) | Delete tabular data older than a specified number of days.
-[`DeleteTabularDataByFilter`](/program/apis/data-client/#deletetabulardatabyfilter) | Filter and delete tabular data.
 [`DeleteBinaryDataByFilter`](/program/apis/data-client/#deletebinarydatabyfilter) | Filter and delete binary data.
 [`DeleteBinaryDataByIds`](/program/apis/data-client/#deletebinarydatabyids) | Filter and delete binary data by ids.
 [`AddTagsToBinaryDataByIds`](/program/apis/data-client/#addtagstobinarydatabyids) | Add tags to binary data by ids.
 [`AddTagsToBinaryDataByFilter`](/program/apis/data-client/#addtagstobinarydatabyfilter) | Add tags to binary data by filter.
-[`RemoveTagsFromBinaryDataByIds`](/program/apis/data-client/#removetagstobinarydatabyids) | Remove tags from binary data by ids.
-[`RemoveTagsFromBinaryDataByFilter`](/program/apis/data-client/#removetagstobinarydatabyfilter) | Remove tags from binary data by filter.
+[`RemoveTagsFromBinaryDataByIds`](/program/apis/data-client/#removetagsfrombinarydatabyids) | Remove tags from binary data by ids.
+[`RemoveTagsFromBinaryDataByFilter`](/program/apis/data-client/#removetagsfrombinarydatabyfilter) | Remove tags from binary data by filter.
 [`TagsByFilter`](/program/apis/data-client/#tagsbyfilter) | Get tags from data by filter.
 [`BoundingBoxLabelsByFilter`](/program/apis/data-client/#boundingboxlabelsbyfilter) | Get a list of bounding box labels using a Filter.
 [`GetDatabaseConnection`](/program/apis/data-client/#getdatabaseconnection) | Get a connection to access a MongoDB Atlas Data federation instance.
