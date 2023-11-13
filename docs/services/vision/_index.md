@@ -3,15 +3,15 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "The vision service enables your smart machine to use its on-board cameras to intelligently see and interpret the world around it."
+description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
 icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 # SMEs: Bijan, Khari
 ---
 
-The vision service enables your smart machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
-While the camera component lets you access what your smart machine's camera sees, the vision service allows you to interpret your image data.
+The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
 Currently, the vision service supports the following kinds of operations:
 

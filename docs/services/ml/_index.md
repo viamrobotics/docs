@@ -6,12 +6,12 @@ type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/deploy-model/
-description: "Deploy Machine Learning models to a smart machine."
+description: "Deploy Machine Learning models to a machine."
 icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
-Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/) your model, the Machine Learning (ML) model service allows you to deploy machine learning models to your smart machine.
+Once you have [trained](/manage/ml/train-model/) or [uploaded](/manage/ml/upload-model/) your model, the Machine Learning (ML) model service allows you to deploy machine learning models to your machine.
 
 You can use the following built-in model:
 
@@ -50,7 +50,7 @@ Click the **Services** subtab and click **Create service** in the lower-left cor
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
 
-You can choose to configure your service with an existing model on the smart machine or deploy a model onto your smart machine:
+You can choose to configure your service with an existing model on the machine or deploy a model onto your machine:
 
 {{< tabs >}}
 {{% tab name="Existing Model" %}}
@@ -387,11 +387,11 @@ You can also run this command on an existing Python SDK install to add support f
 
 See the [Python documentation](https://python.viam.dev/autoapi/viam/services/mlmodel/mlmodel/index.html#viam.services.mlmodel.mlmodel.MLModel) for more information about the `MLModel` service in Python.
 
-See [Program a smart machine](/program/) for more information about using an SDK to control your smart machine.
+See [Program a machine](/program/) for more information about using an SDK to control your machine.
 
 ## Next Steps
 
-To make use of your model with your smart machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
+To make use of your model with your machine, add a [vision service](/services/vision/) or a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}:
 
 {{< cards >}}
 

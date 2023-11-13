@@ -29,7 +29,7 @@ cost: 0 # Aproximate cost in USD - Only specify number
 ---
 
 Outline the why.
-Tell the story of the smart machine.
+Tell the story of the machine.
 
 ## Requirements
 

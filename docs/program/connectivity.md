@@ -27,4 +27,4 @@ To disable the default behavior and manage resource timeout and reconfiguration 
 
 ## Configure a connection timeout
 
-When connecting to a smart machine using the [robot API](/program/apis/robot/) from a supported [Viam SDK](/program/apis/), you can configure an [optional timeout](/program/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.
+When connecting to a machine using the [robot API](/program/apis/robot/) from a supported [Viam SDK](/program/apis/), you can configure an [optional timeout](/program/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.

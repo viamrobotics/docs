@@ -1,13 +1,13 @@
 ---
-title: "Program a Smart Machine"
+title: "Program a Machine"
 linkTitle: "Program Machines"
 childTitleEndOverwrite: "Program Machines"
-description: "Use the SDK of your preferred language to write code to control your smart machines."
+description: "Use the SDK of your preferred language to write code to control your machines."
 weight: 45
 no_list: true
 type: docs
 image: "/general/code.png"
-imageAlt: "Program a smart machine"
+imageAlt: "Program a machine"
 images: ["/general/code.png"]
 aliases:
   - "product-overviews/sdk-as-client"
@@ -15,7 +15,7 @@ aliases:
   - "program/sdks"
 ---
 
-You can write code to control your smart machines using the following software development kits (SDKs):
+You can write code to control your machines using the following software development kits (SDKs):
 
 - [Python SDK](https://python.viam.dev/)
 - [Go SDK](https://pkg.go.dev/go.viam.com/rdk)
