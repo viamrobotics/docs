@@ -779,7 +779,7 @@ The examples from [Code a new resource model](#code-a-new-resource-model) includ
 Once you have created your module, you can use the [Viam CLI](/manage/cli/) to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
 For added convenience, you can configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
 
-You can also add your module to your robot as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
+You can also add your module to your robot as a local module, without uploading it to the Viam registry.
 
 {{< cards >}}
 {{% card link="/registry/upload/" %}}
@@ -790,4 +790,13 @@ You can also add your module to your robot as a [local module](/registry/configu
 Add a module to your robot as a local module.
 
 {{% /manualcard %}}
+{{< /cards >}}
+
+<br>
+
+You can also check out these tutorials that create modules:
+
+{{< cards >}}
+{{% card link="/tutorials/custom/custom-base-dog/" %}}
+{{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}
