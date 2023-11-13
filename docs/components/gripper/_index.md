@@ -278,6 +278,64 @@ logger.Info(moving)
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetGeometries
+
+Get all the geometries associated with the gripper in its current configuration, in the [frame](/services/frame-system/) of the gripper.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the gripper, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=robot, name="my_gripper")
+
+geometries = await my_gripper.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the gripper, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myGripper, err := gripper.FromRobot(robot, "my_gripper")
+
+geometries, err := myGripper.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
@@ -327,6 +385,51 @@ resp, err := myGripper.DoCommand(ctx, map[string]interface{}{"command": "example
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/gripper/v1/gripper_grpc.pb.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot, "my_gripper")
+
+await my_gripper.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myGripper, err := gripper.FromRobot(robot, "my_gripper")
+
+err := myGripper.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

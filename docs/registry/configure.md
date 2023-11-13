@@ -16,6 +16,8 @@ description: "Add a modular resource to your robot by configuring it."
 no_list: true
 aliases:
   - "/program/extend/modular-resources/configure/"
+  - "/extend/modular-resources/configure/"
+  - "/modular-resources/configure/"
 ---
 
 You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
@@ -46,15 +48,15 @@ To add a modular [component](/components/) from the Viam registry to your robot:
 1. Click on the **Components** subtab and click the **Create component** button.
 1. Browse the list of available component types, and select the specific modular component you'd like to add.
 
-   {{<imgproc src="modular-resources/configure/add-component-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
+   {{<imgproc src="registry/configure/add-component-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the category 'camera'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="modular-resources/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
+   {{<imgproc src="registry/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
 1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your robot's component configuration.
 
-   {{<imgproc src="modular-resources/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
+   {{<imgproc src="registry/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
    Be sure the modular component you select supports the [platform](/manage/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
@@ -75,15 +77,15 @@ To add a modular [service](/services/) from the Viam registry to your robot:
 1. Click on the **Services** subtab and click the **Create service** button.
 1. Browse the list of available service types and select the specific modular service you'd like to add.
 
-   {{<imgproc src="modular-resources/configure/add-service-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
+   {{<imgproc src="registry/configure/add-service-by-category.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the category 'ML Model'">}}
 
    You can also start typing to search for a module by name or to narrow down your search results.
 
-   {{<imgproc src="modular-resources/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
+   {{<imgproc src="registry/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
 1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot's service configuration.
 
-   {{<imgproc src="modular-resources/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
+   {{<imgproc src="registry/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
    Be sure the modular service you select supports the [platform](/manage/cli/#using-the---platform-argument) you intend to use it with, such as `linux arm64`.
    You can see which platforms the module supports at bottom of the module information screen before you add it.
@@ -98,7 +100,7 @@ Deleting a module _does not_ delete any configured modular resources it provides
 
 ### Add additional modular resources from a registry module
 
-Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resource's [model](/modular-resources/key-concepts/#models).
+Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
 Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
 You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
@@ -108,11 +110,11 @@ If you prefer to use raw JSON, the following properties are available for modula
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model) |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model) |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
-| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's [model](/modular-resources/key-concepts/#models). |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/modular-resources/key-concepts/#dependency-management). |
+| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -187,7 +189,7 @@ Once you have added a modular resource to your robot, you can view and edit the 
 
 This pane lists the models provided by the module, any [components](/components/) or [services](/services/) on your robot that are currently using the module, and allows you to configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry.
 
-{{<imgproc src="modular-resources/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
+{{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 ### Configure version update management for a registry module
 
@@ -227,8 +229,8 @@ You can add your own custom modules as local modules, or you can add pre-built m
 
 First determine the module you wish to add as a local module:
 
-- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/modular-resources/create/) to code and compile your module and generate an executable.
-- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/modular-resources/create/#compile-the-module-into-an-executable).
+- If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/registry/create/) to code and compile your module and generate an executable.
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/registry/create/#compile-the-module-into-an-executable).
 
 Then, ensure that `viam-server` is able to find and run the executable:
 
@@ -240,7 +242,7 @@ Then, ensure that `viam-server` is able to find and run the executable:
   sudo chmod a+rx <path-to-your-module-executable>
   ```
 
-See the instructions to [compile your module into an executable](/modular-resources/create/#compile-the-module-into-an-executable) for more information.
+See the instructions to [compile your module into an executable](/registry/create/#compile-the-module-into-an-executable) for more information.
 
 ### Add a local module
 
@@ -253,17 +255,17 @@ To add a local module on your robot:
 
 1. Then, select the `local modular resource` type from the list.
 
-   {{<imgproc src="modular-resources/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="registry/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 
 1. On the next screen:
 
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
-   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's [model](/modular-resources/key-concepts/#models).
+   - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
      If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
    - Enter a name for this instance of your modular resource.
      This name must be different from the module name.
 
-   {{<imgproc src="modular-resources/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
+   {{<imgproc src="registry/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
 
 1. Click **Create** to create the modular resource provided by the local module.
 
@@ -273,13 +275,13 @@ You can also add the module directly, without first adding its modular component
 1. Click on the **Modules** subtab.
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
-1. Enter the [module's executable path](/modular-resources/create/#compile-the-module-into-an-executable).
+1. Enter the [module's executable path](/registry/create/#compile-the-module-into-an-executable).
    This path must be the absolute path to the executable on your robot's filesystem.
 1. Then, click the **Add module** button, and click **Save config**.
 
-   {{<imgproc src="modular-resources/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
+   {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
-   This example shows the configuration for adding a [CSI camera](/modular-resources/examples/csi/) as a local module.
+   This example shows the configuration for adding a [CSI camera](/registry/examples/csi/) as a local module.
 
 ### Edit the configuration of a local module
 
@@ -303,7 +305,7 @@ Add these properties to your module's configuration:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-{{<imgproc src="modular-resources/configure/add-local-module-config-builder.png" resize="600x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
+{{<imgproc src="registry/configure/add-local-module-config-builder.png" resize="600x" declaredimensions=true alt="The add a local module pane with an example name and executable path">}}
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -325,18 +327,18 @@ Add these properties to your module's configuration:
 
 ### Add a local modular resource
 
-Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's [model](/modular-resources/key-concepts/#models).
+Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
 The following properties are available for modular resources:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |
-| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/modular-resources/key-concepts/#valid-apis-to-implement-in-your-model). |
+| `namespace` | string | **Required** | The namespace of the API (the first part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
+| `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | A custom name for this instance of your modular resource. |
-| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's [model](/modular-resources/key-concepts/#models). |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/modular-resources/key-concepts/#dependency-management). |
+| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -400,3 +402,10 @@ You can send commands to the base according to the Viam [base API](/components/b
 ## Next Steps
 
 Now that you've configured a modular resource, test it with the [Control tab](/manage/fleet/#remote-control) and program it with the [Viam SDKs](/program/apis/).
+
+You can also check out these tutorials that configure and use modular resources:
+
+{{< cards >}}
+{{% card link="/tutorials/projects/make-a-plant-watering-robot/" %}}
+{{% card link="/tutorials/projects/integrating-viam-with-openai/" %}}
+{{< /cards >}}

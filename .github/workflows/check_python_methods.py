@@ -23,6 +23,7 @@ ignore_apis = [
     'viam.app.app_client.Fragment.from_proto',
     'viam.app.app_client.RobotPartHistoryEntry.from_proto',
     'viam.app.app_client.AppClient.get_rover_rental_parts',
+    'viam.app.data_client.DataClient.create_filter' # deprecated
 ]
 
 def is_unimplemented(obj):

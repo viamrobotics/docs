@@ -163,4 +163,4 @@ If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from S
 
 {{% /alert %}}
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-gps-control.md" >}}

@@ -11,7 +11,7 @@ images: ["/icons/components/imu.svg"]
 The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).
 This three axis accelerometer supplies linear acceleration data, supporting the `LinearAcceleration` method.
 
-If you are using a [Viam Rover](https://docs.viam.com/try-viam/), this is the accelerometer on it.
+If you are using a [Viam Rover](/try-viam/), this is the accelerometer on it.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -121,4 +121,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 | `i2c_bus` | string | **Required** | The `name` of the I<sup>2</sup>C bus on the [board](/micro-rdk/board/) wired to this device. |
 | `use_alt_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.
+
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

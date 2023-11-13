@@ -33,7 +33,7 @@ After configuring a `wheeled-odometry` movement sensor, you can operate your bas
 
 To prepare your robot, attach [encoders](/components/encoder/) to each of the position-reporting motors on your base to measure their rotation.
 
-- Select motors that can report their own position, like an encoded [`roboclaw`](/components/motor/roboclaw/) or [`gpio` motors](/components/motor/gpio/) with [encoders](/components/encoder/#supported-models), or the [`odrive`](/modular-resources/examples/odrive/) module.
+- Select motors that can report their own position, like an encoded [`roboclaw`](/components/motor/roboclaw/) or [`gpio` motors](/components/motor/gpio/) with [encoders](/components/encoder/#supported-models), or the [`odrive`](/registry/examples/odrive/) module.
   You can access this property of a configured motor through the [motor API's `GetProperties()`](/components/motor/#getproperties).
 - Configure your rover as a [wheeled base component](/components/base/wheeled/).
   Make sure to configure the base width and circumference, as these measurements as a property of the base are vital for accurate odometry estimations by your movement sensor.
@@ -140,4 +140,7 @@ The following attributes are available for `wheeled-odometry` movement sensors:
 | `right_motors` | object | **Required** | A list containing the name of each of the bases' right [position-reporting motors](/components/motor/gpio/). |
 | `time_interval_msec` | number | Optional | The time in milliseconds between each wheeled odometry calculation.<br>Default: `500.0`</br> |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.

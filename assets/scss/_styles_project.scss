@@ -1004,6 +1004,7 @@ td > ul, td > ol {
 .relatedcard {
   display: flex;
   flex-direction: column;
+  min-height: 13rem;
 }
 
 .relatedcard a {
@@ -1023,6 +1024,36 @@ td > ul, td > ol {
 
 .relatedcard p {
   vertical-align: middle;
+}
+
+@media (max-width: 800px) {
+.relatedcard {
+  width: 100%;
+  padding: 0.25rem 0rem;
+  min-height: unset;
+}
+
+.relatedcard a {
+  width: 95%;
+  text-align: unset;
+  padding: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.relatedcard * img {
+  width: 45px;
+  height: 45px;
+  margin: 0rem;
+}
+
+.relatedcard * p {
+  margin-left: 0.75rem;
+  margin-bottom: 0;
+}
+
 }
 
 // sectionlist styling

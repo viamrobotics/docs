@@ -622,12 +622,12 @@ SECONDS_TO_RUN = 60 * 15
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='<INSERT LOCATION SECRET>')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<INSERT REMOTE ADDRESS>', opts)
 

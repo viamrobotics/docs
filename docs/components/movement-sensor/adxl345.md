@@ -11,7 +11,7 @@ images: ["/icons/components/imu.svg"]
 The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).
 This three axis accelerometer supplies linear acceleration data, supporting the `LinearAcceleration` method.
 
-If you are using a [Viam Rover](https://docs.viam.com/try-viam/), this is the accelerometer on it.
+If you are using a [Viam Rover](/try-viam/), this is the accelerometer on it.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -31,9 +31,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "<your-board-name>",
-  "i2c_bus": "<your-i2c-bus-name-on-board>",
+  "i2c_bus": "<your-i2c-bus-index>",
   "use_alternate_i2c_address": <boolean>,
+  "board": "<your-board-name>",
   "tap": {
     "accelerometer_pin": <int>,
     "interrupt_pin": "<your-digital-interrupt-name-on-board>",
@@ -57,8 +57,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "local",
-  "i2c_bus": "default_i2c_bus"
+  "i2c_bus": "2"
 }
 ```
 
@@ -78,7 +77,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "namespace": "rdk",
       "attributes": {
         "board": "<your-board-name>",
-        "i2c_bus": "<your-i2c-bus-name-on-board>",
+        "i2c_bus": "<your-i2c-bus-index-on-board>",
         "use_alternate_i2c_address": <boolean>,
         "tap": {
           "accelerometer_pin": <int>,
@@ -109,27 +108,12 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 {
   "components": [
     {
-      "name": "local",
-      "model": "pi",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {
-        "i2cs": [
-          {
-            "name": "default_i2c_bus",
-            "bus": "1"
-          }
-        ]
-      }
-    },
-    {
       "name": "my-adxl",
       "model": "accel-adxl345",
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "local",
-        "i2c_bus": "default_i2c_bus",
+        "i2c_bus": "2",
         "use_alternate_i2c_address": false
       }
     }
@@ -143,13 +127,13 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 ## Attributes
 
 <!-- prettier-ignore -->
-| Name                  | Type   | Inclusion    | Description |
-| --------------------- | ------ | ------------ | ----------- |
-| `board`               | string | **Required** | The `name` of the [board](/components/board/) to which the device is wired. |
-| `i2c_bus`             | string | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on the [board](/components/board/) wired to this device. |
-| `use_alternate_i2c_address` | bool   | Optional     | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
-| `tap`                 | object | Optional     | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [Tap attributes](#tap-attributes). |
-| `free_fall`           | object | Optional     | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [Freefall attributes](#freefall-attributes). |
+| Name | Type   | Inclusion    | Description |
+| ---- | ------ | ------------ | ----------- |
+| `i2c_bus` | string | **Required** | The index of the I2C bus on the board your device is connected to. Often a number. <br> Example: "2"  |
+| `use_alternate_i2c_address` | bool | Optional | Depends on whether you wire SDO low (leaving the default address of 0x53) or high (making the address 0x1D). If high, set true. If low, set false or omit the attribute. <br> Default: `false` |
+| `board` | string | Optional | The `name` of the [board](/components/board/) to which the device is wired. Only needed if you've configured any [interrupt](/components/board/#digital_interrupts) functionality. |
+| `tap` | object | Optional | Holds the configuration values necessary to use the tap detection interrupt on the ADXL345. See [Tap attributes](#tap-attributes). |
+| `free_fall` | object | Optional | Holds the configuration values necessary to use the free-fall detection interrupt on the ADXL345. See [Freefall attributes](#freefall-attributes). |
 
 ### Tap attributes
 
@@ -178,4 +162,9 @@ Inside the `freefall` object, you can include the following attributes:
 | `threshold`         | float  | Optional     | The acceleration on each axis is compared with this value to determine if a free-fall event occurred (in milligrams, between `0` and `15,937`). <br> Default: `437.5` |
 | `time_ms`           | float  | Optional     | Unsigned time value representing the minimum time that the value of all axes must be less than `threshold` to generate a free-fall interrupt (in milliseconds, between 0 and 1,275). <br> Default: `160` |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.
+
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

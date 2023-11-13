@@ -10,7 +10,7 @@ tags: ["data management", "cloud", "sync"]
 
 ## Add the data management service
 
-To capture data from one or more smart machines, you must first add the [data management service](../):
+To capture data from one or more machines, you must first add the [data management service](../):
 
 1. From your robot's **Config** tab, navigate to the **Services** subtab.
 2. Click **Create service** in the lower-left corner of the page.
@@ -78,7 +78,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click **Save Config** at the bottom of the window.
 
-Now your data will be saved locally on your smart machine to the directory specified in the data management service.
+Now your data will be saved locally on your machine to the directory specified in the data management service.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
@@ -166,7 +166,7 @@ To add them to your JSON configuration you must explicitly add the remote compon
 <!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
-| `type` | The type tells your smart machine what the component is. For example, a board. |
+| `type` | The type tells your machine what the component is. For example, a board. |
 | `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |

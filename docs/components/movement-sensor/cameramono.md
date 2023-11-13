@@ -99,4 +99,7 @@ Edit and fill in the attributes as applicable.
 | `camera`                   | string | **Required** | The `name` of the [camera](/components/camera/) you want to use for visual odometry. |
 | `motion_estimation_config` | object | **Required** | See [motionestimation.go in RDK](https://github.com/viamrobotics/rdk/blob/99f62a1640f4c267b744bdfc2924e9fd4f7a3c60/vision/odometry/motionestimation.go). |
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.

@@ -28,7 +28,7 @@ While `monocular-visual-odometry` enables you to add movement sensing abilities 
 If your robot requires precise awareness of its location and its movement, you should consider using a dedicated movement sensor in addition to the `monocular-visual-odometry` module.
 
 The `monocular-visual-odometry` module is available [from the Viam registry](https://app.viam.com/module/viam/monocular-visual-odometry).
-See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-visual-odometry` GitHub repository](https://github.com/viamrobotics/viam-visual-odometry).
 
@@ -255,4 +255,7 @@ The following attributes are available to configure the `monocular-visual-odomet
 
 See the [ORB openCV documentation](https://docs.opencv.org/3.4/db/d95/classcv_1_1ORB.html) for more details.
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+## Test the movement sensor
+
+After you configure your movement sensor, navigate to the [Control tab](/manage/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+This panel presents the data collected by the movement sensor.

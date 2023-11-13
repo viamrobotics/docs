@@ -48,7 +48,7 @@ In the members section of the page enter their email address, select a role, and
 
 ### Create a namespace for your organization
 
-When uploading [custom modules](/modular-resources/) to the Viam registry, you must set a namespace for your organization to associate your module with.
+When uploading [custom modules](/registry/) to the Viam registry, you must set a namespace for your organization to associate your module with.
 
 To create a new namespace for your organization, click on the Org's **Settings** in the top right of the navigation bar, then click the **Set a public namespace** button.
 Enter a name for your namespace, and then click **Set namespace**.

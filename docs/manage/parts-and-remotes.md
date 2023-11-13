@@ -55,8 +55,6 @@ To establish a connection between a part of one robot and a part of a second rob
 2. Click the **Code sample** tab.
 3. On the **Language** toggle, select **Remotes**, then click **Copy**.
 
-   ![The Viam app CODE SAMPLE tab with Remotes selected and a copyable JSON snippet with the name, address and secret of the robot part.](/manage/parts-and-remotes/remote-address.png)
-
    {{% snippet "show-secret.md" %}}
 
 4. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
@@ -68,25 +66,6 @@ To establish a connection between a part of one robot and a part of a second rob
 6. Click **Create Remote**.
 7. Paste the remote config you copied in step 4 into the empty field.
 8. Click **Save Config** in the bottom left of the screen.
-
-<!-- This is possibly wrong--should update with better understanding of auth key versus secret
-4. Copy the `address` of the robot to your clipboard.
-
-![The Viam app CODE SAMPLE tab with Remotes selected and a copyable JSON snippet with the name, address and secret of the robot part.](/manage/parts-and-remotes/remote-address.png)
-
-5. Go to the Viam app robot page of the robot part from which you want to establish a remote connection.
-   This is the robot part that will be able to access the resources of the other robot part.
-6. Click the **Config** tab, and then click the **Remotes** subtab.
-
-![The Viam app CONFIG tab with the REMOTES subtab open.](/manage/parts-and-remotes/remote-create.png)
-
-7. Give the remote a name (you can just use the name of the other robot part, for example, "my-other-robot-main") and click **Create Remote**.
-8. Paste the `address` (for example, `my-other-robot-main.abc1de23f4.viam.cloud`) into the **Address** field.
-9. Click **Add Auth** and paste the `secret` from the other robot's **Code sample** tab into the **Auth Key** field.
-
-![The Viam app CONFIG tab with a remote configured.](/manage/parts-and-remotes/remote-config.png)
-
--->
 
 ## Using remote parts and sub-parts with the Viam SDKs
 
@@ -117,4 +96,4 @@ servo = Servo.from_robot(robot=robot, name='my-other-robot-main:my_servo')
 {{% /tab %}}
 {{< /tabs >}}
 
-For an example that controls a motor that is a component of a sub-part, see [the Mock Robot tutorial](https://docs.viam.com/tutorials/configure/build-a-mock-robot/#how-to-control-a-sub-part-using-the-viam-sdk).
+For an example that controls a motor that is a component of a sub-part, see [the Mock Robot tutorial](/tutorials/configure/build-a-mock-robot/#control-a-sub-part-using-the-viam-sdk).

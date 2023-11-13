@@ -18,6 +18,7 @@ tags:
   ]
 aliases:
   - "/extend/modular-resources/examples/odrive/"
+  - "/modular-resources/examples/odrive/"
 # SMEs: Kim, Martha, Rand
 ---
 
@@ -25,7 +26,7 @@ Viam provides an `odrive` {{< glossary_tooltip term_id="modular-resource" text="
 The `odrive` {{< glossary_tooltip term_id="module" text="module" >}} supports an ODrive motor driver connected in either `serial` or `canbus` mode.
 
 The `odrive` module is available [from the Viam registry](https://app.viam.com/module/viam/odrive).
-See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`odrive` GitHub repository](https://github.com/viamrobotics/odrive).
 
@@ -53,7 +54,7 @@ Your robot must have an ODrive S1 or ODrive Pro motor controller installed to be
 
    {{% /alert %}}
 
-   Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you must set this to around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
+   Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you must set this to around `100` to use the [motor API's `SetPower` method](/components/motor/#setpower).
 
 1. Follow [this guide](https://docs.odriverobotics.com/v/latest/control.html#control-doc) to tune your ODrive motor.
 
@@ -311,7 +312,7 @@ To add an `odrive_config_file` and reconfigure your ODrive natively each time th
    See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
 2. Configure `iq_msg_rate_ms` to a value appropriate for your usage.
    By default, `iq_msg_rate_ms` is set to `0`.
-   You must set this to or around `100` to use the [motor API's `SetPower` method](https://docs.viam.com/components/motor/#setpower).
+   You must set this to or around `100` to use the [motor API's `SetPower` method](/components/motor/#setpower).
 3. If you add an `odrive_config_file` to a `canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
 
 See the [ODrive sample `config.json` file](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of an `odrive_config_file`.

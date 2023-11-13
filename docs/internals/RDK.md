@@ -18,20 +18,52 @@ Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/via
 
 ## `viam-server`
 
-_viam-server_ is responsible for:
+_viam-server_ manages the following:
 
-- All {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication
-- Connecting robots to the cloud
-- Loading and managing connections to hardware [components](/components/)
-- Running built-in [services](/services/)
-- Loading and interfacing with {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} provided by {{< glossary_tooltip term_id="module" text="modules" >}}.
-- Managing configured processes
-- Connecting to other parts of your robot
+### Communication
+
+`viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting robots to the cloud or for connecting to other parts of your machine.
+
+### Dependency Management
+
+Modular resources may depend on other built-in resources or other modular resources, and vice versa.
+The Viam RDK handles dependency management.
+
+### Start-up
+
+`viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, and processes are loaded on startup.
+
+After start-up, `viam-server` manages:
+
+- the configured processes,
+- the connections to hardware,
+- the running services, and
+- the {{< glossary_tooltip term_id="module" text="modules" >}} that provide the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
+
+### Reconfiguration
+
+When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
+This means you can add, modify, and remove a modular resource instance from a running robot.
+
+You can see configuration changes made by yourself or by your collaborators on the [History tab](/manage/fleet/robots/#history).
+You can also revert to an earlier configuration from the History tab.
+
+### Logging
+
+Log messages written appear under the [**Logs** tab](/manage/fleet/robots/#logs) for the machine running the module.
+
+### Data management
+
+Data capture for individual components is supported on [certain component subtypes](/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+
+### Shutdown
+
+During robot shutdown, the RDK handles modular resource instances similarly to built-in resource instances - it signals them for shutdown in topological (dependency) order.
 
 ## Next Steps
 
 {{< cards >}}
 {{% card link="/program/apis/" %}}
-{{% card link="/modular-resources/" %}}
+{{% card link="/registry/" %}}
 {{% card link="/micro-rdk/" %}}
 {{< /cards >}}

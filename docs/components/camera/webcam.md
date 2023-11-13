@@ -139,7 +139,7 @@ Viam supports the following pixel formats:
 - YUY2
 - Z16
 
-If your smart machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** drop down menu, which is visible when you click the **Show more** button.
+If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** drop down menu, which is visible when you click the **Show more** button.
 
 ## View the camera stream
 
