@@ -22,7 +22,7 @@ cost: "0"
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
-The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected smart machine.
+The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.
 In this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 

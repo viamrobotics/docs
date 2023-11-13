@@ -12,7 +12,7 @@ tags:
     "components",
     "services",
   ]
-description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered smart machine."
+description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered machine."
 aliases:
   - "/extend/modular-resources/create/"
   - "/modular-resources/create/"
@@ -102,7 +102,7 @@ When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}}
 
 #### Unique cases
 
-If you are using unique hardware that does not already have an [appropriate API](/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your smart machine.
+If you are using unique hardware that does not already have an [appropriate API](/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your machine.
 
 Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/registry/advanced/).
@@ -714,7 +714,7 @@ Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main
 ### Configure logging
 
 To enable your module to write logs to the [Viam app](https://app.viam.com/), ensure that you have added the following lines of code to your respective module code.
-Log messages are sent to the Viam app and appear under the **Logs** tab for your smart machine.
+Log messages are sent to the Viam app and appear under the **Logs** tab for your machine.
 
 {{< tabs name="Configure logging">}}
 {{% tab name="Python"%}}
@@ -790,4 +790,13 @@ You can also add your module to your robot as a [local module](/registry/configu
 Add a module to your robot as a local module.
 
 {{% /manualcard %}}
+{{< /cards >}}
+
+<br>
+
+You can also check out these tutorials that create modules:
+
+{{< cards >}}
+{{% card link="/tutorials/custom/custom-base-dog/" %}}
+{{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}

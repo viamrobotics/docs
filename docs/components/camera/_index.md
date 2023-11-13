@@ -4,7 +4,7 @@ linkTitle: "Camera"
 childTitleEndOverwrite: "Camera Component"
 weight: 40
 type: "docs"
-description: "A camera captures 2D or 3D images and sends them to the computer controlling the smart machine."
+description: "A camera captures 2D or 3D images and sends them to the computer controlling the machine."
 no_list: true
 tags: ["camera", "components"]
 icon: "/icons/components/camera.svg"

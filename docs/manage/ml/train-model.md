@@ -80,7 +80,7 @@ The model package config looks like this:
 
 <h4>Deploy your model</h4>
 
-Create an ML model service to deploy your machine learning model to your smart machine.
+Create an ML model service to deploy your machine learning model to your machine.
 
 {{% /manualcard %}}
 {{% manualcard link="/services/vision/detection/#configure-an-mlmodel-detector"%}}
