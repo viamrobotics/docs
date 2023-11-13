@@ -8,12 +8,9 @@
   {{ with site.GetPage ($link | string) }}
     <div class="relatedcard">
       <a href="{{ with $alt_link }}{{ $alt_link }}{{ else }}{{ $linkWithSlash }}{{ end }}" target="_blank" title="{{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}">
-        <div>
-          <div>
-            {{ if .Params.icon }}
-              {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
-            {{ end }}
-          </div>
+          {{ if .Params.icon }}
+            {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
+          {{ end }}
           <p>
             {{ if eq $required "yes" }}
               {{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}*
@@ -21,7 +18,6 @@
               {{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}
             {{ end }}
           </p>
-        </div>
       </a>
     </div>
   {{ end }}
