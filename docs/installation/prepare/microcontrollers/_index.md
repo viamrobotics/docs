@@ -56,6 +56,8 @@ See [Micro-RDK](/micro-rdk/) to get a list of supported models and instructions 
 Configure your `esp32` board for your robot.
 
 {{% /manualcard %}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

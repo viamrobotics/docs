@@ -73,17 +73,22 @@ If you have a [compatible operating system](/installation/), follow along with t
 {{% /tab %}}
 {{% tab name="macOS computer" %}}
 
-`viam-server` is available for macOS users through [Homebrew](https://brew.sh/), and supports both Intel and Apple Silicon macOS computers.
+`viam-server` is available for macOS users through Homebrew, and supports both Intel and Apple Silicon macOS computers.
 To install `viam-server` on a macOS computer:
 
-1. Go to the [Viam app](https://app.viam.com) and [add a new robot](/manage/fleet/robots/#add-a-new-robot).
+1. If not installed already, install [Homebrew](https://brew.sh/).
+
+1. Go to the [Viam app](https://app.viam.com) and add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
    If this is your first time using the Viam app, you must create an account first.
+
+   ![The 'First Location' page on the Viam app with a new robot name in the New Robot field and the Add robot button next to the field highlighted.](/manage/app-usage/create-robot.png)
 
 1. On the **Setup** tab, select `Mac` as the **Architecture**.
 
-1. Follow the steps shown on the **Setup** tab to install `viam-server` on your macOS computer.
+1. Follow the steps shown on the **Setup** tab to install `viam-server` on your Linux computer.
 
-1. Once `viam-server` is installed and running, return to the **Setup** page on the [Viam app](https://app.viam.com) and wait for confirmation that your computer has successfully connected.
+1. Once you have followed the steps on the **Setup** tab `viam-server` is installed and running.
+   Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
 
 {{% /tab %}}
 {{< /tabs >}}

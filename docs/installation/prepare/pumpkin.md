@@ -245,10 +245,6 @@ Copy and paste the following json object into your board's **Attributes** box.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Need assistance?
-
-{{< snippet "social.md" >}}
-
 ## Next Steps
 
 {{< cards >}}
@@ -256,3 +252,7 @@ Copy and paste the following json object into your board's **Attributes** box.
 {{% card link="/tutorials/" %}}
 {{% card link="/try-viam/" %}}
 {{< /cards >}}
+
+## Need assistance?
+
+{{< snippet "social.md" >}}

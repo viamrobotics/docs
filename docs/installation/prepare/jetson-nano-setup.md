@@ -97,6 +97,14 @@ For a Jetson Orin Nano, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}
+
 ## Troubleshooting
 
 Make sure the polarity on your barrel jack power supply is matched when powering your robot.
@@ -107,11 +115,3 @@ If you do not see an interactive menu after launching <file>jetson-io.py</file>,
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
-
-## Next Steps
-
-{{< cards >}}
-{{% card link="/manage/configuration/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
-{{< /cards >}}

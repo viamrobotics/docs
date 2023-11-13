@@ -208,6 +208,14 @@ If you are using hardware that requires these protocols, you must enable support
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/try-viam/" %}}
+{{< /cards >}}
+
 ## Troubleshooting
 
 ### Write error when imaging Raspberry Pi OS
@@ -268,11 +276,3 @@ priority=20
 ### Additional troubleshooting
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
-
-## Next Steps
-
-{{< cards >}}
-{{% card link="/manage/configuration/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
-{{< /cards >}}
