@@ -69,6 +69,15 @@ if __name__ == '__main__':
 
 Once you have instantiated a `DataClient`, you can run the following [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
 
+## Find Part ID
+
+To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
+Keep architecture selection at default.
+In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
+For example:
+
+![Part ID displayed in the Viam app.](/program/data-client/grab-part-id.png)
+
 ## API
 
 The data client API supports the following methods (among [others](https://python.viam.dev/autoapi/viam/app/data_client/index.html)):
@@ -174,6 +183,356 @@ binary_data = await data_client.binary_data_by_ids(my_ids)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteTabularData
+
+Delete tabular data older than a specified number of days.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- organization_id (str): ID of organization to delete data from.
+- delete_older_than_days (int): Delete data that was captured up to this many days ago. For example if delete_older_than_days
+  is 10, this deletes any data that was captured up to 10 days ago. If it is 0, all existing data is deleted.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="left_motor")
+days_of_data_to_delete = 10
+tabular_data = await data_client.delete_tabular_data(
+    "a12b3c4e-1234-1abc-ab1c-ab1c2d345abc", days_of_data_to_delete)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteBinaryDataByFilter
+
+Filter and delete binary data.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to
+  all data being deleted. Exercise caution when using this option.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="left_motor")
+res = await data_client.delete_binary_data_by_filter(my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteBinaryDataByIds
+
+Filter and delete binary data by ids.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- binary_ids (List[[viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID "viam.proto.app.data.BinaryID")]): BinaryID objects specifying the data to be deleted. Must be non-empty.
+
+**Returns:**
+
+- (`int`): The number of items deleted.
+
+**Raises:**
+
+- GRPCError – If no BinaryID objects are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.delete_binary_data_by_ids(my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddTagsToBinaryDataByIds
+
+Add tags to binary data by ids.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- tags (List[str]): List of tags to add to specified binary data. Must be non-empty.
+- binary_ids (List[viam.app.proto.BinaryID]): List of BinaryID objects specifying binary data to tag. Must be non-empty.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- GRPCError – If no BinaryID objects or tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+tags = ["tag1", "tag2"]
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddTagsToBinaryDataByFilter
+
+Add tags to binary data by filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- tags (List[str]): List of tags to add to specified binary data. Must be non-empty.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to tag. If no Filter is provided, all data will be
+  tagged.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- GRPCError – If no tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+tags = ["tag1", "tag2"]
+res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveTagsFromBinaryDataByIds
+
+Remove tags from binary by ids.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- tags (List[str]): List of tags to remove from specified binary data. Must be non-empty.
+- file_ids (List[str]): List of BinaryID objects specifying binary data to untag. Must be non-empty.
+
+**Returns:**
+
+- (`int`): The number of tags removed.
+
+**Raises:**
+
+- GRPCError – If no binary_ids or tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+tags = ["tag1", "tag2"]
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.remove_tags_from_binary_data_by_ids(
+    tags, my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveTagsFromBinaryDataByFilter
+
+Remove tags from binary data by filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- tags (List[str]): List of tags to remove from specified binary data.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to untag. If no Filter is provided, all data will be
+  untagged.
+
+**Returns:**
+
+- (`int`): The number of tags removed.
+
+**Raises:**
+
+- GRPCError – If no tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+tags = ["tag1", "tag2"]
+res = await data_client.remove_tags_from_binary_data_by_filter(tags, my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### TagsByFilter
+
+Get a list of tags using a filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all data tags will
+  return.
+
+**Returns:**
+
+- (`List[str]`): The list of tags.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+tags = await data_client.tags_by_filter(my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tags_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### BoundingBoxLabelsByFilter
+
+Get a list of bounding box labels using a Filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all labels will
+  return.
+
+**Returns:**
+
+- (`List[str]`): The list of bounding box labels.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+bounding_box_labels = await data_client.bounding_box_labels_by_filter(
+    my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetDatabaseConnection
+
+Get a connection to access a MongoDB Atlas Data federation instance.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- organization_id (str): Organization to retrieve the connection for.
+
+**Returns:**
+
+- (`str`): The hostname of the federated database.
+
+```python {class="line-numbers linkable-line-numbers"}
+data_client.get_database_connection("a12b3c4e-1234-1abc-ab1c-ab1c2d345abc")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -336,12 +695,3 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Find Part ID
-
-To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
-Keep architecture selection at default.
-In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
-For example:
-
-![Part ID displayed in the Viam app.](/program/data-client/grab-part-id.png)
