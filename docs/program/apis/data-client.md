@@ -154,7 +154,8 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Parameters:**
 
-- `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data. Must be non-empty.
+- `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data.
+  Must be non-empty.
 - `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
 
 **Returns**:
@@ -197,8 +198,9 @@ Delete tabular data older than a specified number of days.
 **Parameters:**
 
 - organization_id ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of organization to delete data from.
-- delete_older_than_days ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Delete data that was captured up to this many days ago. For example if delete_older_than_days
-  is 10, this deletes any data that was captured up to 10 days ago. If it is 0, all existing data is deleted.
+- delete_older_than_days ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Delete data that was captured up to this many days ago.
+  For example if delete_older_than_days is 10, this deletes any data that was captured up to 10 days ago.
+  If it is 0, all existing data is deleted.
 
 **Returns:**
 
@@ -227,8 +229,9 @@ Filter and delete binary data.
 
 **Parameters:**
 
-- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Optional Filter specifying binary data to delete. Passing an empty Filter will lead to
-  all data being deleted. Exercise caution when using this option.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Optional Filter specifying binary data to delete.
+  Passing an empty Filter will lead to all data being deleted.
+  Exercise caution when using this option.
 
 **Returns:**
 
@@ -255,7 +258,8 @@ Filter and delete binary data by ids.
 
 **Parameters:**
 
-- binary_ids (List[[viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID "viam.proto.app.data.BinaryID")]): BinaryID objects specifying the data to be deleted. Must be non-empty.
+- binary_ids (List[[viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID "viam.proto.app.data.BinaryID")]): BinaryID objects specifying the data to be deleted.
+  Must be non-empty.
 
 **Returns:**
 
@@ -300,8 +304,10 @@ Add tags to binary data by ids.
 
 **Parameters:**
 
-- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data. Must be non-empty.
-- binary_ids (List[viam.app.proto.BinaryID]): List of BinaryID objects specifying binary data to tag. Must be non-empty.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data.
+  Must be non-empty.
+- binary_ids (List[viam.app.proto.BinaryID]): List of BinaryID objects specifying binary data to tag.
+  Must be non-empty.
 
 **Returns:**
 
@@ -348,9 +354,9 @@ Add tags to binary data by filter.
 
 **Parameters:**
 
-- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data. Must be non-empty.
-- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to tag. If no Filter is provided, all data will be
-  tagged.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data.
+  Must be non-empty.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to tag. If no Filter is provided, all data will be tagged.
 
 **Returns:**
 
@@ -382,8 +388,10 @@ Remove tags from binary by ids.
 
 **Parameters:**
 
-- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data. Must be non-empty.
-- file_ids ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of BinaryID objects specifying binary data to untag. Must be non-empty.
+- tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data.
+  Must be non-empty.
+- file_ids ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of BinaryID objects specifying binary data to untag.
+  Must be non-empty.
 
 **Returns:**
 
@@ -432,8 +440,8 @@ Remove tags from binary data by filter.
 **Parameters:**
 
 - tags ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data.
-- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to untag. If no Filter is provided, all data will be
-  untagged.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to untag.
+  If no Filter is provided, all data will be untagged.
 
 **Returns:**
 
@@ -465,8 +473,7 @@ Get a list of tags using a filter.
 
 **Parameters:**
 
-- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all data tags will
-  return.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all data tags will return.
 
 **Returns:**
 
@@ -493,8 +500,7 @@ Get a list of bounding box labels using a Filter.
 
 **Parameters:**
 
-- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all labels will
-  return.
+- filter ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all labels will return.
 
 **Returns:**
 
@@ -523,6 +529,7 @@ Get a connection to access a MongoDB Atlas Data federation instance.
 **Parameters:**
 
 - organization_id ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Organization to retrieve the connection for.
+  You can obtain your organization id from the [organization settings page](/manage/fleet/organizations/).
 
 **Returns:**
 
