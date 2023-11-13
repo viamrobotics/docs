@@ -7,7 +7,7 @@ description: "Support in the micro-RDK for servos, small motors whose position y
 images: ["/icons/components/servo.svg"]
 tags: ["servo", "components", "micro-rdk"]
 no_list: true
-# SMEs: Nick M., Gautham V.
+# SMEs: Nicolas M., Gautham V.
 ---
 
 The servo component supports ["RC" or "hobby" servo motors](https://learn.adafruit.com/adafruit-motor-selection-guide/rc-servos).
