@@ -3,12 +3,12 @@ title: "Manage Robots with Viam's Robot API"
 linkTitle: "Robot Management"
 weight: 20
 type: "docs"
-description: "How to use the Robot API to monitor and manage your smart machines."
+description: "How to use the Robot API to monitor and manage your machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 ---
 
-The _robot API_ is the application programming interface that manages each of your smart machines running `viam-server`.
-Use the robot API to connect to your smart machine from within a supported [Viam SDK](/program/apis/), and send commands remotely.
+The _robot API_ is the application programming interface that manages each of your machines running `viam-server`.
+Use the robot API to connect to your machine from within a supported [Viam SDK](/program/apis/), and send commands remotely.
 
 The robot API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
 
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-You can use this code to connect to your smart machine and instantiate a `RobotClient` that you can then use with the [robot API](#api).
+You can use this code to connect to your machine and instantiate a `RobotClient` that you can then use with the [robot API](#api).
 As an example, this code uses the instantiated `RobotClient` to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
 Remember to always close the connection (using `close()`) when done.
 
@@ -95,18 +95,18 @@ func main() {
 }
 ```
 
-You can use this code to connect to your smart machine and instantiate a `robot` client that you can then use with the [Robot API](#api).
+You can use this code to connect to your machine and instantiate a `robot` client that you can then use with the [Robot API](#api).
 As an example, this code uses the instantiated `robot` client to return the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
 Remember to always close the connection (using `Close()`) when done.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you have instantiated the robot client, you can run any of the [robot API methods](#api) against the `robot` object to communicate with your smart machine.
+Once you have instantiated the robot client, you can run any of the [robot API methods](#api) against the `robot` object to communicate with your machine.
 
 ### Configure a timeout
 
-Because the robot API needs to be able to reliably connect to a deployed smart machine even over a weak or intermittent network, it supports a configurable timeout for connection and command execution.
+Because the robot API needs to be able to reliably connect to a deployed machine even over a weak or intermittent network, it supports a configurable timeout for connection and command execution.
 
 To configure a timeout when using the robot API:
 

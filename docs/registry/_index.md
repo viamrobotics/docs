@@ -35,7 +35,7 @@ You configure modular resources same way as built-in resources and use the same 
 
 ## The Viam Registry
 
-The [Viam registry](https://app.viam.com/registry) is the central place where you can browse {{< glossary_tooltip term_id="module" text="modules" >}} that add capabilities to your smart machine beyond what is built-in to `viam-server`.
+The [Viam registry](https://app.viam.com/registry) is the central place where you can browse {{< glossary_tooltip term_id="module" text="modules" >}} that add capabilities to your machine beyond what is built-in to `viam-server`.
 
 A module provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}.
 You can search the available modular resources from the Viam Registry here:
@@ -55,7 +55,7 @@ You can search the available modular resources from the Viam Registry here:
 </div>
 
 You can see details about each module in the [Viam registry](https://app.viam.com/registry) on its dedicated module page.
-You can integrate modules into any Viam-powered smart machine.
+You can integrate modules into any Viam-powered machine.
 
 To use a modular resource from the registry, add it from your robot's **Config** tab in [the Viam app](https://app.viam.com/), using the **Create component** button.
 

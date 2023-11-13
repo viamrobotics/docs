@@ -3,7 +3,7 @@ title: "Configure an NMEA-based GPS"
 linkTitle: "gps-nmea"
 weight: 10
 type: "docs"
-description: "Configure an NMEA-based GPS."
+description: "Configure an NMEA-based GPS on your machine. Once configured use the API to obtain the Position, CompassHeading and LinearVelocity."
 images: ["/icons/components/imu.svg"]
 # SMEs: Rand
 ---
@@ -195,7 +195,7 @@ For a movement sensor communicating over serial, you'll need to include a `seria
 <!-- prettier-ignore -->
 | Name               | Type   | Inclusion    | Description  |
 | ------------------ | ------ | ------------ | ------------------------- |
-| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your smart machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
+| `serial_path` | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
 | `serial_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. <br> Default: `38400` |
 
 {{% /tab %}}
