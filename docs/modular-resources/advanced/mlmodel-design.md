@@ -15,7 +15,7 @@ Vision services, like [an `"mlmodel"` detector](/services/vision/detection/#conf
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
 If you are [designing your own ML Model service](/modular-resources/), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
 
-To be able to utilize a deployed ML model, the `mlmodel` vision service looks for descriptions of these characteristics in the [metadata](/services/ml/#metadata) of the model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
+To be able to use a deployed ML model, the `mlmodel` vision service checks for descriptions of these characteristics in the [metadata](/services/ml/#metadata) of the model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
 For an example of this, see [Example Metadata](#example-metadata).
 
 ## Input tensor: `input_info` in metadata
