@@ -27,7 +27,7 @@ In this tutorial you will learn how to use the Viam SDKS as you write code to ma
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 
 <div class="td-max-width-on-larger-screens">
-{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
 </div>
 
 {{< alert title="Tip" color="tip" >}}
