@@ -104,5 +104,5 @@ To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-serve
 {{< cards >}}
 {{% card link="/manage/configuration/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
