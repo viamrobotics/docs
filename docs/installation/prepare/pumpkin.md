@@ -250,7 +250,7 @@ Copy and paste the following json object into your board's **Attributes** box.
 {{< cards >}}
 {{% card link="/manage/configuration/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Need assistance?
