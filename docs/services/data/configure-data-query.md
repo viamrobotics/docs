@@ -1,14 +1,16 @@
 ---
 title: "Configure Data Query"
 linkTitle: "Configure Data Query"
-description: "Configure data query to query synced data directly in the cloud."
+description: "Configure data query to query tabular data with MQL or SQL"
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "query"]
 # SME: Aaron Casas
 ---
 
-Configure data query to be able to directly query captured data in the Viam cloud using the [MongoDB Query Language (MQL)](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
+Configure data query to be able to directly query captured tabular data in the Viam cloud using SQL or [MQL]((https://www.mongodb.com/docs/manual/tutorial/query-documents/).
+
+Only tabular data, such as sensor data, can be queried in this fashion.
 
 ## Requirements
 
@@ -46,11 +48,11 @@ Once your smart machine has synced captured data to the Viam app, you can config
 
 For more information, see the documentation for the [Viam CLI `database` command](/manage/cli/#data).
 
-## Query data using MQL
+## Query data
 
-Once you have [configured data query](#configure-data-query), you can directly query synced data using MQL.
+Once you have [configured data query](#configure-data-query), you can directly query synced tabular data using SQL or MQL.
 
-You can use any client that supports MQL that is capable of connecting to MongoDB Atlas instances, including [the `mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
+You can use any client that is capable of connecting to MongoDB Atlas instances, including [the `mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
 Use the `hostname` and `user` returned from the setup above to connect from your desired client to the MongoDB Atlas instance.
 
 For example, to connect to your Viam organization's MongoDB Atlas instance and query data using the `mongosh` shell:
@@ -66,23 +68,41 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance, as returned from `viam data database hostname` above.
+   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname, as returned from `viam data database hostname` above.
    - `<YOUR-DB-USER>` is your organization's database user for that Atlas instance, as returned from `viam data database configure` above.
 
-1. Once connected, you can run MQL to query captured data directly.
-   For example, the following MQL queries all synced data in the `sensors` database:
+1. Once connected, you can run MQL or SQL to query captured data directly. For example:
 
-   ```sql {class="line-numbers linkable-line-numbers"}
-   db.sensors.find( {} )
-   ```
+   - The following MQL query searches the `sensorData` database and `readings` collection, and returns sensor readings from a specific `robot_id` and ultrasonic sensor where the recorded `distance` measurement is greater than `.2` meters:
 
-   The following MQL queries synced data in the `sensors` database and returns `sensor_type: temp_sensor` readings greater than a certain `current_temperature`:
+     ```sql {class="line-numbers linkable-line-numbers"}
+     AtlasDataFederation sensorData> db.readings.aggregate(
+         [
+             { $match: {
+                 'robot_id': 'abcdef12-abcd-abcd-abcd-abcdef123456',
+                 'component_name': 'my-ultrasonic-sensor',
+                 'data.readings.distance': { $gt: .2 } } },
+             { $count: 'numStanding' }
+         ] )
+     [ { numStanding: 215 } ]
+     ```
 
-   ```sql {class="line-numbers linkable-line-numbers"}
-   db.sensors.find( { sensor_type: "temp_sensor", current_temperature: { $gt: 32 } } )
-   ```
+   - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/query/sql/shell/connect/#aggregation-pipeline-stage-syntax) to perform the same query as the MQL above, but using SQL syntax:
 
-For more information on the MQL syntax used in this query, see the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
+     ```sql {class="line-numbers linkable-line-numbers"}
+     AtlasDataFederation sensorData> db.aggregate(
+         [
+             { $sql: {
+                 statement: "select count(*) as numStanding from readings \
+                     where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
+                     component_name = 'my-ultrasonic-sensor' and data.readings.distance > 0.2",
+                 format: "jdbc"
+             }}
+         ] )
+     [ { '': { numStanding: 215 } } ]
+     ```
+
+For more information on MQL syntax see the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your cluster tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 ## Next Steps

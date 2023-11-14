@@ -329,7 +329,7 @@ viam board list --organization=my-org
 ### data
 
 The `data` command allows you to manage robot data.
-With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
@@ -348,9 +348,10 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
 
-# configure a new database user for use with data query
-viam data database hostname --org-id=abc
+# configure a database user for the Viam organization's MongoDB Atlas Data
+# Federation instance, in order to query tabular data
 viam data database configure --org-id=abc --password=my_new_secure_password123
+viam data database hostname --org-id=abc
 ```
 
 #### Command options
@@ -359,8 +360,8 @@ viam data database configure --org-id=abc --password=my_new_secure_password123
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
-| `database configure`      | configure a database user for the Viam org's MongoDB Atlas Data Federation instance  | - |
-| `database hostname`      | get the hostname to access a MongoDB Atlas Data Federation Instance  | - |
+| `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/configure-data-query)  | - |
+| `database hostname`      | get your organization's MongoDB Atlas Data Federation instance hostname. See [Configure data query](/services/data/configure-data-query)  | - |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
