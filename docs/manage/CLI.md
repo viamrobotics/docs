@@ -390,7 +390,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 ### locations
 
 The `locations` command allows you to manage the [locations](/manage/fleet/locations/) that you have access to.
-With it, you can list avaialble locations, filter locations by organization, or create a new location API key.
+With it, you can list available locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
