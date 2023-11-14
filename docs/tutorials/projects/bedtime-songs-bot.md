@@ -348,7 +348,7 @@ To start, add in the code that initializes your speaker and plays the songs.
 Tess used the platform-flexible [Go `os` package](https://pkg.go.dev/os) and an audio processing package from [GitHub](https://github.com/faiface/beep/) to do this.
 
 ```go {class="line-numbers linkable-line-numbers"}
-func initSpeaker(logger logger.Logger) {
+func initSpeaker(logger logging.Logger) {
    f, err := os.Open("square.mp3")
    if err != nil {
        logger.Fatal(err)
@@ -367,7 +367,7 @@ func initSpeaker(logger logger.Logger) {
 }
 
 
-func play(label string, logger logger.Logger) {
+func play(label string, logger logging.Logger) {
    f, err := os.Open(label + ".mp3")
    if err != nil {
        logger.Fatal(err)
@@ -467,7 +467,7 @@ import (
 )
 
 // Initialize the speaker
-func initSpeaker(logger logger.Logger) {
+func initSpeaker(logger logging.Logger) {
    f, err := os.Open("square.mp3")
    if err != nil {
        logger.Fatal(err)
@@ -486,7 +486,7 @@ func initSpeaker(logger logger.Logger) {
 }
 
 // Play a song
-func play(label string, logger logger.Logger) {
+func play(label string, logger logging.Logger) {
    f, err := os.Open(label + ".mp3")
    if err != nil {
        logger.Fatal(err)
@@ -512,7 +512,7 @@ func play(label string, logger logger.Logger) {
 
 // Code Sample Connect() Code
 func main() {
- logger := logger.NewDevelopmentLogger("client")
+ logger := logging.NewLogger("client")
  robot, err := client.New(
     context.Background(),
     "ADDRESS FROM THE VIAM APP",

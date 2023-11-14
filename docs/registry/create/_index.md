@@ -359,7 +359,7 @@ func init() {
     })
 }
 
-func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (base.Base, error) {
+func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logging.Logger) (base.Base, error) {
     b := &myBase{
         Named:  conf.ResourceName().AsNamed(),
         logger: logger,
@@ -434,7 +434,7 @@ type myBase struct {
     resource.Named
     left       motor.Motor
     right      motor.Motor
-    logger     logger.Logger
+    logger     logging.Logger
     geometries []spatialmath.Geometry
 }
 
@@ -599,12 +599,12 @@ import (
 )
 
 func main() {
-    // NewLoggerFromArgs will create a logger.Logger at "DebugLevel" if
+    // NewLoggerFromArgs will create a logging.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
     utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
     myMod, err := module.NewModuleFromArgs(ctx, logger)
     if err != nil {
         return err
@@ -743,12 +743,12 @@ import(
 // Alter your component to hold a logger
 type component struct {
     ...
- logger logger.Logger
+ logger logging.Logger
 }
 // Then, alter your component's constructor to save the logger:
 func init() {
  registration := resource.Registration[resource.Resource, *Config]{
-  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (resource.Resource, error) {
+  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logging.Logger) (resource.Resource, error) {
      ...
      return &component {
          ...
