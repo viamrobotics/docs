@@ -66,7 +66,7 @@
         <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}
         </a>
       {{- end }}
-      {{- if (and (and $withChild (not $treeRoot) (ne  .section.File.Path "tutorials/_index.md" ) ) ) }}
+      {{- if (and (and (and $withChild (not $treeRoot) (ne  .section.File.Path "tutorials/_index.md" ) ) (ne  .section.File.Path "blog/_index.md" ) ) ) }}
       <span class="menu-toggle">
         {{ if (or $activePath $active) }}
           <i class="fas fa-chevron-down"></i>
@@ -85,7 +85,7 @@
       {{- end }}
   {{ end }}
   {{- end }}
-  {{- if (and $withChild (ne .section.File.Path "tutorials/_index.md" ) ) }}
+  {{- if (and (and $withChild (ne .section.File.Path "tutorials/_index.md" ) ) (ne .section.File.Path "blog/_index.md" ) ) }}
   {{- $ulNr := add $ulNr 1 }}
   <ul class="ul-{{ $ulNr }}">
     {{ range $pages -}}
