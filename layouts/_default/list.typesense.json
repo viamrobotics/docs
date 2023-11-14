@@ -2,53 +2,88 @@
 {{- $section := $.Site.GetPage "section" .Section }}
       {{- range .Site.AllPages -}}
             {{- if or (and (.IsDescendant $section) (and (not .Draft) (and (not .Params.private) (not .Params.empty_node)))) $section.IsHome -}}
+                  {{ if eq .Section "tutorials" }}
+                        {{ $.Scratch.Set "latestDate" .Date.UTC.Unix}}
+                        {{- if .Params.updated -}}
+                              {{ $.Scratch.Set "latestDate" ((time .Params.updated).UTC.Unix) -}}
+                        {{ end }}
+                        {{- if not (.Params.cost) -}}
+                              {{ errorf "No cost on tutorial: %s" .Title }}
+                        {{- end -}}
 
-            {{ if eq .Section "tutorials" }}
-                  {{ $.Scratch.Set "latestDate" .Date.UTC.Unix}}
-                  {{- if .Params.updated -}}
-                        {{ $.Scratch.Set "latestDate" ((time .Params.updated).UTC.Unix) -}}
-                  {{ end }}
-                  {{- if not (.Params.cost) -}}
-                        {{ errorf "No cost on tutorial: %s" .Title }}
-                  {{- end -}}
+                        {{- if .Weight -}}
+                              {{ $.Scratch.Set "featured" .Weight }}
+                        {{- else -}}
+                              {{ $.Scratch.Set "featured" 9999 }}
+                        {{- end -}}
 
-                  {{- if .Weight -}}
-                        {{ $.Scratch.Set "featured" .Weight }}
-                  {{- else -}}
-                        {{ $.Scratch.Set "featured" 9999 }}
-                  {{- end -}}
+                        {{- if .Params.webmSrc -}}
+                              {{- if eq (.Params.webmSrc | printf "%.1s") "/" -}}
+                                    {{ $.Scratch.Set "webm" (printf "..%s" .Params.webmSrc) }}
+                              {{- else -}}
+                                    {{ $.Scratch.Set "webm" (printf "%s" .Params.webmSrc) }}
+                              {{- end -}}
+                        {{- else -}}
+                              {{ $.Scratch.Set "webm" "" }}
+                        {{- end -}}
+                        {{- if .Params.mp4Src -}}
+                              {{- if eq (.Params.mp4Src | printf "%.1s") "/" -}}
+                                    {{ $.Scratch.Set "mp4" (printf "..%s" .Params.mp4Src) }}
+                              {{- else -}}
+                                    {{ $.Scratch.Set "mp4" (printf "%s" .Params.mp4Src) }}
+                              {{- end -}}
+                        {{- else -}}
+                              {{ $.Scratch.Set "mp4" "" }}
+                        {{- end -}}
+                        {{- if .Params.image -}}
+                              {{- if eq (.Params.image | printf "%.1s") "/" -}}
+                                    {{ $.Scratch.Set "image" (printf "..%s" .Params.image) }}
+                              {{- else -}}
+                                    {{ $.Scratch.Set "image" (printf "%s" .Params.image) }}
+                              {{- end -}}
+                        {{- else -}}
+                              {{ $.Scratch.Set "image" "" }}
+                        {{- end -}}
 
-                  {{- $.Scratch.Add "index"
-                    (dict
-                        "id" .File.UniqueID
-                        "date" ($.Scratch.Get "latestDate")
-                        "description" .Description
-                        "fuzzywordcount" .FuzzyWordCount
-                        "lastmod" .Lastmod.UTC.Unix
-                        "permalink" .Permalink
-                        "publishdate" .PublishDate
-                        "readingtime" .ReadingTime
-                        "relpermalink" .RelPermalink
-                        "title" .Title
-                        "linktitle" .LinkTitle
-                        "wordcount" .WordCount
-                        "section" .Section
-                        "tags" .Params.Tags
-                        "authors" .Params.Authors
-                        "images" .Params.images
-                        "webm" .Params.webmSrc
-                        "mp4" .Params.mp4Src
-                        "image" .Params.image
-                        "imageAlt" .Params.imageAlt
-                        "videoAlt" .Params.videoAlt
-                        "languages" .Params.languages
-                        "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
-                        "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
-                        "level" .Params.level
-                        "cost" (int (.Params.cost))
-                        "featured" ($.Scratch.Get "featured")
-                        "resource" "docs-tutorial"
-                    )}}
+                        {{- if .Params.canonical -}}
+                              {{ $.Scratch.Set "permalink" (printf "%s" .Params.canonical) }}
+                              {{ $.Scratch.Set "relpermalink" (printf "%s" .Params.canonical) }}
+                        {{- else -}}
+                              {{ $.Scratch.Set "permalink" .Permalink }}
+                              {{ $.Scratch.Set "relpermalink" (printf "..%s" .RelPermalink) }}
+                        {{- end -}}
+
+                        {{- $.Scratch.Add "index"
+                        (dict
+                              "id" .File.UniqueID
+                              "date" ($.Scratch.Get "latestDate")
+                              "description" .Description
+                              "fuzzywordcount" .FuzzyWordCount
+                              "lastmod" .Lastmod.UTC.Unix
+                              "permalink" ($.Scratch.Get "permalink")
+                              "publishdate" .PublishDate
+                              "readingtime" .ReadingTime
+                              "relpermalink" ($.Scratch.Get "relpermalink")
+                              "title" .Title
+                              "linktitle" .LinkTitle
+                              "wordcount" .WordCount
+                              "section" .Section
+                              "tags" .Params.Tags
+                              "authors" .Params.Authors
+                              "images" .Params.images
+                              "webm" ($.Scratch.Get "webm")
+                              "mp4" ($.Scratch.Get "mp4")
+                              "image" ($.Scratch.Get "image")
+                              "imageAlt" .Params.imageAlt
+                              "videoAlt" .Params.videoAlt
+                              "languages" .Params.languages
+                              "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
+                              "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "sensor" "servo"))
+                              "level" .Params.level
+                              "cost" (int (.Params.cost))
+                              "featured" ($.Scratch.Get "featured")
+                              "resource" "docs-tutorial"
+                        )}}
                   {{- end -}}
             {{- end -}}
       {{- end -}}
