@@ -75,7 +75,7 @@ Get training job metadata.
 
 **Parameters:**
 
-- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the training job you wish to get data from. Retrieve this value with [`ListTrainingJobs()`](#listtrainingjobs).
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the training job you wish to get metadata from. Retrieve this value with [`ListTrainingJobs()`](#listtrainingjobs).
 
 **Returns**:
 
@@ -100,7 +100,7 @@ Get training job metadata for all jobs within an organization.
 
 **Parameters:**
 
-- `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job data from. Retrieve this value with the cloud management API's [`ListOrganizations()`](/program/apis/cloud/#listorganizations).
+- `org_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of your organization to request training job metadata from. Retrieve this value with the cloud management API's [`ListOrganizations()`](/program/apis/cloud/#listorganizations).
 - `training_status` [(Optional[TrainingStatus.ValueType])](https://python.viam.dev/autoapi/viam/gen/app/mltraining/v1/ml_training_pb2/index.html#viam.gen.app.mltraining.v1.ml_training_pb2.TrainingStatus): The status of training jobs you want to filter the list by. If you leave this unspecified, all training jobs for your organization are returned.
 
 **Returns**:
@@ -128,7 +128,7 @@ Cancel the specified training job.
 
 **Parameters:**
 
-- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the training job you wish to get data from. Retrieve this value with [`ListTrainingJobs()`](#listtrainingjobs).
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the training job you wish to get metadata from. Retrieve this value with [`ListTrainingJobs()`](#listtrainingjobs).
 
 **Returns**:
 
