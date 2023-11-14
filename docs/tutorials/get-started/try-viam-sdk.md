@@ -304,7 +304,7 @@ func main() {
         rpc.Credentials{
             Type:    rpc.CredentialsTypeAPIKey,
             // Replace "<API-KEY>" (including brackets) with your robot's api key
-            Payload: "<API-KEY>"
+            Payload: "<API-KEY>",
         })),
     )
     if err != nil {
@@ -578,7 +578,7 @@ func main() {
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
           // Replace "<API-KEY>" (including brackets) with your robot's api key
-          Payload: "<API-KEY>"
+          Payload: "<API-KEY>",
       })),
     )
     if err != nil {
