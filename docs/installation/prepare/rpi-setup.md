@@ -213,7 +213,7 @@ If you are using hardware that requires these protocols, you must enable support
 {{< cards >}}
 {{% card link="/manage/configuration/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
