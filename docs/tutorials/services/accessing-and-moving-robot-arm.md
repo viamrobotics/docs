@@ -406,7 +406,7 @@ import (
 )
 
 func main() {
-  logger := logger.NewDevelopmentLogger("client")
+  logger := logging.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",

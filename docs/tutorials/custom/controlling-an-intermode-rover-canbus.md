@@ -133,10 +133,10 @@ The _Subtype_ of a resource contains its API triplet, so using `base.Subtype` (s
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func main() {
-    goutils.ContextualMain(mainWithArgs, logger.NewDevelopmentLogger("intermodeBaseModule"))
+    goutils.ContextualMain(mainWithArgs, logging.NewDevelopmentLogger("intermodeBaseModule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
     registerBase()
     modalModule, err := module.NewModuleFromArgs(ctx, logger)
 
@@ -164,7 +164,7 @@ func registerBase() {
             ctx context.Context,
             deps registry.Dependencies,
             config config.Component,
-            logger logger.Logger,
+            logger logging.Logger,
         ) (interface{}, error) {
             return newBase(config.Name, logger) // note: newBase() is not shown in this tutorial
         }})
@@ -207,7 +207,7 @@ func (base *interModeBase) setNextCommand(ctx context.Context, cmd modalCommand)
 }
 
 // toFrame convert the drive command to a CANBUS data frame.
-func (cmd *driveCommand) toFrame(logger logger.Logger) canbus.Frame {
+func (cmd *driveCommand) toFrame(logger logging.Logger) canbus.Frame {
     frame := canbus.Frame{
         ID:   driveId,
         Data: make([]byte, 0, 8),

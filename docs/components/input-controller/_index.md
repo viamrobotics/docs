@@ -214,11 +214,11 @@ func handleController(controller input.Controller) {
 }
 
 func main() {
-    utils.ContextualMain(mainWithArgs, logger.NewDevelopmentLogger("client"))
+    utils.ContextualMain(mainWithArgs, logging.NewDevelopmentLogger("client"))
 }
 
 
-func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
     // ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
 
     // Get the controller from the robot.

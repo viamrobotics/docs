@@ -396,7 +396,7 @@ async def main():
 
 ```go {class="line-numbers linkable-line-numbers"}
 func main() {
-  logger := logger.NewDevelopmentLogger("client")
+  logger := logging.NewDevelopmentLogger("client")
   robot, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
