@@ -38,7 +38,7 @@ Once your smart machine has synced captured data to the Viam app, you can config
    This command returns the `user` name you can use to connect to the Viam organization's MongoDB Atlas instance.
 
 1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance.
-   Provide your organizations `org-id` from step 2:
+   Provide your organization's `org-id` from step 2:
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
