@@ -512,7 +512,7 @@ func play(label string, logger logging.Logger) {
 
 // Code Sample Connect() Code
 func main() {
- logger := logging.NewDevelopmentLogger("client")
+ logger := logging.NewLogger("client")
  robot, err := client.New(
     context.Background(),
     "ADDRESS FROM THE VIAM APP",

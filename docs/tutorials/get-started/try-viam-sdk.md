@@ -293,7 +293,7 @@ Your main function should look like this:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="19-22"}
 func main() {
-    logger := logging.NewDevelopmentLogger("client")
+    logger := logging.NewLogger("client")
     robot, err := client.New(
         context.Background(),
         "ADDRESS FROM THE VIAM APP",
@@ -567,7 +567,7 @@ func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
 }
 
 func main() {
-    logger := logging.NewDevelopmentLogger("client")
+    logger := logging.NewLogger("client")
     robot, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",

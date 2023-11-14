@@ -133,7 +133,7 @@ The _Subtype_ of a resource contains its API triplet, so using `base.Subtype` (s
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func main() {
-    goutils.ContextualMain(mainWithArgs, logging.NewDevelopmentLogger("intermodeBaseModule"))
+    goutils.ContextualMain(mainWithArgs, logging.NewLogger("intermodeBaseModule"))
 }
 
 func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {

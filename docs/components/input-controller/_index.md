@@ -214,7 +214,7 @@ func handleController(controller input.Controller) {
 }
 
 func main() {
-    utils.ContextualMain(mainWithArgs, logging.NewDevelopmentLogger("client"))
+    utils.ContextualMain(mainWithArgs, logging.NewLogger("client"))
 }
 
 
