@@ -361,7 +361,7 @@ viam data database hostname --org-id=abc
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
 | `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/configure-data-query)  | - |
-| `database hostname`      | get your organization's MongoDB Atlas Data Federation instance hostname. See [Configure data query](/services/data/configure-data-query)  | - |
+| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/services/data/configure-data-query)  | - |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |

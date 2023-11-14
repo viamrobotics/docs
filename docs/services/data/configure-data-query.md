@@ -8,7 +8,7 @@ tags: ["data management", "cloud", "query"]
 # SME: Aaron Casas
 ---
 
-Configure data query to be able to directly query captured tabular data in the Viam cloud using SQL or [MQL]((https://www.mongodb.com/docs/manual/tutorial/query-documents/).
+Configure data query to be able to directly query captured tabular data in the Viam cloud using [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL.
 
 Only tabular data, such as sensor data, can be queried in this fashion.
 
@@ -50,7 +50,7 @@ For more information, see the documentation for the [Viam CLI `database` command
 
 ## Query data
 
-Once you have [configured data query](#configure-data-query), you can directly query synced tabular data using SQL or MQL.
+Once you have [configured data query](#configure-data-query), you can directly query synced tabular data using MQL or SQL.
 
 You can use any client that is capable of connecting to MongoDB Atlas instances, including [the `mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
 Use the `hostname` and `user` returned from the setup above to connect from your desired client to the MongoDB Atlas instance.

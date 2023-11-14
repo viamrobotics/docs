@@ -105,13 +105,13 @@ To configure cloud sync, see [configure cloud sync](/services/data/configure-clo
 
 ## Data query
 
-Once you have synced data to the cloud, you can query tabular data directly in the cloud using either SQL or MQL, the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
+Once you have synced data to the cloud, you can query tabular data directly in the cloud using either MQL, the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/), or SQL.
 Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
 You can query both the captured tabular data itself as well as its metadata (such as robot ID, organization ID, and [tags](/manage/data/label/#image-tags)).
 
-In order to query data using MQL, you must have first [captured data](/services/data/configure-data-capture/) and [synced data](/services/data/configure-cloud-sync/) to the cloud.
-You must also configure a new database connection to the Viam cloud data store using the Viam CLI.
+In order to query data, you must have first [captured data](/services/data/configure-data-capture/) and [synced data](/services/data/configure-cloud-sync/) to the cloud.
+You must also configure a new database connection to the Viam organization's MongoDB Atlas Data Federation instance using the Viam CLI.
 
 To configure data query, see [configure data query](/services/data/configure-data-query/).
 
