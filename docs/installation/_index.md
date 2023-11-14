@@ -87,7 +87,7 @@ To install `viam-server` on a macOS computer:
 
 1. Follow the steps shown on the **Setup** tab to install `viam-server` on your macOS computer.
 
-1. Once you have followed the steps on the **Setup** tab `viam-server` is installed and running.
+1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
    Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
 
 {{% /tab %}}
