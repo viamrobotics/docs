@@ -108,7 +108,7 @@ From the SSH session on the TDA4VM board:
 {{< cards >}}
 {{% card link="/manage/configuration/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
 
 ## Need assistance?
