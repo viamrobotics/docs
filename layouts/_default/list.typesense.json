@@ -47,6 +47,7 @@
                         "level" .Params.level
                         "cost" (int (.Params.cost))
                         "featured" ($.Scratch.Get "featured")
+                        "resource" "docs-tutorial"
                     )}}
                   {{- end -}}
             {{- end -}}
