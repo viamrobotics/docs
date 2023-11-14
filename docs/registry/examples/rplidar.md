@@ -51,8 +51,7 @@ Follow the instructions below to set up the `rplidar` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click **Create component** in the lower-left corner.
-1. Select **Camera**, then select `rplidar`.
-   You can also search for "rplidar".
+1. Select **Camera**, then select `lidar:rplidar`.
 1. Click **Add module**, give your component a name of your choice, then click **Create**.
 1. Click **Save config** at the bottom of the page.
 
