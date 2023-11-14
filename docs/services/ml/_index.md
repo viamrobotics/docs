@@ -42,7 +42,7 @@ For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetso
 If none of the existing models fit your use case, you can create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} to add support for it.
 
 ML Models must be designed in particular shapes to work with the `mlmodel` [classification](/services/vision/classification/#configure-an-mlmodel-classifier) or [detection](/services/vision/detection/#configure-an-mlmodel-detector) model of Viam's [vision service](/services/vision/).
-Follow [these instructions](/modular-resources/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
+Follow [these instructions](/registry/advanced/mlmodel-design/) to design your modular ML Model service with models that work with vision.
 {{< /alert >}}
 
 ## Create an ML model service
