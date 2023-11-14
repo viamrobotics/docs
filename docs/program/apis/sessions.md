@@ -94,7 +94,7 @@ To manage your session with the session management API:
 
 The `SessionsClient` that serves the session management API is automatically enabled on your robot.
 It is instantiated as part of your [`RobotClient`](/program/apis/#robot-api) instance (client of the Robot API).
-If you want to disable it to keep any additional clients from authenticating to your robot's session while running a control program with Viam's client SDKs, you can pass the option to your robot, as demonstrated in the following code snippets:
+If you want to disable it, you can pass the option to your robot, as demonstrated in the following code snippets:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
