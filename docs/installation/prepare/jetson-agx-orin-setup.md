@@ -109,6 +109,14 @@ For a Jetson AGX Orin, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
+## Next Steps
+
+{{< cards >}}
+{{% card link="/manage/configuration/" %}}
+{{% card link="/tutorials/" %}}
+{{% card link="/program/" %}}
+{{< /cards >}}
+
 ## Troubleshooting
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
@@ -133,11 +141,3 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
-
-## Next Steps
-
-{{< cards >}}
-{{% card link="/manage/configuration/" %}}
-{{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
-{{< /cards >}}

@@ -293,7 +293,7 @@ Your main function should look like this:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="19-22"}
 func main() {
-    logger := logger.NewDevelopmentLogger("client")
+    logger := logging.NewLogger("client")
     robot, err := client.New(
         context.Background(),
         "ADDRESS FROM THE VIAM APP",
@@ -304,7 +304,7 @@ func main() {
         rpc.Credentials{
             Type:    rpc.CredentialsTypeAPIKey,
             // Replace "<API-KEY>" (including brackets) with your robot's api key
-            Payload: "<API-KEY>"
+            Payload: "<API-KEY>",
         })),
     )
     if err != nil {
@@ -325,7 +325,7 @@ Now that your rover base has been initialized, you can write code to drive it in
 Paste this snippet above your `main()` function:
 
 ```go
-func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
+func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
         // moves the rover forward 600mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
@@ -555,7 +555,7 @@ import (
     "go.viam.com/utils/rpc"
 )
 
-func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
+func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
         // moves the rover forward 600mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
@@ -567,7 +567,7 @@ func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
 }
 
 func main() {
-    logger := logger.NewDevelopmentLogger("client")
+    logger := logging.NewLogger("client")
     robot, err := client.New(
       context.Background(),
       "ADDRESS FROM THE VIAM APP",
@@ -578,7 +578,7 @@ func main() {
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
           // Replace "<API-KEY>" (including brackets) with your robot's api key
-          Payload: "<API-KEY>"
+          Payload: "<API-KEY>",
       })),
     )
     if err != nil {
