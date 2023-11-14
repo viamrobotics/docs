@@ -350,7 +350,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
-viam data database configure --org-id=abc --password=my_new_secure_password123
+viam data database configure --org-id=abc --password=my_password123
 viam data database hostname --org-id=abc
 ```
 
@@ -360,8 +360,8 @@ viam data database hostname --org-id=abc
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
-| `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/configure-data-query)  | - |
-| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/services/data/configure-data-query)  | - |
+| `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/configure-data-query/)  | - |
+| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/services/data/configure-data-query/)  | - |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |

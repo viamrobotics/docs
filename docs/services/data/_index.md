@@ -113,7 +113,7 @@ You can query both the captured tabular data itself as well as its metadata (suc
 In order to query data, you must have first [captured data](/services/data/configure-data-capture/) and [synced data](/services/data/configure-cloud-sync/) to the cloud.
 You must also configure a new database connection to the Viam organization's MongoDB Atlas Data Federation instance using the Viam CLI.
 
-To configure data query, see [configure data query](/services/data/configure-data-query/).
+To configure data query, see [Configure data query](/services/data/configure-data-query/).
 
 ## API
 

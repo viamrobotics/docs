@@ -4,7 +4,7 @@ linkTitle: "Configure Data Query"
 description: "Configure data query to query tabular data with MQL or SQL"
 weight: 35
 type: "docs"
-tags: ["data management", "cloud", "query"]
+tags: ["data management", "cloud", "query", "sensor"]
 # SME: Aaron Casas
 ---
 
@@ -14,7 +14,7 @@ Only tabular data, such as sensor data, can be queried in this fashion.
 
 ## Requirements
 
-Before you can configure [data query](../#data-query), you must [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) and [configure cloud sync](/services/data/configure-cloud-sync/).
+Before you can configure data query, you must [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) and [configure cloud sync](/services/data/configure-cloud-sync/).
 
 ## Configure data query
 
@@ -28,23 +28,23 @@ Once your smart machine has synced captured data to the Viam app, you can config
    viam organizations list
    ```
 
-1. Run the following command to determine the hostname for your organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your smart machine's synced data is stored.
-   Provide your organizations `org-id` from step 2:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
-   ```
-
-   This command returns the `hostname` of your Viam organization's assigned MongoDB Atlas instance.
-
-1. Then, configure a new database user for that database instance.
+1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your smart machine's synced data is stored.
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
    ```
 
-   This command creates a new database `user` for your organization's MongoDB Atlas instance.
+   This command returns the `user` name you can use to connect to the Viam organization's MongoDB Atlas instance.
+
+1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance.
+   Provide your organizations `org-id` from step 2:
+
+   ```sh {class="line-numbers linkable-line-numbers"}
+   viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
+   ```
+
+   This command returns the `hostname` (including database name) you can use to connect to your data store on the Viam organization's MongoDB Atlas instance.
 
 For more information, see the documentation for the [Viam CLI `database` command](/manage/cli/#data).
 
@@ -60,7 +60,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 1. If you haven't already, [download the `mongosh` shell](https://www.mongodb.com/try/download/shell).
    See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
 
-1. Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh`:
+1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
    ```sh {class="line-numbers linkable-line-numbers"}
    mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username <YOUR-DB-USER>
@@ -68,12 +68,12 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname, as returned from `viam data database hostname` above.
+   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), as returned from `viam data database hostname` above.
    - `<YOUR-DB-USER>` is your organization's database user for that Atlas instance, as returned from `viam data database configure` above.
 
-1. Once connected, you can run MQL or SQL to query captured data directly. For example:
+1. Once connected, you can run [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL to query captured data directly. For example:
 
-   - The following MQL query searches the `sensorData` database and `readings` collection, and returns sensor readings from a specific `robot_id` and ultrasonic sensor where the recorded `distance` measurement is greater than `.2` meters:
+   - The following MQL query searches the `sensorData` database and `readings` collection, and returns sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
 
      ```sql {class="line-numbers linkable-line-numbers"}
      AtlasDataFederation sensorData> db.readings.aggregate(
