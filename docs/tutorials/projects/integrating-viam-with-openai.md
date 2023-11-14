@@ -73,7 +73,7 @@ This tutorial assumes that you have already set up your Viam Rover.
 If not, first follow the Viam Rover [setup instructions](/try-viam/rover-resources/rover-tutorial/).
 
 If you are not using a Viam Rover, [install viam-server](/installation/) and configure your robot with the [appropriate components](/components/).
-If you are using a different rover, the [Viam Rover setup instructions](https://docs.viam.com/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
+If you are using a different rover, the [Viam Rover setup instructions](/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
 ### 1. Connect the servo
 
@@ -410,7 +410,7 @@ Some ideas:
 
 - Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 - Integrate another ML model that is used to follow a human (when told to do so).
-- Add Lidar and integrate Viam's [SLAM service](/services/slam/) to map the world around it.
+- Add Lidar and integrate Viam's {{< glossary_tooltip term_id="slam" text="SLAM service" >}} to map the world around it.
 - Use Viam's [Data Management](/manage/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

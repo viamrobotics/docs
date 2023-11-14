@@ -6,7 +6,7 @@ short_description: Built-in software packages for complex capabilities such as S
 aka:
 ---
 
-Services are built-in software packages for complex capabilities such as SLAM, computer vision, motion planning, and data collection.
+Services are built-in software packages for complex capabilities such as Simultaneous Localization And Mapping (SLAM), computer vision, motion planning, and data collection.
 
 Each service is typed by a proto API, such as the [service proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
 

@@ -33,6 +33,9 @@ coveragetest:
 markdowntest:
 	markdownlint --config .markdownlint.yaml
 
+flake8test:
+	flake8-markdown docs/**/*.md
+
 build-pr: clean setup
 	hugo $(PR_OPTIONS)
 

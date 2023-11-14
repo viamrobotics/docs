@@ -21,7 +21,7 @@ Most robots with a motor need at least the following hardware:
 - A compatible motor driver.
   This takes signals from the computer and sends the corresponding signals and power to the motor.
   Selected based on the type of motor (for example, brushed, brushless, or stepper) and its power requirements.
-- A [board component](https://docs.viam.com/components/board/) to send signals to the motor driver[^dmcboard].
+- A [board component](/components/board/) to send signals to the motor driver[^dmcboard].
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
 
 [^dmcboard]: The `DMC4000` model does not require a board.
@@ -690,6 +690,51 @@ resp, err := myMotor.DoCommand(ctx, map[string]interface{}{"command": "jog", "ra
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_motor = Motor.from_robot(robot, "my_motor")
+
+await my_motor.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/motor/client/index.html#viam.components.motor.client.MotorClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myMotor, err := motor.FromRobot(robot, "my_motor")
+
+err := myMotor.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

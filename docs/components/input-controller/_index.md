@@ -447,7 +447,9 @@ The [motion](/services/motion/) and [navigation](/services/navigation/) services
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_geometries).
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_controller = Controller.from_robot(robot=robot, name="my_controller")
+my_controller = Controller.from_robot(
+    robot=myRobotWithController,
+    name="my_controller")
 
 geometries = await my_controller.get_geometries()
 
@@ -472,7 +474,7 @@ if geometries:
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(robot, "my_controller")
+myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 geometries, err := myController.Geometries(context.Background(), nil)
 
@@ -537,6 +539,51 @@ result, err := myController.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_controller = Controller.from_robot(myRobotWithController, "my_controller")
+
+await my_controller.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myController, err := input.FromRobot(myRobotWithController, "my_controller")
+
+err := myController.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

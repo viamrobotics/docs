@@ -44,7 +44,7 @@ Follow the steps outlined for your computer's architecture on the **Setup** tab 
 
 ### Configure your mock robot
 
-[Configure your mock robot](/manage/configuration/) to represent a physical smart machine with robotic board, arm, and motor hardware.
+[Configure your mock robot](/manage/configuration/) to represent a physical machine with robotic board, arm, and motor hardware.
 
 If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
@@ -90,7 +90,7 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](https://docs.viam.com/manage/fleet/robots/#control):
+When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](/manage/fleet/robots/#control):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
 

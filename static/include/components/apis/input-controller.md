@@ -7,3 +7,4 @@ Method Name | Description
 [`GetGeometries`](/components/input-controller/#getgeometries) | Get all the geometries associated with the input controller in its current configuration, in the [frame](/services/frame-system/) of the input controller.
 [`TriggerEvent`](/components/input-controller/#triggerevent) | Trigger an event on the controller.
 [`DoCommand`](/components/input-controller/#docommand) | Send or receive model-specific commands.
+[`Close`](/components/input-controller/#close) | Safely shut down the resource and prevent further use.

@@ -126,7 +126,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](https://docs.viam.com/installation/#preparation), and then followed the instructions on the **Setup** tab on the Viam app.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/#prepare-your-board), and then followed the instructions on the **Setup** tab on the Viam app.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -175,7 +175,7 @@ It will resemble the following:
       ```
 
       In the list of camera devices returned, find the entry for your camera.
-      For example, the webcam on the [Viam Rover](https://docs.viam.com/try-viam/) appears as follows:
+      For example, the webcam on the [Viam Rover](/try-viam/) appears as follows:
 
       ```sh
       GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
@@ -213,7 +213,7 @@ It will resemble the following:
       In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
-If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your smart machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
+If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
 If you are running `viam-server` as a different user, find the <file>.viam/debug/components/camera</file> directory in that user's home directory instead.
 This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
 

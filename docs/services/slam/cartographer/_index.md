@@ -3,7 +3,7 @@ title: "Cartographer Modular Resource"
 linkTitle: "Cartographer"
 weight: 70
 type: "docs"
-description: "Configure a SLAM service with the Cartographer modular resource."
+description: "Configure a Simultaneous Localization And Mapping (SLAM) service with the Cartographer modular resource."
 tags: ["slam", "services"]
 icon: "/services/icons/slam.svg"
 aliases:
@@ -11,7 +11,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
+[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
@@ -550,6 +550,11 @@ Navigate to the **SLAM library** tab on your location page, and click **Make new
 
 Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
+
+### Delete the Map
+
+To clear a SLAM map, go to your **Location** page's **SLAM library** tab.
+Click on the trash can icon in the upper right-hand corner of a map's card to delete the map.
 
 ## SLAM Mapping Best Practices
 

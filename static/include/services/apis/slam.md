@@ -6,3 +6,4 @@
 | [`GetInternalState`](/services/slam/#getinternalstate) | Get the internal state of the SLAM algorithm required to continue mapping/localization. |
 | [`GetLatestMapInfo`](/services/slam/#getlatestmapinfo) | Get the timestamp of the last update to the point cloud SLAM map. |
 | [`DoCommand`](/services/slam/#docommand) | Send arbitrary commands to the resource. |
+| [`Close`](/services/slam/#close) | Safely shut down the resource and prevent further use. |

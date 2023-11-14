@@ -3,7 +3,7 @@ title: "Manage Your Fleet with Viam's Cloud API"
 linkTitle: "Cloud Management"
 weight: 20
 type: "docs"
-description: "Use the cloud app API with Viam's client SDKs to manage your smart machine fleet with code."
+description: "Use the cloud app API with Viam's client SDKs to manage your machine fleet with code."
 tags:
   [
     "cloud",
@@ -16,10 +16,10 @@ tags:
   ]
 ---
 
-The cloud app API allows you to [manage your smart machine fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The cloud app API allows you to [manage your machine fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 With it you can
 
-- create and manage organizations, locations, and individual smart machines
+- create and manage organizations, locations, and individual machines
 - manage permissions and authorization
 - create and manage fragments
 
@@ -36,7 +36,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Use the Viam CLI [to generate an api key for your organization](https://docs.viam.com/manage/cli/#create-an-organization-api-key).
+Use the Viam CLI [to generate an api key to authenticate](/manage/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

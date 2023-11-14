@@ -9,7 +9,7 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        auth_entity='744b0c18-f6fd-4c8d-a707-d3f261b353cc'
+        auth_entity='744b0c18-f6fd-4c8d-a707-d3f261b353cc',
         credentials=Credentials(
             type='api-key',
             payload=os.environ['VIAM_API_KEY']

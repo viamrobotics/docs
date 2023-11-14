@@ -4,7 +4,7 @@ linkTitle: "SLAM Technical"
 weight: 70
 type: "docs"
 draft: true
-description: "Background and technical information for the Viam SLAM service, its configuration, its functionality, and its interfaces."
+description: "Background and technical information for the Simultaneous Localization And Mapping (SLAM) service, its configuration, its functionality, and its interfaces."
 tags: ["slam", "services"]
 # SMEs: Jeremy, Kat
 ---

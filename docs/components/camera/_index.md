@@ -4,7 +4,7 @@ linkTitle: "Camera"
 childTitleEndOverwrite: "Camera Component"
 weight: 40
 type: "docs"
-description: "A camera captures 2D or 3D images and sends them to the computer controlling the smart machine."
+description: "A camera captures 2D or 3D images and sends them to the computer controlling the machine."
 no_list: true
 tags: ["camera", "components"]
 icon: "/icons/components/camera.svg"
@@ -454,13 +454,58 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-  myCamera, err := camera.FromRobot(robot, "my_camera")
+myCamera, err := camera.FromRobot(robot, "my_camera")
 
-  command := map[string]interface{}{"cmd": "test", "data1": 500}
-  result, err := myCamera.DoCommand(context.Background(), command)
+command := map[string]interface{}{"cmd": "test", "data1": 500}
+result, err := myCamera.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://pkg.go.dev/go.viam.com/rdk/components/camera).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_camera = Camera.from_robot(robot, "my_camera")
+
+await my_camera.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myCamera, err := camera.FromRobot(robot, "my_camera")
+
+err := myCamera.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

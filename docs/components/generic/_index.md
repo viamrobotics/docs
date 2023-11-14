@@ -16,7 +16,7 @@ The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}
 
 For example, when using an [arm component](/components/arm/), it makes sense to use the [arm API](/components/arm/#api), which provides specific functionality an arm component needs, such as moving to position or stopping movement.
 But if you want to use an LED display, you need very different functionality that isn't currently exposed in any API.
-Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your smart machine.
+Instead, you can use the generic component API to add support for your unique type of hardware, like LED displays, to your machine.
 
 There are no built-in generic component models (other than `fake`).
 Use generic for a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} model that represents a unique type of hardware.
@@ -197,6 +197,51 @@ resp, err := myGeneric.DoCommand(ctx, map[string]interface{}{"command": "example
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/api/blob/main/component/generic/v1/generic_grpc.pb.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_generic = Generic.from_robot(robot, "my_generic")
+
+await my_generic.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred. Close will never return an error for a generic resource.
+
+```go {class="line-numbers linkable-line-numbers"}
+myGeneric, err := generic.FromRobot(robot, "my_generic")
+
+err := myGeneric.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#TriviallyCloseable).
 
 {{% /tab %}}
 {{< /tabs >}}

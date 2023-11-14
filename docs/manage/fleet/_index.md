@@ -3,7 +3,7 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "Configure, control, debug, and manage your smart machines from the cloud at app.viam.com on your own or with a team."
+description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
 no_list: true
 aliases:
@@ -13,10 +13,10 @@ aliases:
   - "/fleet"
 ---
 
-The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of smart machines alone or in collaboration with others.
-You can manage your fleet of smart machines from the Viam app or using the [cloud API](/program/apis/cloud/).
+The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of machines alone or in collaboration with others.
+You can manage your fleet of machines from the Viam app or using the [cloud API](/program/apis/cloud/).
 
-## Work with groups of smart machines
+## Work with groups of machines
 
 With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >}} into {{< glossary_tooltip term_id="location" text="locations" >}} and {{< glossary_tooltip term_id="organization" text="organizations" >}}.
 
@@ -84,7 +84,7 @@ For some configuration aspects you may require physical access to the robot so y
 
 #### Reconfiguration
 
-When you or your collaborators change the configuration of a smart machine in the Viam app, `viam-server` automatically synchronizes the configuration to your smart machine and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running robot.
 
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
