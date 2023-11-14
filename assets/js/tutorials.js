@@ -17,7 +17,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  So you can pass any parameters supported by the search endpoint below.
   //  query_by is required.
   additionalSearchParameters: {
-    query_by: "title,description",
+    query_by: "resource,title,description",
     sort_by: "featured:asc,date:desc",
   },
 });
@@ -117,6 +117,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.configure({
     hitsPerPage: 12,
+    facetFilters: ["resource: docs-tutorial"],
   }),
   customRefinementList({
     container: "languages-list",
