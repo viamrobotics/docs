@@ -18,7 +18,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-Viam provides an `rplidar` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for SLAMTECH's RPlidar family of movement sensors, extending the Viam [movement sensor API](/components/movement-sensor/#api).
+Viam provides an `rplidar` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for SLAMTECH's RPlidar family of lidar scanners, extending the Viam [camera API](/components/camera/#api).
 Currently, the `rplidar` {{< glossary_tooltip term_id="module" text="module" >}} has been tested with the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1), [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), and [RPlidar S1](http://bucket.download.slamtec.com/f19ea8efcc2bb55dbfd5839f1d307e34aa4a6ca0/LD601_SLAMTEC_rplidar_datasheet_S1_v1.4_en.pdf).
 
 The `rplidar` module is available [from the Viam registry](https://app.viam.com/module/viam/rplidar).
@@ -51,8 +51,7 @@ Follow the instructions below to set up the `rplidar` module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click **Create component** in the lower-left corner.
-1. Select **Camera**, then select `rplidar`.
-   You can also search for "rplidar".
+1. Select **Camera**, then select `lidar:rplidar`.
 1. Click **Add module**, give your component a name of your choice, then click **Create**.
 1. Click **Save config** at the bottom of the page.
 
