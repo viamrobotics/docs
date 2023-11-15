@@ -23,13 +23,14 @@ no_list: true
 # SMEs: Alexa Greenberg, Natalia Jacobowitz
 ---
 
-In this tutorial, you will use three Viam services together to enable a smart machine to recognize specific objects in the world around it:
+In this tutorial, you will use three Viam services together to enable your smart machine to recognize specific objects in the world around it:
 
-- The [data management](#the-data-management-service) service, to capture images from a camera on your smart machine and sync them to the cloud.
-- The [ML model](#the-ml-model-service) service, to manage and deploy a machine learning (ML) model based on these images, once you have added tags to the images matching the objects you want to detect.
-- The [vision](/services/vision/) service, to enable your smart machine's camera to detect objects defined in the ML model on its own.
+- The [data management service](#the-data-management-service), to capture images from a camera on your smart machine and sync them to the cloud.
+- The [ML model service](#the-ml-model-service), to manage and deploy a machine learning (ML) model based on these images, once you have added tags to the images matching the objects you want to detect.
+- The [vision service](/services/vision/), to enable your smart machine's camera to detect objects defined in the ML model on its own.
 
-Working together, these services enable your smart machine to recognize its surroundings and make decisions about the world it sees.
+With all three services working together, your smart machine will be able to analyze its camera feed for the presence of specific shapes, such as a red star or blue circle.
+When it detects a likely match, it will overlay a confidence score onto the camera feed alongside the name of the detected shape, indicating how closely the shape in the camera frame matches a shape it has seen before.
 
 {{< alert title="Tip" color="tip" >}}
 To get started without any hardware, you can rent a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
