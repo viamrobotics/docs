@@ -44,6 +44,9 @@ Once your smart machine has synced captured data to the Viam app, you can config
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
    ```
 
+   This command configures a new database user for your org for use with data query.
+   If you have already created this user, this command updates the password for that user instead.
+
 1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance.
    Provide your organization's `org-id` from step 2:
 
@@ -70,13 +73,14 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
    ```sh {class="line-numbers linkable-line-numbers"}
-   mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username <YOUR-DB-USER>
+   mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username db-user-<YOUR-ORG-ID>
    ```
 
    Where:
 
    - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), as returned from `viam data database hostname` above.
-   - `<YOUR-DB-USER>` is your organization's database user for that Atlas instance, as returned from `viam data database configure` above.
+   - `<YOUR-ORG-ID>` is your organization ID as determined above.
+     The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
 
 1. Once connected, you can run [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL to query captured data directly. For example:
 
