@@ -147,7 +147,10 @@ def parse(type, names):
                     if (extras_values.name == "ul"):
                         for li in extras_values.findChildren("li", recursive=False):
                             item = html_to_markdown(url, li)
-                            method_text.append(get_param_details(item))
+                            try:
+                                method_text.append(get_param_details(item))
+                            except ValueError:
+                                print(f"WARNING: Failed to extract value for \"{item}\" from {url}#{id}")
                     # if values are not a list
                     else:
                         item = html_to_markdown(url, extras_values)
