@@ -111,7 +111,7 @@ For more information see [Configure data capture](/services/data/configure-data-
 
 ### View and filter captured data
 
-Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app, and can apply filters to limit the files returned by specific criteria, such as by robot or date range.
+Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app.
 
 1. First, in the [Viam app](https://app.viam.com), navigate to your robot's **Control** tab and enable the camera to verify that a live stream is returned.
    If you do not see a functioning camera stream, verify that you have configured your [camera](/components/camera/) correctly.
