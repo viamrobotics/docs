@@ -21,9 +21,9 @@ Before you can configure data query, you must:
 
 - [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service)
 - [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
-   Only components that capture tabular data support data query.
+  Only components that capture tabular data support data query.
 - [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
-   When you are able to [view your data in the Viam app](/manage/data/view/), you are ready to proceed.
+  When you are able to [view your data in the Viam app](/manage/data/view/), you are ready to proceed.
 
 ## Configure data query
 
