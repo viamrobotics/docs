@@ -49,7 +49,7 @@ Follow the steps below to set up your smart machine:
 1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your robot's board if they are not the same device.
 1. [Create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
 1. [Install](/installation/#install-viam-server) or [update](/installation/manage/#update-viam-server) `viam-server`.
-   Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0m) or newer, as filtering capabilities were introduced in the RDK starting from that version.
+   Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
 
 ## Add the custom module
 
