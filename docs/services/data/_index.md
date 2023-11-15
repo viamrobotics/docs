@@ -14,10 +14,10 @@ icon: "/services/icons/data-capture.svg"
 ---
 
 The data management service captures data from Viam components and securely syncs data to Viam's cloud.
-You can configure capture frequency individually for each component, and you can directly query select types of synced data in the cloud.
+You can configure capture frequency individually for each component.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
-The service has three parts: [data capture](#data-capture), [cloud sync](#cloud-sync), and [data query](#data-query).
+The service has two parts: [data capture](#data-capture) and [cloud sync](#cloud-sync).
 
 ## Data capture
 
@@ -103,18 +103,6 @@ To configure cloud sync, see [configure cloud sync](/services/data/configure-clo
 
   {{< /alert >}}
 
-## Data query
-
-Once you have synced data to the cloud, you can query tabular data directly in the cloud using either MQL, the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/), or SQL.
-Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-
-You can query both the captured tabular data itself as well as its metadata (such as robot ID, organization ID, and [tags](/manage/data/label/#image-tags)).
-
-In order to query data, you must have first [captured data](/services/data/configure-data-capture/) and [synced data](/services/data/configure-cloud-sync/) to the cloud.
-You must also configure a new database connection to the Viam organization's MongoDB Atlas Data Federation instance using the Viam CLI.
-
-To configure data query, see [Configure data query](/services/data/configure-data-query/).
-
 ## API
 
 The data management service supports the following methods:
@@ -162,18 +150,25 @@ err := data.Sync(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next steps
+## Use the data management service
 
-To use the data management service, [add the data management service](configure-data-capture/#add-the-data-management-service) to your robot.
-Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
+To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your smart machine.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
+Then, [configure data capture](/services/data/configure-data-capture/) and [configure cloud sync](/services/data/configure-cloud-sync/) as needed.
 
-### Access and export data
+### Access, query, and export data
 
-Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
+Once you have configured data capture and cloud sync, you can [view your data](/manage/data/view/) in the Viam app from the **Data** tab.
+
+If you have uploaded tabular data, such as sensor readings, you can [configure data query](/services/data/configure-data-query/) to be able to query directly against that data using common query languages.
+
+You can also [export](/manage/data/export/) your data as needed.
 
 ### Train and deploy machine learning
 
 You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
 You can also [upload and use existing models](../../manage/ml/upload-model/).
+
+## Next steps
+
+For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-management-tutorial/).

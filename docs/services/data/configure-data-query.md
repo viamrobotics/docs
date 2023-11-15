@@ -9,12 +9,20 @@ tags: ["data management", "cloud", "query", "sensor"]
 ---
 
 Configure data query to be able to directly query captured tabular data in the Viam cloud using [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL.
+Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
-Only tabular data, such as sensor data, can be queried in this fashion.
+You can query both the captured tabular data itself as well as its metadata (such as robot ID, organization ID, and [tags](/manage/data/label/#image-tags)).
+
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
 ## Requirements
 
-Before you can configure data query, you must [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) and [configure cloud sync](/services/data/configure-cloud-sync/).
+Before you can configure data query, you must:
+
+- [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service)
+- [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
+   Only components that capture tabular data support data query.
+- [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
 
 ## Configure data query
 
@@ -34,8 +42,6 @@ Once your smart machine has synced captured data to the Viam app, you can config
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
    ```
-
-   This command returns the `user` name you can use to connect to the Viam organization's MongoDB Atlas instance.
 
 1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance.
    Provide your organization's `org-id` from step 2:
@@ -75,7 +81,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    - The following MQL query searches the `sensorData` database and `readings` collection, and returns sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
 
-     ```sql {class="line-numbers linkable-line-numbers"}
+     ```mongodb {class="line-numbers linkable-line-numbers"}
      AtlasDataFederation sensorData> db.readings.aggregate(
          [
              { $match: {
@@ -89,7 +95,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/query/sql/shell/connect/#aggregation-pipeline-stage-syntax) to perform the same query as the MQL above, but using SQL syntax:
 
-     ```sql {class="line-numbers linkable-line-numbers"}
+     ```mongodb {class="line-numbers linkable-line-numbers"}
      AtlasDataFederation sensorData> db.aggregate(
          [
              { $sql: {
