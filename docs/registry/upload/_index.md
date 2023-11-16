@@ -187,7 +187,7 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
      See [Using the `--version` argument](/manage/cli/#using-the---version-argument) for more information.
    - `platform`: provide the system architecture your custom module supports.
      You can only provide one `platform` argument at a time to the `viam module upload` command.
-     See [Using the `--platform` argument](/manage/cli/#using-the---platform-argument) for the full list of supported architecture.
+     See [Using the `--platform` argument](/manage/cli/#using-the---platform-argument) for the full list of supported architectures.
    - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
