@@ -472,7 +472,7 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
-viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
+viam module update [--module <path to meta.json>]
 viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module-path>
 ```
 
