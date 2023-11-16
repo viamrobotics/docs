@@ -3,7 +3,7 @@ title: "Design your ML Models for Vision"
 linkTitle: "ML Model Design"
 weight: 60
 type: "docs"
-tags: ["data management", "ml", "model training"]
+tags: ["data management", "ml", "model training", "vision"]
 description: "Design your ML Model service to work with Viam's vision services."
 icon: "/services/icons/ml.svg"
 # SME: Bijan Haney
