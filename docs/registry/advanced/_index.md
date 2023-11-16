@@ -35,7 +35,7 @@ If your resource does not fit into any of the existing {{< glossary_tooltip term
 
 Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
 
-However, if you are unable to use [modular resources](/registry/) because you have to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/registry/advanced/custom-components-remotes/) on your machine.
+However, if you are unable to use [modular resources](/registry/) because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/registry/advanced/custom-components-remotes/) on your machine.
 
 ## Design a custom ML model
 
