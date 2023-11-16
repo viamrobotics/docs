@@ -10,6 +10,9 @@ images: ["/tutorials/pet-photographer/data-capture.png"]
 authors: ["Sky Leilani"]
 languages: ["go", "python"]
 viamresources: ["vision", "camera"]
+images: ["/tutorials/pet-photographer/data-capture.png"]
+image: "/tutorials/pet-photographer/data-capture.png"
+imageAlt: "Filtered data tab contents from colorfiltercam showing only photos of dog with blue collar"
 level: "Beginner"
 date: "2023-09-17"
 # updated: ""
