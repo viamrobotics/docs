@@ -21,7 +21,7 @@ aliases:
 ---
 
 Some use cases may require advanced considerations when designing or deploying modular resources.
-Depending on your needs, you may wish to define a new API subtype, deploy a custom component using a server on a {{< glossary_tooltip term_id="remote" text="remote part" >}}, or design a custom ML model.
+Depending on your needs, you may wish to define a new API subtype, deploy a custom component using a server on a {{< glossary_tooltip term_id="remote" text="remote" >}} {{< glossary_tooltip term_id="part" text="part" >}}, or design a custom ML model.
 
 ## New API subtypes
 
@@ -41,4 +41,4 @@ However, if you are unable to use [modular resources](/registry/) because you ne
 
 When working with the [ML model service](/services/ml/), you can [deploy an existing model](/manage/ml/upload-model/) or [train your own model](/manage/ml/train-model/).
 
-However, if you are [writing your own module](/registry/) that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.
