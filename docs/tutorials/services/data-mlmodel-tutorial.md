@@ -303,7 +303,7 @@ Once you know your model is working, you can write code to change your machine's
 For an example see the following tutorial:
 
 {{< cards >}}
-  {{% card link="/tutorials/services/color-detection-scuttle/" %}}
+{{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
