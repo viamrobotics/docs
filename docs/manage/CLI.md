@@ -533,10 +533,22 @@ You may use either argument for the `viam module create` command, but must use `
 
 The `--platform` argument accepts one of the following architectures:
 
-- `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
-- `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
-- `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
-- `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
+<!-- prettier-ignore -->
+|  Architecture  | Description | Common use case |
+| -------------- | ----------- | --------------- |
+| `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules. |
+| `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules. |
+| `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | |
+| `linux/any`    | Linux computers running any architecture. | Suitable for Python modules that also require OS support. |
+| `darwin/any`   | macOS computers running any architecture. | |
+| `linux/amd64`  | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture. | |
+| `linux/arm64`  | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | |
+| `linux/arm32v7`| Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm32v7` architecture. | |
+| `linux/arm32v6`| Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm32v6` architecture. | |
+| `darwin/amd64` | macOS computers running the Intel `x86_64` architecture. | |
+| `darwin/arm64` | macOS computers running the `arm64` architecture, such as Apple Silicon. | |
+
+You can use the `uname -m` command on your computer or board to determine its system architecture.
 
 The `viam module upload` command only supports one `platform` argument at a time.
 If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
