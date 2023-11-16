@@ -1,5 +1,5 @@
 ---
-title: "Pet Photographer: Create A Data Filtering Module"
+title: "Pet Photographer: Create a Data Filtering Module"
 linkTitle: "Pet Photographer"
 type: "docs"
 description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
