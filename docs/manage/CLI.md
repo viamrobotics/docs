@@ -472,7 +472,7 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
-viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
+viam module update [--module <path to meta.json>]
 viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module-path>
 ```
 
@@ -515,8 +515,8 @@ If you update and release your module as part of a continuous integration (CI) w
 | `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
-| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
-| `--public-namespace`      | the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
+| `--public-namespace`      | the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
 | `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
 | `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
 
