@@ -73,7 +73,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
 
 1. Navigate to the Python color filter directory, `pycolorfilter`.
 1. Note the path to your module's executable, <file>run.sh</file>, for later use.
-1. [Add the `colorfilter` module to your smart machine as a local module](<(#add-as-a-local-module)>) and continue the tutorial from there.
+1. [Add the `colorfilter` module to your smart machine as a local module](#add-as-a-local-module) and continue the tutorial from there.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
