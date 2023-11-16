@@ -26,8 +26,8 @@ In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" te
 
    {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="550x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
-   The source code for this module is available on the [`modular-filter-examples` GitHub repository](https://github.com/viam-labs/modular-filter-examples) .
-   In addition to the `colorfilter` module used in this tutorial, the example repository also includes a [sensor reading filter](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) which you could use to control and filter the data recorded by a [sensor component](/components/sensor/).
+The source code for this module is available on the [`modular-filter-examples` GitHub repository](https://github.com/viam-labs/modular-filter-examples) .
+In addition to the `colorfilter` module used in this tutorial, the example repository also includes a [sensor reading filter](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) which you could use to control and filter the data recorded by a [sensor component](/components/sensor/).
 
 ## Hardware requirements
 
@@ -118,7 +118,7 @@ To code your own color filtering module, first create the necessary files and di
 
 #### Code a filter resource model
 
-Next, include all the methods that the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} .
+Next, include all the methods that the corresponding Viam SDK requires in the API definition of its built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}}.
 
 {{< tabs >}}
 {{% tab name="Python"%}}
@@ -194,7 +194,7 @@ Write a conditional statement that checks `FromDMContextKey`:
 {{< alert title="Important" color="note" >}}
 Use `FromDMContextKey` to check the caller of the data capture function when working with a modular _camera_ using the Go SDK.
 For all other components, you should use `FromDMString` instead.
-See the [sensor filter example](https://github.com/viam-labs/modular-filter-examples/blob/cd2f79c52b98c3deafbd1e9794869744803d4428/sensorfilter/sensor_filter.go#L99C1-L99C1) for example code to support working with a sensor.
+See the [sensor filter example](https://github.com/viam-labs/modular-filter-examples/blob/main/sensorfilter/sensor_filter.go) for example code to support working with a sensor.
 {{< /alert >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -512,7 +512,7 @@ import (
 "fmt"
 "image"
 
-    "github.com/edaniels/golog"
+    "go.viam.com/rdk/logging"
     "github.com/pkg/errors"
     "github.com/viamrobotics/gostream"
 
@@ -537,7 +537,7 @@ func init() {
     })
 }
 
-func newCamera(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger golog.Logger) (camera.Camera, error) {
+func newCamera(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logging.Logger) (camera.Camera, error) {
     c := &colorFilterCam{
         Named: conf.ResourceName().AsNamed(),
         logger: logger,
@@ -573,7 +573,7 @@ type colorFilterCam struct {
     resource.Named
     actualCam camera.Camera
     visionService vision.Service
-    logger golog.Logger
+    logger loggingg.Logger
 }
 
 // Reconfigure reconfigures the modular component with new settings.
