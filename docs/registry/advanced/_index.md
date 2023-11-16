@@ -41,4 +41,4 @@ However, if you are unable to use [modular resources](/registry/) because you ne
 
 When working with the [ML model service](/services/ml/), you can [deploy an existing model](/manage/ml/upload-model/) or [train your own model](/manage/ml/train-model/).
 
-However, if you are [writing your own module](/registry/) that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design) to better match your specific use case.
+However, if you are [writing your own module](/registry/) that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.
