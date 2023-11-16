@@ -69,7 +69,6 @@ Follow the instructions below to download the `colorfilter` module in your prefe
 
    ```{class="command-line" data-prompt="$"}
    git clone https://github.com/viam-labs/modular-filter-examples.git
-
    ```
 
 1. Navigate to the Python color filter directory, `pycolorfilter`.
