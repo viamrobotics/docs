@@ -85,7 +85,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
    ```
 
 1. Navigate to the Go color filter directory, `colorfilter`.
-1. Inside of the `module` directory, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module.
+1. Inside of the `module` directory, [compile the executable](/registry/create/#compile-the-module-into-an-executable) that runs your module.
 1. Save the path to your module's executable for later use.
 1. [Add the `colorfilter` module to your smart machine as a local module](#add-as-a-local-module) and continue the tutorial from there.
 
@@ -130,7 +130,7 @@ For example, the camera's <file>client.py</file> file is located at <file>[/comp
    - Exclude the `get_images` method, which you will customize to add filtering functionality in the upcoming section.
    - Include the other methods within the class corresponding to your resource type (in this case, the `CameraClient` class).
 
-For more information, refer to [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
+For more information, refer to [Create a custom module](/registry/create/#create-a-custom-module).
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -142,7 +142,7 @@ For example, the camera's <file>client.go</file> file is located at <file>[/comp
    Exclude the `Read` method, which you will replace with a method, `Next`, to add filtering functionality in the upcoming section.
    - You can create your own code or copy the code from the [viam-labs `colorfilter` repository's <file>color_filter.go</file>](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go) file.
 
-For more information, refer to [Create a custom module](https://docs.viam.com/modular-resources/create/#create-a-custom-module).
+For more information, refer to [Create a custom module](/registry/create/#create-a-custom-module).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -684,7 +684,7 @@ In this code:
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information, see [Code a new resource model](/modular-resources/create/#code-a-new-resource-model).
+For more information, see [Code a new resource model](/registry/create/#code-a-new-resource-model).
 
 #### Code an entry point file
 
@@ -792,9 +792,9 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information on creating your own module, refer to [Code your own modules to create modular resources](https://docs.viam.com/modular-resources/create/).
+For more information on creating your own module, refer to [Code your own modules to create modular resources](/registry/create/).
 
-Once you've written your filter module, [compile the executable](https://docs.viam.com/modular-resources/create/#compile-the-module-into-an-executable) that runs your module when executed.
+Once you've written your filter module, [compile the executable](/registry/create/#compile-the-module-into-an-executable) that runs your module when executed.
 
 Note the absolute path to your module’s executable for use in the next section.
 
@@ -804,7 +804,7 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 1. Navigate to the **Config** tab of your robot's page in the [Viam app](https://app.viam.com/robots).
 1. Select the **Modules** subtab and scroll to the **Add local module** section.
-1. Enter a name for your local module, enter the [module's executable path](/modular-resources/create/#compile-the-module-into-an-executable), then click **Add module**.
+1. Enter a name for your local module, enter the [module's executable path](/registry/create/#compile-the-module-into-an-executable), then click **Add module**.
    - The name must use only lowercase characters.
 1. Then, click **Save config**.
 
