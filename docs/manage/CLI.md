@@ -539,7 +539,7 @@ The `--platform` argument accepts one of the following architectures:
 | `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules. |
 | `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules. |
 | `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | |
-| `linux/any`    | Linux computers running any architecture. | Suitable for Python modules that also require OS support. |
+| `linux/any`    | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running any architecture. | Suitable for Python modules that also require OS support. |
 | `darwin/any`   | macOS computers running any architecture. | |
 | `linux/amd64`  | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture. | |
 | `linux/arm64`  | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | |
