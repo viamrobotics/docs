@@ -4,8 +4,11 @@ linkTitle: "Pet Photographer"
 type: "docs"
 description: "Use the filter modular component in the Viam app to photograph your pet in their collar."
 tags: ["vision", "filter", "camera", "detector", "services"]
+image: "/tutorials/pet-photographer/data-capture.png"
+imageAlt: "Filtered data from the custom colorfiltercam in the Data tab showing only photos of a dog wearing a blue collar"
+images: ["/tutorials/pet-photographer/data-capture.png"]
 authors: ["Sky Leilani"]
-languages: []
+languages: ["go", "python"]
 viamresources: ["vision", "camera"]
 images: ["/tutorials/pet-photographer/data-capture.png"]
 image: "/tutorials/pet-photographer/data-capture.png"
