@@ -6,7 +6,7 @@ type: "docs"
 tags: ["data management", "ml", "model training"]
 aliases:
   - /manage/data/upload-model/
-description: "Upload an image classification model to Viam."
+description: "Upload a Machine Learning model to Viam to use it with the ML Model service."
 # SME: Aaron Casas
 ---
 
@@ -52,7 +52,7 @@ The model package config looks like this:
 
 <h4>Deploy your model</h4>
 
-Create an ML model service to deploy your machine learning model to your smart machine.
+Create an ML model service to deploy your machine learning model to your machine.
 
 {{% /manualcard %}}
 {{% manualcard link="/services/vision/detection/#configure-an-mlmodel-detector"%}}

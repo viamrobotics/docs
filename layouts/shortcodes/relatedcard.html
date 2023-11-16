@@ -1,18 +1,24 @@
 {{ $link := (path.Clean (.Get "link")) }}
 {{ $linkWithSlash := printf "%s/" $link }}
+{{ $required := .Get "required" }}
+{{ $alt_title := .Get "alt_title" }}
+{{ $alt_link := .Get "alt_link" }}
+
 {{ if site.GetPage ($link | string) }}
-{{ with site.GetPage ($link | string) }}
-<div class="relatedcard">
-  <a href="{{ $linkWithSlash }}" target="_blank" title="{{ .LinkTitle }}">
-    <div>
-      <div>
-        {{ if .Params.icon }}
+  {{ with site.GetPage ($link | string) }}
+    <div class="relatedcard">
+      <a href="{{ with $alt_link }}{{ $alt_link }}{{ else }}{{ $linkWithSlash }}{{ end }}" target="_blank" title="{{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}">
+          {{ if .Params.icon }}
             {{ partial "imgproc.html" (dict "src" (.Params.icon) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
-        {{ end }}
-      </div>
-      <p>{{ .LinkTitle }}</p>
+          {{ end }}
+          <p>
+            {{ if eq $required "yes" }}
+              {{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}*
+            {{ else }}
+              {{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}
+            {{ end }}
+          </p>
+      </a>
     </div>
-  </a>
-</div>
-{{ end }}
+  {{ end }}
 {{ end }}

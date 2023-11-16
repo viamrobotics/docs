@@ -21,6 +21,18 @@ The motion service can:
 - use motion [planning algorithms](algorithms/) locally on your robot to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/services/frame-system/" >}}
+{{< relatedcard link="/components/movement-sensor/" required="yes">}}
+{{< relatedcard link="/components/base/" >}}
+{{< relatedcard link="/components/arm/" >}}
+{{< relatedcard link="/components/gripper/" >}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Configuration
 
 You need to configure frames for your robot's components with the [frame system](../frame-system/).
@@ -342,7 +354,7 @@ logger.Info("Orientation of myArm from the motion service:", myArmMotionPose.Pos
 
 ### MoveOnMap
 
-Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a [SLAM](/services/slam/) map.
+Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -351,7 +363,7 @@ Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev
 
 - `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the base to move.
 - `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
+- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -387,7 +399,7 @@ success = await motion.move_on_map(component_name=my_base_resource_name,
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk@v0.2.50/spatialmath#Pose): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [SLAM service](/services/slam/) from which the SLAM map is requested.
+- `slamName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
 - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -453,7 +465,7 @@ Translation in obstacles is not supported by the [navigation service](/services/
 - `obstacles` [(Optional[Sequence[GeoObstacle]])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `heading` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
 - `configuration` [(Optional[MotionConfiguration])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
-  - `vision_services` [([ResourceName])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The name you configured for each vision service you want to use while moving this resource.
+  - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/services/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the robot.
   - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
   - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in millimeters that the machine can deviate from the motion plan.
@@ -498,7 +510,7 @@ success = await motion.move_on_globe(
 - `movementSensorName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [([]\*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `motionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
-  - `VisionSvc` [([]resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The name you configured for each vision service you want to use while moving this resource.
+  - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/services/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the robot.
   - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
   - `PlanDeviationMM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in millimeters that the machine can deviate from the motion plan.
@@ -529,7 +541,7 @@ success, err := motionService.MoveOnGlobe(context.Background(), myBaseResourceNa
 {{% /tab %}}
 {{< /tabs >}}
 
-## DoCommand
+### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the service API.
 For built-in service models, any model-specific commands available are covered with each model's documentation.
@@ -577,11 +589,53 @@ await motion.do_command(my_command)
 ```go {class="line-numbers linkable-line-numbers"}
 // Access the motion service
 motionService, err := motion.FromRobot(robot, "builtin")
-if err != nil {
-  logger.Fatal(err)
-}
 
 resp, err := motionService.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+motion = MotionClient.from_robot(robot, "builtin")
+
+await motion.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+motionService, err := motion.FromRobot(robot, "builtin")
+
+err := motionService.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

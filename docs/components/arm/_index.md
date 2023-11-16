@@ -61,9 +61,9 @@ To use your arm with Viam, check whether one of the following [built-in models](
 
 {{< alert title="Add support for other models" color="tip" >}}
 
-If none of the existing models fit your use case, you can [create a modular resource](/modular-resources/) to add support for it.
+If none of the existing models fit your use case, you can [create a modular resource](/registry/) to add support for it.
 
-You can follow [this guide](/modular-resources/examples/custom-arm/) to implement your custom arm as a [modular resource](/modular-resources/).
+You can follow [this guide](/registry/examples/custom-arm/) to implement your custom arm as a [modular resource](/registry/).
 
 {{< /alert >}}
 
@@ -516,6 +516,64 @@ logger.Info(is_moving)
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetGeometries
+
+Get all the geometries associated with the arm in its current configuration, in the [frame](/services/frame-system/) of the arm.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the arm, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=robot, name="my_arm")
+
+geometries = await my_arm.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the arm, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(robot, "my_arm")
+
+geometries, err := myArm.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
@@ -562,7 +620,52 @@ command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myArm.DoCommand(context.Background(), command)
 ```
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot, "my_arm")
+
+await my_arm.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(robot, "my_arm")
+
+err := myArm.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

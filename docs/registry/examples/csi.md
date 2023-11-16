@@ -22,6 +22,7 @@ tags:
   ]
 aliases:
   - "/extend/modular-resources/examples/csi/"
+  - "/modular-resources/examples/csi/"
 # SMEs: Sean
 ---
 
@@ -33,7 +34,7 @@ Instead, Viam supports CSI cameras by providing a {{< glossary_tooltip term_id="
 This {{< glossary_tooltip term_id="module" text="module" >}} includes a simple wrapper around `GStreamer` and a control interface for the **Control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
 
 The `csi-cam` module is available [from the Viam registry](https://app.viam.com/module/viam/csi-cam).
-See [Modular resources](/modular-resources/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
 
 The source code for this module is available on the [`viam-csi` GitHub repository](https://github.com/seanavery/viam-csi).
 

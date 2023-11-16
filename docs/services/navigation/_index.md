@@ -15,6 +15,16 @@ The Navigation service is the stateful definition of Viam's [motion service](/se
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called waypoints.
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](#setmode) to move your rover along a defined path at your desired motion configuration.
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/base/" required="yes" >}}
+{{< relatedcard link="/components/movement-sensor/" required="yes" >}}
+{{< relatedcard link="/components/camera/" >}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Requirements
 
 You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a Navigation service.
@@ -217,6 +227,26 @@ There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 - `MODE_MANUAL`: Stop autonomous navigation between waypoints and allow the base to be controlled manually.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [navigation.Mode.ValueType](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Mode): The `Mode` the service is operating in.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_mode).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get the Mode the service is operating in
+await my_nav.get_mode()
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -239,26 +269,6 @@ mode, err := myNav.Mode(context.Background(), nil)
 ```
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- [navigation.Mode.ValueType](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Mode): The `Mode` the service is operating in.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_mode).
-
-```python
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
-
-# Get the Mode the service is operating in
-await my_nav.get_mode()
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ### SetMode
@@ -271,28 +281,6 @@ There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 - `MODE_MANUAL`: Stop autonomous navigation between waypoints and allow the base to be controlled manually.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `mode` [(Mode)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Mode): The `Mode` for the service to operate in.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
-
-```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
-// Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
-mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
-```
-
-{{% /tab %}}
 {{% tab name="Python" %}}
 
 **Parameters:**
@@ -315,6 +303,28 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 ```
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `mode` [(Mode)](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Mode): The `Mode` for the service to operate in.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
+mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Location
@@ -322,6 +332,26 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 Get the current location of the robot in the navigation service.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude and longitude values.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_location).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get the current location of the robot in the navigation service
+location = await my_nav.get_location()
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -344,26 +374,6 @@ location, err := myNav.Location(context.Background(), nil)
 ```
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- [(navigation.GeoPoint)](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint): The current location of the robot in the navigation service, represented in a `GeoPoint` with latitude and longitude values.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_location).
-
-```python
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
-
-# Get the current location of the robot in the navigation service
-location = await my_nav.get_location()
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ### Waypoints
@@ -372,6 +382,27 @@ Get an array of waypoints currently in the service's data storage.
 These are locations designated within a path for the robot to navigate to.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[navigation.Waypoint])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint): An array comprised of each `Waypoint` in the service's data storage.
+  These are locations designated within a path for the robot to navigate to.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_waypoints).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get a list containing each waypoint stored by the navigation service
+waypoints = await my_nav.get_waypoints()
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -394,27 +425,6 @@ waypoints, err := myNav.Waypoints(context.Background(), nil)
 ```
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- [(List[navigation.Waypoint])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint): An array comprised of each `Waypoint` in the service's data storage.
-  These are locations designated within a path for the robot to navigate to.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_waypoints).
-
-```python
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
-
-# Get a list containing each waypoint stored by the navigation service
-waypoints = await my_nav.get_waypoints()
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ### AddWaypoint
@@ -422,31 +432,6 @@ waypoints = await my_nav.get_waypoints()
 Add a waypoint to the service's data storage.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `point` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
-
-```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
-// Create a new waypoint with latitude and longitude values of 0 degrees
-location = geo.NewPoint(0, 0)
-
-// Add your waypoint to the service's data storage
-err := myNav.AddWaypoint(context.Background(), location, nil)
-```
-
-{{% /tab %}}
 {{% tab name="Python" %}}
 
 **Parameters:**
@@ -472,6 +457,31 @@ await my_nav.add_waypoint(point=location)
 ```
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `point` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Create a new waypoint with latitude and longitude values of 0 degrees
+location = geo.NewPoint(0, 0)
+
+// Add your waypoint to the service's data storage
+err := myNav.AddWaypoint(context.Background(), location, nil)
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### RemoveWaypoint
@@ -480,6 +490,27 @@ Remove a waypoint from the service's data storage.
 If the robot is currently navigating to this waypoint, the motion will be canceled, and the robot will proceed to the next waypoint.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `id`[(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The MongoDB ObjectID of the `Waypoint` to remove from the service's data storage.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.remove_waypoint).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Remove the waypoint matching that ObjectID from the service's data storage
+await my_nav.remove_waypoint(waypoint_id)
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -505,36 +536,36 @@ err := myNav.RemoveWaypoint(context.Background(), waypoint_id, nil)
 ```
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `id`[(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The MongoDB ObjectID of the `Waypoint` to remove from the service's data storage.
-- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- None
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.remove_waypoint).
-
-```python
-my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
-
-# Remove the waypoint matching that ObjectID from the service's data storage
-await my_nav.remove_waypoint(waypoint_id)
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
-### GetObstacles
+### Obstacles
 
-Get an array of obstacles currently in the service's data storage.
+Get an array or list of obstacles currently in the service's data storage.
 These are locations designated for the robot to avoid when navigating.
 See the [motion service](/services/motion/) for more information.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): A list comprised of each `GeoObstacle` in the service's data storage.
+  These are locations designated for the robot to avoid when navigating.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
+
+```python
+my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
+
+# Get a list containing each obstacle stored by the navigation service
+obstacles = await my_nav.get_obstacles()
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -554,10 +585,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 myNav, err := navigation.FromRobot(robot, "my_nav_service")
 
 // Get an array containing each obstacle stored by the navigation service
-obstacles, err := myNav.GetObstacles(context.Background(), nil)
+obstacles, err := myNav.Obstacles(context.Background(), nil)
 ```
 
 {{% /tab %}}
+{{< /tabs >}}
+
+### Paths
+
+Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
+
+{{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
@@ -566,16 +604,37 @@ obstacles, err := myNav.GetObstacles(context.Background(), nil)
 
 **Returns:**
 
-- [(List[navigation.GeoObstacle])](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoObstacle): An array comprised of each `GeoObstacle` in the service's data storage.
-  These are locations designated for the robot to avoid when navigating.
+- [(List[navigation.Path])](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path): An array comprised of `Path`s, each path being a user-provided destination, or, [`Waypoint`](#addwaypoint) and the set of `geopoints` that the robot expects to travel through to get there.
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.NavigationClient.get_obstacles).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_paths).
 
 ```python
 my_nav = NavigationClient.from_robot(robot=robot, name="my_nav_service")
 
-# Get a list containing each obstacle stored by the navigation service
-obstacles = await my_nav.get_obstacles()
+# Get a list containing each path stored by the navigation service
+paths = await my_nav.get_paths()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]\*Path](https://pkg.go.dev/go.viam.com/rdk@v0.12.0/services/navigation#Path): An array of paths, each path being a user-provided destination, or, [`Waypoint`](#addwaypoint), and the set of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot plans to travel through to get there.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/navigation#Service).
+
+```go
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+// Get an array containing each path stored by the navigation service
+paths, err := myNav.Paths(context.Background(), nil)
 ```
 
 {{% /tab %}}
@@ -588,27 +647,6 @@ For built-in service models, any model-specific commands available are covered w
 If you are implementing your own navigation service and add features that have no built-in API method, you can access them with `DoCommand`.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `cmd` [(map\[string\]interface{})](https://go.dev/blog/maps): The command to execute.
-
-**Returns:**
-
-- [(map\[string\]interface{})](https://go.dev/blog/maps): Result of the executed command.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-```go {class="line-numbers linkable-line-numbers"}
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
-
-resp, err := myNav.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
-
-{{% /tab %}}
 {{% tab name="Python" %}}
 
 **Parameters:**
@@ -632,6 +670,72 @@ await my_nav.do_command(my_command)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.do_command).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `cmd` [(map\[string\]interface{})](https://go.dev/blog/maps): The command to execute.
+
+**Returns:**
+
+- [(map\[string\]interface{})](https://go.dev/blog/maps): Result of the executed command.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+resp, err := myNav.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_nav = NavigationClient.from_robot(robot, "my_nav_service")
+
+await my_nav.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myNav, err := navigation.FromRobot(robot, "my_nav_service")
+
+err := myNav.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

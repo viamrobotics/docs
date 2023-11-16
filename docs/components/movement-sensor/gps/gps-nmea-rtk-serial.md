@@ -66,7 +66,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "serial_path": "/dev/serial/by-path/ttyS0",
+  "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
   "serial_baud_rate": 115200,
   "ntrip_connect_attempts": 12,
   "ntrip_mountpoint": "MNTPT",
@@ -117,7 +117,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "serial_path": "/dev/serial/by-path/ttyS0",
+        "serial_path": "/dev/serial/by-path/usb-0:1.1:1.0",
         "serial_baud_rate": 115200,
         "ntrip_connect_attempts": 12,
         "ntrip_mountpoint": "MNTPT",
@@ -131,6 +131,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 }
 ```
 
+The `"serial_path"` filepath used in this example is specific to serial devices connected to Linux systems.
+The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB0"</file> or <file>"/dev/ttyS0"</file>.
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -139,7 +142,7 @@ The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor
 <!-- prettier-ignore -->
 | Name                     | Type   | Inclusion    | Description |
 | ------------------------ | ------ | ------------ | ---------------- |
-| `serial_path`            | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. |
+| `serial_path`            | string | **Required** | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul> |
 | `serial_baud_rate`       | int    | Optional     | The rate at which data is sent from the sensor. <br> Default: `38400` |
 | `ntrip_url`              | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections. |
 | `ntrip_username`         | string | Optional     | Username for the NTRIP server. |
@@ -155,4 +158,4 @@ If you are not sure where to start, check out this [GPS-RTK2 Hookup Guide from S
 
 {{% /alert %}}
 
-{{< readfile "/static/include/components/test-control/movement-sensor-control.md" >}}
+{{< readfile "/static/include/components/test-control/movement-sensor-gps-control.md" >}}

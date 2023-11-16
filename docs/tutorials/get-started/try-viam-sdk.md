@@ -22,12 +22,12 @@ cost: "0"
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
-The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected smart machine.
+The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.
 In this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 
 <div class="td-max-width-on-larger-screens">
-{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square.">}}
+{{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
 </div>
 
 {{< alert title="Tip" color="tip" >}}
@@ -293,14 +293,18 @@ Your main function should look like this:
 
 ```go {class="line-numbers linkable-line-numbers" data-line="19-22"}
 func main() {
-    logger := logger.NewDevelopmentLogger("client")
+    logger := logging.NewLogger("client")
     robot, err := client.New(
         context.Background(),
-        "ADDRESS_FROM_VIAM_APP",
+        "ADDRESS FROM THE VIAM APP",
         logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type: utils.CredentialsTypeRobotLocationSecret,
-            Payload: "SECRET_FROM_VIAM_APP",
+        client.WithDialOptions(rpc.WithEntityCredentials(
+        // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+        "<API-KEY-ID>",
+        rpc.Credentials{
+            Type:    rpc.CredentialsTypeAPIKey,
+            // Replace "<API-KEY>" (including brackets) with your robot's api key
+            Payload: "<API-KEY>",
         })),
     )
     if err != nil {
@@ -321,7 +325,7 @@ Now that your rover base has been initialized, you can write code to drive it in
 Paste this snippet above your `main()` function:
 
 ```go
-func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
+func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
         // moves the rover forward 600mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
@@ -363,10 +367,12 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: "robot-location-secret",
-      payload: "SECRET_FROM_VIAM_APP",
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: "<API-KEY>",
     },
-    authEntity: host,
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
 
@@ -451,10 +457,12 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: "robot-location-secret",
-      payload: "SECRET_FROM_VIAM_APP",
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: "<API-KEY>",
     },
-    authEntity: host,
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
 
@@ -494,14 +502,14 @@ from viam.rpc.dial import Credentials, DialOptions
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('ADDRESS_FROM_VIAM_APP', opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def moveInSquare(base):
@@ -547,7 +555,7 @@ import (
     "go.viam.com/utils/rpc"
 )
 
-func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
+func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
         // moves the rover forward 600mm at 500mm/s
         base.MoveStraight(ctx, 600, 500.0, nil)
@@ -559,15 +567,19 @@ func moveInSquare(ctx context.Context, base base.Base, logger logger.Logger) {
 }
 
 func main() {
-    logger := logger.NewDevelopmentLogger("client")
+    logger := logging.NewLogger("client")
     robot, err := client.New(
-        context.Background(),
-        "ADDRESS_FROM_VIAM_APP",
-        logger,
-        client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-            Type:    utils.CredentialsTypeRobotLocationSecret,
-            Payload: "SECRET_FROM_VIAM_APP",
-        })),
+      context.Background(),
+      "ADDRESS FROM THE VIAM APP",
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
+      })),
     )
     if err != nil {
         logger.Fatal(err)
@@ -641,10 +653,12 @@ async function main() {
   const robot = await VIAM.createRobotClient({
     host,
     credential: {
-      type: "robot-location-secret",
-      payload: "SECRET_FROM_VIAM_APP",
+      type: "api-key",
+      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      payload: "<API-KEY>",
     },
-    authEntity: host,
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
 

@@ -551,18 +551,19 @@ myBaseWheelCircumference := properties.WheelCircumferenceMeters
 ### GetGeometries
 
 Get all the geometries associated with the base in its current configuration, in the [frame](/services/frame-system/) of the base.
-The [motion](/services/motion/) and [navigation](/services/navigation/) services generally use geometries and may require them for obstacle avoidance.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 **Parameters:**
 
-- None.
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- List[(Geometry)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the base, in any order.
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the base, in any order.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_geometries).
 
@@ -573,7 +574,7 @@ geometries = await my_base.get_geometries()
 
 if geometries:
     # Get the center of the first geometry
-    print(f"Pose of the first geometry's center point: {geometries[0].center}")
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
 ```
 
 {{% /tab %}}
@@ -585,10 +586,10 @@ if geometries:
 
 **Returns:**
 
-- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk@v0.10.0/spatialmath#Geometry): The geometries associated with the base, in any order.
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the base, in any order.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/base#Base).
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 ```go {class="line-numbers linkable-line-numbers"}
 myBase, err := base.FromRobot(robot, "my_base")
@@ -652,6 +653,51 @@ result, err := myBase.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_base = Base.from_robot(robot, "my_base")
+
+await my_base.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myBase, err := base.FromRobot(robot, "my_base")
+
+err := myBase.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}

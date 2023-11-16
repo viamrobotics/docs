@@ -20,9 +20,17 @@ Breaking changes are likely to occur, and occur often.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 
 The Viam SLAM service supports the integration of SLAM as a service on your robot.
-You can conduct SLAM with data collected live by a [RPlidar](/modular-resources/examples/rplidar/) or with LIDAR data you provide in configuration, and easily view the map you build on the **SLAM library** tab of your location's page in the [Viam app](https://app.viam.com):
+You can conduct SLAM with data collected live by a [RPlidar](/registry/examples/rplidar/) or with LIDAR data you provide in configuration, and easily view the map you build on the **SLAM library** tab of your location's page in the [Viam app](https://app.viam.com):
 
 ![Completed SLAM maps in the SLAM library tab](/services/slam/view-map-page.png)
+
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/components/camera/" alt_title="RPlidar" required="yes" alt_link="/registry/examples/rplidar/">}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
 
 ## Configuration
 
@@ -291,6 +299,51 @@ await slam.do_command(my_command)
 slam_svc, err := slam.FromRobot(robot, "my_slam_service")
 
 resp, err := slam_svc.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+slam = SLAMClient.from_robot(robot, "my_slam_service")
+
+await slam.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+slam_svc, err := slam.FromRobot(robot, "my_slam_service")
+
+err := slam_svc.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

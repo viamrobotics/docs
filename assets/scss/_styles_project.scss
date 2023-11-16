@@ -61,23 +61,27 @@ h1, .h1 {
 }
 
 h2, .h2 {
+  font-family: space grotesk, sans-serif;
   font-size: 1.5rem !important;
   line-height: 2.625rem;
   clear: both;
 }
 
 h3, .h3 {
+  font-family: space grotesk, sans-serif;
   font-size: 1.1667rem !important;
   clear: both;
 }
 
 h4, .h4 {
+  font-family: space grotesk, sans-serif;
   font-size: 1.0625rem !important;
   line-height: 1.4375em;
   clear: both;
 }
 
 h5, .h5 {
+  font-family: space grotesk, sans-serif;
   font-size: 0.833 !important;
   clear: both;
 }
@@ -107,7 +111,6 @@ h7, .h7 {
 .td-sidebar {
   /* NAV Panel changes */
   background-color: #f2f2f2;
-  letter-spacing: 0.0625rem;
 }
 
 // TABLE OF CONTENT CHANGES
@@ -135,7 +138,6 @@ h7, .h7 {
 .td-toc #TableOfContents ul li a {
   font-size: 0.833rem;
   font-weight: 500;
-  letter-spacing: 0.0625rem;
   color: #333333;
   text-decoration: none;
 }
@@ -143,7 +145,6 @@ h7, .h7 {
 .td-toc #TableOfContents ul li li a {
   font-size: 0.833rem;
   font-weight: 400;
-  letter-spacing: 0.0625rem;
   color: #666666;
 }
 
@@ -155,7 +156,6 @@ h7, .h7 {
 
 .breadcrumb {
   font-size: 1rem;
-  letter-spacing: 0.0625rem;
   a {
     text-decoration: none;
   }
@@ -240,7 +240,7 @@ footer small {
 .td-content p, .td-content li, .td-content td {
   font-weight: normal;
   font-size: 1rem !important;
-  line-height: 1.75em !important;
+  line-height: 1.5em !important;
 }
 
 /*
@@ -398,7 +398,7 @@ END MARKETING CSS
 /* START CSS FOR EXPANDER */
 
 .expand-label {
-  font-family: Space Grotesk, sans-serif;
+  font-family: Public Sans,system-ui;
   font-weight:bold;
   background-color: whitesmoke;
   border: black solid 1px;
@@ -468,6 +468,7 @@ END MARKETING CSS
 // Adjust font size
 
 .hover-card > a div > div, .hover-card > div > div {
+  font-family: space grotesk, sans-serif;
   font-size: 1.0625rem!important;
   font-weight: 600;
   line-height: 1.4375em;
@@ -1004,6 +1005,7 @@ td > ul, td > ol {
 .relatedcard {
   display: flex;
   flex-direction: column;
+  min-height: 13rem;
 }
 
 .relatedcard a {
@@ -1023,6 +1025,36 @@ td > ul, td > ol {
 
 .relatedcard p {
   vertical-align: middle;
+}
+
+@media (max-width: 800px) {
+.relatedcard {
+  width: 100%;
+  padding: 0.25rem 0rem;
+  min-height: unset;
+}
+
+.relatedcard a {
+  width: 95%;
+  text-align: unset;
+  padding: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.relatedcard * img {
+  width: 45px;
+  height: 45px;
+  margin: 0rem;
+}
+
+.relatedcard * p {
+  margin-left: 0.75rem;
+  margin-bottom: 0;
+}
+
 }
 
 // sectionlist styling

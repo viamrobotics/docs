@@ -31,8 +31,8 @@ jobs:
 
       - name: Temp config
         run: |
-          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.number }}/public\" > config_pr.toml
-          echo baseURL = \"https://docs-test.viam.dev/${{ github.event.number }}/public\" >> config_pr.toml
+          echo url_latest_version = \"https://docs-test.viam.dev/${{ github.event.number }}\" > config_pr.toml
+          echo baseURL = \"https://docs-test.viam.dev/${{ github.event.number }}\" >> config_pr.toml
 
       - name: Build
         run: make build-pr
@@ -46,11 +46,11 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v0'
 
       - name: 'Use gcloud CLI'
-        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}/public'
+        run: 'gsutil -m rsync -R -d public gs://docs-test.viam.dev/${{ github.event.number }}'
 
       - name: Comment on PR with link to rendered site
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           recreate: true
-          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.event.number }}/public'
+          message: 'You can view a rendered version of the docs from this PR at https://docs-test.viam.dev/${{ github.event.number }}'
           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}

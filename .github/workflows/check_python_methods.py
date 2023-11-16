@@ -23,6 +23,7 @@ ignore_apis = [
     'viam.app.app_client.Fragment.from_proto',
     'viam.app.app_client.RobotPartHistoryEntry.from_proto',
     'viam.app.app_client.AppClient.get_rover_rental_parts',
+    'viam.app.data_client.DataClient.create_filter' # deprecated
 ]
 
 def is_unimplemented(obj):
@@ -146,7 +147,10 @@ def parse(type, names):
                     if (extras_values.name == "ul"):
                         for li in extras_values.findChildren("li", recursive=False):
                             item = html_to_markdown(url, li)
-                            method_text.append(get_param_details(item))
+                            try:
+                                method_text.append(get_param_details(item))
+                            except ValueError:
+                                print(f"WARNING: Failed to extract value for \"{item}\" from {url}#{id}")
                     # if values are not a list
                     else:
                         item = html_to_markdown(url, extras_values)

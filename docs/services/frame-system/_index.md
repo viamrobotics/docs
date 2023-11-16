@@ -17,6 +17,19 @@ Any robot configured in Viam comes with the frame system service: an internally 
 The frame system is the basis for many of Viam's other services, like [Motion](/services/motion/) and [Vision](/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/services/arm/">}}
+{{< relatedcard link="/components/base/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/services/camera/">}}
+{{< relatedcard link="/services/gantry/">}}
+{{< relatedcard link="/services/motor/">}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
+
 ## Configuration
 
 To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.

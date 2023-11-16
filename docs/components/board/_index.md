@@ -595,6 +595,66 @@ err := myBoard.WriteAnalog(context.Background(), "11", 48, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetGeometries
+
+Get all the geometries associated with the board in its current configuration, in the [frame](/services/frame-system/) of the board.
+The [motion](/services/motion/) and [navigation](/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
+- `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- [(List[Geometry])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry): The geometries associated with the board, in any order.
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_geometries).
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+geometries = await my_board.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+{{% /tab %}}
+
+<!-- Go tab
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [`[]spatialmath.Geometry`](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with the board, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+geometries, err := my.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.center)
+}
+```
+
+ -->
+
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands that are not otherwise defined by the component API.
@@ -646,6 +706,51 @@ resp, err := myBoard.DoCommand(ctx, map[string]interface{}{"command": "dosomethi
 ```
 
 For more information, see the [Go SDK Code](https://github.com/viamrobotics/rdk/blob/main/resource/resource.go).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot, "my_board")
+
+await my_board.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+err := myBoard.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1008,6 +1113,59 @@ high := pin.SetPWMFreq(context.Background(), 1600, nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the GPIOPin with pin number 15.
+pin = await my_board.gpio_pin_by_name(name="15")
+
+# Close the pin.
+await pin.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.GPIOPinClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the GPIOPin with pin number 15.
+pin, err := myBoard.GPIOPinByName("15")
+
+// Close the pin.
+err := pin.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## `AnalogReader` API
 
 ### Read
@@ -1070,6 +1228,60 @@ reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
 // Get the value of the digital signal "my_example_analog_reader" has most recently measured.
 reading := reader.Read(context.Background(), nil)
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the AnalogReader "my_example_analog_reader".
+reader = await my_board.analog_reader_by_name(
+    name="my_example_analog_reader")
+
+# Close the reader.
+await reader.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.AnalogReaderClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the AnalogReader "my_example_analog_reader".
+reader, err := myBoard.AnalogReaderByName("my_example_analog_reader")
+
+// Close the reader.
+err := reader.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1445,6 +1657,60 @@ interrupt = await my_board.digital_interrupt_by_name(
     name="my_example_digital_interrupt")
 ```
 ``` -->
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+my_board = Board.from_robot(robot=robot, name="my_board")
+
+# Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt = await my_board.digital_interrupt_by_name(
+    name="my_example_digital_interrupt")
+
+# Close the interrupt.
+await interrupt.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.DigitalInterruptClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+myBoard, err := board.FromRobot(robot, "my_board")
+
+// Get the DigitalInterrupt "my_example_digital_interrupt".
+interrupt, ok := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
+
+// Close the interrupt.
+err := interrupt.Close(ctx)
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Troubleshooting
 

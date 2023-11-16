@@ -3,15 +3,15 @@ title: "Vision Service"
 linkTitle: "Vision"
 weight: 90
 type: "docs"
-description: "The vision service enables your smart machine to use its on-board cameras to intelligently see and interpret the world around it."
+description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
 icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 # SMEs: Bijan, Khari
 ---
 
-The vision service enables your smart machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
-While the camera component lets you access what your smart machine's camera sees, the vision service allows you to interpret your image data.
+The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
+While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
 Currently, the vision service supports the following kinds of operations:
 
@@ -27,6 +27,14 @@ Currently, the vision service supports the following kinds of operations:
 {{<modular-resources api="rdk:service:vision" type="vision">}}
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}-->
+
+## Used With
+
+{{< cards >}}
+{{< relatedcard link="/services/ml/" >}}
+{{< /cards >}}
+
+{{% snippet "required-legend.md" %}}
 
 ## API
 
@@ -476,12 +484,57 @@ await vision_svc.do_command(my_command)
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access your vision service
-visService, err := vision.from_robot(robot=robot, name='my_vision_svc')
+visService, err := vision.from_robot(robot=robot, name="my_vision_svc")
 if err != nil {
   logger.Fatal(err)
 }
 
 resp, err := visService.DoCommand(ctx, map[string]interface{}{"command": "dosomething", "someparameter": 52})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+Safely shut down the resource and prevent further use.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None
+
+**Returns:**
+
+- None
+
+```python {class="line-numbers linkable-line-numbers"}
+vision_svc = VisionClient.from_robot(robot, "my_vision_svc")
+
+await vision_svc.close()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.close).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error) : An error, if one occurred.
+
+```go {class="line-numbers linkable-line-numbers"}
+visService, err := vision.FromRobot(robot, "my_vision_svc")
+
+err := visService.Close(ctx)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).

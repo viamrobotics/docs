@@ -3,15 +3,168 @@ title: "Manage Robots with Viam's Robot API"
 linkTitle: "Robot Management"
 weight: 20
 type: "docs"
-description: "How to use the Robot API to monitor and manage your smart machines."
+description: "How to use the Robot API to monitor and manage your machines."
 tags: ["robot state", "sdk", "apis", "robot api"]
 ---
 
-The _robot API_ is the application programming interface that manages each of your robots running `viam-server`.
-It is the API for high level operations of each robot {{< glossary_tooltip term_id="part" text="part" >}}.
+The _robot API_ is the application programming interface that manages each of your machines running `viam-server`.
+Use the robot API to connect to your machine from within a supported [Viam SDK](/program/apis/), and send commands remotely.
+
+The robot API is supported for use with the [Viam Python SDK](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient), the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient), and the [Viam C++ SDK](https://cpp.viam.dev/classviam_1_1sdk_1_1RobotClient.html).
+
+## Establish a connection
+
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-These are some of the supported robot API methods. For a full list [see GitHub](https://python.viam.dev/autoapi/viam/proto/robot/index.html#module-viam.proto.robot).
+To find the api key, api key id, and robot address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab.
+Toggle **Include api key**, and then copy and paste the API key id and the API key into your environment variables or directly into the code:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+import asyncio
+
+from viam.rpc.dial import DialOptions, Credentials
+from viam.robot.client import RobotClient
+
+
+async def connect():
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
+    )
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+
+
+async def main():
+    # Make a RobotClient
+    robot_client = await connect()
+    print('Resources:')
+    print(robot.resource_names)
+    await robot_client.close()
+
+if __name__ == '__main__':
+    asyncio.run(main())
+```
+
+You can use this code to connect to your machine and instantiate a `RobotClient` that you can then use with the [robot API](#api).
+As an example, this code uses the instantiated `RobotClient` to return the {{< glossary_tooltip term_id="resource" text="resources" >}} currently configured.
+Remember to always close the connection (using `close()`) when done.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+package main
+
+import (
+  "context"
+
+  "go.viam.com/rdk/logging"
+  "go.viam.com/rdk/robot/client"
+  "go.viam.com/rdk/utils"
+  "go.viam.com/utils/rpc"
+)
+
+func main() {
+  logger := logging.NewLogger("client")
+  robot, err := client.New(
+      context.Background(),
+      "ADDRESS FROM THE VIAM APP",
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        Payload: "<API-KEY>",
+    })),
+  )
+  if err != nil {
+      logger.Fatal(err)
+  }
+
+  defer robot.Close(context.Background())
+  logger.Info("Resources:")
+  logger.Info(robot.ResourceNames())
+}
+```
+
+You can use this code to connect to your machine and instantiate a `robot` client that you can then use with the [Robot API](#api).
+As an example, this code uses the instantiated `robot` client to return the configured {{< glossary_tooltip term_id="resource" text="resources" >}}.
+Remember to always close the connection (using `Close()`) when done.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Once you have instantiated the robot client, you can run any of the [robot API methods](#api) against the `robot` object to communicate with your machine.
+
+### Configure a timeout
+
+Because the robot API needs to be able to reliably connect to a deployed machine even over a weak or intermittent network, it supports a configurable timeout for connection and command execution.
+
+To configure a timeout when using the robot API:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Add a `timeout` to [`DialOptions`](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.DialOptions):
+
+```python {class="line-numbers linkable-line-numbers"}
+# Add the timeout argument to DialOptions:
+dial_options = DialOptions(credentials=creds, timeout=10)
+```
+
+The example above shows a timeout of 10 seconds configured.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Import the `time` package, then add a timeout to your context using `WithTimeout`:
+
+```go {class="line-numbers linkable-line-numbers"}
+// Import the time package in addition to the other imports:
+import (
+  ...
+  "time"
+  ...
+)
+
+// Edit your main() to configure a timeoutContext, then pass this context to the dial invocation:
+func main() {
+  ctx := context.Background()
+  timeoutContext, cancel := context.WithTimeout(ctx, 10*time.Second)
+  defer cancel()
+  robot, err := client.New(
+      timeoutContext,
+      "ADDRESS FROM THE VIAM APP",
+      logger,
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        Payload: "<API-KEY>",
+    })),
+  )
+}
+```
+
+The example above shows a timeout of 10 seconds configured.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## API
+
+The robot API support the following selected methods.
+For the full list of methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [Viam Go SDK documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
@@ -177,7 +330,7 @@ If no names are passed in, the status of every resource configured on the robot 
 
 **Returns:**
 
-- [(List[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A list containing the status of each resource.
+- ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): A list containing the status of each resource.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_status).
 
@@ -408,3 +561,34 @@ For more information, see the [Typescript SDK Docs](https://ts.viam.dev/classes/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### WithAPIKey
+
+Create a client to interact with your robot using an API key as credentials.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `api_key` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): [An API key](/manage/cli/#authenticate) with access to the robot.
+
+- `api_key_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Your API key ID.
+  Must be a valid UUID.
+
+**Returns:**
+
+- [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient): A gRPC client for interacting with your robot.
+
+- [(List[viam.proto.common.ResourceName])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): List of all known resource names. A property of a [RobotClient](https://python.viam.dev/autoapi/viam/robot/client/index.html)
+
+```python
+api_key = "your_api_key"
+api_key_id = "valid_uuid"
+robot_client = RobotClient.with_api_key(api_key, api_key_id)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For the full list of robot API methods, see the [Viam Python SDK documentation](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient) or the [RDK (the Viam Go SDK) documentation](https://pkg.go.dev/go.viam.com/rdk/robot/client#RobotClient).

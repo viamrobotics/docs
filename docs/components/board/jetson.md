@@ -3,7 +3,7 @@ title: "Configure a jetson board"
 linkTitle: "jetson"
 weight: 20
 type: "docs"
-description: "Configure a jetson board."
+description: "Configure a jetson board to integrate a NVIDIA Jetson Orin Module and Developer Kit, NVIDIA Jetson AGX, or NVIDIA Jetson Nano into your robot."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 # SMEs: Gautham, Rand
@@ -13,7 +13,7 @@ tags: ["board", "components"]
 
 Follow one of our Jetson [setup guides](/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
-If you have a CSI camera, follow [these instructions](/modular-resources/examples/csi/) to configure it using the `viam:camera:csi` model.
+If you have a CSI camera, follow [these instructions](/registry/examples/csi/) to configure it using the `viam:camera:csi` model.
 
 {{% /alert %}}
 

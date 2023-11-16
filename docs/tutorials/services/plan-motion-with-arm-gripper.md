@@ -420,12 +420,12 @@ from viam.services.motion import MotionClient
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='LOCATION SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
 
@@ -546,14 +546,18 @@ import (
 )
 
 func main() {
-  logger := logger.NewDevelopmentLogger("client")
+  logger := logging.NewLogger("client")
   robot, err := client.New(
       context.Background(),
       "<ROBOT ADDRESS>",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "LOCATION SECRET FROM THE VIAM APP",
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
       })),
   )
   if err != nil {
