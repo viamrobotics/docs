@@ -705,3 +705,109 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### AddBoundingBoxToImageById
+
+Add a bounding box to an image specified by its id.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)): The ID of the image to add the bounding box to.
+- `label` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A label for the bounding box.
+- `x_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Min X value of the bounding box normalized from 0 to 1.
+- `y_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Min Y value of the bounding box normalized from 0 to 1.
+- `x_max_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Max X value of the bounding box normalized from 0 to 1.
+- `y_max_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Max Y value of the bounding box normalized from 0 to 1.
+
+**Returns:**
+
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The bounding box ID of the image.
+
+**Raises:**
+
+- `GRPCError` – If the X or Y values are outside of the [0, 1] range.
+
+```python {class="line-numbers linkable-line-numbers"}
+file_id = await data_client.file_upload_from_path(
+    part_id="INSERT YOUR PART ID",
+    tags=["tag_1", "tag_2"],
+    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveBoundingBoxFromImageById
+
+Removes a bounding box from an image specified by its id.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `bbox_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the bounding box to remove.
+- `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)): Binary ID of the image to to remove the bounding box from.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+file_id = await data_client.file_upload_from_path(
+    part_id="INSERT YOUR PART ID",
+    tags=["tag_1", "tag_2"],
+    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### StreamingDataCaptureUpload
+
+Uploads the metadata and contents of streaming binary data.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): the data to be uploaded, represented in bytes.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the resource associated with the file.
+- `file_ext` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): File extension type for the data. required for determining MIME type.
+- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional type of the component associated with the file (e.g., “movement_sensor”).
+- `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the component associated with the file.
+- `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the method associated with the file.
+- `method_parameters` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional dictionary of the method parameters. No longer in active use.
+- `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
+- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
+
+**Returns:**
+
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): the `file_id` of the uploaded data.
+
+**Raises:**
+
+- `GRPCError` – If an invalid part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+file_id = await data_client.file_upload_from_path(
+    part_id="INSERT YOUR PART ID",
+    tags=["tag_1", "tag_2"],
+    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.streaming_data_capture_upload).
+
+{{% /tab %}}
+{{< /tabs >}}
