@@ -539,12 +539,12 @@ The `--platform` argument accepts one of the following architectures:
 | `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules. |
 | `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules. |
 | `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | |
-| `linux/any`    | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running any architecture. | Suitable for Python modules that also require OS support. |
+| `linux/any`    | Linux computers running any architecture. | Suitable for Python modules that also require OS support. |
 | `darwin/any`   | macOS computers running any architecture. | |
-| `linux/amd64`  | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture. | |
-| `linux/arm64`  | Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | |
-| `linux/arm32v7`| Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm32v7` architecture. | |
-| `linux/arm32v6`| Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm32v6` architecture. | |
+| `linux/amd64`  | Linux computers running the Intel `x86_64` architecture. | |
+| `linux/arm64`  | Linux computers running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | |
+| `linux/arm32v7`| Linux computers running the `arm32v7` architecture. | |
+| `linux/arm32v6`| Linux computers running the `arm32v6` architecture. | |
 | `darwin/amd64` | macOS computers running the Intel `x86_64` architecture. | |
 | `darwin/arm64` | macOS computers running the `arm64` architecture, such as Apple Silicon. | |
 
