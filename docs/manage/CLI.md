@@ -536,23 +536,26 @@ The `--platform` argument accepts one of the following architectures:
 <!-- prettier-ignore -->
 |  Architecture  | Description | Common use case |
 | -------------- | ----------- | --------------- |
-| `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules. |
-| `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules. |
-| `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | |
-| `linux/any`    | Linux computers running any architecture. | Suitable for Python modules that also require OS support. |
-| `darwin/any`   | macOS computers running any architecture. | |
-| `linux/amd64`  | Linux computers running the Intel `x86_64` architecture. | |
-| `linux/arm64`  | Linux computers running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | |
-| `linux/arm32v7`| Linux computers running the `arm32v7` architecture. | |
-| `linux/arm32v6`| Linux computers running the `arm32v6` architecture. | |
-| `darwin/amd64` | macOS computers running the Intel `x86_64` architecture. | |
-| `darwin/arm64` | macOS computers running the `arm64` architecture, such as Apple Silicon. | |
+| `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules that do not require OS-level support (such as platform-specific dependencies). |
+| `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules on `amd64`. |
+| `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | Suitable for most Docker-based modules on `arm64`. |
+| `linux/any`    | Linux machines running any architecture. | Suitable for Python modules that also require Linux OS-level support (such as platform-specific dependencies). |
+| `darwin/any`   | macOS machines running any architecture. | Suitable for Python modules that also require macOS OS-level support (such as platform-specific dependencies). |
+| `linux/amd64`  | Linux machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on Linux `amd64`. |
+| `linux/arm64`  | Linux machines running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | Suitable for most C++ or Go modules on Linux `arm64`. |
+| `linux/arm32v7`| Linux machines running the `arm32v7` architecture. | Suitable for most C++ or Go modules on Linux `arm32v7`. |
+| `linux/arm32v6`| Linux machines running the `arm32v6` architecture. | Suitable for most C++ or Go modules on `arm32v6`. |
+| `darwin/amd64` | macOS machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on macOS `amd64`. |
+| `darwin/arm64` | macOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
 
 You can use the `uname -m` command on your computer or board to determine its system architecture.
 
 The `viam module upload` command only supports one `platform` argument at a time.
 If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
 Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+
+If you specify a platform that includes `any` (such as `any`, `any/amd64`, or `linux/any`), a machine that deploys your module will select the _most restrictive_ architecture from the ones you have provided for your module.
+For example, if you upload your module with support for `any/amd64` and then also upload with support for `linux/amd64`, a machine running the `linux/amd64` architecture deploys the `linux/amd64` version, while a machine running the `darwin/amd64` architecture deploys the `any/amd64` version.
 
 The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
 
