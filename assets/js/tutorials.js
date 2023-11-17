@@ -117,7 +117,7 @@ search.addWidgets([
   }),
   instantsearch.widgets.configure({
     hitsPerPage: 12,
-    facetFilters: ["resource: docs-tutorial"],
+    filters: ["resource: docs-tutorial"],
   }),
   customRefinementList({
     container: "languages-list",
