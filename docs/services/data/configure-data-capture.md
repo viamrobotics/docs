@@ -326,4 +326,4 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
 
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture data and train a model](/tutorials/services/data-mlmodel-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

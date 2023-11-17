@@ -98,4 +98,4 @@ In the example pictured here, the data management service syncs the configured c
 
 To view your captured data in the cloud, see [View Data](../../../manage/data/view/).
 
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture data and train a model](/tutorials/services/data-mlmodel-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

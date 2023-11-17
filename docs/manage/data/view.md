@@ -46,4 +46,4 @@ To export your captured data from the cloud, see [Export Data](../export/).
 
 You can use cloud image data to [train machine learning models](../../ml/train-model/) within Viam.
 
-For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture data and train a model](/tutorials/services/data-mlmodel-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

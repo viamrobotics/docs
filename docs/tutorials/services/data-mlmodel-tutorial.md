@@ -153,7 +153,7 @@ To train a model from your captured data, first tag your images with appropriate
    If you are not using a Try Viam rover, you can choose objects in your smart machine's surroundings instead.
 
 1. Repeat this process for other images that contain objects you want your model to be able to identify.
-   Once you have added a tag to an image, you can select that tag from the **Tags** drop down menu for other images that also feature the tagged object.
+   Once you have added a tag to an image, you can select that tag from the **Tags** dropdown menu for other images that also feature the tagged object.
 
    {{< alert title="Tip" color="tip" >}}
 
@@ -236,10 +236,10 @@ To deploy a model to your smart machine:
 
 ## The vision service
 
-Now that you have deployed an ML model to your smart machine using the ML model service, you are ready to configure your camera to detect the objects you've tagged by using the _vision service_.
-The [vision](/services/vision/) service enables a camera to, among other things, make use of deployed ML models to intelligently identify objects in in a camera feed.
+Now that you have deployed an ML model to your smart machine using the ML model service, you are ready to configure a _vision service_ which can detect the objects you've tagged in images from in a camera feed.
 
-To enable your smart machine's camera to identify the objects you've tagged, first add the vision service, then add a transform camera to be able to see the tagged objects on the **Control** tab.
+To create a camera that identifies the objects you've tagged and shows the identifications in its camera feed, first add the vision service, then add a transform camera.
+You can then see the tagged objects on the **Control** tab.
 
 ### Add the vision service
 
@@ -247,9 +247,10 @@ To enable your smart machine's camera to identify the objects you've tagged, fir
 1. Click the **Create service** button at the bottom of the page, and select **Vision**, then select **ML Model**.
 1. Give the service a name, like `my-vision-service`, then click **Create**.
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
-1. Click **Save Config** at the bottom of the window to save your changes.
 
    {{< imgproc src="/tutorials/data-management/vision-service-conf.png" alt="The vision service configuration pane showing the ML model service my-mlmodel-service added" resize="500x" >}}
+
+1. Click **Save Config** at the bottom of the window to save your changes.
 
 ### Add a transform camera
 
