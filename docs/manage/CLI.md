@@ -329,12 +329,12 @@ viam board list --organization=my-org
 ### data
 
 The `data` command allows you to manage robot data.
-With it, you can export data in the format of your choice or delete specified data.
-You can filter the data this command operates on.
+With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
+viam data database configure --org-id=<org-id> --password=<db-user-password>
 ```
 
 Examples:
@@ -347,6 +347,11 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
+
+# configure a database user for the Viam organization's MongoDB Atlas Data
+# Federation instance, in order to query tabular data
+viam data database configure --org-id=abc --password=my_password123
+viam data database hostname --org-id=abc
 ```
 
 #### Command options
@@ -355,8 +360,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
-| `database configure`      | configure a database user for the Viam org's MongoDB Atlas Data Federation instance  | - |
-| `database hostname`      | get the hostname to access a MongoDB Atlas Data Federation Instance  | - |
+| `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/configure-data-query/)  | - |
+| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/services/data/configure-data-query/)  | - |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
@@ -378,7 +383,7 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
 | `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
-| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|f alse |
+| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
 | `--part-id`      | filter by specified part id      |`export`, `delete`| false |
 | `--part-name`     | filter by specified part name       |`export`, `delete`| false |
 | `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |

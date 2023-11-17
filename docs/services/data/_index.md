@@ -17,9 +17,9 @@ The data management service captures data from Viam components and securely sync
 You can configure capture frequency individually for each component.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
-The service has two parts: [Data Capture](#data-capture) and [Cloud Sync](#cloud-sync).
+The service has two parts: [data capture](#data-capture) and [cloud sync](#cloud-sync).
 
-## Data Capture
+## Data capture
 
 The data management service captures data from one or more components locally on the robot's storage.
 The process runs in the background and, by default, stores data in the `~/.viam/capture` directory.
@@ -41,9 +41,9 @@ If your requirements change and you want to capture data from both components at
 Data capture is frequently used with [Cloud Sync](#cloud-sync).
 However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
 
-To configure data capture, see [data capture](../data/configure-data-capture/).
+To configure data capture, see [data capture](/services/data/configure-data-capture/).
 
-## Used With
+## Used with
 
 {{< cards >}}
 {{< relatedcard link="/components/arm/">}}
@@ -59,7 +59,7 @@ To configure data capture, see [data capture](../data/configure-data-capture/).
 
 {{% snippet "required-legend.md" %}}
 
-## Cloud Sync
+## Cloud sync
 
 The data management service securely syncs the specified data to the cloud at the user-defined frequency.
 Viam does not impose a minimum or maximum on the frequency of data syncing.
@@ -75,7 +75,7 @@ As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
 If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
 
-To configure cloud sync, see [configure cloud sync](../data/configure-cloud-sync/).
+To configure cloud sync, see [configure cloud sync](/services/data/configure-cloud-sync/).
 
 ### Considerations
 
@@ -150,18 +150,25 @@ err := data.Sync(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-## Next Steps
+## Use the data management service
 
-To use the data management service, [add the data management service](configure-data-capture/#add-the-data-management-service) to your robot.
-Then [configure data capture](configure-data-capture/) as needed and [configure cloud sync](configure-cloud-sync/).
+To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your smart machine.
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../tutorials/services/data-management-tutorial/).
+Then, [configure data capture](/services/data/configure-data-capture/) and [configure cloud sync](/services/data/configure-cloud-sync/) as needed.
 
-### Access and Export Data
+### Access, query, and export data
 
-Once you have configured data capture and cloud sync, you can [view](../../manage/data/view/) and [export](../../manage/data/export/) your data.
+Once you have configured data capture and cloud sync, you can [view your data](/manage/data/view/) in the Viam app from the **Data** tab.
 
-### Train and Deploy Machine Learning
+If you have uploaded tabular data, such as sensor readings, you can [configure data query](/services/data/configure-data-query/) to be able to query directly against that data using MQL or SQL.
+
+You can also [export](/manage/data/export/) your data as needed.
+
+### Train and deploy machine learning
 
 You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
 You can also [upload and use existing models](../../manage/ml/upload-model/).
+
+## Next steps
+
+For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-management-tutorial/).

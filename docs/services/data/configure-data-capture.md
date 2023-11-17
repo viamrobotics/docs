@@ -87,7 +87,6 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 {{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-
 {
   "services": [
     ...
@@ -122,6 +121,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
                 "disabled": false,
                 "method": "ReadImage",
                 "additional_params": {
+                  "reader_name": "cam1",
                   "mime_type": "image/jpeg"
                 }
               }
@@ -183,6 +183,7 @@ This config is just like that of a non-remote part; the remote connection is est
       "name": "my-esp32",
       "model": "esp32",
       "type": "board",
+      "namespace": "rdk",
       "attributes": {
         "pins": [27],
         "analogs": [
@@ -196,7 +197,29 @@ This config is just like that of a non-remote part; the remote connection is est
           }
         ]
       },
-      "depends_on": []
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Analogs",
+                "additional_params": {
+                  "reader_name": "A1"
+                },
+                "capture_frequency_hz": 10
+              },
+              {
+                "method": "Analogs",
+                "additional_params": {
+                  "reader_name": "A2"
+                },
+                "capture_frequency_hz": 10
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
@@ -301,7 +324,8 @@ The following example captures data from the `ReadImage` method of a camera:
                 "disabled": false,
                 "method": "ReadImage",
                 "additional_params": {
-                  "mime_type": "image/jpeg"
+                  "mime_type": "image/jpeg",
+                  "reader_name": "cam1"
                 }
               }
             ]
