@@ -160,7 +160,7 @@ Then, [configure data capture](/services/data/configure-data-capture/) and [conf
 
 Once you have configured data capture and cloud sync, you can [view your data](/manage/data/view/) in the Viam app from the **Data** tab.
 
-If you have uploaded tabular data, such as sensor readings, you can [configure data query](/services/data/configure-data-query/) to be able to query directly against that data using common query languages.
+If you have uploaded tabular data, such as sensor readings, you can [configure data query](/services/data/configure-data-query/) to be able to query directly against that data using MQL or SQL.
 
 You can also [export](/manage/data/export/) your data as needed.
 

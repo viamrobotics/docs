@@ -5,7 +5,7 @@ description: "Configure data query to query tabular data with MQL or SQL"
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "query", "sensor"]
-# SME: Aaron Casas
+# SME: Devin Hilly
 ---
 
 Configure data query to be able to directly query captured tabular data in the Viam cloud using [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL.
@@ -19,11 +19,11 @@ Only tabular data, such as [sensor](/components/sensor/) readings, can be querie
 
 Before you can configure data query, you must:
 
-- [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service)
-- [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
-  Only components that capture tabular data support data query.
-- [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
-  When you are able to [view your data in the Viam app](/manage/data/view/), you are ready to proceed.
+1. [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service)
+1. [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
+   Only components that capture tabular data support data query.
+1. [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
+   When you are able to [view your data in the Viam app](/manage/data/view/), you are ready to proceed.
 
 ## Configure data query
 
@@ -47,8 +47,7 @@ Once your smart machine has synced captured data to the Viam app, you can config
    This command configures a new database user for your org for use with data query.
    If you have already created this user, this command updates the password for that user instead.
 
-1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance.
-   Provide your organization's `org-id` from step 2:
+1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
 
    ```sh {class="line-numbers linkable-line-numbers"}
    viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
