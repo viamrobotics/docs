@@ -23,7 +23,7 @@ The period of time during which a client is connected to a robot is called a _se
 
 _Session management_ is a presence mechanism that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
 
-As a safety precaution, the default session management configuration ensures that a robot only moves when a client is actively connected.
+It also functions as a safety precaution: the default session management configuration ensures that a robot only moves when a client is actively connected and stops any components that remain running when a client disconnects.
 This is especially important for robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
@@ -84,6 +84,10 @@ If you manually manage sessions, each client must send at least one heartbeat wi
 
 The [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) is not currently provided in the Python or TypeScript SDKs.
 Use the Go Client SDK instead.
+
+{{< alert title="Tip" color="tip" >}}
+If you are looking to implement session management yourself only to increase the session window, you can increase the session window instead, by ...
+{{< /alert >}}
 
 To manage your session with the session management API:
 
