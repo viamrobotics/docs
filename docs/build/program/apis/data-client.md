@@ -776,7 +776,7 @@ Uploads the metadata and contents of streaming binary data.
 - `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): the data to be uploaded, represented in bytes.
 - `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the resource associated with the file.
 - `file_ext` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): File extension type for the data. required for determining MIME type.
-- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional type of the component associated with the file (e.g., “movement_sensor”).
+- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional type of the component associated with the file (For example, “movement_sensor”).
 - `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the component associated with the file.
 - `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the method associated with the file.
 - `method_parameters` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional dictionary of the method parameters. No longer in active use.
