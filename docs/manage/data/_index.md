@@ -35,5 +35,5 @@ Once you have configured data capture and cloud sync, you can <a href="/manage/d
 For a comprehensive tutorial on data capture, synchronization, and accessing captures data, see the following tutorial:
 
 {{< cards >}}
-{{% card link="/tutorials/services/data-management-tutorial/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{< /cards >}}

@@ -15,7 +15,7 @@ Click **Save Config** at the bottom of the window.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
 
-![data capture configuration](/tutorials/data-management/data-manager.png)
+![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
 By default, the data management service syncs data to Viam's cloud every 0.1 minutes, that is every 6 seconds.
 To change the sync interval, specify an interval in minutes in the interval field.
@@ -98,4 +98,4 @@ In the example pictured here, the data management service syncs the configured c
 
 To view your captured data in the cloud, see [View Data](../../../manage/data/view/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

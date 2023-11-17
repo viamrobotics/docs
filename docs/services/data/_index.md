@@ -153,8 +153,9 @@ err := data.Sync(context.Background(), nil)
 ## Use the data management service
 
 To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your smart machine.
-
 Then, [configure data capture](/services/data/configure-data-capture/) and [configure cloud sync](/services/data/configure-cloud-sync/) as needed.
+
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
 
 ### Access, query, and export data
 
@@ -171,4 +172,4 @@ You can also [upload and use existing models](../../manage/ml/upload-model/).
 
 ## Next steps
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-mlmodel-tutorial/).

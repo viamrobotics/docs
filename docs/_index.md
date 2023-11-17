@@ -219,7 +219,7 @@ sitemap:
 
 <div class="cards max-page">
   <div class="row">
-    {{< card link="/tutorials/services/data-management-tutorial/" class="green">}}
+    {{< card link="/tutorials/services/data-mlmodel-tutorial/" class="green">}}
     {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" class="pink">}}
     {{< card link="/tutorials/services/color-detection-scuttle/" class="purple">}}
     {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}
