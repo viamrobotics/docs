@@ -185,11 +185,9 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
    - `version`: provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
      You can later increment this value with subsequent `viam module upload` commands.
      See [Using the `--version` argument](/manage/cli/#using-the---version-argument) for more information.
-   - `platform`: provide _one_ of the following, depending on the platform you have built your custom module for (You can use the `uname -m` command to determine your system architecture):
-     - `darwin/arm64`: macOS computers running the `arm64` architecture, such as Apple Silicon.
-     - `darwin/amd64`: macOS computers running the Intel `x86_64` architecture.
-     - `linux/arm64`: Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
-     - `linux/amd64`: Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
+   - `platform`: provide the system architecture your custom module supports.
+     You can only provide one `platform` argument at a time to the `viam module upload` command.
+     See [Using the `--platform` argument](/manage/cli/#using-the---platform-argument) for the full list of supported architectures.
    - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
