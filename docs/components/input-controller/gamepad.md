@@ -77,7 +77,7 @@ If you have another controller that you want to use to control your robot, feel 
 
 ## Troubleshooting
 
-- If you are not able to see a drop-down menu with the name of your controller appear in the **Control** tab, try specifying the `dev_file` attribute to match the exact path to your device.
+- If you are not able to see a dropdown menu with the name of your controller appear in the **Control** tab, try specifying the `dev_file` attribute to match the exact path to your device.
   You can also try setting `auto_reconnect` to `True`.
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

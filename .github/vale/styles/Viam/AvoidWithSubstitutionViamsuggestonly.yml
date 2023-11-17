@@ -1,0 +1,11 @@
+extends: substitution
+message: "Consider if '%s' makes sense instead of '%s'."
+link: 'https://docs.google.com/document/d/1-SAcVPWcZHM1Na88d0_k5HVmc3tRtRHgmrXzKD3uF2I/edit'
+level: suggestion
+ignorecase: true
+action:
+  name: replace
+swap:
+  cloud app: Viam app or Viam platform
+  Scuttlebot: SCUTTLE robot
+  on the app: in the app

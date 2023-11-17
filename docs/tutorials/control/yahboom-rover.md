@@ -51,7 +51,7 @@ Start with the right set of wheels, and name the component `right`.
 For the `Type`, select `motor`.
 For the `Model`, select `gpio`.
 Click **Create Component**.
-Click the **Board** drop-down and select `local` since that is what this motor driver is wired to.
+Click the **Board** dropdown and select `local` since that is what this motor driver is wired to.
 
 You will need to tell Viam how this motor is wired to the Pi.
 In the **Component Pin Assignment** section of the right motor card, toggle the **Type** to **In1/In2** because that is the compatible mode for this motor driver.

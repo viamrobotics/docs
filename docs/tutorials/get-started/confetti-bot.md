@@ -147,9 +147,9 @@ Again, we named it “start” to refer to the button being pressed, but this na
 
 After clicking **Create**, there is a pin assignment type toggle.
 Select **In1/In2** since that is compatible with the type of input our motor controller expects.
-In the drop downs for A/In1 and B/In2, choose `13 GPIO 27` and `15 GPIO 22` and for PWM choose `11 GPIO 17` corresponding to our wiring.
+In the dropdowns for A/In1 and B/In2, choose `13 GPIO 27` and `15 GPIO 22` and for PWM choose `11 GPIO 17` corresponding to our wiring.
 
-In the **Board** drop-down within attributes, choose the name of the board the motor controller is wired to (“party”).
+In the **Board** dropdown within attributes, choose the name of the board the motor controller is wired to (“party”).
 This will ensure that the board initializes before the motor driver when the robot boots up.
 
 ![Motor component configured in the Viam app, the component tab is named start, with a type attribute motor and model attribute gpio. It has the attributes as of the board as party, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 13 GPIO 27, b/In2 as 15 GPIO 22, pwm as 11 GPIO 17.](/tutorials/confetti-bot/app-motor-attribute.png)

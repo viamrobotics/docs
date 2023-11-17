@@ -18,7 +18,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `arm` type, then select the `ur5e` model.
 Enter a name for your arm and click **Create**.
 
-![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/ur5e-ui-config.png)
+![Web UI configuration panel for an arm of model ur5e in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/ur5e-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

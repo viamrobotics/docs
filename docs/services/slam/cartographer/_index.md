@@ -206,7 +206,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 1. Start a mapping session
 
-   Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -363,7 +363,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 2. Start a mapping session
 
-   Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -480,7 +480,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
 2.  Start a mapping session
 
-    Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+    Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
 
     Unlike when creating or updating a map, you do not need to start and end a slam session.
     The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your robot's position on it.

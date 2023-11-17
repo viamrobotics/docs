@@ -193,11 +193,11 @@ Just remember to use that name consistently in the following steps.
 Click **Create component** and add the left [motor](/components/motor/) with type `motor` and model `gpio`.
 Name it `left` and click **Create**.
 
-Select the name of the board the motor controller is wired to (for example, "local") from the **Board** drop-down.
+Select the name of the board the motor controller is wired to (for example, "local") from the **Board** dropdown.
 
 Toggle the **Component Pin Assignment Type** to **In1/In2** since that is compatible with the input type our motor controller expects.
 
-In the **A/In1** and **B/In2** drop-downs, choose `11 GPIO 17` and `13 GPIO 27`, respectively.
+In the **A/In1** and **B/In2** dropdowns, choose `11 GPIO 17` and `13 GPIO 27`, respectively.
 
 Set **Max RPM** to `150`.
 
@@ -210,7 +210,7 @@ Click **Save config** at the bottom of the screen.
 Click **Create component** and add the right [motor](/components/motor/) with type `motor` and model `gpio`.
 Name it `right` and click **Create**.
 
-Select the name of the board the motor controller is wired to (for example, "local") from the **Board** drop-down.
+Select the name of the board the motor controller is wired to (for example, "local") from the **Board** dropdown.
 
 Toggle the **Component Pin Assignment Type** to **In1/In2**.
 
@@ -235,7 +235,7 @@ Configure a [base component](/components/base/) to coordinate your motors so you
 Click **Create component** and add the base with type `base` and model `wheeled`.
 Give it a name (you can call it `base`) and click **Create**.
 
-From the **Right Motors** and **Left Motors** drop downs, select `right` and `left`, respectively (the motors you configured in the previous step).
+From the **Right Motors** and **Left Motors** dropdowns, select `right` and `left`, respectively (the motors you configured in the previous step).
 
 Set the **Wheel Circumference** to `200` and the **Width** to `130` if you used [the same rover we did](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/).
 If you used different hardware, measure the diameter of your wheels and multiply by pi for the circumference.
@@ -348,11 +348,11 @@ If you set the pin state to high, the solenoid will actuate.
 If you set it to low, it should deactivate the solenoid.
 Since we already assembled the robot, setting pin 37 to **high** launches your foam dart launcher if its loaded.
 
-{{< figure src="/tutorials/foam-dart-launcher/board-low.png"  alt="Board component, G P I O section showing Low selected on the Pin State drop-down." title="Board component, GPIO section showing Low selected on the Pin State drop-down" width="800">}}
+{{< figure src="/tutorials/foam-dart-launcher/board-low.png"  alt="Board component, G P I O section showing Low selected on the Pin State dropdown." title="Board component, GPIO section showing Low selected on the Pin State dropdown" width="800">}}
 
 {{< figure src="/tutorials/foam-dart-launcher/board-displaying-high.png"  alt="Board component, G P I O section with pin 37 set to High." title="Board component, GPIO section with pin 37 set to High." width="800">}}
 
-{{< figure src="/tutorials/foam-dart-launcher/board-high.png"  alt="Board component, G P I O section showing High selected on the Pin State drop-down." title="Board component, GPIO section showing High selected on the Pin State drop-down" width="800">}}
+{{< figure src="/tutorials/foam-dart-launcher/board-high.png"  alt="Board component, G P I O section showing High selected on the Pin State dropdown." title="Board component, GPIO section showing High selected on the Pin State dropdown" width="800">}}
 
 ## Control with the Viam App
 

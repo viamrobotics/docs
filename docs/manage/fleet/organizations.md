@@ -26,9 +26,9 @@ For example, you may have an account with one organization for your personal rob
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
 You organization is shown in the upper right corner of [the Viam app](https://app.viam.com).
-If you click on the organization drop down, the app displays your name, email, and a list of organizations you belong to.
+If you click on the organization dropdown, the app displays your name, email, and a list of organizations you belong to.
 
-{{< imgproc alt="The org drop down showing an example user's name, email, Sign out button, list of organizations, and org settings button." src="/manage/app-usage/my-org.png" resize="400x" declaredimensions=true >}}
+{{< imgproc alt="The org dropdown showing an example user's name, email, Sign out button, list of organizations, and org settings button." src="/manage/app-usage/my-org.png" resize="400x" declaredimensions=true >}}
 
 If you used an email invite to sign up, you have two organizations to begin with: the organization that invited you and a personal organization for other projects.
 

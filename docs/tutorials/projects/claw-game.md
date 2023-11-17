@@ -146,7 +146,7 @@ If you have two computers within the _same robot_, you can use one as the main p
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
-Use the parts drop-down menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
+Use the parts dropdown menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
 
 <p>
 {{<imgproc src="/tutorials/claw-game/app-planning.png" resize="500x" declaredimensions=true alt="UI for adding a sub part named planning." class="aligncenter">}}
@@ -157,7 +157,7 @@ Follow the instructions on the **Setup** tab to install `viam-server` on your de
 For more information about parts, see [Robot Architecture: Parts, Sub-Parts and Remotes](/manage/parts-and-remotes/).
 
 Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
-Navigate to the **Config** tab of your robot's page and select your main part from the parts drop down.
+Navigate to the **Config** tab of your robot's page and select your main part from the parts dropdown.
 
 ### Configure the board
 
@@ -204,7 +204,7 @@ Click **Save config** in the lower-left corner of the screen.
 
 ### Configure the arm
 
-Use the parts drop-down menu to navigate to the `planning` sub-part.
+Use the parts dropdown menu to navigate to the `planning` sub-part.
 
 {{<imgproc src="/tutorials/claw-game/app-subpart-planning.png" resize="300x" declaredimensions=true alt="Navigating to the sub-part named planning." class="">}}
 

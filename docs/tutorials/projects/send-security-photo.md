@@ -78,7 +78,7 @@ Select type `camera` and model `webcam`.
 
 Enter `my-camera` as the name, then click **Create** to add the camera.
 
-Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+Click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
@@ -120,7 +120,7 @@ Click the **Services** subtab.
 
    In the new vision service panel, configure your service.
 
-   Select `people` from the **ML Model** drop-down.
+   Select `people` from the **ML Model** dropdown.
 
    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision.png)
 

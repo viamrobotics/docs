@@ -1,6 +1,6 @@
 ## Test the arm
 
-Once your arm is configured and connected, go to the [**Control** tab](/manage/fleet/robots/#control) and click on the arm's drop-down panel.
+Once your arm is configured and connected, go to the [**Control** tab](/manage/fleet/robots/#control) and click on the arm's dropdown panel.
 
 Use the buttons to move the end position or the joints and check whether it moves as expected.
 
