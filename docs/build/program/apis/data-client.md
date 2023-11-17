@@ -731,11 +731,7 @@ Add a bounding box to an image specified by its id.
 - `GRPCError` – If the X or Y values are outside of the [0, 1] range.
 
 ```python {class="line-numbers linkable-line-numbers"}
-file_id = await data_client.file_upload_from_path(
-    part_id="INSERT YOUR PART ID",
-    tags=["tag_1", "tag_2"],
-    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
-)
+placeholder
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
@@ -760,11 +756,7 @@ Removes a bounding box from an image specified by its id.
 - None.
 
 ```python {class="line-numbers linkable-line-numbers"}
-file_id = await data_client.file_upload_from_path(
-    part_id="INSERT YOUR PART ID",
-    tags=["tag_1", "tag_2"],
-    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
-)
+placeholder
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
@@ -800,11 +792,7 @@ Uploads the metadata and contents of streaming binary data.
 - `GRPCError` – If an invalid part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-file_id = await data_client.file_upload_from_path(
-    part_id="INSERT YOUR PART ID",
-    tags=["tag_1", "tag_2"],
-    filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
-)
+placeholder
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.streaming_data_capture_upload).
