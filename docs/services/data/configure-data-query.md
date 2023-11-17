@@ -120,4 +120,4 @@ For information on connecting to your Atlas instance from other MQL clients, see
 To view your captured data in the cloud, see [View Data](/manage/data/view/).
 To export your synced data, see [Export data](/manage/data/export/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-mlmodel-tutorial/).

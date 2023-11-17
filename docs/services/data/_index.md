@@ -172,4 +172,4 @@ You can also [upload and use existing models](../../manage/ml/upload-model/).
 
 ## Next steps
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-mlmodel-tutorial/).
