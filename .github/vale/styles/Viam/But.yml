@@ -2,7 +2,7 @@
 
 extends: existence
 message: "Do not start a paragraph with a 'but'."
-level: warning
+level: error
 scope: paragraph
 action:
   name: remove

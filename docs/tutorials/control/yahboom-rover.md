@@ -130,7 +130,7 @@ Try playing around with these and get a sense of how the base moves.
 ![A screenshot of the CONTROL tab UI with buttons to make the base move.](/tutorials/yahboom-rover/baseui.png)
 
 Awesome! Now you have a rover which you can drive using a webUI.
-But wouldn’t it be more fun to drive it around like an RC car? Now you can try attaching a Bluetooth controller and using that to control the rover.
+In the next step, we'll try to make it more fun to drive around like an RC car by attaching a Bluetooth controller and using that to control the rover.
 If you’ve ever connected a Bluetooth device using the Linux command line, great! If not, strap in, it’s going to be a bit of a ride.
 If you would like to skip adding a Bluetooth controller, [jump ahead to the Configuring the Camera Component section](#configuring-the-camera-component) of the tutorial.
 
@@ -214,8 +214,7 @@ At this point moving the left analogue stick should result in movement of the ro
 
 ## Configuring the Camera Component
 
-But wait!
-This rover has a camera on it.
+Before we can do that: this rover has a camera on it which we need to configure.
 
 Once again, find the **Create Component** section at the bottom of the **Config** tab.
 Follow [these instructions on how to connect and configure a camera](/components/camera/webcam/).
@@ -246,5 +245,5 @@ Saving the config and moving to the control UI, you should notice two new panels
 ![A screenshot of the servo control card on the CONTROL tab. There are buttons to change the angles of the pan and tilt servos, independently.](/tutorials/yahboom-rover/servos.png)
 
 Congratulations, you have successfully configured your rover with Viam!
-But for now, all the control is manual.
-You can use the [Python SDK](https://python.viam.dev) to write your own code to control it, or check out one of our other [tutorials](../../)!
+For now, all the control is manual.
+If you want to go further and make your rover autonomous, you can use the [Python SDK](https://python.viam.dev) to write your own code to control it, or check out one of our other [tutorials](../../)!

@@ -153,7 +153,7 @@ Once you've marked the wires, close up the gearbox with the screws you removed e
 
 We have now reached the part of the tutorial where we will begin to actually modify the robot.
 If the thought of anything other than restoring an Omnibot 2000 to its original working condition makes you sad, we understand.
-But first, remember it was in someone's attic gathering dust for years.
+However, remember it was in someone's attic gathering dust for years.
 Second, we will re-use the motors and gears and leave the original circuit boards in-place (albeit no longer used).
 It's a [restomod](https://www.goldeagle.com/tips-tools/what-is-a-restomod/)!
 
