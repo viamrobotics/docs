@@ -45,7 +45,7 @@ This enhancement allows you to:
 
 ### Added: Modular registry
 
-The [Modular Registry](/registry) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+The [Modular Registry](/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
 You can:
 
