@@ -163,20 +163,18 @@ Query tabular data that has been synced to the Viam app using {{< glossary_toolt
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `sql_query` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The SQL `SELECT` statement to run against your synced tabular data.
+   Tabular data is held in a database named `sensorData` and a table named `readings`, so you your query should `SELECT` from `"readings"` or `"sensorData.readings"`.
 
 **Returns:**
 
+- (object): A struct containing the query results.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(robot, "my_data_service")
-
-// Sync data stored on the robot to the cloud.
-err := data.Sync(context.Background(), nil)
+// code example
 ```
 
 {{% /tab %}}
@@ -197,20 +195,18 @@ Query tabular data that has been synced to the Viam app using {{< glossary_toolt
 
 **Parameters:**
 
-- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+- `mql_query` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The [MQL query](https://www.mongodb.com/docs/manual/tutorial/query-documents/) to run against your synced tabular data.
+   Tabular data is held in a database named `sensorData` and a collection named `readings`, so you should run your query against `"sensorData.readings"`.
 
 **Returns:**
 
+- (object): A struct containing the query results.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(robot, "my_data_service")
-
-// Sync data stored on the robot to the cloud.
-err := data.Sync(context.Background(), nil)
+// code example
 ```
 
 {{% /tab %}}
@@ -218,7 +214,7 @@ err := data.Sync(context.Background(), nil)
 
 ## Use the data management service
 
-To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your smart machine.
+To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your machine.
 Then, [configure data capture](/services/data/configure-data-capture/) and [configure cloud sync](/services/data/configure-cloud-sync/) as needed.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

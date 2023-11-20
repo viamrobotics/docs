@@ -24,7 +24,7 @@ You do not need to perform any additional configuration when [querying data in t
 
 Before you can configure data query, you must:
 
-1. [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
+1. [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your machine.
 1. [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
    Only components that capture tabular data support data query.
 1. [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
@@ -32,7 +32,7 @@ Before you can configure data query, you must:
 
 ## Configure data query
 
-Once your smart machine has synced captured data to the Viam app, you can configure data query using the Viam CLI:
+Once your machine has synced captured data to the Viam app, you can configure data query using the Viam CLI:
 
 1. If you haven't already, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
 
@@ -42,7 +42,7 @@ Once your smart machine has synced captured data to the Viam app, you can config
    viam organizations list
    ```
 
-1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your smart machine's synced data is stored.
+1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
    Provide your organization's `org-id` from step 2, and a desired new password for your database user.
 
    ```sh {class="line-numbers linkable-line-numbers"}
