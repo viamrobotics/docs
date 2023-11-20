@@ -21,9 +21,8 @@ tags:
 When you connect to a robot using an SDK, the SDK connects to the robot's `viam-server` instance as a _client_.
 The period of time during which a client is connected to a robot is called a _session_.
 
-_Session management_ is a presence mechanism that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
-
-As a safety precaution, the default session management configuration ensures that a robot only moves when a client is actively connected.
+_Session management_ is a safety precaution that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
+The default session management configuration checks for presence to ensures that a robot only moves when a client is actively connected and stops any components that remain running when a client disconnects.
 This is especially important for robots that physically move.
 For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
@@ -64,7 +63,19 @@ Heartbeats are sent automatically from Viam's SDKs unless you disable them with 
 Heartbeats are automatically sent at an interval that is one fifth of the heartbeat window.
 For example, if the heartbeat window is 5 seconds, clients will each send a heartbeat every 1 second.
 
-You can adjust the heartbeat window in the configuration of your robot by adding the following to your robot's Raw JSON configuration:
+You can adjust the heartbeat window in the configuration of your robot:
+
+{{< tabs >}}
+{{% tab name="Builder UI" %}}
+
+On your **Auth/Network** tab, set the **Heartbeat Window**:
+
+![Heartbeat window configuration screen](/program/sessions/heartbeatwindow.png)
+
+{{% /tab %}}
+{{% tab name="Raw JSON" %}}
+
+Add the following `heartbeat_window` configuration to your `network.sessions` object:
 
 ```json
   ... // components {...}, services {...},
@@ -76,6 +87,13 @@ You can adjust the heartbeat window in the configuration of your robot by adding
   ...
 ```
 
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< alert title="Note" color="note" >}}
+You must restart your machine for the new `heartbeat_window` to take effect.
+{{< /alert >}}
+
 The default heartbeat window is 2 seconds if this configuration is omitted.
 
 If you manually manage sessions, each client must send at least one heartbeat within the window you set.
@@ -84,6 +102,10 @@ If you manually manage sessions, each client must send at least one heartbeat wi
 
 The [Session Management API](https://pkg.go.dev/go.viam.com/rdk/session) is not currently provided in the Python or TypeScript SDKs.
 Use the Go Client SDK instead.
+
+{{< alert title="Tip" color="tip" >}}
+If you are looking to implement session management yourself only to increase the session window, you can increase the session window instead, by [increasing the `heartbeat_window`](#heartbeats).
+{{< /alert >}}
 
 To manage your session with the session management API:
 
