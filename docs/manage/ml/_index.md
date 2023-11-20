@@ -35,8 +35,8 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   </tr>
   <tr>
     <th>{{<imgproc src="/manage/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
-      <b>2. Label</b>
-      <p>Once you have collected data, you can <a href="/manage/data/label/">label your data</a> in preparation for training machine learning models.</p>
+      <b>2. Create a Dataset and Label</b>
+      <p>Once you have collected data, <a href="/manage/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
     </th>
   </tr>
   <tr>

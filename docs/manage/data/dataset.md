@@ -1,15 +1,21 @@
 ---
-title: "Label Data"
-linkTitle: "Label Data"
-description: "Label image data on the DATA page in the Viam Cloud."
+title: "Label data and create datasets"
+linkTitle: "Create Datasets"
+description: "Label data and create datasets for managing data and creating machine learning models."
 weight: 39
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 images: ["/manage/data/label-dog.gif"]
+aliases:
+  - "/manage/data/label"
 # SME: Tahiya Salam and Alexis Wei
 ---
 
-To label data in a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+To manage your data you can use labels and datasets.
+
+## Label data
+
+To label data, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
 
 On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
 
@@ -66,6 +72,51 @@ If you want to expand the image, click on the expand side menu arrow in the corn
 Repeat this with all images in your dataset.
 
 To delete a tag, click the cross next to the corresponding label.
+
+## Datasets
+
+{{< alert title="Support" color="info" >}}
+Datasets currently only work for images.
+{{< /alert >}}
+
+### Create a dataset
+
+To create a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+
+On the **DATASETS** subtab, click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
+
+![Create dataset UI](/manage/data/create-dataset.png)
+
+you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
+
+### Add or remove data from a dataset
+
+To add or remove data from a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+
+On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
+
+To add image to a dataset, click on the image and select the dataset in the Datasets dropdown.
+You can select an existing dataset or create a new one from this dropdown.
+
+{{<gif webm_src="/manage/data/add-to-dataset.webm" mp4_src="/manage/data/add-to-dataset.mp4" alt="Add image to dataset">}}
+
+To remove an image from a dataset click on the delete button next to the dataset.
+
+{{<gif webm_src="/manage/data/delete-from-dataset.webm" mp4_src="/manage/data/delete-from-dataset.mp4" alt="Remove from dataset">}}
+
+### View the data in a dataset
+
+Once you have added data to your dataset, you can view the data from the **DATASETS** tab by clicking on your dataset.
+
+You can also add or remove labels or tags from this menu or remove data from the dataset by clicking on an image and using the appearing menu.
+
+### Train a model on a dataset
+
+To train a model on a dataset, see [Train a model](/manage/ml/train-model/).
+
+### Delete a dataset
+
+To delete a dataset, right click on the dataset and click on the **Delete** button that appears.
 
 ## Next Steps
 

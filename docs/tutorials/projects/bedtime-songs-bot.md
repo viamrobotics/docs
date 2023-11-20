@@ -221,7 +221,7 @@ Now, use these pictures to train your machine learning model.
 Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your robot.
 After selecting the image, you will see all of the data that is associated with that image.
 
-[Add tags](/manage/data/label/#image-tags) for each of the puzzle pieces.
+[Add tags](/manage/data/dataset/#image-tags) for each of the puzzle pieces.
 Type in your desired tag in the **Tags** section and save the tag.
 Since Tess wanted to classify their toys by shape, they used `“octagon”`, `“circle”`, `“triangle”`, `“oval"`, `“rectangle”`, `“pentagon”`, `“diamond”`, and `“square”`.
 

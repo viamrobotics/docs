@@ -11,7 +11,7 @@ tags: ["data management", "cloud", "query", "sensor"]
 Configure data query to be able to directly query captured tabular data in the Viam cloud using [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL.
 Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
-You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/label/#image-tags).
+You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/dataset/#image-tags).
 
 Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
