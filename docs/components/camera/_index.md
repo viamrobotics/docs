@@ -97,7 +97,7 @@ from viam.components.camera import Camera
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-
+```go
 import (
   "go.viam.com/rdk/components/camera"
 )
