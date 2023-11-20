@@ -14,22 +14,21 @@ aliases:
 
 ### Added: Test an ML model in browser
 
-Now, after you upload and train your machine learning model, you can test its results in the **Data** tab.
-With this feature you can now:
+After you upload and train a machine learning model, you can test its results in the **Data** tab.
 
-- Select an image in the **Data** tab and access the **run model** section to choose and run a model
-- View the results directly above the image
-- Refine models by iteratively tagging more images for training based on observed performance
+This allows you to refine models by iteratively tagging more images for training based on observed performance.
+
+For more information, see [Test classification models with existing images in the cloud](/services/vision/classification/#existing-images-in-the-cloud).
 
 To use this update, the classifier must have been trained or uploaded after September 19 2023.
-Additionally, the current version of this feature exclusively supports classification models.
+The current version of this feature exclusively supports classification models.
 
-## Added: PLC support
+### Added: PLC support
 
-Support for the [Revolution Pi line of PLCs](https://revolutionpi.com/) from KUNBUS has been integrated into the Viam platform in the form of a module.
+The Viam platform now supports the [Revolution Pi line of PLCs](https://revolutionpi.com/) from KUNBUS in the form of a [module](https://app.viam.com/module/viam-labs/viam-revolution-pi).
 This collaboration allows you to leverage the Raspberry Pi-based Revolution Pi, which runs on Linux and has a [specially designed I/O modules](https://www.raspberrypi.com/products/compute-module-4/?variant=raspberry-pi-cm4001000) for streamlined interaction with industrial controls, eliminating the need for additional components.
 
-Read the blog post for a step-by-step guide on using a PLC with Viam.
+Read the [Viam PLC Support](https://www.viam.com/post/viam-plc-support-democratizing-access-to-smart-ot-and-ics) blog post for a step-by-step guide on using a PLC with Viam.
 
 ### Improved: SLAM map creation
 
@@ -46,9 +45,9 @@ This enhancement allows you to:
 
 ### Added: Modular registry
 
-The Modular Registry enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+The [Modular Registry](/registry) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
-This new feature allows you to:
+You can:
 
 - Publish modules on the registry
 - Add modules to any machine's configuration with a few clicks
@@ -56,21 +55,15 @@ This new feature allows you to:
 
 ### Added: Mobile app
 
-Now, you can use a mobile application, available for download now in the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to and control your Viam-powered machines directly from your mobile device.
+You can use a [mobile application](/manage/fleet/#the-viam-mobile-app), available for download now in the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to and control your Viam-powered machines directly from your mobile device.
 
 ### Added: Power sensor component
 
-You now have the capability to use a power sensor component to monitor the voltage, current, and power consumption within your machine's system.
-
-To integrate your power sensor into Viam, you can [configure a module](/registry/configure/), or select from the following supported models:
-
-- [INA219](/components/power-sensor/ina219/)
-- [INA226](/components/power-sensor/ina226/)
-- [Renogy](/components/power-sensor/renogy/)
+You now have the capability to use a [power sensor component](/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
 
 ### Added: Filter component's data before the cloud
 
-This update allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/#cloud-sync).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/#cloud-sync).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -81,9 +74,9 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 ## August 2023
 
-### Added: Board command added to the CLI
+### Added: Configure a customlinux board
 
-You can now upload manage Linux board definitions more efficiently.
+You can now upload Linux board definitions more efficiently.
 
 With the `board` command, you can:
 
@@ -101,10 +94,9 @@ With the latest improvements, you can now:
 - Move between full-screen images effortlessly with the <> arrow buttons or arrow keys
 - Return to the standard view by using the escape key or collapse button
 
-### Added: Duplicate component
+### Added: Duplicate component button
 
 You now have the ability to duplicate any config component, service, module, remote, or process.
-This functionality enables the duplication of any configured component and simplifies the process of creating identical configurations for resources.
 
 To use this feature:
 
@@ -120,19 +112,9 @@ Viam now supports sign-up/log-in through Apple Single Sign-On.
 
 Note that currently, accounts from different SSO providers are treated separately, with no account merging functionality.
 
-### Added: Viam VS Code Extension
-
-There is now a Visual Studio Code extension for Viam that offers a set of code snippets, streamlining the process of building robot applications by providing predefined code for common tasks.
-
 ### Improved: Arm component API
 
-You can now access a [`GetKinematics` method](https://github.com/viamrobotics/api/blob/main/proto/viam/common/v1/common.proto#L186-L203) in the arm API, allowing you to request and receive kinematic information.
-
-With this update:
-
-- Request kinematic information through the arm client
-- Receive kinematic information from arm implementations (modular arms)
-- Experience enhanced functionality through added tests
+Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 ## June 2023
 
@@ -145,15 +127,14 @@ If you depend on sensor data to plan and control robot operations, this feature 
 
 The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your robot.
 
-Session management helps you to ensure safer operation of your robot when dealing with actuating controls.
-Sessions are enabled by default, with the option to disable them by setting `RobotClient.Options.disable_sessions = True`.
+[Session management](/program/apis/sessions/) helps you to ensure safer operation of your robot when dealing with actuating controls.
+Sessions are enabled by default, with the option to disable [them](/program/apis/sessions/#disable-default-session-management).
 
 ### Added: Connect an ODrive motor controller as a Viam module
 
-You can integrate and control ODrive motor controllers with Viam using a Python modular resource.
-This update comes with more options for setting up and controlling your robots' movement.
+You can integrate and control ODrive motor controllers with Viam using a modular resource.
 
-Visit the[GitHub repository](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
+Visit the [GitHub repository](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
 
 ### Added: Implement custom robotic arms as Viam modules
 
@@ -164,16 +145,17 @@ This update enables you to implement custom models of an arm component as a [mod
 - `movetoJointPositions`
 - `GetKinematics`
 
-Then, use the motion planning service to specify poses, and Viam handles the rest.
+Then, use the [motion planning service](/services/motion/) to specify poses, and Viam handles the rest.
+
+For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm).
 
 ### Added: Apply a crop transform to camera views
 
 You can now apply a [crop transform](/components/camera/transform) to the views of your connected cameras in the Viam app.
 
-This feature enables you to:
+This feature enables you to focus on a specific area of your camera feed.
 
-- Focus on a specific area of your camera feed (for example, crop a video stream of a busy street to just the sidewalk)
-- Export screenshots for further analysis
+For example, crop a video stream of a busy street to just the sidewalk.
 
 ### Improved: Gantry component
 
@@ -199,11 +181,11 @@ The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-ty
 
 ### Added: Train object detection ML models
 
-You now have the capability to directly train object detection models in addition to image classification models from within the Viam app.
+You now have the capability to directly [train object detection models](/manage/ml/train-model/) in addition to image classification models from within the Viam app.
 
 This update allows you to:
 
-- Generate labels by drawing bounding boxes around specific objects in your images or a single image.
+- Add labels by drawing bounding boxes around specific objects in your images or a single image.
 - Create a curated subset of data for training by filtering images based on labels or tags.
 
 ### Added: Permissions for organizations in Viam
@@ -216,11 +198,11 @@ Now when you invite collaborators to join your organization, you can assign perm
 - **Operator**: These members can only see and use the [remote control tab](/manage/fleet/robots/#control).
   This role is best for those on your team who are teleoperating or remotely controlling robots.
 
-[Learn more here](/manage/fleet/) about assigning permissions and collaborating with others on Viam.
+For more information about assigning permissions and collaborating with others on Viam, see [Fleet Management](/manage/fleet/).
 
 ### Improved: Control RoboClaw motor controllers with the driver
 
-When using a RoboClaw motor controller without encoders connected to your motors, now have more direct control over the RoboClaw’s functionality within Viam or through the motor API.
+When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within Viam or through the motor API.
 
 For example, in the Viam app, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
 
