@@ -17,7 +17,7 @@ Only tabular data, such as [sensor](/components/sensor/) readings, can be querie
 
 {{< alert title="Important" color="note" >}}
 These steps are only required when querying tabular data directly from an MQL-compatible client, such as `mongosh`.
-You do not need to perform any additional configuration  when [querying data in the Viam app](/manage/data/query/#query-tabular-data-in-the-viam-app) or [querying data using the API](/manage/data/query/#query-tabular-data-using-the-api).
+You do not need to perform any additional configuration when [querying data in the Viam app](/manage/data/query/#query-tabular-data-in-the-viam-app) or [querying data using the API](/manage/data/query/#query-tabular-data-using-the-api).
 {{< /alert >}}
 
 ## Requirements

@@ -1,7 +1,7 @@
 ---
 title: MQL
 id: mql
-full_link: 
+full_link:
 short_description: MQL is the MongoDB query language, similar in form to SQL but specific to the MongoDB document model.
 aka:
 ---
