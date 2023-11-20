@@ -9,8 +9,7 @@ images: ["/services/vision/dog-detector.png"]
 # SMEs: Bijan, Khari
 ---
 
-<!-- uncomment once the changelog is back up -->
-<!-- _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_ -->
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
 
 <div class="td-max-width-on-larger-screens">
   <div class="alignright" >
