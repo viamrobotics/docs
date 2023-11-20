@@ -20,7 +20,7 @@ This allows you to refine models by iteratively tagging more images for training
 
 For more information, see [Test classification models with existing images in the cloud](/services/vision/classification/#existing-images-in-the-cloud).
 
-To use this update, the classifier must have been trained or uploaded after September 19 2023.
+To use this update, the classifier must have been trained or uploaded after September 19, 2023.
 The current version of this feature exclusively supports classification models.
 
 ### Added: PLC support
@@ -76,12 +76,7 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 ### Added: Configure a customlinux board
 
-You can now upload Linux board definitions more efficiently.
-
-With the `board` command, you can:
-
-- Use the `viam board upload` command to upload a board definition file
-- Specify the board's name, organization, version, and the path to the JSOn file
+You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
 
 ### Added: Image inspection for ML training
 
@@ -128,7 +123,7 @@ If you depend on sensor data to plan and control robot operations, this feature 
 The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your robot.
 
 [Session management](/program/apis/sessions/) helps you to ensure safer operation of your robot when dealing with actuating controls.
-Sessions are enabled by default, with the option to disable [them](/program/apis/sessions/#disable-default-session-management).
+Sessions are enabled by default, with the option to [disable sessions](/program/apis/sessions/#disable-default-session-management).
 
 ### Added: Connect an ODrive motor controller as a Viam module
 
