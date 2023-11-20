@@ -1,7 +1,7 @@
 ---
 title: "Export Data"
 linkTitle: "Export Data"
-description: "Export data from the data management service."
+description: "Export data from the Viam app to your local computer using the Viam CLI."
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
