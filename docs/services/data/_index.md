@@ -164,7 +164,7 @@ Query tabular data that has been synced to the Viam app using {{< glossary_toolt
 **Parameters:**
 
 - `sql_query` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The SQL `SELECT` statement to run against your synced tabular data.
-   Tabular data is held in a database named `sensorData` and a table named `readings`, so you your query should `SELECT` from `"readings"` or `"sensorData.readings"`.
+  Tabular data is held in a database named `sensorData` and a table named `readings`, so you your query should `SELECT` from `"readings"` or `"sensorData.readings"`.
 
 **Returns:**
 
@@ -196,7 +196,7 @@ Query tabular data that has been synced to the Viam app using {{< glossary_toolt
 **Parameters:**
 
 - `mql_query` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The [MQL query](https://www.mongodb.com/docs/manual/tutorial/query-documents/) to run against your synced tabular data.
-   Tabular data is held in a database named `sensorData` and a collection named `readings`, so you should run your query against `"sensorData.readings"`.
+  Tabular data is held in a database named `sensorData` and a collection named `readings`, so you should run your query against `"sensorData.readings"`.
 
 **Returns:**
 
