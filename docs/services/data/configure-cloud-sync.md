@@ -98,7 +98,7 @@ In the example pictured here, the data management service syncs the configured c
 
 To view your captured data in the cloud, see [View Data](/manage/data/view/).
 
-To export your captured data from the cloud, see [Export Data](manage/data/export/).
+To export your captured data from the cloud, see [Export Data](/manage/data/export/).
 
 You can [query](/manage/data/query/) tabular data that you have synced to the cloud, and can use images you have synced to [train machine learning models](/manage/ml/train-model/) within the Viam app.
 

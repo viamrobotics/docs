@@ -45,31 +45,12 @@ You must have the [owner](/manage/fleet/#permissions) role in order to query dat
 
 ## Query tabular data using the API
 
-Once you have synced tabular data to the Viam app, you can use data management API methods in your code to query tabular data using either SQL or MQL.
+Once you have synced tabular data to the Viam app, you can use the following data management API methods in your `go` code to query tabular data using either SQL or MQL:
 
-{{< tabs >}}
-{{% tab name="Go" %}}
+- Use the [`TabularDataBySQL`](/services/data/#tabulardatabysql) method to query synced tabular data using SQL.
+- Use the [`TabularDataByMQL`](/services/data/#tabulardatabymql) method to query synced tabular data using the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
 
-### TabularDataBySQL
-
-Use the [`TabularDataBySQL`](/services/data/#tabulardatabysql) method to query synced tabular data using SQL:
-
-```go {class="line-numbers linkable-line-numbers"}
-// TabularDataBySQL code example
-```
-
-### TabularDataByMQL
-
-Use the [`TabularDataByMQL`](/services/data/#tabulardatabymql) method to query synced tabular data using MQL:
-
-```go {class="line-numbers linkable-line-numbers"}
-// TabularDataByMQL code example
-```
-
-See the [MongoDB Query Language Documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for more information on MQL syntax.
-
-{{% /tab %}}
-{{< /tabs >}}
+These APIs are currently implemented only in the [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
 
 ## Query tabular data directly from a compatible client
 
