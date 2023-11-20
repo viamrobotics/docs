@@ -56,7 +56,7 @@ Then remove and fill in the attributes as applicable to your input controller, a
 {{% /tab %}}
 {{< /tabs >}}
 
-From the **Depends On** drop-down menu, select all of the source input controllers for your `mux` controller to combine.
+From the **Depends On** dropdown menu, select all of the source input controllers for your `mux` controller to combine.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

@@ -470,7 +470,7 @@ Click the **quadruped** component panel to expand it and reveal the controls.
 
 ![Screenshot of the Control tab with the custom base card expanded to reveal arrow control buttons.](/tutorials/custom-base-dog/control-tab.png)
 
-1. Enable the camera stream from the **Select Cameras** drop-down.
+1. Enable the camera stream from the **Select Cameras** dropdown.
 2. Toggle the **Keyboard Disabled** switch to **Keyboard Enabled** to use the WASD keys on your keyboard.
 3. Use the **W**, **A**, **S** and **D** buttons to make the robot walk forward, turn left, walk backward or turn right.
 

@@ -66,7 +66,7 @@ Select `camera` for type and `webcam` for model.
 
 Enter `my-camera` as the name for your camera, then click **Create**.
 
-Click the **video path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+Click the **video path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
@@ -106,7 +106,7 @@ Enter `myPeopleDetector` for the name, then click **Create**.
 
 In the new vision service panel, configure your service.
 
-From the **Select model** drop-down, select the name of the TFLite model (`people`).
+From the **Select model** dropdown, select the name of the TFLite model (`people`).
 
 ### Configure the detection camera
 

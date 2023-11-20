@@ -38,9 +38,9 @@ You can make a multi-part robot by first configuring one part which is the "main
 The main part will be able to access the resources of its sub-parts.
 Sub-parts will _not_ have access to the resources of the main part.
 
-Use the parts drop-down menu in the top banner of your robot's page on the [Viam app](https://app.viam.com) to add a new sub-part:
+Use the parts dropdown menu in the top banner of your robot's page on the [Viam app](https://app.viam.com) to add a new sub-part:
 
-![The Viam app interface with the part drop-down open. A new part called 'my-sub-part' is being created.](/manage/parts-and-remotes/sub-part-config.png)
+![The Viam app interface with the part dropdown open. A new part called 'my-sub-part' is being created.](/manage/parts-and-remotes/sub-part-config.png)
 
 To delete a sub-part or make it the main part, use the buttons in the top right of the **Config** tab.
 

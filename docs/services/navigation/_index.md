@@ -174,7 +174,7 @@ To start, add the frame system service to your rover [base](/components/base/) a
 - Click **Add Frame**.
 
   - Keep the `parent` frame as `world`.
-    Select the **Geometry** drop-down menu.
+    Select the **Geometry** dropdown menu.
   - Configure a **Geometry** for the base that reflects its physical dimensions.
     Reference [these instructions](/services/frame-system/#bounding-geometries) to configure your geometry and measure the physical dimensions of your base.
 

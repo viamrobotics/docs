@@ -24,7 +24,7 @@ Enter a name for your arm and click **Create**.
 
 There are no attributes available for this modular arm.
 
-![Web UI configuration panel for an arm of model yahboom-dofbot in the Viam app, with Attributes & Depends On drop-downs and the option to add a frame.](/components/arm/yahboom-dofbot-ui-config.png)
+![Web UI configuration panel for an arm of model yahboom-dofbot in the Viam app, with Attributes & Depends On dropdowns and the option to add a frame.](/components/arm/yahboom-dofbot-ui-config.png)
 
 Edit and fill in the attributes as applicable.
 

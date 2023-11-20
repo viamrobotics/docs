@@ -23,7 +23,7 @@ Click the name of a robot to go to that robot's page, where you'll find a variet
 
 ## Navigating the robot page
 
-The banner at the top of the robot page displays the robot's location, name, and a drop down list of all {{< glossary_tooltip term_id="part" text="parts" >}} of that robot.
+The banner at the top of the robot page displays the robot's location, name, and a dropdown list of all {{< glossary_tooltip term_id="part" text="parts" >}} of that robot.
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
@@ -106,7 +106,7 @@ Your robot and the Viam app communicate securely using [WebRTC](https://pkg.go.d
 
 The **Security** tab allows you to access, generate, and delete the **Robot part secret keys** and the **Robot part API keys** of your robot.
 
-![The Security tab of a robot`s page noting the Robot part API keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](/manage/app-usage/robot-secrets.png)
+![The Security tab of a robot`s page noting the Robot part API keys dropdown menu, with the clipboard icon on the far right and the Generate Key button underneath the dropdown.](/manage/app-usage/robot-secrets.png)
 
 You can copy a secret by clicking on the clipboard icon.
 

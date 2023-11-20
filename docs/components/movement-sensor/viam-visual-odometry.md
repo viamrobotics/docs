@@ -51,7 +51,7 @@ Follow the instructions below to set up the `monocular-visual-odometry` module o
 1. Select the `camera` type, then select the `webcam` model.
 1. Enter a name for your camera, then click **Create**.
 1. In the resulting camera component configuration pane, select a **Video path** for your camera.
-   If your robot is live, the drop-down menu auto-populates any identified camera stream paths.
+   If your robot is live, the dropdown menu auto-populates any identified camera stream paths.
 1. Then, click **Create component** in the lower-left corner again.
 1. Select **Movement Sensor**, then select `visual_odometry:opencv_orb`.
    You can also search for "visual_odometry".
