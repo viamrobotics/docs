@@ -2,7 +2,7 @@
 title: "Changelog"
 linkTitle: "Changelog"
 weight: 110
-draft: true
+draft: false
 type: "docs"
 description: "A lot of added features, improvements, and changes over time."
 aliases:
@@ -45,7 +45,7 @@ This enhancement allows you to:
 
 ### Added: Modular registry
 
-The [Modular Registry](/registry) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+The [Modular Registry](/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
 
 You can:
 
@@ -142,11 +142,11 @@ This update enables you to implement custom models of an arm component as a [mod
 
 Then, use the [motion planning service](/services/motion/) to specify poses, and Viam handles the rest.
 
-For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm).
+For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm/).
 
 ### Added: Apply a crop transform to camera views
 
-You can now apply a [crop transform](/components/camera/transform) to the views of your connected cameras in the Viam app.
+You can now apply a [crop transform](/components/camera/transform/) to the views of your connected cameras in the Viam app.
 
 This feature enables you to focus on a specific area of your camera feed.
 
