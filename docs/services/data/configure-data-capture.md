@@ -348,8 +348,8 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 ## Next Steps
 
-To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
+To sync your captured data with the cloud, [configure cloud sync](/services/data/configure-cloud-sync/).
 
-You can [query](../query/) tabular data that you have synced to the cloud, and can use images you have synced to [train machine learning models](../../ml/train-model/) within the Viam app.
+You can [query](/manage/data/query/) tabular data that you have synced to the cloud, and can use images you have synced to [train machine learning models](/manage/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

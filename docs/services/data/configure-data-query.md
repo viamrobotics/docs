@@ -58,69 +58,14 @@ Once your smart machine has synced captured data to the Viam app, you can config
    viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
    ```
 
-   This command returns the `hostname` (including database name) you can use to connect to your data store on the Viam organization's MongoDB Atlas instance.
+   This command returns the `hostname` (including database name) to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
+   You will need this to query your data in the next section.
 
 For more information, see the documentation for the [Viam CLI `database` command](/manage/cli/#data).
 
-## Query data directly
-
-Once you have [configured data query](#configure-data-query), you can directly query synced tabular data using MQL or SQL.
-
-You can use any client that is capable of connecting to MongoDB Atlas instances, including [the `mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
-Use the `hostname` and `user` returned from the setup above to connect from your desired client to the MongoDB Atlas instance.
-
-For example, to connect to your Viam organization's MongoDB Atlas instance and query data using the `mongosh` shell:
-
-1. If you haven't already, [download the `mongosh` shell](https://www.mongodb.com/try/download/shell).
-   See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
-
-1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
-
-   ```sh {class="line-numbers linkable-line-numbers"}
-   mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username db-user-<YOUR-ORG-ID>
-   ```
-
-   Where:
-
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), as returned from `viam data database hostname` above.
-   - `<YOUR-ORG-ID>` is your organization ID as determined above.
-     The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
-
-1. Once connected, you can run [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL to query captured data directly. For example:
-
-   - The following MQL query searches the `sensorData` database and `readings` collection, and returns sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
-
-     ```mongodb {class="line-numbers linkable-line-numbers"}
-     AtlasDataFederation sensorData> db.readings.aggregate(
-         [
-             { $match: {
-                 'robot_id': 'abcdef12-abcd-abcd-abcd-abcdef123456',
-                 'component_name': 'my-ultrasonic-sensor',
-                 'data.readings.distance': { $gt: .2 } } },
-             { $count: 'numStanding' }
-         ] )
-     [ { numStanding: 215 } ]
-     ```
-
-   - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/query/sql/shell/connect/#aggregation-pipeline-stage-syntax) to perform the same query as the MQL above, but using SQL syntax:
-
-     ```mongodb {class="line-numbers linkable-line-numbers"}
-     AtlasDataFederation sensorData> db.aggregate(
-         [
-             { $sql: {
-                 statement: "select count(*) as numStanding from readings \
-                     where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
-                     component_name = 'my-ultrasonic-sensor' and data.readings.distance > 0.2",
-                 format: "jdbc"
-             }}
-         ] )
-     [ { '': { numStanding: 215 } } ]
-     ```
-
-For more information on MQL syntax see the [MongoDB Query Language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
-For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
-
 ## Next Steps
+
+Once configured, you can [query your data directly](/manage/data/query/#query-tabular-data-directly-from-a-compatible-client) from your chosen client.
 
 To view your captured data in the cloud, see [View Data](/manage/data/view/).
 To export your synced data, see [Export Data](/manage/data/export/).
