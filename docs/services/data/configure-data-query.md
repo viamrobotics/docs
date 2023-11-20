@@ -1,25 +1,30 @@
 ---
-title: "Configure Data Query"
-linkTitle: "Configure Data Query"
-description: "Configure data query to query tabular data with MQL or SQL"
+title: "Configure Direct Data Query"
+linkTitle: "Configure Direct Data Query"
+description: "Configure direct data query to query tabular data with MQL or SQL"
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "query", "sensor"]
 # SME: Devin Hilly
 ---
 
-Configure data query to be able to directly query captured tabular data in the Viam cloud using [MQL](https://www.mongodb.com/docs/manual/tutorial/query-documents/) or SQL.
+Configure direct data query to be able to query captured tabular data in the Viam cloud using {{< glossary_tooltip term_id="mql" text="MQL" >}} or {{< glossary_tooltip term_id="sql" text="SQL" >}} from a MQL-compatible client, such as `mongosh` or MongoDB Compass.
 Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
 You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/dataset/#image-tags).
 
 Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
+{{< alert title="Important" color="note" >}}
+These steps are only required when querying tabular data directly from an MQL-compatible client, such as `mongosh`.
+You do not need to perform any additional configuration  when [querying data in the Viam app](/manage/data/query/#query-tabular-data-in-the-viam-app) or [querying data using the API](/manage/data/query/#query-tabular-data-using-the-api).
+{{< /alert >}}
+
 ## Requirements
 
 Before you can configure data query, you must:
 
-1. [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service)
+1. [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
 1. [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
    Only components that capture tabular data support data query.
 1. [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
@@ -57,7 +62,7 @@ Once your smart machine has synced captured data to the Viam app, you can config
 
 For more information, see the documentation for the [Viam CLI `database` command](/manage/cli/#data).
 
-## Query data
+## Query data directly
 
 Once you have [configured data query](#configure-data-query), you can directly query synced tabular data using MQL or SQL.
 
@@ -112,12 +117,12 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
      [ { '': { numStanding: 215 } } ]
      ```
 
-For more information on MQL syntax see the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
-For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your cluster tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
+For more information on MQL syntax see the [MongoDB Query Language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
+For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 ## Next Steps
 
 To view your captured data in the cloud, see [View Data](/manage/data/view/).
-To export your synced data, see [Export data](/manage/data/export/).
+To export your synced data, see [Export Data](/manage/data/export/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](/tutorials/services/data-mlmodel-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

@@ -5,7 +5,7 @@ description: "Export data from the data management service."
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Aaron Casas
+# SME: Devin Hilly
 ---
 
 First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.

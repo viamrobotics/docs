@@ -5,7 +5,7 @@ description: "Configure cloud sync to automatically capture data in the Viam app
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Aaron Casas
+# SME: Devin Hilly
 ---
 
 Before you can configure [cloud sync](../#cloud-sync), you must [add the data management service](../configure-data-capture/#add-the-data-management-service).
@@ -97,5 +97,9 @@ In the example pictured here, the data management service syncs the configured c
 ## Next Steps
 
 To view your captured data in the cloud, see [View Data](../../../manage/data/view/).
+
+To export your captured data from the cloud, see [Export Data](../export/).
+
+You can [query](../query/) tabular data that you have synced to the cloud, and can use images you have synced to [train machine learning models](../../ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

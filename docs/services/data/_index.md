@@ -10,7 +10,7 @@ aliases:
   - "/data-management/"
   - "/services/data-management/"
 icon: "/services/icons/data-capture.svg"
-# SME: Aaron Casas
+# SME: Devin Hilly
 ---
 
 The data management service captures data from Viam components and securely syncs data to Viam's cloud.
@@ -148,6 +148,74 @@ err := data.Sync(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
+### TabularDataBySQL
+
+{{% alert title="Important" color="tip" %}}
+
+This method is not yet available in the Viam Python SDK.
+
+{{% /alert %}}
+
+Query tabular data that has been synced to the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}}.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+
+```go {class="line-numbers linkable-line-numbers"}
+data, err := datamanager.FromRobot(robot, "my_data_service")
+
+// Sync data stored on the robot to the cloud.
+err := data.Sync(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### TabularDataByMQL
+
+{{% alert title="Important" color="tip" %}}
+
+This method is not yet available in the Viam Python SDK.
+
+{{% /alert %}}
+
+Query tabular data that has been synced to the Viam app using {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+
+```go {class="line-numbers linkable-line-numbers"}
+data, err := datamanager.FromRobot(robot, "my_data_service")
+
+// Sync data stored on the robot to the cloud.
+err := data.Sync(context.Background(), nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Use the data management service
 
 To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your smart machine.
@@ -155,13 +223,24 @@ Then, [configure data capture](/services/data/configure-data-capture/) and [conf
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
 
-### Access, query, and export data
+### Access and export data
 
 Once you have configured data capture and cloud sync, you can [view your data](/manage/data/view/) in the Viam app from the **Data** tab.
 
-If you have uploaded tabular data, such as sensor readings, you can [configure data query](/services/data/configure-data-query/) to be able to query directly against that data using MQL or SQL.
-
 You can also [export](/manage/data/export/) your data as needed.
+
+### Query data
+
+If you have synced tabular data to the Viam app, such as [sensor](/components/sensor/) readings, you can perform {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against that data.
+You can chose to:
+
+- Run SQL or MQL queries against your synced tabular data from the **Query** subtab under the **Data** tab in the Viam app.
+- Use the data management API methods in your code to query tabular data.
+- Directly query tabular data from a MQL-compatible client, such as `mongosh`.
+
+See [Query Data](/manage/data/query/) for instructions on using each of these approaches.
+
+Only tabular data, such as sensor readings, can be queried in this fashion.
 
 ### Train and deploy machine learning
 

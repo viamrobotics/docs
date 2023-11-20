@@ -5,7 +5,7 @@ description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Aaron Casas
+# SME: Devin Hilly
 ---
 
 After the data management service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).
@@ -44,6 +44,6 @@ You can also delete data using the [Viam CLI](../../cli/).
 
 To export your captured data from the cloud, see [Export Data](../export/).
 
-You can use cloud image data to [train machine learning models](../../ml/train-model/) within Viam.
+You can [query](../query/) tabular data that you have synced to the cloud, and can use images you have synced to [train machine learning models](../../ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
