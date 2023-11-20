@@ -575,3 +575,16 @@ Basically the only images that you'd want to use declaredimensions on are the on
 
 If it does resize, use the largest size the image can take up as the image to `resize` the image to.
 {{< /alert >}}
+
+### Image size
+
+Images should be under 1MB in size.
+Hugo throws a warning during local builds (such as `make serve-prod`) if your images exceed this size.
+
+To resize images over 1MB, use the image resize tool of your choice.
+For example, to resize `png` images, you could use [tinypng](https://tinypng.com/).
+
+{{< alert title="Note" color="note" >}}
+The `imgproc` shortcode itself only resizes height and width measurements (and converts format), but _does not alter the source image_.
+Please use an image size minimizer to resize the source image to below 1MB as well.
+{{< /alert >}}
