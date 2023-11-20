@@ -66,7 +66,7 @@ While following this tutorial, you'll complete the following steps to train and 
 
 In the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
-Navigate to your robot's page on the app and click on the [**Config** tab](/manage/configuration/).
+Navigate to your robot's page in the app and click on the [**Config** tab](/manage/configuration/).
 
 First, add your personal computer's webcam to your robot as a [camera](/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
@@ -78,10 +78,10 @@ Click the **Components** subtab, then click **Create component** in the lower-le
 Select `camera` for the type, then select `webcam` for the model.
 Enter `cam` for the name of your [camera component](/components/camera/), then click **Create**.
 
-![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the drop-down menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
+![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the dropdown menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
 
 You do not have to edit the attributes of your camera at this point.
-Optionally, select a fixed filepath for the camera from the automated options in the **video path** drop-down menu.
+Optionally, select a fixed filepath for the camera from the automated options in the **video path** dropdown menu.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
@@ -108,7 +108,7 @@ On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the conf
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your camera.
 
 To view your webcam's image stream, navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
-Click on the drop-down menu labeled **camera** and toggle the feed on.
+Click on the dropdown menu labeled **camera** and toggle the feed on.
 If you want to test your webcam's image capture, you can click on **Export Screenshot** to capture an image, as shown below:
 
 {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
@@ -119,7 +119,7 @@ Now, configure the [Data Management Service](/services/data/configure-data-captu
 {{% tab name="Builder UI" %}}
 
 1. On the **Config** tab, select **Services**, and navigate to **Create service**.
-2. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the drop-down, and name your service `Data-Management-Service`.
+2. Add a service so your robot can sync data to the Viam app in the cloud: For **type**, select **Data Management** from the dropdown, and name your service `Data-Management-Service`.
    If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
 3. Make sure both **Data Capture** and **Cloud Sync** are enabled as shown:
 
@@ -227,14 +227,14 @@ Since Tess wanted to classify their toys by shape, they used `“octagon”`, `�
 
 Scroll between your images.
 Add tags for each image that shows an object of the corresponding shape.
-You can select tags from the **Recently used** drop down menu.
+You can select tags from the **Recently used** dropdown menu.
 Try to have at least 50 images labeled for each tag.
 This is important for the next step.
 
 #### Filter based on tags
 
 Now that you've tagged the image data, you have the option to [filter your images](/manage/data/view/) according to those tags.
-Head over to the **Filtering** menu and select a tag from the drop down list to view all labeled images.
+Head over to the **Filtering** menu and select a tag from the dropdown list to view all labeled images.
 
 ### Train a model
 

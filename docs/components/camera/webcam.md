@@ -23,7 +23,7 @@ Enter a name for your camera and click **Create**.
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 
 Edit and fill in the attributes as applicable.
-If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
+If you click on the **Video Path** field while your robot is live, a dropdown autopopulates with identified camera paths.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -139,7 +139,7 @@ Viam supports the following pixel formats:
 - YUY2
 - Z16
 
-If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** drop down menu, which is visible when you click the **Show more** button.
+If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
 
 ## View the camera stream
 

@@ -1,19 +1,18 @@
 extends: substitution
 message: "Consider if '%s' makes sense instead of '%s'."
 link: 'https://docs.google.com/document/d/1-SAcVPWcZHM1Na88d0_k5HVmc3tRtRHgmrXzKD3uF2I/edit'
-level: suggestion
+level: error
 ignorecase: true
 action:
   name: replace
 swap:
   in the website: on the website
   web app: Viam app or Viam platform
-  cloud app: Viam app or Viam platform
   user of an org: member of an org
   compute parts: Computer
   microprocessor: Raspberry Pi or Jetson or another specific term
   main part and child part: main part and sub-part
   main part and non-main part: main part and sub-part
   subpart: sub-part
-  on the app: in the app
-  Scuttlebot: SCUTTLE robot
+  drop down: dropdown
+  drop-down: dropdown

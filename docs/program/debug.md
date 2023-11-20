@@ -15,7 +15,7 @@ Read and filter a robot's logs to view updates from your robot's `viam-server` i
 
 Navigate to the **Logs** tab of your robot's page in [the Viam app](https://app.viam.com).
 
-Use the **Filter** input to filter the logs by key terms, and select from the **Levels** drop-down menu to filter the logs by warning level:
+Use the **Filter** input to filter the logs by key terms, and select from the **Levels** dropdown menu to filter the logs by warning level:
 
 ![Filtering by log level of info in the logs tab of the Viam app.](/program/sdks/log-level-info.png)
 

@@ -180,7 +180,7 @@ For more information, see [Train a model](/manage/ml/train-model/).
 
 Once you have tagged your images, you can use those tags to see all the images with specific tags.
 
-To filter images by tag, use the **Tags** drop down filter on the left-hand side to select the tag you want to filter by, then click the **Search** button to limit displayed images to only those matching the provided tag.
+To filter images by tag, use the **Tags** dropdown filter on the left-hand side to select the tag you want to filter by, then click the **Search** button to limit displayed images to only those matching the provided tag.
 
 For example, the following shows an images data set filtered to only show images tagged with the `red_star` tag:
 
@@ -205,9 +205,9 @@ To train a model:
 1. Give your model a name, like `my-object-detector`, and select the **Model type**:
    - Use `Single label classification` if you only added one tag per image.
    - Use `Multi label classification` if you added more than one tag for some images.
-1. Select the tags you want to train your model on from the **Labels for training** drop down, then click **Train model**.
+1. Select the tags you want to train your model on from the **Labels for training** dropdown, then click **Train model**.
    Unselected tags will be ignored, and will not be part of the resulting model.
-   If you do not see a tag you expected to see in the **Labels for training** drop down, ensure your filtered images contain images with the tag.
+   If you do not see a tag you expected to see in the **Labels for training** dropdown, ensure your filtered images contain images with the tag.
 
    {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane with five tags filtered" resize="1200x" >}}
 

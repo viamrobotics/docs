@@ -19,7 +19,7 @@ aliases:
 
 ## Install the Micro-RDK
 
-The [Micro-RDK Installer](https://github.com/viamrobotics/micro-rdk/tree/main/micro-rdk-installer) is a CLI that allows you to flash a build of Micro-RDK, along with your robot's credentials and your wifi information, directly to your ESP32.
+The Micro-RDK Installer is a CLI that allows you to flash a build of Micro-RDK, along with your robot's credentials and your wifi information, directly to your ESP32.
 
 With this installation, you can use your ESP32 with all supported resource APIs, but you cannot write your own code directly interacting with the chip.
 If you want to program the chip directly, follow the setup instructions in [the Micro-RDK Development Setup](/installation/prepare/microcontrollers/development-setup/) instead.

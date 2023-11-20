@@ -113,7 +113,7 @@ Click **Create component** and add your webcam with type `camera` and model `web
 Name the component `petcam`, then click **Create**.
 
 Click on the **video path**.
-If the robot is connected, a drop-down menu with available cameras will appear.
+If the robot is connected, a dropdown menu with available cameras will appear.
 Select your camera.
 
 ![The Viam app showing the configuration page for a camera component with model webcam.](/tutorials/pet-treat-dispenser/app-camera-webcam.png)
@@ -127,7 +127,7 @@ If you are unsure which camera to select, selecte one, save the configuration an
 Finally, click **Create component** and add another component with type `motor` and model `gpiostepper`.
 
 1. If you used the same pins as in the wiring diagram, set the **direction** to pin `15 GPIO 22`, and the **step** logic to pin `16 GPIO 23`.
-1. Set the **Enable pins** toggle to `low`, then set the resulting **Enabled Low** drop-down to pin `18 GPIO 24`.
+1. Set the **Enable pins** toggle to `low`, then set the resulting **Enabled Low** dropdown to pin `18 GPIO 24`.
 1. Set the **ticks per rotation** to `400` and select your board model, `pi`.
 
 ![The Viam app showing the configuration page for a stepper motor component with model gpiostepper.](/tutorials/pet-treat-dispenser/app-stepper-gpiostepper.png)
@@ -209,7 +209,7 @@ To enable the [data capture](/services/data/configure-data-capture/) on your rob
 
 1. Under the **Config** tab, select **Services**, and navigate to **Create service**.
    Here, you will add a service so your robot can sync data to the Viam app in the cloud.
-1. For **type**, select **Data Management** from the drop-down, and give your service a name.
+1. For **type**, select **Data Management** from the dropdown, and give your service a name.
    We used `pet-data` for this tutorial.
 1. Ensure that **Data Capture** is enabled and **Cloud Sync** is enabled.
    Enabling data capture here will allow you to view the saved images in the Viam app and allow you to easily tag them and train your own machine learning model.
@@ -267,14 +267,14 @@ Add tags for each image that shows your pet.
 Note we are just tagging the whole image as we are training an image classification model.
 
 Continue parsing through your collected data (in this case images) and tag away to your heart's desire.
-Once you create tags, it is as simple as selecting your image and then selecting the tag in the **Recently used** drop down menu.
+Once you create tags, it is as simple as selecting your image and then selecting the tag in the **Recently used** dropdown menu.
 Tag as many images with as many tags until you are happy with your dataset.
 This is important for the next step.
 
 ### Filter based on tags
 
 Upon completion of tagging your data set, you can now [filter images](/manage/data/view/) according to those tags.
-Head over to the **Filtering** menu and select a tag from the drop down list.
+Head over to the **Filtering** menu and select a tag from the dropdown list.
 In the following screenshot, we have filtered the images in our data set according to one tag, in this case `toast`, (which is the name of our doggy test subject) and now we can easily view all images of Toast:
 
 ![The filtering tab with toast entered as a filtered tag.](/tutorials/pet-treat-dispenser/app-data-filter-tags.png)
@@ -310,7 +310,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 1. From the **Services** subtab, click **Create service** in the lower-left corner.
 1. Select `Vision` as the type and `ML Model` as the model.
 1. Enter a name for your ML model service and click **Create**.
-1. Select the model you previously created in the drop down menu.
+1. Select the model you previously created in the dropdown menu.
 
    ![The vision service panel with the puppymodel selected.](/tutorials/pet-treat-dispenser/app-service-vision.png)
 

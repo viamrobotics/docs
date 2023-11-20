@@ -942,7 +942,7 @@ Your robot's configuration page now includes a panel for your camera.
    {{<imgproc src="/tutorials/pet-photographer/add-local-module-select.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
 1. On the following screen:
 
-   1. Select the camera from the drop down menu.
+   1. Select the camera from the dropdown menu.
    1. Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} for your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}, `example:camera:colorfilter`.
    1. Provide a name for this instance of your modular resource.
       This name must be different from the module name.

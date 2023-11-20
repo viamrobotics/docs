@@ -309,7 +309,7 @@ We need to do several things to prepare a new gripper component for motion.
    - Leave the orientation as the default.
    - For **Geometry Type** choose **Box**.
    - Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
-4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`.
+4. Include the `myArm` component in the **Depends On** dropdown for `myGripper`.
 5. Save this new robot configuration.
    - Your `viam-server` instance should update automatically.
 

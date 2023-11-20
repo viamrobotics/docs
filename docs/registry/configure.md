@@ -211,7 +211,7 @@ The following update options are available:
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
 - **Latest**: Always update to the latest version of this module available from the Viam registry as soon as a new version becomes available.
 
-When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** drop down menu, including past versions if desired.
+When using the **Patch (X.Y.Z)** version type, you may select any patch version of the module from the **Version** dropdown menu, including past versions if desired.
 
 The current deployed version of your module and the latest version of that module available from the Viam registry are shown on this pane for your reference.
 
@@ -364,7 +364,7 @@ To add a local module on your robot:
 
 1. On the next screen:
 
-   - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the drop down menu.
+   - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
      If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
    - Enter a name for this instance of your modular resource.

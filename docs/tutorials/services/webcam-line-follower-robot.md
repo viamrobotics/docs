@@ -92,7 +92,7 @@ Click on the **Components** subtab.
 
    Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
    Click **Create component** to add the camera.
-   If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a drop-down populated with camera paths that have been identified on your machine.
+   If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a dropdown populated with camera paths that have been identified on your machine.
    Select the path to the camera you want to use.
 
 5. Click **Save config** in the bottom left corner of the screen.
@@ -202,7 +202,7 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 ## Configuring a color detector for the color of your tape line
 
 You'll use the [vision service color detector](/services/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
-But first, you need to get creative and use your colored tape to make a path for your robot to follow.
+Before you can start on that, you need to get creative though and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 

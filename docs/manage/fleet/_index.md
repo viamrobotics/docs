@@ -56,9 +56,9 @@ Permissions are added at the organization level and apply to everything in an or
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
   Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
-To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
+To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
-If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role drop down for the respective user.
+If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role dropdown for the respective user.
 
 ![Example permissions overview](/manage/rbac.png)
 
@@ -98,7 +98,7 @@ You and your collaborators can deploy control logic, {{< glossary_tooltip term_i
 
 ### Remote control
 
-Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).
+Everyone who has access to the robot can remotely control it in the app's [**Control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services.
 
 You can also control a robot using the [Viam mobile app](#the-viam-mobile-app).

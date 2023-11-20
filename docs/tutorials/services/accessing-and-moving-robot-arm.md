@@ -57,7 +57,7 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
    - Choose `Arm` as the type.
    - Choose your desired model.
-     - If you're using an xArm 6, choose the `xArm6` model from the drop-down list.
+     - If you're using an xArm 6, choose the `xArm6` model from the dropdown list.
    - Enter `myArm` as the **Name** for this component, then click **Create**.
 
 6. In the newly created `myArm` component panel, fill in some additional details:
