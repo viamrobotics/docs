@@ -34,8 +34,6 @@ Currently, the vision service supports the following kinds of operations:
 {{< relatedcard link="/services/ml/" >}}
 {{< /cards >}}
 
-{{% snippet "required-legend.md" %}}
-
 ## API
 
 Different vision service models support different methods:
