@@ -35,13 +35,13 @@ In addition, if you intend to directly query tabular data from an MQL-compatible
 
 ## Query tabular data in the Viam app
 
-Once you have synced tabular data to the Viam app, you can run SQL or MQL queries against your synced data from the **Query** subtab under the **Data** tab in the Viam app.
+Once you have synced tabular data to the Viam app, you can run SQL or MQL queries against your synced data from the [**Query** subtab](https://app.viam.com/data/query) under the **Data** tab in the Viam app.
 You must have the [owner](/manage/fleet/#permissions) role in order to query data in the Viam app.
 
-1. Navigate to the [Viam app](https://app.viam.com), select the **Data** tab, then click the **Query** subtab.
+1. Navigate to the [**Query** subtab](https://app.viam.com/data/query).
 
 1. Select either `SQL` or `MQL` from the **Query mode** dropdown menu on the right-hand side, then enter your query using the respective syntax for the language you have selected in the text area at the top of your screen.
-   Click **Run query** when ready to perform your query and return matching results.
+   Click **Run query** when ready to perform your query and get matching results.
 
 ## Query tabular data using the API
 
@@ -60,9 +60,9 @@ Once you have synced tabular data to the Viam app, you can directly query that d
 
 1. Open your chosen MQL-compatible client an connect to the Viam organization's MongoDB Atlas instance.
    You can use any client that is capable of connecting to a MongoDB Atlas instance, including the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
-   To connect, use the `hostname` you determined when configuring direct data query, and structure your username in the following format:
+   To connect, use the `hostname` you determined when you [configured direct data query](/services/data/configure-data-query/#configure-data-query), and structure your username in the following format:
 
-   ```sh {class="line-numbers linkable-line-numbers"}
+   ```sh {class="command-line"}
    db-user-<YOUR-ORG-ID>
    ```
 
@@ -76,7 +76,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
-   ```sh {class="line-numbers linkable-line-numbers"}
+   ```sh {class="command-line" data-prompt="$"}
    mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username db-user-<YOUR-ORG-ID>
    ```
 
@@ -88,9 +88,9 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
 1. Once connected, you can run SQL or MQL to query captured data directly. For example:
 
-   - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/) to search the `sensorData` database and `readings` collection, and return sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
+   - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/) to search the `sensorData` database and `readings` collection, and get sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
 
-     ```mongodb {class="line-numbers linkable-line-numbers"}
+     ```mongodb {class="command-line"}
      AtlasDataFederation sensorData> db.aggregate(
          [
              { $sql: {
@@ -105,7 +105,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    - The following MQL query performs the same search as the SQL query above, but uses the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/):
 
-     ```mongodb {class="line-numbers linkable-line-numbers"}
+     ```mongodb {class="command-line"}
      AtlasDataFederation sensorData> db.readings.aggregate(
          [
              { $match: {
