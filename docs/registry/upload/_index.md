@@ -169,7 +169,7 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+   Where `run.sh` is your [entrypoint file](/registry/create/#prepare-the-module-for-execution), `requirements.txt` is your [pip dependency list file](/registry/create/#prepare-the-module-for-execution), and `src` is the source directory of your module.
 
    Supply the path to the resulting archive file in the next step.
 
@@ -257,7 +257,7 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    tar -czf module.tar.gz run.sh requirements.txt src
    ```
 
-   Where `run.sh` is your [entrypoint file](/registry/create/#compile-the-module-into-an-executable), `requirements.txt` is your [pip dependency list file](/registry/create/#compile-the-module-into-an-executable), and `src` is the source directory of your module.
+   Where `run.sh` is your [entrypoint file](/registry/create/#prepare-the-module-for-execution), `requirements.txt` is your [pip dependency list file](/registry/create/#prepare-the-module-for-execution), and `src` is the source directory of your module.
 
    Supply the path to the resulting archive file in the next step.
 

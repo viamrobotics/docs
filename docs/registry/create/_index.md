@@ -114,7 +114,7 @@ To create a custom module, follow these steps:
 
 1. [Code a new resource model](#code-a-new-resource-model) server.
 2. [Code a main program](#code-a-main-entry-point-program).
-3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable.
+3. [Compile or package](#prepare-the-module-for-execution) the module into a single executable.
 
 ### Code a new resource model
 
@@ -643,7 +643,7 @@ Additionally, return any values designated in the function's return signature, t
 {{% /tab %}}
 {{< /tabs >}}
 
-### Compile the module into an executable
+### Prepare the module for execution
 
 To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
@@ -654,11 +654,11 @@ To [add a module](/registry/configure/) to the configuration of your robot, you 
 Your options for completing this step are flexible, as this file does not need to be in raw binary format.
 
 {{% tabs %}}
-{{% tab name="Python" %}}
+{{% tab name="Python: venv (recommended)" %}}
 
-One option is to create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
+Create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
-Make sure to set up a Python virtual environment in the directory your module is in to ensure your module has access to any required libraries:
+Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
@@ -694,7 +694,72 @@ Make sure to set up a Python virtual environment in the directory your module is
    sudo chmod +x <your-file-path-to>/<run.sh>
    ```
 
-See [Prepare your Python Virtual Environment](/program/python-venv/) for more information.
+{{% /tab %}}
+{{% tab name="Python: nuitka" %}}
+
+Install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
+Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries.
+Compile your module as follows:
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) and Nuitka (`nuitka`) are installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   nuitka
+   ```
+
+   Add additional dependencies as needed.
+
+2. After installing dependencies in your virtual environment, compile your module with the following command:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile src/main.py
+   ```
+
+   Any data files you want to include you must specify through a CLI option as follows:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m nuitka --onefile --include-data-files=src/arm/my_arm_kinematics.json=src/arm/my_arm_kinematics.json src/main.py
+   ```
+
+   No relative imports (imports starting with `.`) will work with this option.
+   In addition, no cross compiling is allowed.
+   You have to compile on your target platform/architecture.
+
+{{% /tab %}}
+{{% tab name="Python: pyinstaller" %}}
+
+Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is so your module has access to any required libraries.
+Compile your module as follows:
+
+1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
+   For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`), PyInstaller (`pyinstaller`), and the Google API Python client (`google-api-python-client`) are installed:
+
+   ```sh { class="command-line" data-prompt="$"}
+   viam-sdk
+   pyinstaller
+   google-api-python-client
+   ```
+
+   Add additional dependencies as needed.
+
+2. Add the Google API python client as a hidden import when compiling your module.
+   After installing the required dependencies in your virtual environment, compile your module as follows:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+   ```
+
+   Any data files you want to include you must specify through a CLI option as follows:
+
+   ```sh { class="command-line" data-prompt="$"}
+   python -m PyInstaller --onefile --hidden-import="googleapiclient" --add-data src/arm/my_arm_kinematics.json:src/arm/ src/main.py
+   ```
+
+   No relative imports (imports starting with `.`) will work with this option.
+   In addition, no cross compiling is allowed.
+   You have to compile on your target platform/architecture.
 
 {{% /tab %}}
 {{% tab name="Go" %}}

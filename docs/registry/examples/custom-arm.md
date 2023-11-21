@@ -75,7 +75,7 @@ To create a custom arm model, code a module in Python with the module support li
 1. [Code a main program](#code-a-main-entry-point-program) that starts the module after adding your desired resources from the registry.
    This main program is the "entry point" to your module.
 
-1. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable that can receive a socket argument from `viam-server`, open the socket, and start the module at the entry point.
+1. [Compile or package](#prepare-the-module-for-execution) the module into a single executable that can receive a socket argument from `viam-server`, open the socket, and start the module at the entry point.
 
 ### Code a new resource model
 
@@ -231,7 +231,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 {{% /alert %}}
 
-### Compile the module into an executable
+### Prepare the module for execution
 
 To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 

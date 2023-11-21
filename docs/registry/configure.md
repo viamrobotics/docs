@@ -335,7 +335,7 @@ You can add your own custom modules as local modules, or you can add pre-built m
 First determine the module you wish to add as a local module:
 
 - If you are adding your own custom module, be sure that you have followed the steps to [create your own module](/registry/create/) to code and compile your module and generate an executable.
-- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/registry/create/#compile-the-module-into-an-executable).
+- If you are using a pre-built module, make sure you have installed the module and determined the filename of [the module's executable](/registry/create/#prepare-the-module-for-execution).
 
 Then, ensure that `viam-server` is able to find and run the executable:
 
@@ -347,7 +347,7 @@ Then, ensure that `viam-server` is able to find and run the executable:
   sudo chmod a+rx <path-to-your-module-executable>
   ```
 
-See the instructions to [compile your module into an executable](/registry/create/#compile-the-module-into-an-executable) for more information.
+See the instructions to [compile your module into an executable](/registry/create/#prepare-the-module-for-execution) for more information.
 
 ### Add a local module
 
@@ -380,7 +380,7 @@ You can also add the module directly, without first adding its modular component
 1. Click on the **Modules** subtab.
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
-1. Enter the [module's executable path](/registry/create/#compile-the-module-into-an-executable).
+1. Enter the [module's executable path](/registry/create/#prepare-the-module-for-execution).
    This path must be the absolute path to the executable on your robot's filesystem.
 1. Then, click the **Add module** button, and click **Save config**.
 
