@@ -41,7 +41,29 @@ You must have the [owner](/manage/fleet/#permissions) role in order to query dat
 1. Navigate to the [**Query** subtab](https://app.viam.com/data/query).
 
 1. Select either `SQL` or `MQL` from the **Query mode** dropdown menu on the right-hand side, then enter your query using the respective syntax for the language you have selected in the text area at the top of your screen.
-   Click **Run query** when ready to perform your query and get matching results.
+   For example:
+
+   - The following shows a SQL query that filters by the component name `my-ultrasonic-sensor` and limits the returned results to 5:
+
+     {{< imgproc src="/manage/data/query-ui-sql.png" alt="Viam App Data Query tab with a SQL query shown" resize="800x" >}}
+
+   - The following shows the same search using MQL syntax:
+
+     {{< imgproc src="/manage/data/query-ui-mql.png" alt="Viam App Data Query tab with an MQL query shown" resize="800x" >}}
+
+1. Click **Run query** when ready to perform your query and get matching results.
+   Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
+   For example:
+
+   - The following shows a SQL query that filters by component name and specific column names, and its returned results:
+
+     {{< imgproc src="/manage/data/query-ui-results.png" alt="Viam App Data Query tab with a SQL query shown and results shown below including two matching records" resize="800x" >}}
+
+   - The following shows a SQL query that returns a count of records matching the search criteria:
+
+     {{< imgproc src="/manage/data/query-ui-numreadings.png" alt="Viam App Data Query tab with a SQL query shown with the resulting count of matching records displayed below" resize="800x" >}}
+
+For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
 
 ## Query tabular data using the API
 
