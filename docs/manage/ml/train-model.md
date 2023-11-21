@@ -4,6 +4,10 @@ linkTitle: "Train Model"
 weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
+images: ["/manage/ml/train-model.gif"]
+webmSrc: "/manage/ml/train-model.webm"
+mp4Src: "/manage/ml/train-model.mp4"
+videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /manage/data/train-model/
 description: "Train an image classification model on labeled image data."
@@ -31,7 +35,7 @@ On the **Train a model** menu:
    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 1. Click **TRAIN MODEL**
 
-{{<imgproc src="/manage/ml/train-model-menu.png" resize="900x" declaredimensions=true alt="Train model menu" class="frame" >}}
+{{<gif webm_src="/manage/ml/train-model.webm" mp4_src="/manage/ml/train-model.mp4" alt="Train a model UI">}}
 
 The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 

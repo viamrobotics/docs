@@ -6,6 +6,9 @@ weight: 39
 type: "docs"
 tags: ["data management", "cloud", "sync"]
 images: ["/manage/data/label-dog.gif"]
+webmSrc: "/manage/data/label-dog.webm"
+mp4Src: "/manage/data/label-dog.mp4"
+videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - "/manage/data/label"
 # SME: Tahiya Salam and Alexa Greenberg
@@ -79,30 +82,25 @@ To delete a tag, click the cross next to the corresponding label.
 Datasets currently only work for images.
 {{< /alert >}}
 
-### Create a dataset
+### Create a dataset and add data
 
 To create a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
 
-On the [**DATASETS** subtab](https://app.viam.com/data/datasets), click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
+On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
+
+To add an image to a new dataset, click on the image and create a dataset in the Datasets dropdown.
+Once you have created a dataset, you can select the existing dataset from the dropdown.
+
+{{<gif webm_src="/manage/data/add-to-dataset.webm" mp4_src="/manage/data/add-to-dataset.mp4" alt="Add image to dataset">}}
+
+You can also create a new dataset from the [**DATASETS** subtab](https://app.viam.com/data/datasets).
+Click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
 
 ![Create dataset UI](/manage/data/create-dataset.png)
 
-You can also create a dataset when viewing image data from the Datasets dropdown.
+### Remove an image from a dataset
 
-{{<gif webm_src="/manage/data/add-to-dataset.webm" mp4_src="/manage/data/add-to-dataset.mp4" alt="Add image to dataset">}}
-
-### Add or remove data from a dataset
-
-To add or remove data from a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
-
-On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
-
-To add an image to a dataset, click on the image and select the dataset in the Datasets dropdown.
-You can select an existing dataset or create a new one from this dropdown.
-
-{{<gif webm_src="/manage/data/add-to-dataset.webm" mp4_src="/manage/data/add-to-dataset.mp4" alt="Add image to dataset">}}
-
-To remove an image from a dataset click on the delete button next to the dataset.
+To remove an image from a dataset click on the delete button next to the dataset name.
 
 {{<gif webm_src="/manage/data/delete-from-dataset.webm" mp4_src="/manage/data/delete-from-dataset.mp4" alt="Remove from dataset">}}
 
