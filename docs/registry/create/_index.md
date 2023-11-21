@@ -114,7 +114,7 @@ To create a custom module, follow these steps:
 
 1. [Code a new resource model](#code-a-new-resource-model) server.
 2. [Code a main program](#code-a-main-entry-point-program).
-3. [Compile or package](#compile-the-module-into-an-executable) the module into a single executable.
+3. [Compile or package](#prepare-the-module-for-execution) the module into a single executable.
 
 ### Code a new resource model
 

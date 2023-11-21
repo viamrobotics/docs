@@ -91,7 +91,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
    ```
 
 1. Navigate to the Go color filter directory, `colorfilter`.
-1. Inside of the `module` directory, [compile the executable](/registry/create/#compile-the-module-into-an-executable) that runs your module.
+1. Inside of the `module` directory, [compile the executable](/registry/create/#prepare-the-module-for-execution) that runs your module.
 1. Save the path to your module's executable for later use.
 1. [Add the `colorfilter` module to your smart machine as a local module](#add-as-a-local-module) and continue the tutorial from there.
 
@@ -800,7 +800,7 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 
 For more information on creating your own module, refer to [Code your own modules to create modular resources](/registry/create/).
 
-Once you've written your filter module, [compile the executable](/registry/create/#compile-the-module-into-an-executable) that runs your module when executed.
+Once you've written your filter module, [compile the executable](/registry/create/#prepare-the-module-for-execution) that runs your module when executed.
 
 Note the absolute path to your module’s executable for use in the next section.
 
@@ -810,7 +810,7 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 1. Navigate to the **Config** tab of your robot's page in the [Viam app](https://app.viam.com/robots).
 1. Select the **Modules** subtab and scroll to the **Add local module** section.
-1. Enter a name for your local module, enter the [module's executable path](/registry/create/#compile-the-module-into-an-executable), then click **Add module**.
+1. Enter a name for your local module, enter the [module's executable path](/registry/create/#prepare-the-module-for-execution), then click **Add module**.
    - The name must use only lowercase characters.
 1. Then, click **Save config**.
 
