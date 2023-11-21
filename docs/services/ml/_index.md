@@ -32,8 +32,6 @@ For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetso
 {{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
 
-{{% snippet "required-legend.md" %}}
-
 ### Modular Resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}

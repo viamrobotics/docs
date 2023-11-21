@@ -19,6 +19,20 @@ The service is designed for flexibility and efficiency while preventing data los
 
 The service has two parts: [data capture](#data-capture) and [cloud sync](#cloud-sync).
 
+## Used with
+
+{{< cards >}}
+{{< relatedcard link="/components/arm/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< relatedcard link="/components/encoder/">}}
+{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/components/motor/">}}
+{{< relatedcard link="/components/movement-sensor/">}}
+{{< relatedcard link="/components/sensor/">}}
+{{< relatedcard link="/components/servo/">}}
+{{< /cards >}}
+
 ## Data capture
 
 The data management service captures data from one or more components locally on the robot's storage.
@@ -42,22 +56,6 @@ Data capture is frequently used with [Cloud Sync](#cloud-sync).
 However, if you want to manage your robot's captured data yourself, you can enable only data capture without cloud sync.
 
 To configure data capture, see [data capture](/services/data/configure-data-capture/).
-
-## Used with
-
-{{< cards >}}
-{{< relatedcard link="/components/arm/">}}
-{{< relatedcard link="/components/board/">}}
-{{< relatedcard link="/components/camera/">}}
-{{< relatedcard link="/components/encoder/">}}
-{{< relatedcard link="/components/gantry/">}}
-{{< relatedcard link="/components/motor/">}}
-{{< relatedcard link="/components/movement-sensor/">}}
-{{< relatedcard link="/components/sensor/">}}
-{{< relatedcard link="/components/servo/">}}
-{{< /cards >}}
-
-{{% snippet "required-legend.md" %}}
 
 ## Cloud sync
 

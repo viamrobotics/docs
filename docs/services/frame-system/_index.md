@@ -28,8 +28,6 @@ It stores the required contextual information to use the position and orientatio
 {{< relatedcard link="/services/motor/">}}
 {{< /cards >}}
 
-{{% snippet "required-legend.md" %}}
-
 ## Configuration
 
 To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
