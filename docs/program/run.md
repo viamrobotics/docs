@@ -12,17 +12,7 @@ After saving your [code sample](/program/#hello-world-the-code-sample-tab) and a
 
 ### Authentication
 
-You must authenticate yourself to the robot using the robot's location secret.
-However, the app hides the robot location secret from the sample by default for your security.
-
-To copy the robot location secret, select **Include Secret** on the **Code sample** tab of your robot's page on the [Viam app](https://app.viam.com).
-Paste it into your environment variables or directly into your code.
-
-You must also include the robot's remote address, like `12345.somerobot-main.viam.cloud`, as an external or public address to connect to your robot.
-The code sample includes this address at default.
-You can find it at the top of the robot's **Control** tab.
-
-{{% snippet "secret-share.md" %}}
+{{< readfile "/static/include/program/authenticate.md" >}}
 
 ## Run Code Remotely
 
@@ -47,7 +37,7 @@ python3 ~/myCode/myViamFile.py
 {{% tab name="Go" %}}
 
 ```sh {class="command-line" data-prompt="$"}
-go run ~/myCode/myViamFile.py
+go run ~/myCode/myViamFile.go
 ```
 
 {{% /tab %}}

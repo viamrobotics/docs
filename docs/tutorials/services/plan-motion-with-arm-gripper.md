@@ -309,7 +309,7 @@ We need to do several things to prepare a new gripper component for motion.
    - Leave the orientation as the default.
    - For **Geometry Type** choose **Box**.
    - Enter desired values for the box's **Length**, **Width**, and **Height**, and the box origin's **X**, **Y**, and **Z** values.
-4. Include the `myArm` component in the **Depends On** drop-down for `myGripper`.
+4. Include the `myArm` component in the **Depends On** dropdown for `myGripper`.
 5. Save this new robot configuration.
    - Your `viam-server` instance should update automatically.
 
@@ -420,12 +420,12 @@ from viam.services.motion import MotionClient
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='LOCATION SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<ROBOT ADDRESS>', opts)
 
@@ -546,14 +546,18 @@ import (
 )
 
 func main() {
-  logger := logger.NewDevelopmentLogger("client")
+  logger := logging.NewLogger("client")
   robot, err := client.New(
       context.Background(),
       "<ROBOT ADDRESS>",
       logger,
-      client.WithDialOptions(rpc.WithCredentials(rpc.Credentials{
-          Type:    utils.CredentialsTypeRobotLocationSecret,
-          Payload: "LOCATION SECRET FROM THE VIAM APP",
+      client.WithDialOptions(rpc.WithEntityCredentials(
+      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      "<API-KEY-ID>",
+      rpc.Credentials{
+          Type:    rpc.CredentialsTypeAPIKey,
+          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          Payload: "<API-KEY>",
       })),
   )
   if err != nil {

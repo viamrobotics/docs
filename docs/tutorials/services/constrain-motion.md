@@ -325,7 +325,7 @@ await my_gripper.open()
 ## Full tutorial code
 
 The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
-Be sure to change the `<ROBOT SECRET PAYLOAD>` and `<ROBOT ADDRESS>` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
+Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `ADDRESS FROM THE VIAM APP` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -342,11 +342,14 @@ from viam.proto.service.motion import Constraints, LinearConstraint
 
 
 async def connect():
-    creds = Credentials(type="robot-location-secret",
-                        payload="<ROBOT SECRET PAYLOAD>")
-    opts = RobotClient.Options(refresh_interval=0,
-                               dial_options=DialOptions(credentials=creds))
-    return await RobotClient.at_address("<ROBOT ADDRESS>", opts)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
+    )
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def main():

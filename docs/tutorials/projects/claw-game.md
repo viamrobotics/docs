@@ -36,7 +36,7 @@ In this tutorial, you will:
 
 To build your own claw game machine, you need the following hardware:
 
-- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](https://docs.viam.com/installation/prepare/rpi-setup/).
+- A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
 - An [xarm6](https://www.robotshop.com/products/xarm-6-dof-robotic-arm) robotic arm
 - An [Arcade claw](https://www.ebay.com/itm/393988987705)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
@@ -57,7 +57,7 @@ To build your own claw game machine, you need the following hardware:
 
 To build your own claw game machine, you need the following software:
 
-- [`viam-server`](https://docs.viam.com/installation/#install-viam-server)
+- [`viam-server`](/installation/#install-viam-server)
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [pip](https://pip.pypa.io/en/stable/#)
 - [Viam Python SDK](https://python.viam.dev/)
@@ -140,13 +140,13 @@ Robots are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, 
 Every robot has a main part which is automatically created when you create the robot.
 Since you just created a new robot, your robot's main part is already defined.
 Multi-part robots also have one or more sub-parts representing additional computers running `viam-server`.
-If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](https://docs.viam.com/manage/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/services/motion/) on a laptop and connect that laptop as a sub-part to your robot.
+If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](/manage/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/services/motion/) on a laptop and connect that laptop as a sub-part to your robot.
 
 {{< alert title="Tip" color="tip" >}}
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
 {{< /alert >}}
 
-Use the parts drop-down menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
+Use the parts dropdown menu in the top banner of your robot’s page on [the Viam app](https://app.viam.com/) to add a new sub-part called `planning`:
 
 <p>
 {{<imgproc src="/tutorials/claw-game/app-planning.png" resize="500x" declaredimensions=true alt="UI for adding a sub part named planning." class="aligncenter">}}
@@ -154,10 +154,10 @@ Use the parts drop-down menu in the top banner of your robot’s page on [the Vi
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
 
-For more information about parts, see [Robot Architecture: Parts, Sub-Parts and Remotes](https://docs.viam.com/manage/parts-and-remotes/).
+For more information about parts, see [Robot Architecture: Parts, Sub-Parts and Remotes](/manage/parts-and-remotes/).
 
 Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
-Navigate to the **Config** tab of your robot's page and select your main part from the parts drop down.
+Navigate to the **Config** tab of your robot's page and select your main part from the parts dropdown.
 
 ### Configure the board
 
@@ -167,7 +167,7 @@ Navigate to the **Config** tab of your robot's page and select your main part fr
 Click the **Components** subtab.
 Click the **Create component** button in the lower-left corner.
 
-Add your [board](https://docs.viam.com/components/board/) with type `board` and model `pi`.
+Add your [board](/components/board/) with type `board` and model `pi`.
 Name your board `myBoard` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](/tutorials/claw-game/app-component-myboard.png)
@@ -204,7 +204,7 @@ Click **Save config** in the lower-left corner of the screen.
 
 ### Configure the arm
 
-Use the parts drop-down menu to navigate to the `planning` sub-part.
+Use the parts dropdown menu to navigate to the `planning` sub-part.
 
 {{<imgproc src="/tutorials/claw-game/app-subpart-planning.png" resize="300x" declaredimensions=true alt="Navigating to the sub-part named planning." class="">}}
 
@@ -541,7 +541,7 @@ home_pose = Pose(x=390.0, y=105.0, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0)
 grab_plane = 240.0
 ```
 
-Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints) - in this case we are using an [orientation constraint](https://docs.viam.com/services/motion/constraints/#orientation-constraint).
+Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints) - in this case we are using an [orientation constraint](/services/motion/constraints/#orientation-constraint).
 The orientation constraint places a restriction on the orientation change during a motion, as the arm in a claw game should always face down so the gripper is always in a position where is can descend and grab a prize:
 
 ```python
@@ -825,10 +825,10 @@ To use the [Viam TypeScript SDK](https://ts.viam.dev/) you must install the depe
 
    {{% snippet "show-secret.md" %}}
 
-1. Then, run the following command to start the custom TypeScript interface, inserting your robot's location secret as the argument for `VIAM_SECRET` and your main part host address for `VIAM_LOCATION`:
+1. Then, run the following command to start the custom TypeScript interface, inserting your robot's API key as the argument for `VIAM_API_KEY`,your robot's api key id as the argument for `VIAM_API_KEY_ID`, and your main part host address for `VIAM_LOCATION`:
 
    ```sh {class="command-line" data-prompt="$"}
-   export VIAM_LOCATION=<mylocation>;VIAM_SECRET=<mysecret>;npm run start-simple
+   export VIAM_LOCATION=<mylocation>;VIAM_API_KEY=<myapikey>;VIAM_API_KEY_ID=<myapikeyid>;npm run start-simple
    ```
 
    {{< alert title="Info" color="info" >}}

@@ -3,7 +3,7 @@ title: "Cartographer Modular Resource"
 linkTitle: "Cartographer"
 weight: 70
 type: "docs"
-description: "Configure a SLAM service with the Cartographer modular resource."
+description: "Configure a Simultaneous Localization And Mapping (SLAM) service with the Cartographer modular resource."
 tags: ["slam", "services"]
 icon: "/services/icons/slam.svg"
 aliases:
@@ -11,7 +11,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense SLAM.
+[The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
@@ -206,7 +206,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 1. Start a mapping session
 
-   Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -363,7 +363,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 2. Start a mapping session
 
-   Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -480,7 +480,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
 2.  Start a mapping session
 
-    Navigate to the **Control** tab on your robot's page and click on the drop-down menu matching the `name` of the service you created.
+    Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
 
     Unlike when creating or updating a map, you do not need to start and end a slam session.
     The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your robot's position on it.
@@ -550,6 +550,11 @@ Navigate to the **SLAM library** tab on your location page, and click **Make new
 
 Unlike in `Online` mode, you cannot see the map being created while the slam session is in progress, but similar to when creating or updating a map in `Online` mode, you can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 When all the data has been processed (or 45 minutes have passed, whichever occurs first), the map will be saved to your **Location** page's **SLAM library** tab.
+
+### Delete the Map
+
+To clear a SLAM map, go to your **Location** page's **SLAM library** tab.
+Click on the trash can icon in the upper right-hand corner of a map's card to delete the map.
 
 ## SLAM Mapping Best Practices
 

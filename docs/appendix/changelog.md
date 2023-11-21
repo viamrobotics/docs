@@ -2,13 +2,226 @@
 title: "Changelog"
 linkTitle: "Changelog"
 weight: 110
-draft: true
+draft: false
 type: "docs"
 description: "A lot of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
 # SME:
 ---
+
+## October 2023
+
+### Added: Test an ML model in browser
+
+After you upload and train a machine learning model, you can test its results in the **Data** tab.
+
+This allows you to refine models by iteratively tagging more images for training based on observed performance.
+
+For more information, see [Test classification models with existing images in the cloud](/services/vision/classification/#existing-images-in-the-cloud).
+
+To use this update, the classifier must have been trained or uploaded after September 19, 2023.
+The current version of this feature exclusively supports classification models.
+
+### Added: PLC support
+
+The Viam platform now supports the [Revolution Pi line of PLCs](https://revolutionpi.com/) from KUNBUS in the form of a [module](https://app.viam.com/module/viam-labs/viam-revolution-pi).
+This collaboration allows you to leverage the Raspberry Pi-based Revolution Pi, which runs on Linux and has a [specially designed I/O modules](https://www.raspberrypi.com/products/compute-module-4/?variant=raspberry-pi-cm4001000) for streamlined interaction with industrial controls, eliminating the need for additional components.
+
+Read the [Viam PLC Support](https://www.viam.com/post/viam-plc-support-democratizing-access-to-smart-ot-and-ics) blog post for a step-by-step guide on using a PLC with Viam.
+
+### Improved: SLAM map creation
+
+The [Cartographer-module](/services/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
+This enhancement allows you to:
+
+- Generate larger maps without encountering session timeouts
+- Provide IMU input to improve map quality
+- Save maps to the **SLAM library** tab
+- Create or update maps using previously captured LiDAR and IMU data
+- Deploy maps to machines
+
+## September 2023
+
+### Added: Modular registry
+
+The [Modular Registry](/registry/) enables you to use, create, and share custom modules, extending the capabilities of Viam beyond the components and services that are natively supported.
+
+You can:
+
+- Publish modules on the registry
+- Add modules to any machine's configuration with a few clicks
+- Select the desired module version for deployment, make changes at your convenience, and deploy the updates to a single machine or an entire fleet.
+
+### Added: Mobile app
+
+You can use a [mobile application](/manage/fleet/#the-viam-mobile-app), available for download now in the [Apple](https://apps.apple.com/us/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) app stores, to connect to and control your Viam-powered machines directly from your mobile device.
+
+### Added: Power sensor component
+
+You now have the capability to use a [power sensor component](/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
+
+### Added: Filter component's data before the cloud
+
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/services/data/#cloud-sync).
+It equips machines to:
+
+- Remove data that is not of interest
+- Facilitate high-interval captures while saving data based on your defined metrics
+- Prevent the upload of unnecessary data
+
+To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on creating and configuring a data filtration module.
+
+## August 2023
+
+### Added: Configure a customlinux board
+
+You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
+
+### Added: Image inspection for ML training
+
+This update enables you to get a closer examination of your image and streamline your image annotation experience by making it easier to add bounding boxes and labels in the **Data** tab.
+
+With the latest improvements, you can now:
+
+- Navigate between images using the arrow keys in the main image view
+- Expand images for a more detailed inspection by clicking the expand button on the right image panel
+- Move between full-screen images effortlessly with the <> arrow buttons or arrow keys
+- Return to the standard view by using the escape key or collapse button
+
+### Added: Duplicate component button
+
+You now have the ability to duplicate any config component, service, module, remote, or process.
+
+To use this feature:
+
+- Click on the duplicate component icon at the top right of any resource
+- Optionally, you can modify the component name to distinguish it
+- Adjust any attributes, such as motor pin numbers
+
+## July 2023
+
+### Added: Apple SSO Authentication
+
+Viam now supports sign-up/log-in through Apple Single Sign-On.
+
+Note that currently, accounts from different SSO providers are treated separately, with no account merging functionality.
+
+### Improved: Arm component API
+
+Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
+
+## June 2023
+
+### Added: View sensor data within Viam
+
+You can now [view your sensor data](https://app.viam.com/data/view?view=sensors) directly in the Viam app to verify data creation and accuracy.
+If you depend on sensor data to plan and control robot operations, this feature increases access to data and supports a more efficient workflow.
+
+### Added: Session management in the Python SDK
+
+The Python SDK now includes sessions, a safety feature that automatically cancels operations if the client loses connection to your robot.
+
+[Session management](/program/apis/sessions/) helps you to ensure safer operation of your robot when dealing with actuating controls.
+Sessions are enabled by default, with the option to [disable sessions](/program/apis/sessions/#disable-default-session-management).
+
+### Added: Connect an ODrive motor controller as a Viam module
+
+You can integrate and control ODrive motor controllers with Viam using a modular resource.
+
+Visit the [GitHub repository](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
+
+### Added: Implement custom robotic arms as Viam modules
+
+When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
+This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/components/arm/#api):
+
+- `getJointPositions`
+- `movetoJointPositions`
+- `GetKinematics`
+
+Then, use the [motion planning service](/services/motion/) to specify poses, and Viam handles the rest.
+
+For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm/).
+
+### Added: Apply a crop transform to camera views
+
+You can now apply a [crop transform](/components/camera/transform/) to the views of your connected cameras in the Viam app.
+
+This feature enables you to focus on a specific area of your camera feed.
+
+For example, crop a video stream of a busy street to just the sidewalk.
+
+### Improved: Gantry component
+
+To better control gantries with Viam, you can now:
+
+- Specify speed values when calling the `MovetoPosition` method on [Gantry components](/components/gantry/).
+  This allows you to define the speed at which each axis moves to the desired position, providing enhanced precision and control over the gantry's movement.
+- Set a home position for Gantry components to facilitate position resetting or maintain consistent starting points.
+
+### Improved: Optimized Viam-trained object detection models
+
+This update for object detection models [trained with the machine learning service](/manage/ml/train-model/) brings significant improvements, including:
+
+- 76% faster model inference for camera streams
+- 64% quicker model training for object detection
+- 46% reduction in compressed model size
+
+## May 2023
+
+### Added: TypeScript SDK beta release
+
+The beta release of the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/) allows you to create a web interface to work with your robot, as well as create custom components and services.
+
+### Added: Train object detection ML models
+
+You now have the capability to directly [train object detection models](/manage/ml/train-model/) in addition to image classification models from within the Viam app.
+
+This update allows you to:
+
+- Add labels by drawing bounding boxes around specific objects in your images or a single image.
+- Create a curated subset of data for training by filtering images based on labels or tags.
+
+### Added: Permissions for organizations in Viam
+
+Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
+
+- **Owner**: These members can see and edit [every tab on the robot page](/manage/fleet/robots/#navigating-the-robot-page), as well as manage users in the app.
+  This role is best for those on your team who are actively engineering and building robots.
+
+- **Operator**: These members can only see and use the [remote control tab](/manage/fleet/robots/#control).
+  This role is best for those on your team who are teleoperating or remotely controlling robots.
+
+For more information about assigning permissions and collaborating with others on Viam, see [Fleet Management](/manage/fleet/).
+
+### Improved: Control RoboClaw motor controllers with the driver
+
+When using a RoboClaw motor controller without encoders connected to your motors, you now have more direct control over the RoboClaw’s functionality within Viam or through the motor API.
+
+For example, in the Viam app, you can now set **Go For** values for these motors, utilizing a time-based estimation for the number of revolutions.
+
+### Improved: Camera webcam names and setting framerates
+
+The updates to the camera component have improved the process of connecting to and using cameras with your robots.
+
+The latest updates enable you to:
+
+- View readable webcam names in the **video path** of your camera component.
+- Specify your preferred framerate by selecting the desired value in the newly added **framerate field** on the **Config** tab.
+
+### Improved: Additions to code samples in the Viam app
+
+The updated code samples now includes:
+
+- Options for C++ and TypeScript
+- The ability to hide or display your robots' [secrets](/program/apis/)
+
+Access these samples in the **Code sample** tab on your robot's page to connect to your robot in various languages.
+
+### Improved: Delete data in bulk in the Viam app
+
+You can manage the data synced to Viam's cloud with the new capability for bulk data deletion on the **Data** tab.
 
 ## April 2023
 
@@ -369,6 +582,46 @@ You will no longer be able to add or remove models using the SDKs.
 
 The way to add machine learning vision models is changing.
 You will need to first register the machine learning model file with the [ML model service](/services/ml/) and then add that registered model to a vision service.
+
+## March 2023
+
+### Added: Machine learning for image classification models
+
+You can now [train](/manage/ml/train-model/) and [deploy](/services/ml/#create-an-ml-model-service) image classification models with the [data management service](/services/data/) and use your robot's image data directly within Viaml
+Additionally, you can [upload and use](/manage/ml/upload-model/) existing machine learning models with your robots.
+For more information on using data synced to the cloud to train machine learning models, read [Train a model](/manage/ml/train-model/).
+
+### Added: Motion planning with new `constraint` parameter
+
+A new parameter, [`constraint`](/services/motion/constraints/), has been added to the [Motion service API](/services/motion/#api), allowing you to define restrictions on the robot's movement.
+The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a robot.
+
+### Added: Fragments in robot configuration
+
+You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} in your robot setup.
+The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
+This makes it easier to monitor what fragments you've added to your robot and how they're configured.
+
+For more information, see [Fragments](/manage/configuration/#fragments).
+
+### Improved: Sticky GPS keys
+
+GPS keys you enter are now saved in your local storage.
+This ensures that when you reload the page, your GPS keys remain accessible.
+
+### Improved: More reliable camera streams
+
+The camera component's streams are smoother and more reliable with recent improvements.
+
+Additionally, camera streams automatically restart if you momentarily lose internet connection.
+
+### UI updates to Logs and History
+
+The latest UI updates enable you to:
+
+- Load a previous configuration for reverting changes made in the past
+- Search logs by filtering keywords or log levels such as _info_ or _error_ messages
+- Change your timestamp format to **ISO** or **Local** depending on your preference.
 
 ## February 2023
 

@@ -3,7 +3,7 @@ title: "Fleet Management"
 linkTitle: "Fleet Management"
 weight: 30
 type: "docs"
-description: "Configure, control, debug, and manage your smart machines from the cloud at app.viam.com on your own or with a team."
+description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
 no_list: true
 aliases:
@@ -13,10 +13,10 @@ aliases:
   - "/fleet"
 ---
 
-The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of smart machines alone or in collaboration with others.
-You can manage your fleet of smart machines from the Viam app or using the [cloud API](/program/apis/cloud/).
+The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of machines alone or in collaboration with others.
+You can manage your fleet of machines from the Viam app or using the [cloud API](/program/apis/cloud/).
 
-## Work with groups of smart machines
+## Work with groups of machines
 
 With Viam, you can organize {{< glossary_tooltip term_id="robot" text="robots" >}} into {{< glossary_tooltip term_id="location" text="locations" >}} and {{< glossary_tooltip term_id="organization" text="organizations" >}}.
 
@@ -56,9 +56,9 @@ Permissions are added at the organization level and apply to everything in an or
 - **Operator**: Can see and use only the [remote control tab](robots/#control).
   Cannot see or edit the [**Setup**](robots/#setup), [**Config**](robots/#configuration), [**History**](robots/#history), [**Logs**](robots/#logs), [**Code sample**](robots/#code-sample), or [**Security**](robots/#security) tabs.
 
-To view the roles each organization member has, click on the organization drop down in the top navigation bar and click on **Settings**.
+To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
 
-If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role drop down for the respective user.
+If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role dropdown for the respective user.
 
 ![Example permissions overview](/manage/rbac.png)
 
@@ -84,7 +84,7 @@ For some configuration aspects you may require physical access to the robot so y
 
 #### Reconfiguration
 
-When you or your collaborators change the configuration of a smart machine in the Viam app, `viam-server` automatically synchronizes the configuration to your smart machine and updates the running resources within 15 seconds.
+When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running robot.
 
 You can see configuration changes made by yourself or by your collaborators on the [History tab](robots/#history).
@@ -98,19 +98,19 @@ You and your collaborators can deploy control logic, {{< glossary_tooltip term_i
 
 ### Remote control
 
-Everyone who has access to the robot can remotely control it on the app's [**Control** tab](robots/#control).
+Everyone who has access to the robot can remotely control it in the app's [**Control** tab](robots/#control).
 This allows you to visually test and remotely operate robot components and services.
 
 You can also control a robot using the [Viam mobile app](#the-viam-mobile-app).
 
 ### Control with the SDKs
 
-Everyone who has access to the robot's location can obtain the robot's remote address and location secret from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/apis/).
-You can share the robot's remote address and location secret without granting location access in the app.
+Everyone who has access to the robot's location can obtain the robot's remote address and API key from the app's **Code sample** tab, which are both needed to send API calls to the robot from the [Viam SDKs](/program/apis/).
+You can share the robot's remote address and API key without granting location access in the app.
 
 As long as each collaborator has access to these tokens for a robot, members of your team can write code, use tools like GitHub, and execute code to control the robot from anywhere in the world.
 
-Toggle **Include secret** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's location secret.
+Toggle **Include API Key** above the code on the **Code Sample** tab of your robot's page to display or hide the robot's API key.
 The robot's remote address is displayed on both the **Control** and **Code sample** tabs of your robot's page in the app, ending with `viam.cloud`.
 
 {{% snippet "secret-share.md" %}}

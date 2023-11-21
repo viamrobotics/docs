@@ -31,8 +31,7 @@ The Viam platform comes with a component called [base](/components/base/), which
 Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
-But what if you want to control a rover or other mobile robot that does not expose direct motor control?
-This tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} (custom component).
+If you want to control a rover or other mobile robot that does not expose direct motor control, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} (custom component).
 Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
@@ -133,10 +132,10 @@ The _Subtype_ of a resource contains its API triplet, so using `base.Subtype` (s
 var model = resource.NewModel("viamlabs", "tutorial", "intermode")
 
 func main() {
-    goutils.ContextualMain(mainWithArgs, logger.NewDevelopmentLogger("intermodeBaseModule"))
+    goutils.ContextualMain(mainWithArgs, logging.NewLogger("intermodeBaseModule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
     registerBase()
     modalModule, err := module.NewModuleFromArgs(ctx, logger)
 
@@ -164,7 +163,7 @@ func registerBase() {
             ctx context.Context,
             deps registry.Dependencies,
             config config.Component,
-            logger logger.Logger,
+            logger logging.Logger,
         ) (interface{}, error) {
             return newBase(config.Name, logger) // note: newBase() is not shown in this tutorial
         }})
@@ -207,7 +206,7 @@ func (base *interModeBase) setNextCommand(ctx context.Context, cmd modalCommand)
 }
 
 // toFrame convert the drive command to a CANBUS data frame.
-func (cmd *driveCommand) toFrame(logger logger.Logger) canbus.Frame {
+func (cmd *driveCommand) toFrame(logger logging.Logger) canbus.Frame {
     frame := canbus.Frame{
         ID:   driveId,
         Data: make([]byte, 0, 8),

@@ -269,7 +269,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 Follow [this guide](/installation/#install-viam-server) to install `viam-server` on your Pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
 
-Then, navigate to your new robot's page on the app and click on the **Config** tab.
+Then, navigate to your new robot's page in the app and click on the **Config** tab.
 
 First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 

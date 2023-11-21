@@ -78,7 +78,7 @@ Select type `camera` and model `webcam`.
 
 Enter `my-camera` as the name, then click **Create** to add the camera.
 
-Click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+Click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
 
 Select the path to the camera you want to use.
 
@@ -120,7 +120,7 @@ Click the **Services** subtab.
 
    In the new vision service panel, configure your service.
 
-   Select `people` from the **ML Model** drop-down.
+   Select `people` from the **ML Model** dropdown.
 
    ![vision service panel called myPeopleDetector with filled Attributes section, mlmodel_name is “people”.](/tutorials/tipsy/app-service-vision.png)
 
@@ -235,17 +235,15 @@ from viam.components.camera import Camera
 import yagmail
 
 # These must be set. You can get them from your robot's 'Code sample' tab
-robot_secret = os.getenv('ROBOT_SECRET') or ''
+robot_api_key = os.getenv('ROBOT_API_KEY') or ''
+robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload=robot_secret)
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      api_key=robot_api_key,
+      api_key_id=robot_api_key_id
     )
     return await RobotClient.at_address(robot_address, opts)
 

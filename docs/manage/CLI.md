@@ -96,8 +96,9 @@ to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
 
 Once you have [installed the Viam CLI](#install), you must authenticate your CLI session with Viam in order to run CLI commands.
 
-You can authenticate your CLI session using either a personal access token or an organization API key.
+You can authenticate your CLI session using either a personal access token, or an organization, location, or robot API key.
 To use an organization API key to authenticate, you must first [create an organization API key](#create-an-organization-api-key).
+Similarly, to authenticate using a location or robot API key, you must first create a [location](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
 
 - To authenticate your CLI session using a personal access token:
 
@@ -112,10 +113,26 @@ To use an organization API key to authenticate, you must first [create an organi
 - To authenticate your CLI session using an organization API key:
 
   ```sh {class="command-line" data-prompt="$"}
-  viam login api-key --key-id <api-key-uuid> --key <api-key-secret-value>
+  viam login api-key --key-id <organization-api-key-uuid> --key <organization-api-key-secret-value>
   ```
 
   If you haven't already, [create an organization API key](#create-an-organization-api-key) to use this authentication method.
+
+- To authenticate your CLI session using a location API key:
+
+  ```sh {class="command-line" data-prompt="$"}
+  viam login api-key --key-id <location-api-key-uuid> --key <location-api-key-secret-value>
+  ```
+
+  If you haven't already, [create a location API key](#create-a-location-api-key) to use this authentication method.
+
+- To authenticate your CLI session using a robot API key:
+
+  ```sh {class="command-line" data-prompt="$"}
+  viam login api-key --key-id <robot-api-key-uuid> --key <robot-api-key-secret-value>
+  ```
+
+  If you haven't already, [create a robot API key](#create-a-robot-api-key) to use this authentication method.
 
 An authenticated session is valid for 24 hours, unless you explicitly [log out](#logout).
 
@@ -126,7 +143,7 @@ After the session expires or you log out, you must re-authenticate to use the CL
 To use an organization API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
-   If your organization does not already have an organization API key created, authenticate using a personal access token.
+   If your organization does not already have an organization API key created, authenticate using a personal access token or either a [location API key](#create-a-location-api-key) or [robot API key](#create-a-robot-api-key).
 
 1. Then, run the following command to create a new organization API key:
 
@@ -136,21 +153,97 @@ To use an organization API key to authenticate your CLI session, you must first 
 
    Where:
 
-   - `org-id` is your organization ID. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
-   - `key-name` is an optional name for your API key. If omitted, a name will be auto-generated based on your login info and the current time.
+   - `org-id` is your organization ID.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+   - `key-name` is an optional name for your API key.
 
 The command will return a `key id` and a `key value`.
-You will need both to authenticate using `viam login api-key`.
+You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
-Secure these key values safely.
+Keep these key values safe.
 Authenticating using an organization API key gives the authenticated CLI session full read and write access to all robots within your organization.
 {{% /alert %}}
 
-Once created, you can then use the organization API key to authenticate future CLI sessions.
+Once created, you can use the organization API key to authenticate future CLI sessions or to [connect to robots with the SDK](/program/#authenticate)..
 To switch to using an organization API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 An organization can have multiple API keys.
+
+### Create a location API key
+
+To use an location API key to authenticate your CLI session, you must first create one:
+
+1. First, [authenticate](#authenticate) your CLI session.
+   If you don't already have a location API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [robot API key](#create-a-robot-api-key).
+
+1. Then, run the following command to create a new location API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam locations api-key create --location-id <location-id>
+    --org-id <org-id> --name <key-name>
+   ```
+
+   Where:
+
+   - `location-id` is your location ID.
+     You can find your location ID by running `viam locations list` or by visiting your [robot fleet's page](https://app.viam.com/robots) in the Viam app.
+   - `org-id` is an optional organization ID to attach the key to.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     If only one organization owns the location, you can omit the parameter.
+     If multiple organizations own the location, you must specify the `org-id` explicitly.
+   - `key-name` is an optional name for your API key.
+     If omitted, a name will be auto-generated based on your login info and the current time.
+
+The command will return a `key id` and a `key value`.
+You will need both to authenticate.
+
+{{% alert title="Important" color="note" %}}
+Keep these key values safe.
+Authenticating using a location API key gives the authenticated CLI session full read and write access to all robots in that location.
+{{% /alert %}}
+
+Once created, you can use the location API key to authenticate future CLI sessions or to [connect to robots with the SDK](/program/#authenticate).
+To switch to using a location API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+
+A location can have multiple API keys.
+
+### Create a robot API key
+
+To use a robot API key to authenticate your CLI session, you must first create one:
+
+1. First, [authenticate](#authenticate) your CLI session.
+   If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
+
+1. Then, run the following command to create a new robot API key:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam robots api-key create --robot-id <robot-id> --org-id <org-id> --name <key-name>
+   ```
+
+   Where:
+
+   - `robot-id` is your robot's ID.
+     You can find your robot ID by running `viam robots list`.
+   - `org-id` is an optional organization ID to attach the key to.
+     You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
+     If only one organization owns the robot, you can omit the parameter.
+     If multiple organizations own the robot, you must specify the `org-id` explicitly.
+   - `key-name` is an optional name for your API key.
+     If omitted, a name will be auto-generated based on your login info and the current time.
+
+The command will return a `key id` and a `key value`.
+You will need both to authenticate.
+
+{{% alert title="Important" color="note" %}}
+Keep these key values safe.
+Authenticating using a robot API key gives the authenticated CLI session full read and write access to your robot.
+{{% /alert %}}
+
+Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your robot with the SDK](/program/#authenticate).
+To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+
+A location can have multiple API keys.
 
 ## Manage your robots with the Viam CLI
 
@@ -236,12 +329,12 @@ viam board list --organization=my-org
 ### data
 
 The `data` command allows you to manage robot data.
-With it, you can export data in the format of your choice or delete specified data.
-You can filter the data this command operates on.
+With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
+viam data database configure --org-id=<org-id> --password=<db-user-password>
 ```
 
 Examples:
@@ -254,6 +347,11 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
+
+# configure a database user for the Viam organization's MongoDB Atlas Data
+# Federation instance, in order to query tabular data
+viam data database configure --org-id=abc --password=my_password123
+viam data database hostname --org-id=abc
 ```
 
 #### Command options
@@ -262,6 +360,8 @@ viam data export --destination=/home/robot/data --data-type=binary \
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `export`      | export data in a specified format to a specified location  | - |
+| `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/services/data/configure-data-query/)  | - |
+| `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/services/data/configure-data-query/)  | - |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
@@ -283,17 +383,19 @@ viam data export --destination=/home/robot/data --data-type=binary \
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
 | `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
-| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|f alse |
+| `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
 | `--part-id`      | filter by specified part id      |`export`, `delete`| false |
 | `--part-name`     | filter by specified part name       |`export`, `delete`| false |
 | `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
 | `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
 | `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`| false |
+| `--org-id` | org ID for the database user | `database configure`, `database hostname` | true |
+| `--password` | password for the database user being configured | `database configure` | true |
 
 ### locations
 
-The `locations` command lists all locations that the authenticated session has access to, grouped by organization.
-You can filter results by organization.
+The `locations` command allows you to manage the [locations](/manage/fleet/locations/) that you have access to.
+With it, you can list available locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}
 viam locations list [<organization id>]
@@ -305,7 +407,25 @@ viam locations list [<organization id>]
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all locations (name and id) that the authenticated session has access to, grouped by organization  | **organization id** : return results for specified organization only |
+| `api-key`   |  work with an api-key for your location | `create` |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for a specific location |
+| `--help`      | return help |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| argument | description | applicable commands | required |
+| ----------- | ----------- | ----------- | ----------- |
+| `--location-id`      | the location to create an API key for |`api-key` | true |
+| `--name`     |  the name of the API key    |`api-key` | false |
+| `--org-id`      |  the organization ID to attach the key to  |`api-key` | false |
 
 ### `login`
 
@@ -325,7 +445,7 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
-| `api-key`      | authenticate to Viam using an organization API key      | - |
+| `api-key`      | authenticate to Viam using an organization, location, or robot API key      | create |
 | `print-access-token`      | prints the access token used to authenticate the current CLI session      | - |
 | `--help`      | return help      | - |
 | `--disable-browser-open` | authenticate in a headless environment by preventing the opening of the default browser during login (default: false) | - |
@@ -335,8 +455,8 @@ If you haven't already, you must [create an organization API key](#create-an-org
 <!-- prettier-ignore -->
 |        argument     |       description | applicable commands | required
 | ----------- | ----------- | ----------- | ----------- |
-| `--key-id`    | the `key id` (UUID) of the organization API key | `api-key` | true |
-| `--key`    | the `key value` of the organization API key | `api-key` | true |
+| `--key-id`    | the `key id` (UUID) of the API key | `api-key` | true |
+| `--key`    | the `key value` of the API key | `api-key` | true |
 
 ### logout
 
@@ -357,7 +477,7 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name <module-id> [--org-id <org-id> | --public-namespace <namespace>]
-viam module update [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>]
+viam module update [--module <path to meta.json>]
 viam module upload --version <version> --platform <platform> [--org-id <org-id> | --public-namespace <namespace>] [--module <path to meta.json>] <module-path>
 ```
 
@@ -400,8 +520,8 @@ If you update and release your module as part of a continuous integration (CI) w
 | `--force`    | skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct | `upload` | false |
 | `--module`     |  the path to the [`meta.json` file](#the-metajson-file) for the custom module, if not in the current directory | `update`, `upload` | false |
 | `--name`     |  the name of the custom module to be created | `create` | true |
-| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
-| `--public-namespace`      | the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `update`, `upload` | true |
+| `--org-id`      | the organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
+| `--public-namespace`      | the [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments) | `create`, `upload` | true |
 | `--platform`      |  the architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument) | `upload` | true |
 | `--version`      |  the version of your module to set for this upload. See [Using the `--version` argument](#using-the---version-argument)  | `upload` | true |
 
@@ -418,14 +538,29 @@ You may use either argument for the `viam module create` command, but must use `
 
 The `--platform` argument accepts one of the following architectures:
 
-- `darwin/arm64` - macOS computers running the `arm64` architecture, such as Apple Silicon.
-- `darwin/amd64` - macOS computers running the Intel `x86_64` architecture.
-- `linux/arm64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi.
-- `linux/amd64` - Linux computers or {{< glossary_tooltip term_id="board" text="boards" >}} running the Intel `x86_64` architecture.
+<!-- prettier-ignore -->
+|  Architecture  | Description | Common use case |
+| -------------- | ----------- | --------------- |
+| `any`          | Any supported OS running any supported architecture. | Suitable for most Python modules that do not require OS-level support (such as platform-specific dependencies). |
+| `any/amd64`    | Any supported OS running the `amd64` architecture. | Suitable for most Docker-based modules on `amd64`. |
+| `any/arm64`    | Any supported OS running the `arm64` (`aarch64`) architecture. | Suitable for most Docker-based modules on `arm64`. |
+| `linux/any`    | Linux machines running any architecture. | Suitable for Python modules that also require Linux OS-level support (such as platform-specific dependencies). |
+| `darwin/any`   | macOS machines running any architecture. | Suitable for Python modules that also require macOS OS-level support (such as platform-specific dependencies). |
+| `linux/amd64`  | Linux machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on Linux `amd64`. |
+| `linux/arm64`  | Linux machines running the `arm64` (`aarch64`) architecture, such as the Raspberry Pi. | Suitable for most C++ or Go modules on Linux `arm64`. |
+| `linux/arm32v7`| Linux machines running the `arm32v7` architecture. | Suitable for most C++ or Go modules on Linux `arm32v7`. |
+| `linux/arm32v6`| Linux machines running the `arm32v6` architecture. | Suitable for most C++ or Go modules on `arm32v6`. |
+| `darwin/amd64` | macOS machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on macOS `amd64`. |
+| `darwin/arm64` | macOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
+
+You can use the `uname -m` command on your computer or board to determine its system architecture.
 
 The `viam module upload` command only supports one `platform` argument at a time.
 If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
 Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
+
+If you specify a platform that includes `any` (such as `any`, `any/amd64`, or `linux/any`), a machine that deploys your module will select the _most restrictive_ architecture from the ones you have provided for your module.
+For example, if you upload your module with support for `any/amd64` and then also upload with support for `linux/amd64`, a machine running the `linux/amd64` architecture deploys the `linux/amd64` version, while a machine running the `darwin/amd64` architecture deploys the `any/amd64` version.
 
 The Viam registry page for your module displays the platforms your module supports for each version you have uploaded.
 
@@ -549,16 +684,24 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all organizations (name, id, and [namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization)) that the authenticated session belongs to    | - |
-| `api-key`      | create a new organization API key    | - |
+| `api-key`      | create a new organization API key    |`create` |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for an organization |
+| `--help`      | return help |
 
 ##### Named arguments
 
 <!-- prettier-ignore -->
-|        argument     |       description | applicable commands | required
+| argument | description | applicable commands | required |
 | ----------- | ----------- | ----------- | ----------- |
-| `--org-id`      | your organization ID      |`api-key`|true |
-| `--name` |  optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time |`api-key`| false |
+| `--org-id`      | the organization to create an API key for |`api-key` | true |
+| `--name`     |  the optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time   |`api-key` | false |
 
 ### robots
 
@@ -566,6 +709,7 @@ The `robots` command allows you to manage your robot fleet.
 This includes:
 
 - Listing all robots that you have access to, filtered by organization and location.
+- Creating API keys to grant access to a specific robot
 - Retrieving robot and robot part status
 - Retrieving robot and robot part logs
 - Controlling a robot by issuing component and service commands
@@ -607,21 +751,30 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
+| `api-key`   |  work with an api-key for your robot | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |
 | `--help`      | return help      | - |
 
+##### Positional arguments: `api-key`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `create`     | create an API key for a specific robot |
+| `--help`      | return help |
+
 ##### Positional arguments: `part`
 
 <!-- prettier-ignore -->
-|        argument     |       description
-| ----------- | ----------- | -----------
-| `status`     | retrieve robot status for a specified robot part
-| `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data.
-| `logs`     |  get logs for the specified robot part
-| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled.
-| `--help`      | return help
+|        argument     |       description |
+| ----------- | ----------- | ----------- |
+| `status`     | retrieve robot status for a specified robot part |
+| `run`     |  run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. |
+| `logs`     |  get logs for the specified robot part |
+| `shell`     |  access a robot part securely using a secure shell. This feature must be enabled. |
+| `--help`      | return help |
 
 ##### Named arguments
 
@@ -636,6 +789,9 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `--tail`     |  tail (stream) logs, boolean(default false)    |`part logs`|false |
 | `--stream`      |  if specified, the interval in which to stream the specified data, for example, 100ms or 1s    |`part run`|false |
 | `--data`      |  command data for the command being request to run (see [data argument](#using-the---stream-and---data-arguments))   |`part run`|true |
+| `--robot-id`      | the robot to create an API key for |`api-key` | true |
+| `--name`     |  the optional name of the API key    |`api-key` | false |
+| `--org-id`      |  the optional organization ID to attach the key to  |`api-key` | false |
 
 ##### Using the `--stream` and `--data` arguments
 

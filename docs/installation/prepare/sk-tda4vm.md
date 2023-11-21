@@ -103,14 +103,14 @@ From the SSH session on the TDA4VM board:
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
-## Need assistance?
-
-{{< snippet "social.md" >}}
-
 ## Next Steps
 
 {{< cards >}}
 {{% card link="/manage/configuration/" %}}
 {{% card link="/tutorials/" %}}
-{{% card link="/try-viam/" %}}
+{{% card link="/program/" %}}
 {{< /cards >}}
+
+## Need assistance?
+
+{{< snippet "social.md" >}}

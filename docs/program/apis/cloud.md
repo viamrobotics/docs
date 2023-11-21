@@ -3,7 +3,7 @@ title: "Manage Your Fleet with Viam's Cloud API"
 linkTitle: "Cloud Management"
 weight: 20
 type: "docs"
-description: "Use the cloud app API with Viam's client SDKs to manage your smart machine fleet with code."
+description: "Use the cloud app API with Viam's client SDKs to manage your machine fleet with code."
 tags:
   [
     "cloud",
@@ -16,10 +16,10 @@ tags:
   ]
 ---
 
-The cloud app API allows you to [manage your smart machine fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
+The cloud app API allows you to [manage your machine fleet](/manage/fleet/) with code instead of with the graphical interface of the [Viam app](https://app.viam.com/).
 With it you can
 
-- create and manage organizations, locations, and individual smart machines
+- create and manage organizations, locations, and individual machines
 - manage permissions and authorization
 - create and manage fragments
 
@@ -33,9 +33,10 @@ Cloud app API methods are only available in the Python SDK.
 
 To use the Viam cloud app API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`AppClient`](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient).
 See the following example for reference.
-To find the location secret, go to [Viam app](https://app.viam.com/), and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
-Toggle **Include secret** on and copy the `payload`.
-For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
+
+<!-- After sveltekit migration we should also be able to get a key from the UI-->
+
+Use the Viam CLI [to generate an api key to authenticate](/manage/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -46,13 +47,14 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of any robot in the location.
-        auth_entity='beepboop-main.YOUR LOCATION ID.viam.cloud',
-        credentials=Credentials(
-            type='robot-location-secret',
-            # The location secret
-            payload='YOUR LOCATION SECRET'
-        )
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
 

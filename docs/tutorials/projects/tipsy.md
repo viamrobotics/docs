@@ -101,20 +101,20 @@ Click on the **Components** subtab.
 
    ![Alt text: rightMotor component panel with empty sections for Attributes, Component Pin Assignment, and other information.](/tutorials/tipsy/app-motor-attribute.png)
 
-   In the **Board** drop-down within attributes, choose the name of the board `local` to which the motor is wired.
+   In the **Board** dropdown within attributes, choose the name of the board `local` to which the motor is wired.
    This will ensure that the board initializes before the motor when the robot boots up.
 
    Then set **Max RPM** to 100 and enable direction flip.
 
    In the **Component Pin Assignment** section, toggle the type to **In1/In2.**
-   In the drop downs for A/In1 and B/In2, choose `15 GPIO 22` and `16 GPIO 23` corresponding to the right motor wiring.
+   In the dropdowns for A/In1 and B/In2, choose `15 GPIO 22` and `16 GPIO 23` corresponding to the right motor wiring.
    Leave PWM (pulse-width modulation) pin blank, because this specific motor driver’s configuration does not require a separate PWM pin.
 
    ![Motor component configured in the Viam app, the component tab is named rightMotor, with a type attribute motor and model attribute gpio. It has the attributes as of the board as local, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 15 GPIO 22, b/In2 as 16 GPIO 23, pwm as blank.](/tutorials/tipsy/app-motor-pins.png)
 
    Now let’s add the left motor which is similar to the right motor.
    Add your left [motor](/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
-   Select `local` from the **Board** drop-down, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
+   Select `local` from the **Board** dropdown, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
 
 3. **Configure the base**
 
@@ -124,7 +124,7 @@ Click on the **Components** subtab.
    Select `base` for type and `wheeled` for model.
    Name your base `tipsy-base`, then click **Create**.
 
-   In the **Right Motors** drop-down, select `rightMotor` and in the **Left Motors** drop-down select `leftMotor`.
+   In the **Right Motors** dropdown, select `rightMotor` and in the **Left Motors** dropdown select `leftMotor`.
    Enter `250` for **Wheel Circumference (mm)** and `400` for **Width (mm)**.
    The width describes the distance between the midpoints of the wheels.
    Add `local`, `rightMotor`, and `leftMotor` to the **Depends on** field.
@@ -140,7 +140,7 @@ Click on the **Components** subtab.
    Name it `cam` and click **Create**.
 
    In the configuration panel, click the video path field.
-   If your robot is connected to the Viam app, you will see a drop-down populated with available camera names.
+   If your robot is connected to the Viam app, you will see a dropdown populated with available camera names.
 
    Select the camera you want to use.
    If you are unsure which camera to select, select one, save the configuration, and go to the **Control** tab to confirm you can see the expected video stream.
@@ -355,7 +355,7 @@ Click on the **Services** subtab.
 
    In the new vision service panel, configure your service.
 
-   Select `people` from the **ML Model** drop-down.
+   Select `people` from the **ML Model** dropdown.
 
    ![vision service panel called myPeopleDetector with filled-in Attributes section. ML Model name is “people”.](/tutorials/tipsy/app-service-vision.png)
 
@@ -623,11 +623,12 @@ from viam.services.vision import VisionClient
 from viam.services.sensors import SensorsClient
 ```
 
-Then it connects to our robot using a robot location secret and address.
+Then it connects to our robot using a robot api key and address.
 Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab:
 
 ```python {class="line-numbers linkable-line-numbers"}
-robot_secret = os.getenv('ROBOT_SECRET') or ''
+robot_api_key = os.getenv('ROBOT_API_KEY') or ''
+robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
 robot_address = os.getenv('ROBOT_ADDRESS') or ''
 # change this if you named your base differently in your robot configuration
 base_name = os.getenv('ROBOT_BASE') or 'tipsy-base'

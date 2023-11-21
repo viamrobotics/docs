@@ -246,8 +246,8 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your robot address and location secret. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include secret**.
-   The location secret resembles `abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
+1. First, determine your robot address and API key and API key id. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
+   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key id resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
 
@@ -270,7 +270,7 @@ With everything configured and running, you can now run the inference client tha
 
    ```sh { class="command-line" data-prompt="$"}
    cd ~/example_workspace/opt/bin
-   ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-secret abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234
+   ./example_audio_classification_client --model-label-path ~/example_workspace/yamnet_label_list.txt --robot-host my-robot-main.abcdefg123.viam.cloud --robot-api-key abcdef1g23hi45jklm6nopqrstu7vwx8 --robot-api-key-id a1234b5c-678d-9012-3e45-67fabc8d9efa
    ```
 
    The command should return output similar to:

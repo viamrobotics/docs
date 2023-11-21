@@ -23,7 +23,7 @@ Click the name of a robot to go to that robot's page, where you'll find a variet
 
 ## Navigating the robot page
 
-The banner at the top of the robot page displays the robot's location, name, and a drop down list of all {{< glossary_tooltip term_id="part" text="parts" >}} of that robot.
+The banner at the top of the robot page displays the robot's location, name, and a dropdown list of all {{< glossary_tooltip term_id="part" text="parts" >}} of that robot.
 
 If you've connected your robot to a machine running `viam-server`, the banner also displays when the robot was last online, which version of `viam-server` it is running, the host name, the IP address or addresses, and its operating system.
 
@@ -104,12 +104,11 @@ There is also a JSON stub you can copy if you wish to have your robot communicat
 
 Your robot and the Viam app communicate securely using [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection) with unique secrets.
 
-The **Security** tab allows you to access and change the **Robot Part Secret Keys** of your robot.
+The **Security** tab allows you to access, generate, and delete the **Robot part secret keys** and the **Robot part API keys** of your robot.
 
-![The SECURITY tab of a robot`s page noting the Robot Part Secret Keys drop-down menu, with the clipboard icon on the far right and the Generate Key button underneath the drop-down.](/manage/app-usage/robot-secrets.png)
+![The Security tab of a robot`s page noting the Robot part API keys dropdown menu, with the clipboard icon on the far right and the Generate Key button underneath the dropdown.](/manage/app-usage/robot-secrets.png)
 
-Copy the part secret key by clicking on the clipboard icon.
-Click on the **Generate Key** button to generate a new key.
+You can copy a secret by clicking on the clipboard icon.
 
 {{% snippet "secret-share.md" %}}
 
@@ -117,4 +116,4 @@ Click on the **Generate Key** button to generate a new key.
 
 You can delete a robot by navigating to its page in [the Viam app](https://app.viam.com) and selecting **Sure?** and **Delete robot** in the lower left corner of the page.
 
-{{< imgproc alt="The DELETE ROBOT button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}
+{{< imgproc alt="The delete robot button and the confirmation checkbox (Sure?) next to it." src="/manage/app-usage/delete.png" resize="300x" >}}

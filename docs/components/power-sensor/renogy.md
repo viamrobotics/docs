@@ -92,6 +92,9 @@ Then remove and fill in the attributes as applicable to your power sensor, accor
 }
 ```
 
+The `"serial_path"` filepath used in this example is specific to serial devices connected to Linux systems.
+The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB0"</file> or <file>"/dev/ttyS0"</file>.
+
 {{% /tab %}}
 {{% /tabs %}}
 The following attributes are available for `renogy` sensors:
@@ -99,7 +102,7 @@ The following attributes are available for `renogy` sensors:
 <!-- prettier-ignore -->
 | Attribute | Type | Inclusion | Description |
 | --------- | ---- | --------- | ----------- |
-| `serial_path` | string | Optional | The full filesystem path to the serial device, starting with /dev/</file>. With your serial device connected, you can run `sudo dmesg \| grep tty` to show relevant device connection log messages, and then match the returned device name, such as `ttyS0`, to its device file, such as <file>/dev/ttyS0</file>. If you omit this attribute, Viam will attempt to automatically detect the path. On a Raspberry Pi, you can also run `ls /dev/serial/by-path` to list USB serial devices. If you omit this attribute, Viam will attempt to automatically detect the path.<br>Example: `"/dev/serial/by-path/usb-0:1.1:1.0"` <br>Default: `/dev/serial0` |
+| `serial_path` | string | Optional | The full filesystem path to the serial device, starting with <file>/dev/</file>. To find your serial device path, first connect the serial device to your machine, then:<ul><li>On Linux, run <code>ls /dev/serial/by-path/\*</code> to show connected serial devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/serial/by-path/usb-0:1.1:1.0"</code>.</li><li>On macOS, run <code>ls /dev/tty\* \| grep -i usb</code> to show connected USB serial devices, <code>ls /dev/tty\*</code> to browse all devices, or look for your device in the output of <code>sudo dmesg \| grep tty</code>. Example: <code>"/dev/ttyS0"</code>.</li></ul><br>Default: `/dev/serial0` |
 | `serial_baud_rate` | integer | Optional | The baud rate to use for serial communications. <br> Default: `9600` |
 | `modbus_id`  | integer | Optional | Controller MODBUS address. <br> Default: `1` |
 

@@ -24,3 +24,7 @@ When a robot loses its connection to LAN or WAN, all client sessions will timeou
 When your client cannot connect to your robot's `viam-server` instance, `viam-server` will end any current client [_sessions_](/program/apis/sessions/) on this robot and all client operations will [timeout automatically](/program/apis/sessions/#heartbeats) and halt: any active commands will be cancelled, stopping any moving parts, and no new commands will be able to reach the robot until the connection is restored.
 
 To disable the default behavior and manage resource timeout and reconfiguration over a networking session yourself, you can [disable the default behavior](/program/apis/sessions/#disable-default-session-management) of session management, then use [Viam's SDKs](/program/) in your code to make calls to [the session management API](https://pkg.go.dev/go.viam.com/rdk/session#hdr-API).
+
+## Configure a connection timeout
+
+When connecting to a machine using the [robot API](/program/apis/robot/) from a supported [Viam SDK](/program/apis/), you can configure an [optional timeout](/program/apis/robot/#configure-a-timeout) to account for intermittent or delayed network connectivity.

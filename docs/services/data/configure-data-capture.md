@@ -10,7 +10,7 @@ tags: ["data management", "cloud", "sync"]
 
 ## Add the data management service
 
-To capture data from one or more smart machines, you must first add the [data management service](../):
+To capture data from one or more machines, you must first add the [data management service](../):
 
 1. From your robot's **Config** tab, navigate to the **Services** subtab.
 2. Click **Create service** in the lower-left corner of the page.
@@ -27,7 +27,7 @@ To capture data from one or more smart machines, you must first add the [data ma
 
 5. Click **Save Config**.
 
-![data capture configuration](/tutorials/data-management/data-manager.png)
+![data capture configuration](/tutorials/data-management/data-management-conf.png)
 
 {{%expand "Click to view the JSON configuration for the data management service" %}}
 
@@ -78,7 +78,7 @@ Avoid configuring data capture to higher rates than your hardware can handle, as
 
 Click **Save Config** at the bottom of the window.
 
-Now your data will be saved locally on your smart machine to the directory specified in the data management service.
+Now your data will be saved locally on your machine to the directory specified in the data management service.
 
 For example, a camera has the options `ReadImage` and `NextPointCloud` and a motor has the options `Position` and `IsPowered`.
 
@@ -87,7 +87,6 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
 {{%expand "Click to view an example JSON configuration capturing data from the ReadImage method of a camera" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
-
 {
   "services": [
     ...
@@ -122,6 +121,7 @@ For example, a camera has the options `ReadImage` and `NextPointCloud` and a mot
                 "disabled": false,
                 "method": "ReadImage",
                 "additional_params": {
+                  "reader_name": "cam1",
                   "mime_type": "image/jpeg"
                 }
               }
@@ -166,7 +166,7 @@ To add them to your JSON configuration you must explicitly add the remote compon
 <!-- prettier-ignore -->
 | Key | Description |
 | --- | ----------- |
-| `type` | The type tells your smart machine what the component is. For example, a board. |
+| `type` | The type tells your machine what the component is. For example, a board. |
 | `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
 | `name` | The name specifies the fully qualified name of the part. |
 | `additional_params` | The additional parameters specify the data sources when you are using a board. |
@@ -183,6 +183,7 @@ This config is just like that of a non-remote part; the remote connection is est
       "name": "my-esp32",
       "model": "esp32",
       "type": "board",
+      "namespace": "rdk",
       "attributes": {
         "pins": [27],
         "analogs": [
@@ -196,7 +197,29 @@ This config is just like that of a non-remote part; the remote connection is est
           }
         ]
       },
-      "depends_on": []
+      "service_configs": [
+        {
+          "type": "data_manager",
+          "attributes": {
+            "capture_methods": [
+              {
+                "method": "Analogs",
+                "additional_params": {
+                  "reader_name": "A1"
+                },
+                "capture_frequency_hz": 10
+              },
+              {
+                "method": "Analogs",
+                "additional_params": {
+                  "reader_name": "A2"
+                },
+                "capture_frequency_hz": 10
+              }
+            ]
+          }
+        }
+      ]
     }
   ]
 }
@@ -301,7 +324,8 @@ The following example captures data from the `ReadImage` method of a camera:
                 "disabled": false,
                 "method": "ReadImage",
                 "additional_params": {
-                  "mime_type": "image/jpeg"
+                  "mime_type": "image/jpeg",
+                  "reader_name": "cam1"
                 }
               }
             ]
@@ -326,4 +350,4 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
 
-For a comprehensive tutorial on data management, see [Intro to Data Management](../../../tutorials/services/data-management-tutorial/).
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).

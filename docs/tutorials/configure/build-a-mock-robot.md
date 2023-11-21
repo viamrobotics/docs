@@ -44,7 +44,7 @@ Follow the steps outlined for your computer's architecture on the **Setup** tab 
 
 ### Configure your mock robot
 
-[Configure your mock robot](/manage/configuration/) to represent a physical smart machine with robotic board, arm, and motor hardware.
+[Configure your mock robot](/manage/configuration/) to represent a physical machine with robotic board, arm, and motor hardware.
 
 If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
@@ -82,7 +82,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
    - Enter the name `myMotor` for your board and click **Create**.
    - Most motors are wired to a board which sends them signals.
      Even though your motor is fake, make it more realistic by assigning it a `board`.
-     Select `myBoard` from the **board** drop-down.
+     Select `myBoard` from the **board** dropdown.
 
 5. Click **Save config**.
 
@@ -90,7 +90,7 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](https://docs.viam.com/manage/fleet/robots/#control):
+When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](/manage/fleet/robots/#control):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
 
@@ -332,7 +332,7 @@ By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expan
 
 On your robot's page on the Viam app, click on the dropdown next to the main part, name your part and click **Add new**.
 
-![Screenshot of the Viam app with a dropdown below the main part. 'SubPart' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
+![Screenshot of the Viam app with a dropdown below the main part. 'sub-part' is written in the textbox.](/tutorials/build-a-mock-robot/part-menu.png)
 
 Navigate to your new sub-part's **Config** tab and create a new motor:
 

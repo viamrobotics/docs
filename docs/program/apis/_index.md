@@ -37,6 +37,12 @@ The data client API supports the following methods to upload and retrieve data d
 
 {{< readfile "/static/include/services/apis/data-client.md" >}}
 
+### ML Training API
+
+The ML training API allows you to get information about and cancel ML training jobs taking place on the [Viam app](https://app.viam.com):
+
+{{< readfile "/static/include/services/apis/ml-training-client.md" >}}
+
 ## Component APIs
 
 These APIs provide interfaces for controlling and getting information from various components of a robot.
@@ -172,7 +178,7 @@ The [sensors service](/services/sensors/) supports the following methods:
 
 ### SLAM
 
-The [SLAM service](/services/slam/) supports the following methods:
+The {{< glossary_tooltip term_id="slam" text="Simultaneous Localization And Mapping (SLAM) service" >}} supports the following methods:
 
 {{< readfile "/static/include/services/apis/slam.md" >}}
 

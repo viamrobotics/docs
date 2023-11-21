@@ -9,8 +9,7 @@ images: ["/services/vision/dog-detector.png"]
 # SMEs: Bijan, Khari
 ---
 
-<!-- uncomment once the changelog is back up -->
-<!-- _Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_ -->
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
 
 <div class="td-max-width-on-larger-screens">
   <div class="alignright" >
@@ -157,7 +156,7 @@ You can [add an existing model](/manage/ml/upload-model/) or [train your own mod
 
 <h4>Deploy your model</h4>
 
-To make use of ML models with your smart machine, use the built-in [ML model service](/services/ml/) to deploy and run the model.
+To make use of ML models with your machine, use the built-in [ML model service](/services/ml/) to deploy and run the model.
 
 {{% /manualcard %}}
 

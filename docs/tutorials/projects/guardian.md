@@ -140,7 +140,7 @@ Click on the **Components** subtab.
    Click **Create Component** to add the [camera](/components/camera/).
    Select `camera` for the type, then select `webcam` for the model.
    Enter `cam` as the name for the camera, then click **Create**.
-   In the new camera panel, click the **Video Path** field to reveal a drop-down populated with camera paths that have been identified on your machine.
+   In the new camera panel, click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
    Select `mmal service 16.1 (platform:bcm2835_v4l2-0)`.
 
 3. **Add the servo.**
@@ -472,12 +472,12 @@ from viam.services.vision import VisionClient
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='LOCATION SECRET FROM THE VIAM APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
@@ -763,15 +763,14 @@ LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        api_key='<API-KEY>',
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # id
+        api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud',
-                                        opts)
+    return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 
 
 async def check_for_living_creatures(detections):

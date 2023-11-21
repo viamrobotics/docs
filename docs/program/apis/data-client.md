@@ -29,9 +29,10 @@ Data client API methods are only available in the Python SDK.
 
 To use the Viam data client API, you first need to instantiate a [`ViamClient`](https://python.viam.dev/autoapi/viam/app/viam_client/index.html#viam.app.viam_client.ViamClient) and then instantiate an [`DataClient`](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient).
 See the following example for reference.
-To find the location secret, go to [Viam app](https://app.viam.com/), and go to the [**Code sample**](https://docs.viam.com/manage/fleet/robots/#code-sample) tab of any of the robots in the location.
-Toggle **Include secret** on and copy the `payload`.
-For the URL, use the address of any of the robots in the location (also found on the **Code sample** tab).
+
+<!-- After sveltekit migration we should also be able to get a key from the UI-->
+
+Use the Viam CLI [to generate an api key to authenticate](/manage/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -42,19 +43,19 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-        # The URL of any robot in the location.
-        auth_entity='beepboop-main.YOUR LOCATION ID.viam.cloud',
-        credentials=Credentials(
-            type='robot-location-secret',
-            # The location secret
-            payload='YOUR LOCATION SECRET'
-        )
+      credentials=Credentials(
+        type="api-key",
+        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        payload='<API-KEY>',
+      ),
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+      # id
+      auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
 
 async def main():
-
     # Make a ViamClient
     viam_client = await connect()
     # Instantiate a DataClient to run data client API methods on
@@ -67,6 +68,15 @@ if __name__ == '__main__':
 ```
 
 Once you have instantiated a `DataClient`, you can run the following [API methods](#api) against the `DataClient` object (named `data_client` in the examples).
+
+## Find Part ID
+
+To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
+Keep architecture selection at default.
+In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
+For example:
+
+![Part ID displayed in the Viam app.](/program/data-client/grab-part-id.png)
 
 ## API
 
@@ -144,7 +154,8 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Parameters:**
 
-- `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data. Must be non-empty.
+- `binary_ids` [(List[viam.proto.app.data.BinaryID])](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID): `BinaryID` objects specifying the desired data.
+  Must be non-empty.
 - `dest` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Filepath to write retrieved data to. If not populated, writes to your current directory.
 
 **Returns**:
@@ -177,6 +188,363 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### DeleteTabularData
+
+Delete tabular data older than a specified number of days.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of organization to delete data from.
+  You can obtain your organization id from the [organization settings page](/manage/fleet/organizations/).
+- `delete_older_than_days` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Delete data that was captured up to this many days ago.
+  For example if delete_older_than_days is `10`, this deletes any data that was captured up to 10 days ago.
+  If it is `0`, all existing data is deleted.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="left_motor")
+days_of_data_to_delete = 10
+tabular_data = await data_client.delete_tabular_data(
+    "a12b3c4e-1234-1abc-ab1c-ab1c2d345abc", days_of_data_to_delete)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteBinaryDataByFilter
+
+Filter and delete binary data.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Optional Filter specifying binary data to delete.
+  Passing an empty Filter will lead to all data being deleted.
+  Exercise caution when using this option.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="left_motor")
+res = await data_client.delete_binary_data_by_filter(my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteBinaryDataByIds
+
+Filter and delete binary data by ids.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `binary_ids` (List[[viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID "viam.proto.app.data.BinaryID")]): BinaryID objects specifying the data to be deleted.
+  Must be non-empty.
+
+**Returns:**
+
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of items deleted.
+
+**Raises:**
+
+- `GRPCError` – This error is raised if no BinaryID objects are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.delete_binary_data_by_ids(my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddTagsToBinaryDataByIds
+
+Add tags to binary data by ids.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `tags` ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data.
+  Must be non-empty.
+- `binary_ids` (List[viam.app.proto.BinaryID]): List of BinaryID objects specifying binary data to tag.
+  Must be non-empty.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- `GRPCError` – This error is raised if no BinaryID objects or tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+tags = ["tag1", "tag2"]
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### AddTagsToBinaryDataByFilter
+
+Add tags to binary data by filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `tags` ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to add to specified binary data.
+  Must be non-empty.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to tag. If no Filter is provided, all data will be tagged.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- `GRPCError` – This error is raised if no Btags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+tags = ["tag1", "tag2"]
+res = await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveTagsFromBinaryDataByIds
+
+Remove tags from binary by ids.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `tags` ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data.
+  Must be non-empty.
+- `file_ids` ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of BinaryID objects specifying binary data to untag.
+  Must be non-empty.
+
+**Returns:**
+
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of tags removed.
+
+**Raises:**
+
+- `GRPCError` – This error is raised if no BinaryID objects or tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import BinaryID
+
+tags = ["tag1", "tag2"]
+
+binary_metadata = await data_client.binary_data_by_filter(
+    include_file_data=False
+    )
+
+my_ids = []
+
+for obj in binary_metadata:
+    my_ids.append(
+        BinaryID(
+            file_id=obj.metadata.id,
+            organization_id=obj.metadata.capture_metadata.organization_id,
+            location_id=obj.metadata.capture_metadata.location_id
+            )
+        )
+
+binary_data = await data_client.remove_tags_from_binary_data_by_ids(
+    tags, my_ids)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RemoveTagsFromBinaryDataByFilter
+
+Remove tags from binary data by filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `tags` ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): List of tags to remove from specified binary data.
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying binary data to untag.
+  If no Filter is provided, all data will be untagged.
+
+**Returns:**
+
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of tags removed.
+
+**Raises:**
+
+- `GRPCError` – This error is raised if no tags are provided.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+tags = ["tag1", "tag2"]
+res = await data_client.remove_tags_from_binary_data_by_filter(tags, my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### TagsByFilter
+
+Get a list of tags using a filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all data tags are returned.
+
+**Returns:**
+
+- ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The list of tags.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+tags = await data_client.tags_by_filter(my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tags_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### BoundingBoxLabelsByFilter
+
+Get a list of bounding box labels using a Filter.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `filter` ([viam.proto.app.data.Filter](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Filter "viam.proto.app.data.Filter")): Filter specifying data to retrieve from. If no Filter is provided, all labels will return.
+
+**Returns:**
+
+- ([List[str]](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The list of bounding box labels.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter
+
+my_filter = Filter(component_name="my_camera")
+bounding_box_labels = await data_client.bounding_box_labels_by_filter(
+    my_filter)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetDatabaseConnection
+
+Get a connection to access a MongoDB Atlas Data federation instance.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Organization to retrieve the connection for.
+  You can obtain your organization id from the [organization settings page](/manage/fleet/organizations/).
+
+**Returns:**
+
+- ([`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The hostname of the federated database.
+
+```python {class="line-numbers linkable-line-numbers"}
+data_client.get_database_connection("a12b3c4e-1234-1abc-ab1c-ab1c2d345abc")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### BinaryDataCaptureUpload
 
 Upload binary data collected on your machine through a specific component and the relevant metadata to the [Viam app](https://app.viam.com).
@@ -188,17 +556,17 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 **Parameters:**
 
 - `binary_data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): The data to be uploaded, represented in bytes.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
-- `component_type` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Type of the component used to capture the data.
-- `component_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the component used to capture the data.
-- `method_name` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Name of the method used to capture the data.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
-- `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
-- `file_extension` [(Optional[str])](https://docs.python.org/3/library/typing.html#typing.Optional): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
+- `part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Part ID of the component used to capture the data. See [Find Part ID](#find-part-id) for instructions on retrieving this value.
+- `component_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Type of the component used to capture the data.
+- `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the component used to capture the data.
+- `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): Name of the method used to capture the data.
+- `tags` ([Optional[List[str]]](https://docs.python.org/3/library/stdtypes.html#typesseq-list)): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
+- `data_request_times` ([Optional[Tuple[datetime.datetime, datetime.datetime]]](https://docs.python.org/3/library/stdtypes.html#tuples)): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
+- `file_extension` ([Optional[str]](https://docs.python.org/3/library/typing.html#typing.Optional)): The file extension of binary data including the period. For example, `".jpg"`, `".png"`, or `".pcd"`. Specify this to route the binary data to its corresponding mime type in storage in the [Viam app](https://app.viam.com).
 
 **Returns**:
 
-- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the new file.
+- ([`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of the new file.
 
 ```python {class="line-numbers linkable-line-numbers"}
 time_requested = datetime(2023, 6, 5, 11)
@@ -242,7 +610,7 @@ Uploaded tabular data can be found under the **Sensors** subtab of the app's [**
 
 **Returns**:
 
-- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): ID of the new file.
+- ([`str`](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): ID of the new file.
 
 ```python {class="line-numbers linkable-line-numbers"}
 time_requested = datetime(2023, 6, 5, 11)
@@ -335,12 +703,3 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Find Part ID
-
-To find the ID of your robot part, navigate to its **Setup** tab in the [Viam app](https://app.viam.com).
-Keep architecture selection at default.
-In Step 1, grab the part id from the second string of the generated command as the token following `id=`.
-For example:
-
-![Part ID displayed in the Viam app.](/program/data-client/grab-part-id.png)

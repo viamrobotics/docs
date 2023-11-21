@@ -20,7 +20,8 @@ aliases:
   - "/modular-resources/advanced/"
 ---
 
-Some use cases may require you to define a new API, or deploy a custom component using a server on a {{< glossary_tooltip term_id="remote" text="remote part" >}}.
+Some use cases may require advanced considerations when designing or deploying modular resources.
+Depending on your needs, you may wish to define a new API subtype, deploy a custom component using a server on a {{< glossary_tooltip term_id="remote" text="remote" >}} {{< glossary_tooltip term_id="part" text="part" >}}, or design a custom ML model.
 
 ## New API subtypes
 
@@ -33,4 +34,11 @@ If your resource does not fit into any of the existing {{< glossary_tooltip term
 ## Custom components as remotes
 
 Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
-However, if you are unable to use [modular resources](/registry/) because you have to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/registry/advanced/custom-components-remotes/) of your robot.
+
+However, if you are unable to use [modular resources](/registry/) because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you may need to [implement a custom component and register it on a server configured as a remote](/registry/advanced/custom-components-remotes/) on your machine.
+
+## Design a custom ML model
+
+When working with the [ML model service](/services/ml/), you can [deploy an existing model](/manage/ml/upload-model/) or [train your own model](/manage/ml/train-model/).
+
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/services/vision/), you can also [design your own ML model](/registry/advanced/mlmodel-design/) to better match your specific use case.

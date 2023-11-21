@@ -12,7 +12,7 @@ tags:
     "components",
     "services",
   ]
-description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered smart machine."
+description: "Use the Viam module system to implement modular resources that can be included in any Viam-powered machine."
 aliases:
   - "/extend/modular-resources/create/"
   - "/modular-resources/create/"
@@ -102,7 +102,7 @@ When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}}
 
 #### Unique cases
 
-If you are using unique hardware that does not already have an [appropriate API](/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your smart machine.
+If you are using unique hardware that does not already have an [appropriate API](/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your machine.
 
 Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/registry/advanced/).
@@ -359,7 +359,7 @@ func init() {
     })
 }
 
-func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (base.Base, error) {
+func newBase(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logging.Logger) (base.Base, error) {
     b := &myBase{
         Named:  conf.ResourceName().AsNamed(),
         logger: logger,
@@ -434,7 +434,7 @@ type myBase struct {
     resource.Named
     left       motor.Motor
     right      motor.Motor
-    logger     logger.Logger
+    logger     logging.Logger
     geometries []spatialmath.Geometry
 }
 
@@ -599,12 +599,12 @@ import (
 )
 
 func main() {
-    // NewLoggerFromArgs will create a logger.Logger at "DebugLevel" if
+    // NewLoggerFromArgs will create a logging.Logger at "DebugLevel" if
     // "--log-level=debug" is an argument in os.Args and at "InfoLevel" otherwise.
     utils.ContextualMain(mainWithArgs, module.NewLoggerFromArgs("yourmodule"))
 }
 
-func mainWithArgs(ctx context.Context, args []string, logger logger.Logger) (err error) {
+func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
     myMod, err := module.NewModuleFromArgs(ctx, logger)
     if err != nil {
         return err
@@ -685,7 +685,7 @@ Make sure to [prepare a Python virtual environment](/program/python-venv/) in th
 
    # Be sure to use `exec` so that termination signals reach the python process,
    # or handle forwarding termination signals manually
-   exec $PYTHON -m src.main $@
+   exec $PYTHON <your-src-dir-if-inside>/main.py $@
    ```
 
    To make your shell script executable, run the following command in your terminal:
@@ -779,7 +779,7 @@ Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main
 ### Configure logging
 
 To enable your module to write logs to the [Viam app](https://app.viam.com/), ensure that you have added the following lines of code to your respective module code.
-Log messages are sent to the Viam app and appear under the **Logs** tab for your smart machine.
+Log messages are sent to the Viam app and appear under the **Logs** tab for your machine.
 
 {{< tabs name="Configure logging">}}
 {{% tab name="Python"%}}
@@ -808,12 +808,12 @@ import(
 // Alter your component to hold a logger
 type component struct {
     ...
- logger logger.Logger
+ logger logging.Logger
 }
 // Then, alter your component's constructor to save the logger:
 func init() {
  registration := resource.Registration[resource.Resource, *Config]{
-  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logger.Logger) (resource.Resource, error) {
+  Constructor: func(ctx context.Context, deps resource.Dependencies, conf resource.Config, logger logging.Logger) (resource.Resource, error) {
      ...
      return &component {
          ...
@@ -855,4 +855,13 @@ You can also add your module to your robot as a [local module](/registry/configu
 Add a module to your robot as a local module.
 
 {{% /manualcard %}}
+{{< /cards >}}
+
+<br>
+
+You can also check out these tutorials that create modules:
+
+{{< cards >}}
+{{% card link="/tutorials/custom/custom-base-dog/" %}}
+{{% card link="/registry/examples/custom-arm/" %}}
 {{< /cards >}}

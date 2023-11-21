@@ -86,7 +86,7 @@ Click **Create component**.
 Select the `encoder` type, then select the `AMS-AS5048` model.
 Enter `lenc` as the name for your encoder and click **Create**.
 
-Click the **board** drop-down list and select the name of your board, `local`.
+Click the **board** dropdown list and select the name of your board, `local`.
 
 In the **i2c bus** field type `main`, and in the **i2c address** field type `64`.
 
@@ -98,7 +98,7 @@ Click **Create component**.
 Select the `encoder` type, then select the `AMS-AS5048` model.
 Enter `renc` as the name for your encoder and click **Create**.
 
-Click the **board** drop-down list and select the name of your board, `local`.
+Click the **board** dropdown list and select the name of your board, `local`.
 
 In the **i2c bus** field type `main`, and in the **i2c address** field type `65`.
 
@@ -156,7 +156,7 @@ Click **Create component**.
 Select the `motor` type, then select the `gpio` model.
 Enter `right` as the name for your encoder and click **Create**.
 
-Then from the **Board** drop-down, select `local`, the Raspberry Pi the motor is wired to.
+Then from the **Board** dropdown, select `local`, the Raspberry Pi the motor is wired to.
 
 Select `Encoded` in the **Encoder** section and select `renc` as the **encoder** and set **ticks per rotation** to `2`.
 
@@ -175,7 +175,7 @@ Click **Create component**.
 Select the `motor` type, then select the `gpio` model.
 Enter `left` as the name for your encoder and click **Create**.
 
-Then select `local` from the **Board** drop-down to choose the Raspberry Pi the motor is wired to.
+Then select `local` from the **Board** dropdown to choose the Raspberry Pi the motor is wired to.
 
 Select `Encoded` in the **Encoder** section and select `lenc` as the **encoder** and set **ticks per rotation** to `2`.
 
@@ -371,7 +371,7 @@ Enter a name for your camera and click **Create**.
 
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 
-If you click on the **Video Path** field while your robot is live, a drop down autopopulates with identified camera paths.
+If you click on the **Video Path** field while your robot is live, a dropdown autopopulates with identified camera paths.
 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}

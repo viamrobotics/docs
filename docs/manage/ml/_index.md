@@ -5,7 +5,7 @@ weight: 40
 type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true
-description: "Use Viam's built-in machine learning capabilities to train image classification models and deploy these models to your robots."
+description: "Use Viam's built-in machine learning capabilities to train image classification models and deploy these models to your machines."
 image: "/manage/ml/training.png"
 imageAlt: "Machine Learning"
 images: ["/manage/ml/training.png"]
@@ -17,20 +17,20 @@ images: ["/manage/ml/training.png"]
 Viam includes a built-in [machine learning (ML) service](/services/ml/) which provides your robot with the ability to learn from data and adjust its behavior based on insights gathered from that data.
 Common use cases include:
 
-- Object detection and classification which enable smart machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
-- Speech recognition, natural language processing, and speech synthesis, which enable smart machines to verbally communicate with us.
+- Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
+- Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
 However, your robot can make use of machine learning with nearly any kind of data.
 
 Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/services/ml/#tflite_cpu-limitations).
 
-## Use machine learning with your smart machine
+## Use machine learning with your machine
 
 <table>
   <tr>
     <th>{{<imgproc src="/manage/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
       <b>1. Collect</b>
-      <p>Start by collecting data from your cameras, sensors, or any other source on your smart machine with the <a href="/services/data/">data management service</a>. You can <a href="/manage/data/view/">view the data</a> on the <b>Data tab</b>.</p>
+      <p>Start by collecting data from your cameras, sensors, or any other source on your machine with the <a href="/services/data/">data management service</a>. You can <a href="/manage/data/view/">view the data</a> on the <b>Data tab</b>.</p>
     </th>
   </tr>
   <tr>
@@ -48,7 +48,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <td>
       <b>4. Deploy your ML model</b>
-      <p>To make use of ML models with your smart machine, use the built-in <a href="/services/ml/">ML model service</a> to deploy and run the model.</p>
+      <p>To make use of ML models with your machine, use the built-in <a href="/services/ml/">ML model service</a> to deploy and run the model.</p>
     </td>
   </tr>
   <tr>
