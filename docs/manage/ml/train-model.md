@@ -10,7 +10,7 @@ description: "Train an image classification model on labeled image data."
 # SME: Tahiya + Alexa Greenberg
 ---
 
-You can label or add bounding boxes to [images collected](/services/data/configure-data-capture/) by robots, add them to a dataset, and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
+You can add classification tags or bounding boxes to [images collected](/services/data/configure-data-capture/) by robots, add them to a dataset, and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
 
 When training machine learning models, it is important to supply a variety of different data about the subject.
 In the case of image classification, it is important to provide images of the object being identified in different situations, such as from different angles or in different lighting situations.

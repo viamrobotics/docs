@@ -83,11 +83,13 @@ Datasets currently only work for images.
 
 To create a dataset, go to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
 
-On the **DATASETS** subtab, click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
+On the [**DATASETS** subtab](https://app.viam.com/data/datasets), click **Create dataset**, enter a name for your dataset and click **Create dataset** again.
 
 ![Create dataset UI](/manage/data/create-dataset.png)
 
-you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
+You can also create a dataset when viewing image data from the Datasets dropdown.
+
+{{<gif webm_src="/manage/data/add-to-dataset.webm" mp4_src="/manage/data/add-to-dataset.mp4" alt="Add image to dataset">}}
 
 ### Add or remove data from a dataset
 
@@ -106,7 +108,7 @@ To remove an image from a dataset click on the delete button next to the dataset
 
 ### View the data in a dataset
 
-Once you have added data to your dataset, you can view the data from the **DATASETS** tab by clicking on your dataset.
+Once you have added data to your dataset, you can view the data in your dataset by clicking on your dataset's name on the image sidebar or on the [**DATASETS** subtab](https://app.viam.com/data/datasets).
 
 You can click on any image in the dataset and use its appearing menu in order to add or remove bounding box labels or tags, or remove that image from the dataset.
 
