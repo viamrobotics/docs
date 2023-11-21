@@ -241,52 +241,52 @@ Capture as many images as you want.
 If possible, capture your pet from different angles and with different backgrounds.
 Disable Data Capture after you’re done capturing images of your pet.
 
-### Tag images
+### Create a dataset and tag images
 
 Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your robot.
-After selecting the image, you can type a custom tag for some of the objects you see in the image.
+After selecting the image, you can type a custom tag for some of the objects you see in the image and you add it to a dataset.
 The first thing you want to consider is what tags you are trying to create and how you want your custom model to function.
 
 ![The images tab of the data page with a number of images of the dog.](/tutorials/pet-treat-dispenser/app-data-images.png)
 
-For the treat dispenser, you can tag images with the name of the pet.
+For the treat dispenser, you can tag images with the name of the pet, in our case `toast`.
 Notice that in our image collection, we captured images at different angles and with different background compositions.
 This is to ensure that our model can continue to recognize the object no matter how your robot is viewing it through its camera.
+To be able to train on the data you are tagging you also need to add each image to a dataset.
 
 Begin by selecting the image you would like to tag, and you will see all of the data that is associated with that image.
 Type in your desired tag in the Tags section.
 
-![The images detail pane of the data page shown selecting tags for an image.](/tutorials/pet-treat-dispenser/app-data-tags.png)
-
 Be mindful of your naming as you can only use alphanumeric characters and underscores: this is because the model will be exported as a `.tflite` file with a corresponding `.txt` file for labeling.
 
-Add tags for each image that shows your pet.
+Then use the Datasets dropdown to create a new dataset and assign the image to it.
+We called our dataset `petfeeder`.
 
-![The recently-used tags search window.](/tutorials/pet-treat-dispenser/app-data-recently-used.png)
+{{<gif webm_src="/tutorials/pet-treat-dispenser/tag-and-add.webm" mp4_src="/tutorials/pet-treat-dispenser/tag-and-add.mp4" alt="Tag a photo and add it to the dataset">}}
+
+For each image, add tags to indicate whether it contains your pet and add the image to your dataset.
+
+{{<imgproc src="/tutorials/pet-treat-dispenser/app-data-recently-used.png" resize="300x" declaredimensions=true alt="The recently-used tags search window.">}}
 
 Note we are just tagging the whole image as we are training an image classification model.
 
-Continue parsing through your collected data (in this case images) and tag away to your heart's desire.
-Once you create tags, it is as simple as selecting your image and then selecting the tag in the **Recently used** dropdown menu.
+Continue parsing through your collected data (in this case images) and tag away and assign to your dataset to your heart's desire.
 Tag as many images with as many tags until you are happy with your dataset.
 This is important for the next step.
 
-### Filter based on tags
+### View your dataset
 
-Upon completion of tagging your data set, you can now [filter images](/manage/data/view/) according to those tags.
-Head over to the **Filtering** menu and select a tag from the dropdown list.
-In the following screenshot, we have filtered the images in our data set according to one tag, in this case `toast`, (which is the name of our doggy test subject) and now we can easily view all images of Toast:
+Upon completion of tagging your data set, you can view the data in your dataset by clicking on your dataset's name on the image sidebar or on the [**DATASETS** subtab](https://app.viam.com/data/datasets).
 
-![The filtering tab with toast entered as a filtered tag.](/tutorials/pet-treat-dispenser/app-data-filter-tags.png)
+![The pet feeder dataset.](/tutorials/pet-treat-dispenser/pet-feeder-dataset.png)
 
 ### Train a model
 
-After tagging and filtering your images so only the pictures of your pet are visible, begin training your model.
-Click the **Train Model** button, name your model and select **Single label** as the model type.
-Then select the label that you sued to label your pet images.
-We called it `puppymodel` and selected the tag `toast` to train on images of the pup.
+From the dataset view, click on **Train model**, name your model and select **Single label** as the model type.
+Then select the label or labels that you used to label your pet images.
+We called it `petfeeder` and selected the tag `toast` and `no-toast` to train on images of the pup and images that do not contain the pup.
 
-![The data page with single model selected using name puppymodel.](/tutorials/pet-treat-dispenser/app-training.png)
+{{<gif webm_src="/manage/ml/train-model.webm" mp4_src="/manage/ml/train-model.mp4" alt="Train a model UI">}}
 
 If you want your model to be able to recognize multiple pets you can instead create a **Multi Label** model based on multiple tags.
 Go ahead and select all the tags you would like to include in your model and click **Train Model**.
@@ -299,9 +299,9 @@ Once the model has finished training, deploy it by adding an [ML model service](
    Click to the **Config** tab, then select the **Services** subtab.
 1. Click **Create service** in the lower-left corner.
 1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
-1. Enter `puppymodel` as the name, then click **Create**.
+1. Enter `puppyclassifier` as the name, then click **Create**.
 1. To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
-1. Select your trained model (`puppymodel`) as your desired **Model**.
+1. Select your trained model (`petfeeder`) as your desired **Model**.
 
 ### Use the vision service to detect your pet
 
@@ -311,9 +311,6 @@ To detect your pet with your machine learning model, you need to add a [vision s
 1. Select `Vision` as the type and `ML Model` as the model.
 1. Enter a name for your ML model service and click **Create**.
 1. Select the model you previously created in the dropdown menu.
-
-   ![The vision service panel with the puppymodel selected.](/tutorials/pet-treat-dispenser/app-service-vision.png)
-
 1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 1. Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
 1. Enter `classifier_cam` as the name for your camera, then click **Create**.
