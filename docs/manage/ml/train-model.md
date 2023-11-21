@@ -31,13 +31,22 @@ On the **Train a model** menu:
    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 1. Click **TRAIN MODEL**
 
-![Train model menu](/manage/ml/train-model-menu.png)
+{{<imgproc src="/manage/ml/train-model-menu.png" resize="900x" declaredimensions=true alt="Train model menu" class="frame" >}}
 
 The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 
 ![The trained model](/manage/ml/stars-model.png)
+
+{{< alert title="Note" color="note" >}}
+
+Your [dataset](/manage/data/dataset/) is not versioned.
+You can add or remove data from it at any time.
+Existing models will not change if you change the dataset they were trained on.
+To iterate on your model and train on the a changed dataset, [train a new version of your model](#train-a-new-version-of-a-model).
+
+{{< /alert >}}
 
 ### Train a new version of a model
 
