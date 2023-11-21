@@ -8,7 +8,7 @@ tags: ["data management", "data", "services"]
 description: "Access data captured by the robot's components and train image classification and object detection models on the data."
 aliases:
   - "/manage/data-management/"
-# SME: Aaron Casas
+# SME: Alexa Greenberg
 ---
 
 Data Management is built into Viam.

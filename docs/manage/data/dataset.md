@@ -8,7 +8,7 @@ tags: ["data management", "cloud", "sync"]
 images: ["/manage/data/label-dog.gif"]
 aliases:
   - "/manage/data/label"
-# SME: Tahiya Salam and Alexis Wei
+# SME: Tahiya Salam and Alexa Greenberg
 ---
 
 To manage your data you can use labels and datasets.
@@ -95,7 +95,7 @@ To add or remove data from a dataset, go to the [**DATA** tab](https://app.viam.
 
 On the **Images** subtab, you can filter available images, using the **Filtering** menu and select the attributes that match where, how, and when the data was collected.
 
-To add image to a dataset, click on the image and select the dataset in the Datasets dropdown.
+To add an image to a dataset, click on the image and select the dataset in the Datasets dropdown.
 You can select an existing dataset or create a new one from this dropdown.
 
 {{<gif webm_src="/manage/data/add-to-dataset.webm" mp4_src="/manage/data/add-to-dataset.mp4" alt="Add image to dataset">}}
@@ -108,7 +108,7 @@ To remove an image from a dataset click on the delete button next to the dataset
 
 Once you have added data to your dataset, you can view the data from the **DATASETS** tab by clicking on your dataset.
 
-You can also add or remove labels or tags from this menu or remove data from the dataset by clicking on an image and using the appearing menu.
+You can click on any image in the dataset and use its appearing menu in order to add or remove bounding box labels or tags, or remove that image from the dataset.
 
 ### Train a model on a dataset
 
@@ -116,7 +116,7 @@ To train a model on a dataset, see [Train a model](/manage/ml/train-model/).
 
 ### Delete a dataset
 
-To delete a dataset, right click on the dataset and click on the **Delete** button that appears.
+To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on the **Delete** button that appears.
 
 ## Next Steps
 
