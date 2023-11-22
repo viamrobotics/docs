@@ -70,7 +70,7 @@ Once you have synced tabular data to the Viam app, you can use the following dat
 - Use the [`TabularDataBySQL`](/services/data/#tabulardatabysql) method to query synced tabular data using SQL.
 - Use the [`TabularDataByMQL`](/services/data/#tabulardatabymql) method to query synced tabular data using the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
 
-These APIs are currently implemented only in the [Go SDK](https://pkg.go.dev/go.viam.com/rdk).
+Currently, these API methods are only implemented in the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 ## Query tabular data directly from a compatible client
 
