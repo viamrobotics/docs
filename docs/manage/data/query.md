@@ -14,7 +14,6 @@ Once you have [added the data management service](/services/data/configure-data-
 You can:
 
 - [Query tabular data in the Viam app](#query-tabular-data-in-the-viam-app): Run SQL or MQL queries against your synced tabular data from the **Query** subtab under the **Data** tab in the Viam app.
-- [Query tabular data using the API](#query-tabular-data-using-the-api): Use data management API methods in your code to query tabular data.
 - [Query tabular data directly from a compatible client](#query-tabular-data-directly-from-a-compatible-client): Directly query tabular data from an MQL-compatible client, such as `mongosh`.
 
 You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/label/#image-tags).
@@ -62,15 +61,6 @@ You must have the [owner](/manage/fleet/#permissions) role in order to query dat
      {{< imgproc src="/manage/data/query-ui-numreadings.png" alt="Viam App Data Query tab with a SQL query shown with the resulting count of matching records displayed below" resize="800x" >}}
 
 For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/) documentation.
-
-## Query tabular data using the API
-
-Once you have synced tabular data to the Viam app, you can use the following data management API methods in your Typescript code to query tabular data using either SQL or MQL:
-
-- Use the [`TabularDataBySQL`](/services/data/#tabulardatabysql) method to query synced tabular data using SQL.
-- Use the [`TabularDataByMQL`](/services/data/#tabulardatabymql) method to query synced tabular data using the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
-
-Currently, these API methods are only implemented in the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 ## Query tabular data directly from a compatible client
 

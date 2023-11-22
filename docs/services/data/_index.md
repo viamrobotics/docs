@@ -148,58 +148,6 @@ err := data.Sync(context.Background(), nil)
 {{% /tab %}}
 {{< /tabs >}}
 
-### TabularDataBySQL
-
-Query tabular data that has been synced to the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}}.
-Currently, this API is only implemented in the [Viam TypeScript SDK](https://ts.viam.dev/).
-
-{{< tabs >}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `sql_query` (string): The SQL `SELECT` statement to run against your synced tabular data.
-  Tabular data is held in a database named `sensorData` and a table named `readings`, so you your query should `SELECT` from `"readings"` or `"sensorData.readings"`.
-
-**Returns:**
-
-- [(TabularDataBySQLRequest)](https://ts.viam.dev/classes/dataApi.TabularDataBySQLRequest.html): A struct containing the query results.
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/dataApi.TabularDataBySQLRequest.html).
-
-```ts {class="line-numbers linkable-line-numbers"}
-// code example
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### TabularDataByMQL
-
-Query tabular data that has been synced to the Viam app using {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-Currently, this API is only implemented in the [Viam TypeScript SDK](https://ts.viam.dev/).
-
-{{< tabs >}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `mql_query` (string): The [MQL query](https://www.mongodb.com/docs/manual/tutorial/query-documents/) to run against your synced tabular data.
-  Tabular data is held in a database named `sensorData` and a collection named `readings`, so you should run your query against `"sensorData.readings"`.
-
-**Returns:**
-
-- [(TabularDataBySMQLRequest)](https://ts.viam.dev/classes/dataApi.TabularDataByMQLRequest.html): A struct containing the query results.
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/dataApi.TabularDataByMQLRequest.html).
-
-```ts {class="line-numbers linkable-line-numbers"}
-// code example
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ## Use the data management service
 
 To use the data management service, [add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your machine.
