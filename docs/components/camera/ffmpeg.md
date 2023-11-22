@@ -1,16 +1,15 @@
 ---
-title: "Configure a FFmpeg Camera"
+title: "Configure an ffmpeg Camera"
 linkTitle: "ffmpeg"
 weight: 30
 type: "docs"
-description: "Uses a camera, a video file, or a stream as a camera."
+description: "Uses a camera device, a video file, or a stream as a camera."
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-The `ffmpeg` camera model uses a camera, a video file, or a stream as a camera.
-The `ffmpeg` camera supports streaming cameras with MJPEG, H264, and MP4 tracks.
+The `ffmpeg` camera model uses a camera device, a video file, or a stream as a camera, with support for streaming cameras that use MJPEG, H264, or MP4 tracks.
 
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
