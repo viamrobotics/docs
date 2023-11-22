@@ -65,7 +65,7 @@ For more information, see the documentation for the [Viam CLI `database` command
 
 ## Next Steps
 
-Once configured, you can [query your data directly](/manage/data/query/#query-tabular-data-directly-from-a-compatible-client) from your chosen client.
+Once configured, you can [query your data directly](/manage/data/query/#query-tabular-data-directly-from-a-compatible-client) from your chosen client using either SQL or MQL.
 
 To view your captured data in the cloud, see [View Data](/manage/data/view/).
 To export your synced data, see [Export Data](/manage/data/export/).
