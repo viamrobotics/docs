@@ -32,9 +32,14 @@ You must configure a [base](/components/base/) with [movement sensors](/componen
 To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/components/movement-sensor/#api):
 
 - [`GetPosition()`](/components/movement-sensor/#getposition)
-- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
-- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
 - [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
+- [`GetProperties()`](/components/movement-sensor/#getproperties)
+
+The base should implement the following:
+
+- [`SetVelocity()`](/components/base/#setvelocity)
+- [`GetGeometries()`](/components/base/#getgeometries)
+- [`GetProperties()`](/components/base/#getproperties)
 
 See [navigation concepts](#navigation-concepts) for more info on how to implement and use movement sensors taking these measurements.
 
