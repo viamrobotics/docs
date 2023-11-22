@@ -9,7 +9,9 @@ tags: ["camera", "components"]
 # SMEs: Bijan, vision team
 ---
 
-The `ffmpeg` camera model uses a camera device, a video file, or a stream as a camera, with support for streaming cameras that use MJPEG, H264, or MP4 tracks.
+The `ffmpeg` camera model uses a camera device, a video file, or a stream as a camera.
+
+When used with a streaming camera, the `ffmpeg` camera model supports any streaming camera format that is supported by the [`ffmpeg` program](https://ffmpeg.org/), including MJPEG, H264, and MP4.
 
 {{< tabs name="Configure a ffmpeg camera" >}}
 {{% tab name="Config Builder" %}}
