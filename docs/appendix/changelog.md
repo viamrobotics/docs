@@ -14,7 +14,7 @@ aliases:
 
 ### Changed: Model training from datasets
 
-To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/manage/data/datasets).
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/manage/data/dataset/).
 
 ## October 2023
 
