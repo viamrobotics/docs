@@ -16,9 +16,9 @@ You can:
 - [Query tabular data in the Viam app](#query-tabular-data-in-the-viam-app): Run SQL or MQL queries against your synced tabular data from the **Query** subtab under the **Data** tab in the Viam app.
 - [Query tabular data directly from a compatible client](#query-tabular-data-directly-from-a-compatible-client): Directly query tabular data from an MQL-compatible client, such as `mongosh`.
 
-You can run queries against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/label/#image-tags).
+You can run queries against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/dataset/#image-tags).
 
-Only tabular data, such as [sensor](/components/sensor) readings, can be queried using SQL or MQL.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried using SQL or MQL.
 To search non-tabular data, such as images, see [Filter Data](/manage/data/view/#filter-data).
 To perform searches against tabular data from within the Python SDK, use the [`TabularDataByFilter`](/program/apis/data-client/#tabulardatabyfilter) method.
 
