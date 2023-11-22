@@ -10,7 +10,10 @@ tags: ["camera", "components"]
 ---
 
 The `rtsp` camera model supports streaming cameras with MJPEG tracks.
-The model doesn’t support streaming cameras with H264/MP4 tracks.
+
+{{< alert title="Info" color="info" >}}
+If your streaming camera uses H264 or MP4 tracks, use the [`ffmpeg` camera](/components/camera/ffmpeg/) instead.
+{{< /alert >}}
 
 {{< tabs name="Configure an rtsp camera" >}}
 {{% tab name="Config Builder" %}}
