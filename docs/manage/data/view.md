@@ -5,7 +5,7 @@ description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Devin Hilly
+# SME: Alexa Greenberg
 ---
 
 After the data management service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).

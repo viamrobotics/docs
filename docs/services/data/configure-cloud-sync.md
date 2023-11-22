@@ -5,7 +5,7 @@ description: "Configure cloud sync to automatically capture data in the Viam app
 weight: 35
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Devin Hilly
+# SME: Alexa Greenberg
 ---
 
 Before you can configure [cloud sync](../#cloud-sync), you must [add the data management service](../configure-data-capture/#add-the-data-management-service).

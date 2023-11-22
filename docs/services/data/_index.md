@@ -10,7 +10,7 @@ aliases:
   - "/data-management/"
   - "/services/data-management/"
 icon: "/services/icons/data-capture.svg"
-# SME: Devin Hilly
+# SME: Alexa Greenberg
 ---
 
 The data management service captures data from Viam components and securely syncs data to Viam's cloud.
@@ -150,30 +150,24 @@ err := data.Sync(context.Background(), nil)
 
 ### TabularDataBySQL
 
-{{% alert title="Important" color="tip" %}}
-
-This method is not yet available in the Viam Python SDK.
-
-{{% /alert %}}
-
 Query tabular data that has been synced to the Viam app using {{< glossary_tooltip term_id="sql" text="SQL" >}}.
+Currently, this API is only implemented in the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 {{< tabs >}}
-{{% tab name="Go" %}}
+{{% tab name="TypeScript" %}}
 
 **Parameters:**
 
-- `sql_query` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The SQL `SELECT` statement to run against your synced tabular data.
+- `sql_query` (string): The SQL `SELECT` statement to run against your synced tabular data.
   Tabular data is held in a database named `sensorData` and a table named `readings`, so you your query should `SELECT` from `"readings"` or `"sensorData.readings"`.
 
 **Returns:**
 
-- (object): A struct containing the query results.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(TabularDataBySQLRequest)](https://ts.viam.dev/classes/dataApi.TabularDataBySQLRequest.html): A struct containing the query results.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/dataApi.TabularDataBySQLRequest.html).
 
-```go {class="line-numbers linkable-line-numbers"}
+```ts {class="line-numbers linkable-line-numbers"}
 // code example
 ```
 
@@ -182,30 +176,24 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ### TabularDataByMQL
 
-{{% alert title="Important" color="tip" %}}
-
-This method is not yet available in the Viam Python SDK.
-
-{{% /alert %}}
-
 Query tabular data that has been synced to the Viam app using {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Currently, this API is only implemented in the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 {{< tabs >}}
-{{% tab name="Go" %}}
+{{% tab name="TypeScript" %}}
 
 **Parameters:**
 
-- `mql_query` [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The [MQL query](https://www.mongodb.com/docs/manual/tutorial/query-documents/) to run against your synced tabular data.
+- `mql_query` (string): The [MQL query](https://www.mongodb.com/docs/manual/tutorial/query-documents/) to run against your synced tabular data.
   Tabular data is held in a database named `sensorData` and a collection named `readings`, so you should run your query against `"sensorData.readings"`.
 
 **Returns:**
 
-- (object): A struct containing the query results.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+- [(TabularDataBySMQLRequest)](https://ts.viam.dev/classes/dataApi.TabularDataByMQLRequest.html): A struct containing the query results.
 
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/dataApi.TabularDataByMQLRequest.html).
 
-```go {class="line-numbers linkable-line-numbers"}
+```ts {class="line-numbers linkable-line-numbers"}
 // code example
 ```
 

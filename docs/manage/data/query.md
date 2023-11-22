@@ -31,8 +31,6 @@ Before you can query your data, you must:
 1. [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
    When you are able to [view your data in the Viam app](/manage/data/view/), you are ready to proceed.
 
-In addition, if you intend to directly query tabular data from an MQL-compatible client, you must also [configure direct data query](/services/data/configure-data-query/).
-
 ## Query tabular data in the Viam app
 
 Once you have synced tabular data to the Viam app, you can run SQL or MQL queries against your synced data from the [**Query** subtab](https://app.viam.com/data/query) under the **Data** tab in the Viam app.
@@ -67,7 +65,7 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 
 ## Query tabular data using the API
 
-Once you have synced tabular data to the Viam app, you can use the following data management API methods in your `go` code to query tabular data using either SQL or MQL:
+Once you have synced tabular data to the Viam app, you can use the following data management API methods in your Typescript code to query tabular data using either SQL or MQL:
 
 - Use the [`TabularDataBySQL`](/services/data/#tabulardatabysql) method to query synced tabular data using SQL.
 - Use the [`TabularDataByMQL`](/services/data/#tabulardatabymql) method to query synced tabular data using the [MQL (MongoDB Query Language)](https://www.mongodb.com/docs/manual/tutorial/query-documents/).
