@@ -155,24 +155,27 @@ Then, [configure data capture](/services/data/configure-data-capture/) and [conf
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
 
-### Access and export data
+### View, filter, and export data
 
 Once you have configured data capture and cloud sync, you can [view your data](/manage/data/view/) in the Viam app from the **Data** tab.
+
+You can [filter your data](/manage/data/view/#filter-data) by several categories, including by machine name, location, or timestamp range.
+You can filter your data from the **Data** tab in the Viam app or using the Viam Python SDK.
 
 You can also [export](/manage/data/export/) your data as needed.
 
 ### Query data
 
-If you have synced tabular data to the Viam app, such as [sensor](/components/sensor/) readings, you can perform {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against that data.
+If you have synced tabular data to the Viam app, you can perform {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} queries against that data.
 You can chose to:
 
-- Run SQL or MQL queries against your synced tabular data from the **Query** subtab under the **Data** tab in the Viam app.
-- Use the data management API methods in your code to query tabular data.
+- Run SQL or MQL queries from the **Query** subtab under the **Data** tab in the Viam app.
 - Directly query tabular data from a MQL-compatible client, such as `mongosh`.
 
 See [Query Data](/manage/data/query/) for instructions on using each of these approaches.
 
-Only tabular data, such as sensor readings, can be queried in this fashion.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
+To search other types of data, such as images, see [Filter Data](/manage/data/view/#filter-data).
 
 ### Train and deploy machine learning
 

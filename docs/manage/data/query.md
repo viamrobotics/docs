@@ -1,6 +1,6 @@
 ---
-title: "Query Data"
-linkTitle: "Query Data"
+title: "Query Data with SQL or MQL"
+linkTitle: "Query Data with SQL or MQL"
 weight: 40
 no_list: true
 type: "docs"
@@ -18,7 +18,9 @@ You can:
 
 You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/manage/data/label/#image-tags).
 
-Only tabular data, such as sensor readings, can be queried in this fashion.
+Only tabular data, such as sensor readings, can be queried using SQL or MQL.
+To search non-tabular data, such as images, see [Filter Data](/manage/data/view/#filter-data).
+To perform searches against tabular data from within the Python SDK, use the [`TabularDataByFilter`](/program/apis/data-client/#tabulardatabyfilter) method.
 
 ## Requirements
 
@@ -26,7 +28,8 @@ Before you can query your data, you must:
 
 1. [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service) to your machine.
 1. [Configure data capture](/services/data/configure-data-capture/) for at least one component, such as a sensor.
-   Only components that capture tabular data support data query.
+   Only components that capture tabular data support data query using SQL or MQL.
+   To search non-tabular data, see [Filter Data](/manage/data/view/#filter-data).
 1. [Configure cloud sync](/services/data/configure-cloud-sync/), and sync data to the Viam app.
    When you are able to [view your data in the Viam app](/manage/data/view/), you are ready to proceed.
 
@@ -101,7 +104,11 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
    - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/) to search the `sensorData` database and `readings` collection, and get sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
 
      ```mongodb {class="command-line"}
-     AtlasDataFederation sensorData> db.aggregate(
+     // Switch to sensorData database:
+     use sensorData
+
+     // Run query using $sql:
+     db.aggregate(
          [
              { $sql: {
                  statement: "select count(*) as numStanding from readings \
@@ -116,7 +123,11 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
    - The following MQL query performs the same search as the SQL query above, but uses the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/):
 
      ```mongodb {class="command-line"}
-     AtlasDataFederation sensorData> db.readings.aggregate(
+     // Switch to sensorData database:
+     use sensorData
+
+     // Run query using $match:
+     db.readings.aggregate(
          [
              { $match: {
                  'robot_id': 'abcdef12-abcd-abcd-abcd-abcdef123456',

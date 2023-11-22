@@ -25,8 +25,13 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 ## Filter Data
 
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
-
+You can filter by several categories including machine name, location, or timestamp range.
 For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
+
+You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
+For example, you could use [`BinaryDataByFilter`](/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/program/apis/data-client/#tabulardatabyfilter) to filter binary data or tabular data respectively.
+
+To flexibly query your data using SQL or MQL instead, see [Query Data using SQL / MQL](/manage/data/query/).
 
 ## Delete Data
 
@@ -44,6 +49,7 @@ You can also delete data using the [Viam CLI](../../cli/).
 
 To export your captured data from the cloud, see [Export Data](../export/).
 
-You can [query](../query/) tabular data that you have synced to the cloud, and can use images you have synced to [train machine learning models](../../ml/train-model/) within the Viam app.
+If you have synced tabular data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](../query/) from the Viam app or a MQL-compatible client.
+If you have synced images, you can use those images to [train machine learning models](../../ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
