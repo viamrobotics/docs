@@ -362,7 +362,7 @@ To add a local module on your robot:
 
    {{<imgproc src="registry/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local component' shown at the bottom">}}
 
-2. On the next screen:
+1. On the next screen:
 
    - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -372,7 +372,7 @@ To add a local module on your robot:
 
    {{<imgproc src="registry/configure/add-local-module-create.png" resize="400x" declaredimensions=true alt="The add a component modal showing the create a module step for an intel realsense module">}}
 
-3. Click **Create** to create the modular resource provided by the local module.
+1. Click **Create** to create the modular resource provided by the local module.
 
 You can also add the module directly, without first adding its modular component or service:
 
