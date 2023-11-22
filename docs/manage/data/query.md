@@ -75,7 +75,7 @@ Once you have synced tabular data to the Viam app, you can directly query that d
    You can use any client that is capable of connecting to a MongoDB Atlas instance, including the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
    To connect, use the `hostname` you determined when you [configured direct data query](/services/data/configure-data-query/#configure-data-query), and structure your username in the following format:
 
-   ```sh {class="command-line"}
+   ```sh
    db-user-<YOUR-ORG-ID>
    ```
 
@@ -89,7 +89,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
-   ```sh {class="command-line" data-prompt="$"}
+   ```sh {class="command-line" data-prompt=">"}
    mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username db-user-<YOUR-ORG-ID>
    ```
 
@@ -103,7 +103,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    - The following SQL query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/) to search the `sensorData` database and `readings` collection, and get sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters:
 
-     ```mongodb {class="command-line"}
+     ```mongodb {class="command-line" data-prompt=">"}
      // Switch to sensorData database:
      use sensorData
 
@@ -122,7 +122,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    - The following MQL query performs the same search as the SQL query above, but uses the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/):
 
-     ```mongodb {class="command-line"}
+     ```mongodb {class="command-line" data-prompt=">"}
      // Switch to sensorData database:
      use sensorData
 
