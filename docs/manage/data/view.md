@@ -29,9 +29,9 @@ You can filter by several categories including machine name, location, or timest
 For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
 
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
-For example, you could use [`BinaryDataByFilter`](/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/program/apis/data-client/#tabulardatabyfilter) to filter binary data or tabular data respectively.
+For example, you could use the [`BinaryDataByFilter`](/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
 
-To flexibly query your data using SQL or MQL instead, see [Query Data using SQL / MQL](/manage/data/query/).
+To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/manage/data/query/).
 
 ## Delete Data
 
