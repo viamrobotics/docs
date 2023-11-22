@@ -10,6 +10,12 @@ aliases:
 # SME:
 ---
 
+## Novemeber 2023
+
+### Changed: Model training from datasets
+
+To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/manage/data/datasets).
+
 ## October 2023
 
 ### Added: Test an ML model in browser
