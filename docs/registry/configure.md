@@ -358,9 +358,9 @@ To add a local module on your robot:
    - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
    - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
 
-1. Then, select the `local modular resource` type from the list.
+1. Then, select the `local component` or `local service` type from the list.
 
-   {{<imgproc src="registry/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local modular resource' shown at the bottom">}}
+   {{<imgproc src="registry/configure/add-local-module-list.png" resize="300x" declaredimensions=true alt="The add a component modal showing the list of components to add with 'local component' shown at the bottom">}}
 
 1. On the next screen:
 
