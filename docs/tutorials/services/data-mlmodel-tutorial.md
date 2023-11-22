@@ -125,7 +125,10 @@ Now that you have configured data capture on your camera component, you can view
    New images should appear roughly every six seconds as cloud sync uploads them from your smart machine.
 
 You can use the filters on the left side of the screen to filter your images by robot, component, date range, and more.
-You can also use the **Copy export command** button to use the Viam CLI to [export captured data](/manage/cli/#data), if desired.
+
+If you have a lot of images, filter them by limiting the displayed images to a specific date and time range:
+
+{{< imgproc src="/tutorials/data-management/filter-date-range.png" alt="The data tab displaying images filtered by date and time range" resize="1200x" >}}
 
 For more information see [View and filter data](/manage/data/view/).
 
@@ -137,11 +140,12 @@ You can use an ML model to help your smart machine adapt its behavior to the wor
 For this tutorial, you will train an ML model to be able to recognize specific shapes (for example, red and blue stars), and then deploy that model to your smart machine using the _ML (machine learning) model service_.
 With a model deployed to your smart machine, you can use the [ML model](/services/ml/) service together with the [vision](/services/vision/) service to analyze newly-detected objects for a possible match to a known shape.
 
-To train a model from your captured data, first tag your images with appropriate labels, train a model based on those labels, then deploy the model to your smart machine.
+To train a model from your captured data, first tag your images with appropriate labels and add them to a dataset.
+Then train a model based on your dataset and labels and deploy the model to your smart machine.
 
-### Tag images
+### Tag images and create a dataset
 
-1. From the [**DATA** page](https://app.viam.com/data/view) in the Viam app, select an image captured from your smart machine that you would like to tag.
+1. From the [**DATA** page](https://app.viam.com/data/view) in the Viam app, select an image captured from your smart machine that you would like to tag and add to your dataset.
 1. In the **Tags** field on the right-hand side, enter a new tag describing the object in the image that you want your smart machine to be able to identify, then click **Add as new tag**.
    Tag names support alphanumeric characters, underscores, and hyphens.
 
@@ -152,8 +156,13 @@ To train a model from your captured data, first tag your images with appropriate
 
    If you are not using a Try Viam rover, you can choose objects in your smart machine's surroundings instead.
 
+   Then use the Datasets dropdown to create a new dataset and assign the image to it.
+   We called our dataset `shapes`.
+
+   {{<gif webm_src="/tutorials/data-mlmodel/add-to-dataset.webm" mp4_src="/tutorials/data-mlmodel/add-to-dataset.mp4" alt="Add image to dataset" max-width="600px">}}
+
 1. Repeat this process for other images that contain objects you want your model to be able to identify.
-   Once you have added a tag to an image, you can select that tag from the **Tags** dropdown menu for other images that also feature the tagged object.
+   Once you have added a tag to an image and created a dataset, you can select the tag from the **Tags** dropdown menu and the dataset from the **Datasets** dropdown for other images.
 
    {{< alert title="Tip" color="tip" >}}
 
@@ -174,35 +183,18 @@ The following is an example of a good selection of images containing the `blue_s
 
 If you want to remove a tag, click the **X** icon to the right of the tag name below the **Tags** field.
 
-For more information, see [Train a model](/manage/ml/train-model/).
+### View your dataset
 
-### Filter images using tags
+Upon completion of tagging your data set, you can view the data in your dataset by clicking on your dataset's name on the image sidebar or on the [**DATASETS** subtab](https://app.viam.com/data/datasets).
 
-Once you have tagged your images, you can use those tags to see all the images with specific tags.
+![The shapes dataset.](/tutorials/data-management/shapes-dataset.png)
 
-To filter images by tag, use the **Tags** dropdown filter on the left-hand side to select the tag you want to filter by, then click the **Search** button to limit displayed images to only those matching the provided tag.
-
-For example, the following shows an images data set filtered to only show images tagged with the `red_star` tag:
-
-{{< imgproc src="/tutorials/data-management/filter-by-red-star.png" alt="The filtering pane on the left of the data page with the tag red_star checked and the search button shown" resize="250x" >}}
-
-You can search for multiple tags at once, which will display images that match any of the included tags.
-To reset a filter, and return to viewing all captured images, click the **Reset filters** button on the left, then click **Search** again.
-
-### Train a model based on a filter
-
-You can filter your images to constrain the model you train to only those images you want to inform your model.
-This is useful when you have multiple smart machines capturing data, or multiple environments that your smart machine operates in.
+### Train a model on a dataset
 
 To train a model:
 
-1. First, filter your images by smart machine name, time range, or other filter using the **Filtering** panel on the left-hand side, then click **Search**.
-   The following shows a filter limiting displayed images to a specific date and time range:
-
-   {{< imgproc src="/tutorials/data-management/filter-date-range.png" alt="The data tab displaying images filtered by date and time range" resize="1200x" >}}
-
-1. When you are happy with the images shown, click the **Train model** button in the upper-right.
-1. Give your model a name, like `my-object-detector`, and select the **Model type**:
+1. From the dataset view, click on **Train model**.
+1. Give your model a name, like `my-classifier-model`, and select the **Model type**:
    - Use `Single label classification` if you only added one tag per image.
    - Use `Multi label classification` if you added more than one tag for some images.
 1. Select the tags you want to train your model on from the **Labels for training** dropdown, then click **Train model**.
@@ -219,6 +211,8 @@ You can view your model's training progress from the **Models** subtab under the
 Models that are still being trained appear under **Training**, while models that have completed training and are ready for use appear under **Models**.
 
 {{< imgproc src="/tutorials/data-management/trained-model.png" alt="The models tab on the data page showing a completed model named my-classifier-model ready for deployment" resize="800x" >}}
+
+For more information, see [Train a model](/manage/ml/train-model/).
 
 ### Deploy a model
 

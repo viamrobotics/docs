@@ -4,15 +4,17 @@ linkTitle: "Train Model"
 weight: 40
 type: "docs"
 tags: ["data management", "ml", "model training"]
+images: ["/manage/ml/train-model.gif"]
+webmSrc: "/manage/ml/train-model.webm"
+mp4Src: "/manage/ml/train-model.mp4"
+videoAlt: "Add a bounding box around the dog in an image."
 aliases:
   - /manage/data/train-model/
 description: "Train an image classification model on labeled image data."
-# SME: Aaron Casas
+# SME: Tahiya + Alexa Greenberg
 ---
 
-You can label or add bounding boxes to [images collected](/services/data/configure-data-capture/) by robots and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
-
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/CP14LR0Pq64">}}
+You can add classification tags or bounding boxes to [images collected](/services/data/configure-data-capture/) by robots, add them to a dataset, and use the annotated data to train a **Single Label Classification Model**, **Multi Label Classification Model** or **Object Detection Model** within Viam.
 
 When training machine learning models, it is important to supply a variety of different data about the subject.
 In the case of image classification, it is important to provide images of the object being identified in different situations, such as from different angles or in different lighting situations.
@@ -20,35 +22,35 @@ The more varied the provided data set, the more accurate the resulting model bec
 
 ## Train a model
 
-After [annotating your images](/manage/data/label/), click on the **TRAIN MODEL** button in the top right corner.
+After [creating a dataset](/manage/data/dataset/), navigate to the **DATA** tab and the **DATASETS** subtab.
+Then click on the dataset you want to train a model from and click on the **Train model** button on your dataset's page.
 
-![Train model button](/manage/ml/train-model.png)
+On the **Train a model** menu:
 
-A **Training** side menu opens.
-The model will train on all images that are part of the current filter.
-
-{{< alert title="Info" color="info" >}}
-Filtered datasets are views and not materialized.
-That means the data you are viewing may change as you label and train on the dataset.
-If the underlying data matching the filter changes because data is deleted or more data is added, the dataset will also change.
-{{< /alert >}}
-
-1. Select **New Model**.
-2. Specify a **Model Name**.
-3. Select a **Model Type** and one or more labels to train on:
+1. Enter a name for your new model.
+1. Select a **Model Type** and one or more labels to train on:
    - **Single Label Classification**: The resulting model predicts one of the selected labels or `UNKNOWN` per image.
      If you are only using one label, ensure that the dataset you are training on also contains unlabeled images.
    - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
    - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
-4. Click **TRAIN MODEL**
+1. Click **TRAIN MODEL**
 
-![Train model menu](/manage/ml/train-model-menu.png)
+{{<gif webm_src="/manage/ml/train-model.webm" mp4_src="/manage/ml/train-model.mp4" alt="Train a model UI">}}
 
 The model now starts training and you can follow its process in the **Training** section of the **Models** page.
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 
 ![The trained model](/manage/ml/stars-model.png)
+
+{{< alert title="Note" color="note" >}}
+
+Your [dataset](/manage/data/dataset/) is not versioned.
+You can add or remove data from it at any time.
+Existing models will not change if you change the dataset they were trained on.
+To iterate on your model and train on the a changed dataset, [train a new version of your model](#train-a-new-version-of-a-model).
+
+{{< /alert >}}
 
 ### Train a new version of a model
 
@@ -57,7 +59,7 @@ If you train a new version of that model, Viam will automatically deploy the new
 
 {{< alert title="Important" color="note" >}}
 The previous model remains unchanged when you are training a new version of a model and is not used as input.
-If you are training a new model, you need to again select the images to train on because the model will be built from scratch.
+If you are training a new model, you need to again go to your dataset's page and click on the **Train Model** button.
 {{< /alert >}}
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change `packages` configuration in the [Raw JSON robot configuration](/manage/configuration/#the-config-tab).

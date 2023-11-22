@@ -8,27 +8,26 @@ tags: ["data management", "data", "services"]
 description: "Access data captured by the robot's components and train image classification and object detection models on the data."
 aliases:
   - "/manage/data-management/"
-# SME: Aaron Casas
+# SME: Alexa Greenberg
 ---
 
-Data Management is built into Viam allowing you to capture, sync, [view](view/), [label](label/), and [export](export/) data from your robots, as well as use [Machine Learning](/manage/ml/) features to enhance your robot's capabilities.
+Data Management is built into Viam.
 
 ![Data is captured on the robot, uploaded to the cloud, and then deleted off local storage.](/manage/data/data_management.png)
 
+Once you have captured and synced data, you can:
+
 {{< cards >}}
-{{% manualcard %}}
-
-<h4>Capture and sync data</h4>
-<p>To configure data capture and cloud synchronization, see <a href="../../services/data/">data management service</a>.</p>
-{{% /manualcard %}}
-
-{{% manualcard %}}
-
-<h4>Access and export data</h4>
-Once you have configured data capture and cloud sync, you can <a href="/manage/data/view/">view</a> and <a href="/manage/data/export/">export</a> your data.
-{{% /manualcard %}}
-
+{{% card link="/manage/data/view/" %}}
+{{% card link="/manage/data/dataset/" %}}
+{{% card link="/manage/data/export/" %}}
 {{< /cards >}}
+
+<br>
+
+## Requirements
+
+You must configure data capture and cloud synchronization with the [Data Management Service](/services/data/) to be able to view, label, and export data.
 
 ## Next steps
 
