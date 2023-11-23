@@ -18,8 +18,8 @@
 
 {{- $tooltip := $tooltip | replaceRE "(?s)<a class='glossary-tooltip'.*?>(.*?).*</a>" "$1" | plainify -}}
 {{- $tooltip := trim $tooltip " \n" -}}
-<a class='glossary-tooltip' title='{{- $tooltip | safeHTML -}}' data-toggle='tooltip' data-placement='top' href='{{- if (eq (substr $baseurl -1) "/" ) -}}{{(substr $baseurl 0 -1)}}{{- else -}}{{$baseurl}}{{- end }}{{$external_link}}' target='_blank' aria-label='{{ $text }}'>
+<span class='glossary-tooltip' title='{{- $tooltip | safeHTML -}}' data-toggle='tooltip' data-placement='top' aria-label='{{ $text }}'>
     {{- $text -}}
-</a>
+</span>
 {{- end -}}
 {{- end -}}
