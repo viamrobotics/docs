@@ -9,4 +9,4 @@ aka:
 A physical, mobile platform that the other parts of a mobile robot attach to.
 For example, a wheeled rover, boat, or flying drone.
 
-For more information see [Base Component](../../components/base/).
+For more information see [Base Component](/components/base/).

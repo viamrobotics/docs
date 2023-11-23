@@ -40,13 +40,13 @@ Before starting this tutorial, you must:
 
 - Install the [Viam Python SDK](https://python.viam.dev/)<!-- or the [Viam Go SDK](https://pkg.go.dev/go.viam.com/rdk/robot/client#section-readme/)-->.
 - If you are connecting to a real robotic arm during this tutorial, make sure your computer can communicate with the arm controller before continuing.
-  Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/) including a [fake arm model](../../../components/arm/fake/).
+  Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6/), but you can use any [arm model](/components/arm/) including a [fake arm model](/components/arm/fake/).
 - Complete the previous tutorial, [Plan Motion with an Arm and a Gripper](../plan-motion-with-arm-gripper/), which configures the robot, client and service access, and other infrastructure we'll need for this tutorial.
   For reference, see the [full code sample from the prior tutorial](../plan-motion-with-arm-gripper/#full-tutorial-code).
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](../../../components/arm/) and [gripper](../../../components/gripper/) components with [frames](/services/frame-system/) configured.
+Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/components/arm/) and [gripper](/components/gripper/) components with [frames](/services/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
@@ -279,7 +279,7 @@ If we changed the orientation along the way, we might spill the tea!
 {{< alert title="Tip" color="tip" >}}
 You may be wondering how the orientations of the poses are determined.
 Our example gripper's frame is defined such that its orientation vector points from its "wrist" to the tip of its jaws.
-In the example code above, all poses have an [orientation vector](../../../internals/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
+In the example code above, all poses have an [orientation vector](/reference/internals/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
 When we tell the gripper to move to such a pose, its orientation vector moves to align with the orientation vector of the pose, so its jaws end up pointing along the global X axis, "forwards" from the robot base.
 This puts it in a good position for picking up and moving a cup.
 

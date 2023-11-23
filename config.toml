@@ -71,22 +71,22 @@ author = "Viam Documentation Team"
 logo = "icons/logo.svg"
 header = "Viam Documentation"
 
-version_menu = "SDK Documentation"
-[[params.versions]]
- version = "Python SDK Documentation"
- url = "https://python.viam.dev/"
-[[params.versions]]
- version = "Go Client SDK Documentation"
- url="https://pkg.go.dev/go.viam.com/rdk"
-[[params.versions]]
- version = "TypeScript SDK Documentation"
- url="https://ts.viam.dev/"
-[[params.versions]]
- version = "C++ SDK Documentation"
- url="https://cpp.viam.dev/"
-[[params.versions]]
- version = "Flutter SDK Documentation"
- url="https://flutter.viam.dev/"
+# version_menu = "SDK Documentation"
+# [[params.versions]]
+#  version = "Python SDK Documentation"
+#  url = "https://python.viam.dev/"
+# [[params.versions]]
+#  version = "Go Client SDK Documentation"
+#  url="https://pkg.go.dev/go.viam.com/rdk"
+# [[params.versions]]
+#  version = "TypeScript SDK Documentation"
+#  url="https://ts.viam.dev/"
+# [[params.versions]]
+#  version = "C++ SDK Documentation"
+#  url="https://cpp.viam.dev/"
+# [[params.versions]]
+#  version = "Flutter SDK Documentation"
+#  url="https://flutter.viam.dev/"
 # [[params.versions]]
 #  version = "Rust SDK Documentation"
 #  url = "https://rust.viam.dev/"

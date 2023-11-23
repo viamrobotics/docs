@@ -8,6 +8,7 @@ tags: ["server", "rdk"]
 aliases:
   - "/product-overviews/rdk"
   - "/program/rdk"
+  - "/internals/rdk"
 ---
 
 {{< alert title="Tip" color="tip" >}}

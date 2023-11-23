@@ -88,19 +88,19 @@ Configure the reference frame as follows:
 | --------- | ----------- | ----- |
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
-| `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
+| `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/reference/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
 | `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
 {{% alert title="Info" color="info" %}}
 
-The `Orientation` parameter offers `Types` for ease of configuration, but the frame system always stores and returns [orientation vectors](/internals/orientation-vector/) in `Orientation Vector Radians`.
+The `Orientation` parameter offers `Types` for ease of configuration, but the frame system always stores and returns [orientation vectors](/reference/internals/orientation-vector/) in `Orientation Vector Radians`.
 `Degrees` and `Quaternion` will be converted to `Radians`.
 
 {{% /alert %}}
 
 {{% alert title="Tip" color="tip" %}}
 
-For [base components](../../components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
+For [base components](/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
 You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to understand rotation about any of these axes.
 
 For non-base components, there is no inherent concept of "forward," so it is up to the user to define frames that make sense in their application.
@@ -146,7 +146,7 @@ Add this value to `"Z"` in the camera's reference frame `Translation` attribute,
 Now the distance between these components is accurately reflected in the visualization.
 However, the camera doesn't yet display as oriented towards the base.
 
-Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
+Adjust the [orientation vector](/reference/internals/orientation-vector/) to 0.5 degrees in `"OX"` in the camera's reference frame `Orientation` attribute, and the frame system readjusts to show the camera's orientation:
 
 ![Camera oriented .5 degrees OX shown in the Frame System Editor](/services/frame-system/demo_camera_edited_2.png)
 

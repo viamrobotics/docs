@@ -13,7 +13,7 @@ no_list: true
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).
 You can think of this as a description of how you can interact with that resource.
-Different models of resources implement the same API, which [Viam SDKs expose](/internals/robot-to-robot-comms/), allowing you to control different models of resource types with a consistent interface.
+Different models of resources implement the same API, which [Viam SDKs expose](/reference/internals/robot-to-robot-comms/), allowing you to control different models of resource types with a consistent interface.
 
 The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/manage/configuration/) on your robot.
 

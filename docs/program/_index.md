@@ -277,7 +277,7 @@ Future<void> connectToViam() async {
 
 Save this file on your development machine with the file type of your preferred SDK.
 
-The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
+The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/reference/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
 This section of the boilerplate code contains your robot's address and a placeholder for the API key.
 
 ### Authenticate

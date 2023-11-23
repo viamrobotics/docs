@@ -51,7 +51,7 @@
 {{ $manualLink := cond (isset $s.Params "manuallink") $s.Params.manualLink ( cond (isset $s.Params "manuallinkrelref") (relref $s $s.Params.manualLinkRelref) $s.RelPermalink) -}}
 {{ $manualLinkTitle := cond (isset $s.Params "manuallinktitle") $s.Params.manualLinkTitle $s.Title -}}
 {{ $empty_node := $s.Params.empty_node -}}
-<li class="{{ if $withChild }}nav-fold{{ end }}{{ if $activePath }} active-path{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} collapse{{ end }} {{ if $empty_node }}empty-node-submenu{{ end }}" >
+<li class="{{ if $withChild }}nav-fold{{ end }}{{ if $activePath }} active-path{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} {{ if not $activePath }}collapse{{ end }}{{ end }}{{ if $empty_node }} empty-node-submenu{{ end }}" >
   {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
   <input type="checkbox" id="{{ $mid }}-check"{{ if $activePath}} checked{{ end }}/>
   <label for="{{ $mid }}-check"><a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}</a>
@@ -69,15 +69,20 @@
       {{- if (and (and $withChild (not $treeRoot) (ne  .section.File.Path "tutorials/_index.md" ) ) ) }}
       <span class="menu-toggle">
         {{ if (or $activePath $active) }}
-          <i class="fas fa-chevron-down lozad"></i>
+          <i class="fas fa-chevron-down"></i>
         {{ else }}
-          <i class="fas fa-chevron-right lozad"></i>
+          <i class="fas fa-chevron-right"></i>
         {{- end }}
       {{- end }}
     </span>
   {{ else }}
+      {{ if $s.Params.canonical }}
+      <a href="{{ $s.Params.canonical }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>{{ $s.LinkTitle }}
+      </a>
+      {{ else }}
       <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}
       </a>
+      {{- end }}
   {{ end }}
   {{- end }}
   {{- if (and $withChild (ne .section.File.Path "tutorials/_index.md" ) ) }}

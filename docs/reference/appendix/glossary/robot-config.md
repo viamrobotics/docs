@@ -8,4 +8,4 @@ aka:
 
 The complete configuration of a single robot {{< glossary_tooltip term_id="part" text="part" >}}.
 
-For more information, see [Configuration](../../manage/configuration/).
+For more information, see [Configuration](/manage/configuration/).

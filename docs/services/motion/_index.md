@@ -249,7 +249,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
 
-The following code example gets the pose of the tip of a [gripper](../../components/gripper/) named `my_gripper` which is attached to the end of an arm, in the "world" `reference_frame`:
+The following code example gets the pose of the tip of a [gripper](/components/gripper/) named `my_gripper` which is attached to the end of an arm, in the "world" `reference_frame`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper

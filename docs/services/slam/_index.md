@@ -57,7 +57,7 @@ Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) f
 
 ### GetPosition
 
-Get the current position of the component the SLAM service is configured to source point cloud data from in the SLAM map as a [`Pose`](/internals/orientation-vector/).
+Get the current position of the component the SLAM service is configured to source point cloud data from in the SLAM map as a [`Pose`](/reference/internals/orientation-vector/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -8,6 +8,8 @@ draft: false
 icon: "/installation/thumbnails/manage.png"
 images: ["/installation/thumbnails/manage.png"]
 description: "Building a local robot configuration file for use with viam-server."
+aliases:
+  - "/appendix/local-configuration-file/"
 ---
 
 The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.

@@ -246,4 +246,4 @@ Saving the config and moving to the control UI, you should notice two new panels
 
 Congratulations, you have successfully configured your rover with Viam!
 For now, all the control is manual.
-If you want to go further and make your rover autonomous, you can use the [Python SDK](https://python.viam.dev) to write your own code to control it, or check out one of our other [tutorials](../../)!
+If you want to go further and make your rover autonomous, you can use the [Python SDK](https://python.viam.dev) to write your own code to control it, or check out one of our other [tutorials](/tutorials/)!

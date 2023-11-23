@@ -8,4 +8,4 @@ aka:
 
 An organizational concept, consisting of either one _{{< glossary_tooltip term_id="part" text="part" >}}_, or multiple _parts_ working closely together to complete tasks.
 
-For more information, see [Robots](../../manage/fleet/robots/).
+For more information, see [Robots](/manage/fleet/robots/).

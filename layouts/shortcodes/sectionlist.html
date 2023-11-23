@@ -1,8 +1,8 @@
-{{ $p := .Site.GetPage (.Get "sectiontitle") }}
-<ul class="sectionlist">
-  {{ range (where .Site.Pages "Section" (.Get "sectiontitle")) }}
-  {{ range .Pages }}
-    {{ if and (eq $p .Parent) (not .Draft) }}
+{{ with site.GetPage (.Get "section") }}
+{{ $pages := union .Sections .Pages }}
+  {{ range $pages }}
+  <ul class="sectionlist">
+  {{ if not .Draft }}
       <li>
         <a href="{{ .Permalink }}" title="{{.Title}}">
           <div>
@@ -13,7 +13,10 @@
           </div>
         </a>
     </li>
-      {{ end }}
     {{ end }}
+  </ul>
+{{- else -}}
+{{- warnf "No section found. Check %s" (.Get "section") -}}
+{{- end -}}
 {{ end }}
-</ul>
+

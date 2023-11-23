@@ -8,4 +8,4 @@ aka:
 
 A robot part which is controlled by another robot part.
 
-For more information, see [Robot Architecture: Parts, Sub-Parts and Remotes](../../manage/parts-and-remotes/).
+For more information, see [Robot Architecture: Parts, Sub-Parts and Remotes](/manage/parts-and-remotes/).

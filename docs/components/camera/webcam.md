@@ -111,7 +111,7 @@ v4l2-ctl --list-devices
 
 The `id` listed by `ls /dev/v4l/by-id/` is a more consistent way to refer to the webcam.
 
-See [Camera troubleshooting](/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
+See [Camera troubleshooting](/reference/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
 
 {{% /tab %}}
 {{% tab name="Mac" %}}
@@ -167,7 +167,7 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 ### CSI Camera not working on a Raspberry Pi
 
-If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](../../../installation/prepare/rpi-setup/#enable-communication-protocols).
+If you are using a CSI camera v1.3 or v2.0 on a Raspberry Pi, you need to [enable legacy mode](/installation/prepare/rpi-setup/#enable-communication-protocols).
 If you are using a CSI camera v3.0, you need to use the [`viam:camera:csi` module](https://github.com/viamrobotics/csi-camera/) instead.
 
 ### High CPU usage

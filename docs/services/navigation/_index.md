@@ -196,7 +196,7 @@ To start, add the frame system service to your rover [base](/components/base/) a
 
     In other words, designate the origin of the base as `(0,0,0)`, and measure the distance between the origin of the base and the origin of the sensor to obtain the coordinates of the **Translation**.
 
-    See [the frame system service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
+    See [the frame system service](/services/frame-system/#configuration) for more information, and [the Viam Internals](/reference/internals/orientation-vector/) for a detailed guide on conducting this measurement.
 
 Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the navigation service:
 
@@ -801,7 +801,7 @@ An example of an `Orientation` reading:
 orientation, err := imuwit.Orientation(context.Background, nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/reference/internals/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
 You can choose the origin reference frame by configuring it using Viam's [frame system](/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.

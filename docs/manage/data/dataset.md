@@ -58,7 +58,7 @@ To delete a bounding box, click the cross next to the corresponding label.
 
 ### Image Tags
 
-You can use tags to [create classification models](../../ml/train-model/#train-a-model) for images.
+You can use tags to [create classification models](/manage/ml/train-model/#train-a-model) for images.
 For example, if you would like to create a model that identifies an image of a star in a set of images, tag each image containing a star with a `star` tag.
 The filter also needs to include images without the star tag or with another tag like `notstar`.
 If you add a `notstar` tag, you can filter the data in your dataset by selecting `star` and `notstar` from the **Tags** dropdown in the **Filtering** menu.

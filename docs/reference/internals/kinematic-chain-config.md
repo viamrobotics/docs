@@ -5,12 +5,14 @@ weight: 70
 type: "docs"
 description: "How to write files defining kinematic parameters to configure intermediate reference frames for components with complex kinematic chains."
 tags: ["slam", "services"]
+aliases:
+  - "/internals/kinematic-chain-config/"
 # SMEs: Motion
 ---
 
 Many components have complex kinematic chains and require an additional set of intermediate reference frames to use Viam's [Motion service](/services/motion/).
 
-- For example, an [arm](/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/orientation-vector/) with [`MoveToPosition()`](/components/arm/#movetoposition).
+- For example, an [arm](/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/reference/internals/orientation-vector/) with [`MoveToPosition()`](/components/arm/#movetoposition).
 
 If you want to implement a component with a complex kinematic chain that is not already built into the RDK, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
 

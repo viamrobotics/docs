@@ -8,7 +8,7 @@ tags: ["vision", "computer vision", "CV", "services", "classification"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/reference/appendix/changelog/#april-2023)_
 
 _2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.
 Any camera that can return 2D images can use 2D image classification.
@@ -135,8 +135,8 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/manage/fleet/robots/#control) or with code:
 
-1. Configure a [camera component](../../../components/camera/).
-2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes :
+1. Configure a [camera component](/components/camera/).
+2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes :
 
    ```json
    {
