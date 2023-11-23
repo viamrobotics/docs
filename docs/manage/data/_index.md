@@ -20,6 +20,7 @@ Once you have captured and synced data, you can:
 {{< cards >}}
 {{% card link="/manage/data/view/" %}}
 {{% card link="/manage/data/dataset/" %}}
+{{% card link="/manage/data/query/" %}}
 {{% card link="/manage/data/export/" %}}
 {{< /cards >}}
 
@@ -31,7 +32,7 @@ You must configure data capture and cloud synchronization with the [Data Managem
 
 ## Next steps
 
-For a comprehensive tutorial on data capture, synchronization, and accessing captures data, see the following tutorial:
+For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see:
 
 {{< cards >}}
 {{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}

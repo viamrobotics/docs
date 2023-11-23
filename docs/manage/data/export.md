@@ -1,14 +1,14 @@
 ---
 title: "Export Data"
 linkTitle: "Export Data"
-description: "Export data from the data management service."
+description: "Export data from the Viam app to your local computer using the Viam CLI."
 weight: 40
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Aaron Casas
+# SME: Alexa Greenberg
 ---
 
-First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
+To export your synced data using the Viam CLI, first [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam.
 
 Then, to export data from the data management service in the cloud:
 

@@ -5,7 +5,7 @@ description: "Configure data capture to save data from components remote parts."
 weight: 30
 type: "docs"
 tags: ["data management", "cloud", "sync"]
-# SME: Aaron Casas
+# SME: Alexa Greenberg
 ---
 
 ## Add the data management service
@@ -348,6 +348,9 @@ If you are capturing camera data, it can happen that the camera captures and syn
 
 ## Next Steps
 
-To sync your captured data with the cloud, [configure cloud sync](../configure-cloud-sync/).
+To sync your captured data with the cloud, [configure cloud sync](/services/data/configure-cloud-sync/).
+
+If you have synced tabular data, such as [sensor](/components/sensor/) readings, you can [query that data with SQL or MQL](/manage/data/query/) from the Viam app or a MQL-compatible client.
+If you have synced images, you can use those images to [train machine learning models](/manage/ml/train-model/) within the Viam app.
 
 For a comprehensive tutorial on using data capture and synchronization together with the ML model service, see [Capture Data and Train a Model](/tutorials/services/data-mlmodel-tutorial/).
