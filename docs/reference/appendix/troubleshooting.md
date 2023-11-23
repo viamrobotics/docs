@@ -4,6 +4,8 @@ linkTitle: "Troubleshooting"
 weight: 130
 type: "docs"
 description: "A guide to basic troubleshooting of a Viam-based robotic system, with easy fixes to common problems."
+aliases:
+  - "/appendix/troubleshooting/"
 ---
 
 This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.

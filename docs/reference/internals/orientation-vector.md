@@ -1,11 +1,12 @@
 ---
 title: "Orientation Vector"
 linkTitle: "Orientation Vector"
-weight: 10
+weight: 15
 type: "docs"
 description: "A description of Viam's orientation vector object."
 aliases:
   - "/appendix/orientation-vector"
+  - "/internals/orientation-vector/"
 ---
 
 An _orientation vector_ specifies the orientation of an object in 3D space.

@@ -9,4 +9,6 @@ card:
   name: reference
   weight: 10
   title: Glossary
+aliases:
+  - "/appendix/glossary/"
 ---

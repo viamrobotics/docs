@@ -7,6 +7,7 @@ type: "docs"
 description: "A lot of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
+  - "/appendix/changelog/"
 # SME:
 ---
 

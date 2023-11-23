@@ -1,7 +1,7 @@
 ---
 title: "Local Configuration File"
 linkTitle: "Local Configuration File"
-weight: 120
+weight: 2
 no_list: true
 type: docs
 draft: false
