@@ -85,6 +85,6 @@ However, if the correct port has been selected, try the following:
    2. With the above button held down, select the correct serial port.
    3. Press and hold down the "EN" and "Boot" buttons at the same time. Then release both.
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

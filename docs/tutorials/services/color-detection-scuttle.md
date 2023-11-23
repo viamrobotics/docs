@@ -103,7 +103,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 You can test your detector from the [**Control tab**](/manage/fleet/robots/#control):
 
-1. Configure a [transform camera](../../../components/camera/transform/) with the following attributes:
+1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
 
    ```json
    {

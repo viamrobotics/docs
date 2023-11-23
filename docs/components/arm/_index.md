@@ -430,7 +430,7 @@ err := myArm.Stop(context.Background(), nil)
 This method is not yet available with the Viam Go SDK.
 {{% /alert %}}
 
-Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/internals/kinematic-chain-config/).
+Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/reference/internals/kinematic-chain-config/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -672,7 +672,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
 
 You can also ask questions on the [Community Discord](https://discord.gg/viam) and we will be happy to help.
 

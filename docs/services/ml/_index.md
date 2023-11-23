@@ -131,7 +131,7 @@ Save the configuration and your model will be added to your robot at <file>$HOME
 
 {{< alert title="Info" color="info" >}}
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](../../manage/configuration/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/manage/configuration/#the-config-tab).
 {{< /alert >}}
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.

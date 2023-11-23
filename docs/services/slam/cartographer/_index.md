@@ -567,4 +567,4 @@ While in a slam session, you should:
 - use a robot that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).

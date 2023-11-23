@@ -614,6 +614,6 @@ Things to try:
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

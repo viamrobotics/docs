@@ -179,8 +179,8 @@ To search other types of data, such as images, see [Filter Data](/manage/data/vi
 
 ### Train and deploy machine learning
 
-You can use data synced to the cloud to [train machine learning models](../../manage/ml/train-model/) and then [deploy these models to your robots](../../services/ml/) from the Viam app.
-You can also [upload and use existing models](../../manage/ml/upload-model/).
+You can use data synced to the cloud to [train machine learning models](/manage/ml/train-model/) and then [deploy these models to your robots](/services/ml/) from the Viam app.
+You can also [upload and use existing models](/manage/ml/upload-model/).
 
 ## Next steps
 

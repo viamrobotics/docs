@@ -767,14 +767,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.
 
 ## Next Steps
 
-Try adding a movement sensor to your [mobile robot](../base/) and writing some code with our [SDKs](../../program/apis/) to implement closed-loop movement control for your robot.
+Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/program/apis/) to implement closed-loop movement control for your robot.
 
-Or, try configuring [data capture](../../services/data/) on your movement sensor.
+Or, try configuring [data capture](/services/data/) on your movement sensor.
 
 {{< snippet "social.md" >}}

@@ -100,7 +100,7 @@ The `Orientation` parameter offers `Types` for ease of configuration, but the fr
 
 {{% alert title="Tip" color="tip" %}}
 
-For [base components](../../components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
+For [base components](/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
 You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to understand rotation about any of these axes.
 
 For non-base components, there is no inherent concept of "forward," so it is up to the user to define frames that make sense in their application.

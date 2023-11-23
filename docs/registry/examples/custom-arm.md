@@ -29,7 +29,7 @@ The {{< glossary_tooltip term_id="rdk" text="RDK" >}} provides a number of built
 _Built-in_ models each have a software driver in the RDK.
 For example, the `ur5e`'s driver is implemented in [`ur.go`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur.go) in the RDK.
 
-Each of these models must also include a [kinematics file](/internals/kinematic-chain-config/), which specifies the relative [orientation](/reference/internals/orientation-vector/) of links and joints in its kinematic chain.
+Each of these models must also include a [kinematics file](/reference/internals/kinematic-chain-config/), which specifies the relative [orientation](/reference/internals/orientation-vector/) of links and joints in its kinematic chain.
 Each built-in driver in the RDK includes a corresponding kinematics file located in the same directory as the driver.
 For example, the `ur5e`'s kinematics file, [`ur5e.json`](https://github.com/viamrobotics/rdk/blob/main/components/arm/universalrobots/ur5e.json), is provided in the RDK in the same directory as its driver, `ur.go`.
 
@@ -44,7 +44,7 @@ See [Modular Resources](/registry/) for more information.
 ## Get your arm's kinematics file
 
 The way arms move through space is more complicated than Viam's other [components](/components/).
-Because of this, an arm, unlike other components, requires a [kinematic configuration file](/internals/kinematic-chain-config/) describing its geometry.
+Because of this, an arm, unlike other components, requires a [kinematic configuration file](/reference/internals/kinematic-chain-config/) describing its geometry.
 This provides the necessary information for the [frame system service](/services/frame-system/) and built-in [motion service](/services/motion/) to work with the arm.
 
 **Find a pre-built kinematics file:**
@@ -54,8 +54,8 @@ This provides the necessary information for the [frame system service](/services
 
 **Create your own kinematics file:**
 
-- Follow the instructions on [Configure Complex Kinematic Chains](/internals/kinematic-chain-config/) to write a file detailing the geometry of your arm.
-  - Use the [Spatial Vector Algebra (SVA)](/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
+- Follow the instructions on [Configure Complex Kinematic Chains](/reference/internals/kinematic-chain-config/) to write a file detailing the geometry of your arm.
+  - Use the [Spatial Vector Algebra (SVA)](/reference/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
   - Follow the frame system's guide to [Configure a Reference Frame](/services/frame-system/frame-config/) when working out the relative [orientations](/reference/internals/orientation-vector/) of the `links` on your arm.
     You can view existing examples of the SVA and JSON format in Viam's [built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm).

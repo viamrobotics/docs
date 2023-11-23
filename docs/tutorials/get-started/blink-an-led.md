@@ -30,7 +30,7 @@ This is a great place to start if you have never built a robot or a circuit befo
 {{<gif webm_src="/tutorials/blink-an-led/image9.webm" mp4_src="/tutorials/blink-an-led/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
 First, you'll use the control interface on the [Viam app](https://app.viam.com) to turn the LED on and off.
-Then, you'll write code to control the LED using the Viam [software development kits](../../../program/).
+Then, you'll write code to control the LED using the Viam [software development kits](/program/).
 
 ## What you'll need for this guide
 

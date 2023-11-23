@@ -9,7 +9,7 @@ images: ["/services/vision/dog-detector.png"]
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/reference/appendix/changelog/#april-2023)_
 
 <div class="td-max-width-on-larger-screens">
   <div class="alignright" >
@@ -165,7 +165,7 @@ To make use of ML models with your machine, use the built-in [ML model service](
 <br>
 
 A machine learning detector that draws bounding boxes according to the specified tensorflow-lite model file available on the robot’s hard drive.
-To create a `mlmodel` classifier, you need an [ML model service with a suitable model](../../ml/).
+To create a `mlmodel` classifier, you need an [ML model service with a suitable model](/services/ml/).
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -231,12 +231,12 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/manage/fleet/robots/#control) or with code:
 
-1. Configure a [camera component](../../../components/camera/).
+1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
 
-2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera](../../../components/camera/transform/) with the following attributes:
+2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera]/components/camera/transform/) with the following attributes:
 
    ```json
    {

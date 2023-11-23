@@ -9,7 +9,7 @@ images: ["/icons/components/imu.svg"]
 ---
 
 An [inertial measurement unit (IMU)](https://en.wikipedia.org/wiki/Inertial_measurement_unit) provides data for the `AngularVelocity`, `Orientation`, `CompassHeading`, and `LinearAcceleration` methods.
-Acceleration and magnetometer data are available by using the [sensor](../../../sensor/) `GetReadings` method, which IMUs wrap.
+Acceleration and magnetometer data are available by using the [sensor]/components/sensor/) `GetReadings` method, which IMUs wrap.
 
 The `imu-wit` movement sensor model supports the following IMUs manufactured by [WitMotion](https://www.wit-motion.com/):
 

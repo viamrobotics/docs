@@ -42,7 +42,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
   <tr>
     <th>{{<imgproc src="/manage/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
       <b>3. Train or upload an ML model</b>
-      <p>Use your labeled data to <a href="/manage/ml/train-model/">train your own models</a> for object detection and classification using data from the <a href="../../services/data/">data management service</a> or <a href="/manage/ml/upload-model/">add an existing model</a>.</p>
+      <p>Use your labeled data to <a href="/manage/ml/train-model/">train your own models</a> for object detection and classification using data from the <a href="/services/data/">data management service</a> or <a href="/manage/ml/upload-model/">add an existing model</a>.</p>
     </th>
   </tr>
   <tr>

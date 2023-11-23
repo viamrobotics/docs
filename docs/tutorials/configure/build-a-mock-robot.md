@@ -75,7 +75,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
    - Click **Save config**.
 
-4. Configure a [fake motor component](../../../components/motor/fake/):
+4. Configure a [fake motor component](/components/motor/fake/):
 
    - Click **Create component**.
    - Select the `motor` type, then select the `fake` model.

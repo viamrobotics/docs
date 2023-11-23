@@ -118,7 +118,7 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 {{% /tab %}}
 {{% tab name="Go" %}}
 The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the [`EndPosition`](../../../components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`EndPosition`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm

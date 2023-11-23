@@ -49,10 +49,10 @@ The robot checks for new configurations every 15 seconds and changes its configu
 
 After connecting your robot, go to the **Config** tab, and start adding robot {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and other {{< glossary_tooltip term_id="resource" text="robot resources" >}}.
 
-For more information, see the [configuration documentation](../../configuration/#the-config-tab).
+For more information, see the [configuration documentation](/manage/configuration/#the-config-tab).
 
 {{< alert title="Tip" color="tip" >}}
-If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](../../configuration/).
+If you are managing a large fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robot](/manage/configuration/).
 {{< /alert >}}
 
 ### History
@@ -82,7 +82,7 @@ For example, if you have configured a base with wheels, you can control your rob
 If you have configured a camera component, a window in the **Control** tab displays the camera output.
 
 If you use remote control in the [Viam app](https://app.viam.com) UI, all communication to the robot uses [WebRTC](https://pkg.go.dev/go.viam.com/utils@v0.0.3/rpc#hdr-Connection).
-For local communication between [parts](../../parts-and-remotes/#robot-parts) Viam uses gRPC or WebRTC.
+For local communication between [parts](/manage/parts-and-remotes/#robot-parts) Viam uses gRPC or WebRTC.
 
 {{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="Using the control tab" max-width="800px">}}
 
@@ -96,9 +96,9 @@ To start programming your robot, go to the **Code sample** tab which contains bo
 
 {{% snippet "show-secret.md" %}}
 
-For more information on the SDKs, see [Program your Robot with Viam's SDKs](../../../program/apis/).
+For more information on the SDKs, see [Program your Robot with Viam's SDKs](/program/apis/).
 
-There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](../../parts-and-remotes/).
+There is also a JSON stub you can copy if you wish to have your robot communicate with another robot as a [remote](/manage/parts-and-remotes/).
 
 ### Security
 
