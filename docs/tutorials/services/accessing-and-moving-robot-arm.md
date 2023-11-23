@@ -27,15 +27,15 @@ Before running any code, ensure your robotic arm has enough space and that there
 Also pay attention to your surroundings, double-check your code for correctness, and make sure anyone nearby is aware and alert before issuing commands to your robot.
 {{< /alert >}}
 
-The following instructions show you how to interact with an [arm component](/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
+The following instructions show you how to interact with an [arm component](/platform/build/configure/components/arm/), help you understand how an arm describes its state, and assist you in issuing movement commands to your robotic arm.
 
 <div class="td-max-width-on-larger-screens">
   {{<imgproc src="/tutorials/motion/access_01_xarm6.png" resize="500x" declaredimensions=true alt="A picture of the UFACTORY xArm 6." class="alignright" style="max-width: 400px" >}}
 </div>
 
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/platform/build/configure/components/arm/).
 
-If you do not have a robotic arm of your own, the [fake arm component page](/components/arm/fake/) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
+If you do not have a robotic arm of your own, the [fake arm component page](/platform/build/configure/components/arm/fake/) shows how you can set up a virtual robotic arm with the same kinematic model as a real robotic arm.
 Configure it with `"arm-model": "xArm6"` in its `attributes`.
 You can then continue through the code examples in this tutorial without making any changes (and without needing to buy or build an expensive robot arm)!
 
@@ -90,7 +90,7 @@ In this step, you'll fetch data about the robotic arm's current position.
 {{< tabs >}}
 {{% tab name="Python" %}}
 The following lines from the [full **Python** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the [`get_end_position`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`get_end_position`](/platform/build/configure/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Access myArm
@@ -118,7 +118,7 @@ The `x`, `y`, and `z` values correspond to the `position` element of the pose, w
 {{% /tab %}}
 {{% tab name="Go" %}}
 The following lines from the [full **Go** tutorial code](#full-tutorial-code) enable you to use the `myArm` component you configured earlier.
-The code then calls the [`EndPosition`](/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
+The code then calls the [`EndPosition`](/platform/build/configure/components/arm/#getendposition) method to get the position of the **end of the robot arm with respect to the arm's base**.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Access myArm
@@ -228,7 +228,7 @@ Add the following line to your import list to be able to assign values to a `Joi
 from viam.proto.component.arm import JointPositions
 ```
 
-See the [arm reference document](/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
+See the [arm reference document](/platform/build/configure/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `move_to_joint_positions` function.
 
 ```python {class="line-numbers linkable-line-numbers"}
 # Command a joint position move: move the forearm of the arm slightly up
@@ -241,7 +241,7 @@ await my_arm_component.move_to_joint_positions(positions=cmd_joint_positions)
 You must import an additional Go library to access the data structure that Viam uses to encode joint positions, which is shown next.
 
 Add `armapi "go.viam.com/api/component/arm/v1"` to your import list to be able to assign values to an `armapi.JointPositions` data structure.
-See the [arm reference document](/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
+See the [arm reference document](/platform/build/configure/components/arm/#movetojointpositions) for further details on how to structure data that you pass to the `MoveToJointPositions` function.
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Command a joint position move: move the forearm of the arm slightly up
@@ -271,7 +271,7 @@ For example, the following code gets the arm's end position, makes a 100 millime
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-Add the sample code below to your own client script to try using the arm component's [`move_to_position`](/components/arm/#movetoposition) command.
+Add the sample code below to your own client script to try using the arm component's [`move_to_position`](/platform/build/configure/components/arm/#movetoposition) command.
 This example gets a `Pose` from `get_end_position()` so no additional imports are required.
 If you want to synthesize new poses directly, note that you must import an additional Python package by adding `from viam.proto.common import Pose` to your import list.
 
@@ -284,7 +284,7 @@ await my_arm_component.move_to_position(pose=cmd_arm_pose)
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](/components/arm/#movetoposition) command.
+You must import some additional Go packages to synthesize new poses through the `spatialmath` library for the arms's [`MoveToPosition`](/platform/build/configure/components/arm/#movetoposition) command.
 Add `"go.viam.com/rdk/referenceframe"` and `"go.viam.com/rdk/spatialmath"` to your import list and then add the sample code below to your own client script.
 
 ```go {class="line-numbers linkable-line-numbers"}

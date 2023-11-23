@@ -21,8 +21,8 @@ cost: 540
 no_list: true
 ---
 
-In this tutorial, you'll learn how to use the [vision service](/services/vision/) to make a rover follow a colored object.
-We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/try-viam/rover-resources/).
+In this tutorial, you'll learn how to use the [vision service](/platform/build/configure/services/vision/) to make a rover follow a colored object.
+We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/platform/get-started/try-viam/rover-resources/).
 
 <div class="aligncenter">
 {{<video webm_src="/tutorials/videos/scuttledemos_colordetection.webm" mp4_src="/tutorials/videos/scuttledemos_colordetection.mp4" poster="/tutorials/scuttlebot/scuttledemos_colordetection.jpg" alt="Detecting color with a Scuttle Robot">}}
@@ -34,10 +34,10 @@ You can see the [full code](#full-code) at the bottom of the page.
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/platform/build/configure/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
   - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
-- An attached and configured [webcam camera](/components/camera/webcam/).
+- An attached and configured [webcam camera](/platform/build/configure/components/camera/webcam/).
 
 ## Set up the hardware
 
@@ -48,7 +48,7 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/services/vision/detection/):
+To create a [color detector vision service](/platform/build/configure/services/vision/detection/):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -101,9 +101,9 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**Control tab**](/manage/fleet/robots/#control):
+You can test your detector from the [**Control tab**](/platform/fleet/robots/#control):
 
-1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
+1. Configure a [transform camera](/platform/build/configure/components/camera/transform/) with the following attributes:
 
    ```json
    {
@@ -163,7 +163,7 @@ Next, create a file named <file>main.py</file> and paste the boilerplate code fr
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
-If you haven't yet installed `viam-server`, follow the [installation guide](/installation/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
+If you haven't yet installed `viam-server`, follow the [installation guide](/platform/get-started/installation/#install-viam-server) to install `viam-server` on your robot before proceeding with this tutorial.
 
 You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
 

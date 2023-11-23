@@ -23,7 +23,7 @@ cost: "0"
 In this tutorial you will build a mock robot to learn how to configure robots with Viam.
 You do not need any hardware to do this tutorial.
 
-Follow this tutorial to set up and control a robot with a `fake` [arm](/components/arm/fake/), [board](/components/board/), and [motor](/components/motor/), and an additional mock {{< glossary_tooltip term_id="part" text="sub-part" >}} with a [motor](/components/motor/).
+Follow this tutorial to set up and control a robot with a `fake` [arm](/platform/build/configure/components/arm/fake/), [board](/platform/build/configure/components/board/), and [motor](/platform/build/configure/components/motor/), and an additional mock {{< glossary_tooltip term_id="part" text="sub-part" >}} with a [motor](/platform/build/configure/components/motor/).
 These `fake` components interact with Viam like real hardware but do not physically exist.
 
 ## Set up a mock robot
@@ -40,23 +40,23 @@ Go to this robot's **Setup** tab.
 ### Install and start `viam-server` on your computer
 
 Before you proceed with configuring and controlling your robot, install `viam-server`.
-Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/installation/) on your computer as a system service.
+Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/platform/get-started/installation/) on your computer as a system service.
 
 ### Configure your mock robot
 
-[Configure your mock robot](/manage/configuration/) to represent a physical machine with robotic board, arm, and motor hardware.
+[Configure your mock robot](/platform/build/configure/configuration/) to represent a physical machine with robotic board, arm, and motor hardware.
 
 If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.
 
 1. Navigate to the **Config** tab of your mock robot's page in [the Viam app](https://app.viam.com).
-2. Configure a [fake board component](/components/board/fake/):
+2. Configure a [fake board component](/platform/build/configure/components/board/fake/):
 
    - Click on the **Components** subtab and click **Create component**.
    - Select the `board` type, then select the `fake` model.
    - Enter the name `myBoard` for your board and click **Create**.
 
-3. Configure a [fake arm component](/components/arm/fake/):
+3. Configure a [fake arm component](/platform/build/configure/components/arm/fake/):
 
    - Click **Create component**.
    - Select the `arm` type, then select the `fake` model.
@@ -75,7 +75,7 @@ For this robot, you configure `viam-server` to use `fake` components that emulat
 
    - Click **Save config**.
 
-4. Configure a [fake motor component](/components/motor/fake/):
+4. Configure a [fake motor component](/platform/build/configure/components/motor/fake/):
 
    - Click **Create component**.
    - Select the `motor` type, then select the `fake` model.
@@ -90,7 +90,7 @@ You will need to reference the component names later when you connect to your mo
 
 ## Control your mock robot using the Viam app
 
-When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](/manage/fleet/robots/#control):
+When you add components to your robot, the Viam app automatically generates a UI for them under the [**Control** tab](/platform/fleet/robots/#control):
 
 {{< imgproc src="/tutorials/build-a-mock-robot/control-tab.png" alt="The Control tab with the fake arm, and motor components." resize="400x" >}}
 
@@ -304,7 +304,7 @@ func main() {
 Now when you run this code, you should see the new mock arm positions listed in the command line.
 
 Verify that your mock robotic arm is working in the **Control** tab of the [Viam app](https://app.viam.com).
-Watch the robotic arm's [`JointPositions()`](/components/arm/#jointpositions) changing in real-time along with the code on your development machine.
+Watch the robotic arm's [`JointPositions()`](/platform/build/configure/components/arm/#jointpositions) changing in real-time along with the code on your development machine.
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/build-a-mock-robot/joint-changes.webm" mp4_src="/tutorials/build-a-mock-robot/joint-changes.mp4" alt="A terminal window with 'python3 index.py' being run, then a list of four values is printed each second to the terminal. On the left side is the mock arm from the Control tab of the Viam app. As the joint positions are updated in the terminal from the left, you can see that the joint positions are updated in realtime on the Viam app.">}}
@@ -317,8 +317,8 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 
 ### What is a sub-part?
 
-Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
-You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
+Usually, when building a {{< glossary_tooltip term_id="robot" text="robot" >}}, you pick out a [single-board computer](/platform/build/configure/components/board/) like the [Jetson Nano](/platform/build/configure/components/board/jetson/) or [Raspberry Pi](/platform/build/configure/components/board/pi/).
+You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/platform/build/configure/components/board/), and you start operating your robot with that computer, adding the [components](/platform/build/configure/components/) and [services](/platform/build/configure/services/) you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:
 
@@ -491,4 +491,4 @@ Run this code to see your mock sub-part's motor toggling between running and idl
 
 In this tutorial, we showed you how to set up a mock robot with a sub-part so that you can learn more about using fake components, setting up a local development environment, and writing code using a Viam SDK.
 
-If you're ready to get started with building robots with real hardware components, pick up a [board](/components/board/) and try following another [tutorial](/tutorials/).
+If you're ready to get started with building robots with real hardware components, pick up a [board](/platform/build/configure/components/board/) and try following another [tutorial](/tutorials/).

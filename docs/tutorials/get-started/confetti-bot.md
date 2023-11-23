@@ -34,7 +34,7 @@ You can expand on this project to turn a motor based on other types of inputs, s
 ### Hardware
 
 - A macOS or Linux computer
-- A [Raspberry Pi](https://a.co/d/bxEdcAT), with a [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up using [these instructions](/installation/prepare/rpi-setup/).
+- A [Raspberry Pi](https://a.co/d/bxEdcAT), with a [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up using [these instructions](/platform/get-started/installation/prepare/rpi-setup/).
 - A big button, like [this one](https://www.amazon.com/EG-STARTS-Buttons-Illuminated-Machine/dp/B01LZMANZ7/ref=sxts_b2b_sx_reorder_acb_business).
   Check the wiring diagram for the specific model you have as you wire the button.
 - A mini confetti cannon, like [this one](https://www.amazon.com/Confetti-Poppers-Party-Accessory-Pack/dp/B074SP7FZH/ref=sr_1_4)
@@ -52,7 +52,7 @@ You can expand on this project to turn a motor based on other types of inputs, s
 
 - [Python3](https://www.python.org/download/releases/3.0/)
 - [pip](https://pip.pypa.io/en/stable/#)
-- [viam-server](/installation/#install-viam-server)
+- [viam-server](/platform/get-started/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
 
 ## Set up your hardware
@@ -131,7 +131,7 @@ Then navigate to the robot’s **Config** tab to start configuring your componen
 Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 
 Add your {{< glossary_tooltip term_id="board" text="board" >}} with type `board` and model `pi`.
-Enter `party` for the name of your [board component](/components/board/), then click **Create**.
+Enter `party` for the name of your [board component](/platform/build/configure/components/board/), then click **Create**.
 
 You can name your board whatever you want as long as you refer to it the same way in your code; we picked `party` for fun.
 Your board configuration should now look like this:
@@ -142,7 +142,7 @@ Your board configuration should now look like this:
 
 Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 Select `motor` for the type and `gpio` for the model.
-Enter `start` for the name of your [motor component](/components/motor/), then click **Create**.
+Enter `start` for the name of your [motor component](/platform/build/configure/components/motor/), then click **Create**.
 Again, we named it “start” to refer to the button being pressed, but this name is up to you as long as you remember the name and use the same name in the code later.
 
 After clicking **Create**, there is a pin assignment type toggle.
@@ -159,7 +159,7 @@ Click **Save Config** at the bottom of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
+On the [**Raw JSON** tab](/platform/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -197,7 +197,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Let’s test our configuration from the [Control tab](/manage/fleet/robots/#control).
+Let’s test our configuration from the [Control tab](/platform/fleet/robots/#control).
 Go to the board panel, set the pin connected to your motor (in our case pin 37) to high, and your motor should turn.
 
 ## Attach components to the enclosure

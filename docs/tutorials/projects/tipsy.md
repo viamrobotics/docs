@@ -33,7 +33,7 @@ This tutorial will teach you how to build your own drink-carrying robot.
 
 To build your own drink-carrying robot, you need the following hardware:
 
-- [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/).
+- [Raspberry Pi](https://a.co/d/bxEdcAT), with [microSD card](https://www.amazon.com/Lexar-Micro-microSDHC-Memory-Adapter/dp/B08XQ7NGG1/ref=sr_1_13), set up following the [Raspberry Pi Setup Guide](/platform/get-started/installation/prepare/rpi-setup/).
 - Assembled [SCUTTLE rover](https://www.scuttlerobot.org/product/scuttle-v3) with the motors and motor driver that comes with it.
 - [T-slotted framing](https://www.mcmaster.com/products/structural-framing/t-slotted-framing-rails-4/system-of-measurement~metric/rail-height~30mm/): 4 single 4 slot rails, 30 mm square, hollow, 3’ long.
   These are for the height of the robot.
@@ -53,7 +53,7 @@ To build your own drink-carrying robot, you need the following hardware:
 
 To build your own drink-carrying robot, you need the following software:
 
-- [`viam-server`](/installation/#install-viam-server)
+- [`viam-server`](/platform/get-started/installation/#install-viam-server)
 - [Python 3.8 or newer](https://www.python.org/downloads/)
 - [Viam Python SDK](https://python.viam.dev/).
 - [Project repository on GitHub](https://github.com/viam-labs/devrel-demos/)
@@ -91,7 +91,7 @@ Click on the **Components** subtab.
 
 2. **Configure the motors**
 
-   Add your right [motor](/components/motor/):
+   Add your right [motor](/platform/build/configure/components/motor/):
 
    Click **Create component** in the lower-left corner of the page.
    Select type `motor`, then select model `gpio`.
@@ -113,12 +113,12 @@ Click on the **Components** subtab.
    ![Motor component configured in the Viam app, the component tab is named rightMotor, with a type attribute motor and model attribute gpio. It has the attributes as of the board as local, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 15 GPIO 22, b/In2 as 16 GPIO 23, pwm as blank.](/tutorials/tipsy/app-motor-pins.png)
 
    Now let’s add the left motor which is similar to the right motor.
-   Add your left [motor](/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
+   Add your left [motor](/platform/build/configure/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
    Select `local` from the **Board** dropdown, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
 
 3. **Configure the base**
 
-   Next, add a [base component](/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
+   Next, add a [base component](/platform/build/configure/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
 
    Click **Create component**.
    Select `base` for type and `wheeled` for model.
@@ -133,7 +133,7 @@ Click on the **Components** subtab.
 
 4. **Configure the camera**
 
-   Add the [camera component](/components/camera/):
+   Add the [camera component](/platform/build/configure/components/camera/):
 
    Click **Create component**.
    Select type `camera` and model `webcam`.
@@ -151,7 +151,7 @@ Click on the **Components** subtab.
 
 5. **Configure the ultrasonic sensors**
 
-   Add a [sensor component](/components/sensor/):
+   Add a [sensor component](/platform/build/configure/components/sensor/):
 
    Click **Create component**.
    Select type `sensor` and model `ultrasonic`.
@@ -172,7 +172,7 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/components/board/), your [motors](/components/motor/), your [base](/components/base/), your [camera](/components/camera/), and your [ultrasonic sensors](/components/sensor/ultrasonic/):
+On the [`Raw JSON` tab](/platform/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/platform/build/configure/components/board/), your [motors](/platform/build/configure/components/motor/), your [base](/platform/build/configure/components/base/), your [camera](/platform/build/configure/components/camera/), and your [ultrasonic sensors](/platform/build/configure/components/sensor/ultrasonic/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -314,7 +314,7 @@ On the control tab, you will see panels for each of your configured components.
 ## Configure your services
 
 This tutorial uses pre-trained ML packages.
-If you want to train your own, you can [train a model](/manage/ml/train-model/).
+If you want to train your own, you can [train a model](/platform/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
@@ -330,7 +330,7 @@ Click on the **Services** subtab.
 
 1. **Configure the ML model service**
 
-   Add an [mlmodel](/services/ml/) service:
+   Add an [mlmodel](/platform/build/configure/services/ml/) service:
 
    Click **Create service** in the lower-left corner of the page.
    Select type `ML Model` and model `TFLite CPU`.
@@ -347,7 +347,7 @@ Click on the **Services** subtab.
 
 1. **Configure an ML model detector**
 
-   Add a [vision service](/services/vision/) detector:
+   Add a [vision service](/platform/build/configure/services/vision/) detector:
 
    Click **Create service** in the lower-left corner of the page.
    Select type `Vision`, then select model `mlmodel`.
@@ -361,7 +361,7 @@ Click on the **Services** subtab.
 
 1. **Configure the detection camera**
 
-   To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
+   To be able to test that the vision service is working, add a [transform camera](/platform/build/configure/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
    Click on the **Components** subtab, then click **Create component** in the lower-left corner of the page.
    Select type `camera`, then select model `transform`.
@@ -395,7 +395,7 @@ Click on the **Services** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
+On the [`Raw JSON` tab](/platform/build/configure/configuration/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

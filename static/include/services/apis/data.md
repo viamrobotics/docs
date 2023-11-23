@@ -1,4 +1,4 @@
 <!-- prettier-ignore -->
 Method Name | Description |
 ----------- | ----------- |
-| [`Sync`](/services/data/#sync) | Sync data stored on the robot to the cloud. |
+| [`Sync`](/platform/build/configure/services/data/#sync) | Sync data stored on the robot to the cloud. |

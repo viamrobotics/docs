@@ -1,7 +1,7 @@
 ---
 title: Gantry
 id: attribute
-full_link: /components/gantry/
+full_link: /platform/build/configure/components/gantry/
 short_description: A mechanical system that only uses linear motion to carry out a task.
 aka:
 ---

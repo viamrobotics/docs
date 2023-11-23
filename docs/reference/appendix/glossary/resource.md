@@ -18,4 +18,4 @@ Resources are individual, addressable elements of a robot.
 Each part has local resources and can also have resources from another {{< glossary_tooltip term_id="remote" text="remote">}} robot part.
 The capabilities of each resource are exposed through the part’s API.
 
-Each resource on your robot implements either one of the [existing Viam APIs](/registry/create/#valid-apis-to-implement-in-your-model), or a [custom interface](/registry/advanced/#new-api-subtypes).
+Each resource on your robot implements either one of the [existing Viam APIs](/platform/registry/create/#valid-apis-to-implement-in-your-model), or a [custom interface](/platform/registry/advanced/#new-api-subtypes).

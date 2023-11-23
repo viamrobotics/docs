@@ -18,7 +18,7 @@ cost: 20
 no_list: true
 ---
 
-This tutorial uses the Viam [vision service](/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
+This tutorial uses the Viam [vision service](/platform/build/configure/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
@@ -44,7 +44,7 @@ You need the following hardware for this tutorial:
 You will use the following software in this tutorial:
 
 - [Python 3.8 or newer](https://www.python.org/downloads/)
-- [`viam-server`](/installation/#install-viam-server)
+- [`viam-server`](/platform/get-started/installation/#install-viam-server)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered robot by writing custom scripts in the Python programming language.
     Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
@@ -79,7 +79,7 @@ Navigate to the **Control** tab where you can see your camera working.
 ## Configure your services
 
 This tutorial uses pre-trained ML packages.
-If you want to train your own, you can [train a model](/manage/ml/train-model/).
+If you want to train your own, you can [train a model](/platform/ml/train-model/).
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your project directory.
 
@@ -89,7 +89,7 @@ Navigate to the **Services** subtab of your robot's **Config** tab.
 
 Click **Create service** in the lower-left corner of the page.
 Select `ML Model` for the type, then select `TFLite CPU` for the model.
-Enter `people` as the name for your [mlmodel](/services/ml/), then click **Create**.
+Enter `people` as the name for your [mlmodel](/platform/build/configure/services/ml/), then click **Create**.
 
 In the new ML Model service panel, configure your service.
 
@@ -101,7 +101,7 @@ Then specify the absolute **Model path** as where your tflite file lives and any
 ### Configure an mlmodel detector
 
 Click **Create service** in the lower-left corner of the page.
-For your [vision service](/services/vision/), select type `vision` and model `mlmodel`.
+For your [vision service](/platform/build/configure/services/vision/), select type `vision` and model `mlmodel`.
 Enter `myPeopleDetector` for the name, then click **Create**.
 
 In the new vision service panel, configure your service.
@@ -113,7 +113,7 @@ From the **Select model** dropdown, select the name of the TFLite model (`people
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
 Click the **Components** subtab and click the **Create component** button in the lower-left corner.
-Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
+Create a [transform camera](/platform/build/configure/components/camera/transform/) by selecting type `camera` and model `transform`.
 Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)

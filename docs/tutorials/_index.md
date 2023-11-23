@@ -1,7 +1,7 @@
 ---
 title: "Tutorials"
 linkTitle: "Tutorials"
-weight: 65
+weight: 20
 type: docs
 layout: "tutorials"
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
@@ -17,5 +17,5 @@ no_list: true
 sitemap:
   priority: 1.0
 aliases:
-  - "/build/"
+  - /build/
 ---
