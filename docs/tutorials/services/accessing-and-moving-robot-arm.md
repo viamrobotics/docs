@@ -113,7 +113,7 @@ o_z: -0.99980690150926033
 theta: -179.99979233107763
 ```
 
-The `x`, `y`, and `z` values correspond to the `position` element of the pose, while the `o_x`, `o_y`, `o_z`, and `theta` values are for the `orientation` element of the pose (presented as an [Orientation Vector](/internals/orientation-vector/)).
+The `x`, `y`, and `z` values correspond to the `position` element of the pose, while the `o_x`, `o_y`, `o_z`, and `theta` values are for the `orientation` element of the pose (presented as an [Orientation Vector](/reference/internals/orientation-vector/)).
 
 {{% /tab %}}
 {{% tab name="Go" %}}

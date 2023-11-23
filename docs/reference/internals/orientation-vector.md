@@ -10,7 +10,7 @@ aliases:
 ---
 
 An _orientation vector_ specifies the orientation of an object in 3D space.
-You use orientation vectors to specify relative orientations of components when using the [motion service](../../services/motion/) and [frame system](../../services/frame-system/).
+You use orientation vectors to specify relative orientations of components when using the [motion service](/services/motion/) and [frame system](/services/frame-system/).
 The first three components of this vector form an axis pointing in the same direction as the object.
 **Theta** specifies the angle of the object's rotation about that axis.
 
