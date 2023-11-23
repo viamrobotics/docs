@@ -5,21 +5,21 @@ weight: 2
 no_list: true
 type: docs
 draft: false
-icon: "/installation/thumbnails/manage.png"
-images: ["/installation/thumbnails/manage.png"]
+icon: "/platform/get-started/installation/thumbnails/manage.png"
+images: ["/platform/get-started/installation/thumbnails/manage.png"]
 description: "Building a local robot configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
+The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/platform/build/configure/components/) and software [services](/platform/build/configure/services/)) it has access to, as well as any relevant parameters for those resources.
 
-When you [install `viam-server`](/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
+When you [install `viam-server`](/platform/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
 
 However, if your robot will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
 - [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
 - [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
-For information on the individual configuration options available, see [Configuration](/manage/configuration/).
+For information on the individual configuration options available, see [Configuration](/platform/build/configure/configuration/).
 
 ## Build a local configuration file in the Viam app
 
@@ -51,7 +51,7 @@ If your robot will never connect to the internet, you can create a local configu
 A locally-configured robot will not be able to access Viam's cloud features.
 For most users, we recommend [using the Viam app to create the configuration file](#build-a-local-configuration-file-in-the-viam-app) as it is less error-prone.
 
-If you followed the instructions to [install `viam-server`](/installation/), the installation process provides an example configuration file in the following location:
+If you followed the instructions to [install `viam-server`](/platform/get-started/installation/), the installation process provides an example configuration file in the following location:
 
 - Linux: <file>/etc/viam.json</file>
 - macOS: <file>/opt/homebrew/etc/viam.json</file>
@@ -67,7 +67,7 @@ If your robot temporarily disconnects from the internet, its configuration is ca
 ## Example JSON configuration file
 
 If you want to create your own JSON configuration file without using [the Viam app](https://app.viam.com), you can start with the following example file.
-This file contains some basic example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
+This file contains some basic example [component](/platform/build/configure/components/) and [service](/platform/build/configure/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -225,4 +225,4 @@ This file contains some basic example [component](/components/) and [service](/s
 }
 ```
 
-For more information on the individual configuration options available, see [Configuration](/manage/configuration/).
+For more information on the individual configuration options available, see [Configuration](/platform/build/configure/configuration/).

@@ -18,7 +18,7 @@ Please post the error message you received along with how you were able to trigg
 
 ### The authenticity of host 'hostname.local' can't be established
 
-**Description:** When following our [installation guides](/installation/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
+**Description:** When following our [installation guides](/platform/get-started/installation/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
 This is expected: `ssh` is advising you that it has not yet connected to this address, and prompts you for how to proceed.
 
 **Solution:** The message will ask `Are you sure you want to continue connecting?`.
@@ -36,8 +36,8 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 - Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
 - If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
-- If that fails, try re-imaging your board following the [installation guide](/installation/) appropriate for your board.
-  - If using the [Raspberry Pi installation guide](/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
+- If that fails, try re-imaging your board following the [installation guide](/platform/get-started/installation/) appropriate for your board.
+  - If using the [Raspberry Pi installation guide](/platform/get-started/installation/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
   - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
     - If so, edit your `~/.ssh/known_hosts` file to delete any single lines that begin with the board hostname you specified (like `hostname.local` or similar).
@@ -58,9 +58,9 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` [installation](/installation/) or [update](/installation/manage/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/platform/get-started/installation/) or [update](/platform/get-started/installation/manage/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
-**Solution:** Reinstall `viam-server` following the [installation instructions](/installation/).
+**Solution:** Reinstall `viam-server` following the [installation instructions](/platform/get-started/installation/).
 
 ### AppImages require FUSE to run
 
@@ -128,7 +128,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/installation/#prepare-your-board), and then followed the instructions on the **Setup** tab on the Viam app.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/platform/get-started/installation/#prepare-your-board), and then followed the instructions on the **Setup** tab on the Viam app.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -140,7 +140,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 **Full Error:** `Error: cannot parse config: JSON: cannot unmarshal string into Go struct field Component.components.frame of type float64.`
 
-**Description:** A [frame](/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
+**Description:** A [frame](/platform/build/configure/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
 **Solution:** Check the **Config** tab for your robot in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.
@@ -164,7 +164,7 @@ It will resemble the following:
 
 **Additional Errors:** `cannot open webcam`, and `found no webcams`.
 
-**Description:** When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+**Description:** When working with a [camera](/platform/build/configure/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
 
 **Solution:** On your Linux system, verify each of the following:
 
@@ -177,7 +177,7 @@ It will resemble the following:
       ```
 
       In the list of camera devices returned, find the entry for your camera.
-      For example, the webcam on the [Viam Rover](/try-viam/) appears as follows:
+      For example, the webcam on the [Viam Rover](/platform/get-started/try-viam/) appears as follows:
 
       ```sh
       GENERAL WEBCAM: GENERAL WEBCAM (usb-0000:01:00.0-1.4):
@@ -188,7 +188,7 @@ It will resemble the following:
 
       The video path for your camera device is the first path listed under that camera, in this case `/dev/video0`.
 
-  1.  Then, [stop `viam-server`](/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
+  1.  Then, [stop `viam-server`](/platform/get-started/installation/manage/#run-viam-server), and verify that your Linux OS is able to access that video device properly:
 
       ```sh {class="command-line" data-prompt="$"}
       v4l2-ctl --stream-count 1 --device /dev/video0
@@ -198,7 +198,7 @@ It will resemble the following:
 
       The command returns successfully (with no output) if Linux is able to successfully communicate with the camera, or errors with `Cannot open device` if there was a problem communicating.
       If this command errors, you should consult the documentation for your camera and Linux distribution to troubleshoot.
-      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/installation/manage/#run-viam-server) first, then re-run the command above.
+      If you receive the error `Device or resource busy` instead, be sure you have [stopped `viam-server`](/platform/get-started/installation/manage/#run-viam-server) first, then re-run the command above.
 
 - Ensure that your camera uses a supported pixel format:
 
@@ -212,7 +212,7 @@ It will resemble the following:
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
       The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
-      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/platform/build/configure/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
 If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
@@ -221,7 +221,7 @@ This file contains basic diagnostic and configuration information about your cam
 
 ### Error: failed to find the best driver that fits the constraints
 
-**Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
+**Description:** When working with a [camera](/platform/build/configure/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
 Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.

@@ -27,12 +27,12 @@ no_list: true
 # SME: Matt Vella, Matt Dannenberg, James Otting
 ---
 
-The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
+The Viam platform comes with a component called [base](/platform/build/configure/components/base/), which adds useful abstractions for simplified control of mobile robots.
 Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
 If you want to control a rover or other mobile robot that does not expose direct motor control, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} (custom component).
-Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/program/apis/) of your choice.
+Creating a modular resouce for your robot allows you to issue commands using the same interface as you would with native Viam components. Once you have created the custom component, you can control both the Viam components and the modular resources using the [Viam SDK](/platform/build/program/apis/) of your choice.
 
 <div class="td-max-width-on-larger-screens">
 {{<imgproc src="/tutorials/intermode/rover_outside.png" resize="400x" declaredimensions=true alt="Intermode rover pictured outdoors." class="alignright" style="max-width:300px">}}
@@ -48,12 +48,12 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 {{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
-While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
+While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/platform/build/configure/components/base/), **CAN bus**, or [modular resource](/platform/registry/)-based projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
 
-- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/installation/prepare/rpi-setup/).
+- <a href="https://a.co/d/bxEdcAT" target="_blank">Raspberry Pi with microSD card</a>, with `viam-server` installed per [our Raspberry Pi setup guide](/platform/get-started/installation/prepare/rpi-setup/).
 - [An Intermode rover](https://www.intermode.io/)
 - [PiCAN 2 - Canbus interface for Raspberry Pi](https://copperhilltech.com/pican-2-can-bus-interface-for-raspberry-pi/)
 - [12V to 5V Buck Converter](https://www.amazon.com/dp/B01M03288J)
@@ -63,7 +63,7 @@ The tutorial uses the following hardware:
 
 ### Raspberry Pi software setup
 
-Before proceeding, [set up `viam-server` on your Raspberry Pi](/installation/prepare/rpi-setup/) and configure a (for now) empty robot configuration.
+Before proceeding, [set up `viam-server` on your Raspberry Pi](/platform/get-started/installation/prepare/rpi-setup/) and configure a (for now) empty robot configuration.
 
 Next, install the PiCAN 2 driver software [following these instructions](https://copperhilltech.com/blog/pican2-pican3-and-picanm-driver-installation-for-raspberry-pi/).
 
@@ -104,19 +104,19 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 
 ## A modular resource for the Intermode base
 
-Viam includes [APIs](/program/apis/) for common component types within `viam-server`.
-The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base/).
+Viam includes [APIs](/platform/build/program/apis/) for common component types within `viam-server`.
+The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/platform/build/configure/components/base/).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.
 If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
 
-The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
+The [base](/platform/build/configure/components/base/) component exposes an API for controlling a mobile robot’s movements.
 To use it for the Intermode rover, you must create a new {{< glossary_tooltip term_id="model" text="model" >}} with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
+Since you will conform to an existing Viam API for [base](/platform/build/configure/components/base/), the [API](/platform/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.
@@ -240,7 +240,7 @@ Now the intermode base can receive and execute _SetPower_ commands using the sam
 
 ### Leaving some methods unimplemented
 
-In some cases, you may not want to implement specific methods provided by the resource type's [API](/registry/create/#valid-apis-to-implement-in-your-model).
+In some cases, you may not want to implement specific methods provided by the resource type's [API](/platform/registry/create/#valid-apis-to-implement-in-your-model).
 For example, some hardware may not support specific functionality.
 When you want to leave a method unimplemented you must still create that method, but return an appropriate error message.
 
@@ -304,7 +304,7 @@ Change this to the correct location in `executable_path` when adding the module 
 }
 ```
 
-More details about modules and how they work can be found in the [modular resources documentation](/registry/).
+More details about modules and how they work can be found in the [modular resources documentation](/platform/registry/).
 
 ### Control the rover
 

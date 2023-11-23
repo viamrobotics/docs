@@ -5,12 +5,12 @@
 - Clock, an oscillating signal line: SCLK
 - Chip Select, with 1 line for each peripheral connected to controller: CS\*
 
-To connect your board (controller) and a [component](/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
+To connect your board (controller) and a [component](/platform/build/configure/components/) that requires SPI communication (peripheral device), wire a connection between CS and MOSI/MISO/SLCK pins on the board and component.
 
 {{% alert title="Important" color="note" %}}
 
 You must also enable SPI on your board if it is not enabled by default.
-See your [board model's configuration instructions](/components/board/#supported-models) if applicable.
+See your [board model's configuration instructions](/platform/build/configure/components/board/#supported-models) if applicable.
 
 {{% /alert %}}
 

@@ -51,7 +51,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A water container
 - A screwdriver
 
-Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
+Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/platform/get-started/installation/prepare/rpi-setup/) to prepare your Pi to run `viam-server`.
 Connect your Pi to its power supply to power it on.
 Make sure your Pi is flashed with a Viam-compatible operating system, and that you are able to SSH into it.
 
@@ -118,7 +118,7 @@ Put the soil moisture sensor inside of the container holding your plant.
 
 ### Wire your pump
 
-Now, wire and power your Peristaltic Pump [motor](/components/motor/) and [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS) to complete your hardware setup.
+Now, wire and power your Peristaltic Pump [motor](/platform/build/configure/components/motor/) and [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS) to complete your hardware setup.
 
 Reference this diagram of the motor speed controller:
 
@@ -267,11 +267,11 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 ### Configure the components of your robot in the Viam app
 
-Follow [this guide](/installation/#install-viam-server) to install `viam-server` on your Pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
+Follow [this guide](/platform/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
 
 Then, navigate to your new robot's page in the app and click on the **Config** tab.
 
-First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
+First, add your Pi as a [board component](/platform/build/configure/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
@@ -299,7 +299,7 @@ First, add your Pi as a [board component](/components/board/) by creating a new 
 {{% /tab %}}
 {{< /tabs >}}
 
-Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
+Then, add your pump as a [motor component](/platform/build/configure/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
 Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (the board and GPIO pin that you wired the pump's PWM to).
 
@@ -343,13 +343,13 @@ Now, if you navigate to your robot's **Control** tab, you should be able to cont
 
 #### Configure the ADC as a module from the registry
 
-_Resources_ refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
+_Resources_ refer to the different [components](/platform/build/configure/components/) and [services](/platform/build/configure/services/) Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
-For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
+For example, the [sensor component](/platform/build/configure/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3). Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
 
-A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
+A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/platform/build/configure/components/) and [services](/platform/build/configure/services/)) or models that are not built into Viam.
 A module can be added to your robot from the Viam registry.
 
 The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
@@ -407,7 +407,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [motor](/components/motor/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
+Use the Viam [motor](/platform/build/configure/components/motor/#api) and [sensor](/platform/build/configure/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
 
 You can get your components from the robot like this:
 
@@ -449,7 +449,7 @@ Make sure to import `time` at the beginning of your version of <file>plant-water
 Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
-See the motor component's [API documentation](/components/motor/#gofor) for more information about `water_pump.go_for()`.
+See the motor component's [API documentation](/platform/build/configure/components/motor/#gofor) for more information about `water_pump.go_for()`.
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 

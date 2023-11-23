@@ -217,23 +217,23 @@ We've now got all the hardware and wiring set up, so it is time to configure you
 You might be bracing yourself, as this part is usually much harder than what you just did.
 However, the Viam platform makes it relatively painless.
 
-First, let's install [viam-server](/installation/prepare/rpi-setup/) on your Pi.
+First, let's install [viam-server](/platform/get-started/installation/prepare/rpi-setup/) on your Pi.
 It should only take a few minutes and once you're done, you are ready to configure your robot.
 
-The Viam platform represents both individual hardware pieces and logical groupings of hardware as [components](/components/).
-Higher-level control is surfaced with [services](/services/).
+The Viam platform represents both individual hardware pieces and logical groupings of hardware as [components](/platform/build/configure/components/).
+Higher-level control is surfaced with [services](/platform/build/configure/services/).
 For this project, we'll configure:
 
-- One [board](/components/board/) component representing our Raspberry Pi
-- Two [motor](/components/motor/) components
-- One [base](/components/base/) component, referencing the two motors that make up the base
+- One [board](/platform/build/configure/components/board/) component representing our Raspberry Pi
+- Two [motor](/platform/build/configure/components/motor/) components
+- One [base](/platform/build/configure/components/base/) component, referencing the two motors that make up the base
 
 Configuring these components will allow you to control your rover through the internet both manually and programmatically.
 Later, we can do more interesting things by configuring:
 
-- A [camera](/components/camera/) component (optional but recommended)
-- A [movement sensor](/components/movement-sensor/) component, which in this case represents GPS (optional)
-- A [vision](/services/vision/) service, which allows us to use machine learning models to detect various things in the robot environment
+- A [camera](/platform/build/configure/components/camera/) component (optional but recommended)
+- A [movement sensor](/platform/build/configure/components/movement-sensor/) component, which in this case represents GPS (optional)
+- A [vision](/platform/build/configure/services/vision/) service, which allows us to use machine learning models to detect various things in the robot environment
 
 ### Setting up our Boxbot config using the Viam app
 
@@ -253,7 +253,7 @@ Next, create another component of type "motor", model "gpio".
 Call it "left" to represent the motor on the left side of your rover.
 Now we'll need to add some attributes.
 We'll need to reference the board component we created in the last step by name, and the GPIO pins we connected from this motor to our Pi.
-Other attributes (Max RPM, PWM Freq) are [important for motor control](/components/motor/gpio/#brushless-dc-motor) (Note that these might vary based on your specific hub motors, check the data sheet if you have one; or you can try the ones we use in this tutorial).
+Other attributes (Max RPM, PWM Freq) are [important for motor control](/platform/build/configure/components/motor/gpio/#brushless-dc-motor) (Note that these might vary based on your specific hub motors, check the data sheet if you have one; or you can try the ones we use in this tutorial).
 Once you've configured the "left" motor, repeat for the "right" - make sure you're mapping the correct GPIO pins for each.
 Finally, one of the two motors we are connecting will need the "Direction Flip" attribute set to "true".
 It's ok if you are not sure which one, you can always switch them later after testing.
@@ -298,9 +298,9 @@ You can measure your wheel's circumference and width between wheels, which will 
 
 You can now have some real fun.
 Try driving your rover by keyboard.
-Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/services/vision/detection/) to interact with the environment.
+Drive your [robot programmatically](/tutorials/get-started/try-viam-sdk/), use a [color detector](/tutorials/services/try-viam-color-detection/) or a [machine learning object detector](/platform/build/configure/services/vision/detection/) to interact with the environment.
 Check out our [Python SDK documentation](https://python.viam.dev/) (or another SDK in the language of your choice) and start planning how you'll use your sturdy outdoor rover to do real things!
-Or, expand what your outdoor rover can do by adding a [camera](/components/camera/), [movement sensor](/components/movement-sensor/), or other [component](/components/).
+Or, expand what your outdoor rover can do by adding a [camera](/platform/build/configure/components/camera/), [movement sensor](/platform/build/configure/components/movement-sensor/), or other [component](/platform/build/configure/components/).
 
 <div class="td-max-width-on-larger-screens">
   {{<imgproc src="/tutorials/outdoor-rover-boxbot/matt-done.png" resize="300x" declaredimensions=true alt="Matt working on project." class="alignleft" style="max-width: 250px">}}

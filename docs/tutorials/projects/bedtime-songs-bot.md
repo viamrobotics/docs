@@ -66,9 +66,9 @@ While following this tutorial, you'll complete the following steps to train and 
 
 In the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
-Navigate to your robot's page in the app and click on the [**Config** tab](/manage/configuration/).
+Navigate to your robot's page in the app and click on the [**Config** tab](/platform/build/configure/configuration/).
 
-First, add your personal computer's webcam to your robot as a [camera](/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
+First, add your personal computer's webcam to your robot as a [camera](/platform/build/configure/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -76,7 +76,7 @@ First, add your personal computer's webcam to your robot as a [camera](/componen
 Click the **Components** subtab, then click **Create component** in the lower-left corner of the page.
 
 Select `camera` for the type, then select `webcam` for the model.
-Enter `cam` for the name of your [camera component](/components/camera/), then click **Create**.
+Enter `cam` for the name of your [camera component](/platform/build/configure/components/camera/), then click **Create**.
 
 ![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the dropdown menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
 
@@ -86,7 +86,7 @@ Optionally, select a fixed filepath for the camera from the automated options in
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
+On the [`Raw JSON` tab](/platform/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -113,7 +113,7 @@ If you want to test your webcam's image capture, you can click on **Export Scree
 
 {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
 
-Now, configure the [Data Management Service](/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
+Now, configure the [Data Management Service](/platform/build/configure/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/platform/build/configure/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -130,7 +130,7 @@ Now, configure the [Data Management Service](/services/data/configure-data-captu
    You can leave the default directory as is.
    By default, captured data is saved to the <file>~/.viam/capture</file> directory on-robot.
 
-Next, [configure Data Capture for your webcam](/services/data/configure-data-capture/#configure-data-capture-for-individual-components):
+Next, [configure Data Capture for your webcam](/platform/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components):
 
 1. Go to the **Components** tab and scroll down to the camera component you previously configured.
 2. Click **+ Add method** in the **Data Capture Configuration** section.
@@ -212,7 +212,7 @@ If you set this to `.333`, the data management service will capture 1 image roug
 Go to the [**DATA tab**](https://app.viam.com/data/view?view=images) in the Viam app to see the images captured by your webcam.
 
 When you've captured enough images to tag, navigate back to the **Config** tab.
-Scroll to the card with the name of your webcam and click the power switch next to the **Data Capture Configuration** to **off** to [disable data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+Scroll to the card with the name of your webcam and click the power switch next to the **Data Capture Configuration** to **off** to [disable data capture](/platform/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
 
 Now, use these pictures to train your machine learning model.
 
@@ -221,7 +221,7 @@ Now, use these pictures to train your machine learning model.
 Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your robot.
 After selecting the image, you will see all of the data that is associated with that image.
 
-[Add tags](/manage/data/dataset/#image-tags) for each of the puzzle pieces.
+[Add tags](/platform/data/dataset/#image-tags) for each of the puzzle pieces.
 Type in your desired tag in the **Tags** section and save the tag.
 Since Tess wanted to classify their toys by shape, they used `“octagon”`, `“circle”`, `“triangle”`, `“oval"`, `“rectangle”`, `“pentagon”`, `“diamond”`, and `“square”`.
 
@@ -233,7 +233,7 @@ This is important for the next step.
 
 #### Filter based on tags
 
-Now that you've tagged the image data, you have the option to [filter your images](/manage/data/view/) according to those tags.
+Now that you've tagged the image data, you have the option to [filter your images](/platform/data/view/) according to those tags.
 Head over to the **Filtering** menu and select a tag from the dropdown list to view all labeled images.
 
 ### Train a model
@@ -247,13 +247,13 @@ Select **Multi label** as the model type, which accounts for multiple tags.
 
 Then select the tags that you used to label your toys and click **Train Model**.
 
-Read through our guide to [training a new model](/manage/ml/train-model/) for more information.
+Read through our guide to [training a new model](/platform/ml/train-model/) for more information.
 
 ## Use your ML Model to sing songs to your kids
 
 ### Configure your webcam to act as a shape classifier
 
-[Deploy the model](/services/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/services/vision/classification/#configure-an-mlmodel-classifier) to use the model you've trained to classify objects in your robot's field of vision.
+[Deploy the model](/platform/build/configure/services/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/platform/build/configure/services/vision/classification/#configure-an-mlmodel-classifier) to use the model you've trained to classify objects in your robot's field of vision.
 
 Name your `mlmodel` vision service `"shape-classifier"`.
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
@@ -406,7 +406,7 @@ Make sure you import the necessary packages by adding the following to the `impo
 Also, make sure that you add `initSpeaker(logger)`, a line that initializes the speaker, to the `main` function of your program.
 
 Now, create the logic for the classifiers.
-Use the vision service's [classification](/services/vision/classification/) API method `ClassificationsFromCamera` to do this.
+Use the vision service's [classification](/platform/build/configure/services/vision/classification/) API method `ClassificationsFromCamera` to do this.
 
 You can get your components from the robot like this:
 
@@ -420,7 +420,7 @@ And you can get the classification the `"shape-classifier-model"` behind `"shape
 classifications, err := visService.ClassificationsFromCamera(context.Background(), "cam", 1, nil)
 ```
 
-Change the `name` in [FromRobot()](/program/apis/#fromrobot) if you used a different name for the resource in your code.
+Change the `name` in [FromRobot()](/platform/build/program/apis/#fromrobot) if you used a different name for the resource in your code.
 
 This is what Tess used for the logic for the classifiers:
 
@@ -582,4 +582,4 @@ Now, as shown below, your smart bedtime songs bot knows to play a song whenever 
 
 This project is just a start.
 
-Expand upon the [configuration](/manage/configuration/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/services/ml/), the [vision service](/services/), and more [components](/components/) and [services](/services/).
+Expand upon the [configuration](/platform/build/configure/configuration/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/platform/build/configure/services/ml/), the [vision service](/platform/build/configure/services/), and more [components](/platform/build/configure/components/) and [services](/platform/build/configure/services/).
