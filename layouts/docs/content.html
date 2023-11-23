@@ -52,8 +52,8 @@
 	  <div id="archive" class="card-container">
 		<div class="row-no-margin">
 		  {{ range sort $pages ".Weight"}}
-		  	{{ partial "card.html" (dict "link" (.Page.File) "class" "" "customTitle" "" "customDescription" "" ) }}
-		  {{ end }}
+			{{ partial "card.html" (dict "link" (.Page.File) "class" "" "customTitle" "" "customDescription" "" "customCanoncicalLink" (.Page.Params.canonical) ) }}
+		{{ end }}
 		</div>
 	  </div>
 	  <br>

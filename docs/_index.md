@@ -185,31 +185,25 @@ sitemap:
     <div class="col sectionlist">
         <div>
         <div>Components</div>
-        {{<sectionlist sectiontitle="components">}}
+        {{<sectionlist section="/components">}}
         </div>
     </div>
     <div class="col sectionlist">
         <div>
         <div>Services</div>
-        {{<sectionlist sectiontitle="services">}}
+        {{<sectionlist section="/services">}}
         </div>
     </div>
     <div class="col sectionlist">
         <div>
         <div>Manage</div>
-        {{<sectionlist sectiontitle="manage">}}
+        {{<sectionlist section="/manage">}}
         </div>
     </div>
     <div class="col sectionlist">
         <div>
         <div>SDKs</div>
-        <ul class="sectionlist">
-        <li><a href="https://python.viam.dev/" target="_blank"><div><p>Python SDK</p></div></a></li>
-        <li><a href="https://pkg.go.dev/go.viam.com/rdk" target="_blank"><div><p>Go SDK</p></div></a></li>
-        <li><a href="https://ts.viam.dev/" target="_blank"><div><p>TypeScript SDK</p></div></a></li>
-        <li><a href="https://cpp.viam.dev/" target="_blank"><div><p>C++ SDK (alpha)</p></div></a></li>
-        <li><a href="https://flutter.viam.dev/" target="_blank"><div><p>Flutter SDK (beta)</p></div></a></li>
-        </ul>
+        {{<sectionlist section="/sdks">}}
         </div>
     </div>
   </div>

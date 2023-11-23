@@ -42,14 +42,13 @@ for (let menu of siteMenuSubmenus) {
     let toggle = menu.querySelector("span").querySelector(".menu-toggle");
     if (toggle) {
         if (menu.classList.contains('empty-node-submenu')) {
-            menu.querySelector("span").addEventListener('click', function () {
-                submenuToggle(menu, toggle);
-            });
-        } else {
-            toggle.addEventListener('click', function () {
+            menu.querySelector(".emptynode").addEventListener('click', function () {
                 submenuToggle(menu, toggle);
             });
         }
+        toggle.addEventListener('click', function () {
+            submenuToggle(menu, toggle);
+        });
     }
 };
 

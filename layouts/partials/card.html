@@ -1,6 +1,7 @@
 {{ $class := .class }}
 {{ $customTitle := .customTitle }}
 {{ $customDescription := .customDescription }}
+{{ $customCanoncicalLink := .customCanoncicalLink }}
 {{ $link := (path.Clean (.link)) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
@@ -9,8 +10,12 @@
 <div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
   {{ if site.GetPage ($link | string) }}
     {{ with site.GetPage ($link | string) }}
-      <a href="{{.RelPermalink}}">
-        {{ if .Params.webmSrc }}
+    {{if $customCanoncicalLink }}
+    <a href="{{$customCanoncicalLink}}">
+    {{ else }}
+    <a href="{{.RelPermalink}}">
+    {{ end }}
+      {{ if .Params.webmSrc }}
         <div class="hover-card-video">
 					{{ partial "gif.html" (dict "webm_src" .Params.webmSrc "mp4_src" .Params.mp4Src "alt" .Params.videoAlt "maxWidth" "100%" "class" "" ) }}
         </div>
