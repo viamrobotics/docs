@@ -1,9 +1,9 @@
 ## Test the arm
 
-Once your arm is configured and connected, go to the [**Control** tab](/platform/fleet/robots/#control) and click on the arm's dropdown panel.
+Once your arm is configured and connected, go to the [**Control** tab](/fleet/robots/#control) and click on the arm's dropdown panel.
 
 Use the buttons to move the end position or the joints and check whether it moves as expected.
 
-{{<imgproc src="/platform/build/configure/components/arm/control.png" resize="450x" declaredimensions=true alt="Arm control panel.">}}
+{{<imgproc src="/build/configure/components/arm/control.png" resize="450x" declaredimensions=true alt="Arm control panel.">}}
 
-If the arm does not appear on the **Control** tab, or if you notice unexpected behavior, check your robot's [**Logs** tab](/platform/fleet/robots/#logs) for errors, and review the configuration.
+If the arm does not appear on the **Control** tab, or if you notice unexpected behavior, check your robot's [**Logs** tab](/fleet/robots/#logs) for errors, and review the configuration.

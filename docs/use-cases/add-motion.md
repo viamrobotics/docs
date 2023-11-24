@@ -4,5 +4,5 @@ linkTitle: "Add motion to machines"
 weight: 50
 type: "docs"
 layout: "empty"
-canonical: "/platform/build/configure/services/motion/"
+canonical: "/build/configure/services/motion/"
 ---

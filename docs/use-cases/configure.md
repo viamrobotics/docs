@@ -4,5 +4,5 @@ linkTitle: "Configure resources for machines"
 weight: 10
 type: "docs"
 layout: "empty"
-canonical: "/platform/build/configure/configuration/"
+canonical: "/build/configure/configuration/"
 ---

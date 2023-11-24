@@ -30,14 +30,14 @@ This is a great place to start if you have never built a robot or a circuit befo
 {{<gif webm_src="/tutorials/blink-an-led/image9.webm" mp4_src="/tutorials/blink-an-led/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
 First, you'll use the control interface on the [Viam app](https://app.viam.com) to turn the LED on and off.
-Then, you'll write code to control the LED using the Viam [software development kits](/platform/build/program/).
+Then, you'll write code to control the LED using the Viam [software development kits](/build/program/).
 
 ## What you'll need for this guide
 
 You will use the following hardware for this tutorial:
 
 - [Raspberry Pi 3 or 4](https://a.co/d/5Tn67G3)
-  - Refer to the [Viam Raspberry Pi Setup Guide](/platform/get-started/installation/prepare/rpi-setup/) to set up your Pi.
+  - Refer to the [Viam Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to set up your Pi.
 - [A solderless breadboard](https://www.amazon.com/dp/B0135IQ0ZC)
 - [Jumper wires](https://amzn.to/2qVhd4y)
 - [Resistor pack](https://amzn.to/2Dmainw)
@@ -48,8 +48,8 @@ You will use the following hardware for this tutorial:
 
 Before you build your circuit, you need to set up the operating system on your Raspberry Pi and install `viam-server` on the Pi:
 
-1. Follow the [Raspberry Pi Setup Guide](/platform/get-started/installation/prepare/rpi-setup/) to set up the operating system.
-2. Then [install `viam-server` and connect your Pi to the Viam app](/platform/get-started/installation/#install-viam-server).
+1. Follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to set up the operating system.
+2. Then [install `viam-server` and connect your Pi to the Viam app](/get-started/installation/#install-viam-server).
 
 If you encounter issues, reach out to us on the [Viam Community Discord](https://discord.com/invite/viam).
 
@@ -86,8 +86,8 @@ For example, "GPIO 22".
 For example, board pin 38 is the same pin as GPIO pin 20, but when configuring your robot with Viam, you should refer to it as pin `38`.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/platform/get-started/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
-If you use A4 paper, use this [this Raspberry Pi Leaf](/platform/get-started/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-A4.pdf) instead.
 
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
@@ -121,7 +121,7 @@ Now that your circuit is wired, reconnect your Pi to power.
 
 ## Configure your robot
 
-Before proceeding, be sure that you have [connected your Pi to the Viam app](/platform/get-started/installation/#install-viam-server).
+Before proceeding, be sure that you have [connected your Pi to the Viam app](/get-started/installation/#install-viam-server).
 
 Now it's time to configure your robot's components.
 First, go to the [Viam app](https://app.viam.com/) on your web browser and navigate to your robot's **Config** tab.
@@ -129,7 +129,7 @@ First, go to the [Viam app](https://app.viam.com/) on your web browser and navig
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Add a [_board component_](/platform/build/configure/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
+Add a [_board component_](/build/configure/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
 To create the new component, click **Create component** in the lower-left corner of the **Config** tab.
 
 - Select `board` as the component type.
@@ -170,7 +170,7 @@ Click **Save Config** at the bottom left of the page.
 ## Control your robot using the Viam app
 
 When you configure your board component, the Viam app generates a control panel for it.
-Click the [**Control** tab](/platform/fleet/robots/#control) to view the control panels for all your robot's components (in this case, just the board).
+Click the [**Control** tab](/fleet/robots/#control) to view the control panels for all your robot's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
@@ -297,7 +297,7 @@ go run blink.go
 
 ### Write code to blink the LED
 
-In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/platform/build/configure/components/board/) from the Viam SDK.
+In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/build/configure/components/board/) from the Viam SDK.
 
 The **Code sample** tab automatically adds the board import for you, but it doesn't hurt to double-check.
 

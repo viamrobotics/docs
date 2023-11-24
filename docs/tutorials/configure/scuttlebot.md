@@ -23,7 +23,7 @@ cost: 540
 
 ## Requirements
 
-- A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed](/platform/get-started/installation/prepare/rpi-setup/#install-raspberry-pi-os)
+- A Raspberry Pi with [Raspberry Pi OS 64-bit Lite installed](/get-started/installation/prepare/rpi-setup/#install-raspberry-pi-os)
 - [A SCUTTLE robot](https://www.scuttlerobot.org/shop/)
 
 ## Start configuring your robot
@@ -36,7 +36,7 @@ cost: 540
 
 ## Configure the board
 
-Add your first component, the [board](/platform/build/configure/components/board/):
+Add your first component, the [board](/build/configure/components/board/):
 
 {{< tabs name="Configure an pi Board" >}}
 {{% tab name="Config Builder" %}}
@@ -260,7 +260,7 @@ If your wheel turns in reverse when it should turn forward, add the `dir_flip` a
 
 ## Configure the base
 
-Next, configure the [base component](/platform/build/configure/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
+Next, configure the [base component](/build/configure/components/base/), which describes the geometry of your chassis and wheels so that the software can calculate how to steer the rover in a coordinated way.
 Configuring a base component also provides you with a nice UI for moving the rover around.
 
 {{< tabs name="Configure a Wheeled Base" >}}
@@ -271,7 +271,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `wheeled` model.
 Enter a name for your base and click **Create**.
 
-{{< imgproc src="/platform/build/configure/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
+{{< imgproc src="/build/configure/components/base/wheeled-base-ui-config.png" alt="An example configuration for a wheeled base." resize="600x" >}}
 
 1. Select `right` as the **Right Motor** and `left` as the **Left Motor**.
 2. Enter `250` in **Wheel Circumference (mm)**.
@@ -369,7 +369,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `webcam` model.
 Enter a name for your camera and click **Create**.
 
-{{< imgproc src="/platform/build/configure/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/build/configure/components/camera/configure-webcam.png" alt="Configuration of a webcam camera in the Viam app config builder." resize="600x" >}}
 
 If you click on the **Video Path** field while your robot is live, a dropdown autopopulates with identified camera paths.
 
@@ -402,7 +402,7 @@ Then toggle the camera view to ON.
 If everything is configured correctly, you will see the live video feed from your camera.
 You can change the refresh frequency as needed to change bandwidth.
 
-{{< imgproc src="/platform/build/configure/components/camera/example_camera_image.png" alt="Example Camera view inside Viam app" resize="700x" >}}
+{{< imgproc src="/build/configure/components/camera/example_camera_image.png" alt="Example Camera view inside Viam app" resize="700x" >}}
 
 ## Next steps
 

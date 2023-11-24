@@ -3,7 +3,7 @@ To authenticate yourself to your robot, you need
 1. The robot part's api key:
 
    <!-- we will be releasing the ability to create API keys across all types of resources and combinations soon (i.e an api key can have an authorization on a org, location, robot or any combination of all three). this is correct for now though but it will be changing shortly. -->
-   To authenticate, [use a robot part API key](/platform/fleet/robots/#security) or [an API key](/platform/fleet/cli/#authenticate) with access to the robot.
+   To authenticate, [use a robot part API key](/fleet/robots/#security) or [an API key](/fleet/cli/#authenticate) with access to the robot.
    Copy and paste the API key id and the API key into your environment variables or directly into the code:
 
    {{< tabs >}}

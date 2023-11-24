@@ -6,15 +6,15 @@ short_description: A particular implementation of a resource. For example, UR5e 
 aka:
 ---
 
-A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="subtype" text="subtype" >}} that implements its [API](/platform/build/program/apis/).
+A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="subtype" text="subtype" >}} that implements its [API](/build/program/apis/).
 
 Models allow you to control hardware or software of a similar category, such as motors, with a consistent set of methods as an interface, even if the underlying implementation differs.
 
-For example, some _models_ of DC motors communicate using [GPIO](/platform/build/configure/components/board/), while other DC motors use serial protocols like the [SPI bus](/platform/build/configure/components/board/#spis).
+For example, some _models_ of DC motors communicate using [GPIO](/build/configure/components/board/), while other DC motors use serial protocols like the [SPI bus](/build/configure/components/board/#spis).
 Regardless, you can power any motor model that implements the `rdk:component:motor` API with the `SetPower()` method.
 
-Models are either included with [`viam-server`](/platform/get-started/installation/), provided in {{< glossary_tooltip term_id="module" text="custom modules" >}} available for download from the [Viam registry](https://app.viam.com/registry), or installed as [local modules](/platform/registry/configure/#local-modules).
+Models are either included with [`viam-server`](/get-started/installation/), provided in {{< glossary_tooltip term_id="module" text="custom modules" >}} available for download from the [Viam registry](https://app.viam.com/registry), or installed as [local modules](/registry/configure/#local-modules).
 All models are uniquely namespaced as colon-delimited-triplets.
 Built-in model names have the form `rdk:builtin:name`.
 Modular resource model names have the form `namespace:repo-name:name`.
-See [Naming your model](/platform/registry/upload/#naming-your-model-namespacerepo-namename) for more information.
+See [Naming your model](/registry/upload/#naming-your-model-namespacerepo-namename) for more information.
