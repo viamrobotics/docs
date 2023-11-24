@@ -127,71 +127,171 @@ sitemap:
 <br>
 
 <div class="max-page">
-  <p>
-    Explore more about the Viam platform or try it out for yourself:
-  </p>
+  <h3>
+    Start with these common use cases
+  </h3>
 </div>
-
-<div class="cards max-page">
-  <div class="row">
-      <div class="col hover-card landing yellow">
-        <div>
-          <div>Learn and Try</div>
-          <p style="text-align: left;">
-            Learn about <a href="/get-started/viam/">the Viam platform in 3 minutes</a> and then
-            <a href="get-started/try-viam/">drive a Viam rover</a> from the comfort of your home or follow along with a <a href="tutorials/"> tutorial</a>.</p>
-        </div>
-        {{<gif webm_src="/rover.webm" mp4_src="/rover.mp4" alt="A Viam Rover moving about">}}
-      </div>
-      <div class="col hover-card landing purple">
-        <div>
-          <div>Configure your machine</div>
-          <div style="text-align: left">
-            <ol style="padding-inline-start: 1.1rem">
-              <li>Configure a <a href="build/configure/"> machine</a> or a <a href="fleet/">fleet</a></li>
-              <li><a href="get-started/installation/">Install Viam on your machine</a></li>
-              <li>Configure <a href="build/configure/components/">components</a> and <a href="build/configure/services/">add services</a></li>
-              <li><a href="fleet/machines/#control">Control and test your machine</a></li>
-            </ol>
-          </div>
-        </div>
-        {{<gif webm_src="/blink.webm" mp4_src="/blink.mp4" alt="A blinking L.E.D. connected to a Raspberry Pi">}}
-      </div>
-      <div class="col hover-card landing teal">
-        <div>
-          <div>Program your machine</div>
-          <p style="text-align: left;">
-            Program and control your machines in <a href="/build/program/apis/"> the languages you already know</a> like <a href="https://python.viam.dev/">Python</a>, <a href="https://pkg.go.dev/go.viam.com/rdk">Go</a>, <a href="https://ts.viam.dev/">TypeScript</a>, <a href="https://cpp.viam.dev/" target="_blank">C++</a>, or <a href="https://flutter.viam.dev/" target="_blank">Flutter</a>.
-          </p>
-        </div>
-        <div class="hover-card-img">
-          {{<imgproc src="/general/code.png" alt="Robot code" resize="400x" >}}
-        </div>
-      </div>
-      <div class="col hover-card landing pink">
-        <div>
-          <div>Community</div>
-          <p style="text-align: left;">Have questions, or want to meet other people working on smart machines? <a href="https://discord.gg/viam">Join us in the Community Discord!</a></p>
-        </div>
-        {{<gif webm_src="/heart.webm" mp4_src="/heart.mp4" alt="A robot drawing a heart">}}
-      </div>
-    </div>
-</div>
-
-<h2>Capabilities and APIs</h2>
 
 <div class="cards max-page">
   <div class="row">
     <div class="col sectionlist">
         <div>
-        <div>Components</div>
-        {{<sectionlist section="/build/configure/components/">}}
+        <ul class="sectionlist">
+        <li><a href="build/configure/"><div><p>Configure resources for machines</p></div></a></li>
+        <li><a href="registry/"><div><p>Add functionality with modules</p></div></a></li>
+        <li><a href="build/program/"><div><p>Deploy code</p></div></a></li>
+        </ul>
         </div>
     </div>
     <div class="col sectionlist">
         <div>
-        <div>Services</div>
-        {{<sectionlist section="/build/configure/services/">}}
+        <ul class="sectionlist">
+        <li><a href="fleet/"><div><p>Manage fleets of machines</p></div></a></li>
+        <li><a href="mobility/motion/"><div><p>Add motion to machines</p></div></a></li>
+        <li><a href="tutorials/services/navigate-with-rover-base/"><div><p>Navigate with rovers</p></div></a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="col sectionlist">
+        <div>
+        <ul class="sectionlist">
+        <li><a href="data/"><div><p>Manage and Sync Data</p></div></a></li>
+        <li><a href="ml/"><div><p>Train machine learning models</p></div></a></li>
+        <li><a href="ml/vision/" target="_blank"><div><p>Use Computer Vision</p></div></a></li>
+        </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="max-page">
+  <h3>
+    Follow popular tutorials
+  </h3>
+</div>
+
+<div class="cards max-page">
+  <div class="row">
+    {{< card link="/tutorials/services/data-mlmodel-tutorial/" class="green">}}
+    {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" class="pink">}}
+    {{< card link="/tutorials/services/navigate-with-rover-base/" class="yellow">}}
+    {{< card link="/tutorials/services/color-detection-scuttle/" class="purple">}}
+  </div>
+</div>
+<br>
+<div class="max-page">
+  <h3>
+    Browse by product
+  </h3>
+</div>
+
+<div class="cards max-page">
+  <div class="row">
+    <div class="col sectionlist">
+        <div>
+        <div>Build smart machines</div>
+        <br>
+        <p>Simplify smart machine creation, configuration, and customization.</p>
+        <ul class="sectionlist">
+        <li><a href="build/configure/"><div><p>Configuration</p></div></a></li>
+        <li><a href="build/configure/components/"><div><p>Components</p></div></a></li>
+        <li><a href="build/configure/services/"><div><p>Services</p></div></a></li>
+        <li><a href="build/configure/parts-and-remotes/"><div><p>Robot Architecture</p></div></a></li>
+        <li><a href="build/micro-rdk/"><div><p>Microcontrollers</p></div></a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="col sectionlist">
+      <div>
+        <div>Fleet management</div>
+        <br>
+        <p>Launch, monitor, and update all smart machines from a unified display.</p>
+        <ul class="sectionlist">
+        <li><a href="build/configure/"><div><p>Machines</p></div></a></li>
+        <li><a href="build/configure/components/"><div><p>Locations</p></div></a></li>
+        <li><a href="build/configure/services/"><div><p>Organizations</p></div></a></li>
+        <li><a href="build/program/"><div><p>CLI</p></div></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col sectionlist">
+        <div>
+        <div>Data Management</div>
+        <br>
+        <p>Capture, store, sync, view, and analyze machine data.</p>
+        <ul class="sectionlist">
+        <li><a href="data/capture/"><div><p>Capture machine data
+</p></div></a></li>
+        <li><a href="data/cloud-sync/"><div><p>Sync to the cloud
+</p></div></a></li>
+        <li><a href="data/view/"><div><p>Retrieve or view data
+</p></div></a></li>
+        <li><a href="data/datasets"><div><p>Prepare data for training models
+</p></div></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col sectionlist">
+        <div>
+        <div>Registry</div>
+        <br>
+        <p>Easily add and deploy custom drivers, services, or your own code to your smart machine.</p>
+        <ul class="sectionlist">
+        <li><a href="registry/configure/"><div><p>Find and use modules
+</p></div></a></li>
+        <li><a href="registry/create/"><div><p>Build new drivers</p></div></a></li>
+        <li><a href="registry/upload/"><div><p>Upload to the registry</p></div></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col sectionlist">
+        <div>
+        <div>Mobility</div>
+        <br>
+        <p>Make smart machines move and navigate where they need to go.</p>
+        <ul class="sectionlist">
+        <li><a href="mobility/frame-system/"><div><p>Frame System</p></div></a></li>
+        <li><a href="mobility/motion/"><div><p>Motion Service</p></div></a></li>
+        <li><a href="mobility/slam/"><div><p>SLAM Service</p></div></a></li>
+        <li><a href="mobility/navigation/"><div><p>Navigation Service
+</p></div></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col sectionlist">
+        <div>
+        <div>Machine Learning</div>
+        <br>
+        <p>Collect and label data to train and deploy machine learning models that enhance smart machine performance.</p>
+        <ul class="sectionlist">
+        <li><a href="ml/train-model/"><div><p>Train a model</p></div></a></li>
+        <li><a href="ml/upload-model/"><div><p>Upload a model</p></div></a></li>
+        <li><a href="ml/deploy-model/"><div><p>Deploy a model</p></div></a></li>
+        <li><a href="ml/vision/"><div><p>Use Computer Vision
+</p></div></a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+<br>
+<div class="max-page">
+  <h3>
+    Find out more
+  </h3>
+</div>
+<div class="cards max-page">
+  <div class="row">
+    <div class="col sectionlist">
+        <div>
+        <div>Get Started</div>
+        <ul class="sectionlist">
+        <li><a href="build/get-started/try-viam/"><div><p>Try Viam</p></div></a></li>
+        <li><a href="build/get-started/viam/"><div><p>Viam in 3 minutes</p></div></a></li>
+        <li><a href="build/machine/"><div><p>Configure a machine</p></div></a></li>
+        <li><a href="build/program/"><div><p>Program a machine</p></div></a></li>
+        </ul>
         </div>
     </div>
     <div class="col sectionlist">
@@ -200,16 +300,14 @@ sitemap:
         {{<sectionlist section="/reference/sdks">}}
         </div>
     </div>
-  </div>
-</div>
-
-<h2>Popular Tutorials</h2>
-
-<div class="cards max-page">
-  <div class="row">
-    {{< card link="/tutorials/services/data-mlmodel-tutorial/" class="green">}}
-    {{< card link="/tutorials/services/plan-motion-with-arm-gripper/" class="pink">}}
-    {{< card link="/tutorials/services/color-detection-scuttle/" class="purple">}}
-    {{< card link="/tutorials/projects/integrating-viam-with-openai/" class="yellow">}}
+     <div class="col sectionlist">
+        <div>
+        <div>Learn and Share</div>
+        <ul class="sectionlist">
+        <li><a href="tutorials/"><div><p>Follow tutorials</p></div></a></li>
+        <li><a href="https://discord.gg/viam"><div><p>Join the community discord</p></div></a></li>
+        </ul>
+        </div>
+    </div>
   </div>
 </div>
