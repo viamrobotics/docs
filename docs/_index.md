@@ -126,7 +126,7 @@ sitemap:
 </div>
 <br>
 
-<div class="max-page">
+<!-- <div class="max-page">
   <h3>
     Start with these common use cases
   </h3>
@@ -162,7 +162,7 @@ sitemap:
         </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="max-page">
   <h3>
@@ -187,7 +187,7 @@ sitemap:
 
 <div class="cards max-page">
   <div class="row">
-    <div class="col sectionlist">
+    <div class="col hover-card">
         <div>
         <div>Build smart machines</div>
         <br>
@@ -201,7 +201,7 @@ sitemap:
         </ul>
         </div>
     </div>
-    <div class="col sectionlist">
+    <div class="col hover-card">
       <div>
         <div>Fleet management</div>
         <br>
@@ -214,7 +214,7 @@ sitemap:
         </ul>
       </div>
     </div>
-    <div class="col sectionlist">
+    <div class="col hover-card">
         <div>
         <div>Data Management</div>
         <br>
@@ -231,9 +231,7 @@ sitemap:
         </ul>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col sectionlist">
+    <div class="col hover-card">
         <div>
         <div>Registry</div>
         <br>
@@ -246,7 +244,7 @@ sitemap:
         </ul>
       </div>
     </div>
-    <div class="col sectionlist">
+    <div class="col hover-card">
         <div>
         <div>Mobility</div>
         <br>
@@ -260,7 +258,7 @@ sitemap:
         </ul>
       </div>
     </div>
-    <div class="col sectionlist">
+    <div class="col hover-card">
         <div>
         <div>Machine Learning</div>
         <br>
@@ -285,7 +283,7 @@ sitemap:
   <div class="row">
     <div class="col sectionlist">
         <div>
-        <div>Get Started</div>
+        <h4>Get Started</h4>
         <ul class="sectionlist">
         <li><a href="build/get-started/try-viam/"><div><p>Try Viam</p></div></a></li>
         <li><a href="build/get-started/viam/"><div><p>Viam in 3 minutes</p></div></a></li>
@@ -296,13 +294,13 @@ sitemap:
     </div>
     <div class="col sectionlist">
         <div>
-        <div>SDKs</div>
+        <h4>SDKs</h4>
         {{<sectionlist section="/reference/sdks">}}
         </div>
     </div>
      <div class="col sectionlist">
         <div>
-        <div>Learn and Share</div>
+        <h4>Learn and Share</h4>
         <ul class="sectionlist">
         <li><a href="tutorials/"><div><p>Follow tutorials</p></div></a></li>
         <li><a href="https://discord.gg/viam"><div><p>Join the community discord</p></div></a></li>
