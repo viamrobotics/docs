@@ -18,7 +18,7 @@ cost: 20
 no_list: true
 ---
 
-This tutorial uses the Viam [vision service](/build/configure/services/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
+This tutorial uses the Viam [vision service](/ml/vision/) with your computer's built-in webcam to detect the presence of a person and turn on a lamp when you sit down at your desk.
 
 You can turn it into a night light for reading books, a security robot that alerts you when a person is close by, or a bathroom light that only activates when people enter; the opportunities are endless.
 
@@ -89,7 +89,7 @@ Navigate to the **Services** subtab of your robot's **Config** tab.
 
 Click **Create service** in the lower-left corner of the page.
 Select `ML Model` for the type, then select `TFLite CPU` for the model.
-Enter `people` as the name for your [mlmodel](/build/configure/services/ml/), then click **Create**.
+Enter `people` as the name for your [mlmodel](/ml/), then click **Create**.
 
 In the new ML Model service panel, configure your service.
 
@@ -101,7 +101,7 @@ Then specify the absolute **Model path** as where your tflite file lives and any
 ### Configure an mlmodel detector
 
 Click **Create service** in the lower-left corner of the page.
-For your [vision service](/build/configure/services/vision/), select type `vision` and model `mlmodel`.
+For your [vision service](/ml/vision/), select type `vision` and model `mlmodel`.
 Enter `myPeopleDetector` for the name, then click **Create**.
 
 In the new vision service panel, configure your service.

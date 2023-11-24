@@ -124,7 +124,7 @@ The following are the transformation objects available for the `pipeline`:
 {{< tabs >}}
 {{% tab name="Classifications" %}}
 
-Classifications overlay text from the `GetClassifications` method of the [vision service](/build/configure/services/vision/) onto the image.
+Classifications overlay text from the `GetClassifications` method of the [vision service](/ml/vision/) onto the image.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -138,7 +138,7 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 **Attributes:**
 
-- `classifier_name`: The name of the classifier in the [vision service](/build/configure/services/vision/).
+- `classifier_name`: The name of the classifier in the [vision service](/ml/vision/).
 - `confidence_threshold`: The threshold above which to display classifications.
 
 {{% /tab %}}
@@ -228,7 +228,7 @@ The actual depth information is lost in the transform.
 
 {{% tab name="Detections" %}}
 
-The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/build/configure/services/vision/).
+The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/ml/vision/).
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -242,7 +242,7 @@ The Detections transform takes the input image and overlays the detections from 
 
 **Attributes:**
 
-- `detector_name`: The name of the detector configured in the [vision service](/build/configure/services/vision/).
+- `detector_name`: The name of the detector configured in the [vision service](/ml/vision/).
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 
 {{% /tab %}}
@@ -410,7 +410,7 @@ For further information, please refer to the [OpenCV docs](https://docs.opencv.o
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/services/vision" %}}
+{{% card link="/ml/vision" %}}
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{% card link="/tutorials/services/color-detection-scuttle" %}}
 {{< /cards >}}

@@ -67,7 +67,7 @@ Configure a [gamepad](/build/configure/components/input-controller/gamepad/):
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/configuration/#the-config-tab) on the **Config** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-config-tab) on the **Config** tab.
 Inside the `components` array of your config, add the following configuration for your [gamepad](/build/configure/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -91,7 +91,7 @@ To make it functional, you need to add the base remote control service.
 ## Add the base remote control service
 
 Services are software packages that provide robots with higher level functionality.
-To link the controller's input to the base functionality, you need to configure the [base remote control service](/build/configure/services/base-rc/):
+To link the controller's input to the base functionality, you need to configure the [base remote control service](/mobility/base-rc/):
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -117,7 +117,7 @@ Copy and paste the following into the empty **Attributes** field, replacing `<yo
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/configuration/#the-config-tab) on the **Config** tab.
+If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-config-tab) on the **Config** tab.
 Add the following configuration for your base remote control service, replacing `<your-base-name>` with your base's name:
 
 ```json {class="line-numbers linkable-line-numbers"}

@@ -94,8 +94,8 @@ The generic component supports the following method:
 
 ### GetGeometries
 
-Get all the geometries associated with the generic component in its current configuration, in the [frame](/build/configure/services/frame-system/) of the generic component.
-The [motion](/build/configure/services/motion/) and [navigation](/build/configure/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the generic component in its current configuration, in the [frame](/mobility/frame-system/) of the generic component.
+The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

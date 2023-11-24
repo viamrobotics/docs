@@ -19,4 +19,4 @@ This requirement ensures that when a resource of that model is deployed, you can
 For example:
 
 - The API of the built-in component [camera](/build/configure/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImage()`.
-- The API of the built-in service [vision](/build/configure/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
+- The API of the built-in service [vision](/ml/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.

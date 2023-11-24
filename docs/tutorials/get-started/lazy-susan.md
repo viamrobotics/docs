@@ -161,7 +161,7 @@ Click the **Save Config** button.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and motor:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board and motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -366,7 +366,7 @@ Connect the wood to your motor and decorate it as you wish to make your Lazy Sus
 This is not where your Lazy Susan project has to end - here are some ideas for adding more components to this project:
 
 - An [input controller component](/build/configure/components/input-controller/) so you can turn and stop the Lazy Susan with a gamepad.
-- A [camera component](/build/configure/components/camera/) and an [ML model](/build/configure/services/ml/) that recognizes your friends' faces and stops the Lazy Susan precisely where they can reach their favorite food, or takes their photo as it rotates, so you all can have candid memories.
+- A [camera component](/build/configure/components/camera/) and an [ML model](/ml/) that recognizes your friends' faces and stops the Lazy Susan precisely where they can reach their favorite food, or takes their photo as it rotates, so you all can have candid memories.
 - A [sensor component](/build/configure/components/sensor/), so your Lazy Susan only spins when it detects movement around it.
 
 Or you can head over to our [Tutorials](/tutorials/) page and try one of our other tutorials to continue building robots.

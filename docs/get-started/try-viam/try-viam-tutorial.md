@@ -6,8 +6,7 @@ type: "docs"
 description: "Remotely control a Viam Rover located on-site at Viam in New York."
 image: "/get-started/try-viam/rover-resources/viam-rover/rover-front.jpg"
 imageAlt: "The front of the assembled Viam Rover"
-images:
-  ["/get-started/try-viam/rover-resources/viam-rover/rover-front.jpg"]
+images: ["/get-started/try-viam/rover-resources/viam-rover/rover-front.jpg"]
 tags: ["try viam", "app"]
 no_list: true
 aliases:

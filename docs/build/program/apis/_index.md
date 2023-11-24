@@ -16,7 +16,7 @@ Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes a
 You can think of this as a description of how you can interact with that resource.
 Different models of resources implement the same API, which [Viam SDKs expose](/reference/internals/robot-to-robot-comms/), allowing you to control different models of resource types with a consistent interface.
 
-The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/configuration/) on your robot.
+The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your robot.
 
 ## Robot Management APIs
 
@@ -143,37 +143,37 @@ Documentation on using these methods in your SDK code is found on [service pages
 
 ### Base Remote Control
 
-The [base remote control service](/build/configure/services/base-rc/) supports the following methods:
+The [base remote control service](/mobility/base-rc/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/base-rc.md" >}}
 
 ### Data Management
 
-The [data management service](/build/configure/services/data/) supports the following methods:
+The [data management service](/data/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/data.md" >}}
 
 ### MLModel
 
-The [ML model service](/build/configure/services/ml/) supports the following methods:
+The [ML model service](/ml/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/ml.md" >}}
 
 ### Motion
 
-The [motion service](/build/configure/services/motion/) supports the following methods:
+The [motion service](/mobility/motion/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/motion.md" >}}
 
 ### Navigation
 
-The [navigation service](/build/configure/services/navigation/) supports the following methods:
+The [navigation service](/mobility/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/navigation.md" >}}
 
 ### Sensors
 
-The [sensors service](/build/configure/services/sensors/) supports the following methods:
+The [sensors service](/mobility/sensors/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/sensors.md" >}}
 
@@ -185,7 +185,7 @@ The {{< glossary_tooltip term_id="slam" text="Simultaneous Localization And Mapp
 
 ### Vision
 
-Different [vision service](/build/configure/services/vision/) models support different methods:
+Different [vision service](/ml/vision/) models support different methods:
 
 {{< readfile "/static/include/services/apis/vision.md" >}}
 

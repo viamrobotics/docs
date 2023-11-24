@@ -34,8 +34,8 @@ Most robots with a COMPONENT need at least the following hardware (optional):
 Add services commonly used with the component.
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/services/data/" >}}
-{{< relatedcard link="/build/configure/services/frame-system/" >}}
+{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 
 ## Supported Models

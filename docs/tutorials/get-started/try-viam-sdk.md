@@ -42,7 +42,7 @@ You can rent a rover to drive remotely at no cost with [Try Viam](https://app.vi
 If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/build/configure/components/base/wheeled/).
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/build/configure/configuration/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/build/configure/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 ## Install a Viam SDK
@@ -706,4 +706,4 @@ Can you make it move in a circle?
 A figure-eight?
 You could also write some code to control the other components on the robot, like the [camera](/build/configure/components/camera/), or the rover's [motors](/build/configure/components/motor/).
 
-You could also control Viam's services, by adding [data management](/data/) to collect data in real time or [vision services](/build/configure/services/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).
+You could also control Viam's services, by adding [data management](/data/) to collect data in real time or [vision services](/ml/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).

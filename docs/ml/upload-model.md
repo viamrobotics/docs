@@ -30,10 +30,10 @@ Once the model has finished training, it becomes visible in the **Models** secti
 
 ### Upload a new version of a model
 
-If you [deploy a model](/build/configure/services/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you [deploy a model](/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
 If you upload a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
 
-If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/configuration/#the-config-tab).
+If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the model page.
 The model package config looks like this:
@@ -49,21 +49,21 @@ The model package config looks like this:
 ## Next Steps
 
 {{< cards >}}
-{{% manualcard link="/build/configure/services/ml/" %}}
+{{% manualcard link="/ml/" %}}
 
 <h4>Deploy your model</h4>
 
 Create an ML model service to deploy your machine learning model to your machine.
 
 {{% /manualcard %}}
-{{% manualcard link="/build/configure/services/vision/detection/#configure-an-mlmodel-detector"%}}
+{{% manualcard link="/ml/vision/detection/#configure-an-mlmodel-detector"%}}
 
 <h4>Create a detector with your model</h4>
 
 Configure your `mlmodel detector`.
 
 {{% /manualcard %}}
-{{% manualcard link="/build/configure/services/vision/classification/#configure-an-mlmodel-classifier"%}}
+{{% manualcard link="/ml/vision/classification/#configure-an-mlmodel-classifier"%}}
 
 <h4>Create a classifier with your model</h4>
 

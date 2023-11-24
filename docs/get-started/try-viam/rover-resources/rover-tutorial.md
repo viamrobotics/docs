@@ -6,8 +6,7 @@ type: "docs"
 tags: ["rover", "tutorial"]
 image: "/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"
 imageAlt: "A Viam Rover in a box"
-images:
-  ["/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"]
+images: ["/get-started/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 description: "A list of the contents of the Viam Rover kit, instructions for wiring your rover, and links for additional hardware."
 aliases:
   - "/rover-resources/rover-tutorial/"
@@ -235,7 +234,7 @@ If the Pi has power, the lights on the Raspberry Pi will light up.
 
 ### Connect to the Viam app
 
-While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/fleet/robots/#add-a-new-robot).
+While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/fleet/machines/#add-a-new-robot).
 On the robot's **Setup** tab, select `Linux (Aarch64)`.
 `ssh` into the Pi and follow the instructions on the robot's **Setup** tab to download `viam-server` and configure your robot.
 
@@ -263,7 +262,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/build/configure/components/movement-sensor/) for more information.
-- For [LiDAR laser range scanning](/build/configure/services/slam/cartographer/), we recommend Velodyne, or RPlidar (including A1, which is a sub-$100 LIDAR).
+- For [LiDAR laser range scanning](/mobility/slam/cartographer/), we recommend Velodyne, or RPlidar (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
 ### Mount an RPlidar to the rover

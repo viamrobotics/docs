@@ -5,8 +5,7 @@ weight: 20
 type: "docs"
 image: "/get-started/installation/thumbnails/jetson-nano-dev-kit.png"
 imageAlt: "Jetson Nano"
-images:
-  ["/get-started/installation/thumbnails/jetson-nano-dev-kit.png"]
+images: ["/get-started/installation/thumbnails/jetson-nano-dev-kit.png"]
 description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 no_list: true
 aliases:
@@ -103,7 +102,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/configuration/" %}}
+{{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/build/program/" %}}
 {{< /cards >}}

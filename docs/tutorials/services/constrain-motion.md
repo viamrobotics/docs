@@ -27,8 +27,8 @@ Also pay attention to your surroundings, double-check your code for correctness,
 
 Say you want your robot to pass you a cup of tea, but you don't want it to spill the water or bump into other objects on the table.
 
-If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/build/configure/services/motion/) to move a robot arm and end effector to desired positions.
-This tutorial builds on this foundation and shows you how to use [constraints](/build/configure/services/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
+If you followed along with the [Plan Motion with an Arm tutorial](../plan-motion-with-arm-gripper/), you used the [motion service](/mobility/motion/) to move a robot arm and end effector to desired positions.
+This tutorial builds on this foundation and shows you how to use [constraints](/mobility/motion/constraints/) and transforms to control the way your robot moves between its start and end position.
 
 In this tutorial, you will learn to move a cup across a table without hitting another object, and while remaining upright.
 
@@ -46,7 +46,7 @@ Before starting this tutorial, you must:
 
 ## Configure your robot
 
-Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/build/configure/components/arm/) and [gripper](/build/configure/components/gripper/) components with [frames](/build/configure/services/frame-system/) configured.
+Use the same robot configuration from [the previous tutorial](../plan-motion-with-arm-gripper/) for this tutorial, including the [arm](/build/configure/components/arm/) and [gripper](/build/configure/components/gripper/) components with [frames](/mobility/frame-system/) configured.
 Make one change: Change the Z translation of the gripper frame from `90` to `0`.
 
 The motion service is one of the "built-in" services, so you don't need to do anything to enable it on your robot.
@@ -203,7 +203,7 @@ The following diagram shows this, as well as the global coordinate system.
 
 If you are using a `fake` gripper, there is no real hardware to calibrate and you can [continue to the next section](#use-a-transform-to-represent-a-drinking-cup), imagining that your fake gripper corresponds to the diagram above.
 
-If you are using a real arm and gripper, use the [**Control** tab](/fleet/robots/#control) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
+If you are using a real arm and gripper, use the [**Control** tab](/fleet/machines/#control) in the [Viam app](https://app.viam.com/) to move the gripper, look at its reported orientations, and map them to its orientation in the real world.
 If the axes are different from those described above, take these differences into account in your code.
 
 ## Use a transform to represent a drinking cup
@@ -211,7 +211,7 @@ If the axes are different from those described above, take these differences int
 Imagine your cup is 120 millimeters tall with a radius of 45 millimeters.
 You need to take this space into account to avoid bumping objects on the table with the cup.
 
-You can pass transforms to the [motion service `move` method](/build/configure/services/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
+You can pass transforms to the [motion service `move` method](/mobility/motion/#move) to represent objects that are connected to the robot but are not actual robotic components.
 To represent the drinking cup held in your robot's gripper, create a transform with the cup's measurements:
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -289,10 +289,10 @@ If we changed it to `theta=90` or `theta=270`, the gripper jaws would open verti
 
 ## Add a motion constraint
 
-To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](/build/configure/services/motion/constraints/#linear-constraint).
+To keep the cup upright as the arm moves it from one place on the table to another, create a [linear constraint](/mobility/motion/constraints/#linear-constraint).
 When you tell the robot to move the cup from one upright position to another, the linear constraint forces the gripper to move linearly and to maintain the upright orientation of the cup throughout the planned path.
 
-You could try using an [orientation constraint](/build/configure/services/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
+You could try using an [orientation constraint](/mobility/motion/constraints/#orientation-constraint) instead, which would also constrain the orientation.
 However, since this opens up many more options for potential paths, it is much more computationally intensive than the linear constraint.
 
 The code below creates a linear constraint and then uses that constraint to keep the cup upright and move it in a series of linear paths along the predetermined route while avoiding the obstacles we've defined:

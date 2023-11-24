@@ -66,7 +66,7 @@ While following this tutorial, you'll complete the following steps to train and 
 
 In the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
-Navigate to your robot's page in the app and click on the [**Config** tab](/build/configure/configuration/).
+Navigate to your robot's page in the app and click on the [**Config** tab](/build/configure/).
 
 First, add your personal computer's webcam to your robot as a [camera](/build/configure/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
@@ -86,7 +86,7 @@ Optionally, select a fixed filepath for the camera from the automated options in
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -113,7 +113,7 @@ If you want to test your webcam's image capture, you can click on **Export Scree
 
 {{<imgproc src="../../tutorials/bedtime-songs-bot/export-screenshot.png" resize="400x" declaredimensions=true alt="The image stream of a Macbook webcam in the Viam app control tab. A small wooden toy is shown on the screen." >}}
 
-Now, configure the [Data Management Service](/build/configure/services/data/configure-data-capture/#add-the-data-management-service) to [capture data](/build/configure/services/data/configure-data-capture/), so you can use the image data coming from your camera on your robot to train your ML model:
+Now, configure the [Data Management Service](/data/capture/#add-the-data-management-service) to [capture data](/data/capture/), so you can use the image data coming from your camera on your robot to train your ML model:
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -130,7 +130,7 @@ Now, configure the [Data Management Service](/build/configure/services/data/conf
    You can leave the default directory as is.
    By default, captured data is saved to the <file>~/.viam/capture</file> directory on-robot.
 
-Next, [configure Data Capture for your webcam](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components):
+Next, [configure Data Capture for your webcam](/data/capture/#configure-data-capture-for-individual-components):
 
 1. Go to the **Components** tab and scroll down to the camera component you previously configured.
 2. Click **+ Add method** in the **Data Capture Configuration** section.
@@ -212,7 +212,7 @@ If you set this to `.333`, the data management service will capture 1 image roug
 Go to the [**DATA tab**](https://app.viam.com/data/view?view=images) in the Viam app to see the images captured by your webcam.
 
 When you've captured enough images to tag, navigate back to the **Config** tab.
-Scroll to the card with the name of your webcam and click the power switch next to the **Data Capture Configuration** to **off** to [disable data capture](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+Scroll to the card with the name of your webcam and click the power switch next to the **Data Capture Configuration** to **off** to [disable data capture](/data/capture/#configure-data-capture-for-individual-components).
 
 Now, use these pictures to train your machine learning model.
 
@@ -253,7 +253,7 @@ Read through our guide to [training a new model](/ml/train-model/) for more info
 
 ### Configure your webcam to act as a shape classifier
 
-[Deploy the model](/build/configure/services/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/build/configure/services/vision/classification/#configure-an-mlmodel-classifier) to use the model you've trained to classify objects in your robot's field of vision.
+[Deploy the model](/ml/) to the robot and [configure a vision service classifier of model `mlmodel`](/ml/vision/classification/#configure-an-mlmodel-classifier) to use the model you've trained to classify objects in your robot's field of vision.
 
 Name your `mlmodel` vision service `"shape-classifier"`.
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your service.
@@ -406,7 +406,7 @@ Make sure you import the necessary packages by adding the following to the `impo
 Also, make sure that you add `initSpeaker(logger)`, a line that initializes the speaker, to the `main` function of your program.
 
 Now, create the logic for the classifiers.
-Use the vision service's [classification](/build/configure/services/vision/classification/) API method `ClassificationsFromCamera` to do this.
+Use the vision service's [classification](/ml/vision/classification/) API method `ClassificationsFromCamera` to do this.
 
 You can get your components from the robot like this:
 
@@ -582,4 +582,4 @@ Now, as shown below, your smart bedtime songs bot knows to play a song whenever 
 
 This project is just a start.
 
-Expand upon the [configuration](/build/configure/configuration/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/build/configure/services/ml/), the [vision service](/build/configure/services/), and more [components](/build/configure/components/) and [services](/build/configure/services/).
+Expand upon the [configuration](/build/configure/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/ml/), the [vision service](/build/configure/services/), and more [components](/build/configure/components/) and [services](/build/configure/services/).

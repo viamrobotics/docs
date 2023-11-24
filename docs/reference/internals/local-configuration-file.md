@@ -19,7 +19,7 @@ However, if your robot will never connect to the internet, you will need to crea
 - [Build a local configuration file in the Viam app](#build-a-local-configuration-file-in-the-viam-app) - Use the Viam app to build the configuration file and copy it to your robot, without connecting your robot to the Viam app.
 - [Build a local configuration file manually](#build-a-local-configuration-file-manually) - Build your own local configuration file based on the example file.
 
-For information on the individual configuration options available, see [Configuration](/build/configure/configuration/).
+For information on the individual configuration options available, see [Configuration](/build/configure/).
 
 ## Build a local configuration file in the Viam app
 
@@ -225,4 +225,4 @@ This file contains some basic example [component](/build/configure/components/) 
 }
 ```
 
-For more information on the individual configuration options available, see [Configuration](/build/configure/configuration/).
+For more information on the individual configuration options available, see [Configuration](/build/configure/).

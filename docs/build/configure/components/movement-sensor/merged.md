@@ -15,9 +15,9 @@ This allows you to aggregate the API methods supported by multiple sensors into 
 
 This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/build/configure/components/movement-sensor/#supported-models) or [`IMU`](/build/configure/components/movement-sensor/#supported-models) models, respectively.
 
-To reduce velocity error when your robot is using the [navigation service](/build/configure/services/navigation/), aggregate `Position()` from a [`GPS`](/build/configure/components/movement-sensor/#supported-models) and `Orientation()` from an [`IMU`](/build/configure/components/movement-sensor/#supported-models) movement sensor in a `merged` model.
+To reduce velocity error when your robot is using the [navigation service](/mobility/navigation/), aggregate `Position()` from a [`GPS`](/build/configure/components/movement-sensor/#supported-models) and `Orientation()` from an [`IMU`](/build/configure/components/movement-sensor/#supported-models) movement sensor in a `merged` model.
 
-Configure a [navigation service](/build/configure/services/navigation/) to use your merged sensor to navigate.
+Configure a [navigation service](/mobility/navigation/) to use your merged sensor to navigate.
 
 Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/build/configure/components/movement-sensor/#supported-models).
 Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:
@@ -141,5 +141,5 @@ For instance, in the **JSON Example** above, if both `"imu-wit"` and `"mpu6050"`
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [Control tab](/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.

@@ -8,6 +8,6 @@ Method Name | Description
 [`IsMoving`](/build/configure/components/base/#ismoving) | Return whether the base is moving or not.
 [`Stop`](/build/configure/components/base/#stop) | Stop the base.
 [`GetProperties`](/build/configure/components/base/#getproperties) | Get the width and turning radius of the base in meters.
-[`GetGeometries`](/build/configure/components/base/#getgeometries) | Get all the geometries associated with the base in its current configuration, in the [frame](/build/configure/services/frame-system/) of the base.
+[`GetGeometries`](/build/configure/components/base/#getgeometries) | Get all the geometries associated with the base in its current configuration, in the [frame](/mobility/frame-system/) of the base.
 [`DoCommand`](/build/configure/components/base/#docommand) | Send or receive model-specific commands.
 [`Close`](/build/configure/components/base/#close) | Safely shut down the resource and prevent further use.

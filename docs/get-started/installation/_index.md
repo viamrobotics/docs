@@ -103,7 +103,7 @@ To learn how to run, update, or uninstall `viam-server`, see [Manage `viam-serve
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/configuration/" %}}
+{{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/build/program/" %}}
 {{< /cards >}}

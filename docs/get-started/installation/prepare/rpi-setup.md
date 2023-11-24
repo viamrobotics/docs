@@ -6,8 +6,7 @@ type: "docs"
 description: "Image a Raspberry Pi to prepare it for viam-server installation."
 image: "get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png"
 imageAlt: "Raspberry Pi"
-images:
-  ["/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png"]
+images: ["/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png"]
 no_list: true
 aliases:
   - /getting-started/rpi-setup/
@@ -213,7 +212,7 @@ If you are using hardware that requires these protocols, you must enable support
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/configuration/" %}}
+{{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/build/program/" %}}
 {{< /cards >}}

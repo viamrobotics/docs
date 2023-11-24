@@ -10,6 +10,6 @@ Method Name | Description
 [`ModelAttributes`](/build/configure/components/board/#modelattributes) | Get the attributes related to the model of this board.
 [`SetPowerMode`](/build/configure/components/board/#setpowermode) | Set the board to the indicated power mode.
 [`WriteAnalog`](/build/configure/components/board/#writeanalog) | Write an analog value to a pin on the board.
-[`GetGeometries`](/build/configure/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/build/configure/services/frame-system/) of the board.
+[`GetGeometries`](/build/configure/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.
 [`DoCommand`](/build/configure/components/board/#docommand) | Send or receive model-specific commands.
 [`Close`](/build/configure/components/board/#close) | Safely shut down the resource and prevent further use.

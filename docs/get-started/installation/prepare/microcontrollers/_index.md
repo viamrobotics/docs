@@ -27,7 +27,7 @@ If you want to program the chip directly, follow the setup instructions in [the 
 
 ### Flash your ESP32 with the Micro-RDK Installer
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/robots/#add-a-new-robot) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/machines/#add-a-new-robot) in your desired location.
 
 1. Click on the name of the robot to go to the robot's page.
 2. Click on the **Setup** tab.
@@ -57,7 +57,7 @@ See [Micro-RDK](/build/micro-rdk/) to get a list of supported models and instruc
 Configure your `esp32` board for your robot.
 
 {{% /manualcard %}}
-{{% card link="/build/configure/configuration/" %}}
+{{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/build/program/" %}}
 {{< /cards >}}

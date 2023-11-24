@@ -27,7 +27,7 @@ In this tutorial, you will use three Viam services together to enable your smart
 
 - The [data management service](#the-data-management-service), to capture images from a camera on your smart machine and sync them to the cloud.
 - The [ML model service](#the-ml-model-service), to manage and deploy a machine learning (ML) model based on these images, once you have added tags to the images matching the objects you want to detect.
-- The [vision service](/build/configure/services/vision/), to enable your smart machine's camera to detect objects defined in the ML model on its own.
+- The [vision service](/ml/vision/), to enable your smart machine's camera to detect objects defined in the ML model on its own.
 
 With all three services working together, your smart machine will be able to analyze its camera feed for the presence of specific shapes, such as a red star or blue circle.
 When it detects a likely match, it will overlay a confidence score onto the camera feed alongside the name of the detected shape, indicating how closely the shape in the camera frame matches a shape it has seen before.
@@ -57,7 +57,7 @@ Before following this tutorial, ensure you have:
 
 You can manage how your smart machine works with data files and images by using the _data management service_.
 
-The [data management](/data/) service has two parts: [data capture](/build/configure/services/data/#data-capture) and [cloud sync](/build/configure/services/data/#cloud-sync)
+The [data management](/data/) service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
 
 - **Data capture** allows you to capture data from specific components on your smart machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -85,7 +85,7 @@ First, add the data management service to your smart machine to be able capture 
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
 
-For more information, see [Add the data management service](/build/configure/services/data/configure-data-capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a component
 
@@ -108,7 +108,7 @@ To enable image data capture for a camera component:
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-For more information see [Configure data capture](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/build/configure/services/data/configure-cloud-sync/).
+For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
 
 ### View and filter captured data
 
@@ -138,7 +138,7 @@ Once your smart machine is capturing and syncing images to the Viam app, you are
 You can use an ML model to help your smart machine adapt its behavior to the world around it.
 
 For this tutorial, you will train an ML model to be able to recognize specific shapes (for example, red and blue stars), and then deploy that model to your smart machine using the _ML (machine learning) model service_.
-With a model deployed to your smart machine, you can use the [ML model](/build/configure/services/ml/) service together with the [vision](/build/configure/services/vision/) service to analyze newly-detected objects for a possible match to a known shape.
+With a model deployed to your smart machine, you can use the [ML model](/ml/) service together with the [vision](/ml/vision/) service to analyze newly-detected objects for a possible match to a known shape.
 
 To train a model from your captured data, first tag your images with appropriate labels and add them to a dataset.
 Then train a model based on your dataset and labels and deploy the model to your smart machine.
@@ -216,7 +216,7 @@ For more information, see [Train a model](/ml/train-model/).
 
 ### Deploy a model
 
-Once your model has finished training, add the [ML model](/build/configure/services/ml/) service and deploy your model to your smart machine to be able to use it to classify newly-captured images.
+Once your model has finished training, add the [ML model](/ml/) service and deploy your model to your smart machine to be able to use it to classify newly-captured images.
 
 To deploy a model to your smart machine:
 
@@ -316,8 +316,8 @@ In this tutorial, you learned:
 
 - how to use the [data management](/data/) service to capture images from your smart machine's camera and sync them to the Viam app
 - how to filter and tag your synced images according to the objects you wanted to detect
-- how to use the [ML model](/build/configure/services/ml/) service to train an ML model based on those images and deploy that model to your smart machine
-- how to use the [vision service](/build/configure/services/vision/) to detect objects defined in an ML model from a live camera feed
+- how to use the [ML model](/ml/) service to train an ML model based on those images and deploy that model to your smart machine
+- how to use the [vision service](/ml/vision/) to detect objects defined in an ML model from a live camera feed
 
 From here, you could do anything! Try one of the following:
 
@@ -325,7 +325,7 @@ From here, you could do anything! Try one of the following:
   For example, you might train it to stop or start based on your hand gesture, to turn in a specific direction, or adjust its speed.
 - Teach your smart machine to [recognize specific pets](/tutorials/projects/pet-treat-dispenser/), and dispense treats appropriately.
 - Teach your smart machine to [recognize specific toys](/tutorials/projects/bedtime-songs-bot/), and to sing a specific song about each.
-- Try creating an [object detection model](/build/configure/services/vision/detection/) to be able to identify parts of an image specifically with a bounding box.
+- Try creating an [object detection model](/ml/vision/detection/) to be able to identify parts of an image specifically with a bounding box.
 
 For more ideas, check out our other [tutorials](/tutorials/).
 
