@@ -15,4 +15,4 @@ To install `viam-server` :
 1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
    Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/platform/get-started/installation/manage/) if desired.
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/get-started/installation/manage/) if desired.

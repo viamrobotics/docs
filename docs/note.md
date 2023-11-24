@@ -544,18 +544,18 @@ If you really need to use html directly, place the image in the static folder.
 ```md
 <!-- remove space -->
 
-![Raspberry Pi](/platform/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png)
+![Raspberry Pi](/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 
-{ {<imgproc src="/platform/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">} }
+{ {<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">} }
 
-{ {<imgproc src="/platform/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">} }
+{ {<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">} }
 ```
 
-![Raspberry Pi](/platform/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png)
+![Raspberry Pi](/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png)
 
-{{<imgproc src="/platform/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">}}
+{{<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x60" declaredimensions=true alt="Raspberry Pi">}}
 
-{{<imgproc src="/platform/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">}}
+{{<imgproc src="/get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="x200" declaredimensions=true alt="Raspberry Pi">}}
 
 The `imgproc` shortcode will:
 

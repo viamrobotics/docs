@@ -28,7 +28,7 @@ To allow myself to get some extra zzz’s before work, I've built a robot to fee
 It has also come in useful to give him some treats for being a Good Boy™ while I'm spending my day at the office.
 
 In this tutorial you can follow along and build your own pet feeder.
-You will use the Viam app's [Data Manager](/platform/data/) to train a custom machine learning model that recognizes your pet and use the [Machine Learning Service](/platform/build/configure/services/ml/) and the [vision service](/platform/build/configure/services/vision/) to use it on your robot.
+You will use the Viam app's [Data Manager](/data/) to train a custom machine learning model that recognizes your pet and use the [Machine Learning Service](/build/configure/services/ml/) and the [vision service](/build/configure/services/vision/) to use it on your robot.
 The final component is a stepper motor and a 3D printed model which holds and dispenses treats when your pet is recognized.
 
 ## Requirements
@@ -38,7 +38,7 @@ The final component is a stepper motor and a 3D printed model which holds and di
 You will need the following hardware components:
 
 1. A computer running macOS or Linux
-1. [Raspberry Pi](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) with [microSD card](https://www.amazon.com/Amazon-Basics-microSDXC-Memory-Adapter/dp/B08TJTB8XS/ref=sr_1_4) (and [microSD card reader](https://www.amazon.com/Card-Reader-Beikell-Memory-Adapter/dp/B09Z6JCKL7/ref=sr_1_3)), with `viam-server` installed following the [Installation Guide](/platform/get-started/installation/).
+1. [Raspberry Pi](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) with [microSD card](https://www.amazon.com/Amazon-Basics-microSDXC-Memory-Adapter/dp/B08TJTB8XS/ref=sr_1_4) (and [microSD card reader](https://www.amazon.com/Card-Reader-Beikell-Memory-Adapter/dp/B09Z6JCKL7/ref=sr_1_3)), with `viam-server` installed following the [Installation Guide](/get-started/installation/).
 1. [Raspberry Pi power supply](https://www.amazon.com/Raspberry-Model-Official-SC0218-Accessory/dp/B07W8XHMJZ/ref=asc_df_B07W8XHMJZ/)
 1. [Stepper motor and motor driver](https://makersportal.com/shop/nema-17-stepper-motor-kit-17hs4023-drv8825-bridge)
 1. [12V power supply adaptor for motor driver](https://www.amazon.com/ABLEGRID-12-Volt-Power-Supply/dp/B009ZZKUPG/ref=asc_df_B009ZZKUPG/)
@@ -62,7 +62,7 @@ You will need the following software:
 
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [pip](https://pip.pypa.io/en/stable/#)
-- [`viam-server`](/platform/get-started/installation/#install-viam-server) installed to your {{< glossary_tooltip term_id="board" text="board" >}}.
+- [`viam-server`](/get-started/installation/#install-viam-server) installed to your {{< glossary_tooltip term_id="board" text="board" >}}.
   If you haven't done this, we'll walk you through it in the next section.
 
 ## Assemble your robot
@@ -90,7 +90,7 @@ The STL files for the smart feeder robot are available on [GitHub](https://githu
 
 Now that you've set up your robot, you can start configuring and testing it.
 
-1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/platform/get-started/installation/prepare/rpi-setup/).
+1. If you haven’t already, set up the Raspberry Pi by following our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/).
 1. Go to [the Viam app](https://app.viam.com) and create a new robot instance in your preferred organization.
 1. Then follow the instructions on the **Setup** tab.
 
@@ -107,7 +107,7 @@ Name the component `pi`, then click **Create**.
 
 ![The Viam app showing the configuration page for a board component with name pi.](/tutorials/pet-treat-dispenser/app-board-pi.png)
 
-### Configure your [webcam](/platform/build/configure/components/camera/webcam/)
+### Configure your [webcam](/build/configure/components/camera/webcam/)
 
 Click **Create component** and add your webcam with type `camera` and model `webcam`.
 Name the component `petcam`, then click **Create**.
@@ -119,10 +119,10 @@ Select your camera.
 ![The Viam app showing the configuration page for a camera component with model webcam.](/tutorials/pet-treat-dispenser/app-camera-webcam.png)
 
 {{< alert title="Tip" color="tip" >}}
-If you are unsure which camera to select, selecte one, save the configuration and go to the [**Control** tab](/platform/build/configure/components/camera/webcam/#view-the-camera-stream) to confirm you can see the expected video stream.
+If you are unsure which camera to select, selecte one, save the configuration and go to the [**Control** tab](/build/configure/components/camera/webcam/#view-the-camera-stream) to confirm you can see the expected video stream.
 {{< /alert >}}
 
-### Configure your [stepper motor](/platform/build/configure/components/motor/gpiostepper/)
+### Configure your [stepper motor](/build/configure/components/motor/gpiostepper/)
 
 Finally, click **Create component** and add another component with type `motor` and model `gpiostepper`.
 
@@ -137,7 +137,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/platform/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/platform/build/configure/components/camera/webcam/), and your [stepper motor](/platform/build/configure/components/motor/gpiostepper/):
+On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/build/configure/components/camera/webcam/), and your [stepper motor](/build/configure/components/motor/gpiostepper/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -183,7 +183,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-To test everything is wired and configured correctly, head to the [Control tab](/platform/fleet/robots/#control).
+To test everything is wired and configured correctly, head to the [Control tab](/fleet/robots/#control).
 Start by testing the motor.
 Click on the motor panel and set the **RPM** to 20 and **# of Revolutions** to 100 to see your treat dispensing mechanism in action.
 Feel free to tweak these values to achieve the desired speed of your dispenser.
@@ -200,12 +200,12 @@ Your pet may be a little skeptical of your robot at first, but once you get some
 ## Use machine learning to recognize your pet
 
 Let’s make our pet feeder smart with some data capture and machine learning models!
-To do that, you'll first have to configure [Data Management](/platform/data/) to capture images.
+To do that, you'll first have to configure [Data Management](/data/) to capture images.
 Then you can use these images to train a machine learning model on your pet.
 
 ### Configure data management
 
-To enable the [data capture](/platform/build/configure/services/data/configure-data-capture/) on your robot, do the following:
+To enable the [data capture](/build/configure/services/data/configure-data-capture/) on your robot, do the following:
 
 1. Under the **Config** tab, select **Services**, and navigate to **Create service**.
    Here, you will add a service so your robot can sync data to the Viam app in the cloud.
@@ -286,14 +286,14 @@ From the dataset view, click on **Train model**, name your model and select **Si
 Then select the label or labels that you used to label your pet images.
 We called it `petfeeder` and selected the tag `toast` and `no-toast` to train on images of the pup and images that do not contain the pup.
 
-{{<gif webm_src="/platform/ml/train-model.webm" mp4_src="/platform/ml/train-model.mp4" alt="Train a model UI">}}
+{{<gif webm_src="/ml/train-model.webm" mp4_src="/ml/train-model.mp4" alt="Train a model UI">}}
 
 If you want your model to be able to recognize multiple pets you can instead create a **Multi Label** model based on multiple tags.
 Go ahead and select all the tags you would like to include in your model and click **Train Model**.
 
 ### Deploy your model to your robot
 
-Once the model has finished training, deploy it by adding an [ML model service](/platform/build/configure/services/ml/) to your robot:
+Once the model has finished training, deploy it by adding an [ML model service](/build/configure/services/ml/) to your robot:
 
 1. Navigate to the robot page on the Viam app.
    Click to the **Config** tab, then select the **Services** subtab.
@@ -305,14 +305,14 @@ Once the model has finished training, deploy it by adding an [ML model service](
 
 ### Use the vision service to detect your pet
 
-To detect your pet with your machine learning model, you need to add a [vision service](/platform/build/configure/services/vision/) that uses the model and a [transform camera](/platform/build/configure/components/camera/transform/) that applies the vision service to an existing camera stream and specifies a confidence threshold:
+To detect your pet with your machine learning model, you need to add a [vision service](/build/configure/services/vision/) that uses the model and a [transform camera](/build/configure/components/camera/transform/) that applies the vision service to an existing camera stream and specifies a confidence threshold:
 
 1. From the **Services** subtab, click **Create service** in the lower-left corner.
 1. Select `Vision` as the type and `ML Model` as the model.
 1. Enter a name for your ML model service and click **Create**.
 1. Select the model you previously created in the dropdown menu.
 1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
-1. Create a [transform camera](/platform/build/configure/components/camera/transform/) by selecting type `camera` and model `transform`.
+1. Create a [transform camera](/build/configure/components/camera/transform/) by selecting type `camera` and model `transform`.
 1. Enter `classifier_cam` as the name for your camera, then click **Create**.
 1. Replace the JSON attributes with the following object which specifies the camera source for the transform cam and also defines a pipeline that adds the `classifier` you created.
 
@@ -337,7 +337,7 @@ To detect your pet with your machine learning model, you need to add a [vision s
 
 ## Control your robot programmatically
 
-With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/platform/build/program/apis/) in the language of your choice.
+With your robot configured, you can now add a program to your robot that controls the pet feeder when executed, using the [Viam SDK](/build/program/apis/) in the language of your choice.
 This tutorial uses Python.
 
 ### Set up your Python environment
@@ -451,7 +451,7 @@ python3 main.py
 
 One more thing.
 Right now, you need to run the code manually every time you want your robot to work.
-However, you can configure Viam to automatically run your code as a [process](/platform/build/configure/configuration/#processes).
+However, you can configure Viam to automatically run your code as a [process](/build/configure/configuration/#processes).
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
@@ -549,7 +549,7 @@ Take your smart pet feeder to the next level!
 You could try one of the following:
 
 - Add speakers and record your voice so that the pet feeder can play a message to your pet each time it dispenses a treat.
-- Train an [ML model](/platform/build/configure/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
+- Train an [ML model](/build/configure/services/ml/) to recognize when your pet performs a trick, and withhold the treat until a specific trick is detected.
 - Add a button that your pet must press to access the treat.
   If you add several treat types, you might include a different color button for each treat type, allowing your pet to choose.
 - If you have multiple pets, you could configure different treats for each pet by training the ML model on each pet, and dispensing different treats depending on the pet recognized.

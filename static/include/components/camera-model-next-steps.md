@@ -1,5 +1,5 @@
 {{< cards >}}
-    {{% card link="/platform/build/configure/components/camera/calibrate" %}}
-    {{% card link="/platform/build/configure/components/camera/transform" %}}
-    {{% card link="/platform/build/configure/services/vision" %}}
+    {{% card link="/build/configure/components/camera/calibrate" %}}
+    {{% card link="/build/configure/components/camera/transform" %}}
+    {{% card link="/build/configure/services/vision" %}}
 {{< /cards >}}

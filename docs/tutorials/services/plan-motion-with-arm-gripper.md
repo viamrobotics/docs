@@ -24,10 +24,10 @@ Also pay attention to your surroundings, double-check your code for correctness,
 {{< /alert >}}
 
 Moving individual components, like [an arm](../accessing-and-moving-robot-arm/), is a good way to start using Viam, but there is so much more you can do.
-The [motion service](/platform/build/configure/services/motion/) enables sophisticated movement involving one or many components of your robot.
+The [motion service](/build/configure/services/motion/) enables sophisticated movement involving one or many components of your robot.
 
 {{< alert title="Tip" color="tip" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/platform/build/configure/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/build/configure/components/arm/).
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
@@ -93,14 +93,14 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/platform/build/configure/services/frame-system/).
+The Motion service has a method that can get the _pose_ of a component relative to a [_reference frame_](/build/configure/services/frame-system/).
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
 ### Get the `ResourceName`
 
-When you use the [arm API](/platform/build/configure/components/arm/#api), you call methods on your arm component itself.
-To use the [motion service API](/platform/build/configure/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
+When you use the [arm API](/build/configure/components/arm/#api), you call methods on your arm component itself.
+To use the [motion service API](/build/configure/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
 
@@ -229,7 +229,7 @@ Within the app, the **Frame System** subtab of your robot's **Config** tab gives
 
 In previous examples you controlled motion of individual components.
 Now you will use the motion service to control the motion of the robot as a whole.
-You will use the motion service's [`Move`](/platform/build/configure/services/motion/#move) method to execute more general robotic motion.
+You will use the motion service's [`Move`](/build/configure/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 
@@ -289,10 +289,10 @@ if err != nil {
 ## Command other components to move with the motion service
 
 In this section you will add a new component to your robot.
-One device that is very commonly attached to the end of a robot arm is a [_gripper_](/platform/build/configure/components/gripper/).
+One device that is very commonly attached to the end of a robot arm is a [_gripper_](/build/configure/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
-This is possible because the motion service considers other components of the robot (through the [frame system](/platform/build/configure/services/frame-system/)) when calculating how to achieve the desired motion.
+This is possible because the motion service considers other components of the robot (through the [frame system](/build/configure/services/frame-system/)) when calculating how to achieve the desired motion.
 
 ### Add a gripper component
 

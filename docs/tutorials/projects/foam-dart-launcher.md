@@ -40,19 +40,19 @@ If you use a different rover and/or motor controller, ensure that the motor driv
 For example, a brushed DC motor requires a brushed DC motor driver that is rated for the power requirements of the motor.
 Also, the configuration files shown in this tutorial _must_ be modified if you use a different setup.
 
-You can find more information on configuring different motors in the [Motor Component](/platform/build/configure/components/motor/) topic.
+You can find more information on configuring different motors in the [Motor Component](/build/configure/components/motor/) topic.
 {{% /alert %}}
 
 ### Hardware and software requirements
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/platform/get-started/installation/).
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per [our Raspberry Pi setup guide](/get-started/installation/).
 - [A wheeled rover](https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/)
 - [A foam dart launcher](https://www.amazon.com/Nerf-N-Strike-Elite-Jolt-Blaster/dp/B01HEQHXE8)
 - [A USB camera (webcam)](https://www.amazon.com/gp/product/B0972KK7BC/) (optional, to see where you are going and aiming)
 - [A solenoid](https://www.amazon.com/0530-Frame-Solenoid-Electromagnet-Stroke/dp/B07K35L4TH/)
 - [A relay](https://www.amazon.com/HiLetgo-Channel-Isolation-Support-Trigger/dp/B00LW15D1M/)
 - [A dual motor controller](https://www.amazon.com/Qunqi-Controller-Module-Stepper-Arduino/dp/B014KMHSW6/)
-  If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/platform/build/configure/components/motor/) to learn how to configure the pins.
+  If you use a different motor driver, refer to the manufacturer’s data sheet and our [motor component topic](/build/configure/components/motor/) to learn how to configure the pins.
 - Jumper wires (breadboard wires)
 
 ### Tools and Consumables
@@ -177,7 +177,7 @@ Navigate to your new robot's **Config** tab and click the **Components** subtab.
 
 ### Board Configuration (Raspberry Pi)
 
-Click **Create component** and add your [board](/platform/build/configure/components/board/).
+Click **Create component** and add your [board](/build/configure/components/board/).
 Choose type `board` and model `pi`.
 Name it `local` and click **Create**.
 
@@ -190,7 +190,7 @@ Just remember to use that name consistently in the following steps.
 
 #### Left Motor
 
-Click **Create component** and add the left [motor](/platform/build/configure/components/motor/) with type `motor` and model `gpio`.
+Click **Create component** and add the left [motor](/build/configure/components/motor/) with type `motor` and model `gpio`.
 Name it `left` and click **Create**.
 
 Select the name of the board the motor controller is wired to (for example, "local") from the **Board** dropdown.
@@ -207,7 +207,7 @@ Click **Save config** at the bottom of the screen.
 
 #### Right Motor
 
-Click **Create component** and add the right [motor](/platform/build/configure/components/motor/) with type `motor` and model `gpio`.
+Click **Create component** and add the right [motor](/build/configure/components/motor/) with type `motor` and model `gpio`.
 Name it `right` and click **Create**.
 
 Select the name of the board the motor controller is wired to (for example, "local") from the **Board** dropdown.
@@ -230,7 +230,7 @@ Let’s add a base to be able to control them together.
 
 ### Base Configuration
 
-Configure a [base component](/platform/build/configure/components/base/) to coordinate your motors so you can move the base around with your keyboard.
+Configure a [base component](/build/configure/components/base/) to coordinate your motors so you can move the base around with your keyboard.
 
 Click **Create component** and add the base with type `base` and model `wheeled`.
 Give it a name (you can call it `base`) and click **Create**.
@@ -248,7 +248,7 @@ Now let’s add a camera to watch the video stream on the control panel as you m
 ### Camera Configuration
 
 Add your USB camera as a webcam.
-Please refer to [our webcam documentation](/platform/build/configure/components/camera/webcam/) for complete instructions.
+Please refer to [our webcam documentation](/build/configure/components/camera/webcam/) for complete instructions.
 
 {{<imgproc src="/tutorials/foam-dart-launcher/config-webcam.png" resize="800x" declaredimensions=true alt="Camera Component Attribute Pane.">}}
 
@@ -379,7 +379,7 @@ If any component fails to appear when connecting to the robot in the Viam app, c
 
 In this tutorial, you learned how to create a remotely-controlled foam dart launching robot activated by the GPIO pins on a Raspberry Pi using Viam.
 You could use this same concept as the basis for a security robot that launches darts at people if they enter your room, a Nerf ball blaster dog toy, a kitten treat shooter for cats to fetch in excitement, you name it!
-You could even add [object detection and machine learning](/platform/build/configure/services/vision/) and activate the launcher only when the camera sees a specific object or person.
+You could even add [object detection and machine learning](/build/configure/services/vision/) and activate the launcher only when the camera sees a specific object or person.
 
 If you are looking for a new robotics project, check out our other [tutorials](/tutorials/).
 

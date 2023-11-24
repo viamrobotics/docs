@@ -7,12 +7,12 @@ description: "The RDK is the open-source, on-robot portion of the Viam platform,
 tags: ["server", "rdk"]
 aliases:
   - "/product-overviews/rdk"
-  - "/platform/build/program/rdk"
+  - "/build/program/rdk"
   - "/internals/rdk"
 ---
 
 {{< alert title="Tip" color="tip" >}}
-For an overview of the Viam platform, see [Viam in 3 minutes](/platform/get-started/viam/).
+For an overview of the Viam platform, see [Viam in 3 minutes](/get-started/viam/).
 {{< /alert >}}
 
 Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-robot portion of the Viam platform, that provides `viam-server` and the Go SDK.
@@ -46,16 +46,16 @@ After start-up, `viam-server` manages:
 When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running robot.
 
-You can see configuration changes made by yourself or by your collaborators on the [History tab](/platform/fleet/robots/#history).
+You can see configuration changes made by yourself or by your collaborators on the [History tab](/fleet/robots/#history).
 You can also revert to an earlier configuration from the History tab.
 
 ### Logging
 
-Log messages written appear under the [**Logs** tab](/platform/fleet/robots/#logs) for the machine running the module.
+Log messages written appear under the [**Logs** tab](/fleet/robots/#logs) for the machine running the module.
 
 ### Data management
 
-Data capture for individual components is supported on [certain component subtypes](/platform/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+Data capture for individual components is supported on [certain component subtypes](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
 
 ### Shutdown
 
@@ -64,7 +64,7 @@ During robot shutdown, the RDK handles modular resource instances similarly to b
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/platform/build/program/apis/" %}}
-{{% card link="/platform/registry/" customTitle="Viam Registry" %}}
-{{% card link="/platform/build/micro-rdk/" %}}
+{{% card link="/build/program/apis/" %}}
+{{% card link="/registry/" customTitle="Viam Registry" %}}
+{{% card link="/build/micro-rdk/" %}}
 {{< /cards >}}
