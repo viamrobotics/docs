@@ -333,7 +333,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, left motor, right motor, and base:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, left motor, right motor, and base:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -405,7 +405,7 @@ MAIV is still in pieces, but its time to ensure that the motors and base control
 Check to see if you might have something that you can use to set MAIV's base upon so the motorized wheels can spin freely.
 Or, if the wires between the base and the torso are long enough to allow small movements of the base you can leave the base on the flat surface.
 
-Navigate to your robot's [Control](/fleet/robots/#control) tab.
+Navigate to your robot's [Control](/fleet/machines/#control) tab.
 Click on the base panel and use the arrows to control the base.
 Ensure the motors on both sides are working, and that the wheels are spinning as expected.
 If the wheels on a given side are spinning in the opposite direction of what you would expect, go back to the **Config** tab, toggle `Direction Flip` for the appropriate motor, **Save config** and repeat the test steps.

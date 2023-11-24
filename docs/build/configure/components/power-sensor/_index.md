@@ -21,8 +21,8 @@ Integrate this component to monitor your power levels.
 ## Related Services
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/services/data/" >}}
-{{< relatedcard link="/build/configure/services/sensors/" >}}
+{{< relatedcard link="/data/" >}}
+{{< relatedcard link="/mobility/sensors/" >}}
 {{< /cards >}}
 
 ## Supported Models
@@ -308,8 +308,8 @@ readings, err := myPowerSensor.Readings(context.Background(), nil)
 
 ### GetGeometries
 
-Get all the geometries associated with the power sensor in its current configuration, in the [frame](/build/configure/services/frame-system/) of the power sensor.
-The [motion](/build/configure/services/motion/) and [navigation](/build/configure/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the power sensor in its current configuration, in the [frame](/mobility/frame-system/) of the power sensor.
+The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -110,6 +110,6 @@ The following is a full example config:
 
 {{< cards >}}
 {{% card link="/build/configure/components/camera/transform" %}}
-{{% card link="/build/configure/services/vision" %}}
+{{% card link="/ml/vision" %}}
 {{% card link="/tutorials/services/try-viam-color-detection" %}}
 {{< /cards >}}

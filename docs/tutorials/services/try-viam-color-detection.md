@@ -24,7 +24,7 @@ weight: 3
 
 In this tutorial you will learn how to configure a color detector with the vision service and leverage that detector with a [transform camera](/build/configure/components/camera/transform/) to detect the color red.
 
-The [vision service](/build/configure/services/vision/) enables a robot to use its cameras to see and interpret the world around it.
+The [vision service](/ml/vision/) enables a robot to use its cameras to see and interpret the world around it.
 The service also allows you to create different types of detectors with which the robot can recognize objects, scan QR codes, perform optical quality inspections, sort different colored objects, take measurements, and more.
 
 You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try) or with [your own Viam Rover](/get-started/try-viam/rover-resources/).
@@ -55,7 +55,7 @@ This tutorial uses the color `#7a4f5c` or `rgb(122, 79, 92)` (a reddish color).
 
 **Hex color #7a4f5c**: {{<imgproc src="/tutorials/try-viam-color-detection/7a4f5c.png" resize="150x" declaredimensions=true alt="A color swatch for the color that you will be detecting with your color detector. It's a reddish, maroon color.">}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/build/configure/services/vision/detection/):
+Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots) and configure your [vision service color detector](/ml/vision/detection/):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -103,7 +103,7 @@ The `color_detector` is a heuristic-based detector that draws boxes around objec
 
 Click **Save config** and head to the **Components** tab.
 
-You cannot interact directly with the [vision service](/build/configure/services/vision/).
+You cannot interact directly with the [vision service](/ml/vision/).
 To be able to interact with the vision service you must configure a camera component.
 
 {{< alert title="Tip" color="tip" >}}

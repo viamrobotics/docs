@@ -5,8 +5,7 @@ weight: 20
 type: "docs"
 image: "/get-started/installation/thumbnails/jetson-agx-orin-dev-kit.png"
 imageAlt: "Jetson A G X Orin Developer Kit"
-images:
-  ["/get-started/installation/thumbnails/jetson-agx-orin-dev-kit.png"]
+images: ["/get-started/installation/thumbnails/jetson-agx-orin-dev-kit.png"]
 description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Jetson AGX Orin for viam-server installation."
 no_list: true
 aliases:
@@ -115,7 +114,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/configuration/" %}}
+{{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/build/program/" %}}
 {{< /cards >}}

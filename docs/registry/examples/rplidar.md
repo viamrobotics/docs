@@ -131,6 +131,6 @@ You can find additional assistance in the [Troubleshooting section](/reference/a
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/services/slam/cartographer" %}}
-{{% card link="/build/configure/services/slam" %}}
+{{% card link="/mobility/slam/cartographer" %}}
+{{% card link="/mobility/slam" %}}
 {{< /cards >}}

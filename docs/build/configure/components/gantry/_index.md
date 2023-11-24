@@ -40,9 +40,9 @@ Most robots with a gantry need at least the following hardware:
 ## Related Services
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/services/navigation/" >}}
-{{< relatedcard link="/build/configure/services/frame-system/" >}}
-{{< relatedcard link="/build/configure/services/motion/" >}}
+{{< relatedcard link="/mobility/navigation/" >}}
+{{< relatedcard link="/mobility/frame-system/" >}}
+{{< relatedcard link="/mobility/motion/" >}}
 {{< /cards >}}
 
 ## Supported Models
@@ -425,8 +425,8 @@ is_moving, err := myGantry.IsMoving(context.Background())
 
 ### GetGeometries
 
-Get all the geometries associated with the gantry in its current configuration, in the [frame](/build/configure/services/frame-system/) of the gantry.
-The [motion](/build/configure/services/motion/) and [navigation](/build/configure/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the gantry in its current configuration, in the [frame](/mobility/frame-system/) of the gantry.
+The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

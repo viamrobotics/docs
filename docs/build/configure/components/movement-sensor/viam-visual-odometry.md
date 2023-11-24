@@ -259,5 +259,5 @@ See the [ORB openCV documentation](https://docs.opencv.org/3.4/db/d95/classcv_1_
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [Control tab](/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.

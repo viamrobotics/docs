@@ -148,10 +148,10 @@ sitemap:
           <div>Configure your machine</div>
           <div style="text-align: left">
             <ol style="padding-inline-start: 1.1rem">
-              <li>Configure a <a href="build/configure/configuration/"> machine</a> or a <a href="fleet/">fleet</a></li>
+              <li>Configure a <a href="build/configure/"> machine</a> or a <a href="fleet/">fleet</a></li>
               <li><a href="get-started/installation/">Install Viam on your machine</a></li>
               <li>Configure <a href="build/configure/components/">components</a> and <a href="build/configure/services/">add services</a></li>
-              <li><a href="fleet/robots/#control">Control and test your machine</a></li>
+              <li><a href="fleet/machines/#control">Control and test your machine</a></li>
             </ol>
           </div>
         </div>

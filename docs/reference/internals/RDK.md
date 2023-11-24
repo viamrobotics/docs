@@ -46,16 +46,16 @@ After start-up, `viam-server` manages:
 When you or your collaborators change the configuration of a machine in the Viam app, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
 This means you can add, modify, and remove a modular resource instance from a running robot.
 
-You can see configuration changes made by yourself or by your collaborators on the [History tab](/fleet/robots/#history).
+You can see configuration changes made by yourself or by your collaborators on the [History tab](/fleet/machines/#history).
 You can also revert to an earlier configuration from the History tab.
 
 ### Logging
 
-Log messages written appear under the [**Logs** tab](/fleet/robots/#logs) for the machine running the module.
+Log messages written appear under the [**Logs** tab](/fleet/machines/#logs) for the machine running the module.
 
 ### Data management
 
-Data capture for individual components is supported on [certain component subtypes](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+Data capture for individual components is supported on [certain component subtypes](/data/capture/#configure-data-capture-for-individual-components).
 
 ### Shutdown
 

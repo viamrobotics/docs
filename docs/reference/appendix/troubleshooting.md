@@ -140,7 +140,7 @@ When a robot is disconnected, it will continue to run with its locally-cached cu
 
 **Full Error:** `Error: cannot parse config: JSON: cannot unmarshal string into Go struct field Component.components.frame of type float64.`
 
-**Description:** A [frame](/build/configure/services/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
+**Description:** A [frame](/mobility/frame-system/) attribute may be malformed, and is preventing the parsing of the component's configuration.
 
 **Solution:** Check the **Config** tab for your robot in the [Viam app](https://app.viam.com) and look for a frame attribute, either in **Builder** mode, under the **Frame System** tab or in **Raw JSON** mode.
 If you see a `frame` attribute that you didn't create yourself, delete the whole `frame` object from the JSON config.

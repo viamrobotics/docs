@@ -37,7 +37,7 @@ See [Arm Configuration](/build/configure/components/arm/#supported-models) for t
 
 {{% /alert %}}
 
-If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/build/program/) and control it with the [arm API](/build/configure/components/arm/#api), or use it with [services](/build/configure/services/) like [Motion](/build/configure/services/motion/), just as you would with a built-in model.
+If you have a robot arm that is not already supported by the RDK, create a module that provides a customized model for your arm to [program](/build/program/) and control it with the [arm API](/build/configure/components/arm/#api), or use it with [services](/build/configure/services/) like [Motion](/mobility/motion/), just as you would with a built-in model.
 
 See [Modular Resources](/registry/) for more information.
 
@@ -45,7 +45,7 @@ See [Modular Resources](/registry/) for more information.
 
 The way arms move through space is more complicated than Viam's other [components](/build/configure/components/).
 Because of this, an arm, unlike other components, requires a [kinematic configuration file](/reference/internals/kinematic-chain-config/) describing its geometry.
-This provides the necessary information for the [frame system service](/build/configure/services/frame-system/) and built-in [motion service](/build/configure/services/motion/) to work with the arm.
+This provides the necessary information for the [frame system service](/mobility/frame-system/) and built-in [motion service](/mobility/motion/) to work with the arm.
 
 **Find a pre-built kinematics file:**
 
@@ -57,7 +57,7 @@ This provides the necessary information for the [frame system service](/build/co
 - Follow the instructions on [Configure Complex Kinematic Chains](/reference/internals/kinematic-chain-config/) to write a file detailing the geometry of your arm.
   - Use the [Spatial Vector Algebra (SVA)](/reference/internals/kinematic-chain-config/#kinematic-parameters) kinematic parameter type.
   - Define the parameters in a </file>.json</file> file.
-  - Follow the frame system's guide to [Configure a Reference Frame](/build/configure/services/frame-system/frame-config/) when working out the relative [orientations](/reference/internals/orientation-vector/) of the `links` on your arm.
+  - Follow the frame system's guide to [Configure a Reference Frame](/mobility/frame-system/frame-config/) when working out the relative [orientations](/reference/internals/orientation-vector/) of the `links` on your arm.
     You can view existing examples of the SVA and JSON format in Viam's [built-in arm drivers](https://github.com/viamrobotics/rdk/blob/main/components/arm).
 
 Create a new directory.

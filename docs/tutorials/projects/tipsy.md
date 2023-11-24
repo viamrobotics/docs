@@ -172,7 +172,7 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/build/configure/components/board/), your [motors](/build/configure/components/motor/), your [base](/build/configure/components/base/), your [camera](/build/configure/components/camera/), and your [ultrasonic sensors](/build/configure/components/sensor/ultrasonic/):
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/build/configure/components/board/), your [motors](/build/configure/components/motor/), your [base](/build/configure/components/base/), your [camera](/build/configure/components/camera/), and your [ultrasonic sensors](/build/configure/components/sensor/ultrasonic/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -330,7 +330,7 @@ Click on the **Services** subtab.
 
 1. **Configure the ML model service**
 
-   Add an [mlmodel](/build/configure/services/ml/) service:
+   Add an [mlmodel](/ml/) service:
 
    Click **Create service** in the lower-left corner of the page.
    Select type `ML Model` and model `TFLite CPU`.
@@ -347,7 +347,7 @@ Click on the **Services** subtab.
 
 1. **Configure an ML model detector**
 
-   Add a [vision service](/build/configure/services/vision/) detector:
+   Add a [vision service](/ml/vision/) detector:
 
    Click **Create service** in the lower-left corner of the page.
    Select type `Vision`, then select model `mlmodel`.
@@ -395,7 +395,7 @@ Click on the **Services** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following complete JSON configuration which adds the configuration for the ML model service, the vision service, and a transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

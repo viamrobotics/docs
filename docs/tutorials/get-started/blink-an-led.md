@@ -170,7 +170,7 @@ Click **Save Config** at the bottom left of the page.
 ## Control your robot using the Viam app
 
 When you configure your board component, the Viam app generates a control panel for it.
-Click the [**Control** tab](/fleet/robots/#control) to view the control panels for all your robot's components (in this case, just the board).
+Click the [**Control** tab](/fleet/machines/#control) to view the control panels for all your robot's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.

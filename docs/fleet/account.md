@@ -1,6 +1,6 @@
 ---
 title: "Account Management"
-linkTitle: "Account Management"
+linkTitle: "Accounts"
 weight: 80
 type: "docs"
 description: "Log in and out of your Viam account."
@@ -25,25 +25,7 @@ If you forget your password to the app, click **Forgot password** and enter your
 Accounts created from separate authentication sources are unique to each other.
 {{< /alert >}}
 
-## Manage
-
-You do not have to use the app to use Viam's platform to build your robot, but it has several key features to help you get started managing your robots, including configuring robots with more complicated architecture like sub-parts or remotes:
-
-{{< cards >}}
-{{% card link="/build/configure/configuration" %}}
-{{% card link="/fleet" %}}
-{{% card link="/data" %}}
-{{% card link="/ml" %}}
-{{% card link="/build/configure/parts-and-remotes" %}}
-{{< /cards >}}
-
 <br>
-
-You can also manage and control your robots from the command line with our CLI:
-
-{{< cards >}}
-{{% card link="/fleet/cli" %}}
-{{< /cards >}}
 
 ## Sign Out
 

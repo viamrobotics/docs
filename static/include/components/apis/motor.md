@@ -10,6 +10,6 @@ Method Name | Description
 [`IsPowered`](/build/configure/components/motor/#ispowered) | Return whether or not the motor is currently on, and the amount of power to it.
 [`IsMoving`](/build/configure/components/motor/#ismoving) | Return whether the motor is moving or not.
 [`Stop`](/build/configure/components/motor/#stop) | Cut power to the motor off immediately, without any gradual step down.
-[`GetGeometries`](/build/configure/components/motor/#getgeometries) | Get all the geometries associated with the motor in its current configuration, in the [frame](/build/configure/services/frame-system/) of the motor.
+[`GetGeometries`](/build/configure/components/motor/#getgeometries) | Get all the geometries associated with the motor in its current configuration, in the [frame](/mobility/frame-system/) of the motor.
 [`DoCommand`](/build/configure/components/motor/#docommand) | Send or receive model-specific commands.
 [`Close`](/build/configure/components/motor/#close) | Safely shut down the resource and prevent further use.

@@ -29,7 +29,7 @@ With a configured `wheeled-odometry` movement sensor, your robot calculates an e
 You can access these readings through the [movement sensor API](/build/configure/components/movement-sensor/#api).
 For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
 
-After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/build/configure/services/navigation/).
+After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/mobility/navigation/).
 
 ## Set-up requirements
 
@@ -144,5 +144,5 @@ The following attributes are available for `wheeled-odometry` movement sensors:
 
 ## Test the movement sensor
 
-After you configure your movement sensor, navigate to the [Control tab](/fleet/robots/#control) and select the dedicated movement sensor dropdown panel.
+After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.

@@ -159,7 +159,7 @@ Click **Save Config** at the bottom of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [**Raw JSON** tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
+On the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board and your motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -197,7 +197,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Let’s test our configuration from the [Control tab](/fleet/robots/#control).
+Let’s test our configuration from the [Control tab](/fleet/machines/#control).
 Go to the board panel, set the pin connected to your motor (in our case pin 37) to high, and your motor should turn.
 
 ## Attach components to the enclosure

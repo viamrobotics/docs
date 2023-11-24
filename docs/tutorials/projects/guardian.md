@@ -20,10 +20,10 @@ cost: 90
 ---
 
 In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.
-Adding a bit of [machine learning](/build/configure/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
+Adding a bit of [machine learning](/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/build/configure/components/servo/), a [camera](/build/configure/components/camera/), some LEDs and the [ML Model service](/build/configure/services/ml/) and [vision service](/build/configure/services/vision/).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/build/configure/components/servo/), a [camera](/build/configure/components/camera/), some LEDs and the [ML Model service](/ml/) and [vision service](/ml/vision/).
 Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="/tutorials/guardian/guardian-detection.webm" mp4_src="/tutorials/guardian/guardian-detection.mp4" poster="/tutorials/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
@@ -162,7 +162,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -207,7 +207,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ### Test the components
 
-Navigate to your [robot's Control tab](/fleet/robots/#control) to test your components.
+Navigate to your [robot's Control tab](/fleet/machines/#control) to test your components.
 
 {{<imgproc src="/tutorials/guardian/test.png" resize="600x" declaredimensions=true alt="the control tab">}}
 
@@ -242,7 +242,7 @@ Use a suitable base with a hole, like a box with a hole cut into the top, to pla
 
 At this point also connect the speaker to your Raspberry Pi.
 
-Then test the components on the [robot's Control tab](/fleet/robots/#control) again to ensure everything still works.
+Then test the components on the [robot's Control tab](/fleet/machines/#control) again to ensure everything still works.
 
 ## Detect persons and pets
 
@@ -266,7 +266,7 @@ Click the **Services** subtab.
 
 1. **Add an ML model service.**
 
-The [ML model service](/build/configure/services/ml/) allows you to deploy the provided machine learning model to your robot.
+The [ML model service](/ml/) allows you to deploy the provided machine learning model to your robot.
 
 Click **Create service** in the lower-left corner of the page.
 Select type `ML Model`, then select model `TFLite CPU`.
@@ -278,7 +278,7 @@ Then specify the absolute **Model path** as `/home/pi/effdet0.tflite` and the **
 
 2. **Add a vision service.**
 
-Next, add a [detector](/build/configure/services/vision/detection/) as a vision service to be able to make use of the ML model.
+Next, add a [detector](/ml/vision/detection/) as a vision service to be able to make use of the ML model.
 
 Click **Create service** in the lower-left corner of the page.
 Select type `Vision`, then select model `ML Model`.
@@ -321,7 +321,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [**Raw JSON** tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/build/configure/services/ml/), the [vision service](/build/configure/services/vision/), and a [transform camera](/build/configure/components/camera/transform/):
+Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/build/configure/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {
@@ -403,7 +403,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Navigate to your [robot's Control tab](/fleet/robots/#control) to test the transform camera.
+Navigate to your [robot's Control tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
 You should see bounding boxes with labels around different objects.
 
@@ -432,7 +432,7 @@ Now, install the Python Viam SDK with the `mlmodel` extra, and the VLC module:
 pip3 install 'viam-sdk[mlmodel]' python-vlc
 ```
 
-The `mlmodel` extra includes additional dependency support for the [ML (machine learning) model service](/build/configure/services/ml/).
+The `mlmodel` extra includes additional dependency support for the [ML (machine learning) model service](/ml/).
 
 ### Connect
 
@@ -683,7 +683,7 @@ If everything works, your guardian should now start to idle and when it detects 
 
 One more thing.
 Right now, you have to run the code manually every time you want your Guardian to work.
-You can also configure Viam to automatically run your code as a [process](/build/configure/configuration/#processes).
+You can also configure Viam to automatically run your code as a [process](/build/configure/#processes).
 
 To be able to run the Python script from your Raspberry Pi, you need to install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
 

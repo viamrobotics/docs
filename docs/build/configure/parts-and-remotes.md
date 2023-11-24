@@ -1,9 +1,9 @@
 ---
-title: "Robot Architecture: Parts, Sub-Parts and Remotes"
-linkTitle: "Robot Architecture"
+title: "Machine Architecture: Parts, Sub-Parts and Remotes"
+linkTitle: "Machine Architecture"
 weight: 40
 type: "docs"
-description: "Connect multiple robot parts to each other as sub-parts or remotes."
+description: "Connect multiple machine parts to each other as sub-parts or remotes."
 tags: ["server", "components", "services"]
 aliases:
   - /manage/parts-and-remotes/

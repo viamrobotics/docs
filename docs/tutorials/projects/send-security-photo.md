@@ -31,7 +31,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [vision service](/build/configure/services/vision/) and the [ML model service](/build/configure/services/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/ml/vision/) and the [ML model service](/ml/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -99,7 +99,7 @@ Click the **Services** subtab.
 
 1. **Configure the ML model service**
 
-   Add an [mlmodel](/build/configure/services/ml/) service:
+   Add an [mlmodel](/ml/) service:
 
    Click **Create service** in the lower-left corner of the **Services** subtab.
    Select type `mlmodel`, then select model `tflite_cpu`.
@@ -115,7 +115,7 @@ Click the **Services** subtab.
 
 1. **Configure an mlmodel detector**
 
-   Add a [vision service](/build/configure/services/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
+   Add a [vision service](/ml/vision/) with the name `myPeopleDetector`, type `vision` and model `mlmodel`.
    Click **Create service**.
 
    In the new vision service panel, configure your service.

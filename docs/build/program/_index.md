@@ -30,7 +30,7 @@ The SDKs provide idiomatic wrappers around Viam's robot [gRPC APIs](https://gith
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed `viam-server`](/get-started/installation/) on the computer you want to use to control your robot (likely a [single-board computer](/build/configure/components/board/#supported-models)), and [configured your robot](/build/configure/configuration/).
+Before you get started with your program, ensure that you have [installed `viam-server`](/get-started/installation/) on the computer you want to use to control your robot (likely a [single-board computer](/build/configure/components/board/#supported-models)), and [configured your robot](/build/configure/).
 
 Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/build/configure/components/board/), run one of the following commands in your terminal:
 
@@ -43,7 +43,7 @@ If you are using the Python SDK, [set up a virtual environment](/build/program/p
 pip install viam-sdk
 ```
 
-If you intend to use the [ML (machine learning) model service](/build/configure/services/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+If you intend to use the [ML (machine learning) model service](/ml/), use the following command instead, which installs additional required dependencies along with the Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install 'viam-sdk[mlmodel]'

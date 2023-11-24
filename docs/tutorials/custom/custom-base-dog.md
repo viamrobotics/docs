@@ -409,7 +409,7 @@ If yours doesn't resemble the following, go back to the raw JSON and double-chec
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-You can configure a [_process_](/build/configure/configuration/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+You can configure a [_process_](/build/configure/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Navigate to the **Processes** subtab of your robot's **Config** tab.
 
@@ -518,5 +518,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **Control** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/build/configure/services/vision/) with the robot dog's [camera component](/build/configure/components/camera/).
+You could also use the Viam [vision service](/ml/vision/) with the robot dog's [camera component](/build/configure/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

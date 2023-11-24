@@ -25,7 +25,7 @@ After you upload and train a machine learning model, you can test its results in
 
 This allows you to refine models by iteratively tagging more images for training based on observed performance.
 
-For more information, see [Test classification models with existing images in the cloud](/build/configure/services/vision/classification/#existing-images-in-the-cloud).
+For more information, see [Test classification models with existing images in the cloud](/ml/vision/classification/#existing-images-in-the-cloud).
 
 To use this update, the classifier must have been trained or uploaded after September 19, 2023.
 The current version of this feature exclusively supports classification models.
@@ -39,7 +39,7 @@ Read the [Viam PLC Support](https://www.viam.com/post/viam-plc-support-democrati
 
 ### Improved: SLAM map creation
 
-The [Cartographer-module](/build/configure/services/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
+The [Cartographer-module](/mobility/slam/cartographer/) now runs in Viam's cloud for creating or updating maps.
 This enhancement allows you to:
 
 - Generate larger maps without encountering session timeouts
@@ -70,7 +70,7 @@ You now have the capability to use a [power sensor component](/build/configure/c
 
 ### Added: Filter component's data before the cloud
 
-Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/build/configure/services/data/#cloud-sync).
+Viam has written a module that allows you to filter data based on specific criteria before syncing it to [Viam's cloud](/data/cloud-sync/).
 It equips machines to:
 
 - Remove data that is not of interest
@@ -147,7 +147,7 @@ This update enables you to implement custom models of an arm component as a [mod
 - `movetoJointPositions`
 - `GetKinematics`
 
-Then, use the [motion planning service](/build/configure/services/motion/) to specify poses, and Viam handles the rest.
+Then, use the [motion planning service](/mobility/motion/) to specify poses, and Viam handles the rest.
 
 For more information, see this [tutorial on creating a custom arm](/registry/examples/custom-arm/).
 
@@ -194,10 +194,10 @@ This update allows you to:
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
-- **Owner**: These members can see and edit [every tab on the robot page](/fleet/robots/#navigating-the-robot-page), as well as manage users in the app.
+- **Owner**: These members can see and edit [every tab on the robot page](/fleet/machines/#navigating-the-robot-page), as well as manage users in the app.
   This role is best for those on your team who are actively engineering and building robots.
 
-- **Operator**: These members can only see and use the [remote control tab](/fleet/robots/#control).
+- **Operator**: These members can only see and use the [remote control tab](/fleet/machines/#control).
   This role is best for those on your team who are teleoperating or remotely controlling robots.
 
 For more information about assigning permissions and collaborating with others on Viam, see [Fleet Management](/fleet/).
@@ -236,7 +236,7 @@ You can manage the data synced to Viam's cloud with the new capability for bulk 
 
 {{% alert title="Important: Breaking Change" color="note" %}}
 
-The [vision service](/build/configure/services/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
+The [vision service](/ml/vision/) became more modular in RDK [v0.2.36](https://github.com/viamrobotics/rdk/releases/tag/v0.2.36), API [v0.1.118](https://github.com/viamrobotics/api/releases/tag/v0.1.118), and Python SDK [v0.2.18](https://github.com/viamrobotics/viam-python-sdk/releases/tag/v0.2.18).
 
 Find more information on each of the changes below.
 
@@ -278,7 +278,7 @@ detections = await vision.get_detections(img, "find_objects")
 
 #### Color Detector configurations
 
-You can replace existing color detectors by [configuring new ones in the UI](/build/configure/services/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/build/configure/configuration/#the-config-tab):
+You can replace existing color detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-a-color_detector) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -353,7 +353,7 @@ You can replace existing color detectors by [configuring new ones in the UI](/bu
 
 #### TFLite Detector configurations
 
-You can replace existing TFLite detectors by [configuring new ones in the UI](/build/configure/services/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/build/configure/configuration/#the-config-tab):
+You can replace existing TFLite detectors by [configuring new ones in the UI](/ml/vision/detection/#configure-an-mlmodel-detector) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -413,7 +413,7 @@ You can replace existing TFLite detectors by [configuring new ones in the UI](/b
 
 #### TFLite Classifier configurations
 
-You can replace existing TFLite classifiers by [configuring new ones in the UI](/build/configure/services/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/build/configure/configuration/#the-config-tab):
+You can replace existing TFLite classifiers by [configuring new ones in the UI](/ml/vision/classification/#configure-an-mlmodel-classifier) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -473,7 +473,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/build/configure/services/vision/segmentation/#configure-an-obstacles_pointcloud-segmenter) or you can update the [Raw JSON configuration of your robots](/build/configure/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-an-obstacles_pointcloud-segmenter) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -527,7 +527,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Detector to 3D Segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/build/configure/services/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your robots](/build/configure/configuration/#the-config-tab):
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/ml/vision/segmentation/#configure-a-detector_3d_segmenter) or you can update the [Raw JSON configuration of your robots](/build/configure/#the-config-tab):
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
@@ -582,25 +582,25 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Add and remove models using the robot config
 
-You must add and remove models using the [robot config](/build/configure/configuration/).
+You must add and remove models using the [robot config](/build/configure/).
 You will no longer be able to add or remove models using the SDKs.
 
 #### Add machine learning vision models to a vision service
 
 The way to add machine learning vision models is changing.
-You will need to first register the machine learning model file with the [ML model service](/build/configure/services/ml/) and then add that registered model to a vision service.
+You will need to first register the machine learning model file with the [ML model service](/ml/) and then add that registered model to a vision service.
 
 ## March 2023
 
 ### Added: Machine learning for image classification models
 
-You can now [train](/ml/train-model/) and [deploy](/build/configure/services/ml/#create-an-ml-model-service) image classification models with the [data management service](/build/configure/services/data/) and use your robot's image data directly within Viaml
+You can now [train](/ml/train-model/) and [deploy](/ml/deploy/#create-an-ml-model-service) image classification models with the [data management service](/data/) and use your robot's image data directly within Viaml
 Additionally, you can [upload and use](/ml/upload-model/) existing machine learning models with your robots.
 For more information on using data synced to the cloud to train machine learning models, read [Train a model](/ml/train-model/).
 
 ### Added: Motion planning with new `constraint` parameter
 
-A new parameter, [`constraint`](/build/configure/services/motion/constraints/), has been added to the [Motion service API](/build/configure/services/motion/#api), allowing you to define restrictions on the robot's movement.
+A new parameter, [`constraint`](/mobility/motion/constraints/), has been added to the [Motion service API](/mobility/motion/#api), allowing you to define restrictions on the robot's movement.
 The constraint system also provides flexibility to specify that obstacles should only impact specific frames of a robot.
 
 ### Added: Fragments in robot configuration
@@ -609,7 +609,7 @@ You can now access {{< glossary_tooltip term_id="fragment" text="fragments" >}} 
 The configurations you added will now show up automatically in the **Components** or **Services** subtabs in the **Builder** view.
 This makes it easier to monitor what fragments you've added to your robot and how they're configured.
 
-For more information, see [Fragments](/build/configure/configuration/#fragments).
+For more information, see [Fragments](/build/configure/#fragments).
 
 ### Improved: Sticky GPS keys
 
@@ -647,7 +647,7 @@ Find more information in the [TypeScript SDK docs](https://ts.viam.dev/).
 
 ### Added: Frame system visualizer
 
-When adding [frames](/build/configure/services/frame-system/) to your robot's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
+When adding [frames](/mobility/frame-system/) to your robot's config in the Viam app, you can now use the **Frame System** subtab of the **Config** tab to more easily visualize the relative positions of frames.
 
 ### Added: Support for microcontrollers
 
@@ -671,7 +671,7 @@ The movement sensor API now includes a [GetLinearAcceleration](/build/configure/
 
 ### Added: Support for capsule geometry
 
-The [motion service](/build/configure/services/motion/) now supports capsule geometries.
+The [motion service](/mobility/motion/) now supports capsule geometries.
 
 The UR5 arm model has been improved using this new geometry type.
 
@@ -707,7 +707,7 @@ There are two new movement sensor {{< glossary_tooltip term_id="model" text="mod
 
 ### Improved: Motion planning with remote components
 
-The [motion service](/build/configure/services/motion/) is now agnostic to the networking topology of a robot.
+The [motion service](/mobility/motion/) is now agnostic to the networking topology of a robot.
 
 - Kinematic information is now transferred over the robot API.
   This means that the motion service is able to get kinematic information for every component on the robot, regardless of whether it is on a main or remote viam-server.

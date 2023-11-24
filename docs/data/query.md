@@ -1,6 +1,6 @@
 ---
 title: "Query Data with SQL or MQL"
-linkTitle: "Query Data with SQL or MQL"
+linkTitle: "Query Data"
 weight: 40
 no_list: true
 type: "docs"
@@ -11,7 +11,7 @@ aliases:
 # SME: Devin Hilly
 ---
 
-Once you have [added the data management service](/build/configure/services/data/configure-data-capture/#add-the-data-management-service) and [synced tabular data to the Viam app](/build/configure/services/data/#cloud-sync), you can perform queries against that data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once you have [added the data management service](/data/capture/#add-the-data-management-service) and [synced tabular data to the Viam app](/data/cloud-sync/), you can perform queries against that data using either {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 You can:
 
@@ -26,13 +26,13 @@ To perform searches against tabular data from within the Python SDK, use the [`T
 
 ## Requirements
 
-Before you can query your data, you must:
+Before you can configure data query, you must:
 
-1. [Add the data management service](/build/configure/services/data/configure-data-capture/#add-the-data-management-service) to your machine.
-1. [Configure data capture](/build/configure/services/data/configure-data-capture/) for at least one component, such as a sensor.
-   Only components that capture tabular data support data query using SQL or MQL.
+1. [Add the data management service](/data/capture/#add-the-data-management-service) to your machine.
+1. [Configure data capture](/data/capture/) for at least one component, such as a sensor.
+   Only components that capture tabular data support data query.
    To search non-tabular data, see [Filter Data](/data/view/#filter-data).
-1. [Configure cloud sync](/build/configure/services/data/configure-cloud-sync/), and sync data to the Viam app.
+1. [Configure cloud sync](/data/cloud-sync/), and sync data to the Viam app.
    When you are able to [view your data in the Viam app](/data/view/), you are ready to proceed.
 
 ## Query tabular data in the Viam app
@@ -69,13 +69,58 @@ For more information on MQL syntax, see the [MQL (MongoDB Query Language)](https
 
 ## Query tabular data directly from a compatible client
 
-Once you have synced tabular data to the Viam app, you can directly query that data from an MQL-compatible client, such as [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/) or [Compass](https://www.mongodb.com/docs/compass/current/).
+Configure direct data query to be able to query captured tabular data in the Viam cloud using {{< glossary_tooltip term_id="mql" text="MQL" >}} or {{< glossary_tooltip term_id="sql" text="SQL" >}} from a MQL-compatible client, such as `mongosh` or MongoDB Compass.
+Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
 
-1. If you haven't already, [configure direct data query](/build/configure/services/data/configure-data-query/#configure-data-query) to be able to use this query mode.
+You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
+
+Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried in this fashion.
+
+Before being able to query data, you must configure data query.
+
+### Configure data query
+
+{{< alert title="Important" color="note" >}}
+These steps are only required when querying tabular data directly from an MQL-compatible client, such as `mongosh`.
+You do not need to perform any additional configuration when [querying data in the Viam app](/data/query/#query-tabular-data-in-the-viam-app).
+{{< /alert >}}
+
+1. If you haven't already, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam.
+
+1. Find your organization ID by running the following command, or from your organization's **Settings** page in [the Viam App](https://app.viam.com/):
+
+   ```sh {class="line-numbers linkable-line-numbers"}
+   viam organizations list
+   ```
+
+1. Configure a new database user for the Viam organization's MongoDB [Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance, which is where your machine's synced data is stored.
+   Provide your organization's `org-id` from step 2, and a desired new password for your database user.
+
+   ```sh {class="line-numbers linkable-line-numbers"}
+   viam data database configure --org-id=<YOUR-ORGANIZATION-ID> --password=<NEW-DBUSER-PASSWORD>
+   ```
+
+   This command configures a new database user for your org for use with data query.
+   If you have already created this user, this command updates the password for that user instead.
+
+1. Determine the hostname for your organization's MongoDB Atlas Data Federation instance by running the following command with the organization's `org-id` from step 2:
+
+   ```sh {class="line-numbers linkable-line-numbers"}
+   viam data database hostname --org-id=<YOUR-ORGANIZATION-ID>
+   ```
+
+   This command returns the `hostname` (including database name) to use to connect to your data store on the Viam organization's MongoDB Atlas instance.
+   You will need this to query your data in the next section.
+
+For more information, see the documentation for the [Viam CLI `database` command](/fleet/cli/#data).
+
+### Query
+
+Once you have synced tabular data to the Viam app, you can directly query that data from an MQL-compatible client, such as [`mongosh`](https://www.mongodb.com/docs/mongodb-shell/) or [Compass](https://www.mongodb.com/docs/compass/current/).
 
 1. Open your chosen MQL-compatible client an connect to the Viam organization's MongoDB Atlas instance.
    You can use any client that is capable of connecting to a MongoDB Atlas instance, including the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/), [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), and many third-party tools.
-   To connect, use the `hostname` you determined when you [configured direct data query](/build/configure/services/data/configure-data-query/#configure-data-query), and structure your username in the following format:
+   To connect, use the `hostname` you determined when you [configured direct data query](/data/query/#configure-data-query), and structure your username in the following format:
 
    ```sh
    db-user-<YOUR-ORG-ID>
@@ -97,7 +142,7 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), determined from the [`viam data database hostname` CLI command](/build/configure/services/data/configure-data-query/#configure-data-query).
+   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
    - `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
      The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
 
@@ -146,6 +191,6 @@ For information on connecting to your Atlas instance from other MQL clients, see
 
 To export your captured data from the cloud, see [Export Data](../export/).
 
-To adjust the rate at which your machine captures data, see [Configure Data Capture](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components).
+To adjust the rate at which your machine captures data, see [Configure Data Capture](/data/capture/#configure-data-capture-for-individual-components).
 
-To adjust the sync frequency, see [Configure Cloud Sync](/build/configure/services/data/configure-cloud-sync/).
+To adjust the sync frequency, see [Configure Cloud Sync](/data/cloud-sync/).

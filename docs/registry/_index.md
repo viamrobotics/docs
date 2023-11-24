@@ -65,7 +65,7 @@ By default, newly added modules will remain at the version they were when you in
 
 Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**Control** tab](/fleet/#remote-control) and program it using [standardized APIs](/build/program/apis/).
 
-`viam-server` manages the [dependencies](/reference/internals/rdk/#dependency-management), [start-up](/reference/internals/rdk/#start-up), [reconfiguration](/fleet/#reconfiguration), [data management](/build/configure/services/data/configure-data-capture/#configure-data-capture-for-individual-components), and [shutdown](/reference/internals/rdk/#shutdown) behavior of your modular resource.
+`viam-server` manages the [dependencies](/reference/internals/rdk/#dependency-management), [start-up](/reference/internals/rdk/#start-up), [reconfiguration](/fleet/#reconfiguration), [data management](/data/capture/#configure-data-capture-for-individual-components), and [shutdown](/reference/internals/rdk/#shutdown) behavior of your modular resource.
 
 ### Tutorials using modules
 

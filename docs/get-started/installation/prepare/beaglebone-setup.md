@@ -90,7 +90,7 @@ You can find additional assistance in the [Troubleshooting section](/reference/a
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/build/configure/configuration/" %}}
+{{% card link="/build/configure/" %}}
 {{% card link="/tutorials/" %}}
 {{% card link="/get-started/try-viam/" %}}
 {{< /cards >}}

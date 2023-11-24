@@ -27,7 +27,7 @@ In this tutorial, you will:
 
 - assemble the claw game machine and learn how to fabricate your own encasement for the machine
 - learn how to configure the components using Viam
-- master the art of controlling your robot with our [motion service](/build/configure/services/motion/) using the [Viam Python SDK](https://python.viam.dev/)
+- master the art of controlling your robot with our [motion service](/mobility/motion/) using the [Viam Python SDK](https://python.viam.dev/)
 - learn how to create a custom control interface using the [Viam TypeScript SDK](https://ts.viam.dev/)
 
 ## Requirements
@@ -140,7 +140,7 @@ Robots are organized into {{< glossary_tooltip term_id="part" text="parts" >}}, 
 Every robot has a main part which is automatically created when you create the robot.
 Since you just created a new robot, your robot's main part is already defined.
 Multi-part robots also have one or more sub-parts representing additional computers running `viam-server`.
-If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/build/configure/services/motion/) on a laptop and connect that laptop as a sub-part to your robot.
+If you have two computers within the _same robot_, you can use one as the main part and [connect the other to it as a sub-part](/build/configure/parts-and-remotes/#configure-a-sub-part). This is the approach this tutorial follows: you'll run the [motion planning service](/mobility/motion/) on a laptop and connect that laptop as a sub-part to your robot.
 
 {{< alert title="Tip" color="tip" >}}
 Technically you could configure all the components within one part, but motion planning is more performant when running on a computer like a macOS or Linux laptop running `viam-server`.
@@ -154,7 +154,7 @@ Use the parts dropdown menu in the top banner of your robot’s page on [the Via
 
 Follow the instructions on the **Setup** tab to install `viam-server` on your development machine and connect to your robot's sub-part.
 
-For more information about parts, see [Robot Architecture: Parts, Sub-Parts and Remotes](/build/configure/parts-and-remotes/).
+For more information about parts, see [Machine Architecture: Parts, Sub-Parts and Remotes](/build/configure/parts-and-remotes/).
 
 Now you are ready to configure the individual components in the [Viam app](https://app.viam.com).
 Navigate to the **Config** tab of your robot's page and select your main part from the parts dropdown.
@@ -181,7 +181,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -229,7 +229,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your arm:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -294,7 +294,7 @@ Click **Save config** in the lower-left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your arm and gripper:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your arm and gripper:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -428,7 +428,7 @@ Now select `low` and click **Set Pin State** again: the claw will open.
 
 ## Create obstacles and a world state
 
-The claw game machine will use the [motion service](/build/configure/services/motion/) to plan its movements.
+The claw game machine will use the [motion service](/mobility/motion/) to plan its movements.
 To make sure the arm doesn't hit the walls of the enclosure or the prize drop hole, you need to create representations of obstacles around the arm that the motion service can use when planning.
 
 Obstacles are geometries located at a pose relative to some frame.
@@ -441,12 +441,12 @@ Represented in that file are obstacles for the prize drop hole, and each of the 
 If the dimensions of your enclosure differ from ours, adjust your `obstacles.json` file to match your enclosure.
 
 The obstacles for our arm are configured in reference to the "world" frame which is defined as a , which is a special frame that represents the starting point for all other frames in the robot's world.
-The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/build/configure/services/motion/#move) call.
+The list of obstacles are defined in a `WorldState` object, which is passed as an argument in each [move()](/mobility/motion/#move) call.
 
 {{< alert title="Tip" color="tip" >}}
 If the arm is not mounted exactly perpendicular to the x/y axis of the enclosure, you can adjust the theta (_th_) of the arm within the arm component configuration by a number of degrees to compensate.
 Obstacles can then be configured as if the arm were straight in the enclosure.
-See the [frame system documentation](/build/configure/services/frame-system/) for more information.
+See the [frame system documentation](/mobility/frame-system/) for more information.
 {{< /alert >}}
 
 ### Find the home pose within the enclosure
@@ -541,7 +541,7 @@ home_pose = Pose(x=390.0, y=105.0, z=home_plane, o_x=0, o_y=0, o_z=-1, theta=0)
 grab_plane = 240.0
 ```
 
-Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints) - in this case we are using an [orientation constraint](/build/configure/services/motion/constraints/#orientation-constraint).
+Then we define the [constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints) - in this case we are using an [orientation constraint](/mobility/motion/constraints/#orientation-constraint).
 The orientation constraint places a restriction on the orientation change during a motion, as the arm in a claw game should always face down so the gripper is always in a position where is can descend and grab a prize:
 
 ```python
@@ -597,7 +597,7 @@ async def grab(board, doGrab):
         await pin.set(False)
 ```
 
-Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/build/configure/services/motion/).
+Lastly, the code defines the functions `move_absolute()`, `home()`, `move_to_offset()` and `move_z()`, which construct new pose requests to send to the [motion service](/mobility/motion/).
 
 ```python {class="line-numbers linkable-line-numbers"}
 async def move_absolute(arm, motion_service, pose):
@@ -929,13 +929,13 @@ async function grab(boardClient: BoardClient) {
 In this tutorial, you learned how to:
 
 - Make your own claw machine.
-- Test, configure, and control a robot arm using Viam’s [motion service](/build/configure/services/motion/), the [Viam Python SDK](https://python.viam.dev/), and [the Viam app](https://app.viam.com).
+- Test, configure, and control a robot arm using Viam’s [motion service](/mobility/motion/), the [Viam Python SDK](https://python.viam.dev/), and [the Viam app](https://app.viam.com).
 - Design your own custom interface using the [Viam TypeScript SDK](https://ts.viam.dev/).
 
 For some next steps, you could:
 
-- Use the advanced interface included in the project repository to leverage the [motion service](/build/configure/services/motion/) for larger, more complex arm movement within the enclosure.
-- Add a camera and use the [vision service](/build/configure/services/vision/) to add color detection, or use an [ML model](/build/configure/services/ml/) to determine grab success rate and create a score counter.
+- Use the advanced interface included in the project repository to leverage the [motion service](/mobility/motion/) for larger, more complex arm movement within the enclosure.
+- Add a camera and use the [vision service](/ml/vision/) to add color detection, or use an [ML model](/ml/) to determine grab success rate and create a score counter.
 - Design a hard mode where the prizes are shuffled around with the arm every few attempts.
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 

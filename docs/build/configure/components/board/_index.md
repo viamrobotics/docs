@@ -32,8 +32,8 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 ## Related Services
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/services/frame-system/" >}}
-{{< relatedcard link="/build/configure/services/ml/" >}}
+{{< relatedcard link="/mobility/frame-system/" >}}
+{{< relatedcard link="/ml/" >}}
 {{< /cards >}}
 
 ## Supported Models
@@ -600,8 +600,8 @@ err := myBoard.WriteAnalog(context.Background(), "11", 48, nil)
 
 ### GetGeometries
 
-Get all the geometries associated with the board in its current configuration, in the [frame](/build/configure/services/frame-system/) of the board.
-The [motion](/build/configure/services/motion/) and [navigation](/build/configure/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.
+The [motion](/mobility/motion/) and [navigation](/mobility/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

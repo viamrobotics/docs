@@ -21,7 +21,7 @@ cost: 540
 no_list: true
 ---
 
-In this tutorial, you'll learn how to use the [vision service](/build/configure/services/vision/) to make a rover follow a colored object.
+In this tutorial, you'll learn how to use the [vision service](/ml/vision/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/get-started/try-viam/rover-resources/).
 
 <div class="aligncenter">
@@ -48,7 +48,7 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/build/configure/services/vision/detection/):
+To create a [color detector vision service](/ml/vision/detection/):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -101,7 +101,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector from the [**Control tab**](/fleet/robots/#control):
+You can test your detector from the [**Control tab**](/fleet/machines/#control):
 
 1. Configure a [transform camera](/build/configure/components/camera/transform/) with the following attributes:
 
