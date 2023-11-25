@@ -126,7 +126,7 @@ The following parameters are available for a `"tflite_cpu"` model:
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
-| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
 {{< alert title="Info" color="info" >}}
