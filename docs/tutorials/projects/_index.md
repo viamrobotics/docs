@@ -6,5 +6,5 @@ weight: 60
 type: docs
 empty_node: true
 layout: "empty"
-canonical: "/tutorials/"
+canonical: "tutorials/"
 ---

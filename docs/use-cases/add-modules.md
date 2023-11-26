@@ -4,5 +4,5 @@ linkTitle: "Add functionality with modules"
 weight: 20
 type: "docs"
 layout: "empty"
-canonical: "/registry/"
+canonical: "registry/"
 ---

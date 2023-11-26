@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{.Title | relURL}}</title>
-    <link rel="canonical" href="{{ if and (hasPrefix .Params.canonical "/") (site.GetPage "/") }}{{ with site.GetPage "/" }}{{.RelPermalink | safeURL}}{{end}}{{substr .Params.canonical 1}}{{else}}{{if (hasPrefix .Params.canonical "/") }}{{ warnf "Link may not stage correctly - please tell Naomi: %s" .Destination}}{{end}}{{ .Params.canonical | safeURL }}{{end}}">
+    <title>{{.Title}}</title>
+    <link rel="canonical" href="{{relURL .Params.canonical}}">
     <meta name="robots" content="noindex">
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url={{ if and (hasPrefix .Params.canonical "/") (site.GetPage "/") }}{{ with site.GetPage "/" }}{{.RelPermalink | safeURL}}{{end}}{{substr .Params.canonical 1}}{{else}}{{if (hasPrefix .Params.canonical "/") }}{{ warnf "Link may not stage correctly - please tell Naomi: %s" .Destination}}{{end}}{{ .Params.canonical | safeURL }}{{end}}">
+    <meta http-equiv="refresh" content="0; url={{ relURL .Params.canonical }}">
   </head>
 </html>

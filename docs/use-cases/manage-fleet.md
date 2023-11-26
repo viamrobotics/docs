@@ -4,5 +4,5 @@ linkTitle: "Manage fleets of machines"
 weight: 40
 type: "docs"
 layout: "empty"
-canonical: "/fleet/"
+canonical: "fleet/"
 ---

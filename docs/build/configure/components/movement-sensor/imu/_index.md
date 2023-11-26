@@ -5,5 +5,5 @@ weight: 16
 type: "docs"
 empty_node: true
 layout: "empty"
-canonical: "/build/configure/components/movement-sensor/"
+canonical: "build/configure/components/movement-sensor/"
 ---
