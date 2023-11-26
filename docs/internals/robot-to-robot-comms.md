@@ -4,8 +4,6 @@ linkTitle: "Robot-to-Robot Communication"
 weight: 10
 type: "docs"
 description: "Explanation of how a robot and its parts interact at the communication layer."
-aliases:
-  - "/internals/robot-to-robot-comms/"
 ---
 
 When building a robot application in the [Viam app](https://app.viam.com), a user typically begins by configuring their robot which can consist of one or more parts.

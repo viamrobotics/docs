@@ -4,8 +4,6 @@ linkTitle: "Control Package"
 weight: 10
 type: "docs"
 description: "The Control Package implements feedback control on an endpoint."
-aliases:
-  - "/internals/controls-package/"
 # SME: Nicolas Menard, Rand
 ---
 

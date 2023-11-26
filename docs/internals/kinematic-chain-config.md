@@ -5,8 +5,6 @@ weight: 70
 type: "docs"
 description: "How to write files defining kinematic parameters to configure intermediate reference frames for components with complex kinematic chains."
 tags: ["slam", "services"]
-aliases:
-  - "/internals/kinematic-chain-config/"
 # SMEs: Motion
 ---
 

@@ -4,7 +4,6 @@ linkTitle: "Local Configuration File"
 weight: 2
 no_list: true
 type: docs
-draft: false
 icon: "/get-started/installation/thumbnails/manage.png"
 images: ["/get-started/installation/thumbnails/manage.png"]
 description: "Building a local robot configuration file for use with viam-server."
