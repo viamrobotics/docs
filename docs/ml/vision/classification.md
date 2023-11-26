@@ -10,7 +10,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-_Changed in [RDK v0.2.36 and API v0.1.118](/reference/appendix/changelog/#april-2023)_
+_Changed in [RDK v0.2.36 and API v0.1.118](/appendix/changelog/#april-2023)_
 
 _2D Image Classification_ is the process of taking a 2D image from a camera and deciding which class label, out of many, best describes the given image.
 Any camera that can return 2D images can use 2D image classification.

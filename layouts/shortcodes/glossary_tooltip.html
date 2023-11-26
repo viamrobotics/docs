@@ -8,11 +8,11 @@
 {{- else -}}
 {{- $term_info := $glossary_items.GetMatch (printf "%s.md" $id ) -}}
 {{- if not $term_info -}}
-{{- errorf "%q: %q is not a valid glossary term_id, see ./docs/reference/appendix/glossary/* for a full list" .Page.Path $id -}}
+{{- errorf "%q: %q is not a valid glossary term_id, see ./docs/appendix/glossary/* for a full list" .Page.Path $id -}}
 {{- end }}
 {{- with $term_info -}}
 {{- $text := $text | default $term_info.Title -}}
-{{- $glossary_home := "/reference/appendix/glossary/" | relLangURL -}}
+{{- $glossary_home := "/appendix/glossary/" | relLangURL -}}
 {{- $external_link := $term_info.Params.full_link | default (printf "%s#term-%s" $glossary_home $id | safeURL  ) -}}
 {{- $tooltip :=  $term_info.Params.short_description | markdownify -}}
 

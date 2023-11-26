@@ -296,6 +296,6 @@ If successful, **Live** should be displayed underneath **Last online**.
 
 If you run into the error `Failed to open serial port` when flashing your ESP32 with Linux, make sure the user is added to the group `dialout` with `sudo gpasswd -a $USER dialout`
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

@@ -44,7 +44,7 @@ If you haven't already, [install `viam-server`](/get-started/installation/) on y
 
 The `csi-cam` module is distributed as an AppImage.
 AppImages require FUSE version 2 to run.
-See [FUSE troubleshooting](/reference/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `csi-cam` module supports the Linux platform only.
 

@@ -62,6 +62,6 @@ For your security, the browser won't report a gamepad until an input has been se
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

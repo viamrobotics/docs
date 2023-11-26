@@ -279,7 +279,7 @@ If we changed the orientation along the way, we might spill the tea!
 {{< alert title="Tip" color="tip" >}}
 You may be wondering how the orientations of the poses are determined.
 Our example gripper's frame is defined such that its orientation vector points from its "wrist" to the tip of its jaws.
-In the example code above, all poses have an [orientation vector](/reference/internals/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
+In the example code above, all poses have an [orientation vector](/internals/orientation-vector/) pointing along the positive X axis of the world frame, which is a horizontal orientation pointing "forwards" with respect to the xArm 6 base.
 When we tell the gripper to move to such a pose, its orientation vector moves to align with the orientation vector of the pose, so its jaws end up pointing along the global X axis, "forwards" from the robot base.
 This puts it in a good position for picking up and moving a cup.
 

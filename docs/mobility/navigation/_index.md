@@ -148,7 +148,7 @@ The following attributes are available for `Navigation` services:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the Navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
+| `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the Navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
 | `base` | string | **Required** | The `name` you have configured for the [base](/build/configure/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/build/configure/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/mobility/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
@@ -198,7 +198,7 @@ To start, add the frame system service to your rover [base](/build/configure/com
 
     In other words, designate the origin of the base as `(0,0,0)`, and measure the distance between the origin of the base and the origin of the sensor to obtain the coordinates of the **Translation**.
 
-    See [the frame system service](/mobility/frame-system/#configuration) for more information, and [the Viam Internals](/reference/internals/orientation-vector/) for a detailed guide on conducting this measurement.
+    See [the frame system service](/mobility/frame-system/#configuration) for more information, and [the Viam Internals](/internals/orientation-vector/) for a detailed guide on conducting this measurement.
 
 Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the navigation service:
 
@@ -803,7 +803,7 @@ An example of an `Orientation` reading:
 orientation, err := imuwit.Orientation(context.Background, nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/reference/internals/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/internals/orientation-vector/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
 You can choose the origin reference frame by configuring it using Viam's [frame system](/mobility/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.

@@ -116,7 +116,7 @@ print("The current is ", current, " A, Is AC: ", is_ac)
 **Parameters:**
 
 - `ctx` [Context](https://pkg.go.dev/context): Control the lifecycle of the operation by handling timeouts and managing cancellations.
-- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/reference/appendix/glossary/#term-grpc).
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
 
 **Returns:**
 
@@ -150,7 +150,7 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 
 **Parameters:**
 
-- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/reference/appendix/glossary/#term-grpc).
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
 - `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit in seconds for how long `get_voltage` should wait for a response.
 
 **Returns:**
@@ -173,7 +173,7 @@ print("The voltage is", voltage, "V, Is AC:", is_ac)
 **Parameters:**
 
 - `ctx` [Context](https://pkg.go.dev/context): Control the lifecycle of the operation by handling timeouts and managing cancellations.
-- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/reference/appendix/glossary/#term-grpc).
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
 
 **Returns:**
 
@@ -207,7 +207,7 @@ Return the power reading in watts.
 
 **Parameters:**
 
-- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/reference/appendix/glossary/#term-grpc).
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
 - `timeout`[(Optional[float])](https://docs.python.org/3/library/functions.html#float): Specify a time limit in seconds for how long `get_power` should wait for a response.
 
 **Returns:**
@@ -230,7 +230,7 @@ print("The power is", power, "Watts")
 **Parameters:**
 
 - `ctx` [Context](https://pkg.go.dev/context): Control the lifecycle of the operation by handling timeouts and managing cancellations.
-- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/reference/appendix/glossary/#term-grpc).
+- `extra`[(Optional[Dict[str, Any]])](https://docs.python.org/3/library/typing.html#typing.Optional): Pass additional data and configuration options to the [RPC call](/appendix/glossary/#term-grpc).
 
 **Returns:**
 
@@ -466,6 +466,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 You can also ask questions on the [Viam Community Slack](https://join.slack.com/t/viamrobotics/shared_invite/zt-1f5xf1qk5-TECJc1MIY1MW0d6ZCg~Wnw) and we will be happy to help.

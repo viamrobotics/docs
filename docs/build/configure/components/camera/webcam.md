@@ -113,7 +113,7 @@ v4l2-ctl --list-devices
 
 The `id` listed by `ls /dev/v4l/by-id/` is a more consistent way to refer to the webcam.
 
-See [Camera troubleshooting](/reference/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
+See [Camera troubleshooting](/appendix/troubleshooting/#error-failed-to-find-camera) for Linux-specific camera troubleshooting steps.
 
 {{% /tab %}}
 {{% tab name="Mac" %}}

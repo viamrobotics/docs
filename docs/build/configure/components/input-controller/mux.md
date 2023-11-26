@@ -146,6 +146,6 @@ This tells the program loading the config to fully load the source components fi
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

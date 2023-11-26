@@ -396,7 +396,7 @@ Use the above configuration to set up listening mode, use an ElevenLabs voice `"
 Edit the attributes as applicable:
 
 - Edit `"completion_provider_org"` and `"completion_provider_key"` to match your AI API organization and API credentials, for example your [OpenAI organization header and API key credentials](https://platform.openai.com/account/api-keys).
-- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-reference/quick-start/authentication) or another speech provider.
+- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-quick-start/authentication) or another speech provider.
 - Edit `"mic_device_name"` to match the name your microphone is assigned on your robot's computer.
   Available microphone device names will logged on module startup.
   If left blank, the module will attempt to auto-detect the microphone.

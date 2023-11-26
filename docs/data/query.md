@@ -54,7 +54,7 @@ You must have the [owner](/fleet/#permissions) role in order to query data in th
      {{< imgproc src="/data/query-ui-mql.png" alt="Viam App Data Query tab with an MQL query shown" resize="800x" >}}
 
 1. Click **Run query** when ready to perform your query and get matching results.
-   Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
+   Query results are displayed as a [JSON array](https://json-schema.org/understanding-json-schema/array) below your query.
    For example:
 
    - The following shows a SQL query that filters by component name and specific column names, and its returned results:

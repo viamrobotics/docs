@@ -211,6 +211,6 @@ The following attributes are available for `gpio` input controllers:
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

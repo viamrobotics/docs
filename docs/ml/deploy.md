@@ -184,12 +184,12 @@ Take an already ordered input tensor as an array, make an inference on the model
 
 **Parameters:**
 
-- `input_tensors` [(Dict[str, NDArray])](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html): A dictionary of input flat tensors, as specified in the metadata.
+- `input_tensors` [(Dict[str, NDArray])](https://numpy.org/doc/stable/generated/numpy.ndarray.html): A dictionary of input flat tensors, as specified in the metadata.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- [(`Dict[str, NDArray]`)](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html): A dictionary of output flat tensors as specified in the metadata, after being run through an inference engine.
+- [(`Dict[str, NDArray]`)](https://numpy.org/doc/stable/generated/numpy.ndarray.html): A dictionary of output flat tensors as specified in the metadata, after being run through an inference engine.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.infer).
 

@@ -32,7 +32,7 @@ If you haven't already, [install `viam-server`](/get-started/installation/) on y
 
 The `rplidar` module is distributed as an AppImage.
 AppImages require FUSE version 2 to run.
-See [FUSE troubleshooting](/reference/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `rplidar` module supports the Linux platform only.
 
@@ -124,7 +124,7 @@ Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar h
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
 

@@ -373,4 +373,4 @@ In live mode, it helps to move the camera around slowly, so that consecutive ima
 In offline mode, it can be difficult to determine the quality of the dataset.
 If no map can be generated using the offline dataset, a new dataset should be generated.
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
