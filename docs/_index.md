@@ -194,7 +194,7 @@ sitemap:
     <div class="col sectionlist">
         <div>
         <div>SDKs</div>
-        {{<sectionlist section="/reference/sdks">}}
+        {{<sectionlist section="/sdks">}}
         </div>
     </div>
   </div>

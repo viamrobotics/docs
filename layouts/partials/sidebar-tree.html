@@ -77,7 +77,7 @@
     </span>
   {{ else }}
       {{ if $s.Params.canonical }}
-      <a href="{{ $s.Params.canonical }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>{{ $s.LinkTitle }}
+      <a href="{{ if and (hasPrefix $s.Params.canonical "/") (site.GetPage "/") }}{{ with site.GetPage "/" }}{{.RelPermalink | safeURL}}{{end}}{{substr $s.Params.canonical 1}}{{else}}{{if (hasPrefix $s.Params.canonical "/") }}{{ warnf "Link may not stage correctly - please tell Naomi: %s" .Destination}}{{end}}{{ $s.Params.canonical | safeURL }}{{end}}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }}>{{ $s.LinkTitle }}
       </a>
       {{ else }}
       <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="{{ if $active}} active{{ end }}{{ if $treeRoot }} tree-root{{ end }}">{{ $s.LinkTitle }}

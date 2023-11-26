@@ -9,4 +9,4 @@ no_list: true
 
 You can write code to control your machines using the following software development kits (SDKs):
 
-{{<sectionlist section="/reference/sdks">}}
+{{<sectionlist section="/sdks">}}
