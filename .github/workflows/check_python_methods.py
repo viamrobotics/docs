@@ -26,6 +26,15 @@ ignore_apis = [
     'viam.app.data_client.DataClient.create_filter' # deprecated
 ]
 
+services_page_mapping = {
+    "motion": "mobility/motion",
+    "navigation": "mobility/navigation",
+    "sensors": "mobility/sensors",
+    "slam": "mobility/slam",
+    "vision": "ml/vision",
+    "ml": "ml/deploy"
+}
+
 def is_unimplemented(obj):
    if obj.find(class_="property"):
        return "abstract" in obj.find(class_="property").text
@@ -216,16 +225,23 @@ def parse(type, names):
         # Parse the Docs site's service page
         if args.local:
             if type == "app" or type == "robot":
-                with open(f"dist/program/apis/{service}/index.html") as fp:
+                with open(f"dist/build/program/apis/{service}/index.html") as fp:
                     soup2 = BeautifulSoup(fp, 'html.parser')
             else:
-                with open(f"dist/{type}/{service}/index.html") as fp:
-                    soup2 = BeautifulSoup(fp, 'html.parser')
+                if service in services_page_mapping.keys():
+                    with open(f"dist/{services_page_mapping[service]}/index.html") as fp:
+                        soup2 = BeautifulSoup(fp, 'html.parser')
+                else:
+                    with open(f"dist/build/configure/{type}/{service}/index.html") as fp:
+                        soup2 = BeautifulSoup(fp, 'html.parser')
         else:
             if type == "app" or type == "robot":
                 soup2 = make_soup(f"https://docs.viam.com/program/apis/{service}/")
             else:
-                soup2 = make_soup(f"https://docs.viam.com/{type}/{service}/")
+                if service in services_page_mapping.keys():
+                    soup2 = make_soup(f"https://docs.viam.com/{services_page_mapping[service]}/")
+                else:
+                    soup2 = make_soup(f"https://docs.viam.com/build/configure/{type}/{service}/")
 
         # Find all links on Docs site soup
         all_links = soup2.find_all('a')
