@@ -1,7 +1,7 @@
 ---
-title: "Manage fleets of machines"
-linkTitle: "Manage fleets of machines"
-weight: 40
+title: "Manage a fleet of machines"
+linkTitle: "Manage a fleet of machines"
+weight: 70
 type: "docs"
 layout: "empty"
 canonical: "fleet/"

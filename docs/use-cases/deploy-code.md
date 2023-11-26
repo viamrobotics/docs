@@ -1,8 +1,8 @@
 ---
-title: "Deploy code"
-linkTitle: "Deploy code"
-weight: 30
+title: "Manage and deploy code versions for an existing machine"
+linkTitle: "Manage and deploy code versions"
+weight: 40
 type: "docs"
 layout: "empty"
-canonical: "build/program/"
+canonical: "registry/"
 ---

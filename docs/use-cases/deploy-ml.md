@@ -1,7 +1,7 @@
 ---
-title: "Train machine learning models"
-linkTitle: "Train machine learning models"
-weight: 80
+title: "Train and deploy image classification models"
+linkTitle: "Train and deploy classification models"
+weight: 50
 type: "docs"
 layout: "empty"
 canonical: "ml/"
