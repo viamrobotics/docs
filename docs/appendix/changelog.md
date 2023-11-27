@@ -10,7 +10,7 @@ aliases:
 # SME:
 ---
 
-## Novemeber 2023
+## November 2023
 
 ### Changed: Model training from datasets
 
