@@ -115,9 +115,14 @@ You can click on any image in the dataset and use its appearing menu in order to
 
 To train a model on a dataset, see [Train a model](/ml/train-model/).
 
+### Rename a dataset
+
+To rename a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets).
+Then right click on the dataset and click on **Rename** in the menu that appears, enter a new name and hit enter.
+
 ### Delete a dataset
 
-To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on the **Delete** button that appears.
+To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on **Delete** in the menu that appears.
 
 ## Next Steps
 
