@@ -131,10 +131,10 @@ The following parameters are available for a `"tflite_cpu"` model:
 
 Save the configuration.
 
-{{< alert title="Info for deployed models" color="info" >}}
+### Versioning for deployed models
+
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
-{{< /alert >}}
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
