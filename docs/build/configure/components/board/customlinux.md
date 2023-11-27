@@ -344,7 +344,7 @@ Uploading your definitions file allows you to store it centrally on the Viam app
 
 For example:
 
-- The following command uploads a board definitions file named `my-board-def-file.json` that contains pin mappings for a configured [board](/components/board/) named `my-board`:
+- The following command uploads a board definitions file named `my-board-def-file.json` that contains pin mappings for a configured [board](/build/configure/components/board/) named `my-board`:
 
   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
   viam board upload --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0 my-board-def-file.json
