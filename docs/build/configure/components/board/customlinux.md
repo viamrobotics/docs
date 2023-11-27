@@ -442,4 +442,4 @@ The following attributes are available for `customlinux` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a pin mappings file](#create-a-pin-mappings-file). |
+| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |
