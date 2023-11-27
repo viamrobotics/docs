@@ -23,9 +23,20 @@ To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.co
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
-## Create pin mappings file
+## Create a board definitions file
 
-Create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
+{{% alert title="Caution" color="caution" %}}
+
+While some lines on a board are attached to GPIO pins, some lines are attached to other board hardware.
+It is important to carefully determine your `line_number` values.
+Randomly entering numbers may result in hardware damage.
+
+{{% /alert %}}
+
+The board definitions file describes the location of each GPIO pin on the board so that `viam-server` can access the pins correctly.
+
+On your Pumpkin board, create a JSON file in the <file>/home/root</file> directory named <file>board.json</file>, and provide the mappings between your GPIO pins and connected hardware.
+Use the template and example below to populate the JSON file with a single key, `"pins"`, whose value is a list of objects that each represent a pin on the board.
 
 ```json
 {
@@ -201,6 +212,28 @@ Create a file in your <file>/home/root</file> directory called <file>board.json<
   ]
 }
 ```
+
+### Upload your board definitions file
+
+Once you have created your board definitions file, you can choose to upload it to the Viam app using the [Viam CLI](/fleet/cli/).
+
+Uploading your definitions file allows you to store it centrally on the Viam app, and to deploy it your machines without needing to create it again for each one.
+
+For example:
+
+- The following command uploads a board definitions file named `my-board-def-file.json` that contains pin mappings for a configured [board](/components/board/) named `my-board`:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam board upload --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0 my-board-def-file.json
+   ```
+
+- The following command downloads a previously-uploaded board definitions file stored as `my-board` from the Viam app:
+
+   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+   viam board download --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0
+   ```
+
+For more information, see the [`viam board` CLI command](/fleet/cli/#board).
 
 ## Configure a `customlinux` board
 
