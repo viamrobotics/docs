@@ -9,6 +9,7 @@ description: "Use Viam's built-in machine learning capabilities to train image c
 image: "/ml/training.png"
 imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
+icon: "/build/configure/services/icons/ml.svg"
 aliases:
   - /manage/ml/
 menuindent: true
