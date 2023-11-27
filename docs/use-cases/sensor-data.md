@@ -33,7 +33,7 @@ You could then run queries against that data to search for outliers or edge case
       <p>
       {{< imgproc src="/data/query-ui-sql.png" alt="Viam App Data Query tab with a SQL query shown" resize="800x" class="fill alignright">}}
       {{< imgproc src="/data/query-ui-mql.png" alt="Viam App Data Query tab with an MQL query shown" resize="800x" class="fill alignright">}}</p>
-      <p>For example, the examples to the right demonstrate the same query in SQL and in MQL that limits returned results to only data captured by the <code>my-ultrasonic-sensor</code> component, and only to a maximum of 5 results.
+      <p>For example, the examples to the right demonstrate the same query in SQL and in MQL, limiting returned results to show data captured by the <code>my-ultrasonic-sensor</code> component only, and with a maximum of 5 results.
       <br><br>Matching results are displayed directly below the query.
     </th>
   </tr>
