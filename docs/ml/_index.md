@@ -75,4 +75,5 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
 {{< cards >}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
 {{% card link="/registry/examples/tflite-module/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{< /cards >}}
