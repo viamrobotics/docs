@@ -16,7 +16,7 @@ tags:
   ]
 description: "Some usage may require you to define new APIs or deploy custom components using a server on a remote part"
 aliases:
-  - "/build/program/extend/"
+  - "/program/extend/"
   - "/modular-resources/advanced/"
 ---
 
