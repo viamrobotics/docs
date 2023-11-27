@@ -12,7 +12,7 @@ aliases:
 ---
 
 Viam provides a MLModel service resource backed by NVIDIA's [Triton Inference Server](https://developer.nvidia.com/triton-inference-server), open-source software that makes AI model deployment and execution seamless and standardized.
-Configure this MLModel service as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} on your robot with a [`jetson` board](/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
+Configure this MLModel service as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} on your robot with a [`jetson` board](/build/configure/components/board/jetson/) to deploy MLModels to your robot faster while consuming less compute power.
 
 Usage information is also available on [GitHub](https://github.com/viamrobotics/viam-mlmodelservice-triton).
 
@@ -39,7 +39,7 @@ Examine the output to find the exact tag associated with latest.
 Use this as `"version"` in [configuration](#configuration).
 
 Then, if you haven't done so already, create a new robot in [the Viam app](https://app.viam.com).
-[Install `viam-server` on the board](/installation/prepare/jetson-agx-orin-setup/) and connect to the robot.
+[Install `viam-server` on the board](/get-started/installation/prepare/jetson-agx-orin-setup/) and connect to the robot.
 
 ## Configuration
 
@@ -131,7 +131,7 @@ The following attributes are available for the MLModel service `viam:mlmodelserv
 | `model_version` | int | Optional | The version of the model to be loaded. If not specified, the module will use the newest version of the model named by model_name. <br> Default: `-1` (newest) |
 | `preferred_input_memory_type` | string | Optional | One of `cpu`, `cpu-pinned`, or `gpu`. This controlls the type of memory that will be allocated by the module for input tensors. If not specified, this will default to `cpu` if no CUDA-capable devices are detected at runtime, or to `gpu` if CUDA-capable devices are found.|
 | `preferred_input_memory_type_id` | int | Optional | CUDA identifier on which to allocate gpu or cpu-pinned input tensors. You probably don't need to change this unless you have multiple GPUs. <br> Default: `0` (first device) |
-| `tensor_name_remappings` | obj | Optional | Provides two dictionaries under the `input` and `output` keys that rename the models' tensors. Other Viam services, like the [vision service](/services/vision/) may expect to work with tensors with particular names. Use this map to rename the tensors from the loaded model as needed to meet those requirements. <br> Default: `{}` |
+| `tensor_name_remappings` | obj | Optional | Provides two dictionaries under the `input` and `output` keys that rename the models' tensors. Other Viam services, like the [vision service](/ml/vision/) may expect to work with tensors with particular names. Use this map to rename the tensors from the loaded model as needed to meet those requirements. <br> Default: `{}` |
 
 An example minimal configuration would look like this, within your robot's `"services"` array:
 
@@ -179,7 +179,7 @@ An example detailed configuration with optional parameters specified would look 
 ## Next steps: configure a vision service
 
 Now, use the `viam:mlmodelservice:triton` modular service to perform inference with the machine learning models available in the Triton service's model repository on your robot.
-You can now create a [vision service](/services/vision/) with a configuration in your `"services"` array like the following:
+You can now create a [vision service](/ml/vision/) with a configuration in your `"services"` array like the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -192,4 +192,4 @@ You can now create a [vision service](/services/vision/) with a configuration in
 }
 ```
 
-You can now connect this vision service to a [transform camera](/components/camera/transform/), or get detections programmatically through one of Viam's [client SDKs](/program/).
+You can now connect this vision service to a [transform camera](/build/configure/components/camera/transform/), or get detections programmatically through one of Viam's [client SDKs](/build/program/).

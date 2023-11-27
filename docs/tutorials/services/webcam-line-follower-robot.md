@@ -28,11 +28,11 @@ no_list: true
 Many line-following robots rely on a dedicated array of infrared sensors to follow a dark line on a light background or a light line on a dark background.
 This tutorial uses a standard webcam in place of these sensors, and allows a robot to follow a line of any color that is at least somewhat different from the background.
 
-**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/services/vision/detection/">vision service color detector</a>.
+**Goal**: To make a wheeled robot follow a colored line along the floor using a webcam and the Viam <a href="/ml/vision/detection/">vision service color detector</a>.
 
 **What you will learn**:
 
-- How to use the [vision service](/services/vision/)'s [color detectors](/services/vision/detection/#configure-a-color_detector)
+- How to use the [vision service](/ml/vision/)'s [color detectors](/ml/vision/detection/#configure-a-color_detector)
 - How to use the [Python SDK](https://python.viam.dev/), including:
   - How to establish communication between the code you write and your robot
   - How to send commands to components of your robot
@@ -48,8 +48,8 @@ To build your own line follower robot, you need the following hardware:
 <!-- prettier-ignore -->
 | Hardware | Avg. price |
 | -------- | ----------------- |
-| **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/installation/#prepare-your-board). | $60 |
-| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
+| **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/get-started/installation/#prepare-your-board). | $60 |
+| **A wheeled [base component](/build/configure/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
 | **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera on the front of the rover, pointing down towards the floor.** | $30 |
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
@@ -58,7 +58,7 @@ To build your own line follower robot, you need the following hardware:
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `follower`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/#install-viam-server).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/#install-viam-server).
 Follow the instructions until the Viam app shows that your robot has successfully connected.
 
 ## Configure your components
@@ -73,24 +73,24 @@ Click on the **Components** subtab.
 
    Click **Create component**.
    Select the type `board`, and select the `pi` model.
-   Enter `local` as the name of your [board component](/components/board/), then click **Create**.
+   Enter `local` as the name of your [board component](/build/configure/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
    Click **Create component**.
    Select the type `motor`, and select the `gpio` model.
-   Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
+   Enter `leftm` as the name of your [motor component](/build/configure/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
    Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
    Click **Create component**.
    Select the type `base`, and select the `wheeled` model.
-   Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
+   Enter `scuttlebase` as the name for your [base component](/build/configure/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
-   Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
+   Create a [camera component](/build/configure/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
    Click **Create component** to add the camera.
    If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a dropdown populated with camera paths that have been identified on your machine.
    Select the path to the camera you want to use.
@@ -100,11 +100,11 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, your motors, your base, and your camera:
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
-To find yours, follow [these instructions](/components/camera/webcam/#using-video_path).
+To find yours, follow [these instructions](/build/configure/components/camera/webcam/#using-video_path).
 {{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -184,7 +184,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your components
 
-Navigate to your [robot's **Control** tab](/manage/fleet/robots/#control) to test your components.
+Navigate to your [robot's **Control** tab](/fleet/machines/#control) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 
 1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
@@ -201,7 +201,7 @@ Verify that it’s connected by refreshing the page and ensuring that **Last Onl
 
 ## Configuring a color detector for the color of your tape line
 
-You'll use the [vision service color detector](/services/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
+You'll use the [vision service color detector](/ml/vision/detection/#configure-a-color_detector) to programmatically identify the line to follow.
 Before you can start on that, you need to get creative though and use your colored tape to make a path for your robot to follow.
 Perhaps a circle or other shape, or perhaps a path from one point of interest to another.
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
@@ -223,7 +223,7 @@ Click on the **Services** subtab.
 
 1. **Add a vision service.**
 
-Next, add a vision service [detector](/services/vision/detection/):
+Next, add a vision service [detector](/ml/vision/detection/):
 
 Click the **Create service** button in the lower-left corner of the **Services** subtab.
 Select type `Vision` and model `Color Detector`.
@@ -237,11 +237,11 @@ We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrica
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
+If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/build/configure/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 Click on the **Components** subtab and click **Create component**.
-Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
+Add a [transform camera](/build/configure/components/camera/transform/) with type `camera` and model `transform`.
 Name it `transform_cam` and click **Create**.
 
 Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
@@ -266,7 +266,7 @@ Replace the attributes JSON object with the following object which specifies the
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration which adds the configuration for the vision service and the transform camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -375,7 +375,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [robot's **Control** tab](/manage/fleet/robots/#control) to test the transform camera.
+Navigate to your [robot's **Control** tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 
@@ -609,11 +609,11 @@ If your rover keeps driving off the line so fast that the color detector can’t
 
 Things to try:
 
-- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/services/vision/detection/#configure-a-color_detector) to your vision service parameters.
+- Add a [`saturation_cutoff_pct` or a `value_cutoff_percent`](/ml/vision/detection/#configure-a-color_detector) to your vision service parameters.
 - Try to achieve more consistent lighting on and around the line.
 - Try a different color of line, or a different background.
   Be sure to update your `detect_color` parameter accordingly.
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}

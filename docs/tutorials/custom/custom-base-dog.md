@@ -21,7 +21,7 @@ cost: 190
 # SMEs: James Otting, Eric Daniels
 ---
 
-The [base component type](/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
+The [base component type](/build/configure/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the [Viam app](https://app.viam.com/) remote control interface.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
@@ -53,7 +53,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 Freenove documentation includes Raspberry Pi setup instructions but we recommend the following steps to make sure the Pi is set up for this tutorial:
 
-1. Follow the steps in our [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to install Raspberry Pi OS Lite (64 bit).
+1. Follow the steps in our [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to install Raspberry Pi OS Lite (64 bit).
 
 {{% alert title=Note color="note" %}}
 
@@ -61,7 +61,7 @@ If you choose to install the full Raspberry Pi OS (64 bit) including the desktop
 
 {{% /alert %}}
 
-1.  [Install `viam-server` and connect your robot to the Viam app](/installation/#install-viam-server).
+1.  [Install `viam-server` and connect your robot to the Viam app](/get-started/installation/#install-viam-server).
 
 2.  SSH into the Pi to complete the following steps.
 
@@ -103,7 +103,7 @@ If the name of the directory where you store and run your code is different, be 
    pip install viam-sdk
    ```
 
-8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/#enable-communication-protocols).
+8. Enable I<sup>2</sup>C per [the instructions in the Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols).
 
 9. Alter the I<sup>2</sup>C baud rate according to [Chapter 1, Step 2 in the Freenove instructions](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/blob/master/Tutorial.pdf) (page 40 as of January 24, 2023).
 
@@ -243,7 +243,7 @@ This is the file you will modify in the next steps.
 
 ### Connect the module to the Freenove server
 
-When you send a command to the robot using the Viam [base API](/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
+When you send a command to the robot using the Viam [base API](/build/configure/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
 In your code, establish a socket and then create a `send_data` helper method to send the command from `viam-server` to the Freenove server.
 
 Start by importing socket:
@@ -312,7 +312,7 @@ class robotdog(Base, Reconfigurable):
 To create a custom base model, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
 
 Open your newly created <file>robotdog.py</file> file.
-It contains stubs of all the [base API methods](/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
+It contains stubs of all the [base API methods](/build/configure/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
 
 Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/robotdog/src/robotdog.py).
 
@@ -328,7 +328,7 @@ async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
 ```
 
 Copy and paste that code into your <file>robotdog.py</file> file.
-Feel free to tweak the specific contents of each of the [base method definitions](/components/base/#api) to do things like make the dog move faster.
+Feel free to tweak the specific contents of each of the [base method definitions](/build/configure/components/base/#api) to do things like make the dog move faster.
 Don't forget to save.
 
 ### Make your module executable
@@ -360,7 +360,7 @@ Navigate to the **Components** subtab of your robot's **Config** tab.
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/components/camera/webcam/).
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/build/configure/components/camera/webcam/).
 
 Click **Save config**.
 
@@ -409,7 +409,7 @@ If yours doesn't resemble the following, go back to the raw JSON and double-chec
 
 To operate the dog, you need to start the Freenove robot dog server (which you saved as <file>/home/fido/Freenove_Robot_Dog_Kit_for_Raspberry_Pi/Code/Server/main.py</file>).
 
-You can configure a [_process_](/manage/configuration/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
+You can configure a [_process_](/build/configure/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
 Navigate to the **Processes** subtab of your robot's **Config** tab.
 
@@ -518,5 +518,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **Control** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/services/vision/) with the robot dog's [camera component](/components/camera/).
+You could also use the Viam [vision service](/ml/vision/) with the robot dog's [camera component](/build/configure/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

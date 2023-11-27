@@ -31,13 +31,13 @@
         }
 
         & .ul-1 ul {
-            padding-left: 1em;
+            padding-left: 0.833em;
             font-size: 0.833rem;
         }
 
         @include media-breakpoint-up(md) {
             & .ul-1 ul {
-                padding-left: 1.5em;
+                padding-left: 0.75rem;
             }
         }
         padding-left: 0;
@@ -165,4 +165,9 @@
 .menu-toggle {
     margin-right: -1.5em;
     float: right;
+}
+
+.nav-fold.indent {
+    font-size: 0.833rem;
+    padding-left: 0.75rem;
 }

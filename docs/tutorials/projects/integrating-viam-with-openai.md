@@ -47,7 +47,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer vision service](/services/vision/), ML model support, and [locomotion](/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer vision service](/ml/vision/), ML model support, and [locomotion](/build/configure/components/base/), you can within a few hours create a basic companion robot that:
 
 - Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 - Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -60,7 +60,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 
 ## Hardware list
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/installation/prepare/rpi-setup/).
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with [`viam-server` installed](/get-started/installation/prepare/rpi-setup/).
 - [Viam rover](https://www.viam.com/resources/rover) (note: this tutorial can also be adapted to work with any other configured rover that has a webcam and a microphone)
 - [270 degree servo](https://www.amazon.com/ANNIMOS-Digital-Waterproof-DS3218MG-Control/dp/B076CNKQX4/)
 - [USB powered speaker](https://www.amazon.com/Bluetooth-Portable-Wireless-Speakers-Playtime/dp/B07PLFCP3W/) (with included 3.5mm audio cable and USB power cable)
@@ -70,14 +70,14 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 ## Rover setup
 
 This tutorial assumes that you have already set up your Viam Rover.
-If not, first follow the Viam Rover [setup instructions](/try-viam/rover-resources/rover-tutorial/).
+If not, first follow the Viam Rover [setup instructions](/get-started/try-viam/rover-resources/rover-tutorial/).
 
-If you are not using a Viam Rover, [install viam-server](/installation/) and configure your robot with the [appropriate components](/components/).
-If you are using a different rover, the [Viam Rover setup instructions](/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
+If you are not using a Viam Rover, [install viam-server](/get-started/installation/) and configure your robot with the [appropriate components](/build/configure/components/).
+If you are using a different rover, the [Viam Rover setup instructions](/get-started/try-viam/rover-resources/rover-tutorial-fragments/) may still help you configure your robot.
 
 ### 1. Connect the servo
 
-We'll use a [servo](/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
+We'll use a [servo](/build/configure/components/servo/) in this project to indicate emotion, by rotating the servo to a position that shows a happy, sad, or angry emoji.
 
 {{% alert title="Caution" color="caution" %}}
 Always disconnect devices from power before plugging, unplugging, moving wires, or otherwise modifying electrical circuits.
@@ -123,7 +123,7 @@ You can also attach your speaker to the top of your rover with [double-sided foa
 
 The [git repository](https://github.com/viam-labs/tutorial-openai-integration) for this tutorial contains code that integrates with:
 
-- [viam-server](/viam/#get-started)
+- [viam-server](/get-started/viam/#get-started)
 - [Google text/speech tools](https://gtts.readthedocs.io/en/latest/)
 - [OpenAI](https://openai.com/api/)
 
@@ -199,7 +199,7 @@ Now, configure your rover to:
 
 ### 1. Configure the servo
 
-To configure your [servo](/components/servo/), go to your rover's **Config** tab and click the **Components** subtab.
+To configure your [servo](/build/configure/components/servo/), go to your rover's **Config** tab and click the **Components** subtab.
 
 Click **Create component** in the lower-left corner of the screen.
 
@@ -316,7 +316,7 @@ This opens up some really interesting possibilities, like having your robot talk
 
 ## Alternative Option: Configure Viam Labs speech module
 
-As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/services/) providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
+As an alternate option for adding an AI speech integration to your robot, [the Viam Registry](https://app.viam.com/registry) provides [the `speech` module](https://app.viam.com/module/viam-labs/speech), a modular [service](/build/configure/services/) providing text-to-speech (TTS) and speech-to-text (STT) capabilities for robots running on the Viam platform.
 Usage is documented on [Viam Labs' GitHub](https://github.com/viam-labs/speech).
 
 ### Configuration
@@ -396,7 +396,7 @@ Use the above configuration to set up listening mode, use an ElevenLabs voice `"
 Edit the attributes as applicable:
 
 - Edit `"completion_provider_org"` and `"completion_provider_key"` to match your AI API organization and API credentials, for example your [OpenAI organization header and API key credentials](https://platform.openai.com/account/api-keys).
-- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-reference/quick-start/authentication) or another speech provider.
+- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-quick-start/authentication) or another speech provider.
 - Edit `"mic_device_name"` to match the name your microphone is assigned on your robot's computer.
   Available microphone device names will logged on module startup.
   If left blank, the module will attempt to auto-detect the microphone.
@@ -411,6 +411,6 @@ Some ideas:
 - Make the voice recognition software listen in the background, so the robot can move and interact with the world while listening and responding.
 - Integrate another ML model that is used to follow a human (when told to do so).
 - Add Lidar and integrate Viam's {{< glossary_tooltip term_id="slam" text="SLAM service" >}} to map the world around it.
-- Use Viam's [Data Management](/manage/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
+- Use Viam's [Data Management](/data/) to collect environmental data and use this data to train new ML models that allow the robot to improve its functionality.
 
 We'd love to see where you decide to take this. If you build your own companion robot, let us and others know on the [Community Discord](https://discord.gg/viam).

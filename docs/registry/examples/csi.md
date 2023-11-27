@@ -27,8 +27,8 @@ aliases:
 ---
 
 Many boards, like the Jetson Orin Nano, come with the option to use Camera Serial Interface (CSI) cameras, like [these cameras from E-con Systems](https://www.e-consystems.com/nvidia-jetson-agx-orin-cameras.asp) or [this camera from Seed Technologies](https://www.digikey.com/en/products/detail/seeed-technology-co.,-ltd/114992263/12396924).
-These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/services/vision/).
-Not all CSI cameras are supported by the built-in [webcam camera model](/components/camera/webcam/).
+These cameras are excellent for utilizing embedded vision systems like Viam's [vision service](/ml/vision/).
+Not all CSI cameras are supported by the built-in [webcam camera model](/build/configure/components/camera/webcam/).
 Instead, Viam supports CSI cameras by providing a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} for your CSI camera, `viam:camera:csi`, which you can use to add support for your CSI camera to your robot.
 
 This {{< glossary_tooltip term_id="module" text="module" >}} includes a simple wrapper around `GStreamer` and a control interface for the **Control** tab of the [Viam app](https://app.viam.com) so you can utilize the hardware accelerated GST plugins and use the embedded CSI cameras on your `jetson` boards with Viam.
@@ -40,11 +40,11 @@ The source code for this module is available on the [`viam-csi` GitHub repositor
 
 ## Requirements
 
-If you haven't already, [install `viam-server`](/installation/) on your robot.
+If you haven't already, [install `viam-server`](/get-started/installation/) on your robot.
 
 The `csi-cam` module is distributed as an AppImage.
 AppImages require FUSE version 2 to run.
-See [FUSE troubleshooting](/reference/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `csi-cam` module supports the Linux platform only.
 
@@ -163,4 +163,4 @@ The following attributes are available for the `viam:camera:csi` model:
 | `video_path` | string | Optional | The filepath to the input sensor of this camera on your board. If none is given, your robot will attempt to detect the video path automatically. <br> Default: `"0"` </br>  |
 | `debug` | boolean | Optional | Whether or not you want debug input from this camera in your robot's logs. <br> Default: `false` |
 
-Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.
+Check the [**Logs** tab](/build/program/debug/) of your robot in the Viam app to make sure your camera has connected and no errors are being raised.

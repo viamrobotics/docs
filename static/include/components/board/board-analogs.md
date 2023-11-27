@@ -1,9 +1,9 @@
 An [analog-to-digital converter](https://www.electronics-tutorials.ws/combination/analogue-to-digital-converter.html) (ADC) takes a continuous voltage input (analog signal) and converts it to an discrete integer output (digital signal).
 
-ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/components/sensor/) and other hardware components.
+ADCs are useful when building a robot, as they enable your board to read the analog signal output by most types of [sensors](/build/configure/components/sensor/) and other hardware components.
 
 To integrate an ADC into your robot, you must first physically connect the pins on your ADC to your board.
-If your ADC communicates with your board using [SPI](/components/board/#spis), you need to wire and configure the SPI bus in addition to the `analogs`.
+If your ADC communicates with your board using [SPI](/build/configure/components/board/#spis), you need to wire and configure the SPI bus in addition to the `analogs`.
 
 Then, integrate `analogs` into the `attributes` of your board by adding the following to your board's JSON configuration:
 

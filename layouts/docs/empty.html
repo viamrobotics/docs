@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{.Title | relURL}}</title>
-    <link rel="canonical" href="{{.Params.canonical | relURL}}">
+    <title>{{.Title}}</title>
+    <link rel="canonical" href="{{relURL .Params.canonical}}">
     <meta name="robots" content="noindex">
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url={{.Params.canonical | relURL}}">
+    <meta http-equiv="refresh" content="0; url={{ relURL .Params.canonical }}">
   </head>
 </html>

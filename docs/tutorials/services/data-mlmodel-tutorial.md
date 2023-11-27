@@ -4,13 +4,13 @@ linkTitle: "Capture Data and Train a Model"
 weight: 4
 type: "docs"
 description: "Configure data capture and cloud sync, filter and tag captured data, and train an ML model."
-image: "/manage/ml/training.png"
+image: "/ml/training.png"
 imageAlt: "The data page of the Viam app showing a gallery of the images captured from the Viam Rover."
-images: ["/manage/ml/training.png"]
+images: ["/ml/training.png"]
 aliases:
   - "/tutorials/data-management-tutorial/"
   - "/tutorials/data-management/"
-  - "/manage/data-management/data-management-tutorial/"
+  - "/data-management/data-management-tutorial/"
   - "/tutorials/services/data-management-tutorial/"
 tags: ["data management", "data", "mlmodel", "vision", "services", "try viam"]
 authors: []
@@ -27,14 +27,14 @@ In this tutorial, you will use three Viam services together to enable your smart
 
 - The [data management service](#the-data-management-service), to capture images from a camera on your smart machine and sync them to the cloud.
 - The [ML model service](#the-ml-model-service), to manage and deploy a machine learning (ML) model based on these images, once you have added tags to the images matching the objects you want to detect.
-- The [vision service](/services/vision/), to enable your smart machine's camera to detect objects defined in the ML model on its own.
+- The [vision service](/ml/vision/), to enable your smart machine's camera to detect objects defined in the ML model on its own.
 
 With all three services working together, your smart machine will be able to analyze its camera feed for the presence of specific shapes, such as a red star or blue circle.
 When it detects a likely match, it will overlay a confidence score onto the camera feed alongside the name of the detected shape, indicating how closely the shape in the camera frame matches a shape it has seen before.
 
 {{< alert title="Tip" color="tip" >}}
 To get started without any hardware, you can rent a rover through [Try Viam](https://app.viam.com/try), which is pre-configured with everything you need to begin this tutorial.
-Rover rentals are 10 minutes in length, but you can [extend your session](/try-viam/faq/#can-i-extend-my-time) as needed, or [re-use a configuration from a previous session](/try-viam/faq/#how-can-i-reuse-my-rented-rover) if your time expires and you want to start a new session.
+Rover rentals are 10 minutes in length, but you can [extend your session](/get-started/try-viam/faq/#can-i-extend-my-time) as needed, or [re-use a configuration from a previous session](/get-started/try-viam/faq/#how-can-i-reuse-my-rented-rover) if your time expires and you want to start a new session.
 
 You can also use your own Viam smart machine as long as you have followed the [prerequisite steps](#prerequisites).
 {{< /alert >}}
@@ -45,19 +45,19 @@ Before following this tutorial, ensure you have:
 
 - A smart machine running Viam.
 
-  - If you are using your own smart machine, make sure you have [installed `viam-server`](/installation/).
+  - If you are using your own smart machine, make sure you have [installed `viam-server`](/get-started/installation/).
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), no further action is needed.
 
 - A configured camera component.
 
-  - If you are using your own smart machine, add a [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), to your smart machine.
+  - If you are using your own smart machine, add a [camera component](/build/configure/components/camera/), such as a [webcam](/build/configure/components/camera/webcam/), to your smart machine.
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), a camera is already configured for you.
 
 ## The data management service
 
 You can manage how your smart machine works with data files and images by using the _data management service_.
 
-The [data management](/manage/data/) service has two parts: [data capture](/services/data/#data-capture) and [cloud sync](/services/data/#cloud-sync)
+The [data management](/data/) service has two parts: [data capture](/data/capture/) and [cloud sync](/data/cloud-sync/).
 
 - **Data capture** allows you to capture data from specific components on your smart machine running Viam.
   You can choose the components, corresponding methods, and the frequency of the data capture from the [Viam app](https://app.viam.com/).
@@ -85,12 +85,12 @@ First, add the data management service to your smart machine to be able capture 
 
    {{< imgproc src="/tutorials/data-management/data-management-conf.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
 
-For more information, see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
+For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
 
 ### Configure data capture for a component
 
 Once you have added the data management service, you can configure data capture for specific components on your smart machine.
-For this tutorial, you will configure data capture for images from a [camera](/components/camera/) component, but other data types such as sensor data or SLAM map data from other types of [components](/components/) can be captured as well.
+For this tutorial, you will configure data capture for images from a [camera](/build/configure/components/camera/) component, but other data types such as sensor data or SLAM map data from other types of [components](/build/configure/components/) can be captured as well.
 
 To enable image data capture for a camera component:
 
@@ -108,14 +108,14 @@ To enable image data capture for a camera component:
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-For more information see [Configure data capture](/services/data/configure-data-capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/services/data/configure-cloud-sync/).
+For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
 
 ### View and filter captured data
 
 Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app.
 
 1. First, in the [Viam app](https://app.viam.com), navigate to your robot's **Control** tab and enable the camera to verify that a live stream is returned.
-   If you do not see a functioning camera stream, verify that you have configured your [camera](/components/camera/) correctly.
+   If you do not see a functioning camera stream, verify that you have configured your [camera](/build/configure/components/camera/) correctly.
 
 1. Then, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
 
@@ -130,7 +130,7 @@ If you have a lot of images, filter them by limiting the displayed images to a s
 
 {{< imgproc src="/tutorials/data-management/filter-date-range.png" alt="The data tab displaying images filtered by date and time range" resize="1200x" >}}
 
-For more information see [View and filter data](/manage/data/view/).
+For more information see [View and filter data](/data/view/).
 
 ## The ML model service
 
@@ -138,7 +138,7 @@ Once your smart machine is capturing and syncing images to the Viam app, you are
 You can use an ML model to help your smart machine adapt its behavior to the world around it.
 
 For this tutorial, you will train an ML model to be able to recognize specific shapes (for example, red and blue stars), and then deploy that model to your smart machine using the _ML (machine learning) model service_.
-With a model deployed to your smart machine, you can use the [ML model](/services/ml/) service together with the [vision](/services/vision/) service to analyze newly-detected objects for a possible match to a known shape.
+With a model deployed to your smart machine, you can use the [ML model](/ml/) service together with the [vision](/ml/vision/) service to analyze newly-detected objects for a possible match to a known shape.
 
 To train a model from your captured data, first tag your images with appropriate labels and add them to a dataset.
 Then train a model based on your dataset and labels and deploy the model to your smart machine.
@@ -212,11 +212,11 @@ Models that are still being trained appear under **Training**, while models that
 
 {{< imgproc src="/tutorials/data-management/trained-model.png" alt="The models tab on the data page showing a completed model named my-classifier-model ready for deployment" resize="800x" >}}
 
-For more information, see [Train a model](/manage/ml/train-model/).
+For more information, see [Train a model](/ml/train-model/).
 
 ### Deploy a model
 
-Once your model has finished training, add the [ML model](/services/ml/) service and deploy your model to your smart machine to be able to use it to classify newly-captured images.
+Once your model has finished training, add the [ML model](/ml/) service and deploy your model to your smart machine to be able to use it to classify newly-captured images.
 
 To deploy a model to your smart machine:
 
@@ -303,8 +303,8 @@ For an example see the following tutorial:
 
 ## Troubleshooting
 
-If you are using [Try Viam](https://app.viam.com/try) and your session expires, you can [re-use a configuration from a previous session](/try-viam/faq/#how-can-i-reuse-my-rented-rover) to keep your configuration changes.
-You can also [extend your existing session](/try-viam/faq/#can-i-extend-my-time) while it's still running, if it hasn't expired yet.
+If you are using [Try Viam](https://app.viam.com/try) and your session expires, you can [re-use a configuration from a previous session](/get-started/try-viam/faq/#how-can-i-reuse-my-rented-rover) to keep your configuration changes.
+You can also [extend your existing session](/get-started/try-viam/faq/#can-i-extend-my-time) while it's still running, if it hasn't expired yet.
 
 If your smart machine isn't capturing data and syncing it to the Viam app, ensure that both the data management service (named `viam-data-manager` in this tutorial) and the **Data capture configuration** for your camera (`cam` on the Try Viam rover) are enabled.
 
@@ -314,10 +314,10 @@ If your transform camera is not matching objects you have tagged, try lowering t
 
 In this tutorial, you learned:
 
-- how to use the [data management](/manage/data/) service to capture images from your smart machine's camera and sync them to the Viam app
+- how to use the [data management](/data/) service to capture images from your smart machine's camera and sync them to the Viam app
 - how to filter and tag your synced images according to the objects you wanted to detect
-- how to use the [ML model](/services/ml/) service to train an ML model based on those images and deploy that model to your smart machine
-- how to use the [vision service](/services/vision/) to detect objects defined in an ML model from a live camera feed
+- how to use the [ML model](/ml/) service to train an ML model based on those images and deploy that model to your smart machine
+- how to use the [vision service](/ml/vision/) to detect objects defined in an ML model from a live camera feed
 
 From here, you could do anything! Try one of the following:
 
@@ -325,7 +325,7 @@ From here, you could do anything! Try one of the following:
   For example, you might train it to stop or start based on your hand gesture, to turn in a specific direction, or adjust its speed.
 - Teach your smart machine to [recognize specific pets](/tutorials/projects/pet-treat-dispenser/), and dispense treats appropriately.
 - Teach your smart machine to [recognize specific toys](/tutorials/projects/bedtime-songs-bot/), and to sing a specific song about each.
-- Try creating an [object detection model](/services/vision/detection/) to be able to identify parts of an image specifically with a bounding box.
+- Try creating an [object detection model](/ml/vision/detection/) to be able to identify parts of an image specifically with a bounding box.
 
 For more ideas, check out our other [tutorials](/tutorials/).
 

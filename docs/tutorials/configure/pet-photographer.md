@@ -21,10 +21,10 @@ no_list: true
 weight: 3
 ---
 
-If your smart machine [captures](/services/data/#data-capture) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
+If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 
-In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/components/camera/) to only capture images where your pet is in the frame in the following way:
+In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/build/configure/components/camera/) to only capture images where your pet is in the frame in the following way:
 
 1. Attach a colored object, such as a blue collar, to your pet.
 1. Set up a camera in an area where your pet is likely to appear in the frame, and configure the data management service to capture and sync images from that camera.
@@ -33,14 +33,14 @@ In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" te
    {{<imgproc src="/tutorials/pet-photographer/data-example.png" resize="550x" declaredimensions=true alt="Dog in blue collar in the camera's live feed">}}
 
 The source code for this module is available on the [`modular-filter-examples` GitHub repository](https://github.com/viam-labs/modular-filter-examples) .
-In addition to the `colorfilter` module used in this tutorial, the example repository also includes a [sensor reading filter](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) which you could use to control and filter the data recorded by a [sensor component](/components/sensor/).
+In addition to the `colorfilter` module used in this tutorial, the example repository also includes a [sensor reading filter](https://github.com/viam-labs/modular-filter-examples/tree/main/sensorfilter) which you could use to control and filter the data recorded by a [sensor component](/build/configure/components/sensor/).
 
 ## Hardware requirements
 
 To create your own filtering pet photographer robot, you'll need the following hardware:
 
 - A computer
-- A [webcam](/components/camera/webcam/) or other type of [camera](/components/camera/)
+- A [webcam](/build/configure/components/camera/webcam/) or other type of [camera](/build/configure/components/camera/)
 - A colored object, such as a blue collar for enhanced accuracy _(optional)_
 
 {{< alert title="Tip" color="tip" >}}
@@ -53,8 +53,8 @@ If your pet already has a distinct color that is different from their environmen
 Follow the steps below to set up your smart machine:
 
 1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your robot's board if they are not the same device.
-1. [Create a robot](https://docs.viam.com/manage/fleet/robots/#add-a-new-robot).
-1. [Install](/installation/#install-viam-server) or [update](/installation/manage/#update-viam-server) `viam-server`.
+1. [Create a robot](/fleet/machines/#add-a-new-robot).
+1. [Install](/get-started/installation/#install-viam-server) or [update](/get-started/installation/manage/#update-viam-server) `viam-server`.
    Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
 
 ## Add the custom module
@@ -155,7 +155,7 @@ For more information, refer to [Create a custom module](/registry/create/#create
 
 The filter function in your custom filter module must contain two critical elements:
 
-1. A utility function that will check if the caller of the filter function is the [data management](/services/data/) service.
+1. A utility function that will check if the caller of the filter function is the [data management](/data/) service.
 1. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 {{< alert title="Important" color="note" >}}
@@ -338,7 +338,7 @@ After you have implemented your resource subtype's required methods and written 
 {{< tabs >}}
 {{% tab name="Python"%}}
 
-<file>color_filter.py</file> implements "colorfilter", a custom model of the [camera component API](/components/camera/#api).
+<file>color_filter.py</file> implements "colorfilter", a custom model of the [camera component API](/build/configure/components/camera/#api).
 
 <details>
   <summary>Click to view sample code from <file>color_filter.py</file></summary>
@@ -502,7 +502,7 @@ In this code:
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-<file>color_filter.go</file> implements "colorfilter", a custom model of the [camera component API](/components/camera/#api).
+<file>color_filter.go</file> implements "colorfilter", a custom model of the [camera component API](/build/configure/components/camera/#api).
 
 <details>
   <summary>Click to view sample code from <file>color_filter.go</file></summary>
@@ -820,14 +820,14 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 Next, add the following services to your smart machine to support the color filter module:
 
-- The [data management service](/services/data/) enables your smart machine to capture data and sync it to the cloud.
-- The [vision service](/services/vision/detection/) enables your smart machine to perform color detection on objects in a camera stream.
+- The [data management service](/data/) enables your smart machine to capture data and sync it to the cloud.
+- The [vision service](/ml/vision/detection/) enables your smart machine to perform color detection on objects in a camera stream.
 
-If you are filtering data from other components, such as [sensors](/components/sensor/), you may need to add different services, such as the [sensors service](/services/sensors/) which provides a central interface to all of your robot’s sensors.
+If you are filtering data from other components, such as [sensors](/build/configure/components/sensor/), you may need to add different services, such as the [sensors service](/mobility/sensors/) which provides a central interface to all of your robot’s sensors.
 
 ### Add the data management service
 
-To enable data capture on your robot, add and configure the [data management service](/services/data/) to capture and store data on your robot's computer:
+To enable data capture on your robot, add and configure the [data management service](/data/) to capture and store data on your robot's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -843,7 +843,7 @@ To enable data capture on your robot, add and configure the [data management ser
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
-   For more detailed information, see [Add the data management service](/services/data/configure-data-capture/#add-the-data-management-service).
+   For more detailed information, see [Add the data management service](/data/capture/#add-the-data-management-service).
    {{% /tab %}}
    {{% tab name="JSON Template" %}}
    Add the data management service to the services array in your rover’s raw JSON configuration:
@@ -869,7 +869,7 @@ Click **Save Config** when done.
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [vision service color detector](/services/vision/detection/).
+To enable your smart machine to detect a specific color in its camera stream, add a [vision service color detector](/ml/vision/detection/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
@@ -889,7 +889,7 @@ Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information, refer to [Configure a color detector](/services/vision/detection/#configure-a-color_detector).
+For more detailed information, refer to [Configure a color detector](/ml/vision/detection/#configure-a-color_detector).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -920,7 +920,7 @@ With the vision and data management services configured, you can now configure y
 
 ### Configure your camera
 
-If you haven't already, add a [camera](/components/camera/) component to your smart machine:
+If you haven't already, add a [camera](/build/configure/components/camera/) component to your smart machine:
 
 1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Components** subtab and click **Create component** in the lower-left corner.

@@ -20,10 +20,10 @@ cost: 90
 ---
 
 In the run up to the new Zelda release, I realized you can build a stationary guardian robot with a servo and a camera.
-Adding a bit of [machine learning](/services/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
+Adding a bit of [machine learning](/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/services/ml/) and [vision service](/services/vision/).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/build/configure/components/servo/), a [camera](/build/configure/components/camera/), some LEDs and the [ML Model service](/ml/) and [vision service](/ml/vision/).
 Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="/tutorials/guardian/guardian-detection.webm" mp4_src="/tutorials/guardian/guardian-detection.mp4" poster="/tutorials/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
@@ -68,7 +68,7 @@ Optionally, if you want to decorate your guardian, I recommend the following mat
 You will use the following software in this tutorial:
 
 - [Python 3](https://www.python.org/downloads/)
-- [`viam-server`](/installation/#install-viam-server): Follow the [installation instructions](/installation/#install-viam-server) to install `viam-server` on your Raspberry Pi.
+- [`viam-server`](/get-started/installation/#install-viam-server): Follow the [installation instructions](/get-started/installation/#install-viam-server) to install `viam-server` on your Raspberry Pi.
 
 ## Assemble the robot
 
@@ -92,8 +92,8 @@ Use the screws to attach the horn to the base of the head.
 Next, get your Raspberry Pi and your servo and connect the servo to the Raspberry Pi by connecting the PWM wire to pin 12, the power wire to pin 2, and the ground wire to pin 8.
 
 {{< alert title="Tip" color="tip" >}}
-To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
-If you use A4 paper, use this [this Raspberry Pi Leaf](/try-viam/viam-raspberry-leaf-A4.pdf) instead.
+To make it easier for you to see which pin is which, you can print out [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-8.5x11.pdf) which has labels for the pins and carefully push it onto the pins or fold or cut it so you can hold it up to the Raspberry Pi pins.
+If you use A4 paper, use this [this Raspberry Pi Leaf](/get-started/try-viam/viam-raspberry-leaf-A4.pdf) instead.
 
 If you are having trouble punching the pins through, you can pre-punch the pin holes with a pen.
 Only attach the paper when the Pi is unplugged.
@@ -119,7 +119,7 @@ To be able to test the components, you need to install `viam-server` and configu
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `guardian`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/installation/).
+Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
 
 ### Configure the components
 
@@ -133,11 +133,11 @@ Click on the **Components** subtab.
 
    Click **Create component** in the lower-left corner of the page.
    Select `board` for the type, then select `pi` for the model.
-   Enter `local` as the name for your [board component](/components/board/), then click **Create**.
+   Enter `local` as the name for your [board component](/build/configure/components/board/), then click **Create**.
 
 2. **Add the camera.**
 
-   Click **Create Component** to add the [camera](/components/camera/).
+   Click **Create Component** to add the [camera](/build/configure/components/camera/).
    Select `camera` for the type, then select `webcam` for the model.
    Enter `cam` as the name for the camera, then click **Create**.
    In the new camera panel, click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
@@ -147,7 +147,7 @@ Click on the **Components** subtab.
 
    Click **Create component** in the lower-left corner of the page.
    Select `servo` for the type, then select `pi` for the model.
-   Enter `servo` as the name for your [servo component](/components/servo/), then click **Create**.
+   Enter `servo` as the name for your [servo component](/build/configure/components/servo/), then click **Create**.
    Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
    ```json
@@ -162,7 +162,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board, your camera, and your servo with its PWM wire wired to {{< glossary_tooltip term_id="pin-number" text="pin number" >}} `12`:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -207,7 +207,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ### Test the components
 
-Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test your components.
+Navigate to your [robot's Control tab](/fleet/machines/#control) to test your components.
 
 {{<imgproc src="/tutorials/guardian/test.png" resize="600x" declaredimensions=true alt="the control tab">}}
 
@@ -242,14 +242,14 @@ Use a suitable base with a hole, like a box with a hole cut into the top, to pla
 
 At this point also connect the speaker to your Raspberry Pi.
 
-Then test the components on the [robot's Control tab](/manage/fleet/robots/#control) again to ensure everything still works.
+Then test the components on the [robot's Control tab](/fleet/machines/#control) again to ensure everything still works.
 
 ## Detect persons and pets
 
 For the guardian to be able to detect living beings, you can use [this Machine Learning model](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite).
 The model can detect a variety of things which you can see in the associated <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-You can also [train your own custom model](/manage/ml/train-model/) based on images from your robot but the provided Machine Learning model is a good one to start with.
+You can also [train your own custom model](/ml/train-model/) based on images from your robot but the provided Machine Learning model is a good one to start with.
 
 To use the provided Machine Learning model, copy the <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/effdet0.tflite)</file> file and the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> to your Raspberry Pi:
 
@@ -266,7 +266,7 @@ Click the **Services** subtab.
 
 1. **Add an ML model service.**
 
-The [ML model service](/services/ml/) allows you to deploy the provided machine learning model to your robot.
+The [ML model service](/ml/) allows you to deploy the provided machine learning model to your robot.
 
 Click **Create service** in the lower-left corner of the page.
 Select type `ML Model`, then select model `TFLite CPU`.
@@ -278,7 +278,7 @@ Then specify the absolute **Model path** as `/home/pi/effdet0.tflite` and the **
 
 2. **Add a vision service.**
 
-Next, add a [detector](/services/vision/detection/) as a vision service to be able to make use of the ML model.
+Next, add a [detector](/ml/vision/detection/) as a vision service to be able to make use of the ML model.
 
 Click **Create service** in the lower-left corner of the page.
 Select type `Vision`, then select model `ML Model`.
@@ -296,7 +296,7 @@ Navigate to the **Components** subtab of the **Config** tab.
 Click **Create component** in the lower-left corner of the page.
 
 Select `camera` for the type, then select `transform` for the model.
-Enter `transform_cam` as the name for your [transform camera](/components/camera/transform/), then click **Create**.
+Enter `transform_cam` as the name for your [transform camera](/build/configure/components/camera/transform/), then click **Create**.
 
 Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
@@ -321,7 +321,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [**Raw JSON** tab](/manage/configuration/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/services/ml/), the [vision service](/services/vision/), and a [transform camera](/components/camera/transform/):
+Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/build/configure/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {
@@ -403,7 +403,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Navigate to your [robot's Control tab](/manage/fleet/robots/#control) to test the transform camera.
+Navigate to your [robot's Control tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
 You should see bounding boxes with labels around different objects.
 
@@ -432,7 +432,7 @@ Now, install the Python Viam SDK with the `mlmodel` extra, and the VLC module:
 pip3 install 'viam-sdk[mlmodel]' python-vlc
 ```
 
-The `mlmodel` extra includes additional dependency support for the [ML (machine learning) model service](/services/ml/).
+The `mlmodel` extra includes additional dependency support for the [ML (machine learning) model service](/ml/).
 
 ### Connect
 
@@ -683,11 +683,11 @@ If everything works, your guardian should now start to idle and when it detects 
 
 One more thing.
 Right now, you have to run the code manually every time you want your Guardian to work.
-You can also configure Viam to automatically run your code as a [process](/manage/configuration/#processes).
+You can also configure Viam to automatically run your code as a [process](/build/configure/#processes).
 
 To be able to run the Python script from your Raspberry Pi, you need to install the Python SDK on your Raspberry Pi and copy your code onto the Raspberry Pi.
 
-[`ssh` into your Pi](/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
+[`ssh` into your Pi](/get-started/installation/prepare/rpi-setup/#connect-with-ssh) and install `pip`:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo apt install python3-pip
@@ -739,7 +739,7 @@ Here is a video of how I set up my guardian to follow my dog around my living ro
 
 {{<video webm_src="/tutorials/guardian/ernieandtheguardian.webm" mp4_src="/tutorials/guardian/ernieandtheguardian.mp4" poster="/tutorials/guardian/ernieandtheguardian.jpg" alt="Guardian robot rotates head to follow dog around a room">}}
 
-Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/manage/ml/train-model/) to use.
+Of course, you're free to adapt the code to make it do something else, add more LEDs, or even [train your own custom model](/ml/train-model/) to use.
 
 For more robotics projects, check out our [other tutorials](/tutorials/).
 

@@ -26,7 +26,7 @@ Maybe it was to clear your head, grab your lunch, answer the door, and you get i
 This tutorial will show you how to build a mouse mover using Viam, a Raspberry Pi, a servo, and an optical mouse.
 This robot will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse. This will keep your computer from falling asleep.
 
-This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
+This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/build/configure/components/servo/) with the Viam app and Viam's [Python SDK](https://python.viam.dev/).
 
 <div class="td-max-width-on-larger-screens">
   {{<gif webm_src="/tutorials/single-component-tutorials-servo-mousemover/moving.webm" mp4_src="/tutorials/single-component-tutorials-servo-mousemover/moving.mp4" alt="Video of a mouse running erratically on the screen in a sweeping motion in front of the Viam app Control page with an overlaid video of a mouse on top of a cardboard box with a moving cardboard circle underneath it with red swirl lines on the circle.">}}
@@ -36,7 +36,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ### Hardware
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/installation/)
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/get-started/installation/)
 - microSD card reader
 - [Continuous rotation servo](https://a.co/d/2w0u6rK) (we used the FS90R servo)
 - Wheel or arm for the servo (this comes in some of the FS90R packages)
@@ -61,7 +61,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ## Install Viam software
 
-First, install `viam-server` according to our [installation guide](/installation/)
+First, install `viam-server` according to our [installation guide](/get-started/installation/)
 
 Next, run this command in your Raspberry Pi terminal to install the pip package manager.
 Select "yes" when asked if you want to continue.
@@ -154,7 +154,7 @@ Go to the [Viam app](https://app.viam.com), and navigate to the **Config** tab.
 
 ### Board component
 
-Create a [board component](/components/board/):
+Create a [board component](/build/configure/components/board/):
 
 Navigate to the **Components** subtab of your robot's **Config** tab.
 
@@ -169,7 +169,7 @@ You will reference it later.
 
 ### Servo component
 
-Create a [servo component](/components/servo/):
+Create a [servo component](/build/configure/components/servo/):
 
 Click **Create component** in the lower-left corner.
 

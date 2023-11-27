@@ -19,7 +19,7 @@ aliases:
   - "/modular-resources/upload/"
 ---
 
-Once you have [created a custom module](/registry/create/), use the [Viam CLI](/manage/cli/) to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/manage/fleet/organizations/).
+Once you have [created a custom module](/registry/create/), use the [Viam CLI](/fleet/cli/) to upload it to the Viam registry as a public module that is shared with other Viam users, or as a private module that is shared only within your [organization](/fleet/organizations/).
 
 Once uploaded, you can also [update your modules](/registry/upload/#update-an-existing-module).
 
@@ -27,10 +27,10 @@ Once uploaded, you can also [update your modules](/registry/upload/#update-an-ex
 
 To upload your custom module to the [Viam registry](https://app.viam.com/registry), either as a public or private module, use the Viam CLI commands `create`, `upload`, and `update` following these instructions:
 
-1. First, [install the Viam CLI](/manage/cli/#install) and [authenticate](/manage/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
+1. First, [install the Viam CLI](/fleet/cli/#install) and [authenticate](/fleet/cli/#authenticate) to Viam, from the same machine that you intend to upload your module from.
 
 2. Next, run the `viam module create` command to choose a custom module name and generate the required metadata for your module.
-   By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/manage/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
+   By default, a new module is created as _private_, meaning that it is only accessible to members of your [organization](/fleet/organizations/), but you can choose to set the `visibility` of your module to _public_ to make it accessible to all Viam users.
 
    Select the private or public tab for instructions to upload your module with the respective `visibility` setting:
 
@@ -43,7 +43,7 @@ Get the `org-id` for your {{< glossary_tooltip term_id="organization" text="orga
 viam module create --name <your-module-name> --org-id <your-org-id>
 ```
 
-If you later wish to make your module public, you can use the [`viam module update` command](/manage/cli/#module).
+If you later wish to make your module public, you can use the [`viam module update` command](/fleet/cli/#module).
 
 {{% /tab %}}
 {{% tab name="Public" %}}
@@ -52,8 +52,8 @@ If you later wish to make your module public, you can use the [`viam module upda
 If you mark your module as public, you cannot change it back to private.
 {{% /alert %}}
 
-1.  If you haven't already, [create a new namespace](/manage/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
-    If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/manage/cli/#organizations) command.
+1.  If you haven't already, [create a new namespace](/fleet/organizations/#create-a-namespace-for-your-organization) for your organization.
+    If you have already created a namespace, you can find it on your organization's **Settings** page in [the Viam App](https://app.viam.com/), or by running the [`viam organizations list`](/fleet/cli/#organizations) command.
 
 2.  To generate metadata for your module using your public namespace, run the following command from the same directory as your custom module:
 
@@ -79,7 +79,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>module_id</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>The name of the module, including its <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a>. The <code>name</code> field is pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command.
+        <td>The name of the module, including its <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a>. The <code>name</code> field is pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command.
         <div class="alert alert-caution" role="alert">
       <h4 class="alert-heading">Caution</h4>
 
@@ -94,7 +94,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>visibility</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>Whether the module is accessible only to members of your <a href="/manage/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command, but once you make a module public, you cannot change it back to private.<br><br>Default: <code>private</code></td>
+        <td>Whether the module is accessible only to members of your <a href="/fleet/organizations/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command, but once you make a module public, you cannot change it back to private.<br><br>Default: <code>private</code></td>
       </tr>
       <tr>
         <td><code>url</code></td>
@@ -112,7 +112,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>models</code></td>
         <td>object</td>
         <td><strong>Required</strong></td>
-        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/manage/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
+        <td><p>A list of one or more {{< glossary_tooltip term_id="model" text="models" >}} provided by your custom module. You must provide at least one model, which consists of an <code>api</code> and <code>model</code> key pair. If you are publishing a public module (<code>"visibility": "public"</code>), the namespace of your model must match the <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace of your organization</a>.</p><p>For more information, see <a href="#naming-your-model-namespacerepo-namename">naming your model</a>.</p></td>
       </tr>
       <tr>
         <td><code>entrypoint</code></td>
@@ -150,7 +150,7 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
 
     {{% /alert %}}
 
-    See [`meta.json` file](/manage/cli/#the-metajson-file) for more information.
+    See [`meta.json` file](/fleet/cli/#the-metajson-file) for more information.
 
 4. Run `viam module update` to register the configuration changes you just made to `meta.json` with the Viam registry.
    Run this command from within the same directory as your `meta.json` file:
@@ -184,10 +184,10 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
 
    - `version`: provide a version for your custom module, using [semantic versioning](https://semver.org/) (example: `1.0.0`).
      You can later increment this value with subsequent `viam module upload` commands.
-     See [Using the `--version` argument](/manage/cli/#using-the---version-argument) for more information.
+     See [Using the `--version` argument](/fleet/cli/#using-the---version-argument) for more information.
    - `platform`: provide the system architecture your custom module supports.
      You can only provide one `platform` argument at a time to the `viam module upload` command.
-     See [Using the `--platform` argument](/manage/cli/#using-the---platform-argument) for the full list of supported architectures.
+     See [Using the `--platform` argument](/fleet/cli/#using-the---platform-argument) for the full list of supported architectures.
    - `module-path`: provide the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code.
 
    {{% alert title="Important" color="note" %}}
@@ -217,15 +217,15 @@ For more information, see [naming your model](#naming-your-model-namespacerepo-n
      viam module upload --version 1.0.0 --platform linux/amd64 packaged-module.tar.gz
      ```
 
-When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to check for common errors.
+When you `upload` a module, the command performs basic [validation](/fleet/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/manage/cli/#module)
+For more information, see the [`viam module` command](/fleet/cli/#module)
 
 ## Update an existing module
 
 You can update an existing module in the [Viam registry](https://app.viam.com/registry) in one of two ways:
 
-- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/manage/cli/).
+- [Upload new versions of your module manually](#update-an-existing-module-using-the-viam-cli) using the [Viam CLI](/fleet/cli/).
 - [Automatically upload new versions of your module on release](#update-an-existing-module-using-a-github-action) as part of a continuous integration (CI) workflow, using a GitHub Action.
 
 Updating your module manually is appropriate for smaller projects, especially those with only one contributor.
@@ -233,7 +233,7 @@ Updating your module automatically using CI is better suited for larger, ongoing
 
 ### Update an existing module using the Viam CLI
 
-To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, use the [Viam CLI](/manage/cli/):
+To update an existing module in the [Viam registry](https://app.viam.com/registry) manually, use the [Viam CLI](/fleet/cli/):
 
 1. Edit your custom module with the changes you'd like to make.
 
@@ -267,15 +267,15 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
    viam module upload --version <version> --platform <platform> <module-path>
    ```
 
-   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam registry, and increments the [`version`](/manage/cli/#using-the---version-argument) of the module to version `1.0.1`:
+   For example, the following command uploads a module compressed as an archive named `my-module.tar.gz` to the Viam registry, and increments the [`version`](/fleet/cli/#using-the---version-argument) of the module to version `1.0.1`:
 
    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
    viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz
    ```
 
-   When you `upload` a module, the command performs basic [validation](/manage/cli/#upload-validation) of your module to check for common errors.
+   When you `upload` a module, the command performs basic [validation](/fleet/cli/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/manage/cli/#module)
+For more information, see the [`viam module` command](/fleet/cli/#module)
 
 ### Update an existing module using a GitHub action
 
@@ -322,13 +322,13 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
 
    For guidance on configuring the other parameters, see the documentation for each:
 
-   - [`org-id`](/manage/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-   - [`platform`](/manage/cli/#using-the---platform-argument): You can only upload one platform at a time.
-   - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/manage/cli/#using-the---version-argument) for more details on the types of versioning supported.
+   - [`org-id`](/fleet/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+   - [`platform`](/fleet/cli/#using-the---platform-argument): You can only upload one platform at a time.
+   - [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): Also see [Using the --version argument](/fleet/cli/#using-the---version-argument) for more details on the types of versioning supported.
 
 1. Create an organization API key and configure your GitHub repository to use it to authenticate during GitHub action runs, following the steps below:
 
-   1. Follow the instructions to [create an organization API key](/manage/cli/#create-an-organization-api-key).
+   1. Follow the instructions to [create an organization API key](/fleet/cli/#create-an-organization-api-key).
       These steps will return a `key id` and a `key value` which together comprise your organization API key.
       If you have already created an organization API key, you can skip this step.
 
@@ -355,7 +355,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 If you are [creating a custom module](/registry/create/) and want to [upload that module](/registry/upload/) to the Viam registry, ensure your model name meets the following requirements:
 
-- The namespace of your model **must** match the [namespace of your organization](/manage/fleet/organizations/#create-a-namespace-for-your-organization).
+- The namespace of your model **must** match the [namespace of your organization](/fleet/organizations/#create-a-namespace-for-your-organization).
   For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:demo:mybase`.
 - Your model triplet must be all-lowercase.
 - Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.

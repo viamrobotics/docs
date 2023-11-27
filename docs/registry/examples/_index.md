@@ -25,7 +25,7 @@ aliases:
 ---
 
 To familiarize yourself with creating and using {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, follow one of these example [tutorials](#tutorials) or clone one of these example [repositories](#repositories).
-Once you have created a modular resource, you can test your modular resource using the [Control tab](/manage/fleet/#remote-control) and program it using the [Viam SDKs](/program/apis/).
+Once you have created a modular resource, you can test your modular resource using the [Control tab](/fleet/#remote-control) and program it using the [Viam SDKs](/build/program/apis/).
 
 ## Tutorials
 
@@ -33,7 +33,7 @@ Once you have created a modular resource, you can test your modular resource usi
 {{% card link="/registry/examples/rplidar/" customTitle="Add an RPlidar camera as a Modular Resource" %}}
 {{% card link="/registry/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
 {{% card link="/registry/examples/csi/" customTitle="Add a CSI Camera as a Modular Resource" %}}
-{{% card link="/components/movement-sensor/viam-visual-odometry/" customTitle="Add a Visual Odometry sensor as a Modular Resource" %}}
+{{% card link="/build/configure/components/movement-sensor/viam-visual-odometry/" customTitle="Add a Visual Odometry sensor as a Modular Resource" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/registry/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
 {{% card link="/registry/examples/triton/" customTitle="Add a Triton MLModel Modular Service"  %}}

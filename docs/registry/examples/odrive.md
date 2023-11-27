@@ -22,7 +22,7 @@ aliases:
 # SMEs: Kim, Martha, Rand
 ---
 
-Viam provides an `odrive` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) and [ODrive Pro](https://odriverobotics.com/shop/odrive-pro) motor drivers, extending the Viam [motor API](/components/motor/#api).
+Viam provides an `odrive` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for ODrive Robotics' [ODrive S1](https://odriverobotics.com/shop/odrive-s1) and [ODrive Pro](https://odriverobotics.com/shop/odrive-pro) motor drivers, extending the Viam [motor API](/build/configure/components/motor/#api).
 The `odrive` {{< glossary_tooltip term_id="module" text="module" >}} supports an ODrive motor driver connected in either `serial` or `canbus` mode.
 
 The `odrive` module is available [from the Viam registry](https://app.viam.com/module/viam/odrive).
@@ -32,7 +32,7 @@ The source code for this module is available on the [`odrive` GitHub repository]
 
 ## Requirements
 
-If you haven't already, [install `viam-server`](/installation/) on your robot.
+If you haven't already, [install `viam-server`](/get-started/installation/) on your robot.
 
 Your robot must have an ODrive S1 or ODrive Pro motor controller installed to be able to use the `odrive` module.
 
@@ -54,7 +54,7 @@ Your robot must have an ODrive S1 or ODrive Pro motor controller installed to be
 
    {{% /alert %}}
 
-   Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you must set this to around `100` to use the [motor API's `SetPower` method](/components/motor/#setpower).
+   Note that `iq_msg_rate_ms` in the `odrive_config_file` defaults to `0`, and you must set this to around `100` to use the [motor API's `SetPower` method](/build/configure/components/motor/#setpower).
 
 1. Follow [this guide](https://docs.odriverobotics.com/v/latest/control.html#control-doc) to tune your ODrive motor.
 
@@ -62,14 +62,14 @@ Your robot must have an ODrive S1 or ODrive Pro motor controller installed to be
 
    {{% alert title="Tip" color="tip" %}}
 
-   If you are using a Raspberry Pi as your [board](/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
+   If you are using a Raspberry Pi as your [board](/build/configure/components/board/), you must run `sudo ip link set can0 up type can bitrate <baud_rate>` in your terminal to receive CAN messages.
    See [Troubleshooting: CAN Link Issues](https://github.com/viamrobotics/odrive#can-link-issues) for more information.
 
-   Additionally, make sure you have [enabled SPI communication on your Pi](/installation/prepare/rpi-setup/) to use several common CANHats.
+   Additionally, make sure you have [enabled SPI communication on your Pi](/get-started/installation/prepare/rpi-setup/) to use several common CANHats.
 
    {{% /alert %}}
 
-1. Make sure your ODrive is connected to your [board](/components/board/) as follows, depending on whether you are using a `serial` or `canbus` connection:
+1. Make sure your ODrive is connected to your [board](/build/configure/components/board/) as follows, depending on whether you are using a `serial` or `canbus` connection:
 
    {{< tabs name="Connect your ODrive">}}
    {{% tab name="Serial" %}}
@@ -296,7 +296,7 @@ The following attributes are available for the motor resources available in the 
 | `serial_number` | string | Optional | The serial number of the ODrive. Note that this is not necessary if you only have one ODrive connected. See [Troubleshooting: Hanging](https://github.com/viamrobotics/odrive#hanging) for help finding this value. |
 | `canbus_baud_rate` | string | Optional | [Baud rate](https://docs.odriverobotics.com/v/latest/can-guide.html#setting-up-the-odrive) of the ODrive CAN protocol. This attribute is only available for `canbus` connections. </br> Use [`odrivetool`](https://docs.odriverobotics.com/v/latest/odrivetool.html) to obtain this value with `<odrv>.can.config.baud_rate`. Format the string as a multiple of 1000 (k). <br> Example: `"250k"` |
 
-Check the [**Logs** tab](/program/debug/) of your robot in the Viam app to make sure your ODrive motor has connected and no errors are being raised.
+Check the [**Logs** tab](/build/program/debug/) of your robot in the Viam app to make sure your ODrive motor has connected and no errors are being raised.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -312,7 +312,7 @@ To add an `odrive_config_file` and reconfigure your ODrive natively each time th
    See the [ODrive documentation](https://docs.odriverobotics.com/v/latest/odrivetool.html#configuration-backup) for more info.
 2. Configure `iq_msg_rate_ms` to a value appropriate for your usage.
    By default, `iq_msg_rate_ms` is set to `0`.
-   You must set this to or around `100` to use the [motor API's `SetPower` method](/components/motor/#setpower).
+   You must set this to or around `100` to use the [motor API's `SetPower` method](/build/configure/components/motor/#setpower).
 3. If you add an `odrive_config_file` to a `canbus` motor, you will have to leave the serial connection established with your ODrive plugged in to the USB port, in addition to wiring the CANH and CANL pins.
 
 See the [ODrive sample `config.json` file](https://github.com/viamrobotics/odrive/tree/main/sample-configs) for an example of an `odrive_config_file`.

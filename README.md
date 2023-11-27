@@ -145,7 +145,7 @@ For example, if you were writing in `viam/high-level-overview.md`, Hugo sees thi
 - To link to another markdown file in the same directory as the markdown file, use `[mylink](../installation/)`.
   **Note the trailing slash as another markdown file is another web directory in Hugo**
 - To link to some image in the same directory as the markdown file, use `[mylink](../image1.png)`.
-- To link something in a different directory, use `[mylink](/components/)`
+- To link something in a different directory, use `[mylink](/build/configure/components/)`
 
 We are also using `htmltest` to ensure links within the docs work.
 To test locally, install [`htmltest`](https://github.com/wjdp/htmltest).

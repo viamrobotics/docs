@@ -25,9 +25,9 @@ A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" 
 You can browse existing modules in the [Viam Registry](/registry/#the-viam-registry) to find one that supports your custom hardware or software, or you can write your own module.
 
 Modules run alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
-When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and the associated [APIs](/program/apis/) with `viam-server`, making the new model available for use.
+When a module initializes, it registers its {{< glossary_tooltip term_id="model" text="model or models" >}} and the associated [APIs](/build/program/apis/) with `viam-server`, making the new model available for use.
 
-In most cases, the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} you create should be a new {{< glossary_tooltip term_id="model" text="model" >}} that implements an existing Viam [API](/program/apis/).
+In most cases, the {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} you create should be a new {{< glossary_tooltip term_id="model" text="model" >}} that implements an existing Viam [API](/build/program/apis/).
 For example, if you have a custom base, you can create a new base model that implements the `rdk:component:base` API.
 
 ## Find your reference files
@@ -88,13 +88,13 @@ For example, the `base` component subtype is defined in [<file>rdk/components/ba
 
 ### Valid APIs to implement in your model
 
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/program/apis/) always have the following parameters:
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing {{< glossary_tooltip term_id="component" text="component" >}}, valid [APIs](/build/program/apis/) always have the following parameters:
 
 - `namespace`: `rdk`
 - `type`: `component`
 - `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
 
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/program/apis/) always have the following parameters:
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/build/configure/services/), valid [APIs](/build/program/apis/) always have the following parameters:
 
 - `namespace`: `rdk`
 - `type`: `service`
@@ -102,7 +102,7 @@ When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}}
 
 #### Unique cases
 
-If you are using unique hardware that does not already have an [appropriate API](/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your machine.
+If you are using unique hardware that does not already have an [appropriate API](/build/program/apis/#component-apis) defined to support it, you can use the [generic API](/build/configure/components/generic/) to add support for that unique hardware type to your machine.
 
 Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/registry/advanced/).
@@ -132,7 +132,7 @@ Your new resource model server must have all the methods that the Viam RDK requi
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.py</file> inside.
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:service:base`) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/build/configure/components/base/#api) (`rdk:service:base`) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
 
 <details>
   <summary>Click to view sample code for <file>my_base.py</file></summary>
@@ -313,7 +313,7 @@ Your new resource model server must have all the methods that the Viam RDK requi
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.go</file> inside.
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:service:base`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"mybase"`, using the model family `acme:demo:mybase`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/build/configure/components/base/#api) (`rdk:service:base`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"mybase"`, using the model family `acme:demo:mybase`.
 
 <details>
   <summary>Click to view sample code for <file>mybase.go</file></summary>
@@ -658,7 +658,7 @@ Your options for completing this step are flexible, as this file does not need t
 
 Create and save a new shell script (<file>.sh</file>) that runs your module at your entry point (main program) file.
 
-Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries:
+Make sure to [prepare a Python virtual environment](/build/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
    For example, a `requirements.txt` file with the following contents ensures that the Viam Python SDK (`viam-sdk`) is installed:
@@ -698,7 +698,7 @@ Make sure to [prepare a Python virtual environment](/program/python-venv/) in th
 {{% tab name="Python: nuitka" %}}
 
 Install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
-Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries.
+Make sure to [prepare a Python virtual environment](/build/program/python-venv/) in the directory your module is in to ensure your module has access to any required libraries.
 Compile your module as follows:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
@@ -725,12 +725,12 @@ Compile your module as follows:
 
    No relative imports (imports starting with `.`) will work with this option.
    In addition, no cross compiling is allowed.
-   You have to compile on your target platform/architecture.
+   You have to compile on your target architecture.
 
 {{% /tab %}}
 {{% tab name="Python: pyinstaller" %}}
 
-Make sure to [prepare a Python virtual environment](/program/python-venv/) in the directory your module is so your module has access to any required libraries.
+Make sure to [prepare a Python virtual environment](/build/program/python-venv/) in the directory your module is so your module has access to any required libraries.
 Compile your module as follows:
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module relies on.
@@ -759,7 +759,7 @@ Compile your module as follows:
 
    No relative imports (imports starting with `.`) will work with this option.
    In addition, no cross compiling is allowed.
-   You have to compile on your target platform/architecture.
+   You have to compile on your target architecture.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -841,7 +841,7 @@ The examples from [Code a new resource model](#code-a-new-resource-model) includ
 
 ## Next steps
 
-Once you have created your module, you can use the [Viam CLI](/manage/cli/) to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
+Once you have created your module, you can use the [Viam CLI](/fleet/cli/) to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
 For added convenience, you can configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
 
 You can also add your module to your robot as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.

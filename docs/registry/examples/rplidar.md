@@ -4,9 +4,9 @@ linkTitle: "RPlidar"
 weight: 40
 type: "docs"
 description: "Configure an RPlidar camera as a modular resource of your robot."
-image: "/program/modular-resources/rplidar-on-robot.png"
+image: "/build/program/modular-resources/rplidar-on-robot.png"
 imageAlt: "An R-P-lidar mounted to a Viam rover."
-images: ["/program/modular-resources/rplidar-on-robot.png"]
+images: ["/build/program/modular-resources/rplidar-on-robot.png"]
 tags: ["slam", "services", "modular resources", "lidar", "rplidar"]
 no_list: true
 aliases:
@@ -18,7 +18,7 @@ aliases:
 # SMEs: Kat, Jeremy
 ---
 
-Viam provides an `rplidar` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for SLAMTECH's RPlidar family of lidar scanners, extending the Viam [camera API](/components/camera/#api).
+Viam provides an `rplidar` {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} which adds support for SLAMTECH's RPlidar family of lidar scanners, extending the Viam [camera API](/build/configure/components/camera/#api).
 Currently, the `rplidar` {{< glossary_tooltip term_id="module" text="module" >}} has been tested with the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1), [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), and [RPlidar S1](http://bucket.download.slamtec.com/f19ea8efcc2bb55dbfd5839f1d307e34aa4a6ca0/LD601_SLAMTEC_rplidar_datasheet_S1_v1.4_en.pdf).
 
 The `rplidar` module is available [from the Viam registry](https://app.viam.com/module/viam/rplidar).
@@ -28,11 +28,11 @@ The source code for this module is available on the [`rplidar` GitHub repository
 
 ## Requirements
 
-If you haven't already, [install `viam-server`](/installation/) on your robot.
+If you haven't already, [install `viam-server`](/get-started/installation/) on your robot.
 
 The `rplidar` module is distributed as an AppImage.
 AppImages require FUSE version 2 to run.
-See [FUSE troubleshooting](/reference/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
+See [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run) for instructions on installing FUSE 2 on your system if it is not already installed.
 
 Currently, the `rplidar` module supports the Linux platform only.
 
@@ -124,13 +124,13 @@ Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar h
 
 ## Troubleshooting
 
-You can find additional assistance in the [Troubleshooting section](/reference/appendix/troubleshooting/).
+You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).
 
 {{< snippet "social.md" >}}
 
 ## Next Steps
 
 {{< cards >}}
-{{% card link="/services/slam/cartographer" %}}
-{{% card link="/services/slam" %}}
+{{% card link="/mobility/slam/cartographer" %}}
+{{% card link="/mobility/slam" %}}
 {{< /cards >}}

@@ -24,7 +24,7 @@ To install `viam-server` on a Linux computer:
      sudo apt install libfuse2
      ```
 
-   - If installing `viam-server` on other Linux distributions, or for more information, see [FUSE troubleshooting](/reference/appendix/troubleshooting/#appimages-require-fuse-to-run).
+   - If installing `viam-server` on other Linux distributions, or for more information, see [FUSE troubleshooting](/appendix/troubleshooting/#appimages-require-fuse-to-run).
 
    **Do not** install the `fuse` package (that is, without a version number).
    `viam-server` requires FUSE version 2 specifically (`libfuse2`).
@@ -42,4 +42,4 @@ To install `viam-server` on a Linux computer:
 1. Once you have followed the steps on the **Setup** tab, `viam-server` is installed and running.
    Return to the **Setup** page on the Viam app and wait for confirmation that your computer has successfully connected.
 
-By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/installation/manage/) if desired.
+By default, `viam-server` will start automatically when your system boots, but you can [change this behavior](/get-started/installation/manage/) if desired.

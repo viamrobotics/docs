@@ -24,9 +24,9 @@ Welcome to the robotic world of culinary comfort and supreme convenience!
 Are you sick of straining your arms to transfer plates around the dinner table? Are you tired of being taken away from your delicious meal to pass the rolls?
 Have you ever dreamed of a spinning device to do this chore?
 
-By the end of this tutorial, you will have learned how to wire a motor and motor driver to a Raspberry Pi, install [`viam-server`](/installation/) on your Raspberry Pi, and how to configure your robot in the Viam app to create your own Lazy Susan for your dinner table!
+By the end of this tutorial, you will have learned how to wire a motor and motor driver to a Raspberry Pi, install [`viam-server`](/get-started/installation/) on your Raspberry Pi, and how to configure your robot in the Viam app to create your own Lazy Susan for your dinner table!
 
-You will also learn to take your creation a step further and fine-tune the controls of your Lazy Susan using the [Python motor API methods](/components/motor/#api).
+You will also learn to take your creation a step further and fine-tune the controls of your Lazy Susan using the [Python motor API methods](/build/configure/components/motor/#api).
 
 ## Requirements
 
@@ -88,7 +88,7 @@ Turn on the Raspberry Pi and move on to setting up your software.
 
 ### Software Setup
 
-If you have not already done so, follow the [Raspberry Pi Setup Guide](/installation/prepare/rpi-setup/) to prepare your Pi to connect your robot to the Viam app.
+If you have not already done so, follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi to connect your robot to the Viam app.
 Once your Pi is ready, `ssh` into it from your computer.
 
 In your web browser, go to [the Viam app](https://app.viam.com) and create a new robot instance.
@@ -114,7 +114,7 @@ Wait a moment until your robot connects to the Viam app.
 
 2. **Configure the motor**
 
-   Next, add a [motor component](/components/motor/):
+   Next, add a [motor component](/build/configure/components/motor/):
 
    Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
@@ -122,7 +122,7 @@ Wait a moment until your robot connects to the Viam app.
 
    Enter `dcmotor` as the name for your motor, then click **Create**.
 
-   After creating your motor component, fill in the [required attributes for a gpio motor](/components/motor/gpio/):
+   After creating your motor component, fill in the [required attributes for a gpio motor](/build/configure/components/motor/gpio/):
 
    - For **board**, click the dropdown box and select local (or whatever you named your board!).
 
@@ -161,7 +161,7 @@ Click the **Save Config** button.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/manage/configuration/#the-config-tab), replace the configuration with the following JSON configuration for your board and motor:
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your board and motor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -280,13 +280,13 @@ Now let's move on to write code to fine tune the control of your motor.
 It would be nice if the lazy susan rotated slowly so people can grab some food.
 Head to the Motor API in the [Python SDK documentation](https://python.viam.dev/autoapi/viam/components/motor/index.html).
 
-[SetPower](/components/motor/#setpower) adjusts speed by adjusting the power to the motor.
+[SetPower](/build/configure/components/motor/#setpower) adjusts speed by adjusting the power to the motor.
 This may feel familiar from when you were testing the hardware in the Viam app and adjusted the **Power %** and **Forward** and **Backward** toggle.
 Instead of using a toggle to adjust the motor direction, you now use either positive or negative numbers up to 100.
 
-Reference the [SetPower API Method example](/components/motor/#setpower) for more information.
+Reference the [SetPower API Method example](/build/configure/components/motor/#setpower) for more information.
 
-[GoFor](/components/motor/#gofor) allows you to control how fast the motor spins by allowing you to set the revolutions per minute (or RPMs).
+[GoFor](/build/configure/components/motor/#gofor) allows you to control how fast the motor spins by allowing you to set the revolutions per minute (or RPMs).
 This allows you to have more control over how fast and how long you spin the motor for.
 If you want to have your motor spin backwards, one of these parameters (not both) needs to be negative.
 
@@ -321,7 +321,7 @@ Because we didn’t set any parameters for how long this will run for, we will n
 
 {{<gif webm_src="/tutorials/lazy-susan/control-stop.webm" mp4_src="/tutorials/lazy-susan/control-stop.mp4" alt="Click the stop button" max-width="150px">}}
 
-However, there is also an API method you can use to [Stop](/components/motor/#stop) the motor!
+However, there is also an API method you can use to [Stop](/build/configure/components/motor/#stop) the motor!
 
 Add the following import statement at the top of your code:
 
@@ -339,7 +339,7 @@ time.sleep(10)
 await dc_motor.stop()
 ```
 
-If you would like to have the same effect but use even less code, you can use the [GoFor API Method](/components/motor/#gofor).
+If you would like to have the same effect but use even less code, you can use the [GoFor API Method](/build/configure/components/motor/#gofor).
 Remove the code you have just added or comment it out and add the following code instead:
 
 ```python
@@ -365,9 +365,9 @@ Connect the wood to your motor and decorate it as you wish to make your Lazy Sus
 
 This is not where your Lazy Susan project has to end - here are some ideas for adding more components to this project:
 
-- An [input controller component](/components/input-controller/) so you can turn and stop the Lazy Susan with a gamepad.
-- A [camera component](/components/camera/) and an [ML model](/services/ml/) that recognizes your friends' faces and stops the Lazy Susan precisely where they can reach their favorite food, or takes their photo as it rotates, so you all can have candid memories.
-- A [sensor component](/components/sensor/), so your Lazy Susan only spins when it detects movement around it.
+- An [input controller component](/build/configure/components/input-controller/) so you can turn and stop the Lazy Susan with a gamepad.
+- A [camera component](/build/configure/components/camera/) and an [ML model](/ml/) that recognizes your friends' faces and stops the Lazy Susan precisely where they can reach their favorite food, or takes their photo as it rotates, so you all can have candid memories.
+- A [sensor component](/build/configure/components/sensor/), so your Lazy Susan only spins when it detects movement around it.
 
 Or you can head over to our [Tutorials](/tutorials/) page and try one of our other tutorials to continue building robots.
 
