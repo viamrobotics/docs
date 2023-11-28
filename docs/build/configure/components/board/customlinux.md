@@ -15,10 +15,15 @@ The `customlinux` board model supports boards like the [Mediatek Genio 500 Pumpk
 
 To integrate a custom Linux board into your robot:
 
-1. First [create a pin mappings file](#create-a-pin-mappings-file).
-2. Then [configure a `customlinux` board](#configure-your-board) on your robot, specifying the path to the mappings file in the board config.
+1. [Install `viam-server`](#install-viam-server) on your machine.
+1. [Create a board definitions file](#create-a-board-definitions-file), specifying the mapping between your board's GPIO pins and connected hardware.
+1. [Configure a `customlinux` board](#configure-your-board) on your robot, specifying the path to the definitions file in the board configuration.
 
-## Create a pin mappings file
+## Install `viam-server`
+
+{{< readfile "/static/include/install/install-linux-aarch.md" >}}
+
+## Create a board definitions file
 
 {{% alert title="Caution" color="caution" %}}
 
@@ -28,9 +33,9 @@ Randomly entering numbers may result in hardware damage.
 
 {{% /alert %}}
 
-The pin mappings file describes the location of each GPIO pin on the board so that `viam-server` can access the pins correctly.
+The board definitions file describes the location of each GPIO pin on the board so that `viam-server` can access the pins correctly.
 
-On your `customlinux` board, create a JSON file in the directory of your choice with your board's pin mappings.
+On your `customlinux` board, create a JSON file in the directory of your choice with and provide the mappings between your GPIO pins and connected hardware.
 Use the template and example below to populate the JSON file with a single key, `"pins"`, whose value is a list of objects that each represent a pin on the board.
 
 {{< tabs >}}
@@ -331,6 +336,28 @@ For example, if the <file>npwm</file> contains `"4"`, then the valid `pwm_id` va
 Determining which specific chip and line are attached to each pin depends on the board.
 Try looking at your board's data sheet and cross-referencing with the output from the commands above.
 
+### Upload your board definitions file
+
+Once you have created your board definitions file, you can choose to upload it to the Viam app using the [Viam CLI](/fleet/cli/).
+
+Uploading your definitions file allows you to store it centrally on the Viam app, and to deploy it your machines without needing to create it again for each one.
+
+For example:
+
+- The following command uploads a board definitions file named `my-board-def-file.json` that contains pin mappings for a configured [board](/build/configure/components/board/) named `my-board`:
+
+  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+  viam board upload --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0 my-board-def-file.json
+  ```
+
+- The following command downloads a previously-uploaded board definitions file stored as `my-board` from the Viam app:
+
+  ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+  viam board download --name='my-board' --organization='abcdef12-abcd-abcd-abcd-abcdef123456' --version=1.0.0
+  ```
+
+For more information, see the [`viam board` CLI command](/fleet/cli/#board).
+
 ## Configure your board
 
 {{< tabs name="Configure a customlinux board" >}}
@@ -344,7 +371,7 @@ Enter a name for your `customlinux` board and click **Create**.
 ![An example configuration for a customlinux board in the Viam app Config Builder.](/build/configure/components/board/customlinux-ui-config.png)
 
 Copy and paste the following attribute template into your board's **Attributes** box.
-Then edit the file path to use your [pin mappings file](#create-a-pin-mappings-file).
+Then edit the file path to use your [board definitions file](#create-a-board-definitions-file).
 
 {{< tabs >}}
 {{% tab name="Attributes template" %}}
@@ -415,4 +442,4 @@ The following attributes are available for `customlinux` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a pin mappings file](#create-a-pin-mappings-file). |
+| `board_defs_file_path` | string | **Required** | The path to the pin mappings. See [Create a board definitions file](#create-a-board-definitions-file). |
