@@ -52,8 +52,7 @@ Edit and fill in the attributes as applicable.
       "attributes": {
         "pins": {
           "dir": "<int>",
-          "pwm": "<int>",
-          "en_low": "<int>"
+          "pwm": "<int>"
         },
         "board": "<your-board-name>",
         "min_power_pct": <float>,
@@ -133,7 +132,7 @@ There are three common ways for your computer to communicate with a brushed DC m
 - In1/In2 and PWM: Use this if your motor driver uses three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
   - Configure `a`, `b`, and `pwm`.
 
-Inside the `pins` struct you need to configure **two or three** of the following, in addition to `"en_high"` or `"en_low"`, depending on your motor driver:
+Inside the `pins` struct you need to configure **two or three** of the following depending on your motor driver:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -142,7 +141,6 @@ Inside the `pins` struct you need to configure **two or three** of the following
 | `b` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN2" or "B" pin is wired to. |
 | `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
 | `pwm` | string | **Required** | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
-| `en_high` / `en_low` | string | Optional | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to this struct. If you need a low signal use `en_low`. |
 
 ### PWM frequency and `esp32` boards
 
