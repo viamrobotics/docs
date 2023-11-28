@@ -1,7 +1,7 @@
 ---
 title: "Changelog"
 linkTitle: "Changelog"
-weight: 110
+weight: 20
 draft: false
 type: "docs"
 description: "A lot of added features, improvements, and changes over time."
