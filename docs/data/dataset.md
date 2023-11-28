@@ -32,7 +32,7 @@ If the underlying data matching the filter changes because data is deleted or mo
 You can label your data with:
 
 - [Bounding boxes](#bounding-boxes), which you can use to [train object detection models](/ml/train-model/#train-a-model).
-- [Image tags](#image-tags), which you can use to [image classification models](/ml/train-model/#train-a-model).
+- [Image tags](#image-tags), which you can use to train [image classification models](/ml/train-model/#train-a-model).
 
 ### Bounding boxes
 
