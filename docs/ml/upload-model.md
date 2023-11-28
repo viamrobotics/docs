@@ -22,9 +22,7 @@ To add a new model:
 3. Add a `.txt` label file.
 4. Click **CREATE MODEL**.
 
-The model now starts training and you can follow its process in the **Training** section of the page.
-
-Once the model has finished training, it becomes visible in the **Models** section of the page.
+The model is now added and becomes visible in the **Models** section of the page.
 
 ![The trained model](/ml/stars-model.png)
 

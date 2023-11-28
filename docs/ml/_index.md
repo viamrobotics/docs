@@ -9,6 +9,7 @@ description: "Use Viam's built-in machine learning capabilities to train image c
 image: "/ml/training.png"
 imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
+icon: "/build/configure/services/icons/ml.svg"
 aliases:
   - /manage/ml/
 menuindent: true
@@ -74,4 +75,5 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
 {{< cards >}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
 {{% card link="/registry/examples/tflite-module/" %}}
+{{% card link="/tutorials/services/data-mlmodel-tutorial/" %}}
 {{< /cards >}}
