@@ -53,3 +53,13 @@ Then, test if your model works for classifying objects in a camera stream or exi
     </td>
   </tr>
 </table>
+
+## Next steps
+
+After testing your classifier, see the following to further explore Viam's data management and computer vision capabilities:
+
+- [Export Data Using the Viam CLI](/data/export/): Export your synced data from the Viam cloud.
+- [2D Object Detection](/ml/vision/detection/): configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
+- [Update an existing ML model](/ml/train-model/#train-a-new-version-of-a-model): Refine an existing ML model you have trained, and select which model version to deploy.
+
+You can also explore our [tutorials](/tutorials/) for more ideas.
