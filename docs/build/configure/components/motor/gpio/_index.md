@@ -51,15 +51,16 @@ Edit and fill in the attributes as applicable.
       "namespace": "rdk",
       "attributes": {
         "pins": {
-          <...>
+          "dir": "<int>",
+          "pwm": "<int>",
+          "en_low": "<int>"
         },
         "board": "<your-board-name>",
         "max_rpm": <int>,
         "min_power_pct": <float>,
         "max_power_pct": <float>,
         "pwm_freq": <float>,
-        "dir_flip": <float>,
-        "en_low": <float>
+        "dir_flip": <float>
       },
       "depends_on": []
     }
@@ -122,7 +123,6 @@ The following attributes are available for `gpio` motors:
 | `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
-| `en_high` / `en_low` | string | Optional | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`. |
 | `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/build/configure/components/motor/gpio/encoded-motor/). |
 
 Refer to your motor and motor driver data sheets for specifics.
@@ -141,7 +141,7 @@ There are three common ways for your computer to communicate with a brushed DC m
 - In1/In2 and PWM: Use this if your motor driver uses three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
   - Configure `a`, `b`, and `pwm`.
 
-Inside the `pins` struct you need to configure **two or three** of the following, depending on your motor driver:
+Inside the `pins` struct you need to configure **two or three** of the following, in addition to `"en_high"` or `"en_low"`, depending on your motor driver:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
@@ -150,6 +150,7 @@ Inside the `pins` struct you need to configure **two or three** of the following
 | `b` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "IN2" or "B" pin is wired to. |
 | `dir` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's direction ("DIR") pin is wired to. |
 | `pwm` | string | **Required** for some drivers | Board {{< glossary_tooltip term_id="pin-number" text="pin number" >}} this motor driver's "PWM" pin is wired to. |
+| `en_high` / `en_low` | string | Optional | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to this struct. If you need a low signal use `en_low`. |
 
 {{% alert title="Important" color="note" %}}
 
