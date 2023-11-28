@@ -49,8 +49,8 @@ You could then run queries against that data to search for outliers or edge case
 
 For more information about working with the data management service, see the following:
 
-- [Query Data with SQL or MQL](/data/query/)
-- [View and Filter Data](/data/view/)
-- [Export Data Using the Viam CLI](/data/export/)
+- [Query Data with SQL or MQL](/data/query/): Learn more about querying your data using SQL or MQL.
+- [View and Filter Data](/data/view/): View your synced data directly in the Viam app, and filter that data based on common search criteria.
+- [Export Data Using the Viam CLI](/data/export/): Export your synced data from the Viam cloud.
 
 You can also explore our [tutorials](/tutorials/) for more ideas.
