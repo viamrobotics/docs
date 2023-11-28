@@ -12,7 +12,7 @@ aliases:
 ---
 
 `webcam` is the general camera model.
-If the camera drivers are among those in [this mediadevices repository](https://github.com/pion/mediadevices). the camera will work with the webcam model.
+If the camera drivers are among those in [this mediadevices repository](https://github.com/pion/mediadevices), the camera will work with the webcam model.
 
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
