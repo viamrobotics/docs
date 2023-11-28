@@ -15,7 +15,7 @@ aliases:
 # SME: #team-bucket
 ---
 
-A power sensor is a device that reports measurements of the voltage, current and power consumption in your robot's system.
+A power sensor is a device that reports measurements of the voltage, current, and power consumption in your robot's system.
 Integrate this component to monitor your power levels.
 
 ## Related Services

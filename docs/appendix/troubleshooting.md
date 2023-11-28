@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
 linkTitle: "Troubleshooting"
-weight: 130
+weight: 40
 type: "docs"
 description: "A guide to basic troubleshooting of a Viam-based robotic system, with easy fixes to common problems."
 ---
