@@ -11,6 +11,10 @@ imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
 ---
 
+Deploy an image classification model onto your machine with Viam's machine learning (ML) service.
+Do this all on one platform with Viam's data management service: collect data, create a dataset and label it, train or upload an ML model, and deploy the model.
+Then, test if your model works for classifying objects in a camera stream or existing images with the `mlmodel` classification model of vision service.
+
 <table>
   <tr>
     <th>{{<imgproc src="/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
