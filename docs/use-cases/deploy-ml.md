@@ -11,7 +11,7 @@ imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
 ---
 
-Deploy an image classification model onto your machine with Viam's machine learning (ML) service.
+Create and deploy an image classification model onto your machine with Viam's machine learning (ML) capabilities.
 Do this all on one platform with Viam's data management service: collect data, create a dataset and label it, train or upload an ML model, and deploy the model.
 Then, test if your model works for classifying objects in a camera stream or existing images with the `mlmodel` classification model of vision service.
 
@@ -19,13 +19,13 @@ Then, test if your model works for classifying objects in a camera stream or exi
   <tr>
     <th>{{<imgproc src="/ml/collect.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Collect data">}}
       <b>1. Collect</b>
-      <p>Start by collecting data from your cameras, sensors, or any other source on your machine with the <a href="/data/">data management service</a>. You can <a href="/data/view/">view the data</a> on the <b>Data tab</b>.</p>
+      <p>Start by collecting images from your cameras with the <a href="/data/">data management service</a>. You can <a href="/data/view/">view the data</a> on the <b>Data tab</b>.</p>
     </th>
   </tr>
   <tr>
     <th>{{<imgproc src="/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
       <b>2. Create a Dataset and Label</b>
-      <p>Once you have collected data, <a href="/data/dataset/">label your data and create a dataset</a> in preparation for training machine learning models.</p>
+      <p>Once you have enough images of the objects you'd like to classify, <a href="/data/dataset/">label your data and create a dataset</a> in preparation for training classification models.</p>
     </th>
   </tr>
   <tr>
@@ -59,7 +59,7 @@ Then, test if your model works for classifying objects in a camera stream or exi
 After testing your classifier, see the following to further explore Viam's data management and computer vision capabilities:
 
 - [Export Data Using the Viam CLI](/data/export/): Export your synced data from the Viam cloud.
-- [2D Object Detection](/ml/vision/detection/): configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
+- [2D Object Detection](/ml/vision/detection/): Configure your machine's camera to draw a bounding box around detected objects, based on a machine learning model.
 - [Update an existing ML model](/ml/train-model/#train-a-new-version-of-a-model): Refine an existing ML model you have trained, and select which model version to deploy.
 
 You can also explore our [tutorials](/tutorials/) for more ideas.
