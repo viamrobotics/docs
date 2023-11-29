@@ -1,0 +1,5 @@
+{{ $color := .Get "color" }}
+{{ $title := .Get "title" }}
+<div >
+  <h3 id="{{ $title }}"><span class="changelog changelog-{{ $color }}">{{ $color }}</span> {{ $title }}</h3>
+</div>
