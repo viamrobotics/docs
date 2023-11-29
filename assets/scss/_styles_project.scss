@@ -1543,18 +1543,16 @@ input[type=search]::-webkit-search-cancel-button {
 // Changelog labels
 
 .changelog {
-  text-transform:uppercase;
+  text-transform: uppercase;
   background-color: whitesmoke;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
-  margin: 0.1rem;
-  font-size: 0.833rem !important;
-  font-weight: bold;
+  font-size: 1rem !important;
+  //font-weight: 500;
+  line-height: 1.3;
 }
 
 .changelog-added {
-  //color: #00ef83;
-  //border: 1px solid #00ef83;
   background-color: #00ef83;
 }
 
