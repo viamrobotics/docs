@@ -137,12 +137,12 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
    ```sh {class="command-line" data-prompt=">"}
-   mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username db-user-<YOUR-ORG-ID>
+   mongosh "mongodb://<YOUR-DB-HOSTNAME>" --tls --authenticationDatabase admin --username db-user-<YOUR-ORG-ID>
    ```
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
+   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
    - `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
      The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
 

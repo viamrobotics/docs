@@ -32,7 +32,7 @@ If the underlying data matching the filter changes because data is deleted or mo
 You can label your data with:
 
 - [Bounding boxes](#bounding-boxes), which you can use to [train object detection models](/ml/train-model/#train-a-model).
-- [Image tags](#image-tags), which you can use to [image classification models](/ml/train-model/#train-a-model).
+- [Image tags](#image-tags), which you can use to train [image classification models](/ml/train-model/#train-a-model).
 
 ### Bounding boxes
 
@@ -115,9 +115,16 @@ You can click on any image in the dataset and use its appearing menu in order to
 
 To train a model on a dataset, see [Train a model](/ml/train-model/).
 
+### Rename a dataset
+
+To rename a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets).
+Then right click on the dataset and click on **Rename** in the menu that appears, enter a new name and hit enter.
+Alternatively, you can also click on the dataset and rename it from the three-dot icon next to the dataset name.
+
 ### Delete a dataset
 
-To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on the **Delete** button that appears.
+To delete a dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets), right click on the dataset and click on **Delete** in the menu that appears.
+Alternatively, you can also click on the dataset and delete it from the three-dot icon next to the dataset name.
 
 ## Next Steps
 

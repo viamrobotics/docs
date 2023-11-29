@@ -38,7 +38,7 @@ pip3 install opencv-python
    {{< /alert >}}
 
    Example of good images:
-   ![Example of good images](/build/configure/components/camera/calibrate/ExampleImages.png)
+   ![Example of good images](/build/configure/components/camera/calibrate/example-images.png)
 
 3. Save [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
 4. Run `python3 cameraCalib.py YOUR_PICTURES_DIRECTORY`.

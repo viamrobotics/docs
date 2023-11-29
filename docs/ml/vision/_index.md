@@ -1,6 +1,6 @@
 ---
 title: "Use Computer Vision with the Vision Service"
-linkTitle: "Use Computer Vision"
+linkTitle: "Computer Vision"
 weight: 90
 type: "docs"
 description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
