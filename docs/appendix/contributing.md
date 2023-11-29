@@ -164,7 +164,7 @@ A tutorial helps readers to learn skills by doing something meaningful and attai
   Description or introduction.
   Possibly containing further subsections.
 
-  ## List or table of items
+  ## List or table of items (heading optional as needed)
 
   - Unordered list of options
 
