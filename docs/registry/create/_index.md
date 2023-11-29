@@ -87,21 +87,21 @@ See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-mod
 
 Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.py</file> or <file>services/\<resource-name\>/<resource-name>.py</file> file in the [Python SDK](https://github.com/viamrobotics/viam-python-sdk).
 
-For example, the `base` component subtype is defined in [<file>viam-python-sdk/src/viam/components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py).
+For example, the `base` component subtype is defined in [<file>components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py#L11).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name\>.go</file> or <file>services/\<resource-name\>/\<resource-name\>.go</file> file in the [RDK](https://github.com/viamrobotics/rdk).
 
-For example, the `base` component subtype is defined in [<file>rdk/components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
+For example, the `base` component subtype is defined in [<file>components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
 
 {{% /tab %}}
 {{% tab name="C++" %}}
 
 Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.cpp</file> or <file>services/\<resource-name\>/<resource-name>.cpp</file> file in the [C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/).
 
-For example, the `base` component subtype is defined in [<file>viam-cpp-sdk/src/viam/components/base/base.cpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp).
+For example, the `base` component subtype is defined in [<file>components/base/base.cpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1076,7 +1076,7 @@ Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Use C++ to [compile](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md) and obtain a single executable for your module:
+Use C++ to compile and obtain a single executable for your module:
 
 - Navigate to your module directory in your terminal.
 - Follow the steps to [build and compile the C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md), which compiles your entry point (main program) file <file>main.cpp</file> and all other <file>.cpp</file> files in the directory, building your module and all dependencies into a single executable file.
@@ -1151,7 +1151,7 @@ fn (c *component) someFunction(a int) {
 
 To enable your C++ module to write log messages to the Viam app, add the following lines to your code:
 
-```go {class="line-numbers linkable-line-numbers"}
+```cpp {class="line-numbers linkable-line-numbers"}
 // Include the boost trivial logger:
 #include <boost/log/trivial.hpp>
 
