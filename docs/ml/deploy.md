@@ -126,15 +126,15 @@ The following parameters are available for a `"tflite_cpu"` model:
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
-| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
-Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
+Save the configuration.
 
-{{< alert title="Info" color="info" >}}
+### Versioning for deployed models
+
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
-{{< /alert >}}
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:
