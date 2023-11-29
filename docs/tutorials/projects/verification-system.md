@@ -143,7 +143,7 @@ To use the facial detector as the verification detector and the people detector 
 Name your service `"security"`.
 
 - As the `"people-detect"` detector serves as both trigger detector 1 and 2, set `"trigger_1_labels"` and `"trigger_2_labels"` to `"Person"` to match the bounding box label of `"Person"` you assigned to images in your dataset when training the object detection model behind this detector.
-- As the verification detector is your facial detector `"face-detect"`, set `"verification_labels"` to match the name(s) you assigned to images in the facial detector modules' `"face_labels"` configuration attribute.
+- As the verification detector is your facial detector `"face-detect"`, set `"verification_labels"` to match each name you assigned to an image in the facial detector modules' `"face_labels"` configuration attribute.
 - Note that `"camera_name": "my_webcam"` matches the name we configured for our source camera.
   If you used a different name for your camera, change the name in the JSON.
 - Edit the other attributes to reflect your desired confidence thresholds and times between states.
