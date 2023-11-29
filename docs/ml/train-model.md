@@ -43,7 +43,7 @@ The model now starts training and you can follow its process in the **Training**
 
 Once the model has finished training, it becomes visible in the **Models** section of the page.
 
-![The trained model](/ml/stars-model.png)
+![The trained model](/ml/petfeeder-model.png)
 
 {{< alert title="Note" color="note" >}}
 
