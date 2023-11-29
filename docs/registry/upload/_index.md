@@ -79,7 +79,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>module_id</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>The id of the module, including its <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a> or <code>organization-id</code> followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
+        <td>The module ID, which includes either the module <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a> or <a href="/fleet/organizations/">organization-id</a>, followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
         <div class="alert alert-caution" role="alert">
       <h4 class="alert-heading">Caution</h4>
 
