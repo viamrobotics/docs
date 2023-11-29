@@ -77,11 +77,11 @@ And their values on a resistor:
 ### LEDs (Light-Emitting Diodes)
 
 Light-emitting diodes come in a variety of form factors:
-![Image of various Light Emitting Diode form factors.](/internals/vector/Verschiedene_LEDs.jpg)
+![Image of various Light Emitting Diode form factors.](/internals/vector/verschiedene-leds.jpg)
 LEDs commonly have two leads, although specialty LEDs are available that are capable of simultaneously displaying two colors or of displaying a blended shade. These specialty LEDs have 4-6 leads and 2-4 LED junctions.
 
 LEDs work by applying a voltage with a positive and negative polarity to the leads in such a manner that the positive voltage is attached to the anode of the LED and the negative voltage lead is attached to the LED's cathode. On a two-pin LED, the longer pin is the anode and the short pin is the cathode.
 
 LEDs require current-limiting resistors to avoid destroying the LED junction during an over-current situation. Always include a current-limiting resistor in basic LED circuits. The following schematic illustrates this circuit:
 
-![This image displays a schematic showing the arrangement of a DC voltage source with the positive lead to the LED's anode, the LED's cathode connected to a one end of a current-limiting resistor and the other end of the voltage drop resistor connected to the negative lead of the voltage source, completing the circuit.](/internals/vector/LED_circuit2.png)
+![This image displays a schematic showing the arrangement of a DC voltage source with the positive lead to the LED's anode, the LED's cathode connected to a one end of a current-limiting resistor and the other end of the voltage drop resistor connected to the negative lead of the voltage source, completing the circuit.](/internals/vector/led-circuit2.png)
