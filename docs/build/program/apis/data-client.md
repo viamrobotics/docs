@@ -717,10 +717,10 @@ Add a bounding box to an image specified by its id.
 
 - `binary_id` ([viam.proto.app.data.BinaryID](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)): The ID of the image to add the bounding box to.
 - `label` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A label for the bounding box.
-- `x_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Min X value of the bounding box normalized from 0 to 1.
-- `y_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Min Y value of the bounding box normalized from 0 to 1.
-- `x_max_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Max X value of the bounding box normalized from 0 to 1.
-- `y_max_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Max Y value of the bounding box normalized from 0 to 1.
+- `x_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Minimum X value of the bounding box normalized from `0` to `1`.
+- `y_min_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Minimum Y value of the bounding box normalized from `0` to `1`.
+- `x_max_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Maximum X value of the bounding box normalized from `0` to `1`.
+- `y_max_normalized` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): Maximum Y value of the bounding box normalized from `0` to `1`.
 
 **Returns:**
 
@@ -731,7 +731,24 @@ Add a bounding box to an image specified by its id.
 - `GRPCError` – If the X or Y values are outside of the [0, 1] range.
 
 ```python {class="line-numbers linkable-line-numbers"}
-placeholder
+from viam.proto.app.data import BinaryID
+
+MY_BINARY_ID = BinaryID(
+    file_id=your-file_id,
+    organization_id=your-org-id,
+    location_id=your-location-id
+)
+
+bbox_label = await data_client.add_bounding_box_to_image_by_id(
+  binary_id=MY_BINARY_ID,
+  label="label",
+  x_min_normalized=0,
+  y_min_normalized=.1,
+  x_max_normalized=.2,
+  y_max_normalized=.3,
+)
+
+print(bbox_label)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
@@ -756,7 +773,18 @@ Removes a bounding box from an image specified by its id.
 - None.
 
 ```python {class="line-numbers linkable-line-numbers"}
-placeholder
+from viam.proto.app.data import BinaryID
+
+MY_BINARY_ID = BinaryID(
+    file_id=your-file_id,
+    organization_id=your-org-id,
+    location_id=your-location-id
+)
+
+await data_client.remove_bounding_box_from_image_by_id(
+  binary_id=MY_BINARY_ID,
+  bbox_id="your-bounding-box-id-to-delete"
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
@@ -792,7 +820,20 @@ Uploads the metadata and contents of streaming binary data.
 - `GRPCError` – If an invalid part ID is passed.
 
 ```python {class="line-numbers linkable-line-numbers"}
-placeholder
+time_requested = datetime(2023, 6, 5, 11)
+time_received = datetime(2023, 6, 5, 11, 0, 3)
+
+file_id = await data_client.streaming_data_capture_upload(
+    data="byte-data-to-upload",
+    part_id="INSERT YOUR PART ID",
+    file_ext="png"
+    component_type='motor',
+    component_name='left_motor',
+    method_name='IsPowered',
+    data_request_times=[(time_requested, time_received)],
+    tags=["tag_1", "tag_2"]
+
+print(file_id)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.streaming_data_capture_upload).
