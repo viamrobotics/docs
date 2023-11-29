@@ -675,6 +675,7 @@ file_id = await data_client.streaming_data_capture_upload(
     method_name='IsPowered',
     data_request_times=[(time_requested, time_received)],
     tags=["tag_1", "tag_2"]
+)
 
 print(file_id)
 ```
