@@ -75,7 +75,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   (possibly more Subconcept sections)
 
-  ### Do x with Subconcept (optional)
+  ### Do x with subconcept (optional)
 
   Information for what to do with the concept (possibly linking to how-tos or containing how-tos).
 
@@ -103,7 +103,7 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
 
   (possibly more Do X sections)
 
-  ## Next Steps
+  ## Next steps
 
   Links to related content.
   ```
@@ -170,7 +170,7 @@ A tutorial helps readers to learn skills by doing something meaningful and attai
 
   (possibly more information for each option)
 
-  ## Next Steps
+  ## Next steps
 
   Links to related content.
   ```
