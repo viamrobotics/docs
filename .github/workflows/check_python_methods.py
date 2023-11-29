@@ -232,7 +232,7 @@ def parse(type, names):
                     with open(f"dist/{services_page_mapping[service]}/index.html") as fp:
                         soup2 = BeautifulSoup(fp, 'html.parser')
                 else:
-                    with open(f"dist/build/configure/{type}/{service}/index.html") as fp:
+                    with open(f"dist/{type}/{service}/index.html") as fp:
                         soup2 = BeautifulSoup(fp, 'html.parser')
         else:
             if type == "app" or type == "robot":

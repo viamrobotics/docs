@@ -1,7 +1,7 @@
 ---
 title: "Data Management"
 linkTitle: "Data Management"
-weight: 60
+weight: 440
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
@@ -13,7 +13,7 @@ aliases:
   - "/data-management/"
   - "/data-management/"
   - "/services/data/"
-icon: "/build/configure/services/icons/data-capture.svg"
+icon: "/services/icons/data-capture.svg"
 menuindent: true
 # SME: Alexa Greenberg
 ---
@@ -37,15 +37,15 @@ Once you have captured and synced data, you can:
 ## Used with
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/components/arm/">}}
-{{< relatedcard link="/build/configure/components/board/">}}
-{{< relatedcard link="/build/configure/components/camera/">}}
-{{< relatedcard link="/build/configure/components/encoder/">}}
-{{< relatedcard link="/build/configure/components/gantry/">}}
-{{< relatedcard link="/build/configure/components/motor/">}}
-{{< relatedcard link="/build/configure/components/movement-sensor/">}}
-{{< relatedcard link="/build/configure/components/sensor/">}}
-{{< relatedcard link="/build/configure/components/servo/">}}
+{{< relatedcard link="/components/arm/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< relatedcard link="/components/encoder/">}}
+{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/components/motor/">}}
+{{< relatedcard link="/components/movement-sensor/">}}
+{{< relatedcard link="/components/sensor/">}}
+{{< relatedcard link="/components/servo/">}}
 {{< /cards >}}
 
 You can configure capture frequency individually for each component.
@@ -127,7 +127,7 @@ You can chose to:
 
 See [Query Data](/data/query/) for instructions on using each of these approaches.
 
-Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried in this fashion.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 To search other types of data, such as images, see [Filter Data](/data/view/#filter-data).
 
 ### Train and deploy machine learning

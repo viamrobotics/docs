@@ -37,17 +37,17 @@ Click **Save Config** to save the new configuration.
 
 The fragment adds the following components to your robot's JSON configuration:
 
-- A [board component](/build/configure/components/board/pi/) named `local` representing the Raspberry Pi
+- A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
   - An I<sup>2</sup>C bus for connection to the accelerometer.
-- Two [motors](/build/configure/components/motor/gpio/) (`right` and `left`)
+- Two [motors](/components/motor/gpio/) (`right` and `left`)
   - The configured pin numbers correspond to where the motor drivers are connected to the board.
-- Two [encoders](/build/configure/components/encoder/single/), one for each motor
-- A wheeled [base](/build/configure/components/base/), an abstraction that coordinates the movement of the right and left motors
+- Two [encoders](/components/encoder/single/), one for each motor
+- A wheeled [base](/components/base/), an abstraction that coordinates the movement of the right and left motors
   - Width between the wheel centers: 260 mm
   - Wheel circumference: 217 mm
   - Spin slip factor: 1
-- A webcam [camera](/build/configure/components/camera/webcam/)
-- An [accelerometer](/build/configure/components/movement-sensor/adxl345/)
+- A webcam [camera](/components/camera/webcam/)
+- An [accelerometer](/components/movement-sensor/adxl345/)
 
 {{% alert title="Info" color="info" %}}
 

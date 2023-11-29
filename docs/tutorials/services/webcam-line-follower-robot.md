@@ -49,7 +49,7 @@ To build your own line follower robot, you need the following hardware:
 | Hardware | Avg. price |
 | -------- | ----------------- |
 | **A single board computer**: This tutorial uses a Raspberry Pi running a 64-bit Linux distribution. If you use a different board, configure your {{< glossary_tooltip term_id="board" text="board" >}} using the [instructions for your board](/get-started/installation/#prepare-your-board). | $60 |
-| **A wheeled [base component](/build/configure/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
+| **A wheeled [base component](/components/base/)**: This tutorial uses a [SCUTTLE robot](https://www.scuttlerobot.org/shop/), but any other wheeled base works as long as it can carry the board and camera, and is capable of turning in place. | $99+ |
 | **RGB camera**: A common off-the-shelf webcam (such as the [EMEET C690](https://www.amazon.com/Webcam-Streaming-Recording-Built-Correction/dp/B07M6Y7355/ref=sr_1_5?keywords=webcam&qid=1658796392&sr=8-5&th=1)) connected to the Pi’s USB port, or something like an [ArduCam](https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/) with a ribbon connector to the Pi’s camera module port. **You must mount the camera on the front of the rover, pointing down towards the floor.** | $30 |
 | **Colored tape**: Any color is suitable as long as the color is suitably different from the floor color. For our tutorial, we used green electrical tape to stand out against our grey carpet. | $4 |
 | **Floor space**: Non-shiny floors tend to work best. | - |
@@ -73,24 +73,24 @@ Click on the **Components** subtab.
 
    Click **Create component**.
    Select the type `board`, and select the `pi` model.
-   Enter `local` as the name of your [board component](/build/configure/components/board/), then click **Create**.
+   Enter `local` as the name of your [board component](/components/board/), then click **Create**.
 
 2. **Add the motors.**
 
    Click **Create component**.
    Select the type `motor`, and select the `gpio` model.
-   Enter `leftm` as the name of your [motor component](/build/configure/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
+   Enter `leftm` as the name of your [motor component](/components/motor/), then click **Create** and fill in the appropriate properties for your motor.
    Repeat the same for the right motor and call it `rightm`.
 
 3. **Add the base.**
 
    Click **Create component**.
    Select the type `base`, and select the `wheeled` model.
-   Enter `scuttlebase` as the name for your [base component](/build/configure/components/base/), then click **Create** and select the motors.
+   Enter `scuttlebase` as the name for your [base component](/components/base/), then click **Create** and select the motors.
 
 4. **Add the camera.**
 
-   Create a [camera component](/build/configure/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
+   Create a [camera component](/components/camera/) with the name `my_camera`, the type `camera` and the model `webcam`.
    Click **Create component** to add the camera.
    If your robot is connected, you can click the **Video Path** field in the new camera panel to reveal a dropdown populated with camera paths that have been identified on your machine.
    Select the path to the camera you want to use.
@@ -104,7 +104,7 @@ On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configura
 
 {{< alert title="Note" color="note" >}}
 Your `"video_path"` value may be different.
-To find yours, follow [these instructions](/build/configure/components/camera/webcam/#using-video_path).
+To find yours, follow [these instructions](/components/camera/webcam/#using-video_path).
 {{< /alert >}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -237,11 +237,11 @@ We used `rgb(25,255,217)` or `#19FFD9` to match the color of our green electrica
 
 3. (optional) **Add a `transform` camera as a visualizer**
 
-If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/build/configure/components/camera/transform/).
+If you'd like to see the bounding boxes that the color detector identifies, you'll need to configure a [transform camera](/components/camera/transform/).
 This isn't another piece of hardware, but rather a virtual "camera" that takes in the stream from the webcam we just configured and outputs a stream overlaid with bounding boxes representing the color detections.
 
 Click on the **Components** subtab and click **Create component**.
-Add a [transform camera](/build/configure/components/camera/transform/) with type `camera` and model `transform`.
+Add a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
 Name it `transform_cam` and click **Create**.
 
 Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:

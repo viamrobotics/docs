@@ -167,7 +167,7 @@ Navigate to the **Config** tab of your robot's page and select your main part fr
 Click the **Components** subtab.
 Click the **Create component** button in the lower-left corner.
 
-Add your [board](/build/configure/components/board/) with type `board` and model `pi`.
+Add your [board](/components/board/) with type `board` and model `pi`.
 Name your board `myBoard` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](/tutorials/claw-game/app-component-myboard.png)
@@ -214,7 +214,7 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 Click the **Components** subtab.
 Click the **Create component** button in the lower-left corner.
 
-Add your [arm](/build/configure/components/arm/) with type `arm`, and model `xArm6`.
+Add your [arm](/components/arm/) with type `arm`, and model `xArm6`.
 Name it `myArm` and click **Create**.
 
 ![Create component panel, with the name attribute filled as myArm, type attribute filled as arm and model attribute filled as xArm6. In the Attributes section, host is filled 10.1.1.26 and in Frame section, there is a world frame.](/tutorials/claw-game/app-myarm.png)
@@ -222,7 +222,7 @@ Name it `myArm` and click **Create**.
 Configure the arm component with the arm's IP address in the `host` field under **Attributes**.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
 
-For more information on xArm6 configuration, see [Configure an xArm6 Arm](/build/configure/components/arm/xarm6/).
+For more information on xArm6 configuration, see [Configure an xArm6 Arm](/components/arm/xarm6/).
 
 Click **Save config** in the lower-left corner of the screen.
 
@@ -277,7 +277,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click **Create component** and add your [gripper](/build/configure/components/gripper/).
+Click **Create component** and add your [gripper](/components/gripper/).
 Choose type `gripper` and model `fake`.
 Name it `gripper` and click **Create**.
 

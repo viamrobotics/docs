@@ -9,7 +9,7 @@ images: ["/get-started/installation/thumbnails/manage.png"]
 description: "Building a local robot configuration file for use with viam-server."
 ---
 
-The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/build/configure/components/) and software [services](/build/configure/services/)) it has access to, as well as any relevant parameters for those resources.
+The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
 
 When you [install `viam-server`](/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
 
@@ -66,7 +66,7 @@ If your robot temporarily disconnects from the internet, its configuration is ca
 ## Example JSON configuration file
 
 If you want to create your own JSON configuration file without using [the Viam app](https://app.viam.com), you can start with the following example file.
-This file contains some basic example [component](/build/configure/components/) and [service](/build/configure/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
+This file contains some basic example [component](/components/) and [service](/services/) configurations, as well as an example of a {{< glossary_tooltip term_id="process" text="process" >}}:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
