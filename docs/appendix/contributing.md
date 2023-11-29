@@ -110,7 +110,8 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
 
   {{% /expand %}}
 
-- **Tutorials**: A learning-oriented piece of content that functions as a lesson for the reader. A tutorial helps readers to learn skills by doing something meaningful and attainable.
+- **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
+A tutorial helps readers to learn skills by doing something meaningful and attainable.
 
   {{% expand "Click to view template" %}}
 
@@ -150,7 +151,7 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
 
   {{% /expand %}}
 
-- **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, api methods, etc.).
+- **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
   Examples include the [API pages](https://docs.viam.com/build/program/apis/) as well as [component and service pages](https://docs.viam.com/build/configure/components/arm/).
 
   Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/build/configure/components/component/_index.md).
@@ -160,7 +161,8 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
   ```md
   # Product, Feature or API Name
 
-  Description or introduction. Possibly containing further subsections.
+  Description or introduction.
+  Possibly containing further subsections.
 
   ## List or table of items
 
