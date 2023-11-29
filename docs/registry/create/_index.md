@@ -546,9 +546,11 @@ The following example module registers a modular resource implementing Viam's bu
   <summary>Click to view sample code for <file>my_base.cpp</file></summary>
 
 ```cpp {class="line-numbers linkable-line-numbers"}
+#include "my_base.hpp"
+
+#include <exception>
+#include <fstream>
 #include <iostream>
-#include <memory>
-#include <signal.h>
 #include <sstream>
 
 #include <grpcpp/support/status.h>
@@ -558,47 +560,7 @@ The following example module registers a modular resource implementing Viam's bu
 #include <viam/sdk/config/resource.hpp>
 #include <viam/sdk/resource/resource.hpp>
 
-#include <boost/log/trivial.hpp>
-
 using namespace viam::sdk;
-
-// `MyBase` inherits from the `Base` class defined in the Viam C++ SDK and
-// implements some of the relevant methods along with `reconfigure`. It also
-// specifies a static `validate` method that checks config validity.
-class MyBase : public Base {
-   public:
-    MyBase(Dependencies deps, ResourceConfig cfg) : Base(cfg.name()) {
-        this->reconfigure(deps, cfg);
-    };
-    void reconfigure(Dependencies deps, ResourceConfig cfg) override;
-    static std::vector<std::string> validate(ResourceConfig cfg);
-
-    bool is_moving() override;
-    void stop(const AttributeMap& extra) override;
-    void set_power(const Vector3& linear,
-                   const Vector3& angular,
-                   const AttributeMap& extra) override;
-
-    AttributeMap do_command(const AttributeMap& command) override;
-    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
-    Base::properties get_properties(const AttributeMap& extra) override;
-
-    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
-        throw std::runtime_error("move_straight unimplemented");
-    }
-    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
-        throw std::runtime_error("spin unimplemented");
-    }
-    void set_velocity(const Vector3& linear,
-                      const Vector3& angular,
-                      const AttributeMap& extra) override {
-        throw std::runtime_error("set_velocity unimplemented");
-    }
-
-   private:
-    std::shared_ptr<Motor> left_;
-    std::shared_ptr<Motor> right_;
-};
 
 std::string find_motor(ResourceConfig cfg, std::string motor_name) {
     auto base_name = cfg.name();
@@ -876,7 +838,8 @@ When executed, the main program registers the `MyBase` custom model custom model
 #include <viam/sdk/rpc/dial.hpp>
 #include <viam/sdk/rpc/server.hpp>
 
-#include "base/impl.hpp"
+// NOTE: You must update the following line to import your local "my_base.hpp" header file:
+#include "my_base.hpp"
 
 using namespace viam::sdk;
 
