@@ -49,5 +49,5 @@ You could then run queries against that data to search for outliers or edge case
 {{% card link="/data/query/" %}}
 {{% card link="/data/view/" %}}
 {{% card link="/data/export/" %}}
-{{% card link="/tutorials" %}}
+{{% card link="/tutorials/" %}}
 {{< /cards >}}
