@@ -7,8 +7,7 @@ description: "Configure a Simultaneous Localization And Mapping (SLAM) service w
 tags: ["slam", "services"]
 icon: "/services/icons/slam.svg"
 aliases:
-  - "/services/slam/run-slam-cartographer/"
-  - "/services/slam/cartographer/"
+  - "/services/slam/run-slam-cartographer"
 # SMEs: Kat, Jeremy
 ---
 
@@ -115,7 +114,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    This example JSON configuration:
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
-   - configures the `viam:slam:cartographer` service and the [data management service](/data/)
+   - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
    - adds an `viam:lidar:rplidar` camera with data management configured
 
    <br>
@@ -199,13 +198,13 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
+   [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/configure-data-capture/).
    {{< /alert >}}
 
    For more information about the configuration attributes, see [Attributes](#attributes).
 
-2. Start a mapping session
+1. Start a mapping session
 
    Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
@@ -217,30 +216,30 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    Make sure to either **manually refresh**, or **change the refresh frequency** to something other than `Manual`.
 
-   ![slam RC card start session](/mobility/slam/slam-RC-card-start-session.png)
+   ![slam RC card start session](/services/slam/slam-RC-card-start-session.png)
 
    While the slam session is starting, you will see a loading screen.
 
-   ![slam RC card wait for session to finish starting](/mobility/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
+   ![slam RC card wait for session to finish starting](/services/slam/slam-RC-card-wait-for-session-to-finish-starting.png)
 
    Once the slam session has finished starting, your first pointcloud will appear.
 
-   ![slam RC card first pointcloud](/mobility/slam/slam-RC-card-first-pointcloud.png)
+   ![slam RC card first pointcloud](/services/slam/slam-RC-card-first-pointcloud.png)
 
    You can see that your cloud slam session is in progress from your **Location** page's **SLAM library** tab.
 
-   ![offline mapping maps computing table](/mobility/slam/offline-mapping-maps-computing-table.png)
+   ![offline mapping maps computing table](/services/slam/offline-mapping-maps-computing-table.png)
 
    When you are ready to end the slam session, return to your robot's **Control** tab and click **End session**.
    If you do not click **End session**, the slam session will automatically end after 45 minutes.
 
    Once the session has ended, the map is saved to your **Location** page's **SLAM library** tab.
 
-   ![offline mapping available maps](/mobility/slam/offline-mapping-available-maps.png)
+   ![offline mapping available maps](/services/slam/offline-mapping-available-maps.png)
 
    You can click `View map` to view the map in a dynamic pointcloud viewer.
 
-   ![slam library view map](/mobility/slam/slam-library-view-map.png)
+   ![slam library view map](/services/slam/slam-library-view-map.png)
 
 ### Update an existing map
 
@@ -262,7 +261,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
    This example JSON configuration:
 
    - adds the `viam:rplidar` and the `viam:cartographer` modules
-   - configures the `viam:slam:cartographer` service and the [data management service](/data/)
+   - configures the `viam:slam:cartographer` service and the [data management service](/services/data/)
    - adds an `viam:lidar:rplidar` camera with data management configured
    - specifies the `slam_map` to be updated in the `packages`
 
@@ -356,8 +355,8 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-   To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
+   [Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/configure-data-capture/).
    {{< /alert >}}
 
    For more information about the configuration attributes, see [Attributes](#attributes).
@@ -472,8 +471,8 @@ This example JSON configuration:
     {{< alert title="Tip" color="tip" >}}
 
 Be aware that data is not only captured when a slam session is running.
-[Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
+[Data Capture](/services/data/configure-data-capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/services/data/configure-data-capture/).
 
     {{< /alert >}}
 
@@ -488,7 +487,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
     Since the map will not change, nothing new will be added to this robot's location's **SLAM library**.
 
-    ![slam RC card localize only](/mobility/slam/slam-RC-card-localize-only.png)
+    ![slam RC card localize only](/services/slam/slam-RC-card-localize-only.png)
 
     {{% alert title="Info" color="info" %}}
 
@@ -527,11 +526,11 @@ To create a map, you must have already captured LiDAR data in the location in wh
 The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a robot named `test`.
 Selecting a row opens a pane to the right that contains more information, such as the `Robot ID` of the robot the component belongs to:
 
-{{<imgproc src="/mobility/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
+{{<imgproc src="/services/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
 
 Example of previously captured IMU data:
 
-{{<imgproc src="/mobility/slam/offline-mapping-imu-data.png" resize="1200x" declaredimensions=true alt="UI showing captured sensor data">}}
+{{<imgproc src="/services/slam/offline-mapping-imu-data.png" resize="1200x" declaredimensions=true alt="UI showing captured sensor data">}}
 
 ### Create or update a map
 
@@ -545,7 +544,7 @@ Navigate to the **SLAM library** tab on your location page, and click **Make new
 1. At the bottom, you can see the total number of PCD files and movement sensor data points that will be processed.
 1. Click **Generate map**.
 
-{{<imgproc src="/mobility/slam/offline-mapping-generate-map.png" resize="1200x" declaredimensions=true alt="UI for creating a new map from captured data">}}
+{{<imgproc src="/services/slam/offline-mapping-generate-map.png" resize="1200x" declaredimensions=true alt="UI for creating a new map from captured data">}}
 
 ### View the Map
 

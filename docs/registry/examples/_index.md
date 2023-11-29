@@ -30,10 +30,7 @@ Once you have created a modular resource, you can test your modular resource usi
 ## Tutorials
 
 {{< cards >}}
-{{% card link="/registry/examples/rplidar/" customTitle="Add an RPlidar camera as a Modular Resource" %}}
 {{% card link="/registry/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
-{{% card link="/registry/examples/csi/" customTitle="Add a CSI Camera as a Modular Resource" %}}
-{{% card link="/components/movement-sensor/viam-visual-odometry/" customTitle="Add a Visual Odometry sensor as a Modular Resource" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/registry/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
 {{% card link="/registry/examples/triton/" customTitle="Add a Triton MLModel Modular Service"  %}}

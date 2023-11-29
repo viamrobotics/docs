@@ -1,14 +1,12 @@
 ---
 title: "SLAM Service"
 linkTitle: "SLAM"
-weight: 30
+weight: 70
 type: "docs"
 description: "Simultaneous Localization And Mapping (SLAM) allows your robot to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
 icon: "/services/icons/slam.svg"
 no_list: true
-aliases:
-  - "/services/slam/"
 # SMEs: Kat, Jeremy
 ---
 
@@ -24,12 +22,12 @@ SLAM is an important area of ongoing research in robotics, particularly for mobi
 The Viam SLAM service supports the integration of SLAM as a service on your robot.
 You can conduct SLAM with data collected live by a [RPlidar](https://app.viam.com/module/viam/rplidar) or with LIDAR data you provide in configuration, and easily view the map you build on the **SLAM library** tab of your location's page in the [Viam app](https://app.viam.com):
 
-![Completed SLAM maps in the SLAM library tab](/mobility/slam/view-map-page.png)
+![Completed SLAM maps in the SLAM library tab](/services/slam/view-map-page.png)
 
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/components/camera/" alt_title="RPlidar" required="yes" alt_link="https://app.viam.com/module/viam/rplidar">}}
+{{< relatedcard link="/components/camera/" alt_title="RPlidar" required="yes" alt_link="https://app.viam.com/module/viam/rplidar">}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
