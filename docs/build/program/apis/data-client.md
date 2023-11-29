@@ -634,6 +634,56 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{% /tab %}}
 {{< /tabs >}}
 
+### StreamingDataCaptureUpload
+
+Upload the contents of streaming binary data and the relevant metadata to the [Viam app](https://app.viam.com).
+Uploaded streaming data can be found under the [**Data** tab](https://app.viam.com/data).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): the data to be uploaded, represented in bytes.
+- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the resource associated with the file.
+- `file_ext` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): File extension type for the data. required for determining MIME type.
+- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional type of the component associated with the file (For example, “movement_sensor”).
+- `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the component associated with the file.
+- `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the method associated with the file.
+- `method_parameters` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional dictionary of the method parameters. No longer in active use.
+- `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
+- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
+
+**Returns:**
+
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): the `file_id` of the uploaded data.
+
+**Raises:**
+
+- `GRPCError` – If an invalid part ID is passed.
+
+```python {class="line-numbers linkable-line-numbers"}
+time_requested = datetime(2023, 6, 5, 11)
+time_received = datetime(2023, 6, 5, 11, 0, 3)
+
+file_id = await data_client.streaming_data_capture_upload(
+    data="byte-data-to-upload",
+    part_id="INSERT YOUR PART ID",
+    file_ext="png"
+    component_type='motor',
+    component_name='left_motor',
+    method_name='IsPowered',
+    data_request_times=[(time_requested, time_received)],
+    tags=["tag_1", "tag_2"]
+
+print(file_id)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.streaming_data_capture_upload).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### FileUpload
 
 Upload arbitrary files stored on your machine to the [Viam app](https://app.viam.com) by file name.
@@ -788,55 +838,6 @@ await data_client.remove_bounding_box_from_image_by_id(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### StreamingDataCaptureUpload
-
-Uploads the metadata and contents of streaming binary data.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): the data to be uploaded, represented in bytes.
-- `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the resource associated with the file.
-- `file_ext` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): File extension type for the data. required for determining MIME type.
-- `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional type of the component associated with the file (For example, “movement_sensor”).
-- `component_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the component associated with the file.
-- `method_name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional name of the method associated with the file.
-- `method_parameters` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional dictionary of the method parameters. No longer in active use.
-- `data_request_times` [(Optional[Tuple[datetime.datetime, datetime.datetime]])](https://docs.python.org/3/library/stdtypes.html#tuples): Optional tuple containing [`datetime`](https://docs.python.org/3/library/datetime.html) objects denoting the times this data was requested and received by the appropriate sensor.
-- `tags` [(Optional[List[str]])](https://docs.python.org/3/library/stdtypes.html#typesseq-list): Optional list of [image tags](/manage/data/label/#image-tags) to allow for tag-based data filtering when retrieving data.
-
-**Returns:**
-
-- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): the `file_id` of the uploaded data.
-
-**Raises:**
-
-- `GRPCError` – If an invalid part ID is passed.
-
-```python {class="line-numbers linkable-line-numbers"}
-time_requested = datetime(2023, 6, 5, 11)
-time_received = datetime(2023, 6, 5, 11, 0, 3)
-
-file_id = await data_client.streaming_data_capture_upload(
-    data="byte-data-to-upload",
-    part_id="INSERT YOUR PART ID",
-    file_ext="png"
-    component_type='motor',
-    component_name='left_motor',
-    method_name='IsPowered',
-    data_request_times=[(time_requested, time_received)],
-    tags=["tag_1", "tag_2"]
-
-print(file_id)
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.streaming_data_capture_upload).
 
 {{% /tab %}}
 {{< /tabs >}}
