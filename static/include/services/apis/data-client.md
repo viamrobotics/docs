@@ -16,8 +16,8 @@ Method Name | Description
 [`GetDatabaseConnection`](/build/program/apis/data-client/#getdatabaseconnection) | Get a connection to access a MongoDB Atlas Data federation instance.
 [`BinaryDataCaptureUpload`](/build/program/apis/data-client/#binarydatacaptureupload) | Upload binary data collected on your machine through a specific component and the relevant metadata to the Viam app.
 [`TabularDataCaptureUpload`](/build/program/apis/data-client/#tabulardatacaptureupload) | Upload tabular data collected on your machine through a specific component and the relevant metadata to the Viam app.
-[`StreamingDataCaptureUpload`](/program/apis/data-client/#streamingdatacaptureupload) | Upload the contents of streaming binary data and the relevant metadata to the Viam app.
+[`StreamingDataCaptureUpload`](/build/program/apis/data-client/#streamingdatacaptureupload) | Upload the contents of streaming binary data and the relevant metadata to the Viam app.
 [`FileUpload`](/build/program/apis/data-client/#fileupload) | Upload file data stored on your machine and the relevant metadata to the Viam app.
 [`FileUploadFromPath`](/build/program/apis/data-client/#fileuploadfrompath) | Upload file data stored on your machine from the specified filepath and the relevant metadata to the Viam app.
-[`AddBoundingBoxToImageById`](/program/apis/data-client/#addboundingboxtoimagebyid) | Add a bounding box to an image specified by its id.
-[`RemoveBoundingBoxFromImageById`](/program/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its id.
+[`AddBoundingBoxToImageById`](/build/program/apis/data-client/#addboundingboxtoimagebyid) | Add a bounding box to an image specified by its id.
+[`RemoveBoundingBoxFromImageById`](/build/program/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its id.
