@@ -23,7 +23,6 @@ Follow this tutorial to learn how to configure this module and set up your own s
 
 You can use whatever combination of detectors and camera you would like with this module, but follow along with our recommendations to layer an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together, creating a security system with facial recognition.
 
-
 {{< alert title="Requirements" color="note" >}}
 Before configuring your camera, you must [create a robot](/fleet/machines/#add-a-new-robot).
 {{< /alert >}}
@@ -79,8 +78,8 @@ To create a detector that can recognize individual faces, use Viam Lab's `facial
 This is a modular vision service that uses the DeepFace library to perform facial detections.
 
 - Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/).
-Click on the **Services** subtab and click **Create service**.
-Select the `vision` type, then select the `detector:facial-detector` model. Enter a name for your vision service and click **Create**.
+  Click on the **Services** subtab and click **Create service**.
+  Select the `vision` type, then select the `detector:facial-detector` model. Enter a name for your vision service and click **Create**.
 - Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection). Label a photo of the face of each person you want your security system to recognize in `"face_labels"`.
 
 Name this detector `"face-detect"`.
@@ -126,24 +125,18 @@ To use the facial detector as the verification detector and the people detector 
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "trigger_1_confidence": 0.35,
-    "verification_detector": "face-detect",
-    "camera_name": "my-webcam",
-    "trigger_2_confidence": 0.5,
-    "trigger_1_labels": [
-        "Person"
-    ],
-    "trigger_2_labels": [
-        "Person"
-    ],
-    "disable_alarm": false,
-    "trigger_2_detector": "people-detect",
-    "verification_labels": [
-        "my_name"
-    ],
-    "trigger_1_detector": "people-detect",
-    "disarmed_time_s": 10,
-    "countdown_time_s": 10
+  "trigger_1_confidence": 0.35,
+  "verification_detector": "face-detect",
+  "camera_name": "my-webcam",
+  "trigger_2_confidence": 0.5,
+  "trigger_1_labels": ["Person"],
+  "trigger_2_labels": ["Person"],
+  "disable_alarm": false,
+  "trigger_2_detector": "people-detect",
+  "verification_labels": ["my_name"],
+  "trigger_1_detector": "people-detect",
+  "disarmed_time_s": 10,
+  "countdown_time_s": 10
 }
 ```
 
@@ -152,11 +145,12 @@ Name your service `"security"`.
 - As the `"people-detect"` detector serves as both trigger detector 1 and 2, set `"trigger_1_labels"` and `"trigger_2_labels"` to `"Person"` to match the bounding box label of `"Person"` you assigned to images in your dataset when training the object detection model behind this detector.
 - As the verification detector is your facial detector `"face-detect"`, set `"verification_labels"` to match the name(s) you assigned to images in the facial detector modules' `"face_labels"` configuration attribute.
 - Note that `"camera_name": "my_webcam"` matches the name we configured for our source camera.
-If you used a different name for your camera, change the name in the JSON.
+  If you used a different name for your camera, change the name in the JSON.
 - Edit the other attributes to reflect your desired confidence thresholds and times between states.
 
 The following attributes are available for the `viam-labs:classifier:verification-system` model:
 
+<!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `camera_name` | string | **Required** | The name of the camera component to use for source images. |
@@ -183,7 +177,7 @@ Click on the **Components** subtab and click **Create component**. Select the `c
 
 With **Builder** mode selected, copy and paste the following attributes JSON into your camera's **Attributes** box:
 
-```json
+```json {class="line-numbers linkable-line-numbers"}
 {
   "pipeline": [
     {
@@ -218,22 +212,22 @@ For example:
 The module sets up a state machine with 5 states:
 
 1. `TRIGGER_1`: The module begins in this state.
-It is meant to be attached to a coarse, fast detector, like a simple motion detector.
-This state runs the `trigger_1_detector` on every frame, looking for detections with any label from `trigger_1_labels` with at least `trigger_1_confidence`.
-If the detector triggers, then the state moves to `TRIGGER_2`.
-If no `TRIGGER_1` detector was specified in the config, the module moves immediately to state `TRIGGER_2`.
+   It is meant to be attached to a coarse, fast detector, like a simple motion detector.
+   This state runs the `trigger_1_detector` on every frame, looking for detections with any label from `trigger_1_labels` with at least `trigger_1_confidence`.
+   If the detector triggers, then the state moves to `TRIGGER_2`.
+   If no `TRIGGER_1` detector was specified in the config, the module moves immediately to state `TRIGGER_2`.
 2. `TRIGGER_2`: This state runs the `trigger_2_detector` on every frame, looking for detections with any label from `trigger_2_labels` with at least `trigger_2_confidence`.
-If the detector triggers, then the state moves to `COUNTDOWN`.
-If it doesn't trigger in 10 frames, it returns to state `TRIGGER_1`.
+   If the detector triggers, then the state moves to `COUNTDOWN`.
+   If it doesn't trigger in 10 frames, it returns to state `TRIGGER_1`.
 3. `COUNTDOWN`: This state runs the `verification_detector` on every frame, looking for detections with any label from `verification_labels` with at least `verification_confidence`.
-If the detector triggers, then the state moves to `DISARMED`.
-If it doesn't trigger in the time specified by `countdown_time_s`, it moves to state `ALARM`.
+   If the detector triggers, then the state moves to `DISARMED`.
+   If it doesn't trigger in the time specified by `countdown_time_s`, it moves to state `ALARM`.
 4. `ALARM`: The alarm state.
-The module will emit the `ALARM` classification for the amount of time specified in `alarm_time_s`.
-After that amount of time elapses, the module will return to state `TRIGGER_1`.
+   The module will emit the `ALARM` classification for the amount of time specified in `alarm_time_s`.
+   After that amount of time elapses, the module will return to state `TRIGGER_1`.
 5. `DISARMED`: The disarmed state.
-The module will emit the `DISARMED` classification for the amount of time specified in `disarmed_time_s`.
-After that amount of time elapses, the module will return to state `TRIGGER_1`.
+   The module will emit the `DISARMED` classification for the amount of time specified in `disarmed_time_s`.
+   After that amount of time elapses, the module will return to state `TRIGGER_1`.
 
 If you do not want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, you can set `disable_alarm: true` in the config, which will prevent `TRIGGER_2` from entering into the `COUNTDOWN` state.
 This means the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.
