@@ -644,7 +644,7 @@ Uploaded streaming data can be found under the [**Data** tab](https://app.viam.c
 
 **Parameters:**
 
-- `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): the data to be uploaded, represented in bytes.
+- `data` [(bytes)](https://docs.python.org/3/library/stdtypes.html#bytes-objects): Data to be uploaded, represented in bytes.
 - `part_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Part ID of the resource associated with the file.
 - `file_ext` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): File extension type for the data. required for determining MIME type.
 - `component_type` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): Optional type of the component associated with the file (For example, “movement_sensor”).
@@ -656,7 +656,7 @@ Uploaded streaming data can be found under the [**Data** tab](https://app.viam.c
 
 **Returns:**
 
-- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): the `file_id` of the uploaded data.
+- [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The `file_id` of the uploaded data.
 
 **Raises:**
 
@@ -759,7 +759,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### AddBoundingBoxToImageById
 
-Add a bounding box to an image specified by its id.
+Add a bounding box to an image specified by its BinaryID.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -809,7 +809,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### RemoveBoundingBoxFromImageById
 
-Removes a bounding box from an image specified by its id.
+Removes a bounding box from an image specified by its BinaryID.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
