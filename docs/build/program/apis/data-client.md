@@ -669,7 +669,7 @@ time_received = datetime(2023, 6, 5, 11, 0, 3)
 file_id = await data_client.streaming_data_capture_upload(
     data="byte-data-to-upload",
     part_id="INSERT YOUR PART ID",
-    file_ext="png"
+    file_ext="png",
     component_type='motor',
     component_name='left_motor',
     method_name='IsPowered',
@@ -796,7 +796,7 @@ bbox_label = await data_client.add_bounding_box_to_image_by_id(
   x_min_normalized=0,
   y_min_normalized=.1,
   x_max_normalized=.2,
-  y_max_normalized=.3,
+  y_max_normalized=.3
 )
 
 print(bbox_label)
