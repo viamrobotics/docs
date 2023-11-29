@@ -79,7 +79,7 @@ If you mark your module as public, you cannot change it back to private.
         <td><code>module_id</code></td>
         <td>string</td>
         <td><strong>Required</strong></td>
-        <td>The name of the module, including its <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a>. The <code>name</code> field is pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command.
+        <td>The id of the module, including its <a href="/fleet/organizations/#create-a-namespace-for-your-organization">namespace</a> or <code>organization-id</code> followed by its name (pre-populated using the <code>--name</code> you provided in the <code>viam module create</code> command).
         <div class="alert alert-caution" role="alert">
       <h4 class="alert-heading">Caution</h4>
 
@@ -307,7 +307,6 @@ To update an existing module in the [Viam registry](https://app.viam.com/registr
            # if: github.event_name == 'release' # <-- once the action is working, uncomment this so you only upload on release
            with:
              module-path: module.tar.gz
-             org-id: your-org-id-uuid # <-- replace with your org ID. not required for public modules
              platform: linux/amd64 # <-- replace with your target architecture, or your module will not deploy
              version: ${{ github.event_name == 'release' && github.ref_name || format('0.0.0-{0}.{1}', github.ref_name, github.run_number) }} # <-- see 'Versioning' section below for explanation
              key-id: ${{ secrets.viam_key_id }}
