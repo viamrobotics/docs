@@ -15,17 +15,20 @@ aliases:
 
 To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
 
-1. [Install `viam-server`](#install-viam-server)
-2. [Create a pin mappings file](#create-pin-mappings-file)
-3. [Configure a customlinux board](#configure-a-customlinux-board)
+1. [Install `viam-server`](#install-viam-server) on your machine.
+1. [Create a board definitions file](#create-a-board-definitions-file), specifying the mapping between your board's GPIO pins and connected hardware.
+1. [Configure a `customlinux` board](#configure-a-customlinux-board) on your machine, specifying the path to the definitions file in the board configuration.
 
 ## Install `viam-server`
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
-## Create pin mappings file
+## Create a board definitions file
 
-Create a file in your <file>/home/root</file> directory called <file>board.json</file> with your board's pin mappings:
+The board definitions file describes the location of each GPIO pin on the board so that `viam-server` can access the pins correctly.
+
+On your Pumpkin board, create a JSON file in the <file>/home/root</file> directory named <file>board.json</file>, and provide the mappings between your GPIO pins and connected hardware.
+Use the template and example below to populate the JSON file with a single key, `"pins"`, whose value is a list of objects that each represent a pin on the board.
 
 ```json
 {
@@ -204,7 +207,7 @@ Create a file in your <file>/home/root</file> directory called <file>board.json<
 
 ## Configure a `customlinux` board
 
-Configure your board as a [`customlinux`](/build/configure/components/board/customlinux/) board to use your pin mappings file:
+Configure your board as a [`customlinux`](/build/configure/components/board/customlinux/) board to use your board definitions file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}

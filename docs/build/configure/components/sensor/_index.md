@@ -20,10 +20,11 @@ Add a sensor component to your robot to send the information the sensor measures
 
 {{% alert title="Tip" color="tip" %}}
 
-Viam has two component types defined separately from _sensor_ that you can use to implement sensors with specific functions:
+Viam has three additional component types defined separately from _sensor_ that you can use to implement sensors with specific functions:
 
 1. [Movement sensors](/build/configure/components/movement-sensor/) for Global Positioning System (GPS) units, inertial measurement units (IMUs), and other sensors that detect position, velocity, and acceleration.
-2. [Encoders](/build/configure/components/encoder/) for sensors that can detect speed and direction of rotation of a motor or a joint.
+2. [Power sensors](/build/configure/components/power-sensor/) for sensors that can detect voltage, current, and power consumption of connected hardware.
+3. [Encoders](/build/configure/components/encoder/) for sensors that can detect speed and direction of rotation of a motor or a joint.
 
 {{% /alert %}}
 
