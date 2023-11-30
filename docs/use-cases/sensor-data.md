@@ -14,13 +14,13 @@ You could then run queries against that data to search for outliers or edge case
 
 <table>
   <tr>
-    <th>{{<imgproc src="/build/configure/services/icons/data-capture.svg" class="fill alignright" style="max-width: 200px" declaredimensions=true alt="Collect data">}}
+    <th>{{<imgproc src="/build/configure/services/icons/data-capture.svg" class="fill alignright" style="max-width: 200px" declaredimensions=true alt="Configure the data management service">}}
       <b>1. Configure the data management service</b>
       <p>Start by adding the <a href="/data/">data management service</a> to your machine, then configure <a href="/data/capture/">data capture</a> and <a href="/data/cloud-sync/">cloud sync</a>.</p>
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/icons/components/sensor.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Collect data">}}
+    <th>{{<imgproc src="/icons/components/sensor.svg" class="fill alignleft" style="max-width: 200px" declaredimensions=true alt="Capture tabular data from a sensor">}}
       <b>2. Capture data</b>
       <p>Then, <a href="/data/capture/#configure-data-capture-for-individual-components">capture tabular data from a component on your machine</a>, such as a sensor. Captured data is automatically synced to the cloud after a short delay.
       <br><br>You can <a href="/data/view/">view your data in the Viam app</a> from the <b>Data</b> tab.</p>
@@ -36,7 +36,7 @@ You could then run queries against that data to search for outliers or edge case
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/data/data-query-mongosh-example.png" class="fill alignleft" resize="600x" declaredimensions=true alt="Train models">}}
+    <th>{{<imgproc src="/data/data-query-mongosh-example.png" class="fill alignleft" resize="600x" declaredimensions=true alt="SQL query in mongosh filtering by robot, component, and specific data readings">}}
       <b>4. Query data from a compatible client</b>
       <p>If you prefer, you can also <a href ="/data/query/#query-tabular-data-directly-from-a-compatible-client">query your data directly from an MQL-compatible client</a>, such as <code>mongosh</code> or MongoDB Compass, using SQL or MQL.</p></p>
     </th>
