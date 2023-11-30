@@ -10,14 +10,19 @@ aliases:
 # SME: Alexa Greenberg
 ---
 
-After the data management service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam cloud](https://app.viam.com/data/view).
+After the data management service synchronizes the uploaded data in Viam, you can view it on the [**DATA** page in the Viam app](https://app.viam.com/data/view).
 
 ![Images, files, and sensors tabs](/data/tabs.png)
+
+The **DATA** page displays data from all resources you are an owner of within the {{< glossary_tooltip term_id="organization" text="organization" >}} you are currently authenticated to.
+This includes data from any locations shared with your organizations.
+For more information on who can do what with data, see [Permissions](/fleet/rbac/#permissions).
 
 The **DATA** page shows data about:
 
 - **Images**: PNG or JPEG files
-- **Files**: binary data like point cloud data
+- **Point clouds**: collections of points in 3D space
+- **Files**: binary data like .mov files
 - **Sensors**: tabular sensor counts (like gantry position)
 
 If you click on an image or a file, a **Details** panel appears on the right with capture metadata.
@@ -28,6 +33,7 @@ If you click on an image or a file, a **Details** panel appears on the right wit
 
 On the [**DATA** page in the Viam app](https://app.viam.com/data/view), you can filter data in the left **Filtering** panel.
 You can filter by several categories including machine name, location, or timestamp range.
+
 For example, if you specify `Rover Rental` for location and click **SEARCH**, you can see all data captured on robots that belong to your `Rover Rental` location.
 
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).

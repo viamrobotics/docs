@@ -277,7 +277,7 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 2. Add the JSON configuration in the config field.
 3. Click **SAVE FRAGMENT**.
 
-![Fragment creation view](/manage/fragment-view.png)
+![Fragment creation view](/fleet/fragment-view.png)
 
 ### Add a fragment to a robot
 
@@ -290,11 +290,11 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-![The fragments subtab](/manage/fragments-tab.png)
+![The fragments subtab](/fleet/fragments-tab.png)
 
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
-![A fragment in the components subtab](/manage/fragment-components.png)
+![A fragment in the components subtab](/fleet/fragment-components.png)
 
 In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
 

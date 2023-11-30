@@ -16,6 +16,11 @@ aliases:
 
 To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
 
+### Improved: Role-Based Access Control
+
+You can now manage users access to robots, locations, and organizations.
+For more information, see [Access Control](/fleet/rbac/)
+
 ## October 2023
 
 ### Added: Test an ML model in browser
