@@ -72,8 +72,8 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   ## Subconcept
 
   Paragraphs containing explanation. Add imagery as needed.
-      - Provide context and address potential points of confusion.
-      - Add real or hypothetical examples.
+
+  - Provide context and address potential points of confusion. - Add real or hypothetical examples.
 
   Possibly more Subconcept sections.
 
@@ -89,8 +89,8 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% /expand %}}
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
-Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
-For example, the [Installation page](https://docs.viam.com/get-started/installation/) or the [Find module page](https://docs.viam.com/registry/configure/).
+  Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
+  For example, the [Installation page](https://docs.viam.com/get-started/installation/) or the [Find module page](https://docs.viam.com/registry/configure/).
 
   {{% expand "Click to view template" %}}
 
@@ -113,7 +113,7 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
   {{% /expand %}}
 
 - **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
-A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
+  A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
 
   {{% expand "Click to view template" %}}
 
@@ -122,7 +122,7 @@ A tutorial helps readers to learn and apply skills by doing something meaningful
 
   Outline the why.
   Tell the story of the machine.
-      - Explain the machine's use and origin.
+  Explain the machine's use and origin.
 
   ## Requirements
 
@@ -145,9 +145,9 @@ A tutorial helps readers to learn and apply skills by doing something meaningful
 
   Link to other tutorials with cards or text.
 
-  {{< cards >}}
-  {{% card link="/tutorials/get-started/blink-an-led" %}}
-  {{< /cards >}}
+  {{</* cards */>}}
+  {{%/* card link="/tutorials/get-started/blink-an-led" */%}}
+  {{</* /cards */>}}
   ```
 
   For the full template see [template.md](https://github.com/viamrobotics/docs/blob/main/docs/tutorials/template.md).
