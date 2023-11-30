@@ -57,7 +57,7 @@ For information about Hugo and how to develop locally, see the [README](https://
 The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of the content structure with the following four content types:
 
 - **Explanation (conceptual)**: An understanding-oriented piece of content.
-  This content provides background knowledge on a topic and tends to be linked to from how-to guides and tutorials.
+  This content provides background knowledge on a topic and tends to be referenced in how-to guides and tutorials.
   For example the [Robot Development Kit page](https://docs.viam.com/internals/rdk/) or the [Registry page](https://docs.viam.com/registry/).
   It’s useful to have a real or imagined "Why?" question to serve as a prompt.
 
@@ -73,11 +73,11 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
 
   Paragraphs containing explanation. Add imagery as needed.
 
-  (possibly more Subconcept sections)
+  Possibly more Subconcept sections.
 
   ### Do x with subconcept (optional)
 
-  Information for what to do with the concept (possibly linking to how-tos or containing how-tos).
+  Information on potential ways to apply the concept (possibly linking to how-tos or containing how-tos).
 
   ## Next Steps
 
@@ -87,7 +87,7 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   {{% /expand %}}
 
 - **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
-Generally starts with a description of the task and things to consider and then provides a set of numbered steps to follow.
+Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
 For example, the [Installation page](https://docs.viam.com/get-started/installation/) or the [Find module page](https://docs.viam.com/registry/configure/).
 
   {{% expand "Click to view template" %}}
@@ -95,7 +95,7 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
   ```md
   # Do this task
 
-  Description of task. Possibly containing further subsections.
+  Description of task and considerations. Possibly containing further subsections.
 
   ## Do x
 
@@ -111,7 +111,7 @@ For example, the [Installation page](https://docs.viam.com/get-started/installat
   {{% /expand %}}
 
 - **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
-A tutorial helps readers to learn skills by doing something meaningful and attainable.
+A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
 
   {{% expand "Click to view template" %}}
 
@@ -120,6 +120,7 @@ A tutorial helps readers to learn skills by doing something meaningful and attai
 
   Outline the why.
   Tell the story of the machine.
+      - Explain the machine's use and origin.
 
   ## Requirements
 
@@ -128,11 +129,11 @@ A tutorial helps readers to learn skills by doing something meaningful and attai
 
   ## Build X
 
-  Build steps
+  Build steps.
 
   ## Configure your X
 
-  Configuration steps
+  Configuration steps.
 
   ## Program your X
 
