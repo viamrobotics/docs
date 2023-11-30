@@ -72,6 +72,8 @@ The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of t
   ## Subconcept
 
   Paragraphs containing explanation. Add imagery as needed.
+      - Provide context and address potential points of confusion.
+      - Add real or hypothetical examples.
 
   Possibly more Subconcept sections.
 
