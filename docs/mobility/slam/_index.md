@@ -29,10 +29,9 @@ You can conduct SLAM with data collected live by a [RPlidar](https://app.viam.co
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="ml/vision/vision-odometry/"  required="yes" alt_link="https://app.viam.com/module/viam/rplidar">}}
-{{< relatedcard link="/build/configure/components/camera/" alt_title="RPlidar" required="yes" alt_link="https://app.viam.com/module/viam/rplidar">}}
+{{< relatedcard link="/build/configure/components/camera/" alt_title="RPlidar" required="yes" alt_link="https://github.com/viamrobotics/rplidar">}}
 
-or
+<div class="align-content-center">or</div>
 
 {{< relatedcard link="/mobility/slam/cartographer/" required="yes" >}}
 {{< relatedcard link="/build/configure/components/camera/" required="yes" >}}
