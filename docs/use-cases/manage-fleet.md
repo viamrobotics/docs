@@ -38,14 +38,14 @@ You can grant users different levels of access to individual robots or to groups
   </tr>
   <tr>
     <td>{{<imgproc src="/fleet/app-usage/create-robot.png" class="fill alignleft" resize="450x" declaredimensions=true alt="Create a new robot in the Viam app">}}
-      <b>4. Configure and collaborate on robots</b>
+      <b>4. Configure robots</b>
       <p>Users with access to a location can create and collaborate on the <a href="/fleet/machines/">machines</a> within it. You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar robots.</p>
 </td>
   </tr>
   <tr>
     <td>{{<imgproc src="/use-cases/last-online.png" class="fill alignright" resize="100x" declaredimensions=true alt="Robot last online status indicator in the Viam app.">}}
       <b>5. Monitor your fleet</b>
-      <p>View machine status and logs remotely from the <a href="https://app.viam.com">Viam app</a>, gather robot sensor <a href="/data/">data</a>, and operate machines remotely from the <a href="/fleet/machines/#control"><strong>Control</strong> tab</a>.</p>
+      <p>View the status and logs from each robot in the <a href="https://app.viam.com">Viam app</a>, gather robot sensor <a href="/data/">data</a>, and operate machines remotely from the <a href="/fleet/machines/#control"><strong>Control</strong> tab</a>.</p>
     </td>
   </tr>
 </table>
