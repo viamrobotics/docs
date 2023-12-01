@@ -23,7 +23,7 @@ In the run up to the new Zelda release, I realized you can build a stationary gu
 Adding a bit of [machine learning](/ml/), you can then make the guardian detect objects or people or pets and follow them around by rotating its head.
 Luckily, I am not the first one to have the idea to build a guardian and there was already a [brilliant guardian 3D model](https://www.thingiverse.com/thing:2391826) on Thingiverse with space for LEDs and a servo.
 
-In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/build/configure/components/servo/), a [camera](/build/configure/components/camera/), some LEDs and the [ML Model service](/ml/) and [vision service](/ml/vision/).
+In this tutorial, I will walk you through the steps to build your own functional guardian with a [servo](/components/servo/), a [camera](/components/camera/), some LEDs and the [ML Model service](/ml/) and [vision service](/ml/vision/).
 Here's a video of the finished guardian detecting me:
 
 {{<video webm_src="/tutorials/guardian/guardian-detection.webm" mp4_src="/tutorials/guardian/guardian-detection.mp4" poster="/tutorials/guardian/guardian-detection.jpg" alt="Guardian robot detects person and rotates head to follow them around">}}
@@ -133,11 +133,11 @@ Click on the **Components** subtab.
 
    Click **Create component** in the lower-left corner of the page.
    Select `board` for the type, then select `pi` for the model.
-   Enter `local` as the name for your [board component](/build/configure/components/board/), then click **Create**.
+   Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the camera.**
 
-   Click **Create Component** to add the [camera](/build/configure/components/camera/).
+   Click **Create Component** to add the [camera](/components/camera/).
    Select `camera` for the type, then select `webcam` for the model.
    Enter `cam` as the name for the camera, then click **Create**.
    In the new camera panel, click the **Video Path** field to reveal a dropdown populated with camera paths that have been identified on your machine.
@@ -147,7 +147,7 @@ Click on the **Components** subtab.
 
    Click **Create component** in the lower-left corner of the page.
    Select `servo` for the type, then select `pi` for the model.
-   Enter `servo` as the name for your [servo component](/build/configure/components/servo/), then click **Create**.
+   Enter `servo` as the name for your [servo component](/components/servo/), then click **Create**.
    Configure the attributes by adding the name of your board, `local`, and the {{< glossary_tooltip term_id="pin-number" text="pin number" >}} of the pin on `local` that you connected your servo PWM wire to, `12`:
 
    ```json
@@ -296,7 +296,7 @@ Navigate to the **Components** subtab of the **Config** tab.
 Click **Create component** in the lower-left corner of the page.
 
 Select `camera` for the type, then select `transform` for the model.
-Enter `transform_cam` as the name for your [transform camera](/build/configure/components/camera/transform/), then click **Create**.
+Enter `transform_cam` as the name for your [transform camera](/components/camera/transform/), then click **Create**.
 
 Replace the attributes JSON object with the following object which specifies the camera source that the `transform` camera will be using and defines a pipeline that adds the defined `detector`:
 
@@ -321,7 +321,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 {{% tab name="Raw JSON" %}}
 
-Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/build/configure/components/camera/transform/):
+Next, on the [**Raw JSON** tab](/build/configure/#the-config-tab), replace the configuration with the following configuration which configures the [ML model service](/ml/), the [vision service](/ml/vision/), and a [transform camera](/components/camera/transform/):
 
 ```json {class="line-numbers linkable-line-numbers" data-line="31-48,50-69"}
 {

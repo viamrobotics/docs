@@ -287,7 +287,7 @@ viam organizations --help
 The `board` command allows you to manage your board definition files.
 With it, you can upload new board definition files to the Viam app, download your existing board definition files, and list the files already uploaded.
 
-You can use board definition files to configure pin mappings for [`customlinux` boards](/build/configure/components/board/customlinux/).
+You can use board definition files to configure pin mappings for [`customlinux` boards](/components/board/customlinux/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam board upload --name=<board name> --organization=<org name> --version=<definition file version> file.json

@@ -63,8 +63,8 @@ All together, your kit looks like this:
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/encoder-motors.jpg" resize="400x" declaredimensions=true alt="two motors with encoders" >}}
 
 The motors come with integrated encoders.
-For information on encoders, see [Encoder Component](/build/configure/components/encoder/).
-For more information on encoded DC motors, see [Encoded Motors](/build/configure/components/motor/gpio/encoded-motor/).
+For information on encoders, see [Encoder Component](/components/encoder/).
+For more information on encoded DC motors, see [Encoded Motors](/components/motor/gpio/encoded-motor/).
 
 The kit also includes stiffer suspension springs that you can substitute for the ones on the rover.
 Generally, a stiff suspension helps with precise steering control.
@@ -82,16 +82,16 @@ L298 is a high voltage and high current motor drive chip, and H-Bridge is typica
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/webcam.jpg" resize="400x" declaredimensions=true alt="Webcam with cables" >}}
 
 The webcam that comes with the kit is a standard USB camera device and the rover has a custom camera mount for it.
-For more information, see [Camera Component](/build/configure/components/camera/).
+For more information, see [Camera Component](/components/camera/).
 
 ### 3D accelerometer
 
 {{<imgproc src="get-started/try-viam/rover-resources/viam-rover/accelerometer.jpg" resize="400x" declaredimensions=true alt="A ADXL345 accelerometer" >}}
 
-The [ADXL345](/build/configure/components/movement-sensor/adxl345/) sensor manufactured by Analog Devices is a digital 3-axis accelerometer that can read acceleration up to ±16g for high-resolution (13-bit) measurements.
+The [ADXL345](/components/movement-sensor/adxl345/) sensor manufactured by Analog Devices is a digital 3-axis accelerometer that can read acceleration up to ±16g for high-resolution (13-bit) measurements.
 You can access it with a SPI (3-wire or 4-wire) or I<sup>2</sup>C digital interface.
 
-In Viam, you can configure it as a [movement sensor component](/build/configure/components/movement-sensor/).
+In Viam, you can configure it as a [movement sensor component](/components/movement-sensor/).
 
 ### Buck converter
 
@@ -261,7 +261,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
-  See [Movement Sensor Component](/build/configure/components/movement-sensor/) for more information.
+  See [Movement Sensor Component](/components/movement-sensor/) for more information.
 - For [LiDAR laser range scanning](/mobility/slam/cartographer/), we recommend Velodyne, or RPlidar (including A1, which is a sub-$100 LIDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 

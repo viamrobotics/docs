@@ -1,4 +1,4 @@
-The following example assumes you have a [camera](/build/configure/components/camera/) called `camera0` configured as a component of your robot.
+The following example assumes you have a [camera](/components/camera/) called `camera0` configured as a component of your robot.
 If your camera has a different name in the Viam app, change the `name` in the example.
 
 {{< tabs >}}

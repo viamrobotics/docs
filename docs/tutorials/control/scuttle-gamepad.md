@@ -34,7 +34,7 @@ If your gamepad does not have a dongle, check out [Drive a Yahboom Rover with a 
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/build/configure/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
   - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
 - [EasySMX ESM-9101 Wireless Controller](https://www.amazon.com/Wireless-Controller-EasySMX-ESM-9101-Gamepad/dp/B07F1NLGW2?th=1) or a similar gamepad and dongle.
@@ -44,7 +44,7 @@ You will need the following hardware to complete this tutorial:
 
 ## Set up the hardware
 
-Plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/build/configure/components/board/).
+Plug the gamepad Bluetooth dongle into a USB port on the rover's [board](/components/board/).
 Turn on power to the rover.
 
 ## Add the controller to the rover's config
@@ -54,7 +54,7 @@ Go to your rover's **Config** tab on the [Viam app](https://app.viam.com/).
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Configure a [gamepad](/build/configure/components/input-controller/gamepad/):
+Configure a [gamepad](/components/input-controller/gamepad/):
 
 - Click **Create component**.
 - Select `input_controller` for the component **Type**.
@@ -68,7 +68,7 @@ Configure a [gamepad](/build/configure/components/input-controller/gamepad/):
 {{% tab name="Raw JSON" %}}
 
 If instead of using the config builder, you prefer to write raw JSON, switch to [**Raw JSON** mode](/build/configure/#the-config-tab) on the **Config** tab.
-Inside the `components` array of your config, add the following configuration for your [gamepad](/build/configure/components/input-controller/gamepad/):
+Inside the `components` array of your config, add the following configuration for your [gamepad](/components/input-controller/gamepad/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
