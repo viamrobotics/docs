@@ -19,7 +19,7 @@ For example, you can have a variety of modular resources in the registry made fo
     <tr>
         <th> {{<imgproc src="PLACEHOLDER" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
             <b> 1. Create your modular resource </b>
-            <p> [Create your own modular resource](/create/) that implements an existing Viam [API](/build/program/apis/) to add support for resources, types or models that are not built into Viam.
+            <p> [Create your own modular resource](/create/) that implements an existing Viam [API](/build/program/apis/) to add support for {{< glossary_tooltip term_id="resource" text="resource" >}} {{< glossary_tooltip term_id="type" text="types" >}} or {{< glossary_tooltip term_id="model" text="models" >}} that are not built into Viam.
             </p>
         </th>
     </tr>
@@ -38,8 +38,16 @@ For example, you can have a variety of modular resources in the registry made fo
     </tr>
     <tr>
         <td> {{<imgproc src="PLACEHOLDER" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
-            <b> 4. Use Modular Resources</b>
-            <p> Test your modular resource using the Control tab and program it using standardized APIs provided by Viam. The viam-server handles dependencies, start-up, reconfiguration, data management, and shutdown behavior.</p>
+            <b> 4. Test your modular resource</b>
+            <p> Test your modular resource using the Control tab and program it with Viam's Go or Python SDKs.</p>
         </th>
     </tr>
 </table>
+
+## Next Steps
+
+{{< cards >}}
+{{% card link="/registry/upload/" %}}
+{{% card link="/registry/create/" %}}
+{{% card link="/registry/examples/" %}}
+{{< /cards >}}
