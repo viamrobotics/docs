@@ -54,6 +54,10 @@ For information about Hugo and how to develop locally, see the [README](https://
 
 ## Content Types
 
+
+When creating a new piece of content, decide which one of the four content types the content should be.
+Note this in a comment in the frontmatter of the file.
+
 The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of the content structure with the following four content types:
 
 - **Explanation (conceptual)**: An understanding-oriented piece of content.
