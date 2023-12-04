@@ -1,5 +1,5 @@
 ---
-title: "Machine Architecture: Parts, Sub-Parts and Remotes"
+title: "Machine Architecture: Parts, Sub-Parts, and Remotes"
 linkTitle: "Machine Architecture"
 weight: 40
 type: "docs"
