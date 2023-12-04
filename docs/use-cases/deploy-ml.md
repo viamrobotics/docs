@@ -11,7 +11,7 @@ imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
 ---
 
-Create and deploy an image classification model onto your machine with Viam's machine learning (ML) capabilities.
+You can create and deploy an image classification model onto your machine with Viam's machine learning (ML) capabilities.
 Manage the classification model fully on one platform: collect data, create a dataset and label it, train the model, and deploy it.
 Then, test if your model works for classifying objects in a camera stream or existing images with the `mlmodel` classification model of vision service.
 
@@ -24,14 +24,14 @@ Then, test if your model works for classifying objects in a camera stream or exi
   </tr>
   <tr>
     <th>{{<imgproc src="/ml/label.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Label data">}}
-      <b>2. Create a Dataset and Label</b>
+      <b>2. Create a dataset and label</b>
       <p>Once you have enough images of the objects you'd like to classify, <a href="/data/dataset/">label your data and create a dataset</a> in preparation for training classification models.</p>
     </th>
   </tr>
   <tr>
     <th>{{<imgproc src="/ml/train.svg" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="Train models">}}
-      <b>3. Train or upload an ML model</b>
-      <p>Use your labeled data to <a href="/ml/train-model/">train your own models</a> for object classification using data from the <a href="/data/">data management service</a>, or <a href="/ml/upload-model/">add an existing model</a>.</p>
+      <b>3. Train an ML model</b>
+      <p>Use your labeled data to <a href="/ml/train-model/">train your own models</a> for object classification using data from the <a href="/data/">data management service</a>.</p>
     </th>
   </tr>
   <tr>
