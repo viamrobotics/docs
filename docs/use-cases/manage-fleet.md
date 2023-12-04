@@ -19,31 +19,31 @@ You can grant users different levels of access to individual robots or to groups
 
 <table>
   <tr>
-    <th>{{<imgproc src="/use-cases/signup.png" class="fill alignright" resize="300x" declaredimensions=true alt="Viam app signup screen">}}
+    <th>{{<imgproc src="/use-cases/signup.png" class="fill alignright" resize="600x" style="max-width: 350px" declaredimensions=true alt="Viam app signup screen">}}
       <b>1. Create an account</b>
       <p>Go to the <a href="https://app.viam.com">Viam app</a> and sign up with Google, GitHub, Apple, or an email address.</p>
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/fleet/locations.png" class="fill alignleft" resize="400x" declaredimensions=true alt="Two locations within an organization">}}
+    <th>{{<imgproc src="/fleet/locations.png" class="fill alignleft" resize="600x" style="max-width: 400px" declaredimensions=true alt="Two locations within an organization">}}
       <b>2. Create organizations and locations</b>
       <p>Use <a href="/fleet/organizations/">organizations</a>, and <a href="/fleet/locations/">locations</a> within them, to organize your machines into groups and manage user access.</p>
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/fleet/app-usage/limit-access.png" class="fill alignright" resize="350x" declaredimensions=true alt="Limit user access">}}
+    <th>{{<imgproc src="/fleet/app-usage/limit-access.png" class="fill alignright" resize="600x" style="max-width: 350px" declaredimensions=true alt="Limit user access">}}
       <b>3. Invite other users and assign permissions</b>
       <p>Invite other users to an organization or a location to <a href="/fleet/#use-viam-for-collaboration">share access</a> to the machines within it. Assign each user a role (owner or operator) to manage permissions.</p>
     </th>
   </tr>
   <tr>
-    <td>{{<imgproc src="/fleet/app-usage/create-robot.png" class="fill alignleft" resize="450x" declaredimensions=true alt="Create a new robot in the Viam app">}}
+    <td>{{<imgproc src="/fleet/app-usage/create-robot.png" class="fill alignleft" resize="600x" style="max-width: 450px" declaredimensions=true alt="Create a new robot in the Viam app">}}
       <b>4. Configure robots</b>
       <p>Users with access to a location can create and collaborate on the <a href="/fleet/machines/">machines</a> within it. You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar robots.</p>
 </td>
   </tr>
   <tr>
-    <td>{{<imgproc src="/use-cases/last-online.png" class="fill alignright" resize="100x" declaredimensions=true alt="Robot last online status indicator in the Viam app.">}}
+    <td>{{<imgproc src="/use-cases/last-online.png" class="fill alignright" resize="600x" style="max-width: 100px" declaredimensions=true alt="Robot last online status indicator in the Viam app.">}}
       <b>5. Monitor your fleet</b>
       <p>View the status and logs from each robot in the <a href="https://app.viam.com">Viam app</a>, gather robot sensor <a href="/data/">data</a>, and operate machines remotely from the <a href="/fleet/machines/#control"><strong>Control</strong> tab</a>.</p>
     </td>
