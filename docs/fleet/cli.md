@@ -330,12 +330,15 @@ viam board list --organization=my-org
 ### data
 
 The `data` command allows you to manage robot data.
-With it, you can export data in the format of your choice, delete specified data, or configure a database user to enable querying synced tabular data directly in the cloud.
+With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset and filter a dataset by tags, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export --destination=<output path> --data-type=<output data type> [...named args]
 viam data delete [...named args]
+viam data dataset add --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
+viam data dataset remove --dataset-id=<dataset-id> --file-ids=<file-id-or-ids> --location-id=<location-id> --org-id=<org-id> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
+viam data database hostname --org-id=<org-id>
 ```
 
 Examples:
@@ -348,6 +351,9 @@ viam data export --destination=/home/robot/data --data_type=tabular \
 # export binary data from all orgs and locations, component name myComponent
 viam data export --destination=/home/robot/data --data-type=binary \
 --component-name myComponent
+
+# add images tagged with the "example" tag between January and October of 2023 to dataset abc
+viam data dataset add filter --dataset-id=abc --location-id=123 --org-id=123 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
 # configure a database user for the Viam organization's MongoDB Atlas Data
 # Federation instance, in order to query tabular data
@@ -363,9 +369,19 @@ viam data database hostname --org-id=abc
 | `export`      | export data in a specified format to a specified location  | - |
 | `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
 | `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/data/query/#configure-data-query)  | - |
+| `dataset add`      | add a new image to an existing dataset | `filter` |
+| `dataset remove`      | remove an existing image from a dataset | `filter` |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
+
+##### Positional arguments: `database`
+
+<!-- prettier-ignore -->
+| argument | description |
+| ----------- | ----------- | ----------- |
+| `filter`     | `add` or `delete` images from a dataset using a filter. See [Using the `filter` parameter)](#using-the-filter-parameter).|
+| `--help`      | return help |
 
 ##### Named arguments
 
@@ -378,20 +394,36 @@ viam data database hostname --org-id=abc
 | `--component-type`     | filter by specified component type       |`export`, `delete`| false |
 | `--component-model`   | filter by specified component model       |`export`, `delete`| false |
 | `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
-| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`| false |
-| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`| false |
+| `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| false |
+| `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| false |
+| `--file-ids` | file-ids to add or remove from a dataset       |`dataset`| true |
+| `--location-id`      | location id for the specified dataset (only accepts one location id)       |`dataset`| false |
 | `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
+| `--org-id` | org ID for the database user | `database configure`, `database hostname`, `dataset` | true |
 | `--org-ids`     | filter by specified organizations id (accepts comma-separated list)       |`export`, `delete`| false |
 | `--parallel`      | number of download requests to make in parallel, with a default value of 10       |`export`, `delete`|false |
 | `--part-id`      | filter by specified part id      |`export`, `delete`| false |
 | `--part-name`     | filter by specified part name       |`export`, `delete`| false |
 | `--robot-id`     | filter by specified robot id       |`export`, `delete`| false |
 | `--robot-name`      | filter by specified robot name       |`export`, `delete`| false |
-| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`| false |
-| `--org-id` | org ID for the database user | `database configure`, `database hostname` | true |
+| `--tags`      | filter by specified tag (accepts comma-separated list)       |`export`, `delete`, `dataset`| false |
 | `--password` | password for the database user being configured | `database configure` | true |
+
+##### Using the `filter` parameter
+
+When you use the `viam dataset add` and `viam dataset remove` commands, you can optionally `filter` by common search criteria to perform the `add` or `remove` on a specific subset of images you want to work with.
+For example, the following adds all images captured between January 1 and October 1 2023 that have the `example` tag applied to a dataset with id of `abcdef1234567890abcdef12`:
+
+```sh {class="command-line" data-prompt="$"}
+viam data dataset add filter --dataset-id=abcdef1234567890abcdef12 --org-ids=abc123de-1234-abcd-1234-abc123-def12 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
+```
+
+To find the dataset id of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset id can be found in the URL of the Viam app window when viewing a given dataset, resembling `abcdef1234567890abcdef12`
+
+See [Datasets](/data/dataset/#datasets) for more information.
 
 ### locations
 

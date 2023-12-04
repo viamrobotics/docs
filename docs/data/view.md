@@ -39,6 +39,8 @@ For example, if you specify `Rover Rental` for location and click **SEARCH**, yo
 You can also filter data using the [Viam Python SDK](https://python.viam.dev/).
 For example, you could use the [`BinaryDataByFilter`](/build/program/apis/data-client/#binarydatabyfilter) or [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) methods to filter binary data or tabular data respectively.
 
+Additionally, you can use the [`viam data dataset` commands](/fleet/cli/#data) to add or remove an image or group of images matching a specific filter using the Viam CLI.
+
 To query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}} instead, see [Query Data using SQL / MQL](/data/query/).
 
 ## Delete Data
@@ -51,7 +53,7 @@ To delete all image, file, or sensor data respectively, click on **DELETE ALL** 
 
 ![Data view with no image selected showing the Delete all button](/data/delete_all.png)
 
-You can also delete data using the [Viam CLI](/fleet/cli/).
+Additionally, you can use the [`viam data dataset remove` command](/fleet/cli/#data) to remove an image or group of images using the Viam CLI.
 
 ## Next Steps
 
