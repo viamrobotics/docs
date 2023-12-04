@@ -369,8 +369,8 @@ viam data database hostname --org-id=abc
 | `export`      | export data in a specified format to a specified location  | - |
 | `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
 | `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `dataset add`      | add a new image to an existing dataset | `filter` |
-| `dataset remove`      | remove an existing image from a dataset | `filter` |
+| `dataset add`      | add a new image or group of images to an existing dataset, optionally specifying a filter | `filter` |
+| `dataset remove`      | remove an existing image or group of images from a dataset, optionally specifying a filter | `filter` |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
@@ -393,12 +393,12 @@ viam data database hostname --org-id=abc
 | `--component-name`      | filter by specified component name  |`export`, `delete`| false |
 | `--component-type`     | filter by specified component type       |`export`, `delete`| false |
 | `--component-model`   | filter by specified component model       |`export`, `delete`| false |
-| `--dataset`   | dataset to add or remove images from     |`dataset`| true |
+| `--dataset-id`   | dataset to add or remove images from     |`dataset`| true |
 | `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
 | `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| false |
 | `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| false |
 | `--file-ids` | file-ids to add or remove from a dataset       |`dataset`| true |
-| `--location-id`      | location id for the specified dataset (only accepts one location id)       |`dataset`| true |
+| `--location-id`      | location id for the file ids being added or removed from the specified dataset (only accepts one location id)       |`dataset`| true |
 | `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
@@ -427,7 +427,7 @@ The dataset id can be found in the URL of the Viam app window when viewing a giv
 You can also have the filter parameters generated for you using the **Filtering** pane of the **Data** tab.
 Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filtering** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
-You can use the same filtering parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands.
+You can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands, except you would exclude the `--data-type` and `--destination` flags, which are specific to `viam data export`.
 
 See [Datasets](/data/dataset/#datasets) for more information.
 
