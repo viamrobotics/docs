@@ -420,8 +420,13 @@ For example, the following adds all images captured between January 1 and Octobe
 viam data dataset add filter --dataset-id=abcdef1234567890abcdef12 --org-ids=abc123de-1234-abcd-1234-abc123-def12 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 ```
 
-To find the dataset id of a given dataset, go to the [**DATASETS** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
-The dataset id can be found in the URL of the Viam app window when viewing a given dataset, resembling `abcdef1234567890abcdef12`
+To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+
+You can also have the filter parameters generated for you using the **Filtering** pane of the **Data** tab.
+Navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view), make your selections from the search parameters under the **Filtering** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
+You can use the same filtering parameters (such as `--start`, `--end`, etc) with your `viam data database add filter` or `viam data database remove filter` commands.
 
 See [Datasets](/data/dataset/#datasets) for more information.
 
