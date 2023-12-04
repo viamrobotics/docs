@@ -12,7 +12,7 @@ images: ["/ml/training.png"]
 ---
 
 You can create and deploy an image classification model onto your machine with Viam's machine learning (ML) capabilities.
-Manage the classification model fully on one platform: collect data, create a dataset and label it, train the model, and deploy it.
+Manage the classification model fully on one platform: collect data, create a dataset and label it, and train the model for **Single** or **Multi Label Classification**.
 Then, test if your model works for classifying objects in a camera stream or existing images with the `mlmodel` classification model of vision service.
 
 <table>
