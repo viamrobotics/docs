@@ -27,7 +27,7 @@ no_list: true
 # SME: Matt Vella, Matt Dannenberg, James Otting
 ---
 
-The Viam platform comes with a component called [base](/build/configure/components/base/), which adds useful abstractions for simplified control of mobile robots.
+The Viam platform comes with a component called [base](/components/base/), which adds useful abstractions for simplified control of mobile robots.
 Instead of controlling individual motors, the base component allows you to [issue commands](https://python.viam.dev/autoapi/viam/components/base/index.html#package-contents) like "move_straight", "spin", "set_velocity" and "stop".
 
 Many robotic rovers can be controlled out-of-the-box with the Viam "wheeled" base model - simply by specifying how your motorized wheels are configured.
@@ -48,7 +48,7 @@ This tutorial will show how we can both leverage this protocol and abstract it i
 
 {{% alert title="Tip" color="tip"%}}
 Even if you don't have an Intermode rover, many of the other concepts presented here are still relevant to other robotic projects.
-While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/build/configure/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
+While this tutorial can be followed verbatim for the Intermode rover, much of it can be applied to other [base](/components/base/), **CAN bus**, or [modular resource](/registry/)-based projects.
 {{% /alert %}}
 
 The tutorial uses the following hardware:
@@ -105,18 +105,18 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 ## A modular resource for the Intermode base
 
 Viam includes [APIs](/build/program/apis/) for common component types within `viam-server`.
-The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/build/configure/components/base/).
+The Viam component that exposes the interfaces for controlling a mobile robot's movements is the [base component](/components/base/).
 
 If you want to learn how to leverage this API to create a custom modular resource using code found in the [tutorial repository](https://github.com/viam-labs/tutorial-intermode), continue reading.
 If you want to directly configure this modular resource code with your robot, skip to [using the intermode base resource](#use-the-intermode-base-modular-resource)
 
 ### Create a custom model using the Viam RDK base API
 
-The [base](/build/configure/components/base/) component exposes an API for controlling a mobile robot’s movements.
+The [base](/components/base/) component exposes an API for controlling a mobile robot’s movements.
 To use it for the Intermode rover, you must create a new {{< glossary_tooltip term_id="model" text="model" >}} with its own implementation of each method.
 
 Both the **API** and **model** of any Viam resource are represented as colon-separated triplets where the first element is a namespace.
-Since you will conform to an existing Viam API for [base](/build/configure/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
+Since you will conform to an existing Viam API for [base](/components/base/), the [API](/registry/create/#valid-apis-to-implement-in-your-model) you will use is:
 **rdk:component:base**
 
 This base model is being created for tutorial purposes only, and will implement only partial functionality for demonstration purposes.

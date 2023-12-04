@@ -13,7 +13,7 @@ aliases:
 ---
 
 A motor is a rotating machine that transforms electrical energy into mechanical energy.
-For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Motor Component](/build/configure/components/motor/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Motor Component](/components/motor/).
 
 ## Supported Models
 
@@ -26,10 +26,10 @@ For configuration information, click on the supported motor model name:
 
 ## API
 
-The micro-RDK [motor API](/build/configure/components/motor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [motor API](/components/motor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
-- [`SetPower()`](/build/configure/components/motor/#setpower)
-- [`GetPosition()`](/build/configure/components/motor/#getposition)
-- [`GetProperties()`](/build/configure/components/motor/#getproperties)
-- [`Stop()`](/build/configure/components/motor/#stop)
-- [`IsMoving()`](/build/configure/components/motor/#ismoving)
+- [`SetPower()`](/components/motor/#setpower)
+- [`GetPosition()`](/components/motor/#getposition)
+- [`GetProperties()`](/components/motor/#getproperties)
+- [`Stop()`](/components/motor/#stop)
+- [`IsMoving()`](/components/motor/#ismoving)

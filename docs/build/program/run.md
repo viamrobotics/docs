@@ -4,7 +4,7 @@ linkTitle: "Run Code"
 weight: 50
 type: "docs"
 description: "Execute the logic you've written to control your robot or fleet."
-images: ["/build/configure/services/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags: ["client", "sdk", "application", "sdk", "fleet", "program"]
 aliases:
   - /program/run/

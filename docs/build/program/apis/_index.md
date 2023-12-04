@@ -4,7 +4,7 @@ linkTitle: "APIs"
 weight: 20
 type: "docs"
 description: "Access and control your robot or fleet with the SDKs' client libraries for the resource and robot APIs."
-icon: "/build/configure/services/icons/sdk.svg"
+icon: "/services/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
   - /program/sdks/
@@ -48,90 +48,90 @@ The ML training API allows you to get information about and cancel ML training j
 
 These APIs provide interfaces for controlling and getting information from various components of a robot.
 Built-in API methods are defined for every model of each component type.
-Documentation on using these methods in your SDK code is found on each [component page](/build/configure/components/) as follows:
+Documentation on using these methods in your SDK code is found on each [component page](/components/) as follows:
 
 ### Arm
 
-The [arm component](/build/configure/components/arm/) supports the following methods:
+The [arm component](/components/arm/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/arm.md" >}}
 
 ### Base
 
-The [base component](/build/configure/components/base/) supports the following methods:
+The [base component](/components/base/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/base.md" >}}
 
 ### Board
 
-The [board component](/build/configure/components/board/) supports the following methods:
+The [board component](/components/board/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/board.md" >}}
 
 ### Camera
 
-The [camera component](/build/configure/components/camera/) supports the following methods:
+The [camera component](/components/camera/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/camera.md" >}}
 
 ### Encoder
 
-The [encoder component](/build/configure/components/encoder/) supports the following methods:
+The [encoder component](/components/encoder/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/encoder.md" >}}
 
 ### Gantry
 
-The [gantry component](/build/configure/components/gantry/) supports the following methods:
+The [gantry component](/components/gantry/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/gantry.md" >}}
 
 ### Generic
 
-The [generic component](/build/configure/components/generic/) supports the following methods:
+The [generic component](/components/generic/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generic.md" >}}
 
 ### Gripper
 
-The [gripper component](/build/configure/components/gripper/) supports the following methods:
+The [gripper component](/components/gripper/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/gripper.md" >}}
 
 ### Input Controller
 
-The [input controller component](/build/configure/components/input-controller/) supports the following methods:
+The [input controller component](/components/input-controller/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/input-controller.md" >}}
 
 ### Motor
 
-The [motor component](/build/configure/components/motor/) supports the following methods:
+The [motor component](/components/motor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/motor.md" >}}
 
 ### Movement Sensor
 
-The [movement sensor component](/build/configure/components/movement-sensor/) supports the following methods.
+The [movement sensor component](/components/movement-sensor/) supports the following methods.
 Some methods are only supported by certain models:
 
 {{< readfile "/static/include/components/apis/movement-sensor.md" >}}
 
 ### Power Sensor
 
-The [power sensor component](/build/configure/components/power-sensor/) supports the following methods:
+The [power sensor component](/components/power-sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/power-sensor.md" >}}
 
 ### Sensor
 
-The [sensor component](/build/configure/components/sensor/) supports the following methods:
+The [sensor component](/components/sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/sensor.md" >}}
 
 ### Servo
 
-The [servo component](/build/configure/components/servo/) supports the following methods:
+The [servo component](/components/servo/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/servo.md" >}}
 
@@ -139,7 +139,7 @@ The [servo component](/build/configure/components/servo/) supports the following
 
 These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
 Built-in API methods are defined for each service implementation.
-Documentation on using these methods in your SDK code is found on [service pages](/build/configure/services/) as follows:
+Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
 
 ### Base Remote Control
 
@@ -193,19 +193,19 @@ Different [vision service](/ml/vision/) models support different methods:
 
 ### GPIO Pins
 
-In addition to the [board API](#board), the [board component](/build/configure/components/board/) supports the following methods for interfacing with GPIO pins on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with GPIO pins on a board:
 
 {{< readfile "/static/include/components/apis/gpiopin.md" >}}
 
 ### Analog-to-Digital Converters (ADCs)
 
-In addition to the [board API](#board), the [board component](/build/configure/components/board/) supports the following methods for interfacing with [ADCs](/build/configure/components/board/#analogs) on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [ADCs](/components/board/#analogs) on a board:
 
 {{< readfile "/static/include/components/apis/analogreader.md" >}}
 
 ### Digital Interrupts
 
-In addition to the [board API](#board), the [board component](/build/configure/components/board/) supports the following methods for interfacing with [digital interrupts](/build/configure/components/board/#digital_interrupts) on a board:
+In addition to the [board API](#board), the [board component](/components/board/) supports the following methods for interfacing with [digital interrupts](/components/board/#digital_interrupts) on a board:
 
 {{< readfile "/static/include/components/apis/digitalinterrupt.md" >}}
 

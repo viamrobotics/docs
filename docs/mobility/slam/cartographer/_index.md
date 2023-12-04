@@ -5,7 +5,7 @@ weight: 70
 type: "docs"
 description: "Configure a Simultaneous Localization And Mapping (SLAM) service with the Cartographer modular resource."
 tags: ["slam", "services"]
-icon: "/build/configure/services/icons/slam.svg"
+icon: "/services/icons/slam.svg"
 aliases:
   - "/services/slam/run-slam-cartographer/"
   - "/services/slam/cartographer/"

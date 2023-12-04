@@ -1,7 +1,7 @@
 ---
 title: "Extend Viam with Modules from the Viam Registry"
 linkTitle: "Registry"
-weight: 33
+weight: 420
 type: "docs"
 tags:
   [

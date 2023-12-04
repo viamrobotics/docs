@@ -3,12 +3,12 @@ The [Inter-Integrated circuit (I<sup>2</sup>C)](https://learn.sparkfun.com/tutor
 - Serial Data: SDA
 - Serial Clock: SCL
 
-To connect your board (controller) and a [component](/build/configure/components/) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
+To connect your board (controller) and a [component](/components/) that requires I<sup>2</sup>C communication (peripheral device), wire a connection between SDA and SCL pins on the board and component.
 
 {{% alert title="Important" color="note" %}}
 
 You must also enable I<sup>2</sup>C on your board if it is not enabled by default.
-See your [board model's configuration instructions](/build/configure/components/board/#supported-models) if applicable.
+See your [board model's configuration instructions](/components/board/#supported-models) if applicable.
 
 {{% /alert %}}
 

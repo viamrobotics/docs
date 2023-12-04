@@ -10,7 +10,7 @@ aliases:
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Imagine a robotic [arm](/build/configure/components/arm/) is attached to a table.
+Imagine a robotic [arm](/components/arm/) is attached to a table.
 
 Consider one corner of the table the arm is attached to to be the origin of the `world`, `(0, 0, 0)`.
 Measure from that point to the base of the arm to get the `translation` coordinates.

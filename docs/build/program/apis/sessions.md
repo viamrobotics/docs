@@ -26,7 +26,7 @@ The period of time during which a client is connected to a robot is called a _se
 _Session management_ is a safety precaution that allows you to manage the clients that are authenticated and communicating with a robot's `viam-server` instance.
 The default session management configuration checks for presence to ensures that a robot only moves when a client is actively connected and stops any components that remain running when a client disconnects.
 This is especially important for robots that physically move.
-For example, imagine a wheeled rover gets a [`SetPower()`](/build/configure/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
+For example, imagine a wheeled rover gets a [`SetPower()`](/components/base/#setpower) command as the last input from a client before the connection to the robot is interrupted.
 Without session management, the API request from the client would cause the rover's motors to move, causing the robot to continue driving forever and potentially colliding with objects and people.
 
 For more information, see [Client Sessions and Robot Network Connectivity](/build/program/connectivity/).

@@ -73,7 +73,7 @@ For each component that makes up your machine:
 2. Test it with the visual [control tab](/fleet/machines/#control).
 3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back configuration [history](/fleet/machines/#history).
 
-After configuring your machine's hardware, you can configure [high level functionality](/build/configure/services/) the same way:
+After configuring your machine's hardware, you can configure [high level functionality](/services/) the same way:
 
 - **Data Management** enables you to capture and sync data from one or more machines, and use that data for machine learning and beyond.
 - **Fleet management** enables you to configure, control, debug, and manage entire fleets of machines.
@@ -103,8 +103,8 @@ This provides flexibility and security whether you are building tight control lo
 There are four categories of APIs:
 
 - [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
-- [Components](/build/configure/components/) like motors, arms, GPS
-- [Services](/build/configure/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
+- [Components](/components/) like motors, arms, GPS
+- [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
 - Cloud applications like [Fleet Management](/fleet/), [Data Management](/data/)
 
 You can see the Viam API specification on [GitHub](https://github.com/viamrobotics/api).

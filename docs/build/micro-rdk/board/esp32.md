@@ -30,7 +30,7 @@ To add an `esp32` board, navigate to the **Config** tab of your robot's page in 
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32` [board](/build/configure/components/board/) model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+The`esp32` [board](/components/board/) model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
 
 {{< /alert >}}
 
@@ -98,8 +98,8 @@ The following attributes are available for `esp32` boards:
 | `digital_interrupts` | object | Optional | Any digital interrupts' GPIO number. See [configuration info](#digital_interrupts). |
 | `pins` | object | Required | The GPIO number of any GPIO pins you wish to use as input/output with the [`GPIOPin` API](/build/program/apis/#gpio-pins). |
 
-Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/build/configure/components/board/#api).
-Interaction with digital interrupts is only supported with the [board API](/build/configure/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
+Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/components/board/#api).
+Interaction with digital interrupts is only supported with the [board API](/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
 
 ### `analogs`
 

@@ -2,7 +2,7 @@
 
 > **Note**
 > Looking to contribute? Check out the [Contributor Guide](https://docs.viam.com/appendix/contributing/).
-> For help knowing what and how to write, check out our templates: our [tutorial template](docs/tutorials/template/) and [component page template](docs/build/configure/components/component/) are accessible on the site when building the docs in Draft mode, or accessible here on GitHub.
+> For help knowing what and how to write, check out our templates: our [tutorial template](docs/tutorials/template/) and [component page template](docs/components/component/) are accessible on the site when building the docs in Draft mode, or accessible here on GitHub.
 
 ## Build the docs locally
 

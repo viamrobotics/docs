@@ -5,7 +5,7 @@ weight: 20
 type: "docs"
 description: "The motion service enables your robot to plan and move its components relative to itself, other robots, and the world."
 tags: ["motion", "motion planning", "services"]
-icon: "/build/configure/services/icons/motion.svg"
+icon: "/services/icons/motion.svg"
 no_list: true
 aliases:
   - "/services/motion/"
@@ -27,10 +27,10 @@ The motion service can:
 
 {{< cards >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/build/configure/components/movement-sensor/" required="yes">}}
-{{< relatedcard link="/build/configure/components/base/" >}}
-{{< relatedcard link="/build/configure/components/arm/" >}}
-{{< relatedcard link="/build/configure/components/gripper/" >}}
+{{< relatedcard link="/components/movement-sensor/" required="yes">}}
+{{< relatedcard link="/components/base/" >}}
+{{< relatedcard link="/components/arm/" >}}
+{{< relatedcard link="/components/gripper/" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
@@ -251,7 +251,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_pose).
 
-The following code example gets the pose of the tip of a [gripper](/build/configure/components/gripper/) named `my_gripper` which is attached to the end of an arm, in the "world" `reference_frame`:
+The following code example gets the pose of the tip of a [gripper](/components/gripper/) named `my_gripper` which is attached to the end of an arm, in the "world" `reference_frame`:
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.components.gripper import Gripper
@@ -356,7 +356,7 @@ logger.Info("Orientation of myArm from the motion service:", myArmMotionPose.Pos
 
 ### MoveOnMap
 
-Move a [base](/build/configure/components/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) in respect to the origin of a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -429,16 +429,16 @@ success, err := motionService.MoveOnMap(context.Background(), myBaseResourceName
 
 ### MoveOnGlobe
 
-Move a [base](/build/configure/components/base/) component to a destination GPS point, represented in geographic notation _(latitude, longitude)_.
-Use a [movement sensor](/build/configure/components/movement-sensor/) to check the location of the robot.
+Move a [base](/components/base/) component to a destination GPS point, represented in geographic notation _(latitude, longitude)_.
+Use a [movement sensor](/components/movement-sensor/) to check the location of the robot.
 
 {{< alert title="Usage" color="tip" >}}
 
-`MoveOnGlobe()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous GPS navigation for rover [bases](/build/configure/components/base/).
+`MoveOnGlobe()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
 
 To use `MoveOnGlobe()`, your movement sensor must be able to measure the GPS location and orientation of the robot.
 
-Make sure the [movement sensor](/build/configure/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/build/configure/components/movement-sensor/#api).
+Make sure the [movement sensor](/components/movement-sensor/) you use supports usage of the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [movement sensor API](/components/movement-sensor/#api).
 
 - It must support `GetPosition()` to report the robot's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
@@ -463,11 +463,11 @@ Translation in obstacles is not supported by the [navigation service](/mobility/
 
 - `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to move.
 - `destination` [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) _(lat, lng)_.
-- `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the [movement sensor](/build/configure/components/movement-sensor/) that you want to use to check the robot's location.
+- `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [(Optional[Sequence[GeoObstacle]])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `heading` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
 - `configuration` [(Optional[MotionConfiguration])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
-  - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/build/configure/components/camera/) resource pair you want to use for transient obstacle avoidance.
+  - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `position_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the position of the robot.
   - `obstacle_polling_frequency_hz` [(float)](https://docs.python.org/3/library/functions.html#float): The frequency in hz to poll the vision service for new obstacles.
   - `plan_deviation_m` [(float)](https://docs.python.org/3/library/functions.html#float): The distance in millimeters that the machine can deviate from the motion plan.
@@ -509,10 +509,10 @@ success = await motion.move_on_globe(
 - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to move.
 - `destination` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The location of the component's destination, represented in geographic notation as a [Point](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) _(lat, lng)_.
 - `heading` [(float64)](https://pkg.go.dev/builtin#float64): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` </li><li>Default: `None`</li></ul>
-- `movementSensorName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/build/configure/components/movement-sensor/) that you want to use to check the robot's location.
+- `movementSensorName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
 - `obstacles` [([]\*spatialmath.GeoObstacle)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `motionConfig` [(\*MotionConfiguration)](https://pkg.go.dev/go.viam.com/rdk/services/motion#MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
-  - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/build/configure/components/camera/) resource pair you want to use for transient obstacle avoidance.
+  - `ObstacleDetectors` [([]ObstacleDetectorName)](https://pkg.go.dev/go.viam.com/rdk/services/motion#ObstacleDetectorName): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
   - `PositionPollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the position of the robot.
   - `ObstaclePollingFreqHz` [(float64)](https://pkg.go.dev/builtin#float64): The frequency in hz to poll the vision service for new obstacles.
   - `PlanDeviationMM` [(float64)](https://pkg.go.dev/builtin#float64): The distance in millimeters that the machine can deviate from the motion plan.

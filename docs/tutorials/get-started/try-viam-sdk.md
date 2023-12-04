@@ -24,7 +24,7 @@ cost: "0"
 
 The Viam {{< glossary_tooltip term_id="sdk" text="SDKs" >}} allow you to write code in Python, Go, or TypeScript to control a Viam-connected machine.
 In this tutorial you will learn how to use the Viam SDKS as you write code to make a robot drive in a square.
-You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/build/configure/components/base/).
+You can follow this tutorial with a [rented Viam Rover](https://app.viam.com/try), [your own Viam Rover](/get-started/try-viam/rover-resources/), or another [mobile robot](/components/base/).
 
 <div class="td-max-width-on-larger-screens">
 {{<gif webm_src="/tutorials/try-viam-sdk/image1.webm" mp4_src="/tutorials/try-viam-sdk/image1.mp4" alt="Overhead view of the Viam Rover showing it as it drives in a square." max-width="400px">}}
@@ -39,7 +39,7 @@ You can also directly see the [complete code for the tutorial](#complete-code).
 You don't need any hardware to complete this tutorial!
 You can rent a rover to drive remotely at no cost with [Try Viam](https://app.viam.com/try).
 
-If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/build/configure/components/base/wheeled/).
+If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, this tutorial works for any wheeled robot that can be configured as a [base component](/components/base/wheeled/).
 
 {{% alert title="Important" color="note" %}}
 If you are using your own robot for this tutorial instead of [renting one](https://app.viam.com/try), be sure to [install `viam-server`](/get-started/installation/#install-viam-server) on it and [configure](/build/configure/) its hardware before proceeding with this tutorial.
@@ -704,6 +704,6 @@ main().catch((error) => {
 If you're ready for more, try making your rover move in different ways.
 Can you make it move in a circle?
 A figure-eight?
-You could also write some code to control the other components on the robot, like the [camera](/build/configure/components/camera/), or the rover's [motors](/build/configure/components/motor/).
+You could also write some code to control the other components on the robot, like the [camera](/components/camera/), or the rover's [motors](/components/motor/).
 
 You could also control Viam's services, by adding [data management](/data/) to collect data in real time or [vision services](/ml/vision/) to [add color detection to your rover](/tutorials/services/try-viam-color-detection/).
