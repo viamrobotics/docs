@@ -4,10 +4,7 @@ linkTitle: "Manage and deploy code versions"
 weight: 40
 tags: []
 no_list: true
-description: ""
-image: ""
-imageAlt: ""
-images: [""]
+description: "Deploy and manage module versions as public or private resources with the Viam CLI"
 ---
 
 You can upload custom modules, either as public resources accessible to all Viam users or as private modules shared exclusively within your organization.
