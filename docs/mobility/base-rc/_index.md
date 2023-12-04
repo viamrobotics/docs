@@ -5,15 +5,15 @@ weight: 60
 type: "docs"
 description: "The base remote control service allows you to remotely control a base with an input controller like a gamepad."
 tags: ["base", "services", "rover", "input controller", "remote control"]
-icon: "/build/configure/services/icons/base-rc.svg"
-images: ["/build/configure/services/icons/base-rc.svg"]
+icon: "/services/icons/base-rc.svg"
+images: ["/services/icons/base-rc.svg"]
 aliases:
   - "/services/base-rc/"
 # SME: Eric
 ---
 
-The Base Remote Control service implements an [input controller](/build/configure/components/input-controller/) as a remote control for a [base](/build/configure/components/base/).
-This uses the [`input` api](/build/configure/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
+The Base Remote Control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
+This uses the [`input` api](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
 
 Add the Base Remote Control service after configuring your robot with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
@@ -30,16 +30,16 @@ You can monitor the input from these controls in the **Control** tab of the [Via
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/components/base/" required="yes" >}}
-{{< relatedcard link="/build/configure/components/input-controller/" required="yes" >}}
-{{< relatedcard link="/build/configure/components/movement-sensor/" >}}
+{{< relatedcard link="/components/base/" required="yes" >}}
+{{< relatedcard link="/components/input-controller/" required="yes" >}}
+{{< relatedcard link="/components/movement-sensor/" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
 
 ## Configuration
 
-You must configure a [base](/build/configure/components/base/) with a [movement sensor](/build/configure/components/movement-sensor/) as part of your robot to be able to use a Base Remote Control service.
+You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to be able to use a Base Remote Control service.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -89,11 +89,11 @@ The following attributes are available for base remote control services:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `base` | string | **Required** | The `name` of the [base](/build/configure/components/base/) you have configured for the base you are operating with this service. |
-| `input_controller` | string | **Required** | The `name` of the [input controller](/build/configure/components/input-controller/) you have configured for the base you are operating with this service. |
+| `base` | string | **Required** | The `name` of the [base](/components/base/) you have configured for the base you are operating with this service. |
+| `input_controller` | string | **Required** | The `name` of the [input controller](/components/input-controller/) you have configured for the base you are operating with this service. |
 | `control_mode` | string | Optional | The mode of remote control you want to use. <br> Options: <ul><li>`"arrowControl"`</li><li>`"triggerSpeedControl"`</li><li>`"buttonControl"`</li><li>`"joyStickControl"`</li> <li>`"droneControl"`</li></ul> <br> Default: `"arrowControl"` |
-| `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/build/configure/components/base/) in degrees per second. |
-| `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/build/configure/components/base/) in meters per second. |
+| `max_angular_degs_per_sec` | float | Optional | The max angular velocity for the [base](/components/base/) in degrees per second. |
+| `max_linear_mm_per_sec` | float | Optional | The max linear velocity for the [base](/components/base/) in meters per second. |
 
 ## API
 
@@ -103,7 +103,7 @@ The base remote control service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [base](/build/configure/components/base/) named `"my_base"`, [input controller](/build/configure/components/input-controller/) named `"my_controller"`, and Base Remote Control service named `"my_base_rc_service"`.
+The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and Base Remote Control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 

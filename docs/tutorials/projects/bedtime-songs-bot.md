@@ -68,7 +68,7 @@ In the [Viam app](https://app.viam.com), create a new robot and follow the steps
 
 Navigate to your robot's page in the app and click on the [**Config** tab](/build/configure/).
 
-First, add your personal computer's webcam to your robot as a [camera](/build/configure/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
+First, add your personal computer's webcam to your robot as a [camera](/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -76,7 +76,7 @@ First, add your personal computer's webcam to your robot as a [camera](/build/co
 Click the **Components** subtab, then click **Create component** in the lower-left corner of the page.
 
 Select `camera` for the type, then select `webcam` for the model.
-Enter `cam` for the name of your [camera component](/build/configure/components/camera/), then click **Create**.
+Enter `cam` for the name of your [camera component](/components/camera/), then click **Create**.
 
 ![Creation of a `webcam` camera in the Viam app config builder. The user is selecting the video_path configuration attribute from the dropdown menu](../../tutorials/bedtime-songs-bot/video-path-ui.png)
 
@@ -582,4 +582,4 @@ Now, as shown below, your smart bedtime songs bot knows to play a song whenever 
 
 This project is just a start.
 
-Expand upon the [configuration](/build/configure/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/ml/), the [vision service](/build/configure/services/), and more [components](/build/configure/components/) and [services](/build/configure/services/).
+Expand upon the [configuration](/build/configure/) of your bedtime-songs bot to further customize a robot that can entertain with [machine learning](/ml/), the [vision service](/services/), and more [components](/components/) and [services](/services/).

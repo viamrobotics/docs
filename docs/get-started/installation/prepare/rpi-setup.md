@@ -188,7 +188,7 @@ If you are using hardware that requires these protocols, you must enable support
 
 1. Use your keyboard to select "Interface Options", and press return.
 
-   {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/get-started/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/get-started/installation/rpi-setup/installation-raspberry-pi-i2c-raspiconfig-interface-options.png" resize="800x" declaredimensions=true >}}
 
 1. Enable the relevant protocols to support your specific hardware. For example:
 

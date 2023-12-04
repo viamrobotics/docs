@@ -10,7 +10,7 @@ aliases:
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Imagine a robotic [arm](/build/configure/components/arm/) is attached to the actuator (moving part) of a [gantry](/build/configure/components/gantry/).
+Imagine a robotic [arm](/components/arm/) is attached to the actuator (moving part) of a [gantry](/components/gantry/).
 
 Consider the point that the gantry itself is fixed to as the center of the `world`, making the gantry's origin the same as the `world` origin: `(0, 0, 0)`.
 

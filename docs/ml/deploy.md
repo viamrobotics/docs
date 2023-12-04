@@ -9,7 +9,7 @@ aliases:
   - /services/ml/
 description: "Deploy Machine Learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
 modulescript: true
-icon: "/build/configure/services/icons/ml.svg"
+icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
@@ -30,8 +30,8 @@ For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetso
 
 {{< cards >}}
 {{< relatedcard link="/ml/vision/">}}
-{{< relatedcard link="/build/configure/components/board/">}}
-{{< relatedcard link="/build/configure/components/camera/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
 
 ### Modular Resources
@@ -64,7 +64,7 @@ To configure your service with an existing model on the robot, select **Path to 
 
 Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
-![Create a machine learning models service with an existing model](/build/configure/services/available-models.png)
+![Create a machine learning models service with an existing model](/services/available-models.png)
 
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
@@ -73,7 +73,7 @@ To configure your service and deploy a model onto your robot, select **Deploy Mo
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
-![Create a machine learning models service with a model to be deployed](/build/configure/services/deploy-model.png)
+![Create a machine learning models service with a model to be deployed](/services/deploy-model.png)
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -126,15 +126,15 @@ The following parameters are available for a `"tflite_cpu"` model:
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
 | `model_path` | **Required** | The absolute path to the `.tflite model` file, as a `string`. |
-| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. The SDK expects this text file to contain an ordered listing of the class labels. Without this file, classes will read as "1", "2", and so on. |
+| `label_path` | Optional | The absolute path to a `.txt` file that holds class labels for your TFLite model, as a `string`. This text file should contain an ordered listing of class labels. Without this file, classes will read as "1", "2", and so on. |
 | `num_threads` | Optional | An integer that defines how many CPU threads to use to run inference. Default: `1`. |
 
-Save the configuration and your model will be added to your robot at <file>$HOME/.viam/packages/\<model-name\>/\<file-name\></file>.
+Save the configuration.
 
-{{< alert title="Info" color="info" >}}
+### Versioning for deployed models
+
 If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
-{{< /alert >}}
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
 The model package config looks like this:

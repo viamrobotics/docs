@@ -171,7 +171,7 @@ You must configure each component with a type, a model, a name, attributes, and 
   You can choose any unique name for a component.
 
 - `attributes`: A struct to define things like how the component is wired to the robot, its dimensions, and other specifications; attributes vary widely between models.
-  See the [component documentation](/build/configure/components/) for a given component type and model for more details.
+  See the [component documentation](/components/) for a given component type and model for more details.
 
   {{% alert title="Tip" color="tip" %}}
 
@@ -182,14 +182,14 @@ You must configure each component with a type, a model, a name, attributes, and 
 
 - `depends_on`: Any components that a given component relies upon, and that must be initialized on boot before this component is initialized.
   Many built-in components have convenient implicit dependencies, in which case `depends_on` can be left blank.
-  For example, a [`gpio` motor](/build/configure/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
+  For example, a [`gpio` motor](/components/motor/gpio/) depends on the `board` to which it is wired, but it has a dedicated `board` attribute and `viam-server` will automatically initialize that board before it looks for the motor.
 
 If you are configuring several similar components, you can use the **Duplicate component** button in the upper-right of a component's configuration pane to create a new identical component beneath your existing one.
 Be sure to edit the duplicated component to change any parameters that are unique to the new component, such as its name and pins.
 
 To delete a component, click the trash can icon in the upper-right of the component configuration pane.
 
-For specific information on how to configure each supported component type, see the [components documentation](/build/configure/components/).
+For specific information on how to configure each supported component type, see the [components documentation](/components/).
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -202,7 +202,7 @@ Meanwhile the **Code sample** tab will also update to include code for some basi
 
 ## Services
 
-[Services](/build/configure/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your robot.
+[Services](/services/) are built-in software packages that make it easier to add complex capabilities such as motion planning or object detection to your robot.
 
 For services, the `type` specifies which of the Viam services you want to use on your robot, such as the vision service or the motion service.
 
@@ -210,7 +210,7 @@ The `name` serves as an identifier when accessing the resource from your code, a
 You can choose any unique name for a service.
 
 The other aspects of configuring a service are highly specific to the type of service.
-See the [services documentation](/build/configure/services/) for more information.
+See the [services documentation](/services/) for more information.
 
 ## Modules
 
@@ -277,7 +277,7 @@ To create your own private fragment, go to [app.viam.com/fragments](https://app.
 2. Add the JSON configuration in the config field.
 3. Click **SAVE FRAGMENT**.
 
-![Fragment creation view](/manage/fragment-view.png)
+![Fragment creation view](/fleet/fragment-view.png)
 
 ### Add a fragment to a robot
 
@@ -290,11 +290,11 @@ To add a fragment to a robot:
 - Look through the list of available fragments and click **Add** next to any fragments you want to add to your robot.
 - Click **Save Config** at the bottom of the screen.
 
-![The fragments subtab](/manage/fragments-tab.png)
+![The fragments subtab](/fleet/fragments-tab.png)
 
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
-![A fragment in the components subtab](/manage/fragment-components.png)
+![A fragment in the components subtab](/fleet/fragment-components.png)
 
 In the `Raw JSON` configuration, you will see the fragment ID in the `fragments` section:
 

@@ -58,7 +58,7 @@ You will use the following software in this tutorial:
 
 ## Configure your robot on the Viam app
 
-If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already have a robot set up on the [Viam app](https://app.viam.com), connected and live, with a [webcam configured](/build/configure/components/camera/webcam/).
+If you followed the [Use Object Detection to Turn Your Lights On](/tutorials/projects/light-up/) tutorial, you already have a robot set up on the [Viam app](https://app.viam.com), connected and live, with a [webcam configured](/components/camera/webcam/).
 
 {{% expand "If you're starting with this tutorial, click here for instructions." %}}
 
@@ -70,7 +70,7 @@ Go to the **Setup** tab of your new robot's page and follow the steps [to instal
 
 ### Configure the camera component
 
-On your new robot's page, go to the **Config** tab and create a [camera component](/build/configure/components/camera/):
+On your new robot's page, go to the **Config** tab and create a [camera component](/components/camera/):
 
 Click **Create component** in the lower-left corner of the screen.
 
@@ -129,7 +129,7 @@ Click the **Services** subtab.
 To be able to test that the vision service is working, add a `transform` camera which will add bounding boxes and labels around the objects the service detects.
 
 Click on the **Components** subtab and click **Create component** in the lower-left corner.
-Create a [transform camera](/build/configure/components/camera/transform/) with type `camera` and model `transform`.
+Create a [transform camera](/components/camera/transform/) with type `camera` and model `transform`.
 Name it `detectionCam` and click **Create**.
 
 ![detectionCam component panel with type camera and model transform, Attributes section has source and pipeline but they are empty.](/tutorials/tipsy/app-detection-before.png)

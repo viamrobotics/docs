@@ -45,7 +45,7 @@ The order of these components may vary.
 
 ### Base control
 
-The [base component](/build/configure/components/base/) is the platform that the other parts of a mobile robot attach to.
+The [base component](/components/base/) is the platform that the other parts of a mobile robot attach to.
 
 Click the `viam_base` component to expand the base control pane to reveal the camera feed and driving interfaces.
 
@@ -92,7 +92,7 @@ If you go from the from **Keyboard** to the **Discrete** tab, you can choose bet
 
 ### Camera control
 
-While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/build/configure/components/camera/) panel. In these panels, you can:
+While you can view the camera streams [from the base component panel](#camera-views), you can access more features on each individual [camera component](/components/camera/) panel. In these panels, you can:
 
 - Set the refresh frequency
 - Export screenshots
@@ -108,7 +108,7 @@ While you can view the camera streams [from the base component panel](#camera-vi
 
 ### Motor control
 
-The [motor components](/build/configure/components/motor/) enable you to move the base.
+The [motor components](/components/motor/) enable you to move the base.
 The motors are named `left` and `right`, corresponding to their location on the rover base.
 Their initial state is **Idle**.
 You can click on each motor panel and make the motor **RUN** or **STOP**.
@@ -124,7 +124,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The [board component](/build/configure/components/board/) is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
+The [board component](/components/board/) is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
 
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
@@ -133,7 +133,7 @@ With it, you can control the states of individual GPIO pins on the board.
 
 #### Web gamepad control
 
-The [web gamepad component](/build/configure/components/input-controller/webgamepad/) is disabled by default, but if you have a compatible gamepad, you can enable the **Enabled** toggle.
+The [web gamepad component](/components/input-controller/webgamepad/) is disabled by default, but if you have a compatible gamepad, you can enable the **Enabled** toggle.
 
 ## Learn about robot configuration
 
@@ -144,13 +144,13 @@ There you can view the configuration for each component in the robot: attributes
 
 ### Board configuration
 
-The [board component](/build/configure/components/board/) component is the signal wire hub of a robot.
+The [board component](/components/board/) component is the signal wire hub of a robot.
 Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
 For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
 
 ### Encoder configuration
 
-An [encoder](/build/configure/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
+An [encoder](/components/encoder/) is a device that is used to sense angular position, direction and/or speed of rotation.
 In this case, the encoders on the left and right motors are `Lenc` and `Renc` and configure the pins to `le` and `re`.
 
 {{< alert title="Important" color="note" >}}
@@ -161,7 +161,7 @@ When configuring encoded motors for your own robot, you must configure the encod
 
 ### Motor configuration
 
-Both [motors](/build/configure/components/motor/) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
+Both [motors](/components/motor/) on this rover use the model `gpio` which is the model for basic DC motors that are connected to and controlled by the configured board.
 
 The attributes section lists the board the motor is wired to, and since the rover's motors are encoded the user interface also shows the encoded motor attributes: the encoder name, motor ramp rate limit, encoder ticks per rotation, and max RPM limit.
 
@@ -171,7 +171,7 @@ Click **Go to fancy** to return to the default graphical user interface.
 
 ### Base configuration
 
-The [base component](/build/configure/components/base/) is the platform that the other parts of a mobile robot attach to.
+The [base component](/components/base/) is the platform that the other parts of a mobile robot attach to.
 By configuring a base component, the individual components are organized to produce coordinated movement and you gain an interface to control the movement of the whole physical base of the robot without needing to send separate commands to individual motors.
 The base's type is `base` and its model is `wheeled` which configures a robot with wheels on its base, like the Viam Rover.
 The **left** and **right** attributes configure the motors on the left and right side of the rover, which are named `left` and `right`, respectively.
@@ -184,16 +184,16 @@ The **Spin Slip Factor** of 1.76 is used in steering calculations to account for
 
 ### Camera configuration
 
-The [camera component](/build/configure/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
+The [camera component](/components/camera/) configures the webcam that is plugged into the Raspberry Pi of the rover.
 The camera component has the **Type** `camera`, the **Model** `webcam`, and the **Video Path** is `video0`.
 
-For more information on choosing the correct video path, refer to our [webcam documentation](/build/configure/components/camera/webcam/).
+For more information on choosing the correct video path, refer to our [webcam documentation](/components/camera/webcam/).
 
 ![The video path in the webcam configuration panel is set to 'video0'.](get-started/try-viam/try-viam/camera-config.png)
 
 ### Gamepad configuration
 
-The [web gamepad](/build/configure/components/input-controller/webgamepad/) component has the **Type** `input_controller` and the **Model** `webgamepad`.
+The [web gamepad](/components/input-controller/webgamepad/) component has the **Type** `input_controller` and the **Model** `webgamepad`.
 
 ![The gamepad configuration panel. No attributes are configured.](get-started/try-viam/try-viam/gamepad-config.png)
 

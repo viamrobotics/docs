@@ -13,7 +13,7 @@ aliases:
 ---
 
 A base is the moving platform that the other parts of a mobile robot attach to.
-For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see the [Base Component](/build/configure/components/base/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see the [Base Component](/components/base/).
 
 ## Supported Models
 
@@ -26,7 +26,7 @@ For configuration information, click on the supported base model name:
 
 ## API
 
-The micro-RDK [base API](/build/configure/components/base/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [base API](/components/base/#api) is limited to the following supported client SDK API methods, which operate the same as in the full-featured RDK:
 
-- [`Stop()`](/build/configure/components/base/#stop)
-- [`SetPower()`](/build/configure/components/base/#setpower)
+- [`Stop()`](/components/base/#stop)
+- [`SetPower()`](/components/base/#setpower)

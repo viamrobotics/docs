@@ -34,10 +34,10 @@ You can see the [full code](#full-code) at the bottom of the page.
 
 You will need the following hardware to complete this tutorial:
 
-- A wheeled rover, configured with a [base component](/build/configure/components/base/) on the [Viam app](https://app.viam.com/).
+- A wheeled rover, configured with a [base component](/components/base/) on the [Viam app](https://app.viam.com/).
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a different rover.
   - Regardless of the type of base you are using, [Setting up a SCUTTLE with Viam](/tutorials/configure/scuttlebot/) is a good place to start if you haven't already configured your base.
-- An attached and configured [webcam camera](/build/configure/components/camera/webcam/).
+- An attached and configured [webcam camera](/components/camera/webcam/).
 
 ## Set up the hardware
 
@@ -103,7 +103,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 You can test your detector from the [**Control tab**](/fleet/machines/#control):
 
-1. Configure a [transform camera](/build/configure/components/camera/transform/) with the following attributes:
+1. Configure a [transform camera](/components/camera/transform/) with the following attributes:
 
    ```json
    {

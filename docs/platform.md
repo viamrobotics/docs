@@ -1,7 +1,7 @@
 ---
 title: "Platform"
 linkTitle: "Platform"
-weight: 30
+weight: 400
 type: docs
 layout: "empty"
 empty_node: true
