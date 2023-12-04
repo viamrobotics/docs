@@ -35,7 +35,6 @@ For example, you might want to use the registry to contribute to collaborative p
         <td>{{<imgproc src="/use-cases/update-module-command.png" class="fill alignright" resize="300x" declaredimensions=true alt="Update module command">}}
             <b>3. Manage your modular resource</b>
             <br><br><p>Manage and update your existing module's version in the registry <a href="/registry/upload/#update-an-existing-module-using-the-viam-cli">manually</a> by using the Viam CLI <code>update</code> command, or automatically by using a <a href="/registry/upload/#update-an-existing-module-using-a-github-action">GitHub action</a>.</p>
-            <p>You can also choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.</p>
         </th>
     </tr>
 </table>
