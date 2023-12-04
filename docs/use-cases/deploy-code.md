@@ -19,27 +19,27 @@ For example, you might want to use the registry to contribute to collaborative p
 
 <table>
     <tr>
-        <th> {{<imgproc src="PLACEHOLDER" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
+        <th> {{<imgproc src="/create-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
             <b> 1. Create your module </b>
             <p> [Create a module](/create/) that implements an existing Viam [API](/build/program/apis/) as either a public or private module.
-            By default, a new module is created as private. <br>
-            You can use the Viam CLI `create` command to choose a custom module name, optionally set your module's visibility level, and generate the required metadata.
+            By default, a new module is created as private.
+            You can later make a private module public using the `viam module update` command, but once you make a module public, you cannot change it back to private.<br>
+            You can also use the Viam CLI `create` command to choose a custom module name using the `name` command, generate the required metadata, and optionally set your module's privacy level by filling the `visibility` field in the JSON file resulting from the `create` command.
             </p>
         </th>
     </tr>
     <tr>
-        <td> {{<imgproc src="PLACEHOLDER" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
+        <td> {{<imgproc src="/upload-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
         <b> 2. Upload your modular resource </b>
             <p> [Upload your modular resource](/upload/#upload-a-custom-module) to the registry by using the `upload` command. <br> You can also use the `--version` argument to set the version of your module for the upload.  <br>
             </p>
         </th>
     </tr>
     <tr>
-        <td> {{<imgproc src="PLACEHOLDER" class="fill alignright"
-        style="max-width: 300px" declaredimensions=true alt="">}}
+        <td> {{<imgproc src="/update-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
             <b> 3. Manage your modular resource </b>
             <p> Once you've uploaded your module, manage and update your existing modules in the registry [manually](/registry/upload/#update-an-existing-module-using-the-viam-cli) by using the Viam CLI `update` command, or automatically by using a [GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action). <br>
-            You can also choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.</p> 
+            You can also choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.</p>
         </th>
     </tr>
 </table>
