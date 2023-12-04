@@ -16,7 +16,7 @@ For example, you might want to use the registry to contribute to collaborative p
 
 <table>
     <tr>
-        <th> {{<imgproc src="/create-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
+        <th> {{<imgproc src="/use-cases/create-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
             <b> 1. Create your module </b>
             <p> [Create a module](/create/) that implements an existing Viam [API](/build/program/apis/) as either a public or private module.
             By default, a new module is created as private.
@@ -26,14 +26,14 @@ For example, you might want to use the registry to contribute to collaborative p
         </th>
     </tr>
     <tr>
-        <td> {{<imgproc src="/upload-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
+        <td> {{<imgproc src="/use-cases/upload-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
         <b> 2. Upload your modular resource </b>
             <p> [Upload your modular resource](/upload/#upload-a-custom-module) to the registry by using the `upload` command. <br> You can also use the `--version` argument to set the version of your module for the upload.  <br>
             </p>
         </th>
     </tr>
     <tr>
-        <td> {{<imgproc src="/update-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
+        <td> {{<imgproc src="/use-cases/update-module-command.png" class="fill alignright" style="max-width: 300px" declaredimensions=true alt="">}}
             <b> 3. Manage your modular resource </b>
             <p> Once you've uploaded your module, manage and update your existing modules in the registry [manually](/registry/upload/#update-an-existing-module-using-the-viam-cli) by using the Viam CLI `update` command, or automatically by using a [GitHub action](/registry/upload/#update-an-existing-module-using-a-github-action). <br>
             You can also choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.</p>
