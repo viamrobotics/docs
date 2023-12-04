@@ -393,11 +393,12 @@ viam data database hostname --org-id=abc
 | `--component-name`      | filter by specified component name  |`export`, `delete`| false |
 | `--component-type`     | filter by specified component type       |`export`, `delete`| false |
 | `--component-model`   | filter by specified component model       |`export`, `delete`| false |
+| `--dataset`   | dataset to add or remove images from     |`dataset`| true |
 | `--delete-older-than-days` | number of days, 0 means all data will be deleted | `delete` | false |
 | `--start`      | ISO-8601 timestamp indicating the start of the interval       |`export`, `delete`, `dataset`| false |
 | `--end`      | ISO-8601 timestamp indicating the end of the interval       |`export`, `delete`, `dataset`| false |
 | `--file-ids` | file-ids to add or remove from a dataset       |`dataset`| true |
-| `--location-id`      | location id for the specified dataset (only accepts one location id)       |`dataset`| false |
+| `--location-id`      | location id for the specified dataset (only accepts one location id)       |`dataset`| true |
 | `--location-ids`      | filter by specified location id (accepts comma-separated list)       |`export`, `delete`| false |
 | `--method`       | filter by specified method       |`export`, `delete`| false |
 | `--mime-types`      | filter by specified MIME type (accepts comma-separated list)       |`export`, `delete`|false |
