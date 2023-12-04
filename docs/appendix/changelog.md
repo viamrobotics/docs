@@ -16,6 +16,11 @@ aliases:
 
 To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
 
+### Improved: Role-Based Access Control
+
+You can now manage users access to robots, locations, and organizations.
+For more information, see [Access Control](/fleet/rbac/)
+
 ## October 2023
 
 ### Added: Test an ML model in browser
@@ -65,7 +70,7 @@ You can use a [mobile application](/fleet/#the-viam-mobile-app), available for d
 
 ### Added: Power sensor component
 
-You now have the capability to use a [power sensor component](/build/configure/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
+You now have the capability to use a [power sensor component](/components/power-sensor/) to monitor the voltage, current, and power consumption within your machine's system.
 
 ### Added: Filter component's data before the cloud
 
@@ -82,7 +87,7 @@ To learn more, see [this tutorial](/tutorials/configure/pet-photographer/) on cr
 
 ### Added: Configure a customlinux board
 
-You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/build/configure/components/board/customlinux/).
+You can now use boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems with the [`customlinux` board model](/components/board/customlinux/).
 
 ### Added: Image inspection for ML training
 
@@ -115,7 +120,7 @@ Note that currently, accounts from different SSO providers are treated separatel
 
 ### Improved: Arm component API
 
-Arm models now support the [`GetKinematics` method](/build/configure/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
+Arm models now support the [`GetKinematics` method](/components/arm/#getkinematics) in the arm API, allowing you to request and receive kinematic information.
 
 ## June 2023
 
@@ -140,7 +145,7 @@ Visit the [GitHub repository](https://github.com/viamrobotics/odrive) to learn h
 ### Added: Implement custom robotic arms as Viam modules
 
 When prototyping a robotic arm, you can now facilitate movement without creating your own motion planning.
-This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/build/configure/components/arm/#api):
+This update enables you to implement custom models of an arm component as a [modular resource](/registry/) by coding three endpoints of the [Arm API](/components/arm/#api):
 
 - `getJointPositions`
 - `movetoJointPositions`
@@ -152,7 +157,7 @@ For more information, see this [tutorial on creating a custom arm](/registry/exa
 
 ### Added: Apply a crop transform to camera views
 
-You can now apply a [crop transform](/build/configure/components/camera/transform/) to the views of your connected cameras in the Viam app.
+You can now apply a [crop transform](/components/camera/transform/) to the views of your connected cameras in the Viam app.
 
 This feature enables you to focus on a specific area of your camera feed.
 
@@ -162,7 +167,7 @@ For example, crop a video stream of a busy street to just the sidewalk.
 
 To better control gantries with Viam, you can now:
 
-- Specify speed values when calling the `MovetoPosition` method on [Gantry components](/build/configure/components/gantry/).
+- Specify speed values when calling the `MovetoPosition` method on [Gantry components](/components/gantry/).
   This allows you to define the speed at which each axis moves to the desired position, providing enhanced precision and control over the gantry's movement.
 - Set a home position for Gantry components to facilitate position resetting or maintain consistent starting points.
 
@@ -657,16 +662,16 @@ Find more information in the [micro-RDK documentation](/get-started/installation
 
 ### Added: Remote control power input
 
-On your robot's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/build/configure/components/base/).
+On your robot's **Control** tab on the [Viam app](https://app.viam.com/), you can now set the power of a [base](/components/base/).
 The base control UI previously always sent 100% power to the base's motors.
 
 ### Added: New encoder model: AMS AS5048
 
-The [AMS AS5048](/build/configure/components/encoder/ams-as5048/) is now supported.
+The [AMS AS5048](/components/encoder/ams-as5048/) is now supported.
 
 ### Added: GetLinearAcceleration method
 
-The movement sensor API now includes a [GetLinearAcceleration](/build/configure/components/movement-sensor/#getlinearacceleration) method.
+The movement sensor API now includes a [GetLinearAcceleration](/components/movement-sensor/#getlinearacceleration) method.
 
 ### Added: Support for capsule geometry
 
@@ -694,8 +699,8 @@ You can now supply kinematic information using URDF files when implementing your
 
 There are two new movement sensor {{< glossary_tooltip term_id="model" text="models" >}}:
 
-- [ADXL345](/build/configure/components/movement-sensor/adxl345/): A 3-axis accelerometer
-- [MPU-6050](/build/configure/components/movement-sensor/mpu6050/): A 6-axis accelerometer and gyroscope
+- [ADXL345](/components/movement-sensor/adxl345/): A 3-axis accelerometer
+- [MPU-6050](/components/movement-sensor/mpu6050/): A 6-axis accelerometer and gyroscope
 
 ### Improved: Camera performance and reliability
 
@@ -734,7 +739,7 @@ Now is uses a simpler unary approach that is more performant on batched unary ca
 - Transform
 - Join pointclouds
 
-For information on configuring any camera model, see [Camera Component](/build/configure/components/camera/).
+For information on configuring any camera model, see [Camera Component](/components/camera/).
 
 ### Changed: App code sample tab name update
 
@@ -742,7 +747,7 @@ Changed the name of the **Connect** tab to **Code sample** based on user feedbac
 
 ### Added: New servo model
 
-A new [servo model called `gpio`](/build/configure/components/servo/gpio/) supports servos connected to non-Raspberry Pi boards.
+A new [servo model called `gpio`](/components/servo/gpio/) supports servos connected to non-Raspberry Pi boards.
 
 ### Added: RTT indicator in the app
 
@@ -780,6 +785,6 @@ Other service configurations are not affected.
 
 ### Removed: width and height fields from camera API
 
-Removed `width` and `height` from the response of the [`GetImage`](/build/configure/components/camera/#getimage) method in the camera API.
+Removed `width` and `height` from the response of the [`GetImage`](/components/camera/#getimage) method in the camera API.
 This does not impact any existing camera models.
 If you write a custom camera model, you no longer need to implement the `width` and `height` fields.

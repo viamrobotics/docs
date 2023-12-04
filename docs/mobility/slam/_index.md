@@ -5,7 +5,7 @@ weight: 30
 type: "docs"
 description: "Simultaneous Localization And Mapping (SLAM) allows your robot to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
-icon: "/build/configure/services/icons/slam.svg"
+icon: "/services/icons/slam.svg"
 no_list: true
 aliases:
   - "/services/slam/"
@@ -29,7 +29,7 @@ You can conduct SLAM with data collected live by a [RPlidar](/registry/examples/
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/components/camera/" alt_title="RPlidar" required="yes" alt_link="/registry/examples/rplidar/">}}
+{{< relatedcard link="/components/camera/" alt_title="RPlidar" required="yes" alt_link="/registry/examples/rplidar/">}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
@@ -71,7 +71,7 @@ Get the current position of the component the SLAM service is configured to sour
 **Returns:**
 
 - [(Pose)](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose): A `Pose` representing the current position of the component the SLAM service is configured to source point cloud data from.
-  For example, a [camera](/build/configure/components/camera/) named `"cam"`.
+  For example, a [camera](/components/camera/) named `"cam"`.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_position).
 
@@ -94,7 +94,7 @@ pose = await slam.get_position()
 
 - [(spatialmath.Pose)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): A `Pose` representing the current position of the specified component.
 - [(string)](https://pkg.go.dev/builtin#string): The `"name"` of the component the SLAM service is configured to source point cloud data from.
-  For example, a [camera](/build/configure/components/camera/) named `"cam"`.
+  For example, a [camera](/components/camera/) named `"cam"`.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/slam).

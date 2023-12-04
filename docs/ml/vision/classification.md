@@ -137,8 +137,8 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/fleet/machines/#control) or with code:
 
-1. Configure a [camera component](/build/configure/components/camera/).
-2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](/build/configure/components/camera/transform/) with the following attributes :
+1. Configure a [camera component](/components/camera/).
+2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes :
 
    ```json
    {
@@ -159,7 +159,7 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 4. Navigate to the **Control** tab, click on your transform camera and toggle it on.
    The transform camera will now show classifications on the image.
 
-   ![Model recognizes a star on camera feed](/build/configure/services/model-on-camera.png)
+   ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
 5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
 

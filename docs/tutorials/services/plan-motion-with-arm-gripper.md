@@ -27,7 +27,7 @@ Moving individual components, like [an arm](../accessing-and-moving-robot-arm/),
 The [motion service](/mobility/motion/) enables sophisticated movement involving one or many components of your robot.
 
 {{< alert title="Tip" color="tip" >}}
-Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/build/configure/components/arm/).
+Code examples in this tutorial use a [UFACTORY xArm 6](https://www.ufactory.cc/product-page/ufactory-xarm-6), but you can use any [arm model](/components/arm/).
 
 The [full tutorial code](#full-tutorial-code) is available at the end of this page.
 {{< /alert >}}
@@ -99,7 +99,7 @@ The `GetPose` method provided by the motion service serves a similar function to
 
 ### Get the `ResourceName`
 
-When you use the [arm API](/build/configure/components/arm/#api), you call methods on your arm component itself.
+When you use the [arm API](/components/arm/#api), you call methods on your arm component itself.
 To use the [motion service API](/mobility/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
 
 Add the following to the section of your code where you access the arm:
@@ -289,7 +289,7 @@ if err != nil {
 ## Command other components to move with the motion service
 
 In this section you will add a new component to your robot.
-One device that is very commonly attached to the end of a robot arm is a [_gripper_](/build/configure/components/gripper/).
+One device that is very commonly attached to the end of a robot arm is a [_gripper_](/components/gripper/).
 Most robot arms pick up and manipulate objects in the world with a gripper, so learning how to directly move a gripper is very useful.
 Though various motion service commands cause the gripper to move, ultimately the arm is doing all of the work in these situations.
 This is possible because the motion service considers other components of the robot (through the [frame system](/mobility/frame-system/)) when calculating how to achieve the desired motion.

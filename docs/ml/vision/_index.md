@@ -4,7 +4,7 @@ linkTitle: "Computer Vision"
 weight: 90
 type: "docs"
 description: "The vision service enables your machine to use its on-board cameras to intelligently see and interpret the world around it."
-icon: "/build/configure/services/icons/vision.svg"
+icon: "/services/icons/vision.svg"
 tags: ["vision", "computer vision", "CV", "services"]
 no_list: true
 modulescript: false
@@ -13,7 +13,7 @@ aliases:
 # SMEs: Bijan, Khari
 ---
 
-The vision service enables your machine to use its on-board [cameras](/build/configure/components/camera/) to intelligently see and interpret the world around it.
+The vision service enables your machine to use its on-board [cameras](/components/camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
 Currently, the vision service supports the following kinds of operations:
@@ -45,7 +45,7 @@ Different vision service models support different methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a [camera](/build/configure/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a [camera](/components/camera/) and a vision service [detector](/ml/vision/detection/), [classifier](/ml/vision/classification/) or [segmenter](/ml/vision/segmentation/), as applicable, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
 Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
 
 {{% /alert %}}

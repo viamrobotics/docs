@@ -5,20 +5,20 @@ weight: 70
 type: "docs"
 description: "The sensors service provides a central interface for all of your robot's sensors."
 tags: ["sensor", "services"]
-icon: "/build/configure/services/icons/sensor.svg"
-images: ["/build/configure/services/icons/sensor.svg"]
+icon: "/services/icons/sensor.svg"
+images: ["/services/icons/sensor.svg"]
 aliases:
   - "/services/sensors/"
 # SME: Cheuk
 ---
 
-The sensors service is a built-in service that provides a central interface to all of your robot's [sensors](/build/configure/components/sensor/), regardless of the sensor model.
+The sensors service is a built-in service that provides a central interface to all of your robot's [sensors](/components/sensor/), regardless of the sensor model.
 With it you can obtain readings from multiple sensors on your robot at once.
 
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/components/sensor/" required="yes" >}}
+{{< relatedcard link="/components/sensor/" required="yes" >}}
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}

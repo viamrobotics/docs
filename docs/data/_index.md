@@ -1,7 +1,7 @@
 ---
 title: "Data Management"
 linkTitle: "Data Management"
-weight: 60
+weight: 440
 no_list: true
 type: "docs"
 tags: ["data management", "data", "services"]
@@ -13,12 +13,12 @@ aliases:
   - "/data-management/"
   - "/data-management/"
   - "/services/data/"
-icon: "/build/configure/services/icons/data-capture.svg"
+icon: "/services/icons/data-capture.svg"
 menuindent: true
 # SME: Alexa Greenberg
 ---
 
-The data management service captures data from Viam components and securely syncs data to Viam's cloud.
+Viam's built-in data management service allows you you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your robots, as well as use [Machine Learning](/ml/) features to enhance your robot's capabilities.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
 ![Data is captured on the robot, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
@@ -37,15 +37,15 @@ Once you have captured and synced data, you can:
 ## Used with
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/components/arm/">}}
-{{< relatedcard link="/build/configure/components/board/">}}
-{{< relatedcard link="/build/configure/components/camera/">}}
-{{< relatedcard link="/build/configure/components/encoder/">}}
-{{< relatedcard link="/build/configure/components/gantry/">}}
-{{< relatedcard link="/build/configure/components/motor/">}}
-{{< relatedcard link="/build/configure/components/movement-sensor/">}}
-{{< relatedcard link="/build/configure/components/sensor/">}}
-{{< relatedcard link="/build/configure/components/servo/">}}
+{{< relatedcard link="/components/arm/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
+{{< relatedcard link="/components/encoder/">}}
+{{< relatedcard link="/components/gantry/">}}
+{{< relatedcard link="/components/motor/">}}
+{{< relatedcard link="/components/movement-sensor/">}}
+{{< relatedcard link="/components/sensor/">}}
+{{< relatedcard link="/components/servo/">}}
 {{< /cards >}}
 
 You can configure capture frequency individually for each component.
@@ -127,13 +127,18 @@ You can chose to:
 
 See [Query Data](/data/query/) for instructions on using each of these approaches.
 
-Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried in this fashion.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 To search other types of data, such as images, see [Filter Data](/data/view/#filter-data).
 
 ### Train and deploy machine learning
 
 You can use data synced to the cloud to [train machine learning models](/ml/train-model/) and then [deploy these models to your robots](/ml/) from the Viam app.
 You can also [upload and use existing models](/ml/upload-model/).
+
+### Permissions
+
+Data management permissions vary between owners and operators.
+For more information about who can do what with data, see [Data Permissions](/fleet/rbac/#data-and-machine-learning).
 
 ## Next steps
 

@@ -5,7 +5,7 @@ description: "The frame system holds reference frame information for the relativ
 type: docs
 weight: 10
 no_list: true
-icon: "/build/configure/services/icons/frame-system.svg"
+icon: "/services/icons/frame-system.svg"
 tags: ["frame system", "services"]
 aliases:
   - /services/frame-system/
@@ -22,17 +22,17 @@ It stores the required contextual information to use the position and orientatio
 ## Used With
 
 {{< cards >}}
-{{< relatedcard link="/build/configure/services/arm/">}}
-{{< relatedcard link="/build/configure/components/base/">}}
-{{< relatedcard link="/build/configure/components/board/">}}
-{{< relatedcard link="/build/configure/services/camera/">}}
-{{< relatedcard link="/build/configure/services/gantry/">}}
-{{< relatedcard link="/build/configure/services/motor/">}}
+{{< relatedcard link="/services/arm/">}}
+{{< relatedcard link="/components/base/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/services/camera/">}}
+{{< relatedcard link="/services/gantry/">}}
+{{< relatedcard link="/services/motor/">}}
 {{< /cards >}}
 
 ## Configuration
 
-To enable the default frame for a given [component](/build/configure/components/) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
+To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
 With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
@@ -102,7 +102,7 @@ The `Orientation` parameter offers `Types` for ease of configuration, but the fr
 
 {{% alert title="Tip" color="tip" %}}
 
-For [base components](/build/configure/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
+For [base components](/components/base/), Viam considers `+X` to be to the right, `+Y` to be forwards, and `+Z` to be up.
 You can use [the right-hand rule](https://en.wikipedia.org/wiki/Right-hand_rule) to understand rotation about any of these axes.
 
 For non-base components, there is no inherent concept of "forward," so it is up to the user to define frames that make sense in their application.
@@ -127,7 +127,7 @@ This tab provides a simple interface for simultaneously viewing and editing the 
 
 For example:
 
-Consider a robot configured with a [`jetson` board](/build/configure/components/board/), wired to a [`webcam` camera](/build/configure/components/camera/webcam/) and a [`wheeled` base](/build/configure/components/base/wheeled/) with two [motors](/build/configure/components/motor/) driving its wheels.
+Consider a robot configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
 
 No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
 
@@ -357,11 +357,11 @@ For example:
 
 - In our [example of nested dynamic attachment](/mobility/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
 
-  However, an arm with an attached [camera](/build/configure/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
+  However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
 
   With the [vision service](/ml/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 
-  If a [camera](/build/configure/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
+  If a [camera](/components/camera/) is looking for an apple or an orange, the arm can be commanded to move to the detected fruit's location by providing an additional transform that contains the detected pose with respect to the camera that performed the detection.
 
   The detecting component (camera) would be fixed with respect to the `world` reference frame, and would supply the position and orientation of the detected object.
 

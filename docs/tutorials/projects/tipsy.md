@@ -91,7 +91,7 @@ Click on the **Components** subtab.
 
 2. **Configure the motors**
 
-   Add your right [motor](/build/configure/components/motor/):
+   Add your right [motor](/components/motor/):
 
    Click **Create component** in the lower-left corner of the page.
    Select type `motor`, then select model `gpio`.
@@ -113,12 +113,12 @@ Click on the **Components** subtab.
    ![Motor component configured in the Viam app, the component tab is named rightMotor, with a type attribute motor and model attribute gpio. It has the attributes as of the board as local, encoder as non-encoded, max rpm as 1000, component pin assignment type as In1/In2, enable pins as neither, a/In1 as 15 GPIO 22, b/In2 as 16 GPIO 23, pwm as blank.](/tutorials/tipsy/app-motor-pins.png)
 
    Now let’s add the left motor which is similar to the right motor.
-   Add your left [motor](/build/configure/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
+   Add your left [motor](/components/motor/) with the name “leftMotor”, type `motor`, and model `gpio`.
    Select `local` from the **Board** dropdown, set **Max RPM** to `100`, and configure the motors pins as A/In1 and B/In2 corresponding to`12 GPIO 18` and `11 GPIO 17` respectively (according to the wiring diagram), and leave PWM blank.
 
 3. **Configure the base**
 
-   Next, add a [base component](/build/configure/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
+   Next, add a [base component](/components/base/), which describes the geometry of your chassis and wheels so the software can calculate how to steer the rover in a coordinated way:
 
    Click **Create component**.
    Select `base` for type and `wheeled` for model.
@@ -133,7 +133,7 @@ Click on the **Components** subtab.
 
 4. **Configure the camera**
 
-   Add the [camera component](/build/configure/components/camera/):
+   Add the [camera component](/components/camera/):
 
    Click **Create component**.
    Select type `camera` and model `webcam`.
@@ -151,7 +151,7 @@ Click on the **Components** subtab.
 
 5. **Configure the ultrasonic sensors**
 
-   Add a [sensor component](/build/configure/components/sensor/):
+   Add a [sensor component](/components/sensor/):
 
    Click **Create component**.
    Select type `sensor` and model `ultrasonic`.
@@ -172,7 +172,7 @@ Click on the **Components** subtab.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/build/configure/components/board/), your [motors](/build/configure/components/motor/), your [base](/build/configure/components/base/), your [camera](/build/configure/components/camera/), and your [ultrasonic sensors](/build/configure/components/sensor/ultrasonic/):
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your [board](/components/board/), your [motors](/components/motor/), your [base](/components/base/), your [camera](/components/camera/), and your [ultrasonic sensors](/components/sensor/ultrasonic/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -361,7 +361,7 @@ Click on the **Services** subtab.
 
 1. **Configure the detection camera**
 
-   To be able to test that the vision service is working, add a [transform camera](/build/configure/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
+   To be able to test that the vision service is working, add a [transform camera](/components/camera/transform/) which will add bounding boxes and labels around the objects the service detects.
 
    Click on the **Components** subtab, then click **Create component** in the lower-left corner of the page.
    Select type `camera`, then select model `transform`.

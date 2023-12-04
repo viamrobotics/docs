@@ -23,7 +23,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `movement-sensor` type, then select the `accel-adxl345` model.
 Enter a name for your movement sensor and click **Create**.
 
-{{< imgproc src="/build/configure/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
+{{< imgproc src="/components/movement-sensor/adxl345-builder.png" alt="Creation of an `accel-adxl345` movement sensor in the Viam app config builder." resize="600x" >}}
 
 Copy and paste the following attribute template into your movement sensor's **Attributes** box.
 Then remove and fill in the attributes as applicable to your movement sensor, according to the table below.
@@ -128,4 +128,4 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 After you configure your movement sensor, navigate to the [Control tab](/fleet/machines/#control) and select the dedicated movement sensor dropdown panel.
 This panel presents the data collected by the movement sensor.
 
-{{<imgproc src="/build/configure/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}
+{{<imgproc src="/components/movement-sensor/movement-sensor-control-tab-adxl345.png" resize="400x" declaredimensions=true alt="The movement sensor component in the control tab">}}

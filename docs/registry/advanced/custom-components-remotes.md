@@ -12,14 +12,14 @@ aliases:
 description: "If you are unable to use modular resources, you can implement custom components and register them on a server configured as a remote of your robot."
 ---
 
-Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/build/configure/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
+Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
 
 However, if you are unable to use [modular resources](/registry/) because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you can use a [Viam SDK](/build/program/apis/) to code a custom resource implementation, host it on a server, and add it as a [remote](/build/configure/parts-and-remotes/) of your robot.
 
 Once you have coded your custom component and configured the remote servers, you can control and monitor your component with the Viam SDKs, like any other component.
 
 To show how to create a custom resource, the following example creates an arm as a custom component and registers the new arm model with a Viam SDK.
-Then you can control it as part of your robot with the same [API methods](/build/configure/components/arm/#api) available for [arm models built into the RDK](/build/configure/components/arm/#supported-models).
+Then you can control it as part of your robot with the same [API methods](/components/arm/#api) available for [arm models built into the RDK](/components/arm/#supported-models).
 
 ## Instructions
 

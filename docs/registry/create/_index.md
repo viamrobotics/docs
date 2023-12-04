@@ -94,7 +94,7 @@ When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}}
 - `type`: `component`
 - `subtype`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor`
 
-When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/build/configure/services/), valid [APIs](/build/program/apis/) always have the following parameters:
+When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}} of an existing [service](/services/), valid [APIs](/build/program/apis/) always have the following parameters:
 
 - `namespace`: `rdk`
 - `type`: `service`
@@ -102,7 +102,7 @@ When implementing a custom {{< glossary_tooltip term_id="model" text="model" >}}
 
 #### Unique cases
 
-If you are using unique hardware that does not already have an [appropriate API](/build/program/apis/#component-apis) defined to support it, you can use the [generic API](/build/configure/components/generic/) to add support for that unique hardware type to your machine.
+If you are using unique hardware that does not already have an [appropriate API](/build/program/apis/#component-apis) defined to support it, you can use the [generic API](/components/generic/) to add support for that unique hardware type to your machine.
 
 Some use cases may require you to define a new API, or to deploy custom components using a server on a remote part.
 For more information, see [Advanced Modular Resources](/registry/advanced/).
@@ -132,7 +132,7 @@ Your new resource model server must have all the methods that the Viam RDK requi
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.py</file> inside.
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/build/configure/components/base/#api) (`rdk:service:base`) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:service:base`) as a new model, `"mybase"`, using the model family `acme:demo:mybase`.
 
 <details>
   <summary>Click to view sample code for <file>my_base.py</file></summary>
@@ -313,7 +313,7 @@ Your new resource model server must have all the methods that the Viam RDK requi
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.go</file> inside.
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/build/configure/components/base/#api) (`rdk:service:base`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"mybase"`, using the model family `acme:demo:mybase`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:service:base`) as a new {{< glossary_tooltip term_id="model" text="model" >}}, `"mybase"`, using the model family `acme:demo:mybase`.
 
 <details>
   <summary>Click to view sample code for <file>mybase.go</file></summary>
