@@ -414,7 +414,7 @@ viam data database hostname --org-id=abc
 ##### Using the `filter` parameter
 
 When you use the `viam dataset add` and `viam dataset remove` commands, you can optionally `filter` by common search criteria to perform the `add` or `remove` on a specific subset of images you want to work with.
-For example, the following adds all images captured between January 1 and October 1, 2023 that have the `example` tag applied to a dataset with id of `abcdef1234567890abcdef12`:
+For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied to a dataset with id of `abcdef1234567890abcdef12`:
 
 ```sh {class="command-line" data-prompt="$"}
 viam data dataset add filter --dataset-id=abcdef1234567890abcdef12 --org-ids=abc123de-1234-abcd-1234-abc123-def12 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
