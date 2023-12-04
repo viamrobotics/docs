@@ -16,7 +16,7 @@ You could then run queries against that data to search for outliers or edge case
   <tr>
     <th>{{<imgproc src="/icons/components/sensor.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
       <b>1. Configure the data management service</b><br><br>
-      <p>First, <a href="/manage/fleet/machines/#add-a-new-robot">create a robot</a> if you haven't yet.</p>
+      <p>First, <a href="/fleet/machines/#add-a-new-robot">create a robot</a> if you haven't yet.</p>
       <p>Then, <a href="/data/">add the data management service</a>, and configure <a href="/data/capture/">data capture</a> and <a href="/data/cloud-sync/">cloud sync</a>.</p>
     </th>
   </tr>
