@@ -369,8 +369,8 @@ viam data database hostname --org-id=abc
 | `export`      | export data in a specified format to a specified location  | - |
 | `database configure`      | create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/#configure-data-query)  | - |
 | `database hostname`      | get the MongoDB Atlas Data Federation instance hostname and database name. See [Configure data query](/data/query/#configure-data-query)  | - |
-| `dataset add`      | add a new image or group of images to an existing dataset, optionally specifying a filter | `filter` |
-| `dataset remove`      | remove an existing image or group of images from a dataset, optionally specifying a filter | `filter` |
+| `dataset add`      | add a new image to an existing dataset by its file id, or add a group of images by specifying a filter | `filter` |
+| `dataset remove`      | remove an existing image from a dataset by its file id, or remove a group of images by specifying a filter | `filter` |
 | `delete binary`      | delete binary data  | - |
 | `delete tabular`      | delete tabular data  | - |
 | `--help`      | return help      | - |
@@ -414,7 +414,7 @@ viam data database hostname --org-id=abc
 
 ##### Using the `filter` parameter
 
-When you use the `viam dataset add` and `viam dataset remove` commands, you can optionally `filter` by common search criteria to perform the `add` or `remove` on a specific subset of images you want to work with.
+When you use the `viam dataset add` and `viam dataset remove` commands, you can optionally `filter` by common search criteria to `add` or `remove` a specific subset of images based on a search filter.
 For example, the following adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied to a dataset with id of `abcdef1234567890abcdef12`:
 
 ```sh {class="command-line" data-prompt="$"}
