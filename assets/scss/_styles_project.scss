@@ -1542,14 +1542,22 @@ input[type=search]::-webkit-search-cancel-button {
 
 // Changelog labels
 
-.changelog {
+.changelog-outer {
+  display: flex;
+}
+
+.changelog div {
+  padding-right: 4px;
+}
+
+.changelog div span {
   text-transform: uppercase;
-  background-color: whitesmoke;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.3;
+  vertical-align: top;
 }
 
 .changelog-added {

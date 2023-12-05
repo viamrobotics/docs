@@ -1,8 +1,8 @@
 {{ $color := .Get "color" }}
 {{ $title := .Get "title" }}
-<div style="display: flex">
-  <div style="padding-right: 4px">
-    <span style="vertical-align: top" class="changelog changelog-{{ $color }}">{{ $color }}</span>
+<div class="changelog changelog-outer">
+  <div >
+    <span class="changelog-{{ $color }}">{{ $color }}</span>
   </div>
   <div >
     <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
