@@ -16,7 +16,7 @@ For example, you might add the data management service to multiple machines to b
     <th>{{<imgproc src="/icons/components/camera.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="configure a camera component">}}
       <b>1. Configure a camera</b><br><br>
       <p>First, <a href="/fleet/machines/#add-a-new-robot">create a robot</a> if you haven't yet.</p>
-      <p>Then <a href="/configure/components/camera/">add a camera component</a>, such as a <a href="/configure/components/camera/webcam/">webcam</a>.</p>
+      <p>Then <a href="/components/camera/">add a camera component</a>, such as a <a href="/components/camera/webcam/">webcam</a>.</p>
     </th>
   </tr>
   <tr>
