@@ -17,7 +17,7 @@ For example, you might want to use the registry to contribute to collaborative p
 
 <table>
     <tr>
-        <th>{{<imgproc src="/use-cases/create-module-command.png" class="fill alignright" resize="300x" declaredimensions=true alt="Create module command">}}
+        <th>{{<imgproc src="/use-cases/create-module-command.png" class="fill alignright" resize="450x" declaredimensions=true alt="Create module command">}}
             <b>1. Create your module</b>
             <br><br><p>Use the Viam CLI <code>create</code> command to choose a custom module name using the <code>name</code> flag, generate the required metadata.</p>
             <p>By default, a new module is created as private.<p>
@@ -25,14 +25,14 @@ For example, you might want to use the registry to contribute to collaborative p
         </th>
     </tr>
     <tr>
-        <td>{{<imgproc src="/use-cases/upload-module-command.png" class="fill alignright" resize="300x" declaredimensions=true alt="Upload module command">}}
+        <td>{{<imgproc src="/use-cases/upload-module-command.png" class="fill alignright" resize="450x" declaredimensions=true alt="Upload module command">}}
         <b>2. Upload your modular resource</b>
             <br><br><p>Use the <code>upload</code> command to <a href="/upload/#upload-a-custom-module">Uupload your modular resource</a> to the registry.</p>
             <p>You can also use the <code>--version</code> argument to set the version of your module for the upload.</p>
         </td>
     </tr>
     <tr>
-        <td>{{<imgproc src="/use-cases/update-module-command.png" class="fill alignright" resize="300x" declaredimensions=true alt="Update module command">}}
+        <td>{{<imgproc src="/use-cases/update-module-command.png" class="fill alignright" resize="450x" declaredimensions=true alt="Update module command">}}
             <b>3. Manage your modular resource</b>
             <br><br><p>Manage and update your existing module's version in the registry <a href="/registry/upload/#update-an-existing-module-using-the-viam-cli">manually</a> by using the Viam CLI <code>update</code> command, or automatically by using a <a href="/registry/upload/#update-an-existing-module-using-a-github-action">GitHub action</a>.</p>
         </th>
