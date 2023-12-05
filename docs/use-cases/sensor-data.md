@@ -24,7 +24,7 @@ You can then run queries against that data to search for outliers or edge cases,
     <th>{{<imgproc src="/services/icons/sensor.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Capture tabular data from a sensor">}}
       <b>2. Capture data</b><br><br>
       <p>Next, <a href="/data/capture/#configure-data-capture-for-individual-components">capture tabular data from a component on your machine</a>, such as a sensor. With cloud sync enabled, captured data is automatically uploaded to the Viam app after a short delay.
-      <br><br>You can <a href="/data/view/">view your synced data in the Viam app</a> from the <b>Data</b> tab.</p>
+      <br><br>You can view your synced data in the Viam app from the <b>Data</b> tab.</p>
     </th>
   </tr>
   <tr>
