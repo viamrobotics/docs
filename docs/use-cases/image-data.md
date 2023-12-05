@@ -41,7 +41,7 @@ For example, you might add the data management service to multiple machines to b
   <tr>
     <th>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
       <b>5. Filter data by common search criteria</b><br><br>
-      <p>You can <a href="/data/view/#filter-data">filter synced images in the Viam app</a> using the **Filtering** menu under the <b>Data</b> tab in the Viam app, using search criteria such as robot name, location, date range, or component name.</p>
+      <p>You can <a href="/data/view/#filter-data">filter synced images in the Viam app</a> using the <b>Filtering</b> menu under the <b>Data</b> tab in the Viam app, using search criteria such as robot name, location, date range, or component name.</p>
     </th>
   </tr>
   <tr>
