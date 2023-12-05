@@ -193,7 +193,7 @@ api_key = "your_api_key"
 api_key_id = "valid_uuid"
 opts = RobotClient.Options.with_api_key(api_key, api_key_id)
 
-return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
+robot = await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options.with_api_key).
@@ -261,7 +261,7 @@ from grpclib.testing import ChannelFor
 from viam.robot.service import RobotService
 
 async with ChannelFor([RobotService]) as channel:
-      robot = await RobotClient.with_channel(channel, RobotClient.Options())
+    robot = await RobotClient.with_channel(channel, RobotClient.Options())
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
@@ -453,13 +453,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `query` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
+- `query` [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
 - `destination` [(string)](https://pkg.go.dev/builtin#string): The name of the reference page to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/referenceframe#LinkInFrame): Any additional transforms.
+- `additionalTransforms` [([]\*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/referenceframe#LinkInFrame): Any additional transforms.
 
 **Returns:**
 
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/referenceframe#PoseInFrame): Transformed pose in frame.
+- [(\*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk@v0.15.1/referenceframe#PoseInFrame): Transformed pose in frame.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go
