@@ -33,7 +33,7 @@ For example, you might add the data management service to multiple machines to b
     </th>
   </tr>
   <tr>
-    <th>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
+    <th>{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px"  declaredimensions=true alt="Train models">}}
       <b>4. View data in the Viam app</b><br><br>
       <p>Once you have synced images, you can <a href="/data/view/">view those images in the Viam app</a> from the <b>Data</b> tab.</p>
     </th>
