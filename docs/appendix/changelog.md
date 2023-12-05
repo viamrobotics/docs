@@ -26,7 +26,7 @@ To learn more, see the [Authenticate section](/fleet/cli/#create-a-location-api-
 
 ### Added: Queryable sensor data
 
-Once you have added the data management service and synced tabular data to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
+Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
 
 You can:
 
