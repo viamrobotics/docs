@@ -21,27 +21,44 @@ In the [registry](https://app.viam.com/module/viam-labs/verification-system), Vi
 Follow this tutorial to learn how to configure this module and set up your own security system to detect, verify, and alarm based on specified detections from nested [vision service detectors](/ml/vision/detection/).
 
 You can use whatever combination of detectors and camera you would like with this module, but follow along with our recommendations to layer an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together, creating a security system with facial recognition.
+With this combination of detectors layered together, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
 
-{{< alert title="Requirements" color="note" >}}
+For example:
+
+{{<video webm_src="/tutorials/verification-system/demo.webm" mp4_src="/tutorials/verification-system/demo.mp4" alt="Bijan interacting with the verification system" poster="/tutorials/verification-system/trigger_1.png">}}
+
+## Requirements
+
+- A [camera](/components/camera/)
+- A computer running `viam-server` that the camera can connect to, like a [single-board computer (SBC)](/components/board/)
+
 Before configuring your camera, you must [create a robot](/fleet/machines/#add-a-new-robot).
-{{< /alert >}}
+
+1. On the locations page of the [Viam app](https://app.viam.com), add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
+2. Click on that robot's name to go to its page.
 
 ## Configure a camera
 
 Navigate to the **Config** tab of your machine's page on the [Viam app](https://app.viam.com).
-Configure the camera you want to provide an image stream for your verification system on.
+Configure the camera you want to use for your security system.
 
 We configured ours as a webcam named `"my-webcam"`.
 Follow [these instructions](/build/configure/components/camera/webcam/) to do so.
+
+Connect your camera to your machine running `viam-server`, and hang it up somewhere where it can see people in your home:
+
+{{<imgproc src="/tutorials/verification-system/camera.jpeg" resize="500x" declaredimensions=true alt="Camera hanging up in office.">}}
+
+Next, configure the person detector, or, the "coarser" layer of the security system that verifies that there's a person moving.
 
 ## Configure an `mlmodel` person detector
 
 Create a detector to detect when people are in your verification system camera's field of vision:
 
-- [Capture images from your camera](/data/capture/#configure-data-capture-for-individual-components) with Viam's data management service, then [create a dataset](/data/dataset/#create-a-dataset-and-add-data).
-- Label your data with [bounding boxes](/data/dataset/#bounding-boxes) labeled as `Person` where a person is present to create an object detection model for people.
-- [Train a model on your dataset](/ml/train-model/).
-- [Deploy the model](/ml/deploy/) to your machine.
+1. [Capture images from your camera](/data/capture/#configure-data-capture-for-individual-components) with Viam's data management service, then [create a dataset](/data/dataset/#create-a-dataset-and-add-data).
+2. Label your data with [bounding boxes](/data/dataset/#bounding-boxes) labeled as `Person` where a person is present to create an object detection model for people. You only want this model to be able to distinguish between what is and isn't a person, so you can conduct this training step with anyone.
+3. [Train a model on your dataset](/ml/train-model/). Select **Model Type** as **Object Detection**.
+4. [Deploy the model](/ml/deploy/) to your machine so you can use it.
 
 Now that you've trained and deployed the model itself, [configure an `mlmodel` detector model](/ml/vision/detection/#configure-an-mlmodel-detector) with the name of the ML model service you deployed your model as.
 Name this detector `"people-detect"`.
@@ -71,48 +88,34 @@ For example, we configured a person detector as follows:
 ]
 ```
 
+Now, move on to configuring the "finer" layer of the detectors-- the facial recognition detector.
+
 ## Configure a facial detector
 
 To create a detector that can recognize individual faces, use Viam Lab's `facial-detector` module, available in the [registry](https://app.viam.com/module/viam-labs/facial-detector).
 This is a modular vision service that uses the DeepFace library to perform facial detections.
 
-- Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/).
-  Click on the **Services** subtab and click **Create service**.
-  Select the `vision` type, then select the `detector:facial-detector` model. Enter a name for your vision service and click **Create**.
-- Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection). Label a photo of the face of each person you want your security system to recognize in `"face_labels"`.
+Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/).
+Click on the **Services** subtab and click **Create service**.
+Select the `vision` type, then select the `detector:facial-detector` model. Enter a name for your vision service, `"face-detect"` and click **Create**.
 
-Name this detector `"face-detect"`.
+Edit the attributes as applicable according to the configuration information on [GitHub](https://github.com/viam-labs/facial-detection):
 
-For example, we configured a facial detector as follows:
+- `"face_labels"`: Label a photo of the face of each person you want your security system to recognize with the name you want for the label paired with the image path.
+- `"recognition_model"`: The model to use for facial recognition. `"ArcFace"` is chosen as the default for a good balance of speed and accuracy. See [GitHub](https://github.com/viam-labs/facial-detection) for more options.
+- `"detection_framework"`: The detection framework to use for facial detection. `"ssd"` is chosen as the default for a good balance of speed and accuracy.
 
 ```json {class="line-numbers linkable-line-numbers"}
-"modules": [
-  {
-    "module_id": "viam-labs:facial-detector",
-    "version": "0.0.8",
-    "type": "registry",
-    "name": "viam-labs_facial-detector"
-  }
-]
-"services": [
-  {
-    "depends_on": [
-      "my-webcam"
-    ],
-    "attributes": {
-      "recognition_model": "ArcFace",
-      "face_labels": {
-        "my_name": "/home/me/my-photo.jpg"
-       },
-        "detection_framework": "ssd"
+{
+  "face_labels": {
+    "my_name": "/home/me/my-photo.jpg"
     },
-    "name": "face-detect",
-    "type": "vision",
-    "namespace": "rdk",
-    "model": "viam-labs:detector:facial-detector"
-  }
-]
+    "recognition_model": "ArcFace",
+    "detection_framework": "ssd"
+}
 ```
+
+Make sure to name this detector `"face-detect"`.
 
 ## Configure a verification system
 
@@ -200,11 +203,6 @@ Save your config.
 
 Navigate to the **Control** tab.
 Expand the card matching the name of the transform camera you configured to view an image stream with the system's notifications overlaid.
-With this configuration of detectors, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
-
-For example:
-
-{{<video webm_src="/tutorials/verification-system/demo.webm" mp4_src="/tutorials/verification-system/demo.mp4" alt="Bijan interacting with the verification system" poster="/tutorials/verification-system/trigger_1.png">}}
 
 ## How the verification system works
 
