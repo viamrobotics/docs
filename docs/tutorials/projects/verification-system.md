@@ -109,9 +109,9 @@ Edit the attributes as applicable according to the configuration information on 
 {
   "face_labels": {
     "my_name": "/home/me/my-photo.jpg"
-    },
-    "recognition_model": "ArcFace",
-    "detection_framework": "ssd"
+  },
+  "recognition_model": "ArcFace",
+  "detection_framework": "ssd"
 }
 ```
 
