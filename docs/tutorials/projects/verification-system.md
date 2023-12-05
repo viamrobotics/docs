@@ -1,14 +1,13 @@
 ---
 title: "Create a Facial Verification System"
 linkTitle: "Verification System"
-weight: 40
 type: "docs"
 description: "Configure a verification system module to implement a facial verification security system on your smart machine."
 image: "/tutorials/verification-system/disarmed.png"
 imageAlt: "Bijan disarming the facial verification system."
 images: ["/tutorials/verification-system/disarmed.png"]
-tags: ["mlmodel", "vision", "services", "security", "canera"]
-authors: []
+tags: ["mlmodel", "vision", "services", "security", "camera"]
+authors: ["Sierra G."]
 languages: []
 viamresources: ["mlmodel", "vision", "camera"]
 level: "Intermediate"
@@ -18,7 +17,7 @@ no_list: true
 # SMEs: Bijan Haney
 ---
 
-In the [registry](https://app.viam.com/module/viam-labs/verification-system), Viam Labs provides a model of [vision service classifier](/ml/vision/classification/) called `verification-system`.
+In the [registry](https://app.viam.com/module/viam-labs/verification-system), Viam Labs provides a [vision service classifier](/ml/vision/classification/) model called `verification-system`.
 Follow this tutorial to learn how to configure this module and set up your own security system to detect, verify, and alarm based on specified detections from nested [vision service detectors](/ml/vision/detection/).
 
 You can use whatever combination of detectors and camera you would like with this module, but follow along with our recommendations to layer an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together, creating a security system with facial recognition.
