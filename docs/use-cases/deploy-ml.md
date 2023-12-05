@@ -42,7 +42,7 @@ Then, test if your model works for classifying objects in a camera stream or exi
   </tr>
   <tr>
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
-      <b>5. Configure a service</b>
+      <b>5. Configure an <code>mlmodel</code> vision service</b>
       <p>For object classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/classification/#configure-an-mlmodel-classifier">ml model classifier</a> model.</p>
 </td>
   </tr>
