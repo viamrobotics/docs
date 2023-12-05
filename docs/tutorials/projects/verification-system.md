@@ -43,7 +43,7 @@ Navigate to the **Config** tab of your machine's page on the [Viam app](https://
 Configure the camera you want to use for your security system.
 
 We configured ours as a webcam named `"my-webcam"`.
-Follow [these instructions](/build/configure/components/camera/webcam/) to do so.
+Follow [these instructions](/components/camera/webcam/) to do so.
 
 Connect your camera to your machine running `viam-server`, and hang it up somewhere where it can see people in your home:
 
@@ -196,7 +196,7 @@ With **Builder** mode selected, copy and paste the following attributes JSON int
 
 Note that the camera name in `"source"` and the `"classifier_name"` match the names that we configured for our source camera and verification system service, respectively.
 If you used different names, edit as applicable.
-View these [instructions to configure a transform camera](/build/configure/components/camera/transform/) for reference.
+View these [instructions to configure a transform camera](/components/camera/transform/) for reference.
 Save your config.
 
 ## View your verification system in action
