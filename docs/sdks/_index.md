@@ -13,7 +13,7 @@ You can write code to control your machines using the following software develop
 
 <br>
 
-For extra guidance and examples:
+For extra guidance and examples, see:
 
 {{< cards >}}
 {{% card link="/build/program" customDescription="More guidance on how to use the SDKs." %}}
