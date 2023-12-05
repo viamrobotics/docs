@@ -324,9 +324,9 @@ The following parameters are available for an `"obstacles_depth"` segmenter:
 
 If you want to identify multiple boxes over the flat plane with your segmenter:
 
-- First, [configure your frame system](/mobility/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/build/configure/components/camera/), within Viam's [frame system service](/mobility/frame-system/).
+- First, [configure your frame system](/mobility/frame-system/#configuration) to configure the relative spatial orientation of the components of your robot, including your [camera](/components/camera/), within Viam's [frame system service](/mobility/frame-system/).
   - After configuring your frame system, your camera will populate its own `Properties` with these spatial intrinsic parameters from the frame system.
-  - You can get those parameters from your camera through the [camera API](/build/configure/components/camera/#getproperties).
+  - You can get those parameters from your camera through the [camera API](/components/camera/#getproperties).
 - The segmenter now returns multiple boxes within the `GeometryInFrame` object it captures.
 
 Click **Save config** and proceed to [test your segmenter](#test-your-segmenter).
@@ -336,7 +336,7 @@ Click **Save config** and proceed to [test your segmenter](#test-your-segmenter)
 `obstacles_distance` is a vision service model that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 It is best for transient obstacle avoidance.
 
-For example, if you have an ultrasonic distance sensor as an [`ultrasonic` camera](/build/configure/components/camera/ultrasonic/), this model will query the sensor `"num_queries"` times, and then take the average point from those measurements and return that as an obstacle.
+For example, if you have an ultrasonic distance sensor as an [`ultrasonic` camera](/components/camera/ultrasonic/), this model will query the sensor `"num_queries"` times, and then take the average point from those measurements and return that as an obstacle.
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -399,7 +399,7 @@ The following parameters are available for a `obstacles_distance` segmenter:
 <!-- prettier-ignore -->
 | Parameter | Inclusion | Description |
 | --------- | --------- | ----------- |
-| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/build/configure/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
+| `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
 
 ## Test your segmenter
 

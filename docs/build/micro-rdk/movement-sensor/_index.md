@@ -13,7 +13,7 @@ aliases:
 ---
 
 A movement sensor is a sensor that gives data on where a robot is and how fast it is moving.
-For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Movement Sensor Component](/build/configure/components/movement-sensor/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Movement Sensor Component](/components/movement-sensor/).
 
 ## Configuration
 
@@ -27,11 +27,11 @@ For configuration information, click a supported movement sensor model name:
 
 ## API
 
-The micro-RDK [movement sensor API](/build/configure/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
+The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
-- [`GetAngularVelocity()`](/build/configure/components/movement-sensor/#getangularvelocity)
-- [`GetLinearVelocity()`](/build/configure/components/movement-sensor/#getlinearvelocity)
-- [`GetCompassHeading()`](/build/configure/components/movement-sensor/#getcompassheading)
-- [`GetPosition()`](/build/configure/components/movement-sensor/#getposition)
-- [`GetProperties()`](/build/configure/components/movement-sensor/#getproperties)
-- [`GetLinearAcceleration()`](/build/configure/components/movement-sensor/#getlinearacceleration)
+- [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
+- [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
+- [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
+- [`GetPosition()`](/components/movement-sensor/#getposition)
+- [`GetProperties()`](/components/movement-sensor/#getproperties)
+- [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration)

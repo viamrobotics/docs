@@ -1,7 +1,7 @@
 ---
 title: "Fleet Management"
 linkTitle: "Fleet Management"
-weight: 34
+weight: 430
 type: "docs"
 description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
@@ -17,7 +17,7 @@ menuindent: true
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of machines alone or in collaboration with others.
-You can manage your and control your fleet of machines from the Viam app, using the [CLI](/fleet/cli/) or using the [cloud API](/build/program/apis/cloud/).
+You can manage your and control your fleet of machines from the Viam app, using the [CLI](/fleet/cli/), or using the [cloud API](/build/program/apis/cloud/).
 
 ## Work with groups of machines
 

@@ -9,7 +9,7 @@ aliases:
   - /services/ml/
 description: "Deploy Machine Learning models to a machine and use the vision service to detect or classify images or to create point clouds of identified objects."
 modulescript: true
-icon: "/build/configure/services/icons/ml.svg"
+icon: "/services/icons/ml.svg"
 # SME: Aaron Casas
 ---
 
@@ -30,8 +30,8 @@ For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetso
 
 {{< cards >}}
 {{< relatedcard link="/ml/vision/">}}
-{{< relatedcard link="/build/configure/components/board/">}}
-{{< relatedcard link="/build/configure/components/camera/">}}
+{{< relatedcard link="/components/board/">}}
+{{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
 
 ### Modular Resources
@@ -64,7 +64,7 @@ To configure your service with an existing model on the robot, select **Path to 
 
 Then specify the absolute **Model Path** and any **Optional Settings** such as the absolute **Label Path** and the **Number of threads**.
 
-![Create a machine learning models service with an existing model](/build/configure/services/available-models.png)
+![Create a machine learning models service with an existing model](/services/available-models.png)
 
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
@@ -73,7 +73,7 @@ To configure your service and deploy a model onto your robot, select **Deploy Mo
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
-![Create a machine learning models service with a model to be deployed](/build/configure/services/deploy-model.png)
+![Create a machine learning models service with a model to be deployed](/services/deploy-model.png)
 
 {{% /tab %}}
 {{< /tabs >}}

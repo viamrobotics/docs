@@ -1,7 +1,7 @@
 ---
 title: "Tutorials"
 linkTitle: "Tutorials"
-weight: 20
+weight: 300
 type: docs
 layout: "tutorials"
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"

@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning"
 linkTitle: "Machine Learning"
-weight: 70
+weight: 450
 type: "docs"
 tags: ["data management", "data", "services"]
 no_list: true
@@ -9,7 +9,7 @@ description: "Use Viam's built-in machine learning capabilities to train image c
 image: "/ml/training.png"
 imageAlt: "Machine Learning"
 images: ["/ml/training.png"]
-icon: "/build/configure/services/icons/ml.svg"
+icon: "/services/icons/ml.svg"
 aliases:
   - /manage/ml/
 menuindent: true

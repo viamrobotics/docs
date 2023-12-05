@@ -20,7 +20,7 @@ You can:
 
 You can run queries against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
 
-Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried using SQL or MQL.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried using SQL or MQL.
 To search non-tabular data, such as images, see [Filter Data](/data/view/#filter-data).
 To perform searches against tabular data from within the Python SDK, use the [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) method.
 
@@ -74,7 +74,7 @@ Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.c
 
 You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
 
-Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried in this fashion.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
 Before being able to query data, you must configure data query.
 

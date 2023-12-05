@@ -4,7 +4,7 @@ linkTitle: "Extra Params"
 weight: 70
 type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
-images: ["/build/configure/services/icons/sdk.svg"]
+images: ["/services/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
 aliases:
   - /program/sdks/use-extra-params
@@ -17,10 +17,10 @@ How to [utilize](#utilize) and [define](#define) the `extra` parameters that man
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
-For example, a new model of [sensor](/build/configure/components/sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
+For example, a new model of [sensor](/components/sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
 
 The `extra` parameters in that built-in resource type's [API](/build/program/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
-This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/build/configure/components/motor/) or all models of [camera](/build/configure/components/camera/).
+This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/components/motor/) or all models of [camera](/components/camera/).
 
 Send extra information in an API call in `extra` parameters as follows:
 
@@ -94,7 +94,7 @@ If `extra` information must be passed to a resource, it is handled within a new,
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/registry/create/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/build/program/apis/), reference this modification to the built-in [sensor](/build/configure/components/sensor/) resource type's [Readings](/build/configure/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/build/program/apis/), reference this modification to the built-in [sensor](/components/sensor/) resource type's [Readings](/components/sensor/#getreadings) method in the code of a [new sensor model](/registry/):
 
 {{< tabs >}}
 {{% tab name="Python" %}}

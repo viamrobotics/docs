@@ -10,7 +10,7 @@ tags: ["slam", "services"]
 
 Many components have complex kinematic chains and require an additional set of intermediate reference frames to use Viam's [Motion service](/mobility/motion/).
 
-- For example, an [arm](/build/configure/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/orientation-vector/) with [`MoveToPosition()`](/build/configure/components/arm/#movetoposition).
+- For example, an [arm](/components/arm/) has a reference frame originating where the arm is attached to a surface, but it also has links and joints whose frames of reference matter when attempting to move the arm to a [pose](/internals/orientation-vector/) with [`MoveToPosition()`](/components/arm/#movetoposition).
 
 If you want to implement a component with a complex kinematic chain that is not already built into the RDK, you need to add a file to your driver that details the attachment of the intermediate reference frames on the component.
 
@@ -313,6 +313,6 @@ This is an example <file>.json</file> configuration as used by Viam's [Universal
 
 These reference frames are ingested by the frame system.
 They are not exposed in the [client SDKs](/build/program/), with one exception.
-If your resource is an [arm component](/build/configure/components/arm/), you can use the [`GetKinematics()`](/build/configure/components/arm/#getkinematics) method to access its kinematics information.
+If your resource is an [arm component](/components/arm/), you can use the [`GetKinematics()`](/components/arm/#getkinematics) method to access its kinematics information.
 
 {{% /alert %}}

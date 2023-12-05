@@ -1,7 +1,7 @@
 ---
 title: Service
 id: service
-full_link: /build/configure/services/
+full_link: /services/
 short_description: Built-in software packages for complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection.
 aka:
 ---
@@ -10,4 +10,4 @@ Services are built-in software packages for complex capabilities such as Simulta
 
 Each service is typed by a proto API, such as the [service proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
 
-For more information, see [Services](/build/configure/services/).
+For more information, see [Services](/services/).
