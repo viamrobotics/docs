@@ -14,7 +14,7 @@ aliases:
 
 ### Added: Authenticate with location API key
 
-To run CLI commands, you must first authenticate your CLI session with Viam.
+To run commands in the Viam CLI, you must first authenticate your CLI session with Viam.
 
 After you [create a location API key](/fleet/cli/#create-a-location-api-key), you now have the option to use it to authenticate your CLI session:
 
