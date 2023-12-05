@@ -181,7 +181,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "mlmodel_name": "<vision-service-name>"
+  "mlmodel_name": "<mlmodel-service-name>"
 }
 ```
 
@@ -197,7 +197,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "<vision-service-name>"
+      "mlmodel_name": "<mlmodel-service-name>"
     }
   }
 ]
@@ -213,7 +213,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "my_vision_service"
+      "mlmodel_name": "my_mlmodel_service"
     }
   }
 ]
