@@ -273,7 +273,9 @@ def parse(type, names):
 
             if not found and id != "viam.components.board.client.DigitalInterruptClient.add_callback" \
             and id != "viam.components.board.client.DigitalInterruptClient.add_post_processor" \
-            and id != "viam.components.input.client.ControllerClient.reset_channel":
+            and id != "viam.components.input.client.ControllerClient.reset_channel" \
+            and id != "viam.robot.client.RobotClient.get_component" \
+            and id != "viam.robot.client.RobotClient.get_service":
                 sdk_methods_missing.append(id)
 
 
