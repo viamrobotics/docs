@@ -245,6 +245,8 @@ Find more information on each of the changes below.
 
 {{% /alert %}}
 
+<!-- markdownlint-disable MD001 -->
+
 #### Use individual vision service instances
 
 You need to create **an individual vision service instance** for each detector, classifier, and segmenter model.
