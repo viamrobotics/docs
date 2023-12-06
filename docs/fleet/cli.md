@@ -423,6 +423,9 @@ For example, the following adds three images specified by their file ids to the 
 viam data dataset add ids --dataset-id=abc --location-id=123 --org-id=123 --file-ids=abc,123,def
 ```
 
+To find the dataset id of a given dataset, go to the [**Datasets** subtab](https://app.viam.com/data/datasets) under the **Data** tab on the Viam app and select a dataset.
+The dataset id can be found in the URL of the Viam app window when viewing a given dataset, following the `?id=` portion of the URL, resembling `abcdef1234567890abcdef12`.
+
 To find the file id of a given image, navigate to the [**Data** tab in the Viam app](https://app.viam.com/data/view) and select your image.
 Its **File ID** is shown under the **Details** subtab that appears on the right.
 
