@@ -30,3 +30,4 @@ The micro-RDK [base API](/components/base/#api) is limited to the following supp
 
 - [`Stop()`](/components/base/#stop)
 - [`SetPower()`](/components/base/#setpower)
+- [`DoCommand()`](/components/base/#docommand)

@@ -32,3 +32,4 @@ The micro-RDK [servo API](/components/servo/#api) supports the following client 
 - [`Move()`](/components/servo/#move)
 - [`GetPosition()`](/components/servo/#getposition)
 - [`Stop()`](/components/servo/#stop)
+- [`DoCommand()`](/components/servo/#docommand)
