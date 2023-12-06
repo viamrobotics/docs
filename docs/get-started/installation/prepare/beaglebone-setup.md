@@ -82,7 +82,8 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 ## Troubleshooting
 
-If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone.
+If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/02-quick-start.html) for help updating your BeagleBone.
+
 {{< snippet "social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

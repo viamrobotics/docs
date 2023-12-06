@@ -18,7 +18,7 @@ Once you have [trained](/ml/train-model/) or [uploaded](/ml/upload-model/) your 
 You can use the following built-in model:
 
 {{< alert title="Note" color="note" >}}
-For some models, like the [Triton MLModel](/registry/examples/triton/) for Jetson boards, you can configure the service to use the available CPU or GPU.
+For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-mlmodelservice-triton/tree/main/) for Jetson boards, you can configure the service to use the available CPU or GPU.
 {{< /alert >}}
 
 <!-- prettier-ignore -->
