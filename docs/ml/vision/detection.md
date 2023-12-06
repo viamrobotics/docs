@@ -181,7 +181,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "mlmodel_name": "<detector_name>"
+  "mlmodel_name": "<mlmodel-service-name>"
 }
 ```
 
@@ -197,7 +197,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "<detector_name>"
+      "mlmodel_name": "<mlmodel-service-name>"
     }
   }
 ]
@@ -213,7 +213,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "person_detector"
+      "mlmodel_name": "my_mlmodel_service"
     }
   }
 ]
@@ -247,7 +247,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
          "type": "detections",
          "attributes": {
            "confidence_threshold": 0.5,
-           "detector_name": "my_detector"
+           "detector_name": "<vision-service-name>"
          }
        }
      ],
