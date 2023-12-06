@@ -14,24 +14,13 @@ aliases:
 
 ### Added: Authenticate with location API key
 
-To run commands in the Viam CLI, you must first authenticate your CLI session with Viam.
-
-After you [create a location API key](/fleet/cli/#create-a-location-api-key), you now have the option to use it to authenticate your CLI session:
-
-```sh {class="command-line" data-prompt="$"}
-viam login api-key --key-id <location-api-key-uuid> --key <location-api-key-secret-value>
-```
-
-To learn more, see the [Authenticate section](/fleet/cli/#create-a-location-api-key) in the Viam CLI guide.
+You can now use [API keys for authentication](/build/program/#authenticate).
+API keys allow you to assign the minimum required permissions for usage.
+Location secrets, the previous method of authentication is deprecated and will be removed in a future release.
 
 ### Added: Queryable sensor data
 
 Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
-
-You can:
-
-- [Query tabular data in the Viam app](/data/query/#query-tabular-data-in-the-viam-app)
-- [Query tabular data directly from a compatible client](/data/query/#query-tabular-data-directly-from-a-compatible-client)
 
 For more information, see [Query Data with SQL or MQL](/data/query/).
 
