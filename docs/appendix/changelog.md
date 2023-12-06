@@ -137,7 +137,7 @@ Sessions are enabled by default, with the option to [disable sessions](/build/pr
 
 {{% changelog color="added" title="Connect an ODrive motor controller as a Viam module" %}}
 
-You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam registry](https://app.viam.com/module/viam/odrive).
+You can integrate and control ODrive motor controllers with Viam using the [`odrive` module from the Viam registry](https://github.com/viamrobotics/odrive).
 
 See the [Odrive module readme](https://github.com/viamrobotics/odrive) to learn how to connect and use an ODrive motor controller with Viam, and view the sample configurations.
 
