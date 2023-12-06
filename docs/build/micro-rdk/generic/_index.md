@@ -13,7 +13,7 @@ no_list: true
 The _generic_ component {{< glossary_tooltip term_id="subtype" text="subtype" >}} enables you to add support for unique types of hardware that do not already have an [appropriate API](/build/program/apis/#component-apis) defined for them.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Generic Component](/components/generic/).
 
-<!-- 
+<!--
 ## Supported Models
 
 For configuration information, click on the supported generic model name:
