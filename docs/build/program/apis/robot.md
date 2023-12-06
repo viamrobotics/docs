@@ -249,7 +249,7 @@ Any robots created using this method will NOT automatically close the channel up
 
 **Parameters:**
 
-- `channel` [(ViamChannel)](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel): The channel that is connected to a robot, obtained by `viam.rpc.dial`.
+- `channel` [(ViamChannel)](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel): The channel that is connected to a robot, obtained by [`viam.rpc.dial`](https://python.viam.dev/_modules/viam/rpc/dial.html#dial).
 - `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**
@@ -257,11 +257,14 @@ Any robots created using this method will NOT automatically close the channel up
 - `RobotClient`: The robot client.
 
 ```python {class="line-numbers linkable-line-numbers"}
-from grpclib.testing import ChannelFor
-from viam.robot.service import RobotService
+from viam.robot.client import RobotClient
+from viam.rpc.dial import DialOptions, dial
 
-async with ChannelFor([RobotService]) as channel:
-    robot = await RobotClient.with_channel(channel, RobotClient.Options())
+async def connect_with_channel() -> RobotClient:
+    async with await dial('ADDRESS', DialOptions()) as channel:
+        return await RobotClient.with_channel(channel, RobotClient.Options())
+
+robot = await connect_with_channel()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.with_channel).
