@@ -5,6 +5,9 @@ description: "View and filter data on the DATA page in the Viam Cloud."
 weight: 38
 type: "docs"
 tags: ["data management", "cloud", "sync"]
+image: "/ml/collect.svg"
+imageAlt: "View images"
+images: ["/ml/collect.svg"]
 aliases:
   - /manage/data/view/
 # SME: Alexa Greenberg
