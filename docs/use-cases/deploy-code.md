@@ -27,7 +27,7 @@ For example, you might want to use the registry to contribute to collaborative p
     <tr>
         <td>{{<imgproc src="/use-cases/upload-module-command.png" class="fill alignright" resize="450x" declaredimensions=true alt="Upload module command">}}
         <b>2. Upload your modular resource</b>
-            <br><br><p>Use the <code>upload</code> command to <a href="/upload/#upload-a-custom-module">Uupload your modular resource</a> to the registry.</p>
+            <br><br><p>Use the <code>upload</code> command to <a href="/registry/upload/#upload-a-custom-module">Upload your modular resource</a> to the registry.</p>
             <p>You can also use the <code>--version</code> argument to set the version of your module for the upload.</p>
         </td>
     </tr>
