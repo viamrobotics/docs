@@ -38,6 +38,5 @@ Enter a name for your generic component and click **Create**.
 {{< /tabs >}}
 
 No attributes are available for fake generic components.
-See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/generic/fake/generic.go) for API call return specifications.
 
 {{< readfile "/static/include/components/test-control/generic-control.md" >}}
