@@ -260,6 +260,7 @@ Any robots created using this method will NOT automatically close the channel up
 from viam.robot.client import RobotClient
 from viam.rpc.dial import DialOptions, dial
 
+
 async def connect_with_channel() -> RobotClient:
     async with await dial('ADDRESS', DialOptions()) as channel:
         return await RobotClient.with_channel(channel, RobotClient.Options())
