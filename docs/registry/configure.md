@@ -386,7 +386,7 @@ You can also add the module directly, without first adding its modular component
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
-   This example shows the configuration for adding a [CSI camera](https://app.viam.com/module/viam/csi-cam) as a local module.
+   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
 ### Edit the configuration of a local module
 

@@ -61,7 +61,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
   - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
-- In addition, you must [add the `rplidar` module to your robot](https://app.viam.com/module/viam/rplidar) to support the RPlidar hardware, if you have not done so already.
+- In addition, you must [add the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar) to support the RPlidar hardware, if you have not done so already.
 
   {{< alert title="SUPPORT" color="note" >}}
 
@@ -89,7 +89,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    1. Click **Add module**, give your service a name of your choice, then click **Create**.
    1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
-      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](https://app.viam.com/module/viam/rplidar).
+      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar).
         Example: "my-rplidar"
         - Then set a **Data capture rate (Hz)** for it.
           Example: "5"
