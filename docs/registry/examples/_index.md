@@ -30,7 +30,6 @@ Once you have created a modular resource, you can test your modular resource usi
 ## Tutorials
 
 {{< cards >}}
-{{% card link="/registry/examples/odrive/" customTitle="Add an ODrive motor as a Modular Resource" %}}
 {{% card link="/registry/examples/custom-arm/" %}}
 {{% card link="/registry/examples/tflite-module/" customTitle="Add a TensorFlow Lite Modular Service"  %}}
 {{% card link="/tutorials/custom/custom-base-dog/" %}}
