@@ -11,7 +11,7 @@ aliases:
 # SMEs: Gautham, Rand
 ---
 
-{{% alert title="REQUIREMENTS" color="caution" %}}
+{{% alert title="REQUIREMENTS" color="note" %}}
 
 Follow one of our Jetson [setup guides](/get-started/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 

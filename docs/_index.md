@@ -20,9 +20,15 @@ sitemap:
 
 <div id="board-carousel" class="carousel max-page">
   <ul tabindex="0">
+  <li id="c0_slide1">
+      <a href="get-started/installation/prepare/rpi-setup/">
+        {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-5-8gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi 5">}}
+        <p>Raspberry Pi 5</p>
+      </a>
+    </li>
     <li id="c1_slide1">
       <a href="get-started/installation/prepare/rpi-setup/">
-        {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi">}}
+        {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-4-b-2gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi 4b">}}
         <p>Raspberry Pi 4</p>
       </a>
     </li>

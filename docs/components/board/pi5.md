@@ -1,35 +1,45 @@
 ---
-title: "Configure a Raspberry Pi 4, 3, or Zero 2 board"
-linkTitle: "pi"
+title: "Configure a Raspberry Pi 5 board"
+linkTitle: "pi5"
 weight: 20
 type: "docs"
-description: "Configure a Raspberry Pi 4 or earlier board."
+description: "Configure a Raspberry Pi 5 board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
-aliases:
-  - "/components/board/pi/"
-# SMEs: Gautham, Rand
+# SMEs: Bucket, Alan
 ---
 
 {{% alert title="REQUIREMENTS" color="note" %}}
 
-Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi` board.
+Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi for running `viam-server` before configuring a `pi5` board.
 
 {{% /alert %}}
 
-Configure a `pi` board to integrate a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/), or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) into your robot.
+Configure a `pi5` board to integrate a [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) into your robot.
 
-To configure a Raspberry Pi 5, see [Configure a Raspberry Pi 5 board](/components/board/pi5/).
+To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or Zero 2 board](/components/board/pi/).
 
-{{< tabs name="Configure a pi Board" >}}
+### Enable hardware PWM
+
+_(Optional)_ If you want to use hardware PWM on {{< glossary_tooltip term_id="pin-number" text="pins" >}} 12 and 35, edit <file>/boot/config.txt</file> on your Pi, adding the following line:
+
+```sh {class="line-numbers linkable-line-numbers"}
+dtoverlay=pwm-2chan
+```
+
+Then reboot the Pi for the change to take effect.
+
+### Configuration
+
+{{< tabs name="Configure a pi5 Board" >}}
 {{% tab name="Config Builder" %}}
 
 Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
-Select the `board` type, then select the `pi` model.
+Select the `board` type, then select the `pi5` model.
 Enter a name for your board and click **Create**.
 
-![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
+![An example board configuration in the app builder UI. The name (local), type (board) and model (pi5) are shown. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
 
 Copy and paste the following attribute template into your board's **Attributes** box.
 Then remove and fill in the attributes as applicable to your board, according to the table below.
@@ -100,7 +110,7 @@ Then remove and fill in the attributes as applicable to your board, according to
   "components": [
     {
       "name": "<your-pi-board-name>",
-      "model": "pi",
+      "model": "pi5",
       "type": "board",
       "namespace": "rdk",
       "attributes": {
@@ -126,7 +136,7 @@ Then remove and fill in the attributes as applicable to your board, according to
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `pi` boards:
+The following attributes are available for `pi5` boards:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
