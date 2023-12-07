@@ -16,7 +16,7 @@ aliases:
 
 You can now use [API keys for authentication](/build/program/#authenticate).
 API keys allow you to assign the minimum required permissions for usage.
-Location secrets, the previous method of authentication is deprecated and will be removed in a future release.
+Location secrets, the previous method of authentication, is deprecated and will be removed in a future release.
 
 ### Added: Queryable sensor data
 
