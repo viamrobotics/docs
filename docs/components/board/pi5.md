@@ -29,6 +29,8 @@ dtoverlay=pwm-2chan
 
 Then reboot the Pi for the change to take effect.
 
+If you do not enable hardware PWM, these pins will have no function.
+
 ### Configuration
 
 {{< tabs name="Configure a pi5 Board" >}}
@@ -54,7 +56,7 @@ Then remove and fill in the attributes as applicable to your board, according to
       "chip_select": "<chip-select-pin-number-on-board>",
       "name": "<your-analog-reader-name>",
       "pin": "<pin-number-on-adc>",
-      "spi_bus": "<your-spi-bus-name>",
+      "spi_bus": "<your-spi-bus-number>",
       "average_over_ms": <int>,
       "samples_per_sec": <int>
     }
@@ -62,20 +64,7 @@ Then remove and fill in the attributes as applicable to your board, according to
   "digital_interrupts": [
     {
       "name": "<your-digital-interrupt-name>",
-      "pin": "<pin-number>",
-      "type": "<basic|servo>"
-    }
-  ],
-  "spis": [
-    {
-      "name": "<your-bus-name>",
-      "bus_select": "<your-bus-index>"
-    }
-  ],
-  "i2cs": [
-    {
-      "name": "<your-bus-name>",
-      "bus": "<your-bus-index>"
+      "pin": "<pin-number>"
     }
   ]
 }
@@ -119,12 +108,6 @@ Then remove and fill in the attributes as applicable to your board, according to
         ],
         "digital_interrupts": [
           <...See table below...>
-        ],
-        "spis": [
-          <...See table below...>
-        ],
-        "i2cs": [
-          <...See table below...>
         ]
       },
       "depends_on": []
@@ -143,8 +126,6 @@ The following attributes are available for `pi5` boards:
 | ---- | ---- | --------- | ----------- |
 | `analogs` | object | Optional | Attributes of any pins that can be used as analog-to-digital converter (ADC) inputs. See [configuration info](#analogs). |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](#digital_interrupts). |
-| `spis` | object | Optional | Any Serial Peripheral Interface (SPI) chip select pins' bus index and name. See [configuration info](#spis). Review [these instructions](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols) to learn how to enable SPI on a Raspberry Pi. |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). Review [these instructions](/get-started/installation/prepare/rpi-setup/#enable-communication-protocols) to learn how to enable I<sup>2</sup>C on a Raspberry Pi. |
 
 ## Attribute Configuration
 
@@ -157,11 +138,3 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
-
-### `spis`
-
-{{< readfile "/static/include/components/board/board-spis.md" >}}
-
-### `i2cs`
-
-{{< readfile "/static/include/components/board/board-i2cs.md" >}}
