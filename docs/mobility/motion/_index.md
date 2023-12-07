@@ -631,6 +631,7 @@ err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
 {{< /tabs >}}
 
 ### GetPlan
+
 Returns the plan(s) & state history of the most recent `MoveOnGlobe()` call to move a [base](/components/base/) component.
 
 Returns a result if the last execution (call to `MoveOnGlobe`) is still executing OR changed state within the last 24 hours AND the robot has not reinitialized.
@@ -699,6 +700,7 @@ planHistory, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
 {{< /tabs >}}
 
 ### ListPlanStatuses
+
 Returns the status of plans created by MoveOnGlobe requests that are executing OR are part of an execution which changed it state within the a 24HR TTL OR until the robot reinitializes.
 
 All repeated fields are in time ascending order.
