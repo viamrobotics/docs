@@ -17,7 +17,7 @@ Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepar
 
 Configure a `pi5` board to integrate a [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) into your robot.
 
-To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or Zero 2 board](/components/board/pi/).
+To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or Zero 2 W board](/components/board/pi/).
 
 ### Enable hardware PWM
 

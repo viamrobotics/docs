@@ -1,9 +1,9 @@
 ---
-title: "Configure a Raspberry Pi 4, 3, or Zero 2 board"
+title: "Configure a Raspberry Pi 4, 3, or Zero 2 W board"
 linkTitle: "pi"
 weight: 20
 type: "docs"
-description: "Configure a Raspberry Pi 4, 3, or Zero 2 board."
+description: "Configure a Raspberry Pi 4, 3, or Zero 2 W board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:

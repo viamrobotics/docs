@@ -20,7 +20,7 @@ sitemap:
 
 <div id="board-carousel" class="carousel max-page">
   <ul tabindex="0">
-  <li id="c0_slide1">
+  <li id="c1_slide0">
       <a href="get-started/installation/prepare/rpi-setup/">
         {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-5-8gb.png" resize="148x120" declaredimensions=true alt="Raspberry Pi 5">}}
         <p>Raspberry Pi 5</p>
@@ -89,7 +89,7 @@ sitemap:
     <li id="c1_slide11">
       <a href="get-started/installation/prepare/rpi-setup/">
         {{<imgproc src="get-started/installation/thumbnails/raspberry-pi-zero-2w.png" alt="Raspberry Pi" resize="148x120" declaredimensions=true >}}
-        <p>Raspberry Pi Zero 2W</p>
+        <p>Raspberry Pi Zero 2 W</p>
       </a>
     </li>
     <li id="c1_slide12">
@@ -112,6 +112,7 @@ sitemap:
     </li>
   </ul>
   <ol style="visibility: hidden" aria-hidden="true">
+    <li><a href="#c1_slide0">Raspberry Pi 5</a></li>
     <li><a href="#c1_slide1">Raspberry Pi 4</a></li>
     <li><a href="#c1_slide2">NVIDIA Jetson Orin Nano</a></li>
     <li><a href="#c1_slide3">Intel UP4000</a></li>
@@ -122,7 +123,7 @@ sitemap:
     <li><a href="#c1_slide8">NVIDIA Jetson AGX Orin</a></li>
     <li><a href="#c1_slide9">NVIDIA Jetson Xavier NX</a></li>
     <li><a href="#c1_slide10">Raspberry Pi 3</a></li>
-    <li><a href="#c1_slide11">Raspberry Pi Zero 2W</a></li>
+    <li><a href="#c1_slide11">Raspberry Pi Zero 2 W</a></li>
     <li><a href="#c1_slide12">BeagleBone AI-64</a></li>
     <li><a href="#c1_slide13">Numato GPIO Modules</a></li>
     <li><a href="#c1_slide14">PCA9686 I<sup>2</sup>C Interface</a></li>
