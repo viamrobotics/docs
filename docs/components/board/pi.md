@@ -3,7 +3,7 @@ title: "Configure a Raspberry Pi 4, 3, or Zero 2 board"
 linkTitle: "pi"
 weight: 20
 type: "docs"
-description: "Configure a Raspberry Pi 4 or earlier board."
+description: "Configure a Raspberry Pi 4, 3, or Zero 2 board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
