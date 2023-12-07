@@ -12,6 +12,18 @@ aliases:
 
 ## November 2023
 
+{{% changelog color="added" title="Authenticate with location API key" %}}
+
+You can now use [API keys for authentication](/build/program/#authenticate).
+API keys allow you to assign the minimum required permissions for usage.
+Location secrets, the previous method of authentication, is deprecated and will be removed in a future release.
+
+{{% changelog color="added" title="Queryable sensor data" %}}
+
+Once you have added the data management service and synced tabular data, such as sensor readings, to the Viam app, you can now run queries against both captured tabular data as well as its metadata using either SQL or MQL.
+
+For more information, see [Query Data with SQL or MQL](/data/query/).
+
 {{% changelog color="changed" title="Model training from datasets" %}}
 
 To make it easier to iterate while training machine learning models from image data, you now train models from [datasets](/data/dataset/).
