@@ -129,7 +129,7 @@ The following attributes are available for `pi5` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
 
 ### `analogs`
 
