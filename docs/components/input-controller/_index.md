@@ -33,7 +33,6 @@ Most robots with an input controller need at least the following hardware:
 
 {{< cards >}}
 {{< relatedcard link="/mobility/base-rc/" >}}
-{{< relatedcard link="/data/" >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< /cards >}}
 

@@ -15,7 +15,7 @@ aliases:
 
 Follow one of our Jetson [setup guides](/get-started/installation/) to prepare your board for running `viam-server` before configuring a `jetson` board.
 
-If you have a CSI camera, follow [these instructions](/registry/examples/csi/) to configure it using the `viam:camera:csi` model.
+If you have a CSI camera, follow [these instructions](https://github.com/viamrobotics/csi-camera) to configure it using the `viam:camera:csi` model.
 
 {{% /alert %}}
 
