@@ -29,13 +29,6 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
-## Related Services
-
-{{< cards >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/ml/" >}}
-{{< /cards >}}
-
 ## Supported Models
 
 To use your board with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your board.
