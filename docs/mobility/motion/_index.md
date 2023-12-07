@@ -579,7 +579,7 @@ motion = MotionClient.from_robot(robot=robot, name="builtin")
 my_base_resource_name = Base.get_resource_name("my_base")
 
 # Assuming a move_on_globe started started the execution
-# mvmnt_sensor_resource_name = MovementSensor.get_resource_name("my_movement_sensor")
+# mvmnt_sensor = MovementSensor.get_resource_name("my_movement_sensor")
 # my_destination = movement_sensor.GeoPoint(latitude=0, longitude=0)
 # execution_id = await motion.move_on_globe(
 #    component_name=my_base_resource_name,
@@ -588,7 +588,7 @@ my_base_resource_name = Base.get_resource_name("my_base")
 
 # Stop the base component which was instructed to move by `MoveOnGlobe()`
 my_base_resource_name = Base.get_resource_name("my_base")
-await motion.stop_plan(component_name=my_base_resource_name)
+await motion.stop_plan(component_name=mvmnt_sensor)
 ```
 
 {{% /tab %}}
@@ -664,7 +664,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```python {class="line-numbers linkable-line-numbers"}
 motion = MotionClient.from_robot(robot=robot, name="builtin")
 my_base_resource_name = Base.get_resource_name("my_base")
-# Get the plan(s) of the base component which was instructed to move by `MoveOnGlobe()`
+# Get the plan(s) of the base component which was instructed
+# to move by `MoveOnGlobe()`
 resp = await motion.get_plan(component_name=my_base_resource_name)
 ```
 
