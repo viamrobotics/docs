@@ -650,8 +650,8 @@ All repeated fields are in time ascending order.
 **Parameters:**
 
 - `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to stop.
-- `lastPlanOnly` [(Optional\[bool\])](https://docs.python.org/library/typing.html#typing.Optional):  If `true`, the response will only return the the last plan for the component / execution
-- `executionID` [(Optional\[str\])](https://docs.python.org/library/typing.html#typing.Optional):  If non empty, the response will return the plans of the provided execution & component. Useful for retrieving plans from executions before the current execution.
+- `lastPlanOnly` [(Optional\[bool\])](https://docs.python.org/library/typing.html#typing.Optional): If `true`, the response will only return the the last plan for the component / execution
+- `executionID` [(Optional\[str\])](https://docs.python.org/library/typing.html#typing.Optional): If non empty, the response will return the plans of the provided execution & component. Useful for retrieving plans from executions before the current execution.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -677,8 +677,8 @@ resp = await motion.get_plan(component_name=my_base_resource_name)
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `req` [PlanHistoryReq](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#PlanHistoryReq): A `PlanHistoryReq` which contains the following values:
   - `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the base to stop.
-  - `lastPlanOnly` [(bool)](https://pkg.go.dev/builtin#bool):  If `true`, the response will only return the the last plan for the component / execution
-  - `executionID` [(ExecutionID)](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#PlanHistoryReq):  If non empty, the response will return the plans of the provided execution & component. Useful for retrieving plans from executions before the current execution.
+  - `lastPlanOnly` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the response will only return the the last plan for the component / execution
+  - `executionID` [(ExecutionID)](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#PlanHistoryReq): If non empty, the response will return the plans of the provided execution & component. Useful for retrieving plans from executions before the current execution.
   - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -711,7 +711,7 @@ All repeated fields are in time ascending order.
 
 **Parameters:**
 
-- `onlyActivePlans` [(Optional\[bool\])](https://docs.python.org/library/typing.html#typing.Optional):  If `true`, the response will only return plans which are executing.
+- `onlyActivePlans` [(Optional\[bool\])](https://docs.python.org/library/typing.html#typing.Optional): If `true`, the response will only return plans which are executing.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -734,7 +734,7 @@ resp = await motion.list_plan_statuses()
 
 - `ctx` [(Context)](https://pkg.go.dev/context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `req` [ListPlanStatusesReq](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#ListPlanStatusesReq): A `ListPlanStatusesReq` which contains the following values:
-  - `onlyActivePlans` [(bool)](https://pkg.go.dev/builtin#bool):  If `true`, the response will only return plans which are executing.
+  - `onlyActivePlans` [(bool)](https://pkg.go.dev/builtin#bool): If `true`, the response will only return plans which are executing.
   - `extra` [(map\[string\]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
