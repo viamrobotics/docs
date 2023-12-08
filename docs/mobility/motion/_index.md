@@ -634,7 +634,10 @@ err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
 
 Returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#moveonglobe) call to move a [base](/components/base/) component.
 
-Returns a result if the last execution (call to `MoveOnGlobe`) is still executing OR changed state within the last 24 hours AND the robot has not reinitialized.
+Returns a result if both of the following conditions are met:
+
+- the last execution (call to `MoveOnGlobe`) is still executing **or** changed state within the last 24 hours
+- the robot has not reinitialized
 
 Plans never change.
 
