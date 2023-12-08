@@ -636,7 +636,7 @@ Returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#mo
 
 Returns a result if the last execution (call to `MoveOnGlobe`) is still executing OR changed state within the last 24 hours AND the robot has not reinitialized.
 
-Plans are never mutated.
+Plans never change.
 
 Replans always create new plans.
 
