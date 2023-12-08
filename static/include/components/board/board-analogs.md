@@ -14,10 +14,10 @@ Then, integrate `analogs` into the `attributes` of your board by adding the foll
 // "attributes": { ... ,
 "analogs": [
   {
-    "chip_select": "<chip-select-pin-number-on-board>",
     "name": "<your-analog-reader-name>",
     "pin": "<pin-number-on-adc>",
     "spi_bus": "<your-spi-bus-name>",
+    "chip_select": "<chip-select-pin-number-on-board>",
     "average_over_ms": <int>,
     "samples_per_sec": <int>
   }
@@ -37,16 +37,16 @@ Then, integrate `analogs` into the `attributes` of your board by adding the foll
       "attributes": {
         "analogs": [
           {
-            "chip_select": "24",
             "name": "current",
             "pin": "1",
-            "spi_bus": "main"
+            "spi_bus": "main",
+            "chip_select": "24"
           },
           {
-            "chip_select": "24",
             "name": "pressure",
             "pin": "0",
-            "spi_bus": "main"
+            "spi_bus": "main",
+            "chip_select": "24"
           }
         ],
         "spis": [
