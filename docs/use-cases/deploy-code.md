@@ -35,8 +35,8 @@ For example, you might want to use the registry to contribute to collaborative p
             <b>3. Deploy your module</b>
             <br><br><p>Once you create your module, you can <a href="/registry/upload/">deploy it to the Viam registry</a>.</p>
              <p>You can register your module as public and extend accessibility to all Viam users, or as private and limit accessibility to users in your organization.</p>
-             <p>Visit <a href="/registry/upload/#upload-a-custom-module">Upload a custom module</a> for more information.</p>
-             <p>You can easily deploy to robot or fleet directly from your robot's page in the Viam app or as a <a href="/registry/configure/#local-modules">local module</a> if desired.</p>
+            <p style="text-indent: 10px;"> • Visit <a href="/registry/upload/#upload-a-custom-module">Upload a custom module</a> for more information.</p>
+             <p>You can easily deploy to robot or fleet directly from your robot's page in the Viam app or as a <a href="/registry/configure/#local-modules">local module</a> if desired.</p>  
         </th>
     </tr>
      <tr>
