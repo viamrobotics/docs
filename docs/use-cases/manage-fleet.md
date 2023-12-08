@@ -39,7 +39,7 @@ You can grant users different levels of access to individual robots or to groups
   <tr>
     <td>{{<imgproc src="/fleet/app-usage/create-robot.png" class="fill alignleft" resize="600x" style="max-width: 450px" declaredimensions=true alt="Create a new robot in the Viam app">}}
       <b>4. Configure robots</b>
-      <p>Users with access to a location can create and collaborate on the <a href="/fleet/machines/">machines</a> within it. You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar robots.</p>
+      <p>Users with access to a location can create and collaborate on the <a href="/fleet/machines/">machines</a> within it. Use the config builder interface to configure {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} for new or existing robots. You can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} to streamline the process of configuring multiple similar robots.</p>
 </td>
   </tr>
   <tr>
