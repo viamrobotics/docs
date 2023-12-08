@@ -705,7 +705,10 @@ planHistory, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
 
 ### ListPlanStatuses
 
-Returns the plan statuses created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) calls that are executing OR are part of an execution which changed it state within the a 24HR TTL OR until the robot reinitializes.
+Returns the statuses of plans created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) calls that meet at least one of the following conditions since the motion service initialized:
+
+- the plan's status is in progress
+- the plan's status changed state within the last 24 hours
 
 All repeated fields are in chronological order.
 
