@@ -704,7 +704,7 @@ planHistory, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
 
 Returns the plan statuses created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) calls that are executing OR are part of an execution which changed it state within the a 24HR TTL OR until the robot reinitializes.
 
-All repeated fields are in time ascending order.
+All repeated fields are in chronological order.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
