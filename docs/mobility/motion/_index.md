@@ -436,7 +436,7 @@ Use a [movement sensor](/components/movement-sensor/) to check the location of t
 
 `MoveOnGlobe()` is non blocking, meaning the motion service will move the component to the destination GPS point after `MoveOnGlobe()` returns.
 
-Each successful `MoveOnGlobe()` call retuns a unique ExectionID which can be used to identify all plans generated durring the `MoveOnGlobe()`.
+Each successful `MoveOnGlobe()` call retuns a unique ExectionID which you can use to identify all plans generated durring the `MoveOnGlobe()`.
 
 The progress of the `MoveOnGlobe()` call can be monitored by querying `GetPlan()` and `ListPlanStatuses()`.
 
