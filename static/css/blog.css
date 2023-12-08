@@ -79,3 +79,10 @@ code.hljs {
 .hljs-meta .hljs-keyword,.hljs-meta-keyword {
     font-weight: 700
 }
+
+.hljs-copy {
+    position: absolute;
+    right: 0px;
+    color: black;
+    background-color: #CCC;
+}
