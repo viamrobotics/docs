@@ -34,3 +34,4 @@ The micro-RDK [encoder API](/components/encoder/#api) supports only the followin
 - [`ResetPosition()`](/components/encoder/#resetposition)
 - [`GetPosition()`](/components/encoder/#getposition)
 - [`GetProperties()`](/components/encoder/#getproperties)
+- [`DoCommand()`](/components/encoder/#docommand)

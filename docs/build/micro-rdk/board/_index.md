@@ -29,6 +29,7 @@ For configuration information, click on the supported board model name:
 The micro-RDK [board API](/components/board/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
 - [`SetPowerMode()`](/components/board/#setpowermode)
+- [`DoCommand()`](/components/board/#docommand)
 
 For `GPIOPin`s:
 

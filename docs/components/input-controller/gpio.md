@@ -1,5 +1,5 @@
 ---
-title: "Configure a GPIO/ADC based input controller"
+title: "Configure a GPIO/ADC-based input controller"
 linkTitle: "gpio"
 weight: 30
 type: "docs"
