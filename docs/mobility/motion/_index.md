@@ -438,7 +438,7 @@ Use a [movement sensor](/components/movement-sensor/) to check the location of t
 
 Each successful `MoveOnGlobe()` call retuns a unique ExectionID which you can use to identify all plans generated durring the `MoveOnGlobe()`.
 
-The progress of the `MoveOnGlobe()` call can be monitored by querying `GetPlan()` and `ListPlanStatuses()`.
+You can monitor the progress of the `MoveOnGlobe()` call by querying `GetPlan()` and `ListPlanStatuses()`.
 
 `MoveOnGlobe()` is intended for use with the [navigation service](/mobility/navigation/), providing autonomous GPS navigation for rover [bases](/components/base/).
 
