@@ -43,8 +43,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
     "serial_baud_rate": <int>
   },
   "i2c_attributes": {
-    "board": "<your-board-name>",
-    "i2c_bus": "<name-of-bus-on-board>",
+    "i2c_bus": "<index-of-bus-on-board>",
     "i2c_addr": <int>,
     "i2c_baud_rate": <int>
   },
@@ -72,7 +71,6 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 {
   "connection_type": "I2C",
   "i2c_attributes": {
-    "board": "local",
     "i2c_bus": "1",
     "i2c_addr": 111,
     "i2c_baud_rate": 38400
@@ -101,8 +99,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
           "serial_baud_rate": <int>
         },
         "i2c_attributes": {
-            "board": "<your-board-name>",
-            "i2c_bus": "<name-of-bus-on-board>",
+            "i2c_bus": "<index-of-bus-on-board>",
             "i2c_addr": <int>,
             "i2c_baud_rate": <int>
         },
@@ -155,7 +152,6 @@ The `"serial_path"` filepath on a macOS system might resemble <file>"/dev/ttyUSB
       "attributes": {
         "connection_type": "I2C",
         "i2c_attributes": {
-          "board": "local",
           "i2c_bus": "1",
           "i2c_addr": 111,
           "i2c_baud_rate": 38400
@@ -210,8 +206,7 @@ For a movement sensor communicating over I<sup>2</sup>C, you'll need a `i2c_attr
 <!-- prettier-ignore -->
 | Name            | Type   | Inclusion    | Description |
 | --------------- | ------ | ------------ | ------------------------ |
-| `board`         | string | **Required** | The `name` of the [board](/components/board/) to which the [I<sup>2</sup>C](/components/board/#i2cs) connection is being made. |
-| `i2c_bus`       | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor. |
+| `i2c_bus`       | string | **Required** | The index of the [I<sup>2</sup>C bus](/components/board/#i2cs) on the board wired to the sensor. |
 | `i2c_addr`      | int    | **Required** | The device's I<sup>2</sup>C address. |
 | `i2c_baud_rate` | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400` |
 
