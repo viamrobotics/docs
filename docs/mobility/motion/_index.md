@@ -695,7 +695,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 ```go {class="line-numbers linkable-line-numbers"}
 motionService, err := motion.FromRobot(robot, "builtin")
-# Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` call.
+// Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` call.
 ctx := context.Background()
 planHistory, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
     ComponentName: s.req.ComponentName,
