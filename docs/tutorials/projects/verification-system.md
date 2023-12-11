@@ -17,11 +17,13 @@ no_list: true
 # SMEs: Bijan Haney
 ---
 
-In the [registry](https://app.viam.com/module/viam-labs/verification-system), Viam Labs provides a [vision service classifier](/ml/vision/classification/) model called `verification-system`.
-Follow this tutorial to learn how to configure this module and set up your own security system to detect, verify, and alarm based on specified detections from nested [vision service detectors](/ml/vision/detection/).
 
-You can use whatever combination of detectors and camera you would like with this module, but follow along with our recommendations to layer an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together, creating a security system with facial recognition.
-With this combination of detectors layered together, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
+Follow this tutorial to create a simple security system with visual people detection to alarm, and facial recognition to disarm.
+In this project, you will create a security system with facial recognition to "verify" whether intruders present are recognized by your system and can disable your alarm.
+To accomplish this on your machine, you will configure an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together in the [`verification-system` module](https://app.viam.com/module/viam-labs/verification-system).
+
+The verification system module itself is a model of [vision service classifier](/ml/vision/classification/), a type of vision service that returns labels for a given image, but it works because of these layered [vision service detectors](/ml/vision/detection/), object detectors which return bounding boxes drawn around the identified objects.
+With the combination of detectors you configure on your machine, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
 
 For example:
 
