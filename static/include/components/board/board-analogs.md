@@ -71,6 +71,6 @@ The following properties are available for `analogs`:
 |`name` | string | **Required** | Your name for the analog reader. |
 |`pin`| string | **Required** | The pin number of the ADC's connection pin, wired to the board. This should be labeled as the physical index of the pin on the ADC.
 |`chip_select`| string | **Required** | The chip select index of the board's connection pin, wired to the ADC. |
-|`spi_bus` | string | Optional | The index of the SPI bus connecting the ADC and board. |
+|`spi_bus` | string | **Required** | The index of the SPI bus connecting the ADC and board. |
 | `average_over_ms` | int | Optional | Duration in milliseconds over which the rolling average of the analog input should be taken. |
 |`samples_per_sec` | int | Optional | Sampling rate of the analog input in samples per second. |
