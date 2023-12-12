@@ -1,5 +1,5 @@
 ---
-title: "Configure a single encoder"
+title: "Configure a Single Encoder"
 linkTitle: "single"
 type: "docs"
 description: "Configure a single encoder."

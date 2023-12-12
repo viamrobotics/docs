@@ -1,5 +1,5 @@
 ---
-title: "Configure a gpio Servo"
+title: "Configure a GPIO-Controlled Servo"
 linkTitle: "gpio"
 weight: 90
 type: "docs"

@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake input controller for testing"
+title: "Configure a Fake Input Controller for Testing"
 linkTitle: "fake"
 weight: 30
 type: "docs"

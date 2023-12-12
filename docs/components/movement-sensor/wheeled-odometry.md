@@ -1,8 +1,8 @@
 ---
-title: "Configure a wheeled-odometry movement sensor"
+title: "Configure a Wheeled Odometry Movement Sensor"
 linkTitle: "wheeled-odometry"
 type: "docs"
-description: "Configure a wheeled-odometry movement sensor."
+description: "Configure a wheeled odometry movement sensor."
 images: ["/icons/components/imu.svg"]
 tags:
   [

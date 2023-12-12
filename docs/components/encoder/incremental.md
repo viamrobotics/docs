@@ -1,5 +1,5 @@
 ---
-title: "Configure an incremental encoder"
+title: "Configure an Incremental Encoder"
 linkTitle: "incremental"
 type: "docs"
 description: "Configure an incremental encoder."

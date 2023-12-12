@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake motor"
+title: "Configure a Fake Motor"
 linkTitle: "fake"
 weight: 10
 type: "docs"

@@ -1,5 +1,5 @@
 ---
-title: "Configure a Raspberry Pi 5 board"
+title: "Configure a Raspberry Pi 5 Board"
 linkTitle: "pi5"
 weight: 20
 type: "docs"

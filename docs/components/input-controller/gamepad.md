@@ -1,5 +1,5 @@
 ---
-title: "Configure a Linux-supported gamepad"
+title: "Configure a Linux-supported Gamepad"
 linkTitle: "gamepad"
 weight: 30
 type: "docs"

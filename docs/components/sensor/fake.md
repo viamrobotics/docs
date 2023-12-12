@@ -1,5 +1,5 @@
 ---
-title: "Create a fake Sensor"
+title: "Create a Fake Sensor"
 linkTitle: "fake"
 weight: 10
 type: "docs"
