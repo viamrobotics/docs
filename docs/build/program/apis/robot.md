@@ -193,7 +193,7 @@ Pass these options to [`AtAddress`](#ataddress).
 api_key = '<API-KEY>'
 # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
 # id
-api_key_id  = '<API-KEY-ID>'
+api_key_id = '<API-KEY-ID>'
 
 opts = RobotClient.Options.with_api_key(api_key, api_key_id)
 
