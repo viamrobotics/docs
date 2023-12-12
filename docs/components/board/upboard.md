@@ -49,12 +49,6 @@ Then remove and fill in the attributes as applicable to your board, according to
       "name": "<your-digital-interrupt-name>",
       "pin": "<pin-number>"
     }
-  ],
-  "i2cs": [
-    {
-      "name": "<your-bus-name>",
-      "bus": "<your-bus-index>"
-    }
   ]
 }
 ```
@@ -64,10 +58,10 @@ Then remove and fill in the attributes as applicable to your board, according to
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "i2cs": [
+    "digital_interrupts": [
     {
-      "name": "my-i2c-bus1",
-      "bus": "1"
+      "name": "your-interrupt",
+      "pin": "18"
     }
   ]
 }
@@ -93,12 +87,6 @@ Then remove and fill in the attributes as applicable to your board, according to
             "name": "<your-digital-interrupt-name>",
             "pin": "<pin-number>"
           }
-        ],
-        "i2cs": [
-          {
-            "name": "<your-bus-name>",
-            "bus": "<your-bus-index>"
-          }
         ]
       },
       "depends_on": []
@@ -119,11 +107,11 @@ Then remove and fill in the attributes as applicable to your board, according to
       "type": "board",
       "namespace": "rdk",
       "attributes": {
-        "i2cs": [
-          {
-            "name": "my-i2c-bus1",
-            "bus": "1"
-          }
+        "digital_interrupts": [
+            {
+              "name": "your-interrupt",
+              "pin": "18"
+            }
         ]
       },
       "depends_on": []
@@ -141,16 +129,11 @@ The following attributes are available for `upboard` boards:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 | `digital_interrupts` | object | Optional | Any digital interrupts's {{< glossary_tooltip term_id="pin-number" text="pin number" >}} and name. See [configuration info](/components/board/#digital_interrupts). |
-| `i2cs` | object | Optional | Any Inter-Integrated Circuit (I<sup>2</sup>C) pins' bus index and name. See [configuration info](#i2cs). |
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts), and components that must communicate through [I<sup>2</sup>C](#i2cs) protocol into your robot.
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your robot.
 
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
-
-### `i2cs`
-
-{{< readfile "/static/include/components/board/board-i2cs.md" >}}

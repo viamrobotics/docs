@@ -6,7 +6,7 @@ type: "docs"
 description: "Configure an MPU-6050 movement sensor."
 images: ["/icons/components/imu.svg"]
 aliases:
-  - /micro-rdk/movement-sensor/gyro-mpu6050/
+  - "/components/movement-sensor/mpu6050/"
 # SMEs: Rand
 ---
 
@@ -30,8 +30,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "<your-board-name>",
-  "i2c_bus": "<your-i2c-bus-name-on-board>",
+  "i2c_bus": "<your-i2c-bus-index-on-board>",
   "use_alt_i2c_address": <boolean>
 }
 ```
@@ -41,8 +40,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "local",
-  "i2c_bus": "default_i2c_bus"
+  "i2c_bus": "1"
 }
 ```
 
@@ -61,8 +59,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "<your-board-name>",
-        "i2c_bus": "<your-i2c-bus-name-on-board>",
+        "i2c_bus": "<your-i2c-bus-index-on-board>",
         "use_alt_i2c_address": <boolean>
       },
       "depends_on": []
@@ -78,30 +75,12 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 {
   "components": [
     {
-      "name": "local",
-      "model": "esp32",
-      "type": "board",
-      "namespace": "rdk",
-      "attributes": {
-        "pins": [15, 21, 22],
-        "i2cs": [
-          {
-            "name": "default_i2c_bus",
-            "bus": "i2c0",
-            "data_pin": 21,
-            "clock_pin": 22
-          }
-        ]
-      }
-    },
-    {
       "name": "my_accelgyro",
       "model": "gyro-mpu6050",
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "local",
-        "i2c_bus": "default_i2c_bus"
+        "i2c_bus": "1"
       }
     }
   ]
@@ -116,8 +95,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 <!-- prettier-ignore -->
 | Name                  | Type    | Inclusion    | Description |
 | --------------------- | ------- | ------------ | ----------- |
-| `board`               | string  | **Required** | The `name` of the [board](/build/micro-rdk/board/) to which the device is wired. |
-| `i2c_bus`             | string  | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on your [board](/components/board/) wired to this device. |
+| `i2c_bus`             | string  | **Required** | The index of the I<sup>2</sup>C bus on the [board](/components/board/) that your movement sensor is wired to. |
 | `use_alt_i2c_address` | boolean | Optional     | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69). If high, set `true`. If low, set `false`. <br> Default: `false` |
 
 ## Test the movement sensor

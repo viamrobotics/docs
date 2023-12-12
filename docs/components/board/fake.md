@@ -78,12 +78,10 @@ The following attributes are available for `fake` boards:
 | `fail_new` | bool | **Required** | If the fake board should raise an error at robot start-up. |
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs). |
 | `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See [configuration info](#digital_interrupts). |
-| `spis` | object | Optional | Any serial peripheral interface (SPI) chip select bus pins' index and name. See [configuration info](#spis). |
-| `i2cs` | object | Optional | Any inter-integrated circuit (I2C) bus pins' index and name. See [configuration info](#i2cs). |
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
 
 ### `analogs`
 
@@ -92,11 +90,3 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
-
-### `spis`
-
-{{< readfile "/static/include/components/board/board-spis.md" >}}
-
-### `i2cs`
-
-{{< readfile "/static/include/components/board/board-i2cs.md" >}}
