@@ -189,8 +189,12 @@ Pass these options to [`AtAddress`](#ataddress).
 - [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting the `RobotClient`.
 
 ```python
-api_key = "your_api_key"
-api_key_id = "valid_uuid"
+# Replace "<API-KEY>" (including brackets) with your robot's api key
+api_key='<API-KEY>'
+# Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+# id
+api_key_id='<API-KEY-ID>'
+
 opts = RobotClient.Options.with_api_key(api_key, api_key_id)
 
 robot = await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
