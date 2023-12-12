@@ -17,7 +17,6 @@ no_list: true
 # SMEs: Bijan Haney
 ---
 
-
 Follow this tutorial to create a simple security system with visual people detection to alarm, and facial recognition to disarm.
 In this project, you will create a security system with facial recognition to "verify" whether intruders present are recognized by your system and can disable your alarm.
 To accomplish this on your machine, you will configure an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together in the [`verification-system` module](https://app.viam.com/module/viam-labs/verification-system).
