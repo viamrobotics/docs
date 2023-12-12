@@ -1,5 +1,5 @@
 ---
-title: "Configure a Webgamepad"
+title: "Configure a Web Gamepad"
 linkTitle: "webgamepad"
 weight: 30
 type: "docs"
