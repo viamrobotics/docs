@@ -7,6 +7,6 @@ Method Name | Description
 [`MoveOnGlobe`](/mobility/motion/#moveonglobe) | Move a [base](/components/base/) component to a destination GPS point. Use a [Movement Sensor](/components/movement-sensor/) to measure the robot's GPS coordinates.
 [`StopPlan`](/mobility/motion/#stopplan) | Stop a [base](/components/base/) component being moved by an in progress [`MoveOnGlobe`](/mobility/motion/#moveonglobe) call.
 [`GetPlan`](/mobility/motion/#getplan) | Returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#moveonglobe) call to move a [base](/components/base/) component.
-[`ListPlanStatuses`](/mobility/motion/#listplanstatuses) | Returns the plan statuses created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) calls
+[`ListPlanStatuses`](/mobility/motion/#listplanstatuses) | Returns the plan statuses created by [`MoveOnGlobe`](/mobility/motion/#moveonglobe) calls.
 [`DoCommand`](/mobility/motion/#docommand)     | Send arbitrary commands to the resource.
 [`Close`](/mobility/motion/#close) | Safely shut down the resource and prevent further use.
