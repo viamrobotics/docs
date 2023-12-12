@@ -51,8 +51,8 @@ For example, you might want to use the registry to contribute to collaborative p
     <th>{{<imgproc src="/icons/components/controller.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="controller icon">}}
       <b>5. Update your module</b>
       <br><br>
-      <p>You have the option to <a href="/registry/upload/#update-an-existing-module">update your module</a> in the registry with the latest changes.</p>
-      <p>This makes it easy to push changes to a fleet of machines.</p>
+      <p>You have the option to <a href="/registry/upload/#update-an-existing-module">update your module</a> in the registry with the latest changes.
+      This makes it easy to push changes to a fleet of machines.</p>
     </th>
   </tr>
 </table>
