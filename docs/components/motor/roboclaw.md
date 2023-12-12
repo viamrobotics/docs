@@ -1,5 +1,5 @@
 ---
-title: "Configure a roboclaw motor"
+title: "Configure a RoboClaw-Controlled Motor"
 linkTitle: "roboclaw"
 weight: 22
 type: "docs"

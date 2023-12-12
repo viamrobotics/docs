@@ -1,5 +1,5 @@
 ---
-title: "Configure a sensirion-sht3xd Sensor"
+title: "Configure a Sensirion-SHT3x-DIS Sensor"
 linkTitle: "sensirion-sht3xd"
 weight: 70
 type: "docs"

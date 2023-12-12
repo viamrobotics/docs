@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake Servo"
+title: "Configure a Fake Servo"
 linkTitle: "fake"
 weight: 10
 type: "docs"

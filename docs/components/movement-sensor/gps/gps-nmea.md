@@ -1,5 +1,5 @@
 ---
-title: "Configure an NMEA-based GPS"
+title: "Configure an NMEA-Based GPS"
 linkTitle: "gps-nmea"
 weight: 10
 type: "docs"

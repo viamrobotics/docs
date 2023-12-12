@@ -1,5 +1,5 @@
 ---
-title: "Configure a Raspberry Pi 4, 3, or Zero 2 W board"
+title: "Configure a Raspberry Pi 4, 3, or Zero 2 W Board"
 linkTitle: "pi"
 weight: 20
 type: "docs"

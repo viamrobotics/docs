@@ -1,5 +1,5 @@
 ---
-title: "Configure an NTRIP-based RTK GPS with a Serial Connection"
+title: "Configure an NTRIP-Based RTK GPS with a Serial Connection"
 linkTitle: "gps-nmea-rtk-serial"
 weight: 10
 type: "docs"

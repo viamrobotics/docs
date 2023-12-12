@@ -1,5 +1,5 @@
 ---
-title: "Configure a gpio motor"
+title: "Configure a GPIO-Controlled Motor"
 linkTitle: "gpio"
 weight: 10
 type: "docs"

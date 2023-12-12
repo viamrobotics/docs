@@ -1,9 +1,9 @@
 ---
-title: "Configure a customlinux board"
+title: "Configure a Custom Linux Board"
 linkTitle: "customlinux"
 weight: 75
 type: "docs"
-description: "Configure a customlinux board."
+description: "Configure a custom Linux board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:

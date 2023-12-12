@@ -1,5 +1,5 @@
 ---
-title: "Configure an AMS-AS5048 encoder"
+title: "Configure an AMS-AS5048 Encoder"
 linkTitle: "AMS-AS5048"
 type: "docs"
 description: "Configure an AMS-AS5048 encoder."
