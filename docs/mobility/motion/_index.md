@@ -747,7 +747,7 @@ resp = await motion.list_plan_statuses()
 
 **Returns:**
 
-- [([]PlanStatusWithID)](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#PlanStatusWithID): PlanStatusWithID describes the state of a given plan at a point in time plus the PlanId, ComponentName and ExecutionID the status is associated with.
+- [([]PlanStatusWithID)](https://pkg.go.dev/go.viam.com/rdk/services/motion@v0.15.1#PlanStatusWithID): `PlanStatusWithID` describes the state of a given plan at a point in time plus the `PlanId`, `ComponentName` and `ExecutionID` the status is associated with.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
