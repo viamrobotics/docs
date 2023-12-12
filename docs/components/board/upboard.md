@@ -58,7 +58,7 @@ Then remove and fill in the attributes as applicable to your board, according to
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-    "digital_interrupts": [
+  "digital_interrupts": [
     {
       "name": "your-interrupt",
       "pin": "18"
@@ -108,10 +108,10 @@ Then remove and fill in the attributes as applicable to your board, according to
       "namespace": "rdk",
       "attributes": {
         "digital_interrupts": [
-            {
-              "name": "your-interrupt",
-              "pin": "18"
-            }
+          {
+            "name": "your-interrupt",
+            "pin": "18"
+          }
         ]
       },
       "depends_on": []
