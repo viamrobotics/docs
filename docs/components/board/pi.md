@@ -44,7 +44,7 @@ Then remove and fill in the attributes as applicable to your board, according to
       "name": "<your-analog-reader-name>",
       "pin": "<pin-number-on-adc>",
       "spi_bus": "<your-spi-bus-index>",
-      "chip_select": "<chip-select-pin-number-on-board>",
+      "chip_select": "<chip-select-index-on-board>",
       "average_over_ms": <int>,
       "samples_per_sec": <int>
     }
