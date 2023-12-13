@@ -29,7 +29,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `pi` model.
 Enter a name for your board and click **Create**.
 
-![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
+![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
 Copy and paste the following attribute template into your board's **Attributes** box.
 Then remove and fill in the attributes as applicable to your board, according to the table below.
