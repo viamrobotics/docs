@@ -1,6 +1,6 @@
 {{ $size := (.Get "size") }}
 <div class="col hover-card">
-  {{ if .Get "link" }}<a href="{{ .Get "link" }}" class="noanchor">{{ end }}
+  {{ if .Get "link" }}<a href="{{ .Get "link" }}" {{ if .Get "target" }} target="{{ .Get "target" }}"{{ end }} class="noanchor">{{ end }}
         {{ if .Get "img" }}
         <div class="hover-card-img">
           {{ $img := resources.GetMatch (.Get "img") }}

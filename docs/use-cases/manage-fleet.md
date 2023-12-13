@@ -12,7 +12,7 @@ images: ["/fleet/locations.png"]
 ---
 
 You can use Viam's cloud-based fleet management tools to monitor and manage access to your fleet of {{< glossary_tooltip term_id="smart-machine" text="smart machines" >}}.
-Use these tools as you create and scale a new fleet of robots, or [integrate Viam](https://www.viam.com/post/integrate-your-ros2-robot-with-viam) to manage and add functionality to your existing fleet.
+Use these tools as you create and scale a new fleet of robots, or integrate Viam to manage and add functionality like data management to your existing fleet.
 
 For example, you might have 30 robots in one warehouse and 500 in another.
 You can monitor and teleoperate all of the robots from one online dashboard, and grant permission to other users to do the same.
@@ -57,5 +57,11 @@ You can grant users different levels of access to individual robots or to groups
 {{% card link="/fleet/" %}}
 {{% card link="/fleet/cli/" %}}
 {{% card link="/fleet/rbac/" %}}
-{{% card link="/tutorials/" %}}
+{{% manualcard link="https://www.viam.com/post/integrate-your-ros2-robot-with-viam/" target="_blank" %}}
+
+<h4>Integrate your ROS2 robot with Viam</h4>
+
+Read a blog post on the ROS integration process.
+
+{{% /manualcard %}}
 {{< /cards >}}
