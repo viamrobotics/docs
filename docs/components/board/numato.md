@@ -1,9 +1,9 @@
 ---
-title: "Configure a numato board"
+title: "Configure a Numato Board"
 linkTitle: "numato"
 weight: 50
 type: "docs"
-description: "Configure a numato board."
+description: "Configure a Numato peripheral board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:

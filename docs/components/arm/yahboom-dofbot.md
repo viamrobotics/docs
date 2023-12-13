@@ -1,5 +1,5 @@
 ---
-title: "Configure a yahboom-dofbot Arm"
+title: "Configure a Yahboom DOFBOT Arm"
 linkTitle: "yahboom-dofbot"
 weight: 50
 type: "docs"

@@ -1,9 +1,9 @@
 ---
-title: "Configure a beaglebone board"
+title: "Configure a BeagleBone Board"
 linkTitle: "beaglebone"
 weight: 40
 type: "docs"
-description: "Configure a beaglebone board."
+description: "Configure a BeagleBone board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:

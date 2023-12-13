@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake power sensor"
+title: "Configure a Fake Power Sensor"
 linkTitle: "fake"
 weight: 10
 type: "docs"

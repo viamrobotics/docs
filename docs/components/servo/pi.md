@@ -1,5 +1,5 @@
 ---
-title: "Configure a pi Servo"
+title: "Configure a Raspberry Pi-Controlled Servo"
 linkTitle: "pi"
 weight: 90
 type: "docs"

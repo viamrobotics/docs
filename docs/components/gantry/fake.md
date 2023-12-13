@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake Gantry"
+title: "Configure a Fake Gantry"
 linkTitle: "fake"
 weight: 10
 type: "docs"

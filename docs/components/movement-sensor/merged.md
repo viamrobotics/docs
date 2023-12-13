@@ -1,5 +1,5 @@
 ---
-title: "Configure a merged movement sensor"
+title: "Configure a Merged Movement Sensor"
 linkTitle: "merged"
 weight: 40
 type: "docs"

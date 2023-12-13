@@ -1,10 +1,10 @@
 ---
-title: "Configure an eva Arm"
+title: "Configure an Eva Arm"
 linkTitle: "eva"
 weight: 34
 type: "docs"
 draft: "true"
-description: "Configure an eva arm."
+description: "Configure an Eva arm."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:

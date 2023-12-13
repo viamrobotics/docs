@@ -1,9 +1,9 @@
 ---
-title: "Configure an upboard board"
+title: "Configure an UP Board"
 linkTitle: "upboard"
 weight: 70
 type: "docs"
-description: "Configure an upboard board."
+description: "Configure an UP board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
@@ -11,7 +11,7 @@ aliases:
 # SMEs: Susmita
 ---
 
-Configure an `upboard` board to integrate an Intel-based board like the [UP4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
+Configure an `upboard` board to integrate an Intel-based board like the [UP 4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
 
 Complete the following setup requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
 

@@ -1,5 +1,5 @@
 ---
-title: "Configure a Raspberry Pi 4, 3, or Zero 2 W board"
+title: "Configure a Raspberry Pi 4, 3, or Zero 2 W Board"
 linkTitle: "pi"
 weight: 20
 type: "docs"
@@ -29,7 +29,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `pi` model.
 Enter a name for your board and click **Create**.
 
-![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/tutorials/scuttlebot/board-empty-json.png)
+![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/components/board/pi-ui-config.png)
 
 Copy and paste the following attribute template into your board's **Attributes** box.
 Then remove and fill in the attributes as applicable to your board, according to the table below.
@@ -43,8 +43,8 @@ Then remove and fill in the attributes as applicable to your board, according to
     {
       "name": "<your-analog-reader-name>",
       "pin": "<pin-number-on-adc>",
-      "spi_bus": "<your-spi-bus-name>",
-      "chip_select": "<chip-select-pin-number-on-board>",
+      "spi_bus": "<your-spi-bus-index>",
+      "chip_select": "<chip-select-index-on-board>",
       "average_over_ms": <int>,
       "samples_per_sec": <int>
     }

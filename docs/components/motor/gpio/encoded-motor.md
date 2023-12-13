@@ -1,5 +1,5 @@
 ---
-title: "Configure a motor with an encoder"
+title: "Configure a Motor with an Encoder"
 linkTitle: "Encoded Motors"
 weight: 90
 type: "docs"
