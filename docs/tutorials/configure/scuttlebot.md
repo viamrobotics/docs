@@ -34,17 +34,9 @@ cost: 540
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
-## Configure the board
-
-Add your first component, the [board](/components/board/).
-
-1. Click on the **Components** subtab and click **Create component**.
-2. Select the `board` type, then select the `pi` model.
-3. Enter `local` as the name for your board and click **Create**.
-
 ## Configure the encoders
 
-Next, configure the left and right encoders as follows:
+Configure the left and right encoders as follows:
 
 {{< tabs name="Configure AMS-AS5048 Encoders" >}}
 {{% tab name="Config Builder" %}}
@@ -85,7 +77,6 @@ Add the following JSON objects to the `components` array:
     "type": "encoder",
     "namespace": "rdk",
     "attributes": {
-      "board": "local",
       "connection_type": "i2c",
       "i2c_attributes": {
         "i2c_bus": "1",
@@ -99,7 +90,6 @@ Add the following JSON objects to the `components` array:
     "type": "encoder",
     "namespace": "rdk",
     "attributes": {
-      "board": "local",
       "connection_type": "i2c",
       "i2c_attributes": {
         "i2c_bus": "1",
@@ -252,12 +242,6 @@ Enter a name for your base and click **Create**.
 ```json
 {
   "components": [
-    {
-      "attributes": {},
-      "model": "pi",
-      "name": "local",
-      "type": "board"
-    },
     {
       "attributes": {
         "board": "local",
