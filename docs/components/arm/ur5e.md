@@ -1,9 +1,9 @@
 ---
-title: "Configure a ur5e Arm"
+title: "Configure a UR5e Arm"
 linkTitle: "ur5e"
 weight: 40
 type: "docs"
-description: "Configure a ur5e arm."
+description: "Configure a UR5e arm."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:

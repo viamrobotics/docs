@@ -48,7 +48,7 @@ For configuration information, click on the model name:
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
-| [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
+| [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel I<sup>2</sup>C [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
 | [`customlinux`](customlinux/) | A model for other Linux boards. |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
@@ -62,7 +62,7 @@ If you are using the micro-RDK, navigate to [Micro-RDK Board](/build/micro-rdk/b
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
 
 ### `analogs`
 
@@ -71,14 +71,6 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
-
-### `spis`
-
-{{< readfile "/static/include/components/board/board-spis.md" >}}
-
-### `i2cs`
-
-{{< readfile "/static/include/components/board/board-i2cs.md" >}}
 
 ## Control your board with Viam's client SDK libraries
 
@@ -423,55 +415,6 @@ myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the current status of the board.
 err := myBoard.Status(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### ModelAttributes
-
-Get the attributes related to the model of this board.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
-  Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.model_attributes).
-
-```python
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the attributes related to the model of this board.
-attributes = await my_board.model_attributes()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
-  Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the attributes related to the model of this board.
-attributes := myBoard.ModelAttributes()
 ```
 
 {{% /tab %}}

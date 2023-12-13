@@ -1,5 +1,5 @@
 ---
-title: "Configure a gpiostepper motor"
+title: "Configure a GPIO-Controlled Stepper Motor"
 linkTitle: "gpiostepper"
 weight: 20
 type: "docs"

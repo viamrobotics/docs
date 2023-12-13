@@ -1,5 +1,5 @@
 ---
-title: "Configure an ultrasonic Camera"
+title: "Configure an Ultrasonic Camera"
 linkTitle: "ultrasonic"
 weight: 60
 type: "docs"
