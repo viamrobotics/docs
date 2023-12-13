@@ -181,14 +181,7 @@ On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configura
       "model": "pi",
       "name": "local",
       "type": "board",
-      "attributes": {
-        "i2cs": [
-          {
-            "bus": "1",
-            "name": "default_i2c"
-          }
-        ]
-      },
+      "attributes": {},
       "depends_on": []
     },
     {
@@ -425,12 +418,6 @@ On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configura
       "name": "local",
       "type": "board",
       "attributes": {
-        "i2cs": [
-          {
-            "bus": "1",
-            "name": "default_i2c"
-          }
-        ]
       },
       "depends_on": []
     },

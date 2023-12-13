@@ -36,42 +36,11 @@ cost: 540
 
 ## Configure the board
 
-Add your first component, the [board](/components/board/):
+Add your first component, the [board](/components/board/).
 
-{{< tabs name="Configure an pi Board" >}}
-{{% tab name="Config Builder" %}}
-
-Click on the **Components** subtab and click **Create component**.
-Select the `board` type, then select the `pi` model.
-Enter `local` as the name for your board and click **Create**.
-
-Click on **Show more** and add `I2C` with **name** `main` and **bus** `1`.
-
-![The component configuration panel for a board component.](/tutorials/scuttlebot/board.png)
-
-{{% /tab %}}
-{{% tab name="Raw JSON" %}}
-
-Add the following JSON object to the `components` array:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "type": "board",
-  "model": "pi",
-  "name": "local",
-  "attributes": {
-    "i2cs": [
-      {
-        "bus": "1",
-        "name": "main"
-      }
-    ]
-  }
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
+1. Click on the **Components** subtab and click **Create component**.
+2. Select the `board` type, then select the `pi` model.
+3. Enter `local` as the name for your board and click **Create**.
 
 ## Configure the encoders
 
@@ -88,7 +57,7 @@ Enter `lenc` as the name for your encoder and click **Create**.
 
 Click the **board** dropdown list and select the name of your board, `local`.
 
-In the **i2c bus** field type `main`, and in the **i2c address** field type `64`.
+In the **i2c bus** field type `1`, and in the **i2c address** field type `64`.
 
 ![Configuration of an AMS-AS5048 encoder in the Viam app config builder.](/tutorials/scuttlebot/create-encoder.png)
 
@@ -100,7 +69,7 @@ Enter `renc` as the name for your encoder and click **Create**.
 
 Click the **board** dropdown list and select the name of your board, `local`.
 
-In the **i2c bus** field type `main`, and in the **i2c address** field type `65`.
+In the **i2c bus** field type `1`, and in the **i2c address** field type `65`.
 
 Click **Save config**.
 
@@ -119,7 +88,7 @@ Add the following JSON objects to the `components` array:
       "board": "local",
       "connection_type": "i2c",
       "i2c_attributes": {
-        "i2c_bus": "main",
+        "i2c_bus": "1",
         "i2c_addr": 64
       }
     }
@@ -133,7 +102,7 @@ Add the following JSON objects to the `components` array:
       "board": "local",
       "connection_type": "i2c",
       "i2c_attributes": {
-        "i2c_bus": "main",
+        "i2c_bus": "1",
         "i2c_addr": 65
       }
     }
