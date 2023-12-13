@@ -17,12 +17,13 @@ no_list: true
 # SMEs: Bijan Haney
 ---
 
-Follow this tutorial to create a simple security system with visual people detection to alarm, and facial recognition to disarm.
-In this project, you will create a security system with facial recognition to "verify" whether intruders present are recognized by your system and can disable your alarm.
-To accomplish this on your machine, you will configure an [`mlmodel` person detector](#configure-an-mlmodel-person-detector) and [facial detector](#configure-a-facial-detector) together in the [`verification-system` module](https://app.viam.com/module/viam-labs/verification-system).
+Follow this tutorial to create your own machine learning (ML) enabled security system, or, "verification system."
+The verification system configuration you will use in this project combines two detectors: The first detector detects whether there are people present, thanks to a person-detection ML model you train yourself.
+You give the second detector photos of known faces and it tells you if a person is recognized.
 
-The verification system module itself is a model of [vision service classifier](/ml/vision/classification/), a type of vision service that returns labels for a given image, but it works because of these layered [vision service detectors](/ml/vision/detection/), object detectors which return bounding boxes drawn around the identified objects.
-With the combination of detectors you configure on your machine, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
+The verification system has three possible layers of detectors.
+You layer them together so that objects detected in the images your verification's system camera captures point to countdown, alarmed, or disarmed states.
+With our recommended combination of detectors, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
 
 For example:
 
@@ -89,10 +90,12 @@ For example, we configured a person detector as follows:
 ]
 ```
 
+This will serve as the first and second layers of your verification system.
 Now, move on to configuring the "finer" layer of the detectors-- the facial recognition detector.
 
 ## Configure a facial detector
 
+Now, to disarm our alarm, we want our verification system to be able to give someone an "ok" based on their ID.
 To create a detector that can recognize individual faces, use Viam Lab's `facial-detector` module, available in the [registry](https://app.viam.com/module/viam-labs/facial-detector).
 This is a modular vision service that uses the DeepFace library to perform facial detections.
 
@@ -169,7 +172,7 @@ The following attributes are available for the `viam-labs:classifier:verificatio
 | `countdown_time_s` | int | Optional | The time in seconds the system will remain in state `COUNTDOWN` before transitioning to state `ALARM`. <br> Default: `20` |
 | `alarm_time_s` | int | Optional | The time in seconds the system will remain in  state `ALARM` before transitioning to state `TRIGGER_1`. <br> Default: `10` |
 | `disarmed_time_s` | int | Optional | The time in seconds the system will remain in  state `DISARMED` before transitioning to state `TRIGGER_1`. <br> Default: `10` |
-| `disable_alarm` | bool | Optional | Disables the `COUNTDOWN` and `ALARM` states. The system will always remain the `TRIGGER_1` and `TRIGGER_2` states. <br> Default: `false` |
+| `disable_alarm` | bool | Optional | Disables the `COUNTDOWN` and `ALARM` states. The system will always remain in the `TRIGGER_1` and `TRIGGER_2` states. <br> Default: `false` |
 
 ## Configure a transform camera
 
