@@ -8,3 +8,8 @@
     <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
   </div>
 </div>
+{{ if eq $.Page.File.Ext "md" }}
+  {{ $.Inner | markdownify }}
+{{ else }}
+  {{ $.Inner | htmlUnescape | safeHTML }}
+{{ end }}
