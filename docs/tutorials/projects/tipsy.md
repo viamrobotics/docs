@@ -417,8 +417,7 @@ On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configura
       "model": "pi",
       "name": "local",
       "type": "board",
-      "attributes": {
-      },
+      "attributes": {},
       "depends_on": []
     },
     {
