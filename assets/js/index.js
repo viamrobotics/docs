@@ -74,13 +74,15 @@ if (toc) {
         // Cache element references and measurements
         tocItems = tocItems.map( function( item ) {
             var anchor = item.querySelector( 'a' );
-            var target = document.getElementById( anchor.getAttribute( 'href' ).slice( 1 ) );
+            if(anchor) {
+                var target = document.getElementById( anchor.getAttribute( 'href' ).slice( 1 ) );
 
-            return {
-                listItem: item,
-                anchor: anchor,
-                target: target
-            };
+                return {
+                    listItem: item,
+                    anchor: anchor,
+                    target: target
+                };
+            }
         } );
 
         setActiveElements();
@@ -96,7 +98,7 @@ if (toc) {
 
         for (var i = 0; i < tocItems.length; i++) {
             let item = tocItems[i];
-            if (item.target) {
+            if (item && item.target) {
 
                 var targetBounds = item.target.getBoundingClientRect();
 

@@ -320,7 +320,7 @@ When a module is instantiated, it has access to the following default environmen
 | Name | Description |
 | ---- | ----------- |
 | `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` |
-| `VIAM_MODULE_ROOT` | The root of the module install directory. Useful for file navigation that is relative to the root of the module. If you are using a [local module](#local-modules), you must set this value manually if your module requires it.<br>Example: `$VIAM_HOME/packages/.data/modules/verxxxx-my-module/` |
+| `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module. If you are using a [local module](#local-modules), you must set this value manually if your module requires it.<br>Example: `/opt/my-module/verxxxx-my-module/` |
 | `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/build/program/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-robot-id/my-module-name/` |
 | `VIAM_MODULE_ID` | The module ID of the module. <br>Example: `viam:realsense` |
 
@@ -386,7 +386,7 @@ You can also add the module directly, without first adding its modular component
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
-   This example shows the configuration for adding a [CSI camera](/registry/examples/csi/) as a local module.
+   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
 ### Edit the configuration of a local module
 

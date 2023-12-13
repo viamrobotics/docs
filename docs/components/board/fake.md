@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake board"
+title: "Configure a Fake Board"
 linkTitle: "fake"
 weight: 20
 type: "docs"

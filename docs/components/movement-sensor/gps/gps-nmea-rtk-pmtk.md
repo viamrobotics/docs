@@ -1,5 +1,5 @@
 ---
-title: "Configure an NTRIP-based RTK GPS with an I2C Connection"
+title: "Configure an NTRIP-Based RTK GPS with an I2C Connection"
 linkTitle: "gps-nmea-rtk-pmtk"
 weight: 10
 type: "docs"
@@ -51,9 +51,8 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "<your-board-name>",
   "i2c_addr": <int>,
-  "i2c_bus": "<name-of-bus-on-board>",
+  "i2c_bus": "<index-of-bus-on-board>",
   "i2c_baud_rate": <int>,
   "ntrip_connect_attempts": <int>,
   "ntrip_mountpoint": "<identifier>",
@@ -68,9 +67,8 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "local",
   "i2c_addr": 66,
-  "i2c_bus": "default_bus",
+  "i2c_bus": "1",
   "i2c_baud_rate": 115200,
   "ntrip_connect_attempts": 12,
   "ntrip_mountpoint": "MNTPT",
@@ -95,10 +93,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "<your-board-name>",
         "i2c_addr": <int>,
         "i2c_baud_rate": <int>,
-        "i2c_bus": "<name-of-bus-on-board>",
+        "i2c_bus": "<index-of-bus-on-board>",
         "ntrip_connect_attempts": <int>,
         "ntrip_mountpoint": "<identifier>",
         "ntrip_password": "<password for NTRIP server>",
@@ -123,10 +120,9 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
       "type": "movement_sensor",
       "namespace": "rdk",
       "attributes": {
-        "board": "local",
         "i2c_addr": 66,
         "i2c_baud_rate": 115200,
-        "i2c_bus": "default_bus",
+        "i2c_bus": "1",
         "ntrip_connect_attempts": 12,
         "ntrip_mountpoint": "MNTPT",
         "ntrip_password": "pass",
@@ -147,9 +143,8 @@ The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor
 <!-- prettier-ignore -->
 | Name                     | Type   | Inclusion    | Description |
 | ------------------------ | ------ | ------------ | ----------- |
-| `board`                  | string | **Required** | The `name` of the [board](/components/board/) connected to the sensor with [I<sup>2</sup>C](/components/board/#i2cs). |
 | `i2c_addr`               | int    | **Required** | The device's I<sup>2</sup>C address. |
-| `i2c_bus`                | string | **Required** | The name of the [I<sup>2</sup>C bus](/components/board/#i2cs) wired to the sensor. |
+| `i2c_bus`                | string | **Required** | The index of the [I<sup>2</sup>C bus](/components/board/#i2cs) of the board wired to the sensor. |
 | `i2c_baud_rate`          | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400` |
 | `ntrip_url`              | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections. |
 | `ntrip_username`         | string | Optional     | Username for the NTRIP server. |

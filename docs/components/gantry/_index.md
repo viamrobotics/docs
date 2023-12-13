@@ -40,7 +40,6 @@ Most robots with a gantry need at least the following hardware:
 ## Related Services
 
 {{< cards >}}
-{{< relatedcard link="/mobility/navigation/" >}}
 {{< relatedcard link="/mobility/frame-system/" >}}
 {{< relatedcard link="/mobility/motion/" >}}
 {{< /cards >}}

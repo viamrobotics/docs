@@ -9,8 +9,8 @@ code.hljs {
 }
 
 .hljs {
-    color: #white;
-    background: #333;
+    color: #F5F5F5;
+    background: #222;
 }
 
 .hljs ::selection,.hljs::selection {
@@ -19,7 +19,7 @@ code.hljs {
 }
 
 .hljs-comment {
-    color: #008000
+    color: #888888
 }
 
 .hljs-tag {
@@ -27,7 +27,7 @@ code.hljs {
 }
 
 .hljs-operator,.hljs-punctuation,.hljs-subst {
-    color: #000000
+    color: #427D59
 }
 
 .hljs-operator {
@@ -35,11 +35,11 @@ code.hljs {
 }
 
 .hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable {
-    color: #a31515
+    color: #FF79FF
 }
 
 .hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_ {
-    color: #a31515
+    color: #FF7D80
 }
 
 .hljs-class .hljs-title,.hljs-title,.hljs-title.class_ {
@@ -48,27 +48,27 @@ code.hljs {
 
 .hljs-strong {
     font-weight: 700;
-    color: #000000
+    color: #F5F5F5
 }
 
 .hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__ {
-    color: #000000
+    color: #00EF83
 }
 
 .hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp {
-    color: #0000ff
+    color: #B84AFF
 }
 
 .hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property {
-    color: #000000
+    color: #00E8E8
 }
 
 .diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type {
-    color: #673ab7
+    color: #FFD400
 }
 
 .hljs-emphasis {
-    color: #000000;
+    color: #F5F5F5;
     font-style: italic
 }
 
@@ -78,4 +78,11 @@ code.hljs {
 
 .hljs-meta .hljs-keyword,.hljs-meta-keyword {
     font-weight: 700
+}
+
+.hljs-copy {
+    position: absolute;
+    right: 0px;
+    color: black;
+    background-color: #CCC;
 }

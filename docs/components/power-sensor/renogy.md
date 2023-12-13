@@ -1,5 +1,5 @@
 ---
-title: "Configure a renogy power sensor"
+title: "Configure a Renogy Power Sensor"
 linkTitle: "renogy"
 weight: 10
 type: "docs"

@@ -262,7 +262,7 @@ async def main():
 
         found = False
         for d in detections:
-            if d.confidence > 0.8 and d.class_name.lower == "person":
+            if d.confidence > 0.8 and d.class_name.lower() == "person":
                 print("This is a person!")
                 found = True
         if found:

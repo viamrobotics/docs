@@ -1,5 +1,5 @@
 ---
-title: "Configure a ti board"
+title: "Configure a TI Board"
 linkTitle: "ti"
 weight: 20
 type: "docs"

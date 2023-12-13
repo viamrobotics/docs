@@ -29,13 +29,6 @@ Signaling is overseen by a computer running `viam-server` which allows you to co
 
 {{% figure src="/components/board/board-comp-options.png" alt="Image showing two board options: First, running viam-server locally and second, running via a peripheral plugged into the USB port of a computer that is running the viam-server." title="Two different board options: a single-board computer with GPIO pins running `viam-server` locally, or a GPIO peripheral plugged into a desktop computer's USB port, with the computer running `viam-server`." %}}
 
-## Related Services
-
-{{< cards >}}
-{{< relatedcard link="/mobility/frame-system/" >}}
-{{< relatedcard link="/ml/" >}}
-{{< /cards >}}
-
 ## Supported Models
 
 To use your board with Viam, check whether one of the following [built-in models](#built-in-models) or [modular resources](#modular-resources) supports your board.
@@ -430,55 +423,6 @@ myBoard, err := board.FromRobot(robot, "my_board")
 
 // Get the current status of the board.
 err := myBoard.Status(context.Background(), nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### ModelAttributes
-
-Get the attributes related to the model of this board.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(Attributes)](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.Attributes): Attributes related to the model of this board.
-  Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/index.html#viam.components.board.Board.model_attributes).
-
-```python
-my_board = Board.from_robot(robot=robot, name="my_board")
-
-# Get the attributes related to the model of this board.
-attributes = await my_board.model_attributes()
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None
-
-**Returns:**
-
-- [(ModelAttributes)](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes): Attributes related to the model of this board.
-  Will include the board's innate `remote` attribute, which is not specified in configuration and is a `bool` indicating whether this model of board is accessed over a remote connection like gRPC.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#ModelAttributes).
-
-```go
-myBoard, err := board.FromRobot(robot, "my_board")
-
-// Get the attributes related to the model of this board.
-attributes := myBoard.ModelAttributes()
 ```
 
 {{% /tab %}}

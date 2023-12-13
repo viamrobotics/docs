@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake Gripper"
+title: "Configure a Fake Gripper"
 linkTitle: "fake"
 weight: 10
 type: "docs"

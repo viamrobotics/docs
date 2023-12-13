@@ -7,7 +7,6 @@ Method Name | Description
 [`AnalogReaderNames`](/components/board/#analogreadernames) | Get the `name` of every [`AnalogReader`](/components/board/#analogs).
 [`DigitalInterruptNames`](/components/board/#digitalinterruptnames) | Get the `name` of every [`DigitalInterrupt`](/components/board/#digital_interrupts).
 [`Status`](/components/board/#status) | Get the current status of this board.
-[`ModelAttributes`](/components/board/#modelattributes) | Get the attributes related to the model of this board.
 [`SetPowerMode`](/components/board/#setpowermode) | Set the board to the indicated power mode.
 [`WriteAnalog`](/components/board/#writeanalog) | Write an analog value to a pin on the board.
 [`GetGeometries`](/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the [frame](/mobility/frame-system/) of the board.

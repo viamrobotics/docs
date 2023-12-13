@@ -1,9 +1,9 @@
 ---
-title: "Configure a beaglebone board"
+title: "Configure a BeagleBone Board"
 linkTitle: "beaglebone"
 weight: 40
 type: "docs"
-description: "Configure a beaglebone board."
+description: "Configure a BeagleBone board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
@@ -11,7 +11,7 @@ aliases:
 # SMEs: Gautham, Rand
 ---
 
-{{% alert title="REQUIREMENTS" color="caution" %}}
+{{% alert title="REQUIREMENTS" color="note" %}}
 
 Follow the [setup guide](/get-started/installation/prepare/beaglebone-setup/) to prepare your BeagleBone for running `viam-server` before configuring a `beaglebone` board.
 
