@@ -48,7 +48,7 @@ For configuration information, click on the model name:
 | [`ti`](ti/) | [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) |
 | [`beaglebone`](beaglebone/) | [BeagleBoard's BeagleBone AI-64](https://www.beagleboard.org/boards/beaglebone-ai-64) |
 | [`numato`](numato/) | [Numato GPIO Modules](https://numato.com/product-category/automation/gpio-modules/), peripherals for adding GPIO pins |
-| [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel [I<sup>2</sup>C](#i2cs) [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
+| [`pca9685`](pca9685/) | [PCA9685 Arduino I<sup>2</sup>C Interface](https://www.adafruit.com/product/815), a 16-channel I<sup>2</sup>C [PWM](https://docs.arduino.cc/learn/microcontrollers/analog-output)/[servo](/components/servo/) driver peripheral |
 | [`customlinux`](customlinux/) | A model for other Linux boards. |
 | [`fake`](fake/) | A model used for testing, with no physical hardware |
 
@@ -62,7 +62,7 @@ If you are using the micro-RDK, navigate to [Micro-RDK Board](/build/micro-rdk/b
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs), [digital interrupts](#digital_interrupts), and components that must communicate through the [SPI](#spis) and [I<sup>2</sup>C](#i2cs) protocols into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
 
 ### `analogs`
 
@@ -71,14 +71,6 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 ### `digital_interrupts`
 
 {{< readfile "/static/include/components/board/board-digital-interrupts.md" >}}
-
-### `spis`
-
-{{< readfile "/static/include/components/board/board-spis.md" >}}
-
-### `i2cs`
-
-{{< readfile "/static/include/components/board/board-i2cs.md" >}}
 
 ## Control your board with Viam's client SDK libraries
 

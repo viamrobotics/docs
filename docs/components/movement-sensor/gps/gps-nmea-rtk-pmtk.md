@@ -144,7 +144,7 @@ The following attributes are available for a `gps-nmea-rtk-pmtk` movement sensor
 | Name                     | Type   | Inclusion    | Description |
 | ------------------------ | ------ | ------------ | ----------- |
 | `i2c_addr`               | int    | **Required** | The device's I<sup>2</sup>C address. |
-| `i2c_bus`                | string | **Required** | The index of the [I<sup>2</sup>C bus](/components/board/#i2cs) of the board wired to the sensor. |
+| `i2c_bus`                | string | **Required** | The index of the I<sup>2</sup>C bus of the board wired to the sensor. |
 | `i2c_baud_rate`          | int    | Optional     | The rate at which data is sent from the sensor. Optional. <br> Default: `38400` |
 | `ntrip_url`              | string | **Required** | The URL of the NTRIP server from which you get correction data. Connects to a base station (maintained by a third party) for RTK corrections. |
 | `ntrip_username`         | string | Optional     | Username for the NTRIP server. |
