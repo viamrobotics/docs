@@ -1,5 +1,5 @@
 ---
-title: "Configure an RTSP camera"
+title: "Configure an RTSP Camera"
 linkTitle: "rtsp"
 weight: 34
 type: "docs"

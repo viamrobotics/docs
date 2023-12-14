@@ -1,5 +1,5 @@
 ---
-title: "Configure a fake encoder"
+title: "Configure a Fake Encoder"
 linkTitle: "fake"
 type: "docs"
 description: "Configure a fake encoder."

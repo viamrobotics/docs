@@ -1,5 +1,5 @@
 ---
-title: "Configure a camera_mono model for Visual Odometry"
+title: "Configure a camera_mono Model for Visual Odometry"
 linkTitle: "camera_mono"
 weight: 40
 type: "docs"

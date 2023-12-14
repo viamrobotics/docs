@@ -1,5 +1,5 @@
 ---
-title: "Configure a mux input controller"
+title: "Configure a Mux Input Controller"
 linkTitle: "mux"
 weight: 30
 type: "docs"

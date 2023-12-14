@@ -117,7 +117,7 @@ Then remove and fill in the attributes as applicable to your movement sensor, ac
 | Name                  | Type    | Inclusion    | Description |
 | --------------------- | ------- | ------------ | ----------- |
 | `board`               | string  | **Required** | The `name` of the [board](/build/micro-rdk/board/) to which the device is wired. |
-| `i2c_bus`             | string  | **Required** | The `name` of the [I<sup>2</sup>C bus configured](/components/board/#i2cs) on your [board](/components/board/) wired to this device. |
+| `i2c_bus`             | string  | **Required** | The `name` of the I<sup>2</sup>C bus configured on your [board](/components/board/) wired to this device. |
 | `use_alt_i2c_address` | boolean | Optional     | Depends on whether you wire AD0 low (leaving the default address of 0x68) or high (making the address 0x69). If high, set `true`. If low, set `false`. <br> Default: `false` |
 
 ## Test the movement sensor
