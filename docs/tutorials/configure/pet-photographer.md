@@ -823,8 +823,6 @@ Next, add the following services to your smart machine to support the color filt
 - The [data management service](/data/) enables your smart machine to capture data and sync it to the cloud.
 - The [vision service](/ml/vision/detection/) enables your smart machine to perform color detection on objects in a camera stream.
 
-If you are filtering data from other components, such as [sensors](/components/sensor/), you may need to add different services, such as the [sensors service](/mobility/sensors/) which provides a central interface to all of your robot’s sensors.
-
 ### Add the data management service
 
 To enable data capture on your robot, add and configure the [data management service](/data/) to capture and store data on your robot's computer:

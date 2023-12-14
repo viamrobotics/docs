@@ -22,6 +22,5 @@ You can also add support for additional service types using {{< glossary_tooltip
 {{% card link="/ml/deploy/" %}}
 {{% card link="/mobility/navigation/" %}}
 {{% card link="/mobility/slam/" %}}
-{{% card link="/mobility/sensors/" %}}
 {{% card link="/ml/vision/" %}}
 {{< /cards >}}
