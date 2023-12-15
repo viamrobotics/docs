@@ -645,7 +645,7 @@ Plans never change.
 
 Replans always create new plans.
 
-Replans share the ExecutionID of the previously executing plan.
+Replans share the `ExecutionID` of the previously executing plan.
 
 All repeated fields are in time ascending order.
 
