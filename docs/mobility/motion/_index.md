@@ -87,7 +87,7 @@ The motion service takes the volumes associated with all configured robot compon
 
 **Parameters:**
 
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the piece of the robot that should arrive at the destination.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the piece of the robot that should arrive at the destination.
   Note that `move` moves the distal end of the component to the destination.
   For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
 
@@ -108,7 +108,7 @@ The motion service takes the volumes associated with all configured robot compon
     - If a motion begins with a component already in collision with an obstacle, collisions between that specific component and that obstacle will not be checked.
     - The motion service assumes that obstacles are static.
       If a worldstate obstacle is physically attached to a part of the robot such that it will move with the robot, specify it with _transforms_.
-    - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.Geometry) with dimensions.
+    - Obstacles are defined by a pose and a [geometry](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry) with dimensions.
       The pose location is the point at the center of the geometry.
     - Obstacle locations are defined with respect to the _origin_ of the specified frame.
       Their poses are relative to the _origin_ of the specified frame.
@@ -226,7 +226,7 @@ You can use the `supplemental_transforms` argument to augment the robot's existi
 
 **Parameters:**
 
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the piece of the robot whose pose is returned.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the piece of the robot whose pose is returned.
 
 - `destination_frame` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)):
   The name of the frame with respect to which the component's pose is reported.
@@ -363,9 +363,9 @@ Move a [base](/components/base/) component to a [`Pose`](https://python.viam.dev
 
 **Parameters:**
 
-- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the base to move.
+- `component_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the base to move.
 - `destination` ([Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose)): The destination, which can be any [Pose](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Pose) with respect to the SLAM map's origin.
-- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName)): The `ResourceName` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
+- `slam_service_name` ([ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The `ResourceName` of the {{< glossary_tooltip term_id="slam" text="SLAM service" >}} from which the SLAM map is requested.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -467,10 +467,10 @@ Translation in obstacles is not supported by the [navigation service](/mobility/
 
 **Parameters:**
 
-- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to move.
+- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The `ResourceName` of the base to move.
 - `destination` [(GeoPoint)](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint): The location of the component's destination, represented in geographic notation as a [GeoPoint](https://python.viam.dev/autoapi/viam/components/movement_sensor/index.html#viam.components.movement_sensor.GeoPoint) _(lat, lng)_.
-- `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
-- `obstacles` [(Optional[Sequence[GeoObstacle]])](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
+- `movement_sensor_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The `ResourceName` of the [movement sensor](/components/movement-sensor/) that you want to use to check the robot's location.
+- `obstacles` [(Optional[Sequence[GeoObstacle]])](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.GeoObstacle): Obstacles to consider when planning the motion of the component, with each represented as a `GeoObstacle`. <ul><li> Default: `None` </li></ul>
 - `heading` [(Optional[float])](https://docs.python.org/library/typing.html#typing.Optional): The compass heading, in degrees, that the robot's movement sensor should report at the `destination` point. <ul><li> Range: `[0-360)` 0: North, 90: East, 180: South, 270: West </li><li>Default: `None`</li></ul>
 - `configuration` [(Optional[MotionConfiguration])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.MotionConfiguration): The configuration you want to set across this robot for this motion service. This parameter and each of its fields are optional.
   - `obstacle_detectors` [(Iterable[ObstacleDetector])](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ObstacleDetector): The names of each [vision service](/ml/vision/) and [camera](/components/camera/) resource pair you want to use for transient obstacle avoidance.
@@ -564,7 +564,7 @@ Stop a [base](/components/base/) component being moved by an in progress [`MoveO
 
 **Parameters:**
 
-- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to stop.
+- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The `ResourceName` of the base to stop.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -654,15 +654,15 @@ All repeated fields are in time ascending order.
 
 **Parameters:**
 
-- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResourceName): The `ResourceName` of the base to stop.
-- `lastPlanOnly` [(Optional\[bool\])](https://docs.python.org/library/typing.html#typing.Optional): If `true`, the response will only return the the last plan for the component / execution
+- `component_name` [(ResourceName)](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName): The `ResourceName` of the base to stop.
+- `lastPlanOnly` [(Optional\[bool\])](https://docs.python.org/library/typing.html#typing.Optional): If `true`, the response will only return the the last plan for the component. If the `executionID` parameter is non empty then the last plan for the component & `executionID` is returned.
 - `executionID` [(Optional\[str\])](https://docs.python.org/library/typing.html#typing.Optional): If non empty, the response will return the plans of the provided execution & component. Useful for retrieving plans from executions before the current execution.
 - `extra` [(Optional\[Dict\[str, Any\]\])](https://docs.python.org/library/typing.html#typing.Optional): Extra options to pass to the underlying RPC call.
 - `timeout` [(Optional\[float\])](https://docs.python.org/library/typing.html#typing.Optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- [(GetPlanResponse)](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.GetPlanResponse)
+- [(GetPlanResponse)](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_plan).
 
