@@ -543,7 +543,7 @@ Your new resource model server must have all the methods that the Viam RDK requi
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.cpp</file> inside.
 
-The following example module registers a modular resource implementing Viam's built-in [Base API](/build/configure/components/base/#api) (`rdk:component:base`) as a new model, `"MyBase"`.
+The following example module registers a modular resource implementing Viam's built-in [Base API](/components/base/#api) (`rdk:component:base`) as a new model, `"MyBase"`.
 The `my_base.cpp` file defines the specific functionality of the module, while the `my_base.hpp` file defines the implementation of that functionality.
 
 <details>
