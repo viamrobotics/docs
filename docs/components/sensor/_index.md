@@ -37,7 +37,6 @@ Most robots with a sensor need at least the following hardware:
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
-{{< relatedcard link="/mobility/sensors/" >}}
 {{< /cards >}}
 
 ## Supported Models

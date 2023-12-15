@@ -11,7 +11,7 @@ parser.add_argument('--local', action='store_true', required=False)
 
 args = parser.parse_args()
 
-services = ["motion", "navigation", "sensors", "slam", "vision", "mlmodel"]
+services = ["motion", "navigation", "slam", "vision", "mlmodel"]
 components = ["arm", "base", "board", "camera", "encoder", "gantry", "generic", "gripper",
               "input", "movement_sensor", "power_sensor", "sensor"]
 app_apis = ["data_client", "app_client"]
@@ -29,7 +29,6 @@ ignore_apis = [
 services_page_mapping = {
     "motion": "mobility/motion",
     "navigation": "mobility/navigation",
-    "sensors": "mobility/sensors",
     "slam": "mobility/slam",
     "vision": "ml/vision",
     "ml": "ml/deploy"

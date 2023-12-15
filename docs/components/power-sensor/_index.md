@@ -22,7 +22,6 @@ Integrate this component to monitor your power levels.
 
 {{< cards >}}
 {{< relatedcard link="/data/" >}}
-{{< relatedcard link="/mobility/sensors/" >}}
 {{< /cards >}}
 
 ## Supported Models
