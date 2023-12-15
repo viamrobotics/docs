@@ -676,7 +676,7 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
 ```
 
 </details>
-
+<br>
 <details>
   <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
 
