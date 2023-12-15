@@ -663,8 +663,8 @@ All repeated fields are in time ascending order.
 **Returns:**
 
 - [(GetPlanResponse)](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)
-    - [current_plan_with_status](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse.current_plan_with_status): The current plan and status that matches the request query
-    - [replan_history](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse.replan_history):  The history of all previous plans that were generated in ascending order. This field will be empty if the motion service did not need to re-plan.
+  - [current_plan_with_status](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse.current_plan_with_status): The current plan and status that matches the request query
+  - [replan_history](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse.replan_history): The history of all previous plans that were generated in ascending order. This field will be empty if the motion service did not need to re-plan.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.get_plan).
 
@@ -728,7 +728,7 @@ All repeated fields are in chronological order.
 **Returns:**
 
 - [(ListPlanStatusesResponse)](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.ListPlanStatusesResponse)
-    - [(plan_statuses_with_ids)](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ListPlanStatusesResponse.plan_statuses_with_ids): List of plan statuses allong with associated `planId`, `componentName` and `executionID` that match the request.
+  - [(plan_statuses_with_ids)](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ListPlanStatusesResponse.plan_statuses_with_ids): List of plan statuses allong with associated `planId`, `componentName` and `executionID` that match the request.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.list_plan_statuses).
 
