@@ -32,7 +32,6 @@ Then remove and fill in the attributes as applicable to your sensor, according t
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "<your-board-name>",
   "i2c_bus": "<your-i2c-bus-index-on-board>"
 }
 ```
@@ -42,7 +41,6 @@ Then remove and fill in the attributes as applicable to your sensor, according t
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board": "local",
   "i2c_bus": "2"
 }
 ```
