@@ -634,7 +634,7 @@ err := motionService.StopPlan(context.Background(), motion.StopPlanReq{
 
 By default, returns the plan history of the most recent [`MoveOnGlobe`](/mobility/motion/#moveonglobe) call to move a [base](/components/base/) component.
 
-The plan history for executions before the most recent can be requested by providing an ExecutionID in the request.
+The plan history for executions before the most recent can be requested by providing an `ExecutionID` in the request.
 
 Returns a result if both of the following conditions are met:
 
