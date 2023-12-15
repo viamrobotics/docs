@@ -1205,10 +1205,9 @@ fn (c *component) someFunction(a int) {
 
 Messages sent to `std::cout` in your C++ code are automatically sent to the Viam app over gRPC when a network connection is available.
 
-We recommend that you use a C+ logging library to assist with log message format and creation, such as the boost trivial logger:
+We recommend that you use a C++ logging library to assist with log message format and creation, such as the Boost trivial logger:
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-// Include the boost trivial logger:
 #include <boost/log/trivial.hpp>
 ```
 
