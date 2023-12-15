@@ -65,16 +65,12 @@ See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-mod
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-To create a new resource model, you need to implement your model's **client** interface in a file called `my_modular_resource.cpp`.
+To create a new resource model, start by referencing the corresponding built-in resource's implementation in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/sdk).
 
-This interface defines how your model's server responds to API requests.
+For example, if you are implementing a new custom `base` component model, reference the [<file>components/base/base.hpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp) implementation file to learn how the `BaseClient` class is implemented.
 
-To ensure the client interface you create returns the expected results, use the appropriate client interface defined in <file>components/\<resource-name\>/client.hpp</file> or <file>services/\<resource-name\>/client.hpp</file> in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/sdk) as a reference.
-
-For example, the `base` component client is defined in the [<file>components/base/client.hpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/client.hpp) implementation file.
-
-Depending on your needs, you may also wish to create a corresponding implementation (header) file, `my_modular_resource.hpp`, as well.
-The example code in the following sections demonstrates using both files together.
+You can create your own derivative class in a <file>.cpp</file>, such as <file>my_modular_resource.cpp</file>, and optionally define the implementation of that class in a <file>.hpp</file> header file, such as <file>my_modular_resource.hpp</file>.
+The example code in the following sections demonstrates an implementation using both files.
 
 See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-model) for more information.
 
@@ -152,7 +148,7 @@ For more information see [Naming your model](/registry/upload/#naming-your-model
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Your new resource model server must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like [`rdk:component:base`](https://python.viam.dev/autoapi/viam/components/base/index.html).
+Your new resource model must implement all the methods that the Viam RDK requires, and should match the built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} API, like [`rdk:component:base`](https://python.viam.dev/autoapi/viam/components/base/index.html).
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.py</file> inside.
 
@@ -333,7 +329,7 @@ Additional example modules are available in the [Python SDK GitHub repository](h
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-Your new resource model server must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like [`rdk:component:base`](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions).
+Your new resource model must implement all the methods that the Viam RDK requires, and should match the built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} API, like [`rdk:component:base`](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions).
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.go</file> inside.
 
@@ -539,7 +535,7 @@ Additional examples are available in the [examples directory of the RDK](https:/
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Your new resource model server must have all the methods that the Viam RDK requires, and should match the built-in API client {{< glossary_tooltip term_id="subtype" text="subtype" >}} like [`rdk:component:base`](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html).
+Your new resource model must implement all the methods that the Viam RDK requires, and should match the built-in {{< glossary_tooltip term_id="subtype" text="subtype" >}} API, like [`rdk:component:base`](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html).
 
 Create a folder for your module and save your code as a file named <file>my_modular_resource.cpp</file> inside.
 
