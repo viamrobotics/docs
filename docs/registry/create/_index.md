@@ -69,9 +69,12 @@ To create a new resource model, you need to implement your model's **client** in
 
 This interface defines how your model's server responds to API requests.
 
-To ensure the client interface you create returns the expected results, use the appropriate client interface defined in <file>components/\<resource-name\>/client.cpp</file> or <file>services/\<resource-name\>/client.cpp</file> in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/sdk) as a reference.
+To ensure the client interface you create returns the expected results, use the appropriate client interface defined in <file>components/\<resource-name\>/client.hpp</file> or <file>services/\<resource-name\>/client.hpp</file> in the [Viam C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/sdk) as a reference.
 
-For example, the `base` component client is defined in the [<file>components/base/client.cpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/client.cpp) file.
+For example, the `base` component client is defined in the [<file>components/base/client.hpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/client.hpp) implementation file.
+
+Depending on your needs, you may also wish to create a corresponding implementation (header) file, `my_modular_resource.hpp`, as well.
+The example code in the following sections demonstrates using both files together.
 
 See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-model) for more information.
 
@@ -87,21 +90,21 @@ See [Valid APIs to implement in your model](#valid-apis-to-implement-in-your-mod
 
 Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.py</file> or <file>services/\<resource-name\>/<resource-name>.py</file> file in the [Python SDK](https://github.com/viamrobotics/viam-python-sdk).
 
-For example, the `base` component subtype is defined in [<file>components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py#L11).
+For example, the `base` component API is defined in [<file>components/base/base.py</file>](https://github.com/viamrobotics/viam-python-sdk/blob/main/src/viam/components/base/base.py#L11).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name\>.go</file> or <file>services/\<resource-name\>/\<resource-name\>.go</file> file in the [RDK](https://github.com/viamrobotics/rdk).
 
-For example, the `base` component subtype is defined in [<file>components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
+For example, the `base` component API is defined in [<file>components/base/base.go</file>](https://github.com/viamrobotics/rdk/blob/main/components/base/base.go#L37).
 
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.cpp</file> or <file>services/\<resource-name\>/<resource-name>.cpp</file> file in the [C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/).
+Find the subtype API as defined in the relevant <file>components/\<resource-name\>/\<resource-name>\.hpp</file> or <file>services/\<resource-name\>/<resource-name>.hpp</file> implementation (header) file in the [C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/).
 
-For example, the `base` component subtype is defined in [<file>components/base/base.cpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.cpp).
+For example, the `base` component API is defined in [<file>components/base/base.hpp</file>](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -541,12 +544,13 @@ Your new resource model server must have all the methods that the Viam RDK requi
 Create a folder for your module and save your code as a file named <file>my_modular_resource.cpp</file> inside.
 
 The following example module registers a modular resource implementing Viam's built-in [Base API](/build/configure/components/base/#api) (`rdk:component:base`) as a new model, `"MyBase"`.
+The `my_base.cpp` file defines the specific functionality of the module, while the `my_base.hpp` file defines the implementation of that functionality.
 
 <details>
   <summary>Click to view sample code for <file>my_base.cpp</file></summary>
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-#include "my_base.hpp"
+#include "base.hpp"
 
 #include <exception>
 #include <fstream>
@@ -669,6 +673,61 @@ Base::properties MyBase::get_properties(const AttributeMap& extra) {
     // Return fake properties.
     return {2, 4, 8};
 }
+```
+
+</details>
+
+<details>
+  <summary>Click to view sample code for the <file>my_base.hpp</file> header file</summary>
+
+```cpp {class="line-numbers linkable-line-numbers"}
+#pragma once
+
+#include <viam/sdk/components/base/base.hpp>
+#include <viam/sdk/components/component.hpp>
+#include <viam/sdk/components/motor/motor.hpp>
+#include <viam/sdk/config/resource.hpp>
+#include <viam/sdk/resource/resource.hpp>
+
+using namespace viam::sdk;
+
+// `MyBase` inherits from the `Base` class defined in the viam C++ SDK and
+// implements some of the relevant methods along with `reconfigure`. It also
+// specifies a static `validate` method that checks config validity.
+class MyBase : public Base {
+   public:
+    MyBase(Dependencies deps, ResourceConfig cfg) : Base(cfg.name()) {
+        this->reconfigure(deps, cfg);
+    };
+    void reconfigure(Dependencies deps, ResourceConfig cfg) override;
+    static std::vector<std::string> validate(ResourceConfig cfg);
+
+    bool is_moving() override;
+    void stop(const AttributeMap& extra) override;
+    void set_power(const Vector3& linear,
+                   const Vector3& angular,
+                   const AttributeMap& extra) override;
+
+    AttributeMap do_command(const AttributeMap& command) override;
+    std::vector<GeometryConfig> get_geometries(const AttributeMap& extra) override;
+    Base::properties get_properties(const AttributeMap& extra) override;
+
+    void move_straight(int64_t distance_mm, double mm_per_sec, const AttributeMap& extra) override {
+        throw std::runtime_error("move_straight unimplemented");
+    }
+    void spin(double angle_deg, double degs_per_sec, const AttributeMap& extra) override {
+        throw std::runtime_error("spin unimplemented");
+    }
+    void set_velocity(const Vector3& linear,
+                      const Vector3& angular,
+                      const AttributeMap& extra) override {
+        throw std::runtime_error("set_velocity unimplemented");
+    }
+
+   private:
+    std::shared_ptr<Motor> left_;
+    std::shared_ptr<Motor> right_;
+};
 ```
 
 </details>
@@ -838,54 +897,24 @@ When executed, the main program registers the `MyBase` custom model custom model
 #include <viam/sdk/rpc/dial.hpp>
 #include <viam/sdk/rpc/server.hpp>
 
-// NOTE: You must update the following line to import your local "my_base.hpp" header file:
-#include "my_base.hpp"
+#include "base.hpp"
 
 using namespace viam::sdk;
 
 int main(int argc, char** argv) {
-    if (argc < 2) {
-        std::cerr << "Need socket path as command line argument" << std::endl;
-        return EXIT_FAILURE;
-    }
-    std::string socket_addr = argv[1];
-
-    // Use set_logger_severity_from_args to set the boost trivial logger's
-    // severity depending on commandline arguments.
-    set_logger_severity_from_args(argc, argv);
-    BOOST_LOG_TRIVIAL(debug) << "Starting module with debug level logging";
-
-    // C++ modules must handle SIGINT and SIGTERM. You can use the SignalManager
-    // class and its wait method to handle the correct signals.
-    SignalManager signals;
-
-    // Here is where we define your new model's colon-delimited-triplet (acme:demo:mybase)
-    // acme = namespace, demo = repo-name, mybase = model name.
     API base_api = Base::static_api();
     Model mybase_model("acme", "demo", "mybase");
 
     std::shared_ptr<ModelRegistration> mybase_mr = std::make_shared<ModelRegistration>(
-        ResourceType("Base"),
         base_api,
         mybase_model,
         [](Dependencies deps, ResourceConfig cfg) { return std::make_unique<MyBase>(deps, cfg); },
         MyBase::validate);
 
-    Registry::register_model(mybase_mr);
+    std::vector<std::shared_ptr<ModelRegistration>> mrs = {mybase_mr};
+    auto my_mod = std::make_shared<ModuleService>(argc, argv, mrs);
+    my_mod->serve();
 
-    // The `ModuleService_` must outlive the Server, so the declaration order
-    // here matters.
-    auto my_mod = std::make_shared<ModuleService_>(socket_addr);
-    auto server = std::make_shared<Server>();
-
-    my_mod->add_model_from_registry(server, base_api, mybase_model);
-    my_mod->start(server);
-    BOOST_LOG_TRIVIAL(info) << "Complex example module listening on " << socket_addr;
-
-    server->start();
-    int sig = 0;
-    auto result = signals.wait(&sig);
-    server->shutdown();
     return EXIT_SUCCESS;
 };
 ```
@@ -894,8 +923,9 @@ int main(int argc, char** argv) {
 
 {{% alert title="Important" color="note" %}}
 
-You must define all functions belonging to a built-in resource subtype's API if defining a new model.
+You must define all _pure virtual methods_ belonging to a built-in resource subtype's API if defining a new model.
 Otherwise, the class will not instantiate.
+For example, you would need to implement the [`move_straight()` virtual method](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L72) for the `base` component, but you would not need to implement [`resource_registration()`](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/src/viam/sdk/components/base/base.hpp#L56).
 
 If you do not wish to implement all methods, `throw` a `runtime_error` in the body of functions you do not want to implement.
 
@@ -1039,11 +1069,72 @@ Expand the [Go module code](#code-a-main-entry-point-program) to view <file>main
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Use C++ to compile and obtain a single executable for your module:
+To compile your C++ module's executable, you must create a <file>CMakeLists.txt</file> file to handle compilation configuration, a <file>run.sh</file> file to wrap your executable, and then compile the executable using the C++ SDK build steps.
 
-- Navigate to your module directory in your terminal.
-- Follow the steps to [build and compile the C++ SDK](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md), which compiles your entry point (main program) file <file>main.cpp</file> and all other <file>.cpp</file> files in the directory, building your module and all dependencies into a single executable file.
-- Run `ls` in your module directory to find the executable, which should have the same name as the module directory.
+1. Create a <file>CMakeLists.txt</file> file in your module directory to instruct the compiler how to compile your module.
+
+   The following example shows a basic configuration that automatically downloads the C++ SDK and handles compile-time linking for a module named `my-module`:
+
+   ```cpp {class="line-numbers linkable-line-numbers"}
+   cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
+
+   project(my-module LANGUAGES CXX)
+
+   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
+   include(FetchContent)
+   FetchContent_Declare(
+     viam-cpp-sdk
+     GIT_REPOSITORY https://github.com/viamrobotics/viam-cpp-sdk.git
+     GIT_TAG main
+     # SOURCE_DIR ${CMAKE_SOURCE_DIR}/../viam-cpp-sdk
+     CMAKE_ARGS -DVIAMCPPSDK_USE_DYNAMIC_PROTOS=ON
+     FIND_PACKAGE_ARGS
+   )
+   FetchContent_MakeAvailable(viam-cpp-sdk)
+
+   FILE(GLOB sources *.cpp)
+   add_executable(my-module ${sources})
+   target_link_libraries(my-module PRIVATE viam-cpp-sdk::viamsdk)
+   ```
+
+2. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
+
+   The following example shows a simple configuration that performs some basic sanity checks and handles system-level linking for a module named `my-module`:
+
+   ```sh { class="command-line"}
+   #!/usr/bin/env bash
+   # run.sh -- entrypoint wrapper for the module
+
+   # bash safe mode
+   set -euo pipefail
+
+   cd $(dirname $0)
+   # get bundled .so files from this directory
+   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH-}:$PWD
+   exec ./my-module $@
+   ```
+
+3. Use C++ to compile and obtain a single executable for your module:
+
+   1. Create a new <file>build</file> directory within your module directory:
+
+      ```sh { class="command-line"}
+      mkdir build
+      cd build
+      ```
+
+   2. Build and compile your module:
+
+      ```sh { class="command-line"}
+      cmake .. -G Ninja
+      ninja all
+      ninja install
+      ```
+
+   3. Run `ls` in your module's <file>build</file> directory to find the compiled executable, which should have the same name as the module directory (`my-module` in these examples):
+
+For more information on building a module in C++, see the [C++ SDK Build Documentation](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
 <file>main.cpp</file> adds the custom model <file>mybase.cpp</file> from the resource registry, while <file>mybase.cpp</file> defines and registers the module.
 Expand the [C++ module code](#code-a-main-entry-point-program) to view <file>main.cpp</file> for an example of this.
@@ -1112,20 +1203,13 @@ fn (c *component) someFunction(a int) {
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-To enable your C++ module to write log messages to the Viam app, add the following lines to your code:
+Messages sent to `std::cout` in your C++ code are automatically sent to the Viam app over gRPC when a network connection is available.
+
+We recommend that you use a C+ logging library to assist with log message format and creation, such as the boost trivial logger:
 
 ```cpp {class="line-numbers linkable-line-numbers"}
 // Include the boost trivial logger:
 #include <boost/log/trivial.hpp>
-
-// Within your main() program, before logging anything, accept command line arguments to control log severity:
-set_logger_severity_from_args(argc, argv);
-
-// When ready to log an action, use the following notation:
-   // To log a simple message at debug level:
-   BOOST_LOG_TRIVIAL(debug) << "Starting module with debug level logging";
-   // To log a message that contains a variable at info level:
-   BOOST_LOG_TRIVIAL(info) << "Detected the following variable value: " << my_var;
 ```
 
 {{% /tab %}}
