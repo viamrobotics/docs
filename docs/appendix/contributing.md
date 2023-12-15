@@ -3,7 +3,7 @@ title: "Contributing to the docs"
 linkTitle: "Contributing to the docs"
 weight: 99
 type: "docs"
-description: "Information for writing docs with hugo - this is only rendered in test and dev environments."
+description: "Learn about our style guide and how to work with hugo to contribute to these docs."
 ---
 
 Thank you for wanting to help us make the docs better.
