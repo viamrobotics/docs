@@ -57,6 +57,9 @@ You can grant users different levels of access to individual robots or to groups
 {{% card link="/fleet/" %}}
 {{% card link="/fleet/cli/" %}}
 {{% card link="/fleet/rbac/" %}}
+
+<!-- markdownlint-disable MD034 -->
+
 {{% manualcard link="https://www.viam.com/post/integrate-your-ros2-robot-with-viam/" target="_blank" %}}
 
 <h4>Integrate your ROS2 robot with Viam</h4>
