@@ -728,7 +728,7 @@ All repeated fields are in chronological order.
 **Returns:**
 
 - [(ListPlanStatusesResponse)](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.ListPlanStatusesResponse)
-  - [(plan_statuses_with_ids)](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ListPlanStatusesResponse.plan_statuses_with_ids): List of plan statuses allong with associated `planId`, `componentName` and `executionID` that match the request.
+  - [(plan_statuses_with_ids)](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.ListPlanStatusesResponse.plan_statuses_with_ids): List of plan statuses along with associated `planId`, `componentName` and `executionID` that match the request.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/index.html#viam.services.motion.MotionClient.list_plan_statuses).
 
