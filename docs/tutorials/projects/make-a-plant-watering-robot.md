@@ -365,7 +365,7 @@ while True:
     readings = await sensor.get_readings()
     soil_moisture = readings.get('moisture')
 
-    # Calculate the average moisture reading from the list of readings, to account
+    # Calculate the average moisture reading from the list of readings,
     # for outliers
     avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
