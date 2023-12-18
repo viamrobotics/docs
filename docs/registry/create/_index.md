@@ -546,7 +546,7 @@ The `my_base.cpp` file defines the specific functionality of the module, while t
   <summary>Click to view sample code for <file>my_base.cpp</file></summary>
 
 ```cpp {class="line-numbers linkable-line-numbers"}
-#include "base.hpp"
+#include "my_base.hpp"
 
 #include <exception>
 #include <fstream>
@@ -598,7 +598,7 @@ void MyBase::reconfigure(Dependencies deps, ResourceConfig cfg) {
 
 std::vector<std::string> MyBase::validate(ResourceConfig cfg) {
     // Custom validation can be done by specifying a validate function at the
-    // time of resource registration (see complex/main.cpp) like this one.
+    // time of resource registration (see main.cpp) like this one.
     // Validate functions can `throw` exceptions that will be returned to the
     // parent through gRPC. Validate functions can also return a vector of
     // strings representing the implicit dependencies of the resource.
@@ -729,7 +729,7 @@ class MyBase : public Base {
 </details>
 <br>
 
-Additional example modules are available in the [C++ SDK GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
+Additional example modules are available in the [C++ SDK GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -893,7 +893,7 @@ When executed, the main program registers the `MyBase` custom model custom model
 #include <viam/sdk/rpc/dial.hpp>
 #include <viam/sdk/rpc/server.hpp>
 
-#include "base.hpp"
+#include "my_base.hpp"
 
 using namespace viam::sdk;
 
@@ -1071,7 +1071,7 @@ To compile your C++ module's executable, you must create a <file>CMakeLists.txt<
 
    The following example shows a basic configuration that automatically downloads the C++ SDK and handles compile-time linking for a module named `my-module`:
 
-   ```cpp {class="line-numbers linkable-line-numbers"}
+   ```sh {class="line-numbers linkable-line-numbers"}
    cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 
    project(my-module LANGUAGES CXX)
@@ -1098,7 +1098,7 @@ To compile your C++ module's executable, you must create a <file>CMakeLists.txt<
 
    The following example shows a simple configuration that performs some basic sanity checks and handles system-level linking for a module named `my-module`:
 
-   ```sh { class="command-line"}
+   ```sh {class="line-numbers linkable-line-numbers"}
    #!/usr/bin/env bash
    # run.sh -- entrypoint wrapper for the module
 
@@ -1132,7 +1132,7 @@ To compile your C++ module's executable, you must create a <file>CMakeLists.txt<
 
 For more information on building a module in C++, see the [C++ SDK Build Documentation](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
 
-<file>main.cpp</file> adds the custom model <file>mybase.cpp</file> from the resource registry, while <file>mybase.cpp</file> defines and registers the module.
+<file>main.cpp</file> adds the custom model <file>my_base.cpp</file> from the resource registry, while <file>my_base.cpp</file> defines and registers the module.
 Expand the [C++ module code](#code-a-main-entry-point-program) to view <file>main.cpp</file> for an example of this.
 
 {{% /tab %}}
@@ -1199,7 +1199,7 @@ fn (c *component) someFunction(a int) {
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Messages sent to `std::cout` in your C++ code are automatically sent to the Viam app over gRPC when a network connection is available.
+`viam-server` automatically gathers all output sent to the standard output (`STDOUT`) in your C++ code and forwards it to the Viam app when a network connection is available.
 
 We recommend that you use a C++ logging library to assist with log message format and creation, such as the Boost trivial logger:
 
