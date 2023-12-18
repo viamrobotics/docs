@@ -61,7 +61,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set up your plant watering robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
-You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the pump when it is time to pump water from the water's container to the plant's container.
+You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water container to the plant container.
 
 ### Full wiring diagram
 
@@ -141,7 +141,7 @@ To complete the steps, insert the ends of the jumper wires into the pin gates on
 
 {{% /alert %}}
 
-## Program your plant watering robot
+## Get ready to program your plant watering robot
 
 {{<gif webm_src="/tutorials/plant-watering-pi/plant-watering-video.webm" mp4_src="/tutorials/plant-watering-pi/plant-watering-video.mp4" alt="The plant watering robot on a white desk. Camera goes up to the watering tube and pulls it out, showing the drip.">}}
 
@@ -171,15 +171,23 @@ Now, select **Yes** to enable SPI:
 Finally, select **Finish**.
 Restart your Pi using `sudo reboot` to make these changes take effect.
 
-### Test your soil moisture readings on your Pi
+### Install the Python SDK
 
-Next, install the Adafruit ADC library [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/) on your Pi.
+Next, set up a virtual environment and install the SDK.
+(If you want to read more on virtual environments, check out [the documentation](https://docs.viam.com/build/program/python-venv/).)
 
-Before installation, make sure any packages on your Pi are up to date:
+Make sure any packages on your Pi are up to date, while connected to your Pi with SSH run:
 
 ```shell
 sudo apt update
 sudo apt upgrade
+```
+
+Then run the following command to create and activate the virtual environment:
+
+```sh {class="command-line" data-prompt="$"}
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 Make sure you have `pip` installed for Python 3:
@@ -194,77 +202,11 @@ If not, run the following command:
 sudo apt install python3-pip
 ```
 
-Run the following command while connected to your Pi with SSH to install [`Adafruit_CircuitPython_MCP3xxx`](https://github.com/adafruit/Adafruit_CircuitPython_MCP3xxx/):
+Run the following command to install the SDK:
 
-```shell
-sudo pip3 install adafruit-circuitpython-mcp3xxx
+```sh {class="command-line" data-prompt="$"}
+pip3 install viam-sdk
 ```
-
-Create a new directory for your plant watering robot's files and navigate to this directory in your terminal session.
-For example, run the following commands:
-
-```shell
-mkdir plant-watering-robot
-cd plant-watering-robot
-```
-
-After navigating to this directory, create a new Python file called <file>adctesting.py</file> and open up the file.
-For example, run the following commands:
-
-```shell
-touch adctesting.py
-nano adctesting.py
-```
-
-Now, add the following Python code to <file>adctesting.py</file> to test reading values from your resistive soil moisture sensor through your MCP3008 ADC:
-
-```python
-import time
-import busio
-import digitalio
-import board
-import adafruit_mcp3xxx.mcp3008 as MCP
-from adafruit_mcp3xxx.analog_in import AnalogIn
-
-# Create the SPI bus
-spi = busio.SPI(clock=board.SCK, MISO=board.MISO, MOSI=board.MOSI)
-
-# Create the cs (chip select)
-cs = digitalio.DigitalInOut(board.D8)
-
-# Create the MCP3008 object
-mcp = MCP.MCP3008(spi, cs)
-
-# Create an analog input channel on Pin 0
-chan = AnalogIn(mcp, MCP.P0)
-
-print('Reading MCP3008 values, press Ctrl-C to quit...')
-while True:
-    print('Raw ADC Value: ', chan.value)
-    time.sleep(1)
-```
-
-Run the code as follows:
-
-```shell
-sudo python3 adctesting.py
-```
-
-{{% alert title="Tip" color="tip" %}}
-
-If running this code returns `ImportError: No module named busio`, try again after reinstalling `adafruit-blinka`:
-
-```shell
-sudo pip3 install --force-reinstall adafruit-blinka
-```
-
-{{% /alert %}}
-
-Now, you should see the moisture sensor values outputted by the MCP3008.
-
-Test your sensor by putting it in air, water, and different soils to see how the values change to determine your baseline for wet and dry values.
-
-![Terminal output of resistive soil moisture sensor values.](/tutorials/plant-watering-pi/moisture-sensor-output.png)
 
 ### Configure the components of your robot in the Viam app
 
@@ -363,13 +305,13 @@ Follow these instructions to start working on your Python control code:
 
    {{% snippet "show-secret.md" %}}
 
-5. Paste this code sample into a new file in the `plant-watering-robot` directory you created on your Pi.
+5. Paste this code sample into a new file on your Pi.
 6. Name the file <file>plant-watering-robot.py</file>, and save it.
 
 For example, run the following commands on your Pi to create and open the file:
 
 ```shell
-cd plant-watering-robot
+source .venv/bin/activate
 touch plant-watering-robot.py
 nano plant-watering-robot.py
 ```
@@ -397,8 +339,8 @@ while True:
     readings = await sensor.get_readings()
     soil_moisture = readings.get('moisture')
 
-    # Calculate average moisture reading from the list of readings, to account
-    # for outliers
+    # Calculate the average moisture reading from the list of readings
+    #  to account for outliers
     avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
     # If the average moisture reading is greater than 60000, trigger pump
@@ -423,15 +365,17 @@ while True:
         # Stop the pump by setting the duty cycle to 0%
         await pwm_pin.set_pwm(duty=0.0)
 
+        # Run the water pump for 100 revs. at 1000 rpm
+        # await water_pump.go_for(rpm=1000, revolutions=100)
+
         # Wait 60 seconds so that the water can soak into the soil a bit before
         # trying to water again
-        print('waiting a little bit for water to soak in')
+        print('waiting a little bit for the water to soak in')
         time.sleep(60)
 ```
 
 {{% alert title="Tip" color="tip" %}}
 Make sure to import `time` at the beginning of your version of <file>plant-watering-robot.py</file> to be able to use `sleep()`!
-Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
@@ -440,7 +384,7 @@ Save your <file>plant-watering-robot.py</file> program with this logic added in,
 sudo python3 plant-watering-robot.py
 ```
 
-To tinker this example code to work best for you, determine at what [analog value from the soil moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `60000`.
+Test your sensor by putting it in air, water, and different soils to see how the values change and determine your baseline for wet and dry values.
 Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 ## Next steps
