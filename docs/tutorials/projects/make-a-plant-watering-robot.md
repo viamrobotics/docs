@@ -398,8 +398,6 @@ Save your <file>plant-watering-robot.py</file> program with this logic added in,
 sudo python3 plant-watering-robot.py
 ```
 
-To tinker this example code to work best for you, determine at what analog value from the soil moisture readings you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `60000`.
-
 Test your sensor by putting it in air, water, and different soils to see how the values change and determine your baseline for wet and dry values.
 
 Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
