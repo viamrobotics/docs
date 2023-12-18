@@ -227,12 +227,12 @@ As you follow the prompts, it's a good idea to use the same names we used so tha
 - Module namespace: `viamlabs`
 - Module repo-name: `base`
 - Language: `python`
-- API triplet: `rdk:components:base`
+- API triplet: `rdk:component:base`
 - Existing API? `Yes`
 
 {{% alert title="Important" color="note" %}}
 
-You can use a different model name, module namespace, and repo-name, but you need to use the existing API triplet `rdk:components:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
+You can use a different model name, module namespace, and repo-name, but you need to use the existing API triplet `rdk:component:base` in order for your custom base to work properly as a base with `viam-server` and the [Viam app](https://app.viam.com/).
 
 {{% /alert %}}
 
