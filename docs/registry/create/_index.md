@@ -1106,8 +1106,6 @@ To compile your C++ module's executable, you must create a <file>CMakeLists.txt<
    set -euo pipefail
 
    cd $(dirname $0)
-   # get bundled .so files from this directory
-   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH-}:$PWD
    exec ./my-module $@
    ```
 
