@@ -58,7 +58,7 @@ Make sure your Pi is flashed with a Viam-compatible operating system, and that y
 ## Set up your plant watering robot
 
 Before programming the Pi to make the plant watering robot functional, you need to physically set up the plant watering robot by wiring the different components together.
-You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water container to the plant's container.
+You will set up the robot to receive signals from the resistive soil moisture sensor and signal to the peristaltic pump when it is time to pump water from the water container to the plant container.
 
 ### Full wiring diagram
 
@@ -172,7 +172,8 @@ Restart your Pi using `sudo reboot` to make these changes take effect.
 
 ### Install the Python SDK
 
-Next, set up a virtual environment and install the SDK. (If you want to read more on virtual environments, check out [the documentation](https://docs.viam.com/build/program/python-venv/).) 
+Next, set up a virtual environment and install the SDK.
+(If you want to read more on virtual environments, check out [the documentation](https://docs.viam.com/build/program/python-venv/).) 
 
 Make sure any packages on your Pi are up to date, while connected to your Pi with SSH run:
 
@@ -333,7 +334,7 @@ Follow these instructions to start working on your Python control code:
 
    {{% snippet "show-secret.md" %}}
 
-4. Paste this code sample into a new file in the virtual directory you created on your Pi.
+4. Paste this code sample into a new file on your Pi.
 5. Name the file <file>plant-watering-robot.py</file>, and save it.
 
 For example, run the following commands on your Pi to create and open the file:
@@ -366,7 +367,7 @@ while True:
     readings = await sensor.get_readings()
     soil_moisture = readings.get('moisture')
 
-    # Calculate the average moisture reading from the list of readings,
+    # Calculate the average moisture reading from the list of readings
     #  to account for outliers
     avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
@@ -398,7 +399,7 @@ sudo python3 plant-watering-robot.py
 
 To tinker this example code to work best for you, determine at what [analog value from the soil moisture readings](#test-your-soil-moisture-readings-on-your-pi) you want to water your plant, as your thirsty plant's average moisture reading might differ from our example value of `60000`.
 
-Test your sensor by putting it in air, water, and different soils to see how the values change to determine your baseline for wet and dry values.
+Test your sensor by putting it in air, water, and different soils to see how the values change and determine your baseline for wet and dry values.
 Also, consider how often you would like to check the moisture levels of the plant, and how long the plant should be watered.
 
 ## Next steps
