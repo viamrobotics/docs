@@ -68,8 +68,8 @@ To check locally for broken links, install [`htmltest`](https://github.com/wjdp/
 ### Lint JS and Markdown files with Prettier on save
 
 1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
-2. Run `npm install` in the docs folder you have the docs checked out in.
-3. Inside VS code, open `settings.json` by pressing `CMD+SHIFT+P` and typing in settings and ensure the following settings are in the file:
+2. Run `npm install` in the docs folder where you have the docs checked out.
+3. Inside VS code, open user `settings.json` by pressing `CMD+SHIFT+P` and typing in settings, and ensure the following settings are in the file:
 
 ```json
   "[markdown]": {
