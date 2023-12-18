@@ -201,7 +201,7 @@ sudo apt install python3-pip
 
 Run the following command to install the SDK:
 
-```shell
+```sh {class="command-line" data-prompt="$"}
 pip3 install viam-sdk
 ```
 
