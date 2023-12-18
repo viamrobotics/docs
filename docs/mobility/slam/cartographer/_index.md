@@ -46,7 +46,8 @@ For doing pure localization on an existing map, the `cartographer` modular resou
 
 {{% alert title="Info" color="info" %}}
 
-Running `cartographer` in the cloud incurs a small cost per Viam's [Pricing](https://www.viam.com/product/pricing). Currently, cost is only incurred for "Data Management", "Cloud Data Upload", and "Cloud Data Egress".
+Running `cartographer` in the cloud incurs cost for Data Management, Cloud Data Upload, and Cloud Data Egress. Currently, you incur no cost for compute.
+See Viam's [Pricing](https://www.viam.com/product/pricing) for more information. 
 
 {{% /alert %}}
 
