@@ -366,7 +366,7 @@ while True:
     soil_moisture = readings.get('moisture')
 
     # Calculate the average moisture reading from the list of readings,
-    # for outliers
+    #  to account for outliers
     avg_moisture = sum(soil_moisture) / len(soil_moisture)
 
     # If the average moisture reading is greater than 60000, trigger pump
