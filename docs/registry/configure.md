@@ -40,6 +40,10 @@ Follow the instructions below depending on the type of modular resource you woul
 - [Add a modular component](#add-a-modular-component-from-the-viam-registry)
 - [Add a modular service](#add-a-modular-service-from-the-viam-registry)
 
+{{< alert title="Note" color="note" >}}
+If you are using a [rented Viam rover](/get-started/try-viam/), adding modules is disabled for security purposes.
+{{< /alert >}}
+
 ### Add a modular component from the Viam registry
 
 To add a modular [component](/components/) from the Viam registry to your robot:

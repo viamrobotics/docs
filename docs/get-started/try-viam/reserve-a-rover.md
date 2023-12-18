@@ -33,11 +33,15 @@ Once your reservation starts and the system has configured your rover, click **T
 
 {{<imgproc src="get-started/try-viam/navigation-bar.png" resize="800x" alt="Navigation bar of the Viam app with the Viam Rover time remaining indicator.">}}
 
-## Extend your reservation
+### Limitations
+
+When using a rented Viam rover, adding [modules](/registry/) is disabled for security purposes.
+
+### Extend your reservation
 
 {{< readfile "/static/include/try-viam/extend-a-reservation.md" >}}
 
-## Cancel my reservation/session
+### Cancel my reservation/session
 
 {{< readfile "/static/include/try-viam/cancel-a-reservation.md" >}}
 
