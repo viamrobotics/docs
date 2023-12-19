@@ -54,7 +54,7 @@ To move a sub-location to the top level of locations, select **Root** from the *
 A location always belongs to the organization it was created in.
 Members of the organization have access to all locations in the organization by default.
 
-You can share a location beyond its organization by [sharing a location with an additional organization](#share-a-location-with-an-additional-organization).
+You can share a location beyond its organization by sharing a location with an additional organization:
 
 #### Share a location with an additional organization
 
@@ -62,9 +62,16 @@ Share your location with another organization you belong to by selecting the org
 
 ![The Add Organization dropdown in the Viam app displays all organizations the user is a member of.](/fleet/app-usage/add-org-drop-down.png)
 
-The location's page lists newly added organization, along with the organization identified as the **primary owner**:
+The location's page lists the newly added organization, along with the organization identified as the _primary owner_:
 
 ![After adding another org, the Viam app lists it under the orgs that share this location list.](/fleet/app-usage/after-add-org.png)
+
+{{% alert title="Info" color="info" %}}
+
+Only members of the _primary owner_ organization can share the location.
+If the location has been shared with additional organizations, members of those secondary organizations cannot share the location.
+
+{{% /alert %}}
 
 ##### Remove an organization from a shared location
 
