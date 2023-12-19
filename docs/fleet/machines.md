@@ -1,5 +1,5 @@
 ---
-title: "Manage machines"
+title: "Manage Machines"
 linkTitle: "Machines"
 weight: 10
 type: "docs"
