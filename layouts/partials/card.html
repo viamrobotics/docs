@@ -1,7 +1,7 @@
 {{ $class := .class }}
 {{ $customTitle := .customTitle }}
 {{ $customDescription := .customDescription }}
-{{ $customCanoncicalLink := .customCanoncicalLink }}
+{{ $customCanonicalLink := .customCanonicalLink }}
 {{ $link := (path.Clean (.link)) }}
 {{ $baseurl := .Site.BaseURL }}
 {{ if (eq (substr .Site.BaseURL -1 1) "/" ) }}
@@ -10,8 +10,8 @@
 <div class="col hover-card {{ if $class }}{{ $class }}{{ end }}">
   {{ if site.GetPage ($link | string) }}
     {{ with site.GetPage ($link | string) }}
-    {{if $customCanoncicalLink }}
-    <a href="{{$customCanoncicalLink}}">
+    {{if $customCanonicalLink }}
+    <a href="{{$customCanonicalLink}}">
     {{ else }}
     <a href="{{.RelPermalink}}">
     {{ end }}
