@@ -238,7 +238,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
 
-2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera]/components/camera/transform/) with the following attributes:
+2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes:
 
    ```json
    {
