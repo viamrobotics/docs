@@ -1096,11 +1096,10 @@ To compile your C++ module's executable, you must create a <file>CMakeLists.txt<
 
 2. Create a <file>run.sh</file> file in your module directory to wrap the executable and perform basic sanity checks at runtime.
 
-   The following example shows a simple configuration that performs some basic sanity checks and handles system-level linking for a module named `my-module`:
+   The following example shows a simple configuration that runs a module named `my-module`:
 
    ```sh {class="line-numbers linkable-line-numbers"}
    #!/usr/bin/env bash
-   # run.sh -- entrypoint wrapper for the module
 
    # bash safe mode
    set -euo pipefail
