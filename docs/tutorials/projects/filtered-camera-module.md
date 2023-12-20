@@ -41,7 +41,7 @@ Before following this tutorial, you should:
 
 ## Add a camera and configure data capture
 
-The `filter_camera` module filters image data captured by a camera component, and so requires that your machine has a camera component and the data management service configured.
+The `filtered-camera` module filters image data captured by a camera component, and so requires that your machine has a camera component and the data management service configured.
 
 - A [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), allows your machine to see the world around it through an attached camera.
 - The [data management service](/data/) enables your machine to capture images from an attached camera and sync them to the cloud.
@@ -177,7 +177,7 @@ For more information, see [Train a model](/ml/train-model/).
 
 ## Configure the ML model and vision services
 
-The `filter_camera` module filters image data based on your trained ML model, and so requires that your machine has the ML model service and vision service configured.
+The `filtered-camera` module filters image data based on your trained ML model, and so requires that your machine has the ML model service and vision service configured.
 
 - The [ML model service](/ml/) enables your machine to deploy a machine learning (ML) model to be used by other services.
 - The [vision service](/ml/vision/) enables your machine's camera to detect objects defined in the ML model on its own.
