@@ -34,6 +34,8 @@ For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-
 {{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
 
+After deploying your model, configure an [`mlmodel` vision service](/ml/vision/) and [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
+
 ### Modular Resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
