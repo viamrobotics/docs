@@ -40,7 +40,7 @@ Once you have configured your machine, you can remotely control your machine on 
     <td>
     {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
       <b>4. Navigate autonomously</b>
-      <p> Define a path for your rover to navigate. Manage motion's start and stop, see where your machine is navigating, and configure waypoints and obstacles on the <b>Control</b> tab or with a <a href="/sdks/">Viam SDK.</a></p>
+      <p> Define a path for your rover to navigate. Manage motion's start and stop, see where your machine is navigating, and configure waypoints and obstacles on the <b>Control</b> tab or with a <a href="/sdks/">Viam SDK</a>.</p>
     </td>
   </tr>
 </table>
