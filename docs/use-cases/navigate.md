@@ -24,7 +24,7 @@ Once you have configured your machine, you can remotely control your machine on 
   <tr>
     <th>{{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
       <b>2. Program to move</b>
-      <p>Remotely control your rover base programmatically with a <a href="/sdks/">Viam SDK.</a> Make calls to the <a href="/components/base/#api">base API</a> or <a href="/mobility/motion/">motion service</a>.
+      <p>Remotely control your rover base programmatically with a <a href="/sdks/">Viam SDK.</a> Make calls to the <a href="/components/base/#api">base API</a>.
       Or, <a href="/mobility/base-rc/">configure the base remote control service</a> to teleoperate your base with an <a href="/components/input-controller/">input controller.</a></p>
     </th>
   </tr>
