@@ -14,7 +14,7 @@ aliases:
 
 Before you can program a robot, you must configure it.
 
-A robot's configuration tells the code running the robot what _resources_ (hardware _components_ and software _services_) it has access to, as well as any relevant parameters for those resources.
+A robot's configuration tells the code running the robot what _{{< glossary_tooltip term_id="resource" text="resources" >}}_ (hardware _{{< glossary_tooltip term_id="component" text="components" >}}_ and software _{{< glossary_tooltip term_id="service" text="services" >}}_) it has access to, as well as any relevant parameters for those resources.
 
 To start configuring, go to the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
 
