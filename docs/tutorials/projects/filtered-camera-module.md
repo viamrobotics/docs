@@ -9,9 +9,9 @@ tags: ["camera", "vision", "detector"]
 no_list: true
 viamresources: ["camera", "vision", "mlmodel"]
 level: "Intermediate"
-cost: 0
 date: "2023-12-20"
 # updated: ""
+cost: "0"
 ---
 
 If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
