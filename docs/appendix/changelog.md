@@ -10,6 +10,13 @@ aliases:
 # SME:
 ---
 
+
+## December 2023
+
+{{% changelog color="changed" title="Return type of GetImage()" %}}
+
+The Python SDK introduced a new image container class called `ViamImage`. The camera API's [`GetImage()`](/components/camera/#getimage) API method now returns a `ViamImage` type.
+
 ## November 2023
 
 {{% changelog color="added" title="Authenticate with location API key" %}}
