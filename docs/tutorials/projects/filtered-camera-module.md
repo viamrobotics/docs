@@ -1,18 +1,13 @@
 ---
-title: "Use the Filtered Camera Module to selectively capture images"
+title: "Use the filtered-camera module to selectively capture images"
 linkTitle: "Filtered Camera"
 weight: 6
 type: "docs"
-description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
-webmSrc: "/tutorials/guardian/preview.webm"
-mp4Src: "/tutorials/guardian/preview.mp4"
-videoAlt: "A guardian detecting a person or pet."
+description: "Use the filtered-camera module to selectively capture images."
 images: ["/tutorials/guardian/preview.gif"]
-tags: ["camera", "vision", "detector", "python"]
+tags: ["camera", "vision", "detector"]
 no_list: true
-authors: ["Naomi Pentrel"]
-languages: ["python"]
-viamresources: ["camera", "vision", "servo", "mlmodel"]
+viamresources: ["camera", "vision", "mlmodel"]
 level: "Intermediate"
 date: "2023-12-20"
 # updated: ""
