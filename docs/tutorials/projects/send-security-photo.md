@@ -232,6 +232,7 @@ from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 from viam.services.vision import VisionClient
 from viam.components.camera import Camera
+from viam.media.video import RawImage
 import yagmail
 
 # These must be set. You can get them from your robot's 'Code sample' tab
@@ -258,7 +259,8 @@ async def main():
     N = 100
     for i in range(N):
         img = await my_camera.get_image()
-        detections = await myPeopleDetector.get_detections(img)
+        raw_img = RawImage(data=img.data, mime_type=img.mime_type)
+        detections = await myPeopleDetector.get_detections(raw_img)
 
         found = False
         for d in detections:
@@ -268,7 +270,7 @@ async def main():
         if found:
             print("sending a message")
             # Change this path to your own
-            img.save('/yourpath/foundyou.png')
+            raw_img.save('/yourpath/foundyou.png')
             # Yagmail section
             # Create a yagmail.SMTP instance
             # to initialize the server connection.

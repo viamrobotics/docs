@@ -77,9 +77,10 @@ my_detector = VisionClient.from_robot(robot, "my_detector")
 
 # Get an image from the camera
 img = await cam1.get_image()
+raw_img = RawImage(data=img.data, mime_type=img.mime_type)
 
 # Get detections from that image
-detections = await my_detector.get_detections(img)
+detections = await my_detector.get_detections(raw_img)
 ```
 
 {{% /tab %}}
@@ -232,9 +233,10 @@ my_classifier = VisionClient.from_robot(robot, "my_classifier")
 
 # Get an image from the camera
 img = await cam1.get_image()
+raw_img = RawImage(data=img.data, mime_type=img.mime_type)
 
 # Get the 2 classifications with the highest confidence scores
-classifications = await my_classifier.get_classifications(img, 2)
+classifications = await my_classifier.get_classifications(raw_img, 2)
 ```
 
 {{% /tab %}}

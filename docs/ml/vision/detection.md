@@ -276,6 +276,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.services.vision import VisionClient
+from viam.media.video import RawImage
 
 robot = await connect()
 camera_name = "cam1"
@@ -290,7 +291,8 @@ detections = await my_detector.get_detections_from_camera(camera_name)
 # If you need to store the image, get the image first
 # and then run detections on it. This process is slower:
 img = await cam1.get_image()
-detections_from_image = await my_detector.get_detections(img)
+raw_img = RawImage(data=img.data, mime_type=img.mime_type)
+detections_from_image = await my_detector.get_detections(raw_img)
 
 await robot.close()
 ```
