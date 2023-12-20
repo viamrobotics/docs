@@ -24,7 +24,7 @@ Once you have configured your machine, you can remotely control your machine on 
   <tr>
     <th>{{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
       <b>2. Program to move</b>
-      <p>Remotely control your rover base programmatically with a <a href="/sdks/">Viam SDK.</a> Make calls to the <a href="/mobility/motion/">motion service.</a>
+      <p>Remotely control your rover base programmatically with a <a href="/sdks/">Viam SDK.</a> Make calls to the <a href="/components/base/#api">base API</a> or <a href="/mobility/motion/">motion service</a>.
       Or, <a href="/mobility/base-rc/">configure the base remote control service</a> to teleoperate your base with an <a href="/components/input-controller/">input controller.</a></p>
     </th>
   </tr>
@@ -32,14 +32,15 @@ Once you have configured your machine, you can remotely control your machine on 
     <th> {{<imgproc src="/services/icons/navigation.svg" class="fill alignright" resize="200x" style="max-width: 200px" declaredimensions=true alt="Navigation icon.">}}
       <b>3. Prepare your base to navigate</b>
       <p><a href="/components/movement-sensor/">Configure a movement sensor</a> as part of your machine to use navigation.
-      Then, <a href="/mobility/navigation/#configure-and-calibrate-the-frame-system-service-for-gps-navigation">configure and calibrate</a> the frame system for GPS navigation.</p>
+      Additionally, <a href="/mobility/navigation/#configure-and-calibrate-the-frame-system-service-for-gps-navigation">configure and calibrate</a> the frame system for GPS navigation.
+      Then, <a href="/mobility/navigation/">configure a navigation service</a> on your machine.</p>
     </th>
   </tr>
   <tr>
     <td>
     {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
       <b>4. Navigate autonomously</b>
-      <p><a href="/mobility/navigation/">Configure a navigation service</a> on your machine. Add waypoints to define a path. Manage navigation's start and stop, see where your machine is navigating, and configure waypoints and obstacles on the <b>Control</b> tab or with a <a href="/sdks/">Viam SDK.</a></p>
+      <p> Define a path for your rover to navigate. Manage motion's start and stop, see where your machine is navigating, and configure waypoints and obstacles on the <b>Control</b> tab or with a <a href="/sdks/">Viam SDK.</a></p>
     </td>
   </tr>
 </table>
