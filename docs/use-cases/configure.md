@@ -3,7 +3,7 @@ title: "Build a simple smart machine"
 linkTitle: "Build simple smart machines"
 weight: 10
 type: "docs"
-description: "Build a simple robot in a few steps."
+description: "Build a simple smart machine in a few steps using Viam's modular system of components and services without writing much or any code."
 tags: ["components", "configuration"]
 ---
 
@@ -36,9 +36,9 @@ Viam's modular system of {{< glossary_tooltip term_id="component" text="componen
     </th>
   </tr>
   <tr>
-    <th>{{<gif webm_src="/tutorials/lazy-susan/control-dcmotor.webm" mp4_src="/tutorials/lazy-susan/control-dcmotor.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
+    <th>{{<gif webm_src="/manage/control.webm" mp4_src="/manage/control.mp4" alt="The Viam app Control tab with a control panel for each component. The panel for a DC motor is clicked, expanding to show power controls." max-width="400px" class="fill alignleft">}}
       <b>4. Test your components</b><br><br>
-      <p>When you configure a component, a remote control panel is generated for it in the <b>Control</b> tab of the Viam app. Here, you can drive motors at different speeds, view your camera feed, see sensor readings, and generally test the basic functionality of your robot before you've even written any code.
+      <p>When you configure a component, a remote control panel is generated for it in the <b>Control</b> tab of the Viam app. With the panels, you can drive motors at different speeds, view your camera feeds, see sensor readings, and generally test the basic functionality of your robot before you've even written any code.
       </p>
     </th>
   </tr>
