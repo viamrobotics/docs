@@ -193,7 +193,8 @@ classifications = await my_classifier.get_classifications_from_camera(
 # and then run classifications on it. This process is slower:
 img = await cam1.get_image()
 raw_img = RawImage(data=img.data, mime_type=img.mime_type)
-classifications_from_image = await my_classifier.get_classifications(raw_img, 2)
+classifications_from_image = await my_classifier.get_classifications(
+  raw_img, 2)
 
 await robot.close()
 ```
