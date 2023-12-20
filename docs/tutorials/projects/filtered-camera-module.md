@@ -276,7 +276,10 @@ With everything configured, the `filtered-camera` module is now ready to selecti
 1. Find your camera component (`my-webcam`) and ensure that **Data capture** is *disabled*.
    We want to use the `filtered-camera` module to capture data instead, so that it can selectively capture image based on your ML model.
 1. Position your machine's camera so that no detectible objects are visible, then ensure that no new images are being synced to the Viam app by watching the [**Data** tab](https://app.viam.com/data/view) in the Viam app.
-1. Then place an object that is part of your trained ML model within view of your camera, and watch images of that object begin to appear under the **Data** tab automatically!
+1. Then place an object that is part of your trained ML model within view of your camera, and watch images of that object begin to appear under the **Data** tab automatically.
+1. Remove the object from view of the camera, and images should stop being captured and synced.
+
+Congratulations, you now have a smart filtered camera on your machine, and can fine tune the kind of image capture it performs.
 
 ## Next steps
 
@@ -294,6 +297,7 @@ This tutorial demonstrated using the `filtered-camera` module with [object detec
 ### No images appearing in the Viam app
 
 Ensure that the camera component (`my-webcam` in this tutorial) has data capture enabled under the **Components** subtab, and that the data management service (`my-data-management` in this tutorial) has both **Capturing** and **Syncing** enabled under the **Services** subtab.
+Your machine can only sync images to the Viam app when it is online; if it is not presently online, it will sync captured images when next it connects to the internet.
 
 ### Cannot train ML model
 
