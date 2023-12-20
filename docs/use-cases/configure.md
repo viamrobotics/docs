@@ -30,7 +30,7 @@ Viam's modular system of {{< glossary_tooltip term_id="component" text="componen
   <tr>
     <th>{{<imgproc src="/icons/components.png" class="fill alignleft" resize="400x" style="max-width: 220px" declaredimensions=true alt="An assortment of components.">}}
       <b>3. Configure your components</b><br><br>
-      <p>Each piece of your smart machine that is controlled by a computer is called a <i>component</i>. For example, if your smart machine includes a Raspberry Pi, a motor, and a camera, each of those is a component.</p>
+      <p>Each physical piece of your smart machine that is controlled by a computer is called a <i>component</i>. For example, if your smart machine includes a Raspberry Pi, a motor, and a camera, each of those is a component.</p>
       <p>You need to <i><a href="/build/configure/">configure</a></i> your machine so that <code>viam-server</code> can interact with its hardware. Use the configuration builder tool in the Viam app to create a file that describes what hardware you are using and how it is connected.
       For example, if you have a DC motor, follow the <a href="/components/motor/gpio/">corresponding configuration instructions</a> to tell the software which pins it is connected to.</p>
     </th>
