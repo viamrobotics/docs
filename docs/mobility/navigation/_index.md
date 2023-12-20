@@ -13,7 +13,7 @@ aliases:
 # SMEs: Raymond
 ---
 
-The Navigation service is the stateful definition of Viam's [motion service](/mobility/motion/).
+The navigation service is the stateful definition of Viam's [motion service](/mobility/motion/).
 It uses GPS to autonomously navigate a rover [base](/components/base/) to user defined endpoints called waypoints.
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](#setmode) to move your rover along a defined path at your desired motion configuration.
 
@@ -29,7 +29,7 @@ Configure your base with a navigation service, add waypoints, and set the mode o
 
 ## Requirements
 
-You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a Navigation service.
+You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a navigation service.
 
 To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/components/movement-sensor/#api):
 
@@ -55,7 +55,7 @@ Click the **Services** subtab, then click **Create service** in the lower-left c
 Select the type `Navigation`.
 Enter a name for your service, then click **Create**.
 
-![An example configuration for a Navigation service in the Viam app Config Builder.](/mobility/navigation/navigation-ui-config.png)
+![An example configuration for a navigation service in the Viam app Config Builder.](/mobility/navigation/navigation-ui-config.png)
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -148,7 +148,7 @@ The following attributes are available for `Navigation` services:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the Navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
+| `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
 | `base` | string | **Required** | The `name` you have configured for the [base](/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/mobility/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
@@ -753,7 +753,7 @@ After configuring the navigation service for your robot, navigate to the **Contr
 
 Here, you can toggle the mode of the service between **Manual** and **Waypoint** to start and stop navigation, add waypoints and obstacles, and view the position of your rover base on a map:
 
-![An example control interface for a Navigation service in the Viam app Control Tab.](/mobility/navigation/navigation-control-card.png)
+![An example control interface for a navigation service in the Viam app Control Tab.](/mobility/navigation/navigation-control-card.png)
 
 ## Navigation Concepts
 
