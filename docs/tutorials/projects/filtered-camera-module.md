@@ -4,18 +4,33 @@ linkTitle: "Filtered Camera"
 weight: 6
 type: "docs"
 description: "Use the filtered-camera module to selectively capture images."
-images: ["/tutorials/guardian/preview.gif"]
-tags: ["camera", "vision", "detector"]
+images: ["/tutorials/filtered-camera-module/viam-figure-preview.png"]
+imageAlt: "The wooden Viam figure being detected by a transform camera"
+tags: ["camera", "vision", "detector", "mlmodel", "data"]
 no_list: true
-viamresources: ["camera", "vision", "mlmodel"]
+viamresources: ["camera", "vision", "mlmodel", "data"]
 level: "Intermediate"
 date: "2023-12-20"
 # updated: ""
 cost: "0"
 ---
 
-If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
-For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
+{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-preview.png" alt="The promotional Viam wooden figure we give out at events, being correctly detected with a 0.97 confidence threshold" resize="400x"  class="alignright" >}}
+
+With the data management service, a Viam machine can capture data from a variety of components and sync that data to the Viam app.
+However, if your machine captures a large volume of data, especially image data such as pictures, you may wish to control which specific images are captured or uploaded.
+
+For example, if you aim your machine's camera at a busy city street, your machine will happily capture as many pictures as its configured capture rate dictates.
+Even if you added a movement sensor and programmed your machine to only capture images when the sensor detects movement, you will still end up with many pictures of moving vehicles on your bustling city street.
+
+Instead, you can use the `filtered-camera` module to be able to selectively capture and sync only those images that meet the specific criteria you've outlined in a machine learning (ML) model.
+
+For example, you could use the `filtered-camera` module together with your camera observing the busy city street, and configure it to only capture images of bikers, of trucks with trailers, or of convertibles.
+
+This tutorial will demonstrate using the `filtered-camera` module to selectively capture images only when a specific object is detected within the camera feed: the Viam wooden figure.
+When this figure is not present in the camera frame, the `filtered-camera` module will stop capturing images until it detects the figure again.
+
+The `filtered-camera` module is available from the [Viam registry](https://app.viam.com/module/erh/filtered-camera), and you can [view the code on GitHub](https://github.com/erh/filtered_camera).
 
 ## Prerequisites
 
@@ -26,7 +41,7 @@ Before following this tutorial, you should:
 
 ## Add a camera and configure data capture
 
-The `filter_camera` module filters image data captured by a camera component, and so requires that your machine has a camera component and data management service configured.
+The `filter_camera` module filters image data captured by a camera component, and so requires that your machine has a camera component and the data management service configured.
 
 - A [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), allows your machine to see the world around it through an attached camera.
 - The [data management service](/data/) enables your machine to capture images from an attached camera and sync them to the cloud.
@@ -47,7 +62,7 @@ Add a [camera](/components/camera/) component to your machine:
 
 ### Add the data management service
 
-Next, add the data management service to your smart machine to be able capture and sync data:
+Next, add the data management service to your machine to be able capture and sync data:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
@@ -103,7 +118,7 @@ This tutorial will use images of a wooden Viam figure from multiple angles and p
 
 For best results:
 
-- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your smart machine to be able to identify.
+- Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your machine to be able to identify.
 - Include a small number of images that do not contain any of the objects you wish to identify, but do not label these images.
   Unlabelled images must not comprise more than 20% of your dataset, so if you have 25 images in your dataset, at least 20 of those must be labelled.
 - If your machine operates in various lighting conditions, such as changing sunlight, include images of each object under varying lighting conditions.
@@ -169,7 +184,7 @@ The `filter_camera` module filters image data based on your trained ML model, an
 
 ### Add the ML model service
 
-Add the ML model service to your smart machine to be able to deploy and update ML models:
+Add the ML model service to your machine to be able to deploy and update ML models:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **ML model**, then select the built-in `TFLite CPU` model.
@@ -184,7 +199,7 @@ For more information, see [Create an ML model service](/ml/deploy/#create-an-ml-
 
 ### Add the vision service
 
-Add the vision service to your smart machine to be able to use the deployed ML model with your camera, and with the `filtered-camera` module.
+Add the vision service to your machine to be able to use the deployed ML model with your camera, and with the `filtered-camera` module.
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
@@ -327,6 +342,8 @@ You could use this in many ways, such as:
 - Train an ML model on familiar faces, so that your machine can capture and upload images of any new faces it encounters, but ignore familiar faces entirely.
 - Train an ML model on various common forms of delivery packaging, so that your machine can send you an image of a new delivery, but not clutter your inbox with images of other things, such as cars driving by.
 - Train an ML model on a variety of domestic farm animals, so that your machine can alert you if a different kind of animal is detected in the vicinity, without capturing images of every animal.
+
+You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/ml/upload-model/#upload-a-new-version-of-a-model) using the ML model service.
 
 This tutorial demonstrated using the `filtered-camera` module with [object detection](/ml/vision/detection/), but you can also use it to perform [object classification](/ml/vision/classification/).
 
