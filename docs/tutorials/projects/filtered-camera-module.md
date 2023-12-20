@@ -1,5 +1,5 @@
 ---
-title: "Use the filtered-camera module to selectively capture images"
+title: "Selectively capture data using filtered-camera"
 linkTitle: "Filtered Camera"
 weight: 6
 type: "docs"
@@ -9,6 +9,7 @@ tags: ["camera", "vision", "detector"]
 no_list: true
 viamresources: ["camera", "vision", "mlmodel"]
 level: "Intermediate"
+cost: 0
 date: "2023-12-20"
 # updated: ""
 ---
@@ -89,7 +90,7 @@ The `filtered_camera` module supports two modes of filtering:
 - [Detection](/ml/vision/detection/), where you train an ML model by drawing bounding boxes around distinct objects within captured images, to enable your machine to be able to detect those objects on its own.
 - [Classification](/ml/vision/classification/), where you train an ML model by tagging images with a class label that best describes it, to enable your machine to be able to classify similar images on its own.
 
-This tutorial demonstrates configuring a *detection* model.
+This tutorial demonstrates configuring a _detection_ model.
 
 ### Capture images and create a dataset
 
@@ -259,7 +260,7 @@ With all the prerequisites in place, you are ready to add the `filtered_camera` 
 
 1. Next, in the **Data capture configuration** section on the `filtered_camera` module configuration pane, click the **Add method** button to enable data capture for this camera.
 
-   - Set the **Type** to `ReadImage` and the **Frequency** to ``0.333``.
+   - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
@@ -273,7 +274,7 @@ With all the prerequisites in place, you are ready to add the `filtered_camera` 
 With everything configured, the `filtered-camera` module is now ready to selectively capture only images that meet your ML model criteria.
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
-1. Find your camera component (`my-webcam`) and ensure that **Data capture** is *disabled*.
+1. Find your camera component (`my-webcam`) and ensure that **Data capture** is _disabled_.
    We want to use the `filtered-camera` module to capture data instead, so that it can selectively capture image based on your ML model.
 1. Position your machine's camera so that no detectible objects are visible, then ensure that no new images are being synced to the Viam app by watching the [**Data** tab](https://app.viam.com/data/view) in the Viam app.
 1. Then place an object that is part of your trained ML model within view of your camera, and watch images of that object begin to appear under the **Data** tab automatically.
