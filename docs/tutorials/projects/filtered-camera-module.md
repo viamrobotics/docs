@@ -53,7 +53,7 @@ Add a [camera](/components/camera/) component to your machine:
 1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Components** subtab and click **Create component** in the lower-left corner.
 1. Select `camera` and then select `webcam`.
-1. Give your camera a name, such as `my-webcam`, and click **Create**.
+1. Give the camera a name, such as `my-webcam`, and click **Create**.
 1. If your machine is online and connected to the Viam app, your camera's video path is automatically detected and configured.
    If your machine is not currently connected, you can manually select the video path for your camera, or bring your machine online to have this path automatically configured for you.
 1. Click **Save Config** at the bottom of the window to save your changes.
@@ -157,7 +157,7 @@ Once you have created a dataset containing the images you want to use, draw boun
 
 Once your dataset is ready, train a new ML model on that dataset.
 
-1. Click the **Train model** button in the upper-left cover of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
+1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
 1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="1000x" >}}
@@ -213,7 +213,7 @@ For more information, see [Configure an `mlmodel` detector](/ml/vision/detection
 
 ## Test your ML model with a transform camera
 
-Before adding the `filtered-camera` module, you can create a transform camera to test that the ML model is working as expected with your camera.
+Before adding the `filtered-camera` module, you can create a [transform camera](/components/camera/transform/) to test that the ML model is working as expected with your camera.
 A transform camera will overlay a bounding box on your camera's live feed when it detects objects that match its ML model.
 This step is optional, you can skip this step if you want to get right to using the `filtered-camera` module.
 
@@ -223,7 +223,7 @@ To add a transform camera to your machine:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create component** button at the bottom of the page, select **Camera**, then select the built-in `transform` model.
-1. Give the service a name, like `my-transform-camera`, then click **Create**.
+1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
 1. On the panel that appears, enter the following configuration into the **Attributes** field:
 
    ```json
@@ -274,7 +274,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create component** button at the bottom of the page, select **Camera**, then select the `filtered-camera` model.
    You can also search for `filtered-camera` directly.
-1. Give the module a name, like `my-filtered-camera`, then click **Create**.
+1. Give the modular camera a name, like `my-filtered-camera`, then click **Create**.
 1. On the panel that appears, enter the following configuration into the **Attributes** field:
 
    ```json
