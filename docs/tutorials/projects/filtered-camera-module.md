@@ -43,7 +43,7 @@ Add a [camera](/components/camera/) component to your machine:
    If your machine is not currently connected, you can manually select the video path for your camera, or bring your machine online to have this path automatically configured for you.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam.png" alt="The camera component configuration pane in the Viam app showing a configured webcam with video path video0" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam.png" alt="The camera component configuration pane in the Viam app showing a configured webcam with video path video0" resize="500x" >}}
 
 ### Add the data management service
 
@@ -74,7 +74,7 @@ Once you have added the data management service, enable image data capture for y
    - Set the **Mime type** to `image/jpeg` to configure image data capture.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
-     {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="600x" >}}
+     {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="1400x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 1. In the [Viam app](https://app.viam.com), navigate to the [**Data**](/data/view/) tab, where you should see images captured by your camera component appear roughly every 6 seconds.
@@ -87,7 +87,7 @@ For more information see [Configure data capture](/data/capture/#configure-data-
 
 Now that your camera component is steadily capturing images to the Viam app, you can train a machine learning (ML) model on those images to be able to detect certain objects in the camera feed.
 
-The `filtered_camera` module supports two modes of filtering:
+The `filtered-camera` module supports two modes of filtering:
 
 - [Detection](/ml/vision/detection/), where you train an ML model by drawing bounding boxes around distinct objects within captured images, to enable your machine to be able to detect those objects on its own.
 - [Classification](/ml/vision/classification/), where you train an ML model by tagging images with a class label that best describes it, to enable your machine to be able to classify similar images on its own.
@@ -105,7 +105,7 @@ For best results:
 
 - Provide at least 10 images of the same object, taken from different angles, and repeat this approach for each object you want your smart machine to be able to identify.
 - Include a small number of images that do not contain any of the objects you wish to identify, but do not label these images.
-  Unlabelled images must not comprise more than 20% of your dataset, so if you have 20 images in your dataset, at least 16 of those must be labelled.
+  Unlabelled images must not comprise more than 20% of your dataset, so if you have 25 images in your dataset, at least 20 of those must be labelled.
 - If your machine operates in various lighting conditions, such as changing sunlight, include images of each object under varying lighting conditions.
 
 {{< /alert >}}
@@ -118,7 +118,10 @@ A [dataset](/data/dataset/) allows you to conveniently view, work with, and trai
 1. In the **Actions** pane on the right-hand side, enter a new dataset name under **Datasets**, then press return.
 1. Repeat the steps above to add more images to your dataset, until you have enough to train an ML model on.
 
-{{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/viam-figure-dataset.png" alt="The datasets subtab of the data tab in the Viam app, showing a custom 'viam-figure' dataset of 25 images, most containing the wooden Viam figure" resize="1400x" >}}
+
+   For this tutorial, the dataset contains 20 images of the Viam wooden figure, and 5 images that _do not_ contain the Viam figure.
+   This meets the ML model requirements of having at least 80% of the images in the dataset labelled with the target object to detect, while still including a small number of unlabelled images.
 
 ### Draw bounding boxes around matching objects
 
@@ -128,11 +131,10 @@ Once you have created a dataset containing the images you want to use, draw boun
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, select the **Bounding box** mode, enter a new label that describes the object in the image you want to detect, then draw a bounding box over the image on the right-hand side.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/add-label-viam-figure.png" alt="The labels drop down menu for a selected image in the data tab, where the previously-used label 'viam-figure' is available for use" resize="600x" >}}
-
-   {{< imgproc src="/tutorials/filtered-camera-module/draw-bounding-box.png" alt="A selected image from the data tab, where the 'viam-figure' label has been added and a bounding box has been drawn around just the matching portion of the image " resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/draw-bounding-box.png" alt="A selected image from the data tab, where the 'viam-figure' label has been added and a bounding box has been drawn around just the matching portion of the image " resize="400x" >}}
 
 1. Repeat this process for the remaining images in your dataset.
+   Once you have created a new label with your first image, you can select that label from the **Current label** dropdown for all future images in this dataset.
    Ensure that at least 80% of the images in your dataset are labelled, with the remaining images not containing objects to identify.
    If you want your machine to be able to identify multiple objects, you can add multiple labels per image as well.
 
@@ -143,22 +145,22 @@ Once your dataset is ready, train a new ML model on that dataset.
 1. Click the **Train model** button in the upper-left cover of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
 1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/train-a-new-model.png" alt="The models tab in the Viam app showing the configuration for training a new object detection model using the viam-figure dataset and viam-figure label" resize="1000x" >}}
 
    Your model will begin training on the images you have tagged, and should be ready after a short time.
    You can view your model's training progress from the **Models** subtab under the [**DATA** page](https://app.viam.com/data/view).
 
-   {{< imgproc src="/tutorials/filtered-camera-module/train-model-training.png" alt="The models subtab under the data tab in the Viam app showing a model being actively trained" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/train-model-training.png" alt="The models subtab under the data tab in the Viam app showing a model being actively trained" resize="800x" >}}
 
    Models that are still being trained appear under **Training**, while models that have completed training and are ready for use appear under **Models**.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/train-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has completed training and is ready for use" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/train-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has completed training and is ready for use" resize="1200x" >}}
 
 If you already have a model you want to use, you can [upload an existing model](/ml/upload-model/) instead and skip this step.
 
 For more information, see [Train a model](/ml/train-model/).
 
-## Configure ML model and vision services
+## Configure the ML model and vision services
 
 The `filter_camera` module filters image data based on your trained ML model, and so requires that your machine has the ML model service and vision service configured.
 
@@ -182,7 +184,7 @@ For more information, see [Create an ML model service](/ml/deploy/#create-an-ml-
 
 ### Add the vision service
 
-Add the vision service to your smart machine to be able to use the deployed ML model with your camera, and with the `filtered_camera` module.
+Add the vision service to your smart machine to be able to use the deployed ML model with your camera, and with the `filtered-camera` module.
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
@@ -190,15 +192,15 @@ Add the vision service to your smart machine to be able to use the deployed ML m
 1. On the panel that appears, select your trained ML model from the **ML Model** dropdown.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="500x" >}}
 
 For more information, see [Configure an `mlmodel` detector](/ml/vision/detection/#configure-an-mlmodel-detector).
 
 ## Test your ML model with a transform camera
 
-Before adding the `filtered_camera` module, you can create a transform camera to test that the ML model is working as expected with your camera.
+Before adding the `filtered-camera` module, you can create a transform camera to test that the ML model is working as expected with your camera.
 A transform camera will overlay a bounding box on your camera's live feed when it detects objects that match its ML model.
-This step is optional, you can skip this step if you want to get right to using the `filtered_camera` module.
+This step is optional, you can skip this step if you want to get right to using the `filtered-camera` module.
 
 ### Add a transform camera
 
@@ -229,7 +231,7 @@ To add a transform camera to your machine:
    A value of `0.5` is a relatively loose match, representing 50% confidence.
    To require that your machine match with more confidence, you can raise this value to something like `0.8`, representing 80% confidence.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-transform-camera.png" alt="The transform camera component configuration pane with required attributes configured" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/configure-transform-camera.png" alt="The transform camera component configuration pane with required attributes configured" resize="800x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
@@ -244,15 +246,15 @@ Now that you've configured a transform camera, you can see your ML model in acti
    Try placing an object you trained your ML model on in front of the camera.
    The transform camera should draw a bounding box around that object in the live camera feed, and indicate a confidence threshold for the match.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="The control tab in the Viam app showing both a live camera feed and the live transform camera overlay, with the latter correctly detecting a viam figure with a confidence score of 0.97" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="The control tab in the Viam app showing both a live camera feed and the live transform camera overlay, with the latter correctly detecting a viam figure with a confidence score of 0.97" resize="800x" >}}
 
 1. When satisfied that your ML model is working well, you can disable both cameras.
    Alternatively, if the transform camera is not matching reliably, consider adding and labelling more images in your dataset, or lowering the `confidence_threshold` of the transform camera.
    Ideally, you want your ML model to be able to identify objects with a high level of confidence, which usually is dependent on a robust source dataset.
 
-## Add and configure the `filtered_camera` module
+## Add and configure the `filtered-camera` module
 
-With all the prerequisites in place, you are ready to add the `filtered_camera` module to your machine.
+With all the prerequisites in place, you are ready to add the `filtered-camera` module to your machine.
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create component** button at the bottom of the page, select **Camera**, then select the `filtered-camera` model.
@@ -287,7 +289,7 @@ With all the prerequisites in place, you are ready to add the `filtered_camera` 
    }
    ```
 
-1. Next, in the **Data capture configuration** section on the `filtered_camera` module configuration pane, click the **Add method** button to enable data capture for this camera.
+1. Next, in the **Data capture configuration** section on the `filtered-camera` module configuration pane, click the **Add method** button to enable data capture for this camera.
 
    - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.
      This will capture an image from the camera roughly once every 3 seconds.
@@ -298,7 +300,7 @@ With all the prerequisites in place, you are ready to add the `filtered_camera` 
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-filtered-camera.png" alt="The filtered-camera modular component configuration pane with required attributes configured and data capture enabled" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/configure-filtered-camera.png" alt="The filtered-camera modular component configuration pane with required attributes configured and data capture enabled" resize="1500x" >}}
 
 ### Test the `filtered-camera` module
 
@@ -307,7 +309,7 @@ With everything configured, the `filtered-camera` module is now ready to selecti
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Find your camera component (`my-webcam`) and ensure that **Data capture** is _disabled_.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/data-capture-off.png" alt="The camera component configuration pane showing data capture disabled" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/data-capture-off.png" alt="The camera component configuration pane showing data capture disabled" resize="1600x" >}}
 
    We want to use the `filtered-camera` module to capture data instead, so that it can selectively capture image based on your ML model.
 
