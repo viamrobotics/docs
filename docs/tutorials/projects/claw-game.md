@@ -15,7 +15,6 @@ level: "Advanced"
 date: "2023-05-29"
 # updated: ""
 cost: 8910
-weight: 8
 ---
 
 {{<gif webm_src="/tutorials/claw-game/claw-game.webm" mp4_src="/tutorials/claw-game/claw-game.mp4" alt="claw game in action at a party" class="alignright" max-width="250px">}}
