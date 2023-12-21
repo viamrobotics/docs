@@ -157,7 +157,10 @@ Once you have created a dataset containing the images you want to use, draw boun
 ### Train a new ML model
 
 Once your dataset is ready, train a new ML model on that dataset.
-If you already have a trained model that you want to use, skip to the next section.
+
+{{% alert title="Info" color="info" %}}
+Alternatively, if you want to use a pre-trained model that is capable of identifying many basic objects, or if you already have a trained model that you want to use, skip to the next section.
+{{% /alert %}}
 
 1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
 1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
@@ -175,9 +178,13 @@ If you already have a trained model that you want to use, skip to the next secti
 
 For more information, see [Train a model](/ml/train-model/).
 
-#### Upload an existing ML model
+### Upload an existing ML model
 
-If you already have a model you want to use, you can upload an existing model instead.
+If you want to use a pre-trained model instead of training your own, or already have a model you want to use, you can upload an existing model instead.
+
+{{% alert title="Info" color="info" %}}
+If you trained your own model in the previous section, skip to the next section.
+{{% /alert %}}
 
 For example, you could use the object detection model we trained for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear. You can download that model here:
 
