@@ -2,7 +2,7 @@
 title: "Create a Facial Verification System"
 linkTitle: "Verification System"
 type: "docs"
-description: "Configure a verification system module to implement a facial verification security system on your smart machine."
+description: "Create an alarm system that can detect people and can recognize faces, allowing it to smartly trigger alarms."
 image: "/tutorials/verification-system/disarmed.png"
 imageAlt: "Bijan disarming the facial verification system."
 images: ["/tutorials/verification-system/disarmed.png"]
@@ -17,17 +17,20 @@ no_list: true
 # SMEs: Bijan Haney
 ---
 
-Follow this tutorial to create your own machine learning (ML) enabled security system, or, "verification system."
-The verification system configuration you will use in this project combines two detectors: The first detector detects whether there are people present, thanks to a person-detection ML model you train yourself.
-You give the second detector photos of known faces and it tells you if a person is recognized.
+Create a machine learning (ML) enabled security system, or "verification system", that can detect people and verify that the people are meant to be there with facial recognition.
+The verification system you will create in this project combines two detectors: 
 
-The verification system has three possible layers of detectors.
-You layer them together so that objects detected in the images your verification's system camera captures point to countdown, alarmed, or disarmed states.
-With our recommended combination of detectors, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
+1. The first detector detects whether there are people present, thanks to a person-detection ML model you train yourself.
+2. The second detector verifies that the people present are known.
+   You will use an existing model and provide it with a set of photos of known faces.
+
+Layering these two detectors, your verification system will trigger a countdown when it detects people and disarm the alarm if it detects your face with the facial detector within the countdown period.
 
 For example:
 
 {{<video webm_src="/tutorials/verification-system/demo.webm" mp4_src="/tutorials/verification-system/demo.mp4" alt="Bijan interacting with the verification system" poster="/tutorials/verification-system/trigger_1.png">}}
+
+This tutorial uses two layers of detectors to detect people and then faces but if your use case is different, you can adapt the detectors or the layering of the detectors.
 
 ## Requirements
 
@@ -91,7 +94,7 @@ For example, we configured a person detector as follows:
 ```
 
 This will serve as the first and second layers of your verification system.
-Now, move on to configuring the "finer" layer of the detectors-- the facial recognition detector.
+Now, move on to configuring the "finer" layer of the detectors: the facial recognition detector.
 
 ## Configure a facial detector
 
