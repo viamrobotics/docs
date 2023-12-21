@@ -233,6 +233,7 @@ The module sets up a state machine with 5 states:
    The module will emit the `DISARMED` classification for the amount of time specified in `disarmed_time_s`.
    After that amount of time elapses, the module will return to state `TRIGGER_1`.
 
+Note that `ALARM` is by default silent and only a label overlay, but you can [poll the classifications](/ml/vision/#getclassificationsfromcamera) to set up a physical alarm trigger.
 If you do not want the `ALARM` capabilities, and would like to just use it as a notification system when a detector gets triggered, you can set `disable_alarm: true` in the config, which will prevent `TRIGGER_2` from entering into the `COUNTDOWN` state.
 This means the system will only cycle between the states of `TRIGGER_1` and `TRIGGER_2`.
 
@@ -240,5 +241,9 @@ You can use entering into the state `TRIGGER_2` as a way to send notifications.
 
 ## Next Steps
 
+Now that you've got the verification aspect of your system working, you can use this as a launch point for creating your own DIY home security system.
+For example:
+
+- Try making it so your machine triggers a physical alarm when the `ALARM` classification is emitted. Write a program with a [Viam SDK](/sdks/) and use [`GetClassificationsFromCamera()`](/ml/vision/#getclassificationsfromcamera) to poll for the classifications made.
 - Try changing the type of [detectors](/ml/vision/detection/), using different detectors for the `TRIGGER_1` and `TRIGGER_2` states.
 - Configure the [filtered camera module](https://app.viam.com/module/erh/filtered-camera) and use it as the source camera in your verification system to save images to the Viam cloud when the system enters into specific states.
