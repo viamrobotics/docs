@@ -1,7 +1,6 @@
 ---
 title: "Integrate Viam with ChatGPT to create a companion robot"
 linkTitle: "AI Companion Robot"
-weight: 5
 type: "docs"
 tags:
   [
