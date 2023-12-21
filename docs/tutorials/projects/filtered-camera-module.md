@@ -145,6 +145,7 @@ Once you have created a dataset containing the images you want to use, draw boun
 1. In the [Viam app](https://app.viam.com), navigate to the [**Datasets**](https://app.viam.com/data/datasets) subtab and select the dataset you created.
 1. Select an image you want to use in your ML model.
 1. In the **Actions** pane on the right-hand side, select the **Bounding box** mode, enter a new label that describes the object in the image you want to detect, then draw a bounding box over the image on the right-hand side.
+   The example below shows adding the `viam-figure` label to an image, with a rectangular bounding box drawn around it.
 
    {{< imgproc src="/tutorials/filtered-camera-module/draw-bounding-box.png" alt="A selected image from the data tab, where the 'viam-figure' label has been added and a bounding box has been drawn around just the matching portion of the image " resize="400x" >}}
 
@@ -287,6 +288,12 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
      "camera": "my-webcam"
    }
    ```
+
+   This example configures the `filter-camera` module to require a 60% confidence (`0.6`) threshold match for the label `viam-figure`, meaning that it must be at least 60% confident based on your trained ML model that the image contains the labelled object in order to capture it.
+   Images that do not meet this threshold do not trigger a successful match.
+
+   Additionally, the example configures a `window_seconds` value of `10` seconds, which controls the duration of a buffer of images captured _previous_ to a successful match.
+   With this configuration, images captured up to `10` seconds before the successful match are included in the capture and sync process.
 
    If you used a different label when drawing your bounding boxes and training your ML model, supply it here instead of `viam-figure`.
    If you used multiple labels, specify them on multiple lines like so:

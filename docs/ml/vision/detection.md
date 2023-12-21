@@ -367,7 +367,7 @@ from PIL import Image
 
 robot = await connect()
 # Grab Viam's vision service for the detector
-my_detector = VisionClient.from_robot(robot, "my_detector")
+my_detector = VisionClient.from_robot(robot, "my_detector")x
 
 # Load an image
 img = Image.open('test-image.png')
