@@ -241,7 +241,7 @@ You can use entering into the state `TRIGGER_2` as a way to send notifications.
 
 ## Next Steps
 
-Now that you've got the verification aspect of your system working, you can use this as a launch point for creating your own DIY home security system.
+Now that you've got the verification aspect of your system working, you can use this as a launch point for customizing your own DIY home security system.
 For example:
 
 - Try making it so your machine triggers a physical alarm when the `ALARM` classification is emitted. Write a program with a [Viam SDK](/sdks/) and use [`GetClassificationsFromCamera()`](/ml/vision/#getclassificationsfromcamera) to poll for the classifications made.
