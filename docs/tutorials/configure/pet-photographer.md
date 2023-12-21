@@ -18,7 +18,6 @@ date: "2023-09-17"
 # updated: ""
 cost: "0"
 no_list: true
-weight: 3
 ---
 
 If your smart machine [captures](/data/capture/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
