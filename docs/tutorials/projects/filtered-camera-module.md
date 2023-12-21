@@ -353,6 +353,7 @@ You could use this in many ways, such as:
 You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/ml/upload-model/#upload-a-new-version-of-a-model) using the ML model service.
 
 This tutorial demonstrated using the `filtered-camera` module with [object detection](/ml/vision/detection/), but you can also use it to perform [object classification](/ml/vision/classification/).
+See the [`filtered-camera` module repository](https://github.com/erh/filtered_camera) for the attributes to use to configure object classification.
 
 ## Troubleshooting
 
