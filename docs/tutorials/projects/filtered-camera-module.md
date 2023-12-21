@@ -74,7 +74,7 @@ Next, add the data management service to your machine to be able to capture and 
    By default, the data management service captures data to the <file>~/.viam/capture</file> directory, and syncs captured data files to the Viam app every 6 seconds (`0.1` minutes in the configuration).
    Leave the default settings as they are, and click **Save Config** at the bottom of the screen to save your changes.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-data-management.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/configure-data-management.png" alt="The data management service configuration pane with default settings shown for both capturing and syncing" resize="700x" >}}
 
 For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
 
@@ -92,7 +92,7 @@ Once you have added the data management service, enable image data capture for y
    - Set the **Mime type** to `image/jpeg`.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
-     {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="1400x" >}}
+     {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="800x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 1. In the [Viam app](https://app.viam.com), navigate to the [**Data**](/data/view/) tab, where you should see images captured by your camera component appearing steadily.
@@ -365,7 +365,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
 
 1. Click **Save Config** at the bottom of the window to save your changes.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/configure-filtered-camera.png" alt="The filtered-camera modular component configuration pane with required attributes configured and data capture enabled" resize="1500x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/configure-filtered-camera.png" alt="The filtered-camera modular component configuration pane with required attributes configured and data capture enabled" resize="800x" >}}
 
 ### Test the `filtered-camera` module
 
@@ -374,7 +374,7 @@ With everything configured, the `filtered-camera` module is now ready to selecti
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Find your camera component (`my-webcam`) and ensure that **Data capture** is _disabled_.
 
-   {{< imgproc src="/tutorials/filtered-camera-module/data-capture-off.png" alt="The camera component configuration pane showing data capture disabled" resize="1600x" >}}
+   {{< imgproc src="/tutorials/filtered-camera-module/data-capture-off.png" alt="The camera component configuration pane showing data capture disabled" resize="800x" >}}
 
    We want to use the `filtered-camera` module to capture data instead, so that it can selectively capture image based on your ML model.
 
