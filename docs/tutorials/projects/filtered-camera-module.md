@@ -27,8 +27,11 @@ If you wanted to see if any fancy sports cars might have driven by, you might ha
 Instead, you can use the `filtered-camera` module to be able to selectively capture and sync only those images that meet the specific criteria you've outlined in a machine learning (ML) model.
 For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
 
-This tutorial will demonstrate using the `filtered-camera` module to selectively capture images only when a specific object is detected within the camera feed: the Viam wooden figure.
+In this tutorial, you will learn how to use the `filtered-camera` module to selectively capture images only when a specific object is detected within the camera feed: the Viam wooden figure.
 When this figure is not present in the camera frame, the `filtered-camera` module will stop capturing images until it detects the figure again.
+
+You can train your own model to be able to identify any object you wish, or you can use a provided pre-trained model that is capable of identifying many common objects.
+This tutorial will provide instructions on both approaches.
 
 The `filtered-camera` module is available from the [Viam registry](https://app.viam.com/module/erh/filtered-camera), and you can [view the code on GitHub](https://github.com/erh/filtered_camera).
 
@@ -98,16 +101,20 @@ Once you have added the data management service, enable image data capture for y
 
 For more information see [Configure data capture](/data/capture/#configure-data-capture-for-individual-components) and [Configure cloud sync](/data/cloud-sync/).
 
-## Label images and train a machine learning (ML) model
+## The machine learning (ML) model for filtering
 
 Now that your camera component is steadily capturing images to the Viam app, you can train a machine learning (ML) model on those images to be able to detect certain objects in the camera feed.
+
+{{% alert title="Info" color="info" %}}
+Alternatively, if you want to use a provided pre-trained model that is capable of identifying many basic objects, or if you already have a trained model that you want to use, skip to [Upload an existing ML model](#upload-an-existing-ml-model).
+{{% /alert %}}
 
 The `filtered-camera` module supports two modes of filtering:
 
 - [Detection](/ml/vision/detection/), where you train an ML model by drawing bounding boxes around distinct objects within captured images, to enable your machine to be able to detect those objects on its own.
 - [Classification](/ml/vision/classification/), where you train an ML model by tagging images with a class label that best describes it, to enable your machine to be able to classify similar images on its own.
 
-This tutorial demonstrates configuring a _detection_ model.
+In this tutorial, you will learn to configure a _detection_ model.
 
 ### Capture images and create a dataset
 
@@ -158,10 +165,6 @@ Once you have created a dataset containing the images you want to use, draw boun
 
 Once your dataset is ready, train a new ML model on that dataset.
 
-{{% alert title="Info" color="info" %}}
-Alternatively, if you want to use a pre-trained model that is capable of identifying many basic objects, or if you already have a trained model that you want to use, skip to the next section.
-{{% /alert %}}
-
 1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
 1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
 
@@ -183,10 +186,10 @@ For more information, see [Train a model](/ml/train-model/).
 If you want to use a pre-trained model instead of training your own, or already have a model you want to use, you can upload an existing model instead.
 
 {{% alert title="Info" color="info" %}}
-If you trained your own model in the previous section, skip to the next section.
+If you trained your own model in the previous sections, skip to [Configure the ML model and vision services](#configure-the-ml-model-and-vision-services).
 {{% /alert %}}
 
-For example, you could use the object detection model we trained for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear. You can download that model here:
+For example, you could use the object detection model we used for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear. You can download that model here:
 
 - <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite)</file>: The TFLite model file containing the trained model.
 - <file>[labels.txt](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt)</file>: The corresponding labels file containing the labels to assign to matching detected objects.
@@ -391,7 +394,7 @@ You can also refine your existing ML model by adding and labelling new images th
 
 If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 
-This tutorial demonstrated using the `filtered-camera` module with [object detection](/ml/vision/detection/), but you can also use it to perform [object classification](/ml/vision/classification/).
+In this tutorial, you learned how to use the `filtered-camera` module with [object detection](/ml/vision/detection/), but you can also use it to perform [object classification](/ml/vision/classification/).
 See the [`filtered-camera` module repository](https://github.com/erh/filtered_camera) for the attributes to use to configure object classification.
 
 ## Troubleshooting
