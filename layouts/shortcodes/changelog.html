@@ -1,8 +1,9 @@
 {{ $color := .Get "color" }}
 {{ $title := .Get "title" }}
+<div class="filterable changelog-{{ $color }}">
 <div class="changelog changelog-outer">
   <div>
-    <span class="changelog-{{ $color }}">{{ $color }}</span>
+    <span>{{ $color }}</span>
   </div>
   <div>
     <h3 id="{{ anchorize $title }}">{{ $title }}</h3>
@@ -13,3 +14,4 @@
 {{ else }}
   {{ $.Inner | htmlUnescape | safeHTML }}
 {{ end }}
+</div>

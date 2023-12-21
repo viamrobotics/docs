@@ -1560,18 +1560,64 @@ input[type=search]::-webkit-search-cancel-button {
   vertical-align: top;
 }
 
-.changelog-added {
+.changelog-added span {
   background-color: #00ef83;
 }
 
-.changelog-improved {
+.changelog-improved span {
   background-color: #00e8e8;
 }
 
-.changelog-changed {
+.changelog-changed span {
   background-color: #ffd400;
 }
 
-.changelog-removed {
+.changelog-removed span {
   background-color: #ff0047;
 }
+
+// Changelog filtering
+
+#changelog-menu {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+#changelog-filters button {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 1rem;
+  margin: 0.2rem;
+  border: 1px solid black;
+}
+
+#added-button.active, #added-button:hover {
+  background-color: #93f6c9;
+}
+
+#improved-button.active, #improved-button:hover {
+  background-color: #92f3f3;
+}
+
+#changed-button.active, #changed-button:hover {
+  background-color: #f4eab7;
+}
+
+#removed-button.active, #removed-button:hover {
+  background-color: #f68dab;
+}
+
+#all-button.active, #all-button:hover {
+  background-color: #d1b4cb;
+}
+
+.filterable {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+// END changelog filtering

@@ -7,7 +7,7 @@ type: "docs"
 description: "A log of added features, improvements, and changes over time."
 aliases:
   - "/appendix/release-notes/"
-# SME:
+layout: "changelog"
 ---
 
 ## November 2023
