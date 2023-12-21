@@ -20,12 +20,12 @@ cost: "0"
 With the data management service, a Viam machine can capture data from a variety of components and sync that data to the Viam app.
 However, if your machine captures a large volume of data, especially image data such as pictures, you may wish to control which specific images are captured or uploaded.
 
-For example, if you aim your machine's camera at a busy city street, your machine will happily capture as many pictures as its configured capture rate dictates.
-Even if you added a movement sensor and programmed your machine to only capture images when the sensor detects movement, you will still end up with many pictures of moving vehicles on your bustling city street.
+For example, image that you have positioned your machine's camera to view a busy city street.
+Your machine will happily capture as many pictures as its configured capture rate dictates, resulting in potentially a large number of images for you to search through manually if you wanted to determine if there were any images of sports cars, for example.
 
 Instead, you can use the `filtered-camera` module to be able to selectively capture and sync only those images that meet the specific criteria you've outlined in a machine learning (ML) model.
 
-For example, you could use the `filtered-camera` module together with your camera observing the busy city street, and configure it to only capture images of bikers, of trucks with trailers, or of convertibles.
+With the `filtered-camera` module, you could train an ML model focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
 
 This tutorial will demonstrate using the `filtered-camera` module to selectively capture images only when a specific object is detected within the camera feed: the Viam wooden figure.
 When this figure is not present in the camera frame, the `filtered-camera` module will stop capturing images until it detects the figure again.
@@ -62,7 +62,7 @@ Add a [camera](/components/camera/) component to your machine:
 
 ### Add the data management service
 
-Next, add the data management service to your machine to be able capture and sync data:
+Next, add the data management service to your machine to be able to capture and sync data:
 
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
@@ -86,13 +86,13 @@ Once you have added the data management service, enable image data capture for y
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-   - Set the **Mime type** to `image/jpeg` to configure image data capture.
+   - Set the **Mime type** to `image/jpeg`.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
      {{< imgproc src="/tutorials/filtered-camera-module/configure-webcam-data-capture.png" alt="The camera component configuration pane in the Viam app with data capture configured and enabled" resize="1400x" >}}
 
 1. Click **Save Config** at the bottom of the window to save your changes.
-1. In the [Viam app](https://app.viam.com), navigate to the [**Data**](/data/view/) tab, where you should see images captured by your camera component appear roughly every 6 seconds.
+1. In the [Viam app](https://app.viam.com), navigate to the [**Data**](/data/view/) tab, where you should see images captured by your camera component appearing steadily.
    If you see images appear here, proceed to the next step.
    If you do not see images appear after a short time, see the [troubleshooting](#troubleshooting) section for further guidance.
 
@@ -154,9 +154,10 @@ Once you have created a dataset containing the images you want to use, draw boun
    Ensure that at least 80% of the images in your dataset are labelled, with the remaining images not containing objects to identify.
    If you want your machine to be able to identify multiple objects, you can add multiple labels per image as well.
 
-### Train an ML model
+### Train a new ML model
 
 Once your dataset is ready, train a new ML model on that dataset.
+If you already have a trained model that you want to use, skip to the next section.
 
 1. Click the **Train model** button in the upper-left corner of the [**Datasets**](https://app.viam.com/data/datasets) subtab view for your dataset.
 1. Select the **Object detection** model type, select the label or labels you added in the previous step, enter a name for your new ML model, and click **Train model**.
@@ -172,16 +173,42 @@ Once your dataset is ready, train a new ML model on that dataset.
 
    {{< imgproc src="/tutorials/filtered-camera-module/train-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has completed training and is ready for use" resize="1200x" >}}
 
-If you already have a model you want to use, you can [upload an existing model](/ml/upload-model/) instead and skip this step.
-
 For more information, see [Train a model](/ml/train-model/).
+
+#### Upload an existing ML model
+
+If you already have a model you want to use, you can upload an existing model instead.
+
+For example, you could use the object detection model we trained for the [Turn on Lights with Object Detection tutorial](/tutorials/projects/light-up/), which was trained on many common objects, including animals, vehicles, household items, and sports gear. You can download that model here:
+
+- <file>[effdet0.tflite](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/effdet0.tflite)</file>: The TFLite model file containing the trained model.
+- <file>[labels.txt](https://github.com/viam-labs/devrel-demos/blob/main/Light%20up%20bot/labels.txt)</file>: The corresponding labels file containing the labels to assign to matching detected objects.
+  You can look through this file to see the full list of trained objects in the model.
+
+To use an existing ML model:
+
+1. Navigate to the [**Models** page](https://app.viam.com/data/models) in the Viam app and click the **Upload model** button.
+1. Select **New model** and configure visibility for your model: public models are available to all Viam users while private models are only available to users in your [organization](/fleet/organizations/).
+1. If you haven't already, you will be prompted to select an [organization namespace](/fleet/organizations/#create-a-namespace-for-your-organization).
+1. Then, in the resulting **Upload model** screen, enter a name for your model, select **Object detection**, and upload both the <file>effdet0.tflite</file> and <file>labels.txt</file> files.
+   Add a brief description of your model, then click **Upload model**.
+
+   {{< imgproc src="/tutorials/filtered-camera-module/upload-existing-model.png" alt="The models subtab under the data tab in the Viam app showing an existing model upload for an object detection model, including the effdet0.tflite model file and the labels.txt labels file" resize="800x" >}}
+
+Your uploaded model is immediately available for use after upload.
+
+{{< imgproc src="/tutorials/filtered-camera-module/upload-model-complete.png" alt="The models subtab under the data tab in the Viam app, showing a model that has been uploaded and is ready for use" resize="1200x" >}}
+
+If you are designing your own model, see [`tflite_cpu` limitations](/ml/deploy/#tflite_cpu-limitations) for guidance on structuring your own model.
+
+For more information, see [Upload an existing model](/ml/upload-model/).
 
 ## Configure the ML model and vision services
 
-The `filtered-camera` module filters image data based on your trained ML model, and so requires that your machine has the ML model service and vision service configured.
+The `filtered-camera` module filters image data based on your trained ML model, and so requires that your machine has an ML model service and vision service configured.
 
-- The [ML model service](/ml/) enables your machine to deploy a machine learning (ML) model to be used by other services.
-- The [vision service](/ml/vision/) enables your machine's camera to detect objects defined in the ML model on its own.
+- The [ML model service](/ml/deploy/) enables your machine to deploy a machine learning (ML) model to be used by other services.
+- The [vision service](/ml/vision/) uses the deployed model together with your machine's camera to detect objects defined in the ML model on its own.
 
 ### Add the ML model service
 
@@ -206,6 +233,7 @@ Add the vision service to your machine to be able to use the deployed ML model w
 1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
 1. Give the service a name, like `my-vision-service`, then click **Create**.
 1. On the panel that appears, select your trained ML model from the **ML Model** dropdown.
+   If you uploaded a pre-trained model or made your own model separately, provide the name for that model here.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="500x" >}}
@@ -214,9 +242,9 @@ For more information, see [Configure an `mlmodel` detector](/ml/vision/detection
 
 ## Test your ML model with a transform camera
 
-Before adding the `filtered-camera` module, you can create a [transform camera](/components/camera/transform/) to test that the ML model is working as expected with your camera.
+Before filtering your data, you can create a [transform camera](/components/camera/transform/) to test that the ML model is working as expected with your camera.
 A transform camera will overlay a bounding box on your camera's live feed when it detects objects that match its ML model.
-This step is optional, you can skip this step if you want to get right to using the `filtered-camera` module.
+This step is optional, you can skip this step if you want to get right to filtering your data with the `filtered-camera` module.
 
 ### Add a transform camera
 
@@ -227,7 +255,7 @@ To add a transform camera to your machine:
 1. Give the transform camera a name, like `my-transform-camera`, then click **Create**.
 1. On the panel that appears, enter the following configuration into the **Attributes** field:
 
-   ```json
+   ```json {class="line-numbers linkable-line-numbers"}
    {
      "pipeline": [
        {
@@ -259,7 +287,7 @@ Now that you've configured a transform camera, you can see your ML model in acti
    You can find these toggles under their respective component: click a control pane to expand it if it is collapsed.
    The screenshot below shows a machine with a configured `base` component, so the two toggles appear under the `base` control pane, but you can always find them under their own control pane as well.
 1. The camera component displays the raw camera feed, but the transform camera will additionally overlay a bounding box on the same feed if a matching object is detected.
-   Try placing an object you trained your ML model on in front of the camera.
+   Try placing an object your ML model can recognize in front of the camera.
    The transform camera should draw a bounding box around that object in the live camera feed, and indicate a confidence threshold for the match.
 
    {{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="The control tab in the Viam app showing both a live camera feed and the live transform camera overlay, with the latter correctly detecting a viam figure with a confidence score of 0.97" resize="800x" >}}
@@ -278,7 +306,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
 1. Give the modular camera a name, like `my-filtered-camera`, then click **Create**.
 1. On the panel that appears, enter the following configuration into the **Attributes** field:
 
-   ```json
+   ```json {class="line-numbers linkable-line-numbers"}
    {
      "vision": "my-vision-service",
      "window_seconds": 10,
@@ -298,7 +326,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
    If you used a different label when drawing your bounding boxes and training your ML model, supply it here instead of `viam-figure`.
    If you used multiple labels, specify them on multiple lines like so:
 
-   ```json
+   ```json {class="line-numbers linkable-line-numbers"}
    {
      "vision": "my-vision-service",
      "window_seconds": 10,
@@ -317,7 +345,7 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
      This will capture an image from the camera roughly once every 3 seconds.
      You can adjust the capture frequency if you want the camera to capture more or less image data, but avoid configuring data capture to higher rates than your hardware can handle, as this could lead to performance degradation.
 
-   - Set the **Mime type** to `image/jpeg` to configure image data capture.
+   - Set the **Mime type** to `image/jpeg`.
    - Ensure that the toggle on the right-hand side is set to **On**.
 
 1. Click **Save Config** at the bottom of the window to save your changes.
@@ -343,14 +371,18 @@ Congratulations, you now have a smart filtered camera on your machine, and can f
 
 ## Next steps
 
-You can use the `filtered-camera` module to control the volume of data your machine writes and syncs, focusing only only image data that meets your ML model-specified match criteria.
-You could use this in many ways, such as:
+In this tutorial, you learned how to use the `filtered-camera` module to control the volume of data your machine writes and syncs, by using an ML model to detect objects in your camera feed and selectively capture and upload only those images that are matched by your model.
+
+You could expand on this in many ways!
+For example, you can:
 
 - Train an ML model on familiar faces, so that your machine can capture and upload images of any new faces it encounters, but ignore familiar faces entirely.
 - Train an ML model on various common forms of delivery packaging, so that your machine can send you an image of a new delivery, but not clutter your inbox with images of other things, such as cars driving by.
 - Train an ML model on a variety of domestic farm animals, so that your machine can alert you if a different kind of animal is detected in the vicinity, without capturing images of every animal.
 
 You can also refine your existing ML model by adding and labelling new images that help the ML model better identify matching objects, and then [upload the new version of your model](/ml/upload-model/#upload-a-new-version-of-a-model) using the ML model service.
+
+If you trained a new model as part of this tutorial, try using the provided [pre-trained model files](#upload-an-existing-ml-model) instead, and then aiming your machine's camera at objects listed in the <file>labels.txt</file> file to see how accurately it is able to detect those objects.
 
 This tutorial demonstrated using the `filtered-camera` module with [object detection](/ml/vision/detection/), but you can also use it to perform [object classification](/ml/vision/classification/).
 See the [`filtered-camera` module repository](https://github.com/erh/filtered_camera) for the attributes to use to configure object classification.
