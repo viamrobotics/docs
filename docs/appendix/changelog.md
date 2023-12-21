@@ -10,7 +10,6 @@ aliases:
 # SME:
 ---
 
-
 ## December 2023
 
 {{% changelog color="changed" title="Return type of GetImage()" %}}
