@@ -147,7 +147,7 @@ A [dataset](/data/dataset/) allows you to conveniently view, work with, and trai
 
 ### Draw bounding boxes around matching objects
 
-Once you have created a dataset containing the images you want to use, draw bounding boxes around the objects in those images you want your machine to be able to identify.
+Once you have created a dataset containing the images you want to use, label and draw bounding boxes around the objects in those images you want your machine to be able to identify.
 
 1. In the [Viam app](https://app.viam.com), navigate to the [**Datasets**](https://app.viam.com/data/datasets) subtab and select the dataset you created.
 1. Select an image you want to use in your ML model.
@@ -215,7 +215,7 @@ For more information, see [Upload an existing model](/ml/upload-model/).
 
 ## Configure the ML model and vision services
 
-The `filtered-camera` module filters image data based on your trained ML model, and so requires that your machine has an ML model service and vision service configured.
+The `filtered-camera` module filters image data based on your ML model, and so requires that your machine has an ML model service and vision service configured.
 
 - The [ML model service](/ml/deploy/) enables your machine to deploy a machine learning (ML) model to be used by other services.
 - The [vision service](/ml/vision/) uses the deployed model together with your machine's camera to detect objects defined in the ML model on its own.
@@ -227,8 +227,9 @@ Add the ML model service to your machine to be able to deploy and update ML mode
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **ML model**, then select the built-in `TFLite CPU` model.
 1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
-1. On the panel that appears, select the **Deploy model on robot** toggle, then select your trained model from the **Models** dropdown.
-   If you don't see your model name appear here, ensure that your model has finished training under the [**Models** subtab](https://app.viam.com/data/models) of the **Data** tab in the Viam app.
+1. On the panel that appears, select the **Deploy model on robot** toggle, then select your model from the **Models** dropdown.
+   If you don't see your model name appear here, ensure that your model appears under the [**Models** subtab](https://app.viam.com/data/models) of the **Data** tab in the Viam app.
+   If you trained your own model, ensure that the model has finished training and appears under the **Models** section of that page, and not the **Training** section.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-mlmodel-service.png" alt="The ML model service configuration pane with deploy model on robot selected, and the my-viam-figure-model added" resize="600x" >}}
@@ -242,8 +243,7 @@ Add the vision service to your machine to be able to use the deployed ML model w
 1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, select **Vision**, then select the built-in `ML model` model.
 1. Give the service a name, like `my-vision-service`, then click **Create**.
-1. On the panel that appears, select your trained ML model from the **ML Model** dropdown.
-   If you uploaded a pre-trained model or made your own model separately, provide the name for that model here.
+1. On the panel that appears, select your ML model from the **ML Model** dropdown.
 1. Click **Save Config** at the bottom of the window to save your changes.
 
    {{< imgproc src="/tutorials/filtered-camera-module/configure-vision-service.png" alt="The vision service configuration pane with my-mlmodel-service selected as the ML model" resize="500x" >}}
@@ -303,7 +303,8 @@ Now that you've configured a transform camera, you can see your ML model in acti
    {{< imgproc src="/tutorials/filtered-camera-module/transform-camera-overlay.png" alt="The control tab in the Viam app showing both a live camera feed and the live transform camera overlay, with the latter correctly detecting a viam figure with a confidence score of 0.97" resize="800x" >}}
 
 1. When satisfied that your ML model is working well, you can disable both cameras.
-   Alternatively, if the transform camera is not matching reliably, consider adding and labelling more images in your dataset, or lowering the `confidence_threshold` of the transform camera.
+   Alternatively, if the transform camera is not matching reliably, you will need to adjust your model.
+   If you trained your model, consider adding and labelling more images in your dataset, or lowering the `confidence_threshold` of the transform camera.
    Ideally, you want your ML model to be able to identify objects with a high level of confidence, which usually is dependent on a robust source dataset.
 
 ## Add and configure the `filtered-camera` module
@@ -327,14 +328,18 @@ With all the prerequisites in place, you are ready to add the `filtered-camera` 
    }
    ```
 
-   This example configures the `filter-camera` module to require a 60% confidence (`0.6`) threshold match for the label `viam-figure`, meaning that it must be at least 60% confident based on your trained ML model that the image contains the labelled object in order to capture it.
+   This example configures the `filter-camera` module to require a 60% confidence (`0.6`) threshold match for the label `viam-figure`, meaning that it must be at least 60% confident based on your ML model that the image contains the labelled object in order to capture it.
    Images that do not meet this threshold do not trigger a successful match.
 
    Additionally, the example configures a `window_seconds` value of `10` seconds, which controls the duration of a buffer of images captured _previous_ to a successful match.
    With this configuration, images captured up to `10` seconds before the successful match are included in the capture and sync process.
 
-   If you used a different label when drawing your bounding boxes and training your ML model, supply it here instead of `viam-figure`.
-   If you used multiple labels, specify them on multiple lines like so:
+   If your model uses a different label, provide it here instead of `viam-figure`:
+
+   - If you [trained your own model](#draw-bounding-boxes-around-matching-objects), you assigned one or more labels when you drew bounding boxes around matching objects in your uploaded images.
+   - If you [uploaded our provided pre-trained model or are using your own](#upload-an-existing-ml-model), the labels can be found in the <file>labels.txt</file> file that you uploaded alongside your `.tflite` model file.
+
+   If you used multiple labels in your ML model, you can specify them on multiple lines like so:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
