@@ -20,12 +20,12 @@ cost: "0"
 With the data management service, a Viam machine can capture data from a variety of components and sync that data to the Viam app.
 However, if your machine captures a large volume of data, especially image data such as pictures, you may wish to control which specific images are captured or uploaded.
 
-For example, image that you have positioned your machine's camera to view a busy city street.
-Your machine will happily capture as many pictures as its configured capture rate dictates, resulting in potentially a large number of images for you to search through manually if you wanted to determine if there were any images of sports cars, for example.
+For example, imagine that you have positioned your machine's camera to view a busy city street.
+Your machine will happily capture as many pictures as its configured capture rate dictates, resulting in potentially a large number of images captured over the course of a day.
+If you wanted to see if any fancy sports cars might have driven by, you might have to search through many images to find out!
 
 Instead, you can use the `filtered-camera` module to be able to selectively capture and sync only those images that meet the specific criteria you've outlined in a machine learning (ML) model.
-
-With the `filtered-camera` module, you could train an ML model focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
+For example, you could train an ML model that is focused on sports cars, and only capture images from the camera feed when a sports car is detected in the frame.
 
 This tutorial will demonstrate using the `filtered-camera` module to selectively capture images only when a specific object is detected within the camera feed: the Viam wooden figure.
 When this figure is not present in the camera frame, the `filtered-camera` module will stop capturing images until it detects the figure again.
