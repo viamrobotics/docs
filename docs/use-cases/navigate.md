@@ -24,7 +24,7 @@ Once you have configured your machine, you can remotely control your machine on 
   <tr>
     <th>{{<imgproc src="/services/icons/base-rc.svg" class="fill alignleft" resize="200x" style="max-width: 200px" declaredimensions=true alt="Base remote control service icon.">}}
       <b>2. Program to move</b>
-      <p>Remotely control your rover base programmatically with a <a href="/sdks/">Viam SDK.</a> Make calls to the <a href="/components/base/#api">base API</a>.
+      <p>Remotely control your rover base programmatically with a <a href="/sdks/">Viam SDK</a> by making calls to the <a href="/components/base/#api">base API</a>.
       Or, <a href="/mobility/base-rc/">configure the base remote control service</a> to teleoperate your base with an <a href="/components/input-controller/">input controller.</a></p>
     </th>
   </tr>
@@ -40,7 +40,7 @@ Once you have configured your machine, you can remotely control your machine on 
     <td>
     {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
       <b>4. Navigate autonomously</b>
-      <p> Define a path for your rover to navigate. Manage motion's start and stop, see where your machine is navigating, and configure waypoints and obstacles on the <b>Control</b> tab or with a <a href="/sdks/">Viam SDK</a>.</p>
+      <p>Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the <b>Control</b> tab or the <a href="/mobility/navigation/#api/">navigation API</a>.</p>
     </td>
   </tr>
 </table>
