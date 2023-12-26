@@ -69,7 +69,7 @@ Navigate to the **Config** tab of your machine's page on the [Viam app](https://
 Configure the camera you want to use for your security system.
 
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
-Reference [these supported models](/components/camera/#supportedmodels).
+Reference [these supported models](/components/camera/#supported-models).
 
 1. To configure a `webcam`, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 2. Click on the **Components** subtab and click **Create component**.
