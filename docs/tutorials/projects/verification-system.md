@@ -18,7 +18,7 @@ no_list: true
 ---
 
 Create a machine learning (ML) enabled security system, or "verification system", that can detect people and verify that the people are meant to be there with facial recognition.
-The verification system you will create in this project combines two detectors: 
+The verification system you will create in this project combines two detectors:
 
 1. The first detector detects whether there are people present, thanks to a person-detection ML model you train yourself.
 2. The second detector verifies that the people present are known.
@@ -91,26 +91,26 @@ To add the [data management service](/data/) and configure data capture:
 
 1. From your robot's **Config** tab, navigate to the **Services** subtab.
 2. Click **Create service** in the lower-left corner of the page.
-Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
-  Click **Create**.
-1. On the panel that appears, manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
-For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
-1. Navigate to the **Components** subtab.
-Scroll to the panel of the camera you just configured.
-Find the **Data Capture Configuration** section.
-Click **Add Method**.
-If you're using a webcam, select the method **Type** [`ReadImage()`](/components/camera/#getimage).
-Set the **Frequency** to `0.333`.
-This will capture an image from the camera roughly once every 3 seconds.
-Click **Save config.**
-1. Toggle the **Data capture configuration** on.
-Now, your camera is taking pictures.
-Make sure it is mounted where it will be as a security camera.
-Walk in front of it a number of times, perhaps with a friend or two, letting the camera capture many images of you.
-For optimal performance, try capturing a variety of angles and use different lighting.
-1. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
-Here you can view the images captured so far from the camera on your machine.
-New images should appear roughly every six seconds as cloud sync uploads them from your machine.
+   Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
+   Click **Create**.
+3. On the panel that appears, manage the capturing and syncing functions and specify the **directory**, the sync **interval** and any **tags** to apply to captured data.
+   For more information, see [Add the data management service](/data/capture/#add-the-data-management-service).
+4. Navigate to the **Components** subtab.
+   Scroll to the panel of the camera you just configured.
+   Find the **Data Capture Configuration** section.
+   Click **Add Method**.
+   If you're using a webcam, select the method **Type** [`ReadImage()`](/components/camera/#getimage).
+   Set the **Frequency** to `0.333`.
+   This will capture an image from the camera roughly once every 3 seconds.
+   Click **Save config.**
+5. Toggle the **Data capture configuration** on.
+   Now, your camera is taking pictures.
+   Make sure it is mounted where it will be as a security camera.
+   Walk in front of it a number of times, perhaps with a friend or two, letting the camera capture many images of you.
+   For optimal performance, try capturing a variety of angles and use different lighting.
+6. Select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
+   Here you can view the images captured so far from the camera on your machine.
+   New images should appear roughly every six seconds as cloud sync uploads them from your machine.
 
 For more information, see [configure data capture for individual components](/data/capture/#configure-data-capture-for-individual-components)
 
@@ -133,12 +133,12 @@ Finally, configure an `mlmodel` detector:
 3. Select the `Vision` type, then select the `ML Model` model.
 4. Give the detector the name `"people-detect"` and click **Create**.
 5. In your vision service's panel, fill in the **Attributes** field:
-  
-  ```json {class="line-numbers linkable-line-numbers"}
-  {
-    "mlmodel_name": "persondetect"
-  }
-  ```
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "mlmodel_name": "persondetect"
+}
+```
 
 6. Click **Save config**.
 
@@ -229,7 +229,7 @@ To use the facial detector as the verification detector and the people detector 
 Name your service `"security"`.
 
 - Trigger detectors 1 and 2 cascade to the alarm state.
-Since the `"people-detect"` detector serves as both trigger detector 1 and 2, set `"trigger_1_labels"` and `"trigger_2_labels"` to `"Person"` to match the bounding box label of `"Person"` you assigned to images in your dataset when training the object detection model behind this detector.
+  Since the `"people-detect"` detector serves as both trigger detector 1 and 2, set `"trigger_1_labels"` and `"trigger_2_labels"` to `"Person"` to match the bounding box label of `"Person"` you assigned to images in your dataset when training the object detection model behind this detector.
 - As the identity verification detector is your facial detector `"face-detect"`, set `"verification_labels"` to match each name you assigned to an image in the facial detector modules' `"face_labels"` configuration attribute.
 - Note that `"camera_name": "my_webcam"` matches the name we configured for our source camera.
   If you used a different name for your camera, change the name in the JSON.
