@@ -40,6 +40,7 @@ The verification system works as a state machine with 5 states:
 4. `ALARM`: The alarm state.
    The module will emit the `ALARM` classification for the amount of time specified in `alarm_time_s`.
    After that amount of time elapses, the module will return to state `TRIGGER_1`.
+   Note that `ALARM` is by default silent and only a label overlay, but you can [poll the classifications](/ml/vision/#getclassificationsfromcamera) to set up an alarm trigger.
 5. `DISARMED`: The disarmed state.
    The module will emit the `DISARMED` classification for the amount of time specified in `disarmed_time_s`.
    After that amount of time elapses, the module will return to state `TRIGGER_1`.
@@ -290,30 +291,6 @@ Save your config.
 
 Navigate to the **Control** tab.
 Expand the card matching the name of the transform camera you configured to view an image stream with the system's notifications overlaid:
-
-## How the verification system works
-
-The module sets up a state machine with 5 states:
-
-1. `TRIGGER_1`: The module begins in this state.
-   It is meant to be attached to a coarse, fast detector, like a simple motion detector.
-   This state runs the `trigger_1_detector` on every frame, looking for detections with any label from `trigger_1_labels` with at least `trigger_1_confidence`.
-   If the detector triggers, then the state moves to `TRIGGER_2`.
-   If no `TRIGGER_1` detector was specified in the config, the module moves immediately to state `TRIGGER_2`.
-2. `TRIGGER_2`: This state runs the `trigger_2_detector` on every frame, looking for detections with any label from `trigger_2_labels` with at least `trigger_2_confidence`.
-   If the detector triggers, then the state moves to `COUNTDOWN`.
-   If it doesn't trigger in 10 frames, it returns to state `TRIGGER_1`.
-3. `COUNTDOWN`: This state runs the `verification_detector` on every frame, looking for detections with any label from `verification_labels` with at least `verification_confidence`.
-   If the detector triggers, then the state moves to `DISARMED`.
-   If it doesn't trigger in the time specified by `countdown_time_s`, it moves to state `ALARM`.
-4. `ALARM`: The alarm state.
-   The module will emit the `ALARM` classification for the amount of time specified in `alarm_time_s`.
-   After that amount of time elapses, the module will return to state `TRIGGER_1`.
-5. `DISARMED`: The disarmed state.
-   The module will emit the `DISARMED` classification for the amount of time specified in `disarmed_time_s`.
-   After that amount of time elapses, the module will return to state `TRIGGER_1`.
-
-Note that `ALARM` is by default silent and only a label overlay, but you can [poll the classifications](/ml/vision/#getclassificationsfromcamera) to set up a physical alarm trigger.
 
 ![Verification camera feed](/tutorials/verification-system/disarmed.png)
 
