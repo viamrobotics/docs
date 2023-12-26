@@ -34,6 +34,9 @@ For some models, like the [Triton MLModel](https://github.com/viamrobotics/viam-
 {{< relatedcard link="/components/camera/">}}
 {{< /cards >}}
 
+After deploying your model, you need to configure an additional service to use the deployed model.
+For example, you can configure an [`mlmodel` vision service](/ml/vision/) and a [`transform` camera](/components/camera/transform/) to visualize the predictions your model makes.
+
 ### Modular Resources
 
 {{<modular-resources api="rdk:service:mlmodel" type="mlmodel">}}
@@ -150,9 +153,9 @@ The model package config looks like this:
 
 ### `tflite_cpu` Limitations
 
-We strongly recommend that you package your `.tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
+We strongly recommend that you package your `tflite_cpu` model with metadata in [the standard form](https://github.com/tensorflow/tflite-support/blob/560bc055c2f11772f803916cb9ca23236a80bf9d/tensorflow_lite_support/metadata/metadata_schema.fbs).
 
-In the absence of metadata, your `.tflite_cpu` model must satisfy the following requirements:
+In the absence of metadata, your `tflite_cpu` model must satisfy the following requirements:
 
 - A single input tensor representing the image of type UInt8 (expecting values from 0 to 255) or Float 32 (values from -1 to 1).
 - At least 3 output tensors (the rest won’t be read) containing the bounding boxes, class labels, and confidence scores (in that order).

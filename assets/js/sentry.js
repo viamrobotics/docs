@@ -1,4 +1,4 @@
-var loadJS = function(url, implementationCode, location){
+var loadJS = function(url, implementationCode, location) {
     var scriptTag = document.createElement('script');
     scriptTag.src = url;
 
@@ -7,15 +7,16 @@ var loadJS = function(url, implementationCode, location){
 
     location.appendChild(scriptTag);
 };
-var startSentry = function(){
+var startSentry = function() {
     Sentry.onLoad(function() {
         Sentry.init({
-          integrations: [
-            new Sentry.Replay({
-                maskAllText: false,
-                blockAllMedia: false,
-            }),
-          ],
+            integrations: [
+                new Sentry.Replay({
+                    block: ['.table'],
+                    maskAllText: false,
+                    blockAllMedia: false,
+                }),
+            ],
         });
     });
 }
