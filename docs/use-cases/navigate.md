@@ -40,7 +40,7 @@ Once you have configured your machine, you can remotely control your machine on 
     <td>
     {{<imgproc src="/use-cases/navigation-card.png" class="fill alignleft" resize="200x" style="max-width: 300px" declaredimensions=true alt="Navigation map card">}}
       <b>4. Navigate autonomously</b>
-      <p>Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the <b>Control</b> tab or the <a href="/mobility/navigation/#api/">navigation API</a>.</p>
+      <p>Define a path for your rover to navigate with waypoints and obstacles. Then, start and stop your machine's motion along the path and view your machine's current location. You can use the map interface on the <b>Control</b> tab or the <a href="/mobility/navigation/#api">navigation API</a>.</p>
     </td>
   </tr>
 </table>
