@@ -16,6 +16,7 @@ The only microcontroller the micro-RDK currently supports is the [ESP32](https:/
 - [Movement Sensor](/build/micro-rdk/movement-sensor/)
 - [Motor](/build/micro-rdk/motor/)
 - [Servo](/build/micro-rdk/servo/)
+- [Generic](/build/micro-rdk/generic/)
 
 Click on each supported resource to see supported models, API methods, and configuration info.
 

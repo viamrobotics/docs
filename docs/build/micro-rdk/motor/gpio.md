@@ -13,7 +13,7 @@ aliases:
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).
 
 You can configure [encoders](/build/micro-rdk/encoder/) to work with `gpio` motors.
-Find more information in the [encoded motor documentation](/build/configure/components/motor/gpio/encoded-motor/).
+Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
 To configure a DC motor as a component of your robot, first configure the [board](/build/micro-rdk/board/) to which the motor driver is wired.
 Then add your motor:
@@ -26,7 +26,7 @@ Click on the **Components** subtab and click **Create component**.
 Select the `motor` type, then select the `gpio` model.
 Enter a name for your motor and click **Create**.
 
-![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/build/configure/components/motor/gpio-config-ui.png)
+![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
 
 Edit and fill in the attributes as applicable.
 
@@ -51,14 +51,14 @@ Edit and fill in the attributes as applicable.
       "namespace": "rdk",
       "attributes": {
         "pins": {
-          <...>
+          "dir": "<int>",
+          "pwm": "<int>"
         },
         "board": "<your-board-name>",
         "min_power_pct": <float>,
         "max_power_pct": <float>,
         "pwm_freq": <float>,
-        "dir_flip": <float>,
-        "en_low": <float>
+        "dir_flip": <float>
       },
       "depends_on": []
     }
@@ -114,22 +114,25 @@ The following attributes are available for `gpio` motors:
 | `max_power_pct` | number | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
 | `pwm_freq` | int | Optional | Sets the PWM pulse frequency in Hz. Many motors operate optimally in the kHz range. <br> Default: `800` |
 | `dir_flip` | bool | Optional | Flips the direction of "forward" versus "backward" rotation. Default: `false` |
-| `en_high` / `en_low` | string | Optional | Some drivers have optional enable pins that enable or disable the driver chip. If your chip requires a high signal to be enabled, add `en_high` with the pin number to the pins section. If you need a low signal use `en_low`. |
-| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/build/configure/components/motor/gpio/encoded-motor/). |
+| `encoder` | string | Optional | The name of an encoder attached to this motor. See [encoded motor](/components/motor/gpio/encoded-motor/). |
 
 Refer to your motor and motor driver data sheets for specifics.
 
 ## `pins`
 
-There are two common ways for your computer to communicate with a brushed DC motor driver chip that are supported in the micro-RDK.
+There are three common ways for your computer to communicate with a brushed DC motor driver chip.
 **Your motor driver data sheet will specify which one to use.**
 
 - PWM/DIR: Use this if one of your motor driver's pins (labeled "PWM") takes a [pulse width modulation (PWM)](https://en.wikipedia.org/wiki/Pulse-width_modulation) signal to the driver to control speed while another pin labeled "DIR" takes a high or low signal to control the direction.
   - Configure `pwm` and `dir`.
+- In1/In2: Use this if your motor driver has pins labeled "IN1" and "IN2" or "A" and "B," or similar.
+  One digital signal set to a high voltage and another set to a low voltage turns the motor in one direction and vice versa.
+  Speed is controlled with PWM through one or both pins.
+  - Configure `a` and `b`.
 - In1/In2 and PWM: Use this if your motor driver uses three pins: In1 (A) and In2 (B) to control direction and a separate PWM pin to control speed.
   - Configure `a`, `b`, and `pwm`.
 
-Inside the `pins` struct you need to configure **two or three** of the following, depending on your motor driver:
+Inside the `pins` struct you need to configure **two or three** of the following depending on your motor driver:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |

@@ -20,7 +20,7 @@ aliases:
   - "/modular-resources/configure/"
 ---
 
-You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/build/configure/components/) or [services](/build/configure/services/)):
+You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
 
 1. Add a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-modular-resource-from-the-viam-registry) or a [local module](#local-modules).
    This makes the modular resource available to the robot.
@@ -33,16 +33,20 @@ To add a modular resource from a local module, you must add the module first.
 
 The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
 
-A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/build/configure/components/) or [service](/build/configure/services/)).
+A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/components/) or [service](/services/)).
 
 Follow the instructions below depending on the type of modular resource you would like to add to your robot:
 
 - [Add a modular component](#add-a-modular-component-from-the-viam-registry)
 - [Add a modular service](#add-a-modular-service-from-the-viam-registry)
 
+{{< alert title="Note" color="note" >}}
+If you are using a [rented Viam rover](/get-started/try-viam/), adding modules is disabled for security purposes.
+{{< /alert >}}
+
 ### Add a modular component from the Viam registry
 
-To add a modular [component](/build/configure/components/) from the Viam registry to your robot:
+To add a modular [component](/components/) from the Viam registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
@@ -71,7 +75,7 @@ Deleting a module _does not_ delete any configured modular resources it provides
 
 ### Add a modular service from the Viam registry
 
-To add a modular [service](/build/configure/services/) from the Viam registry to your robot:
+To add a modular [service](/services/) from the Viam registry to your robot:
 
 1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click the **Create service** button.
@@ -114,7 +118,7 @@ If you prefer to use raw JSON, the following properties are available for modula
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/build/configure/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -187,7 +191,7 @@ Once you have added a modular resource to your robot, you can view and edit the 
 1. Click on the **Modules** subtab.
    All modules you have added to your robot appear under the **Deployed** section.
 
-This pane lists the models provided by the module, and any [components](/build/configure/components/) or [services](/build/configure/services/) on your robot that are currently using the module.
+This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your robot that are currently using the module.
 You can also configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry, or [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
 {{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
@@ -320,7 +324,7 @@ When a module is instantiated, it has access to the following default environmen
 | Name | Description |
 | ---- | ----------- |
 | `VIAM_HOME` | The root of the `viam-server` configuration.<br>Default: `$HOME/.viam` |
-| `VIAM_MODULE_ROOT` | The root of the module install directory. Useful for file navigation that is relative to the root of the module. If you are using a [local module](#local-modules), you must set this value manually if your module requires it.<br>Example: `$VIAM_HOME/packages/.data/modules/verxxxx-my-module/` |
+| `VIAM_MODULE_ROOT` | The root of the module install directory. The module process uses this directory as its current working directory (`cwd`). This variable is useful for file navigation that is relative to the root of the module. If you are using a [local module](#local-modules), you must set this value manually if your module requires it.<br>Example: `/opt/my-module/verxxxx-my-module/` |
 | `VIAM_MODULE_DATA` | A persistent folder location a module can use to store data across reboots and versions. This location is a good place to store [python virtual environments](/build/program/python-venv/).<br>Example: `$VIAM_HOME/module-data/cloud-robot-id/my-module-name/` |
 | `VIAM_MODULE_ID` | The module ID of the module. <br>Example: `viam:realsense` |
 
@@ -355,8 +359,8 @@ To add a local module on your robot:
 
 1. Navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com).
 
-   - If you are adding a modular [component](/build/configure/components/), click the **Components** subtab and click **Create component**.
-   - If you are adding a modular [service](/build/configure/services/), click the **Services** subtab and click **Create service**.
+   - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
+   - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
 
 1. Then, select the `local component` or `local service` type from the list.
 
@@ -364,7 +368,7 @@ To add a local module on your robot:
 
 1. On the next screen:
 
-   - Select the type of modular resource provided by your module, such as a [camera](/build/configure/components/camera/), from the dropdown menu.
+   - Select the type of modular resource provided by your module, such as a [camera](/components/camera/), from the dropdown menu.
    - Enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
      If you are adding a pre-built modular resource, the model triplet should be provided for you in the module's documentation.
    - Enter a name for this instance of your modular resource.
@@ -386,7 +390,7 @@ You can also add the module directly, without first adding its modular component
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
 
-   This example shows the configuration for adding a [CSI camera](/registry/examples/csi/) as a local module.
+   This example shows the configuration for adding a [CSI camera](https://github.com/viamrobotics/csi-camera/) as a local module.
 
 ### Edit the configuration of a local module
 
@@ -443,7 +447,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | A custom name for this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/build/configure/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -473,7 +477,7 @@ The `attributes` available vary depending on your implementation.
 The following is an example configuration for a base modular resource implementation.
 The configuration adds `acme:demo:mybase` as a modular resource from the module `my_base`.
 The custom model is configured as a component with the name "my-custom-base-1".
-You can send commands to the base according to the Viam [base API](/build/configure/components/base/#api):
+You can send commands to the base according to the Viam [base API](/components/base/#api):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

@@ -3,7 +3,7 @@ title: "Contributing to the docs"
 linkTitle: "Contributing to the docs"
 weight: 99
 type: "docs"
-description: "Information for writing docs with hugo - this is only rendered in test and dev environments."
+description: "Learn about our style guide and how to work with hugo to contribute to these docs."
 ---
 
 Thank you for wanting to help us make the docs better.
@@ -51,6 +51,137 @@ When in doubt, ask during review.
 
 All documentation is in the [docs folder](https://github.com/viamrobotics/docs/tree/main/docs).
 For information about Hugo and how to develop locally, see the [README](https://github.com/viamrobotics/docs/blob/main/README.md).
+
+## Content Types
+
+When creating a new piece of content, decide which one of the four content types the content should be.
+Note this in a comment in the frontmatter of the file.
+
+The docs use the [Diátaxis Framework](https://diataxis.fr/) as the basis of the content structure with the following four content types:
+
+- **Explanation (conceptual)**: An understanding-oriented piece of content.
+  This content provides background knowledge on a topic and tends to be referenced in how-to guides and tutorials.
+  For example the [Robot Development Kit page](https://docs.viam.com/internals/rdk/) or the [Registry page](https://docs.viam.com/registry/).
+  It’s useful to have a real or imagined "Why?" question to serve as a prompt.
+
+  {{% expand "Click to view template" %}}
+
+  ```md
+  # Concept
+
+  Introductory paragraph.
+  Possibly containing further subsections or links to relevant conceptual information.
+
+  ## Subconcept
+
+  Paragraphs containing explanation. Add imagery as needed.
+
+  - Provide context and address potential points of confusion. - Add real or hypothetical examples.
+
+  Possibly more Subconcept sections.
+
+  ### Do x with subconcept (optional)
+
+  Information on potential ways to apply the concept (possibly linking to how-tos or containing how-tos).
+
+  ## Next Steps
+
+  Links to related content.
+  ```
+
+  {{% /expand %}}
+
+- **How-to Guide (procedural)**: A task-oriented piece of content that directs a reader to perform actions step by step to complete a task, like a recipe.
+  Generally starts with a description of the task and things to consider, and then provides a set of numbered steps to follow.
+  For example, the [Installation page](https://docs.viam.com/get-started/installation/) or the [Find module page](https://docs.viam.com/registry/configure/).
+
+  {{% expand "Click to view template" %}}
+
+  ```md
+  # Do this task
+
+  Description of task and considerations. Possibly containing further subsections.
+
+  ## Do x
+
+  1. Ordered list of actions to perform. Written in imperative form. Add imagery as needed.
+
+  (possibly more Do X sections)
+
+  ## Next steps
+
+  Links to related content.
+  ```
+
+  {{% /expand %}}
+
+- **Tutorial**: A learning-oriented piece of content that functions as a lesson for the reader.
+  A tutorial helps readers to learn and apply skills by doing something meaningful and attainable.
+
+  {{% expand "Click to view template" %}}
+
+  ```md
+  # Do X with Y
+
+  Outline the why.
+  Tell the story of the machine.
+  Explain the machine's use and origin.
+
+  ## Requirements
+
+  What does the reader need to already know.
+  What will you be using (hardware/software).
+
+  ## Build X
+
+  Build steps.
+
+  ## Configure your X
+
+  Configuration steps.
+
+  ## Program your X
+
+  Code and directions.
+
+  ## Next steps
+
+  Link to other tutorials with cards or text.
+
+  {{</* cards */>}}
+  {{%/* card link="/tutorials/get-started/blink-an-led" */%}}
+  {{</* /cards */>}}
+  ```
+
+  For the full template see [template.md](https://github.com/viamrobotics/docs/blob/main/docs/tutorials/template.md).
+
+  {{% /expand %}}
+
+- **Reference**: A concise, information-oriented piece of content that generally starts with an overview/introduction and then a list of some kind (configuration options, API methods, etc.).
+  Examples include the [API pages](https://docs.viam.com/build/program/apis/) as well as [component and service pages](https://docs.viam.com/components/arm/).
+
+  Example template: [Component template](https://github.com/viamrobotics/docs/blob/main/docs/components/component/_index.md).
+
+  {{% expand "Click to view template" %}}
+
+  ```md
+  # Product, Feature or API Name
+
+  Description or introduction.
+  Possibly containing further subsections.
+
+  ## List or table of items (heading optional as needed)
+
+  - Unordered list of options
+
+  (possibly more information for each option)
+
+  ## Next steps
+
+  Links to related content.
+  ```
+
+  {{% /expand %}}
 
 ## Style Guide
 

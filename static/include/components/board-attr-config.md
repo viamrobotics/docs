@@ -11,18 +11,6 @@ Then remove and fill in the attributes as applicable to your board, according to
       "name": "<your-digital-interrupt-name>",
       "pin": "<pin-number>"
     }
-  ],
-  "spis": [
-    {
-      "name": "<your-bus-name>",
-      "bus_select": "<your-bus-index>"
-    }
-  ],
-  "i2cs": [
-    {
-      "name": "<your-bus-name>",
-      "bus": "<your-bus-index>"
-    }
   ]
 }
 ```

@@ -3,7 +3,7 @@ title: "Troubleshooting"
 linkTitle: "Troubleshooting"
 weight: 40
 type: "docs"
-description: "A guide to basic troubleshooting of a Viam-based robotic system, with easy fixes to common problems."
+description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
 ---
 
 This document lists common errors encountered when working with `viam-server` and the [Viam app](https://app.viam.com), and provides simple steps to resolve them.
@@ -162,7 +162,7 @@ It will resemble the following:
 
 **Additional Errors:** `cannot open webcam`, and `found no webcams`.
 
-**Description:** When working with a [camera](/build/configure/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
+**Description:** When working with a [camera](/components/camera/) component on the Linux platform, your Linux OS must be able to access the camera properly, and the camera must be configured to use a pixel format that Viam supports.
 
 **Solution:** On your Linux system, verify each of the following:
 
@@ -210,7 +210,7 @@ It will resemble the following:
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
       The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
-      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/build/configure/components/camera/webcam/#using-format).
+      In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
 If you are still having issues with your camera component on the Linux platform, and would like to [file an issue](https://github.com/viamrobotics/rdk), include your machine's camera debug file contained in the <file>/root/.viam/debug/components/camera</file> directory.
@@ -219,7 +219,7 @@ This file contains basic diagnostic and configuration information about your cam
 
 ### Error: failed to find the best driver that fits the constraints
 
-**Description:** When working with a [camera](/build/configure/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
+**Description:** When working with a [camera](/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 **Solution:** Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration page on the [Viam app](https://app.viam.com).
 Under **Config > Components**, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **Go to advanced** link in the component panel's upper-right to enter these attributes manually.

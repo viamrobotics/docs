@@ -13,7 +13,7 @@ aliases:
 ---
 
 An encoder is a special type of sensor that measures rotation of a motor or joint.
-For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Encoder Component](/build/configure/components/encoder/).
+For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Encoder Component](/components/encoder/).
 
 ## Supported Models
 
@@ -29,8 +29,9 @@ Click on the model names above for configuration information.
 
 ## API
 
-The micro-RDK [encoder API](/build/configure/components/encoder/#api) supports only the following supported client SDK API methods, which operate the same ways as those in the full-featured RDK:
+The micro-RDK [encoder API](/components/encoder/#api) supports only the following supported client SDK API methods, which operate the same ways as those in the full-featured RDK:
 
-- [`ResetPosition()`](/build/configure/components/encoder/#resetposition)
-- [`GetPosition()`](/build/configure/components/encoder/#getposition)
-- [`GetProperties()`](/build/configure/components/encoder/#getproperties)
+- [`ResetPosition()`](/components/encoder/#resetposition)
+- [`GetPosition()`](/components/encoder/#getposition)
+- [`GetProperties()`](/components/encoder/#getproperties)
+- [`DoCommand()`](/components/encoder/#docommand)

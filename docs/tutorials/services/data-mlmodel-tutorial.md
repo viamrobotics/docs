@@ -50,7 +50,7 @@ Before following this tutorial, ensure you have:
 
 - A configured camera component.
 
-  - If you are using your own smart machine, add a [camera component](/build/configure/components/camera/), such as a [webcam](/build/configure/components/camera/webcam/), to your smart machine.
+  - If you are using your own smart machine, add a [camera component](/components/camera/), such as a [webcam](/components/camera/webcam/), to your smart machine.
   - If you are using a Viam Rover through [Try Viam](https://app.viam.com/try), a camera is already configured for you.
 
 ## The data management service
@@ -90,7 +90,7 @@ For more information, see [Add the data management service](/data/capture/#add-t
 ### Configure data capture for a component
 
 Once you have added the data management service, you can configure data capture for specific components on your smart machine.
-For this tutorial, you will configure data capture for images from a [camera](/build/configure/components/camera/) component, but other data types such as sensor data or SLAM map data from other types of [components](/build/configure/components/) can be captured as well.
+For this tutorial, you will configure data capture for images from a [camera](/components/camera/) component, but other data types such as sensor data or SLAM map data from other types of [components](/components/) can be captured as well.
 
 To enable image data capture for a camera component:
 
@@ -115,7 +115,7 @@ For more information see [Configure data capture](/data/capture/#configure-data-
 Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app.
 
 1. First, in the [Viam app](https://app.viam.com), navigate to your robot's **Control** tab and enable the camera to verify that a live stream is returned.
-   If you do not see a functioning camera stream, verify that you have configured your [camera](/build/configure/components/camera/) correctly.
+   If you do not see a functioning camera stream, verify that you have configured your [camera](/components/camera/) correctly.
 
 1. Then, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
 

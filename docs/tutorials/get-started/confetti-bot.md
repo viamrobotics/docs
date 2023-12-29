@@ -131,7 +131,7 @@ Then navigate to the robot’s **Config** tab to start configuring your componen
 Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 
 Add your {{< glossary_tooltip term_id="board" text="board" >}} with type `board` and model `pi`.
-Enter `party` for the name of your [board component](/build/configure/components/board/), then click **Create**.
+Enter `party` for the name of your [board component](/components/board/), then click **Create**.
 
 You can name your board whatever you want as long as you refer to it the same way in your code; we picked `party` for fun.
 Your board configuration should now look like this:
@@ -142,7 +142,7 @@ Your board configuration should now look like this:
 
 Click on the **Components** subtab and click **Create component** in the lower-left corner of the page.
 Select `motor` for the type and `gpio` for the model.
-Enter `start` for the name of your [motor component](/build/configure/components/motor/), then click **Create**.
+Enter `start` for the name of your [motor component](/components/motor/), then click **Create**.
 Again, we named it “start” to refer to the button being pressed, but this name is up to you as long as you remember the name and use the same name in the code later.
 
 After clicking **Create**, there is a pin assignment type toggle.

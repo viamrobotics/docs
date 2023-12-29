@@ -54,9 +54,9 @@ To install Raspberry Pi OS (formerly called Raspbian) on a microSD card from whi
 
     {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Other) is selected." src="/get-started/installation/rpi-setup/select-other-custom-os.png" resize="800x" declaredimensions=true >}}
 
-    Select `Raspberry Pi OS Lite (64-bit)` from the menu.
+    Select `Raspberry Pi OS (Legacy, 64-bit) Full` from the menu.
 
-    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS Lite (64-bit) is selected." src="/get-started/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
+    {{< imgproc alt="Raspberry Pi Imager window showing Raspberry Pi OS (Legacy, 64-bit) Full is selected." src="/get-started/installation/rpi-setup/select-other-rpi.png" resize="800x" declaredimensions=true >}}
 
     You should be brought back to the initial launch screen.
 
@@ -142,7 +142,7 @@ In the past, malware infected thousands of Raspberry Pi devices that were using 
 
    Remove the microSD card from your computer when it is complete:
 
-   {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS Lite has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="You will be notified with a dialogue box informing you that Raspberry Pi OS (Legacy, 64-bit) Full has been written successfully." src="/get-started/installation/rpi-setup/imager-done.png" resize="800x" declaredimensions=true >}}
 
 6. Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
    A red LED will turn on to indicate that the Pi is connected to power.
@@ -188,7 +188,7 @@ If you are using hardware that requires these protocols, you must enable support
 
 1. Use your keyboard to select "Interface Options", and press return.
 
-   {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/get-started/installation/rpi-setup/Installation-Raspberry-Pi-I2C-Raspi-Config-Interfacing-Options.png" resize="800x" declaredimensions=true >}}
+   {{< imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/get-started/installation/rpi-setup/installation-raspberry-pi-i2c-raspiconfig-interface-options.png" resize="800x" declaredimensions=true >}}
 
 1. Enable the relevant protocols to support your specific hardware. For example:
 

@@ -5,7 +5,7 @@ weight: 70
 type: "docs"
 description: "Configure a Simultaneous Localization And Mapping (SLAM) service with the Cartographer modular resource."
 tags: ["slam", "services"]
-icon: "/build/configure/services/icons/slam.svg"
+icon: "/services/icons/slam.svg"
 aliases:
   - "/services/slam/run-slam-cartographer/"
   - "/services/slam/cartographer/"
@@ -46,7 +46,8 @@ For doing pure localization on an existing map, the `cartographer` modular resou
 
 {{% alert title="Info" color="info" %}}
 
-See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand the costs associated with running Cartographer in the cloud.
+Running `cartographer` in the cloud incurs cost for Data Management, Cloud Data Upload, and Cloud Data Egress. Currently, you incur no cost for compute.
+See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 {{% /alert %}}
 
@@ -61,7 +62,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) page to understand th
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
   - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
-- In addition, you must [add the `rplidar` module to your robot](/registry/examples/rplidar/) to support the RPlidar hardware, if you have not done so already.
+- In addition, you must [add the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar) to support the RPlidar hardware, if you have not done so already.
 
   {{< alert title="SUPPORT" color="note" >}}
 
@@ -89,7 +90,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    1. Click **Add module**, give your service a name of your choice, then click **Create**.
    1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
-      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](/registry/examples/rplidar/).
+      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar).
         Example: "my-rplidar"
         - Then set a **Data capture rate (Hz)** for it.
           Example: "5"
@@ -205,7 +206,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    For more information about the configuration attributes, see [Attributes](#attributes).
 
-1. Start a mapping session
+2. Start a mapping session
 
    Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.

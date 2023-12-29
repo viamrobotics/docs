@@ -32,7 +32,7 @@ You need the following hardware, tools, and software to install `viam-server` on
 4. (Optional) A microSD card and a way to connect the microSD card to the computer (like a microSD slot or microSD reader)
    - This is required if you need to set up your BeagleBone for the first time or update your BeagleBone to the latest software image.
 
-The following instructions mirror the instructions given in the BeagleBoard documentation at [Connecting up your BeagleBone](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) and [Getting Started with your BeagleBone](https://beagleboard.org/getting-started).
+The following instructions mirror the instructions given in the [BeagleBoard Quick Start Guide](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/02-quick-start.html).
 
 If you want additional help setting up your BeagleBone, you can follow the guides there and return to the Viam docs after SSH'ing into your BeagleBone.
 
@@ -82,7 +82,8 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 ## Troubleshooting
 
-If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/ch03.html) for help updating your BeagleBone.
+If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/02-quick-start.html) for help updating your BeagleBone.
+
 {{< snippet "social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/appendix/troubleshooting/).

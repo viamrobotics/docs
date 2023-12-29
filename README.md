@@ -2,7 +2,7 @@
 
 > **Note**
 > Looking to contribute? Check out the [Contributor Guide](https://docs.viam.com/appendix/contributing/).
-> For help knowing what and how to write, check out our templates: our [tutorial template](docs/tutorials/template/) and [component page template](docs/build/configure/components/component/) are accessible on the site when building the docs in Draft mode, or accessible here on GitHub.
+> For help knowing what and how to write, check out our templates: our [tutorial template](docs/tutorials/template/) and [component page template](docs/components/component/) are accessible on the site when building the docs in Draft mode, or accessible here on GitHub.
 
 ## Build the docs locally
 
@@ -68,8 +68,8 @@ To check locally for broken links, install [`htmltest`](https://github.com/wjdp/
 ### Lint JS and Markdown files with Prettier on save
 
 1. Install the [Prettier VS Code Extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
-2. Run `npm install` in the docs folder you have the docs checked out in.
-3. Inside VS code, open `settings.json` by pressing `CMD+SHIFT+P` and typing in settings and ensure the following settings are in the file:
+2. Run `npm install` in the docs folder where you have the docs checked out.
+3. Inside VS code, open the _user_ `settings.json` file by pressing `CMD+SHIFT+P` and typing 'settings', and add the following settings to the end of the file:
 
 ```json
   "[markdown]": {

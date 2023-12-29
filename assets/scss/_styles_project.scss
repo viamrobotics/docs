@@ -1539,3 +1539,39 @@ input[type=search]::-webkit-search-cancel-button {
   text-decoration: underline;
   text-decoration-style: dotted;
 }
+
+// Changelog labels
+
+.changelog-outer {
+  display: flex;
+}
+
+.changelog div {
+  padding-right: 4px;
+}
+
+.changelog div span {
+  text-transform: uppercase;
+  padding: 0.1rem 0.25rem;
+  border: 1px solid black;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.3;
+  vertical-align: top;
+}
+
+.changelog-added {
+  background-color: #00ef83;
+}
+
+.changelog-improved {
+  background-color: #00e8e8;
+}
+
+.changelog-changed {
+  background-color: #ffd400;
+}
+
+.changelog-removed {
+  background-color: #ff0047;
+}

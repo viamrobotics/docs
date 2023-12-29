@@ -129,7 +129,7 @@ First, go to the [Viam app](https://app.viam.com/) on your web browser and navig
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Add a [_board component_](/build/configure/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
+Add a [_board component_](/components/board/) to represent your single-board computer, which in this case is the Raspberry Pi.
 To create the new component, click **Create component** in the lower-left corner of the **Config** tab.
 
 - Select `board` as the component type.
@@ -297,7 +297,7 @@ go run blink.go
 
 ### Write code to blink the LED
 
-In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/build/configure/components/board/) from the Viam SDK.
+In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/components/board/) from the Viam SDK.
 
 The **Code sample** tab automatically adds the board import for you, but it doesn't hurt to double-check.
 

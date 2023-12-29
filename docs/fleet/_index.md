@@ -1,7 +1,7 @@
 ---
 title: "Fleet Management"
 linkTitle: "Fleet Management"
-weight: 34
+weight: 430
 type: "docs"
 description: "Configure, control, debug, and manage your machines from the cloud at app.viam.com on your own or with a team."
 tags: ["fleet management", "cloud", "app"]
@@ -17,7 +17,7 @@ menuindent: true
 ---
 
 The [Viam app](https://app.viam.com) provides fleet management allowing you to work on any number of machines alone or in collaboration with others.
-You can manage your and control your fleet of machines from the Viam app, using the [CLI](/fleet/cli/) or using the [cloud API](/build/program/apis/cloud/).
+You can manage your and control your fleet of machines from the Viam app, using the [CLI](/fleet/cli/), or using the [cloud API](/build/program/apis/cloud/).
 
 ## Work with groups of machines
 
@@ -30,13 +30,13 @@ For example, you may have separate organizations for your robots at home and at 
 
 Inside an organization, you can organize robots into one or more locations:
 
-![An image of two locations, New York, and Chicago, in one organization, Good Robots](/manage/locations.png)
+![An image of two locations, New York, and Chicago, in one organization, Good Robots](/fleet/locations.png)
 
 If you are managing a fleet, you can use {{< glossary_tooltip term_id="fragment" text="fragments" >}} when [configuring your robots](/build/configure/), allowing you to use the same configuration for multiple robots.
 
 ## Use Viam for collaboration
 
-To facilitate collaboration, you can add collaborators to organizations, assign [permissions](#permissions) to collaborators, and share locations across multiple organizations.
+To facilitate collaboration, you can add collaborators to organizations, manage access, and share locations across multiple organizations.
 
 When you create a Viam account, Viam automatically creates an organization for you.
 You can use this organization as your collaboration hub by inviting collaborators to your organization.
@@ -51,19 +51,8 @@ You can also share locations across different organizations **that you are part 
 
 ### Permissions
 
-Role Based Access Control (RBAC) is a way to enforce security in the [Viam app](https://app.viam.com) by assigning organization members roles that confer permissions.
-Permissions are added at the organization level and apply to everything in an org.
-
-- **Owner**: Can see and edit [every tab on the robot page](machines/#navigating-the-robot-page).
-  Can manage users in the app.
-- **Operator**: Can see and use only the [remote control tab](machines/#control).
-  Cannot see or edit the [**Setup**](machines/#setup), [**Config**](machines/#configuration), [**History**](machines/#history), [**Logs**](machines/#logs), [**Code sample**](machines/#code-sample), or [**Security**](machines/#security) tabs.
-
-To view the roles each organization member has, click on the organization dropdown in the top navigation bar and click on **Settings**.
-
-If you have the **Owner** role, you can [invite new users](organizations/#invite-users-to-your-organization) and change the roles assigned to organization members using the role dropdown for the respective user.
-
-![Example permissions overview](/manage/rbac.png)
+You can assign users different fleet management capabilities by making them an owner or an operator of a given {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="robot" text="robot" >}}.
+For more information, see [Permissions](/fleet/rbac/#permissions).
 
 ## Collaborate on your robots
 

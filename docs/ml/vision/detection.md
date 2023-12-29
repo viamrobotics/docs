@@ -181,7 +181,7 @@ In your vision service's panel, fill in the **Attributes** field.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "mlmodel_name": "<detector_name>"
+  "mlmodel_name": "<mlmodel-service-name>"
 }
 ```
 
@@ -197,7 +197,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "<detector_name>"
+      "mlmodel_name": "<mlmodel-service-name>"
     }
   }
 ]
@@ -213,7 +213,7 @@ Add the vision service object to the services array in your raw JSON configurati
     "type": "vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "person_detector"
+      "mlmodel_name": "my_mlmodel_service"
     }
   }
 ]
@@ -233,12 +233,12 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
 
-1. Configure a [camera component](/build/configure/components/camera/).
+1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
    This is the camera whose name you need to pass to vision service methods.
    {{< /alert >}}
 
-2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera]/components/camera/transform/) with the following attributes:
+2. (Optional) If you would like to see detections from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes:
 
    ```json
    {
@@ -247,7 +247,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
          "type": "detections",
          "attributes": {
            "confidence_threshold": 0.5,
-           "detector_name": "my_detector"
+           "detector_name": "<vision-service-name>"
          }
        }
      ],

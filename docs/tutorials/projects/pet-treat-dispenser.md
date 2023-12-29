@@ -107,7 +107,7 @@ Name the component `pi`, then click **Create**.
 
 ![The Viam app showing the configuration page for a board component with name pi.](/tutorials/pet-treat-dispenser/app-board-pi.png)
 
-### Configure your [webcam](/build/configure/components/camera/webcam/)
+### Configure your [webcam](/components/camera/webcam/)
 
 Click **Create component** and add your webcam with type `camera` and model `webcam`.
 Name the component `petcam`, then click **Create**.
@@ -119,10 +119,10 @@ Select your camera.
 ![The Viam app showing the configuration page for a camera component with model webcam.](/tutorials/pet-treat-dispenser/app-camera-webcam.png)
 
 {{< alert title="Tip" color="tip" >}}
-If you are unsure which camera to select, selecte one, save the configuration and go to the [**Control** tab](/build/configure/components/camera/webcam/#view-the-camera-stream) to confirm you can see the expected video stream.
+If you are unsure which camera to select, selecte one, save the configuration and go to the [**Control** tab](/components/camera/webcam/#view-the-camera-stream) to confirm you can see the expected video stream.
 {{< /alert >}}
 
-### Configure your [stepper motor](/build/configure/components/motor/gpiostepper/)
+### Configure your [stepper motor](/components/motor/gpiostepper/)
 
 Finally, click **Create component** and add another component with type `motor` and model `gpiostepper`.
 
@@ -137,7 +137,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/build/configure/components/camera/webcam/), and your [stepper motor](/build/configure/components/motor/gpiostepper/):
+On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configuration with the following JSON configuration for your {{< glossary_tooltip term_id="board" text="board" >}}, your [webcam](/components/camera/webcam/), and your [stepper motor](/components/motor/gpiostepper/):
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -305,14 +305,14 @@ Once the model has finished training, deploy it by adding an [ML model service](
 
 ### Use the vision service to detect your pet
 
-To detect your pet with your machine learning model, you need to add a [vision service](/ml/vision/) that uses the model and a [transform camera](/build/configure/components/camera/transform/) that applies the vision service to an existing camera stream and specifies a confidence threshold:
+To detect your pet with your machine learning model, you need to add a [vision service](/ml/vision/) that uses the model and a [transform camera](/components/camera/transform/) that applies the vision service to an existing camera stream and specifies a confidence threshold:
 
 1. From the **Services** subtab, click **Create service** in the lower-left corner.
 1. Select `Vision` as the type and `ML Model` as the model.
 1. Enter a name for your ML model service and click **Create**.
 1. Select the model you previously created in the dropdown menu.
 1. Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
-1. Create a [transform camera](/build/configure/components/camera/transform/) by selecting type `camera` and model `transform`.
+1. Create a [transform camera](/components/camera/transform/) by selecting type `camera` and model `transform`.
 1. Enter `classifier_cam` as the name for your camera, then click **Create**.
 1. Replace the JSON attributes with the following object which specifies the camera source for the transform cam and also defines a pipeline that adds the `classifier` you created.
 

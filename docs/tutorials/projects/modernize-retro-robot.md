@@ -156,7 +156,7 @@ If you hesitate at the thought of physically modifying an Omnibot 2000, remember
 Plus, we will re-use the motors and gears and leave the original circuit boards in-place (albeit no longer used).
 It's a [restomod](https://www.goldeagle.com/tips-tools/what-is-a-restomod/)!
 
-Let's get started with wiring the left and right motors to a motor controller and Raspberry Pi - this will allow your Omnibot to be controlled with Viam as a [wheeled base](/build/configure/components/base/wheeled/).
+Let's get started with wiring the left and right motors to a motor controller and Raspberry Pi - this will allow your Omnibot to be controlled with Viam as a [wheeled base](/components/base/wheeled/).
 
 First, detach the left and right base motor's wires from the small printed circuit board.
 Orient your L298N so that the `OUT1` and `OUT2` terminals are on the left side.
@@ -278,11 +278,11 @@ Click on the **Components** subtab.
 
    Click the **Create component** button in the lower-left corner of the page.
    Select the type `board`, then select the `pi` model.
-   Enter `local` as the name for your [board component](/build/configure/components/board/), then click **Create**.
+   Enter `local` as the name for your [board component](/components/board/), then click **Create**.
 
 2. **Add the left motor.**
 
-   Click **Create component** to add the [motor component](/build/configure/components/motor/) on the left side of the robot base.
+   Click **Create component** to add the [motor component](/components/motor/) on the left side of the robot base.
    Select the type `motor`, and select the `gpio` model.
    Enter `base-l` for the name, then click **Create**.
 
@@ -300,7 +300,7 @@ Click on the **Components** subtab.
 3. **Add the right motor**
 
    Click **Create component**.
-   For your right base [motor component](/build/configure/components/motor/), select the type `motor`, and select the `gpio` model.
+   For your right base [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
    Enter `base-r` for the name, then click **Create**.
 
    Next, select `local` for the board attribute.
@@ -316,7 +316,7 @@ Click on the **Components** subtab.
 
 4. **Add the base**
 
-   Configuring a [base component](/build/configure/components/base/) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
+   Configuring a [base component](/components/base/) allows you to create an interface to control the movement of MAIV withing needing to send individual motor commands.
 
    Click **Create component**.
    Select the type `base`, and select the `wheeled` model.
@@ -478,7 +478,7 @@ You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2
 To add the neck motor, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
-To create your [motor component](/build/configure/components/motor/), select the type `motor`, and select the `gpio` model.
+To create your [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
 Enter `neck` as the name for your neck motor, then click **Create**.
 
 Next, select `local` for the board attribute.
@@ -558,7 +558,7 @@ Fit MAIV's neck into the torso, and re-assemble the torso.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
-Add the [camera component](/build/configure/components/camera/) to your robot by navigating to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Add the [camera component](/components/camera/) to your robot by navigating to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click the **Create component** button in the lower-left corner.
 
 Select the type `camera`, and select the `webcam` model.

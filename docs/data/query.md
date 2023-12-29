@@ -20,7 +20,7 @@ You can:
 
 You can run queries against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
 
-Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried using SQL or MQL.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried using SQL or MQL.
 To search non-tabular data, such as images, see [Filter Data](/data/view/#filter-data).
 To perform searches against tabular data from within the Python SDK, use the [`TabularDataByFilter`](/build/program/apis/data-client/#tabulardatabyfilter) method.
 
@@ -74,7 +74,7 @@ Synced data is stored in a MongoDB [Atlas Data Federation](https://www.mongodb.c
 
 You can query against both the captured tabular data itself as well as its metadata, including robot ID, organization ID, and [tags](/data/dataset/#image-tags).
 
-Only tabular data, such as [sensor](/build/configure/components/sensor/) readings, can be queried in this fashion.
+Only tabular data, such as [sensor](/components/sensor/) readings, can be queried in this fashion.
 
 Before being able to query data, you must configure data query.
 
@@ -137,12 +137,12 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
 1. Run the following command to connect to the Viam organization's MongoDB Atlas instance from `mongosh`:
 
    ```sh {class="command-line" data-prompt=">"}
-   mongosh "mongodb+srv://<YOUR-DB-HOSTNAME>" --apiVersion 1 --username db-user-<YOUR-ORG-ID>
+   mongosh "mongodb://<YOUR-DB-HOSTNAME>" --tls --authenticationDatabase admin --username db-user-<YOUR-ORG-ID>
    ```
 
    Where:
 
-   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname (including database name), determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
+   - `<YOUR-DB-HOSTNAME>` is your organization's assigned MongoDB Atlas instance hostname, determined from the [`viam data database hostname` CLI command](/data/query/#configure-data-query).
    - `<YOUR-ORG-ID>` is your organization ID, determined from the `viam organizations list` CLI command.
      The full username you provide to the `--username` flag should therefore resemble `db-user-abcdef12-abcd-abcd-abcd-abcdef123456`.
 

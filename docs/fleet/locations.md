@@ -60,11 +60,11 @@ You can share a location beyond its organization by [sharing a location with an 
 
 Share your location with another organization you belong to by selecting the organization from the **Add Organization** dropdown menu and clicking **Share**.
 
-![The Add Organization dropdown in the Viam app displays all organizations the user is a member of.](/manage/app-usage/add-org-drop-down.png)
+![The Add Organization dropdown in the Viam app displays all organizations the user is a member of.](/fleet/app-usage/add-org-drop-down.png)
 
 The location's page lists newly added organization, along with the organization identified as the **primary owner**:
 
-![After adding another org, the Viam app lists it under the orgs that share this location list.](/manage/app-usage/after-add-org.png)
+![After adding another org, the Viam app lists it under the orgs that share this location list.](/fleet/app-usage/after-add-org.png)
 
 ##### Remove an organization from a shared location
 
@@ -77,7 +77,7 @@ Grant programmatic access to your location by sharing a location secret key.
 
 You can see the secret keys for a location in the **Location Secret Keys** dropdown:
 
-![The list of secret keys that can grant access to a location displays in the location secret keys dropdown menu of the Viam app.](/manage/app-usage/location-secret-keys-dropdown.png)
+![The list of secret keys that can grant access to a location displays in the location secret keys dropdown menu of the Viam app.](/fleet/app-usage/location-secret-keys-dropdown.png)
 
 {{< alert title="Caution" color="caution" >}}
 Do not share your location secret, part secret, or robot address publicly.

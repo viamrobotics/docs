@@ -1,7 +1,6 @@
 ---
 title: "Plant Watering Robot with a Raspberry Pi"
 linkTitle: "Plant Watering Robot"
-weight: 7
 type: "docs"
 description: "Create a plant watering robot with a Raspberry Pi."
 tags: ["raspberry pi", "app", "board", "motor"]
@@ -34,7 +33,8 @@ Follow this tutorial to learn how to set up an automatic plant watering system:
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/Q6UuUKJpDn0?start=877">}}
 
-You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC, the breadboard, and the motor speed controller, and uses the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off. You can start with this simple version and then add the ADC to make your machine more accurate!
+You can also follow a simplified version of this tutorial in this video: it eliminates the need for the ADC, the breadboard, and the motor speed controller, and uses the digital pin of the moisture sensor to get “high” and “low” readings and to turn a relay on and off.
+You can start with this simple version and then add the ADC to make your machine more accurate!
 
 The tutorial uses the following hardware, but you can adjust it as needed:
 
@@ -118,7 +118,7 @@ Put the soil moisture sensor inside of the container holding your plant.
 
 ### Wire your pump
 
-Now, wire and power your Peristaltic Pump [motor](/build/configure/components/motor/) and [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS) to complete your hardware setup.
+Now, wire and power your Peristaltic Pump [motor](/components/motor/) and [motor speed controller](https://www.amazon.com/High-Power-Transistor-Controller-MELIFE-Electronic/dp/B09XKCD8HS) to complete your hardware setup.
 
 Reference this diagram of the motor speed controller:
 
@@ -271,7 +271,7 @@ Follow [this guide](/get-started/installation/#install-viam-server) to install `
 
 Then, navigate to your new robot's page in the app and click on the **Config** tab.
 
-First, add your Pi as a [board component](/build/configure/components/board/) by creating a new component with **type** `board` and **model** `pi`:
+First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
 {{< tabs name="Configure an Pi Board" >}}
 {{% tab name="Config Builder" %}}
@@ -279,7 +279,7 @@ First, add your Pi as a [board component](/build/configure/components/board/) by
 ![Creation of a pi board in the Viam app config builder.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -299,7 +299,7 @@ First, add your Pi as a [board component](/build/configure/components/board/) by
 {{% /tab %}}
 {{< /tabs >}}
 
-Then, add your pump as a [motor component](/build/configure/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
+Then, add your pump as a [motor component](/components/motor/) by adding a new component with **type** `motor` and **model** `gpio`.
 
 Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (the board and GPIO pin that you wired the pump's PWM to).
 
@@ -309,7 +309,7 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (th
 ![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-config-builder.png)
 
 {{% /tab %}}
-{{% tab name="JSON Template" %}}
+{{% tab name="Raw JSON" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
 // Board JSON ... },
@@ -343,13 +343,14 @@ Now, if you navigate to your robot's **Control** tab, you should be able to cont
 
 #### Configure the ADC as a module from the registry
 
-_Resources_ refer to the different [components](/build/configure/components/) and [services](/build/configure/services/) Viam provides for robots to use.
+_Resources_ refer to the different [components](/components/) and [services](/services/) Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
-For example, the [sensor component](/build/configure/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
+For example, the [sensor component](/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
-However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3). Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
+However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
+Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
 
-A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/build/configure/components/) and [services](/build/configure/services/)) or models that are not built into Viam.
+A _module_ provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}}, which add resource types ([components](/components/) and [services](/services/)) or models that are not built into Viam.
 A module can be added to your robot from the Viam registry.
 
 The [Viam registry](https://app.viam.com/registry) allows hardware and software engineers to collaborate on their robotics projects by writing and sharing custom modules with each other.
@@ -357,10 +358,13 @@ You can add a module from the Viam registry directly from your robot’s Configu
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
-1. Go to your robot's **Config** tab. Select **Create component**.
-2. Search mcp300x. Click **Add module**.
+1. Go to your robot's **Config** tab.
+   Select **Create component**.
+2. Search mcp300x.
+   Click **Add module**.
 3. Give your module a name of your choice, and click **Create** to add this module to your robot.
-4. Find your module's card on the **Config** page. In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
+4. Find your module's card on the **Config** page.
+   In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
    For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
 
    ```json
@@ -407,7 +411,7 @@ nano plant-watering-robot.py
 Now, you can add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [motor](/build/configure/components/motor/#api) and [sensor](/build/configure/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
+Use the Viam [motor](/components/motor/#api) and [sensor](/components/sensor/#control-your-sensor-with-viams-client-sdk-libraries) API methods.
 
 You can get your components from the robot like this:
 
@@ -449,7 +453,7 @@ Make sure to import `time` at the beginning of your version of <file>plant-water
 Also, make sure to import `viam.components.sensor`.
 {{% /alert %}}
 
-See the motor component's [API documentation](/build/configure/components/motor/#gofor) for more information about `water_pump.go_for()`.
+See the motor component's [API documentation](/components/motor/#gofor) for more information about `water_pump.go_for()`.
 
 Save your <file>plant-watering-robot.py</file> program with this logic added in, and then run it on your Pi like this:
 
