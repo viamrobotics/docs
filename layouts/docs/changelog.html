@@ -24,14 +24,14 @@
               <p>Use the menu on the right to browse changes by month, or use the following buttons to filter by change type:</p>
               <div id="changelog-menu">
                 <div id="changelog-filters">
-                  <button class="filter" onclick="filterSelection('changelog-improved')" id="improved-button">Improvements</button>
-                  <button class="filter" onclick="filterSelection('changelog-added')" id="added-button">Additions</button>
-                  <button class="filter" onclick="filterSelection('changelog-changed')" id="changed-button">Changes</button>
-                  <button class="filter" onclick="filterSelection('changelog-removed')" id="removed-button">Removals</button>
-                  <button class="filter active" onclick="filterSelection('all')" id="all-button">Show All</button>
+                  <button class="filter-button" onclick="filterSelection('changelog-improved')" id="improved-button">Improvements</button>
+                  <button class="filter-button" onclick="filterSelection('changelog-added')" id="added-button">Additions</button>
+                  <button class="filter-button" onclick="filterSelection('changelog-changed')" id="changed-button">Changes</button>
+                  <button class="filter-button" onclick="filterSelection('changelog-removed')" id="removed-button">Removals</button>
+                  <button class="filter-button active" onclick="filterSelection('all')" id="all-button">Show All</button>
                 </div>
               </div>
-              {{ .Render "content" }}
+              {{ .Content }}
           </div>
           <!-- <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
               <i style="font-size:large;" class="fas fa-chevron-up"></i>

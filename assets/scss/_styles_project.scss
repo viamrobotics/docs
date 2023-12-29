@@ -1550,7 +1550,7 @@ input[type=search]::-webkit-search-cancel-button {
   padding-right: 4px;
 }
 
-.changelog div span {
+.changelog .colorbox {
   text-transform: uppercase;
   padding: 0.1rem 0.25rem;
   border: 1px solid black;
@@ -1560,19 +1560,19 @@ input[type=search]::-webkit-search-cancel-button {
   vertical-align: top;
 }
 
-.changelog-added span {
+.changelog-added .colorbox {
   background-color: #00ef83;
 }
 
-.changelog-improved span {
+.changelog-improved .colorbox {
   background-color: #00e8e8;
 }
 
-.changelog-changed span {
+.changelog-changed .colorbox {
   background-color: #ffd400;
 }
 
-.changelog-removed span {
+.changelog-removed .colorbox {
   background-color: #ff0047;
 }
 
@@ -1616,8 +1616,13 @@ input[type=search]::-webkit-search-cancel-button {
   display: none;
 }
 
+// Display only the elements that currently have show class
 .show {
   display: block;
+}
+
+.hidethisone {
+  display: none;
 }
 
 // END changelog filtering
