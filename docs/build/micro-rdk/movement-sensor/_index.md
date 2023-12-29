@@ -36,4 +36,4 @@ The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports o
 - [`GetPosition()`](/build/configure/components/movement-sensor/#getposition)
 - [`GetProperties()`](/build/configure/components/movement-sensor/#getproperties)
 - [`GetLinearAcceleration()`](/build/configure/components/movement-sensor/#getlinearacceleration)
-- [`DoCommand()`](/components/movement-sensor/#docommand)
+- [`DoCommand()`](/build/configure/components/movement-sensor/#docommand)
