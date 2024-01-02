@@ -17,7 +17,7 @@ With modules, it is easy to deploy code to a robot or a fleet of robots with rob
 <table>
   <tr>
     <th>{{<imgproc src="/ml/collect.svg" class="fill alignleft" style="max-width: 150px" alt="ml collect icon">}}
-      <b>1. Search for a module</b>
+      <b>1. Search modules</b>
       <br><br>
       <p>First, <a href="/fleet/machines/#add-a-new-robot">create a robot</a> if you haven't yet.</p>
       <p><a href="/registry/configure/">Search for modules</a> that fits your robot's requirements in the Viam Registry and <a href="https://docs.viam.com/registry/configure/#add-a-modular-resource-from-the-viam-registry">add it</a> from your robot's page.</p>
