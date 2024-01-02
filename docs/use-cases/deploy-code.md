@@ -37,18 +37,18 @@ With modules, it is easy to deploy code to a robot or a fleet of robots with rob
       <p>Once you create your module, you can <a href="/registry/upload/">upload</a> it to the Viam registry for deployment. You have the option to customize several aspects of your deployment experience: </p></br>
       <ul>
         <li>
-        Deployment Visibility: You can tailor your module's visibility by <a href="https://docs.viam.com/registry/upload/#upload-a-custom-module">uploading it to the registry</a> as either a public or private module.
+          Deployment Visibility: You can tailor your module's visibility by <a href="https://docs.viam.com/registry/upload/#upload-a-custom-module">uploading it to the registry</a> as either a public or private module.
               <ul>
                 <li>A public module is available to all Viam users.</li>
                 <li>A private module is visible only to members of your <a href="/fleet/organizations/">organization</a>.</li>
               </ul>
-        </ul>
-        </li>
-        </ul>
-        <ul>
+         </li>
+      </ul>
+      <ul>
         <li>
         Offline Deployment: If your robot was offline when you configured the module for use, it will deploy once your machine is online.
-        </li></br>
+        </li>
+        </br>
         <li>
         Local Module Deployment: You can easily deploy to a robot or fleet as a <a href="/registry/configure/#local-modules">local module</a> to develop your module locally before uploading it to the Viam registry.
         </li>
