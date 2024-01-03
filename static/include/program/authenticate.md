@@ -12,10 +12,10 @@ To authenticate yourself to your robot, you need
 ```python {class="line-numbers linkable-line-numbers" data-line="3,5,9,11"}
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your robot's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your robot's API key
+        # ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -30,11 +30,11 @@ robot, err := client.New(
     "ADDRESS FROM THE VIAM APP",
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's API key ID
     "<API-KEY-ID>",
     rpc.Credentials{
         Type:    rpc.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        // Replace "<API-KEY>" (including brackets) with your robot's API key
         Payload: "<API-KEY>",
     })),
 )
@@ -51,10 +51,10 @@ robot, err := client.New(
     host,
     credential: {
       type: 'api-key',
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your robot's API key
       payload: '<API-KEY>',
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your robot's API key ID
     authEntity: '<API-KEY-ID>',
     signalingAddress: 'https://app.viam.com:443',
   });
@@ -67,9 +67,9 @@ robot, err := client.New(
 std::string host("ADDRESS FROM THE VIAM APP");
 DialOptions dial_opts;
 dial_opts.set_type("api-key");
-// Replace "<API-KEY-ID>" with your robot's api key ID
+// Replace "<API-KEY-ID>" with your robot's API key ID
 dial_opts.set_entity("<API-KEY-ID>");
-// Replace "<API-KEY>" with your robot's api key
+// Replace "<API-KEY>" with your robot's API key
 Credentials credentials("<API-KEY>");
 dial_opts.set_credentials(credentials);
 boost::optional<DialOptions> opts(dial_opts);
@@ -84,9 +84,9 @@ auto robot = RobotClient::at_address(host, options);
 ```dart {class="line-numbers linkable-line-numbers" data-line="2,4,6,10"}
 Future<void> connectToViam() async {
   const host = 'ADDRESS FROM THE VIAM APP';
-  // Replace '<API-KEY-ID>' (including brackets) with your api key ID
+  // Replace '<API-KEY-ID>' (including brackets) with your API key ID
   const apiKeyID = '<API-KEY-ID>';
-  // Replace '<API-KEY>' (including brackets) with your api key
+  // Replace '<API-KEY>' (including brackets) with your API key
   const apiKey = '<API-KEY>';
 
   final robot = await RobotClient.atAddress(
