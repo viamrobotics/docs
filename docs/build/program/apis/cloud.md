@@ -38,7 +38,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Use the Viam CLI [to generate an api key to authenticate](/fleet/cli/#authenticate).
+Use the Viam CLI [to generate an API key to authenticate](/fleet/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -51,11 +51,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your robot's API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's API key
+      # ID
       auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
@@ -108,7 +108,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### ListOrganizationMembers
 
-List the members and invites of the {{< glossary_tooltip term_id="organization" text="organizations" >}} that you are currently authenticated to.
+List the members and invites of the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
