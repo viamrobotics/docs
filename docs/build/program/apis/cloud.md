@@ -1479,7 +1479,7 @@ Check validity of a list of permissions.
 
 **Parameters:**
 
-- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): The permissions to validate.
+- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): A list of the resource permissions arguments to validate as authorized.
   For example, `“read_organization”` or `“control_robot”`.
   See [GitHub](https://github.com/viamrobotics/app/blob/7ddb29e4dcb8cbca6c76c3acaeeb19c544028bd2/auth/models/models.go#L190) for the full list of permissions.
 
