@@ -51,4 +51,4 @@ Method Name | Description
 [`CheckPermissions`](/build/program/apis/cloud/#checkpermissions) | Check validity of a list of permissions.
 [`CreateKey`](/build/program/apis/cloud/#createkey) | Create a new API key.
 [`CreateKeyFromExistingKeyAuthorizations`](/build/program/apis/cloud/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations.
-[`ListKeys`](/build/program/apis/cloud/#listkeys) | List all keys for the currently-authed-to org.
+[`ListKeys`](/build/program/apis/cloud/#listkeys) | List all keys for an organization.
