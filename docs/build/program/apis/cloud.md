@@ -1338,13 +1338,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Create an organization invite and send it by email.
+Create an {{< glossary_tooltip term_id="organization" text="organization" >}} invite and send it by email.
 
 **Parameters:**
 
 - `email` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The email address to send the invite to.
-- `authorizations` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Specifications of the
-  authorizations to include in the invite.
+- `authorizations` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Authorizations to include in the invite.
   If not provided, full owner permissions will be granted.
 
 **Returns:**
@@ -1353,7 +1352,7 @@ Create an organization invite and send it by email.
 
 **Raises:**
 
-- `GRPCError`: If an invalid email is provided, or if the user is already a member of the org.
+- `GRPCError`: This error is raised if an invalid email is provided, or if the user is already a member of the org.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.create_organization_invite("youremail@email.com")
@@ -1396,7 +1395,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Delete a pending organization invite.
+Delete a pending organization invite to the organization you are currently authenticated to.
 
 **Parameters:**
 
@@ -1408,7 +1407,7 @@ Delete a pending organization invite.
 
 **Raises:**
 
-- `GRPCError`: If no pending invite is associated with the provided email address.
+- `GRPCError`: This error is raised if no pending invite is associated with the provided email address.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.delete_organization_invite("youremail@email.com")
@@ -1436,7 +1435,7 @@ Resend a pending organization invite email.
 
 **Raises:**
 
-- `GRPCError`: If no pending invite is associated with the provided email address.
+- `GRPCError`: This error is raised if no pending invite is associated with the provided email address.
 
 ```python {class="line-numbers linkable-line-numbers"}
 await cloud.resend_organization_invite("youremail@email.com")
@@ -1452,7 +1451,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Return a list of rover rental robots within an org.
+Return a list of rover rental robots within an {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 **Parameters:**
 
@@ -1480,7 +1479,8 @@ Check validity of a list of permissions.
 
 **Parameters:**
 
-- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): The permissions to validate. For example, `“read_organization”` or `“control_robot”`.
+- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): The permissions to validate.
+  For example, `“read_organization”` or `“control_robot”`.
   See [GitHub](https://github.com/viamrobotics/app/blob/7ddb29e4dcb8cbca6c76c3acaeeb19c544028bd2/auth/models/models.go#L190) for the full list of permissions.
 
 **Returns:**
@@ -1489,7 +1489,7 @@ Check validity of a list of permissions.
 
 **Raises:**
 
-- `GRPCError`: If the list of permissions to validate is empty.
+- `GRPCError`: This error is raised if the list of permissions to validate is empty.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import AuthorizedPermissions
@@ -1524,7 +1524,7 @@ Create a new API key.
 
 **Raises:**
 
-- `GRPCError`: If the authorizations list is empty.
+- `GRPCError`: This error is raised if the authorizations list is empty.
 
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.app.app_client import APIKeyAuthorization
@@ -1556,7 +1556,7 @@ Create a new API key with an existing key’s authorizations.
 
 **Returns:**
 
-- [(Tuple[str, str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new api key and api key ID.
+- [(Tuple[str, str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new API key and API key ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 api_key, api_key_id = cloud.create_key_from_existing_key_authorizations(
@@ -1573,7 +1573,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-List all keys for the currently-authed-to org.
+List all keys for the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to.
 
 **Parameters:**
 
