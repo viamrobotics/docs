@@ -1495,8 +1495,8 @@ Check validity of a list of permissions.
 from viam.proto.app import AuthorizedPermissions
 
 permissions = [AuthorizedPermissions(resource_type="organization",
-resource_id="organization-identifier123",
-permissions=["control_robot"])]
+              resource_id="organization-identifier123",
+              permissions=["control_robot"])]
 
 filtered_permissions = await cloud.check_permissions(permissions)
 ```
