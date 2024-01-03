@@ -43,13 +43,12 @@ Method Name | Description
 [`UploadModuleFile`](/build/program/apis/cloud/#uploadmodulefile ) | Upload a module file.
 [`GetModule`](/build/program/apis/cloud/#getmodule ) | Get a module by its ID.
 [`ListModules`](/build/program/apis/cloud/#listmodules ) | List available modules.
-[`CreateOrganizationInvite`](/build/program/apis/#createorganizationinvite)
-[`UpdateOrganizationInviteAuthorizations`](/build/program/apis/#updateorganizationinviteauthorizations)
-[`DeleteOrganizationMember`](/build/program/apis/#deleteorganizationmember)
-[`DeleteOrganizationInvite`](/build/program/apis/#deleteorganizationinvite)
-[`ResendOrganizationInvite`](/build/program/apis/#resendorganizationinvite)
-[`GetRoverRentalRobots`](/build/program/apis/#getroverrentalrobots)
-[`CheckPermissions`](/build/program/apis/#checkpermissions)
-[`CreateKey`](/build/program/apis/#createkey)
-[`CreateKeyFromExistingKeyAuthorizations`](/build/program/apis/#createkeyfromexistingkeyauthorizations)
-[`ListKeys`](/build/program/apis/#listkeys)
+[`CreateOrganizationInvite`](/build/program/apis/#createorganizationinvite) | Create an organization invite and send it by email.
+[`DeleteOrganizationMember`](/build/program/apis/#deleteorganizationmember) | Remove a member from the organization.
+[`DeleteOrganizationInvite`](/build/program/apis/#deleteorganizationinvite) | Delete a pending organization invite.
+[`ResendOrganizationInvite`](/build/program/apis/#resendorganizationinvite) | Resend a pending organization invite email.
+[`GetRoverRentalRobots`](/build/program/apis/#getroverrentalrobots) | Return a list of rover rental robots within an org.
+[`CheckPermissions`](/build/program/apis/#checkpermissions) | Check validity of a list of permissions.
+[`CreateKey`](/build/program/apis/#createkey) | Create a new API key.
+[`CreateKeyFromExistingKeyAuthorizations`](/build/program/apis/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations.
+[`ListKeys`](/build/program/apis/#listkeys) | List all keys for the currently-authed-to org.
