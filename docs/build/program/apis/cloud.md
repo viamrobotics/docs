@@ -1344,8 +1344,8 @@ Create an organization invite and send it by email.
 
 - `email` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The email address to send the invite to.
 - `authorizations` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Specifications of the
-authorizations to include in the invite.
-If not provided, full owner permissions will be granted.
+  authorizations to include in the invite.
+  If not provided, full owner permissions will be granted.
 
 **Returns:**
 
@@ -1481,7 +1481,7 @@ Check validity of a list of permissions.
 **Parameters:**
 
 - `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): The permissions to validate. For example, `“read_organization”` or `“control_robot”`.
-See [GitHub](https://github.com/viamrobotics/app/blob/7ddb29e4dcb8cbca6c76c3acaeeb19c544028bd2/auth/models/models.go#L190) for the full list of permissions.
+  See [GitHub](https://github.com/viamrobotics/app/blob/7ddb29e4dcb8cbca6c76c3acaeeb19c544028bd2/auth/models/models.go#L190) for the full list of permissions.
 
 **Returns:**
 
@@ -1494,7 +1494,9 @@ See [GitHub](https://github.com/viamrobotics/app/blob/7ddb29e4dcb8cbca6c76c3acae
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import AuthorizedPermissions
 
-permissions = [AuthorizedPermissions(resource_type="organization", resource_id="organization-identifier123", permissions=["control_robot"])]
+permissions = [AuthorizedPermissions(resource_type="organization",
+resource_id="organization-identifier123",
+permissions=["control_robot"])]
 
 filtered_permissions = await cloud.check_permissions(permissions)
 ```
@@ -1557,7 +1559,8 @@ Create a new API key with an existing key’s authorizations.
 - [(Tuple[str, str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new api key and api key ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
-api_key, api_key_id = cloud.create_key_from_existing_key_authorizations(id="INSERT YOUR API KEY ID")
+api_key, api_key_id = cloud.create_key_from_existing_key_authorizations(
+  id="INSERT YOUR API KEY ID")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key_from_existing_key_authorizations).
