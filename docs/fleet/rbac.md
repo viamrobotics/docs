@@ -31,7 +31,7 @@ To view the roles each organization member has, click on the organization dropdo
 To limit the access of a user, first open the access settings for the user by clicking on the user.
 Then either change the role of the user from owner to operator with the dropdown or click on **Limit access** and change the resource the user has access.
 
-You can also remote the user by clicking on **Remove user**.
+You can also remove the user by clicking on **Remove user**.
 
 {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/limit-access.png" resize="800x" declaredimensions=true >}}
 
