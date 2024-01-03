@@ -1332,3 +1332,259 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### CreateOrganizationInvite
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Create an organization invite and send it by email.
+
+**Parameters:**
+
+- `email` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The email address to send the invite to.
+- `authorizations` [(Optional[List[viam.proto.app.Authorization]])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization): Specifications of the
+authorizations to include in the invite.
+If not provided, full owner permissions will be granted.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- `GRPCError`: If an invalid email is provided, or if the user is already a member of the org.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.create_organization_invite("youremail@email.com")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteOrganizationMember
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Remove a member from the organization.
+
+**Parameters:**
+
+- `user_id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the user to remove.
+
+**Returns:**
+
+- None.
+
+```python {class="line-numbers linkable-line-numbers"}
+member_list, invite_list = await cloud.list_organization_members()
+first_user_id = member_list[0].user_id
+
+await cloud.delete_organization_member(first_user_id)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_member).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeleteOrganizationInvite
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Delete a pending organization invite.
+
+**Parameters:**
+
+- `email` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The email address the pending invite was sent to.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- `GRPCError`: If no pending invite is associated with the provided email address.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.delete_organization_invite("youremail@email.com")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_invite).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ResendOrganizationInvite
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Resend a pending organization invite email.
+
+**Parameters:**
+
+- `email` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The email address associated with the invite.
+
+**Returns:**
+
+- None.
+
+**Raises:**
+
+- `GRPCError`: If no pending invite is associated with the provided email address.
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.resend_organization_invite("youremail@email.com")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.resend_organization_invite).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetRoverRentalRobots
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Return a list of rover rental robots within an org.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(List[viam.proto.app.RoverRentalRobot])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RoverRentalRobot): The list of rover rental robots.
+
+```python {class="line-numbers linkable-line-numbers"}
+rental_robots = await cloud.get_rover_rental_robots()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_rover_rental_robots).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CheckPermissions
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Check validity of a list of permissions.
+
+**Parameters:**
+
+- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): The permissions to validate. For example, `“read_organization”` or `“control_robot”`.
+See [GitHub](https://github.com/viamrobotics/app/blob/7ddb29e4dcb8cbca6c76c3acaeeb19c544028bd2/auth/models/models.go#L190) for the full list of permissions.
+
+**Returns:**
+
+- [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): The permissions argument, with invalid permissions filtered out.
+
+**Raises:**
+
+- `GRPCError`: If the list of permissions to validate is empty.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app import AuthorizedPermissions
+
+permissions = [AuthorizedPermissions(resource_type="organization", resource_id="organization-identifier123", permissions=["control_robot"])]
+
+filtered_permissions = await cloud.check_permissions(permissions)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.check_permissions).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateKey
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Create a new API key.
+
+**Parameters:**
+
+- `authorizations` [(List[APIKeyAuthorization])](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.APIKeyAuthorization): A list of authorizations to associate with the key.
+- `name` [(Optional[str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): A name for the key. If None, defaults to the current timestamp.
+
+**Returns:**
+
+- [(Tuple[str, str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The api key and api key ID.
+
+**Raises:**
+
+- `GRPCError`: If the authorizations list is empty.
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.app.app_client import APIKeyAuthorization
+
+auth = APIKeyAuthorization(
+  role="owner",
+  resource_type="robot",
+  resource_id="your-robot-id123"
+)
+
+api_key, api_key_id = cloud.create_key([auth], "my_key")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateKeyFromExistingKeyAuthorizations
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Create a new API key with an existing key’s authorizations.
+
+**Parameters:**
+
+- `id` [(str)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The ID of the API key to duplicate authorizations from.
+
+**Returns:**
+
+- [(Tuple[str, str])](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new api key and api key ID.
+
+```python {class="line-numbers linkable-line-numbers"}
+api_key, api_key_id = cloud.create_key_from_existing_key_authorizations(id="INSERT YOUR API KEY ID")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key_from_existing_key_authorizations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListKeys
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+List all keys for the currently-authed-to org.
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(List[viam.proto.app.APIKeyWithAuthorizations])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations): The existing API keys and authorizations.
+
+```python {class="line-numbers linkable-line-numbers"}
+keys = cloud.list_keys()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_keys).
+
+{{% /tab %}}
+{{< /tabs >}}

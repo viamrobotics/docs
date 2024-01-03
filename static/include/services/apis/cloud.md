@@ -43,3 +43,13 @@ Method Name | Description
 [`UploadModuleFile`](/build/program/apis/cloud/#uploadmodulefile ) | Upload a module file.
 [`GetModule`](/build/program/apis/cloud/#getmodule ) | Get a module by its ID.
 [`ListModules`](/build/program/apis/cloud/#listmodules ) | List available modules.
+[`CreateOrganizationInvite`](/build/program/apis/#createorganizationinvite)
+[`UpdateOrganizationInviteAuthorizations`](/build/program/apis/#updateorganizationinviteauthorizations)
+[`DeleteOrganizationMember`](/build/program/apis/#deleteorganizationmember)
+[`DeleteOrganizationInvite`](/build/program/apis/#deleteorganizationinvite)
+[`ResendOrganizationInvite`](/build/program/apis/#resendorganizationinvite)
+[`GetRoverRentalRobots`](/build/program/apis/#getroverrentalrobots)
+[`CheckPermissions`](/build/program/apis/#checkpermissions)
+[`CreateKey`](/build/program/apis/#createkey)
+[`CreateKeyFromExistingKeyAuthorizations`](/build/program/apis/#createkeyfromexistingkeyauthorizations)
+[`ListKeys`](/build/program/apis/#listkeys)
