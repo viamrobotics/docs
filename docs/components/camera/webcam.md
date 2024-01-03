@@ -133,15 +133,23 @@ Viam supports the following pixel formats:
 
 - I420
 - I444
-- MJPEG
+- MJPEG / MJPG
 - NV12
 - NV21
 - RGBA
-- UYVY
-- YUY2
+- UYVY / Y422
+- YUY2 / YUYV / V422
 - Z16
 
 If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
+
+You can also manually determine the pixel formats your camera supports by running the following command on the machine you have connected your camera to:
+
+```sh {class="command-line" data-prompt="$"}
+v4l2-ctl --list-formats-ext --device /dev/video0
+```
+
+Replace `/dev/video0` in the above command with the video path you [determined for your video device above](#using-video_path), if different.
 
 ## View the camera stream
 
