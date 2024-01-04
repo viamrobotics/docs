@@ -84,7 +84,7 @@ To view the role of an API key and what it grants access to, click on **Show det
 
 To edit an API key, click on **Show details** in the key's row of the key table's **Resources** column.
 
-To edit the role, click on the drop-down menu next to the role and select **Owner** or **Operator**.
+To edit the role, click on the dropdown menu next to the role and select **Owner** or **Operator**.
 See [Permissions](#permissions) for information about the privilege each role entails at each resource level.
 
 To change the entities it is able to access, click **+ Grant additional access**.
