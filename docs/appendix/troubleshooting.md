@@ -209,7 +209,7 @@ It will resemble the following:
 
       Replace `/dev/video0` in the above command with the video path you determined for your video device above, if different.
 
-      The command will return a list of pixel formats your camera supports, such as `MJPG` or `YUYV`.
+      The command will return a list of pixel formats your camera supports, such as `MJPG` (also notated as `MJPEG`) or `YUYV` (also notated as `YUY2`).
       In order to use a camera device with Viam, it must support at least one of the [pixel formats supported by Viam](/components/camera/webcam/#using-format).
       If your camera does not support any of these formats, it cannot be used with Viam.
 
