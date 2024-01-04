@@ -32,17 +32,15 @@
                 </div>
               </div>
               {{ .Content }}
-          </div>
-          <!-- <button onclick="toTop()" class="docsbutton" id="scrollButton" title="Go to top" style="visibility: hidden;">
-              <i style="font-size:large;" class="fas fa-chevron-up"></i>
-          </button> -->
-      </main>
+            </div>
+          </main>
+        </div>
       </div>
+      {{ partial "footer.html" . }}
     </div>
-    {{ partial "footer.html" . }}
-  </div>
-  {{ $jsChangelog := resources.Get "js/changelog.js" }}
-  {{ $jsChangelog := $jsChangelog | minify }}
-  <script type="text/javascript" src="{{ $jsChangelog.RelPermalink }}" crossorigin="anonymous"></script>
-</body>
+    {{ $jsChangelog := resources.Get "js/changelog.js" }}
+    {{ $jsChangelog := $jsChangelog | minify }}
+    <script type="text/javascript" src="{{ $jsChangelog.RelPermalink }}" crossorigin="anonymous"></script>
+    {{ partial "scripts.html" . }}
+  </body>
 </html>
