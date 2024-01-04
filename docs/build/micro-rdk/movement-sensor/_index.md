@@ -29,6 +29,7 @@ For configuration information, click a supported movement sensor model name:
 
 The micro-RDK [movement sensor API](/components/movement-sensor/#api) supports only the following client SDK API methods, which operate the same as in the full-featured RDK:
 
+- [`GetReadings()`](/components/movement-sensor/#getreadings)
 - [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity)
 - [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity)
 - [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading)
