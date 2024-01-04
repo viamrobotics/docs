@@ -1,5 +1,5 @@
 const { TypesenseInstantSearchAdapter, instantsearch } = window;
-const observer = lozad();
+const observer = lozad(); 
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
