@@ -33,7 +33,7 @@ Once you have configured your machine, you can remotely control your machine on 
       <b>3. Prepare your base to navigate</b>
       <p><a href="/components/movement-sensor/">Configure a movement sensor</a> as part of your machine to use navigation.
       Additionally, <a href="/mobility/navigation/#configure-and-calibrate-the-frame-system-service-for-gps-navigation">configure and calibrate</a> the frame system for GPS navigation.
-      Then, <a href="/mobility/navigation/">configure a navigation service</a> on your machine.</p>
+      Then, <a href="/mobility/navigation/">configure the navigation service</a> on your machine.</p>
     </th>
   </tr>
   <tr>
