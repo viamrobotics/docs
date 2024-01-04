@@ -56,7 +56,7 @@ function cleanHeadings() {
         RemoveClass(headings[i], "show");
         AddClass(headings[i], "hidethisone");
       }
-      if (nextel.nextElementSibling !== "undefined" && nextel.nextElementSibling !== "null") {
+      if (nextel.nextElementSibling) {
         nextSibTag = nextel.nextElementSibling.tagName;
         nextel = nextel.nextElementSibling;
       } else {
