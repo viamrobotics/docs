@@ -1,7 +1,7 @@
 ---
 title: "Platform"
 linkTitle: "Platform"
-description: "Use Viam to configure, program, operate, manage, and collect data from your robots."
+description: "Use Viam to configure, program, operate, manage, and collect data from your smart machines."
 weight: 400
 type: docs
 ---

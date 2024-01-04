@@ -14,6 +14,7 @@ tags:
   ]
 description: "Support additional hardware components or services by adding them from the Viam Registry or by creating new modular resources."
 image: "/services/icons/modular-registry.svg"
+imageAlt: "Integrate other capabilities."
 no_list: true
 modulescript: true
 aliases:
