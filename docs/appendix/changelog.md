@@ -305,7 +305,6 @@ You can manage the data synced to Viam's cloud with the new capability for bulk 
 
 {{% /changelog %}}
 
-<!--
 ## April 2023
 
 {{% changelog color="changed" title="Vision service" %}}
@@ -318,7 +317,7 @@ Find more information on each of the changes below.
 
 {{% /alert %}}
 
-<!-- markdownlint-disable MD001
+<!-- markdownlint-disable MD001 -->
 
 #### Use individual vision service instances
 
@@ -669,7 +668,6 @@ The way to add machine learning vision models is changing.
 You will need to first register the machine learning model file with the [ML model service](/ml/) and then add that registered model to a vision service.
 
 {{% /changelog %}}
--->
 
 ## March 2023
 
