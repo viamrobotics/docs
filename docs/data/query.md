@@ -185,6 +185,16 @@ For example, to connect to your Viam organization's MongoDB Atlas instance and q
      [ { numStanding: 215 } ]
      ```
 
+{{< alert title="Tip" color="tip" >}}
+If you use a data field that is named the same as a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words), such as `value` or `position`, you must escape that field name in your query using backticks ( <file>\`</file> ).
+For example, to query against a data field named `value` in the `readings` collection, you would use:
+
+```mongodb {class="command-line" data-prompt=">"}
+select sensorData.`value` from readings
+```
+
+{{< /alert >}}
+
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 ## Next Steps
