@@ -143,14 +143,12 @@ Viam supports the following pixel formats:
 
 If your machine is connected to the Viam app, the available pixel formats supported by your camera automatically appear in the **Format** dropdown menu, which is visible when you click the **Show more** button.
 
-On Linux, you can also manually determine which pixel formats your camera supports by running the following command:
+On Linux, you can also manually determine which pixel formats your camera supports by running the following command on the machine your camera is connected to.
+Replace `/dev/video0` with the video path you [determined for your video device above](#using-video_path), if different:
 
 ```sh {class="command-line" data-prompt="$"}
 v4l2-ctl --list-formats-ext --device /dev/video0
 ```
-
-Replace `/dev/video0` in the above command with the video path you [determined for your video device above](#using-video_path), if different.
-Run this command on the Linux machine you have connected your camera to.
 
 ## View the camera stream
 
