@@ -1,6 +1,6 @@
 ---
-title: "Configure a esp32 Wheeled Base"
-linkTitle: "esp32_wheeled_base"
+title: "Configure an ESP32 Wheeled Base"
+linkTitle: "two_wheeled_base"
 weight: 30
 type: "docs"
 description: "Configure and wire an esp32 wheeled base."
@@ -8,19 +8,20 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - /micro-rdk/base/esp32_wheeled_base/
+  - /build/micro-rdk/base/esp32_wheeled_base/
 # SMEs: Gautham V.
 ---
 
-An `esp32_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
+A `two_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).
 Only two-wheeled bases are supported by this micro-RDK model.
 
 {{< alert title="Info" color="info" >}}
 
-The`esp32_wheeled_base` base model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
+The`two_wheeled_base` base model is not currently available as a built-in option in [the Viam app](https://app.viam.com), so you cannot use **Builder** mode to configure this board.
 
 {{< /alert >}}
 
-Configure a `esp32_wheeled_base` base as follows:
+Configure a `two_wheeled_base` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="JSON Template" %}}
@@ -30,7 +31,7 @@ Configure a `esp32_wheeled_base` base as follows:
   "components": [
     {
       "name": "<your-base-name>",
-      "model": "esp32_wheeled_base",
+      "model": "two_wheeled_base",
       "type": "base",
       "namespace": "rdk",
       "attributes": {
@@ -50,7 +51,7 @@ Configure a `esp32_wheeled_base` base as follows:
   "components": [
     {
       "name": "my-wheeled-base",
-      "model": "esp32_wheeled_base",
+      "model": "two_wheeled_base",
       "type": "base",
       "namespace": "rdk",
       "attributes": {
@@ -66,7 +67,7 @@ Configure a `esp32_wheeled_base` base as follows:
 {{% /tab %}}
 {{< /tabs >}}
 
-The following attributes are available for `esp32_wheeled_base` bases:
+The following attributes are available for `two_wheeled_base` bases:
 
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |

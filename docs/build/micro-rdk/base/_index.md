@@ -22,7 +22,7 @@ For configuration information, click on the supported base model name:
 <!-- prettier-ignore -->
 | Model | Description |
 | ----- | ----------- |
-| [`esp32_wheeled_base`](esp32_wheeled_base/) | Mobile robot with two wheels |
+| [`two_wheeled_base`](two_wheeled_base/) | Mobile robot with two wheels |
 
 ## API
 
