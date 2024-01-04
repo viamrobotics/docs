@@ -1,7 +1,7 @@
 ---
 title: "Developer Blog"
 linkTitle: "Developer Blog"
-weight: 65
+weight: 99
 type: docs
 layout: "blog"
 webmSrc: "/tutorials/videos/scuttle-gamepad-preview.webm"
