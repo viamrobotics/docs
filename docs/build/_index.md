@@ -26,7 +26,7 @@ Viam uses a composable system of building blocks called {{< glossary_tooltip ter
   </div>
 </div>
 
-For additional flexibility see the [modular resource registry](/registry/).
+If a component or service you want to use for your project is not natively supported, see the [modular resource registry](/registry/).
 
 ## SDKs
 
