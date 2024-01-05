@@ -43,3 +43,12 @@ Method Name | Description
 [`UploadModuleFile`](/build/program/apis/cloud/#uploadmodulefile ) | Upload a module file.
 [`GetModule`](/build/program/apis/cloud/#getmodule ) | Get a module by its ID.
 [`ListModules`](/build/program/apis/cloud/#listmodules ) | List available modules.
+[`CreateOrganizationInvite`](/build/program/apis/cloud/#createorganizationinvite) | Create an organization invite and send it by email.
+[`DeleteOrganizationMember`](/build/program/apis/cloud/#deleteorganizationmember) | Remove a member from the organization.
+[`DeleteOrganizationInvite`](/build/program/apis/cloud/#deleteorganizationinvite) | Delete a pending organization invite.
+[`ResendOrganizationInvite`](/build/program/apis/cloud/#resendorganizationinvite) | Resend a pending organization invite email.
+[`GetRoverRentalRobots`](/build/program/apis/cloud/#getroverrentalrobots) | Return a list of rover rental robots within an org.
+[`CheckPermissions`](/build/program/apis/cloud/#checkpermissions) | Check if the entity you're currently authenticated to is permitted to perform some action or set of actions on the resource you pass to the method.
+[`CreateKey`](/build/program/apis/cloud/#createkey) | Create a new API key.
+[`CreateKeyFromExistingKeyAuthorizations`](/build/program/apis/cloud/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations.
+[`ListKeys`](/build/program/apis/cloud/#listkeys) | List all keys for an organization.
