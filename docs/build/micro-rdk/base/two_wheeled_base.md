@@ -1,9 +1,9 @@
 ---
-title: "Configure a Two Wheeled Base (Micro-RDK)"
+title: "Configure a Two-Wheeled Base (Micro-RDK)"
 linkTitle: "two_wheeled_base"
 weight: 30
 type: "docs"
-description: "Configure and wire a two wheeled base with a microcontroller."
+description: "Configure and wire a two-wheeled base with a microcontroller."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
