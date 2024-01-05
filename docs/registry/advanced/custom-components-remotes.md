@@ -9,12 +9,12 @@ aliases:
   - "/program/extend/custom-components-remotes/"
   - "/extend/custom-components-remotes/"
   - "/modular-resources/advanced/custom-components-remotes/"
-description: "If you are unable to use modular resources, you can implement custom components and register them on a server configured as a remote of your robot."
+description: "If you are unable to use modular resources, you can implement custom components and register them on a server configured as a remote of your machine."
 ---
 
 Running {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} on the [board](/components/board/) directly connected to your components is the preferred way of managing and controlling custom components.
 
-However, if you are unable to use [modular resources](/registry/) because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you can use a [Viam SDK](/build/program/apis/) to code a custom resource implementation, host it on a server, and add it as a [remote](/build/configure/parts-and-remotes/) of your robot.
+However, if you are unable to use [modular resources](/registry/) because you need to host `viam-server` on a non-Linux system or have an issue with compilation, you can use a [Viam SDK](/build/program/apis/) to code a custom resource implementation, host it on a server, and add it as a [remote](/build/configure/parts-and-remotes/) of your machine.
 
 Once you have coded your custom component and configured the remote servers, you can control and monitor your component with the Viam SDKs, like any other component.
 
@@ -32,8 +32,8 @@ To add a custom resource as a [remote](/build/configure/parts-and-remotes/):
    You can do this by creating a new interface that implements required methods.
    The new model must implement any functions of the built-in resource type marked as required in its [RDK API definition](/registry/create/#valid-apis-to-implement-in-your-model).
 2. Register the custom component on a new gRPC server instance and start the server.
-3. Add the server as a [remote](/build/configure/parts-and-remotes/) of your robot.
-4. (Optional) [Configure a process](/build/configure/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
+3. Add the server as a [remote](/build/configure/parts-and-remotes/) of your machine.
+4. (Optional) [Configure a process](/build/configure/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your machine.
 
 Each remote server can host one or many custom components.
 
@@ -49,8 +49,8 @@ For more detailed instructions, see the full example in the [Python SDK document
    The new model must implement any methods of the built-in resource type marked as required in its [RDK API definition](/registry/create/#valid-apis-to-implement-in-your-model).
 1. Register the custom component on a new gRPC server instance and start the server.
    You can do this with the [`viam.rpc` library](https://python.viam.dev/autoapi/viam/rpc/index.html) by creating a new `rpc.server.Server` instance.
-1. Add the server as a [remote](/build/configure/parts-and-remotes/) of your robot.
-1. (Optional) [Configure a process](/build/configure/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your robot.
+1. Add the server as a [remote](/build/configure/parts-and-remotes/) of your machine.
+1. (Optional) [Configure a process](/build/configure/#processes) to launch this remote server to ensure the remote server is always running alongside the rest of your machine.
 
 Each remote server can host one or many custom components.
 

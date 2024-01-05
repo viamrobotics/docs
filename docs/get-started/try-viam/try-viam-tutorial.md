@@ -25,11 +25,11 @@ Watch this tutorial video for a walkthrough of Try Viam, including [how to reser
 
 ## **Control** tab
 
-Click on the rover name at the top to go to the rental rover's **Control** tab where you can drive the robot and interact with each of the robot's components.
+Click on the rover name at the top to go to the rental rover's **Control** tab where you can drive the machine and interact with each of the machine's components.
 
 At the top of the page you can see the randomly assigned name of the rover, the host, and the IP address.
 
-![The top banner of a Try Viam rover robot page. The randomly generated name for this rover is 'silent-forest'](get-started/try-viam/try-viam/bannerinfo.png)
+![The top banner of a Try Viam rover machine page. The randomly generated name for this rover is 'silent-forest'](get-started/try-viam/try-viam/bannerinfo.png)
 
 The **Control** tab contains panels for each of the rover's components:
 
@@ -45,7 +45,7 @@ The order of these components may vary.
 
 ### Base control
 
-The [base component](/components/base/) is the platform that the other parts of a mobile robot attach to.
+The [base component](/components/base/) is the platform that the other parts of a mobile machine attach to.
 
 Click the `viam_base` component to expand the base control pane to reveal the camera feed and driving interfaces.
 
@@ -124,7 +124,7 @@ You can also see their current positions (based on encoder readings) in real tim
 
 #### Board control
 
-The [board component](/components/board/) is the signal wire hub of a robot which allows you to control the states of individual GPIO pins on the board.
+The [board component](/components/board/) is the signal wire hub of a machine which allows you to control the states of individual GPIO pins on the board.
 
 For the Viam Rover, the board component is named `local` and controls a Raspberry Pi on the Viam Rover.
 With it, you can control the states of individual GPIO pins on the board.
@@ -135,7 +135,7 @@ With it, you can control the states of individual GPIO pins on the board.
 
 The [web gamepad component](/components/input-controller/webgamepad/) is disabled by default, but if you have a compatible gamepad, you can enable the **Enabled** toggle.
 
-## Learn about robot configuration
+## Learn about machine configuration
 
 On the Viam app, navigate to the **Components** subtab, under **Config**.
 There you can view the configuration for each component in the robot: attributes, component dependencies, pin assignments, and more.
@@ -144,7 +144,7 @@ There you can view the configuration for each component in the robot: attributes
 
 ### Board configuration
 
-The [board component](/components/board/) component is the signal wire hub of a robot.
+The [board component](/components/board/) component is the signal wire hub of a machine.
 Configuring a board component allows you to control the states of individual GPIO pins to command the electrical signals sent through and received by the board.
 For the Viam Rover, the board component is a Raspberry Pi with **Name** `local`, **Type** `board`, and **Model** `pi`.
 
@@ -197,7 +197,7 @@ The [web gamepad](/components/input-controller/webgamepad/) component has the **
 
 ![The gamepad configuration panel. No attributes are configured.](get-started/try-viam/try-viam/gamepad-config.png)
 
-If you connect a generic gamepad controller to your computer, you can use it to control your robot.
+If you connect a generic gamepad controller to your computer, you can use it to control your machine.
 
 If you are configuring your own robot, be aware that using the gamepad requires a service.
 To see how the service is configured, navigate to the **Services** section under the **Config** tab.
@@ -214,7 +214,7 @@ The names for **base** and **input_controller** correspond to the naming scheme 
 ### Raw JSON
 
 The 'Builder' configuration mode provides a user-friendly, guided experience for you.
-In the background, the Viam app translates the Viam robot configuration into JSON.
+In the background, the Viam app translates the Viam machine configuration into JSON.
 You can view the complete JSON for your rover by clicking on **Raw JSON** at the top left of the **Config** tab.
 
 ![The CONFIG tab with the mode toggled to Raw JSON. A section of the full raw JSON config is displayed but one would have to scroll to see all of it.](get-started/try-viam/try-viam/raw-json.png)

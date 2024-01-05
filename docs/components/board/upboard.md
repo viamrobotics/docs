@@ -11,7 +11,7 @@ aliases:
 # SMEs: Susmita
 ---
 
-Configure an `upboard` board to integrate an Intel-based board like the [UP 4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your robot.
+Configure an `upboard` board to integrate an Intel-based board like the [UP 4000](https://github.com/up-board/up-community/wiki/Pinout_UP4000) into your machine.
 
 Complete the following setup requirements, then move on to configuring your board in [the Viam app](https://app.viam.com):
 
@@ -29,7 +29,7 @@ You must flash your Intel-based board with:
 {{< tabs name="Configure an upboard Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `upboard` model.
 Enter a name for your board and click **Create**.
@@ -132,7 +132,7 @@ The following attributes are available for `upboard` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 
 ### `digital_interrupts`
 

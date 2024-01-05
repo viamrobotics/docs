@@ -16,7 +16,7 @@ An `image_file` camera gets color and depth image frames or point clouds from a 
 {{< tabs name="Configure an Image File Camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `image_file` model.
 Enter a name for your camera and click **Create**.
@@ -115,7 +115,7 @@ The following attributes are available for `image_file` cameras:
 
 You must specify at least one of `color_image_file_path`, `depth_image_file_path`, and `pointcloud_file_path`.
 
-If you provide configuration for the `depth_image_file_path` and `intrinsic_parameters` of the camera, then your robot will also retrieve point cloud data from the `depth_image_file_path`.
+If you provide configuration for the `depth_image_file_path` and `intrinsic_parameters` of the camera, then your machine will also retrieve point cloud data from the `depth_image_file_path`.
 If you then also configure a `pointcloud_file_path` on your camera, Viam will try to pull the data from the `pointcloud_file_path` first.
 
 ## View the camera stream

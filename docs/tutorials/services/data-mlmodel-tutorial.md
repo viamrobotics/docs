@@ -76,7 +76,7 @@ To capture data from your smart machine and sync to the Viam app, add the data m
 
 First, add the data management service to your smart machine to be able capture and sync data:
 
-1. On your robot's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Data Management**.
 1. Give the service a name, like `viam-data-manager`, then click **Create Service**.
 1. On the panel that appears, you can manage the capturing and syncing functions individually.
@@ -94,7 +94,7 @@ For this tutorial, you will configure data capture for images from a [camera](/c
 
 To enable image data capture for a camera component:
 
-1. On your robot's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 
 1. In the configuration pane for your [configured camera component](#prerequisites), find the **Data capture configuration** section, and click the **Add method** button to enable data capture for this camera.
 
@@ -114,7 +114,7 @@ For more information see [Configure data capture](/data/capture/#configure-data-
 
 Now that you have configured data capture on your camera component, you can view the resulting data files in the Viam app.
 
-1. First, in the [Viam app](https://app.viam.com), navigate to your robot's **Control** tab and enable the camera to verify that a live stream is returned.
+1. First, in the [Viam app](https://app.viam.com), navigate to your machine's **Control** tab and enable the camera to verify that a live stream is returned.
    If you do not see a functioning camera stream, verify that you have configured your [camera](/components/camera/) correctly.
 
 1. Then, select the [**DATA** page](https://app.viam.com/data/view) from the top of the screen.
@@ -220,7 +220,7 @@ Once your model has finished training, add the [ML model](/ml/) service and depl
 
 To deploy a model to your smart machine:
 
-1. On your robot's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **ML Model**, then select **TFLite CPU**.
 1. Give the service a name, like `my-mlmodel-service`, then click **Create**.
 1. In the resulting ML Model service configuration pane, select **Deploy model on robot**, then select the model you just trained from the **Models** dropdown menu.
@@ -237,7 +237,7 @@ You can then see the tagged objects on the **Control** tab.
 
 ### Add the vision service
 
-1. On your robot's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Services** tab.
 1. Click the **Create service** button at the bottom of the page, and select **Vision**, then select **ML Model**.
 1. Give the service a name, like `my-vision-service`, then click **Create**.
 1. In the resulting vision service configuration pane, select the ML model service you just added from the **ML Model** dropdown menu.
@@ -248,7 +248,7 @@ You can then see the tagged objects on the **Control** tab.
 
 ### Add a transform camera
 
-1. On your robot's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. Click the **Create components** button at the bottom of the page, and select **Camera**, then select **Transform camera**.
 1. Give the camera a name, like `my-transform-cam`, then click **Create**.
 1. In the resulting camera components configuration pane, enter the following into the **Attributes** section for the transform camera:
@@ -280,7 +280,7 @@ You can then see the tagged objects on the **Control** tab.
 
 Your smart machine is now ready to detect the objects you've tagged.
 
-1. On your robot's **Control** page in the [Viam app](https://app.viam.com), find your configured camera component.
+1. On your machine's **Control** page in the [Viam app](https://app.viam.com), find your configured camera component.
    If you are using a Viam Rover, use the `viam_base` panel instead, which presents both the camera and the transform camera together.
 1. Enable both the camera and the transform camera, to show both on the right-hand side.
    On the Viam Rover, and using the transform camera name from earlier in this tutorial, these are `cam` and `my-transform-cam`.

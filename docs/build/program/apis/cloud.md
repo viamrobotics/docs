@@ -674,7 +674,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### NewRobotPart
 
-Create a new robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -880,7 +880,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 **Returns:**
 
-- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new robot's ID.
+- [(string)](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str): The new machine's ID.
 
 ```python {class="line-numbers linkable-line-numbers"}
 new_robot_id = await cloud.new_robot(name="beepboop")
@@ -925,7 +925,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DeleteRobot
 
-Delete a specified robot.
+Delete a specified machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -15,7 +15,7 @@ aliases:
 [The Cartographer Project](https://github.com/cartographer-project) contains a C++ library that performs dense Simultaneous Localization And Mapping (SLAM).
 
 To use Cartographer with the Viam {{< glossary_tooltip term_id="slam" text="SLAM" >}} service, you can use the [`cartographer`](https://app.viam.com/module/viam/cartographer) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your robot.
+See [Modular resources](/registry/#the-viam-registry) for instructions on using a module from the Viam registry on your machine.
 
 The source code for this module is available on the [`viam-cartographer` GitHub repository](https://github.com/viamrobotics/viam-cartographer).
 
@@ -42,7 +42,7 @@ The `cartographer` module supports three modes of operation:
 - [Pure localization](#localize-only)
 
 Creating and updating SLAM maps with Cartographer is especially CPU-intensive, so the `cartographer` modular resource runs in the cloud for these two tasks.
-For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your robot.
+For doing pure localization on an existing map, the `cartographer` modular resource runs locally on your machine.
 
 {{% alert title="Info" color="info" %}}
 
@@ -53,7 +53,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 ### Requirements
 
-- You must have an RPlidar, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), physically connected to your robot.
+- You must have an RPlidar, such as the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) or [RPlidar A3](https://www.slamtec.com/en/Lidar/A3), physically connected to your machine.
 
   Be sure to position the RPlidar so that it **faces forward in the direction of travel**. For example, if you are using a Viam Rover and the [RPlidar A1](https://www.slamtec.com/en/Lidar/A1) model, mount it to the Rover so that the **pointed** end of the RPlidar mount housing is facing in the same direction as the webcam.
 
@@ -83,7 +83,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    {{% tab name="Config Builder" %}}
    Follow the instructions below to set up the `cartographer` module on your robot:
 
-   1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+   1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
    1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
    1. Select **SLAM**, then select `cartographer`.
       You can also search for "cartographer".
@@ -200,7 +200,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the robot is running.
    To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
    {{< /alert >}}
 
@@ -208,7 +208,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 2. Start a mapping session
 
-   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -232,7 +232,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    ![offline mapping maps computing table](/mobility/slam/offline-mapping-maps-computing-table.png)
 
-   When you are ready to end the slam session, return to your robot's **Control** tab and click **End session**.
+   When you are ready to end the slam session, return to your machine's **Control** tab and click **End session**.
    If you do not click **End session**, the slam session will automatically end after 45 minutes.
 
    Once the session has ended, the map is saved to your **Location** page's **SLAM library** tab.
@@ -255,7 +255,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    Configure **Select map** and **Map version** with the name and version of the map you would like to update.
    For the other attributes, review the information in [Create a new map](#create-a-new-map).
-   You can see more details about the available maps from your robot's **Location** page under the **SLAM library** tab.
+   You can see more details about the available maps from your machine's **Location** page under the **SLAM library** tab.
 
    {{% /tab %}}
    {{% tab name="JSON Example" %}}
@@ -357,7 +357,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
    {{< alert title="Tip" color="tip" >}}
    Be aware that data is not only captured when a slam session is running.
-   [Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+   [Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the robot is running.
    To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
    {{< /alert >}}
 
@@ -365,7 +365,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 2. Start a mapping session
 
-   Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
+   Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
    On the cartographer panel, you can start a mapping session.
 
    When you start a mapping session, Cartographer uses the data captured from when you click **Start session** until you click **End session** to create the map.
@@ -379,7 +379,7 @@ Updating an existing map uses an instance of the `cartographer` module running i
 
 {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position on the existing map.
+Cartographer may take several minutes to find your machine's position on the existing map.
 In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
 {{% /alert %}}
@@ -473,7 +473,7 @@ This example JSON configuration:
     {{< alert title="Tip" color="tip" >}}
 
 Be aware that data is not only captured when a slam session is running.
-[Data Capture](/data/capture/) continuously monitors and captures your robot's sensor data while the robot is running.
+[Data Capture](/data/capture/) continuously monitors and captures your machine's sensor data while the robot is running.
 To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture/).
 
     {{< /alert >}}
@@ -482,18 +482,18 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
 2.  Start a mapping session
 
-    Navigate to the **Control** tab on your robot's page and click on the dropdown menu matching the `name` of the service you created.
+    Navigate to the **Control** tab on your machine's page and click on the dropdown menu matching the `name` of the service you created.
 
     Unlike when creating or updating a map, you do not need to start and end a slam session.
-    The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your robot's position on it.
+    The pointcloud for the existing map will appear **immediately** and Cartographer will try to find your machine's position on it.
 
-    Since the map will not change, nothing new will be added to this robot's location's **SLAM library**.
+    Since the map will not change, nothing new will be added to this machine's location's **SLAM library**.
 
     ![slam RC card localize only](/mobility/slam/slam-RC-card-localize-only.png)
 
     {{% alert title="Info" color="info" %}}
 
-Cartographer may take several minutes to find your robot's position on the existing map.
+Cartographer may take several minutes to find your machine's position on the existing map.
 In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
 If you move your robot, it will appear to be moving in a trajectory from the map's origin.
@@ -505,7 +505,7 @@ If you move your robot, it will appear to be moving in a trajectory from the map
 <!-- prettier-ignore -->
 | Name | Data Type | Inclusion | Description |
 | ---- | --------- | --------- | ----------- |
-| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your robot. |
+| `use_cloud_slam` | boolean | **Required** | If `true`, the Cartographer algorithm will execute in the cloud rather than locally on your machine. |
 | `camera` | obj | **Required** | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the LiDAR camera component to use as input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that camera component. |
 | `movement_sensor` | obj | Optional | An object of the form `{ "name": <string>, "data_frequency_hz": <int> }` where `name` is the name of the IMU movement sensor (that is, a movement sensor that supports the `GetAngularVelocity` and `GetLinearAcceleration` API methods) to use as additional input and `data_frequency_hz` is the rate at which to capture (in "Create new map" or "Update existing map" modes) or poll (in "Localize only" mode) data from that movement sensor component. |
 | `enable_mapping` | boolean | Optional | If `true`, Cartographer will build the map in addition to doing localization. <ul> Default: `true` </ul> |

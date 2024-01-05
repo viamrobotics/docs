@@ -221,10 +221,10 @@ Instead, save this command to run in any future terminal session where you need 
 
 Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/machines/#add-a-new-robot) in your desired location.
 
-Click on the name of the robot to go to the robot's page.
+Click on the name of the machine to go to the machine's page.
 Then, navigate to the **Config** tab.
 
-### Configure your robot with an ESP32
+### Configure your machine with an ESP32
 
 [Client API](/build/program/apis/) usage with the micro-RDK is currently limited to the following supported {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
@@ -235,7 +235,7 @@ Then, navigate to the **Config** tab.
 - [Motor](/build/micro-rdk/motor/)
 
 See [micro-RDK](/build/micro-rdk/) to get a list of supported models and instructions on how to configure them.
-Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your robot.
+Follow [this guide](/build/micro-rdk/board/esp32/) to configure an `esp32` board on your machine.
 
 ### Generate a New Project from the Micro-RDK Template
 
@@ -248,14 +248,14 @@ Use [the Micro-RDK template](https://github.com/viamrobotics/micro-rdk-robot-tem
 cargo generate --git https://github.com/viamrobotics/micro-rdk-robot-template.git
 ```
 
-You will be prompted to paste your robot's JSON configuration into the terminal.
+You will be prompted to paste your machine's JSON configuration into the terminal.
 To obtain this:
 
-- Navigate to [your new robot's](#create-a-new-robot) page on [the Viam app](https://app.viam.com).
+- Navigate to [your new machine's](#create-a-new-robot) page on [the Viam app](https://app.viam.com).
 - Click on the **Setup** tab.
   Keep your `Mode` and `Architecture` selections at default.
 - Click the **Copy viam-server config** button on the right side of the **Setup** tab.
-  The micro-RDK needs this JSON file, which contains your robot part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
+  The micro-RDK needs this JSON file, which contains your machine part secret key and cloud app address, to connect to the [Viam app](https://app.viam.com).
 - Paste the `viam-server` config into your terminal when prompted.
 
 {{% snippet "secret-share.md" %}}
@@ -289,7 +289,7 @@ If successful, you will retain a serial connection to the board until you press 
 To manage this connection, consider running it within a dedicated terminal session, or under `tmux` or `screen`.
 While the serial connection is live, you can also restart the currently flashed image with `Ctrl-R`.
 
-Navigate to your new robot's page on [the Viam app](https://app.viam.com).
+Navigate to your new machine's page on [the Viam app](https://app.viam.com).
 If successful, **Live** should be displayed underneath **Last online**.
 
 ### Troubleshooting

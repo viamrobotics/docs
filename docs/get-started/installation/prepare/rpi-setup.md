@@ -235,7 +235,7 @@ Follow the instructions to [enable communication protocols](#enable-communicatio
 
 ### Add additional WiFi credentials
 
-If you move your robot to a different WiFi network, you will have to update the WiFi credentials.
+If you move your machine to a different WiFi network, you will have to update the WiFi credentials.
 
 You can update the WiFi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
 

@@ -29,7 +29,7 @@ sudo curl -o /usr/local/bin/intelgrpcserver https://storage.googleapis.com/packa
 sudo chmod a+rx /usr/local/bin/intelgrpcserver
 ```
 
-### Configure the Server to Run on Robot Start-Up
+### Configure the Server to Run on Machine Start-Up
 
 On the [Viam app](https://app.viam.com), click **Config** and then access the **Processes** tab. Add the following configuration:
 
@@ -57,7 +57,7 @@ On the **Config** tab, click **Remotes**, and then add the following configurati
 ]
 ```
 
-This adds the two cameras to your robot.
+This adds the two cameras to your machine.
 They will have the names `intel:color` and `intel:depth`.
 
 ### Create a Camera to Display Point Clouds
@@ -116,7 +116,7 @@ sudo curl -o /usr/local/bin/intelrealserver https://storage.googleapis.com/packa
 sudo chmod a+rx /usr/local/bin/intelrealserver
 ```
 
-### Configure the Server to Run on Robot Start-Up
+### Configure the Server to Run on Machine Start-Up
 
 On the [Viam app](https://app.viam.com), click **Config** and then click **Processes**.
 Enter the following configuration:

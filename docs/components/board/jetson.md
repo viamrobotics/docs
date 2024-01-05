@@ -3,7 +3,7 @@ title: "Configure a Jetson Board"
 linkTitle: "jetson"
 weight: 20
 type: "docs"
-description: "Configure a jetson board to integrate an NVIDIA Jetson Orin Module and Developer Kit, NVIDIA Jetson AGX, or NVIDIA Jetson Nano into your robot."
+description: "Configure a jetson board to integrate an NVIDIA Jetson Orin Module and Developer Kit, NVIDIA Jetson AGX, or NVIDIA Jetson Nano into your machine."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
@@ -34,7 +34,7 @@ Configure a `jetson` board to integrate an [NVIDIA Jetson Orin Module and Develo
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `jetson` model.
 Enter a name for your board and click **Create**.
@@ -77,7 +77,7 @@ The following attributes are available for `jetson` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 
 ### `digital_interrupts`
 

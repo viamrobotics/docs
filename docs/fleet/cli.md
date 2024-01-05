@@ -226,7 +226,7 @@ To use a robot API key to authenticate your CLI session, you must first create o
 
    Where:
 
-   - `robot-id` is your robot's ID.
+   - `robot-id` is your machine's ID.
      You can find your robot ID by running `viam robots list`.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
@@ -240,17 +240,17 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a robot API key gives the authenticated CLI session full read and write access to your robot.
+Authenticating using a robot API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your robot with the SDK](/build/program/#authenticate).
+Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
 To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
 ## Manage your robots with the Viam CLI
 
-With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your robot fleet or manage custom modules.
+With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your machine fleet or manage custom modules.
 All Viam CLI commands use the following format:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -331,7 +331,7 @@ viam board list --organization=my-org
 
 ### data
 
-The `data` command allows you to manage robot data.
+The `data` command allows you to manage machine data.
 With it, you can export data in a variety of formats, delete specified data, add or remove images from a dataset and filter a dataset by tags, or configure a database user to enable querying synced tabular data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}

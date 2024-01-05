@@ -51,7 +51,7 @@ If your pet already has a distinct color that is different from their environmen
 
 Follow the steps below to set up your smart machine:
 
-1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your robot's board if they are not the same device.
+1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your machine's board if they are not the same device.
 1. [Create a robot](/fleet/machines/#add-a-new-robot).
 1. [Install](/get-started/installation/#install-viam-server) or [update](/get-started/installation/manage/#update-viam-server) `viam-server`.
    Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
@@ -83,7 +83,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-1. Clone the [`colorfilter` module](https://github.com/viam-labs/modular-filter-examples) from GitHub onto your robot's computer:
+1. Clone the [`colorfilter` module](https://github.com/viam-labs/modular-filter-examples) from GitHub onto your machine's computer:
 
    ```{class="command-line" data-prompt="$"}
    git clone https://github.com/viam-labs/modular-filter-examples.git
@@ -807,7 +807,7 @@ Note the absolute path to your module’s executable for use in the next section
 
 Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine as a local module:
 
-1. Navigate to the **Config** tab of your robot's page in the [Viam app](https://app.viam.com/robots).
+1. Navigate to the **Config** tab of your machine's page in the [Viam app](https://app.viam.com/robots).
 1. Select the **Modules** subtab and scroll to the **Add local module** section.
 1. Enter a name for your local module, enter the [module's executable path](/registry/create/#prepare-the-module-for-execution), then click **Add module**.
    - The name must use only lowercase characters.
@@ -824,7 +824,7 @@ Next, add the following services to your smart machine to support the color filt
 
 ### Add the data management service
 
-To enable data capture on your robot, add and configure the [data management service](/data/) to capture and store data on your robot's computer:
+To enable data capture on your robot, add and configure the [data management service](/data/) to capture and store data on your machine's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -919,12 +919,12 @@ With the vision and data management services configured, you can now configure y
 
 If you haven't already, add a [camera](/components/camera/) component to your smart machine:
 
-1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
+1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Components** subtab and click **Create component** in the lower-left corner.
 1. Select the `camera` and then select `webcam`.
    1.Enter 'cam' as the name for your camera, then click **Create**.
 
-Your robot's configuration page now includes a panel for your camera.
+Your machine's configuration page now includes a panel for your camera.
 
 - To choose the camera the robot will use, click the **video path** field.
   - If your robot is connected to the Viam app, you'll see a list of available cameras.
@@ -968,7 +968,7 @@ Then, click **Save config**.
 
 ## Test your color filter camera
 
-To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your robot's page.
+To test that your color filter camera is capturing and filtering images properly, navigate to the **Control** tab on your machine's page.
 
 On the **colorfiltercam** panel, toggle **view colorfiltercam** to view your camera's live feed.
 Test the filter by positioning your smart machine so that it captures an image of your pet wearing its collar.

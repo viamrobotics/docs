@@ -11,13 +11,13 @@ aliases:
 When building a smart machine application in the [Viam app](https://app.viam.com), a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
 Next they will test that it is wired up properly using the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
-This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.
+This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the machine.
 
 Below, we describe the flow of information through a Viam-based multipart robot and then get into the specifics of what backs these connections and communcations APIs.
 
 ## High-Level Inter-Robot/SDK Communication
 
-To begin, let's define our robot's topology:
+To begin, let's define our machine's topology:
 
 ![robot communication diagram](/internals/robot-to-robot-comms/robot-communication-diagram.png)
 

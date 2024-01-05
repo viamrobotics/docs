@@ -235,8 +235,8 @@ If the Pi has power, the lights on the Raspberry Pi will light up.
 ### Connect to the Viam app
 
 While the Pi boots, go to [app.viam.com](https://app.viam.com/robots) and [add a robot](/fleet/machines/#add-a-new-robot).
-On the robot's **Setup** tab, select `Linux (Aarch64)`.
-`ssh` into the Pi and follow the instructions on the robot's **Setup** tab to download `viam-server` and configure your robot.
+On the machine's **Setup** tab, select `Linux (Aarch64)`.
+`ssh` into the Pi and follow the instructions on the machine's **Setup** tab to download `viam-server` and configure your machine.
 
 To configure your rover so you can start driving it, [add the Viam Fragment to your Robot](/get-started/try-viam/rover-resources/rover-tutorial-fragments/).
 

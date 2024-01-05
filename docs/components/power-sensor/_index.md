@@ -5,7 +5,7 @@ childTitleEndOverwrite: "Power Sensor"
 weight: 70
 no_list: true
 type: "docs"
-description: "A device that provides information about a robot's power systems, including voltage, current, and power consumption."
+description: "A device that provides information about a machine's power systems, including voltage, current, and power consumption."
 tags: ["sensor", "components", "power sensor", "ina219", "ina226", "renogy"]
 icon: "/icons/components/power-sensor.svg"
 images: ["/icons/components/power-sensor.svg"]
@@ -15,7 +15,7 @@ aliases:
 # SME: #team-bucket
 ---
 
-A power sensor is a device that reports measurements of the voltage, current, and power consumption in your robot's system.
+A power sensor is a device that reports measurements of the voltage, current, and power consumption in your machine's system.
 Integrate this component to monitor your power levels.
 
 ## Related Services
@@ -51,10 +51,10 @@ To get started using Viam's SDKs to connect to and control your robot, go to you
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Once connected, you can control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Once connected, you can control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your robot.
+These examples assume you have a power sensor called `"my_power_sensor"` configured as a component of your machine.
 If your power sensor has a different name, change the `name` in the code.
 
 Import the power sensor package for the SDK you are using:

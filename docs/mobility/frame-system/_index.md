@@ -32,7 +32,7 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the robot's page in [the Viam app](https://app.viam.com) and click **Components**.
+To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the machine's page in [the Viam app](https://app.viam.com) and click **Components**.
 With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
 To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
@@ -40,7 +40,7 @@ To adjust the frame from its default configuration, change the parameters as nee
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
+Navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to a component's panel, and click **Add Frame**:
 
 ![add reference frame pane](/mobility/frame-system/frame_card.png)
 
@@ -91,7 +91,7 @@ Configure the reference frame as follows:
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
+| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
 {{% alert title="Info" color="info" %}}
 
@@ -117,13 +117,13 @@ For more information about determining the appropriate values for these paramete
 ### Visualize the Frame System
 
 You can visualize how your robot is oriented in the frame system in [the Viam app](https://app.viam.com).
-Navigate to the **Config** tab on your robot's page, select **mode** as **Builder**, and click on **Frame System**.
+Navigate to the **Config** tab on your machine's page, select **mode** as **Builder**, and click on **Frame System**.
 
 The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
 
 ![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](/mobility/frame-system/frame_system_basic.png)
 
-This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a robot's components in the frame system.
+This tab provides a simple interface for simultaneously viewing and editing the position, orientation, and geometries of a machine's components in the frame system.
 
 For example:
 
@@ -131,7 +131,7 @@ Consider a robot configured with a [`jetson` board](/components/board/), wired t
 
 No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
 
-![Example robot's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](/mobility/frame-system/demo_base_unedited.png)
+![Example machine's default frame configuration shown in the Frame System Editor. All components are stuck on top of each other](/mobility/frame-system/demo_base_unedited.png)
 
 The distance on the floor from the wheeled base to the board and camera setup is 200 millimeters.
 
@@ -152,7 +152,7 @@ Adjust the [orientation vector](/internals/orientation-vector/) to 0.5 degrees i
 
 ![Camera oriented .5 degrees OX shown in the Frame System Editor](/mobility/frame-system/demo_camera_edited_2.png)
 
-Now that the frame system is accurately configured with the robot's spatial orientation, [motion service](/mobility/motion/) methods that take in reference frame information can be utilized.
+Now that the frame system is accurately configured with the machine's spatial orientation, [motion service](/mobility/motion/) methods that take in reference frame information can be utilized.
 
 ### Display Options
 
@@ -177,7 +177,7 @@ Click the video camera icon below and to the right of the **Frame System** butto
 
 ### Bounding Geometries
 
-To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** subtab of the **Config** tab of a robot's page on [the Viam app](https://app.viam.com).
+To visualize a component's spatial constraints, add `Geometry` properties by selecting a component and selecting a **Geometry** type in the **Frame System** subtab of the **Config** tab of a machine's page on [the Viam app](https://app.viam.com).
 
 By default, a **Geometry** is shown surrounding the origin point of a component:
 
@@ -208,7 +208,7 @@ For example:
 
 `viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following reconfiguration.
 
-Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames in the robot's logs at `--debug` level:
+Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames in the machine's logs at `--debug` level:
 
 ![an example of a logged frame system](/mobility/frame-system/frame_sys_log_example.png)
 
@@ -218,7 +218,7 @@ The resulting tree of reference frames looks like:
 
 ![reference frame tree](/mobility/frame-system/frame_tree.png)
 
-`viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the robot's configuration and defining _two_ reference frames for each component:
+`viam-server` builds the connections in this tree by looking at the `"frame"` portion of each component in the machine's configuration and defining _two_ reference frames for each component:
 
 1. One with the name of the component, representing the actuator or final link in the component's kinematic chain: like `"A"` as the end of an arm.
 2. Another representing the origin of the component, defined with the component's name and the suffix _"\_origin"_.
@@ -252,7 +252,7 @@ Returns a topologically sorted list of all the reference frames monitored by the
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get a list of each of the reference frames configured on the robot.
+# Get a list of each of the reference frames configured on the machine.
 frame_system = await robot.get_frame_system_config()
 print(f"Frame System Configuration: {frame_system}")
 ```
@@ -268,7 +268,7 @@ print(f"Frame System Configuration: {frame_system}")
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-- `framesystemparts` [(`framesystemparts.Parts`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The individual parts that make up a robot's frame system.
+- `framesystemparts` [(`framesystemparts.Parts`)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Pose): The individual parts that make up a machine's frame system.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -351,13 +351,13 @@ fmt.Println("Transformed Orientation:", transformedPoseInFrame.Pose().Orientatio
 
 ## Additional Transforms
 
-_Additional Transforms_ exist to help the frame system determine the location of and relationships between objects not initially known to the robot.
+_Additional Transforms_ exist to help the frame system determine the location of and relationships between objects not initially known to the machine.
 
 For example:
 
-- In our [example of nested dynamic attachment](/mobility/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the robot's coordinate system).
+- In our [example of nested dynamic attachment](/mobility/frame-system/nested-frame-config/), the arm can be managed by the frame system without additional transforms because the base of the arm is fixed with respect to the gantry's platform, and the gantry's origin is fixed with respect to the `world` reference frame (centered at `(0, 0, 0)` in the machine's coordinate system).
 
-  However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the robot.
+  However, an arm with an attached [camera](/components/camera/) might generate additional information about the poses of other objects with respect to references frames on the machine.
 
   With the [vision service](/ml/vision/), the camera might detect objects that do not have a relationship to a `world` reference frame.
 

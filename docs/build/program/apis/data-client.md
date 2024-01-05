@@ -34,7 +34,7 @@ See the following example for reference.
 
 <!-- After sveltekit migration we should also be able to get a key from the UI-->
 
-Use the Viam CLI [to generate an api key to authenticate](/fleet/cli/#authenticate).
+Use the Viam CLI [to generate an API key to authenticate](/fleet/cli/#authenticate).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

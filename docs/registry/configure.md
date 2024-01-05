@@ -23,7 +23,7 @@ aliases:
 You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
 
 1. Add a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-modular-resource-from-the-viam-registry) or a [local module](#local-modules).
-   This makes the modular resource available to the robot.
+   This makes the modular resource available to the machine.
 1. Then add the modular resource itself.
 
 When you add a modular resource from the registry, the underlying module that provides it is automatically added at the same time.
@@ -31,7 +31,7 @@ To add a modular resource from a local module, you must add the module first.
 
 ## Add a modular resource from the Viam registry
 
-The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your robot.
+The [Viam registry](https://app.viam.com/registry) is a central repository of modules from both Viam and the robotics community that allows you to easily extend Viam's capabilities on your machine.
 
 A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/components/) or [service](/services/)).
 
@@ -48,7 +48,7 @@ If you are using a [rented Viam rover](/get-started/try-viam/), adding modules i
 
 To add a modular [component](/components/) from the Viam registry to your robot:
 
-1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
 1. Browse the list of available component types, and select the specific modular component you'd like to add.
 
@@ -58,7 +58,7 @@ To add a modular [component](/components/) from the Viam registry to your robot:
 
    {{<imgproc src="registry/configure/add-component-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the intel realsense module when searching by the name 'realsense'">}}
 
-1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your robot's component configuration.
+1. After selecting the modular component, click the **Add module** button, enter a name for your modular component, and click **Create** to add it to your machine's component configuration.
 
    {{<imgproc src="registry/configure/add-component-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the intel realsense module pane, with the 'Add module' button shown">}}
 
@@ -70,14 +70,14 @@ You can also find [the underlying module](#edit-the-configuration-of-a-module-fr
 
 If the module requires you to configure specific **Attributes**, click the **URL** link in the [module's configuration pane](#edit-the-configuration-of-a-module-from-the-viam-registry) to view the specific attribute requirements on the module's GitHub page.
 
-To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the robot's **Config** tab.
+To delete a module added from the Viam registry, click the trash can icon in the upper-right corner of the module configuration pane in the **Modules** subtab of the machine's **Config** tab.
 Deleting a module _does not_ delete any configured modular resources it provides.
 
 ### Add a modular service from the Viam registry
 
 To add a modular [service](/services/) from the Viam registry to your robot:
 
-1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click the **Create service** button.
 1. Browse the list of available service types and select the specific modular service you'd like to add.
 
@@ -87,7 +87,7 @@ To add a modular [service](/services/) from the Viam registry to your robot:
 
    {{<imgproc src="registry/configure/add-service-by-name.png" resize="400x" declaredimensions=true alt="The add a component modal showing results for the mlmodelservice triton module when searching by the name 'triton'">}}
 
-1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your robot's service configuration.
+1. After selecting the modular service, click the **Add module** button, enter a name for your modular service, and click **Create** to add it to your machine's service configuration.
 
    {{<imgproc src="registry/configure/add-service-screen.png" resize="400x" declaredimensions=true alt="The add a component modal showing the mlmodelservice triton module pane, with the 'Add module' button shown">}}
 
@@ -187,7 +187,7 @@ The custom model is configured as a component with the name "my-realsense".
 
 Once you have added a modular resource to your robot, you can view and edit the configuration of the underlying module from the **Modules** subtab:
 
-1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
    All modules you have added to your robot appear under the **Deployed** section.
 
@@ -269,7 +269,7 @@ This configures a module environment variable `PATH` that uses your system's `PA
 The notation `${environment.<ENV-VAR-NAME>}"` can be used to access any system environment variable that `viam-server` has access to, where `<ENV-VAR-NAME>` represents a system environment variable, like `PATH`, `USER`, or `PWD`.
 For example, you can use `${environment.HOME}"` to access the `HOME` environment variable for the user running `viam-server`.
 
-To configure a modular resource with an environment variable, navigate to the **Config** tab on your robot's page in the Viam app, toggle **Raw JSON** mode, and add the following `env` configuration to the `modules` section:
+To configure a modular resource with an environment variable, navigate to the **Config** tab on your machine's page in the Viam app, toggle **Raw JSON** mode, and add the following `env` configuration to the `modules` section:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -357,7 +357,7 @@ See the instructions to [compile your module into an executable](/registry/creat
 
 To add a local module on your robot:
 
-1. Navigate to the **Config** tab of your robot's page on [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
 
    - If you are adding a modular [component](/components/), click the **Components** subtab and click **Create component**.
    - If you are adding a modular [service](/services/), click the **Services** subtab and click **Create service**.
@@ -380,12 +380,12 @@ To add a local module on your robot:
 
 You can also add the module directly, without first adding its modular component or service:
 
-1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
 1. Scroll to the **Add local module** section.
 1. Enter a **Name** for this instance of your modular resource.
 1. Enter the [module's executable path](/registry/create/#prepare-the-module-for-execution).
-   This path must be the absolute path to the executable on your robot's filesystem.
+   This path must be the absolute path to the executable on your machine's filesystem.
 1. Then, click the **Add module** button, and click **Save config**.
 
    {{<imgproc src="registry/configure/add-local-module-csi-cam.png" resize="600x" declaredimensions=true alt="The add a local module pane with name 'my-csi-ca' and executable path '/usr/local/bin/viam-csi'">}}
@@ -396,7 +396,7 @@ You can also add the module directly, without first adding its modular component
 
 Once you have added a modular resource to your robot, you can view and edit the underlying module from the **Modules** subtab:
 
-1. Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
    Local modules you have added to your robot appear under the **Local** section.
 
@@ -406,7 +406,7 @@ The following properties are available for modules:
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
 `name` | string | **Required**| Name of the module you are registering. |
-`executable_path` | string | **Required**| The absolute path to the executable on your robot's filesystem. |
+`executable_path` | string | **Required**| The absolute path to the executable on your machine's filesystem. |
 `type` | string | **Required**| Either `registry` or `local`. |
 
 Add these properties to your module's configuration:

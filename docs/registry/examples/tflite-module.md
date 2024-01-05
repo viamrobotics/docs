@@ -208,7 +208,7 @@ Next, install `viam-server` on your robot, if you have not done so already:
 
 When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary, which includes a `--generate` function that determines and creates the necessary robot configuration to support this example.
 
-To generate your robot's configuration using `example_audio_classification_client`:
+To generate your machine's configuration using `example_audio_classification_client`:
 
 1. First, determine the full path to the `yamnet/classification` model you just downloaded.
    If you followed the instructions above, this path is: <file>~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite</file>.
@@ -230,7 +230,7 @@ To generate your robot's configuration using `example_audio_classification_clien
    ```
 
 1. Copy the contents of this file.
-   Then return to your robot's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and add the configuration into the text area.
+   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and add the configuration into the text area.
 
    {{< alert title="Important" color="note" >}}
    If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.
@@ -246,8 +246,8 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your robot address and API key and API key id. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
-   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key id resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
+1. First, determine your robot address and API key and API key ID. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
+   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
 

@@ -156,7 +156,7 @@ Go to the [Viam app](https://app.viam.com), and navigate to the **Config** tab.
 
 Create a [board component](/components/board/):
 
-Navigate to the **Components** subtab of your robot's **Config** tab.
+Navigate to the **Components** subtab of your machine's **Config** tab.
 
 Click **Create component** in the lower-left corner.
 

@@ -58,7 +58,7 @@ For more information, see [Permissions](/fleet/rbac/#permissions).
 
 Viam is built in a way that allows you to change configurations, deploy packages, check logs, and control your machines both when you are close to your machine, as well as remotely.
 
-Robot [configuration](machines/#configuration) and machine [code](#control-with-the-sdks) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](machines/#configuration) and machine [code](#control-with-the-sdks) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
 
 ### Configuration
 

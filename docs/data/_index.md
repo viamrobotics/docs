@@ -18,7 +18,7 @@ menuindent: true
 # SME: Alexa Greenberg
 ---
 
-Viam's built-in data management service allows you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your robots, as well as use [Machine Learning](/ml/) features to enhance your robot's capabilities.
+Viam's built-in data management service allows you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your robots, as well as use [Machine Learning](/ml/) features to enhance your machine's capabilities.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
 ![Data is captured on the robot, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
@@ -62,8 +62,8 @@ The data management service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a machine configured with a data management service called `"my_data_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -75,7 +75,7 @@ This method is not yet available in the Viam Python SDK.
 
 {{% /alert %}}
 
-Sync data stored on the robot to the cloud.
+Sync data stored on the machine to the cloud.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -94,7 +94,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 ```go {class="line-numbers linkable-line-numbers"}
 data, err := datamanager.FromRobot(robot, "my_data_service")
 
-// Sync data stored on the robot to the cloud.
+// Sync data stored on the machine to the cloud.
 err := data.Sync(context.Background(), nil)
 ```
 

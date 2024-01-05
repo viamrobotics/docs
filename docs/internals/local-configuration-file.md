@@ -11,7 +11,7 @@ description: "Building a local robot configuration file for use with viam-server
 
 The `viam-server` binary uses a JSON-formatted configuration file to define all resources (hardware [components](/components/) and software [services](/services/)) it has access to, as well as any relevant parameters for those resources.
 
-When you [install `viam-server`](/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your robot.
+When you [install `viam-server`](/get-started/installation/) from [the Viam app](https://app.viam.com), you configure your robot directly in the app, and the app will automatically sync your configuration to your machine.
 
 However, if your robot will never connect to the internet, you will need to create your own local configuration file, using one of these options:
 
@@ -31,7 +31,7 @@ Follow the steps below to build and then download your configuration file:
 1. Download the JSON configuration to the board or computer you intend to run `viam-server` on.
    You can click the **See full config** link to view this file in plaintext for easy copying.
 
-If you later need to make changes to your robot's configuration:
+If you later need to make changes to your machine's configuration:
 
 1. Make your edits under the **Config** tab in **Builder** mode
 1. Switch to **Raw JSON** mode to view your full configuration in JSON format
@@ -55,7 +55,7 @@ If you followed the instructions to [install `viam-server`](/get-started/install
 - Linux: <file>/etc/viam.json</file>
 - macOS: <file>/opt/homebrew/etc/viam.json</file>
 
-You can also use the [example configuration file](#example-json-configuration-file) below to base your robot's configuration on.
+You can also use the [example configuration file](#example-json-configuration-file) below to base your machine's configuration on.
 
 {{% alert title="Note" color="note" %}}
 This process is not required if your robot is connected to the Viam app.

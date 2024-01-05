@@ -30,7 +30,7 @@ cost: 540
 
 1. Go to [the Viam app](https://app.viam.com).
 1. Create a _robot_ and follow the setup instructions until the robot successfully connects to the Viam app.
-1. Navigate to the robot's **Config** tab.
+1. Navigate to the machine's **Config** tab.
 
 ![A SCUTTLE robot on a carpeted floor.](/tutorials/scuttlebot/scuttle-on-floor.png)
 
@@ -225,7 +225,7 @@ Configuring a base component also provides you with a nice UI for moving the rov
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `wheeled` model.
 Enter a name for your base and click **Create**.
@@ -317,7 +317,7 @@ Finally, add a camera to your SCUTTLE robot.
 {{< tabs name="Configure a Webcam" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `webcam` model.
 Enter a name for your camera and click **Create**.

@@ -49,8 +49,8 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 ## Configure a Robot
 
-1. Navigate to the [robot page on the Viam app](https://app.viam.com/robots).
-2. Create a new robot.
+1. Navigate to the [machine page on the Viam app](https://app.viam.com/robots).
+2. Create a new machine.
 3. Follow the instructions on the **Setup** tab.
 4. Select the **Config** tab.
 5. Under the **Components** subtab, click **Create component** in the lower-left corner and create a component with the following attributes:
@@ -340,10 +340,10 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -412,11 +412,11 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
   )

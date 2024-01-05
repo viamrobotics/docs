@@ -56,9 +56,9 @@ To build your own line follower robot, you need the following hardware:
 
 ### Install `viam-server` and connect to your robot
 
-Go to the [Viam app](https://app.viam.com) and create a new robot called `follower`.
+Go to the [Viam app](https://app.viam.com) and create a new machine called `follower`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/#install-viam-server).
+Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/#install-viam-server).
 Follow the instructions until the Viam app shows that your robot has successfully connected.
 
 ## Configure your components
@@ -66,7 +66,7 @@ Follow the instructions until the Viam app shows that your robot has successfull
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
 1. **Add the board.**
@@ -184,7 +184,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your components
 
-Navigate to your [robot's **Control** tab](/fleet/machines/#control) to test your components.
+Navigate to your [machine's **Control** tab](/fleet/machines/#control) to test your components.
 Verify that it’s connected by refreshing the page and ensuring that **Last Online** (in the top banner) says, "Live."
 
 1. Go to the **Control** tab, click on the base panel, and toggle the transform camera to on.
@@ -207,10 +207,10 @@ Perhaps a circle or other shape, or perhaps a path from one point of interest to
 Sharp corners will be more challenging for the robot to follow so consider creating more gentle curves.
 
 Once you have created your path, set your robot on the line such that the line appears in the front of the camera’s view.
-Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the robot page.
+Verify that the camera sees the line by viewing the camera feed on the **Control** tab of the machine page.
 
 <p>
-{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" class="aligncenter" declaredimensions=true alt="The camera view in the control tab on the robot page">}}
+{{<imgproc src="/tutorials/webcam-line-follower/lf-cam-view6.png" resize="600x" class="aligncenter" declaredimensions=true alt="The camera view in the control tab on the machine page">}}
 </p>
 
 Now, let's configure the color detector so your rover can detect the line:
@@ -218,7 +218,7 @@ Now, let's configure the color detector so your rover can detect the line:
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Next, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Services** subtab.
 
 1. **Add a vision service.**
@@ -375,7 +375,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ## Test your color detector
 
-Navigate to your [robot's **Control** tab](/fleet/machines/#control) to test the transform camera.
+Navigate to your [machine's **Control** tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on.
 You should now be able to view the camera feed with color detector overlays superimposed on the image.
 

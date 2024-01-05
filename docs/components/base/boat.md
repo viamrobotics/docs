@@ -18,7 +18,7 @@ To configure a `boat` base as a component of your robot, first configure the [bo
 {{< tabs name="Configure a Boat Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `boat` model.
 Enter a name for your base and click **Create**.

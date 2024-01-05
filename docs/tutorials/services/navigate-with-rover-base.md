@@ -166,7 +166,7 @@ If you choose to wire your components differently, adjust your pin assignment co
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON objects to the `"components"` array:
+In the **Raw JSON** mode in your machine's **Config** tab, add the following JSON objects to the `"components"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -334,7 +334,7 @@ In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON 
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON objects to the `"components"` array:
+In the **Raw JSON** mode in your machine's **Config** tab, add the following JSON objects to the `"components"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
     {
@@ -418,7 +418,7 @@ In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON 
 Add the navigation service so that your wheeled base can navigate between waypoints and avoid obstacles.
 To add the navigation service to your robot, do the following:
 
-1. On your robot's **Config** page, navigate to the **Services** tab.
+1. On your machine's **Config** page, navigate to the **Services** tab.
 2. At the bottom of the page, create a service.
    Choose `Navigation` as the type.
 3. Then click **Create Service**.
@@ -445,7 +445,7 @@ To add the navigation service to your robot, do the following:
 
 5. Click **Save Config** at the bottom of the window.
 
-Your navigation service should now appear in your robot's **Config** tab as a card with a map like the following:
+Your navigation service should now appear in your machine's **Config** tab as a card with a map like the following:
 
 ![Navigation Card](/tutorials/navigate-with-rover-base/navigation-config-builder.png)
 
@@ -454,7 +454,7 @@ For more detailed information see [the navigation service](/mobility/navigation/
 {{% /tab %}}
 {{% tab name="Raw JSON" %}}
 
-In the **Raw JSON** mode in your robot's **Config** tab, add the following JSON object to the `"services"` array:
+In the **Raw JSON** mode in your machine's **Config** tab, add the following JSON object to the `"services"` array:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
@@ -623,10 +623,10 @@ SECONDS_TO_RUN = 60 * 15
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+        # ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('<INSERT REMOTE ADDRESS>', opts)

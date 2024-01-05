@@ -76,7 +76,7 @@ Follow the instructions on the **Setup** tab to install `viam-server` on your Ra
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
 1. **Configure the board**
@@ -609,7 +609,7 @@ from viam.services.vision import VisionClient
 from viam.services.sensors import SensorsClient
 ```
 
-Then it connects to our robot using a robot api key and address.
+Then it connects to our robot using a robot API key and address.
 Replace these values with your robot’s own location secret and address, which you can obtain from the **Code sample** tab:
 
 ```python {class="line-numbers linkable-line-numbers"}

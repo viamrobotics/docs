@@ -261,9 +261,9 @@ To make this shell script executable, run the following command in your terminal
 sudo chmod +x <FILEPATH>/<FILENAME>
 ```
 
-Ensure any dependencies for your module (including the [Python SDK](https://python.viam.dev/)) are installed on your robot's computer.
+Ensure any dependencies for your module (including the [Python SDK](https://python.viam.dev/)) are installed on your machine's computer.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
 ## Configure the module and modular resource on your robot
 
-Follow [these configuration instructions](/registry/configure/) to add your custom resource to your robot.
+Follow [these configuration instructions](/registry/configure/) to add your custom resource to your machine.

@@ -7,7 +7,7 @@ tags:
 description: "Integrate a custom base component with the Viam Python SDK."
 webmSrc: "/tutorials/custom-base-dog/base-control-dog.webm"
 mp4Src: "/tutorials/custom-base-dog/base-control-dog.mp4"
-videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window."
+videoAlt: "A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab on the Viam app open in a browser window."
 images: ["/tutorials/custom-base-dog/base-control-dog.gif"]
 aliases:
   - /tutorials/custom-base-dog/
@@ -28,7 +28,7 @@ Viam natively supports a wheeled base model, but if you have a quadruped or othe
 This tutorial demonstrates how to add a custom base using [this robot dog kit and its open source code](https://github.com/Freenove/Freenove_Robot_Dog_Kit_for_Raspberry_Pi) as an example.
 
 <div class="alignleft">
-  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the robot's Control tab on the Viam app open in a browser window." max-width="400px">}}
+  {{<gif webm_src="/tutorials/custom-base-dog/base-control-dog.webm" mp4_src="/tutorials/custom-base-dog/base-control-dog.mp4" alt="A quadrupedal robot comprised of small servos, black laser cut acrylic, and with ultrasonic sensors for eyes, walks forward, backward, and turns from side to side on a desk. Next to it is a laptop with the machine's Control tab on the Viam app open in a browser window." max-width="400px">}}
 </div>
 
 By the end of the tutorial, you will be able to drive this dog around using the Viam base methods: `MoveStraight`, `Spin`, `SetPower`, `SetVelocity`, and `Stop`.
@@ -163,7 +163,7 @@ Save the file.
 
 ### Find IP address
 
-Go to the [robot page](https://app.viam.com/robots) for your robot dog that you created when installing `viam-server` on the Pi.
+Go to the [machine page](https://app.viam.com/robots) for your robot dog that you created when installing `viam-server` on the Pi.
 
 In the banner towards the top of the page, the IP address of the robot dog Pi is displayed under **IPs**.
 Copy the IP to your clipboard.
@@ -252,7 +252,7 @@ Start by importing socket:
 import socket
 ```
 
-Then add `ip_address` and `port` attributes to your custom base so you can configure the correct connection details in your robot's config later.
+Then add `ip_address` and `port` attributes to your custom base so you can configure the correct connection details in your machine's config later.
 Modify the `validate` and `reconfigure` methods to use these attributes, and define the `send_data` method.
 The code below shows what the top of your class definition should look like.
 
@@ -345,7 +345,7 @@ sudo chmod +x run.sh
 
 You need to tell your robot how to access the module you created.
 
-On the [Viam app](https://app.viam.com), go to your robot's **Config** tab.
+On the [Viam app](https://app.viam.com), go to your machine's **Config** tab.
 Click the **Modules** subtab.
 Name your module `my-custom-base`.
 Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
@@ -356,7 +356,7 @@ Click **Save Config** at the bottom of the page.
 ## Configure the components
 
 Now that the custom base code is set up, you need to configure all your hardware components.
-Navigate to the **Components** subtab of your robot's **Config** tab.
+Navigate to the **Components** subtab of your machine's **Config** tab.
 
 ### Configure the camera
 
@@ -387,7 +387,7 @@ At the end of your camera configuration, add a comma and then add the following 
 }
 ```
 
-Edit the `ip_address` attribute to match your robot's hostname, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`).
+Edit the `ip_address` attribute to match your machine's hostname, replacing `<HOSTNAME>` with your Pi's hostname (for example, `"ip_address": "robotdog.local"`).
 If this doesn't work, you can instead try using the IP address of the machine where the module is running, for example, `"ip_address": "10.0.0.123"`.
 
 If you are using a port other than `5001`, edit the `port` attribute.
@@ -397,7 +397,7 @@ Click **Save config**.
 
 Your raw JSON configuration should look similar to the following:
 
-![Raw JSON mode on the Config tab, showing the components and modules sections of the robot's raw JSON config.](/tutorials/custom-base-dog/raw-json.png)
+![Raw JSON mode on the Config tab, showing the components and modules sections of the machine's raw JSON config.](/tutorials/custom-base-dog/raw-json.png)
 
 Toggle back to **Builder** mode and make sure a configuration panel has been generated:
 
@@ -411,7 +411,7 @@ To operate the dog, you need to start the Freenove robot dog server (which you s
 
 You can configure a [_process_](/build/configure/#processes) to automatically start the server on boot so it is ready to receive commands from `viam-server`.
 
-Navigate to the **Processes** subtab of your robot's **Config** tab.
+Navigate to the **Processes** subtab of your machine's **Config** tab.
 
 Create a new process and give it a name (for example `freenove`).
 Fill out the config panel as follows:
@@ -484,7 +484,7 @@ Depending on the speed of your server connection, you may need to hold down the 
 
 - If your servos aren't moving as expected or at all, try turning the whole robot off for a while to let them cool down.
 
-- Make sure the robot's batteries have adequate charge.
+- Make sure the machine's batteries have adequate charge.
   If you have otherwise unexplained connection errors, try powering things off and charging the batteries for a while before attempting to SSH to the Pi again.
 
 - If certain sensors or servos aren't being found by the software, turn off the robot and make sure all wires are fully connected before turning it back on.

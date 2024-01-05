@@ -11,12 +11,12 @@ aliases:
 ---
 
 Configuring a `fake` motor can be convenient for testing software without using any hardware.
-For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base/)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your robot.
+For example, you can use a `fake` component as a placeholder while waiting on a hardware shipment, so that other components that depend on this motor (for example, a [base](/components/base/)) won't fail to initialize, and your SDK code won't throw errors when it fails to find a physical motor connected to your machine.
 
 {{< tabs name="fake-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `motor` type, then select the `fake` model.
 Enter a name for your motor and click **Create**.
@@ -110,7 +110,7 @@ The driver data sheet (for a real, not fake, motor) will specify which one to us
 
 ## Test the motor
 
-Once your motor is configured and your robot is connected, go to the [**Control** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
+Once your motor is configured and your machine is connected, go to the [**Control** tab](/fleet/machines/#control) and click on the motor's dropdown panel.
 Use the buttons to try turning your motor forwards or backwards at different power levels and notice how the **Position** number changes.
 
 ![Motor control panel.](/components/motor/control.png)

@@ -11,12 +11,12 @@ aliases:
 # SMEs: Gautham, Rand
 ---
 
-Configure a `fake` board to test integrating a board into your robot without physical hardware:
+Configure a `fake` board to test integrating a board into your machine without physical hardware:
 
 {{< tabs name="Configure an fake Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `fake` model.
 Enter a name for your board and click **Create**.
@@ -75,13 +75,13 @@ The following attributes are available for `fake` boards:
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 | ---- | ---- | --------- | ----------- |
-| `fail_new` | bool | **Required** | If the fake board should raise an error at robot start-up. |
+| `fail_new` | bool | **Required** | If the fake board should raise an error at machine start-up. |
 | `analogs` | object | Optional | Attributes of any pins that can be used as Analog-to-Digital Converter (ADC) inputs. See [configuration info](#analogs). |
 | `digital_interrupts` | object | Optional | Pin and name of any digital interrupts. See [configuration info](#digital_interrupts). |
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
 
 ### `analogs`
 

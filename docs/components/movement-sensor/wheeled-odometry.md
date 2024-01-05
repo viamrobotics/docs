@@ -19,13 +19,13 @@ aliases:
 # SMEs: Rand, Martha
 ---
 
-Configure a `wheeled-odometry` movement sensor to implement _wheeled odometry_ on your robot.
+Configure a `wheeled-odometry` movement sensor to implement _wheeled odometry_ on your machine.
 
 _Wheeled odometry_ is the estimation of the rate of change of position, orientation, linear velocity, and angular velocity using the dimensions of a base, calculated by measuring the movement of the motors through encoders.
-Because of this method of estimation, you don't have to have a specific piece of movement sensor hardware to implement `wheeled-odometry` on your robot.
+Because of this method of estimation, you don't have to have a specific piece of movement sensor hardware to implement `wheeled-odometry` on your machine.
 This model uses [encoders](/components/encoder/) from [position reporting motors](/components/motor/) to get an odometry estimate of a wheeled base as it moves.
 
-With a configured `wheeled-odometry` movement sensor, your robot calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/build/program/apis/sessions/).
+With a configured `wheeled-odometry` movement sensor, your machine calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/build/program/apis/sessions/).
 You can access these readings through the [movement sensor API](/components/movement-sensor/#api).
 For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
 
@@ -48,7 +48,7 @@ To prepare your robot, attach [encoders](/components/encoder/) to each of the po
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `movement-sensor` type, then select the `wheeled-odometry` model.
 Enter a name for your movement sensor and click **Create**.

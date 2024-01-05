@@ -42,7 +42,7 @@ Arm drivers are also paired, in the RDK, with JSON files that describe the kinem
 
 - When you configure a supported arm model to connect to `viam-server`, the Arm driver will load and parse the kinematics file for the Viam RDK's [frame system](/mobility/frame-system/) service to use.
 
-- The [frame system](/mobility/frame-system/) will allow you to easily calculate where any part of your robot is relative to any other part, other robot, or piece of the environment.
+- The [frame system](/mobility/frame-system/) will allow you to easily calculate where any part of your machine is relative to any other part, other robot, or piece of the environment.
 
 - All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 
@@ -89,14 +89,14 @@ For configuration information, click on the model name:
 
 ## Control your arm with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your robot, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an arm called `"my_arm"` configured as a component of your robot.
+These examples assume you have an arm called `"my_arm"` configured as a component of your machine.
 If your arm has a different name, change the `name` in the code.
 
 Be sure to import the arm package for the SDK you are using:

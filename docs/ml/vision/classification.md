@@ -56,7 +56,7 @@ Once you have deployed your ML model, configure your `mlmodel` classifier:
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `ML Model` model.
 Enter a name for your service and click **Create**.
@@ -161,7 +161,7 @@ If you intend to use the classifier with a camera that is part of your robot, yo
 
    ![Model recognizes a star on camera feed](/services/model-on-camera.png)
 
-5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the robot's camera `"cam1"`.
+5. The following code gets the robot’s vision service and then runs a classifier vision model on an image from the machine's camera `"cam1"`.
 
    {{% alert title="Tip" color="tip" %}}
 

@@ -44,7 +44,7 @@ You must configure a [base](/components/base/) with a [movement sensor](/compone
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab, then click **Create service** in the lower-left corner.
 Select the type `Base Remote Control`.
 Enter a name for your service, then click **Create**.
@@ -105,7 +105,7 @@ The base remote control service supports the following methods:
 
 The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

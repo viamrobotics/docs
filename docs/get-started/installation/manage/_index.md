@@ -80,7 +80,7 @@ Run the following on the command line to start `viam-server`, providing the path
 sudo viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your robot's configuration file is available at <file>/etc/viam.json</file>.
+If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your machine's configuration file is available at <file>/etc/viam.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can [build a new configuration file](/internals/local-configuration-file/).
 
@@ -111,7 +111,7 @@ Run the following on the command line to start `viam-server`, providing the path
 viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your robot's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
+If you followed the [Installation Guide](/get-started/installation/#install-viam-server), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-robotname-main.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 If you don't yet have a configuration file, you can use the example configuration file provided at <file>/opt/homebrew/etc/viam.json</file> or you can [build a new configuration file](/internals/local-configuration-file/).
 
@@ -124,7 +124,7 @@ Type **Ctrl + C** on your keyboard within the terminal session where you are run
 ### Run as a system service
 
 Installing `viam-server` as a system service is not recommended for most use cases on macOS.
-However, if you are looking to create a robot that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
+However, if you are looking to create a machine that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
 
 Once you have [installed `viam-server`](/get-started/installation/#install-viam-server) on your macOS computer, use the following commands to control the service.
 These commands require that you store your configuration file at <file>/opt/homebrew/etc/viam.json</file>.

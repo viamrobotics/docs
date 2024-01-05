@@ -16,7 +16,7 @@ Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes a
 You can think of this as a description of how you can interact with that resource.
 Different models of resources implement the same API, which [Viam SDKs expose](/internals/machine-to-machine-comms/), allowing you to control different models of resource types with a consistent interface.
 
-The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your robot.
+The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your machine.
 
 ## Robot Management APIs
 
@@ -243,7 +243,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your robot.
+- [(Resource)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The named resource if it exists on your machine.
   For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```go
@@ -266,7 +266,7 @@ For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient
 
 **Returns:**
 
-- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your robot.
+- [(Resource)](https://ts.viam.dev/interfaces/Resource.html): The named resource if it exists on your machine.
   For example, an [ArmClient](https://ts.viam.dev/classes/ArmClient.html).
 
 ```typescript

@@ -61,7 +61,7 @@ If you are running out of time during your rental, you can [extend your rover re
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to your [robot's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to your [machine's page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Python** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -100,7 +100,7 @@ name: "cam"
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **Go** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -131,7 +131,7 @@ go run square.go
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The easiest way to get started writing an application with Viam is to navigate to the [robot page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
+The easiest way to get started writing an application with Viam is to navigate to the [machine page on the Viam app](https://app.viam.com/robots), select the **Code sample** tab, then select **TypeScript** and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
 
@@ -299,11 +299,11 @@ func main() {
         "ADDRESS FROM THE VIAM APP",
         logger,
         client.WithDialOptions(rpc.WithEntityCredentials(
-        // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+        // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
         "<API-KEY-ID>",
         rpc.Credentials{
             Type:    rpc.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your robot's api key
+            // Replace "<API-KEY>" (including brackets) with your machine's API key
             Payload: "<API-KEY>",
         })),
     )
@@ -368,10 +368,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -417,7 +417,7 @@ If you have a different base name, update the name in your code.
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
+  // Replace with the name of a motor on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -458,10 +458,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -503,10 +503,10 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+        # ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -573,11 +573,11 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
     )
@@ -654,10 +654,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -670,7 +670,7 @@ async function main() {
 
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of a motor on your robot.
+  // Replace with the name of a motor on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
