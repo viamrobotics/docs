@@ -1,5 +1,5 @@
 ---
-title: "Configure an incremental encoder"
+title: "Configure an incremental encoder (Micro-RDK)"
 linkTitle: "incremental"
 type: "docs"
 description: "Configure an incremental encoder."

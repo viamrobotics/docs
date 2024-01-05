@@ -1,5 +1,5 @@
 ---
-title: "Configure a single encoder"
+title: "Configure a single encoder (Micro-RDK)"
 linkTitle: "single"
 type: "docs"
 description: "Configure a single encoder."
