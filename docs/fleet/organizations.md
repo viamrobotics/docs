@@ -25,7 +25,7 @@ A user can create more organizations at any time.
 
 Any member of an organization can invite new users to that organization.
 
-For example, you may have an account with one organization for your personal robots at home and another organization for the robots at work.
+For example, you may have an account with one organization for your personal smart machines at home and another organization for the smart machines at work.
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/eb7v6dabCGQ">}}
 
@@ -54,8 +54,8 @@ Then select the resource that you would like to grant the user access to and the
 You can grant a user access to the following resources:
 
 - an {{< glossary_tooltip term_id="organization" text="organization" >}}
-- an {{< glossary_tooltip term_id="location" text="location" >}}
-- an {{< glossary_tooltip term_id="robot" text="robot" >}}
+- a {{< glossary_tooltip term_id="location" text="location" >}}
+- a {{< glossary_tooltip term_id="machine" text="machine" >}}
 
 For more information on the permissions the roles assign for each resource, see [Permissions](/fleet/rbac/#permissions).
 

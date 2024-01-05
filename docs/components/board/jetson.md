@@ -3,7 +3,7 @@ title: "Configure a Jetson Board"
 linkTitle: "jetson"
 weight: 20
 type: "docs"
-description: "Configure a jetson board to integrate an NVIDIA Jetson Orin Module and Developer Kit, NVIDIA Jetson AGX, or NVIDIA Jetson Nano into your robot."
+description: "Configure a jetson board to integrate an NVIDIA Jetson Orin Module and Developer Kit, NVIDIA Jetson AGX, or NVIDIA Jetson Nano into your machine."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
@@ -29,12 +29,12 @@ For the Jetson Nano, see pages 1-3 of the [Jetson Nano Developer Kit 40-Pin Expa
 
 {{% /alert %}}
 
-Configure a `jetson` board to integrate an [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson AGX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your robot:
+Configure a `jetson` board to integrate an [NVIDIA Jetson Orin Module and Developer Kit](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/), [NVIDIA Jetson AGX](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-agx-xavier/), or [NVIDIA Jetson Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/) into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `jetson` model.
 Enter a name for your board and click **Create**.
@@ -77,7 +77,7 @@ The following attributes are available for `jetson` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [digital interrupts](#digital_interrupts) into your machine.
 
 ### `digital_interrupts`
 

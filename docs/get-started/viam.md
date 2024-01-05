@@ -69,7 +69,7 @@ For each component that makes up your machine:
 {{< imgproc src="/viam/test_components.png" alt="Multiple components being tested in the Viam app." resize="320x" style="max-width:320px" class="alignright" >}}
 </p>
 
-1. Add it to your robot by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
+1. Add it to your machine by [choosing the component type](/build/configure/#components) (example: `camera`) and model (example: `webcam`).
 2. Test it with the visual [control tab](/fleet/machines/#control).
 3. See any problems with in-app [logs](/fleet/machines/#logs), review or roll back configuration [history](/fleet/machines/#history).
 
@@ -82,7 +82,7 @@ After configuring your machine's hardware, you can configure [high level functio
 - **Simultaneous Localization And Mapping (SLAM)** enables your machine to map its surroundings and find its position on a map.
 
 <div>
-{{< imgproc src="/viam/robot-components.png" alt="Robot components" resize="600x" class="aligncenter" >}}
+{{< imgproc src="/viam/robot-components.png" alt="Machine components" resize="600x" class="aligncenter" >}}
 </div>
 
 ## Control your machine
@@ -102,7 +102,7 @@ This provides flexibility and security whether you are building tight control lo
 
 There are four categories of APIs:
 
-- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level robot commands
+- [Robot](https://github.com/viamrobotics/api/blob/main/proto/viam/robot/v1/robot.proto) provides high level machine commands
 - [Components](/components/) like motors, arms, GPS
 - [Services](/services/) like computer vision, motion planning, Simultaneous Localization And Mapping (SLAM)
 - Cloud applications like [Fleet Management](/fleet/), [Data Management](/data/)

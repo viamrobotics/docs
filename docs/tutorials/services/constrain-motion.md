@@ -141,7 +141,7 @@ You will use this same code later in this tutorial.
 Since this tutorial gets a bit more complicated than the last, let's configure a representation of the table so you can see it in the frame system visualizer.
 This configured table won't be taken into account by the motion service, but it's useful to be able to see it.
 
-On your robot's **Config** tab, create a new component called `table` with **Type** `generic` and **Model** `fake`.
+On your machine's **Config** tab, create a new component called `table` with **Type** `generic` and **Model** `fake`.
 Click **Create component**, then click **Add frame**.
 
 Go to the **Frame System** subtab.
@@ -343,10 +343,10 @@ from viam.proto.service.motion import Constraints, LinearConstraint
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)

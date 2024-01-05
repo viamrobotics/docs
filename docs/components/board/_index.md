@@ -5,7 +5,7 @@ childTitleEndOverwrite: "Board Component"
 weight: 20
 type: "docs"
 no_list: true
-description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
+description: "The signal wire hub of a machine, with GPIO pins for transmitting signals between the machine's computer and its other components."
 tags: ["board", "components"]
 icon: "/icons/components/board.svg"
 images: ["/icons/components/board.svg"]
@@ -15,7 +15,7 @@ aliases:
 # SMEs: Gautham, Rand
 ---
 
-A _board_ component on your robot communicates with the other [components](/components/) of the robot.
+A _board_ component on your machine communicates with the other [components](/components/) of the machine.
 
 A board can be:
 
@@ -23,7 +23,7 @@ A board can be:
 - A GPIO peripheral device that must connect to an external computer.
 - A PWM peripheral device that must connect to an SBC that has a CPU and GPIO pins.
 
-The board of a robot is also its signal wire hub that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
+The board of a machine is also its signal wire hub that provides access to general purpose input/output [(GPIO)](https://www.howtogeek.com/787928/what-is-gpio/) pins: a collection of pins on the motherboard of a computer that can receive electrical signals.
 
 Signaling is overseen by a computer running `viam-server` which allows you to control the flow of electricity to these pins to change their state between "high" (active) and "low" (inactive), and wire them to send [digital signals](https://en.wikipedia.org/wiki/Digital_signal) to and from other hardware.
 
@@ -62,7 +62,7 @@ If you are using the micro-RDK, navigate to [Micro-RDK Board](/build/micro-rdk/b
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
 
 ### `analogs`
 
@@ -74,14 +74,14 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 
 ## Control your board with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by getting your `board` component from the robot with `FromRobot` and adding API method calls, as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by getting your `board` component from the machine with `FromRobot` and adding API method calls, as shown in the following examples.
 
-These examples assume you have a board called "my_board" configured as a component of your robot.
+These examples assume you have a board called "my_board" configured as a component of your machine.
 If your board has a different name, change the `name` in the code.
 
 Be sure to import the board package for the SDK you are using:

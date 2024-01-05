@@ -17,7 +17,7 @@ The transformations are applied in the order they are written in the `pipeline`.
 {{< tabs name="Example transform view" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `transform` model.
 Enter a name for your camera and click **Create**.
@@ -321,7 +321,7 @@ The Resize transform resizes the image to the specified height and width.
 {{% tab name="Rotate" %}}
 
 The Rotate transformation rotates the image by 180 degrees.
-This feature is useful for when the camera is installed upside down on your robot.
+This feature is useful for when the camera is installed upside down on your machine.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {

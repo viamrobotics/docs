@@ -20,7 +20,7 @@ If your streaming camera uses a different streaming video format, such as H264 o
 {{< tabs name="Configure an rtsp camera" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `rtsp` model.
 Enter a name for your camera and click **Create**.

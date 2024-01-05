@@ -12,14 +12,14 @@ aliases:
 ---
 
 A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
-To configure a `wheeled` base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+To configure a `wheeled` base as a component of your machine, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
 Configure a `wheeled` base as follows:
 
 {{< tabs name="Configure a Wheeled Base" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `base` type, then select the `wheeled` model.
 Enter a name for your arm and click **Create**.

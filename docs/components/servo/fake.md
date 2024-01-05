@@ -11,14 +11,14 @@ aliases:
 # SME: Rand
 ---
 
-You can use a `fake` servo to test implementing a servo component on your robot without any physical hardware.
+You can use a `fake` servo to test implementing a servo component on your machine without any physical hardware.
 
 Configure a `fake` servo as follows:
 
 {{< tabs name="Configure a Fake Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `servo` type, then select the `fake` model.
 Enter a name for your servo and click **Create**.

@@ -14,21 +14,21 @@ The data management service securely syncs the specified data to the cloud at th
 Viam does not impose a minimum or maximum on the frequency of data syncing.
 However, in practice, your hardware or network speed may impose limits on the frequency of data syncing.
 
-If the internet becomes unavailable or the robot needs to restart during the sync process, the service will try to resume sync indefinitely.
+If the internet becomes unavailable or the machine needs to restart during the sync process, the service will try to resume sync indefinitely.
 When the connection is restored, the service resumes the syncing process where it left off without duplicating data.
 For more detailed information, see [Considerations](#considerations).
 
-Once the service syncs a file to Viam's cloud, the service deletes the file locally from the robot's configured capture location.
+Once the service syncs a file to Viam's cloud, the service deletes the file locally from the machine's configured capture location.
 
 As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
-If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
+If you change your mind and want your machine to sync less frequently, you can change the sync frequency, for example, to once a day.
 
 ## Configuration
 
 Before you can configure [cloud sync](/data/cloud-sync/), you must [add the data management service](/data/capture/#add-the-data-management-service).
 
-To enable cloud sync, navigate to the **Services** tab on your robot's **Config** tab and enable **Syncing** for your [data management service](../).
+To enable cloud sync, navigate to the **Services** tab on your machine's **Config** tab and enable **Syncing** for your [data management service](../).
 Click **Save Config** at the bottom of the window.
 
 Now the data that you capture will sync automatically with the Viam app in the cloud.
@@ -64,7 +64,7 @@ If `capture_dir` is unspecified, `viam-server` will use the default directory at
 
 ### Pause sync
 
-You can pause Cloud Sync at any time by navigating to the **Services** tab on your robot's **Config** tab and disabling **Syncing** for your [data management service](../).
+You can pause Cloud Sync at any time by navigating to the **Services** tab on your machine's **Config** tab and disabling **Syncing** for your [data management service](../).
 If you have captured data that you do not want to sync, delete the data on the machine before resuming Cloud Sync.
 To delete the data locally, `ssh` into your machine and delete the data in the directory where you capture data.
 
@@ -119,21 +119,21 @@ In the example pictured here, the data management service syncs the configured c
 
 - **Data Integrity**: Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
 
-  If the internet becomes unavailable or the robot needs to restart during the sync process, the sync is interrupted.
+  If the internet becomes unavailable or the machine needs to restart during the sync process, the sync is interrupted.
   If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour at which point the service retries the sync every hour.
   When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
 
   For example, if the service has uploaded 33% of the data and then the internet connection is severed, sync is interrupted.
   Once the service retries and successfully connects, data synchronization resumes at 33%.
 
-- **Storage** When a robot loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
+- **Storage** When a machine loses its internet connection, it cannot resume cloud sync until it can reach the Viam cloud again.
 
-  To ensure that the robot can store all data captured while it has no connection, you need to provide enough local data storage.
+  To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
   {{< alert title="Warning" color="warning" >}}
 
   Currently, the data management service can use the entire available disk space to store data.
-  If the robot loses connectivity and remains disconnected, data capture can eventually use all disk space.
+  If the machine loses connectivity and remains disconnected, data capture can eventually use all disk space.
   Currently, Viam does not safeguard against this.
 
   {{< /alert >}}

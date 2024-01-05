@@ -17,12 +17,12 @@ Unlike other servo models, `pi` servos are implemented as part of the [`pi` boar
 
 {{% /alert %}}
 
-Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your robot:
+Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your machine:
 
 {{< tabs name="Configure a pi Servo" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `servo` type, then select the `pi` model.
 Enter a name for your servo and click **Create**.

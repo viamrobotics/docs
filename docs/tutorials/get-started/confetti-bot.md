@@ -116,10 +116,10 @@ Now wire all of the components according to the wiring diagram:
 
 Now that your robot is wired, you need to configure it on the Viam app before you can program it.
 
-In the Viam app, create a new robot and give it a name.
+In the Viam app, create a new machine and give it a name.
 We named ours ConfettiBot.
 
-![A robot page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
+![A machine page header in the Viam app, its under the location work, and named ConfettiBot.](/tutorials/confetti-bot/app-name-confettibot.png)
 
 Then navigate to the robot’s **Config** tab to start configuring your components.
 
@@ -266,7 +266,7 @@ Navigate to the **Code sample** tab on the Viam app, select **Python** as the la
 
 {{% snippet "show-secret.md" %}}
 
-Paste this into a new Python file in your favorite code editor to connect to your robot.
+Paste this into a new Python file in your favorite code editor to connect to your machine.
 
 At the top of the code, your board and motor components are imported:
 

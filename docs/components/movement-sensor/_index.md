@@ -15,7 +15,7 @@ aliases:
 # SME: Rand
 ---
 
-A movement sensor component is a sensor that gives data on where a robot is and how fast it is moving.
+A movement sensor component is a sensor that gives data on where a machine is and how fast it is moving.
 Examples of movement sensors include global positioning systems (GPS), inertial measurement units (IMUs), accelerometers and gyroscopes.
 
 {{% alert title="Tip" color="tip" %}}
@@ -66,14 +66,14 @@ If you are using the micro-RDK, navigate to [Micro-RDK Movement Sensor](/build/m
 
 ## Control your movement sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your robot.
+These examples assume you have a movement sensor called `"my_movement_sensor"` configured as a component of your machine.
 If your movement sensor has a different name, change the `name` in the code.
 
 Be sure to import the movement sensor package for the SDK you are using:
@@ -772,7 +772,7 @@ You can also ask questions on the [Viam Community Slack](https://join.slack.com/
 
 ## Next Steps
 
-Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/build/program/apis/) to implement closed-loop movement control for your robot.
+Try adding a movement sensor to your [mobile robot](/components/base/) and writing some code with our [SDKs](/build/program/apis/) to implement closed-loop movement control for your machine.
 
 Or, try configuring [data capture](/data/) on your movement sensor.
 

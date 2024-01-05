@@ -99,7 +99,7 @@ Now that you've set up your robot, you can start configuring and testing it.
 
 ### Configure your {{< glossary_tooltip term_id="board" text="board" >}}
 
-Head to the **Config** tab on your robot's page.
+Head to the **Config** tab on your machine's page.
 Click on the **Components** subtab and click the **Create component** button in the lower-left corner.
 
 Select `board` as the type and `pi` as the model.
@@ -215,7 +215,7 @@ To enable the [data capture](/data/capture/) on your robot, do the following:
    Enabling data capture here will allow you to view the saved images in the Viam app and allow you to easily tag them and train your own machine learning model.
    You can leave the default directory as is.
    This is where your captured data is stored on-robot.
-   By default, it saves it to the <file>~/.viam/capture</file> directory on your robot.
+   By default, it saves it to the <file>~/.viam/capture</file> directory on your machine.
 
 ![The data management service configured with the name pet-data.](/tutorials/pet-treat-dispenser/app-service-data-management.png)
 
@@ -243,7 +243,7 @@ Disable Data Capture after you’re done capturing images of your pet.
 
 ### Create a dataset and tag images
 
-Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your robot.
+Head over to the [**DATA** page](https://app.viam.com/data/view) and select an image captured from your machine.
 After selecting the image, you can type a custom tag for some of the objects you see in the image and you add it to a dataset.
 The first thing you want to consider is what tags you are trying to create and how you want your custom model to function.
 
@@ -295,7 +295,7 @@ Go ahead and select all the tags you would like to include in your model and cli
 
 Once the model has finished training, deploy it by adding an [ML model service](/ml/) to your robot:
 
-1. Navigate to the robot page on the Viam app.
+1. Navigate to the machine page on the Viam app.
    Click to the **Config** tab, then select the **Services** subtab.
 1. Click **Create service** in the lower-left corner.
 1. Select `ML Model` as the type, and select `TFLite CPU` as the model.
@@ -453,7 +453,7 @@ One more thing.
 Right now, you need to run the code manually every time you want your robot to work.
 However, you can configure Viam to automatically run your code as a [process](/build/configure/#processes).
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
 
 Enter `main` as the process name and click **Create process**.

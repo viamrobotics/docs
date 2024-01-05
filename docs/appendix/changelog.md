@@ -259,7 +259,7 @@ This update allows you to:
 
 Now when you invite collaborators to join your organization, you can assign permissions to members by setting one of these roles:
 
-- **Owner**: These members can see and edit [every tab on the robot page](/fleet/machines/#navigating-the-robot-page), as well as manage users in the app.
+- **Owner**: These members can see and edit [every tab on the robot page](/fleet/machines/#navigating-the-machine-page), as well as manage users in the app.
   This role is best for those on your team who are actively engineering and building robots.
 
 - **Operator**: These members can only see and use the [remote control tab](/fleet/machines/#control).

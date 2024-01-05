@@ -12,12 +12,12 @@ aliases:
 # SME: #team-bucket
 ---
 
-Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your robot:
+Configure a `renogy` sensor to integrate a [Renogy battery temperature sensor](https://www.renogy.com/wanderer-10a-pwm-charge-controller/) into your machine:
 
 {{< tabs name="Configure a Renogy Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component** in the lower-left corner.
 Select the type `power_sensor`, then select the `renogy` model.
 Name your sensor, and click **Create**.

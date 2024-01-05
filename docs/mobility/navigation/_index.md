@@ -29,7 +29,7 @@ Configure your base with a navigation service, add waypoints, and set the mode o
 
 ## Requirements
 
-You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your robot to configure a navigation service.
+You must configure a [base](/components/base/) with [movement sensors](/components/movement-sensor/) as part of your machine to configure a navigation service.
 
 To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/components/movement-sensor/#api):
 
@@ -50,7 +50,7 @@ See [navigation concepts](#navigation-concepts) for more info on how to implemen
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab, then click **Create service** in the lower-left corner.
 Select the type `Navigation`.
 Enter a name for your service, then click **Create**.
@@ -151,29 +151,29 @@ The following attributes are available for `Navigation` services:
 | `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
 | `base` | string | **Required** | The `name` you have configured for the [base](/components/base/) you are operating with this service. |
 | `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/components/movement-sensor/) you have configured for the base you are operating with this service. |
-| `motion_service` | string | Optional | The `name` of the [motion service](/mobility/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your robot, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
+| `motion_service` | string | Optional | The `name` of the [motion service](/mobility/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
 | `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/mobility/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
-| `position_polling_frequency_hz` | float | Optional | The frequency in Hz to poll for the position of the robot. <br> Default: `1` |
+| `position_polling_frequency_hz` | float | Optional | The frequency in Hz to poll for the position of the machine. <br> Default: `1` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in Hz to poll each vision service for new obstacles. <br> Default: `1` |
-| `plan_deviation_m` | float | Optional | The distance in meters that a robot is allowed to deviate from the motion plan. <br> Default: `2.6`|
+| `plan_deviation_m` | float | Optional | The distance in meters that a machine is allowed to deviate from the motion plan. <br> Default: `2.6`|
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/components/base/) in degrees per second. <br> Default: `20` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/components/base/) in meters per second. <br> Default: `0.3` |
-| `obstacles` | obj | Optional | Any obstacles you wish to add to the robot's path. See the [motion service](/mobility/motion/) for more information. |
+| `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/mobility/motion/) for more information. |
 
 ### Configure and calibrate the frame system service for GPS navigation
 
 {{% alert title="Info" color="info" %}}
 
-The [frame system service](/mobility/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a robot within a coordinate system configured by the user.
+The [frame system service](/mobility/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
 It stores the required contextual information for Viam's services like [Motion](/mobility/motion/) and [Vision](/ml/vision/) to use the position and orientation readings returned by components like [movement sensors](/components/movement-sensor/).
 
 {{% /alert %}}
 
-To make sure your rover base's autonomous GPS navigation with the navigation service is accurate, configure and calibrate the frame system service for the components of your robot.
+To make sure your rover base's autonomous GPS navigation with the navigation service is accurate, configure and calibrate the frame system service for the components of your machine.
 To start, add the frame system service to your rover [base](/components/base/) and [movement sensor](/components/movement-sensor/).
 
-- Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+- Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
   Scroll to the card with the name of your base:
 
   {{< imgproc src="/mobility/navigation/click-add-frame-ui.png" alt="The button to add a frame selected with the cursor on the Viam app config builder." resize="500x" >}}
@@ -202,13 +202,13 @@ To start, add the frame system service to your rover [base](/components/base/) a
 
 Then, to calibrate your frame system for the most accurate autonomous GPS navigation with the navigation service:
 
-- After configuring your robot, navigate to the **Control** page and select the card matching the name of your movement sensor.
+- After configuring your machine, navigate to the **Control** page and select the card matching the name of your movement sensor.
 - Monitor the readings displayed on the card, and verify that the compass or orientation readings from the movement sensor report `0` when the base is facing north.
 - If you cannot verify this:
-  - Navigate back to your robot's **Config** page.
+  - Navigate back to your machine's **Config** page.
     Scroll to the card with the name of your movement sensor.
     Adjust the **Orientation** of the frame to compensate for the mismatch.
-  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your robot to be oriented accurately within the frame system.
+  - Navigate back to the Navigation card on your **Control** page, and confirm that the compass or orientation readings from the movement sensor now report `0` when the base is facing north, confirming that you've successfully calibrated your machine to be oriented accurately within the frame system.
   - If you cannot verify this, repeat as necessary.
 
 ## API
@@ -219,8 +219,8 @@ The navigation service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a `Navigation` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a machine configured with a `Navigation` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 
@@ -600,7 +600,7 @@ obstacles, err := myNav.Obstacles(context.Background(), nil)
 
 ### Paths
 
-Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the robot's motion planning.
+Get each path, the series of geo points the robot plans to travel through to get to a destination waypoint, in the machine's motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -749,7 +749,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ## Control Tab Usage
 
-After configuring the navigation service for your robot, navigate to the **Control** tab of the robot's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
+After configuring the navigation service for your machine, navigate to the **Control** tab of the machine's page in the [Viam app](https://app.viam.com) and expand the card matching the name of your service to use an interface for rover navigation.
 
 Here, you can toggle the mode of the service between **Manual** and **Waypoint** to start and stop navigation, add waypoints and obstacles, and view the position of your rover base on a map:
 
@@ -758,7 +758,7 @@ Here, you can toggle the mode of the service between **Manual** and **Waypoint**
 ## Navigation Concepts
 
 The following concepts are important to understand when utilizing the navigation service.
-Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your robot to navigate across space.
+Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/components/movement-sensor/), which can then be utilized by your machine to navigate across space.
 
 Here's how to make use of the following types of measurements:
 
@@ -785,9 +785,9 @@ An example of a `Compass Heading` reading:
 heading, err := gps.CompassHeading(context.Background, nil)
 ```
 
-Use compass heading readings to determine the _bearing_ of your robot, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your robot is facing.
+Use compass heading readings to determine the _bearing_ of your machine, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your machine is facing.
 
-To read compass headings, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your robot.
+To read compass headings, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetCompassHeading()`](/components/movement-sensor/#getcompassheading) method to get readings from the sensor.
 
 ### Orientation
@@ -808,8 +808,8 @@ An orientation vector indicates how it is rotated relative to an origin coordina
 You can choose the origin reference frame by configuring it using Viam's [frame system](/mobility/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
-To read orientation, first [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your robot.
-Additionally, follow [these instructions](/mobility/frame-system/#configuration) to configure the geometries of each component of your robot within the [frame system](/mobility/frame-system/).
+To read orientation, first [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
+Additionally, follow [these instructions](/mobility/frame-system/#configuration) to configure the geometries of each component of your machine within the [frame system](/mobility/frame-system/).
 Then use the movement sensor API's [`GetOrientation()`](/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular Velocity
@@ -827,9 +827,9 @@ An example of an `AngularVelocity` reading:
 angularVelocity, err := imu.AngularVelocity(context.Background, nil)
 ```
 
-Use angular velocity readings to determine the speed and direction at which your robot is rotating.
+Use angular velocity readings to determine the speed and direction at which your machine is rotating.
 
-To get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your robot.
+To get an angular velocity reading, first [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetAngularVelocity()`](/components/movement-sensor/#getangularvelocity) method to get angular velocity readings from the sensor.
 
 ### Position
@@ -850,7 +850,7 @@ position, altitude, err:= imu.Position(context.Background, nil)
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 These position readings reflect the _absolute_ position of components.
 
-To get a position, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your robot.
+To get a position, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetPosition()`](/components/movement-sensor/#getposition) method to get position readings from the sensor.
 
 ### Linear Velocity
@@ -869,9 +869,9 @@ An example of a `Linear Velocity` reading:
 linearVelocity, err := imu.LinearVelocity(context.Background, nil)
 ```
 
-Use linear velocity readings to determine the speed at which your robot is moving through space.
+Use linear velocity readings to determine the speed at which your machine is moving through space.
 
-To get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your robot.
+To get linear velocity, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetLinearVelocity()`](/components/movement-sensor/#getlinearvelocity) method to get linear velocity readings from the sensor.
 
 ### Linear Acceleration
@@ -889,9 +889,9 @@ An example of a `Linear Acceleration` reading:
 linearAcceleration, err := imu.LinearAcceleration(context.Background, nil)
 ```
 
-You can use linear acceleration readings to determine the rate of change of the [linear velocity](/mobility/navigation/#linear-velocity) of your robot, or, the acceleration at which your robot is moving through space.
+You can use linear acceleration readings to determine the rate of change of the [linear velocity](/mobility/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.
 
-To get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your robot.
+To get linear acceleration, [configure a capable movement sensor](/components/movement-sensor/#supported-models) on your machine.
 Then use the movement sensor API's [`GetLinearAcceleration()`](/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
 
 ## Next steps

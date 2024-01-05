@@ -12,13 +12,13 @@ aliases:
 # SME: Rand, Martha
 ---
 
-Configure a `single-axis` gantry to integrate a single-axis gantry into your robot.
+Configure a `single-axis` gantry to integrate a single-axis gantry into your machine.
 Before configuring the gantry, configure any [motor components](/components/motor/) that are part of the gantry.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `gantry` type, then select the `single-axis` model.
 Enter a name for your sensor and click **Create**.

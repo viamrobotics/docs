@@ -19,12 +19,12 @@ When configured as a camera, you can use the camera method [`GetPointCloud()`](/
 Additionally, you can use the camera component as an input to a [vision service](/ml/vision/) model that returns obstacles.
 {{< /alert >}}
 
-Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your robot:
+Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `sensor` type, then select the `ultrasonic` model.
 Enter a name for your sensor and click **Create**.

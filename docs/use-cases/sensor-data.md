@@ -16,7 +16,7 @@ You can then run queries against that data to search for outliers or edge cases,
   <tr>
     <th>{{<imgproc src="/icons/components/sensor.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
       <b>1. Configure the data management service</b><br><br>
-      <p>First, <a href="/fleet/machines/#add-a-new-robot">create a robot</a> if you haven't yet.</p>
+      <p>First, <a href="/fleet/machines/#add-a-new-machine">create a machine</a> if you haven't yet.</p>
       <p>Then, <a href="/data/">add the data management service</a>, and configure <a href="/data/capture/">data capture</a> and <a href="/data/cloud-sync/">cloud sync</a>.</p>
     </th>
   </tr>
@@ -39,7 +39,7 @@ You can then run queries against that data to search for outliers or edge cases,
     <th>{{<imgproc src="/services/icons/data-capture.svg" class="fill alignleft" style="max-width: 150px" declaredimensions=true alt="Configure the data management service">}}
       <b>4. Query data from a compatible client</b><br><br>
       <p>If you prefer, you can also <a href ="/data/query/#query-tabular-data-directly-from-a-compatible-client">query your data directly from an MQL-compatible client</a>, such as <code>mongosh</code> or MongoDB Compass, using SQL or MQL.</p>
-      <p>{{<imgproc src="/data/data-query-mongosh-example.png" class="fill alignleft" resize="600x" declaredimensions=true alt="SQL query in mongosh filtering by robot, component, and specific data readings">}}</p>
+      <p>{{<imgproc src="/data/data-query-mongosh-example.png" class="fill alignleft" resize="600x" declaredimensions=true alt="SQL query in mongosh filtering by machine, component, and specific data readings">}}</p>
     </th>
   </tr>
 </table>

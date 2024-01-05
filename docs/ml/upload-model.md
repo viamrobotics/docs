@@ -28,7 +28,7 @@ The model is now added and becomes visible in the **Models** section of the page
 
 ### Upload a new version of a model
 
-If you [deploy a model](/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you [deploy a model](/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you upload a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
 
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).

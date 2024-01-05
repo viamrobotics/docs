@@ -5,7 +5,7 @@ childTitleEndOverwrite: "Sensor Component"
 weight: 70
 no_list: true
 type: "docs"
-description: "A device that sends information about the outside world to the computer controlling a robot."
+description: "A device that sends information about the outside world to the computer controlling a machine."
 tags: ["sensor", "components"]
 icon: "/icons/components/sensor.svg"
 images: ["/icons/components/sensor.svg"]
@@ -16,7 +16,7 @@ aliases:
 ---
 
 A _sensor_ is a device that can measure information about the outside world.
-Add a sensor component to your robot to send the information the sensor measures to the computer controlling the robot.
+Add a sensor component to your machine to send the information the sensor measures to the computer controlling the machine.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -64,14 +64,14 @@ For configuration information, click on the model name:
 
 ## Control your sensor with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a sensor called `"my_sensor"` configured as a component of your robot.
+These examples assume you have a sensor called `"my_sensor"` configured as a component of your machine.
 If your sensor has a different name, change the `name` in the code.
 
 Be sure to import the sensor package for the SDK you are using:

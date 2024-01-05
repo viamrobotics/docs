@@ -118,14 +118,14 @@ To be able to test the components, you need to install `viam-server` and configu
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `guardian`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
+Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your computer](/get-started/installation/).
 
 ### Configure the components
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
 1. **Add the board.**
@@ -206,7 +206,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 ### Test the components
 
-Navigate to your [robot's Control tab](/fleet/machines/#control) to test your components.
+Navigate to your [machine's Control tab](/fleet/machines/#control) to test your components.
 
 {{<imgproc src="/tutorials/guardian/test.png" resize="600x" declaredimensions=true alt="the control tab">}}
 
@@ -241,7 +241,7 @@ Use a suitable base with a hole, like a box with a hole cut into the top, to pla
 
 At this point also connect the speaker to your Raspberry Pi.
 
-Then test the components on the [robot's Control tab](/fleet/machines/#control) again to ensure everything still works.
+Then test the components on the [machine's Control tab](/fleet/machines/#control) again to ensure everything still works.
 
 ## Detect persons and pets
 
@@ -260,7 +260,7 @@ scp labels.txt pi@guardian.local:/home/pi/labels.txt
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Next, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Next, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click the **Services** subtab.
 
 1. **Add an ML model service.**
@@ -402,7 +402,7 @@ Click **Save config** in the bottom left corner of the screen.
 {{% /tab %}}
 {{< /tabs >}}
 
-Navigate to your [robot's Control tab](/fleet/machines/#control) to test the transform camera.
+Navigate to your [machine's Control tab](/fleet/machines/#control) to test the transform camera.
 Click on the transform camera panel and toggle the camera on, then point your camera at a person or pet to test if the vision service detects them.
 You should see bounding boxes with labels around different objects.
 
@@ -435,7 +435,7 @@ The `mlmodel` extra includes additional dependency support for the [ML (machine 
 
 ### Connect
 
-Next, go to the **Code sample** tab on your robot page and select **Python**, then click **Copy**.
+Next, go to the **Code sample** tab on your machine page and select **Python**, then click **Copy**.
 
 {{% snippet "show-secret.md" %}}
 
@@ -472,10 +472,10 @@ from viam.services.vision import VisionClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
+      # ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -717,7 +717,7 @@ Also copy your music file over:
 scp guardian.mp3 pi@guardian.local:/home/pi/guardian/guardian.mp3
 ```
 
-Now navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Now navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Processes** subtab and navigate to the **Create process** menu.
 
 Enter `main` as the process name and click **Create process**.
@@ -763,10 +763,10 @@ LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)

@@ -26,11 +26,11 @@ You can write code to control your machines using the following software develop
 
 The SDKs provide idiomatic wrappers around Viam's robot [gRPC APIs](https://github.com/viamrobotics/api).
 
-![Diagram showing how a client connects to a robot with Viam. Diagram shows a client as a computer sending commands to a robot. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/build/program/sdks/robot-client.png)
+![Diagram showing how a client connects to a machine with Viam. Diagram shows a client as a computer sending commands to a machine. Robot 1 then communicates with other robotic parts over gRPC and WebRTC and communicating that information back to the client.](/build/program/sdks/robot-client.png)
 
 ## Requirements
 
-Before you get started with your program, ensure that you have [installed `viam-server`](/get-started/installation/) on the computer you want to use to control your robot (likely a [single-board computer](/components/board/#supported-models)), and [configured your robot](/build/configure/).
+Before you get started with your program, ensure that you have [installed `viam-server`](/get-started/installation/) on the computer you want to use to control your machine (likely a [single-board computer](/components/board/#supported-models)), and [configured your machine](/build/configure/).
 
 Next, to install your preferred Viam SDK on your Linux or macOS development machine or [single-board computer](/components/board/), run one of the following commands in your terminal:
 
@@ -80,11 +80,11 @@ flutter pub add viam_sdk
 
 ## Hello World: The Code Sample Tab
 
-Create a program in the language of your choice to connect to your robot and use methods built into the SDK's client API libraries to [interact with and control](/build/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the robot.
+Create a program in the language of your choice to connect to your machine and use methods built into the SDK's client API libraries to [interact with and control](/build/program/apis/) the {{< glossary_tooltip term_id="resource" text="resources" >}} on the machine.
 
-Start by navigating to your robot's page on [the Viam app](https://app.viam.com/robots).
+Start by navigating to your machine's page on [the Viam app](https://app.viam.com/robots).
 Select the **Code Sample** tab, select your preferred SDK, and copy the code generated for you.
-This code snippet imports all the necessary libraries to set up a connection with your robot and interface with its configured components and services.
+This code snippet imports all the necessary libraries to set up a connection with your machine and interface with its configured components and services.
 
 Your boilerplate code sample should look similar to this:
 
@@ -100,10 +100,9 @@ from viam.robot.client import RobotClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      # Replace "<API-KEY>" (including brackets) with your machine's API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-      # id
+      # Replace "<API-KEY-ID>" (including brackets) with your API key ID
       api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -143,11 +142,11 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your API key
           Payload: "<API-KEY>",
       })),
   )
@@ -180,10 +179,10 @@ async function main() {
     host,
     credential: {
       type: "api-key",
-      // Replace "<API-KEY>" (including brackets) with your robot's api key
+      // Replace "<API-KEY>" (including brackets) with your machine's API key
       payload: "<API-KEY>",
     },
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your API key ID
     authEntity: "<API-KEY-ID>",
     signalingAddress: "https://app.viam.com:443",
   });
@@ -222,9 +221,9 @@ int main() {
   std::string host("ADDRESS FROM THE VIAM APP");
   DialOptions dial_opts;
   dial_opts.set_type("api-key");
-  // Replace "<API-KEY-ID>" with your robot's api key ID
+  // Replace "<API-KEY-ID>" with your machine's API key ID
   dial_opts.set_entity("<API-KEY-ID>");
-  // Replace "<API-KEY>" with your robot's api key
+  // Replace "<API-KEY>" with your machine's API key
   Credentials credentials("<API-KEY>");
   dial_opts.set_credentials(credentials);
   boost::optional<DialOptions> opts(dial_opts);
@@ -259,9 +258,9 @@ import 'package:viam_sdk/viam_sdk.dart';
 // Step 2: Call this function from within your widget
 Future<void> connectToViam() async {
   const host = 'ADDRESS FROM THE VIAM APP';
-  // Replace '<API-KEY-ID>' (including brackets) with your api key ID
+  // Replace '<API-KEY-ID>' (including brackets) with your API key ID
   const apiKeyID = '<API-KEY-ID>';
-  // Replace '<API-KEY>' (including brackets) with your api key
+  // Replace '<API-KEY>' (including brackets) with your API key
   const apiKey = '<API-KEY>';
 
   final robot = await RobotClient.atAddress(
@@ -278,8 +277,8 @@ Future<void> connectToViam() async {
 
 Save this file on your development machine with the file type of your preferred SDK.
 
-The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/robot-to-robot-comms/) the robot's `viam-server` instance.
-This section of the boilerplate code contains your robot's address and a placeholder for the API key.
+The sample code contains the required imports as well as the connect logic which establishes a connection for your client application to [communicate with](/internals/machine-to-machine-comms/) the machine's `viam-server` instance.
+This section of the boilerplate code contains your machine's address and a placeholder for the API key.
 
 ### Authenticate
 
@@ -292,13 +291,13 @@ Once you have saved the sample code, [execute your program](/build/program/run/)
 You can run your program on any computer which:
 
 1. has [the appropriate SDK](#requirements) installed
-2. can establish a connection to your robot through the cloud, on a local or wide area network (LAN or WAN), or [locally](/build/program/run/#run-code-on-robot)
+2. can establish a connection to your machine through the cloud, on a local or wide area network (LAN or WAN), or [locally](/build/program/run/#run-code-on-machine)
 
-The program will connect to your robot and print a list of the available {{< glossary_tooltip term_id="resource" text="resources" >}}.
+The program will connect to your machine and print a list of the available {{< glossary_tooltip term_id="resource" text="resources" >}}.
 
 ### Edit the sample code
 
-Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/build/program/apis/) to make a client application that connects to your robot and controls it in the way you want.
+Once you have successfully run the sample code, you can edit the boilerplate code by [adding control logic](/build/program/apis/) to make a client application that connects to your machine and controls it in the way you want.
 You can find the right libraries to import for SDK methods, typing, interfaces, and utilities at the start of [each resource's API documentation](/build/program/apis/), as well as in the individual SDK documentation sites and [on GitHub](https://github.com/viamrobotics/rdk).
 
 {{< cards >}}

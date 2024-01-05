@@ -66,7 +66,7 @@ The brushed motor we are using has a high starting torque which means it can rea
 A motor driver is a device that takes signals from your board and sends power to a motor based on those signals.
 Motor drivers allow you to start and stop the motor, select clockwise or counterclockwise rotation, and speed it up or slow it down.
 
-A {{< glossary_tooltip term_id="board" text="board" >}} is the hardware that sends digital signals to control your robot.
+A {{< glossary_tooltip term_id="board" text="board" >}} is the hardware that sends digital signals to control your machine.
 Your board allows you to send PWM (pulse width modulation) signals to the motor driver to control the motor speed.
 PWM controls motor speed by sending electrical current in pulses - the more frequently pulses are sent in a given time period, the faster the motor will move.
 The board sends PWM signals to the motor driver through GPIO (general-purpose input/output) pins, which are digital pins that the board provides to allow you to flexibly communicate with various devices.
@@ -91,7 +91,7 @@ Turn on the Raspberry Pi and move on to setting up your software.
 If you have not already done so, follow the [Raspberry Pi Setup Guide](/get-started/installation/prepare/rpi-setup/) to prepare your Pi to connect your robot to the Viam app.
 Once your Pi is ready, `ssh` into it from your computer.
 
-In your web browser, go to [the Viam app](https://app.viam.com) and create a new robot instance.
+In your web browser, go to [the Viam app](https://app.viam.com) and create a new machine instance.
 Name your robot whatever you like and head to the **Setup** tab.
 On your Pi, follow the steps there to download the Viam app config and download and install `viam-server`.
 Wait a moment until your robot connects to the Viam app.

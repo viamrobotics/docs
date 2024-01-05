@@ -123,8 +123,8 @@ Now that your circuit is wired, reconnect your Pi to power.
 
 Before proceeding, be sure that you have [connected your Pi to the Viam app](/get-started/installation/#install-viam-server).
 
-Now it's time to configure your robot's components.
-First, go to the [Viam app](https://app.viam.com/) on your web browser and navigate to your robot's **Config** tab.
+Now it's time to configure your machine's components.
+First, go to the [Viam app](https://app.viam.com/) on your web browser and navigate to your machine's **Config** tab.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -170,7 +170,7 @@ Click **Save Config** at the bottom left of the page.
 ## Control your robot using the Viam app
 
 When you configure your board component, the Viam app generates a control panel for it.
-Click the [**Control** tab](/fleet/machines/#control) to view the control panels for all your robot's components (in this case, just the board).
+Click the [**Control** tab](/fleet/machines/#control) to view the control panels for all your machine's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
@@ -212,7 +212,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Code sample** tab.
+The easiest way to get started writing an application with Viam is to navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Code sample** tab.
 Select your programming language (**Python** or **Golang**), and copy the boilerplate code.
 
 {{% snippet "show-secret.md" %}}
@@ -402,11 +402,11 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your robot's api key
+          // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
   )

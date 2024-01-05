@@ -13,7 +13,7 @@ aliases:
 
 Configuring a `mux` (multiplexed) input controller allows you to combine one or more controllers into a single virtual controller.
 
-This lets you control a robot from different locations, such as the web and a locally connected gamepad, or use multiple controllers as one device.
+This lets you control a machine from different locations, such as the web and a locally connected gamepad, or use multiple controllers as one device.
 
 For example, you could use a joystick alongside a numpad.
 
@@ -24,7 +24,7 @@ To combine multiple controlers into a `mux` controller, you must first configure
 {{< tabs name="Configure a `mux` input controller" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `input_controller` type, then select the `mux` model.
 Enter a name for your input controller and click **Create**.

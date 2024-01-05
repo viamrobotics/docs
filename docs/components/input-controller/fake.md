@@ -11,7 +11,7 @@ aliases:
 # SMEs: James
 ---
 
-Configuring a `fake` input controller allows you to test an input controller communicating with your robot, without any physical hardware.
+Configuring a `fake` input controller allows you to test an input controller communicating with your machine, without any physical hardware.
 
 This controller can have [Controls](../#control-field) defined in `attributes`, as seen in the "JSON Template" tab below.
 However, these Controls only ever return a single `PositionChangeAbs` event on the X axis, with the [Event.value](../#event-object) stuck at 0.7.
@@ -19,7 +19,7 @@ However, these Controls only ever return a single `PositionChangeAbs` event on t
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `input_controller` type, then select the `fake` model.
 Enter a name for your input controller and click **Create**.

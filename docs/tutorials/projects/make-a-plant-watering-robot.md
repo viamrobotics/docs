@@ -269,7 +269,7 @@ Test your sensor by putting it in air, water, and different soils to see how the
 
 Follow [this guide](/get-started/installation/#install-viam-server) to install `viam-server` on your Pi, create a new robot, and connect to it on [the Viam app](https://app.viam.com).
 
-Then, navigate to your new robot's page in the app and click on the **Config** tab.
+Then, navigate to your new machine's page in the app and click on the **Config** tab.
 
 First, add your Pi as a [board component](/components/board/) by creating a new component with **type** `board` and **model** `pi`:
 
@@ -337,7 +337,7 @@ Set the motor's attributes **Max RPM** to `1000` and **PWM** to `12 GPIO 18` (th
 
 Click **Save config**.
 
-Now, if you navigate to your robot's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
+Now, if you navigate to your machine's **Control** tab, you should be able to control the motor by setting the power and direction of rotation and clicking the **RUN** button:
 
 ![Creation of a pump motor in the Viam app config builder.](/tutorials/plant-watering-pi/pump-motor-control.png)
 
@@ -358,11 +358,11 @@ You can add a module from the Viam registry directly from your robot’s Configu
 
 Add the mcp300x-adc-sensor module to your robot in 3 steps:
 
-1. Go to your robot's **Config** tab.
+1. Go to your machine's **Config** tab.
    Select **Create component**.
 2. Search mcp300x.
    Click **Add module**.
-3. Give your module a name of your choice, and click **Create** to add this module to your robot.
+3. Give your module a name of your choice, and click **Create** to add this module to your machine.
 4. Find your module's card on the **Config** page.
    In **Attributes**, add the necessary attributes as `"channel_map"` and `"sensor_pin"`.
    For example, if you have a moisture sensor on channel 0, and your `sensor_pin` is 8, your configuration should look like this:
@@ -391,7 +391,7 @@ Now that you have set up your robot and are able to control your motor, you can 
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+1. Navigate to your machine's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
 2. Select **Python** as the language.
 3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
 

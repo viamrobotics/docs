@@ -56,7 +56,7 @@ To iterate on your model and train on the a changed dataset, [train a new versio
 
 ### Train a new version of a model
 
-If you [deploy a model](/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the robot.
+If you [deploy a model](/ml/) to a robot, Viam automatically assumes that this is the `latest` version of the model and that you would always like to deploy the `latest` version of the model to the machine.
 If you train a new version of that model, Viam will automatically deploy the new version to the robot and replace the old version.
 
 {{< alert title="Important" color="note" >}}

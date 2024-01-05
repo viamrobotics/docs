@@ -14,7 +14,7 @@ aliases:
 Viam provides an example {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}} written in C++ that extends the [ML model](/ml/) service to run any TensorFlow Lite model.
 The example includes an inference client program as well, which generates audio samples and uses the modular resource to classify the audio samples based on a pre-trained model.
 
-This tutorial walks you through everything necessary to start using these example files with your robot, including building the C++ SDK, configuring your robot and installing `viam-server`, and generating results with the example inference client program.
+This tutorial walks you through everything necessary to start using these example files with your machine, including building the C++ SDK, configuring your machine and installing `viam-server`, and generating results with the example inference client program.
 
 The provided example code demonstrates the design, implementation, and usage of a custom module to help you write your own.
 This code is for instructional purposes only, and is not intended for production use.
@@ -183,9 +183,9 @@ This example uses the `yamnet/classification` TensorFlow Lite model for audio cl
 
 ## Install `viam-server`
 
-Next, install `viam-server` on your robot, if you have not done so already:
+Next, install `viam-server` on your machine, if you have not done so already:
 
-1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new robot](/fleet/machines/#add-a-new-robot).
+1. Navigate to [the Viam app](https://app.viam.com) in your browser and [add a new machine](/fleet/machines/#add-a-new-machine).
 
 1. Switch to the **Setup** tab, and select your platform from the **Architecture** selection at the top.
 
@@ -200,15 +200,15 @@ Next, install `viam-server` on your robot, if you have not done so already:
 
    {{< /alert >}}
 
-1. Once complete, verify that step 3 on the **Setup** tab indicates that your robot has successfully connected.
+1. Once complete, verify that step 3 on the **Setup** tab indicates that your machine has successfully connected.
 
 1. Stop `viam-server` by pressing CTL-C on your keyboard from within the terminal window where you entered the commands from step 3 above.
 
-## Generate your robot configuration
+## Generate your machine configuration
 
 When you built the C++ SDK, the build process also built the `example_audio_classification_client` binary, which includes a `--generate` function that determines and creates the necessary robot configuration to support this example.
 
-To generate your robot's configuration using `example_audio_classification_client`:
+To generate your machine's configuration using `example_audio_classification_client`:
 
 1. First, determine the full path to the `yamnet/classification` model you just downloaded.
    If you followed the instructions above, this path is: <file>~/example_workspace/lite-model_yamnet_classification_tflite_1.tflite</file>.
@@ -230,7 +230,7 @@ To generate your robot's configuration using `example_audio_classification_clien
    ```
 
 1. Copy the contents of this file.
-   Then return to your robot's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and add the configuration into the text area.
+   Then return to your machine's page on [the Viam app](https://app.viam.com), select the **Config** tab, select **Raw JSON**, and add the configuration into the text area.
 
    {{< alert title="Important" color="note" >}}
    If you already have other configured components, you will need to add each generated JSON object to the respective `modules` or `services` array.
@@ -246,12 +246,12 @@ This generated configuration features the minimum required configuration to supp
 
 With everything configured and running, you can now run the inference client that connects to `viam-server` and uses the `example_mlmodelservice_tflite` module.
 
-1. First, determine your robot address and API key and API key id. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
-   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key id resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
+1. First, determine your machine address and API key and API key ID. To do so, navigate to [the Viam app](https://app.viam.com), select the **Code sample** tab, and toggle **Include API Key**.
+   The API key resembles `abcdef1g23hi45jklm6nopqrstu7vwx8`, the API key ID resembles `a1234b5c-678d-9012-3e45-67fabc8d9efa` and the robot address resembles `my-robot-main.abcdefg123.viam.cloud`.
 
    {{%  snippet "secret-share.md" %}}
 
-1. Next, start `viam-server` once more on your robot, this time as a background process:
+1. Next, start `viam-server` once more on your machine, this time as a background process:
 
    ```sh { class="command-line" data-prompt="$"}
    viam-server -config /etc/viam.json
@@ -304,16 +304,16 @@ What follows is a high-level overview of the steps it takes when executed:
    As written, the example analyzes only the noise signal, but you can change which signal is classified by changing which is assigned to the `samples` variable in the code.
 
 1. The client then populates an input tensor named `sample` as a `tensor_view` over the provided sample data.
-   The tensor must be named according to the configured value under `tensor_name_remappings` in your robot configuration.
-   If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
+   The tensor must be named according to the configured value under `tensor_name_remappings` in your machine configuration.
+   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `sample` was pre-populated for you in your generated robot configuration.
 
 1. The client invokes the `infer` method provided by the `example_mlmodelservice_tflite` module, providing it with the `sample` input tensor data it generated earlier.
 
 1. The `example_mlmodelservice_tflite` module returns a map of response tensors as a result.
 
 1. The client validates the result, including its expected type: a vector of `float` values.
-   The expected output must be defined under `tensor_name_remappings` in your robot configuration for validation to succeed.
-   If you followed the instructions above to [generate your robot configuration](#generate-your-robot-configuration), the value `categories` was pre-populated for you in your generated robot configuration.
+   The expected output must be defined under `tensor_name_remappings` in your machine configuration for validation to succeed.
+   If you followed the instructions above to [generate your machine configuration](#generate-your-machine-configuration), the value `categories` was pre-populated for you in your generated robot configuration.
 
 1. If a labels file was provided, labels are read in as a vector of `string` values and the top 5 scores are associated with their labels.
 
@@ -330,7 +330,7 @@ Once you have run the example and examined the module and client code, you might
 - Write a client similar to `example_audio_classification_client` that generates a different kind of data and provides a suitable TensorFlow Lite model for that data to the `MLModelService` modular resource.
   For example, you might find a new [pre-trained TensorFlow Lite model](https://www.tensorflow.org/lite/models/trained) that analyzes [speech waveforms](https://tfhub.dev/s?deployment-format=lite&module-type=audio-speech-synthesis) and write a client to provide these waveform samples to the `MLModelService` modular resource and interpret the results returned.
 - Write a client similar to `example_audio_classification_client` that [trains its own model](/ml/train-model/) on existing or incoming data, as long as that model fulfils the TFLite model constraints.
-  For example, you might add a [movement sensor](/components/movement-sensor/) component to your robot that captures sensor readings to the built-in [data management service](/data/).
+  For example, you might add a [movement sensor](/components/movement-sensor/) component to your machine that captures sensor readings to the built-in [data management service](/data/).
   Then you could write a client that trains a new model based on the collected data, provides the model and new sensor data readings to the `MLModelService` modular resource, and interprets the results returned.
 - Write a module similar to `example_mlmodelservice_tflite` that accepts models for other inference engines besides TensorFlow Lite, then write a client that provides a valid model and source data for that inference engine.
 

@@ -13,12 +13,12 @@ aliases:
 
 <!-- TODO: section on why configuring this one WITH another board is necessary & why the module is useful. -->
 
-Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) into your robot:
+Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) into your machine:
 
 {{< tabs name="Configure an numato Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `numato` model.
 Enter a name for your board and click **Create**.
@@ -82,7 +82,7 @@ The following attributes are available for `numato` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) into your machine.
 
 ### `analogs`
 

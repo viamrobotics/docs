@@ -934,7 +934,7 @@ Additionally, return any values designated in the function's return signature, t
 
 ### Prepare the module for execution
 
-To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+To [add a module](/registry/configure/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
 - runs your module when executed,
 - takes a local socket as a command line argument, and
@@ -1214,7 +1214,7 @@ The examples from [Code a new resource model](#code-a-new-resource-model) includ
 Once you have created your module, you can use the [Viam CLI](/fleet/cli/) to [upload your module](/registry/upload/) to the [Viam registry](https://app.viam.com/registry) to share it with other Viam users or just to other users in your organization.
 For added convenience, you can configure [automated uploads for new module versions](/registry/upload/#update-an-existing-module-using-a-github-action) through a continuous integration (CI) workflow, using a GitHub Action.
 
-You can also add your module to your robot as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
+You can also add your module to your machine as a [local module](/registry/configure/#local-modules), without uploading it to the Viam registry.
 
 {{< cards >}}
 {{% card link="/registry/upload/" %}}
@@ -1222,7 +1222,7 @@ You can also add your module to your robot as a [local module](/registry/configu
 
 <h4>Local module</h4>
 
-Add a module to your robot as a local module.
+Add a module to your machine as a local module.
 
 {{% /manualcard %}}
 {{< /cards >}}

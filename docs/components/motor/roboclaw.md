@@ -21,12 +21,12 @@ Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-
 
 {{< /alert >}}
 
-To configure a `roboclaw` motor as a component of your robot:
+To configure a `roboclaw` motor as a component of your machine:
 
 {{< tabs name="Configure your roboclaw motor">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `motor` type, then select the `roboclaw` model.
 Enter a name for your motor and click **Create**.

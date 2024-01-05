@@ -17,13 +17,13 @@ menuindent: true
 
 {{<imgproc src="/ml/training.png" class="alignright" resize="400x" declaredimensions=true alt="ML training">}}
 
-Viam includes a built-in [machine learning (ML) service](/ml/) which provides your robot with the ability to learn from data and adjust its behavior based on insights gathered from that data.
+Viam includes a built-in [machine learning (ML) service](/ml/) which provides your machine with the ability to learn from data and adjust its behavior based on insights gathered from that data.
 Common use cases include:
 
 - Object detection and classification which enable machines to detect people, animals, plants, or other objects with bounding boxes, and to perform actions when they are detected.
 - Speech recognition, natural language processing, and speech synthesis, which enable machines to verbally communicate with us.
 
-However, your robot can make use of machine learning with nearly any kind of data.
+However, your machine can make use of machine learning with nearly any kind of data.
 
 Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML models as long as your models adhere to the [model requirements](/ml/deploy/#tflite_cpu-limitations).
 
@@ -58,7 +58,7 @@ Viam natively supports [TensorFlow Lite](https://www.tensorflow.org/lite) ML mod
     <td>{{<imgproc src="/ml/configure.svg" class="fill alignleft" style="max-width: 300px" declaredimensions=true alt="Configure a service">}}
       <b>5. Configure a service</b>
       <p>For object detection and classification, you can use the <a href="/ml/vision/">vision service</a>, which provides an <a href="/ml/vision/detection/#configure-an-mlmodel-detector">ml model detector</a> and an <a href="/ml/vision/classification/#configure-an-mlmodel-classifier">ml model classifier</a> model.</p>
-      <p>For other usage, you can use a <a href="/registry/">modular resource</a> to integrate it with your robot.</p>
+      <p>For other usage, you can use a <a href="/registry/">modular resource</a> to integrate it with your machine.</p>
 </td>
   </tr>
   <tr>

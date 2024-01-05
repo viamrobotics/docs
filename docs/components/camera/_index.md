@@ -77,14 +77,14 @@ For configuration information, click on the model name:
 
 ## Control your camera with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have a camera called `"my_camera"` configured as a component of your robot.
+These examples assume you have a camera called `"my_camera"` configured as a component of your machine.
 If your camera has a different name, change the `name` in the code.
 
 Be sure to import the camera package for the SDK you are using:

@@ -53,7 +53,7 @@ To create a [color detector vision service](/ml/vision/detection/):
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `Color Detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
@@ -153,7 +153,7 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **Code sample** tab on your [robot page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
+Next, go to the **Code sample** tab on your [machine page](https://app.viam.com/robots) and select **Python**, then click **Copy**.
 
 {{% snippet "show-secret.md" %}}
 
@@ -188,10 +188,10 @@ from viam.components.base import Base
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)
@@ -328,10 +328,10 @@ from viam.components.base import Base
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address("ADDRESS FROM THE VIAM APP", opts)

@@ -32,7 +32,7 @@ Most robots with an encoder need at least the following hardware:
 
 - A [board component](/components/board/) that can run a `viam-server` instance.
   For example, a Raspberry Pi, or another model of single-board computer with GPIO (general purpose input/output) pins.
-- Some sort of rotary robot part (like a motor, joint or dial) for which you want to measure movement.
+- Some sort of rotary machine part (like a motor, joint or dial) for which you want to measure movement.
 
 ## Related Services
 
@@ -72,14 +72,14 @@ If you are using the micro-RDK, navigate to [Micro-RDK Encoder](/build/micro-rdk
 
 ## Control your encoder with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an encoder called `"my_encoder"` configured as a component of your robot.
+These examples assume you have an encoder called `"my_encoder"` configured as a component of your machine.
 If your encoder has a different name, change the `name` in the code.
 
 Be sure to import the encoder package for the SDK you are using:

@@ -56,7 +56,7 @@ The webcam can be installed on a robot, or just held in your hand.
 
 {{% /alert %}}
 
-First, follow these instructions to connect and calibrate your webcam as a component of your robot:
+First, follow these instructions to connect and calibrate your webcam as a component of your machine:
 
 1. [Connect and configure a webcam](/components/camera/webca/)
 2. [Calibrate a camera](/components/camera/calibrate/)
@@ -66,8 +66,8 @@ Now, add the `orbslamv3` service:
 {{< tabs name="Add the ORBSLAM3 Service Live">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice.
 
@@ -92,7 +92,7 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
+Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab .
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 
@@ -175,8 +175,8 @@ If this directory structure is not present at runtime, the SLAM service creates 
 {{< tabs name="Add the ORBSLAM3 Service with Dataset">}}
 {{% tab name="Config Builder" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
-Navigate to the **Config** tab on your robot's page, and click on the **Services** subtab.
+Go to your machine's page on the [Viam app](https://app.viam.com/).
+Navigate to the **Config** tab on your machine's page, and click on the **Services** subtab.
 
 Add a service with type `slam`, model `orbslamv3`, and a name of your choice:
 
@@ -200,7 +200,7 @@ Paste the following into the **Attributes** field of your new service:
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
 
-Go to your robot's page on the [Viam app](https://app.viam.com/).
+Go to your machine's page on the [Viam app](https://app.viam.com/).
 Navigate to the **Config** tab .
 Select the **Raw JSON** mode, then copy/paste the following `"services"` JSON to add to your existing camera configuration:
 

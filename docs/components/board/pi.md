@@ -17,14 +17,14 @@ Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepar
 
 {{% /alert %}}
 
-Configure a `pi` board to integrate a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/), or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) into your robot.
+Configure a `pi` board to integrate a [Raspberry Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), [Raspberry Pi 3](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/), or [Raspberry Pi Zero 2 W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w/) into your machine.
 
 To configure a Raspberry Pi 5, see [Configure a Raspberry Pi 5 board](/components/board/pi5/).
 
 {{< tabs name="Configure a pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `pi` model.
 Enter a name for your board and click **Create**.
@@ -118,7 +118,7 @@ The following attributes are available for `pi` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
 
 ### `analogs`
 

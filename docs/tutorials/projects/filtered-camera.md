@@ -40,7 +40,7 @@ The `filtered-camera` module is available from the [Viam registry](https://app.v
 
 Before following this tutorial, you should:
 
-1. [Create a new machine](/fleet/machines/#add-a-new-robot) in the Viam app.
+1. [Create a new machine](/fleet/machines/#add-a-new-machine) in the Viam app.
 1. [Install `viam-server`](/get-started/installation/) on your new machine.
 
 ## Add a camera and configure data capture
@@ -54,7 +54,7 @@ The `filtered-camera` module filters image data captured by a camera component, 
 
 Add a [camera](/components/camera/) component to your machine:
 
-1. Navigate to your robot's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
+1. Navigate to your machine's page on the [Viam app](https://app.viam.com/robots) and select the **Config** tab.
 1. Click the **Components** subtab and click **Create component** in the lower-left corner.
 1. Select `camera` and then select `webcam`.
 1. Give the camera a name, such as `my-webcam`, and click **Create**.
@@ -83,7 +83,7 @@ For more information, see [Add the data management service](/data/capture/#add-t
 
 Once you have added the data management service, enable image data capture for your camera component:
 
-1. On your robot's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
+1. On your machine's **Config** page in the [Viam app](https://app.viam.com), navigate to the **Components** tab.
 1. In the configuration pane for your configured camera component (named `my-webcam` in the above steps), find the **Data capture configuration** section, and click the **Add method** button to enable data capture for this camera.
 
    - Set the **Type** to `ReadImage` and the **Frequency** to `0.333`.

@@ -53,7 +53,7 @@ Follow [these instructions](/registry/advanced/mlmodel-design/) to design your m
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `ML Model` type, then select the `TFLite CPU` model.
 Enter a name for your service and click **Create**.
@@ -72,7 +72,7 @@ Then specify the absolute **Model Path** and any **Optional Settings** such as t
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
 
-To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
@@ -136,7 +136,7 @@ Save the configuration.
 
 ### Versioning for deployed models
 
-If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the robot.
+If you upload or train a new version of a model, Viam automatically deploys the `latest` version of the model to the machine.
 If you do not want Viam to automatically deploy the `latest` version of the model, you can change the `packages` configuration in the [Raw JSON robot configuration](/build/configure/#the-config-tab).
 
 You can get the version number from a specific model version by clicking on **COPY** on the model on the models tab of the **DATA** page.
@@ -173,8 +173,8 @@ The MLModel service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with an `MLModel` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
-Go to your robot's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your robot.
+The following code examples assume that you have a robot configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
+Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
 

@@ -84,7 +84,7 @@ Inside the `components` array of your config, add the following configuration fo
 {{% /tab %}}
 {{< /tabs >}}
 
-The controller config adds the gamepad controller to your robot.
+The controller config adds the gamepad controller to your machine.
 However, it is not functional yet.
 To make it functional, you need to add the base remote control service.
 
@@ -96,7 +96,7 @@ To link the controller's input to the base functionality, you need to configure 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-- Go to the **Services** subtab of your robot's **Config** tab.
+- Go to the **Services** subtab of your machine's **Config** tab.
 - In the **Create service** panel, click the **Type** dropdown and select `Base Remote Control`.
 - Enter `gamepad_service` for the **Service** **name**.
 - Click **Create service**.

@@ -17,12 +17,12 @@ An ultrasonic distance sensor can also be configured as a [sensor](/components/s
 When configured as a sensor, you can use the sensor method [`GetReadings()`](/components/sensor/#getreadings), rather than the camera method [`GetPointCloud()`](/components/camera/#getpointcloud).
 {{< /alert >}}
 
-Configure an `ultrasonic` camera to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your robot:
+Configure an `ultrasonic` camera to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `camera` type, then select the `ultrasonic` model.
 Enter a name for your camera and click **Create**.

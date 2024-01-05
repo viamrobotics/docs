@@ -3,19 +3,19 @@ title: "Configure an xArmLite Arm"
 linkTitle: "xArmLite"
 weight: 34
 type: "docs"
-description: "Configure a UFACTORY Lite 6 arm for your robot."
+description: "Configure a UFACTORY Lite 6 arm for your machine."
 tags: ["arm", "components"]
 aliases:
   - "/components/arm/xarmlite/"
 # SMEs: Bucket, Motion
 ---
 
-Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your robot:
+Configure an `xArmLite` arm to add a [UFACTORY Lite 6](https://www.ufactory.cc/product-page/ufactory-lite-6/) to your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `arm` type, then select the `xArmLite` model.
 Enter a name for your arm and click **Create**.

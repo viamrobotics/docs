@@ -64,9 +64,9 @@ While following this tutorial, you'll complete the following steps to train and 
 
 ### Configure your webcam to capture data
 
-In the [Viam app](https://app.viam.com), create a new robot and follow the steps on your new robot’s **Setup** tab.
+In the [Viam app](https://app.viam.com), create a new machine and follow the steps on your new machine’s **Setup** tab.
 
-Navigate to your robot's page in the app and click on the [**Config** tab](/build/configure/).
+Navigate to your machine's page in the app and click on the [**Config** tab](/build/configure/).
 
 First, add your personal computer's webcam to your robot as a [camera](/components/camera/) by creating a new component with **type** `camera` and **model** `webcam`:
 
@@ -107,7 +107,7 @@ On the [`Raw JSON` tab](/build/configure/#the-config-tab), replace the configura
 
 If you use a different name, adapt the code in the later steps of this tutorial to use the name you give your camera.
 
-To view your webcam's image stream, navigate to the **Control** tab of your robot's page on [the Viam app](https://app.viam.com).
+To view your webcam's image stream, navigate to the **Control** tab of your machine's page on [the Viam app](https://app.viam.com).
 Click on the dropdown menu labeled **camera** and toggle the feed on.
 If you want to test your webcam's image capture, you can click on **Export Screenshot** to capture an image, as shown below:
 
@@ -325,7 +325,7 @@ Now, use Viam's Go SDK to program your robot so that if your webcam "sees" (capt
 
 Follow these instructions to start working on your Go control code:
 
-1. Navigate to your robot's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
+1. Navigate to your machine's page in [the Viam app](https://app.viam.com), and click on the **Code sample** tab.
 2. Select **Go** as the language.
 3. Click **Copy** to copy the generated code sample, which establishes a connection with your robot when run.
 
@@ -519,11 +519,11 @@ func main() {
     "ADDRESS FROM THE VIAM APP",
     logger,
     client.WithDialOptions(rpc.WithEntityCredentials(
-    // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
     "<API-KEY-ID>",
     rpc.Credentials{
         Type:    rpc.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
     })),
 )

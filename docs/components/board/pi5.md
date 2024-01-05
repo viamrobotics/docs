@@ -15,7 +15,7 @@ Follow the [setup guide](/get-started/installation/prepare/rpi-setup/) to prepar
 
 {{% /alert %}}
 
-Configure a `pi5` board to integrate a [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) into your robot.
+Configure a `pi5` board to integrate a [Raspberry Pi 5](https://www.raspberrypi.com/products/raspberry-pi-5/) into your machine.
 
 To configure a Raspberry Pi 4 or earlier, see [Configure a Raspberry Pi 4, 3, or Zero 2 W board](/components/board/pi/).
 
@@ -36,7 +36,7 @@ If you do not enable hardware PWM, these pins will have no function.
 {{< tabs name="Configure a pi5 Board" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `board` type, then select the `pi5` model.
 Enter a name for your board and click **Create**.
@@ -129,7 +129,7 @@ The following attributes are available for `pi5` boards:
 
 ## Attribute Configuration
 
-Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your robot.
+Configuring these attributes on your board allows you to integrate [analog-to-digital converters](#analogs) and [digital interrupts](#digital_interrupts) into your machine.
 
 ### `analogs`
 

@@ -12,14 +12,14 @@ aliases:
 # SME: #team-bucket
 ---
 
-Use a `fake` sensor to test implementing a sensor component on your robot without any physical hardware.
+Use a `fake` sensor to test implementing a sensor component on your machine without any physical hardware.
 
 Configure a `fake` sensor as follows:
 
 {{< tabs name="Configure a Fake Sensor" >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `sensor` type, then select the `fake` model.
 Enter a name for your sensor and click **Create**.

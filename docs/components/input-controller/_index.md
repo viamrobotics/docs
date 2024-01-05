@@ -4,7 +4,7 @@ linkTitle: "Input Controller"
 weight: 60
 type: "docs"
 no_list: true
-description: "An input controller, like a gamepad or joystick, is a device humans use to control a robot's actions."
+description: "An input controller, like a gamepad or joystick, is a device humans use to control a machine's actions."
 tags: ["input controller", "components"]
 icon: "/icons/components/controller.svg"
 modulescript: false
@@ -15,7 +15,7 @@ aliases:
 
 You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
 
-Configuring an _input_ component allows you to use devices like these with your robot, enabling you to control your robot's actions by interacting with the device.
+Configuring an _input_ component allows you to use devices like these with your machine, enabling you to control your machine's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
@@ -26,7 +26,7 @@ For example, when a specific button is pushed, the callback function registered 
 Most robots with an input controller need at least the following hardware:
 
 - A computer capable of running `viam-server`.
-- A power supply cable or batteries for the input device and the robot.
+- A power supply cable or batteries for the input device and the machine.
 - A component that you can direct the input to control, like an [arm](/components/arm/) or [motor](/components/motor/).
 
 ## Related Services
@@ -62,18 +62,18 @@ For configuration information, click on the model name:
 
 {{< readfile "/static/include/create-your-own-mr.md" >}}-->
 
-## Control your robot with an input controller with Viam's client SDK libraries
+## Control your machine with an input controller with Viam's client SDK libraries
 
-Once you've configured your input controller according to model type, you can write code to define how your robot processes the input from the controller.
+Once you've configured your input controller according to model type, you can write code to define how your machine processes the input from the controller.
 
-To get started using Viam's SDKs to connect to and control your robot, go to your robot's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 
-When executed, this sample code will create a connection to your robot as a client.
-Then control your robot programmatically by adding API method calls as shown in the following examples.
+When executed, this sample code will create a connection to your machine as a client.
+Then control your machine programmatically by adding API method calls as shown in the following examples.
 
-These examples assume you have an input controller called `"my_controller"` configured as a component of your robot.
+These examples assume you have an input controller called `"my_controller"` configured as a component of your machine.
 If your input controller has a different name, change the `name` in the code.
 
 Be sure to import the input controller package for the SDK you are using:
@@ -161,9 +161,9 @@ async def handle_controller(controller):
 
 
 async def main():
-    # ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
+    # ... < INSERT CONNECTION CODE FROM MACHINE'S CODE SAMPLE TAB >
 
-    # Get your controller from the robot.
+    # Get your controller from the machine.
     my_controller = Controller.from_robot(
         robot=myRobotWithController, name="my_controller")
 
@@ -221,15 +221,15 @@ func main() {
 
 
 func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (err error) {
-    // ... < INSERT CONNECTION CODE FROM ROBOT'S CODE SAMPLE TAB >
+    // ... < INSERT CONNECTION CODE FROM MACHINE'S CODE SAMPLE TAB >
 
-    // Get the controller from the robot.
+    // Get the controller from the machine.
     myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
     // Run the handleController function.
     err := HandleController(myController)
 
-    // Delay closing your connection to your robot.
+    // Delay closing your connection to your machine.
     err = myRobotWithController.Start(ctx)
     defer myRobotWithController.Close(ctx)
 
@@ -264,7 +264,7 @@ This method returns the current state of the controller as a map of [Event Objec
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_events).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the controller from the robot.
+# Get the controller from the machine.
 my_controller = Controller.from_robot(
     robot=myRobotWithController, name="my_controller")
 
@@ -291,7 +291,7 @@ print(f"Recent Events:\n{recent_events}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the robot.
+// Get the controller from the machine.
 myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 // Get the most recent Event for each Control.
@@ -323,7 +323,7 @@ Get a list of the [Controls](#control-field) that your controller provides.
 For more information, see the [Python SDK Docs](https://python.viam.dev/_modules/viam/components/input/input.html#Controller.get_controls).
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the controller from the robot.
+# Get the controller from the machine.
 my_controller = Controller.from_robot(
     robot=myRobotWithController, name="my_controller")
 
@@ -350,7 +350,7 @@ print(f"Controls:\n{controls}")
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/input#Controller).
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the robot.
+// Get the controller from the machine.
 myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 // Get the list of Controls provided by the controller.
@@ -509,7 +509,7 @@ If you are implementing your own input controller and add features that have no 
 - [(Dict[str, Any])](https://docs.python.org/3/library/stdtypes.html#typesmapping): Result of the executed command.
 
 ```python {class="line-numbers linkable-line-numbers"}
-# Get the controller from the robot.
+# Get the controller from the machine.
 my_controller = Controller.from_robot(
     robot=myRobotWithController, name="my_controller")
 
@@ -533,7 +533,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Get the controller from the robot.
+// Get the controller from the machine.
 myController, err := input.FromRobot(myRobotWithController, "my_controller")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
@@ -1050,9 +1050,9 @@ async def handleController(controller):
 
 
 async def main():
-    # ADD YOUR ROBOT REMOTE ADDRESS and API KEY VALUES.
+    # ADD YOUR MACHINE REMOTE ADDRESS and API KEY VALUES.
     # These can be found in the Code sample tab of app.viam.com.
-    # Toggle 'Include secret' to show the api key values.
+    # Toggle 'Include secret' to show the API key values.
     g920_robot = await connect_robot(
         "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
     modal_robot = await connect_robot(

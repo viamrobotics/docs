@@ -264,14 +264,14 @@ In just a few minutes, you'll have it back on.
 
 Go to the [Viam app](https://app.viam.com) and create a new robot called `MAIV`.
 
-Go to the **Setup** tab of your new robot's page and follow the steps [to install `viam-server` on your Raspberry Pi](/get-started/installation/).
+Go to the **Setup** tab of your new machine's page and follow the steps [to install `viam-server` on your Raspberry Pi](/get-started/installation/).
 
 ### Configure the components
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab.
 
 1. **Add the board**.
@@ -475,7 +475,7 @@ You can use any free GPIO pins, but we connected pin 16 to `IN1`, pin 37 to `IN2
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
-To add the neck motor, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+To add the neck motor, navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Navigate to the **Components** subtab and click **Create component** in the lower-left corner.
 
 To create your [motor component](/components/motor/), select the type `motor`, and select the `gpio` model.
@@ -558,7 +558,7 @@ Fit MAIV's neck into the torso, and re-assemble the torso.
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
-Add the [camera component](/components/camera/) to your robot by navigating to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Add the [camera component](/components/camera/) to your robot by navigating to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click the **Create component** button in the lower-left corner.
 
 Select the type `camera`, and select the `webcam` model.
@@ -610,7 +610,7 @@ Now MAIV is ready to interact with the world!
 
 Start by driving MAIV through the **Control** panel, then try writing some code.
 A simple first exercise would be to have MAIV [drive in a square](/tutorials/get-started/try-viam-sdk/).
-The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot API key and key id and any component names that differ in the code.
+The same code that works with any configured base will work with MAIV, you'll just need to update the robot location, robot API key and key ID and any component names that differ in the code.
 
 Since MAIV has a camera, you could also [set up a color detector](/tutorials/services/webcam-line-follower-robot/) or detect objects using a [machine learning model](/tutorials/projects/send-security-photo/).
 

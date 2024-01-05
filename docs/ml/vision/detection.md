@@ -53,7 +53,7 @@ If the color is not reliably detected, increase the `hue_tolerance_pct`.
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `ML Model` type, then select the `Color Detector` model.
 Enter a name for your service and click **Create**.
@@ -172,7 +172,7 @@ To create a `mlmodel` classifier, you need an [ML model service with a suitable 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
-Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/robots).
 Click the **Services** subtab and click **Create service** in the lower-left corner.
 Select the `Vision` type, then select the `ML Model` model.
 Enter a name for your service and click **Create**.
@@ -231,7 +231,7 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 ### Live camera footage
 
-If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the detector with a camera that is part of your machine, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
 
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
@@ -262,7 +262,7 @@ If you intend to use the detector with a camera that is part of your robot, you 
    ![Viam app control tab interface showing bounding boxes around two office chairs, both labeled "chair" with confidence score "0.50."](/ml/vision/chair-detector.png)
 
 5. To access detections with code, use the Vision Service methods on the camera you configured in step 1.
-   The following code gets the robot’s vision service and then runs a color detector vision model on output from the robot's camera `"cam1"`:
+   The following code gets the robot’s vision service and then runs a color detector vision model on output from the machine's camera `"cam1"`:
 
    {{% alert title="Tip" color="tip" %}}
 
@@ -308,7 +308,7 @@ import (
 )
 
 // Grab the camera from the robot
-cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
+cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

@@ -10,7 +10,7 @@ aliases:
 # SMEs: Rand, James
 ---
 
-Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your robot.
+Use an [encoder](/components/encoder/) with a motor to create a closed feedback loop for better control of your machine.
 Instead of sending speed or position commands without a way to verify the motor's behavior, the encoder lets the computer know how the motor is actually rotating in the real world, so adjustments can be made to achieve the desired motor movement.
 
 Some motors come with encoders integrated with or attached to them.

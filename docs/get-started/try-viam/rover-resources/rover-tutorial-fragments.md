@@ -1,6 +1,6 @@
 ---
-title: "Add the Viam Fragment to your Robot"
-linkTitle: "Add the Viam Fragment to your Robot"
+title: "Add the Viam Fragment to your Machine"
+linkTitle: "Add the Viam Fragment to your Machine"
 weight: 20
 type: "docs"
 tags: ["rover", "tutorial"]
@@ -21,13 +21,13 @@ Viam provides a reusable {{% glossary_tooltip term_id="fragment" text="*fragment
 
 ## Add the fragment
 
-Navigate to your robot in [the Viam app](https://app.viam.com/robots).
+Navigate to your machine in [the Viam app](https://app.viam.com/robots).
 On the **Config** tab, click on the **Fragments** subtab.
 
 {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_tab.png" resize="1200x" alt="Fragments tab inside the Viam app">}}
 
 On the **Fragments** tab, you can see the available fragments to add.
-Find `ViamRover202210b` and click `Add` to add the fragment to your robot configuration.
+Find `ViamRover202210b` and click `Add` to add the fragment to your machine configuration.
 
 {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragments_list.png" resize="1200x" alt="List of available fragments">}}
 
@@ -35,7 +35,7 @@ Click **Save Config** to save the new configuration.
 
 {{<imgproc src="get-started/try-viam/rover-resources/fragments/fragment_configuration.png" resize="1200x" alt="Fragment configuration">}}
 
-The fragment adds the following components to your robot's JSON configuration:
+The fragment adds the following components to your machine's JSON configuration:
 
 - A [board component](/components/board/pi/) named `local` representing the Raspberry Pi
   - An I<sup>2</sup>C bus for connection to the accelerometer.
@@ -61,7 +61,7 @@ To see the configured pin numbers and other values specific to this fragment, [s
 
 ## See the components on the configuration page
 
-Adding a fragment to your robot adds the configuration to your robot.
+Adding a fragment to your machine adds the configuration to your machine.
 The components and services included in the fragment appear inside a read-only fragment section in the **Components** and **Services** subtabs.
 
 ## Modify the config

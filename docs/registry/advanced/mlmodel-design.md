@@ -55,7 +55,7 @@ For labels:
 
 - Many computer vision models have an associated 'labelfile.txt' that lists the class labels associated with the model.
   To get those labels associated with the model, currently the vision service looks at the first element of the `output_info` list in the ML models' metadata and checks for a key called `"labels"` in its `"extra"` struct.
-  The value of that key should be the full path to the label file on the robot.
+  The value of that key should be the full path to the label file on the machine.
   See [Example Metadata](#example-metadata) for an example of this.
 
   ```sh {class="command-line" data-prompt="$"}

@@ -22,7 +22,7 @@ Measure from that point to the base of the arm to get the `translation` coordina
 {{< tabs name="Example Frame Configuration of Component attached to Static Surface" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your robot following this example, navigate to the **Config** tab on your robot's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
+To complete the frame configuration for your machine following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myArm`'s card, and click **Add Frame**:
 
 ![frame card example for this configuration](/mobility/frame-system/frame_card_static.png)
 
@@ -74,13 +74,13 @@ Select the `parent` frame as `world` and fill in the coordinates for `translatio
 | `Parent`  | **Required** | Default: `world`. The name of the reference frame you want to act as the parent of this frame. |
 | `Translation` | **Required** | Default: `(0, 0, 0)`. The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: _mm_. |
 | `Orientation`  | **Required** | Default: `(0, 0, 1), 0`. The [orientation vector](/internals/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: `Orientation Vector Degrees`, `Orientation Vector Radians`, and `Quaternion`. |
-| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the robot. <br> Types: `Sphere`, `Box`, and `Capsule`. |
+| `Geometry`  | Optional | Default: `none`. Collision geometries for defining bounds in the environment of the machine. <br> Types: `Sphere`, `Box`, and `Capsule`. |
 
 {{% alert title="Tip" color="tip" %}}
 
 Note: `myArm` uses the default `orientation` from the `world` origin.
 
-You do not have to explicitly configure this on your robot, as it is the default.
+You do not have to explicitly configure this on your machine, as it is the default.
 It is included as part of this example for illustrative purposes.
 
 {{% /alert %}}

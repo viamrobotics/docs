@@ -15,13 +15,13 @@ The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (b
 [Encoders](/components/encoder/) can be configured to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
-To configure a DC motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
+To configure a DC motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 Click on the **Components** subtab and click **Create component**.
 Select the `motor` type, then select the `gpio` model.
 Enter a name for your motor and click **Create**.
