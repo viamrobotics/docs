@@ -135,7 +135,7 @@ If the classifier's results exceed the confidence threshold, the **Run model** s
 
 ### Live camera footage
 
-If you intend to use the classifier with a camera that is part of your robot, you can test your classifier from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the classifier with a camera that is part of your machine, you can test your classifier from the [**Control tab**](/fleet/machines/#control) or with code:
 
 1. Configure a [camera component](/components/camera/).
 2. (Optional) If you would like to see classifications from the **Control tab**, configure a [transform camera](/components/camera/transform/) with the following attributes :
@@ -209,7 +209,7 @@ import (
 )
 
 // Grab the camera from the robot
-cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
+cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

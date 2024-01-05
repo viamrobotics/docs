@@ -13,7 +13,7 @@ aliases:
 ---
 
 A `boat` base is a model for a mobile robotic boat.
-To configure a `boat` base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+To configure a `boat` base as a component of your machine, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
 {{< tabs name="Configure a Boat Base" >}}
 {{% tab name="Config Builder" %}}

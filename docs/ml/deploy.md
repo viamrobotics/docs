@@ -72,7 +72,7 @@ Then specify the absolute **Model Path** and any **Optional Settings** such as t
 {{% /tab %}}
 {{% tab name="Deploy Model" %}}
 
-To configure your service and deploy a model onto your robot, select **Deploy Model On Robot** for the **Deployment** field.
+To configure your service and deploy a model onto your machine, select **Deploy Model On Robot** for the **Deployment** field.
 
 Then select the **Models** and any **Optional Settings** such as the **Number of threads**.
 
@@ -173,7 +173,7 @@ The MLModel service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with an `MLModel` service, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with an `MLModel` service, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code Sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}

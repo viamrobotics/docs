@@ -81,7 +81,7 @@ You can see the secret keys for a location in the **Location Secret Keys** dropd
 
 {{< alert title="Caution" color="caution" >}}
 Do not share your location secret, part secret, or machine address publicly.
-Sharing this information could compromise your system security by allowing unauthorized access to your robot, or to the computer running your machine.
+Sharing this information could compromise your system security by allowing unauthorized access to your machine, or to the computer running your machine.
 {{< /alert >}}
 -->
 

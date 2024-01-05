@@ -21,7 +21,7 @@ Follow [this guide](https://resources.basicmicro.com/roboclaw-motor-controllers-
 
 {{< /alert >}}
 
-To configure a `roboclaw` motor as a component of your robot:
+To configure a `roboclaw` motor as a component of your machine:
 
 {{< tabs name="Configure your roboclaw motor">}}
 {{% tab name="Config Builder" %}}

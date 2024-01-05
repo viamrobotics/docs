@@ -613,7 +613,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### GetRobotPartHistory
 
-Get a list containing the history of a robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Get a list containing the history of a machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -642,7 +642,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### UpdateRobotPart
 
-Change the name of and assign an optional new configuration to a robot {{< glossary_tooltip term_id="part" text="part" >}}.
+Change the name of and assign an optional new configuration to a machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -729,7 +729,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### MarkPartAsMain
 
-Mark a robot part as the [_main_ part](/build/configure/parts-and-remotes/#robot-parts) of a robot.
+Mark a machine part as the [_main_ part](/build/configure/parts-and-remotes/#robot-parts) of a machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -779,7 +779,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### CreateRobotPartSecret
 
-Create a robot {{< glossary_tooltip term_id="part" text="part" >}} secret.
+Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -808,7 +808,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### DeleteRobotPartSecret
 
-Delete a robot part secret.
+Delete a machine part secret.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -13,7 +13,7 @@ aliases:
 
 <!-- TODO: section on why configuring this one WITH another board is necessary & why the module is useful. -->
 
-Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) into your robot:
+Configure a `numato` board to integrate [Numato GPIO Peripheral Modules](https://numato.com/product-category/automation/gpio-modules/) into your machine:
 
 {{< tabs name="Configure an numato Board" >}}
 {{% tab name="Config Builder" %}}

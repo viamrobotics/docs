@@ -25,7 +25,7 @@ Now, as the gantry moves its actuator, the Frame System will translate both the 
 {{< tabs name="Example Frame Configuration of Component attached to Dynamic Component" >}}
 {{% tab name="Config Builder" %}}
 
-To complete the frame configuration for your robot following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
+To complete the frame configuration for your machine following this example, navigate to the **Config** tab on your machine's page in [the Viam app](https://app.viam.com), select the **Builder** mode, scroll to `myGantry`'s card, and click **Add Frame**:
 
 ![gantry frame card example for this configuration](/mobility/frame-system/frame_card_dyn_gantry.png)
 
@@ -114,7 +114,7 @@ Select the `parent` frame as `myGantry` and fill in the coordinates for `transla
 
 Note: `myGantry` uses the default translation and orientation from the `world` origin, and `myArm` uses the default orientation.
 
-You do not have to explicitly configure this on your robot, as it is the default.
+You do not have to explicitly configure this on your machine, as it is the default.
 It is included as part of this example for illustrative purposes.
 
 {{% /alert %}}

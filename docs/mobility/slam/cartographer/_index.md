@@ -62,7 +62,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
   - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
-- In addition, you must [add the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar) to support the RPlidar hardware, if you have not done so already.
+- In addition, you must [add the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar) to support the RPlidar hardware, if you have not done so already.
 
   {{< alert title="SUPPORT" color="note" >}}
 
@@ -77,11 +77,11 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
 1. Configure your `cartographer` SLAM service
 
-   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to add the `cartographer` module to your robot:
+   After installing your physical RPlidar and adding the `rplidar` module as outlined in the [requirements](#requirements) section, follow the steps below to add the `cartographer` module to your machine:
 
    {{< tabs name="Create new map">}}
    {{% tab name="Config Builder" %}}
-   Follow the instructions below to set up the `cartographer` module on your robot:
+   Follow the instructions below to set up the `cartographer` module on your machine:
 
    1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
    1. Click on the **Services** subtab and click **Create service** in the lower-left corner.
@@ -90,7 +90,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
    1. Click **Add module**, give your service a name of your choice, then click **Create**.
    1. In the resulting `SLAM` service configuration pane, first choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
 
-      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your robot](https://github.com/viamrobotics/rplidar).
+      - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
         Example: "my-rplidar"
         - Then set a **Data capture rate (Hz)** for it.
           Example: "5"
@@ -108,7 +108,7 @@ Creating a new map uses an instance of the cartographer module running in the cl
 
    To save your changes, click **Save config** at the bottom of the page.
 
-   Check the **Logs** tab of your robot in the Viam app to make sure your RPlidar has connected and no errors are being raised.
+   Check the **Logs** tab of your machine in the Viam app to make sure your RPlidar has connected and no errors are being raised.
 
    {{%/tab %}}
    {{% tab name="JSON Example" %}}
@@ -380,13 +380,13 @@ Updating an existing map uses an instance of the `cartographer` module running i
 {{% alert title="Info" color="info" %}}
 
 Cartographer may take several minutes to find your machine's position on the existing map.
-In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
+In the meantime, your machine will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
 {{% /alert %}}
 
 ### Localize only
 
-In this mode, the `cartographer` module on your robot executes the Cartographer algorithm itself locally to find its position on a map.
+In this mode, the `cartographer` module on your machine executes the Cartographer algorithm itself locally to find its position on a map.
 
 1.  Configure your `cartographer` SLAM service
 
@@ -394,7 +394,7 @@ In this mode, the `cartographer` module on your robot executes the Cartographer 
     {{% tab name="Config Builder" %}}
 
 The configuration is similar to the configuration for [updating an existing map](#update-an-existing-map), except instead of configuring a `Data capture rate (Hz)` on the camera and movement sensor, set a `Data polling rate (Hz)` on both.
-The `cartographer` module on your robot polls the live LiDAR and IMU directly at these rates, whereas the capture rate is only used when data is being sent to the cloud.
+The `cartographer` module on your machine polls the live LiDAR and IMU directly at these rates, whereas the capture rate is only used when data is being sent to the cloud.
 
     {{% /tab %}}
     {{% tab name="JSON Example" %}}
@@ -494,9 +494,9 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
     {{% alert title="Info" color="info" %}}
 
 Cartographer may take several minutes to find your machine's position on the existing map.
-In the meantime, your robot will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
+In the meantime, your machine will show up at the map's origin (with the `(x,y)` coordinates `(0,0)`).
 
-If you move your robot, it will appear to be moving in a trajectory from the map's origin.
+If you move your machine, it will appear to be moving in a trajectory from the map's origin.
 
     {{% /alert %}}
 
@@ -525,7 +525,7 @@ You can browse your previously captured data from the **Data** page under the **
 
 To create a map, you must have already captured LiDAR data in the location in which you would like to create the map.
 
-The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a robot named `test`.
+The following example shows the previously-captured LiDAR data under the **Point clouds** tab for a machine named `test`.
 Selecting a row opens a pane to the right that contains more information, such as the `Robot ID` of the robot the component belongs to:
 
 {{<imgproc src="/mobility/slam/offline-mapping-pointcloud-data.png" resize="1200x" declaredimensions=true alt="UI showing captured point clouds">}}
@@ -539,7 +539,7 @@ Example of previously captured IMU data:
 Navigate to the **SLAM library** tab on your location page, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
 1. Enter the **Robot name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your robot has been deleted, you can alternatively specify the **robot ID**.
+   If your machine has been deleted, you can alternatively specify the **robot ID**.
 1. Adjust the configuration parameters as needed.
    See [`config_params`](#config_params) for details.
 1. Select the timeframe of the data you'd like to use.

@@ -12,7 +12,7 @@ tags:
     "components",
     "services",
   ]
-description: "Add a modular resource to your robot by configuring it."
+description: "Add a modular resource to your machine by configuring it."
 no_list: true
 aliases:
   - "program/extend/modular-resources/configure/"
@@ -20,7 +20,7 @@ aliases:
   - "/modular-resources/configure/"
 ---
 
-You can extend Viam by adding a module on your robot that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
+You can extend Viam by adding a module on your machine that provides one or more {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} ([components](/components/) or [services](/services/)):
 
 1. Add a {{< glossary_tooltip term_id="module" text="module" >}}, either one [from the registry](#add-a-modular-resource-from-the-viam-registry) or a [local module](#local-modules).
    This makes the modular resource available to the machine.
@@ -35,7 +35,7 @@ The [Viam registry](https://app.viam.com/registry) is a central repository of mo
 
 A module provides one or more {{< glossary_tooltip term_id="resource" text="modular resources" >}} (either a [component](/components/) or [service](/services/)).
 
-Follow the instructions below depending on the type of modular resource you would like to add to your robot:
+Follow the instructions below depending on the type of modular resource you would like to add to your machine:
 
 - [Add a modular component](#add-a-modular-component-from-the-viam-registry)
 - [Add a modular service](#add-a-modular-service-from-the-viam-registry)
@@ -46,7 +46,7 @@ If you are using a [rented Viam rover](/get-started/try-viam/), adding modules i
 
 ### Add a modular component from the Viam registry
 
-To add a modular [component](/components/) from the Viam registry to your robot:
+To add a modular [component](/components/) from the Viam registry to your machine:
 
 1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Components** subtab and click the **Create component** button.
@@ -75,7 +75,7 @@ Deleting a module _does not_ delete any configured modular resources it provides
 
 ### Add a modular service from the Viam registry
 
-To add a modular [service](/services/) from the Viam registry to your robot:
+To add a modular [service](/services/) from the Viam registry to your machine:
 
 1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Services** subtab and click the **Create service** button.
@@ -104,7 +104,7 @@ Deleting a module _does not_ delete any configured modular resources it provides
 
 ### Add additional modular resources from a registry module
 
-Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your robot by adding new components or services configured with your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
+Once you have [added a module](#add-a-modular-resource-from-the-viam-registry) from the Viam registry, you can add any number of the modular resources it provides to your machine by adding new components or services configured with your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
 Follow the same steps as when you added the first modular resource, clicking **Create component** or **Create service** as applicable.
 You will be prompted to click **Add module** again while configuring the resource, though no duplicate module will be added to the `modules` section of the configuration.
@@ -118,7 +118,7 @@ If you prefer to use raw JSON, the following properties are available for modula
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | What you want to name this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.
@@ -185,20 +185,20 @@ The custom model is configured as a component with the name "my-realsense".
 
 ## Edit the configuration of a module from the Viam registry
 
-Once you have added a modular resource to your robot, you can view and edit the configuration of the underlying module from the **Modules** subtab:
+Once you have added a modular resource to your machine, you can view and edit the configuration of the underlying module from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
-   All modules you have added to your robot appear under the **Deployed** section.
+   All modules you have added to your machine appear under the **Deployed** section.
 
-This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your robot that are currently using the module.
+This pane lists the models provided by the module, and any [components](/components/) or [services](/services/) on your machine that are currently using the module.
 You can also configure [how the module updates](#configure-version-update-management-for-a-registry-module) when a new version is available from the Viam registry, or [configure environment variables](#use-environment-variables-with-a-registry-module) for your module.
 
 {{<imgproc src="registry/configure/deployed-module-with-component.png" resize="1000x" declaredimensions=true alt="The module subtab of the config tab showing the realsense custom module configuration pane includes the update management section showing version update management options version type, set to Patch (X.Y.Z) and version set to 0.0.3">}}
 
 ### Configure version update management for a registry module
 
-When you add a module to your robot, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
+When you add a module to your machine, you can also configure how that module updates itself when a newer version becomes available from the Viam registry.
 By default, a newly-added module is set to pin to the specific patch release (**Patch (X.Y.Z)**) of the version you added, meaning that the module will _never automatically update itself_.
 
 If you wish to allow automatic module updates when a new version of the module becomes available in the Viam registry, you can set the **Version type** for your module in the **Modules** subtab.
@@ -330,7 +330,7 @@ When a module is instantiated, it has access to the following default environmen
 
 ## Local modules
 
-If you wish to add a module to your robot without uploading it to the Viam registry, you can add your module as a _local module_.
+If you wish to add a module to your machine without uploading it to the Viam registry, you can add your module as a _local module_.
 
 You can add your own custom modules as local modules, or you can add pre-built modules written by other Viam users.
 
@@ -343,7 +343,7 @@ First determine the module you wish to add as a local module:
 
 Then, ensure that `viam-server` is able to find and run the executable:
 
-- Ensure that the module executable is saved to a location on the filesystem of your robot that `viam-server` can access.
+- Ensure that the module executable is saved to a location on the filesystem of your machine that `viam-server` can access.
   For example, if you are running `viam-server` on an Raspberry Pi, you must save the module executable on the Pi's filesystem.
 - Ensure that this file is executable (runnable) with the following command:
 
@@ -355,7 +355,7 @@ See the instructions to [compile your module into an executable](/registry/creat
 
 ### Add a local module
 
-To add a local module on your robot:
+To add a local module on your machine:
 
 1. Navigate to the **Config** tab of your machine's page on [the Viam app](https://app.viam.com).
 
@@ -394,11 +394,11 @@ You can also add the module directly, without first adding its modular component
 
 ### Edit the configuration of a local module
 
-Once you have added a modular resource to your robot, you can view and edit the underlying module from the **Modules** subtab:
+Once you have added a modular resource to your machine, you can view and edit the underlying module from the **Modules** subtab:
 
 1. Navigate to the **Config** tab of your machine's page in [the Viam app](https://app.viam.com).
 1. Click on the **Modules** subtab.
-   Local modules you have added to your robot appear under the **Local** section.
+   Local modules you have added to your machine appear under the **Local** section.
 
 The following properties are available for modules:
 
@@ -436,7 +436,7 @@ Add these properties to your module's configuration:
 
 ### Add a local modular resource
 
-Once you have added a local module to your robot, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your robot by adding new components or services that use your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
+Once you have added a local module to your machine, you can add any number of the {{< glossary_tooltip term_id="resource" text="resources" >}} provided by that module to your machine by adding new components or services that use your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
 
 The following properties are available for modular resources:
 
@@ -447,7 +447,7 @@ The following properties are available for modular resources:
 | `type` | string | **Required** | The {{< glossary_tooltip term_id="subtype" text="subtype">}} of the API (the third part of the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}). See [Valid APIs to implement in your model](/registry/create/#valid-apis-to-implement-in-your-model). |
 | `name` | string | **Required** | A custom name for this instance of your modular resource. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your robot alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
+| `depends_on` | array | Optional | The `name` of components you want to confirm are available on your machine alongside your modular resource. Often a [board](/components/board/). Unnecessary if you coded [implicit dependencies](/internals/rdk/#dependency-management). |
 
 All standard properties for configuration, such as `attributes` and `depends_on`, are also supported for modular resources.
 The `attributes` available vary depending on your implementation.

@@ -13,11 +13,11 @@ aliases:
 
 The `customlinux` board model supports boards like the [Mediatek Genio 500 Pumpkin](https://ologicinc.com/portfolio/mediateki500/) that run Linux operating systems and are not supported by other built-in Viam models.
 
-To integrate a custom Linux board into your robot:
+To integrate a custom Linux board into your machine:
 
 1. [Install `viam-server`](#install-viam-server) on your machine.
 1. [Create a board definitions file](#create-a-board-definitions-file), specifying the mapping between your board's GPIO pins and connected hardware.
-1. [Configure a `customlinux` board](#configure-your-board) on your robot, specifying the path to the definitions file in the board configuration.
+1. [Configure a `customlinux` board](#configure-your-board) on your machine, specifying the path to the definitions file in the board configuration.
 
 ## Install `viam-server`
 

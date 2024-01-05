@@ -12,7 +12,7 @@ aliases:
 ---
 
 A `wheeled` base supports mobile robotic bases with drive motors on both sides (differential steering).
-To configure a `wheeled` base as a component of your robot, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
+To configure a `wheeled` base as a component of your machine, first configure the [board](/components/board/) controlling the base and any [motors](/components/motor/) attached to the base.
 
 Configure a `wheeled` base as follows:
 

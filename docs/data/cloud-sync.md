@@ -22,7 +22,7 @@ Once the service syncs a file to Viam's cloud, the service deletes the file loca
 
 As before, consider the example of a tomato picking robot.
 When you initially set the robot up you may want to sync captured data to the cloud every five minutes.
-If you change your mind and want your robot to sync less frequently, you can change the sync frequency, for example, to once a day.
+If you change your mind and want your machine to sync less frequently, you can change the sync frequency, for example, to once a day.
 
 ## Configuration
 

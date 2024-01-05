@@ -75,7 +75,7 @@ The XBox controllers emulate an XBox 360 gamepad when in wired mode, as does the
 
 Because of that, any unknown gamepad is mapped as an XBox 360.
 
-If you have another controller that you want to use to control your robot, feel free to submit a PR on [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
+If you have another controller that you want to use to control your machine, feel free to submit a PR on [Github](https://github.com/viamrobotics/rdk/blob/main/components/input/input.go) with new mappings.
 
 ## Troubleshooting
 

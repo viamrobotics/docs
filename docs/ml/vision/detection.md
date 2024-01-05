@@ -231,7 +231,7 @@ You can test your detector with [live camera footage](#live-camera-footage) or [
 
 ### Live camera footage
 
-If you intend to use the detector with a camera that is part of your robot, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
+If you intend to use the detector with a camera that is part of your machine, you can test your detector from the [**Control tab**](/fleet/machines/#control) or with code:
 
 1. Configure a [camera component](/components/camera/).
    {{< alert title="Tip" color="tip" >}}
@@ -308,7 +308,7 @@ import (
 )
 
 // Grab the camera from the robot
-cameraName := "cam1" // make sure to use the same component name that you have in your robot configuration
+cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
 myCam, err := camera.FromRobot(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)

@@ -11,7 +11,7 @@ aliases:
 # SMEs: Bucket, Motion
 ---
 
-Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your robot:
+Configure an `xArm7` arm to integrate a [UFACTORY xArm 7](https://www.ufactory.cc/product-page/ufactory-xarm-7) into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

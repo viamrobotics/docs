@@ -17,7 +17,7 @@ Follow the [setup guide](/get-started/installation/prepare/sk-tda4vm/) to prepar
 
 {{% /alert %}}
 
-Configure a `ti` board to integrate a [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) into your robot:
+Configure a `ti` board to integrate a [Texas Instruments TDA4VM](https://devices.amazonaws.com/detail/a3G8a00000E2QErEAN/TI-TDA4VM-Starter-Kit-for-Edge-AI-vision-systems) into your machine:
 
 {{< tabs name="Configure an ti Board" >}}
 {{% tab name="Config Builder" %}}

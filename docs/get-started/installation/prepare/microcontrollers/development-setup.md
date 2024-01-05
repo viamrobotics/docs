@@ -217,9 +217,9 @@ Instead, save this command to run in any future terminal session where you need 
 
 ## Install the Micro-RDK
 
-### Create a New Robot
+### Create a New Machine
 
-Navigate to [the Viam app](https://app.viam.com) and [add a new robot](/fleet/machines/#add-a-new-robot) in your desired location.
+Navigate to [the Viam app](https://app.viam.com) and [add a new machine](/fleet/machines/#add-a-new-machine) in your desired location.
 
 Click on the name of the machine to go to the machine's page.
 Then, navigate to the **Config** tab.

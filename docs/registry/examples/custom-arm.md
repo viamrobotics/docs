@@ -233,7 +233,7 @@ The best practice with the Python SDK is to put `pass` or raise an `NotImplement
 
 ### Prepare the module for execution
 
-To [add a module](/registry/configure/) to the configuration of your robot, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
+To [add a module](/registry/configure/) to the configuration of your machine, you need to have an [executable](https://en.wikipedia.org/wiki/Executable) that:
 
 - runs your module when executed,
 - takes a local socket as a command line argument, and
@@ -264,6 +264,6 @@ sudo chmod +x <FILEPATH>/<FILENAME>
 Ensure any dependencies for your module (including the [Python SDK](https://python.viam.dev/)) are installed on your machine's computer.
 Your executable will be run by `viam-server` as root, so dependencies need to be available to the root user.
 
-## Configure the module and modular resource on your robot
+## Configure the module and modular resource on your machine
 
 Follow [these configuration instructions](/registry/configure/) to add your custom resource to your machine.

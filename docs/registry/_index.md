@@ -60,7 +60,7 @@ You can integrate modules into any Viam-powered machine.
 
 To use a modular resource from the registry, add it from your machine's **Config** tab in the Viam app, using the **Create component** button.
 
-After adding a module to your robot, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
+After adding a module to your machine, you can choose to [configure](/registry/configure/) it for automatic version updates from the Viam registry, or update your module manually.
 By default, newly added modules will remain at the version they were when you installed them, and will not update automatically.
 
 Once you have added and configured the module you would like to use in the Viam app, you can test your added resource using the [**Control** tab](/fleet/#remote-control) and program it using [standardized APIs](/build/program/apis/).

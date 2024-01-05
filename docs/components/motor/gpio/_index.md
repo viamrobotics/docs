@@ -15,7 +15,7 @@ The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (b
 [Encoders](/components/encoder/) can be configured to work with `gpio` motors.
 Find more information in the [encoded motor documentation](/components/motor/gpio/encoded-motor/).
 
-To configure a DC motor as a component of your robot, first configure the [board](/components/board/) to which the motor driver is wired.
+To configure a DC motor as a component of your machine, first configure the [board](/components/board/) to which the motor driver is wired.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}

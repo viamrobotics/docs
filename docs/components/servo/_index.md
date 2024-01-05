@@ -74,7 +74,7 @@ If none of these models fit your use case, you can create a {{< glossary_tooltip
 
 ## Control your servo with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 

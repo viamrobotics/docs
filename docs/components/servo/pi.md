@@ -17,7 +17,7 @@ Unlike other servo models, `pi` servos are implemented as part of the [`pi` boar
 
 {{% /alert %}}
 
-Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your robot:
+Configure a `pi` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a [Raspberry Pi board](/components/board/pi/) into your machine:
 
 {{< tabs name="Configure a pi Servo" >}}
 {{% tab name="Config Builder" %}}

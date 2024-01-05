@@ -18,7 +18,7 @@ menuindent: true
 # SME: Alexa Greenberg
 ---
 
-Viam's built-in data management service allows you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your robots, as well as use [Machine Learning](/ml/) features to enhance your machine's capabilities.
+Viam's built-in data management service allows you to capture, sync, [view](view/), [label](dataset/), and [export](export/) data from your machines, as well as use [Machine Learning](/ml/) features to enhance your machine's capabilities.
 The service is designed for flexibility and efficiency while preventing data loss, data duplication, and other data management issues.
 
 ![Data is captured on the robot, uploaded to the cloud, and then deleted off local storage.](/data/data_management.png)
@@ -132,7 +132,7 @@ To search other types of data, such as images, see [Filter Data](/data/view/#fil
 
 ### Train and deploy machine learning
 
-You can use data synced to the cloud to [train machine learning models](/ml/train-model/) and then [deploy these models to your robots](/ml/) from the Viam app.
+You can use data synced to the cloud to [train machine learning models](/ml/train-model/) and then [deploy these models to your machines](/ml/) from the Viam app.
 You can also [upload and use existing models](/ml/upload-model/).
 
 ### Permissions

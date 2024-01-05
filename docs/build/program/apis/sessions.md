@@ -41,7 +41,7 @@ The Session Management API provides functionality for:
 
 A _client_ of a Viam machine can be a program using an SDK to control the robot, or all the different resources on the robot, including all {{< glossary_tooltip term_id="part" text="parts" >}} and sub-parts, like an input controller and a base, communicating.
 
-For example, if you use Viam's module registry to add {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} to your robot, the clients of your machine will include the model servers you instantiate on your machine for individual resources, as well as the SDKs you are using to program the modular resources.
+For example, if you use Viam's module registry to add {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} to your machine, the clients of your machine will include the model servers you instantiate on your machine for individual resources, as well as the SDKs you are using to program the modular resources.
 
 Viam's session management API's `SessionsClient` is a built-in solution that manages the connection between your machine's clients and your machine.
 If you connect to your machine using one of Viam's SDKs, the resulting client will automatically maintain the session by sending a _heartbeat_ notifying the machine's `viam-server` instance of its continued presence.
@@ -65,7 +65,7 @@ Heartbeats are sent automatically from Viam's SDKs unless you disable them with 
 Heartbeats are automatically sent at an interval that is one fifth of the heartbeat window.
 For example, if the heartbeat window is 5 seconds, clients will each send a heartbeat every 1 second.
 
-You can adjust the heartbeat window in the configuration of your robot:
+You can adjust the heartbeat window in the configuration of your machine:
 
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
@@ -118,7 +118,7 @@ To manage your session with the session management API:
 
 The `SessionsClient` that serves the session management API is automatically enabled on your machine.
 It is instantiated as part of your [`RobotClient`](/build/program/apis/#robot-api) instance (client of the Robot API).
-If you want to disable it, you can pass the option to your robot, as demonstrated in the following code snippets:
+If you want to disable it, you can pass the option to your machine, as demonstrated in the following code snippets:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

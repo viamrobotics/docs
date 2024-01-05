@@ -56,7 +56,7 @@ The webcam can be installed on a robot, or just held in your hand.
 
 {{% /alert %}}
 
-First, follow these instructions to connect and calibrate your webcam as a component of your robot:
+First, follow these instructions to connect and calibrate your webcam as a component of your machine:
 
 1. [Connect and configure a webcam](/components/camera/webca/)
 2. [Calibrate a camera](/components/camera/calibrate/)

@@ -15,7 +15,7 @@ aliases:
 
 You are likely already familiar with human-interface devices, like keyboards and mice, elevator button panels, light power switches, joysticks, and gamepads, or, video game controllers, from your daily life.
 
-Configuring an _input_ component allows you to use devices like these with your robot, enabling you to control your machine's actions by interacting with the device.
+Configuring an _input_ component allows you to use devices like these with your machine, enabling you to control your machine's actions by interacting with the device.
 
 This component currently supports devices like gamepads and joysticks that contain one or more [Controls](#control-field) representing the individual axes and buttons on the device.
 To use the controller's inputs, you must [register callback functions](#registercontrolcallback) to the [Controls](#control-field) with the `input` API.
@@ -66,7 +66,7 @@ For configuration information, click on the model name:
 
 Once you've configured your input controller according to model type, you can write code to define how your machine processes the input from the controller.
 
-To get started using Viam's SDKs to connect to and control your robot, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 

@@ -17,7 +17,7 @@ Follow the [setup guide](/get-started/installation/prepare/beaglebone-setup/) to
 
 {{% /alert %}}
 
-Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](https://www.beagleboard.org/boards/beaglebone-ai-64) into your robot:
+Configure a `beaglebone` board to integrate [BeagleBoard's BeagleBone AI 64](https://www.beagleboard.org/boards/beaglebone-ai-64) into your machine:
 
 {{< tabs name="Configure an beaglebone Board" >}}
 {{% tab name="Config Builder" %}}

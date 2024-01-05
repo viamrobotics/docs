@@ -39,7 +39,7 @@ Go to this machine's **Setup** tab.
 
 ### Install and start `viam-server` on your computer
 
-Before you proceed with configuring and controlling your robot, install `viam-server`.
+Before you proceed with configuring and controlling your machine, install `viam-server`.
 Follow the steps outlined for your computer's architecture on the **Setup** tab of the [Viam app](https://app.viam.com) to [install `viam-server`](/get-started/installation/) on your computer as a system service.
 
 ### Configure your mock robot
@@ -96,9 +96,9 @@ When you add components to your machine, the Viam app automatically generates a 
 
 You can use the **Control** tab UI to send commands to your machine.
 
-For example, you can control the direction and speed of your motor, or change the joint positions of your robotic arm.
+For example, you can control the direction and speed of your motor, or change the joint positions of your machineic arm.
 You can also see the machine's reported positions and speeds change.
-With real physical components, you would not only be able to control and see your machine's readings on this tab, but you would also see your robot move in the physical world.
+With real physical components, you would not only be able to control and see your machine's readings on this tab, but you would also see your machine move in the physical world.
 
 ## Control your mock robot using a Viam SDK
 
@@ -120,11 +120,11 @@ Navigate to your [machine's page on the Viam app](https://app.viam.com/robots), 
 
 {{% snippet "show-secret.md" %}}
 
-This code snippet imports all the necessary libraries, is pre-populated with your robot credentials, and sets up a connection with the Viam app in the cloud.
+This code snippet imports all the necessary libraries, is pre-populated with your machine credentials, and sets up a connection with the Viam app in the cloud.
 Next, paste that boilerplate code into a file named <file>index.py</file> or <file>index.go</file> in your code editor, and save your file locally.
 
 You can now run the code.
-Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your robot is live, and that the computer running the program is able to connect to that instance.
+Doing so verifies that the Viam SDK is properly installed, that the `viam-server` instance on your machine is live, and that the computer running the program is able to connect to that instance.
 
 Run your code by entering the following in a new terminal on your computer:
 
@@ -145,7 +145,7 @@ go run index.go
 {{% /tab %}}
 {{< /tabs >}}
 
-If you successfully configured your robot and it is able to connect to the Viam app you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your robot in the Viam app:
+If you successfully configured your machine and it is able to connect to the Viam app you should see the program print a list of the various _{{< glossary_tooltip term_id="resource" text="resources" >}}_ that have been configured on your machine in the Viam app:
 
 ![Command line output from running python3 index.py when your Raspberry Pi has correctly connected and initialized with the Viam app. The output is an array of resources that have been pulled from the Viam app. The list includes the motion service, arm component, data manager, board component and motor component. There is also a list of arm position and orientation values.](/tutorials/build-a-mock-robot/resource-output.png)
 
@@ -318,11 +318,11 @@ Imagine for the purpose of this tutorial that the `fake` motor we are adding con
 ### What is a sub-part?
 
 Usually, when building a {{< glossary_tooltip term_id="machine" text="machine" >}}, you pick out a [single-board computer](/components/board/) like the [Jetson Nano](/components/board/jetson/) or [Raspberry Pi](/components/board/pi/).
-You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your robot with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
+You follow the instructions in the **Setup** tab to install `viam-server` on your [board](/components/board/), and you start operating your machine with that computer, adding the [components](/components/) and [services](/services/) you want to use to that `viam-server` instance.
 
 By utilizing {{< glossary_tooltip term_id="part" text="parts" >}}, you can expand upon this, chaining multiple computers together to build a complex robot with Viam:
 
-- Each individual computer-controlled unit of a robot is called a “{{< glossary_tooltip term_id="part" text="part" >}}” in Viam.
+- Each individual computer-controlled unit of a machine is called a “{{< glossary_tooltip term_id="part" text="part" >}}” in Viam.
 - Typically, simple robots have just one part, but you can have as many parts as your project requires.
 - Parts are organized in a tree, with one of them being the _main_ part, and the others being _sub-parts_.
 - You can access any sub-part either directly, or through any part above it in the tree.
@@ -346,7 +346,7 @@ Click **Save config**.
 
 ### Start a new instance of `viam-server` for your mock sub-part
 
-Every sub-part of a robot needs to run an instance of `viam-server`.
+Every sub-part of a machine needs to run an instance of `viam-server`.
 Since you are using only one computer, you need to bind the sub-part to a new port so you can run two servers on your machine at the same time.
 
 The following instructions use port `8081`, but you can use any open port you want.
@@ -374,7 +374,7 @@ Now that you have two instances of `viam-server` running on your local machine, 
 
 ![Screenshot of the Viam app's Control tab for the main part that lists the main arm, and the sub part motor component.](/tutorials/build-a-mock-robot/control-all.png)
 
-To test that your motor sub-part has been added to your robot, run your Python or Go script again.
+To test that your motor sub-part has been added to your machine, run your Python or Go script again.
 Review the output of your program that prints the machine's resources to see your sub-part's motor's `name` listed.
 
 ## Control a sub-part using the Viam SDK

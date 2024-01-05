@@ -12,7 +12,7 @@ aliases:
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-Any robot configured in Viam comes with the frame system service: an internally managed and mostly static system for storing the "reference frame" of each component of a robot within a coordinate system configured by the user.
+Any robot configured in Viam comes with the frame system service: an internally managed and mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
 
 ![Visualization of a wheeled base configured with motors and a mounted camera in the frame system tab of the Viam app UI](/mobility/frame-system/frame_system_wheeled_base.png)
 
@@ -32,10 +32,10 @@ It stores the required contextual information to use the position and orientatio
 
 ## Configuration
 
-To enable the default frame for a given [component](/components/) on a robot, navigate to the **Config** tab of the machine's page in [the Viam app](https://app.viam.com) and click **Components**.
+To enable the default frame for a given [component](/components/) on a machine, navigate to the **Config** tab of the machine's page in [the Viam app](https://app.viam.com) and click **Components**.
 With **mode** as **Builder**, click **Add Frame** on the component's card and **Save Config**.
 
-To adjust the frame from its default configuration, change the parameters as needed for your robot before saving.
+To adjust the frame from its default configuration, change the parameters as needed for your machine before saving.
 
 {{< tabs name="Frame Configuration Instructions" >}}
 {{% tab name="Config Builder" %}}
@@ -116,10 +116,10 @@ For more information about determining the appropriate values for these paramete
 
 ### Visualize the Frame System
 
-You can visualize how your robot is oriented in the frame system in [the Viam app](https://app.viam.com).
+You can visualize how your machine is oriented in the frame system in [the Viam app](https://app.viam.com).
 Navigate to the **Config** tab on your machine's page, select **mode** as **Builder**, and click on **Frame System**.
 
-The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your robot:
+The Viam app shows you a 3D visualization of the spatial configuration of the reference frames of components configured on your machine:
 
 ![Default frame system configuration grid visualization for a single component, shown in the Frame System Editor](/mobility/frame-system/frame_system_basic.png)
 
@@ -127,7 +127,7 @@ This tab provides a simple interface for simultaneously viewing and editing the 
 
 For example:
 
-Consider a robot configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
+Consider a machine configured with a [`jetson` board](/components/board/), wired to a [`webcam` camera](/components/camera/webcam/) and a [`wheeled` base](/components/base/wheeled/) with two [motors](/components/motor/) driving its wheels.
 
 No reference frame configuration has been specified, so on the **Frame System** subtab of the **Config** tab, the components are shown to all be located on the default `world` origin point as follows:
 
@@ -206,7 +206,7 @@ For example:
 
 ## How the Frame System Works
 
-`viam-server` builds a tree of reference frames for your robot with the `world` as the root node and regenerates this tree following reconfiguration.
+`viam-server` builds a tree of reference frames for your machine with the `world` as the root node and regenerates this tree following reconfiguration.
 
 Access a [topologically-sorted list](https://en.wikipedia.org/wiki/Topological_sorting) of the generated reference frames in the machine's logs at `--debug` level:
 

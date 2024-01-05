@@ -3,7 +3,7 @@ title: "Motion Service"
 linkTitle: "Motion"
 weight: 20
 type: "docs"
-description: "The motion service enables your robot to plan and move its components relative to itself, other robots, and the world."
+description: "The motion service enables your machine to plan and move its components relative to itself, other machines, and the world."
 tags: ["motion", "motion planning", "services"]
 icon: "/services/icons/motion.svg"
 no_list: true
@@ -12,15 +12,15 @@ aliases:
 # SME: Motion team
 ---
 
-The motion service enables your robot to plan and move itself or its components relative to itself, other robots, and the world.
+The motion service enables your machine to plan and move itself or its components relative to itself, other machines, and the world.
 The motion service:
 
-1. Gathers the current positions of the robot’s components as defined with the [frame system](../frame-system/).
+1. Gathers the current positions of the machine’s components as defined with the [frame system](../frame-system/).
 2. Plans the necessary motions to move a component to a given destination while obeying any [constraints you configure](constraints/).
 
 The motion service can:
 
-- use motion [planning algorithms](algorithms/) locally on your robot to plan coordinated motion across many components.
+- use motion [planning algorithms](algorithms/) locally on your machine to plan coordinated motion across many components.
 - pass movement requests through to individual components which have implemented their own motion planning.
 
 ## Used With
@@ -40,7 +40,7 @@ The motion service can:
 You need to configure frames for your machine's components with the [frame system](../frame-system/).
 This defines the spatial context within which the motion service operates.
 
-The motion service itself is enabled on the robot by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
+The motion service itself is enabled on the machine by default, so you do not need to do any extra configuration in the [Viam app](https://app.viam.com/) to enable it.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -57,7 +57,7 @@ The motion service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a robot configured with a gripper, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}
@@ -448,7 +448,7 @@ Make sure the [movement sensor](/components/movement-sensor/) you use supports u
 
 - It must support `GetPosition()` to report the machine's current GPS location.
 - It must **also** support **either** `GetCompassHeading()` or `GetOrientation()` to report which way the robot is facing.
-- If your movement sensor provides multiple methods, your robot will default to using the values returned by `GetCompassHeading()`.
+- If your movement sensor provides multiple methods, your machine will default to using the values returned by `GetCompassHeading()`.
 
 {{< /alert >}}
 

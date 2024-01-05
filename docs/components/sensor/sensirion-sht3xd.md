@@ -12,7 +12,7 @@ aliases:
 # SME: #team-bucket
 ---
 
-Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your robot:
+Configure a `sensirion-sht3xd` sensor to integrate a [Sensirion SHT3x-DIS temperature and humidity sensor](https://www.adafruit.com/product/2857) into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

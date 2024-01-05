@@ -1,9 +1,9 @@
 ---
-title: "Interact with Resources with Viam's client SDKs"
+title: "Interact with Resources with Viam's Client SDKs"
 linkTitle: "APIs"
 weight: 20
 type: "docs"
-description: "Access and control your robot or fleet with the SDKs' client libraries for the resource and robot APIs."
+description: "Access and control your machine or fleet with the SDKs' client libraries for the resource and robot APIs."
 icon: "/services/icons/sdk.svg"
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:
@@ -224,7 +224,7 @@ Get a resource configured on a machine by `"name"`.
 
 **Returns:**
 
-- [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your robot.
+- [(Resource)](https://python.viam.dev/autoapi/viam/resource/base/index.html): The named resource if it exists on your machine.
   For example, an [arm](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
 ```python
@@ -257,7 +257,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 In the TypeScript SDK, the equivalent of the `FromRobot` is defined in each resource API's client constructor.
 
-For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient.html) and name `my_arm` belonging to a robot `robot` is instantiated as follows:
+For example, a component with [type `arm`](https://ts.viam.dev/classes/ArmClient.html) and name `my_arm` belonging to a machine `robot` is instantiated as follows:
 
 **Parameters:**
 

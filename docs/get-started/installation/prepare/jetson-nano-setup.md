@@ -24,7 +24,7 @@ Follow this guide to set up the [Jetson Nano Developer Kit](https://developer.nv
 {{% alert title="Important" color="note" %}}
 
 This guide assumes that you have a Jetson Nano Developer Kit or a Jetson Orin Nano Developer Kit with a Jetson module and reference carrier board.
-If you want to use a different carrier board to incorporate your Nano into your robot, the type of carrier board you use will affect your hardware requirements.
+If you want to use a different carrier board to incorporate your Nano into your machine, the type of carrier board you use will affect your hardware requirements.
 
 {{% /alert %}}
 

@@ -33,7 +33,7 @@ After configuring a `wheeled-odometry` movement sensor, you can operate your bas
 
 ## Set-up requirements
 
-To prepare your robot, attach [encoders](/components/encoder/) to each of the position-reporting motors on your base to measure their rotation.
+To prepare your machine, attach [encoders](/components/encoder/) to each of the position-reporting motors on your base to measure their rotation.
 
 - Select motors that can report their own position, like an encoded [`roboclaw`](/components/motor/roboclaw/) or [`gpio` motors](/components/motor/gpio/) with [encoders](/components/encoder/#supported-models), or the [`odrive` module](https://github.com/viamrobotics/odrive).
   You can access this property of a configured motor through the [motor API's `GetProperties()`](/components/motor/#getproperties).

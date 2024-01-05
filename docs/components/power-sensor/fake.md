@@ -14,7 +14,7 @@ aliases:
 
 Use a `fake` power sensor to test implementing a power sensor component on your machine without any physical hardware.
 
-Configure a `fake` power sensor to integrate into your robot:
+Configure a `fake` power sensor to integrate into your machine:
 
 {{< tabs name="Configure a Fake Power Sensor" >}}
 {{% tab name="Config Builder" %}}

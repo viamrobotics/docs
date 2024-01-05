@@ -15,7 +15,7 @@ aliases:
 The base remote control service implements an [input controller](/components/input-controller/) as a remote control for a [base](/components/base/).
 This uses the [`input` api](/components/input-controller/#api) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
 
-Add the base remote control service after configuring your robot with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
+Add the base remote control service after configuring your machine with a base and input controller to control the linear and angular velocity of the base with the controller's button or joystick controls.
 
 Control mode is determined by the configuration attribute `"mode"`, for which there are five options:
 
@@ -39,7 +39,7 @@ You can monitor the input from these controls in the **Control** tab of the [Via
 
 ## Configuration
 
-You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your robot to be able to use a base remote control service.
+You must configure a [base](/components/base/) with a [movement sensor](/components/movement-sensor/) as part of your machine to be able to use a base remote control service.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -104,7 +104,7 @@ The base remote control service supports the following methods:
 {{% alert title="Tip" color="tip" %}}
 
 The following code examples assume that you have a robot configured with a [base](/components/base/) named `"my_base"`, [input controller](/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
-Make sure to add the required code to connect to your robot and import any required packages at the top of your code file.
+Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}

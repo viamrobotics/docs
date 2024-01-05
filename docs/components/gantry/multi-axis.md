@@ -12,7 +12,7 @@ aliases:
 # SME: Rand, Martha
 ---
 
-Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/components/gantry/single-axis/) gantries into your robot:
+Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/components/gantry/single-axis/) gantries into your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

@@ -3,7 +3,7 @@ title: "SLAM Service"
 linkTitle: "SLAM"
 weight: 30
 type: "docs"
-description: "Simultaneous Localization And Mapping (SLAM) allows your robot to create a map of its surroundings and find its location within that map."
+description: "Simultaneous Localization And Mapping (SLAM) allows your machine to create a map of its surroundings and find its location within that map."
 tags: ["slam", "services"]
 icon: "/services/icons/slam.svg"
 no_list: true
@@ -18,7 +18,7 @@ Stability is not guaranteed.
 Breaking changes are likely to occur, and occur often.
 {{% /alert %}}
 
-[Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your robot to create a map of its surroundings and find its location within that map.
+[Simultaneous Localization And Mapping (SLAM)](https://en.wikipedia.org/wiki/Simultaneous_localization_and_mapping) allows your machine to create a map of its surroundings and find its location within that map.
 SLAM is an important area of ongoing research in robotics, particularly for mobile applications such as drones, boats, and rovers.
 
 The Viam SLAM service supports the integration of SLAM as a service on your machine.
@@ -54,7 +54,7 @@ The SLAM service supports the following methods:
 
 {{% alert title="Tip" color="tip" %}}
 
-The following code examples assume that you have a robot configured with a SLAM service called `"my_slam_service"`, and that you add the required code to connect to your robot and import any required packages at the top of your code file.
+The following code examples assume that you have a machine configured with a SLAM service called `"my_slam_service"`, and that you add the required code to connect to your machine and import any required packages at the top of your code file.
 Go to your machine's **Code sample** tab on the [Viam app](https://app.viam.com) for boilerplate code to connect to your machine.
 
 {{% /alert %}}

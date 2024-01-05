@@ -10,7 +10,7 @@ aliases:
   - "/components/arm/ur5e/"
 ---
 
-Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your robot:
+Configure a `ur5e` arm to add a [Universal Robots UR5e](https://www.universal-robots.com/products/ur5-robot) to your machine:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}

@@ -229,8 +229,8 @@ async def connect():
     opts = RobotClient.Options.with_api_key(
         # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
-        # ID
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -248,7 +248,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### WithChannel
 
-Create a robot that is connected to a robot over the given channel.
+Create a robot that is connected to a machine over the given channel.
 Any robots created using this method will NOT automatically close the channel upon exit.
 
 {{< tabs >}}
@@ -256,7 +256,7 @@ Any robots created using this method will NOT automatically close the channel up
 
 **Parameters:**
 
-- `channel` [(ViamChannel)](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel): The channel that is connected to a robot, obtained by [`viam.rpc.dial`](https://python.viam.dev/_modules/viam/rpc/dial.html#dial).
+- `channel` [(ViamChannel)](https://python.viam.dev/autoapi/viam/rpc/dial/index.html#viam.rpc.dial.ViamChannel): The channel that is connected to a machine, obtained by [`viam.rpc.dial`](https://python.viam.dev/_modules/viam/rpc/dial.html#dial).
 - `options` [(Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for refreshing. Any connection options will be ignored.
 
 **Returns:**

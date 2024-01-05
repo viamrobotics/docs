@@ -4,13 +4,13 @@ linkTitle: "CLI"
 weight: 99
 type: "docs"
 no_list: true
-description: "Manage and control your robots from the command line."
+description: "Manage and control your machines from the command line."
 aliases:
   - "/build/program/cli"
   - /manage/cli/
 ---
 
-The Viam CLI (command line interface) tool enables you to manage your robots and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
+The Viam CLI (command line interface) tool enables you to manage your machines and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} across organizations and locations from the command line.
 The CLI lets you:
 
 - Retrieve [organization](/fleet/organizations/) and location information
@@ -211,9 +211,9 @@ To switch to using a location API key for authentication right away, [logout](#l
 
 A location can have multiple API keys.
 
-### Create a robot API key
+### Create a machine API key
 
-To use a robot API key to authenticate your CLI session, you must first create one:
+To use a machine API key to authenticate your CLI session, you must first create one:
 
 1. First, [authenticate](#authenticate) your CLI session.
    If you don't already have a robot API key created, authenticate using a personal access token, an [organization API key](#create-an-organization-api-key), or a [location API key](#create-a-location-api-key).
@@ -227,7 +227,7 @@ To use a robot API key to authenticate your CLI session, you must first create o
    Where:
 
    - `robot-id` is your machine's ID.
-     You can find your robot ID by running `viam robots list`.
+     You can find your machine ID by running `viam robots list`.
    - `org-id` is an optional organization ID to attach the key to.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in [the Viam app](https://app.viam.com/).
      If only one organization owns the robot, you can omit the parameter.
@@ -240,15 +240,15 @@ You will need both to authenticate.
 
 {{% alert title="Important" color="note" %}}
 Keep these key values safe.
-Authenticating using a robot API key gives the authenticated CLI session full read and write access to your machine.
+Authenticating using a machine API key gives the authenticated CLI session full read and write access to your machine.
 {{% /alert %}}
 
-Once created, you can use the robot API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
-To switch to using a robot API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
+Once created, you can use the machine API key to authenticate future CLI sessions or to [connect to your machine with the SDK](/build/program/#authenticate).
+To switch to using a machine API key for authentication right away, [logout](#logout) then log back in using `viam login api-key`.
 
 A location can have multiple API keys.
 
-## Manage your robots with the Viam CLI
+## Manage your machines with the Viam CLI
 
 With the Viam CLI [installed](#install) and [authenticated](#authenticate), you can use it to issue commands to your machine fleet or manage custom modules.
 All Viam CLI commands use the following format:
@@ -769,7 +769,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 
 ### robots
 
-The `robots` command allows you to manage your robot fleet.
+The `robots` command allows you to manage your machine fleet.
 This includes:
 
 - Listing all robots that you have access to, filtered by organization and location.
@@ -777,7 +777,7 @@ This includes:
 - Retrieving robot and robot part status
 - Retrieving robot and robot part logs
 - Controlling a robot by issuing component and service commands
-- Accessing your robot with a secure shell (when this feature is enabled)
+- Accessing your machine with a secure shell (when this feature is enabled)
 
 ```sh {class="command-line" data-prompt="$"}
 viam robots list
@@ -815,7 +815,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 |        command option     |       description      | positional arguments
 | ----------- | ----------- | ----------- |
 | `list`      | list all robots that the authenticated session has access to, filtered by organization and location.  | - |
-| `api-key`   |  work with an api-key for your robot | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
+| `api-key`   |  work with an api-key for your machine | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status`      | retrieve robot status for a specified robot  | - |
 | `logs`      | retrieve logs for a specified robot | - |
 | `part`      | manage a specified robot part  | `status`, `run`, `logs`, `shell` (see [positional arguments: part](#positional-arguments-part)) |

@@ -5,7 +5,7 @@ childTitleEndOverwrite: "Board Component"
 weight: 20
 type: "docs"
 no_list: true
-description: "The signal wire hub of a robot, with GPIO pins for transmitting signals between the machine's computer and its other components."
+description: "The signal wire hub of a machine, with GPIO pins for transmitting signals between the machine's computer and its other components."
 tags: ["board", "components"]
 icon: "/icons/components/board.svg"
 images: ["/icons/components/board.svg"]
@@ -74,7 +74,7 @@ Configuring these attributes on your board allows you to integrate [analog-to-di
 
 ## Control your board with Viam's client SDK libraries
 
-To get started using Viam's SDKs to connect to and control your robot, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
+To get started using Viam's SDKs to connect to and control your machine, go to your machine's page on [the Viam app](https://app.viam.com), navigate to the **Code sample** tab, select your preferred programming language, and copy the sample code generated.
 
 {{% snippet "show-secret.md" %}}
 

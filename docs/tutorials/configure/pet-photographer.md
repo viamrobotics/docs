@@ -52,13 +52,13 @@ If your pet already has a distinct color that is different from their environmen
 Follow the steps below to set up your smart machine:
 
 1. Install [Go](https://go.dev/dl/) or [Python](https://www.python.org/downloads/) on both your local development computer and on your machine's board if they are not the same device.
-1. [Create a robot](/fleet/machines/#add-a-new-robot).
+1. [Create a machine](/fleet/machines/#add-a-new-machine).
 1. [Install](/get-started/installation/#install-viam-server) or [update](/get-started/installation/manage/#update-viam-server) `viam-server`.
    Your `viam-server` must be [version 0.8.0](https://github.com/viamrobotics/rdk/releases/tag/v0.8.0-rc0) or newer, as filtering capabilities were introduced in the RDK starting from that version.
 
 ## Add the custom module
 
-In this tutorial, you can choose to add custom data filtering to your robot in one of two ways:
+In this tutorial, you can choose to add custom data filtering to your machine in one of two ways:
 
 1. [Download the `colorfilter` module](#download-the-colorfilter-module) from Viam and get started quickly.
 1. [Code your own color filtering module](#code-your-own-module), exploring the process of building a module from scratch.
@@ -824,7 +824,7 @@ Next, add the following services to your smart machine to support the color filt
 
 ### Add the data management service
 
-To enable data capture on your robot, add and configure the [data management service](/data/) to capture and store data on your machine's computer:
+To enable data capture on your machine, add and configure the [data management service](/data/) to capture and store data on your machine's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -927,7 +927,7 @@ If you haven't already, add a [camera](/components/camera/) component to your sm
 Your machine's configuration page now includes a panel for your camera.
 
 - To choose the camera the robot will use, click the **video path** field.
-  - If your robot is connected to the Viam app, you'll see a list of available cameras.
+  - If your machine is connected to the Viam app, you'll see a list of available cameras.
   - Select the `camera` you want to use, then click **Save config**.
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
