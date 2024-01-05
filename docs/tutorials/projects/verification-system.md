@@ -58,10 +58,10 @@ This tutorial uses two layers of detectors to detect people and then faces but i
 - A [camera](/components/camera/)
 - A computer running `viam-server` that the camera can connect to, like a [single-board computer (SBC)](/components/board/)
 
-Before configuring your camera, you must [create a robot](/fleet/machines/#add-a-new-machine).
+Before configuring your camera, you must [create a Machine](/fleet/machines/#add-a-new-machine).
 
-1. On the locations page of the [Viam app](https://app.viam.com), add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
-2. Click on that robot's name to go to its page.
+1. On the locations page of the [Viam app](https://app.viam.com), add a new Machine by providing a name in the **New Machine** field and clicking **Add Machine**.
+2. Click on that machine's name to go to its page.
 
 ## Configure a camera
 
@@ -71,7 +71,7 @@ Configure the camera you want to use for your security system.
 We configured ours as a `webcam`, but you can use whatever model of camera you'd like.
 Reference [these supported models](/components/camera/#supported-models).
 
-1. To configure a `webcam`, navigate to the **Config** tab of your robot's page in [the Viam app](https://app.viam.com).
+1. To configure a `webcam`, navigate to the **Config** tab of your Machine's page in [the Viam app](https://app.viam.com).
 2. Click on the **Components** subtab and click **Create component**.
 3. Select the `camera` type, then select the `webcam` model.
 4. Enter the name `"my_webcam""` for your camera and click **Create**.
@@ -90,7 +90,7 @@ You can collect this data using the data management service and your already ins
 
 To add the [data management service](/data/) and configure data capture:
 
-1. From your robot's **Config** tab, navigate to the **Services** subtab.
+1. From your machine's **Config** tab, navigate to the **Services** subtab.
 2. Click **Create service** in the lower-left corner of the page.
    Choose `Data Management` as the type and specify a name for your data management service, for example `data-manager`.
    Click **Create**.
@@ -129,7 +129,7 @@ Then:
 
 Finally, configure an `mlmodel` detector:
 
-1. Navigate to your robot's **Config** tab on the [Viam app](https://app.viam.com/robots).
+1. Navigate to your machine's **Config** tab on the [Viam app](https://app.viam.com/Machines).
 2. Click the **Services** subtab and click **Create service** in the lower-left corner.
 3. Select the `Vision` type, then select the `ML Model` model.
 4. Give the detector the name `"people-detect"` and click **Create**.
@@ -179,7 +179,7 @@ This can be accomplished with a second detector: an identity verification detect
 To create a detector that can recognize individual faces, use Viam Lab's `facial-detector` module, available in the [registry](https://app.viam.com/module/viam-labs/facial-detector).
 This is a modular vision service that uses the DeepFace library to perform facial detections.
 
-Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/).
+Navigate to the **Config** tab of your Machine’s page in [the Viam app](https://app.viam.com/).
 Click on the **Services** subtab and click **Create service**.
 Select the `vision` type, then select the `detector:facial-detector` model.
 Give your vision service the name `"face-detect"` and click **Create**.
@@ -206,7 +206,7 @@ Make sure to name this detector `"face-detect"`.
 
 Now that you've configured your camera, a rough `"people-detect"` detector and a more fine-tuned `"face-detect"` facial detector, you can add a module that contains the code that runs the alarm system based on detections it receives from the detectors specified in its configuration.
 
-Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/). Click on the **Services** subtab and click **Create service**. Select the `vision` type, then select the `classifier:verification-system` model. Enter a name for your vision service and click **Create**.
+Navigate to the **Config** tab of your Machine’s page in [the Viam app](https://app.viam.com/). Click on the **Services** subtab and click **Create service**. Select the `vision` type, then select the `classifier:verification-system` model. Enter a name for your vision service and click **Create**.
 
 To use the facial detector as the verification detector and the people detector as the first two layers of detectors, with **Builder** mode selected copy and paste the following attributes configuration into your service's **Attributes** box:
 
@@ -262,7 +262,7 @@ Note that `ALARM` is by default silent and only a label overlay, but you can [po
 
 To view the classifications that your verification system makes, configure a transform camera.
 
-Navigate to the **Config** tab of your robot’s page in [the Viam app](https://app.viam.com/).
+Navigate to the **Config** tab of your machine’s page in [the Viam app](https://app.viam.com/).
 Click on the **Components** subtab and click **Create component**. Select the `camera` type, then select the `transform` model. Enter a name for your camera and click **Create**.
 
 With **Builder** mode selected, copy and paste the following attributes JSON into your camera's **Attributes** box:
