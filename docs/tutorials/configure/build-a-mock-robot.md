@@ -281,7 +281,7 @@ async def main():
     arm = ArmClient.from_robot(robot=robot, name='myArm')
     await randomMovement(arm)
 
-    await machine.close()
+    await robot.close()
 ```
 
 {{% /tab %}}
