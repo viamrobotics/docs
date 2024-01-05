@@ -13,7 +13,7 @@ Next they will test that it is wired up properly using the Viam app's Control pa
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the machine.
 
-Below, we describe the flow of information through a Viam-based multipart robot and then get into the specifics of what backs these connections and communcations APIs.
+Below, we describe the flow of information through a Viam-based multipart robot and then get into the specifics of what backs these connections and communications APIs.
 
 ## High-Level Inter-Robot/SDK Communication
 
@@ -25,7 +25,7 @@ This robot is made of two parts and a separate SDK-based application, which we'l
 
 - The first and main part, RDK Part 1, consists of a Raspberry Pi and a single USB connected camera called Camera.
 
-- The second and final part, RDK Part 2, consists of a Rapsberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
+- The second and final part, RDK Part 2, consists of a Raspberry Pi connected to a robotic arm over ethernet and a gantry over GPIO.
 
 RDK Part 1 will establish a bidirectional gRPC/{{< glossary_tooltip term_id="webrtc" >}} connection to RDK Part 2.
 RDK Part 1 is considered the controlling peer (client).
