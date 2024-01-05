@@ -1492,8 +1492,9 @@ Check if the organization, location, or robot your `ViamClient` is authenticated
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import AuthorizedPermissions
 
-# Check whether the entity you're currently authenticated to 
-# has permission to control and/or read logs from robots 
+# Check whether the entity you're currently
+# authenticated to has permission to control
+# and/or read logs from robots
 # in the "organization-identifier123" org
 permissions = [AuthorizedPermissions(resource_type="organization",
                                      resource_id="organization-identifier123",
