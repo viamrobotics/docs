@@ -1498,7 +1498,7 @@ from viam.proto.app import AuthorizedPermissions
 # in the "organization-identifier123" org
 permissions = [AuthorizedPermissions(resource_type="organization",
                                      resource_id="organization-identifier123",
-                                     permissions=["control_robot", 
+                                     permissions=["control_robot",
                                                   "read_robot_logs"])]
 
 filtered_permissions = await cloud.check_permissions(permissions)
