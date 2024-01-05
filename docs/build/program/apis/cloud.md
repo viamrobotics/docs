@@ -1368,7 +1368,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Remove a member from the organization.
+Remove a member from the {{< glossary_tooltip term_id="organization" text="organization" >}} you are currently authenticated to.
 
 **Parameters:**
 
@@ -1479,8 +1479,7 @@ Check validity of a list of permissions.
 
 **Parameters:**
 
-- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): A list of the resource permissions arguments to validate as authorized.
-  For example, `“read_organization”` or `“control_robot”`.
+- `permissions` [(List[viam.proto.app.AuthorizedPermissions])](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions): A list containing the resource type and ID, followed by the resource permissions to check.
   See [GitHub](https://github.com/viamrobotics/app/blob/main/auth/models/models.go#L190) for the full list of permissions.
 
 **Returns:**
@@ -1494,9 +1493,10 @@ Check validity of a list of permissions.
 ```python {class="line-numbers linkable-line-numbers"}
 from viam.proto.app import AuthorizedPermissions
 
+# Check whether the entity you're currently authenticated to has permission to control and/or read logs from robots in the organization-identifier123 org
 permissions = [AuthorizedPermissions(resource_type="organization",
                                      resource_id="organization-identifier123",
-                                     permissions=["control_robot"])]
+                                     permissions=["control_robot", "read_robot_logs"])]
 
 filtered_permissions = await cloud.check_permissions(permissions)
 ```
