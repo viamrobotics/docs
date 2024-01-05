@@ -14,7 +14,7 @@ no_list: true
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [Application Programming Interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).
 You can think of this as a description of how you can interact with that resource.
-Different models of resources implement the same API, which [Viam SDKs expose](/internals/robot-to-robot-comms/), allowing you to control different models of resource types with a consistent interface.
+Different models of resources implement the same API, which [Viam SDKs expose](/internals/machine-to-machine-comms/), allowing you to control different models of resource types with a consistent interface.
 
 The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the robot when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/build/configure/) on your robot.
 
@@ -22,7 +22,7 @@ The API methods provided by the SDKs for each of these resource APIs wrap gRPC c
 
 ### Robot API
 
-All robots support the following methods through the [robot API](/build/program/apis/robot/):
+All machines support the following methods through the [robot API](/build/program/apis/robot/):
 
 {{< readfile "/static/include/services/apis/robot.md" >}}
 
@@ -46,7 +46,7 @@ The ML training API allows you to get information about and cancel ML training j
 
 ## Component APIs
 
-These APIs provide interfaces for controlling and getting information from various components of a robot.
+These APIs provide interfaces for controlling and getting information from various components of a machine.
 Built-in API methods are defined for every model of each component type.
 Documentation on using these methods in your SDK code is found on each [component page](/components/) as follows:
 
@@ -137,7 +137,7 @@ The [servo component](/components/servo/) supports the following methods:
 
 ## Service APIs
 
-These APIs provide interfaces for controlling and getting information from the services you configured on a robot.
+These APIs provide interfaces for controlling and getting information from the services you configured on a machine.
 Built-in API methods are defined for each service implementation.
 Documentation on using these methods in your SDK code is found on [service pages](/services/) as follows:
 
@@ -212,7 +212,7 @@ In the other SDKs, resource APIs implement but do not inherit these base require
 
 ### FromRobot
 
-Get a resource configured on a robot by `"name"`.
+Get a resource configured on a machine by `"name"`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

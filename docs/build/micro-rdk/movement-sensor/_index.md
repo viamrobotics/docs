@@ -12,7 +12,7 @@ aliases:
 # SMEs: Nick M., Gautham V.
 ---
 
-A movement sensor is a sensor that gives data on where a robot is and how fast it is moving.
+A movement sensor is a sensor that gives data on where a machine is and how fast it is moving.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Movement Sensor Component](/components/movement-sensor/).
 
 ## Configuration

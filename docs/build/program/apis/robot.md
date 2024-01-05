@@ -1,6 +1,6 @@
 ---
-title: "Manage Robots with Viam's Robot API"
-linkTitle: "Robot Management"
+title: "Manage Machines with Viam's Robot API"
+linkTitle: "Machine Management"
 weight: 20
 type: "docs"
 description: "How to use the Robot API to monitor and manage your machines."
@@ -18,8 +18,8 @@ The robot API is supported for use with the [Viam Python SDK](https://python.via
 
 To interact with the robot API with Viam's SDKs, instantiate a `RobotClient` ([gRPC](https://grpc.io/) client) and use that class for all interactions.
 
-To find the api key, api key id, and robot address, go to [Viam app](https://app.viam.com/), select the robot you wish to connect to, and go to the [**Code sample**](/fleet/machines/#code-sample) tab.
-Toggle **Include api key**, and then copy and paste the API key id and the API key into your environment variables or directly into the code:
+To find the API key, API key ID, and machine address, go to [Viam app](https://app.viam.com/), select the machine you wish to connect to, and go to the [**Code sample**](/fleet/machines/#code-sample) tab.
+Toggle **Include api key**, and then copy and paste the API key ID and the API key into your environment variables or directly into the code:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -33,10 +33,10 @@ from viam.robot.client import RobotClient
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
-        # id
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('ADDRESS FROM THE VIAM APP', opts)
@@ -79,11 +79,12 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API Key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
     })),
   )
@@ -147,11 +148,12 @@ func main() {
       "ADDRESS FROM THE VIAM APP",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      // Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your robot's api key
+        // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
     })),
   )
@@ -189,9 +191,9 @@ Pass these options to [`AtAddress`](#ataddress).
 - [(RobotClient.Options)](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.Options): Options for connecting the `RobotClient`.
 
 ```python
-# Replace "<API-KEY>" (including brackets) with your robot's api key
+# Replace "<API-KEY>" (including brackets) with your machine's API key
 api_key = '<API-KEY>'
-# Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+# Replace "<API-KEY-ID>" (including brackets) with your machine's API key
 # id
 api_key_id = '<API-KEY-ID>'
 
@@ -224,9 +226,9 @@ Create a robot client that is connected to the robot at the provided address.
 ```python {class="line-numbers linkable-line-numbers"}
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your robot's api key
+        # Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your robot's api key
+        # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
         # id
         api_key_id='<API-KEY-ID>'
     )
@@ -872,7 +874,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 - [(ResourceName.AsObject[])](https://ts.viam.dev/modules/commonApi.ResourceName-1.html): List of all known resource names.
 
 ```typescript
-// Get a list of all resources on the robot.
+// Get a list of all resources on the machine.
 const resource_names = await robot.resourceNames();
 ```
 

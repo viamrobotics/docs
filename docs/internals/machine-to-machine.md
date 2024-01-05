@@ -1,12 +1,14 @@
 ---
-title: "Robot-to-Robot Communication: End-to-End Flow"
-linkTitle: "Robot-to-Robot Communication"
+title: "Machine-to-Machine Communication: End-to-End Flow"
+linkTitle: "Machine-to-Machine Communication"
 weight: 10
 type: "docs"
-description: "Explanation of how a robot and its parts interact at the communication layer."
+description: "Explanation of how a machine and its parts interact at the communication layer."
+aliases:
+  - "/internals/robot-to-robot-comms/"
 ---
 
-When building a robot application in the [Viam app](https://app.viam.com), a user typically begins by configuring their robot which can consist of one or more parts.
+When building a smart machine application in the [Viam app](https://app.viam.com), a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.
 Next they will test that it is wired up properly using the Viam app's Control page.
 Once they've ensured everything is wired up properly, they will build their main application and the business logic for their robot using one of Viam's language SDKs.
 This SDK-based application is typically run on either the main part of the robot or a separate computer dedicated to running the business logic for the robot.

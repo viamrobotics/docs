@@ -3,7 +3,7 @@ title: "Micro-RDK Board Models"
 linkTitle: "Board"
 weight: 30
 type: "docs"
-description: "The micro-RDK support for the signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components."
+description: "The micro-RDK support for the signal wire hub of a smart machine, with GPIO pins for transmitting signals between the machine's computer and its other components."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components", "micro-rdk"]
 no_list: true
@@ -12,7 +12,7 @@ aliases:
 # SMEs: Nick M., Gautham V.
 ---
 
-A board is the signal wire hub of a robot, with GPIO pins for transmitting signals between the robot's computer and its other components.
+A board is the signal wire hub of a {{< glossary_tooltip term_id="machine" text="smart machine" >}}, with GPIO pins for transmitting signals between the machine's computer and its other components.
 For more information and models supported by the {{< glossary_tooltip term_id="rdk" text="RDK" >}}, see [Board Component](/components/board/).
 
 ## Supported Models
