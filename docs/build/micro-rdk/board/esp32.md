@@ -1,5 +1,5 @@
 ---
-title: "Configure an ESP32 board (Micro-RDK)"
+title: "Configure an ESP32 Board (Micro-RDK)"
 linkTitle: "esp32"
 weight: 20
 type: "docs"

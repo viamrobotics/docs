@@ -3,7 +3,7 @@ title: "Configure a gpio Servo (Micro-RDK)"
 linkTitle: "gpio"
 weight: 90
 type: "docs"
-description: "Configure a gpio servo."
+description: "Configure a gpio servo with a microcontroller."
 tags: ["servo", "components"]
 icon: "/icons/components/servo.svg"
 aliases:

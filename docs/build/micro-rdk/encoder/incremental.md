@@ -1,8 +1,8 @@
 ---
-title: "Configure an incremental encoder (Micro-RDK)"
+title: "Configure an incremental Encoder (Micro-RDK)"
 linkTitle: "incremental"
 type: "docs"
-description: "Configure an incremental encoder."
+description: "Configure an incremental encoder with a microcontroller."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:

@@ -3,7 +3,7 @@ title: "Configure an ADXL345 Accelerometer (Micro-RDK)"
 linkTitle: "accel-adxl345"
 weight: 20
 type: "docs"
-description: "Configure an ADXL345 digital accelerometer."
+description: "Configure an ADXL345 digital accelerometer with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/accel-adxl345/

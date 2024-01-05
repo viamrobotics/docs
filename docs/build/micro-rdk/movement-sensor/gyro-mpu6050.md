@@ -3,7 +3,7 @@ title: "Configure an MPU-6050 (Micro-RDK)"
 linkTitle: "gyro-mpu6050"
 weight: 40
 type: "docs"
-description: "Configure an MPU-6050 movement sensor."
+description: "Configure an MPU-6050 movement sensor with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/gyro-mpu6050/

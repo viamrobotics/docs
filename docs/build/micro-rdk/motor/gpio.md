@@ -1,9 +1,9 @@
 ---
-title: "Configure a gpio motor (Micro-RDK)"
+title: "Configure a gpio Motor (Micro-RDK)"
 linkTitle: "gpio"
 weight: 10
 type: "docs"
-description: "Configure brushed or brushless DC motors."
+description: "Configure brushed or brushless DC motors with a microcontroller."
 images: ["/icons/components/motor.svg"]
 aliases:
   - /micro-rdk/motor/gpio/
