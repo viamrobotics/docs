@@ -58,7 +58,7 @@ This tutorial uses two layers of detectors to detect people and then faces but i
 - A [camera](/components/camera/)
 - A computer running `viam-server` that the camera can connect to, like a [single-board computer (SBC)](/components/board/)
 
-Before configuring your camera, you must [create a robot](/fleet/machines/#add-a-new-robot).
+Before configuring your camera, you must [create a robot](/fleet/machines/#add-a-new-machine).
 
 1. On the locations page of the [Viam app](https://app.viam.com), add a new robot by providing a name in the **New Robot** field and clicking **Add robot**.
 2. Click on that robot's name to go to its page.
